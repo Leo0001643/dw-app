@@ -1,0 +1,29 @@
+name: aone_records
+version: 0.0.1
+description:
+
+
+environment:
+  sdk: '>=2.16.1'
+  flutter: ">=1.17.0"
+
+dependencies:
+  aone_widget:
+    path: ../../packages/aone_widget
+  aone_common:
+    path: ../../packages/common
+
+  flutter:
+    sdk: flutter
+  collection: ^1.15.0
+  get: ^4.6.1
+  flutter_screenutil: ^5.5.3+2
+  flutter_smart_dialog: ^3.4.2+2
+  auto_size_text: ^3.0.0
+
+
+
+dev_dependencies:
+  pedantic: ^1.10.0-0
+  flutter_test:
+    sdk: flutter

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="21px" viewBox="0 0 22 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>完成</title>
+    <g id="签到" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="签到中心v2" transform="translate(-31.000000, -207.000000)" fill-rule="nonzero">
+            <g id="签到板块V2" transform="translate(12.000000, 130.000000)">
+                <g id="签到状态" transform="translate(10.000000, 54.000000)">
+                    <g id="完成" transform="translate(9.500000, 23.000000)">
+                        <rect id="矩形" fill="#000000" opacity="0" x="0" y="0" width="21" height="21"></rect>
+                        <polygon id="路径" fill="#0081F8" points="19.5117101 5.81780153 8.51625698 16.9731662 1.48828993 9.84295647 3.24908013 8.0445388 8.52924719 13.4015348 17.7695972 4.02681284"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

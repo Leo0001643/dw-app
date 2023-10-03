@@ -1,0 +1,20 @@
+library logics;
+
+export 'activity/activity_logic.dart';
+export 'activity/sinin_logic.dart';
+export 'captcha/captcha_controller.dart';
+export 'favorite/favorite_logic.dart';
+export 'game_category/game_category_logic.dart';
+export 'game_init/game_init_logic.dart';
+export 'home/home_controller.dart';
+export 'login/login_logic.dart';
+export 'mine/card_management/card_management_logic.dart';
+export 'mine/change_password/change_password_logic.dart';
+export 'mine/change_userinfo/change_userinfo_logic.dart';
+export 'register/register_logic.dart';
+export 'search/search_logic.dart';
+export 'strong_activity/strong_activity_logic.dart';
+export 'task_center/task_center_logic.dart';
+export 'welfare_center/welfare_center_logic.dart';
+export 'password_recovery/password_recovery_logic.dart';
+export 'bootstrap/bootstrap_controller.dart';

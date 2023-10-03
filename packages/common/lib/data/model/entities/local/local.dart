@@ -1,0 +1,2 @@
+library local_entities;
+

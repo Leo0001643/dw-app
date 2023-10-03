@@ -1,0 +1,139 @@
+import 'dart:io';
+
+import 'package:aone_common/common.dart';
+import 'package:app04/lang/nationlize.dart';
+import 'package:app04/router/router.dart';
+import 'package:app04/theme/b55_loading.dart';
+import 'package:app04/theme/custom_theme.dart';
+import 'package:app04/theme/theme_scroll_behavior.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:aone_locales/aone_locales.dart';
+
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
+import 'config/site_config.dart';
+import 'theme/color_config.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  if (AppRuntimeConfig.isUseDShield) {
+    print('请求d盾域名...');
+    var appDomain =
+        await getDShieldData(AppRuntimeConfig.envConfig.dShieldJson ?? '');
+    AppRuntimeConfig.envConfig.appDomain = appDomain;
+    print('返回d盾域名为 == $appDomain');
+  }
+
+  AppEnv.setup(
+    AppRuntimeConfig.envConfig,
+    isCoverConfig: AppRuntimeConfig.isCoverConfig,
+  );
+
+  AoneAppTheme.setup(AppColorsConfig.appTheme);
+  // DoKit.runApp(
+  //   app: DoKitApp(const MyApp()),
+  //   useInRelease: false,
+  //   useRunZoned: false,
+  //   releaseAction: () => {
+  //     // release模式下执行该函数
+  //   },
+  // );
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
+  // 透明状态栏
+  if (Platform.isAndroid) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+      ),
+    );
+  }
+
+  if (kReleaseMode && (AppRuntimeConfig.envConfig.dShieldJson ?? '') != "") {
+    await SentryFlutter.init(
+      (options) {
+        options.dsn =
+            'https://95d63f8974b244bdb4a9e8eb76fd884c@pusha1admin.a1error.com/4';
+        // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+        // We recommend adjusting this value in production.
+        options.tracesSampleRate = 1.0;
+      },
+      appRunner: () => runApp(const MyApp()),
+    );
+  } else {
+    runApp(
+      const MyApp(),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Intl.defaultLocale = 'zh';
+    return AoneLocale(
+      // 请勿移除此builder 否则无法正常初始化
+      child: (context) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter App',
+        translations: Nationalize(),
+        locale: const Locale('zh', 'CN'),
+        fallbackLocale: const Locale('zh', 'CN'),
+        theme: CustomTheme.lightTheme,
+        darkTheme: CustomTheme.darkTheme,
+        themeMode: ThemeMode.light,
+        initialRoute: Routes.splash,
+        getPages: routers,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        // locale: context.locale,
+        // localizationsDelegates: const [
+        //   FormBuilderLocalizations.delegate,
+        //   GlobalMaterialLocalizations.delegate,
+        //   GlobalWidgetsLocalizations.delegate,
+        //   GlobalCupertinoLocalizations.delegate,
+        // ],
+        // supportedLocales: const [
+        //   Locale('zh', 'CH'),
+        //   Locale('hans'),
+        //   Locale('en'),
+        // ],
+        navigatorObservers: [
+          FlutterSmartDialog.observer,
+        ],
+        builder: (context, widget) {
+          ScreenUtil.init(
+            context,
+            designSize: const Size(375, 667),
+            splitScreenMode: false,
+            minTextAdapt: true,
+          );
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+              textScaleFactor: 1.0,
+            ),
+            child: ScrollConfiguration(
+              behavior: ThemeScrollBehavior(),
+              child: FlutterSmartDialog(
+                loadingBuilder: (_, __) => const B55Loading(),
+                child: widget,
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

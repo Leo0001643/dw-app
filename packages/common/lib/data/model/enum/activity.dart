@@ -1,0 +1,7 @@
+
+
+
+enum UserActState {
+  invalidUser,
+  invalidAct,
+}

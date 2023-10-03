@@ -1,0 +1,24 @@
+ext {
+    androidCode = [
+            //  ---------------- C11 --------------------
+            EnvType_h09           : "0",
+            AppName_h09           : "Bet365",
+            AppIcon_h09           : "@mipmap/ic_launcher",
+            ApplicationId_h09     : "com.example.a04",
+            App_version_h09       : "1.0.0",
+
+            //  ---------------- C11 --------------------
+            EnvType_h18          : "0",
+            AppName_h18          : "H18",
+            AppIcon_h18          : "@mipmap/ic_launcher",
+            ApplicationId_h18     : "com.example.a04",
+            App_version_h18       : "1.2.0",
+
+    ]
+    signing = [
+            // app文件名时间格式
+            releaseTime: new Date().format("yyyyMMddHHmm", TimeZone.getDefault()),
+            //多渠道配置 维度
+            dimensions : "app",
+    ]
+}

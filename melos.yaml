@@ -1,0 +1,9 @@
+name: aone_flutter
+
+
+packages:
+  - packages/**
+  - sites/**
+  - modules/**
+
+
