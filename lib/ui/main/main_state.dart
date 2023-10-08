@@ -1,0 +1,24 @@
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import '/app/res/dimens.dart';
+import 'customer_service/customer_service_page.dart';
+import 'home/home_page.dart';
+import 'mine/mine_page.dart';
+import 'preferential/preferential_page.dart';
+
+class MainState {
+
+  MainState() {
+    ///Initialize variables
+    pageController = PageController();
+  }
+
+
+  var count = Dimens.i_40.obs;
+  var selectedIndex = 0.obs;
+
+  late PageController pageController;
+  List<Widget> pages = [HomePage(), PreferentialPage(), CustomerServicePage(),MinePage()];
+
+
+}
