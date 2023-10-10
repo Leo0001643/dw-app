@@ -21,6 +21,11 @@ class MainLogic extends GetxController {
     super.onClose();
   }
 
+
+  void openDrawer() {
+    state.scaffoldKey.currentState?.openEndDrawer();
+  }
+
   Future<void> checkPermission(BuildContext context) async {
     ///android权限申请需要在AndroidManifest.xml里添加对应的权限声明
     ///iOS

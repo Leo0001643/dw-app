@@ -85,7 +85,76 @@ class ImageX{
   static const icon_zh = 'assets/images/icon_zh.png';
   static const icon_zs = 'assets/images/icon_zs.png';
   static const icon_logo = 'assets/images/icon_logo.png';
+  static const icon_empty = 'assets/images/icon_empty.png';
+  static const icon_qdcj = 'assets/images/icon_qdcj.png';
+  static const icon_tjyl = 'assets/images/icon_tjyl.png';
+  static const icon_xrzx = 'assets/images/icon_xrzx.png';
+
+  static const ic_delete_grey = 'assets/images/ic_delete_grey.png';
+  static const ic_into_right = 'assets/images/ic_into_right.png';
+  static const icon_alipay = 'assets/images/icon_alipay.png';
+  static const icon_bb = 'assets/images/icon_bb.png';
+  static const icon_bddt = 'assets/images/icon_bddt.png';
+  static const icon_bdyhk = 'assets/images/icon_bdyhk.png';
+  static const icon_bgyy = 'assets/images/icon_bgyy.png';
+  static const icon_bzzx = 'assets/images/icon_bzzx.png';
+  static const icon_cft = 'assets/images/icon_cft.png';
+  static const icon_check_black = 'assets/images/icon_check_black.png';
+  static const icon_copy = 'assets/images/icon_copy.png';
+  static const icon_dai = 'assets/images/icon_dai.png';
+  static const icon_dollar_grey = 'assets/images/icon_dollar_grey.png';
+  static const icon_dollar_red = 'assets/images/icon_dollar_red.png';
+  static const icon_down_up = 'assets/images/icon_down_up.png';
+  static const icon_download = 'assets/images/icon_download.png';
+  static const icon_dx = 'assets/images/icon_dx.png';
+  static const icon_ed = 'assets/images/icon_ed.png';
+  static const icon_edit_avatar = 'assets/images/icon_edit_avatar.png';
+  static const icon_edzh = 'assets/images/icon_edzh.png';
+  static const icon_exist = 'assets/images/icon_exist.png';
+  static const icon_fan = 'assets/images/icon_fan.png';
+  static const icon_game_cards = 'assets/images/icon_game_cards.png';
+  static const icon_gywm = 'assets/images/icon_gywm.png';
+  static const icon_hbjj = 'assets/images/icon_hbjj.png';
+  static const icon_hy_grey = 'assets/images/icon_hy_grey.png';
+  static const icon_hy_red = 'assets/images/icon_hy_red.png';
+  static const icon_jfjl = 'assets/images/icon_jfjl.png';
+  static const icon_jj_grey = 'assets/images/icon_jj_grey.png';
+  static const icon_jj_red = 'assets/images/icon_jj_red.png';
+  static const icon_jymm = 'assets/images/icon_jymm.png';
+  static const icon_language = 'assets/images/icon_language.png';
+  static const icon_pc = 'assets/images/icon_pc.png';
+  static const icon_pkg_grey = 'assets/images/icon_pkg_grey.png';
+  static const icon_pkg_red = 'assets/images/icon_pkg_red.png';
+  static const icon_qmf = 'assets/images/icon_qmf.png';
+  static const icon_right_left = 'assets/images/icon_right_left.png';
+  static const icon_rmb_grey = 'assets/images/icon_rmb_grey.png';
+  static const icon_rs_grey = 'assets/images/icon_rs_grey.png';
+  static const icon_setting = 'assets/images/icon_setting.png';
+  static const icon_share = 'assets/images/icon_share.png';
+  static const icon_thb_grey = 'assets/images/icon_thb_grey.png';
+  static const icon_thb_red = 'assets/images/icon_thb_red.png';
+  static const icon_tjyhk = 'assets/images/icon_tjyhk.png';
+  static const icon_tsy = 'assets/images/icon_tsy.png';
+  static const icon_tuiguang = 'assets/images/icon_tuiguang.png';
+  static const icon_tz = 'assets/images/icon_tz.png';
+  static const icon_tzjl = 'assets/images/icon_tzjl.png';
+  static const icon_uncheck = 'assets/images/icon_uncheck.png';
+  static const icon_union_grey = 'assets/images/icon_union_grey.png';
+  static const icon_unipay = 'assets/images/icon_unipay.png';
+  static const icon_usdt_grey = 'assets/images/icon_usdt_grey.png';
+  static const icon_ustd2 = 'assets/images/icon_ustd2.png';
+  static const icon_ustd2_grey = 'assets/images/icon_ustd2_grey.png';
+  static const icon_ustd2_red = 'assets/images/icon_ustd2_red.png';
+  static const icon_tjyhicon_ustd_greyk = 'assets/images/icon_ustd_grey.png';
+  static const icon_vhd_grey = 'assets/images/icon_vhd_grey.png';
+  static const icon_vhd_red = 'assets/images/icon_vhd_red.png';
+  static const icon_vip = 'assets/images/icon_vip.png';
+  static const icon_wg = 'assets/images/icon_wg.png';
+  static const icon_wxpay = 'assets/images/icon_wxpay.png';
+  static const icon_yhkzz = 'assets/images/icon_yhkzz.png';
+  static const icon_zjmx = 'assets/images/icon_zjmx.png';
 
 
 }
+
 

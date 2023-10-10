@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 
 import 'home_state.dart';
 
@@ -16,4 +18,43 @@ class HomeLogic extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
+
+  void clickMenu(BuildContext context,int index){
+    switch(index){
+      case 0:
+        DialogUtils().showLanguageDialog(context);
+        break;
+      case 1:
+        DialogUtils().showCurrencyDialog(context);
+        break;
+      case 2:
+
+        break;
+      case 3:
+
+        break;
+    }
+
+  }
+
+
+  void clickInfo(BuildContext context,int index){
+    switch(index){
+      case 0:
+
+        break;
+      case 1:
+
+        break;
+      case 2:
+
+        break;
+      case 3:
+
+        break;
+    }
+
+  }
+
+
 }

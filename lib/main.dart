@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown
     ]);
 
-    var locales = [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VN")];
+    var locales = [const Locale('zh','ZH'),const Locale('en','US'),const Locale("de","DE"),const Locale("id","ID")];
 
     return ScreenUtilInit(
       //填入设计稿中设备的屏幕尺寸,单位dp

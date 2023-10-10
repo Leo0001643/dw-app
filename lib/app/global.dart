@@ -1,6 +1,8 @@
 
+import 'package:common_utils/common_utils.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get_utils/src/get_utils/get_utils.dart';
 import 'package:rxdart/rxdart.dart';
 ///普通事件
 EventBus eventBus=new EventBus();
@@ -21,8 +23,68 @@ bool inProduct(){
 }
 
 
+/// 数据判空 接受任意类型数据
+bool isEmpty(Object? obj) => ObjectUtil.isEmpty(obj);
+
+/// 数据判空 接受任意类型数据
+bool unEmpty(Object? obj) => ObjectUtil.isNotEmpty(obj);
 
 
+extension StringExtension on String? {
+  ///防止字段为空报错
+  String em({String aft = ""}){
+    return isEmpty(this) ? aft : this!;
+  }
+
+  ///判断是否服务器链接
+  bool isServerUrl(){
+    return unEmpty(this) && ( this!.startsWith("http") || GetUtils.isURL(this!) );
+  }
+
+  int parseInt(){
+    return int.parse(em(aft: "0"));
+  }
+
+  double parseDouble(){
+    return double.parse(em(aft: "0.00"));
+  }
+
+
+}
+
+extension NumExtension on num? {
+  ///防止字段为空报错
+  num em(){
+    return this == null ? 0 : this!;
+  }
+
+  ///数字转金额保留两位小数
+  String toAmount(){
+    return em().toStringAsFixed(2);
+  }
+
+}
+
+extension IntExtension on int? {
+  ///防止字段为空报错
+  num em(){
+    return this == null ? 0 : this!;
+  }
+}
+
+extension DoubleExtension on double? {
+  ///防止字段为空报错
+  num em(){
+    return this == null ? 0.0 : this!;
+  }
+}
+
+extension ListExtension on List? {
+  ///防止字段为空报错
+  int em(){
+    return this == null ? 0 : this!.length;
+  }
+}
 
 
 

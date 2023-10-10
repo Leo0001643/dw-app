@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 import '/app/intl/intr.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'main_logic.dart';
@@ -18,24 +19,27 @@ class _MainPageState extends State<MainPage> {
   final logic = Get.find<MainLogic>();
   final MainState state = Get.find<MainLogic>().state;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: state.scaffoldKey,
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: state.pageController,
         children: state.pages,
       ),
+      endDrawer: EndsDrawerView(),
       bottomNavigationBar: ConvexAppBar.builder(
           height: 49.h,
           elevation: 1.h,
           backgroundColor: Colors.white,
           curveSize: 58.r,
           itemBuilder: ItemBuilder(),
+          onTap: (i)=> state.pageController.jumpToPage(i),
           count: 5)
     );
   }
+
 
 
   @override
@@ -43,6 +47,7 @@ class _MainPageState extends State<MainPage> {
     Get.delete<MainLogic>();
     super.dispose();
   }
+
 
 }
 

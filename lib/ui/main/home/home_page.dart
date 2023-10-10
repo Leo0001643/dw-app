@@ -5,14 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';
+import 'package:getwidget/components/carousel/gf_items_carousel.dart';
 import 'package:getwidget/components/tabs/gf_segment_tabs.dart';
 import 'package:getwidget/components/tabs/gf_tabbar.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
+import 'package:leisure_games/ui/main/home/game_menu_view.dart';
+import 'package:leisure_games/ui/main/main_logic.dart';
 import 'package:marquee/marquee.dart';
-
 import 'home_logic.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,9 +31,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
 
   buildMenuItem(String text, String icon, int i) {
     return InkWell(
-      onTap: (){
-        showToast("$i");
-      },
+      onTap: ()=> logic.clickMenu(context,i),
       child: Column(
         children: [
           Image.asset(icon,width: 48.h,),
@@ -47,23 +50,46 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
         Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
         SizedBox(height: 14.h,),
         InkWell(
-          onTap: (){},
+          onTap: ()=> logic.clickInfo(context, i),
           child: Text(t,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
         ),
         SizedBox(height: 5.h,),
         InkWell(
-          onTap: (){},
+          onTap: ()=> logic.clickInfo(context, j),
           child: Text(u,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
         ),
         SizedBox(height: 5.h,),
         InkWell(
-          onTap: (){},
+          onTap: ()=> logic.clickInfo(context, k),
           child: Text(v,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
         ),
       ],
     );
   }
 
+  buildHotItem(HomeGameMenuEntity element) {
+    return Container(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(10.r)),
+            child: Image.network(state.test_image,width: 72.r,height: 72.r,fit: BoxFit.cover,),
+          ),
+          SizedBox(height: 5.h,),
+          Text(
+            element.name.em(),
+            style: TextStyle(
+              fontSize: 12.sp,
+              color: Colors.black54,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,28 +101,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: ScreenUtil().statusBarHeight,),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 11.w),
-              child: Row(
-                children: [
-                  SizedBox(width: 10.w,),
-                  Image.asset(ImageX.icon_logo,),
-                  Expanded(child: Container()),
-                  InkWell(
-                    child: Padding(
-                      padding: EdgeInsets.all(10.r),
-                      child: Image.asset(ImageX.icon_user_msg,),
-                    ),
-                  ),
-                  InkWell(
-                    child: Padding(
-                      padding: EdgeInsets.all(10.r),
-                      child: Image.asset(ImageX.icon_more,),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            WidgetUtils().buildHomeAppBar(msg: true,drawer: true),
             GFCarousel(
                 autoPlay: true,
                 aspectRatio: 335/154,
@@ -169,30 +174,67 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                 tabBarHeight: 35.h,
                 tabBarColor: Colors.white,
                 indicatorSize: TabBarIndicatorSize.label,
-                indicatorColor: ColorX.color_fc243b,
-                indicatorWeight: 3.r,
-                indicatorPadding: EdgeInsets.symmetric(horizontal: 17.r),
+                indicatorPadding: EdgeInsets.only(top: 30.h,left: 13.w,right: 13.w),
+                indicator: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: ColorX.color_fc243b,
+                ),
                 labelColor: ColorX.color_fc243b,
                 unselectedLabelColor: ColorX.color_091722,
                 width: 180.w,
                 tabs: [
-                  Text(Intr().remen,style: TextStyle(fontSize: 15.sp),),
-                  Text(Intr().zuijin,style: TextStyle(fontSize: 15.sp),),
-                  Text(Intr().shoucang,style: TextStyle(fontSize: 15.sp),),
+                  Text(Intr().remen,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
+                  Text(Intr().zuijin,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
+                  Text(Intr().shoucang,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
                 ],
               ),
             ),
-            SizedBox(height: 150.h,),
+            Container(
+              alignment: Alignment.center,
+              // child: EmptyDataWidget(iconWidth:88.r,iconHeight: 88.r,),
+              child: GFCarousel(
+                height: 100.h,
+                viewportFraction: 0.23,
+                autoPlay: true,
+                autoPlayInterval: Duration(milliseconds: 3000),
+                autoPlayAnimationDuration: Duration(milliseconds: 4000),
+                items: [
+                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+                ],
+              ),
+            ),
+            SizedBox(height: 10.h,),
             SizedBox(
               height: 351.h,
-              child: Container(
-                color: ColorX.color_fc243b,
-              ),
+              child: GameMenuView(),
             ),
             SizedBox(
               height: 170.h,
               child: Container(
                 color: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    InkWell(
+                      onTap: (){},
+                      child: Image.asset(ImageX.icon_qdcj,width: 105.w,height: 95.h,),
+                    ),
+                    InkWell(
+                      onTap: (){},
+                      child: Image.asset(ImageX.icon_xrzx,width: 105.w,height: 95.h,),
+                    ),
+                    InkWell(
+                      onTap: (){},
+                      child: Image.asset(ImageX.icon_tjyl,width: 105.w,height: 95.h,),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
@@ -209,13 +251,12 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                   buildComInfo(Intr().jishuzhichi,Intr().fangjiechijiaocheng,6,Intr().shiyongbangzhu,7,"",-1),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
-
 
   final logic = Get.find<HomeLogic>();
   final state = Get.find<HomeLogic>().state;
@@ -233,6 +274,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
     _tabController.dispose();
     super.dispose();
   }
+
 
 
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/app/res/dimens.dart';
 import 'customer_service/customer_service_page.dart';
@@ -19,6 +20,9 @@ class MainState {
 
   late PageController pageController;
   List<Widget> pages = [HomePage(), PreferentialPage(), CustomerServicePage(),MinePage()];
+
+
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

@@ -59,6 +59,20 @@ class Intr extends Translations{
   String get jishuzhichi => 'jishuzhichi'.tr;
   String get fangjiechijiaocheng => 'fangjiechijiaocheng'.tr;
   String get shiyongbangzhu => 'shiyongbangzhu'.tr;
+  String get shedingyuyan => 'shedingyuyan'.tr;
+  String get morenyuyan => 'morenyuyan'.tr;
+  String get tiaoguo => 'tiaoguo'.tr;
+  String get queren => 'queren'.tr;
+  String get xuanzeyuyan => 'xuanzeyuyan'.tr;
+  String get xuanzeqianbao => 'xuanzeqianbao'.tr;
+  String get morenqianbao => 'morenqianbao'.tr;
+  String get shedingqianbao => 'shedingqianbao'.tr;
+  String get rmb => 'rmb'.tr;
+  String get dollar => 'dollar'.tr;
+  String get thb => 'thb'.tr;
+  String get vnd => 'vnd'.tr;
+
+
 
 
   @override
@@ -116,6 +130,18 @@ class Intr extends Translations{
       "jishuzhichi": "技术支持",
       "fangjiechijiaocheng": "防劫持教程",
       "shiyongbangzhu": "使用帮助",
+      "xuanzeyuyan":"选择语言",
+      "shedingyuyan":"* 请选择默认语言，您可以稍后在“更多”或“我的-设置”中进行设定",
+      "morenyuyan":"默认语言",
+      "tiaoguo":"跳过",
+      "queren":"确认",
+      "xuanzeqianbao":"请选择钱包",
+      "morenqianbao":"默认钱包",
+      "shedingqianbao":"* 请选择默认钱包，您可以稍后在“更多”或“我的-钱包”中进行设定",
+      "rmb":"人民币（CNY）",
+      "dollar":"美元（US）",
+      "thb":"泰铢（Thai Baht）",
+      "vnd":"越南盾（VND）",
 
     },
     'en_US': {
@@ -171,8 +197,20 @@ class Intr extends Translations{
       "jishuzhichi": "技术支持",
       "fangjiechijiaocheng": "防劫持教程",
       "shiyongbangzhu": "使用帮助",
+      "xuanzeyuyan":"选择语言",
+      "shedingyuyan":"* 请选择默认语言，您可以稍后在“更多”或“我的-设置”中进行设定",
+      "morenyuyan":"默认语言",
+      "tiaoguo":"跳过",
+      "queren":"确认",
+      "xuanzeqianbao":"请选择钱包",
+      "morenqianbao":"默认钱包",
+      "shedingqianbao":"* 请选择默认钱包，您可以稍后在“更多”或“我的-钱包”中进行设定",
+      "rmb":"人民币（CNY）",
+      "dollar":"美元（US）",
+      "thb":"泰铢（Thai Baht）",
+      "vnd":"越南盾（VND）",
     },
-    'vi_VN': {
+    'de_DE': {
       "app_name": "Flutter示例",
       "home": "首页",
       "preferential": "Preferential",
@@ -225,6 +263,84 @@ class Intr extends Translations{
       "jishuzhichi": "技术支持",
       "fangjiechijiaocheng": "防劫持教程",
       "shiyongbangzhu": "使用帮助",
+      "xuanzeyuyan":"选择语言",
+      "shedingyuyan":"* 请选择默认语言，您可以稍后在“更多”或“我的-设置”中进行设定",
+      "morenyuyan":"默认语言",
+      "tiaoguo":"跳过",
+      "queren":"确认",
+      "xuanzeqianbao":"请选择钱包",
+      "morenqianbao":"默认钱包",
+      "shedingqianbao":"* 请选择默认钱包，您可以稍后在“更多”或“我的-钱包”中进行设定",
+      "rmb":"人民币（CNY）",
+      "dollar":"美元（US）",
+      "thb":"泰铢（Thai Baht）",
+      "vnd":"越南盾（VND）",
+    },
+    'id_ID': {
+      "app_name": "Flutter示例",
+      "home": "首页",
+      "preferential": "Preferential",
+      "charge": "充值",
+      "tixian": "提现",
+      "choujiang": "抽奖",
+      "zoushi": "走势",
+      "customer_service": "客服",
+      "mine": "Mine",
+      "activity": "活动",
+      "other": "其他",
+      "greet": "你好~",
+      "language": "语言",
+      "count": "GetX计数器",
+      "storage": "轻量存储",
+      "connect": "网络请求",
+      "theme": "主题",
+      "dio_get":"dio get",
+      "dio_post":"dio post",
+      "getx_get": "getx Get",
+      "getx_post": "getx Post",
+      "permission": "权限",
+      "webview": "浏览器",
+      "pictureSelector": "图片选择器",
+      "rx_dart": "RxDart使用",
+      "pick_time": "选择时间",
+      "sayHello": "你好",
+      "multiple": "多布局",
+      "userEventBus": "欢迎使用EventBus",
+      "permissionDenied": "权限已被拒绝",
+      "ac_unit": "雪花",
+      "access_alarm": "闹钟",
+      "accessibility": "健康",
+      "account_balance": "酒店",
+      "account_balance_wallet": "钱包",
+      "add_a_photo": "摄影",
+      "add_moderator": "安全",
+      "add_shopping_cart": "购物",
+      "remen": "热门",
+      "zuijin": "最近",
+      "shoucang": "收藏",
+      "gaunyuwomen": "关于我们",
+      "guanwangjieshao": "官网介绍",
+      "xiazhaiyingyong": "下载应用",
+      "pingtaifuwu": "平台服务",
+      "yonghuzhongxin": "用户中心",
+      "huiyuan": "会员",
+      "chongzhijilu": "充值记录",
+      "qiandaochoujiang": "签到抽奖",
+      "jishuzhichi": "技术支持",
+      "fangjiechijiaocheng": "防劫持教程",
+      "shiyongbangzhu": "使用帮助",
+      "xuanzeyuyan":"选择语言",
+      "shedingyuyan":"* 请选择默认语言，您可以稍后在“更多”或“我的-设置”中进行设定",
+      "morenyuyan":"默认语言",
+      "tiaoguo":"跳过",
+      "queren":"确认",
+      "xuanzeqianbao":"请选择钱包",
+      "morenqianbao":"默认钱包",
+      "shedingqianbao":"* 请选择默认钱包，您可以稍后在“更多”或“我的-钱包”中进行设定",
+      "rmb":"人民币（CNY）",
+      "dollar":"美元（US）",
+      "thb":"泰铢（Thai Baht）",
+      "vnd":"越南盾（VND）",
     },
   };
 
