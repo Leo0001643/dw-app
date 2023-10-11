@@ -76,7 +76,7 @@ class WidgetUtils {
     );
   }
 
-  AppBar buildAppBar(String? title,{bool msg = false,bool drawer=false,}){
+  AppBar buildAppBar(String? title,{bool msg = false,bool drawer=false,bool back=true,Color bgColor = ColorX.color_f7f8fb}){
     return AppBar(
       title: Text(title.em(),
         style: TextStyle(
@@ -85,11 +85,14 @@ class WidgetUtils {
             fontWeight: FontWeight.w600),
       ),
       centerTitle: true,
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: bgColor,
       elevation: 0,
-      leading: InkWell(
-        onTap: ()=>Get.back(),
-        child: Image.asset(ImageX.icon_page_back),
+      leading: Visibility(
+        visible: back,
+        child: InkWell(
+          onTap: ()=>Get.back(),
+          child: Image.asset(ImageX.icon_page_back),
+        ),
       ),
       actions: [
         Visibility(

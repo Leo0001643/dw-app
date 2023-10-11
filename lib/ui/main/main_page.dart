@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
+import 'package:leisure_games/ui/main/home/home_logic.dart';
 import '/app/intl/intr.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'main_logic.dart';
@@ -15,9 +16,16 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixin{
   final logic = Get.find<MainLogic>();
   final MainState state = Get.find<MainLogic>().state;
+
+  @override
+  void initState() {
+    state.tabController = TabController(length: 5,vsync: this);
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +40,12 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: ConvexAppBar.builder(
           height: 49.h,
           elevation: 1.h,
+          controller: state.tabController,
           backgroundColor: Colors.white,
           curveSize: 58.r,
           itemBuilder: ItemBuilder(),
           onTap: (i)=> state.pageController.jumpToPage(i),
-          count: 5)
+          count: 5),
     );
   }
 

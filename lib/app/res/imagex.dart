@@ -154,7 +154,38 @@ class ImageX{
   static const icon_yhkzz = 'assets/images/icon_yhkzz.png';
   static const icon_zjmx = 'assets/images/icon_zjmx.png';
 
+  static const bg_customer = 'assets/images/bg_customer.png';
+  static const icon_alibb = 'assets/images/icon_alibb.png';
+  static const icon_facebook = 'assets/images/icon_facebook.png';
+  static const icon_letstalk = 'assets/images/icon_letstalk.png';
+  static const icon_online = 'assets/images/icon_online.png';
+  static const icon_qiaqia = 'assets/images/icon_qiaqia.png';
+  static const icon_qq = 'assets/images/icon_qq.png';
+  static const icon_skype = 'assets/images/icon_skype.png';
+  static const icon_line = 'assets/images/icon_line.png';
+  static const icon_telegram = 'assets/images/icon_telegram.png';
+  static const icon_twitter = 'assets/images/icon_twitter.png';
+  static const icon_voice = 'assets/images/icon_voice.png';
+  static const icon_wechat = 'assets/images/icon_wechat.png';
+  static const icon_whatsapp = 'assets/images/icon_whatsapp.png';
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}  
+    
+    
+    
 
 

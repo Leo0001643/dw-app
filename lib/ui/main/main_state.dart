@@ -12,6 +12,8 @@ class MainState {
   MainState() {
     ///Initialize variables
     pageController = PageController();
+
+    pages = [HomePage(), PreferentialPage(),Container(), CustomerServicePage(),MinePage()];
   }
 
 
@@ -19,8 +21,8 @@ class MainState {
   var selectedIndex = 0.obs;
 
   late PageController pageController;
-  List<Widget> pages = [HomePage(), PreferentialPage(), CustomerServicePage(),MinePage()];
-
+  TabController? tabController;
+  late List<Widget> pages;
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 

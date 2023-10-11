@@ -16,4 +16,11 @@ class RegisterLogic extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
+
+
+  void clickRegister(){
+
+  }
+
+
 }

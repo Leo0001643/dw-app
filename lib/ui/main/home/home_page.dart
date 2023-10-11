@@ -29,67 +29,23 @@ class HomePage extends StatefulWidget {
 class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
 
 
-  buildMenuItem(String text, String icon, int i) {
-    return InkWell(
-      onTap: ()=> logic.clickMenu(context,i),
-      child: Column(
-        children: [
-          Image.asset(icon,width: 48.h,),
-          SizedBox(height: 4.h,),
-          Text(text,style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
-        ],
-      ),
-    );
+  final logic = Get.find<HomeLogic>();
+  final state = Get.find<HomeLogic>().state;
+
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 3, vsync: this);
+    super.initState();
   }
 
-
-  buildComInfo(String title, String t, int i, String u, int j, String v, int k) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-        SizedBox(height: 14.h,),
-        InkWell(
-          onTap: ()=> logic.clickInfo(context, i),
-          child: Text(t,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-        ),
-        SizedBox(height: 5.h,),
-        InkWell(
-          onTap: ()=> logic.clickInfo(context, j),
-          child: Text(u,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-        ),
-        SizedBox(height: 5.h,),
-        InkWell(
-          onTap: ()=> logic.clickInfo(context, k),
-          child: Text(v,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-        ),
-      ],
-    );
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
-  buildHotItem(HomeGameMenuEntity element) {
-    return Container(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(10.r)),
-            child: Image.network(state.test_image,width: 72.r,height: 72.r,fit: BoxFit.cover,),
-          ),
-          SizedBox(height: 5.h,),
-          Text(
-            element.name.em(),
-            style: TextStyle(
-              fontSize: 12.sp,
-              color: Colors.black54,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -166,48 +122,48 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-              child: GFTabBar(
-                length: 3,
-                controller: _tabController,
-                tabBarHeight: 35.h,
-                tabBarColor: Colors.white,
-                indicatorSize: TabBarIndicatorSize.label,
-                indicatorPadding: EdgeInsets.only(top: 30.h,left: 13.w,right: 13.w),
-                indicator: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: ColorX.color_fc243b,
-                ),
-                labelColor: ColorX.color_fc243b,
-                unselectedLabelColor: ColorX.color_091722,
-                width: 180.w,
-                tabs: [
-                  Text(Intr().remen,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                  Text(Intr().zuijin,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                  Text(Intr().shoucang,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                ],
-              ),
-            ),
-            Container(
-              alignment: Alignment.center,
-              // child: EmptyDataWidget(iconWidth:88.r,iconHeight: 88.r,),
-              child: GFCarousel(
-                height: 100.h,
-                viewportFraction: 0.23,
-                autoPlay: true,
-                autoPlayInterval: Duration(milliseconds: 3000),
-                autoPlayAnimationDuration: Duration(milliseconds: 4000),
-                items: [
-                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                  buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
+            //   child: GFTabBar(
+            //     length: 3,
+            //     controller: _tabController,
+            //     tabBarHeight: 35.h,
+            //     tabBarColor: Colors.white,
+            //     indicatorSize: TabBarIndicatorSize.label,
+            //     indicatorPadding: EdgeInsets.only(top: 30.h,left: 13.w,right: 13.w),
+            //     indicator: const BoxDecoration(
+            //       shape: BoxShape.circle,
+            //       color: ColorX.color_fc243b,
+            //     ),
+            //     labelColor: ColorX.color_fc243b,
+            //     unselectedLabelColor: ColorX.color_091722,
+            //     width: 180.w,
+            //     tabs: [
+            //       Text(Intr().remen,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
+            //       Text(Intr().zuijin,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
+            //       Text(Intr().shoucang,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
+            //     ],
+            //   ),
+            // ),
+            // Container(
+            //   alignment: Alignment.center,
+            //   // child: EmptyDataWidget(iconWidth:88.r,iconHeight: 88.r,),
+            //   child: GFCarousel(
+            //     height: 100.h,
+            //     viewportFraction: 0.23,
+            //     autoPlay: true,
+            //     autoPlayInterval: Duration(milliseconds: 3000),
+            //     autoPlayAnimationDuration: Duration(milliseconds: 4000),
+            //     items: [
+            //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+            //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+            //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+            //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+            //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+            //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
+            //     ],
+            //   ),
+            // ),
             SizedBox(height: 10.h,),
             SizedBox(
               height: 351.h,
@@ -258,23 +214,68 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
     );
   }
 
-  final logic = Get.find<HomeLogic>();
-  final state = Get.find<HomeLogic>().state;
 
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    _tabController = TabController(length: 3, vsync: this);
-    super.initState();
+  buildMenuItem(String text, String icon, int i) {
+    return InkWell(
+      onTap: ()=> logic.clickMenu(context,i),
+      child: Column(
+        children: [
+          Image.asset(icon,width: 48.h,),
+          SizedBox(height: 4.h,),
+          Text(text,style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+        ],
+      ),
+    );
   }
 
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+
+  buildComInfo(String title, String t, int i, String u, int j, String v, int k) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+        SizedBox(height: 14.h,),
+        InkWell(
+          onTap: ()=> logic.clickInfo(context, i),
+          child: Text(t,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+        ),
+        SizedBox(height: 5.h,),
+        InkWell(
+          onTap: ()=> logic.clickInfo(context, j),
+          child: Text(u,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+        ),
+        SizedBox(height: 5.h,),
+        InkWell(
+          onTap: ()=> logic.clickInfo(context, k),
+          child: Text(v,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+        ),
+      ],
+    );
   }
 
+  buildHotItem(HomeGameMenuEntity element) {
+    return Container(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(10.r)),
+            child: Image.network(state.test_image,width: 72.r,height: 72.r,fit: BoxFit.cover,),
+          ),
+          SizedBox(height: 5.h,),
+          Text(
+            element.name.em(),
+            style: TextStyle(
+              fontSize: 12.sp,
+              color: Colors.black54,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
 
 }

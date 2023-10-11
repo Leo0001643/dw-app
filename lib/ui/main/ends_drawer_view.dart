@@ -24,19 +24,21 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
     return Column(
       children: [
         SizedBox(height: 50.h,),
-        Text("欢迎来到xxx",style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-        Text("全球最领先的xxxx",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+        Text(Intr().hyld,style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+        Text(Intr().qqzlxd,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
         SizedBox(height: 20.h,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            WidgetUtils().buildElevatedButton("注册", 131.w, 45.h,
+            WidgetUtils().buildElevatedButton(Intr().register, 131.w, 45.h,
                 bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
                   Navigator.of(context).pop();
+                  Get.toNamed(Routes.register);
                 }),
 
-            WidgetUtils().buildElevatedButton("登录", 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
-
+            WidgetUtils().buildElevatedButton(Intr().login, 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
+              Navigator.of(context).pop();
+              Get.toNamed(Routes.login);
             }),
           ],
         ),
@@ -75,7 +77,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               alignment: Alignment.centerRight,
               child: Row(
                 children: [
-                  Text("个人中心",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                  Text(Intr().grzx,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
                   Image.asset(ImageX.ic_into_right),
                 ],
               ),
@@ -93,22 +95,28 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
           margin: EdgeInsets.symmetric(horizontal: 10.w),
           child: Column(
             children: [
-              Row(
-                children: [
-                  Image.asset(ImageX.icon_rmb_grey),
-                  Text("人民币钱包",style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
-                  SizedBox(width: 5.w,),
-                  Expanded(child: Container()),
-                  Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
-                  Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
-                  SizedBox(width: 5.w,),
-                  Image.asset(ImageX.icon_right_left,width: 10.w,),
-                ],
+              InkWell(
+                onTap: (){
+                  Navigator.of(context).pop();
+                  Get.toNamed(Routes.select_currency);
+                },
+                child: Row(
+                  children: [
+                    Image.asset(ImageX.icon_rmb_grey),
+                    Text(Intr().rmbqb,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                    SizedBox(width: 5.w,),
+                    Expanded(child: Container()),
+                    Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                    Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
+                    SizedBox(width: 5.w,),
+                    Image.asset(ImageX.icon_right_left,width: 10.w,),
+                  ],
+                ),
               ),
               SizedBox(height: 10.h,),
               Row(
                 children: [
-                  Text("余额：",style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                  Text(Intr().yue,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
                   Text("¥8,888",style: TextStyle(
                       fontSize: 14.sp,
                       color: ColorX.color_091722,
@@ -134,28 +142,28 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 children: [
                   Image.asset(ImageX.icon_edzh),
                   SizedBox(height: 5.h,),
-                  Text("额度转换",style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                  Text(Intr().edzh,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
                 ],
               ),
               Column(
                 children: [
                   Image.asset(ImageX.icon_pc),
                   SizedBox(height: 5.h,),
-                  Text("PC详情",style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                  Text(Intr().pcxq,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
                 ],
               ),
               Column(
                 children: [
                   Image.asset(ImageX.icon_tzjl),
                   SizedBox(height: 5.h,),
-                  Text("投注记录",style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                  Text(Intr().tzjl,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
                 ],
               ),
               Column(
                 children: [
                   Image.asset(ImageX.icon_jymm),
                   SizedBox(height: 5.h,),
-                  Text("简易密码",style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                  Text(Intr().jymm,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
                 ],
               ),
             ],
@@ -178,10 +186,13 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // noLoginHeader(),
-            userHeader(),
+            noLoginHeader(),
+            // userHeader(),
             InkWell(
-              onTap: ()=> Get.toNamed(Routes.select_language),
+              onTap: (){
+                Navigator.of(context).pop();
+                Get.toNamed(Routes.select_language);
+              },
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -193,7 +204,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                   children: [
                     Image.asset(ImageX.icon_language),
                     SizedBox(width: 5.w,),
-                    Text("多语言",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                    Text(Intr().dyy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
                     Expanded(child: Container()),
                     Text("中文",style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
                     Image.asset(ImageX.ic_into_right),
@@ -216,7 +227,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                       children: [
                         Image.asset(ImageX.icon_bgyy),
                         SizedBox(width: 5.w,),
-                        Text("背景音乐",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                        Text(Intr().bjyy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
                         Expanded(child: Container()),
                         GFToggle(
                           onChanged: (value){},
@@ -229,14 +240,14 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                     ),
                   ),
                   SizedBox(height: 15.h,),
-                  Divider(color: ColorX.color_f7f8fb,height: 1.h,),
+                  Divider(color: ColorX.color_10_949,height: 1.h,),
                   SizedBox(height: 15.h,),
                   Container(
                     child: Row(
                       children: [
                         Image.asset(ImageX.icon_tsy),
                         SizedBox(width: 5.w,),
-                        Text("提示音",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                        Text(Intr().tsy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
                         Expanded(child: Container()),
                         GFToggle(
                           onChanged: (value){},
@@ -261,33 +272,45 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 5.h),
-                    child: Row(
-                      children: [
-                        Image.asset(ImageX.icon_wg),
-                        SizedBox(width: 5.w,),
-                        Text("外观/颜色",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                        Expanded(child: Container()),
-                        Text("浅色",style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                        Image.asset(ImageX.ic_into_right),
-                      ],
+                  InkWell(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 5.h),
+                      child: Row(
+                        children: [
+                          Image.asset(ImageX.icon_wg),
+                          SizedBox(width: 5.w,),
+                          Text(Intr().wgys,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                          Expanded(child: Container()),
+                          Text(Intr().qs,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
+                          Image.asset(ImageX.ic_into_right),
+                        ],
+                      ),
                     ),
+                    onTap: (){
+                      Navigator.of(context).pop();
+                      Get.toNamed(Routes.select_theme);
+                    },
                   ),
                   SizedBox(height: 15.h,),
-                  Divider(color: ColorX.color_f7f8fb,height: 1.h,),
+                  Divider(color: ColorX.color_10_949,height: 1.h,),
                   SizedBox(height: 15.h,),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 5.h),
-                    child: Row(
-                      children: [
-                        Image.asset(ImageX.icon_dx),
-                        SizedBox(width: 5.w,),
-                        Text("动效",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                        Expanded(child: Container()),
-                        Text("全开",style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                        Image.asset(ImageX.ic_into_right),
-                      ],
+                  InkWell(
+                    onTap: (){
+                      Navigator.of(context).pop();
+                      Get.toNamed(Routes.select_animation);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 5.h),
+                      child: Row(
+                        children: [
+                          Image.asset(ImageX.icon_dx),
+                          SizedBox(width: 5.w,),
+                          Text(Intr().dx,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                          Expanded(child: Container()),
+                          Text(Intr().qk,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
+                          Image.asset(ImageX.ic_into_right),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -309,15 +332,15 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                       children: [
                         Image.asset(ImageX.icon_share),
                         SizedBox(width: 5.w,),
-                        Text("分享给好友",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                        Text(Intr().fxghy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
                         Expanded(child: Container()),
-                        Text("一次分享,无限佣金",style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
+                        Text(Intr().ycfx,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
                         Image.asset(ImageX.ic_into_right),
                       ],
                     ),
                   ),
                   SizedBox(height: 15.h,),
-                  Divider(color: ColorX.color_f7f8fb,height: 1.h,),
+                  Divider(color: ColorX.color_10_949,height: 1.h,),
                   SizedBox(height: 15.h,),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 5.h),
@@ -325,9 +348,9 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                       children: [
                         Image.asset(ImageX.icon_download),
                         SizedBox(width: 5.w,),
-                        Text("下载APP",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                        Text(Intr().xzapp,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
                         Expanded(child: Container()),
-                        Text("立享888金币红包",style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
+                        Text(Intr().lxjbhb,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
                         Image.asset(ImageX.ic_into_right),
                       ],
                     ),
@@ -347,7 +370,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 children: [
                   Image.asset(ImageX.icon_exist),
                   SizedBox(width: 5.w,),
-                  Text("退出",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                  Text(Intr().logout,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
                   Expanded(child: Container()),
                   Image.asset(ImageX.ic_into_right),
                 ],

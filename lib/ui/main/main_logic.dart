@@ -1,23 +1,32 @@
 
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '/app/global.dart';
 
 import 'main_state.dart';
 
 class MainLogic extends GetxController {
+
   final state = MainState();
+  StreamSubscription? changePageSub;
 
   @override
   void onReady() {
-    // TODO: implement onReady
+    changePageSub = eventBus.on<ChangeMainPageEvent>().listen((event) {
+      state.scaffoldKey.currentState?.closeEndDrawer();
+      state.pageController.jumpToPage(event.pageIndex);
+      state.tabController?.animateTo(event.pageIndex);
+    });
     super.onReady();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
+    changePageSub?.cancel();
     super.onClose();
   }
 
