@@ -35,6 +35,7 @@ class WidgetUtils {
         backgroundColor: bg,
         minimumSize: Size(width, height),
         maximumSize: Size(width, height),
+        padding: EdgeInsets.zero,
       ),
       child: Text(text,
         style: TextStyle(fontSize: textSize.sp,color: textColor,fontWeight: FontWeight.w600),
@@ -116,6 +117,82 @@ class WidgetUtils {
           ),
         ),
       ],
+    );
+  }
+
+
+  AppBar buildRoomBar(String? title,{bool msg = false,bool drawer=false,bool back=true,Color bgColor = ColorX.color_f7f8fb,GestureTapCallback? onTap,}){
+    return AppBar(
+      title: InkWell(
+        onTap: onTap,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(title.em(),
+              style: TextStyle(
+                  fontSize: 16.sp,
+                  color: ColorX.color_091722,
+                  fontWeight: FontWeight.w600),
+            ),
+            SizedBox(width: 5.w,),
+            Image.asset(ImageX.icon_down_black),
+          ],
+        ),
+      ),
+      centerTitle: true,
+      backgroundColor: bgColor,
+      elevation: 0,
+      leading: Visibility(
+        visible: back,
+        child: InkWell(
+          onTap: ()=>Get.back(),
+          child: Image.asset(ImageX.icon_page_back),
+        ),
+      ),
+      actions: [
+        Visibility(
+          visible: msg,
+          child: InkWell(
+            onTap: ()=> Get.toNamed(Routes.message),
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(ImageX.icon_user_msg,),
+            ),
+          ),
+        ),
+        Visibility(
+          visible: drawer,
+          child: InkWell(
+            onTap: ()=> Get.find<MainLogic>().openDrawer(),
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(ImageX.icon_more,),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+  AppBar buildHtmlBar(RxString title,{bool back=true,Color bgColor = ColorX.color_f7f8fb}){
+    return AppBar(
+      title: Obx(() {
+        return Text(title.value,
+          style: TextStyle(
+              fontSize: 16.sp,
+              color: ColorX.color_091722,
+              fontWeight: FontWeight.w600),
+        );
+      }),
+      centerTitle: true,
+      backgroundColor: bgColor,
+      elevation: 0,
+      leading: Visibility(
+        visible: back,
+        child: InkWell(
+          onTap: ()=>Get.back(),
+          child: Image.asset(ImageX.icon_page_back),
+        ),
+      ),
     );
   }
 

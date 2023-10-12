@@ -4,9 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
 
 class GameMenuView extends StatefulWidget{
@@ -18,8 +21,6 @@ class GameMenuView extends StatefulWidget{
 
 class StateGameMenuView extends State<GameMenuView>{
 
-  var test_image = "http://ddm.dingdangmao6.cn/renren-fast/upload/2022112812_20221128211908.jpg";
-
   buildGroupTitle(String groupByValue) {
     return Text(groupByValue,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 14.sp),);
   }
@@ -30,7 +31,35 @@ class StateGameMenuView extends State<GameMenuView>{
       children: [
         ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(10.r)),
-          child: Image.network(test_image,width: 72.r,height: 72.r,fit: BoxFit.cover,),
+          child: Stack(
+            children: [
+              Image.network(Constants.test_image,width: 72.r,height: 72.r,fit: BoxFit.cover,),
+              Positioned(
+                right: 0,
+                top: 0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black38,
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  margin: EdgeInsets.all(3.r),
+                  child: Image.asset(ImageX.icon_heart,/*color: Colors.white,*/),
+                ),
+              ),
+              Positioned(
+                right: 0, left: 0, bottom: 0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black38,
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(vertical: 5.r,horizontal: 10.r),
+                  child: Text("00:00:33",style: TextStyle(fontSize: 12.sp,color: Colors.white),),
+                ),
+              ),
+            ],
+          ),
         ),
         SizedBox(height: 5.h,),
         Text(
@@ -140,7 +169,10 @@ class StateGameMenuView extends State<GameMenuView>{
           spacing: 18.w,
           runSpacing: 10.h,
           children: [
-            buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
+            InkWell(
+              onTap: ()=> Get.toNamed(Routes.room_list),
+              child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
+            ),
             buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
             buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
             buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),

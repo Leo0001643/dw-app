@@ -1,0 +1,30 @@
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
+
+import 'service_details_state.dart';
+
+class ServiceDetailsLogic extends GetxController {
+  final ServiceDetailsState state = ServiceDetailsState();
+
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+  }
+
+
+  void clickCopy(String value){
+    Clipboard.setData(ClipboardData(text: value));
+    showToast("复制成功");
+  }
+
+
+
+}

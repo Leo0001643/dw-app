@@ -42,7 +42,6 @@ class HomeState {
   ];
 
 
-  var test_image = "http://ddm.dingdangmao6.cn/renren-fast/upload/2022112812_20221128211908.jpg";
 
 
 }

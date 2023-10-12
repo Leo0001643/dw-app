@@ -28,7 +28,7 @@ class HomeLogic extends GetxController {
         DialogUtils().showCurrencyDialog(context);
         break;
       case 2:
-
+        DialogUtils().showAccessRouteDialog(context);
         break;
       case 3:
 

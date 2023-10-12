@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -89,7 +91,7 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
               Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
               Expanded(child: Container(),),
               InkWell(
-                onTap: (){},
+                onTap: ()=> logic.clickService(i),
                 child: Text(Intr().djjr,style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,
                     decoration: TextDecoration.underline),),
               ),

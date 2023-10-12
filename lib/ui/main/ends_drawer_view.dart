@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -61,7 +62,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(22.r),
-                child: Image.network(test_image,width: 42.r,height: 42.r,fit: BoxFit.cover,),
+                child: Image.network(Constants.test_image,width: 42.r,height: 42.r,fit: BoxFit.cover,),
               ),
             ),
             SizedBox(width: 8.w,),
@@ -385,8 +386,6 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
 
   var musicToggle = false.obs;
   var notifyToggle = false.obs;
-  var test_image = "http://ddm.dingdangmao6.cn/renren-fast/upload/2022112812_20221128211908.jpg";
-
 
 
 }

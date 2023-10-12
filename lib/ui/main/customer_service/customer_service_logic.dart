@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/routes.dart';
 
 import 'customer_service_state.dart';
 
@@ -16,4 +17,12 @@ class CustomerServiceLogic extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
+
+  void clickService(int index){
+    Get.toNamed(Routes.service_details);
+  }
+
+
+
+
 }

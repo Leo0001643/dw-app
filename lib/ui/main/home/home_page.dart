@@ -32,21 +32,6 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
   final logic = Get.find<HomeLogic>();
   final state = Get.find<HomeLogic>().state;
 
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    _tabController = TabController(length: 3, vsync: this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-
   @override
   Widget build(BuildContext context) {
 
@@ -253,29 +238,29 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
     );
   }
 
-  buildHotItem(HomeGameMenuEntity element) {
-    return Container(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(10.r)),
-            child: Image.network(state.test_image,width: 72.r,height: 72.r,fit: BoxFit.cover,),
-          ),
-          SizedBox(height: 5.h,),
-          Text(
-            element.name.em(),
-            style: TextStyle(
-              fontSize: 12.sp,
-              color: Colors.black54,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // buildHotItem(HomeGameMenuEntity element) {
+  //   return Container(
+  //     child: Column(
+  //       mainAxisSize: MainAxisSize.min,
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         ClipRRect(
+  //           borderRadius: BorderRadius.all(Radius.circular(10.r)),
+  //           child: Image.network(state.test_image,width: 72.r,height: 72.r,fit: BoxFit.cover,),
+  //         ),
+  //         SizedBox(height: 5.h,),
+  //         Text(
+  //           element.name.em(),
+  //           style: TextStyle(
+  //             fontSize: 12.sp,
+  //             color: Colors.black54,
+  //             overflow: TextOverflow.ellipsis,
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
 
 }

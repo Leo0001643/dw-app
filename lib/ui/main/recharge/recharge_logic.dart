@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import 'rx_dart_state.dart';
+import 'recharge_state.dart';
 
-class RxDartLogic extends GetxController {
-  final state = RxDartState();
+class RechargeLogic extends GetxController {
+  final RechargeState state = RechargeState();
 
   @override
   void onReady() {
