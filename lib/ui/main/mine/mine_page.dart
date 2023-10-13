@@ -6,6 +6,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
 import 'mine_logic.dart';
@@ -91,7 +92,7 @@ class StateMinePage extends State<MinePage>{
                 children: [
                   InkWell(
                     onTap: (){
-                      Get.toNamed(Routes.select_currency);
+                      DialogUtils().showSelectWalletBtmDialog(context);
                     },
                     child: Row(
                       children: [

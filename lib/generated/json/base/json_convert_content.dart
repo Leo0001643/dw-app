@@ -7,19 +7,36 @@ import 'package:flutter/material.dart' show debugPrint;
 import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
 import 'package:leisure_games/ui/bean/language_menu_entity.dart';
+import 'package:leisure_games/ui/bean/message_item_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
 typedef EnumConvertFunction<T> = T Function(String value);
+typedef ConvertExceptionHandler = void Function(Object error, StackTrace stackTrace);
 
 class JsonConvert {
-  static Map<String, JsonConvertFunction> get convertFuncMap =>
-      {
-        (ChapterInfoEntity).toString(): ChapterInfoEntity.fromJson,
-        (HomeGameMenuEntity).toString(): HomeGameMenuEntity.fromJson,
-        (LanguageMenuEntity).toString(): LanguageMenuEntity.fromJson,
-      };
+  static ConvertExceptionHandler? onError;
+  JsonConvertClassCollection convertFuncMap = JsonConvertClassCollection();
+
+  /// When you are in the development, to generate a new model class, hot-reload doesn't find new generation model class, you can build on MaterialApp method called jsonConvert. ReassembleConvertFuncMap (); This method only works in a development environment
+  /// https://flutter.cn/docs/development/tools/hot-reload
+  /// class MyApp extends StatelessWidget {
+  ///    const MyApp({Key? key})
+  ///        : super(key: key);
+  ///
+  ///    @override
+  ///    Widget build(BuildContext context) {
+  ///      jsonConvert.reassembleConvertFuncMap();
+  ///      return MaterialApp();
+  ///    }
+  /// }
+  void reassembleConvertFuncMap() {
+    bool isReleaseMode = const bool.fromEnvironment('dart.vm.product');
+    if (!isReleaseMode) {
+      convertFuncMap = JsonConvertClassCollection();
+    }
+  }
 
   T? convert<T>(dynamic value, {EnumConvertFunction? enumConvert}) {
     if (value == null) {
@@ -32,6 +49,9 @@ class JsonConvert {
       return _asT<T>(value, enumConvert: enumConvert);
     } catch (e, stackTrace) {
       debugPrint('asT<$T> $e $stackTrace');
+      if (onError != null) {
+        onError!(e, stackTrace);
+      }
       return null;
     }
   }
@@ -46,6 +66,9 @@ class JsonConvert {
           .toList();
     } catch (e, stackTrace) {
       debugPrint('asT<$T> $e $stackTrace');
+      if (onError != null) {
+        onError!(e, stackTrace);
+      }
       return <T>[];
     }
   }
@@ -60,6 +83,9 @@ class JsonConvert {
       _asT<T>(e, enumConvert: enumConvert)!).toList();
     } catch (e, stackTrace) {
       debugPrint('asT<$T> $e $stackTrace');
+      if (onError != null) {
+        onError!(e, stackTrace);
+      }
       return <T>[];
     }
   }
@@ -97,7 +123,8 @@ class JsonConvert {
         }
         return convertFuncMap[type]!(Map<String, dynamic>.from(value)) as T;
       } else {
-        throw UnimplementedError('$type unimplemented');
+        throw UnimplementedError(
+            '$type unimplemented,you can try running the app again');
       }
     }
   }
@@ -116,6 +143,10 @@ class JsonConvert {
       return data.map<LanguageMenuEntity>((Map<String, dynamic> e) =>
           LanguageMenuEntity.fromJson(e)).toList() as M;
     }
+    if (<MessageItemEntity>[] is M) {
+      return data.map<MessageItemEntity>((Map<String, dynamic> e) =>
+          MessageItemEntity.fromJson(e)).toList() as M;
+    }
 
     debugPrint("${M.toString()} not found");
 
@@ -132,5 +163,22 @@ class JsonConvert {
     } else {
       return jsonConvert.convert<M>(json);
     }
+  }
+}
+
+class JsonConvertClassCollection {
+  Map<String, JsonConvertFunction> convertFuncMap = {
+    (ChapterInfoEntity).toString(): ChapterInfoEntity.fromJson,
+    (HomeGameMenuEntity).toString(): HomeGameMenuEntity.fromJson,
+    (LanguageMenuEntity).toString(): LanguageMenuEntity.fromJson,
+    (MessageItemEntity).toString(): MessageItemEntity.fromJson,
+  };
+
+  bool containsKey(String type) {
+    return convertFuncMap.containsKey(type);
+  }
+
+  JsonConvertFunction? operator [](String key) {
+    return convertFuncMap[key];
   }
 }

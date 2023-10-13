@@ -55,7 +55,7 @@ class WidgetUtils {
           Visibility(
             visible: msg,
             child: InkWell(
-              onTap: ()=> Get.toNamed(Routes.message),
+              onTap: ()=> Get.toNamed(Routes.message_center),
               child: Padding(
                 padding: EdgeInsets.all(10.r),
                 child: Image.asset(ImageX.icon_user_msg,),
@@ -99,7 +99,7 @@ class WidgetUtils {
         Visibility(
           visible: msg,
           child: InkWell(
-            onTap: ()=> Get.toNamed(Routes.message),
+            onTap: ()=> Get.toNamed(Routes.message_center),
             child: Padding(
               padding: EdgeInsets.all(10.r),
               child: Image.asset(ImageX.icon_user_msg,),
@@ -153,7 +153,7 @@ class WidgetUtils {
         Visibility(
           visible: msg,
           child: InkWell(
-            onTap: ()=> Get.toNamed(Routes.message),
+            onTap: ()=> Get.toNamed(Routes.message_center),
             child: Padding(
               padding: EdgeInsets.all(10.r),
               child: Image.asset(ImageX.icon_user_msg,),

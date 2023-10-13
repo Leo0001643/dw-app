@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
 import 'recharge_logic.dart';
@@ -77,21 +78,24 @@ class _RechargePageState extends State<RechargePage> {
   }
 
   Widget buildCategoryItem(String title, String icon, int i) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.r),
-        color: Colors.white,
-      ),
-      margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 10.h),
-      padding: EdgeInsets.all(15.r),
-      child: Row(
-        children: [
-          Image.asset(icon,width: 18.r,),
-          SizedBox(width: 5.w,),
-          Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
-          Expanded(child: Container()),
-          Image.asset(ImageX.icon_right_grey),
-        ],
+    return InkWell(
+      onTap: ()=> Get.toNamed(Routes.recharge_category),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.r),
+          color: Colors.white,
+        ),
+        margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 10.h),
+        padding: EdgeInsets.all(15.r),
+        child: Row(
+          children: [
+            Image.asset(icon,width: 18.r,),
+            SizedBox(width: 5.w,),
+            Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+            Expanded(child: Container()),
+            Image.asset(ImageX.icon_right_grey),
+          ],
+        ),
       ),
     );
   }

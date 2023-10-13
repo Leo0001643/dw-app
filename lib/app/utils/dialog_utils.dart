@@ -8,6 +8,7 @@ import 'package:leisure_games/app/widget/currency_dialog.dart';
 import 'package:leisure_games/app/widget/game_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/language_dialog.dart';
 import 'package:leisure_games/app/widget/select_room_bottom_dialog.dart';
+import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
 
 class DialogUtils {
 
@@ -83,6 +84,24 @@ class DialogUtils {
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
             child: SelectRoomBottomDialog(),
+          );
+        }
+    );
+  }
+
+  ///切换钱包
+  void showSelectWalletBtmDialog(BuildContext context){
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: Colors.white,
+        builder: (context){
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: SelectWalletBottomDialog(),
           );
         }
     );

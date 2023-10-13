@@ -67,14 +67,14 @@ extension NumExtension on num? {
 
 extension IntExtension on int? {
   ///防止字段为空报错
-  num em(){
+  int em(){
     return this == null ? 0 : this!;
   }
 }
 
 extension DoubleExtension on double? {
   ///防止字段为空报错
-  num em(){
+  double em(){
     return this == null ? 0.0 : this!;
   }
 }
