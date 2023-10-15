@@ -39,7 +39,8 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
                 alignment: Alignment.centerRight,
                 child: Padding(
                     padding: EdgeInsets.only(right: 15.w),
-                  child: WidgetUtils().buildElevatedButton("确定", 50.w, 26.h,textSize: 12.sp,onPressed: (){}),
+                  child: WidgetUtils().buildElevatedButton("确定", 50.w, 26.h,textSize: 12.sp,
+                      bg:ColorX.color_fc243b,onPressed: (){}),
                 ),
               ),
             ],

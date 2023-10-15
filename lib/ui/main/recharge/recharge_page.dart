@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -32,9 +33,9 @@ class _RechargePageState extends State<RechargePage> {
             Center(
               child: Column(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(22.r),
-                    child: Image.network(Constants.test_image,width: 42.r,height: 42.r,fit: BoxFit.cover,),
+                  GFAvatar(
+                    backgroundImage: NetworkImage(Constants.test_image,),
+                    size: 40.r,
                   ),
                   SizedBox(height: 7.h,),
                   Text("充值帐户: 2946781",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
@@ -79,7 +80,7 @@ class _RechargePageState extends State<RechargePage> {
 
   Widget buildCategoryItem(String title, String icon, int i) {
     return InkWell(
-      onTap: ()=> Get.toNamed(Routes.recharge_category),
+      // onTap: ()=> Get.toNamed(Routes.recharge_category,arguments: i % 2 == 0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),

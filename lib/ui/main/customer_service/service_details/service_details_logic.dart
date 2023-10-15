@@ -20,11 +20,5 @@ class ServiceDetailsLogic extends GetxController {
   }
 
 
-  void clickCopy(String value){
-    Clipboard.setData(ClipboardData(text: value));
-    showToast("复制成功");
-  }
-
-
 
 }

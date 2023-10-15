@@ -104,7 +104,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
               ),
               Expanded(child: Container(),),
               InkWell(
-                onTap: ()=> logic.clickCopy(code),
+                onTap: ()=> WidgetUtils().clickCopy(code),
                 child: Text("点击复制",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,
                     decoration: TextDecoration.underline),),
               ),

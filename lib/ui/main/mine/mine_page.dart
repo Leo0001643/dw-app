@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 
 import 'mine_logic.dart';
 
@@ -32,23 +35,27 @@ class StateMinePage extends State<MinePage>{
             Row(
               children: [
                 SizedBox(width: 17.w,),
-                Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.white,width: 2.r),
+                InkWell(
+                  onTap: ()=> Get.toNamed(Routes.select_avatar),
+                  child: Stack(
+                    children: [
+                      GFAvatar(
+                        backgroundImage: NetworkImage(Constants.test_image),
+                        shape: GFAvatarShape.circle,
+                        size: 35.r,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white,width: 2.r),
+                          ),
+                        ),
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(22.r),
-                        child: Image.network(Constants.test_image,width: 42.r,height: 42.r,fit: BoxFit.cover,),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,right: 0,
-                      child: Image.asset(ImageX.icon_edit_avatar),
-                    )
-                  ],
+                      Positioned(
+                        bottom: 0,right: 0,
+                        child: Image.asset(ImageX.icon_edit_avatar),
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(width: 8.w,),
                 Column(
@@ -118,13 +125,11 @@ class StateMinePage extends State<MinePage>{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      WidgetUtils().buildElevatedButton("提现", 131.w, 45.h,
-                          bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
-
-                          }),
-
+                      WidgetUtils().buildElevatedButton("提现", 131.w, 45.h, bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
+                        // Get.toNamed(Routes.withdraw);
+                      }),
                       WidgetUtils().buildElevatedButton("充值", 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
-
+                        eventBus.fire(ChangeMainPageEvent(2));
                       }),
                     ],
                   ),
@@ -224,9 +229,9 @@ class StateMinePage extends State<MinePage>{
                   Wrap(
                     runSpacing: 15.h,
                     children: [
-                      buildCategoryItem("通用设置",ImageX.icon_setting,10),
-                      buildCategoryItem("帮助中心",ImageX.icon_bzzx,11),
-                      buildCategoryItem("关于我们",ImageX.icon_gywm,11),
+                      buildCategoryItem("通用设置",ImageX.icon_setting,12),
+                      buildCategoryItem("帮助中心",ImageX.icon_bzzx,13),
+                      buildCategoryItem("关于我们",ImageX.icon_gywm,14),
                       Container(width: 80.w,),
                     ],
                   ),
@@ -242,7 +247,7 @@ class StateMinePage extends State<MinePage>{
 
   Widget buildCategoryItem(String title, String icon,int index) {
     return InkWell(
-      onTap: (){},
+      onTap: ()=> logic.clickItem(index),
       child: Container(
         width: 80.w,
         child: Column(

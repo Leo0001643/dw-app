@@ -31,6 +31,7 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
   @override
   void dispose() {
     _tabController.dispose();
+    state.pageController.dispose();
     Get.delete<MessageCenterLogic>();
     super.dispose();
   }

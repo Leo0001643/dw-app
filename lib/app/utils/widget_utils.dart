@@ -27,7 +27,7 @@ class WidgetUtils {
 
 
   Widget buildElevatedButton(String text,double width,double height,
-      {Color bg = ColorX.color_fc243b,Color textColor = Colors.white,double textSize = 14,VoidCallback? onPressed}){
+      {Color? bg,Color textColor = Colors.white,double textSize = 14,VoidCallback? onPressed}){
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -205,7 +205,7 @@ class WidgetUtils {
     return Container(
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.all(Radius.circular(5.r)),
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
       ),
       padding: EdgeInsets.symmetric(horizontal: 10.r),
       width: width,
@@ -249,7 +249,10 @@ class WidgetUtils {
   }
 
 
-
+  void clickCopy(String value){
+    Clipboard.setData(ClipboardData(text: value));
+    showToast("复制成功");
+  }
 
 
 
