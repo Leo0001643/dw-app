@@ -28,13 +28,15 @@ class ColorX{
   static const color_344e7b = Color(0xff344E7B);
   static const color_4e3100 = Color(0xff4E3100);
   static const color_e8e8e8 = Color(0xffe8e8e8);
-  static const color_5583e7 = Color(0xff5583e7);
   static const color_62_586 = Color.fromRGBO(88,105,141,0.62);
+  static const color_529aff = Color(0xff529AFF);
+  static const color_23a81d = Color(0xff23A81D);
+  static const color_6655e7 = Color(0xff6655E7);
+  static const color_5583e7 = Color(0xff5583e7);
+  static const color_e75555 = Color(0xffe75555);
 
 
   static const color_10_949 = Color.fromRGBO(148, 158, 185, 0.1);
-
-
 
 
 

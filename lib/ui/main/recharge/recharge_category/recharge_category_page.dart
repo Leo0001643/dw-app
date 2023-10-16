@@ -55,7 +55,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
           if(unEmpty(value)){
             showToast("选择了${value}");
             if(value == 6){
-              // Get.offAndToNamed(Routes.recharge_digital);
+              Get.offAndToNamed(Routes.recharge_digital);
             }else {
               state.supportOnline.value = false;
               state.pageController.jumpToPage(1);

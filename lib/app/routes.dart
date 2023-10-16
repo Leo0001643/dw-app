@@ -17,6 +17,10 @@ import 'package:leisure_games/ui/main/home/message_center/notice/notice_binding.
 import 'package:leisure_games/ui/main/home/room_list/room_list_binding.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_page.dart';
 import 'package:leisure_games/ui/main/main_binding.dart';
+import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_binding.dart';
+import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_page.dart';
+import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_binding.dart';
+import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_page.dart';
 import 'package:leisure_games/ui/main/mine/mine_binding.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_binding.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_page.dart';
@@ -38,8 +42,24 @@ import 'package:leisure_games/ui/main/mine/setting/setting_binding.dart';
 import 'package:leisure_games/ui/main/mine/setting/setting_page.dart';
 import 'package:leisure_games/ui/main/mine/setting/user_info/user_info_binding.dart';
 import 'package:leisure_games/ui/main/mine/setting/user_info/user_info_page.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_apply/withdraw_apply_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_apply/withdraw_apply_page.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_check/withdraw_check_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_check/withdraw_check_page.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_page.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_result/withdraw_result_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_result/withdraw_result_page.dart';
 import 'package:leisure_games/ui/main/preferential/preferential_binding.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_binding.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_category_binding.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_category_page.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_offline/recharge_offline_binding.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_online/recharge_online_binding.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_digital/recharge_digital_binding.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_digital/recharge_digital_page.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_binding.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_page.dart';
 import 'package:leisure_games/ui/register/register_binding.dart';
 import 'package:leisure_games/ui/register/register_page.dart';
 
@@ -65,12 +85,17 @@ class Routes {
   static const String set_simple_pwd = "/mine/setting/set_simple_pwd";
   static const String service_details = "/customer_service/service_details";
   static const String message_details = "/message_center/message_details";
-  // static const String recharge_category = "/recharge/recharge_category";
-  // static const String recharge_digital = "/recharge/recharge_digital";
-  // static const String recharge_result = "/recharge/recharge_result";
-  // static const String withdraw = "/mine/withdraw";
-  // static const String bind_bank = "/mine/bind_bank";
-  // static const String bind_usdt = "/mine/bind_usdt";
+  static const String recharge_category = "/recharge/recharge_category";
+  static const String recharge_digital = "/recharge/recharge_digital";
+  static const String recharge_result = "/recharge/recharge_result";
+  static const String withdraw = "/mine/withdraw";
+  // static const String withdraw_check = "/mine/withdraw_check";
+  // static const String withdraw_apply = "/mine/withdraw_apply";
+  // static const String withdraw_result = "/mine/withdraw_result";
+  static const String bind_bank = "/mine/bind_bank";
+  static const String bind_usdt = "/mine/bind_usdt";
+  // static const String promotion_profit = "/mine/promotion_profit";
+  // static const String coin_exchange = "/mine/coin_exchange";
 
 
   static final List<GetPage> getPages=[
@@ -89,19 +114,24 @@ class Routes {
     GetPage(name: select_theme,binding: SelectThemeBinding(), page: () => SelectThemePage()),
     GetPage(name: service_details,binding: ServiceDetailsBinding(), page: () => ServiceDetailsPage()),
     GetPage(name: message_details,binding: MessageDetailsBinding(), page: () => MessageDetailsPage()),
-    // GetPage(name: recharge_category,binding: RechargeCategoryBinding(),bindings:
-    // [RechargeOnlineBinding(),RechargeOfflineBinding()], page: () => RechargeCategoryPage()),
+    GetPage(name: recharge_category,binding: RechargeCategoryBinding(),bindings:
+    [RechargeOnlineBinding(),RechargeOfflineBinding()], page: () => RechargeCategoryPage()),
     GetPage(name: select_avatar,binding: SelectAvatarBinding(), page: () => SelectAvatarPage()),
     GetPage(name: setting,binding: SettingBinding(), page: () => SettingPage()),
     GetPage(name: user_info,binding: UserInfoBinding(), page: () => UserInfoPage()),
     GetPage(name: set_withdraw_pwd,binding: SetWithdrawPwdBinding(), page: () => SetWithdrawPwdPage()),
     GetPage(name: set_login_pwd,binding: SetLoginPwdBinding(), page: () => SetLoginPwdPage()),
     GetPage(name: set_simple_pwd,binding: SetSimplePwdBinding(), page: () => SetSimplePwdPage()),
-    // GetPage(name: recharge_digital,binding: RechargeDigitalBinding(), page: () => RechargeDigitalPage()),
-    // GetPage(name: recharge_result,binding: RechargeResultBinding(), page: () => RechargeResultPage()),
-    // GetPage(name: withdraw,binding: WithdrawBinding(), page: () => WithdrawPage()),
-    // GetPage(name: bind_bank,binding: BindBankBinding(), page: () => BindBankPage()),
-    // GetPage(name: bind_usdt,binding: BindUsdtBinding(), page: () => BindUsdtPage()),
+    GetPage(name: recharge_digital,binding: RechargeDigitalBinding(), page: () => RechargeDigitalPage()),
+    GetPage(name: recharge_result,binding: RechargeResultBinding(), page: () => RechargeResultPage()),
+    GetPage(name: withdraw,binding: WithdrawBinding(), page: () => WithdrawPage()),
+    GetPage(name: bind_bank,binding: BindBankBinding(), page: () => BindBankPage()),
+    GetPage(name: bind_usdt,binding: BindUsdtBinding(), page: () => BindUsdtPage()),
+    // GetPage(name: withdraw_apply,binding: WithdrawApplyBinding(), page: () => WithdrawApplyPage()),
+    // GetPage(name: withdraw_check,binding: WithdrawCheckBinding(), page: () => WithdrawCheckPage()),
+    // GetPage(name: withdraw_result,binding: WithdrawResultBinding(), page: () => WithdrawResultPage()),
+    // GetPage(name: promotion_profit,binding: PromotionProfitBinding(), page: () => PromotionProfitPage()),
+    // GetPage(name: coin_exchange,binding: CoinExchangeBinding(), page: () => CoinExchangePage()),
 
 
 

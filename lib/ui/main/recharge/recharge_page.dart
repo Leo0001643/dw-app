@@ -80,7 +80,7 @@ class _RechargePageState extends State<RechargePage> {
 
   Widget buildCategoryItem(String title, String icon, int i) {
     return InkWell(
-      // onTap: ()=> Get.toNamed(Routes.recharge_category,arguments: i % 2 == 0),
+      onTap: ()=> Get.toNamed(Routes.recharge_category,arguments: i % 2 == 0),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),

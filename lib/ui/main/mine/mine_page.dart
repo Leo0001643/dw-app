@@ -126,7 +126,7 @@ class StateMinePage extends State<MinePage>{
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       WidgetUtils().buildElevatedButton("提现", 131.w, 45.h, bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
-                        // Get.toNamed(Routes.withdraw);
+                        Get.toNamed(Routes.withdraw);
                       }),
                       WidgetUtils().buildElevatedButton("充值", 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
                         eventBus.fire(ChangeMainPageEvent(2));
