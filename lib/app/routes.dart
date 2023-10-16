@@ -21,7 +21,13 @@ import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_page.dart';
+import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_binding.dart';
+import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_page.dart';
 import 'package:leisure_games/ui/main/mine/mine_binding.dart';
+import 'package:leisure_games/ui/main/mine/promotion_profit/promotion_profit_binding.dart';
+import 'package:leisure_games/ui/main/mine/promotion_profit/promotion_profit_page.dart';
+import 'package:leisure_games/ui/main/mine/proxy_register/proxy_register_binding.dart';
+import 'package:leisure_games/ui/main/mine/proxy_register/proxy_register_page.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_binding.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_page.dart';
 import 'package:leisure_games/ui/main/mine/select_avatar/select_avatar_binding.dart';
@@ -96,6 +102,7 @@ class Routes {
   static const String bind_usdt = "/mine/bind_usdt";
   // static const String promotion_profit = "/mine/promotion_profit";
   // static const String coin_exchange = "/mine/coin_exchange";
+  // static const String proxy_register = "/mine/proxy_register";
 
 
   static final List<GetPage> getPages=[
@@ -127,13 +134,6 @@ class Routes {
     GetPage(name: withdraw,binding: WithdrawBinding(), page: () => WithdrawPage()),
     GetPage(name: bind_bank,binding: BindBankBinding(), page: () => BindBankPage()),
     GetPage(name: bind_usdt,binding: BindUsdtBinding(), page: () => BindUsdtPage()),
-    // GetPage(name: withdraw_apply,binding: WithdrawApplyBinding(), page: () => WithdrawApplyPage()),
-    // GetPage(name: withdraw_check,binding: WithdrawCheckBinding(), page: () => WithdrawCheckPage()),
-    // GetPage(name: withdraw_result,binding: WithdrawResultBinding(), page: () => WithdrawResultPage()),
-    // GetPage(name: promotion_profit,binding: PromotionProfitBinding(), page: () => PromotionProfitPage()),
-    // GetPage(name: coin_exchange,binding: CoinExchangeBinding(), page: () => CoinExchangePage()),
-
-
 
   ];
   
