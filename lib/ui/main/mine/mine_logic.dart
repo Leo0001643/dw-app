@@ -23,6 +23,9 @@ class MineLogic extends GetxController {
       case 0:
         // Get.toNamed(Routes.coin_exchange);
         break;
+      case 1:
+        // Get.toNamed(Routes.quota_conversion);
+        break;
       case 3:
         Get.toNamed(Routes.set_withdraw_pwd);
         break;
@@ -33,7 +36,10 @@ class MineLogic extends GetxController {
         Get.toNamed(Routes.bind_usdt);
         break;
       case 10:
-        // Get.toNamed(Routes.promotion_profit);
+        Get.toNamed(Routes.promotion_profit);
+        break;
+      case 11:
+        Get.toNamed(Routes.proxy_register);
         break;
       case 12:
         Get.toNamed(Routes.setting);

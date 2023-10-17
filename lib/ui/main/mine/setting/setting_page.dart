@@ -170,29 +170,35 @@ class _SettingPageState extends State<SettingPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 12.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(Intr().wgys,style: TextStyle(fontSize: 12.sp,color: ColorX.color_0d192d),),
-                          Expanded(child: Container()),
-                          Text("浅色",style: TextStyle(fontSize: 12.sp,color: ColorX.color_949eb9),),
-                          Image.asset(ImageX.icon_right_grey)
-                        ],
+                    InkWell(
+                      onTap: ()=> Get.toNamed(Routes.select_theme),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 12.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(Intr().wgys,style: TextStyle(fontSize: 12.sp,color: ColorX.color_0d192d),),
+                            Expanded(child: Container()),
+                            Text("浅色",style: TextStyle(fontSize: 12.sp,color: ColorX.color_949eb9),),
+                            Image.asset(ImageX.icon_right_grey)
+                          ],
+                        ),
                       ),
                     ),
                     Divider(color: ColorX.color_10_949,height: 1.h,),
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(Intr().dx,style: TextStyle(fontSize: 12.sp,color: ColorX.color_0d192d),),
-                          Expanded(child: Container()),
-                          Text("全开",style: TextStyle(fontSize: 12.sp,color: ColorX.color_949eb9),),
-                          Image.asset(ImageX.icon_right_grey)
-                        ],
+                    InkWell(
+                      onTap: ()=> Get.toNamed(Routes.select_animation),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(Intr().dx,style: TextStyle(fontSize: 12.sp,color: ColorX.color_0d192d),),
+                            Expanded(child: Container()),
+                            Text("全开",style: TextStyle(fontSize: 12.sp,color: ColorX.color_949eb9),),
+                            Image.asset(ImageX.icon_right_grey)
+                          ],
+                        ),
                       ),
                     ),
                   ],

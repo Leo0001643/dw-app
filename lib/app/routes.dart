@@ -17,11 +17,21 @@ import 'package:leisure_games/ui/main/home/message_center/notice/notice_binding.
 import 'package:leisure_games/ui/main/home/room_list/room_list_binding.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_page.dart';
 import 'package:leisure_games/ui/main/main_binding.dart';
+import 'package:leisure_games/ui/main/mine/about/about_binding.dart';
+import 'package:leisure_games/ui/main/mine/about/about_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_page.dart';
+import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_binding.dart';
+import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_page.dart';
 import 'package:leisure_games/ui/main/mine/mine_binding.dart';
+import 'package:leisure_games/ui/main/mine/promotion_profit/promotion_profit_binding.dart';
+import 'package:leisure_games/ui/main/mine/promotion_profit/promotion_profit_page.dart';
+import 'package:leisure_games/ui/main/mine/proxy_register/proxy_register_binding.dart';
+import 'package:leisure_games/ui/main/mine/proxy_register/proxy_register_page.dart';
+import 'package:leisure_games/ui/main/mine/quota_conversion/quota_conversion_binding.dart';
+import 'package:leisure_games/ui/main/mine/quota_conversion/quota_conversion_page.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_binding.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_page.dart';
 import 'package:leisure_games/ui/main/mine/select_avatar/select_avatar_binding.dart';
@@ -42,8 +52,14 @@ import 'package:leisure_games/ui/main/mine/setting/setting_binding.dart';
 import 'package:leisure_games/ui/main/mine/setting/setting_page.dart';
 import 'package:leisure_games/ui/main/mine/setting/user_info/user_info_binding.dart';
 import 'package:leisure_games/ui/main/mine/setting/user_info/user_info_page.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_apply/withdraw_apply_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_apply/withdraw_apply_page.dart';
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_check/withdraw_check_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_check/withdraw_check_page.dart';
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_page.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_result/withdraw_result_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_result/withdraw_result_page.dart';
 import 'package:leisure_games/ui/main/preferential/preferential_binding.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_binding.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_category_binding.dart';
@@ -83,14 +99,16 @@ class Routes {
   static const String recharge_digital = "/recharge/recharge_digital";
   static const String recharge_result = "/recharge/recharge_result";
   static const String withdraw = "/mine/withdraw";
-  // static const String withdraw_check = "/mine/withdraw_check";
-  // static const String withdraw_apply = "/mine/withdraw_apply";
-  // static const String withdraw_result = "/mine/withdraw_result";
+  static const String withdraw_check = "/mine/withdraw_check";
+  static const String withdraw_apply = "/mine/withdraw_apply";
+  static const String withdraw_result = "/mine/withdraw_result";
   static const String bind_bank = "/mine/bind_bank";
   static const String bind_usdt = "/mine/bind_usdt";
-  // static const String promotion_profit = "/mine/promotion_profit";
+  static const String promotion_profit = "/mine/promotion_profit";
   // static const String coin_exchange = "/mine/coin_exchange";
-  // static const String proxy_register = "/mine/proxy_register";
+  static const String proxy_register = "/mine/proxy_register";
+  // static const String quota_conversion = "/mine/quota_conversion";
+  // static const String about = "/mine/about";
 
 
   static final List<GetPage> getPages=[
@@ -122,6 +140,15 @@ class Routes {
     GetPage(name: withdraw,binding: WithdrawBinding(), page: () => WithdrawPage()),
     GetPage(name: bind_bank,binding: BindBankBinding(), page: () => BindBankPage()),
     GetPage(name: bind_usdt,binding: BindUsdtBinding(), page: () => BindUsdtPage()),
+    GetPage(name: withdraw_apply,binding: WithdrawApplyBinding(), page: () => WithdrawApplyPage()),
+    GetPage(name: withdraw_check,binding: WithdrawCheckBinding(), page: () => WithdrawCheckPage()),
+    GetPage(name: withdraw_result,binding: WithdrawResultBinding(), page: () => WithdrawResultPage()),
+    GetPage(name: promotion_profit,binding: PromotionProfitBinding(), page: () => PromotionProfitPage()),
+    // GetPage(name: coin_exchange,binding: CoinExchangeBinding(), page: () => CoinExchangePage()),
+    GetPage(name: proxy_register,binding: ProxyRegisterBinding(), page: () => ProxyRegisterPage()),
+    // GetPage(name: quota_conversion,binding: QuotaConversionBinding(), page: () => QuotaConversionPage()),
+    // GetPage(name: about,binding: AboutBinding(), page: () => AboutPage()),
+
 
   ];
   
