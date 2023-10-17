@@ -17,21 +17,16 @@ import 'package:leisure_games/ui/main/home/message_center/notice/notice_binding.
 import 'package:leisure_games/ui/main/home/room_list/room_list_binding.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_page.dart';
 import 'package:leisure_games/ui/main/main_binding.dart';
-import 'package:leisure_games/ui/main/mine/about/about_binding.dart';
-import 'package:leisure_games/ui/main/mine/about/about_page.dart';
+import 'package:leisure_games/ui/main/main_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_page.dart';
-import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_binding.dart';
-import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_page.dart';
 import 'package:leisure_games/ui/main/mine/mine_binding.dart';
 import 'package:leisure_games/ui/main/mine/promotion_profit/promotion_profit_binding.dart';
 import 'package:leisure_games/ui/main/mine/promotion_profit/promotion_profit_page.dart';
 import 'package:leisure_games/ui/main/mine/proxy_register/proxy_register_binding.dart';
 import 'package:leisure_games/ui/main/mine/proxy_register/proxy_register_page.dart';
-import 'package:leisure_games/ui/main/mine/quota_conversion/quota_conversion_binding.dart';
-import 'package:leisure_games/ui/main/mine/quota_conversion/quota_conversion_page.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_binding.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_page.dart';
 import 'package:leisure_games/ui/main/mine/select_avatar/select_avatar_binding.dart';
@@ -72,9 +67,6 @@ import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_b
 import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_page.dart';
 import 'package:leisure_games/ui/register/register_binding.dart';
 import 'package:leisure_games/ui/register/register_page.dart';
-
-import '../ui/main/main_page.dart';
-
 
 class Routes {
   static const String main = "/";
