@@ -181,7 +181,7 @@ class StateMinePage extends State<MinePage>{
                     children: [
                       buildCategoryItem("投注记录",ImageX.icon_tzjl,6),
                       buildCategoryItem("积分记录",ImageX.icon_jfjl,7),
-                      buildCategoryItem("会员反水",ImageX.icon_fan,8),
+                      buildCategoryItem("会员返水",ImageX.icon_fan,8),
                       buildCategoryItem("红包和奖金",ImageX.icon_hbjj,9),
                     ],
                   ),
@@ -253,6 +253,7 @@ class StateMinePage extends State<MinePage>{
         child: Column(
           children: [
             Image.asset(icon),
+            SizedBox(height: 3.h,),
             Text(title,style: TextStyle(fontSize: 11.sp,color: ColorX.color_58698d),),
           ],
         ),

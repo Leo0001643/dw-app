@@ -8,9 +8,6 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'recharge_result_logic.dart';
 ///
 ///充值结果
-///author: Soushin
-///2023/10/15 12:09
-///
 class RechargeResultPage extends StatefulWidget {
   const RechargeResultPage({Key? key}) : super(key: key);
 

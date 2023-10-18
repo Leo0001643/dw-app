@@ -12,9 +12,6 @@ import 'promotion_profit_logic.dart';
 
 ///
 ///推广赚钱
-///author: Soushin
-///2023/10/16 11:47
-///
 class PromotionProfitPage extends StatefulWidget {
   const PromotionProfitPage({Key? key}) : super(key: key);
 

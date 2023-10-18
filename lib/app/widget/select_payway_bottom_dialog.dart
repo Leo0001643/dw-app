@@ -10,9 +10,6 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 
 ///
 ///选择付款方式
-///author: Soushin
-///2023/10/13 17:54
-///
 class SelectPaywayBottomDialog extends StatefulWidget{
 
   @override

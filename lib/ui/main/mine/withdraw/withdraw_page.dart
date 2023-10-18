@@ -12,9 +12,6 @@ import 'withdraw_logic.dart';
 
 ///
 ///提现中心
-///author: Soushin
-///2023/10/15 12:49
-///
 class WithdrawPage extends StatefulWidget {
   const WithdrawPage({Key? key}) : super(key: key);
 

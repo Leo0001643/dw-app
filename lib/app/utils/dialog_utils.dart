@@ -11,6 +11,8 @@ import 'package:leisure_games/app/widget/access_route_dialog.dart';
 import 'package:leisure_games/app/widget/currency_dialog.dart';
 import 'package:leisure_games/app/widget/game_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/language_dialog.dart';
+import 'package:leisure_games/app/widget/rebate_role_bottom_dialog.dart';
+import 'package:leisure_games/app/widget/select_option_btm_dialog.dart';
 import 'package:leisure_games/app/widget/select_payway_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_room_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
@@ -181,6 +183,42 @@ class DialogUtils {
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
             child: GameRoleBottomDialog(),
+          );
+        }
+    );
+  }
+
+  ///返水比例
+  void showRebateRoleBtmDialog(BuildContext context){
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: Colors.white,
+        builder: (context){
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: RebateRoleBottomDialog(),
+          );
+        }
+    );
+  }
+
+  ///单选底部弹窗
+  Future<dynamic> showSelectOptionBtmDialog(BuildContext context,String title,List data){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: Colors.white,
+        builder: (context){
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: SelectOptionBtmDialog(title,data),
           );
         }
     );

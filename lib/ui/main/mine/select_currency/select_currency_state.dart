@@ -8,7 +8,6 @@ class SelectCurrencyState {
     ///Initialize variables
   }
 
-
   var dropdownValue = LanguageMenuEntity(language: Intr().rmb, icon: ImageX.icon_jj_grey).obs;
 
   late List<LanguageMenuEntity> country = [

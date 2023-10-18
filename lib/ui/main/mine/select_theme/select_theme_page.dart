@@ -10,9 +10,6 @@ import 'select_theme_logic.dart';
 
 ///
 /// 深浅色开关
-///author: Soushin
-///2023/10/11 08:39
-///
 class SelectThemePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => StateSelectThemePage();

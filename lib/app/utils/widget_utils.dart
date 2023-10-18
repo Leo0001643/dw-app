@@ -120,6 +120,50 @@ class WidgetUtils {
     );
   }
 
+  AppBar buildRxAppBar(RxString title,{bool msg = false,bool drawer=false,bool back=true,Color bgColor = ColorX.color_f7f8fb}){
+    return AppBar(
+      title: Obx(() {
+        return Text(title.value,
+          style: TextStyle(
+              fontSize: 16.sp,
+              color: ColorX.color_091722,
+              fontWeight: FontWeight.w600),
+        );
+      }),
+      centerTitle: true,
+      backgroundColor: bgColor,
+      elevation: 0,
+      leading: Visibility(
+        visible: back,
+        child: InkWell(
+          onTap: ()=>Get.back(),
+          child: Image.asset(ImageX.icon_page_back),
+        ),
+      ),
+      actions: [
+        Visibility(
+          visible: msg,
+          child: InkWell(
+            onTap: ()=> Get.toNamed(Routes.message_center),
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(ImageX.icon_user_msg,),
+            ),
+          ),
+        ),
+        Visibility(
+          visible: drawer,
+          child: InkWell(
+            onTap: ()=> Get.find<MainLogic>().openDrawer(),
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(ImageX.icon_more,),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
   AppBar buildRoomBar(String? title,{bool msg = false,bool drawer=false,bool back=true,Color bgColor = ColorX.color_f7f8fb,GestureTapCallback? onTap,}){
     return AppBar(

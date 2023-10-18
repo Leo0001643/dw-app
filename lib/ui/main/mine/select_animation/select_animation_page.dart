@@ -13,9 +13,6 @@ import 'select_animation_logic.dart';
 
 ///
 ///动效开关
-///author: Soushin
-///2023/10/11 08:39
-///
 class SelectAnimationPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => StateSelectAnimationPage();

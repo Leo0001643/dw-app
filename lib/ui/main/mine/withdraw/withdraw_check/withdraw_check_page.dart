@@ -10,8 +10,6 @@ import 'withdraw_check_logic.dart';
 
 ///
 ///提现稽核
-///author: Soushin
-///2023/10/15 21:26
 ///
 class WithdrawCheckPage extends StatefulWidget {
   const WithdrawCheckPage({Key? key}) : super(key: key);

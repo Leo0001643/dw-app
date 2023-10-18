@@ -9,9 +9,6 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 
 ///
 ///切换钱包
-///author: Soushin
-///2023/10/13 17:54
-///
 class SelectWalletBottomDialog extends StatefulWidget{
 
   @override

@@ -9,9 +9,6 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'withdraw_result_logic.dart';
 ///
 ///提现结果
-///author: Soushin
-///2023/10/15 21:26
-///
 class WithdrawResultPage extends StatefulWidget {
   const WithdrawResultPage({Key? key}) : super(key: key);
 

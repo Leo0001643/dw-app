@@ -12,9 +12,6 @@ import 'recharge_category_logic.dart';
 
 ///
 ///充值页面 适配各种类型的充值
-///author: Soushin
-///2023/10/13 18:18
-///
 class RechargeCategoryPage extends StatefulWidget {
   const RechargeCategoryPage({Key? key}) : super(key: key);
 

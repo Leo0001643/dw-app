@@ -14,9 +14,6 @@ import 'select_currency_logic.dart';
 
 ///
 ///选择币种
-///author: Soushin
-///2023/10/10 18:03
-///
 class SelectCurrencyPage extends StatefulWidget {
 
   @override

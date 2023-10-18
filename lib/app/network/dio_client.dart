@@ -2,8 +2,6 @@
 import 'package:dio/dio.dart';
 
 /// 网络访问 替换getx自带的appConnect
-///author: Soushin
-///2023/6/20 20:12
 class DioClient {
 
   DioClient._internal();

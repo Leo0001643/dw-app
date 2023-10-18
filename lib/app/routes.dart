@@ -18,15 +18,27 @@ import 'package:leisure_games/ui/main/home/room_list/room_list_binding.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_page.dart';
 import 'package:leisure_games/ui/main/main_binding.dart';
 import 'package:leisure_games/ui/main/main_page.dart';
+import 'package:leisure_games/ui/main/mine/about/about_binding.dart';
+import 'package:leisure_games/ui/main/mine/about/about_page.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting_detail_binding.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting_detail_page.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_record_binding.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_record_page.dart';
+import 'package:leisure_games/ui/main/mine/bill_flow/bill_flow_binding.dart';
+import 'package:leisure_games/ui/main/mine/bill_flow/bill_flow_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_page.dart';
+import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_binding.dart';
+import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_page.dart';
 import 'package:leisure_games/ui/main/mine/mine_binding.dart';
 import 'package:leisure_games/ui/main/mine/promotion_profit/promotion_profit_binding.dart';
 import 'package:leisure_games/ui/main/mine/promotion_profit/promotion_profit_page.dart';
 import 'package:leisure_games/ui/main/mine/proxy_register/proxy_register_binding.dart';
 import 'package:leisure_games/ui/main/mine/proxy_register/proxy_register_page.dart';
+import 'package:leisure_games/ui/main/mine/quota_conversion/quota_conversion_binding.dart';
+import 'package:leisure_games/ui/main/mine/quota_conversion/quota_conversion_page.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_binding.dart';
 import 'package:leisure_games/ui/main/mine/select_animation/select_animation_page.dart';
 import 'package:leisure_games/ui/main/mine/select_avatar/select_avatar_binding.dart';
@@ -97,10 +109,18 @@ class Routes {
   static const String bind_bank = "/mine/bind_bank";
   static const String bind_usdt = "/mine/bind_usdt";
   static const String promotion_profit = "/mine/promotion_profit";
-  // static const String coin_exchange = "/mine/coin_exchange";
   static const String proxy_register = "/mine/proxy_register";
-  // static const String quota_conversion = "/mine/quota_conversion";
-  // static const String about = "/mine/about";
+  static const String quota_conversion = "/mine/quota_conversion";
+  static const String about = "/mine/about";
+  static const String coin_exchange = "/mine/coin_exchange";
+  static const String bill_flow = "/mine/bill_flow";
+  static const String betting_record = "/mine/betting_record";
+  static const String betting_detail = "/mine/betting_record/betting_detail";
+  // static const String points_record = "/mine/points_record";
+  // static const String member_rebate = "/mine/member_rebate";
+  // static const String profit_rebate = "/mine/profit_rebate";
+  // static const String bet_amount_rebate = "/mine/bet_amount_rebate";
+  // static const String bonus_packet = "/mine/bonus_packet";
 
 
   static final List<GetPage> getPages=[
@@ -136,10 +156,18 @@ class Routes {
     GetPage(name: withdraw_check,binding: WithdrawCheckBinding(), page: () => WithdrawCheckPage()),
     GetPage(name: withdraw_result,binding: WithdrawResultBinding(), page: () => WithdrawResultPage()),
     GetPage(name: promotion_profit,binding: PromotionProfitBinding(), page: () => PromotionProfitPage()),
-    // GetPage(name: coin_exchange,binding: CoinExchangeBinding(), page: () => CoinExchangePage()),
     GetPage(name: proxy_register,binding: ProxyRegisterBinding(), page: () => ProxyRegisterPage()),
-    // GetPage(name: quota_conversion,binding: QuotaConversionBinding(), page: () => QuotaConversionPage()),
-    // GetPage(name: about,binding: AboutBinding(), page: () => AboutPage()),
+    GetPage(name: quota_conversion,binding: QuotaConversionBinding(), page: () => QuotaConversionPage()),
+    GetPage(name: about,binding: AboutBinding(), page: () => AboutPage()),
+    GetPage(name: coin_exchange,binding: CoinExchangeBinding(), page: () => CoinExchangePage()),
+    GetPage(name: bill_flow,binding: BillFlowBinding(), page: () => BillFlowPage()),
+    GetPage(name: betting_record,binding: BettingRecordBinding(), page: () => BettingRecordPage()),
+    GetPage(name: betting_detail,binding: BettingDetailBinding(), page: () => BettingDetailPage()),
+    // GetPage(name: points_record,binding: PointsRecordBinding(), page: () => PointsRecordPage()),
+    // GetPage(name: member_rebate,binding: MemberRebateBinding(), page: () => MemberRebatePage()),
+    // GetPage(name: profit_rebate,binding: ProfitRebateBinding(), page: () => ProfitRebatePage()),
+    // GetPage(name: bet_amount_rebate,binding: BetAmountRebateBinding(), page: () => BetAmountRebatePage()),
+    // GetPage(name: bonus_packet,binding: BonusPacketBinding(), page: () => BonusPacketPage()),
 
 
   ];
