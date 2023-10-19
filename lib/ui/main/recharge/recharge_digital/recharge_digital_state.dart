@@ -5,6 +5,8 @@ class RechargeDigitalState {
     ///Initialize variables
   }
 
+  var title = "支付宝".obs;
+
   //选择的是在线 or 线下
   var selectOnline = true.obs;
 

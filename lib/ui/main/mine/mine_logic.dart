@@ -42,13 +42,13 @@ class MineLogic extends GetxController {
         Get.toNamed(Routes.betting_record);
         break;
       case 7:
-        // Get.toNamed(Routes.points_record);
+        Get.toNamed(Routes.points_record);
         break;
       case 8:
-        // Get.toNamed(Routes.member_rebate);
+        Get.toNamed(Routes.member_rebate);
         break;
       case 9:
-        // Get.toNamed(Routes.bonus_packet);
+        Get.toNamed(Routes.bonus_packet);
         break;
       case 10:
         Get.toNamed(Routes.promotion_profit);

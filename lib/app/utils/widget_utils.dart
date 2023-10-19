@@ -120,7 +120,7 @@ class WidgetUtils {
     );
   }
 
-  AppBar buildRxAppBar(RxString title,{bool msg = false,bool drawer=false,bool back=true,Color bgColor = ColorX.color_f7f8fb}){
+  AppBar buildRxAppBar(RxString title,{bool msg = false,bool back=true,Color bgColor = ColorX.color_f7f8fb}){
     return AppBar(
       title: Obx(() {
         return Text(title.value,
@@ -151,33 +151,28 @@ class WidgetUtils {
             ),
           ),
         ),
-        Visibility(
-          visible: drawer,
-          child: InkWell(
-            onTap: ()=> Get.find<MainLogic>().openDrawer(),
-            child: Padding(
-              padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_more,),
-            ),
-          ),
-        ),
       ],
     );
   }
 
-  AppBar buildRoomBar(String? title,{bool msg = false,bool drawer=false,bool back=true,Color bgColor = ColorX.color_f7f8fb,GestureTapCallback? onTap,}){
+  AppBar buildRoomBar(RxString title,{bool msg = false,bool collect = false, bool back=true,
+    Color bgColor = ColorX.color_f7f8fb,GestureTapCallback? onTap,GestureTapCallback? onCollect,}){
     return AppBar(
       title: InkWell(
         onTap: onTap,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          runAlignment: WrapAlignment.center,
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            Text(title.em(),
-              style: TextStyle(
-                  fontSize: 16.sp,
-                  color: ColorX.color_091722,
-                  fontWeight: FontWeight.w600),
-            ),
+            Obx(() {
+              return Text(title.value,
+                style: TextStyle(
+                    fontSize: 16.sp,
+                    color: ColorX.color_091722,
+                    fontWeight: FontWeight.w600),
+              );
+            }),
             SizedBox(width: 5.w,),
             Image.asset(ImageX.icon_down_black),
           ],
@@ -195,22 +190,22 @@ class WidgetUtils {
       ),
       actions: [
         Visibility(
+          visible: collect,
+          child: InkWell(
+            onTap: onCollect,
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Icon(Icons.collections_outlined,color: ColorX.color_091722,),
+            ),
+          ),
+        ),
+        Visibility(
           visible: msg,
           child: InkWell(
             onTap: ()=> Get.toNamed(Routes.message_center),
             child: Padding(
               padding: EdgeInsets.all(10.r),
               child: Image.asset(ImageX.icon_user_msg,),
-            ),
-          ),
-        ),
-        Visibility(
-          visible: drawer,
-          child: InkWell(
-            onTap: ()=> Get.find<MainLogic>().openDrawer(),
-            child: Padding(
-              padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_more,),
             ),
           ),
         ),

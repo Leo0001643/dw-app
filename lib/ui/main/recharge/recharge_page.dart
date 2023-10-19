@@ -35,7 +35,7 @@ class _RechargePageState extends State<RechargePage> {
                 children: [
                   GFAvatar(
                     backgroundImage: NetworkImage(Constants.test_image,),
-                    size: 40.r,
+                    radius: 20.r,
                   ),
                   SizedBox(height: 7.h,),
                   Text("充值帐户: 2946781",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),

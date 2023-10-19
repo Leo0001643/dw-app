@@ -31,7 +31,7 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("推广赚钱",msg: true),
+      appBar: WidgetUtils().buildAppBar("关于我们",msg: true),
       backgroundColor: ColorX.color_f7f8fb,
       body: Container(
         decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(12.r),),

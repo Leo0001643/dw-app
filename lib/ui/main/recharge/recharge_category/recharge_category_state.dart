@@ -9,6 +9,9 @@ class RechargeCategoryState {
     pages = [RechargeOnlinePage(), RechargeOfflinePage()];
   }
 
+  var title = "支付宝".obs;
+
+
   late PageController pageController;
   late List<Widget> pages;
 

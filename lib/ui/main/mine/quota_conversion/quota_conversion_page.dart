@@ -7,6 +7,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 
 import 'quota_conversion_logic.dart';
@@ -219,7 +220,8 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                   SizedBox(width: 10.w,),
                   WidgetUtils().buildElevatedButton("充值", 168.w, 40.h,
                       bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
-
+                        eventBus.fire(ChangeMainPageEvent(3));
+                        Get.back();
                       })
                 ],
               ),

@@ -47,7 +47,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
             child: GFAvatar(
               backgroundImage: NetworkImage(Constants.test_image),
               shape: GFAvatarShape.circle,
-              size: 35.r,
+              radius: 17.r,
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -123,7 +123,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
       child: GFAvatar(
         backgroundImage: NetworkImage(Constants.test_image),
         shape: GFAvatarShape.circle,
-        size: 35.r,
+        radius: 17.r,
         child: Visibility(
           visible: select,
           child: Container(

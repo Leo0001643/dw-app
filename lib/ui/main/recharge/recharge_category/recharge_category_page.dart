@@ -47,7 +47,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildRoomBar("支付宝",msg: true,onTap: (){
+      appBar: WidgetUtils().buildRoomBar(state.title,msg: true,onTap: (){
         DialogUtils().showSelectPaywayBtmDialog(context).then((value) {
           if(unEmpty(value)){
             showToast("选择了${value}");
