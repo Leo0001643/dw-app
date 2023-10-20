@@ -33,7 +33,7 @@ class _RoomListPageState extends State<RoomListPage> {
           children: [
             SizedBox(height: 20.h,),
             InkWell(
-              // onTap: ()=> Get.toNamed(Routes.game_room),
+              onTap: ()=> Get.toNamed(Routes.game_room),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -62,7 +62,7 @@ class _RoomListPageState extends State<RoomListPage> {
             ),
             SizedBox(height: 20.h,),
             InkWell(
-              // onTap: ()=> Get.toNamed(Routes.game_room),
+              onTap: ()=> Get.toNamed(Routes.game_room),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -91,7 +91,7 @@ class _RoomListPageState extends State<RoomListPage> {
             ),
             SizedBox(height: 20.h,),
             InkWell(
-              // onTap: ()=> Get.toNamed(Routes.game_room),
+              onTap: ()=> Get.toNamed(Routes.game_room),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,

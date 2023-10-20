@@ -155,8 +155,8 @@ class WidgetUtils {
     );
   }
 
-  AppBar buildRoomBar(RxString title,{bool msg = false,bool collect = false, bool back=true,
-    Color bgColor = ColorX.color_f7f8fb,GestureTapCallback? onTap,GestureTapCallback? onCollect,}){
+  AppBar buildRoomBar(RxString title,{bool msg = false,bool back=true,
+    Color bgColor = ColorX.color_f7f8fb,GestureTapCallback? onTap,}){
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -175,6 +175,61 @@ class WidgetUtils {
             }),
             SizedBox(width: 5.w,),
             Image.asset(ImageX.icon_down_black),
+          ],
+        ),
+      ),
+      centerTitle: true,
+      backgroundColor: bgColor,
+      elevation: 0,
+      leading: Visibility(
+        visible: back,
+        child: InkWell(
+          onTap: ()=>Get.back(),
+          child: Image.asset(ImageX.icon_page_back),
+        ),
+      ),
+      actions: [
+        Visibility(
+          visible: msg,
+          child: InkWell(
+            onTap: ()=> Get.toNamed(Routes.message_center),
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(ImageX.icon_user_msg,),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+
+  AppBar buildGameBar(RxString title,Widget subTitle,{bool msg = false,bool collect = false, bool back=true,
+    Color bgColor = ColorX.color_f7f8fb,GestureTapCallback? onTap,GestureTapCallback? onCollect,}){
+    return AppBar(
+      title: InkWell(
+        onTap: onTap,
+        child: Column(
+          children: [
+            Wrap(
+              alignment: WrapAlignment.center,
+              runAlignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Obx(() {
+                  return Text(title.value,
+                    style: TextStyle(
+                        fontSize: 16.sp,
+                        color: ColorX.color_091722,
+                        fontWeight: FontWeight.w600),
+                  );
+                }),
+                SizedBox(width: 5.w,),
+                Image.asset(ImageX.icon_down_black),
+              ],
+            ),
+            SizedBox(height: 3.h,),
+            subTitle,
           ],
         ),
       ),
@@ -212,6 +267,8 @@ class WidgetUtils {
       ],
     );
   }
+
+
   AppBar buildHtmlBar(RxString title,{bool back=true,Color bgColor = ColorX.color_f7f8fb}){
     return AppBar(
       title: Obx(() {

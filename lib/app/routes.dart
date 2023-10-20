@@ -7,6 +7,13 @@ import 'package:leisure_games/ui/login/login_page.dart';
 import 'package:leisure_games/ui/main/customer_service/customer_service_binding.dart';
 import 'package:leisure_games/ui/main/customer_service/service_details/service_details_binding.dart';
 import 'package:leisure_games/ui/main/customer_service/service_details/service_details_page.dart';
+import 'package:leisure_games/ui/main/home/game_room/game_room_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/game_room_page.dart';
+import 'package:leisure_games/ui/main/home/game_room/number_source/number_description/number_description_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/number_source/number_source_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/number_source/number_source_page.dart';
+import 'package:leisure_games/ui/main/home/game_room/number_source/prize_number/prize_number_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/number_source/tool_check/tool_check_binding.dart';
 import 'package:leisure_games/ui/main/home/home_binding.dart';
 import 'package:leisure_games/ui/main/home/message_center/message/message_binding.dart';
 import 'package:leisure_games/ui/main/home/message_center/message_center_binding.dart';
@@ -98,7 +105,8 @@ class Routes {
   static const String select_currency = "/select_currency";
   static const String select_language = "/select_language";
   static const String room_list = "/home/room_list";
-  // static const String game_room = "/home/game_room";
+  static const String game_room = "/home/game_room";
+  static const String number_source = "/home/number_source";
   static const String message_center = "/home/message_center";
   static const String select_animation = "/mine/select_animation";
   static const String select_theme = "/mine/select_theme";
@@ -179,7 +187,9 @@ class Routes {
     GetPage(name: profit_rebate,binding: ProfitRebateBinding(), page: () => ProfitRebatePage()),
     GetPage(name: bet_amount_rebate,binding: BetAmountRebateBinding(), page: () => BetAmountRebatePage()),
     GetPage(name: bonus_packet,binding: BonusPacketBinding(), page: () => BonusPacketPage()),
-    // GetPage(name: game_room,binding: GameRoomBinding(), page: () => GameRoomPage()),
+    GetPage(name: game_room,binding: GameRoomBinding(), page: () => GameRoomPage()),
+    GetPage(name: number_source,binding: NumberSourceBinding(),
+        bindings: [PrizeNumberBinding(),NumberDescriptionBinding(),ToolCheckBinding()], page: () => NumberSourcePage()),
 
 
   ];
