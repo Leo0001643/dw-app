@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 
 import 'home_state.dart';
@@ -31,7 +32,7 @@ class HomeLogic extends GetxController {
         DialogUtils().showAccessRouteDialog(context);
         break;
       case 3:
-
+        Get.toNamed(Routes.lottery_trend);
         break;
     }
 

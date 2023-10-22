@@ -120,6 +120,26 @@ class WidgetUtils {
     );
   }
 
+  AppBar buildAppBarBtn(String? title,Widget right){
+    return AppBar(
+      title: Text(title.em(),
+        style: TextStyle(
+            fontSize: 16.sp,
+            color: ColorX.color_091722,
+            fontWeight: FontWeight.w600),
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.white,
+      elevation: 0,
+      leading: InkWell(
+        onTap: ()=>Get.back(),
+        child: Image.asset(ImageX.icon_page_back),
+      ),
+      actions: [right],
+    );
+  }
+
+
   AppBar buildRxAppBar(RxString title,{bool msg = false,bool back=true,Color bgColor = ColorX.color_f7f8fb}){
     return AppBar(
       title: Obx(() {

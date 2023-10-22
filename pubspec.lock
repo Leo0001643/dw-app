@@ -193,6 +193,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.3.3"
+  data_table_2:
+    dependency: "direct main"
+    description:
+      name: data_table_2
+      sha256: e90b548cfc78250cbfc8402c832953bb4d4a64cf7653a996084027ce5495aa59
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.5.8"
   decimal:
     dependency: transitive
     description:
@@ -701,6 +709,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.4"
+  simple_gesture_detector:
+    dependency: transitive
+    description:
+      name: simple_gesture_detector
+      sha256: "86d08f85f1f58583b7b4b941d989f48ea6ce08c1724a1d10954a277c2ec36592"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.2.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -754,6 +770,30 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
+  syncfusion_flutter_charts:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_charts
+      sha256: "36faee9bfa9497a0aec44f5501616df545ea00f5348f40818cb5fd1a2d8f719c"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "23.1.41"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      sha256: a8e3d3ea369566bb45f454331c5863939632b6068d15b558fa384811f1f5aa51
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "23.1.41"
+  table_calendar:
+    dependency: "direct main"
+    description:
+      name: table_calendar
+      sha256: "1e3521a3e6d3fc7f645a58b135ab663d458ab12504f1ea7f9b4b81d47086c478"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.9"
   term_glyph:
     dependency: transitive
     description:
