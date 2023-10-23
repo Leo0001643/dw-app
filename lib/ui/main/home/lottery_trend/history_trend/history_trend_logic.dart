@@ -7,7 +7,7 @@ class HistoryTrendLogic extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
+    loadData();
     super.onReady();
   }
 
@@ -16,4 +16,15 @@ class HistoryTrendLogic extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
+
+  void loadData() {
+    for(var i=0;i<27;i++){
+      state.data.add(i);
+    }
+    state.data.refresh();
+  }
+
+
+
+
 }

@@ -7,6 +7,8 @@ import 'package:leisure_games/ui/login/login_page.dart';
 import 'package:leisure_games/ui/main/customer_service/customer_service_binding.dart';
 import 'package:leisure_games/ui/main/customer_service/service_details/service_details_binding.dart';
 import 'package:leisure_games/ui/main/customer_service/service_details/service_details_page.dart';
+import 'package:leisure_games/ui/main/home/game_room/betting_details/betting_details_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/betting_details/betting_details_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_binding.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/number_source/number_description/number_description_binding.dart';
@@ -149,7 +151,7 @@ class Routes {
   static const String lottery_trend = "/home/lottery_trend";
   static const String history_lottery = "/home/history_lottery";
   static const String history_trend = "/home/history_trend";
-  // static const String betting_details = "/home/betting_details";
+  static const String betting_details = "/home/betting_details";
   // static const String room_tendency = "/home/room_tendency";
 
 
@@ -204,7 +206,7 @@ class Routes {
     GetPage(name: lottery_trend,binding: LotteryTrendBinding(), page: () => LotteryTrendPage()),
     GetPage(name: history_lottery,binding: HistoryLotteryBinding(), page: () => HistoryLotteryPage()),
     GetPage(name: history_trend,binding: HistoryTrendBinding(), page: () => HistoryTrendPage()),
-    // GetPage(name: betting_details,binding: BettingDetailsBinding(), page: () => BettingDetailsPage()),
+    GetPage(name: betting_details,binding: BettingDetailsBinding(), page: () => BettingDetailsPage()),
     // GetPage(name: room_tendency,binding: RoomTendencyBinding(),
     //     bindings: [LotteryResultBinding(),DataAnalysisBinding(),DoubleQueueBinding(),DsDewBinding(),DxDewBinding(),NumberTrendBinding()],
     //     page: () => RoomTendencyPage()),

@@ -25,7 +25,7 @@ class GameRoomLogic extends GetxController {
         Get.toNamed(Routes.number_source);
         break;
       case 1:
-        // Get.toNamed(Routes.betting_details);
+        Get.toNamed(Routes.betting_details);
         break;
       case 2:
         break;

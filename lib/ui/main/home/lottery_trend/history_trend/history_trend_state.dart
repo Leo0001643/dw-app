@@ -7,6 +7,9 @@ class HistoryTrendState {
 
   var title = "台湾槟果sd8".obs;
 
-  var formTitle = RxList.empty(growable: true);
+  ///数据源
+  var data = RxList<int>.empty(growable: true);
+
+
 
 }

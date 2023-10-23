@@ -113,7 +113,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                         buildDrawNum("5"),
                         buildDrawMark("="),
                         buildDrawResult("22"),
-                        SizedBox(width: 5.w,),
+                        // SizedBox(width: 5.w,),
                         Text("（小 双）",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                         Image.asset(ImageX.icon_down_black),
                       ],

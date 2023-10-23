@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/line_painter.dart';
 
 import 'history_trend_logic.dart';
 
@@ -20,25 +22,40 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
   final logic = Get.find<HistoryTrendLogic>();
   final state = Get.find<HistoryTrendLogic>().state;
   late TabController _tabController;
-
+  ScrollController _listViewController = ScrollController();
+  ScrollController _scrollViewController = ScrollController();
+  bool _isScrolling = false;
 
   @override
   void initState() {
-    state.formTitle.value.addAll(['期号','值','小','大','单','双','极小','极大']);
-    for(var i=0;i<10;i++){
-      state.formTitle.value.add('$i');
-    }
     _tabController = TabController(length: 4, vsync: this);
-
+    _listViewController.addListener(_scrollListener);
+    _scrollViewController.addListener(_scrollListener);
     super.initState();
   }
 
   @override
   void dispose() {
     _tabController.dispose();
-
+    _listViewController.removeListener(_scrollListener);
+    _scrollViewController.removeListener(_scrollListener);
+    _listViewController.dispose();
+    _scrollViewController.dispose();
     Get.delete<HistoryTrendLogic>();
     super.dispose();
+  }
+
+  void _scrollListener() {
+    if (_isScrolling) return;
+
+    if (_listViewController.position.activity is! IdleScrollActivity) {
+      _isScrolling = true;
+      _scrollViewController.position.jumpTo(_listViewController.offset);
+    } else if (_scrollViewController.position.activity is! IdleScrollActivity) {
+      _isScrolling = true;
+      _listViewController.position.jumpTo(_scrollViewController.offset);
+    }
+    _isScrolling = false;
   }
 
 
@@ -47,110 +64,184 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildRxAppBar(state.title,msg: true,),
-      backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          GFTabBar(
-            length: 4,
-            controller: _tabController,
-            tabBarHeight: 40.h,
-            tabBarColor: Colors.white,
-            indicatorSize: TabBarIndicatorSize.label,
-            indicatorPadding: EdgeInsets.only(top: 33.h,left: 10.w,right: 10.w,bottom: 3.h),
-            indicator: BoxDecoration(
-              borderRadius: BorderRadius.circular(3.r),
-              color: ColorX.color_091722,
-            ),
-            labelColor: ColorX.color_091722,
-            unselectedLabelColor: ColorX.color_58698d,
-            width: 300.w,
-            tabs: [
-              Text("特码",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-              Text("第一球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-              Text("第二球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-              Text("第三球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-            ],
-          ),
-          Divider(height: 1.h,color: ColorX.color_10_fc2,),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("特码 统计",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                Text("显示期数：50",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Obx(() {
-              var minWidth = (state.formTitle.value.length - 1) * 50.w + 100.w;
-              return DataTable2(
-                  columnSpacing: 0,
-                  horizontalMargin: 0,
-                  minWidth: minWidth,
-                  headingRowColor: MaterialStateProperty.all(ColorX.color_f7f8fb),
-                  fixedLeftColumns: 1,
-                  dataRowHeight: 30.h,
-                  headingRowHeight: 30.h,
-                  fixedTopRows: 0,
-                  border: TableBorder(
-                      verticalInside: BorderSide(color: ColorX.color_10_949,width: 1.r),
-                      horizontalInside: BorderSide(color: ColorX.color_10_949,width: 1.r),
+      backgroundColor: ColorX.color_f7f8fb,
+      body: Container(
+        margin: EdgeInsets.only(top: 10.h),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r)),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 86.w,
+              child: Column(
+                children: [
+                  Container(
+                    height: 76.h,
+                    alignment: Alignment.center,
+                    child: Text("期号",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,),),
                   ),
-                  columns: buildFormTitle(),
-                  rows: List<DataRow>.generate(
-                      100,
-                          (index) => DataRow(cells: buildFormCell(index)))
-              );
-            }),
-          ),
-        ],
+                  SizedBox(height: 1.h,child: Container(color: ColorX.color_10_949,),),
+                  Expanded(
+                    child: Obx(() {
+                      if(isEmpty(state.data)){ return Container(); }
+                      return ListView.builder(
+                        controller: _listViewController,
+                        itemCount: state.data.length - 1,
+                        itemBuilder: (context,index){
+                          return Container(
+                            height: 35.h,
+                            alignment: Alignment.center,
+                            color: index % 2 == 1 ? ColorX.color_10_949:Colors.white,
+                            child: Text("1120307$index",style: TextStyle(fontSize: 12.sp,color: ColorX.color_3e3737,),),
+                          );
+                        },
+                      );
+                    }),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 1.w,child: Container(color: ColorX.color_10_949,),),
+            Expanded(
+              child: Column(
+                children: [
+                  GFTabBar(
+                    length: 4,
+                    controller: _tabController,
+                    tabBarHeight: 40.h,
+                    tabBarColor: Colors.white,
+                    isScrollable: true,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicatorPadding: EdgeInsets.only(top: 35.h,left: 10.w,right: 10.w,bottom: 2.h),
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(3.r),
+                      color: ColorX.color_091722,
+                    ),
+                    labelColor: ColorX.color_091722,
+                    unselectedLabelColor: ColorX.color_58698d,
+                    // width: 289.w,
+                    tabs: [
+                      Text("特码",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                      Text("第一球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                      Text("第二球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                      Text("第三球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                    ],
+                  ),
+                  Divider(height: 1.h,color: ColorX.color_10_949,),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      scrollDirection : Axis.vertical,
+                      controller: _scrollViewController,
+                      child: SingleChildScrollView(
+                        scrollDirection : Axis.horizontal,
+                        child: Obx(() {
+                          var widgets = List<Widget>.empty(growable: true);
+                          state.data.forEach((element) {
+                            var index = state.data.indexOf(element);
+                            widgets.add(buildNumberRow(state.data.length,index));
+                            if(index == 0){
+                              widgets.add(Container(color: ColorX.color_10_949,alignment: Alignment.centerLeft,height: 1.h,width: 31.w * state.data.length,));
+                            }
+                          });
+                          return Stack(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: widgets,
+                              ),
+                              SizedBox(
+                                width: (30.w + 1.w) * state.data.length ,
+                                height:(35.h) * state.data.length ,
+                                child: Stack(
+                                  children: [
+                                    ///折线渲染
+                                    buildLine(Size(1, 1),Size(5, 5),),
+                                    buildLine(Size(5, 5),Size(2, 7),),
+                                    buildLine(Size(2, 7),Size(8, 10),),
+                                    buildLine(Size(8, 10),Size(15, 12),),
+                                    buildLine(Size(15, 12),Size(20, 18),),
+                                    buildLine(Size(20, 18),Size(2, 25),),
+
+                                    ///最上层点渲染
+                                    buildDrawNum(Size(1, 1),"35",ColorX.color_fc243b),
+                                    buildDrawNum(Size(5, 5),"12",ColorX.color_60c549),
+                                    buildDrawNum(Size(2, 7),"33",ColorX.color_fc243b),
+                                    buildDrawNum(Size(8, 10),"83",ColorX.color_5583e7),
+                                    buildDrawNum(Size(15, 12),"09",ColorX.color_fc243b),
+                                    buildDrawNum(Size(20, 18),"78",ColorX.color_60c549),
+                                    buildDrawNum(Size(2, 25),"13",ColorX.color_5583e7),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          );
+                        }),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  List<DataColumn2> buildFormTitle() {
-    var columns = List<DataColumn2>.empty(growable: true);
-    state.formTitle.value.forEach((element) {
-      var index = state.formTitle.value.indexOf(element);
-      columns.add(DataColumn2(
-        label: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(element,textAlign: TextAlign.center,),
-          ],
-        ),
-        fixedWidth: index == 0 ? 80.w : 40.w,
-      ));
-    });
-    return columns;
+  Widget buildNumberItem(String num, Color color) {
+    return Container(
+      width: 30.w,
+      height: 35.h,
+      color: color,
+      alignment: Alignment.center,
+      child: Text(num,style: TextStyle(fontSize: 12.sp,color: ColorX.color_949eb9,),),
+    );
   }
 
-  List<DataCell> buildFormCell(int index) {
-    var cells = List<DataCell>.empty(growable: true);
-    state.formTitle.value.forEach((element) {
-      var i = state.formTitle.value.indexOf(element);
-      var text = i == 0 ? "23445673":element;
-      var color = i > 1 ? (text == "单" || text == "大" || text == "极大" ? ColorX.color_529aff:ColorX.color_e75555):ColorX.color_091722;
-      cells.add(DataCell(
-        Container(
-          height: 30.h,
-          margin: EdgeInsets.all(5.r),
-          decoration: BoxDecoration(
-              color: i > 1 ? ColorX.color_f7f8fb:null,
-              borderRadius: BorderRadius.circular(5.r),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(text,style: TextStyle(fontSize: 13.sp,fontWeight: FontWeight.w500,color: color),),
-            ],
-          ),
-        ),
-      ));
-    });
-    return cells;
+  Widget buildNumberRow(int count,int index) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: List.generate(count, (i) {
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            buildNumberItem("12",index == 0 || (index%2 == 1) ? Colors.white : ColorX.color_f7f8fb),
+            Container(height: 35.h,width:1.r,color: ColorX.color_10_949,),
+          ],
+        );
+      }),
+    );
   }
+
+  Widget buildLine(Size start, Size end) {
+    return CustomPaint(
+      painter: LinePainter(
+        color: ColorX.color_fc243b,
+        start: Offset((30.w + 1.w) * start.width + 15.w, (35.h) * start.height + 17.5.h),
+        end: Offset((30.w + 1.w) * end.width + 15.w, (35.h) * end.height + 17.5.h),
+      ),
+    );
+  }
+
+  Widget buildDrawNum(Size size,String num,Color bg) {
+    return Positioned(
+      top: (35.h) * size.height,
+      left:  (30.w + 1.w) * size.width,
+      child: Container(
+        width: 30.w,
+        height: 35.h,
+        alignment: Alignment.center,
+        child: Container(
+          width: 24.r,height: 24.r,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(color: bg,borderRadius: BorderRadius.circular(15.r),),
+          child: Text(num, style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+        ),
+      ),
+    );
+  }
+
 
 }
