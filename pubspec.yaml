@@ -58,7 +58,7 @@ dependencies:
   table_calendar: ^3.0.9
   data_table_2: ^2.5.8
   syncfusion_flutter_charts: ^23.1.41
-
+  scratcher: ^2.4.0
 
 dev_dependencies:
   flutter_test:

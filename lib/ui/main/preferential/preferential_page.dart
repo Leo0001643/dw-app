@@ -13,6 +13,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'preferential_logic.dart';
 
+///优惠中心
 class PreferentialPage extends StatefulWidget {
 
   @override

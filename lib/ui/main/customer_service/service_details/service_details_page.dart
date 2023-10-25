@@ -29,19 +29,20 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            WidgetUtils().buildAppBar("Skype",msg: true,bgColor: Colors.transparent),
             Stack(
               children: [
                 Container(
-                  color: Colors.black,
-                  height: 150.h,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(image: AssetImage(ImageX.kefudetail),fit: BoxFit.cover,),
+                  ),
+                  height: 213.h,
+                  child: WidgetUtils().buildAppBar("Skype",msg: true,bgColor: Colors.transparent),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 120.h),
+                  margin: EdgeInsets.only(top: 193.h),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),

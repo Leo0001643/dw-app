@@ -31,7 +31,7 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
             SizedBox(height: 10.h,),
             Container(
               decoration: BoxDecoration(
-                color: ColorX.color_f7f8fb,
+                image: DecorationImage(image: AssetImage(ImageX.kefutop),fit: BoxFit.fill),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               padding: EdgeInsets.symmetric(horizontal: 20.w),

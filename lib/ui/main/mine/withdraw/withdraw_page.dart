@@ -32,30 +32,40 @@ class _WithdrawPageState extends State<WithdrawPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("提现中心"),
       backgroundColor: ColorX.color_f7f8fb,
-      body: Column(
+      body: Stack(
         children: [
           Container(
-            height: 140.h,
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GFAvatar(
-                  backgroundImage: NetworkImage(Constants.test_image,),
-                    radius: 20.r,
-                ),
-                SizedBox(height: 7.h,),
-                Text("提现帐户: 2946781",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
-              ],
+            decoration: const BoxDecoration(
+              image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
             ),
+            height: 226.h,
           ),
-          buildCategoryItem("从CNY钱包提出", ImageX.icon_rmb_grey, 0),
-          buildCategoryItem("从USDT钱包提出", ImageX.icon_tjyhicon_ustd_greyk, 0),
+          Column(
+            children: [
+              WidgetUtils().buildAppBar("提现中心",bgColor: Colors.transparent),
+              Container(
+                height: 140.h,
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GFAvatar(
+                      backgroundImage: NetworkImage(Constants.test_image,),
+                      radius: 20.r,
+                    ),
+                    SizedBox(height: 7.h,),
+                    Text("提现帐户: 2946781",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
+                  ],
+                ),
+              ),
+              buildCategoryItem("从CNY钱包提出", ImageX.icon_rmb_grey, 0),
+              buildCategoryItem("从USDT钱包提出", ImageX.icon_tjyhicon_ustd_greyk, 0),
 
+            ],
+          ),
         ],
-      ),
+      )
     );
   }
 

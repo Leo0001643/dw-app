@@ -100,6 +100,8 @@ import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_offlin
 import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_online/recharge_online_binding.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_digital/recharge_digital_binding.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_digital/recharge_digital_page.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_record/recharge_record_binding.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_record/recharge_record_page.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_binding.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_page.dart';
 import 'package:leisure_games/ui/register/register_binding.dart';
@@ -152,7 +154,8 @@ class Routes {
   static const String history_lottery = "/home/history_lottery";
   static const String history_trend = "/home/history_trend";
   static const String betting_details = "/home/betting_details";
-  // static const String room_tendency = "/home/room_tendency";
+  static const String room_tendency = "/home/room_tendency";
+  static const String recharge_record = "/home/recharge_record";
 
 
   static final List<GetPage> getPages=[
@@ -210,6 +213,7 @@ class Routes {
     // GetPage(name: room_tendency,binding: RoomTendencyBinding(),
     //     bindings: [LotteryResultBinding(),DataAnalysisBinding(),DoubleQueueBinding(),DsDewBinding(),DxDewBinding(),NumberTrendBinding()],
     //     page: () => RoomTendencyPage()),
+    GetPage(name: recharge_record,binding: RechargeRecordBinding(), page: () => RechargeRecordPage()),
 
 
   ];

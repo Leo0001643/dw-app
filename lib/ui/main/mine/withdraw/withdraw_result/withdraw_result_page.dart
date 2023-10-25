@@ -29,62 +29,72 @@ class _WithdrawResultPageState extends State<WithdrawResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("提现",msg: true),
       backgroundColor: ColorX.color_f7f8fb,
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: [
             Container(
-              height: 115.h,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(ImageX.icon_select,width: 24.r,height: 24.r,),
-                  SizedBox(height: 5.r,),
-                  Text("提交成功",style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-                  // SizedBox(height: 5.r,),
-                  // Text("请3分钟后刷新本页,查询进度",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
-                ],
+              decoration: const BoxDecoration(
+                image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
               ),
+              height: 226.h,
             ),
-            Container(
-              decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r)),
-              margin: EdgeInsets.symmetric(horizontal: 20.w),
-              padding: EdgeInsets.all(15.r),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("提现详情",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-                  SizedBox(height: 15.h,),
-                  buildInfoItem("提现账户","xxx"),
-                  SizedBox(height: 15.h,),
-                  buildInfoItem("提交时间","2023-07-05  11:45:10"),
-                  SizedBox(height: 15.h,),
-                  Row(
+            Column(
+              children: [
+                WidgetUtils().buildAppBar("提现",bgColor: Colors.transparent,msg: true),
+                Container(
+                  height: 115.h,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      buildInfoItem("提现金额","¥500"),
-                      SizedBox(width: 3.w,),
-                      Text("(手续费:¥100)",style: TextStyle(fontSize: 12.sp,color: ColorX.color_62_586),),
+                      Image.asset(ImageX.icon_select,width: 24.r,height: 24.r,),
+                      SizedBox(height: 5.r,),
+                      Text("提交成功",style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                      // SizedBox(height: 5.r,),
+                      // Text("请3分钟后刷新本页,查询进度",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
                     ],
                   ),
-                  SizedBox(height: 15.h,),
-                  buildInfoItem("到账金额","¥500"),
-                  SizedBox(height: 15.h,),
-                  buildInfoItem("账户余额","¥500"),
-                ],
-              ),
-            ),
-            SizedBox(height: 24.h,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                WidgetUtils().buildElevatedButton("完成", 150.w, 40.h,bg: ColorX.color_fc243b,onPressed: (){
-                  Get.until(ModalRoute.withName(Routes.withdraw));
-                }),
+                ),
+                Container(
+                  decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r)),
+                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                  padding: EdgeInsets.all(15.r),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("提现详情",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                      SizedBox(height: 15.h,),
+                      buildInfoItem("提现账户","xxx"),
+                      SizedBox(height: 15.h,),
+                      buildInfoItem("提交时间","2023-07-05  11:45:10"),
+                      SizedBox(height: 15.h,),
+                      Row(
+                        children: [
+                          buildInfoItem("提现金额","¥500"),
+                          SizedBox(width: 3.w,),
+                          Text("(手续费:¥100)",style: TextStyle(fontSize: 12.sp,color: ColorX.color_62_586),),
+                        ],
+                      ),
+                      SizedBox(height: 15.h,),
+                      buildInfoItem("到账金额","¥500"),
+                      SizedBox(height: 15.h,),
+                      buildInfoItem("账户余额","¥500"),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 24.h,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    WidgetUtils().buildElevatedButton("完成", 150.w, 40.h,bg: ColorX.color_fc243b,onPressed: (){
+                      Get.until(ModalRoute.withName(Routes.withdraw));
+                    }),
+                  ],
+                ),
               ],
             ),
           ],
-        ),
+        )
       ),
     );
   }

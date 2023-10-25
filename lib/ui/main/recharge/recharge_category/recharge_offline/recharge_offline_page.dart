@@ -140,15 +140,15 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               WidgetUtils().buildElevatedButton("币币兑换", 102.w, 38.h,bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
-
+                Get.toNamed(Routes.coin_exchange);
               }),
               SizedBox(width: 16.w,),
               WidgetUtils().buildElevatedButton("充值记录", 102.w, 38.h,bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
-
+                Get.toNamed(Routes.recharge_record);
               }),
               SizedBox(width: 16.w,),
               WidgetUtils().buildElevatedButton("额度转换", 102.w, 38.h,bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
-
+                Get.toNamed(Routes.quota_conversion);
               }),
             ],
           ),

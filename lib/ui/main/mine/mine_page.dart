@@ -31,112 +31,121 @@ class StateMinePage extends State<MinePage>{
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 50.h,),
-            Row(
-              children: [
-                SizedBox(width: 17.w,),
-                InkWell(
-                  onTap: ()=> Get.toNamed(Routes.select_avatar),
-                  child: Stack(
-                    children: [
-                      GFAvatar(
-                        backgroundImage: NetworkImage(Constants.test_image),
-                        shape: GFAvatarShape.circle,
-                        radius: 17.r,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.white,width: 2.r),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,right: 0,
-                        child: Image.asset(ImageX.icon_edit_avatar),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(width: 8.w,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text("Hala",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
-                        SizedBox(width: 5.w,),
-                        Image.asset(ImageX.icon_vip),
-                      ],
-                    ),
-                    Text("昵称:晴子",style: TextStyle(fontSize: 10.sp,color: ColorX.color_58698d),),
-                  ],
-                ),
-                Expanded(child: Container()),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text("¥88.88\n奖金",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),textAlign: TextAlign.center,),
-                        SizedBox(width: 10.w,),
-                        Text("1000\n积分",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),textAlign: TextAlign.center,),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(width: 20.w,),
-              ],
-            ),
-            SizedBox(height: 16.h,),
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15.r),
+                image: DecorationImage(image: AssetImage(ImageX.my_bg),fit: BoxFit.fill,),
               ),
-              padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
-              margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InkWell(
-                    onTap: (){
-                      DialogUtils().showSelectWalletBtmDialog(context);
-                    },
-                    child: Row(
+                  SizedBox(height: 50.h,),
+                  Row(
+                    children: [
+                      SizedBox(width: 17.w,),
+                      InkWell(
+                        onTap: ()=> Get.toNamed(Routes.select_avatar),
+                        child: Stack(
+                          children: [
+                            GFAvatar(
+                              backgroundImage: NetworkImage(Constants.test_image),
+                              shape: GFAvatarShape.circle,
+                              radius: 17.r,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.white,width: 2.r),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,right: 0,
+                              child: Image.asset(ImageX.icon_edit_avatar),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 8.w,),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text("Hala",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
+                              SizedBox(width: 5.w,),
+                              Image.asset(ImageX.icon_vip),
+                            ],
+                          ),
+                          Text("昵称:晴子",style: TextStyle(fontSize: 10.sp,color: ColorX.color_58698d),),
+                        ],
+                      ),
+                      Expanded(child: Container()),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text("¥88.88\n奖金",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),textAlign: TextAlign.center,),
+                              SizedBox(width: 10.w,),
+                              Text("1000\n积分",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),textAlign: TextAlign.center,),
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 20.w,),
+                    ],
+                  ),
+                  SizedBox(height: 16.h,),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r),
+                      image: DecorationImage(image: AssetImage(ImageX.my_card),fit: BoxFit.fill,),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+                    margin: EdgeInsets.symmetric(horizontal: 10.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.asset(ImageX.icon_rmb_grey),
-                        Text(Intr().rmbqb,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
-                        SizedBox(width: 5.w,),
-                        Expanded(child: Container()),
-                        Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
-                        Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
-                        SizedBox(width: 5.w,),
-                        Image.asset(ImageX.icon_right_left,width: 10.w,),
+                        InkWell(
+                          onTap: (){
+                            DialogUtils().showSelectWalletBtmDialog(context);
+                          },
+                          child: Row(
+                            children: [
+                              Image.asset(ImageX.icon_rmb_grey),
+                              Text(Intr().rmbqb,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                              SizedBox(width: 5.w,),
+                              Expanded(child: Container()),
+                              Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                              Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
+                              SizedBox(width: 5.w,),
+                              Image.asset(ImageX.icon_right_left,width: 10.w,),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 10.h,),
+                        Row(
+                          children: [
+                            Text("余额：",style: TextStyle(fontSize: 15.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                            Text("¥8,888",style: TextStyle(fontSize: 18.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
+                          ],
+                        ),
+                        SizedBox(height: 20.h,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            WidgetUtils().buildElevatedButton("提现", 131.w, 45.h, bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
+                              Get.toNamed(Routes.withdraw);
+                            }),
+                            WidgetUtils().buildElevatedButton("充值", 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
+                              eventBus.fire(ChangeMainPageEvent(2));
+                            }),
+                          ],
+                        ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 10.h,),
-                  Row(
-                    children: [
-                      Text("余额：",style: TextStyle(fontSize: 15.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
-                      Text("¥8,888",style: TextStyle(fontSize: 18.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
-                    ],
-                  ),
-                  SizedBox(height: 20.h,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      WidgetUtils().buildElevatedButton("提现", 131.w, 45.h, bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
-                        Get.toNamed(Routes.withdraw);
-                      }),
-                      WidgetUtils().buildElevatedButton("充值", 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
-                        eventBus.fire(ChangeMainPageEvent(2));
-                      }),
-                    ],
-                  ),
+                  SizedBox(height: 10.r,),
                 ],
               ),
             ),
-            SizedBox(height: 10.r,),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),

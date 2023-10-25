@@ -35,64 +35,44 @@ class StateSelectThemePage extends State<StatefulWidget>{
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 60.h,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.r),
-                        color: Colors.white,
-                      ),
-                      width: 150.w,
-                      height: 244.h,
-                    ),
-                    SizedBox(height: 10.h,),
-                    InkWell(
-                      onTap: (){ state.selectTheme.value = true; },
-                      child: Row(
-                        children: [
-                          Obx(() {
-                            return state.selectTheme.value ? Image.asset(ImageX.icon_select) : Image.asset(ImageX.icon_unselect);
-                          }),
-                          SizedBox(width: 9.w,),
-                          Text(Intr().qzb, style: TextStyle(fontSize: 16.sp, color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 20.w,),
-                Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.r),
-                        color: ColorX.color_091722,
-                      ),
-                      width: 150.w,
-                      height: 244.h,
-                    ),
-                    SizedBox(height: 10.h,),
-                    InkWell(
-                      onTap: (){ state.selectTheme.value = false; },
-                      child: Row(
-                        children: [
-                          Obx(() {
-                            return state.selectTheme.value ? Image.asset(ImageX.icon_unselect) : Image.asset(ImageX.icon_select);
-                          }),
-                          SizedBox(width: 9.w,),
-                          Text(Intr().kxh, style: TextStyle(fontSize: 16.sp, color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+            SizedBox(height: 30.h,),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 25.w),
+              child: Image.asset(ImageX.theme,width: 350.w,fit: BoxFit.fill,),
             ),
-
+            SizedBox(height: 15.h,),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 25.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  InkWell(
+                    onTap: (){ state.selectTheme.value = true; },
+                    child: Row(
+                      children: [
+                        Obx(() {
+                          return state.selectTheme.value ? Image.asset(ImageX.icon_select) : Image.asset(ImageX.icon_unselect);
+                        }),
+                        SizedBox(width: 9.w,),
+                        Text(Intr().qzb, style: TextStyle(fontSize: 16.sp, color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
+                      ],
+                    ),
+                  ),
+                  InkWell(
+                    onTap: (){ state.selectTheme.value = false; },
+                    child: Row(
+                      children: [
+                        Obx(() {
+                          return state.selectTheme.value ? Image.asset(ImageX.icon_unselect) : Image.asset(ImageX.icon_select);
+                        }),
+                        SizedBox(width: 9.w,),
+                        Text(Intr().kxh, style: TextStyle(fontSize: 16.sp, color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

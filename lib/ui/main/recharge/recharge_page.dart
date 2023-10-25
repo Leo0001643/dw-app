@@ -24,56 +24,68 @@ class _RechargePageState extends State<RechargePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("充值中心",msg: true,drawer: true,back: false),
       backgroundColor: ColorX.color_f7f8fb,
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: [
-            SizedBox(height: 30.h,),
-            Center(
-              child: Column(
-                children: [
-                  GFAvatar(
-                    backgroundImage: NetworkImage(Constants.test_image,),
-                    radius: 20.r,
+            Container(
+              height: 236.h,
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
+              ),
+            ),
+            Column(
+              children: [
+                WidgetUtils().buildAppBar("充值中心",bgColor: Colors.transparent, msg: true,drawer: true,back: false),
+                Container(
+                  height: 100.h,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GFAvatar(
+                        backgroundImage: NetworkImage(Constants.test_image,),
+                        radius: 28.r,
+                      ),
+                      SizedBox(height: 7.h,),
+                      Text("充值帐户: 2946781",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
+                    ],
                   ),
-                  SizedBox(height: 7.h,),
-                  Text("充值帐户: 2946781",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
-                ],
-              ),
+                ),
+                SizedBox(height: 10.h,),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 27.w,vertical: 7.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("人民币钱包(当前默认)",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                      Text("余额: ¥666",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                    ],
+                  ),
+                ),
+                buildCategoryItem("财付通",ImageX.icon_cft,0),
+                buildCategoryItem("全民付",ImageX.icon_cft,1),
+                buildCategoryItem("银行卡转帐",ImageX.icon_cft,2),
+                buildCategoryItem("微信支付",ImageX.icon_cft,3),
+                buildCategoryItem("云闪付支付",ImageX.icon_cft,4),
+                buildCategoryItem("支付宝",ImageX.icon_cft,5),
+                SizedBox(height: 10.h,),
+                Padding(
+                  padding: EdgeInsets.only(left: 27.w,right: 27.w,top: 10.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("数字钱包",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                      Text("余额: \$666",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                    ],
+                  ),
+                ),
+                buildCategoryItem("USDT币",ImageX.icon_dollar_grey,6),
+                SizedBox(height: 30.h,),
+              ],
             ),
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 27.w,vertical: 10.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("人民币钱包(当前默认)",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
-                  Text("余额: ¥666",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
-                ],
-              ),
-            ),
-            buildCategoryItem("财付通",ImageX.icon_cft,0),
-            buildCategoryItem("全民付",ImageX.icon_cft,1),
-            buildCategoryItem("银行卡转帐",ImageX.icon_cft,2),
-            buildCategoryItem("微信支付",ImageX.icon_cft,3),
-            buildCategoryItem("云闪付支付",ImageX.icon_cft,4),
-            buildCategoryItem("支付宝",ImageX.icon_cft,5),
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left: 27.w,right: 27.w,top: 10.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("数字钱包",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
-                  Text("余额: \$666",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
-                ],
-              ),
-            ),
-            buildCategoryItem("USDT币",ImageX.icon_dollar_grey,6),
-            SizedBox(height: 30.h,),
           ],
-        ),
+        )
       ),
     );
   }
