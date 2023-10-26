@@ -12,7 +12,7 @@ class SelectOptionBtmDialog extends StatefulWidget{
   String title;
   List data;
 
-  SelectOptionBtmDialog(this.title, this.data);
+  SelectOptionBtmDialog(this.title, this.data, {super.key});
 
   @override
   State<StatefulWidget> createState() => StateSelectOptionBtmDialog();

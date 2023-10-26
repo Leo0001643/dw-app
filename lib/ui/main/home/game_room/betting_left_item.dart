@@ -6,11 +6,13 @@ import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
 class BettingLeftItem extends StatefulWidget{
 
   final int index;
-  BettingLeftItem(this.index);
+  final GameRoomLogic logic;
+  BettingLeftItem(this.index,this.logic);
 
   @override
   State<StatefulWidget> createState() =>StateBettingLeftItem();
@@ -25,6 +27,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
     return Container(
       child: Column(
         children: [
+          SizedBox(height: 10.h,),
           Padding(
             padding: EdgeInsets.only(left: 13.w),
             child: Row(
@@ -41,7 +44,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
           ),
           GFCard(
             padding: EdgeInsets.zero,
-            margin: EdgeInsets.only(left: 50.w,right: 53.w,bottom: 15.h),
+            margin: EdgeInsets.only(left: 50.w,right: 53.w,bottom: 5.h),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
             elevation: 3.r,
             content: Column(
@@ -49,7 +52,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 7.h,horizontal: 15.w,),
                   decoration: BoxDecoration(
-                    color: ColorX.color_68_e2e,
+                    color: buildTitleColor(),
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
                   ),
                   child: Row(
@@ -72,7 +75,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                 buildBettingInfoItem(),
                 buildBettingInfoItem(),
                 Container(
-                  padding: EdgeInsets.only(right: 10.w,top: 8.h,bottom: 8.h),
+                  padding: EdgeInsets.only(right: 10.w,top: 8.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -83,6 +86,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                     ],
                   ),
                 ),
+                SizedBox(height: 7.h,),
               ],
             ),
           ),
@@ -108,6 +112,17 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
         Divider(color: ColorX.color_10_949,height: 1.h,indent: 10.w,endIndent: 10.w,),
       ],
     );
+  }
+
+  buildTitleColor() {
+    switch(widget.logic.state.roomType){
+      case 1:
+        return ColorX.color_70_dee;
+      case 2:
+        return ColorX.color_44_f0e;
+      default:
+        return ColorX.color_68_e2e;
+    }
   }
 
 }

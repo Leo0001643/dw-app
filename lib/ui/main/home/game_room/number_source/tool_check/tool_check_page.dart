@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
 import 'tool_check_logic.dart';
@@ -84,38 +85,42 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
               style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.8),),
             SizedBox(height: 10.h,),
             Container(
-              color: ColorX.color_091722,
-              height: 100.h,
               width: 335.w,
+              child: Image.asset(ImageX.checkMa1),
             ),
             SizedBox(height: 10.h,),
             Text("2.将上述字符串进行SHA256转化",
               style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.8),),
             SizedBox(height: 10.h,),
             Container(
-              color: ColorX.color_091722,
-              height: 100.h,
               width: 335.w,
+              child: Image.asset(ImageX.checkMa2),
             ),
             SizedBox(height: 10.h,),
             Text("3.通过数学公式进行转换,转换规则如下:",
               style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.8),),
             SizedBox(height: 10.h,),
             Container(
-              color: ColorX.color_091722,
-              height: 100.h,
               width: 335.w,
+              child: Column(
+                children: [
+                  Image.asset(ImageX.icon_check_ma),
+                  SizedBox(height: 10.h,),
+                  Image.asset(ImageX.icon_check_ma_2),
+                  SizedBox(height: 10.h,),
+                  Image.asset(ImageX.icon_check_ma_3),
+                ],
+              ),
             ),
             SizedBox(height: 10.h,),
             Text("4.根据转换结果,选取小数后3位作为开奖号码",
               style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.8),),
             SizedBox(height: 10.h,),
             Container(
-              color: ColorX.color_091722,
-              height: 100.h,
               width: 335.w,
+              child: Image.asset(ImageX.icon_check_ma_4),
             ),
-            SizedBox(height: 40.h,),
+            SizedBox(height: 20.h,),
           ],
         ),
       ),

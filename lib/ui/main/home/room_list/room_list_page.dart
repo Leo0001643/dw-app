@@ -28,28 +28,42 @@ class _RoomListPageState extends State<RoomListPage> {
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,onTap: (){
         DialogUtils().showSelectRoomBtmDialog(context);
       }),
-      body: SingleChildScrollView(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(ImageX.room),fit: BoxFit.fill,
+          )
+        ),
         child: Column(
           children: [
             SizedBox(height: 20.h,),
             InkWell(
-              onTap: ()=> Get.toNamed(Routes.game_room),
+              onTap: ()=> Get.toNamed(Routes.game_room,arguments: 0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
                   borderRadius: BorderRadius.circular(10.r),
+                  image: DecorationImage(image: AssetImage(ImageX.room1),fit: BoxFit.fill),
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 20.w),
                 padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
+                height: 0.181.sh,
+                width: 335.w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("普通房",style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
-                    Text("当前在线18人|奖金池\$8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
-                    SizedBox(height: 44.h,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("普通房",style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
+                        Text("当前在线18人|奖金池\$8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                      ],
+                    ),
                     InkWell(
                       onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: "赔率说明")),
-                      child: Row(
+                      child: Wrap(
+                        direction: Axis.horizontal,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Text("赔率说明",style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
                           Image.asset(ImageX.icon_right_black,color: ColorX.color_c20015,),
@@ -62,23 +76,32 @@ class _RoomListPageState extends State<RoomListPage> {
             ),
             SizedBox(height: 20.h,),
             InkWell(
-              onTap: ()=> Get.toNamed(Routes.game_room),
+              onTap: ()=> Get.toNamed(Routes.game_room,arguments: 1),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  image: DecorationImage(image: AssetImage(ImageX.room2),fit: BoxFit.fill),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 20.w),
                 padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
+                height: 0.181.sh,
+                width: 335.w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("高级房",style: TextStyle(fontSize: 20.sp,color: ColorX.color_344e7b,fontWeight: FontWeight.w600),),
-                    Text("当前在线18人|奖金池\$8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
-                    SizedBox(height: 44.h,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("高级房",style: TextStyle(fontSize: 20.sp,color: ColorX.color_344e7b,fontWeight: FontWeight.w600),),
+                        Text("当前在线18人|奖金池\$8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
+                      ],
+                    ),
                     InkWell(
                       onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: "赔率说明")),
-                      child: Row(
+                      child: Wrap(
+                        direction: Axis.horizontal,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Text("赔率说明",style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
                           Image.asset(ImageX.icon_right_black,color: ColorX.color_344e7b,),
@@ -91,23 +114,32 @@ class _RoomListPageState extends State<RoomListPage> {
             ),
             SizedBox(height: 20.h,),
             InkWell(
-              onTap: ()=> Get.toNamed(Routes.game_room),
+              onTap: ()=> Get.toNamed(Routes.game_room,arguments: 2),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  image: DecorationImage(image: AssetImage(ImageX.room3),fit: BoxFit.fill),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 20.w),
                 padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
+                height: 0.181.sh,
+                width: 335.w,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("贵宾房",style: TextStyle(fontSize: 20.sp,color: ColorX.color_4e3100,fontWeight: FontWeight.w600),),
-                    Text("当前在线18人|奖金池\$8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
-                    SizedBox(height: 44.h,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("贵宾房",style: TextStyle(fontSize: 20.sp,color: ColorX.color_4e3100,fontWeight: FontWeight.w600),),
+                        Text("当前在线18人|奖金池\$8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
+                      ],
+                    ),
                     InkWell(
                       onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: "赔率说明")),
-                      child: Row(
+                      child: Wrap(
+                        direction: Axis.horizontal,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Text("赔率说明",style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
                           Image.asset(ImageX.icon_right_black,color: ColorX.color_4e3100,),
@@ -148,7 +180,7 @@ class _RoomListPageState extends State<RoomListPage> {
             ),
           ],
         ),
-      ),
+      )
     );
   }
 

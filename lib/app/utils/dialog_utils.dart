@@ -1,15 +1,13 @@
 
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/access_route_dialog.dart';
 import 'package:leisure_games/app/widget/currency_dialog.dart';
 import 'package:leisure_games/app/widget/game_role_bottom_dialog.dart';
+import 'package:leisure_games/app/widget/history_lottery_btm_dialog.dart';
 import 'package:leisure_games/app/widget/language_dialog.dart';
 import 'package:leisure_games/app/widget/rebate_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_option_btm_dialog.dart';
@@ -17,6 +15,7 @@ import 'package:leisure_games/app/widget/select_payway_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_room_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
+import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
 class DialogUtils {
 
@@ -246,6 +245,56 @@ class DialogUtils {
   }
 
 
+  ///历史开奖
+  Future<dynamic> showHistoryLotteryBtmDialog(BuildContext context,GameRoomLogic logic){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: Colors.white,
+        builder: (context){
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: HistoryLotteryBtmDialog(logic),
+          );
+        }
+    );
+  }
+
+  // ///咪牌
+  // Future<dynamic> showSqueezeBtmDialog(BuildContext context,GameRoomLogic logic){
+  //   return showModalBottomSheet(
+  //       context: context,
+  //       isScrollControlled: true,
+  //       shape: RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.only(topRight: Radius.circular(18.r),topLeft: Radius.circular(18.r)),
+  //       ),
+  //       backgroundColor: Colors.white,
+  //       builder: (context){
+  //         return SingleChildScrollView(
+  //           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+  //           child: SqueezeBtmDialog(logic),
+  //         );
+  //       }
+  //   );
+  // }
+  //
+  // ///投注
+  // Future<dynamic> showBettingBtmDialog(BuildContext context,GameRoomLogic logic){
+  //   return showModalBottomSheet(
+  //       context: context,
+  //       isScrollControlled: true,
+  //       shape: RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+  //       ),
+  //       backgroundColor: Colors.white,
+  //       builder: (context){
+  //         return BettingBtmDialog(logic);
+  //       }
+  //   );
+  // }
 
 
 

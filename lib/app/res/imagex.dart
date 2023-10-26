@@ -389,8 +389,10 @@ class ImageX{
   static const gtIcon = 'assets/images/gtIcon.png';
 
 
+  static const ic_1room_head = 'assets/images/ic_1room_head.png';
+  static const ic_2room_head = 'assets/images/ic_2room_head.png';
+  static const ic_3room_head = 'assets/images/ic_3room_head.png';
 
-  
 
 
 

@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 
 import 'game_room_state.dart';
 
@@ -19,7 +21,7 @@ class GameRoomLogic extends GetxController {
   }
 
 
-  void onTabClick(int index){
+  void onTabClick(BuildContext context,int index){
     switch(index){
       case 0:
         Get.toNamed(Routes.number_source);
@@ -28,9 +30,10 @@ class GameRoomLogic extends GetxController {
         Get.toNamed(Routes.betting_details);
         break;
       case 2:
+        // DialogUtils().showSqueezeBtmDialog(context,this);
         break;
       case 3:
-        // Get.toNamed(Routes.room_tendency);
+        Get.toNamed(Routes.room_tendency);
         break;
     }
   }

@@ -23,7 +23,11 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 3, vsync: this)
+    ..addListener(() {
+      state.selectIndex.value = -1;
+      state.tabIndex.value = _tabController.index;
+    });
     super.initState();
   }
 
@@ -47,7 +51,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
             child: GFAvatar(
               backgroundImage: NetworkImage(Constants.test_image),
               shape: GFAvatarShape.circle,
-              radius: 17.r,
+              radius: 27.r,
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -90,18 +94,21 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
                     ),
                   ),
                   Expanded(
-                    child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          mainAxisSpacing: 20.h,
-                          crossAxisSpacing: 20.w,
-                        ),
-                        itemCount: 20,
-                        itemBuilder: (context,index){
-                          return Obx(() {
-                            return buildAvatarItem(index,state.selectIndex.value == index);
+                    child: Obx(() {
+                      var list = state.tabIndex.value == 0 ? state.defaultList : (state.tabIndex.value == 1 ? state.qqList:state.selectionList);
+                      return GridView.builder(
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
+                            mainAxisSpacing: 20.h,
+                            crossAxisSpacing: 20.w,
+                          ),
+                          itemCount: list.length,
+                          itemBuilder: (context,index){
+                            return Obx(() {
+                              return buildAvatarItem(index,state.selectIndex.value == index,list[index]);
+                            });
                           });
-                        }),
+                    }),
                   ),
                   SizedBox(height: 20.h,),
                   WidgetUtils().buildElevatedButton("确定", 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
@@ -117,11 +124,11 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
     );
   }
 
-  Widget buildAvatarItem(int index, bool select) {
+  Widget buildAvatarItem(int index, bool select,String item) {
     return InkWell(
       onTap: ()=> state.selectIndex.value = index,
       child: GFAvatar(
-        backgroundImage: NetworkImage(Constants.test_image),
+        backgroundImage: AssetImage(item),
         shape: GFAvatarShape.circle,
         radius: 17.r,
         child: Visibility(
