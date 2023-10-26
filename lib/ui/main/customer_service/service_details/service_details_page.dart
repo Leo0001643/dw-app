@@ -29,19 +29,20 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(image: AssetImage(ImageX.kefudetail),fit: BoxFit.cover,),
-                  ),
-                  height: 213.h,
-                  child: WidgetUtils().buildAppBar("Skype",msg: true,bgColor: Colors.transparent),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(image: AssetImage(ImageX.kefudetail),fit: BoxFit.cover,),
                 ),
-                Container(
+                height: 213.h,
+                child: WidgetUtils().buildAppBar("Skype",msg: true,bgColor: Colors.transparent),
+              ),
+              Expanded(
+                child: Container(
                   margin: EdgeInsets.only(top: 193.h),
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -65,17 +66,17 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                       Center(
                         child: WidgetUtils().buildElevatedButton("返回", 131.w, 40.h,
                             bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
-                                Navigator.of(context).pop();
+                              Navigator.of(context).pop();
                             }),
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
-          ],
-        ),
-      )
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
