@@ -43,7 +43,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     return Scaffold(
       appBar: WidgetUtils().buildGameBar(
           state.title, buildRoomType(),
-          collect: true,msg: true,onTap: (){
+          collect: false,msg: true,onTap: (){
         DialogUtils().showSelectRoomBtmDialog(context);
       }),
       backgroundColor: ColorX.color_f7f8fb,
@@ -144,7 +144,9 @@ class _GameRoomPageState extends State<GameRoomPage> {
                       return BettingLeftItem(index,logic);
                     },
                   ),
-                  buildFloatingBtn((){ showToast("弹幕"); }),
+                  buildFloatingBtn((){ DialogUtils().showBulletBtmDialog(context, logic,(v){
+                    showToast("发送${v.length}");
+                  }); }),
                 ],
               ),
             ),
@@ -219,20 +221,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
       bottom: 30.h,
       child: InkWell(
         onTap: onPressed,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),bottomLeft: Radius.circular(20.r)),
-          ),
-          padding: EdgeInsets.symmetric(vertical: 7.h,horizontal: 10.w),
-          child: Wrap(
-            children: [
-              Icon(Icons.edit_calendar_rounded,color: ColorX.color_091722,),
-              SizedBox(width: 5.w,),
-              Text("弹幕",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
-            ],
-          ),
-        ),
+        child: Image.asset(ImageX.icon_barrage,width: 60.w,height:35.h,fit: BoxFit.fill,),
       ),
     );
   }
@@ -378,7 +367,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     }
     var textColor = state.roomType == 2 ? ColorX.color_ffe0ac:Colors.white;
     return InkWell(
-      // onTap: ()=> DialogUtils().showBettingBtmDialog(context, logic),
+      onTap: ()=> DialogUtils().showBettingBtmDialog(context, logic),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),

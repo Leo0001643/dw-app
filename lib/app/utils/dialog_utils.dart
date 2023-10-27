@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/access_route_dialog.dart';
+import 'package:leisure_games/app/widget/betting_btm_dialog.dart';
 import 'package:leisure_games/app/widget/currency_dialog.dart';
 import 'package:leisure_games/app/widget/game_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/history_lottery_btm_dialog.dart';
@@ -14,6 +15,7 @@ import 'package:leisure_games/app/widget/select_option_btm_dialog.dart';
 import 'package:leisure_games/app/widget/select_payway_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_room_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
+import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
@@ -263,38 +265,69 @@ class DialogUtils {
     );
   }
 
-  // ///咪牌
-  // Future<dynamic> showSqueezeBtmDialog(BuildContext context,GameRoomLogic logic){
-  //   return showModalBottomSheet(
-  //       context: context,
-  //       isScrollControlled: true,
-  //       shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.only(topRight: Radius.circular(18.r),topLeft: Radius.circular(18.r)),
-  //       ),
-  //       backgroundColor: Colors.white,
-  //       builder: (context){
-  //         return SingleChildScrollView(
-  //           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-  //           child: SqueezeBtmDialog(logic),
-  //         );
-  //       }
-  //   );
-  // }
-  //
-  // ///投注
-  // Future<dynamic> showBettingBtmDialog(BuildContext context,GameRoomLogic logic){
-  //   return showModalBottomSheet(
-  //       context: context,
-  //       isScrollControlled: true,
-  //       shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
-  //       ),
-  //       backgroundColor: Colors.white,
-  //       builder: (context){
-  //         return BettingBtmDialog(logic);
-  //       }
-  //   );
-  // }
+  ///咪牌
+  Future<dynamic> showSqueezeBtmDialog(BuildContext context,GameRoomLogic logic){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(18.r),topLeft: Radius.circular(18.r)),
+        ),
+        backgroundColor: Colors.white,
+        builder: (context){
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: SqueezeBtmDialog(logic),
+          );
+        }
+    );
+  }
+
+  ///投注
+  Future<dynamic> showBettingBtmDialog(BuildContext context,GameRoomLogic logic){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: Colors.white,
+        builder: (context){
+          return BettingBtmDialog(logic);
+        }
+    );
+  }
+
+  ///确认注单
+  void showConfirmBetDialog(BuildContext context,GameRoomLogic logic){
+    showDialog(
+        context: context,
+        builder: (context){
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.r),
+            ),
+            contentPadding: EdgeInsets.zero,
+            content: Container(),
+          );
+        }
+    );
+  }
+
+  ///弹幕
+  Future<dynamic> showBulletBtmDialog(BuildContext context,GameRoomLogic logic,Function valueCallBack){
+    return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: Colors.white,
+        builder: (context){
+          return Container();
+        }
+    );
+  }
 
 
 

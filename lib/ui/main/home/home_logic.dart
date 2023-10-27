@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 
 import 'home_state.dart';
 
@@ -22,17 +24,28 @@ class HomeLogic extends GetxController {
 
   void clickMenu(BuildContext context,int index){
     switch(index){
-      case 0:
-        DialogUtils().showLanguageDialog(context);
+      case 0:///充值
+        // DialogUtils().showLanguageDialog(context);
+      eventBus.fire(ChangeMainPageEvent(2));
         break;
-      case 1:
-        DialogUtils().showCurrencyDialog(context);
+      case 1:///提现
+        // DialogUtils().showCurrencyDialog(context);
+      Get.toNamed(Routes.withdraw);
         break;
-      case 2:
+      case 2:///抽奖
         DialogUtils().showAccessRouteDialog(context);
         break;
-      case 3:
+      case 3:///走势
         Get.toNamed(Routes.lottery_trend);
+        break;
+      case 4:///签到抽奖
+        Get.toNamed(Routes.sign_in);
+        break;
+      case 5:///优惠活动
+        eventBus.fire(ChangeMainPageEvent(1));
+        break;
+      case 6:///推荐有礼
+        Get.toNamed(Routes.promotion_profit);
         break;
     }
 

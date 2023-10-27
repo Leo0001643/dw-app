@@ -30,7 +30,7 @@ class GameRoomLogic extends GetxController {
         Get.toNamed(Routes.betting_details);
         break;
       case 2:
-        // DialogUtils().showSqueezeBtmDialog(context,this);
+        DialogUtils().showSqueezeBtmDialog(context,this);
         break;
       case 3:
         Get.toNamed(Routes.room_tendency);

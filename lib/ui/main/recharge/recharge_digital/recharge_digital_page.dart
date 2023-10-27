@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -28,7 +29,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
 
   @override
   void initState() {
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: state.tabs.length, vsync: this);
     _tabController.addListener(() {
       state.selectOnline.value = _tabController.index == 0;
     });
@@ -68,8 +69,8 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
               }),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-                child: GFTabBar(
-                  length: 3,
+                child: LCTabBar(
+                  length: state.tabs.length,
                   controller: _tabController,
                   tabBarHeight: 35.h,
                   tabBarColor: Colors.transparent,
@@ -82,10 +83,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                   labelColor: ColorX.color_091722,
                   unselectedLabelColor: ColorX.color_58698d,
                   width: 335.w,
-                  tabs: [
-                    Text("线上(自动到账)",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                    Text("线下(人工存款)",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                  ],
+                  tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
                 ),
               ),
               Expanded(

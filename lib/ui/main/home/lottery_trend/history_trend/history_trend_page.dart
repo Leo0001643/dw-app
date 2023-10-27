@@ -6,6 +6,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/app/widget/line_painter.dart';
 
 import 'history_trend_logic.dart';
@@ -28,7 +29,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
 
   @override
   void initState() {
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: state.tabs.length, vsync: this);
     _listViewController.addListener(_scrollListener);
     _scrollViewController.addListener(_scrollListener);
     super.initState();
@@ -107,14 +108,16 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
             Expanded(
               child: Column(
                 children: [
-                  GFTabBar(
-                    length: 4,
+                  LCTabBar(
+                    length: state.tabs.length,
                     controller: _tabController,
                     tabBarHeight: 40.h,
                     tabBarColor: Colors.white,
-                    isScrollable: true,
-                    indicatorSize: TabBarIndicatorSize.label,
-                    indicatorPadding: EdgeInsets.only(top: 35.h,left: 10.w,right: 10.w,bottom: 2.h),
+                    isScrollable: false,
+                    width: 288.w,
+                    labelPadding: EdgeInsets.zero,
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    indicatorPadding: EdgeInsets.only(top: 35.h,left: 30.w,right: 30.w,bottom: 3.h),
                     indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(3.r),
                       color: ColorX.color_091722,
@@ -122,12 +125,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                     labelColor: ColorX.color_091722,
                     unselectedLabelColor: ColorX.color_58698d,
                     // width: 289.w,
-                    tabs: [
-                      Text("特码",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-                      Text("第一球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-                      Text("第二球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-                      Text("第三球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-                    ],
+                    tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),).toList(),
                   ),
                   Divider(height: 1.h,color: ColorX.color_10_949,),
                   Expanded(

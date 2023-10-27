@@ -11,6 +11,7 @@ class RechargeCategoryState {
 
   var title = "支付宝".obs;
 
+  var tabs = ["线上(自动到账)","线下(人工存款)"];
 
   late PageController pageController;
   late List<Widget> pages;

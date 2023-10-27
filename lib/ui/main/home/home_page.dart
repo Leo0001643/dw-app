@@ -163,15 +163,15 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     InkWell(
-                      onTap: (){},
+                      onTap: ()=> logic.clickMenu(context, 4),
                       child: Image.asset(ImageX.icon_qdcj,width: 105.w,height: 95.h,),
                     ),
                     InkWell(
-                      onTap: (){},
+                      onTap: ()=> logic.clickMenu(context, 5),
                       child: Image.asset(ImageX.icon_xrzx,width: 105.w,height: 95.h,),
                     ),
                     InkWell(
-                      onTap: (){},
+                      onTap: ()=> logic.clickMenu(context, 6),
                       child: Image.asset(ImageX.icon_tjyl,width: 105.w,height: 95.h,),
                     ),
                   ],

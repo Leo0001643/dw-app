@@ -7,6 +7,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 
@@ -25,7 +26,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
 
   @override
   void initState() {
-    state.tabController = TabController(length: 3, vsync: this);
+    state.tabController = TabController(length: state.tabs.length, vsync: this);
     super.initState();
   }
 
@@ -234,24 +235,22 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GFTabBar(
-                          length: 3,
+                        LCTabBar(
+                          length: state.tabs.length,
                           controller: state.tabController,
                           tabBarHeight: 35.h,
                           tabBarColor: Colors.white,
-                          indicatorSize: TabBarIndicatorSize.label,
-                          indicatorPadding: EdgeInsets.only(top: 32.h,left: 10.w,right: 10.w),
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          labelPadding: EdgeInsets.zero,
+                          indicatorPadding: EdgeInsets.only(top: 32.h,left: 30.w,right: 30.w),
                           indicator: BoxDecoration(
                             borderRadius: BorderRadius.circular(3.r),
                             color: ColorX.color_091722,
                           ),
                           labelColor: ColorX.color_091722,
                           unselectedLabelColor: ColorX.color_58698d,
-                          width: 280.w,
-                          tabs: [
-                            Text("各账户额度明细",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w500),),
-                            Text("划转记录",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w500),),
-                          ],
+                          width: 240.w,
+                          tabs: state.tabs.map((e) => Text(e ,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w500),),).toList(),
                         ),
                         InkWell(
                           onTap: (){},

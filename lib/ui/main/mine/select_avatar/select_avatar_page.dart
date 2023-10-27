@@ -5,6 +5,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
 import 'select_avatar_logic.dart';
 
@@ -23,7 +24,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this)
+    _tabController = TabController(length: state.tabs.length, vsync: this)
     ..addListener(() {
       state.selectIndex.value = -1;
       state.tabIndex.value = _tabController.index;
@@ -72,13 +73,14 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 0.w,vertical: 10.h),
-                    child: GFTabBar(
-                      length: 3,
+                    child: LCTabBar(
+                      length: state.tabs.length,
                       controller: _tabController,
                       tabBarHeight: 35.h,
                       tabBarColor: Colors.white,
-                      indicatorSize: TabBarIndicatorSize.label,
-                      indicatorPadding: EdgeInsets.only(top: 28.h,left: 10.w,right: 10.w,bottom: 3.r),
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      labelPadding: EdgeInsets.zero,
+                      indicatorPadding: EdgeInsets.only(top: 30.h,left: 20.w,right: 20.w,bottom: 2.r),
                       indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(3.r),
                         color: ColorX.color_091722,
@@ -86,11 +88,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
                       labelColor: ColorX.color_091722,
                       unselectedLabelColor: ColorX.color_58698d,
                       width: 180.w,
-                      tabs: [
-                        Text("默认",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                        Text(" QQ ",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                        Text("精选",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                      ],
+                      tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
                     ),
                   ),
                   Expanded(

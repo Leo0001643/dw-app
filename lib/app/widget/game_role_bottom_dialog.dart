@@ -3,12 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
 class GameRoleBottomDialog extends StatefulWidget{
 
@@ -50,7 +49,7 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
           Stack(
             children: [
               Center(
-                child: GFTabBar(
+                child: LCTabBar(
                   length: 3,
                   controller: _tabController,
                   tabBarHeight: 35.h,

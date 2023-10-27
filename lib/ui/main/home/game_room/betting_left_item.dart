@@ -6,6 +6,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
 class BettingLeftItem extends StatefulWidget{
@@ -49,24 +50,27 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             elevation: 3.r,
             content: Column(
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 7.h,horizontal: 15.w,),
-                  decoration: BoxDecoration(
-                    color: buildTitleColor(),
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("第123123121期",style: TextStyle(fontSize: 14.sp,color: ColorX.color_80_091),),
-                      Wrap(
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          Text("投注",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-                          Image.asset(ImageX.icon_right_black),
-                        ],
-                      ),
-                    ],
+                InkWell(
+                  onTap: ()=> DialogUtils().showConfirmBetDialog(context,widget.logic),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 7.h,horizontal: 15.w,),
+                    decoration: BoxDecoration(
+                      color: buildTitleColor(),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("第123123121期",style: TextStyle(fontSize: 14.sp,color: ColorX.color_80_091),),
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Text("投注",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                            Image.asset(ImageX.icon_right_black),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 buildBettingInfoItem(),

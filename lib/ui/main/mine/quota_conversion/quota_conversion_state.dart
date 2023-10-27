@@ -24,5 +24,7 @@ class QuotaConversionState {
 
   late TabController tabController;
 
+  var tabs = ["各账户额度明细","划转记录"];
+
 
 }

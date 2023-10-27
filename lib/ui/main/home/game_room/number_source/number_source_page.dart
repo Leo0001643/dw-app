@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
 import 'number_source_logic.dart';
 
@@ -22,7 +22,7 @@ class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerPr
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: state.tabs.length, vsync: this);
     _tabController.addListener(() {
       state.pageController.jumpToPage(_tabController.index);
     });
@@ -45,8 +45,8 @@ class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerPr
         child: Column(
           children: [
             Center(
-              child: GFTabBar(
-                length: 3,
+              child: LCTabBar(
+                length: state.tabs.length,
                 controller: _tabController,
                 tabBarHeight: 35.h,
                 tabBarColor: Colors.white,
@@ -59,11 +59,7 @@ class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerPr
                 labelColor: ColorX.color_091722,
                 unselectedLabelColor: ColorX.color_58698d,
                 width: 300.w,
-                tabs: [
-                  Text("奖号展示",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                  Text("奖号说明",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                  Text("工具校验",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                ],
+                tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),)).toList(),
               ),
             ),
             Expanded(

@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
 import 'recharge_category_logic.dart';
 
@@ -30,7 +31,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
     state.supportOnline.value = Get.arguments;
     //判断是否支持在线 不支持默认页面显示离线
     state.pageController = PageController(initialPage: state.supportOnline.value ? 0:1);
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: state.tabs.length, vsync: this);
     _tabController.addListener(() {
       state.pageController.jumpToPage(_tabController.index);
     });
@@ -77,8 +78,8 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
                   visible: state.supportOnline.value,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-                    child: GFTabBar(
-                      length: 3,
+                    child: LCTabBar(
+                      length: state.tabs.length,
                       controller: _tabController,
                       tabBarHeight: 35.h,
                       tabBarColor: Colors.transparent,
@@ -91,10 +92,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
                       labelColor: ColorX.color_091722,
                       unselectedLabelColor: ColorX.color_58698d,
                       width: 335.w,
-                      tabs: [
-                        Text("线上(自动到账)",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                        Text("线下(人工存款)",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                      ],
+                      tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
                     ),
                   ),
                 );

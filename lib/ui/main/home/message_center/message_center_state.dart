@@ -12,5 +12,6 @@ class MessageCenterState {
   late PageController pageController;
   late List<Widget> pages;
 
+  var tabs = ["公告","消息"];
 
 }

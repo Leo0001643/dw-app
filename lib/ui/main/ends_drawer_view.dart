@@ -148,33 +148,45 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Column(
-                  children: [
-                    Image.asset(ImageX.icon_edzh),
-                    SizedBox(height: 5.h,),
-                    Text(Intr().edzh,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
-                  ],
+                InkWell(
+                  onTap: ()=> Get.toNamed(Routes.quota_conversion),
+                  child: Column(
+                    children: [
+                      Image.asset(ImageX.icon_edzh),
+                      SizedBox(height: 5.h,),
+                      Text(Intr().edzh,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                    ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    Image.asset(ImageX.icon_pc),
-                    SizedBox(height: 5.h,),
-                    Text(Intr().pcxq,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
-                  ],
+                InkWell(
+                  onTap: ()=> Get.toNamed(Routes.betting_details),
+                  child: Column(
+                    children: [
+                      Image.asset(ImageX.icon_pc),
+                      SizedBox(height: 5.h,),
+                      Text(Intr().pcxq,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                    ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    Image.asset(ImageX.icon_tzjl),
-                    SizedBox(height: 5.h,),
-                    Text(Intr().tzjl,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
-                  ],
+                InkWell(
+                  onTap: ()=> Get.toNamed(Routes.betting_record),
+                  child: Column(
+                    children: [
+                      Image.asset(ImageX.icon_tzjl),
+                      SizedBox(height: 5.h,),
+                      Text(Intr().tzjl,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                    ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    Image.asset(ImageX.icon_jymm),
-                    SizedBox(height: 5.h,),
-                    Text(Intr().jymm,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
-                  ],
+                InkWell(
+                  onTap: ()=> Get.toNamed(Routes.set_simple_pwd),
+                  child: Column(
+                    children: [
+                      Image.asset(ImageX.icon_jymm),
+                      SizedBox(height: 5.h,),
+                      Text(Intr().jymm,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -337,17 +349,20 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 children: [
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 5.h),
-                    child: Row(
-                      children: [
-                        Image.asset(ImageX.icon_share),
-                        SizedBox(width: 5.w,),
-                        Text(Intr().fxghy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                        Expanded(child: Container()),
-                        Text(Intr().ycfx,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                        Image.asset(ImageX.ic_into_right),
-                      ],
+                  InkWell(
+                    onTap: ()=> Get.toNamed(Routes.promotion_profit),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 5.h),
+                      child: Row(
+                        children: [
+                          Image.asset(ImageX.icon_share),
+                          SizedBox(width: 5.w,),
+                          Text(Intr().fxghy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                          Expanded(child: Container()),
+                          Text(Intr().ycfx,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
+                          Image.asset(ImageX.ic_into_right),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(height: 15.h,),

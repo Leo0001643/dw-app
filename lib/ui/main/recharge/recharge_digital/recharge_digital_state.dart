@@ -13,5 +13,6 @@ class RechargeDigitalState {
   var selectAgree = 0.obs;
 
   var agreeList = <String>["TRC充值","CRC20充值"];
+  var tabs = ["线上(自动到账)","线下(人工存款)"];
 
 }

@@ -14,5 +14,6 @@ class NumberSourceState {
   late PageController pageController;
   late List<Widget> pages;
 
+  var tabs = ["奖号展示","奖号说明","工具校验"];
 
 }

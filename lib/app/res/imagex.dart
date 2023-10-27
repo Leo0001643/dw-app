@@ -393,9 +393,7 @@ class ImageX{
   static const ic_2room_head = 'assets/images/ic_2room_head.png';
   static const ic_3room_head = 'assets/images/ic_3room_head.png';
 
-
-
-
+  static const delete = 'assets/images/delete.png';
 
 
 

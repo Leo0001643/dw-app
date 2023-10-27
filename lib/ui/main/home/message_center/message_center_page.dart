@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
 import 'message_center_logic.dart';
 
@@ -46,8 +47,8 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-            child: GFTabBar(
-              length: 2,
+            child: LCTabBar(
+              length: state.tabs.length,
               controller: _tabController,
               tabBarHeight: 45.h,
               tabBarColor: Colors.white,
@@ -60,10 +61,7 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
               labelColor: ColorX.color_091722,
               unselectedLabelColor: ColorX.color_58698d,
               width: 180.w,
-              tabs: [
-                buildTabBarItem("公告", 100),
-                buildTabBarItem("消息", 100),
-              ],
+              tabs: state.tabs.map((e) => buildTabBarItem(e, 100)).toList(),
             ),
           ),
           Expanded(
@@ -78,7 +76,7 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
     );
   }
 
-  buildTabBarItem(String tab, int num) {
+  Widget buildTabBarItem(String tab, int num) {
     var read = num > 99 ? "99+" : "$num";
     return Stack(
       children: [

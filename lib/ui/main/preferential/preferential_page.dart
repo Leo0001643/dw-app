@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
-import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -31,7 +30,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: state.tabs.length, vsync: this);
     _refreshController= RefreshController();
     super.initState();
   }
@@ -53,8 +52,8 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-            child: GFTabBar(
-              length: 3,
+            child: LCTabBar(
+              length: state.tabs.length,
               controller: _tabController,
               tabBarHeight: 35.h,
               tabBarColor: Colors.white,
@@ -67,11 +66,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
               labelColor: ColorX.color_091722,
               unselectedLabelColor: ColorX.color_58698d,
               width: 180.w,
-              tabs: [
-                Text("全部",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                Text("充值",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                Text("其他",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-              ],
+              tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
             ),
           ),
           Expanded(
