@@ -16,6 +16,14 @@ import 'package:leisure_games/ui/main/home/game_room/number_source/number_source
 import 'package:leisure_games/ui/main/home/game_room/number_source/number_source_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/number_source/prize_number/prize_number_binding.dart';
 import 'package:leisure_games/ui/main/home/game_room/number_source/tool_check/tool_check_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/data_analysis/data_analysis_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/double_queue/double_queue_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/ds_dew/ds_dew_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/dx_dew/dx_dew_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/lottery_result/lottery_result_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/number_trend/number_trend_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/room_tendency_binding.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/room_tendency_page.dart';
 import 'package:leisure_games/ui/main/home/home_binding.dart';
 import 'package:leisure_games/ui/main/home/lottery_trend/history_lottery/history_lottery_binding.dart';
 import 'package:leisure_games/ui/main/home/lottery_trend/history_lottery/history_lottery_page.dart';
@@ -156,6 +164,7 @@ class Routes {
   static const String betting_details = "/home/betting_details";
   static const String room_tendency = "/home/room_tendency";
   static const String recharge_record = "/home/recharge_record";
+  static const String sign_in = "/home/sign_in";
 
 
   static final List<GetPage> getPages=[
@@ -210,11 +219,11 @@ class Routes {
     GetPage(name: history_lottery,binding: HistoryLotteryBinding(), page: () => HistoryLotteryPage()),
     GetPage(name: history_trend,binding: HistoryTrendBinding(), page: () => HistoryTrendPage()),
     GetPage(name: betting_details,binding: BettingDetailsBinding(), page: () => BettingDetailsPage()),
-    // GetPage(name: room_tendency,binding: RoomTendencyBinding(),
-    //     bindings: [LotteryResultBinding(),DataAnalysisBinding(),DoubleQueueBinding(),DsDewBinding(),DxDewBinding(),NumberTrendBinding()],
-    //     page: () => RoomTendencyPage()),
+    GetPage(name: room_tendency,binding: RoomTendencyBinding(),
+        bindings: [LotteryResultBinding(),DataAnalysisBinding(),DoubleQueueBinding(),DsDewBinding(),DxDewBinding(),NumberTrendBinding()],
+        page: () => RoomTendencyPage()),
     GetPage(name: recharge_record,binding: RechargeRecordBinding(), page: () => RechargeRecordPage()),
-
+    // GetPage(name: sign_in,binding: SignInBinding(), page: () => SignInPage()),
 
   ];
   

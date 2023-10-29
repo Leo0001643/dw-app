@@ -6,6 +6,8 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/access_route_dialog.dart';
 import 'package:leisure_games/app/widget/betting_btm_dialog.dart';
+import 'package:leisure_games/app/widget/bullet_btm_dialog.dart';
+import 'package:leisure_games/app/widget/confirm_bet_dialog.dart';
 import 'package:leisure_games/app/widget/currency_dialog.dart';
 import 'package:leisure_games/app/widget/game_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/history_lottery_btm_dialog.dart';
@@ -308,7 +310,7 @@ class DialogUtils {
               borderRadius: BorderRadius.circular(12.r),
             ),
             contentPadding: EdgeInsets.zero,
-            content: Container(),
+            content: ConfirmBetDialog(logic),
           );
         }
     );
@@ -324,7 +326,7 @@ class DialogUtils {
         ),
         backgroundColor: Colors.white,
         builder: (context){
-          return Container();
+          return BulletBtmDialog(logic,valueCallBack);
         }
     );
   }
