@@ -421,6 +421,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
+  luckywheel:
+    dependency: "direct main"
+    description:
+      name: luckywheel
+      sha256: "73331d43dd66a9f05904a504fee79c3776ceb2d5b804553c72a64a688af771ec"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   marquee:
     dependency: "direct main"
     description:

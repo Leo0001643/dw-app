@@ -59,6 +59,7 @@ dependencies:
   data_table_2: ^2.5.8
   syncfusion_flutter_charts: ^23.1.41
   scratcher: ^2.4.0
+  luckywheel: ^1.0.0
 
 dev_dependencies:
   flutter_test:
