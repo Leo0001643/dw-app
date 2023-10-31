@@ -388,12 +388,14 @@ class ImageX{
   static const grayJt = 'assets/images/grayJt.png';
   static const gtIcon = 'assets/images/gtIcon.png';
 
-
   static const ic_1room_head = 'assets/images/ic_1room_head.png';
   static const ic_2room_head = 'assets/images/ic_2room_head.png';
   static const ic_3room_head = 'assets/images/ic_3room_head.png';
-
   static const delete = 'assets/images/delete.png';
+
+  static const draw_btn = 'assets/images/draw_btn.png';
+  static const lucky_title = 'assets/images/lucky_title.png';
+  static const close_btn = 'assets/images/close_btn.png';
 
 
 
