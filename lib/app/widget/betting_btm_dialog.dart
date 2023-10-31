@@ -302,7 +302,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                             width: 90.w,
                             child: WidgetUtils().buildElevatedButton("投注", 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
                               ///确认投注
-                              DialogUtils().showConfirmBetDialog(context, widget.logic);
+                              // DialogUtils().showConfirmBetDialog(context, widget.logic);
                             }),
                           ),
                         ],

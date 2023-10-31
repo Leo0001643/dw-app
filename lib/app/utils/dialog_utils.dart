@@ -6,20 +6,22 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/access_route_dialog.dart';
 import 'package:leisure_games/app/widget/betting_btm_dialog.dart';
-import 'package:leisure_games/app/widget/bullet_btm_dialog.dart';
-import 'package:leisure_games/app/widget/confirm_bet_dialog.dart';
 import 'package:leisure_games/app/widget/currency_dialog.dart';
+import 'package:leisure_games/app/widget/game_brand_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/game_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/history_lottery_btm_dialog.dart';
 import 'package:leisure_games/app/widget/language_dialog.dart';
+import 'package:leisure_games/app/widget/lucky_draw_dialog.dart';
 import 'package:leisure_games/app/widget/rebate_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_option_btm_dialog.dart';
 import 'package:leisure_games/app/widget/select_payway_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_room_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
+import 'package:leisure_games/app/widget/sign_success_dialog.dart';
 import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
 
 class DialogUtils {
 
@@ -133,6 +135,25 @@ class DialogUtils {
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
             child: SelectRoomBottomDialog(),
+          );
+        }
+    );
+  }
+
+
+  ///游戏品牌
+  void showGameBrandBtmDialog(BuildContext context){
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(20.r),topLeft: Radius.circular(20.r)),
+        ),
+        backgroundColor: Colors.white,
+        builder: (context){
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: GameBrandBottomDialog(),
           );
         }
     );
@@ -300,33 +321,22 @@ class DialogUtils {
     );
   }
 
-  ///确认注单
-  void showConfirmBetDialog(BuildContext context,GameRoomLogic logic){
+  ///确认签到
+  void showSignSuccessDialog(BuildContext context,SignInLogic logic){
     showDialog(
         context: context,
         builder: (context){
-          return AlertDialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.r),
-            ),
-            contentPadding: EdgeInsets.zero,
-            content: ConfirmBetDialog(logic),
-          );
+          return SignSuccessDialog(logic);
         }
     );
   }
 
-  ///弹幕
-  Future<dynamic> showBulletBtmDialog(BuildContext context,GameRoomLogic logic,Function valueCallBack){
-    return showModalBottomSheet(
+  ///抽奖详情
+  void showLuckyDrawDialog(BuildContext context){
+    showDialog(
         context: context,
-        isScrollControlled: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
-        ),
-        backgroundColor: Colors.white,
         builder: (context){
-          return BulletBtmDialog(logic,valueCallBack);
+          return LuckyDrawDialog();
         }
     );
   }
