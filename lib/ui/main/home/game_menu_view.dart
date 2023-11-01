@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/components/typography/gf_typography.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -55,7 +57,7 @@ class StateGameMenuView extends State<GameMenuView>{
                   ),
                   alignment: Alignment.center,
                   margin: EdgeInsets.symmetric(vertical: 5.r,horizontal: 10.r),
-                  child: Text("00:00:33",style: TextStyle(fontSize: 12.sp,color: Colors.white),),
+                  child: Text("00:00:33",style: TextStyle(fontSize: 10.sp,color: Colors.white),),
                 ),
               ),
             ],
@@ -173,8 +175,14 @@ class StateGameMenuView extends State<GameMenuView>{
               onTap: ()=> Get.toNamed(Routes.room_list),
               child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
             ),
-            buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
-            buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
+            InkWell(
+              // onTap: ()=> Get.toNamed(Routes.chess_game_list),
+              child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
+            ),
+            InkWell(
+              // onTap: ()=> Get.toNamed(Routes.table_game_list),
+              child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
+            ),
             buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
           ],
         ),
