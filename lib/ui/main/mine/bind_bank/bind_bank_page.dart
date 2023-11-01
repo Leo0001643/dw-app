@@ -44,7 +44,7 @@ class _BindBankPageState extends State<BindBankPage> {
             Container(
               margin: EdgeInsets.symmetric(vertical: 10.h),
               child: GFCarousel(
-                height: 200.h,
+                height: 205.h,
                 viewportFraction: 0.9,
                 enableInfiniteScroll: false,
                 items: [
@@ -119,11 +119,11 @@ class _BindBankPageState extends State<BindBankPage> {
           Text("招商银行",
             style: TextStyle(fontSize: 20.sp,color: Colors.white,fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 12.h,),
+          SizedBox(height: 10.h,),
           Text("卡号",style: TextStyle(fontSize: 12.sp,color: Colors.white),),
           Text("342* **** **** **** 1242",
             style: TextStyle(fontSize: 20.sp,color: Colors.white),),
-          SizedBox(height: 12.h,),
+          SizedBox(height: 10.h,),
           Text("持卡人",style: TextStyle(fontSize: 12.sp,color: Colors.white),),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

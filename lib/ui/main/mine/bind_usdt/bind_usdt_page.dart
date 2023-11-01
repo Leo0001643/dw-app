@@ -43,7 +43,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
             Container(
               margin: EdgeInsets.symmetric(vertical: 10.h),
               child: GFCarousel(
-                height: 200.h,
+                height: 205.h,
                 viewportFraction: 0.9,
                 enableInfiniteScroll: false,
                 items: [
@@ -119,17 +119,16 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
           Text("USDT",
             style: TextStyle(fontSize: 20.sp,color: Colors.white,fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 12.h,),
+          SizedBox(height: 10.h,),
           Text("地址",style: TextStyle(fontSize: 12.sp,color: Colors.white),),
           Text("thidfhsglhgslhhhkshk9t9hi",
             style: TextStyle(fontSize: 20.sp,color: Colors.white),),
-          SizedBox(height: 12.h,),
+          SizedBox(height: 10.h,),
           Text("所属协议",style: TextStyle(fontSize: 12.sp,color: Colors.white),),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("USDT_TRC20",
-                style: TextStyle(fontSize: 20.sp,color: Colors.white),),
+              Text("USDT_TRC20", style: TextStyle(fontSize: 20.sp,color: Colors.white),),
               Align(
                 alignment: Alignment.centerRight,
                 child: Image.asset(ImageX.icon_usdt_grey),

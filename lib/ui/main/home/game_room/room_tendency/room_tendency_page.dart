@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -66,12 +67,12 @@ class _RoomTendencyPageState extends State<RoomTendencyPage> with SingleTickerPr
             labelColor: ColorX.color_091722,
             unselectedLabelColor: ColorX.color_58698d,
             tabs: [
-              buildTabItem("开奖结果",ImageX.icon_result),
-              buildTabItem("数据分析",ImageX.icon_data),
-              buildTabItem("双面长龙",ImageX.icon_order),
-              buildTabItem("单双露珠",ImageX.icon_sd),
-              buildTabItem("大小露珠",ImageX.icon_size),
-              buildTabItem("号码走势",ImageX.icon_zs),
+              buildTabItem(Intr().kaijiangjieguo,ImageX.icon_result),
+              buildTabItem(Intr().shujufenxi,ImageX.icon_data),
+              buildTabItem(Intr().shuangmianchanglong,ImageX.icon_order),
+              buildTabItem(Intr().danshuangluzhu,ImageX.icon_sd),
+              buildTabItem(Intr().daxiaoluzhu,ImageX.icon_size),
+              buildTabItem(Intr().haomazhoushi,ImageX.icon_zs),
             ],
           ),
           Expanded(

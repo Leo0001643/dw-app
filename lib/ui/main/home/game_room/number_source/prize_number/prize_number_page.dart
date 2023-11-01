@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:sprintf/sprintf.dart';
 
 import 'prize_number_logic.dart';
 
@@ -33,11 +35,11 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("第1231124123期",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600,),),
+                Text(sprintf(Intr().dixqi,["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600,),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("倒计时",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600,),),
+                    Text(Intr().daojishi,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600,),),
                     SizedBox(width: 5.w,),
                     buildDrawTime("00"),
                     Text(" : ",style: TextStyle(fontSize: 18.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
@@ -71,19 +73,19 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> {
               children: [
                 Expanded(
                   flex: 30,
-                  child: Text("期号",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                  child: Text(Intr().qihao,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                 ),
                 Expanded(
                   flex: 25,
                   child: Center(
-                    child: Text("开奖号码",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                    child: Text(Intr().kaijianghaoma,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                   ),
                 ),
                 Expanded(
                   flex: 45,
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: Text("号源(近50期)",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                    child: Text(Intr().haoyuanjinqi,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                   ),
                 ),
               ],

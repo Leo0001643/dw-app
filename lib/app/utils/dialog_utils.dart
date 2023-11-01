@@ -13,14 +13,17 @@ import 'package:leisure_games/app/widget/game_brand_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/game_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/history_lottery_btm_dialog.dart';
 import 'package:leisure_games/app/widget/language_dialog.dart';
+import 'package:leisure_games/app/widget/lucky_draw_dialog.dart';
 import 'package:leisure_games/app/widget/rebate_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_option_btm_dialog.dart';
 import 'package:leisure_games/app/widget/select_payway_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_room_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
+import 'package:leisure_games/app/widget/sign_success_dialog.dart';
 import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
 
 class DialogUtils {
 
@@ -352,6 +355,26 @@ class DialogUtils {
   }
 
 
+
+  ///确认签到
+  void showSignSuccessDialog(BuildContext context,SignInLogic logic){
+    showDialog(
+        context: context,
+        builder: (context){
+          return SignSuccessDialog(logic);
+        }
+    );
+  }
+
+  ///抽奖详情
+  void showLuckyDrawDialog(BuildContext context){
+    showDialog(
+        context: context,
+        builder: (context){
+          return LuckyDrawDialog();
+        }
+    );
+  }
 
 
 

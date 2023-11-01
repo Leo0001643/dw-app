@@ -54,13 +54,44 @@ android {
         versionName flutterVersionName
     }
 
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+    signingConfigs {
+        config {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../leisure.jks')
+            storePassword '12345678'
         }
     }
+    buildTypes {
+        release {
+//            minifyEnabled true
+//            shrinkResources true
+//            zipAlignEnabled true
+            signingConfig signingConfigs.config
+            multiDexKeepProguard file('multidex-config.pro')
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+            multiDexKeepProguard file('multidex-config.pro')
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            // 自定义文件名{示例：AppName-Flavor-debug-v1.0.0_201807301409}
+            outputFileName = "leisure${variant.flavorName}_${variant.buildType.name}_${variant.versionName}_${buildTime()}.apk"
+        }
+    }
+
+}
+
+static def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmm')
+    return formattedDate
 }
 
 flutter {

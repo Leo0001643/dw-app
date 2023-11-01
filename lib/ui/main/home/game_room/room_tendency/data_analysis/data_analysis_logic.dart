@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 
 import 'data_analysis_state.dart';
 
@@ -18,7 +19,8 @@ class DataAnalysisLogic extends GetxController {
   }
 
   void loadData() async {
-    state.formTitle.value.addAll(['期号','值','小','大','单','双','极小','极大']);
+    state.formTitle.value.addAll([Intr().qihao,Intr().zhi,Intr().bet_xiao,
+      Intr().bet_da,Intr().bet_dan,Intr().bet_shuang,Intr().jixiao,Intr().jida,]);
     for(var i=0;i<50;i++){
       state.formTitle.value.add('$i');
     }

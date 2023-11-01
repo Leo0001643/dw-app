@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
+import 'package:sprintf/sprintf.dart';
 
 import 'room_list_logic.dart';
 
@@ -23,13 +25,19 @@ class _RoomListPageState extends State<RoomListPage> {
   final state = Get.find<RoomListLogic>().state;
 
   @override
+  void dispose() {
+    Get.delete<RoomListLogic>();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,onTap: (){
         DialogUtils().showSelectRoomBtmDialog(context);
       }),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(ImageX.room),fit: BoxFit.fill,
           )
@@ -42,7 +50,7 @@ class _RoomListPageState extends State<RoomListPage> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.r),
-                  image: DecorationImage(image: AssetImage(ImageX.room1),fit: BoxFit.fill),
+                  image: const DecorationImage(image: AssetImage(ImageX.room1),fit: BoxFit.fill),
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 20.w),
                 padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
@@ -55,17 +63,17 @@ class _RoomListPageState extends State<RoomListPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("普通房",style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
-                        Text("当前在线18人|奖金池\$8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                        Text(Intr().card_ptf,style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
+                        Text(sprintf(Intr().dangqianzaixian,["10","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
                       ],
                     ),
                     InkWell(
-                      onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: "赔率说明")),
+                      onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: Intr().peilvshuoming)),
                       child: Wrap(
                         direction: Axis.horizontal,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                          Text("赔率说明",style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                          Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
                           Image.asset(ImageX.icon_right_black,color: ColorX.color_c20015,),
                         ],
                       ),
@@ -79,7 +87,7 @@ class _RoomListPageState extends State<RoomListPage> {
               onTap: ()=> Get.toNamed(Routes.game_room,arguments: 1),
               child: Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(ImageX.room2),fit: BoxFit.fill),
+                  image: const DecorationImage(image: AssetImage(ImageX.room2),fit: BoxFit.fill),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 20.w),
@@ -93,17 +101,17 @@ class _RoomListPageState extends State<RoomListPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("高级房",style: TextStyle(fontSize: 20.sp,color: ColorX.color_344e7b,fontWeight: FontWeight.w600),),
-                        Text("当前在线18人|奖金池\$8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
+                        Text(Intr().card_gjf,style: TextStyle(fontSize: 20.sp,color: ColorX.color_344e7b,fontWeight: FontWeight.w600),),
+                        Text(sprintf(Intr().dangqianzaixian,["14","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
                       ],
                     ),
                     InkWell(
-                      onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: "赔率说明")),
+                      onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: Intr().peilvshuoming)),
                       child: Wrap(
                         direction: Axis.horizontal,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                          Text("赔率说明",style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
+                          Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
                           Image.asset(ImageX.icon_right_black,color: ColorX.color_344e7b,),
                         ],
                       ),
@@ -117,7 +125,7 @@ class _RoomListPageState extends State<RoomListPage> {
               onTap: ()=> Get.toNamed(Routes.game_room,arguments: 2),
               child: Container(
                 decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(ImageX.room3),fit: BoxFit.fill),
+                  image: const DecorationImage(image: AssetImage(ImageX.room3),fit: BoxFit.fill),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 margin: EdgeInsets.symmetric(horizontal: 20.w),
@@ -131,17 +139,17 @@ class _RoomListPageState extends State<RoomListPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("贵宾房",style: TextStyle(fontSize: 20.sp,color: ColorX.color_4e3100,fontWeight: FontWeight.w600),),
-                        Text("当前在线18人|奖金池\$8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
+                        Text(Intr().card_gbf,style: TextStyle(fontSize: 20.sp,color: ColorX.color_4e3100,fontWeight: FontWeight.w600),),
+                        Text(sprintf(Intr().dangqianzaixian,["17","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
                       ],
                     ),
                     InkWell(
-                      onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: "赔率说明")),
+                      onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: Intr().peilvshuoming)),
                       child: Wrap(
                         direction: Axis.horizontal,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                          Text("赔率说明",style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
+                          Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
                           Image.asset(ImageX.icon_right_black,color: ColorX.color_4e3100,),
                         ],
                       ),
@@ -158,21 +166,21 @@ class _RoomListPageState extends State<RoomListPage> {
                   Expanded(
                     child: InkWell(
                       onTap: ()=> DialogUtils().showGameRoleBtmDialog(context),
-                      child: buildRoleItem("玩法规则","给大家介绍下玩法规则,为了游…",0),
+                      child: buildRoleItem(Intr().wanfaguizhe,Intr().wanfaguizhe_jieshao,0),
                     ),
                   ),
                   SizedBox(width: 10.w,),
                   Expanded(
                     child: InkWell(
                       onTap: ()=> DialogUtils().showGameRoleBtmDialog(context),
-                      child: buildRoleItem("游戏术语","了解常用的术语后提高游戏效…", 1),
+                      child: buildRoleItem(Intr().youxishuyu,Intr().youxishuyu_jieshao, 1),
                     ),
                   ),
                   SizedBox(width: 10.w,),
                   Expanded(
                     child: InkWell(
                       onTap: ()=> DialogUtils().showGameRoleBtmDialog(context),
-                      child: buildRoleItem("下注技巧","以下是一些下注的技巧,例如 …", 2),
+                      child: buildRoleItem(Intr().xiazhujiqiao,Intr().xiazhujiqiao_jieshao, 2),
                     ),
                   ),
                 ],
@@ -182,12 +190,6 @@ class _RoomListPageState extends State<RoomListPage> {
         ),
       )
     );
-  }
-
-  @override
-  void dispose() {
-    Get.delete<RoomListLogic>();
-    super.dispose();
   }
 
   Widget buildRoleItem(String name, String role, int i) {

@@ -39,6 +39,8 @@ import 'package:leisure_games/ui/main/home/message_center/message_details/messag
 import 'package:leisure_games/ui/main/home/message_center/notice/notice_binding.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_binding.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_page.dart';
+import 'package:leisure_games/ui/main/home/sign_in/sign_in_binding.dart';
+import 'package:leisure_games/ui/main/home/sign_in/sign_in_page.dart';
 import 'package:leisure_games/ui/main/main_binding.dart';
 import 'package:leisure_games/ui/main/main_page.dart';
 import 'package:leisure_games/ui/main/mine/about/about_binding.dart';
@@ -165,6 +167,12 @@ class Routes {
   static const String room_tendency = "/home/room_tendency";
   static const String recharge_record = "/home/recharge_record";
   static const String sign_in = "/home/sign_in";
+  // static const String points_lottery = "/home/points_lottery";
+  // static const String table_game_list = "/home/table_game_list";
+  // static const String chess_game_list = "/home/chess_game_list";
+
+
+
 
 
   static final List<GetPage> getPages=[
@@ -223,7 +231,10 @@ class Routes {
         bindings: [LotteryResultBinding(),DataAnalysisBinding(),DoubleQueueBinding(),DsDewBinding(),DxDewBinding(),NumberTrendBinding()],
         page: () => RoomTendencyPage()),
     GetPage(name: recharge_record,binding: RechargeRecordBinding(), page: () => RechargeRecordPage()),
-    // GetPage(name: sign_in,binding: SignInBinding(), page: () => SignInPage()),
+    GetPage(name: sign_in,binding: SignInBinding(), page: () => SignInPage()),
+    // GetPage(name: points_lottery,binding: PointsLotteryBinding(), page: () => PointsLotteryPage()),
+    // GetPage(name: chess_game_list,binding: ChessGameListBinding(), page: () => ChessGameListPage()),
+    // GetPage(name: table_game_list,binding: TableGameListBinding(), page: () => TableGameListPage()),
 
   ];
   

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -35,8 +36,8 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("输入对应号源",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-                WidgetUtils().buildElevatedButton("校验", 50.w, 26.h,textSize: 12.sp,
+                Text(Intr().shuruduiyinghaoyuan,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                WidgetUtils().buildElevatedButton(Intr().jiaoyan, 50.w, 26.h,textSize: 12.sp,
                     bg:ColorX.color_fc243b,onPressed: (){}),
               ],
             ),
@@ -44,18 +45,18 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
             WidgetUtils().buildTextField(333.w, 124.h, 14.sp, ColorX.color_091722, "",
             backgroundColor: ColorX.color_f7f8fb,),
             SizedBox(height: 25.h,),
-            Text("校验结果",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-            buildCheckItem("SHA256转化值","sdsdfsdf"),
-            buildCheckItem("取前16位数字","sdsdfsdf"),
-            buildCheckItem("10进位转换","sdsdfsdf"),
-            buildCheckItem("除以二的64次方","sdsdfsdf"),
-            buildCheckItem("最终开奖号码","sdsdfsdf"),
+            Text(Intr().jiaoyanjieguo,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+            buildCheckItem(Intr().sha256zhuanhuahzi,"sdsdfsdf"),
+            buildCheckItem(Intr().quqianshiliuwei,"sdsdfsdf"),
+            buildCheckItem(Intr().shijinweizhuanhuan,"sdsdfsdf"),
+            buildCheckItem(Intr().chuyierde64cifang,"sdsdfsdf"),
+            buildCheckItem(Intr().zuizhongkaijianghaoma,"sdsdfsdf"),
             SizedBox(height: 25.h,),
-            Text("说明",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-            Text("用户可通过相关在线SHA256函数查询网站,复述上述全部哈希值字符串,进行查询,下方提供查询网址:",
+            Text(Intr().shuoming,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+            Text(Intr().shuoming_jieshao,
               style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.8),),
             SizedBox(height: 15.h,),
-            Text("号源查询",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+            Text(Intr().haoyuanchaxun,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
             SizedBox(height: 10.h,),
             Row(
               children: [
@@ -63,7 +64,7 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
                 SizedBox(width: 5.w,),
                 InkWell(
                   onTap: ()=> WidgetUtils().clickCopy("https://modao.cc"),
-                  child: Text("点击复制",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,decoration: TextDecoration.underline,),),
+                  child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,decoration: TextDecoration.underline,),),
                 ),
               ],
             ),
@@ -74,14 +75,14 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
                 SizedBox(width: 5.w,),
                 InkWell(
                   onTap: ()=> WidgetUtils().clickCopy("https://modao.cc"),
-                  child: Text("点击复制",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,decoration: TextDecoration.underline,),),
+                  child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,decoration: TextDecoration.underline,),),
                 ),
               ],
             ),
             SizedBox(height: 25.h,),
-            Text("校验说明",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+            Text(Intr().jiaoyanshuoming,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
             SizedBox(height: 10.h,),
-            Text("1.开奖时,抓取最新时间段内交易的哈希值集合,将其平成长字符串",
+            Text(Intr().jiaoyanshuoming1,
               style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.8),),
             SizedBox(height: 10.h,),
             Container(
@@ -89,7 +90,7 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
               child: Image.asset(ImageX.checkMa1),
             ),
             SizedBox(height: 10.h,),
-            Text("2.将上述字符串进行SHA256转化",
+            Text(Intr().jiaoyanshuoming2,
               style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.8),),
             SizedBox(height: 10.h,),
             Container(
@@ -97,7 +98,7 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
               child: Image.asset(ImageX.checkMa2),
             ),
             SizedBox(height: 10.h,),
-            Text("3.通过数学公式进行转换,转换规则如下:",
+            Text(Intr().jiaoyanshuoming3,
               style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.8),),
             SizedBox(height: 10.h,),
             Container(
@@ -113,7 +114,7 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
               ),
             ),
             SizedBox(height: 10.h,),
-            Text("4.根据转换结果,选取小数后3位作为开奖号码",
+            Text(Intr().jiaoyanshuoming4,
               style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.8),),
             SizedBox(height: 10.h,),
             Container(

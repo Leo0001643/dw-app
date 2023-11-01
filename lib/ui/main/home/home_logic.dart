@@ -33,7 +33,8 @@ class HomeLogic extends GetxController {
       Get.toNamed(Routes.withdraw);
         break;
       case 2:///抽奖
-        DialogUtils().showAccessRouteDialog(context);
+        // DialogUtils().showAccessRouteDialog(context);
+        // Get.toNamed(Routes.points_lottery);
         break;
       case 3:///走势
         Get.toNamed(Routes.lottery_trend);

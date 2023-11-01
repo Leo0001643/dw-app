@@ -3,10 +3,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:sprintf/sprintf.dart';
 
 ///确认注单
 class ConfirmBettingDialog extends StatefulWidget{
@@ -39,7 +41,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 385.h,
+      height: 0.5.sh,
       width: 0.92.sw,
       child: Column(
         children: [
@@ -57,7 +59,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("请确认注单",style: TextStyle(fontSize: 14.sp,color: Colors.white,),),
-                Text("第 07041025 期",style: TextStyle(fontSize: 14.sp,color: Colors.white,),),
+                Text(sprintf(Intr().dixqi,[" 1231312 "]),style: TextStyle(fontSize: 14.sp,color: Colors.white,),),
               ],
             ),
           ),
@@ -122,7 +124,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
                     children: [
                       TextSpan(text: "若中奖, 奖金",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
                       TextSpan(text: "¥60.000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
-                      TextSpan(text: ", 盈利",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+                      TextSpan(text: ", 盈利 ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
                       TextSpan(text: "¥30.000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
                     ]
                 )),
@@ -131,7 +133,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
                     children: [
                       TextSpan(text: "注单: ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
                       TextSpan(text: "3",style: TextStyle(fontSize: 18.sp,color: ColorX.color_fc243b,),),
-                      TextSpan(text: ", 总金额",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
+                      TextSpan(text: ", 总金额 ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
                       TextSpan(text: "¥3000000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
                     ]
                 )),
@@ -140,21 +142,24 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
           ),
           SizedBox(height: 8.h,),
           Divider(height: 2.h,color: ColorX.color_10_949,),
-          SizedBox(height: 8.h,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              WidgetUtils().buildElevatedButton("取消", 135.w, 40.h,
-                  bg: ColorX.color_f7f8fb,textColor: ColorX.color_58698d,onPressed: (){
-                    Navigator.of(context).pop(false);
-                  }),
-              SizedBox(width: 10.w,),
-              WidgetUtils().buildElevatedButton("确定", 135.w, 40.h,
-                  bg: buildBtnColor(),textColor: Colors.white,onPressed: (){
-                    Navigator.of(context).pop(true);
-                  })
-            ],
-          )
+          Expanded(
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  WidgetUtils().buildElevatedButton("取消", 135.w, 40.h,
+                      bg: ColorX.color_f7f8fb,textColor: ColorX.color_58698d,onPressed: (){
+                        Navigator.of(context).pop(false);
+                      }),
+                  SizedBox(width: 10.w,),
+                  WidgetUtils().buildElevatedButton("确定", 135.w, 40.h,
+                      bg: buildBtnColor(),textColor: Colors.white,onPressed: (){
+                        Navigator.of(context).pop(true);
+                      })
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

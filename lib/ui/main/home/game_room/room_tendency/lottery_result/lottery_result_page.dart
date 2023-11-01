@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -66,9 +67,9 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
             alignment: WrapAlignment.center,
             spacing: 3.w,
             children: [
-              Text("第",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+              Text(Intr().di,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
               Text("112030767",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
-              Text("期",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+              Text(Intr().qi,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
             ],
           ),
           SizedBox(width: 3.w,),
@@ -81,11 +82,11 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
           buildDrawResult("22"),
           Wrap(
             children: [
-              Text("（",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              Text("(",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
               Text("小",style: TextStyle(fontSize: 12.sp,color: ColorX.color_529aff,fontWeight: FontWeight.w600),),
               SizedBox(width: 3.w,),
               Text("双",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
-              Text("）",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              Text(")",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
             ],
           ),
         ],

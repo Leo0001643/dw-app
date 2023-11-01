@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
@@ -58,12 +59,7 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
             labelColor: ColorX.color_091722,
             unselectedLabelColor: ColorX.color_58698d,
             // width: 300.w,
-            tabs: [
-              Text("特码",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-              Text("第一球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-              Text("第二球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-              Text("第三球",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-            ],
+            tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),).toList(),
           ),
           Container(
             height: 40.h,
@@ -72,15 +68,15 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("大路",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                Text(Intr().dalu,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
                 Wrap(
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                    buildDrawText("大", ColorX.color_fc243b,20.r,12.sp),
+                    buildDrawText(Intr().bet_da, ColorX.color_fc243b,20.r,12.sp),
                     SizedBox(width: 5.w,),
                     Text("232",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
                     SizedBox(width: 10.w,),
-                    buildDrawText("小", ColorX.color_5583e7,20.r,12.sp),
+                    buildDrawText(Intr().bet_xiao, ColorX.color_5583e7,20.r,12.sp),
                     SizedBox(width: 5.w,),
                     Text("232",style: TextStyle(fontSize: 14.sp,color: ColorX.color_5583e7),),
                   ],
@@ -117,7 +113,7 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("珠盘路",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                Text(Intr().zhupanlu,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
               ],
             ),
           ),

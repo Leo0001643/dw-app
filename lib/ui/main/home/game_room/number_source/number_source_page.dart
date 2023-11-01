@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
@@ -39,7 +40,7 @@ class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("官方号源",bgColor: Colors.white),
+      appBar: WidgetUtils().buildAppBar(Intr().guanfanghaoyuan,bgColor: Colors.white),
       backgroundColor: Colors.white,
       body: Container(
         child: Column(

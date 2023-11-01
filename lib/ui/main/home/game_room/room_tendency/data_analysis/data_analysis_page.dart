@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
+import 'package:sprintf/sprintf.dart';
 import 'data_analysis_logic.dart';
 
 ///数据分析
@@ -65,8 +67,8 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("特码 统计",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
-                  Text("显示期数：50",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+                  Text(sprintf(Intr().lx_tongji,["特码"]),style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+                  Text(sprintf(Intr().xianshiqishu_,["50"]),style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
                 ],
               ),
             ),

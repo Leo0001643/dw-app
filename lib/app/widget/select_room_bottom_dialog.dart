@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -32,14 +33,14 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
               Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.h),
-                  child: Text("切换房间",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                  child: Text(Intr().qiehuanfangjian,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                 ),
               ),
               Align(
                 alignment: Alignment.centerRight,
                 child: Padding(
                     padding: EdgeInsets.only(right: 15.w),
-                  child: WidgetUtils().buildElevatedButton("确定", 50.w, 26.h,textSize: 12.sp,
+                  child: WidgetUtils().buildElevatedButton(Intr().confirm, 50.w, 26.h,textSize: 12.sp,
                       bg:ColorX.color_fc243b,onPressed: (){}),
                 ),
               ),
@@ -76,7 +77,7 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
                 child: Obx(() {
                   return InkWell(
                     onTap: ()=> current.value = i,
-                    child: buildRoomItem("普通房",current.value == i),
+                    child: buildRoomItem(Intr().card_ptf,current.value == i),
                   );
                 }),
               ),
@@ -85,7 +86,7 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
                 child: Obx(() {
                   return InkWell(
                     onTap: ()=> current.value = j,
-                    child: buildRoomItem("高级房", current.value == j),
+                    child: buildRoomItem(Intr().card_gjf, current.value == j),
                   );
                 }),
               ),
@@ -94,7 +95,7 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
                 child: Obx(() {
                   return InkWell(
                     onTap: ()=> current.value = h,
-                    child: buildRoomItem("贵宾房", current.value == h),
+                    child: buildRoomItem(Intr().card_gbf, current.value == h),
                   );
                 }),
               ),

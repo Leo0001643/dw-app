@@ -5,12 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:sprintf/sprintf.dart';
 
 class BettingBtmDialog extends StatefulWidget {
   final GameRoomLogic logic;
@@ -24,7 +26,7 @@ class BettingBtmDialog extends StatefulWidget {
 class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerProviderStateMixin{
   late TabController _tabController;
 
-  var tabs = ["特码","第一球","第二球","第三球"];
+  var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
 
   var chips = [ImageX.chip1,ImageX.chip5,ImageX.chip10,ImageX.chip50,ImageX.chip100,ImageX.chip500,ImageX.chip1000,
     ImageX.chip5000,ImageX.chip10000,];
@@ -69,7 +71,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
               Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.h),
-                  child: Text("投注",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,),),
+                  child: Text(Intr().touzhu,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,),),
                 ),
               ),
             ],
@@ -93,7 +95,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("第1231312期",style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                        Text(sprintf(Intr().dixqi,["1231312"]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
@@ -103,7 +105,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                             Text(" : ",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                             buildDrawTime("53"),
                             SizedBox(width: 5.w,),
-                            Text("End",style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                            Text(Intr().end,style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                           ],
                         ),
                       ],
@@ -260,7 +262,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                       ),
                                       margin: EdgeInsets.only(left: 10.w),
                                       child: Obx(() {
-                                        return WidgetUtils().buildTextField(101.w, 38.h, 13.sp, ColorX.color_949eb9, "请输入金额",
+                                        return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, "请输入金额",
                                             defText: inputAmt.value,inputType: TextInputType.number,onChanged: (v)=> inputAmt.value = v);
                                       }),
                                     ),
@@ -270,7 +272,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text("总计",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
+                                          Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
                                           Text("¥ 35000000",style: TextStyle(fontSize: 14.sp,color: buildTextColor(),),),
                                         ],
                                       ),
@@ -282,13 +284,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                         chipIndex.value = -1;
                                       },
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(8.r),
-                                        ),
-                                        width: 50.w,
-                                        height: 40.h,
-                                        child: Icon(Icons.delete_forever_rounded,size: 20.r,color: ColorX.color_58698d,),
+                                        child: Image.asset(ImageX.icon_clear,width: 48.w,height: 40.h,),
                                       ),
                                     ),
                                   ],
@@ -300,7 +296,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                             padding: EdgeInsets.only(top: 30.h),
                             alignment: Alignment.center,
                             width: 90.w,
-                            child: WidgetUtils().buildElevatedButton("投注", 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
+                            child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
                               ///确认投注
                               // DialogUtils().showConfirmBetDialog(context, widget.logic);
                             }),
@@ -348,7 +344,6 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
   Widget buildDrawTime(String time) {
     return Container(
-      width:24.r,height: 24.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: ColorX.color_10_fff,
@@ -386,7 +381,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
             children: [
               SizedBox(height: 6.h,),
               Text("大",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
-              SizedBox(height: 16.h,),
+              SizedBox(height: 15.h,),
               Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.color_d53849),),
               SizedBox(height: 6.h,),
             ],

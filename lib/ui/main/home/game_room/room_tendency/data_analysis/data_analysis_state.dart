@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 
 class DataAnalysisState {
   DataAnalysisState() {
@@ -10,7 +11,7 @@ class DataAnalysisState {
 
   var formTitle = RxList.empty(growable: true);
 
-  var tabs = ["特码","第一球","第二球","第三球"];
+  var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
 
 
 }

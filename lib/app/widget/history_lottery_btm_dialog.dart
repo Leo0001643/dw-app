@@ -2,10 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:sprintf/sprintf.dart';
 
 class HistoryLotteryBtmDialog extends StatefulWidget{
   final GameRoomLogic logic;
@@ -55,7 +57,7 @@ class StateHistoryLotteryBtmDialog extends State<HistoryLotteryBtmDialog>{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("第1231312期",style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                    Text(sprintf(Intr().dixqi,["1231312"]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                     Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
@@ -65,7 +67,7 @@ class StateHistoryLotteryBtmDialog extends State<HistoryLotteryBtmDialog>{
                         Text(" : ",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                         buildDrawTime("53"),
                         SizedBox(width: 10.w,),
-                        Text("End",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                        Text(Intr().end,style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                       ],
                     ),
                   ],
@@ -132,9 +134,9 @@ class StateHistoryLotteryBtmDialog extends State<HistoryLotteryBtmDialog>{
             alignment: WrapAlignment.center,
             spacing: 3.w,
             children: [
-              Text("第",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+              Text(Intr().di,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
               Text("112030767",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
-              Text("期",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+              Text(Intr().qi,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
             ],
           ),
           SizedBox(width: 3.w,),
@@ -147,11 +149,11 @@ class StateHistoryLotteryBtmDialog extends State<HistoryLotteryBtmDialog>{
           buildDrawResult("22"),
           Wrap(
             children: [
-              Text("（",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-              Text("小",style: TextStyle(fontSize: 12.sp,color: ColorX.color_529aff,fontWeight: FontWeight.w600),),
+              Text("(",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              Text(Intr().bet_xiao,style: TextStyle(fontSize: 12.sp,color: ColorX.color_529aff,fontWeight: FontWeight.w600),),
               SizedBox(width: 3.w,),
-              Text("双",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
-              Text("）",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              Text(Intr().bet_shuang,style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
+              Text(")",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
             ],
           ),
         ],

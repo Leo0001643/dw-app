@@ -6,11 +6,13 @@ import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/betting_left_item.dart';
+import 'package:sprintf/sprintf.dart';
 
 import 'game_room_logic.dart';
 
@@ -63,7 +65,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                           Container(
                             margin: EdgeInsets.all(2.r),
                             child: GFAvatar(
-                              backgroundImage: NetworkImage(Constants.test_image),
+                              backgroundImage: const NetworkImage(Constants.test_image),
                               shape: GFAvatarShape.circle,
                               radius: 17.r,
                             ),
@@ -75,7 +77,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Balance",style: TextStyle(fontSize: 12.sp,color: textColor),),
+                          Text(Intr().zongyue, style: TextStyle(fontSize: 12.sp,color: textColor),),
                           SizedBox(height: 3.h,),
                           buildBalanceType(),
                         ],
@@ -85,10 +87,10 @@ class _GameRoomPageState extends State<GameRoomPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            buildUserTab(0,"号源",ImageX.icon_radio_uncheck,textColor),
-                            buildUserTab(1,"注单",ImageX.icon_dan2,textColor),
-                            buildUserTab(2,"咪牌",ImageX.icon_pai2,textColor),
-                            buildUserTab(3,"趋势",ImageX.icon_qs_hei,textColor),
+                            buildUserTab(0,Intr().haoyuan, ImageX.icon_radio_uncheck,textColor),
+                            buildUserTab(1,Intr().zhudan, ImageX.icon_dan2,textColor),
+                            buildUserTab(2,Intr().mipai, ImageX.icon_pai2,textColor),
+                            buildUserTab(3,Intr().qushi, ImageX.icon_qs_hei,textColor),
                           ],
                         ),
                       ),
@@ -109,7 +111,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text("第1231312期",style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                              Text(sprintf(Intr().dixqi,["1231312"]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                               Wrap(
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
@@ -118,8 +120,8 @@ class _GameRoomPageState extends State<GameRoomPage> {
                                   buildDrawTime("02"),
                                   Text(" : ",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                                   buildDrawTime("53"),
-                                  SizedBox(width: 10.w,),
-                                  Text("End",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                                  // SizedBox(width: 10.w,),
+                                  // Text("End",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                                 ],
                               ),
                             ],
@@ -145,7 +147,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                     },
                   ),
                   buildFloatingBtn((){ DialogUtils().showBulletBtmDialog(context, logic,(v){
-                    showToast("发送${v.length}");
+                    showToast("${v.length}");
                   }); }),
                 ],
               ),
@@ -186,7 +188,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   Widget buildDrawMark(String mark,Color color) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.w),
+      padding: EdgeInsets.symmetric(horizontal: 5.w),
       child: Text(mark,style: TextStyle(fontSize: 18.sp,color: color,fontWeight: FontWeight.w500),),
     );
   }
@@ -228,19 +230,19 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   Widget buildRoomType() {
     var color = ColorX.color_fc243b;
-    var text = "普通房";
+    var text = Intr().card_ptf;
     switch(state.roomType){
       case 0:
         color = ColorX.color_fc243b;
-        text = "普通房";
+        text = Intr().card_ptf;
         break;
       case 1:
         color = ColorX.color_62_586;
-        text = "高级房";
+        text = Intr().card_gjf;
         break;
       case 2:
         color = ColorX.color_574436;
-        text = "贵宾房";
+        text = Intr().card_gbf;
         break;
     }
     return Container(
@@ -304,7 +306,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("第823242期",style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
+          Text(sprintf(Intr().dixqi,["823242"]),style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
           SizedBox(width: 5.w,),
           buildDrawNum("5"),
           buildDrawMark("+",color),
@@ -314,7 +316,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
           buildDrawMark("=",color),
           buildDrawResult("22"),
           // SizedBox(width: 5.w,),
-          Text("（小 双）",style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),),
+          Text("(大 小)",style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),),
           Image.asset(ImageX.icon_down_black,color: color,),
         ],
       ),
@@ -380,7 +382,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
         width: 335.w,
         height: 50.h,
         alignment: Alignment.center,
-        child: Text("投注",style: TextStyle(fontSize: 16.sp,color: textColor,fontWeight: FontWeight.w600),),
+        child: Text(Intr().touzhu,style: TextStyle(fontSize: 16.sp,color: textColor,fontWeight: FontWeight.w600),),
       ),
     );
   }

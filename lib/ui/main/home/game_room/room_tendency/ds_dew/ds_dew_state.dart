@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 
 class DsDewState {
   DsDewState() {
@@ -10,6 +11,8 @@ class DsDewState {
 
   //珠盘路
   var beadRoads = RxList.empty(growable: true);
+
+  var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
 
 
 }

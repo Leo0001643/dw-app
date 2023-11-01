@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:sprintf/sprintf.dart';
 import 'betting_detail_logic.dart';
 
 //投注详情
@@ -196,7 +198,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
           ],
         ),
         SizedBox(height: 5.h,),
-        Text("第 7622868 期",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+        Text(sprintf(Intr().dixqi,[" 1231312 "]),style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
         SizedBox(height: 5.h,),
         Text("加拿大西28/普通房@1.8881 1.888",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
         SizedBox(height: 5.h,),

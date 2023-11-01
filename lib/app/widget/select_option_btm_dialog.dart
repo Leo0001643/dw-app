@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -72,7 +73,7 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
           alignment: Alignment.centerRight,
           child: Padding(
             padding: EdgeInsets.only(right: 15.w),
-            child: WidgetUtils().buildElevatedButton("确定", 50.w, 26.h,textSize: 12.sp,
+            child: WidgetUtils().buildElevatedButton(Intr().confirm, 50.w, 26.h,textSize: 12.sp,
                 bg:ColorX.color_fc243b,onPressed: (){
                   Navigator.of(context).pop(data[currentIndex.value]);
                 }),

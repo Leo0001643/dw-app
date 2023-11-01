@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -23,10 +24,11 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
   var progress = 0.0.obs;
   var progressVisible= true.obs;//显示隐藏
 
+  var tabs = [Intr().wanfaguizhe,Intr().youxishuyu,Intr().xiazhujiqiao,];
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: tabs.length, vsync: this);
     super.initState();
   }
 
@@ -35,6 +37,7 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
     _tabController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -63,11 +66,7 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
                   labelColor: ColorX.color_091722,
                   unselectedLabelColor: ColorX.color_58698d,
                   width: 280.w,
-                  tabs: [
-                    Text("玩法规则",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                    Text("游戏术语",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                    Text("下注技巧",style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                  ],
+                  tabs: tabs.map((e) => Text(e, style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600))).toList(),
                 ),
               ),
               InkWell(
@@ -87,13 +86,13 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
             child: Column(
               children: [
                 Obx(() => Visibility(
+                    visible: progressVisible.value,
                     child: LinearProgressIndicator(
                       value: progress.value/100,//取值为0-1
                       minHeight: 3,
                       valueColor: AlwaysStoppedAnimation(Colors.amberAccent),
                       backgroundColor: Colors.white,
                     ),
-                    visible: progressVisible.value,
                   ),
                 ),
                 Expanded(

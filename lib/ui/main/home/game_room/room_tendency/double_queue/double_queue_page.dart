@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -60,8 +61,8 @@ class _DoubleQueuePageState extends State<DoubleQueuePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("第一球 - 单",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
-          Text("5期",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+          Text("${Intr().diyiqiu} - ${Intr().bet_dan}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+          Text("5${Intr().qi}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
         ],
       ),
     );

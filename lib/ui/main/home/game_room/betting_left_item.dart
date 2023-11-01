@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:sprintf/sprintf.dart';
 
 class BettingLeftItem extends StatefulWidget{
 
@@ -61,11 +63,11 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("第123123121期",style: TextStyle(fontSize: 14.sp,color: ColorX.color_80_091),),
+                        Text(sprintf(Intr().dixqi,["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_80_091),),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Text("投注",style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                            Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
                             Image.asset(ImageX.icon_right_black),
                           ],
                         ),
@@ -83,9 +85,9 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("注单：",style: TextStyle(fontSize: 13.sp,color: ColorX.color_60543f),),
+                      Text(Intr().zhudan_,style: TextStyle(fontSize: 13.sp,color: ColorX.color_60543f),),
                       Text("4",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
-                      Text("，总计：",style: TextStyle(fontSize: 13.sp,color: ColorX.color_60543f),),
+                      Text(Intr().zongji_,style: TextStyle(fontSize: 13.sp,color: ColorX.color_60543f),),
                       Text("¥80",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
                     ],
                   ),

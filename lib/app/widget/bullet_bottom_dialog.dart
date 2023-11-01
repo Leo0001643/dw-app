@@ -322,7 +322,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
         inputList.add(icon);
         inputList.refresh();
       },
-      child: Image.network(icon,width: 32.r,height: 32.r,fit: BoxFit.cover,),
+      child: Image.network(icon,width: 0.085.sw,height: 0.085.sw,fit: BoxFit.cover,),
     );
   }
 
@@ -333,7 +333,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
         inputList.add(icon);
         inputList.refresh();
       },
-      child: Image.network(icon,width: 90.r,height: 90.r,fit: BoxFit.cover,),
+      child: Image.network(icon,width: 0.24.sw,height: 0.24.sw,fit: BoxFit.cover,),
     );
   }
 

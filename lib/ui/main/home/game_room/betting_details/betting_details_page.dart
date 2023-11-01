@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:sprintf/sprintf.dart';
 
 import 'betting_details_logic.dart';
 
@@ -40,14 +42,15 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBarBtn("下注详情",
+      appBar: WidgetUtils().buildAppBarBtn(Intr().xiazhuxiangqing,
       Padding(
         padding: EdgeInsets.only(right: 10.w),
         child: InkWell(
-          onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, "全部记录", ["比特币1分28","加拿大28","加拿大西28","台湾宾果28"]),
+          onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().quanbujilu,
+              ["比特币1分28","加拿大28","加拿大西28","台湾宾果28"]),
           child: Row(
             children: [
-              Text("全部记录",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
+              Text(Intr().quanbujilu,style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
               Image.asset(ImageX.icon_down_black),
             ],
           ),
@@ -83,28 +86,28 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("单号",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().danhao,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("内容",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().neirong,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("下注金额",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().xiazhujine,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
                     )
                   ),
                   Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("可赢金额",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().keyingjine,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
                     ),
                   ),
                 ],
@@ -137,13 +140,13 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("小计",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().xiaoji,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("100笔",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(sprintf(Intr().xbi,["100"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Expanded(
@@ -217,20 +220,20 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   GFTypography(
-                    text: "期号:762252\n加拿大西28",
+                    text: sprintf(Intr().qihao_,["762252\n加拿大西28"]),
                     textColor: ColorX.color_091722,
                     type: GFTypographyType.typo6,
                     showDivider: false,
                     fontWeight: FontWeight.normal,
                   ),
-                  GFTypography(
+                  const GFTypography(
                     text: "大1.881/1.888",
                     textColor: ColorX.color_fc243b,
                     type: GFTypographyType.typo6,
                     showDivider: false,
                     fontWeight: FontWeight.normal,
                   ),
-                  GFTypography(
+                  const GFTypography(
                     text: "07-03 09:0026",
                     textColor: ColorX.color_6655e7,
                     type: GFTypographyType.typo6,

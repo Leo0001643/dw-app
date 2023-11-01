@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/main/home/game_room/room_tendency/number_trend/number_trend_state.dart';
@@ -82,7 +83,7 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                   ),
                   primaryYAxis: NumericAxis(
                     axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
-                    labelFormat: '号{value}',
+                    labelFormat: Intr().hao_value,
                     labelAlignment: LabelAlignment.center,
                     minimum: 1,//设置最小值
                     interval: 1,//设置步长
