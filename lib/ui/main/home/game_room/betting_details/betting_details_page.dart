@@ -9,7 +9,6 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:sprintf/sprintf.dart';
 
 import 'betting_details_logic.dart';
 
@@ -146,7 +145,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text(sprintf(Intr().xbi,["100"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().xbi(["100"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Expanded(
@@ -220,7 +219,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   GFTypography(
-                    text: sprintf(Intr().qihao_,["762252\n加拿大西28"]),
+                    text: Intr().qihao_(["762252\n加拿大西28"]),
                     textColor: ColorX.color_091722,
                     type: GFTypographyType.typo6,
                     showDivider: false,

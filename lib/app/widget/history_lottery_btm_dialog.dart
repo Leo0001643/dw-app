@@ -7,7 +7,6 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:sprintf/sprintf.dart';
 
 class HistoryLotteryBtmDialog extends StatefulWidget{
   final GameRoomLogic logic;
@@ -57,7 +56,7 @@ class StateHistoryLotteryBtmDialog extends State<HistoryLotteryBtmDialog>{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(sprintf(Intr().dixqi,["1231312"]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                    Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                     Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [

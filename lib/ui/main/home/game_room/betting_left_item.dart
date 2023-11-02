@@ -9,7 +9,6 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
-import 'package:sprintf/sprintf.dart';
 
 class BettingLeftItem extends StatefulWidget{
 
@@ -63,7 +62,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(sprintf(Intr().dixqi,["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_80_091),),
+                        Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_80_091),),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [

@@ -10,7 +10,6 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
-import 'package:sprintf/sprintf.dart';
 
 ///确认注单
 class SignSuccessDialog extends StatefulWidget{
@@ -42,7 +41,7 @@ class StateConfirmBetDialog extends State<SignSuccessDialog> with SingleTickerPr
             ]
           )),
           Text(Intr().gongxiwancheng,style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none,),),
-          Text(sprintf(Intr().xiaciqiandao,[" +1"," 7 "]),style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none,),),
+          Text(Intr().xiaciqiandao([" +1"," 7 "]),style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none,),),
           SizedBox(height: 25.h,),
           WidgetUtils().buildElevatedButton(Intr().mingtianjixue, 233.w, 48.h, bg: ColorX.color_fc9824,onPressed: (){
             Navigator.of(context).pop();

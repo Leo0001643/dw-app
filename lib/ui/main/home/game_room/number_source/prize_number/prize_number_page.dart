@@ -5,8 +5,6 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
-import 'package:sprintf/sprintf.dart';
-
 import 'prize_number_logic.dart';
 
 class PrizeNumberPage extends StatefulWidget {
@@ -35,7 +33,7 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(sprintf(Intr().dixqi,["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600,),),
+                Text(Intr().dixqi(["231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600,),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

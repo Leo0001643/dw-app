@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -61,7 +62,7 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
           Container(
             margin: EdgeInsets.symmetric(vertical: 10.h),
             alignment: Alignment.center,
-            child: WidgetUtils().buildElevatedButton("购彩", 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+            child: WidgetUtils().buildElevatedButton(Intr().goucai, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
               Get.toNamed(Routes.room_list);
             }),
           ),
@@ -85,9 +86,9 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
             alignment: WrapAlignment.center,
             spacing: 3.w,
             children: [
-              Text("第",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
+              Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
               Text("112030767",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,),),
-              Text("期",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
+              Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
             ],
           ),
           SizedBox(height: 10.h,),

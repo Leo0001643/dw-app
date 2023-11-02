@@ -9,7 +9,6 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:scratcher/scratcher.dart';
-import 'package:sprintf/sprintf.dart';
 
 class SqueezeBtmDialog extends StatefulWidget{
   final GameRoomLogic logic;
@@ -77,7 +76,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                 top: 14.h, left: 0,right: 2.w,
                 child: Column(
                   children: [
-                    Text(sprintf(Intr().dixqi,[" 1231312 "]),style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),),
+                    Text(Intr().dixqi([" 1231312 "]),style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),),
                     SizedBox(height: 38.h,),
                     Center(
                       child:Container(
@@ -109,9 +108,9 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(sprintf(Intr().dixqitouzhu,["06161240","00:43"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                Text(Intr().dixqitouzhu(["06161240","00:43"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
                                 SizedBox(height: 3.h,),
-                                Text(sprintf(Intr().dixqikaijiang,["06161240","9s"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                Text(Intr().dixqikaijiang(["06161240","9s"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
                               ],
                             ),
                           ),

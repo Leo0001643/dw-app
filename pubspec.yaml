@@ -60,8 +60,10 @@ dependencies:
   syncfusion_flutter_charts: ^23.1.41
   scratcher: ^2.4.0
   luckywheel: ^1.0.0
-  sprintf: ^7.0.0
 
+
+
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

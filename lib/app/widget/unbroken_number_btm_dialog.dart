@@ -8,7 +8,6 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:sprintf/sprintf.dart';
 
 class UnbrokenNumberBtnDialog extends StatefulWidget{
 
@@ -65,7 +64,7 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("${Intr().qihao_}12312132",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,height: 1.5)),
-                Text(sprintf(Intr().zhuaqushijian,["2023 - 06 - 16 08:25:02"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,height: 1.5)),
+                Text(Intr().zhuaqushijian(["2023 - 06 - 16 08:25:02"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,height: 1.5)),
               ],
             ),
           ),

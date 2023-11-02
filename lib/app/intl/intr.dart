@@ -84,7 +84,7 @@ class Intr extends Translations{
   String get login => 'login'.tr;
   String get grzx => 'grzx'.tr;
   String get rmbqb => 'rmbqb'.tr;
-  String get yue => 'yue'.tr;
+  String get yue_ => 'yue_'.tr;
   String get edzh => 'edzh'.tr;
   String get pcxq => 'pcxq'.tr;
   String get tzjl => 'tzjl'.tr;
@@ -141,7 +141,7 @@ class Intr extends Translations{
   String get tab_by => 'tab_by'.tr;
   String get tab_dz => 'tab_dz'.tr;
   String get ytxyhkhmyz => 'ytxyhkhmyz'.tr;
-  String get dangqianzaixian => 'dangqianzaixian'.tr;
+  String dangqianzaixian(List<String> args) => 'dangqianzaixian'.trArgs(args);
   String get peilvshuoming => 'peilvshuoming'.tr;
   String get wanfaguizhe => 'wanfaguizhe'.tr;
   String get youxishuyu => 'youxishuyu'.tr;
@@ -156,7 +156,7 @@ class Intr extends Translations{
   String get zhudan => 'zhudan'.tr;
   String get mipai => 'mipai'.tr;
   String get qushi => 'qushi'.tr;
-  String get dixqi => 'dixqi'.tr;
+  String dixqi(List<String> args) => 'dixqi'.trArgs(args);
   String get zongyue => 'zongyue'.tr;
   String get touzhu => 'touzhu'.tr;
   String get bet_da => 'bet_da'.tr;
@@ -182,8 +182,8 @@ class Intr extends Translations{
   String get xiazhujine => 'xiazhujine'.tr;
   String get keyingjine => 'keyingjine'.tr;
   String get xiaoji => 'xiaoji'.tr;
-  String get xbi => 'xbi'.tr;
-  String get qihao_ => 'qihao_'.tr;
+  String xbi(List<String> args) => 'xbi'.trArgs(args);
+  String qihao_(List<String> args) => 'qihao_'.trArgs(args);
   String get wallet_cny => 'wallet_cny'.tr;
   String get wallet_usdt => 'wallet_usdt'.tr;
   String get danhao => 'danhao'.tr;
@@ -197,7 +197,7 @@ class Intr extends Translations{
   String get kaijianghaoma => 'kaijianghaoma'.tr;
   String get haoyuanjinqi => 'haoyuanjinqi'.tr;
   String get wanzhenghaoyuanzhanshi => 'wanzhenghaoyuanzhanshi'.tr;
-  String get zhuaqushijian => 'zhuaqushijian'.tr;
+  String zhuaqushijian(List<String> args) => 'zhuaqushijian'.trArgs(args);
   String get shuominghaoyuan => 'shuominghaoyuan'.tr;
   String get bitebipc28quhaojizhi => 'bitebipc28quhaojizhi'.tr;
   String get zhuahaoyuan => 'zhuahaoyuan'.tr;
@@ -225,8 +225,8 @@ class Intr extends Translations{
   String get jiaoyanshuoming3 => 'jiaoyanshuoming3'.tr;
   String get jiaoyanshuoming4 => 'jiaoyanshuoming4'.tr;
   String get zuizhongkaijianghaoma => 'zuizhongkaijianghaoma'.tr;
-  String get dixqitouzhu => 'dixqitouzhu'.tr;
-  String get dixqikaijiang => 'dixqikaijiang'.tr;
+  String dixqitouzhu(List<String> args) => 'dixqitouzhu'.trArgs(args);
+  String dixqikaijiang(List<String> args) => 'dixqikaijiang'.trArgs(args);
   String get fengpanzhong => 'fengpanzhong'.tr;
   String get shuaxin => 'shuaxin'.tr;
   String get kaijiangjieguo => 'kaijiangjieguo'.tr;
@@ -235,8 +235,8 @@ class Intr extends Translations{
   String get danshuangluzhu => 'danshuangluzhu'.tr;
   String get daxiaoluzhu => 'daxiaoluzhu'.tr;
   String get haomazhoushi => 'haomazhoushi'.tr;
-  String get lx_tongji => 'lx_tongji'.tr;
-  String get xianshiqishu_ => 'xianshiqishu_'.tr;
+  String lx_tongji(List<String> args) => 'lx_tongji'.trArgs(args);
+  String xianshiqishu_(List<String> args) => 'xianshiqishu_'.trArgs(args);
   String get zhi => 'zhi'.tr;
   String get jixiao => 'jixiao'.tr;
   String get jida => 'jida'.tr;
@@ -249,8 +249,8 @@ class Intr extends Translations{
   String get shoucangla => 'shoucangla'.tr;
   String get qiandaoyouli => 'qiandaoyouli'.tr;
   String get jifen => 'jifen'.tr;
-  String get benyueyiqian => 'benyueyiqian'.tr;
-  String get zongjifen_ => 'zongjifen_'.tr;
+  String benyueyiqian(List<String> args) => 'benyueyiqian'.trArgs(args);
+  String zongjifen_(List<String> args) => 'zongjifen_'.trArgs(args);
   String get lijiqiandao => 'lijiqiandao'.tr;
   String get day_yi => 'day_yi'.tr;
   String get day_er => 'day_er'.tr;
@@ -260,7 +260,7 @@ class Intr extends Translations{
   String get day_liu => 'day_liu'.tr;
   String get day_ri => 'day_ri'.tr;
   String get jifenyaojiang => 'jifenyaojiang'.tr;
-  String get jifenmeici => 'jifenmeici'.tr;
+  String jifenmeici(List<String> args) => 'jifenmeici'.trArgs(args);
   String get lianyao5 => 'lianyao5'.tr;
   String get lianyao10 => 'lianyao10'.tr;
   String get lianyao15 => 'lianyao15'.tr;
@@ -270,11 +270,218 @@ class Intr extends Translations{
   String get nianyueri => 'nianyueri'.tr;
   String get bencijiangli => 'bencijiangli'.tr;
   String get gongxiwancheng => 'gongxiwancheng'.tr;
-  String get xiaciqiandao => 'xiaciqiandao'.tr;
+  String xiaciqiandao(List<String> args) => 'xiaciqiandao'.trArgs(args);
   String get mingtianjixue => 'mingtianjixue'.tr;
   String get gongxininhuode => 'gongxininhuode'.tr;
   String get jiangjin => 'jiangjin'.tr;
   String get cishu => 'cishu'.tr;
+  String get lishikaijiang => 'lishikaijiang'.tr;
+  String get kaijiangzhoushi => 'kaijiangzhoushi'.tr;
+  String get qugoucai => 'qugoucai'.tr;
+  String get goucai => 'goucai'.tr;
+  String get xiaoxi => 'xiaoxi'.tr;
+  String get gonggao => 'gonggao'.tr;
+  String get gonggaoxiangqing => 'gonggaoxiangqing'.tr;
+  String get youhuizhongxin => 'youhuizhongxin'.tr;
+  String get chongzhi => 'chongzhi'.tr;
+  String get quanbu => 'quanbu'.tr;
+  String get qita => 'qita'.tr;
+  String get fanhui => 'fanhui'.tr;
+  String get wenxintishi_fuzhi => 'wenxintishi_fuzhi'.tr;
+  String get chongzhizhongxin => 'chongzhizhongxin'.tr;
+  String chongzhizhanghu_(List<String> args) => 'chongzhizhanghu_'.trArgs(args);
+  String dangqianmoren(List<String> args) => 'dangqianmoren'.trArgs(args);
+  String get xianshang => 'xianshang'.tr;
+  String get xianxia => 'xianxia'.tr;
+  String get diyibu_chakanshoukuanxinxi => 'diyibu_chakanshoukuanxinxi'.tr;
+  String get wenxintishi_zhifuyoushijian => 'wenxintishi_zhifuyoushijian'.tr;
+  String get dierbu_tianchongdingdan => 'dierbu_tianchongdingdan'.tr;
+  String get chongzhizhanghu => 'chongzhizhanghu'.tr;
+  String get huikuanxingming => 'huikuanxingming'.tr;
+  String get huikuanjine => 'huikuanjine'.tr;
+  String get qingshuruhuikuanren => 'qingshuruhuikuanren'.tr;
+  String get qingshuruhuikuanjine => 'qingshuruhuikuanjine'.tr;
+  String get tijiao => 'tijiao'.tr;
+  String get bibiduihuan => 'bibiduihuan'.tr;
+  String get eduzhuanhuan => 'eduzhuanhuan'.tr;
+  String get zhifushuoming_rmb => 'zhifushuoming_rmb'.tr;
+  String get kahao => 'kahao'.tr;
+  String get cikaren => 'cikaren'.tr;
+  String get beizhu => 'beizhu'.tr;
+  String get dianjixiafangzhifu => 'dianjixiafangzhifu'.tr;
+  String get wenxintishi_ => 'wenxintishi_'.tr;
+  String get wenxintishi_1 => 'wenxintishi_1'.tr;
+  String get wenxintishi_2 => 'wenxintishi_2'.tr;
+  String wenxintishi_3(List<String> args) => 'wenxintishi_3'.trArgs(args);
+  String get tianrujine => 'tianrujine'.tr;
+  String get shoudongshuruhuoxuanzhe => 'shoudongshuruhuoxuanzhe'.tr;
+  String get diyibu_xuanzhezhifuxieyi => 'diyibu_xuanzhezhifuxieyi'.tr;
+  String get dierbu_chakanshoukuanxinxi => 'dierbu_chakanshoukuanxinxi'.tr;
+  String get shoukuanzhanghu => 'shoukuanzhanghu'.tr;
+  String get disanbu_tianxierukuanxinxi => 'disanbu_tianxierukuanxinxi'.tr;
+  String get fanhuishouye => 'fanhuishouye'.tr;
+  String get zhifushuoming_ => 'zhifushuoming_'.tr;
+  String get zhifushuoming_1 => 'zhifushuoming_1'.tr;
+  String get zhifushuoming_2 => 'zhifushuoming_2'.tr;
+  String nicheng_(List<String> args) => 'nicheng_'.trArgs(args);
+  String get wodeqianbao => 'wodeqianbao'.tr;
+  String get tixianmima => 'tixianmima'.tr;
+  String get zijinmingxi => 'zijinmingxi'.tr;
+  String get bangdingyinhangka => 'bangdingyinhangka'.tr;
+  String get bangdingusdt => 'bangdingusdt'.tr;
+  String get wodetouzhu => 'wodetouzhu'.tr;
+  String get touzhujilu => 'touzhujilu'.tr;
+  String get jifenjilu => 'jifenjilu'.tr;
+  String get huiyuanfanshui => 'huiyuanfanshui'.tr;
+  String get hongbaohejiangjin => 'hongbaohejiangjin'.tr;
+  String get wodeyinli => 'wodeyinli'.tr;
+  String get tuiguangzhuanqian => 'tuiguangzhuanqian'.tr;
+  String get dializhuce => 'dializhuce'.tr;
+  String get tongyongshezhi => 'tongyongshezhi'.tr;
+  String get bangzhuzhongxin => 'bangzhuzhongxin'.tr;
+  String get guanyuwomen => 'guanyuwomen'.tr;
+  String tixianzhanghu_(List<String> args) => 'tixianzhanghu_'.trArgs(args);
+  String get congcnyqianbaotichu => 'congcnyqianbaotichu'.tr;
+  String get congusdtqianbaotichu => 'congusdtqianbaotichu'.tr;
+  String get tixianxinxi => 'tixianxinxi'.tr;
+  String get querentixianxinxi => 'querentixianxinxi'.tr;
+  String get tixianjine => 'tixianjine'.tr;
+  String get qingshurutixianmima => 'qingshurutixianmima'.tr;
+  String get querenjine => 'querenjine'.tr;
+  String get shouxufei => 'shouxufei'.tr;
+  String get kedaozhangjine => 'kedaozhangjine'.tr;
+  String get qingxuanzhetixianzhanghu => 'qingxuanzhetixianzhanghu'.tr;
+  String get querenjihexinxi => 'querenjihexinxi'.tr;
+  String zitixianhouzongtouzhu_(List<String> args) => 'zitixianhouzongtouzhu_'.trArgs(args);
+  String get meiyoutongguoyouhui => 'meiyoutongguoyouhui'.tr;
+  String get changtaixingjihe => 'changtaixingjihe'.tr;
+  String get tongguochangtaixing => 'tongguochangtaixing'.tr;
+  String get duocitixian => 'duocitixian'.tr;
+  String get yixiaoshineimian => 'yixiaoshineimian'.tr;
+  String get shixiaoshouxufei => 'shixiaoshouxufei'.tr;
+  String get mianshoushouxufei => 'mianshoushouxufei'.tr;
+  String get cichijiheshijian => 'cichijiheshijian'.tr;
+  String meidongshijian_(List<String> args) => 'meidongshijian_'.trArgs(args);
+  String get jixutixian => 'jixutixian'.tr;
+  String get tijiaochenggong => 'tijiaochenggong'.tr;
+  String get tixianxiangqing => 'tixianxiangqing'.tr;
+  String get tijiaoshijian => 'tijiaoshijian'.tr;
+  String shouxufei_(List<String> args) => 'shouxufei_'.trArgs(args);
+  String get daozhangjine => 'daozhangjine'.tr;
+  String get zhanghuyue => 'zhanghuyue'.tr;
+  String get wancheng => 'wancheng'.tr;
+  String get shezhi => 'shezhi'.tr;
+  String get gerenziliao => 'gerenziliao'.tr;
+  String get shezhidenglumima => 'shezhidenglumima'.tr;
+  String get shezhijianyimima => 'shezhijianyimima'.tr;
+  String get zhongwen => 'zhongwen'.tr;
+  String get qianse => 'qianse'.tr;
+  String get quankai => 'quankai'.tr;
+  String get tuichudenglu => 'tuichudenglu'.tr;
+  String get wanshanziliao => 'wanshanziliao'.tr;
+  String get nicheng => 'nicheng'.tr;
+  String get shoujihaoma => 'shoujihaoma'.tr;
+  String get qqhaoma => 'qqhaoma'.tr;
+  String get weixin => 'weixin'.tr;
+  String get shuruweixinhao => 'shuruweixinhao'.tr;
+  String get shuruqqhaoma => 'shuruqqhaoma'.tr;
+  String get shuruzhenshiyouxiao => 'shuruzhenshiyouxiao'.tr;
+  String get shurunicheng => 'shurunicheng'.tr;
+  String get shezhitixianmima => 'shezhitixianmima'.tr;
+  String get yuanmima => 'yuanmima'.tr;
+  String get shuruyuantixianmima => 'shuruyuantixianmima'.tr;
+  String get xinmima => 'xinmima'.tr;
+  String get shuruxintixianmima => 'shuruxintixianmima'.tr;
+  String get zaiciqueren => 'zaiciqueren'.tr;
+  String get chongfushuru => 'chongfushuru'.tr;
+  String get querenjianyimima => 'querenjianyimima'.tr;
+  String get shurujianyimima => 'shurujianyimima'.tr;
+  String get shezhichenggong => 'shezhichenggong'.tr;
+  String get shuruneirongbuyizhi => 'shuruneirongbuyizhi'.tr;
+  String get wenxintishi_jianyimima => 'wenxintishi_jianyimima'.tr;
+  String get shuruyuandenglumima => 'shuruyuandenglumima'.tr;
+  String get shuruxindenglumima => 'shuruxindenglumima'.tr;
+  String get chongfushuruxindenglumima => 'chongfushuruxindenglumima'.tr;
+  String get tixianzhongxin => 'tixianzhongxin'.tr;
+  String get youhuijihe => 'youhuijihe'.tr;
+  String get tixianzhanghu => 'tixianzhanghu'.tr;
+  String get genghuantouxiang => 'genghuantouxiang'.tr;
+  String get moren => 'moren'.tr;
+  String get qq => 'qq'.tr;
+  String get jingxuan => 'jingxuan'.tr;
+  String get gezhanghumingxi => 'gezhanghumingxi'.tr;
+  String get huazhuanjilu => 'huazhuanjilu'.tr;
+  String get dailizhuce => 'dailizhuce'.tr;
+  String get querenmima => 'querenmima'.tr;
+  String get dianziyouxiang => 'dianziyouxiang'.tr;
+  String get wenxintishi_zhuce => 'wenxintishi_zhuce'.tr;
+  String get jieshaorenxinxi => 'jieshaorenxinxi'.tr;
+  String get daima => 'daima'.tr;
+  String get fuzhi => 'fuzhi'.tr;
+  String get lianjie => 'lianjie'.tr;
+  String get tuiguangerweima => 'tuiguangerweima'.tr;
+  String get baocuntupian => 'baocuntupian'.tr;
+  String get fuzhilianjie => 'fuzhilianjie'.tr;
+  String get huiyuanliebiao => 'huiyuanliebiao'.tr;
+  String get riqi => 'riqi'.tr;
+  String get xiaxiancunkuan => 'xiaxiancunkuan'.tr;
+  String get zhuanquhongli => 'zhuanquhongli'.tr;
+  String get xianxiayonghu => 'xianxiayonghu'.tr;
+  String get zhu_beijingshijian => 'zhu_beijingshijian'.tr;
+  String get riqi_meidong => 'riqi_meidong'.tr;
+  String get jiaoyileibie => 'jiaoyileibie'.tr;
+  String get jiaoyiedu => 'jiaoyiedu'.tr;
+  String get xianyouedu => 'xianyouedu'.tr;
+  String get xiazhujifenjiangli => 'xiazhu_jifenjiangli'.tr;
+  String get fuyinglifanshui => 'fuyinglifanshui'.tr;
+  String get youxileixing => 'youxileixing'.tr;
+  String get youxiaotouzhu => 'youxiaotouzhu'.tr;
+  String get shuying => 'shuying'.tr;
+  String get fanshui => 'fanshui'.tr;
+  String get touzhuliangfanshui => 'touzhuliangfanshui'.tr;
+  String get jinrizuhezhanbilv => 'jinrizuhezhanbilv'.tr;
+  String qitayouxi_(List<String> args) => 'qitayouxi_'.trArgs(args);
+  String get huishui => 'huishui'.tr;
+  String get yinlifanshui => 'yinlifanshui'.tr;
+  String get zuhezhanbilv => 'zuhezhanbilv'.tr;
+  String get jinri => 'jinri'.tr;
+  String get day_7 => '7ri'.tr;
+  String get day_15 => '15ri'.tr;
+  String get day_30 => '30ri'.tr;
+  String get youxipingtai => 'youxipingtai'.tr;
+  String get bishu => 'bishu'.tr;
+  String get touzhue => 'touzhue'.tr;
+  String youxiaotouzhu_(List<String> args) => 'youxiaotouzhu_'.trArgs(args);
+  String get touzhuriqi => 'touzhuriqi'.tr;
+  String wodeyinhangka_(List<String> args) => 'wodeyinhangka_'.trArgs(args);
+  String get tianjiayinhangka => 'tianjiayinhangka'.tr;
+  String get wenxintixing_yinhangka => 'wenxintixing_yinhangka'.tr;
+  String get tianjiashuziqianbao => 'tianjiashuziqianbao'.tr;
+  String get wenxintixing_usdt => 'wenxintixing_usdt'.tr;
+  String get dizhi => 'dizhi'.tr;
+  String get suoshuxieyi => 'suoshuxieyi'.tr;
+  String zuiduoketianjia_(List<String> args) => 'zuiduoketianjia_'.trArgs(args);
+  String get hongbao => 'hongbao'.tr;
+  String get jine => 'jine'.tr;
+  String get youxiaoqi => 'youxiaoqi'.tr;
+  String get xuyaodamaliang => 'xuyaodamaliang'.tr;
+  String get yitiqu => 'yitiqu'.tr;
+  String get tiqu => 'tiqu'.tr;
+  String get tiquchenggong => 'tiquchenggong'.tr;
+  String get duihuan => 'duihuan'.tr;
+  String huilv_(List<String> args) => 'huilv_'.trArgs(args);
+  String get cong_from => 'cong_from'.tr;
+  String get zhi_to => 'zhi_to'.tr;
+  String get zhuanru => 'zhuanru'.tr;
+
+  String get huazhuanjine => 'huazhuanjine'.tr;
+  String get querenhuazhuan => 'querenhuazhuan'.tr;
+  String get yijianguiji => 'yijianguiji'.tr;
+
+
+
+
+
 
 
 
@@ -352,7 +559,7 @@ class Intr extends Translations{
       "login":"登录",
       "grzx":"个人中心",
       "rmbqb":"人民币钱包",
-      "yue":"余额：",
+      "yue_":"余额：",
       "edzh":"额度转换",
       "pcxq":"PC详情",
       "tzjl":"投注记录",
@@ -543,8 +750,210 @@ class Intr extends Translations{
       "gongxininhuode":"恭喜您获得",
       "jiangjin":"奖金",
       "cishu":"次数",
+      "lishikaijiang":"历史开奖",
+      "kaijiangzhoushi":"开奖走势",
+      "qugoucai":"去购彩",
+      "goucai":"购彩",
+      "xiaoxi":"消息",
+      "gonggao":"公告",
+      "gonggaoxiangqing":"公告详情",
+      "youhuizhongxin":"优惠中心",
+      "chongzhi":"充值",
+      "quanbu":"全部",
+      "qita":"其他",
+      "fanhui":"返回",
+      "wenxintishi_fuzhi":"温馨提示：\n长按号码可以复制到剪切板",
+      "chongzhizhongxin":"充值中心",
+      "chongzhizhanghu_":"充值帐户: %s",
+      "dangqianmoren":"%s(当前默认)",
+      "xianshang":"线上(自动到账)",
+      "xianxia":"线下(人工存款)",
+      "diyibu_chakanshoukuanxinxi":"第一步,查看下方收款信息,去转帐充值:",
+      "wenxintishi_zhifuyoushijian":"温馨提示: 支付有时间限制,请在规定的时间内完成转帐操作",
+      "dierbu_tianchongdingdan":"第二步,填充订单(充值时的汇款资料)",
+      "chongzhizhanghu":"充值账户",
+      "huikuanxingming":"汇款姓名",
+      "huikuanjine":"汇款金额",
+      "qingshuruhuikuanren":"请输入汇款人姓名",
+      "qingshuruhuikuanjine":"请输入汇款金额",
+      "tijiao":"提交",
+      "bibiduihuan":"币币兑换",
+      "eduzhuanhuan":"额度转换",
+      "zhifushuoming_rmb":"支付说明:\n1.公司帐户资金如何领取到个人帐户 人民币银行结算账户管理方法规定\n2.公司帐户资金如何领取到个人帐户 人民币银行结算账户管理方法规定",
+      "kahao":"卡号",
+      "cikaren":"持卡人",
+      "beizhu":"备注",
+      "dianjixiafangzhifu":"点击下方支付跳转链接并阅读提示信息",
+      "wenxintishi_":"温馨提示:",
+      "wenxintishi_1":"1、系统将会自动打开一个网页，请按提示继续操作",
+      "wenxintishi_2":"2、手续费 1.22%,到账率高!",
+      "wenxintishi_3":"3、%s",
+      "tianrujine":"填入金额(1-0)并点击确定",
+      "shoudongshuruhuoxuanzhe":"手动输入或下方选择金额",
+      "diyibu_xuanzhezhifuxieyi":"第一步,选择支付协议",
+      "dierbu_chakanshoukuanxinxi":"第二步,查看收款信息,进行转账充值",
+      "shoukuanzhanghu":"收款账户",
+      "disanbu_tianxierukuanxinxi":"第三步,完成转账后填写入款信息",
+      "fanhuishouye":"返回首页",
+      "zhifushuoming_":"支付说明:\n1.",
+      "zhifushuoming_1":"充值完毕,系统会在2分钟内自动存入USDT钱包,如果您想使用CNY钱包,请到「币币兑换」页面兑换\n",
+      "zhifushuoming_2":"2.公司帐户资金如何领取到个人帐户 人民币银行结算账户管理方法规定",
+      "nicheng_":"昵称：%s",
+      "wodeqianbao":"我的钱包",
+      "tixianmima":"提现密码",
+      "zijinmingxi":"资金明细",
+      "bangdingyinhangka":"绑定银行卡",
+      "bangdingusdt":"绑定USDT",
+      "wodetouzhu":"我的投注",
+      "touzhujilu":"投注记录",
+      "jifenjilu":"积分记录",
+      "huiyuanfanshui":"会员返水",
+      "hongbaohejiangjin":"红包和奖金",
+      "wodeyinli":"我的盈利",
+      "tuiguangzhuanqian":"推广赚钱",
+      "dializhuce":"代理注册",
+      "tongyongshezhi":"通用设置",
+      "bangzhuzhongxin":"帮助中心",
+      "guanyuwomen":"关于我们",
+      "tixianzhongxin":"提现中心",
+      "tixianzhanghu_":"提现帐户: %s",
+      "congcnyqianbaotichu":"从CNY钱包提出",
+      "congusdtqianbaotichu":"从USDT钱包提出",
+      "tixianxinxi":"提现信息",
+      "querentixianxinxi":"确认提现信息",
+      "tixianjine":"提现金额",
+      "qingshurutixianmima":"请输入提现密码",
+      "querenjine":"确认金额",
+      "shouxufei":"手续费",
+      "kedaozhangjine":"可到账金额",
+      "qingxuanzhetixianzhanghu":"请选择提现账户",
+      "querenjihexinxi":"确认稽核信息",
+      "zitixianhouzongtouzhu_":"自提现后第一次存款之后总有效投注: %s",
+      "youhuijihe":"优惠稽核",
+      "meiyoutongguoyouhui":"没有通过优惠稽核,需扣除优惠 100",
+      "changtaixingjihe":"常态性稽核",
+      "tongguochangtaixing":"通过常态性稽核,不收取行政费用!",
+      "duocitixian":"多次提现手续费",
+      "yixiaoshineimian":"1小时内 1 次提现,免手续费!",
+      "shixiaoshouxufei":"时效手续费",
+      "mianshoushouxufei":"免收手续费!",
+      "cichijiheshijian":"此次稽核时间",
+      "meidongshijian_":"美东时间:%s",
+      "jixutixian":"继续提现",
+      "tijiaochenggong":"提交成功",
+      "tixianxiangqing":"提现详情",
+      "tixianzhanghu":"提现账户",
+      "tijiaoshijian":"提交时间",
+      "shouxufei_":"(手续费:%s)",
+      "daozhangjine":"到账金额",
+      "zhanghuyue":"账户余额",
+      "wancheng":"完成",
+      "shezhi":"设置",
+      "gerenziliao":"个人资料",
+      "shezhidenglumima":"设置登录密码",
+      "shezhijianyimima":"设置简易密码",
+      "zhongwen":"中文",
+      "qianse":"浅色",
+      "quankai":"全开",
+      "tuichudenglu":"退出登录",
+      "wanshanziliao":"完善资料",
+      "nicheng":"昵称",
+      "shoujihaoma":"手机号码",
+      "qqhaoma":"QQ号码",
+      "weixin":"微信",
+      "shuruweixinhao":"输入微信号",
+      "shuruqqhaoma":"输入QQ号码",
+      "shuruzhenshiyouxiao":"输入真实有效的手机号码",
+      "shurunicheng":"输入昵称",
+      "shezhitixianmima":"设置提现密码",
+      "yuanmima":"原密码",
+      "shuruyuantixianmima":"输入原提现密码",
+      "xinmima":"新密码",
+      "shuruxintixianmima":"输入6-12位新提现密码",
+      "zaiciqueren":"再次确认",
+      "chongfushuru":"重复输入新提现密码",
+      "querenjianyimima":"确认简易密码",
+      "shurujianyimima":"输入简易密码",
+      "shezhichenggong":"设置成功",
+      "shuruneirongbuyizhi":"输入内容不一致，请重试",
+      "wenxintishi_jianyimima":"温馨提示:\n一些说明文字一些说明文字一些说明文字一些说明文字一些说明文字",
+      "shuruyuandenglumima":"输入原登录密码",
+      "shuruxindenglumima":"输入6-12位新登录密码",
+      "chongfushuruxindenglumima":"重复输入新登录密码",
 
 
+      "genghuantouxiang":"更换头像",
+      "moren":"默认",
+      "qq":"QQ",
+      "jingxuan":"精选",
+      "gezhanghumingxi":"各账户额度明细",
+      "huazhuanjilu":"划转记录",
+      "dailizhuce":"代理注册",
+      "querenmima":"确认密码",
+      "dianziyouxiang":"电子邮箱",
+      "wenxintishi_zhuce":"温馨提示:\n1.标有*号代表必须填写项目\n2.注册即代表您已同意各项“开户协议”",
+      "jieshaorenxinxi":"介绍人信息",
+      "daima":"代码",
+      "fuzhi":"复制",
+      "lianjie":"链接",
+      "tuiguangerweima":"推广二维码",
+      "baocuntupian":"保存图片",
+      "fuzhilianjie":"复制链接",
+      "huiyuanliebiao":"会员列表(通过 sp=495 注册的会员如下",
+      "riqi":"日期",
+      "xiaxiancunkuan":"下线存款",
+      "zhuanquhongli":"赚取红利",
+      "xianxiayonghu":"线下用户",
+      "zhu_beijingshijian":"注:北京时间 = 美东时间 + 12小时",
+      "riqi_meidong":"日期 (美东)",
+      "jiaoyileibie":"交易类别",
+      "jiaoyiedu":"交易额度",
+      "xianyouedu":"现有额度",
+
+      "xiazhujifenjiangli":"下注积分奖励",
+      "fuyinglifanshui":"负盈利返水",
+      "youxileixing":"游戏类型",
+      "youxiaotouzhu":"有效投注",
+      "shuying":"输赢",
+      "fanshui":"返水",
+      "touzhuliangfanshui":"投注量返水",
+      "jinrizuhezhanbilv":"今日投注组合占比率",
+      "qitayouxi_":"其他游戏 ( %s 至 %s )",
+      "huishui":"回水",
+      "yinlifanshui":"盈利返水",
+      "zuhezhanbilv":"组合占比率",
+      "jinri":"今日",
+      "day_7":"7日",
+      "day_15":"15日",
+      "day_30":"30日",
+      "youxipingtai":"游戏平台",
+      "bishu":"笔数",
+      "touzhue":"投注额",
+      "youxiaotouzhu_":"有效投注: %s 投注额: %s",
+      "touzhuriqi":"投注日期 (东美时间)",
+      "wodeyinhangka_":"我的银行卡:已绑定%s张 (还可以绑定%s张)",
+      "tianjiayinhangka":"添加银行卡",
+      "zuiduoketianjia_":"(最多可添加%s张)",
+      "wenxintixing_yinhangka":"温馨提醒:\n1.银行卡账户持有人姓名必须与注册时输入的姓名一致,否则无法申请提款;\n2.每个用户最多可以绑定 3 张银行卡;\n3.一经绑定不能擅自修改,如需修改请",
+      "tianjiashuziqianbao":"添加数字钱包",
+      "wenxintixing_usdt":"温馨提醒:\n1.每个用户最多可以绑定 3 个UDDT钱包账户(不同协议分别可以绑定一个;\n2.一经绑定不能擅自修改,如需修改请",
+      "dizhi":"地址",
+      "suoshuxieyi":"所属协议",
+      "hongbao":"红包",
+      "jine":"金额",
+      "youxiaoqi":"有效期",
+      "xuyaodamaliang":"需要打码量",
+      "yitiqu":"已提取",
+      "tiqu":"提取",
+      "tiquchenggong":"提取成功",
+      "duihuan":"兑换",
+      "huilv_":"汇率: %s",
+      "cong_from":"从",
+      "zhi_to":"至",
+      "zhuanru":"转入",
+      "huazhuanjine":"划转金额",
+      "querenhuazhuan":"确认划转",
+      "yijianguiji":"一键归集",
 
 
     },

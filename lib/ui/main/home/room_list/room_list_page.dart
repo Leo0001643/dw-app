@@ -9,7 +9,6 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
-import 'package:sprintf/sprintf.dart';
 
 import 'room_list_logic.dart';
 
@@ -64,7 +63,7 @@ class _RoomListPageState extends State<RoomListPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(Intr().card_ptf,style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
-                        Text(sprintf(Intr().dangqianzaixian,["10","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                        Text(Intr().dangqianzaixian(["10","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
                       ],
                     ),
                     InkWell(
@@ -102,7 +101,7 @@ class _RoomListPageState extends State<RoomListPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(Intr().card_gjf,style: TextStyle(fontSize: 20.sp,color: ColorX.color_344e7b,fontWeight: FontWeight.w600),),
-                        Text(sprintf(Intr().dangqianzaixian,["14","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
+                        Text(Intr().dangqianzaixian(["14","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
                       ],
                     ),
                     InkWell(
@@ -140,7 +139,7 @@ class _RoomListPageState extends State<RoomListPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(Intr().card_gbf,style: TextStyle(fontSize: 20.sp,color: ColorX.color_4e3100,fontWeight: FontWeight.w600),),
-                        Text(sprintf(Intr().dangqianzaixian,["17","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
+                        Text(Intr().dangqianzaixian(["17","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
                       ],
                     ),
                     InkWell(

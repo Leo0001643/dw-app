@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -41,7 +42,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("走势",msg: true),
+      appBar: WidgetUtils().buildAppBar(Intr().zoushi,msg: true),
       backgroundColor: ColorX.color_f7f8fb,
       body: SmartRefresher(
         controller: _refreshController,
@@ -88,9 +89,9 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                           alignment: WrapAlignment.center,
                           spacing: 3.w,
                           children: [
-                            Text("第",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
+                            Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
                             Text("112030767",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,),),
-                            Text("期",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
+                            Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
                           ],
                         ),
                         SizedBox(height: 10.h,),
@@ -126,7 +127,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                       children: [
                         Image.asset(ImageX.icon_lisi_kj),
                         SizedBox(width: 3.w,),
-                        Text("历史开奖",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                        Text(Intr().lishikaijiang,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
                       ],
                     ),
                   ),
@@ -138,7 +139,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                       children: [
                         Image.asset(ImageX.icon_lisi_jiang),
                         SizedBox(width: 3.w,),
-                        Text("开奖走势",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                        Text(Intr().kaijiangzhoushi,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
                       ],
                     ),
                   ),
@@ -148,7 +149,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                     child: Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        Text("去购彩",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+                        Text(Intr().qugoucai,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
                         SizedBox(width: 3.w,),
                         Image.asset(ImageX.icon_right_black),
                       ],

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
@@ -22,7 +23,7 @@ class _MessageDetailsPageState extends State<MessageDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("公告详情",bgColor: Colors.white),
+      appBar: WidgetUtils().buildAppBar(Intr().gonggaoxiangqing,bgColor: Colors.white),
       backgroundColor: Colors.white,
       body: Container(
         margin: EdgeInsets.only(left: 15.w,right: 15.w,top: 15.h),

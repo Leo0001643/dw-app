@@ -8,7 +8,6 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
-import 'package:sprintf/sprintf.dart';
 
 ///确认注单
 class ConfirmBettingDialog extends StatefulWidget{
@@ -59,7 +58,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("请确认注单",style: TextStyle(fontSize: 14.sp,color: Colors.white,),),
-                Text(sprintf(Intr().dixqi,[" 1231312 "]),style: TextStyle(fontSize: 14.sp,color: Colors.white,),),
+                Text(Intr().dixqi([" 1231312 "]),style: TextStyle(fontSize: 14.sp,color: Colors.white,),),
               ],
             ),
           ),

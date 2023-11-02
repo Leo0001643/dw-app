@@ -6,7 +6,6 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
-import 'package:sprintf/sprintf.dart';
 import 'data_analysis_logic.dart';
 
 ///数据分析
@@ -67,8 +66,8 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(sprintf(Intr().lx_tongji,["特码"]),style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
-                  Text(sprintf(Intr().xianshiqishu_,["50"]),style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+                  Text(Intr().lx_tongji(["特码"]),style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+                  Text(Intr().xianshiqishu_(["50"]),style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
                 ],
               ),
             ),

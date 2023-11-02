@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
@@ -81,7 +82,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                   Container(
                     height: 76.h,
                     alignment: Alignment.center,
-                    child: Text("期号",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,),),
+                    child: Text(Intr().qihao,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,),),
                   ),
                   SizedBox(height: 1.h,child: Container(color: ColorX.color_10_949,),),
                   Expanded(

@@ -34,7 +34,7 @@ class HomeLogic extends GetxController {
         break;
       case 2:///抽奖
         // DialogUtils().showAccessRouteDialog(context);
-        // Get.toNamed(Routes.points_lottery);
+        Get.toNamed(Routes.points_lottery);
         break;
       case 3:///走势
         Get.toNamed(Routes.lottery_trend);

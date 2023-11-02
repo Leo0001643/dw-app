@@ -9,7 +9,6 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:sprintf/sprintf.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'sign_in_logic.dart';
@@ -73,8 +72,8 @@ class _SignInPageState extends State<SignInPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(sprintf(Intr().benyueyiqian,["2"]),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none),),
-                      Text(sprintf(Intr().zongjifen_,["6.19"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,decoration: TextDecoration.none),),
+                      Text(Intr().benyueyiqian(["2"]),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none),),
+                      Text(Intr().zongjifen_(["6.19"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,decoration: TextDecoration.none),),
                     ],
                   ),
                 ),
