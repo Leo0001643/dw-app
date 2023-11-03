@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -28,7 +29,7 @@ class BulletBottomDialog extends StatefulWidget {
 class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTickerProviderStateMixin{
   late TabController _tabController;
 
-  var tabs = ["常用短语","其他短语","表情","GIF"];
+  var tabs = [Intr().changyongduanyu,Intr().qitaduanyu,Intr().biaoqing,Intr().gif];
 
   var selectPhrases = (-1).obs;
 

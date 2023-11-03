@@ -6,9 +6,6 @@ class DataUtils{
 
   /// get WeekDay.
   /// dateTime
-  /// isUtc
-  /// languageCode zh or en
-  /// short
   static String getWeekday(DateTime? dateTime) {
     if (dateTime == null) return "";
     String weekday = "";

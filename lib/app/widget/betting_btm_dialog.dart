@@ -259,7 +259,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                       ),
                                       margin: EdgeInsets.only(left: 10.w),
                                       child: Obx(() {
-                                        return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, "请输入金额",
+                                        return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, Intr().qingshurujine,
                                             defText: inputAmt.value,inputType: TextInputType.number,onChanged: (v)=> inputAmt.value = v);
                                       }),
                                     ),

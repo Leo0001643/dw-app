@@ -23,13 +23,13 @@ class LanguageDialog extends StatefulWidget{
 
 class StateLanguageDialog extends State<LanguageDialog>{
 
-  var dropdownValue = LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh).obs;
+
+  var dropdownValue = LanguageMenuEntity(language: Intr().zhongwenjianti, icon: ImageX.icon_zh,locale: Intr().locales[0]).obs;
 
   late List<LanguageMenuEntity> country = [
     dropdownValue.value,
-    LanguageMenuEntity(language: "English", icon: ImageX.icon_us),
-    LanguageMenuEntity(language: "Deutsch", icon: ImageX.icon_de),
-    LanguageMenuEntity(language: "Indonesia", icon: ImageX.icon_indonesia),
+    LanguageMenuEntity(language: Intr().yingyu, icon: ImageX.icon_us,locale: Intr().locales[1]),
+    LanguageMenuEntity(language: Intr().yuenanyu, icon: ImageX.icon_vi,locale: Intr().locales[2]),
   ];
 
 

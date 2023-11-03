@@ -146,14 +146,16 @@ class StateHistoryLotteryBtmDialog extends State<HistoryLotteryBtmDialog>{
           buildDrawNum("5"),
           buildDrawMark("="),
           buildDrawResult("22"),
-          Wrap(
-            children: [
-              Text("(",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-              Text(Intr().bet_xiao,style: TextStyle(fontSize: 12.sp,color: ColorX.color_529aff,fontWeight: FontWeight.w600),),
-              SizedBox(width: 3.w,),
-              Text(Intr().bet_shuang,style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
-              Text(")",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-            ],
+          Expanded(
+            child: Wrap(
+              children: [
+                Text("(",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                Text(Intr().bet_xiao,style: TextStyle(fontSize: 12.sp,color: ColorX.color_529aff,fontWeight: FontWeight.w600),),
+                SizedBox(width: 3.w,),
+                Text(Intr().bet_shuang,style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
+                Text(")",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              ],
+            ),
           ),
         ],
       ),

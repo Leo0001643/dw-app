@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -32,7 +33,7 @@ class StateSelectWalletBottomDialog extends State<SelectWalletBottomDialog>{
           Center(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 20.h),
-              child: Text("切换全局钱包",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              child: Text(Intr().qiehuanquanjuqianbao,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
             ),
           ),
           Padding(
@@ -40,7 +41,7 @@ class StateSelectWalletBottomDialog extends State<SelectWalletBottomDialog>{
             child: InkWell(
               onTap: ()=> current.value = 0,
               child: Obx(() {
-                return buildWalletItem("人民币钱包", "余额: ¥8,888", current.value == 0);
+                return buildWalletItem(Intr().wallet_cny, "${Intr().yue_} ¥8,888", current.value == 0);
               }),
             ),
           ),
@@ -50,7 +51,7 @@ class StateSelectWalletBottomDialog extends State<SelectWalletBottomDialog>{
             child: InkWell(
               onTap: ()=> current.value = 1,
               child: Obx(() {
-                return buildWalletItem("USDT钱包", "余额: ¥8,888", current.value == 1);
+                return buildWalletItem(Intr().wallet_usdt, "${Intr().yue_} ¥8,888", current.value == 1);
               }),
             ),
           ),

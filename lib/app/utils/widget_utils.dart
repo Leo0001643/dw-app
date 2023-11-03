@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -77,7 +78,7 @@ class WidgetUtils {
     );
   }
 
-  AppBar buildAppBar(String? title,{bool msg = false,bool drawer=false,bool back=true,Color bgColor = ColorX.color_f7f8fb}){
+  AppBar buildAppBar(String? title,{bool msg = false,bool drawer=false,bool back=true,Color? bgColor}){
     return AppBar(
       title: Text(title.em(),
         style: TextStyle(
@@ -86,7 +87,7 @@ class WidgetUtils {
             fontWeight: FontWeight.w600),
       ),
       centerTitle: true,
-      backgroundColor: bgColor,
+      backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
       leading: Visibility(
         visible: back,
@@ -129,7 +130,7 @@ class WidgetUtils {
             fontWeight: FontWeight.w600),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: ColorX.appBarBg(),
       elevation: 0,
       leading: InkWell(
         onTap: ()=>Get.back(),
@@ -140,7 +141,7 @@ class WidgetUtils {
   }
 
 
-  AppBar buildRxAppBar(RxString title,{bool msg = false,bool back=true,Color bgColor = ColorX.color_f7f8fb}){
+  AppBar buildRxAppBar(RxString title,{bool msg = false,bool back=true,Color? bgColor}){
     return AppBar(
       title: Obx(() {
         return Text(title.value,
@@ -151,7 +152,7 @@ class WidgetUtils {
         );
       }),
       centerTitle: true,
-      backgroundColor: bgColor,
+      backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
       leading: Visibility(
         visible: back,
@@ -176,7 +177,7 @@ class WidgetUtils {
   }
 
   AppBar buildRoomBar(RxString title,{bool msg = false,bool back=true,
-    Color bgColor = ColorX.color_f7f8fb,GestureTapCallback? onTap,}){
+    Color? bgColor,GestureTapCallback? onTap,}){
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -199,7 +200,7 @@ class WidgetUtils {
         ),
       ),
       centerTitle: true,
-      backgroundColor: bgColor,
+      backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
       leading: Visibility(
         visible: back,
@@ -225,7 +226,7 @@ class WidgetUtils {
 
 
   AppBar buildGameBar(RxString title,Widget subTitle,{bool msg = false,bool collect = false, bool back=true,
-    Color bgColor = ColorX.color_f7f8fb,GestureTapCallback? onTap,GestureTapCallback? onCollect,}){
+    Color? bgColor,GestureTapCallback? onTap,GestureTapCallback? onCollect,}){
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -254,7 +255,7 @@ class WidgetUtils {
         ),
       ),
       centerTitle: true,
-      backgroundColor: bgColor,
+      backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
       leading: Visibility(
         visible: back,
@@ -289,7 +290,7 @@ class WidgetUtils {
   }
 
 
-  AppBar buildHtmlBar(RxString title,{bool back=true,Color bgColor = ColorX.color_f7f8fb}){
+  AppBar buildHtmlBar(RxString title,{bool back=true,Color? bgColor}){
     return AppBar(
       title: Obx(() {
         return Text(title.value,
@@ -300,7 +301,7 @@ class WidgetUtils {
         );
       }),
       centerTitle: true,
-      backgroundColor: bgColor,
+      backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
       leading: Visibility(
         visible: back,
@@ -367,7 +368,7 @@ class WidgetUtils {
 
   void clickCopy(String value){
     Clipboard.setData(ClipboardData(text: value));
-    showToast("复制成功");
+    showToast(Intr().fuzhichenggong);
   }
 
 

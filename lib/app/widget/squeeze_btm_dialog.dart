@@ -68,7 +68,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
             ),
           ),
           SizedBox(height: 15.h,),
-          Center(child: Image.asset(ImageX.titlegj),),
+          Center(child: Image.asset(ImageX.titlegjP()),),
           Stack(
             children: [
               Center(child: Image.asset(ImageX.guajiabg,width: 362.w,height: 347.h,fit: BoxFit.fill,),),
@@ -85,7 +85,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                         child: Scratcher(
                           accuracy: ScratchAccuracy.low,
                           color: Colors.transparent,
-                          image: Image.asset(ImageX.guagua_mask1,fit: BoxFit.fill,),
+                          image: Image.asset(ImageX.guaguaMask1P(),fit: BoxFit.fill,),
                           brushSize: 20.r,
                           threshold: 50,
                           onThreshold: () {

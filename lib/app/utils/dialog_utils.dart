@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/access_route_dialog.dart';
@@ -101,19 +102,20 @@ class DialogUtils {
                 Container(
                   height: 70.h,
                   alignment: Alignment.center,
-                  child: Text("是否退出登录",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
+                  child: Text(Intr().shifoutuichudenglu
+                    ,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
                 ),
                 Divider(color: ColorX.color_10_949,height: 1.h,),
               ],
             ),
             actionsPadding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 15.h),
             actions: [
-              WidgetUtils().buildElevatedButton("取消", 116.w, 40.h,
+              WidgetUtils().buildElevatedButton(Intr().cancel, 116.w, 40.h,
                   bg: ColorX.color_f7f8fb,textColor: ColorX.color_58698d,onPressed: (){
                 Navigator.of(context).pop(false);
               }),
               SizedBox(width: 10.w,),
-              WidgetUtils().buildElevatedButton("确定", 116.w, 40.h,
+              WidgetUtils().buildElevatedButton(Intr().confirm, 116.w, 40.h,
                   bg: ColorX.color_fc243b,textColor: Colors.white,onPressed: (){
                     Navigator.of(context).pop(true);
               })

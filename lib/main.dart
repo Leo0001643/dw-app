@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:leisure_games/app/app_theme.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'app/app_data.dart';
 import 'app/global.dart';
@@ -16,7 +17,7 @@ import 'app/routes.dart';
 void main() {
   Logger.init(tag: 'leisure_games',isDebug: isDebug);
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  AppData.initData().then((value) => runApp(MyApp()));///初始化本地数据
 }
 
 // ignore: must_be_immutable
@@ -25,12 +26,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    AppData.initData();///初始化本地数据
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,//强制竖屏
       DeviceOrientation.portraitDown
     ]);
-
     return ScreenUtilInit(
       //填入设计稿中设备的屏幕尺寸,单位dp
         designSize: const Size(375, 778),
@@ -40,8 +39,8 @@ class MyApp extends StatelessWidget {
           initialRoute: Routes.main,
           getPages: Routes.getPages,
           navigatorObservers: [RouteObservers()],
-          locale: Intr().locales[0],
-          fallbackLocale: Intr().locales[1], ///添加一个默认语言选项，以备上面指定的语言翻译 不存在
+          locale: Intr().currentLocale(),
+          fallbackLocale: Intr().fallbackLocale(), ///添加一个默认语言选项，以备上面指定的语言翻译 不存在
           supportedLocales: Intr().locales,
           localizationsDelegates: const [
             RefreshLocalizations.delegate,
@@ -49,6 +48,7 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate, /// 对应的Cupertino风格
             GlobalWidgetsLocalizations.delegate, /// 指定默认的文本排列方向, 由左到右或由右到左
           ],
+          themeMode: AppTheme().currentTheme(),
           // builder: (context,widget){
           //   return MediaQuery(///设置文字大小不随系统设置改变
           //       data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
