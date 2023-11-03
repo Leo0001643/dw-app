@@ -7,6 +7,8 @@ import 'package:leisure_games/ui/login/login_page.dart';
 import 'package:leisure_games/ui/main/customer_service/customer_service_binding.dart';
 import 'package:leisure_games/ui/main/customer_service/service_details/service_details_binding.dart';
 import 'package:leisure_games/ui/main/customer_service/service_details/service_details_page.dart';
+import 'package:leisure_games/ui/main/home/chess_game_list/chess_game_list_binding.dart';
+import 'package:leisure_games/ui/main/home/chess_game_list/chess_game_list_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/betting_details/betting_details_binding.dart';
 import 'package:leisure_games/ui/main/home/game_room/betting_details/betting_details_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_binding.dart';
@@ -43,6 +45,8 @@ import 'package:leisure_games/ui/main/home/room_list/room_list_binding.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_page.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_binding.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_page.dart';
+import 'package:leisure_games/ui/main/home/table_game_list/table_game_list_binding.dart';
+import 'package:leisure_games/ui/main/home/table_game_list/table_game_list_page.dart';
 import 'package:leisure_games/ui/main/main_binding.dart';
 import 'package:leisure_games/ui/main/main_page.dart';
 import 'package:leisure_games/ui/main/mine/about/about_binding.dart';
@@ -61,6 +65,8 @@ import 'package:leisure_games/ui/main/mine/bonus_packet/bonus_packet_binding.dar
 import 'package:leisure_games/ui/main/mine/bonus_packet/bonus_packet_page.dart';
 import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_binding.dart';
 import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_page.dart';
+import 'package:leisure_games/ui/main/mine/help_center/help_center_binding.dart';
+import 'package:leisure_games/ui/main/mine/help_center/help_center_page.dart';
 import 'package:leisure_games/ui/main/mine/member_rebate/bet_amount_rebate/bet_amount_rebate_binding.dart';
 import 'package:leisure_games/ui/main/mine/member_rebate/bet_amount_rebate/bet_amount_rebate_page.dart';
 import 'package:leisure_games/ui/main/mine/member_rebate/member_rebate_binding.dart';
@@ -153,6 +159,8 @@ class Routes {
   static const String proxy_register = "/mine/proxy_register";
   static const String quota_conversion = "/mine/quota_conversion";
   static const String about = "/mine/about";
+  static const String help_center = "/mine/help_center";
+
   static const String coin_exchange = "/mine/coin_exchange";
   static const String bill_flow = "/mine/bill_flow";
   static const String betting_record = "/mine/betting_record";
@@ -170,8 +178,8 @@ class Routes {
   static const String recharge_record = "/home/recharge_record";
   static const String sign_in = "/home/sign_in";
   static const String points_lottery = "/home/points_lottery";
-  // static const String table_game_list = "/home/table_game_list";
-  // static const String chess_game_list = "/home/chess_game_list";
+  static const String table_game_list = "/home/table_game_list";
+  static const String chess_game_list = "/home/chess_game_list";
 
 
 
@@ -213,6 +221,7 @@ class Routes {
     GetPage(name: proxy_register,binding: ProxyRegisterBinding(), page: () => ProxyRegisterPage()),
     GetPage(name: quota_conversion,binding: QuotaConversionBinding(), page: () => QuotaConversionPage()),
     GetPage(name: about,binding: AboutBinding(), page: () => AboutPage()),
+    GetPage(name: help_center,binding: HelpCenterBinding(), page: () => HelpCenterPage()),
     GetPage(name: coin_exchange,binding: CoinExchangeBinding(), page: () => CoinExchangePage()),
     GetPage(name: bill_flow,binding: BillFlowBinding(), page: () => BillFlowPage()),
     GetPage(name: betting_record,binding: BettingRecordBinding(), page: () => BettingRecordPage()),
@@ -235,8 +244,8 @@ class Routes {
     GetPage(name: recharge_record,binding: RechargeRecordBinding(), page: () => RechargeRecordPage()),
     GetPage(name: sign_in,binding: SignInBinding(), page: () => SignInPage()),
     GetPage(name: points_lottery,binding: PointsLotteryBinding(), page: () => PointsLotteryPage()),
-    // GetPage(name: chess_game_list,binding: ChessGameListBinding(), page: () => ChessGameListPage()),
-    // GetPage(name: table_game_list,binding: TableGameListBinding(), page: () => TableGameListPage()),
+    GetPage(name: chess_game_list,binding: ChessGameListBinding(), page: () => ChessGameListPage()),
+    GetPage(name: table_game_list,binding: TableGameListBinding(), page: () => TableGameListPage()),
 
   ];
   

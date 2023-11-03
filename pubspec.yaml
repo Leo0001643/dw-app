@@ -93,6 +93,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/font/
+    - assets/music/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -116,6 +118,15 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: ITCAvantGardeStd
+      fonts:
+        - asset: assets/font/ITCAvantGardeStd-Bk.otf
+          weight: 600
+        - asset: assets/font/ITCAvantGardeStd-Demi.otf
+          weight: 400
+        - asset: assets/font/ITCAvantGardeStd-Md.otf
+          weight: 500
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_intl:

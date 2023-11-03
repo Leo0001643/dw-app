@@ -1,21 +1,10 @@
-import 'package:leisure_games/generated/json/base/json_field.dart';
-import 'package:leisure_games/generated/json/language_menu_entity.g.dart';
-import 'dart:convert';
-export 'package:leisure_games/generated/json/language_menu_entity.g.dart';
+import 'dart:ui';
 
-@JsonSerializable()
 class LanguageMenuEntity {
 	String? language = '';
 	String? icon = '';
+	Locale? locale;
 
-	LanguageMenuEntity({this.language,this.icon});
+	LanguageMenuEntity({this.language,this.icon,this.locale});
 
-	factory LanguageMenuEntity.fromJson(Map<String, dynamic> json) => $LanguageMenuEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $LanguageMenuEntityToJson(this);
-
-	@override
-	String toString() {
-		return jsonEncode(this);
-	}
 }

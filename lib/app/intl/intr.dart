@@ -2,6 +2,7 @@
 import 'dart:ui';
 
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 
 class Intr extends Translations{
   Intr._internal();
@@ -19,18 +20,17 @@ class Intr extends Translations{
   //中文 英文 越南语
   var locales = [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
 
+  ///当前语言环境
+  Locale currentLocale(){
+    return locales[AppData.localeIndex()];
+  }
 
-  String get language => 'language'.tr;
-  String get count => 'count'.tr;
-  String get storage => 'storage'.tr;
+  ///当前语言环境
+  Locale fallbackLocale(){
+    return locales[1];
+  }
+
   String get theme => 'theme'.tr;
-  String get connect => 'connect'.tr;
-  String get permission => 'permission'.tr;
-  String get webview => 'webview'.tr;
-  String get pictureSelector => 'pictureSelector'.tr;
-  String get rx_dart => 'rx_dart'.tr;
-  String get multiple => 'multiple'.tr;
-  String get userEventBus => 'userEventBus'.tr;
   String get home => 'home'.tr;
   String get mine => 'mine'.tr;
   String get preferential => 'preferential'.tr;
@@ -39,19 +39,6 @@ class Intr extends Translations{
   String get tixian => 'tixian'.tr;
   String get choujiang => 'choujiang'.tr;
   String get zoushi => 'zoushi'.tr;
-  String get activity => 'activity'.tr;
-  String get other => 'other'.tr;
-  String get sayHello => 'sayHello'.tr;
-  String get ac_unit => 'ac_unit'.tr;
-  String get access_alarm => 'access_alarm'.tr;
-  String get accessibility => 'accessibility'.tr;
-  String get account_balance => 'account_balance'.tr;
-  String get account_balance_wallet => 'account_balance_wallet'.tr;
-  String get add_a_photo => 'add_a_photo'.tr;
-  String get add_moderator => 'add_moderator'.tr;
-  String get add_shopping_cart => 'add_shopping_cart'.tr;
-  String get getx_get => 'getx_get'.tr;
-  String get getx_post => 'getx_post'.tr;
   String get remen => 'remen'.tr;
   String get zuijin => 'zuijin'.tr;
   String get shoucang => 'shoucang'.tr;
@@ -347,6 +334,7 @@ class Intr extends Translations{
   String get querentixianxinxi => 'querentixianxinxi'.tr;
   String get tixianjine => 'tixianjine'.tr;
   String get qingshurutixianmima => 'qingshurutixianmima'.tr;
+  String get qingshurutixianjine => 'qingshurutixianjine'.tr;
   String get querenjine => 'querenjine'.tr;
   String get shouxufei => 'shouxufei'.tr;
   String get kedaozhangjine => 'kedaozhangjine'.tr;
@@ -375,7 +363,6 @@ class Intr extends Translations{
   String get shezhidenglumima => 'shezhidenglumima'.tr;
   String get shezhijianyimima => 'shezhijianyimima'.tr;
   String get zhongwen => 'zhongwen'.tr;
-  String get qianse => 'qianse'.tr;
   String get quankai => 'quankai'.tr;
   String get tuichudenglu => 'tuichudenglu'.tr;
   String get wanshanziliao => 'wanshanziliao'.tr;
@@ -386,6 +373,7 @@ class Intr extends Translations{
   String get shuruweixinhao => 'shuruweixinhao'.tr;
   String get shuruqqhaoma => 'shuruqqhaoma'.tr;
   String get shuruzhenshiyouxiao => 'shuruzhenshiyouxiao'.tr;
+  String get shurudianziyouxiang => 'shurudianziyouxiang'.tr;
   String get shurunicheng => 'shurunicheng'.tr;
   String get shezhitixianmima => 'shezhitixianmima'.tr;
   String get yuanmima => 'yuanmima'.tr;
@@ -473,10 +461,40 @@ class Intr extends Translations{
   String get cong_from => 'cong_from'.tr;
   String get zhi_to => 'zhi_to'.tr;
   String get zhuanru => 'zhuanru'.tr;
-
   String get huazhuanjine => 'huazhuanjine'.tr;
   String get querenhuazhuan => 'querenhuazhuan'.tr;
   String get yijianguiji => 'yijianguiji'.tr;
+  String get xuanzheriqi => 'xuanzheriqi'.tr;
+  String get shaixuan => 'shaixuan'.tr;
+  String get cunqukuan => 'cunqukuan'.tr;
+  String get zhuanzhang => 'zhuanzhang'.tr;
+  String get zhichu => 'zhichu'.tr;
+  String get shouru => 'shouru'.tr;
+  String get qingxuanzhe => 'qingxuanzhe'.tr;
+  String get qing3fenzhonghoushuaxin => 'qing3fenzhonghoushuaxin'.tr;
+  String get chongzhixiangqing => 'chongzhixiangqing'.tr;
+  String get dingdanbianhao => 'dingdanbianhao'.tr;
+  String get chongzhijine => 'chongzhijine'.tr;
+  String get chongzhixingming => 'chongzhixingming'.tr;
+  String get zhongwenjianti => 'zhongwenjianti'.tr;
+  String get yingyu => 'yingyu'.tr;
+  String get yuenanyu => 'yuenanyu'.tr;
+  String get jintian => 'jintian'.tr;
+  String get zuijin7tain => 'zuijin7tain'.tr;
+  String get zuijin30tian => 'zuijin30tian'.tr;
+  String get quanbuzhuangtai => 'quanbuzhuangtai'.tr;
+  String get chenggong => 'chenggong'.tr;
+  String get chulizhong => 'chulizhong'.tr;
+  String get yiquxiao => 'yiquxiao'.tr;
+  String get quanbufangshi => 'quanbufangshi'.tr;
+  String get changyongduanyu => 'changyongduanyu'.tr;
+  String get qitaduanyu => 'qitaduanyu'.tr;
+  String get biaoqing => 'biaoqing'.tr;
+  String get gif => 'gif'.tr;
+  String get shifoutuichudenglu => 'shifoutuichudenglu'.tr;
+  String get fuzhichenggong => 'fuzhichenggong'.tr;
+  String get qiehuanquanjuqianbao => 'qiehuanquanjuqianbao'.tr;
+  String get tuijianyouli => 'tuijianyouli'.tr;
 
 
 
@@ -489,7 +507,6 @@ class Intr extends Translations{
   @override
   Map<String, Map<String, String>> get keys => {
     'zh_ZH': {
-      "app_name": "Flutter示例",
       "home": "首页",
       "mine": "我的",
       "preferential": "优惠",
@@ -498,35 +515,8 @@ class Intr extends Translations{
       "choujiang": "抽奖",
       "zoushi": "走势",
       "customer_service": "客服",
-      "activity": "活动",
-      "other": "其他",
-      "greet": "你好~",
-      "language": "语言",
-      "count": "GetX计数器",
-      "storage": "轻量存储",
-      "connect": "网络请求",
       "theme": "主题",
-      "dio_get":"dio get",
-      "dio_post":"dio post",
-      "getx_get": "getx Get",
-      "getx_post": "getx Post",
-      "permission": "权限",
-      "webview": "浏览器",
-      "pictureSelector": "图片选择器",
-      "rx_dart": "RxDart使用",
       "pick_time": "选择时间",
-      "sayHello": "你好",
-      "multiple": "多布局",
-      "userEventBus": "欢迎使用EventBus",
-      "permissionDenied": "权限已被拒绝",
-      "ac_unit": "雪花",
-      "access_alarm": "闹钟",
-      "accessibility": "健康",
-      "account_balance": "酒店",
-      "account_balance_wallet": "钱包",
-      "add_a_photo": "摄影",
-      "add_moderator": "安全",
-      "add_shopping_cart": "购物",
       "remen": "热门",
       "zuijin": "最近",
       "shoucang": "收藏",
@@ -823,6 +813,7 @@ class Intr extends Translations{
       "querentixianxinxi":"确认提现信息",
       "tixianjine":"提现金额",
       "qingshurutixianmima":"请输入提现密码",
+      "qingshurutixianjine":"请输入提现金额",
       "querenjine":"确认金额",
       "shouxufei":"手续费",
       "kedaozhangjine":"可到账金额",
@@ -853,7 +844,6 @@ class Intr extends Translations{
       "shezhidenglumima":"设置登录密码",
       "shezhijianyimima":"设置简易密码",
       "zhongwen":"中文",
-      "qianse":"浅色",
       "quankai":"全开",
       "tuichudenglu":"退出登录",
       "wanshanziliao":"完善资料",
@@ -861,9 +851,10 @@ class Intr extends Translations{
       "shoujihaoma":"手机号码",
       "qqhaoma":"QQ号码",
       "weixin":"微信",
-      "shuruweixinhao":"输入微信号",
-      "shuruqqhaoma":"输入QQ号码",
-      "shuruzhenshiyouxiao":"输入真实有效的手机号码",
+      "shuruweixinhao":"请输入微信号",
+      "shuruqqhaoma":"请输入QQ号码",
+      "shuruzhenshiyouxiao":"请输入真实有效的手机号码",
+      "shurudianziyouxiang":"请输入电子邮箱",
       "shurunicheng":"输入昵称",
       "shezhitixianmima":"设置提现密码",
       "yuanmima":"原密码",
@@ -880,8 +871,6 @@ class Intr extends Translations{
       "shuruyuandenglumima":"输入原登录密码",
       "shuruxindenglumima":"输入6-12位新登录密码",
       "chongfushuruxindenglumima":"重复输入新登录密码",
-
-
       "genghuantouxiang":"更换头像",
       "moren":"默认",
       "qq":"QQ",
@@ -909,7 +898,6 @@ class Intr extends Translations{
       "jiaoyileibie":"交易类别",
       "jiaoyiedu":"交易额度",
       "xianyouedu":"现有额度",
-
       "xiazhujifenjiangli":"下注积分奖励",
       "fuyinglifanshui":"负盈利返水",
       "youxileixing":"游戏类型",
@@ -954,6 +942,38 @@ class Intr extends Translations{
       "huazhuanjine":"划转金额",
       "querenhuazhuan":"确认划转",
       "yijianguiji":"一键归集",
+      "xuanzheriqi":"选择日期",
+      "shaixuan":"筛选",
+      "cunqukuan":"存/提款",
+      "zhuanzhang":"转账",
+      "zhichu":"支出",
+      "shouru":"收入",
+      "qingxuanzhe":"请选择",
+      "qing3fenzhonghoushuaxin":"请3分钟后刷新本页,查询进度",
+      "chongzhixiangqing":"充值详情",
+      "chongzhixingming":"充值姓名",
+      "dingdanbianhao":"订单编号",
+      "chongzhijine":"充值金额",
+      "zhongwenjianti":"中文简体",
+      "yingyu":"英语",
+      "yuenanyu":"越南语",
+      "jintian":"今天",
+      "zuijin7tain":"最近7天",
+      "zuijin30tian":"最近30天",
+      "quanbuzhuangtai":"全部状态",
+      "chenggong":"成功",
+      "chulizhong":"处理中",
+      "yiquxiao":"已取消",
+      "quanbufangshi":"全部方式",
+      "changyongduanyu":"常用短语",
+      "qitaduanyu":"其他短语",
+      "biaoqing":"表情",
+      "gif":"GIF",
+      "shifoutuichudenglu":"是否退出登录",
+      "fuzhichenggong":"复制成功",
+      "qiehuanquanjuqianbao":"切换全局钱包",
+      "tuijianyouli":"推荐有礼",
+
 
 
     },

@@ -1,6 +1,9 @@
 
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+import 'package:leisure_games/app/app_data.dart';
+
 class ColorX{
 
   static const color_fc243b = Color(0xffFC243B);
@@ -59,6 +62,22 @@ class ColorX{
   static const color_50_c13 = Color.fromRGBO(193,54,54,0.50);
 
 
+  static Color pageBg(){
+    return AppData.theme() ? Colors.white : Colors.black;
+  }
+
+  static Color pageBg2(){
+    return AppData.theme() ? ColorX.color_f7f8fb : Colors.black;
+  }
+
+
+  static Color appBarBg(){
+    return AppData.theme() ? Colors.white : Colors.black;
+  }
+
+  static Color appBarBg2(){
+    return AppData.theme() ? ColorX.color_f7f8fb : Colors.black;
+  }
 
 
 

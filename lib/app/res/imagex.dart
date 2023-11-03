@@ -1,4 +1,6 @@
 
+import 'package:leisure_games/app/app_data.dart';
+
 class ImageX{
   
   static const icon_face = 'assets/images/face.png';
@@ -327,7 +329,6 @@ class ImageX{
   static const q69 = 'assets/images/q69.png';
   static const q70 = 'assets/images/q70.png';
 
-
   static const qiandaotanchuang_bg = 'assets/images/qiandaotanchuang_bg.png';
   static const recharge_bg = 'assets/images/recharge_bg.jpg';
   static const room = 'assets/images/room.jpg';
@@ -355,8 +356,6 @@ class ImageX{
   static const wins = 'assets/images/wins.png';
   static const xuanzhuan = 'assets/images/xuanzhuan.png';
   static const yellowJt = 'assets/images/yellowJt.png';
-
-
   static const checkMa1 = 'assets/images/checkMa1.png';
   static const checkMa2 = 'assets/images/checkMa2.png';
   static const dice_1 = 'assets/images/dice_1.png';
@@ -397,11 +396,294 @@ class ImageX{
   static const lucky_title = 'assets/images/lucky_title.png';
   static const close_btn = 'assets/images/close_btn.png';
 
+  static const close_en = 'assets/images/close_en.png';
+  static const close_vi = 'assets/images/close_vi.png';
+  static const draw_btn_en = 'assets/images/draw_btn_en.png';
+  static const draw_btn_vi = 'assets/images/draw_btn_vi.png';
+  static const guagua_mask1_vi = 'assets/images/guagua_mask1_vi.png';
+  static const guagua_mask1_en = 'assets/images/guagua_mask1_en.png';
+  static const icon_check_ma2_en = 'assets/images/icon_check_ma_2_en.png';
+  static const icon_check_ma2_vi = 'assets/images/icon_check_ma_2_vi.png';
+  static const icon_check_ma3_en = 'assets/images/icon_check_ma_3_en.png';
+  static const icon_check_ma3_vi = 'assets/images/icon_check_ma_3_vi.png';
+  static const icon_check_ma4_en = 'assets/images/icon_check_ma_4_en.png';
+  static const icon_check_ma4_vi = 'assets/images/icon_check_ma_4_vi.png';
+  static const icon_check_ma_en = 'assets/images/icon_check_ma_en.png';
+  static const icon_check_ma_vi = 'assets/images/icon_check_ma_vi.png';
+  static const ios1_en = 'assets/images/ios1_en.jpg';
+  static const ios1_vi = 'assets/images/ios1_vi.jpg';
+  static const ios1 = 'assets/images/ios1.png';
+  static const ios2_en = 'assets/images/ios2_en.jpg';
+  static const ios2_vi = 'assets/images/ios2_vi.jpg';
+  static const ios2 = 'assets/images/ios2.png';
+  static const ios3_en = 'assets/images/ios3_en.jpg';
+  static const ios3_vi = 'assets/images/ios3_vi.jpg';
+  static const ios3 = 'assets/images/ios3.png';
+  static const ios4_en = 'assets/images/ios4_en.jpg';
+  static const ios4_vi = 'assets/images/ios4_vi.jpg';
+  static const ios4 = 'assets/images/ios4.png';
+  static const ios5_en = 'assets/images/ios5_en.jpg';
+  static const ios5_vi = 'assets/images/ios5_vi.jpg';
+  static const ios5 = 'assets/images/ios5.png';
+  static const ios6_en = 'assets/images/ios6_en.jpg';
+  static const ios6_vi = 'assets/images/ios6_vi.jpg';
+  static const ios6 = 'assets/images/ios6.png';
+  static const lottering_en = 'assets/images/lottering_en.png';
+  static const lottering_vi = 'assets/images/lottering_vi.png';
+  static const lucky_title_en = 'assets/images/lucky_title_en.png';
+  static const lucky_title_vi = 'assets/images/lucky_title_vi.png';
+  // static const open_en = 'assets/images/open_en.png';
+  static const open_vi = 'assets/images/open_vi.png';
+  // static const start_en = 'assets/images/start_en.png';
+  static const start_vi = 'assets/images/start_vi.png';
+  static const step1_en = 'assets/images/step1_en.png';
+  static const step1_vi = 'assets/images/step1_vi.png';
+  static const step1 = 'assets/images/step1.png';
+  static const step2_en = 'assets/images/step2_en.png';
+  static const step2_vi = 'assets/images/step2_vi.png';
+  static const step2 = 'assets/images/step2.png';
+  static const step3_en = 'assets/images/step3_en.png';
+  static const step3_vi = 'assets/images/step3_vi.png';
+  static const step3 = 'assets/images/step3.png';
+  static const step4_en = 'assets/images/step4_en.png';
+  static const step4_vi = 'assets/images/step4_vi.png';
+  static const step4 = 'assets/images/step4.png';
+  static const titlegj_en = 'assets/images/titlegj_en.png';
+  static const titlegj_vi = 'assets/images/titlegj_vi.png';
+  static const qdyj = 'assets/images/qdyj.png';
+  static const tjyl = 'assets/images/tjyl.png';
+  static const yhhd = 'assets/images/yhhd.png';
+  static const room_dark = 'assets/images/room_dark.png';
+  static const tjyl_dark = 'assets/images/tjyl_dark.png';
+  static const yhhd_dark = 'assets/images/yhhd_dark.png';
+  static const my_bg_dark = 'assets/images/my_bg_dark.png';
+  static const my_card_dark = 'assets/images/my_card_dark.png';
+  static const qdyj_dark = 'assets/images/qdyj_dark.png';
+  static const afterLogin_dark = 'assets/images/afterLogin_dark.png';
+  static const icon_charge_dark = 'assets/images/icon_charge_dark.png';
+  static const icon_draw_dark = 'assets/images/icon_draw_dark.png';
+  static const icon_trend_dark = 'assets/images/icon_trend_dark.png';
+  static const icon_withdraw_dark = 'assets/images/icon_withdraw_dark.png';
+  static const isSelect_dark = 'assets/images/isSelect_dark.png';
+  static const kefutop_dark = 'assets/images/kefutop_dark.png';
+  static const ic_1room_dark = 'assets/images/ic_1room_dark.png';
+  static const ic_2room_dark = 'assets/images/ic_2room_dark.png';
+  static const ic_3room_dark = 'assets/images/ic_3room_dark.png';
+  static const recharge_bg_dark = 'assets/images/recharge_bg_dark.png';
 
 
 
 
-}  
+
+
+
+
+
+
+
+
+
+  
+  static String startP(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return start_en;
+      case 2:
+        return start_vi;
+      default:
+        return start;
+    }
+  }
+
+  static String closeP(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return close_en;
+      case 2:
+        return close_vi;
+      default:
+        return close;
+    }
+  }
+
+  static String drawBtnP(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return draw_btn_en;
+      case 2:
+        return draw_btn_vi;
+      default:
+        return draw_btn;
+    }
+  }
+
+
+  static String guaguaMask1P(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return guagua_mask1_en;
+      case 2:
+        return guagua_mask1_vi;
+      default:
+        return guagua_mask1;
+    }
+  }
+
+
+  static String iconCheckMa2P(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return icon_check_ma2_en;
+      case 2:
+        return icon_check_ma2_vi;
+      default:
+        return icon_check_ma_2;
+    }
+  }
+
+  static String iconCheckMa3P(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return icon_check_ma3_en;
+      case 2:
+        return icon_check_ma3_vi;
+      default:
+        return icon_check_ma_3;
+    }
+  }
+
+
+  static String iconCheckMa4P(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return icon_check_ma4_en;
+      case 2:
+        return icon_check_ma4_vi;
+      default:
+        return icon_check_ma_4;
+    }
+  }
+
+
+  static String iconCheckMaP(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return icon_check_ma_en;
+      case 2:
+        return icon_check_ma_vi;
+      default:
+        return icon_check_ma;
+    }
+  }
+
+
+  static String lotteringP(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return lottering_en;
+      case 2:
+        return lottering_vi;
+      default:
+        return lottering;
+    }
+  }
+
+
+  static String luckyTitleP(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return lucky_title_en;
+      case 2:
+        return lucky_title_vi;
+      default:
+        return lucky_title;
+    }
+  }
+
+
+  static String openP(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return open_en;
+      case 2:
+        return open_vi;
+      default:
+        return open;
+    }
+  }
+
+  static String titlegjP(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return titlegj_en;
+      case 2:
+        return titlegj_vi;
+      default:
+        return titlegj;
+    }
+  }
+
+  static String iconChargeT(){
+    return AppData.theme() ? icon_charge : icon_charge_dark;
+  }
+
+  static String iconWithdrawT(){
+    return AppData.theme() ? icon_withdraw : icon_withdraw_dark;
+  }
+
+  static String iconDrawT(){
+    return AppData.theme() ? icon_draw : icon_draw_dark;
+  }
+
+  static String iconTrendT(){
+    return AppData.theme() ? icon_trend : icon_trend_dark;
+  }
+
+  static String afterLoginT(){
+    return AppData.theme() ? afterLogin : afterLogin_dark;
+  }
+
+  static String beforeLoginT(){
+    return AppData.theme() ? beforeLogin : afterLogin_dark;
+  }
+
+  static String isSelectT(){
+    return AppData.theme() ? isSelect : isSelect_dark;
+  }
+
+  static String kefutopT(){
+    return AppData.theme() ? kefutop : kefutop_dark;
+  }
+
+  static String mybgT(){
+    return AppData.theme() ? my_bg : my_bg_dark;
+  }
+
+  static String myCardT(){
+    return AppData.theme() ? my_card : my_card_dark;
+  }
+
+  static String qdyjT(){
+    return AppData.theme() ? qdyj : qdyj_dark;
+  }
+
+  static String rechargeBgT(){
+    return AppData.theme() ? recharge_bg : recharge_bg_dark;
+  }
+
+  static String roomT(){
+    return AppData.theme() ? room : room_dark;
+  }
+
+  static String tjylT(){
+    return AppData.theme() ? tjyl : tjyl_dark;
+  }
+
+  static String yhhdT(){
+    return AppData.theme() ? yhhd : yhhd_dark;
+  }
+
+}
     
     
     

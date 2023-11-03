@@ -6,7 +6,6 @@
 import 'package:flutter/material.dart' show debugPrint;
 import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
-import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
@@ -139,10 +138,6 @@ class JsonConvert {
       return data.map<HomeGameMenuEntity>((Map<String, dynamic> e) =>
           HomeGameMenuEntity.fromJson(e)).toList() as M;
     }
-    if (<LanguageMenuEntity>[] is M) {
-      return data.map<LanguageMenuEntity>((Map<String, dynamic> e) =>
-          LanguageMenuEntity.fromJson(e)).toList() as M;
-    }
     if (<MessageItemEntity>[] is M) {
       return data.map<MessageItemEntity>((Map<String, dynamic> e) =>
           MessageItemEntity.fromJson(e)).toList() as M;
@@ -170,7 +165,6 @@ class JsonConvertClassCollection {
   Map<String, JsonConvertFunction> convertFuncMap = {
     (ChapterInfoEntity).toString(): ChapterInfoEntity.fromJson,
     (HomeGameMenuEntity).toString(): HomeGameMenuEntity.fromJson,
-    (LanguageMenuEntity).toString(): LanguageMenuEntity.fromJson,
     (MessageItemEntity).toString(): MessageItemEntity.fromJson,
   };
 
