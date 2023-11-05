@@ -70,6 +70,13 @@ class ColorX{
     return AppData.theme() ? ColorX.color_f7f8fb : Colors.black;
   }
 
+  static Color pageBg3(){
+    return AppData.theme() ? ColorX.color_f7f8fb : Colors.black12;
+  }
+
+  static Color pageBg4(){
+    return AppData.theme() ? Colors.white : Color.fromRGBO(24, 24, 24, 1);
+  }
 
   static Color appBarBg(){
     return AppData.theme() ? Colors.white : Colors.black;
@@ -77,6 +84,100 @@ class ColorX{
 
   static Color appBarBg2(){
     return AppData.theme() ? ColorX.color_f7f8fb : Colors.black;
+  }
+
+  static Color appBarBg3(){
+    return AppData.theme() ? ColorX.color_f7f8fb : Colors.white10;
+  }
+
+  static Color icon586(){
+    return AppData.theme() ? ColorX.color_58698d : Colors.white;
+  }
+
+  static Color iconBlack(){
+    return AppData.theme() ? Colors.black : Colors.white;
+  }
+
+  static Color cardBg(){
+    return AppData.theme() ? Colors.white : Colors.white10;
+  }
+
+  static Color cardBg2(){
+    return AppData.theme() ? ColorX.color_f7f8fb : Colors.black;
+  }
+
+  static Color cardBg3(){
+    return AppData.theme() ? ColorX.color_f7f8fb : Colors.white10;
+  }
+
+  static Color cardBg4(){
+    return AppData.theme() ? ColorX.color_f4f4f6 : Color.fromRGBO(30, 31, 31, 1);
+  }
+
+  static Color cardBg5(){
+    return AppData.theme() ? Colors.white : Color.fromRGBO(30, 31, 31, 1);
+  }
+
+  static Color cardBg6(){
+    return AppData.theme() ? ColorX.color_e7ebf4 : Colors.white10;
+  }
+
+  static Color cardBg7(){
+    return AppData.theme() ? ColorX.color_dce0e7 : Colors.black;
+  }
+
+  static Color cardBg8(){
+    return AppData.theme() ? Colors.white60 : Color.fromRGBO(30, 31, 31, 0.5);
+  }
+
+  static Color text0917(){
+    return AppData.theme() ? ColorX.color_091722 : Colors.white;
+  }
+
+  static Color text586(){
+    return AppData.theme() ? ColorX.color_58698d : Colors.white38;
+  }
+
+  static Color text5862(){
+    return AppData.theme() ? ColorX.color_58698d : Colors.white;
+  }
+
+  static Color textBlack(){
+    return AppData.theme() ? Colors.black : Colors.white;
+  }
+
+
+  static Color text5d6(){
+    return AppData.theme() ? ColorX.color_5b6d7b : Colors.white38;
+  }
+
+  static Color text80091(){
+    return AppData.theme() ? ColorX.color_80_091 : Colors.white;
+  }
+
+  static Color text333(){
+    return AppData.theme() ? ColorX.color_333333 : Colors.white;
+  }
+
+  static Color text605(){
+    return AppData.theme() ? ColorX.color_60543f : Colors.white;
+  }
+
+  static Color text606(){
+    return AppData.theme() ? ColorX.color_606060 : Colors.white;
+  }
+
+  static Color textd53(){
+    return AppData.theme() ? ColorX.color_d53849 : ColorX.color_ff5163;
+  }
+
+  static Color text949(){
+    return AppData.theme() ? ColorX.color_949eb9 : Colors.white60;
+  }
+
+
+  static List<Color> cardColors(){
+    return AppData.theme() ? [Colors.white,Color(0xfff3f4f9)] : [Color.fromRGBO(30, 31, 31, 1),Color.fromRGBO(30, 31, 31, 1)];
   }
 
 

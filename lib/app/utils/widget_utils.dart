@@ -59,7 +59,7 @@ class WidgetUtils {
               onTap: ()=> Get.toNamed(Routes.message_center),
               child: Padding(
                 padding: EdgeInsets.all(10.r),
-                child: Image.asset(ImageX.icon_user_msg,),
+                child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
               ),
             ),
           ),
@@ -69,7 +69,7 @@ class WidgetUtils {
               onTap: ()=> Get.find<MainLogic>().openDrawer(),
               child: Padding(
                 padding: EdgeInsets.all(10.r),
-                child: Image.asset(ImageX.icon_more,),
+                child: Image.asset(ImageX.icon_more,color: ColorX.icon586(),),
               ),
             ),
           ),
@@ -83,7 +83,7 @@ class WidgetUtils {
       title: Text(title.em(),
         style: TextStyle(
             fontSize: 16.sp,
-            color: ColorX.color_091722,
+            color: ColorX.text0917(),
             fontWeight: FontWeight.w600),
       ),
       centerTitle: true,
@@ -93,7 +93,7 @@ class WidgetUtils {
         visible: back,
         child: InkWell(
           onTap: ()=>Get.back(),
-          child: Image.asset(ImageX.icon_page_back),
+          child: Image.asset(ImageX.icon_page_back,),
         ),
       ),
       actions: [
@@ -103,7 +103,7 @@ class WidgetUtils {
             onTap: ()=> Get.toNamed(Routes.message_center),
             child: Padding(
               padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_user_msg,),
+              child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
             ),
           ),
         ),
@@ -113,7 +113,7 @@ class WidgetUtils {
             onTap: ()=> Get.find<MainLogic>().openDrawer(),
             child: Padding(
               padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_more,),
+              child: Image.asset(ImageX.icon_more,color: ColorX.icon586(),),
             ),
           ),
         ),
@@ -126,7 +126,7 @@ class WidgetUtils {
       title: Text(title.em(),
         style: TextStyle(
             fontSize: 16.sp,
-            color: ColorX.color_091722,
+            color: ColorX.text0917(),
             fontWeight: FontWeight.w600),
       ),
       centerTitle: true,
@@ -147,7 +147,7 @@ class WidgetUtils {
         return Text(title.value,
           style: TextStyle(
               fontSize: 16.sp,
-              color: ColorX.color_091722,
+              color: ColorX.text0917(),
               fontWeight: FontWeight.w600),
         );
       }),
@@ -168,7 +168,7 @@ class WidgetUtils {
             onTap: ()=> Get.toNamed(Routes.message_center),
             child: Padding(
               padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_user_msg,),
+              child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
             ),
           ),
         ),
@@ -190,12 +190,12 @@ class WidgetUtils {
               return Text(title.value,
                 style: TextStyle(
                     fontSize: 16.sp,
-                    color: ColorX.color_091722,
+                    color: ColorX.text0917(),
                     fontWeight: FontWeight.w600),
               );
             }),
             SizedBox(width: 5.w,),
-            Image.asset(ImageX.icon_down_black),
+            Image.asset(ImageX.icon_down_black,color: ColorX.icon586(),),
           ],
         ),
       ),
@@ -216,7 +216,7 @@ class WidgetUtils {
             onTap: ()=> Get.toNamed(Routes.message_center),
             child: Padding(
               padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_user_msg,),
+              child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
             ),
           ),
         ),
@@ -241,7 +241,7 @@ class WidgetUtils {
                   return Text(title.value,
                     style: TextStyle(
                         fontSize: 16.sp,
-                        color: ColorX.color_091722,
+                        color: ColorX.text0917(),
                         fontWeight: FontWeight.w600),
                   );
                 }),
@@ -281,7 +281,7 @@ class WidgetUtils {
             onTap: ()=> Get.toNamed(Routes.message_center),
             child: Padding(
               padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_user_msg,),
+              child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
             ),
           ),
         ),
@@ -296,7 +296,7 @@ class WidgetUtils {
         return Text(title.value,
           style: TextStyle(
               fontSize: 16.sp,
-              color: ColorX.color_091722,
+              color: ColorX.text0917(),
               fontWeight: FontWeight.w600),
         );
       }),
@@ -307,7 +307,7 @@ class WidgetUtils {
         visible: back,
         child: InkWell(
           onTap: ()=>Get.back(),
-          child: Image.asset(ImageX.icon_page_back),
+          child: Image.asset(ImageX.icon_page_back,),
         ),
       ),
     );

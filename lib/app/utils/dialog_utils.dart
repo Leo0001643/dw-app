@@ -134,7 +134,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -153,7 +153,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(20.r),topLeft: Radius.circular(20.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -171,7 +171,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -189,7 +189,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -207,7 +207,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -225,7 +225,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -243,7 +243,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -263,7 +263,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -282,7 +282,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -300,7 +300,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(18.r),topLeft: Radius.circular(18.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -318,7 +318,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return BettingBtmDialog(logic);
         }
@@ -334,6 +334,7 @@ class DialogUtils {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.r),
             ),
+            backgroundColor: ColorX.cardBg5(),
             contentPadding: EdgeInsets.zero,
             content: ConfirmBettingDialog(logic),
           );
@@ -349,7 +350,7 @@ class DialogUtils {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         builder: (context){
           return BulletBottomDialog(logic,valueCallBack);
         }

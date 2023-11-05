@@ -495,10 +495,12 @@ class Intr extends Translations{
   String get fuzhichenggong => 'fuzhichenggong'.tr;
   String get qiehuanquanjuqianbao => 'qiehuanquanjuqianbao'.tr;
   String get tuijianyouli => 'tuijianyouli'.tr;
-
-
-
-
+  String get zanwuyouxi => 'zanwuyouxi'.tr;
+  String get fangwenluxian => 'fangwenluxian'.tr;
+  String get kuai => 'kuai'.tr;
+  String get yiban => 'yiban'.tr;
+  String get henman => 'henman'.tr;
+  String get bukeyong => 'bukeyong'.tr;
 
 
 
@@ -973,6 +975,12 @@ class Intr extends Translations{
       "fuzhichenggong":"复制成功",
       "qiehuanquanjuqianbao":"切换全局钱包",
       "tuijianyouli":"推荐有礼",
+      "zanwuyouxi":"暂无游戏~",
+      "fangwenluxian":"访问路线选择",
+      "kuai":"快",
+      "yiban":"一般",
+      "henman":"很慢",
+      "bukeyong":"不可用",
 
 
 

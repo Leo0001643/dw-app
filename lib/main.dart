@@ -49,6 +49,8 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate, /// 指定默认的文本排列方向, 由左到右或由右到左
           ],
           themeMode: AppTheme().currentTheme(),
+          theme: AppTheme().lightTheme,
+          darkTheme: AppTheme().darkTheme,
           // builder: (context,widget){
           //   return MediaQuery(///设置文字大小不随系统设置改变
           //       data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
