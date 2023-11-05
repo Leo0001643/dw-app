@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -13,6 +14,8 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
 class EndsDrawerView extends StatefulWidget{
+
+
   @override
   State<StatefulWidget> createState() => StateEndsDrawerView();
 
@@ -21,22 +24,255 @@ class EndsDrawerView extends StatefulWidget{
 
 class StateEndsDrawerView extends State<EndsDrawerView>{
 
+
+  var musicToggle = false.obs;
+  var notifyToggle = false.obs;
+
+
+
+  String language(){
+    switch(AppData.localeIndex()){
+      case 1:
+        return Intr().yingyu;
+      case 2:
+        return Intr().yuenanyu;
+      default:
+        return Intr().zhongwenjianti;
+    }
+  }
+
+
+  String theme(){
+    return AppData.theme() ? Intr().qzb:Intr().kxh;
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 316.w,
+      height: 1.sh,
+      color: ColorX.cardBg7(),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            // noLoginHeader(),
+            userHeader(),
+            InkWell(
+              onTap: (){
+                Navigator.of(context).pop();
+                Get.toNamed(Routes.select_language);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: ColorX.cardBg5(),
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+                margin: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Row(
+                  children: [
+                    Image.asset(ImageX.icon_language,color: ColorX.icon586(),),
+                    SizedBox(width: 5.w,),
+                    Text(Intr().dyy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                    Expanded(child: Container()),
+                    Text(language(),style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+                    Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 8.h,),
+            Container(
+              decoration: BoxDecoration(
+                color: ColorX.cardBg5(),
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
+              margin: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Column(
+                children: [
+                  Container(
+                    child: Row(
+                      children: [
+                        Image.asset(ImageX.icon_bgyy,color: ColorX.icon586(),),
+                        SizedBox(width: 5.w,),
+                        Text(Intr().bjyy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                        Expanded(child: Container()),
+                        GFToggle(
+                          onChanged: (value){},
+                          value: musicToggle.value,
+                          type: GFToggleType.ios,
+                          disabledTrackColor: ColorX.text949(),
+                          enabledTrackColor: ColorX.color_69c25c,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 15.h,),
+                  Divider(color: ColorX.color_10_949,height: 1.h,),
+                  SizedBox(height: 15.h,),
+                  Container(
+                    child: Row(
+                      children: [
+                        Image.asset(ImageX.icon_tsy,color: ColorX.icon586(),),
+                        SizedBox(width: 5.w,),
+                        Text(Intr().tsy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                        Expanded(child: Container()),
+                        GFToggle(
+                          onChanged: (value){},
+                          value: notifyToggle.value,
+                          type: GFToggleType.ios,
+                          disabledTrackColor: ColorX.text949(),
+                          enabledTrackColor: ColorX.color_69c25c,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8.h,),
+            Container(
+              decoration: BoxDecoration(
+                color: ColorX.cardBg5(),
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
+              margin: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Column(
+                children: [
+                  InkWell(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 5.h),
+                      child: Row(
+                        children: [
+                          Image.asset(ImageX.icon_wg,color: ColorX.icon586()),
+                          SizedBox(width: 5.w,),
+                          Text(Intr().wgys,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                          Expanded(child: Container()),
+                          Text(theme(),style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+                          Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                        ],
+                      ),
+                    ),
+                    onTap: (){
+                      Navigator.of(context).pop();
+                      Get.toNamed(Routes.select_theme);
+                    },
+                  ),
+                  SizedBox(height: 15.h,),
+                  Divider(color: ColorX.color_10_949,height: 1.h,),
+                  SizedBox(height: 15.h,),
+                  InkWell(
+                    onTap: (){
+                      Navigator.of(context).pop();
+                      Get.toNamed(Routes.select_animation);
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 5.h),
+                      child: Row(
+                        children: [
+                          Image.asset(ImageX.icon_dx,color: ColorX.icon586()),
+                          SizedBox(width: 5.w,),
+                          Text(Intr().dx,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                          Expanded(child: Container()),
+                          Text(Intr().qk,style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+                          Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8.h,),
+            Container(
+              decoration: BoxDecoration(
+                color: ColorX.cardBg5(),
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
+              margin: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Column(
+                children: [
+                  InkWell(
+                    onTap: ()=> Get.toNamed(Routes.promotion_profit),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 5.h),
+                      child: Row(
+                        children: [
+                          Image.asset(ImageX.icon_share,color: ColorX.icon586()),
+                          SizedBox(width: 5.w,),
+                          Text(Intr().fxghy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                          Expanded(child: Container()),
+                          Text(Intr().ycfx,style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+                          Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15.h,),
+                  Divider(color: ColorX.color_10_949,height: 1.h,),
+                  SizedBox(height: 15.h,),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 5.h),
+                    child: Row(
+                      children: [
+                        Image.asset(ImageX.icon_download,color: ColorX.icon586()),
+                        SizedBox(width: 5.w,),
+                        Text(Intr().xzapp,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                        Expanded(child: Container()),
+                        Text(Intr().lxjbhb,style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+                        Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8.h,),
+            Container(
+              decoration: BoxDecoration(
+                color: ColorX.cardBg5(),
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+              margin: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Row(
+                children: [
+                  Image.asset(ImageX.icon_exist,color: ColorX.icon586()),
+                  SizedBox(width: 5.w,),
+                  Text(Intr().logout,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                  Expanded(child: Container()),
+                  Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                ],
+              ),
+            ),
+            SizedBox(height: 30.h,),
+          ],
+        ),
+      ),
+    );
+  }
+
+
   Widget noLoginHeader() {
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(ImageX.beforeLogin),fit: BoxFit.fill,),
+        image: DecorationImage(image: AssetImage(ImageX.beforeLoginT()),fit: BoxFit.fill,),
       ),
       child: Column(
         children: [
           SizedBox(height: 50.h,),
-          Text(Intr().hyld,style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-          Text(Intr().qqzlxd,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+          Text(Intr().hyld,style: TextStyle(fontSize: 20.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+          Text(Intr().qqzlxd,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
           SizedBox(height: 20.h,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               WidgetUtils().buildElevatedButton(Intr().register, 131.w, 45.h,
-                  bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
+                  bg: ColorX.cardBg3(),textColor: ColorX.text0917(),onPressed: (){
                     Navigator.of(context).pop();
                     Get.toNamed(Routes.register);
                   }),
@@ -56,7 +292,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
   Widget userHeader() {
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(ImageX.afterLogin),fit: BoxFit.fill,),
+        image: DecorationImage(image: AssetImage(ImageX.afterLoginT()),fit: BoxFit.fill,),
       ),
       child: Column(
         children: [
@@ -78,7 +314,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Hala",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
+                  Text("Hala",style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
                   Image.asset(ImageX.icon_vip),
                 ],
               ),
@@ -87,8 +323,8 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 alignment: Alignment.centerRight,
                 child: Row(
                   children: [
-                    Text(Intr().grzx,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
-                    Image.asset(ImageX.ic_into_right),
+                    Text(Intr().grzx,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
+                    Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
                   ],
                 ),
               ),
@@ -98,7 +334,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
           SizedBox(height: 20.h,),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white60,
+              color: ColorX.cardBg8(),
               borderRadius: BorderRadius.circular(10.r),
             ),
             padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
@@ -113,11 +349,11 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                   child: Row(
                     children: [
                       Image.asset(ImageX.icon_rmb_grey),
-                      Text(Intr().rmbqb,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                      Text(Intr().rmbqb,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
                       SizedBox(width: 5.w,),
                       Expanded(child: Container()),
-                      Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
-                      Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
+                      Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                      Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
                       SizedBox(width: 5.w,),
                       Image.asset(ImageX.icon_right_left,width: 10.w,),
                     ],
@@ -126,10 +362,10 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 SizedBox(height: 10.h,),
                 Row(
                   children: [
-                    Text(Intr().yue,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                    Text(Intr().yue_,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
                     Text("¥8,888",style: TextStyle(
                       fontSize: 14.sp,
-                      color: ColorX.color_091722,
+                      color: ColorX.text0917(),
                       fontWeight: FontWeight.w600,
                     ),),
                   ],
@@ -140,7 +376,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
           SizedBox(height: 8.h,),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: ColorX.cardBg5(),
               borderRadius: BorderRadius.circular(10.r),
             ),
             padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
@@ -154,7 +390,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                     children: [
                       Image.asset(ImageX.icon_edzh),
                       SizedBox(height: 5.h,),
-                      Text(Intr().edzh,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                      Text(Intr().edzh,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
                     ],
                   ),
                 ),
@@ -164,7 +400,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                     children: [
                       Image.asset(ImageX.icon_pc),
                       SizedBox(height: 5.h,),
-                      Text(Intr().pcxq,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                      Text(Intr().pcxq,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
                     ],
                   ),
                 ),
@@ -174,7 +410,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                     children: [
                       Image.asset(ImageX.icon_tzjl),
                       SizedBox(height: 5.h,),
-                      Text(Intr().tzjl,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                      Text(Intr().tzjl,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
                     ],
                   ),
                 ),
@@ -184,7 +420,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                     children: [
                       Image.asset(ImageX.icon_jymm),
                       SizedBox(height: 5.h,),
-                      Text(Intr().jymm,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                      Text(Intr().jymm,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
                     ],
                   ),
                 ),
@@ -198,219 +434,6 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
   }
 
 
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 316.w,
-      height: 1.sh,
-      color: ColorX.color_dce0e7,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            // noLoginHeader(),
-            userHeader(),
-            InkWell(
-              onTap: (){
-                Navigator.of(context).pop();
-                Get.toNamed(Routes.select_language);
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-                padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
-                margin: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Row(
-                  children: [
-                    Image.asset(ImageX.icon_language),
-                    SizedBox(width: 5.w,),
-                    Text(Intr().dyy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                    Expanded(child: Container()),
-                    Text("中文",style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                    Image.asset(ImageX.ic_into_right),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 8.h,),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
-              margin: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Column(
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Image.asset(ImageX.icon_bgyy),
-                        SizedBox(width: 5.w,),
-                        Text(Intr().bjyy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                        Expanded(child: Container()),
-                        GFToggle(
-                          onChanged: (value){},
-                          value: musicToggle.value,
-                          type: GFToggleType.ios,
-                          disabledTrackColor: ColorX.color_949eb9,
-                          enabledTrackColor: ColorX.color_69c25c,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 15.h,),
-                  Divider(color: ColorX.color_10_949,height: 1.h,),
-                  SizedBox(height: 15.h,),
-                  Container(
-                    child: Row(
-                      children: [
-                        Image.asset(ImageX.icon_tsy),
-                        SizedBox(width: 5.w,),
-                        Text(Intr().tsy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                        Expanded(child: Container()),
-                        GFToggle(
-                          onChanged: (value){},
-                          value: notifyToggle.value,
-                          type: GFToggleType.ios,
-                          disabledTrackColor: ColorX.color_949eb9,
-                          enabledTrackColor: ColorX.color_69c25c,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 8.h,),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
-              margin: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Column(
-                children: [
-                  InkWell(
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5.h),
-                      child: Row(
-                        children: [
-                          Image.asset(ImageX.icon_wg),
-                          SizedBox(width: 5.w,),
-                          Text(Intr().wgys,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                          Expanded(child: Container()),
-                          Text(Intr().qs,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                          Image.asset(ImageX.ic_into_right),
-                        ],
-                      ),
-                    ),
-                    onTap: (){
-                      Navigator.of(context).pop();
-                      Get.toNamed(Routes.select_theme);
-                    },
-                  ),
-                  SizedBox(height: 15.h,),
-                  Divider(color: ColorX.color_10_949,height: 1.h,),
-                  SizedBox(height: 15.h,),
-                  InkWell(
-                    onTap: (){
-                      Navigator.of(context).pop();
-                      Get.toNamed(Routes.select_animation);
-                    },
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5.h),
-                      child: Row(
-                        children: [
-                          Image.asset(ImageX.icon_dx),
-                          SizedBox(width: 5.w,),
-                          Text(Intr().dx,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                          Expanded(child: Container()),
-                          Text(Intr().qk,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                          Image.asset(ImageX.ic_into_right),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 8.h,),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
-              margin: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Column(
-                children: [
-                  InkWell(
-                    onTap: ()=> Get.toNamed(Routes.promotion_profit),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5.h),
-                      child: Row(
-                        children: [
-                          Image.asset(ImageX.icon_share),
-                          SizedBox(width: 5.w,),
-                          Text(Intr().fxghy,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                          Expanded(child: Container()),
-                          Text(Intr().ycfx,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                          Image.asset(ImageX.ic_into_right),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 15.h,),
-                  Divider(color: ColorX.color_10_949,height: 1.h,),
-                  SizedBox(height: 15.h,),
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 5.h),
-                    child: Row(
-                      children: [
-                        Image.asset(ImageX.icon_download),
-                        SizedBox(width: 5.w,),
-                        Text(Intr().xzapp,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                        Expanded(child: Container()),
-                        Text(Intr().lxjbhb,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                        Image.asset(ImageX.ic_into_right),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 8.h,),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
-              margin: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Row(
-                children: [
-                  Image.asset(ImageX.icon_exist),
-                  SizedBox(width: 5.w,),
-                  Text(Intr().logout,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                  Expanded(child: Container()),
-                  Image.asset(ImageX.ic_into_right),
-                ],
-              ),
-            ),
-            SizedBox(height: 30.h,),
-          ],
-        ),
-      ),
-    );
-  }
-
-  var musicToggle = false.obs;
-  var notifyToggle = false.obs;
 
 
 }
