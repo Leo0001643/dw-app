@@ -53,21 +53,4 @@ class MainLogic extends GetxController {
     });
   }
 
-  changeLanguage() {
-    var locale = Get.locale;
-    if(locale?.languageCode == 'cn'){
-      Get.updateLocale(Locale('en','EN'));
-    } else {
-      Get.updateLocale(Locale('cn','ZH'));
-    }
-    // for (var localeFile in S.delegate.supportedLocales) {
-    //   print("语言切换${locale.toString()}--${localeFile.toString()}");
-    //   if (localeFile.languageCode != locale?.languageCode) {
-    //     Get.updateLocale(localeFile);
-    //     // MyAppState.appData.changeLocale(localeFile);
-    //     return;
-    //   }
-    // }
-  }
-
 }

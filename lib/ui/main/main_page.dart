@@ -28,6 +28,13 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
 
 
   @override
+  void dispose() {
+    Get.delete<MainLogic>();
+    super.dispose();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: state.scaffoldKey,
@@ -37,25 +44,23 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
         children: state.pages,
       ),
       endDrawer: EndsDrawerView(),
-      bottomNavigationBar: ConvexAppBar.builder(
-          height: 49.h,
-          elevation: 1.h,
-          controller: state.tabController,
-          backgroundColor: Colors.white,
-          curveSize: 58.r,
-          itemBuilder: ItemBuilder(),
-          onTap: (i)=> state.pageController.jumpToPage(i),
-          count: 5),
+      bottomNavigationBar: GetBuilder<GetMaterialController>(
+        builder: (ct){
+          return ConvexAppBar.builder(
+              height: 49.h,
+              elevation: 1.h,
+              controller: state.tabController,
+              backgroundColor: ColorX.appBarBg(),
+              curveSize: 58.r,
+              itemBuilder: ItemBuilder(),
+              onTap: (i)=> state.pageController.jumpToPage(i),
+              count: 5);
+        },
+      ),
     );
   }
 
 
-
-  @override
-  void dispose() {
-    Get.delete<MainLogic>();
-    super.dispose();
-  }
 
 
 }
