@@ -31,12 +31,12 @@ class _NumberDescriptionPageState extends State<NumberDescriptionPage> {
       child: Column(
         children: [
           Container(
-            color: ColorX.color_f7f8fb,
+            color: ColorX.cardBg2(),
             margin: EdgeInsets.only(top: 10.h),
             padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
             width: 1.sw,
             alignment: Alignment.center,
-            child: Text(Intr().bitebipc28quhaojizhi,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+            child: Text(Intr().bitebipc28quhaojizhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
           ),
           buildDescItem(Intr().zhuahaoyuan,Intr().zhuahaoyuan_jieshao),
           buildDescItem(Intr().sha256zhuanhua,Intr().sha256zhuanhua_jieshao),
@@ -56,12 +56,12 @@ class _NumberDescriptionPageState extends State<NumberDescriptionPage> {
           children: [
             Image.asset(ImageX.icon_tiitle_ext),
             SizedBox(width: 12.w,),
-            Text(title,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+            Text(title,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
           ],
         ),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 15.w,vertical: 8.h),
-          child: Text(desc,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,height: 1.7),),
+          child: Text(desc,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),height: 1.7),),
         ),
       ],
     );

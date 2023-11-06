@@ -33,16 +33,16 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(Intr().dixqi(["231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600,),),
+                Text(Intr().dixqi(["231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),fontWeight: FontWeight.w600,),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(Intr().daojishi,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600,),),
+                    Text(Intr().daojishi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),fontWeight: FontWeight.w600,),),
                     SizedBox(width: 5.w,),
                     buildDrawTime("00"),
-                    Text(" : ",style: TextStyle(fontSize: 18.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
+                    Text(" : ",style: TextStyle(fontSize: 18.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
                     buildDrawTime("02"),
-                    Text(" : ",style: TextStyle(fontSize: 18.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
+                    Text(" : ",style: TextStyle(fontSize: 18.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
                     buildDrawTime("53"),
                   ],
                 ),
@@ -64,26 +64,26 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> {
             ),
           ),
           Container(
-            color: ColorX.color_f7f8fb,
+            color: ColorX.pageBg2(),
             margin: EdgeInsets.only(top: 10.h),
             padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
             child: Row(
               children: [
                 Expanded(
                   flex: 30,
-                  child: Text(Intr().qihao,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                  child: Text(Intr().qihao,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                 ),
                 Expanded(
                   flex: 25,
                   child: Center(
-                    child: Text(Intr().kaijianghaoma,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                    child: Text(Intr().kaijianghaoma,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                   ),
                 ),
                 Expanded(
                   flex: 45,
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: Text(Intr().haoyuanjinqi,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                    child: Text(Intr().haoyuanjinqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                   ),
                 ),
               ],
@@ -108,7 +108,7 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> {
       width:26.r,height: 26.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: ColorX.color_f7f8fb,
+        color: ColorX.cardBg(),
         border: Border.all(color: Colors.white,width: 1.r),
         borderRadius: BorderRadius.circular(5.r),
       ),
@@ -132,13 +132,13 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> {
         DialogUtils().showUnbrokenNumberBtmDialog(context);
       },
       child: Container(
-        color: result ? ColorX.color_f7f8fb:Colors.white,
+        color: result ? ColorX.cardBg2():ColorX.cardBg(),
         padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
         child: Row(
           children: [
             Expanded(
               flex: 30,
-              child: Text("202306161188",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              child: Text("202306161188",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             ),
             Expanded(
               flex: 25,
@@ -146,7 +146,7 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("0 0 4",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722, fontWeight: FontWeight.w600,),),
+                  Text("0 0 4",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(), fontWeight: FontWeight.w600,),),
                   SizedBox(width: 5.w,),
                   buildDrawNum("9", ColorX.color_529aff),
                 ],

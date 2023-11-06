@@ -23,8 +23,8 @@ class _MessageDetailsPageState extends State<MessageDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().gonggaoxiangqing,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().gonggaoxiangqing,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Container(
         margin: EdgeInsets.only(left: 15.w,right: 15.w,top: 15.h),
         child: Obx(() {

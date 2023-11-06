@@ -25,12 +25,12 @@ class HomeLogic extends GetxController {
   void clickMenu(BuildContext context,int index){
     switch(index){
       case 0:///充值
-        // DialogUtils().showLanguageDialog(context);
-      eventBus.fire(ChangeMainPageEvent(2));
+        DialogUtils().showLanguageDialog(context);
+      // eventBus.fire(ChangeMainPageEvent(2));
         break;
       case 1:///提现
-        // DialogUtils().showCurrencyDialog(context);
-      Get.toNamed(Routes.withdraw);
+        DialogUtils().showCurrencyDialog(context);
+      // Get.toNamed(Routes.withdraw);
         break;
       case 2:///抽奖
         // DialogUtils().showAccessRouteDialog(context);

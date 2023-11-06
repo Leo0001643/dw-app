@@ -40,8 +40,8 @@ class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().guanfanghaoyuan,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().guanfanghaoyuan,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(
           children: [
@@ -50,15 +50,15 @@ class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerPr
                 length: state.tabs.length,
                 controller: _tabController,
                 tabBarHeight: 35.h,
-                tabBarColor: Colors.white,
+                tabBarColor: ColorX.appBarBg(),
                 indicatorSize: TabBarIndicatorSize.label,
                 indicatorPadding: EdgeInsets.only(top: 32.h,left: 10.w,right: 10.w,),
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(3.r),
-                  color: ColorX.color_091722,
+                  color: ColorX.text0917(),
                 ),
-                labelColor: ColorX.color_091722,
-                unselectedLabelColor: ColorX.color_58698d,
+                labelColor: ColorX.text0917(),
+                unselectedLabelColor: ColorX.text586(),
                 width: 300.w,
                 tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),)).toList(),
               ),

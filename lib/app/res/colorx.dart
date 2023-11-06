@@ -175,6 +175,13 @@ class ColorX{
     return AppData.theme() ? ColorX.color_949eb9 : Colors.white60;
   }
 
+  static Color text3e3(){
+    return AppData.theme() ? ColorX.color_3e3737 : Colors.white;
+  }
+
+  static Color text0d1(){
+    return AppData.theme() ? ColorX.color_0d192d : Colors.white70;
+  }
 
   static List<Color> cardColors(){
     return AppData.theme() ? [Colors.white,Color(0xfff3f4f9)] : [Color.fromRGBO(30, 31, 31, 1),Color.fromRGBO(30, 31, 31, 1)];

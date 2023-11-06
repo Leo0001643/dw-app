@@ -38,36 +38,36 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: ColorX.color_f7f8fb,
+        color: ColorX.pageBg2(),
         child: Column(
           children: [
-            Container(height: 10.h,color: ColorX.color_f7f8fb,),
+            Container(height: 10.h,color: ColorX.pageBg2(),),
             LCTabBar(
               length: state.tabs.length,
               controller: _tabController,
               tabBarHeight: 40.h,
-              tabBarColor: Colors.white,
+              tabBarColor: ColorX.cardBg(),
               indicatorSize: TabBarIndicatorSize.tab,
               indicatorPadding: EdgeInsets.only(top: 34.h,left: 40.w,right: 40.w,bottom: 3.h),
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(3.r),
-                color: ColorX.color_091722,
+                color: ColorX.text0917(),
               ),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft: Radius.circular(10.r)),),
-              labelColor: ColorX.color_091722,
-              unselectedLabelColor: ColorX.color_58698d,
+              labelColor: ColorX.text0917(),
+              unselectedLabelColor: ColorX.text586(),
               // width: 300.w,
               tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),)).toList(),
             ),
             Divider(height: 1.h,color: ColorX.color_10_949,),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
-              color: Colors.white,
+              color: ColorX.cardBg(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(Intr().lx_tongji(["特码"]),style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
-                  Text(Intr().xianshiqishu_(["50"]),style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+                  Text(Intr().lx_tongji(["特码"]),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
+                  Text(Intr().xianshiqishu_(["50"]),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
                 ],
               ),
             ),
@@ -84,15 +84,15 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
                   headingRowHeight: 30.h,
                   dividerThickness: 0,
                   border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
-                  headingRowColor: MaterialStateProperty.all(Colors.white),
-                  dataRowColor: MaterialStateProperty.all(Colors.white),
+                  headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                  dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
                   minWidth: (state.totalTitle.value.length) * 40.w + 1000.w,
                   columns: buildTotalTitle(),
                   rows: List<DataRow>.generate(2, (index)=> DataRow(cells: buildTotalCell(index))),
                 );
               }),
             ),
-            Container(height: 10.h,color: ColorX.color_f7f8fb,),
+            Container(height: 10.h,color: ColorX.pageBg2(),),
             Expanded(
               child: Obx(() {
                 if(isEmpty(state.formTitle.value)){ return Container(); }
@@ -103,7 +103,7 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
                     minWidth: minWidth,
                     dividerThickness: 0,
                     headingRowColor: MaterialStateProperty.all(ColorX.color_10_949),
-                    dataRowColor: MaterialStateProperty.all(Colors.white),
+                    dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
                     fixedLeftColumns: 1,
                     dataRowHeight: 30.h,
                     headingRowHeight: 30.h,
@@ -131,7 +131,7 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
           children: [
             Text(element,
               textAlign: TextAlign.center,
-              style: TextStyle(color: index > 0 ? ColorX.color_58698d:ColorX.color_091722,fontSize: 12.sp),
+              style: TextStyle(color: index > 0 ? ColorX.text586():ColorX.text0917(),fontSize: 12.sp),
             ),
           ],
         ),
@@ -151,7 +151,7 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(text,style: TextStyle(color: i > 0 ? ColorX.color_58698d:ColorX.color_091722,fontSize: 12.sp),),
+            Text(text,style: TextStyle(color: i > 0 ? ColorX.text586():ColorX.text0917(),fontSize: 12.sp),),
           ],
         ),
       ));
@@ -169,9 +169,11 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
         label: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(element,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: ColorX.color_091722,fontSize: 12.sp),
+            Expanded(
+              child: Text(element,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: ColorX.text0917(),fontSize: 12.sp),
+              ),
             ),
           ],
         ),
@@ -186,19 +188,22 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
     state.formTitle.value.forEach((element) {
       var i = state.formTitle.value.indexOf(element);
       var text = i == 0 ? "23445673":element;
-      var color = i > 1 ? (text == "单" || text == "大" || text == "极大" ? ColorX.color_529aff:ColorX.color_e75555):( i == 0? ColorX.color_091722: ColorX.color_58698d);
+      var color = i > 1 ? (text == "单" || text == "大" || text == "极大" ? ColorX.color_529aff:ColorX.color_e75555):( i == 0? ColorX.text0917(): ColorX.text586());
       cells.add(DataCell(
         Container(
           height: 30.h,
           margin: EdgeInsets.all(5.r),
           decoration: BoxDecoration(
-            color: i > 1 ? ColorX.color_f7f8fb:null,
+            color: i > 1 ? ColorX.cardBg3():null,
             borderRadius: BorderRadius.circular(5.r),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(text,style: TextStyle(fontSize: 13.sp,fontWeight: FontWeight.w500,color: color),),
+              Expanded(
+                child: Center(
+                  child: Text(text,style: TextStyle(fontSize: 13.sp,fontWeight: FontWeight.w500,color: color),),
+                ),
+              ),
             ],
           ),
         ),

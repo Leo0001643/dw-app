@@ -48,6 +48,7 @@ class DialogUtils {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.r),
             ),
+            backgroundColor: ColorX.cardBg5(),
             contentPadding: EdgeInsets.zero,
             content: LanguageDialog(),
           );
@@ -64,6 +65,7 @@ class DialogUtils {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16.r),
             ),
+            backgroundColor: ColorX.cardBg5(),
             contentPadding: EdgeInsets.zero,
             content: CurrencyDialog(),
           );
@@ -94,6 +96,7 @@ class DialogUtils {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.r),
             ),
+            backgroundColor: ColorX.cardBg5(),
             titlePadding: EdgeInsets.zero,
             contentPadding: EdgeInsets.zero,
             content: Column(
@@ -103,7 +106,7 @@ class DialogUtils {
                   height: 70.h,
                   alignment: Alignment.center,
                   child: Text(Intr().shifoutuichudenglu
-                    ,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
+                    ,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
                 ),
                 Divider(color: ColorX.color_10_949,height: 1.h,),
               ],
@@ -111,7 +114,7 @@ class DialogUtils {
             actionsPadding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 15.h),
             actions: [
               WidgetUtils().buildElevatedButton(Intr().cancel, 116.w, 40.h,
-                  bg: ColorX.color_f7f8fb,textColor: ColorX.color_58698d,onPressed: (){
+                  bg: ColorX.cardBg3(),textColor: ColorX.text586(),onPressed: (){
                 Navigator.of(context).pop(false);
               }),
               SizedBox(width: 10.w,),

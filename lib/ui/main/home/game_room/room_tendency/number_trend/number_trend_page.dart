@@ -44,7 +44,7 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorX.color_f7f8fb,
+      color: ColorX.pageBg2(),
       child: Column(
         children: [
           SizedBox(height: 10.h,),
@@ -52,16 +52,17 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
             length: state.tabs.length,
             controller: _tabController,
             tabBarHeight: 40.h,
-            tabBarColor: Colors.white,
+            tabBarColor: ColorX.cardBg(),
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorPadding: EdgeInsets.only(top: 34.h,left: 40.w,right: 40.w,bottom: 3.h),
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(3.r),
-              color: ColorX.color_091722,
+              color: ColorX.text0917(),
             ),
+            labelPadding: EdgeInsets.zero,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft: Radius.circular(10.r)),),
-            labelColor: ColorX.color_091722,
-            unselectedLabelColor: ColorX.color_58698d,
+            labelColor: ColorX.text0917(),
+            unselectedLabelColor: ColorX.text586(),
             // width: 300.w,
             tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),)).toList(),
           ),
@@ -75,7 +76,7 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                     interval: 1,//设置步长
                     visibleMaximum: state.data.length.toDouble()/4,//设置可见数量 数量50的时候 50/4合适
                     axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
-                    labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.color_58698d),
+                    labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
                     majorTickLines: MajorTickLines(size: 0),
                     minorTickLines: MinorTickLines(size: 0),
                     majorGridLines: MajorGridLines(width: 1.w,color: ColorX.color_10_949),
@@ -85,13 +86,14 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                     axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
                     labelFormat: Intr().hao_value,
                     labelAlignment: LabelAlignment.center,
+                    labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
                     minimum: 1,//设置最小值
                     interval: 1,//设置步长
                     anchorRangeToVisiblePoints: false,
                     majorTickLines: MajorTickLines(size: 0),
                     minorTickLines: MinorTickLines(size: 0),
                   ),
-                  backgroundColor: Colors.white,
+                  backgroundColor: ColorX.cardBg(),
                   // Chart title
                   // title: ChartTitle(text: 'Half yearly sales analysis'),
                   // Enable legend
@@ -112,7 +114,7 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                             margin: EdgeInsets.all(3.r),
                             labelAlignment: ChartDataLabelAlignment.middle,
                             builder: (data,point,series,pointIndex,seriesIndex){
-                              return Text((data as SalesData).sales.toString(),style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),);
+                              return Text((data as SalesData).sales.toString(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
                             }
                         ))
                   ]);

@@ -36,7 +36,7 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorX.color_f7f8fb,
+      color: ColorX.pageBg2(),
       child: SmartRefresher(
         controller: _refreshController,
         enablePullDown: true,
@@ -56,7 +56,7 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
 
   Widget buildLotteryItem(int index) {
     return Container(
-      decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r),),
+      decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r),),
       margin: EdgeInsets.only(top: 10.h,left: 15.w,right: 15.w,),
       padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 15.w),
       child: Row(
@@ -67,9 +67,9 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
             alignment: WrapAlignment.center,
             spacing: 3.w,
             children: [
-              Text(Intr().di,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
-              Text("112030767",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
-              Text(Intr().qi,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+              Text(Intr().di,style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
+              Text("112030767",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),),
+              Text(Intr().qi,style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
             ],
           ),
           SizedBox(width: 3.w,),
@@ -82,11 +82,11 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
           buildDrawResult("22"),
           Wrap(
             children: [
-              Text("(",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-              Text("小",style: TextStyle(fontSize: 12.sp,color: ColorX.color_529aff,fontWeight: FontWeight.w600),),
+              Text("(",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              Text("小",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
               SizedBox(width: 3.w,),
               Text("双",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
-              Text(")",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              Text(")",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             ],
           ),
         ],
@@ -99,15 +99,15 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
     return Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(15.r),),
-      child: Text(num, style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+      decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(15.r),),
+      child: Text(num, style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
     );
   }
 
   Widget buildDrawMark(String mark) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 5.w),
-      child: Text(mark,style: TextStyle(fontSize: 18.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+      child: Text(mark,style: TextStyle(fontSize: 18.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
     );
   }
 

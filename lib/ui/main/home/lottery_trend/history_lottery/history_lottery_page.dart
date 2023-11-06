@@ -41,7 +41,7 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildRxAppBar(state.title,msg: true,),
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: Column(
         children: [
           Expanded(
@@ -73,22 +73,22 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
 
   Widget buildLotteryItem(int index) {
     return Container(
-      decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r),),
+      decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r),),
       margin: EdgeInsets.only(top: 10.h,left: 15.w,right: 15.w,),
       padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 15.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("台湾宾果PC28",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500,),),
+          Text("台湾宾果PC28",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
           Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,
             runAlignment: WrapAlignment.center,
             alignment: WrapAlignment.center,
             spacing: 3.w,
             children: [
-              Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
-              Text("112030767",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,),),
-              Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
+              Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
+              Text("112030767",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
+              Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
             ],
           ),
           SizedBox(height: 10.h,),

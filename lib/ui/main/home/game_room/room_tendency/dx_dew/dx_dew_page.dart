@@ -40,7 +40,7 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorX.color_f7f8fb,
+      color: ColorX.pageBg2(),
       child: Column(
         children: [
           SizedBox(height: 10.h,),
@@ -48,23 +48,23 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
             length: 4,
             controller: _tabController,
             tabBarHeight: 40.h,
-            tabBarColor: Colors.white,
+            tabBarColor: ColorX.cardBg(),
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorPadding: EdgeInsets.only(top: 34.h,left: 40.w,right: 40.w,bottom: 3.h),
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(3.r),
-              color: ColorX.color_091722,
+              color: ColorX.text0917(),
             ),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft: Radius.circular(10.r)),),
-            labelColor: ColorX.color_091722,
-            unselectedLabelColor: ColorX.color_58698d,
+            labelColor: ColorX.text0917(),
+            unselectedLabelColor: ColorX.text586(),
             // width: 300.w,
             tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),).toList(),
           ),
           Container(
             height: 40.h,
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            color: Colors.white,
+            color: ColorX.cardBg(),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -97,23 +97,23 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
                 headingRowHeight: 18.h,
                 dividerThickness: 0,
                 border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
-                headingRowColor: MaterialStateProperty.all(Colors.white),
-                dataRowColor: MaterialStateProperty.all(Colors.white),
+                headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
                 minWidth: 100.w + (state.bigRoads.value.length -1) * 40.w,
                 columns: buildBigTitle(),
                 rows: List<DataRow>.generate(5, (index)=> DataRow(cells: buildBigCell(index))),
               );
             }),
           ),
-          Container(height: 30.h,color: Colors.white,),
+          Container(height: 30.h,color: ColorX.cardBg(),),
           Container(
             height: 40.h,
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            color: Colors.white,
+            color: ColorX.cardBg(),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(Intr().zhupanlu,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                Text(Intr().zhupanlu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
               ],
             ),
           ),
@@ -130,8 +130,8 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
                 headingRowHeight: 18.h,
                 dividerThickness: 0,
                 border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
-                headingRowColor: MaterialStateProperty.all(Colors.white),
-                dataRowColor: MaterialStateProperty.all(Colors.white),
+                headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
                 minWidth: 100.w + (state.beadRoads.value.length -1) * 20.w,
                 columns: buildBeadTitle(),
                 rows: List<DataRow>.generate(5, (index)=> DataRow(cells: buildBeadCell(index))),
@@ -139,7 +139,7 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
             }),
           ),
           Expanded(
-            child: Container(color: Colors.white,),
+            child: Container(color: ColorX.pageBg(),),
           ),
         ],
       ),

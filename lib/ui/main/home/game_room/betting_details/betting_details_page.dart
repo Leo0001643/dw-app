@@ -49,13 +49,13 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
               ["比特币1分28","加拿大28","加拿大西28","台湾宾果28"]),
           child: Row(
             children: [
-              Text(Intr().quanbujilu,style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
-              Image.asset(ImageX.icon_down_black),
+              Text(Intr().quanbujilu,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+              Image.asset(ImageX.icon_down_black,color: ColorX.iconBlack(),),
             ],
           ),
         ),
       ),),
-      backgroundColor: Colors.white,
+      backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +77,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
               }),
             ),
             Container(
-              color: ColorX.color_f7f8fb,
+              color: ColorX.pageBg2(),
               margin: EdgeInsets.only(top: 10.h),
               height: 40.h,
               child: Row(
@@ -85,28 +85,28 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text(Intr().danhao,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().danhao,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text(Intr().neirong,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().neirong,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text(Intr().xiazhujine,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().xiazhujine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
                     )
                   ),
                   Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text(Intr().keyingjine,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().keyingjine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                 ],
@@ -173,7 +173,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
   Widget buildWalletTab(BillWalletEntity item,bool select) {
     return Container(
       decoration: BoxDecoration(
-        color: select ? Colors.white:ColorX.color_f7f8fb,
+        color: select ? ColorX.cardBg2():ColorX.cardBg(),
         borderRadius: BorderRadius.circular(10.r),
         border: select ? Border.all(color: ColorX.color_fc243b,width: 1.r) : null,
       ),
@@ -183,7 +183,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
         children: [
           Image.asset(select ? item.activeIcon:item.normalIcon),
           SizedBox(width: 3.w,),
-          Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.color_091722),),
+          Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
         ],
       ),
     );
@@ -191,7 +191,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
 
   Widget buildBetItem(int index) {
     return Container(
-      color: Colors.white,
+      color: ColorX.cardBg(),
       height: 94.h,
       child: Row(
         children: [
@@ -220,7 +220,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                 children: [
                   GFTypography(
                     text: Intr().qihao_(["762252\n加拿大西28"]),
-                    textColor: ColorX.color_091722,
+                    textColor: ColorX.text0917(),
                     type: GFTypographyType.typo6,
                     showDivider: false,
                     fontWeight: FontWeight.normal,
@@ -254,7 +254,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("8.88/8.88",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+              child: Text("8.88/8.88",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
             ),
           ),
         ],

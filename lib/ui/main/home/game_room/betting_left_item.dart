@@ -40,7 +40,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                   radius: 16.r,
                 ),
                 SizedBox(width: 5.w,),
-                Text("Zoe",style: TextStyle(fontSize: 14.sp,color: ColorX.color_606060),),
+                Text("Zoe",style: TextStyle(fontSize: 14.sp,color: ColorX.text606(),),),
               ],
             ),
           ),
@@ -48,6 +48,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             padding: EdgeInsets.zero,
             margin: EdgeInsets.only(left: 50.w,right: 53.w,bottom: 5.h),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+            color: ColorX.cardBg(),
             elevation: 3.r,
             content: Column(
               children: [
@@ -62,12 +63,12 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_80_091),),
+                        Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text80091()),),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-                            Image.asset(ImageX.icon_right_black),
+                            Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
+                            Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
                           ],
                         ),
                       ],
@@ -84,9 +85,9 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(Intr().zhudan_,style: TextStyle(fontSize: 13.sp,color: ColorX.color_60543f),),
+                      Text(Intr().zhudan_,style: TextStyle(fontSize: 13.sp,color: ColorX.text605()),),
                       Text("4",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
-                      Text(Intr().zongji_,style: TextStyle(fontSize: 13.sp,color: ColorX.color_60543f),),
+                      Text(Intr().zongji_,style: TextStyle(fontSize: 13.sp,color: ColorX.text605()),),
                       Text("¥80",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
                     ],
                   ),
@@ -109,8 +110,8 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("First ball - 3",style: TextStyle(fontSize: 13.sp,color: ColorX.color_333333),),
-              Text("8.666 x \$5",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+              Text("First ball - 3",style: TextStyle(fontSize: 13.sp,color: ColorX.text333()),),
+              Text("8.666 x \$5",style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
             ],
           ),
         ),

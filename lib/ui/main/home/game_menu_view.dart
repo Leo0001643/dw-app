@@ -24,7 +24,7 @@ class GameMenuView extends StatefulWidget{
 class StateGameMenuView extends State<GameMenuView>{
 
   buildGroupTitle(String groupByValue) {
-    return Text(groupByValue,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 14.sp),);
+    return Text(groupByValue,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 14.sp,color: Colors.white),);
   }
 
   buildGroupItem(HomeGameMenuEntity element) {
@@ -86,14 +86,14 @@ class StateGameMenuView extends State<GameMenuView>{
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
-          color: select ? Colors.transparent:ColorX.color_f7f8fb,
+          color: select ? Colors.transparent:ColorX.cardBg(),
           border: select ? Border.all(color: ColorX.color_fc243b,width: 1.w): Border.all(color: Colors.transparent,width: 0),
         ),
         alignment: Alignment.center,
         width: 70.w,
         height: 40.h,
         margin: EdgeInsets.only(bottom: 10.h),
-        child: Text(e,style: TextStyle(fontSize: 12.sp,color: select ? ColorX.color_fc243b:ColorX.color_091722),),
+        child: Text(e,style: TextStyle(fontSize: 12.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
       ),
     );
   }
@@ -176,11 +176,11 @@ class StateGameMenuView extends State<GameMenuView>{
               child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
             ),
             InkWell(
-              // onTap: ()=> Get.toNamed(Routes.chess_game_list),
+              onTap: ()=> Get.toNamed(Routes.chess_game_list),
               child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
             ),
             InkWell(
-              // onTap: ()=> Get.toNamed(Routes.table_game_list),
+              onTap: ()=> Get.toNamed(Routes.table_game_list),
               child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
             ),
             buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),

@@ -37,24 +37,25 @@ class _TableGameListPageState extends State<TableGameListPage> {
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: ColorX.appBarBg(),onTap: (){
         DialogUtils().showGameBrandBtmDialog(context);
       }),
-      backgroundColor: Colors.white,
+      backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(
           children: [
             Container(
               decoration: BoxDecoration(
-                color: ColorX.color_f7f8fb,
+                color: ColorX.cardBg(),
                 borderRadius: BorderRadius.circular(8.r),
               ),
               margin: EdgeInsets.symmetric(horizontal: 12.w),
               child: Row(
                 children: [
                   SizedBox(width: 10.w,),
-                  Image.asset(ImageX.icon_search),
+                  Image.asset(ImageX.icon_search,color: ColorX.icon586(),),
                   Expanded(
                     child: Obx(() {
                       return WidgetUtils().buildTextField(null, 44.h, 16.sp,
                           ColorX.color_949eb9, Intr().qingshuruyouximingcheng,backgroundColor: Colors.transparent,
+                          hintColor: ColorX.text586(),
                           defText: state.searchWord.value,inputType:TextInputType.text,onChanged: (v){
                             state.searchWord.value = v;
                           });
@@ -79,7 +80,7 @@ class _TableGameListPageState extends State<TableGameListPage> {
             Expanded(
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.w,),
-                color: ColorX.color_f7f8fb,
+                color: ColorX.cardBg2(),
                 child: SingleChildScrollView(
                   child: Wrap(
                     runSpacing: 10.w,
@@ -111,7 +112,7 @@ class _TableGameListPageState extends State<TableGameListPage> {
   Widget buildGameItem(int index) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.cardBg(),
         borderRadius: BorderRadius.circular(10.r),
       ),
       width: 0.459.sw,
@@ -125,7 +126,8 @@ class _TableGameListPageState extends State<TableGameListPage> {
           SizedBox(height: 5.h,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 7.w),
-            child: Text("棋牌小游戏棋牌小游戏棋牌小游戏棋牌小游戏棋牌小游戏",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,overflow: TextOverflow.ellipsis),maxLines: 1,),
+            child: Text("棋牌小游戏棋牌小游戏棋牌小游戏棋牌小游戏棋牌小游戏",
+              style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),overflow: TextOverflow.ellipsis),maxLines: 1,),
           ),
           // SizedBox(height: 5.h,),
           Padding(
@@ -137,7 +139,7 @@ class _TableGameListPageState extends State<TableGameListPage> {
                   children: [
                     Image.asset(ImageX.icon_hot),
                     SizedBox(width: 3.w,),
-                    Text("9.9w",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
+                    Text("9.9w",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
                   ],
                 ),
                 InkWell(

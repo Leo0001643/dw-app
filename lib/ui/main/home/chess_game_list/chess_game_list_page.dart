@@ -45,18 +45,19 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: ColorX.color_f7f8fb,
+                color: ColorX.cardBg(),
                 borderRadius: BorderRadius.circular(8.r),
               ),
               margin: EdgeInsets.symmetric(horizontal: 12.w),
               child: Row(
                 children: [
                   SizedBox(width: 10.w,),
-                  Image.asset(ImageX.icon_search),
+                  Image.asset(ImageX.icon_search,color: ColorX.icon586(),),
                   Expanded(
                     child: Obx(() {
                       return WidgetUtils().buildTextField(null, 44.h, 16.sp,
                           ColorX.color_949eb9, Intr().qingshuruyouximingcheng,backgroundColor: Colors.transparent,
+                          hintColor: ColorX.text586(),
                           defText: state.searchWord.value,inputType:TextInputType.text,onChanged: (v){
                             state.searchWord.value = v;
                           });
@@ -136,7 +137,7 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
           ),
           SizedBox(height: 7.h,),
           Text("棋牌小游戏棋棋牌小游戏棋",
-            style: TextStyle(fontSize: 12.sp,color: ColorX.color_80_091,overflow: TextOverflow.ellipsis),maxLines: 2,),
+            style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),overflow: TextOverflow.ellipsis),maxLines: 2,),
         ],
       ),
     );

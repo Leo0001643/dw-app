@@ -43,7 +43,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().zoushi,msg: true),
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: SmartRefresher(
         controller: _refreshController,
         enablePullDown: true,
@@ -64,7 +64,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
     return InkWell(
       onTap: ()=> Get.toNamed(Routes.history_lottery),
       child: Container(
-        decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r)),
+        decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r)),
         margin: EdgeInsets.only(top: 10.h,left: 15.w,right: 15.w,),
         child: Column(
           children: [
@@ -82,16 +82,16 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("台湾宾果PC28",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500,),),
+                        Text("台湾宾果PC28",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           runAlignment: WrapAlignment.center,
                           alignment: WrapAlignment.center,
                           spacing: 3.w,
                           children: [
-                            Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
-                            Text("112030767",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,),),
-                            Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,),),
+                            Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
+                            Text("112030767",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
+                            Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
                           ],
                         ),
                         SizedBox(height: 10.h,),
@@ -111,7 +111,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                       ],
                     ),
                   ),
-                  Image.asset(ImageX.icon_right_black,width: 20.w,height: 20.w,),
+                  Image.asset(ImageX.icon_right_black,width: 20.w,height: 20.w,color: ColorX.iconBlack(),),
                 ],
               ),
             ),
@@ -125,9 +125,9 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                     child: Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        Image.asset(ImageX.icon_lisi_kj),
+                        Image.asset(ImageX.icon_lisi_kj,color: ColorX.icon586(),),
                         SizedBox(width: 3.w,),
-                        Text(Intr().lishikaijiang,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                        Text(Intr().lishikaijiang,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                       ],
                     ),
                   ),
@@ -137,9 +137,9 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                     child: Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        Image.asset(ImageX.icon_lisi_jiang),
+                        Image.asset(ImageX.icon_lisi_jiang,color: ColorX.icon586(),),
                         SizedBox(width: 3.w,),
-                        Text(Intr().kaijiangzhoushi,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                        Text(Intr().kaijiangzhoushi,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                       ],
                     ),
                   ),
@@ -149,9 +149,9 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                     child: Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        Text(Intr().qugoucai,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+                        Text(Intr().qugoucai,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
                         SizedBox(width: 3.w,),
-                        Image.asset(ImageX.icon_right_black),
+                        Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
                       ],
                     ),
                   ),

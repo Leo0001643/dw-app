@@ -36,7 +36,7 @@ class _DoubleQueuePageState extends State<DoubleQueuePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorX.color_f7f8fb,
+      color: ColorX.pageBg2(),
       child: SmartRefresher(
         controller: _refreshController,
         enablePullDown: true,
@@ -55,14 +55,14 @@ class _DoubleQueuePageState extends State<DoubleQueuePage> {
 
   Widget buildLotteryItem(int index) {
     return Container(
-      decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r),),
+      decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r),),
       margin: EdgeInsets.only(top: 10.h,left: 15.w,right: 15.w,),
       padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 15.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("${Intr().diyiqiu} - ${Intr().bet_dan}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
-          Text("5${Intr().qi}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+          Text("${Intr().diyiqiu} - ${Intr().bet_dan}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
+          Text("5${Intr().qi}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
         ],
       ),
     );

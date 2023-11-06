@@ -39,14 +39,14 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   @override
   Widget build(BuildContext context) {
-    var textColor = state.roomType == 0 ? ColorX.color_091722:Colors.white;
+    var textColor = state.roomType == 0 ? ColorX.text0917():Colors.white;
     return Scaffold(
       appBar: WidgetUtils().buildGameBar(
           state.title, buildRoomType(),
           collect: false,msg: true,onTap: (){
         DialogUtils().showSelectRoomBtmDialog(context);
       }),
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: Container(
         child: Column(
           children: [
@@ -126,8 +126,8 @@ class _GameRoomPageState extends State<GameRoomPage> {
                           ),
                         ),
                         SizedBox(height: 6.h,),
-                        buildNotifyItem("⎡20:00] ：The game is over in 3 minutes !",textColor),
-                        buildNotifyItem("⎡21:00] ：The game begins. 18 people in here!",textColor),
+                        buildNotifyItem("⎡20:00] ：The game is over in 3 minutes !",state.roomType == 0 ? ColorX.color_091722:Colors.white),
+                        buildNotifyItem("⎡21:00] ：The game begins. 18 people in here!",state.roomType == 0 ? ColorX.color_091722:Colors.white),
                         SizedBox(height: 10.h,),
                       ],
                     ),
@@ -265,7 +265,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     var color = Colors.white;
     switch(state.roomType){
       case 0:
-        color = Colors.white;
+        color = ColorX.cardBg();
         break;
       case 1:
         color = Color(0xff363f57);
@@ -298,7 +298,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
   }
 
   Widget buildCurrentTermType() {
-    var color = state.roomType == 0 ? ColorX.color_091722:ColorX.color_ffe0ac;
+    var color = state.roomType == 0 ? ColorX.text0917():ColorX.color_ffe0ac;
     return InkWell(
       onTap: ()=> DialogUtils().showHistoryLotteryBtmDialog(context,logic),
       child: Row(

@@ -41,8 +41,8 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().xiaoxi,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().xiaoxi,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -59,9 +59,10 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
                 borderRadius: BorderRadius.circular(3.r),
                 color: ColorX.color_091722,
               ),
+              labelPadding: EdgeInsets.zero,
               labelColor: ColorX.color_091722,
               unselectedLabelColor: ColorX.color_58698d,
-              width: 180.w,
+              width: 0.55.sw,
               tabs: state.tabs.map((e) => buildTabBarItem(e, 100)).toList(),
             ),
           ),

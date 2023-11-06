@@ -66,11 +66,11 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildRxAppBar(state.title,msg: true,),
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: Container(
         margin: EdgeInsets.only(top: 10.h),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: ColorX.pageBg(),
           borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r)),
         ),
         child: Row(
@@ -82,7 +82,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                   Container(
                     height: 76.h,
                     alignment: Alignment.center,
-                    child: Text(Intr().qihao,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,),),
+                    child: Text(Intr().qihao,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),),),
                   ),
                   SizedBox(height: 1.h,child: Container(color: ColorX.color_10_949,),),
                   Expanded(
@@ -113,7 +113,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                     length: state.tabs.length,
                     controller: _tabController,
                     tabBarHeight: 40.h,
-                    tabBarColor: Colors.white,
+                    tabBarColor: Colors.transparent,
                     isScrollable: false,
                     width: 288.w,
                     labelPadding: EdgeInsets.zero,
@@ -121,10 +121,10 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                     indicatorPadding: EdgeInsets.only(top: 35.h,left: 30.w,right: 30.w,bottom: 3.h),
                     indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(3.r),
-                      color: ColorX.color_091722,
+                      color: ColorX.text0917(),
                     ),
-                    labelColor: ColorX.color_091722,
-                    unselectedLabelColor: ColorX.color_58698d,
+                    labelColor: ColorX.text0917(),
+                    unselectedLabelColor: ColorX.text586(),
                     // width: 289.w,
                     tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),).toList(),
                   ),

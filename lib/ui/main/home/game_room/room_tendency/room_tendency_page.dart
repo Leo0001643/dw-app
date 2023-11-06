@@ -46,26 +46,26 @@ class _RoomTendencyPageState extends State<RoomTendencyPage> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("趋势"),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar("趋势",bgColor: ColorX.appBarBg3()),
+      backgroundColor: ColorX.pageBg(),
       body: Column(
         children: [
           LCTabBar(
             length: state.pages.length,
             tabBarHeight: 84.h,
             controller: _tabController,
-            tabBarColor: Colors.white,
+            tabBarColor: ColorX.cardBg3(),
             isScrollable: false,
             labelPadding: EdgeInsets.zero,
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: BoxDecoration(
-              color: ColorX.color_f7f8fb,
+              color: ColorX.appBarBg(),
               borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r)),
             ),
-            labelStyle: TextStyle(color: ColorX.color_091722,fontSize: 11.sp),
-            unselectedLabelStyle: TextStyle(color: ColorX.color_58698d,fontSize: 11.sp),
-            labelColor: ColorX.color_091722,
-            unselectedLabelColor: ColorX.color_58698d,
+            labelStyle: TextStyle(color: ColorX.text0917(),fontSize: 11.sp),
+            unselectedLabelStyle: TextStyle(color: ColorX.text586(),fontSize: 11.sp),
+            labelColor: ColorX.text0917(),
+            unselectedLabelColor: ColorX.text586(),
             tabs: [
               buildTabItem(Intr().kaijiangjieguo,ImageX.icon_result),
               buildTabItem(Intr().shujufenxi,ImageX.icon_data),

@@ -36,9 +36,9 @@ class _RoomListPageState extends State<RoomListPage> {
         DialogUtils().showSelectRoomBtmDialog(context);
       }),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(ImageX.room),fit: BoxFit.fill,
+            image: AssetImage(ImageX.roomT()),fit: BoxFit.fill,
           )
         ),
         child: Column(
@@ -203,12 +203,14 @@ class _RoomListPageState extends State<RoomListPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              Expanded(
+                child: Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              ),
               Image.asset(ImageX.ic_into_right),
             ],
           ),
           SizedBox(height: 5.h,),
-          Text(role,style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
+          Text(role,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
         ],
       ),
     );

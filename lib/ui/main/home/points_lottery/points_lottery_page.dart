@@ -44,20 +44,23 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage(ImageX.color_pillar),fit: BoxFit.fill,),
         ),
         child: Column(
           children: [
             WidgetUtils().buildAppBar(Intr().jifenyaojiang,bgColor: Colors.transparent,),
             Center(
-              child: Image.asset(ImageX.lucky_title),
+              child: Image.asset(ImageX.luckyTitleP()),
             ),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage(ImageX.accountBg),fit: BoxFit.fill,),
               ),
-              padding: EdgeInsets.only(left: 38.w,right: 5.w,top: 7.h,bottom: 7.h,),
+              width: 120.r,
+              height: 22.r,
+              padding: EdgeInsets.only(left: 28.w),
+              alignment: Alignment.centerLeft,
               child: Text(Intr().jifenmeici(["90.06"]),style: TextStyle(fontSize: 12.sp,color: Colors.white,),),
             ),
             SizedBox(height: 10.h,),
@@ -89,7 +92,7 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 30.h,),
                       child: InkWell(
-                        child: Image.asset(ImageX.draw_btn,),
+                        child: Image.asset(ImageX.drawBtnP(),),
                         onTap: ()=> logic.start(),
                       ),
                     ),
