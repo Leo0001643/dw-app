@@ -24,14 +24,14 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().kfzx,msg: true,drawer: true,back: false),
-      backgroundColor: Colors.white,
+      backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height: 10.h,),
             Container(
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(ImageX.kefutop),fit: BoxFit.fill),
+                image: DecorationImage(image: AssetImage(ImageX.kefutopT()),fit: BoxFit.fill),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -44,9 +44,9 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(Intr().xszxkf,
-                        style: TextStyle(fontSize: 24.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
+                        style: TextStyle(fontSize: 24.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
                       SizedBox(height: 10.h,),
-                      Text(Intr().qthwnfw,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
+                      Text(Intr().qthwnfw,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
                     ],
                   ),
                   Expanded(child: Container()),
@@ -79,7 +79,9 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
         SizedBox(height: 10.h,),
         Container(
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(ImageX.bg_customer),fit: BoxFit.fill),
+            color: ColorX.cardBg4(),
+            borderRadius: BorderRadius.circular(10.r),
+            // image: DecorationImage(image: AssetImage(ImageX.bg_customer),fit: BoxFit.fill),
           ),
           padding: EdgeInsets.all(10.r),
           margin: EdgeInsets.symmetric(horizontal: 20.w),
@@ -88,11 +90,11 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
             children: [
               Image.asset(icon,),
               SizedBox(width: 8.w,),
-              Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+              Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
               Expanded(child: Container(),),
               InkWell(
                 onTap: ()=> logic.clickService(i),
-                child: Text(Intr().djjr,style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,
+                child: Text(Intr().djjr,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
                     decoration: TextDecoration.underline),),
               ),
             ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -43,29 +44,38 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
   }
 
   @override
+  void didChangeDependencies() {
+    state.tabs = [Intr().quanbu,Intr().chongzhi,Intr().qita];
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("优惠中心",msg: true,drawer: true,back: false,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().youhuizhongxin,msg: true,drawer: true,back: false,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
+          Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
+            color: ColorX.cardBg(),
+            width: 1.sw,
             child: LCTabBar(
               length: state.tabs.length,
               controller: _tabController,
               tabBarHeight: 35.h,
-              tabBarColor: Colors.white,
-              indicatorSize: TabBarIndicatorSize.label,
-              indicatorPadding: EdgeInsets.only(top: 28.h,left: 10.w,right: 10.w,bottom: 3.r),
+              tabBarColor: Colors.transparent,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorPadding: EdgeInsets.only(top: 30.h,left: 20.w,right: 20.w,bottom: 2.h),
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(3.r),
-                color: ColorX.color_091722,
+                color: ColorX.text0917(),
               ),
-              labelColor: ColorX.color_091722,
-              unselectedLabelColor: ColorX.color_58698d,
-              width: 180.w,
+              labelPadding: EdgeInsets.zero,
+              labelColor: ColorX.text0917(),
+              unselectedLabelColor: ColorX.text586(),
+              width: 0.55.sw,
               tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
             ),
           ),
@@ -88,7 +98,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
                       child: Container(
                         margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 15.h),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: ColorX.cardBg(),
                           borderRadius: BorderRadius.circular(10.r),
                         ),
                         child: Column(
@@ -107,12 +117,12 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
                                     SizedBox(height: 10.h,),
                                     Padding(
                                       padding: EdgeInsets.only(left: 15.w),
-                                      child: Text("真人视讯首存大派送",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                                      child: Text("真人视讯首存大派送",style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                                     ),
                                     SizedBox(height: 5.h,),
                                     Padding(
                                       padding: EdgeInsets.only(left: 15.w),
-                                      child: Text("长期活动",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+                                      child: Text("长期活动",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
                                     ),
                                     SizedBox(height: 10.h,),
                                   ],

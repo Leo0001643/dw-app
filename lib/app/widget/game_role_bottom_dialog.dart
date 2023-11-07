@@ -42,7 +42,7 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.pageBg(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
       child: Column(
@@ -56,15 +56,15 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
                   length: 3,
                   controller: _tabController,
                   tabBarHeight: 35.h,
-                  tabBarColor: Colors.white,
+                  tabBarColor: Colors.transparent,
                   indicatorSize: TabBarIndicatorSize.label,
                   indicatorPadding: EdgeInsets.only(top: 28.h,left: 20.w,right: 20.w,bottom: 3.r),
                   indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(3.r),
-                    color: ColorX.color_091722,
+                    color: ColorX.text0917(),
                   ),
-                  labelColor: ColorX.color_091722,
-                  unselectedLabelColor: ColorX.color_58698d,
+                  labelColor: ColorX.text0917(),
+                  unselectedLabelColor: ColorX.text586(),
                   width: 280.w,
                   tabs: tabs.map((e) => Text(e, style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600))).toList(),
                 ),
@@ -75,7 +75,7 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
                   padding: EdgeInsets.only(left: 15.w),
                   child: SizedBox(
                     height: 35.h,width: 35.w,
-                    child: Image.asset(ImageX.icon_down_arrow),
+                    child: Image.asset(ImageX.icon_down_arrow,color: ColorX.iconBlack(),),
                   ),
                 ),
               ),

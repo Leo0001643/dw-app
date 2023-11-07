@@ -50,7 +50,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       height: 0.77.sh,
       width: 1.sw,
       decoration: BoxDecoration(
-        color: ColorX.color_f7f8fb,
+        color: ColorX.pageBg4(),
         borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
       ),
       child: Column(
@@ -62,13 +62,13 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                 padding: EdgeInsets.only(left: 20.w,top: 15.h),
                 child: InkWell(
                   onTap: ()=> Navigator.of(context).pop(),
-                  child: Image.asset(ImageX.icon_down_arrow,),
+                  child: Image.asset(ImageX.icon_down_arrow,color: ColorX.iconBlack(),),
                 ),
               ),
               Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.h),
-                  child: Text(Intr().touzhu,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,),),
+                  child: Text(Intr().touzhu,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),),),
                 ),
               ),
             ],
@@ -76,7 +76,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
           Center(
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.white,width: 1.w),
+                border: Border.all(color: ColorX.cardBg(),width: 1.w),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               height: 95.h,
@@ -122,7 +122,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                       color: buildTextColor(),
                     ),
                     labelColor: buildTextColor(),
-                    unselectedLabelColor: ColorX.color_091722,
+                    unselectedLabelColor: ColorX.text0917(),
                     tabs: tabs.map((e) =>
                         Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
                     ).toList(),
@@ -211,7 +211,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                           height: 138.h,
                           margin: EdgeInsets.zero,
                           padding: EdgeInsets.zero,
-                          color: ColorX.color_f4f4f6,
+                          color: ColorX.cardBg4(),
                           elevation: 3.r,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(topRight: Radius.circular(20.r),topLeft: Radius.circular(20.r),),
@@ -260,6 +260,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                       margin: EdgeInsets.only(left: 10.w),
                                       child: Obx(() {
                                         return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, Intr().qingshurujine,
+                                            backgroundColor: ColorX.cardBg(),hintColor: ColorX.text586(),
                                             defText: inputAmt.value,inputType: TextInputType.number,onChanged: (v)=> inputAmt.value = v);
                                       }),
                                     ),
@@ -269,7 +270,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
+                                          Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),),
                                           Text("¥ 35000000",style: TextStyle(fontSize: 14.sp,color: buildTextColor(),),),
                                         ],
                                       ),
@@ -280,9 +281,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                         inputAmt.value = "";
                                         chipIndex.value = -1;
                                       },
-                                      child: Container(
-                                        child: Image.asset(ImageX.icon_clear,width: 48.w,height: 40.h,),
-                                      ),
+                                      child: Image.asset(ImageX.icon_clear,width: 48.w,height: 40.h,),
                                     ),
                                   ],
                                 ),
@@ -364,8 +363,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
         content: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
-            gradient: const LinearGradient(
-              colors: [Colors.white,Color(0xfff3f4f9)],
+            gradient: LinearGradient(
+              colors: ColorX.cardColors(),
               // colors: [Color(0xffffeed4),Color(0xfffff5d0)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -377,9 +376,9 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 6.h,),
-              Text("大",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+              Text("大",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
               SizedBox(height: 15.h,),
-              Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.color_d53849),),
+              Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.textd53()),),
               SizedBox(height: 6.h,),
             ],
           ),
@@ -402,8 +401,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
         content: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
-            gradient: const LinearGradient(
-              colors: [Colors.white,Color(0xfff3f4f9)],
+            gradient: LinearGradient(
+              colors: ColorX.cardColors(),
               // colors: [Color(0xffffeed4),Color(0xfffff5d0)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -415,9 +414,9 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 3.h,),
-              Text("大",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+              Text("大",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
               SizedBox(height: 15.h,),
-              Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.color_d53849),),
+              Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.textd53()),),
               SizedBox(height: 3.h,),
             ],
           ),
@@ -439,8 +438,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
         content: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
-            gradient: const LinearGradient(
-              colors: [Colors.white,Color(0xfff3f4f9)],
+            gradient: LinearGradient(
+              colors: ColorX.cardColors(),
               // colors: [Color(0xffffeed4),Color(0xfffff5d0)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -462,7 +461,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                 child: Text("04",style: TextStyle(fontSize: 14.sp,color: ColorX.color_5583e7),),
               ),
               SizedBox(height: 3.h,),
-              Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.color_d53849),),
+              Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.textd53()),),
               SizedBox(height: 3.h,),
             ],
           ),

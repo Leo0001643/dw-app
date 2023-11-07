@@ -28,7 +28,7 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.cardBg5(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
       child: Column(
@@ -38,7 +38,7 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
           Stack(
             children: [
               Center(
-                child: Text("返水说明",style: TextStyle(fontSize: 18.sp,fontWeight: FontWeight.w600),),
+                child: Text("返水说明",style: TextStyle(fontSize: 18.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
               ),
               InkWell(
                 onTap: ()=> Navigator.of(context).pop(),
@@ -46,7 +46,7 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
                   padding: EdgeInsets.only(left: 15.w),
                   child: SizedBox(
                     height: 35.h,width: 35.w,
-                    child: Image.asset(ImageX.icon_down_arrow),
+                    child: Image.asset(ImageX.icon_down_arrow,color: ColorX.icon586(),),
                   ),
                 ),
               ),

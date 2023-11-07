@@ -68,16 +68,16 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("余额: ¥ 6666.00",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+                Text("${Intr().yue_}¥ 6666.00",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
                 LCSegmentTabs(
                   length: payWays.length,
                   labelColor: Colors.white,
-                  unselectedLabelColor: ColorX.color_091722,
+                  unselectedLabelColor: ColorX.text0917(),
                   width: 88.w,
                   height: 22.h,
                   border: Border.all(color: Colors.transparent),
                   borderRadius: BorderRadius.circular(15.r),
-                  tabBarColor: ColorX.color_e7ebf4,
+                  tabBarColor: ColorX.cardBg6(),
                   indicatorColor: buildBtnColor(),
                   labelPadding: EdgeInsets.zero,
                   tabs: payWays.map((e) => Text(e,style: TextStyle(fontSize: 12.sp),)).toList(),
@@ -94,15 +94,15 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
               children: [
                 Expanded(
                   flex: 25,
-                  child: Text("选中号码",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+                  child: Text("选中号码",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
                 ),
                 Expanded(
                   flex: 35,
-                  child: Text("赔率",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+                  child: Text("赔率",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
                 ),
                 Expanded(
                   flex: 40,
-                  child: Text("金额",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+                  child: Text("金额",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
                 ),
               ],
             ),
@@ -121,18 +121,18 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
               children: [
                 Text.rich(TextSpan(
                     children: [
-                      TextSpan(text: "若中奖, 奖金",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+                      TextSpan(text: "若中奖, 奖金",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
                       TextSpan(text: "¥60.000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
-                      TextSpan(text: ", 盈利 ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+                      TextSpan(text: ", 盈利 ",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
                       TextSpan(text: "¥30.000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
                     ]
                 )),
                 SizedBox(height: 8.h,),
                 Text.rich(TextSpan(
                     children: [
-                      TextSpan(text: "注单: ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
+                      TextSpan(text: "注单: ",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),),
                       TextSpan(text: "3",style: TextStyle(fontSize: 18.sp,color: ColorX.color_fc243b,),),
-                      TextSpan(text: ", 总金额 ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,),),
+                      TextSpan(text: ", 总金额 ",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),),
                       TextSpan(text: "¥3000000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
                     ]
                 )),
@@ -147,7 +147,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   WidgetUtils().buildElevatedButton("取消", 135.w, 40.h,
-                      bg: ColorX.color_f7f8fb,textColor: ColorX.color_58698d,onPressed: (){
+                      bg: ColorX.cardBg3(),textColor: ColorX.text586(),onPressed: (){
                         Navigator.of(context).pop(false);
                       }),
                   SizedBox(width: 10.w,),
@@ -173,7 +173,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
         children: [
           Expanded(
             flex: 25,
-            child: Text("特码 - 大",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+            child: Text("特码 - 大",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
           ),
           Expanded(
             flex: 35,
@@ -183,27 +183,27 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
             flex: 40,
             child: Row(
               children: [
-                Text("x",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,),),
+                Text("x",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
                 SizedBox(width: 5.w,),
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: ColorX.color_f7f8fb,
+                      color: ColorX.cardBg3(),
                       borderRadius: BorderRadius.circular(6.r),
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 5.w,vertical: 3.h),
                     child: Row(
                       children: [
-                        Text("¥",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),),
+                        Text("¥",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
                         SizedBox(width: 3.w,),
-                        Text("1000000",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                        Text("1000000",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                       ],
                     ),
                   ),
                 ),
                 InkWell(
                   onTap: (){},
-                  child: Icon(Icons.delete_forever_rounded,size: 20.r,color: ColorX.color_58698d,),
+                  child: Icon(Icons.delete_forever_rounded,size: 20.r,color: ColorX.icon586(),),
                 )
               ],
             ),

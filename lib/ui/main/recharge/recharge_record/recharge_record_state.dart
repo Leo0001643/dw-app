@@ -1,13 +1,16 @@
+import 'package:leisure_games/app/intl/intr.dart';
+
 class RechargeRecordState {
   RechargeRecordState() {
     ///Initialize variables
   }
 
-  var filterTime = ["今天","最近7天","最近30天",];
+  var filterTime = [Intr().jintian,Intr().zuijin7tain,Intr().zuijin30tian,];
 
-  var filterWays = ["全部方式","财付通","点卡支付","京东支付","全民付","QQ转账","银联扫码","USDT币","微信支付","云闪付支付",];
+  var filterWays = [Intr().quanbufangshi,"财付通","点卡支付","京东支付","全民付","QQ转账","银联扫码","USDT币","微信支付","云闪付支付",];
 
-  var filterStatus = ["全部状态","成功","处理中","已取消",];
+  var filterStatus = [Intr().quanbuzhuangtai,
+    Intr().chenggong,Intr().chulizhong,Intr().yiquxiao,];
 
 
 }

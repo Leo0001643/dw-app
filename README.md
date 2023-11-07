@@ -22,7 +22,11 @@ git config user.email "Lance@gmail.com"
 
 
 
+# dart
+dart pub run build_runner build
 
+# flutter
+flutter pub run build_runner build
 
 
 
@@ -121,9 +125,6 @@ git config user.email "Lance@gmail.com"
 ### 切换房间页面
 - 去掉确认按钮，点击对应房间即可跳转
 
-
-
-@lance1234578
 
 
 

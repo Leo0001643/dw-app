@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 
 class RechargeDigitalState {
   RechargeDigitalState() {
@@ -13,6 +14,6 @@ class RechargeDigitalState {
   var selectAgree = 0.obs;
 
   var agreeList = <String>["TRC充值","CRC20充值"];
-  var tabs = ["线上(自动到账)","线下(人工存款)"];
+  var tabs = [Intr().xianshang,Intr().xianxia];
 
 }

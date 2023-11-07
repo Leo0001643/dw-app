@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -34,13 +35,13 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
               SizedBox(width: 15.w,),
               Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: ColorX.color_091722,width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
+                  border: Border.all(color: ColorX.text586(),width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
                   shape: BoxShape.circle,
                 ),
                 width: 8.r,height: 8.r,
               ),
               SizedBox(width: 13.w,),
-              Text("点击下方支付跳转链接并阅读提示信息",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              Text(Intr().dianjixiafangzhifu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             ],
           ),
           SizedBox(height: 15.h,),
@@ -55,10 +56,10 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                   children: [
                     buildPayItem("支付跳转1", true),
                     SizedBox(height: 10.h,),
-                    Text("温馨提示:",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
-                    Text("1、系统将会自动打开一个网页，请按提示继续操作",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
-                    Text("2、手续费 1.22%,到账率高!",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
-                    Text("3、1111",style: TextStyle(fontSize: 12.sp,color: ColorX.color_5583e7),),
+                    Text(Intr().wenxintishi_,style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
+                    Text(Intr().wenxintishi_1,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                    Text(Intr().wenxintishi_2,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                    Text(Intr().wenxintishi_3(["111"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_5583e7),),
                   ],
                 ),
               ),
@@ -70,13 +71,13 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
               SizedBox(width: 15.w,),
               Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: ColorX.color_5b6d7b,width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
+                  border: Border.all(color: ColorX.text586(),width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
                   shape: BoxShape.circle,
                 ),
                 width: 8.r,height: 8.r,
               ),
               SizedBox(width: 13.w,),
-              Text("填入金额(1-0)并点击确定",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              Text(Intr().tianrujine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             ],
           ),
           SizedBox(height: 10.h,),
@@ -86,31 +87,32 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.r),
-                  color: Colors.white,
+                  color: ColorX.cardBg(),
                 ),
                 padding: EdgeInsets.all(10.r),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("充值账户",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                    Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                     SizedBox(height: 10.h,),
                     Container(
-                      decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(5.r)),
+                      decoration: BoxDecoration(color: ColorX.appBarBg2(),borderRadius: BorderRadius.circular(5.r)),
                       width: 300.w,height: 45.h,
                       padding: EdgeInsets.symmetric(horizontal: 15.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("username",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                          Text("username",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                           InkWell(
                             onTap: ()=> WidgetUtils().clickCopy("username"),
-                            child: Image.asset(ImageX.icon_copy,color: ColorX.color_58698d,),
+                            child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
                           ),
                         ],
                       ),
                     ),
                     SizedBox(height: 10.h,),
-                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.color_091722, "手动输入或下方选择金额",backgroundColor: ColorX.color_f7f8fb),
+                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(),
+                        Intr().shoudongshuruhuoxuanzhe,backgroundColor: ColorX.appBarBg2(),hintColor: ColorX.text5d6()),
                     SizedBox(height: 10.h,),
                     SizedBox(
                       width: 300.w,
@@ -135,22 +137,22 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
             ],
           ),
           SizedBox(height: 20.h,),
-          WidgetUtils().buildElevatedButton("提交", 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+          WidgetUtils().buildElevatedButton(Intr().tijiao, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
             Get.offAndToNamed(Routes.recharge_result);
           }),
           SizedBox(height: 20.h,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              WidgetUtils().buildElevatedButton("币币兑换", 102.w, 38.h,bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
+              WidgetUtils().buildElevatedButton(Intr().bibiduihuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
                 Get.toNamed(Routes.coin_exchange);
               }),
               SizedBox(width: 16.w,),
-              WidgetUtils().buildElevatedButton("充值记录", 102.w, 38.h,bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
+              WidgetUtils().buildElevatedButton(Intr().chongzhijilu, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
                 Get.toNamed(Routes.recharge_record);
               }),
               SizedBox(width: 16.w,),
-              WidgetUtils().buildElevatedButton("额度转换", 102.w, 38.h,bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
+              WidgetUtils().buildElevatedButton(Intr().eduzhuanhuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
                 Get.toNamed(Routes.quota_conversion);
               }),
             ],
@@ -158,8 +160,8 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
           SizedBox(height: 20.h,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Text("支付说明:\n1.公司帐户资金如何领取到个人帐户 人民币银行结算账户管理方法规定\n2.公司帐户资金如何领取到个人帐户 人民币银行结算账户管理方法规定",
-            style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,height: 1.8),),
+            child: Text(Intr().zhifushuoming_rmb,
+            style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),height: 1.8),),
           ),
           SizedBox(height: 50.h,),
 
@@ -195,10 +197,10 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
 
   Widget buildBtnAmount(int i) {
     return Container(
-      decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(5.r)),
+      decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(5.r)),
       alignment: Alignment.center,
       height: 40.h,width: 65.w,
-      child: Text("$i",style: TextStyle(fontSize: 14.sp,color: Colors.black,fontWeight: FontWeight.w600),),
+      child: Text("$i",style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w600),),
     );
   }
 

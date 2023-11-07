@@ -25,7 +25,7 @@ class StateSelectWalletBottomDialog extends State<SelectWalletBottomDialog>{
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.cardBg5(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
       child: Column(
@@ -33,7 +33,8 @@ class StateSelectWalletBottomDialog extends State<SelectWalletBottomDialog>{
           Center(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 20.h),
-              child: Text(Intr().qiehuanquanjuqianbao,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              child: Text(Intr().qiehuanquanjuqianbao,
+                style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             ),
           ),
           Padding(
@@ -73,8 +74,8 @@ class StateSelectWalletBottomDialog extends State<SelectWalletBottomDialog>{
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(name,style: TextStyle(fontSize: 16.sp,color: select?ColorX.color_fc243b:ColorX.color_091722),),
-              Text(amount,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              Text(name,style: TextStyle(fontSize: 16.sp,color: select?ColorX.color_fc243b:ColorX.text0917()),),
+              Text(amount,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ],
           ),
         ),

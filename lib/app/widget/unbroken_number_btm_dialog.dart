@@ -24,7 +24,7 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.cardBg5(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
       child: Column(
@@ -38,14 +38,14 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
                   onTap: ()=> Navigator.of(context).pop(),
                   child: Padding(
                     padding: EdgeInsets.only(left: 15.w,top: 15.h),
-                    child: Text(Intr().cancel,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.color_58698d),),
+                    child: Text(Intr().cancel,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.text586()),),
                   ),
                 ),
               ),
               Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.h),
-                  child: Text(Intr().wanzhenghaoyuanzhanshi,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                  child: Text(Intr().wanzhenghaoyuanzhanshi,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                 ),
               ),
               Align(
@@ -63,8 +63,8 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("${Intr().qihao_}12312132",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,height: 1.5)),
-                Text(Intr().zhuaqushijian(["2023 - 06 - 16 08:25:02"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,height: 1.5)),
+                Text(Intr().qihao_(["12312132"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),height: 1.5)),
+                Text(Intr().zhuaqushijian(["2023 - 06 - 16 08:25:02"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),height: 1.5)),
               ],
             ),
           ),
@@ -74,7 +74,7 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
           buildNumberItem("3","6cce4fc7e14b54ce50999d89a8e841730b69276cce4fc7e14b54ce50999d89a8e841730b6927"),
           Padding(
             padding: EdgeInsets.only(left: 15.w),
-            child: Text(Intr().shuominghaoyuan,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+            child: Text(Intr().shuominghaoyuan,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
           ),
           SizedBox(height: 20.h,),
         ],
@@ -88,7 +88,7 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("${num}.",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+          Text("${num}.",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
           Expanded(
             child: InkWell(
               onTap: (){

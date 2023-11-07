@@ -24,7 +24,7 @@ class StateGameBrandBottomDialog extends State<GameBrandBottomDialog>{
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.cardBg5(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
       child: Column(
@@ -34,7 +34,7 @@ class StateGameBrandBottomDialog extends State<GameBrandBottomDialog>{
               Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.h),
-                  child: Text(Intr().xuanzhe,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                  child: Text(Intr().xuanzhe,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                 ),
               ),
               Align(
@@ -68,8 +68,8 @@ class StateGameBrandBottomDialog extends State<GameBrandBottomDialog>{
             return Container(
               height: 57.h,
               alignment: Alignment.center,
-              color: current.value == i ? Colors.black12 :Colors.white,
-              child: Text(Intr().quanbuyouxi,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              color: current.value == i ? Colors.black12 : ColorX.cardBg(),
+              child: Text(Intr().quanbuyouxi,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             );
           }),
         ),
@@ -86,13 +86,13 @@ class StateGameBrandBottomDialog extends State<GameBrandBottomDialog>{
           child: Obx(() {
             return Container(
               height: 57.h,
-              color: current.value == i ? Colors.black12 :Colors.white,
+              color: current.value == i ? Colors.black12 : ColorX.cardBg(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.network(Constants.test_image,width: 15.r,),
                   SizedBox(width: 5.w,),
-                  Text("AG电子",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                  Text("AG电子",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
                 ],
               ),
             );

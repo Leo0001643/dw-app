@@ -650,7 +650,7 @@ class Intr extends Translations{
       "keyingjine":"可赢金额",
       "xiaoji":"小计",
       "xbi":"%s笔",
-      "qihao_":"期号:",
+      "qihao_":"期号:%s",
       "wallet_cny":"CNY钱包",
       "wallet_usdt":"USDT钱包",
       "danhao":"单号",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -28,18 +29,18 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(ImageX.rechargeBgT()),fit: BoxFit.fill),
             ),
             height: 226.h,
           ),
           Column(
             children: [
-              WidgetUtils().buildAppBar("充值",msg: true,bgColor: Colors.transparent),
+              WidgetUtils().buildAppBar(Intr().chongzhi,msg: true,bgColor: Colors.transparent),
               Container(
                 height: 115.h,
                 child: Column(
@@ -47,9 +48,9 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
                   children: [
                     Image.asset(ImageX.icon_select,width: 24.r,height: 24.r,),
                     SizedBox(height: 5.r,),
-                    Text("提交成功",style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                    Text(Intr().tijiaochenggong,style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                     SizedBox(height: 5.r,),
-                    Text("请3分钟后刷新本页,查询进度",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                    Text(Intr().qing3fenzhonghoushuaxin,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
                   ],
                 ),
               ),
@@ -60,15 +61,15 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("充值详情",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                    Text(Intr().chongzhixiangqing,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                     SizedBox(height: 15.h,),
-                    buildInfoItem("充值姓名","xxx"),
+                    buildInfoItem(Intr().chongzhixingming,"xxx"),
                     SizedBox(height: 15.h,),
-                    buildInfoItem("订单编号","947957829459679390"),
+                    buildInfoItem(Intr().dingdanbianhao,"947957829459679390"),
                     SizedBox(height: 15.h,),
-                    buildInfoItem("提交时间","2023-07-05  11:45:10"),
+                    buildInfoItem(Intr().tijiaoshijian,"2023-07-05  11:45:10"),
                     SizedBox(height: 15.h,),
-                    buildInfoItem("充值金额","¥500"),
+                    buildInfoItem(Intr().chongzhijine,"¥500"),
                   ],
                 ),
               ),
@@ -76,9 +77,9 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  WidgetUtils().buildElevatedButton("刷新", 150.w, 40.h,bg: Colors.white,textColor:ColorX.color_091722,onPressed: (){}),
+                  WidgetUtils().buildElevatedButton(Intr().shuaxin, 150.w, 40.h,bg: Colors.white,textColor:ColorX.color_091722,onPressed: (){}),
                   SizedBox(width: 20.w,),
-                  WidgetUtils().buildElevatedButton("完成", 150.w, 40.h,bg: ColorX.color_fc243b,onPressed: (){
+                  WidgetUtils().buildElevatedButton(Intr().wancheng, 150.w, 40.h,bg: ColorX.color_fc243b,onPressed: (){
                     Get.back();
                   }),
                 ],

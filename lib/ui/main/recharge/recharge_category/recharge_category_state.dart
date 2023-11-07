@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_offline/recharge_offline_page.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_online/recharge_online_page.dart';
 
@@ -11,7 +12,7 @@ class RechargeCategoryState {
 
   var title = "支付宝".obs;
 
-  var tabs = ["线上(自动到账)","线下(人工存款)"];
+  var tabs = [Intr().xianshang,Intr().xianxia];
 
   late PageController pageController;
   late List<Widget> pages;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -38,7 +39,7 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("充值记录",msg: true,bgColor: Colors.white),
+      appBar: WidgetUtils().buildAppBar(Intr().chongzhijilu,msg: true,bgColor: ColorX.appBarBg()),
       backgroundColor: Colors.white,
       body: Column(
         children: [
@@ -76,7 +77,7 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
   Widget buildFilterItem(String tab,List<String> list) {
     return Expanded(
       child: InkWell(
-        onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,"请选择",list),
+        onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,Intr().qingxuanzhe,list),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

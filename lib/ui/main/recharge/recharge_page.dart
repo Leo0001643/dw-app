@@ -1,8 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -24,20 +26,20 @@ class _RechargePageState extends State<RechargePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Stack(
           children: [
             Container(
               height: 236.h,
               alignment: Alignment.center,
-              decoration: const BoxDecoration(
-                image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
+              decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage(ImageX.rechargeBgT()),fit: BoxFit.fill),
               ),
             ),
             Column(
               children: [
-                WidgetUtils().buildAppBar("充值中心",bgColor: Colors.transparent, msg: true,drawer: true,back: false),
+                WidgetUtils().buildAppBar(Intr().chongzhizhongxin,bgColor: Colors.transparent, msg: true,drawer: true,back: false),
                 Container(
                   height: 100.h,
                   child: Column(
@@ -48,7 +50,7 @@ class _RechargePageState extends State<RechargePage> {
                         radius: 28.r,
                       ),
                       SizedBox(height: 7.h,),
-                      Text("充值帐户: 2946781",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
+                      Text(Intr().chongzhizhanghu_(["2946781"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
                     ],
                   ),
                 ),
@@ -58,8 +60,8 @@ class _RechargePageState extends State<RechargePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("人民币钱包(当前默认)",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
-                      Text("余额: ¥666",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                      Text(Intr().dangqianmoren([Intr().wallet_cny]),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                      Text("${Intr().yue_}¥666",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
                     ],
                   ),
                 ),
@@ -75,8 +77,8 @@ class _RechargePageState extends State<RechargePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("数字钱包",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
-                      Text("余额: \$666",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                      Text(Intr().wallet_usdt,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                      Text("${Intr().yue_}\$666",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
                     ],
                   ),
                 ),
@@ -96,7 +98,7 @@ class _RechargePageState extends State<RechargePage> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-          color: Colors.white,
+          color: ColorX.cardBg(),
         ),
         margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 10.h),
         padding: EdgeInsets.all(15.r),
@@ -104,9 +106,9 @@ class _RechargePageState extends State<RechargePage> {
           children: [
             Image.asset(icon,width: 18.r,),
             SizedBox(width: 5.w,),
-            Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+            Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
             Expanded(child: Container()),
-            Image.asset(ImageX.icon_right_grey),
+            Image.asset(ImageX.icon_right_grey,color: ColorX.text586(),),
           ],
         ),
       ),

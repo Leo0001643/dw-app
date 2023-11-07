@@ -33,7 +33,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
-            child: Text("访问路线选择",style: TextStyle(fontSize: 16.sp,color: ColorX.color_3e3737),),
+            child: Text(Intr().fangwenluxian,style: TextStyle(fontSize: 16.sp,color: ColorX.color_3e3737),),
           ),
           SizedBox(height: 20.h,),
           Container(
@@ -85,7 +85,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
                         color: ColorX.color_60c549,
                       ),
                       SizedBox(height: 7.h,),
-                      Text("快",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                      Text(Intr().kuai,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
                     ],
                   ),
                 ),
@@ -97,7 +97,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
                         color: ColorX.color_ff9e52,
                       ),
                       SizedBox(height: 7.h,),
-                      Text("一般",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                      Text(Intr().yiban,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
                     ],
                   ),
                 ),
@@ -109,7 +109,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
                         color: ColorX.color_d53849,
                       ),
                       SizedBox(height: 7.h,),
-                      Text("很慢",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                      Text(Intr().henman,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
                     ],
                   ),
                 ),
@@ -121,7 +121,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
                         color: ColorX.color_b5b5b5,
                       ),
                       SizedBox(height: 7.h,),
-                      Text("不可用",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                      Text(Intr().bukeyong,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
                     ],
                   ),
                 ),
@@ -130,7 +130,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
           ),
           SizedBox(height: 16.h,),
           Center(
-            child: WidgetUtils().buildElevatedButton("返回", 131.w, 40.h, bg: ColorX.color_f7f8fb,
+            child: WidgetUtils().buildElevatedButton(Intr().fanhui, 131.w, 40.h, bg: ColorX.color_f7f8fb,
                 textColor: ColorX.color_091722,onPressed: (){
                     Navigator.of(context).pop();
                 }),

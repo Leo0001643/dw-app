@@ -29,7 +29,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorX.cardBg5(),
       body: Column(
         children: [
           Stack(
@@ -39,13 +39,13 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                   image: DecorationImage(image: AssetImage(ImageX.kefudetail),fit: BoxFit.cover,),
                 ),
                 height: 213.h,
-                child: WidgetUtils().buildAppBar("Skype",msg: true,bgColor: Colors.transparent),
+                child: WidgetUtils().buildRxAppBar(state.title,msg: true,bgColor: Colors.transparent),
               ),
               Expanded(
                 child: Container(
                   margin: EdgeInsets.only(top: 193.h),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: ColorX.cardBg5(),
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
                   ),
                   child: Column(
@@ -60,12 +60,12 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
 
                       Padding(
                         padding: EdgeInsets.only(left: 20.w),
-                        child: Text("温馨提示：\n长按号码可以复制到剪切板",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                        child: Text(Intr().wenxintishi_fuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),height: 1.5),),
                       ),
                       SizedBox(height: 32.h,),
                       Center(
-                        child: WidgetUtils().buildElevatedButton("返回", 131.w, 40.h,
-                            bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
+                        child: WidgetUtils().buildElevatedButton(Intr().fanhui, 131.w, 40.h,
+                            bg: ColorX.cardBg3(),textColor: ColorX.text0917(),onPressed: (){
                               Navigator.of(context).pop();
                             }),
                       ),
@@ -86,7 +86,9 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
         SizedBox(height: 10.h,),
         Container(
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(ImageX.bg_customer),fit: BoxFit.fill),
+            color: ColorX.cardBg3(),
+            borderRadius: BorderRadius.circular(10.r),
+            // image: DecorationImage(image: AssetImage(ImageX.bg_customer),fit: BoxFit.fill),
           ),
           padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 15.w),
           margin: EdgeInsets.symmetric(horizontal: 20.w),
@@ -99,15 +101,15 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                  Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                   SizedBox(height: 5.h,),
-                  Text(code,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                  Text(code,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                 ],
               ),
               Expanded(child: Container(),),
               InkWell(
                 onTap: ()=> WidgetUtils().clickCopy(code),
-                child: Text("点击复制",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722,
+                child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
                     decoration: TextDecoration.underline),),
               ),
             ],

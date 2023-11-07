@@ -51,7 +51,7 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
 
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.cardBg5(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
       child: Column(
@@ -66,7 +66,7 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
         Center(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 10.h),
-            child: Text(widget.title,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+            child: Text(widget.title,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
           ),
         ),
         Align(
@@ -93,7 +93,7 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
             children: [
               Image.asset(select ? ImageX.icon_select : ImageX.icon_unselect),
               SizedBox(width: 5.w,),
-              Text(option,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+              Text(option,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
             ],
           ),
           SizedBox(height: 15.h,),

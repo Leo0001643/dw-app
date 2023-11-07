@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -45,12 +46,12 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(ImageX.rechargeBgT()),fit: BoxFit.fill),
             ),
             height: 226.h,
           ),
@@ -78,10 +79,10 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                   indicatorPadding: EdgeInsets.only(top: 31.h,left: 30.w,right: 30.w,bottom: 1.h),
                   indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(3.r),
-                    color: ColorX.color_091722,
+                    color: ColorX.text0917(),
                   ),
-                  labelColor: ColorX.color_091722,
-                  unselectedLabelColor: ColorX.color_58698d,
+                  labelColor: ColorX.text0917(),
+                  unselectedLabelColor: ColorX.text586(),
                   width: 335.w,
                   tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
                 ),
@@ -95,13 +96,14 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                           SizedBox(width: 15.w,),
                           Container(
                             decoration: BoxDecoration(
-                              border: Border.all(color: ColorX.color_091722,width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
+                              border: Border.all(color: ColorX.text586(),width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
                               shape: BoxShape.circle,
                             ),
                             width: 8.r,height: 8.r,
                           ),
                           SizedBox(width: 13.w,),
-                          Text("第一步,选择支付协议",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                          Text(Intr().diyibu_xuanzhezhifuxieyi,
+                            style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                         ],
                       ),
                       SizedBox(height: 15.h,),
@@ -134,13 +136,14 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                           SizedBox(width: 15.w,),
                           Container(
                             decoration: BoxDecoration(
-                              border: Border.all(color: ColorX.color_5b6d7b,width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
+                              border: Border.all(color: ColorX.text586(),width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
                               shape: BoxShape.circle,
                             ),
                             width: 8.r,height: 8.r,
                           ),
                           SizedBox(width: 13.w,),
-                          Text("第二步,查看收款信息,进行转账充值",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                          Text(Intr().dierbu_chakanshoukuanxinxi,
+                            style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                         ],
                       ),
                       SizedBox(height: 10.h,),
@@ -158,25 +161,25 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.r),
-                                color: Colors.white,
+                                color: ColorX.cardBg(),
                               ),
                               padding: EdgeInsets.all(10.r),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("充值账户",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                                  Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                                   SizedBox(height: 10.h,),
                                   Container(
-                                    decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(5.r)),
+                                    decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(5.r)),
                                     width: 300.w,height: 45.h,
                                     padding: EdgeInsets.symmetric(horizontal: 15.w),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("username",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                                        Text("username",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                                         InkWell(
                                           onTap: ()=> WidgetUtils().clickCopy("username"),
-                                          child: Image.asset(ImageX.icon_copy,color: ColorX.color_58698d,),
+                                          child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
                                         ),
                                       ],
                                     ),
@@ -187,27 +190,29 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                       QrImageView(
                                         data: "1234567890",
                                         size: 112.r,
+                                        backgroundColor: Colors.white,
                                       ),
                                       SizedBox(width: 17.w,),
                                       Expanded(
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text("收款账户",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722),),
+                                            Text(Intr().shoukuanzhanghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
                                             SizedBox(height: 10.h,),
                                             Container(
                                               decoration: BoxDecoration(
-                                                color: ColorX.color_f7f8fb,
+                                                color: ColorX.cardBg2(),
                                                 borderRadius: BorderRadius.circular(8.r),
                                               ),
                                               padding: EdgeInsets.all(5.r),
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.end,
                                                 children: [
-                                                  Text("TY7ZSy8Q3pXibU2m9FoAvAK9g36THYt8cL",style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
+                                                  Text("TY7ZSy8Q3pXibU2m9FoAvAK9g36THYt8cL",
+                                                    style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
                                                   InkWell(
                                                     onTap: ()=> WidgetUtils().clickCopy("TY7ZSy8Q3pXibU2m9FoAvAK9g36THYt8cL"),
-                                                    child: Image.asset(ImageX.icon_copy,color: ColorX.color_58698d,),
+                                                    child: Image.asset(ImageX.icon_copy,color: ColorX.text5862(),),
                                                   ),
                                                 ],
                                               ),
@@ -239,13 +244,14 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                               SizedBox(width: 15.w,),
                               Container(
                                 decoration: BoxDecoration(
-                                  border: Border.all(color: ColorX.color_5b6d7b,width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
+                                  border: Border.all(color: ColorX.text586(),width: 3.r,strokeAlign: BorderSide.strokeAlignOutside),
                                   shape: BoxShape.circle,
                                 ),
                                 width: 8.r,height: 8.r,
                               ),
                               SizedBox(width: 13.w,),
-                              Text("第三步,完成转账后填写入款信息",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                              Text(Intr().disanbu_tianxierukuanxinxi,
+                                style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                             ],
                           ),
                         );
@@ -265,38 +271,39 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10.r),
-                                  color: Colors.white,
+                                  color: ColorX.cardBg(),
                                 ),
                                 padding: EdgeInsets.all(10.r),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("充值账户",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                                    Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                                     SizedBox(height: 10.h,),
                                     Container(
-                                      decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(5.r)),
+                                      decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(5.r)),
                                       width: 300.w,height: 45.h,
                                       padding: EdgeInsets.symmetric(horizontal: 15.w),
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text("username",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                                          Text("username",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                                           InkWell(
                                             onTap: ()=> WidgetUtils().clickCopy("username"),
-                                            child: Image.asset(ImageX.icon_copy,color: ColorX.color_58698d,),
+                                            child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
                                           ),
                                         ],
                                       ),
                                     ),
                                     SizedBox(height: 10.h,),
-                                    Text("汇款姓名",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                                    Text(Intr().huikuanxingming,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                                     SizedBox(height: 10.h,),
-                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.color_091722, "请输入汇款人姓名",backgroundColor: ColorX.color_f7f8fb),
+                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshuruhuikuanren,
+                                        backgroundColor: ColorX.cardBg2(),hintColor: ColorX.text586()),
                                     SizedBox(height: 10.h,),
-                                    Text("汇款金额",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                                    Text(Intr().huikuanjine,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                                     SizedBox(height: 10.h,),
-                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.color_091722, "请输入汇款金额",backgroundColor: ColorX.color_f7f8fb,
-                                        inputType: TextInputType.number),
+                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshuruhuikuanjine,
+                                        backgroundColor: ColorX.cardBg2(), inputType: TextInputType.number,hintColor: ColorX.text586()),
                                   ],
                                 ),
                               ),
@@ -306,7 +313,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                       }),
                       SizedBox(height: 20.h,),
                       Obx(() {
-                        var tab = state.selectOnline.value ? "返回首页" : "提交";
+                        var tab = state.selectOnline.value ? Intr().fanhuishouye : Intr().tijiao;
                         return WidgetUtils().buildElevatedButton(tab, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
                           if(state.selectOnline.value){
                             eventBus.fire(ChangeMainPageEvent(0));
@@ -320,15 +327,15 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          WidgetUtils().buildElevatedButton("币币兑换", 102.w, 38.h,bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
+                          WidgetUtils().buildElevatedButton(Intr().bibiduihuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
                             Get.toNamed(Routes.coin_exchange);
                           }),
                           SizedBox(width: 16.w,),
-                          WidgetUtils().buildElevatedButton("充值记录", 102.w, 38.h,bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
+                          WidgetUtils().buildElevatedButton(Intr().chongzhijilu, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
                             Get.toNamed(Routes.recharge_record);
                           }),
                           SizedBox(width: 16.w,),
-                          WidgetUtils().buildElevatedButton("额度转换", 102.w, 38.h,bg: Colors.white,textColor: ColorX.color_091722,onPressed: (){
+                          WidgetUtils().buildElevatedButton(Intr().eduzhuanhuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
                             Get.toNamed(Routes.quota_conversion);
                           }),
                         ],
@@ -338,12 +345,12 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Text.rich(TextSpan(
                             children: [
-                              TextSpan(text: "支付说明:\n1.",
-                                style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,height: 1.8),),
-                              TextSpan(text: "充值完毕,系统会在2分钟内自动存入USDT钱包,如果您想使用CNY钱包,请到「币币兑换」页面兑换\n",
+                              TextSpan(text: Intr().zhifushuoming_,
+                                style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),height: 1.8),),
+                              TextSpan(text: Intr().zhifushuoming_1,
                                 style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b,height: 1.8),),
-                              TextSpan(text: "2.公司帐户资金如何领取到个人帐户 人民币银行结算账户管理方法规定",
-                                style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,height: 1.8),),
+                              TextSpan(text: Intr().zhifushuoming_2,
+                                style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),height: 1.8),),
                             ]
                         )),
                       ),

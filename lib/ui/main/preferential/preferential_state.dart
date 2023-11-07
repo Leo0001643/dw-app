@@ -1,9 +1,11 @@
+import 'package:leisure_games/app/intl/intr.dart';
+
 class PreferentialState {
   PreferentialState() {
     ///Initialize variables
   }
 
-  var tabs = ["全部","充值","其他"];
+  var tabs = [Intr().quanbu,Intr().chongzhi,Intr().qita];
 
 
 }

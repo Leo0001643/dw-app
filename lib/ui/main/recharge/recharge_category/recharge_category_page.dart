@@ -49,12 +49,12 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(ImageX.rechargeBgT()),fit: BoxFit.fill),
             ),
             height: 226.h,
           ),
@@ -87,10 +87,10 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
                       indicatorPadding: EdgeInsets.only(top: 31.h,left: 30.w,right: 30.w,bottom: 1.h),
                       indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(3.r),
-                        color: ColorX.color_091722,
+                        color: ColorX.text0917(),
                       ),
-                      labelColor: ColorX.color_091722,
-                      unselectedLabelColor: ColorX.color_58698d,
+                      labelColor: ColorX.text0917(),
+                      unselectedLabelColor: ColorX.text586(),
                       width: 335.w,
                       tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
                     ),

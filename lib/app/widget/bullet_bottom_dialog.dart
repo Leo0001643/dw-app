@@ -130,7 +130,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
       height: 0.54.sh,
       width: 1.sw,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.pageBg4(),
         borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
       ),
       child: Column(
@@ -142,7 +142,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: ColorX.color_f7f8fb,
+                    color: ColorX.cardBg3(),
                     borderRadius: BorderRadius.circular(10.r),
                   ),
                   margin: EdgeInsets.only(left: 15.w),
@@ -173,7 +173,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                 onTap: ()=> widget.valueCallBack.call(inputList.value),
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 15.w),
-                  child: Image.asset(ImageX.icon_send,width: 24.r,height: 24.r,),
+                  child: Image.asset(ImageX.icon_send,color: ColorX.icon586(), width: 24.r,height: 24.r,),
                 ),
               ),
             ],
@@ -182,22 +182,22 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
             length: tabs.length,
             controller: _tabController,
             tabBarHeight: 40.h,
-            tabBarColor: Colors.white,
+            tabBarColor: ColorX.pageBg4(),
             indicatorSize: TabBarIndicatorSize.tab,
             labelPadding: EdgeInsets.zero,
             indicatorPadding: EdgeInsets.only(top: 34.h,left: 35.w,right: 35.w,bottom: 3.h),
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(3.r),
-              color: ColorX.color_091722,
+              color: ColorX.text0917(),
             ),
-            labelColor: ColorX.color_091722,
-            unselectedLabelColor: ColorX.color_58698d,
+            labelColor: ColorX.text0917(),
+            unselectedLabelColor: ColorX.text586(),
             tabs: tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w500),),).toList(),
           ),
           Expanded(
             child: Container(
               width: 1.sw,
-              color: ColorX.color_f7f8fb,
+              color: ColorX.cardBg2(),
               child: Stack(
                 children: [
                   SingleChildScrollView(
@@ -237,10 +237,10 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                       child: Container(
                         padding: EdgeInsets.all(8.r),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: ColorX.cardBg(),
                           borderRadius: BorderRadius.circular(8.r),
                         ),
-                        child: Image.asset(ImageX.delete,width: 25.w,fit: BoxFit.fill,),
+                        child: Image.asset(ImageX.delete,color: ColorX.icon586(),width: 25.w,fit: BoxFit.fill,),
                       ),
                     ),
                   ),
@@ -304,14 +304,14 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
       },
       child: Container(
         decoration: BoxDecoration(
-          color: selectPhrases.value == index ? ColorX.color_fc243b : Colors.white,
+          color: selectPhrases.value == index ? ColorX.color_fc243b : ColorX.cardBg(),
           borderRadius: BorderRadius.circular(20.r),
         ),
         padding: EdgeInsets.symmetric(vertical: 7.h,horizontal: 14.w),
         child: Text(tab,
           style: TextStyle(
             fontSize: 14.sp,
-            color: selectPhrases.value == index ? Colors.white : ColorX.color_58698d,
+            color: selectPhrases.value == index ? Colors.white : ColorX.text5862(),
           ),),
       ),
     );
@@ -341,14 +341,14 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
   Widget buildInputCommonItem(String tab,int index,) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.cardBg(),
         borderRadius: BorderRadius.circular(20.r),
       ),
       padding: EdgeInsets.symmetric(vertical: 5.h,horizontal: 10.w),
       child: Text(tab,
         style: TextStyle(
           fontSize: 12.sp,
-          color: ColorX.color_58698d,
+          color: ColorX.text5862(),
         ),),
     );
   }

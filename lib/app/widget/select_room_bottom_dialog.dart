@@ -23,7 +23,7 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.cardBg5(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
       child: Column(
@@ -33,7 +33,7 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
               Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.h),
-                  child: Text(Intr().qiehuanfangjian,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                  child: Text(Intr().qiehuanfangjian,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                 ),
               ),
               Align(
@@ -63,8 +63,8 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(name,style: TextStyle(fontSize: 15.sp,color: ColorX.color_091722),),
-              Text(time,style: TextStyle(fontSize: 15.sp,color: ColorX.color_091722),),
+              Text(name,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
+              Text(time,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
             ],
           ),
         ),
@@ -117,7 +117,7 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
           ),
           padding: EdgeInsets.symmetric(vertical: 9.h),
           alignment: Alignment.center,
-          child: Text(name,style: TextStyle(fontSize: 16.sp,color: select?ColorX.color_fc243b:ColorX.color_091722),),
+          child: Text(name,style: TextStyle(fontSize: 16.sp,color: select?ColorX.color_fc243b:ColorX.text0917()),),
         ),
         Visibility(
           visible: select,
