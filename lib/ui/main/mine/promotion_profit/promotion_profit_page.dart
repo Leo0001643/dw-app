@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/empty_data_widget.dart';
@@ -32,8 +33,8 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("推广赚钱",msg: true),
-      backgroundColor: ColorX.color_f7f8fb,
+      appBar: WidgetUtils().buildAppBar(Intr().tuiguangzhuanqian,msg: true),
+      backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
@@ -41,72 +42,73 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                child: Text("介绍人信息",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                child: Text(Intr().jieshaorenxinxi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
                 padding: EdgeInsets.only(left: 12.w,bottom: 10.h),
               ),
               Container(
-                decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(12.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(12.r),),
                 padding: EdgeInsets.all(15.r),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("代码",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+                    Text(Intr().daima,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                     SizedBox(height: 5.h,),
                     GFListTile(
                       onTap: (){},
                       title: Text("100001547",
-                        style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                        style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
                       padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 10.w),
                       margin: EdgeInsets.zero,
                       radius: 10.r,
-                      color: ColorX.color_f7f8fb,
+                      color: ColorX.cardBg2(),
                       shadow: BoxShadow(color: Colors.transparent),
                       icon: InkWell(
                         onTap: ()=> WidgetUtils().clickCopy("100001547"),
-                        child: Text("复制",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                        child: Text(Intr().fuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
                       ),
                     ),
                     SizedBox(height: 14.h,),
-                    Text("链接",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+                    Text(Intr().lianjie,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                     SizedBox(height: 5.h,),
                     GFListTile(
                       onTap: (){},
                       title: Text("http://soptj9qq.com/#/register?sp=100001547",
-                        style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                        style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
                       padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 10.w),
                       margin: EdgeInsets.zero,
                       radius: 10.r,
-                      color: ColorX.color_f7f8fb,
+                      color: ColorX.cardBg2(),
                       shadow: BoxShadow(color: Colors.transparent),
                       icon: InkWell(
                         onTap: ()=> WidgetUtils().clickCopy("http://soptj9qq.com/#/register?sp=100001547"),
-                        child: Text("复制",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                        child: Text(Intr().fuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
                       ),
                     ),
                   ],
                 ),
               ),
               Padding(
-                child: Text("推广二维码",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+                child: Text(Intr().tuiguangerweima,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
                 padding: EdgeInsets.only(left: 12.w,bottom: 10.h,top: 20.h),
               ),
               Container(
-                decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(12.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(12.r),),
                 padding: EdgeInsets.all(15.r),
                 child: Row(
                   children: [
                     QrImageView(
                       data: "12312312311231",
                       size: 136.r,
+                      backgroundColor: Colors.white,
                     ),
                     SizedBox(width: 36.w,),
                     Column(
                       children: [
-                        WidgetUtils().buildElevatedButton("保存图片", 132.w, 40.h,
-                            bg: ColorX.color_f7f8fb,textColor:ColorX.color_091722,onPressed: (){}),
+                        WidgetUtils().buildElevatedButton(Intr().baocuntupian, 132.w, 40.h,
+                            bg: ColorX.cardBg2(),textColor:ColorX.text0917(),onPressed: (){}),
                         SizedBox(height: 15.h,),
-                        WidgetUtils().buildElevatedButton("复制链接", 132.w, 40.h,
-                            bg: ColorX.color_f7f8fb,textColor:ColorX.color_091722,onPressed: (){}),
+                        WidgetUtils().buildElevatedButton(Intr().fuzhilianjie, 132.w, 40.h,
+                            bg: ColorX.cardBg2(),textColor:ColorX.text0917(),onPressed: (){}),
                       ],
                     ),
                   ],
@@ -116,14 +118,14 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("推广二维码",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
-                    Text("会员列表(通过 sp=495 注册的会员如下",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                    Text(Intr().tuiguangerweima,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
+                    Text(Intr().huiyuanliebiao,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                   ],
                 ),
                 padding: EdgeInsets.only(left: 12.w,bottom: 10.h,top: 20.h),
               ),
               Container(
-                decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(12.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(12.r),),
                 padding: EdgeInsets.all(15.r),
                 alignment: Alignment.center,
                 child: buildPromotionList(["","",""]),
@@ -146,20 +148,20 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> {
             children: [
               Expanded(
                 flex: 30,
-                child: Text("日期",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
+                child: Text(Intr().riqi,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
               ),
               Expanded(
                 flex: 23,
                 child: Text("线下用户线下用户线下用户线下用户线下用户线下用户线下用户线下用户线下用户线下用户线下用户线下用户线下用户线下用户",
-                  style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500,),overflow: TextOverflow.ellipsis,),
+                  style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),overflow: TextOverflow.ellipsis,),
               ),
               Expanded(
                 flex: 23,
-                child: Text("下线存款",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
+                child: Text(Intr().xiaxiancunkuan,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
               ),
               Expanded(
                 flex: 23,
-                child: Text("赚取红利",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
+                child: Text(Intr().zhuanquhongli,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
               ),
             ],
           ),
@@ -177,19 +179,19 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> {
       children: [
         Expanded(
           flex: 30,
-          child: Text("日期",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+          child: Text(Intr().riqi,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
         ),
         Expanded(
           flex: 23,
-          child: Text("线下用户",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+          child: Text(Intr().xianxiayonghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
         ),
         Expanded(
           flex: 23,
-          child: Text("下线存款",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+          child: Text(Intr().xiaxiancunkuan,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
         ),
         Expanded(
           flex: 23,
-          child: Text("赚取红利",style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+          child: Text(Intr().zhuanquhongli,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
         ),
       ],
     ));

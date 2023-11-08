@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -33,151 +34,165 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 15.w),
           child: Stack(
             children: [
               Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
+                decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage(ImageX.rechargeBgT()),fit: BoxFit.fill),
                 ),
                 height: 226.h,
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  WidgetUtils().buildAppBar("提现信息",bgColor: Colors.transparent,msg: true),
-                  SizedBox(height: 15.h,),
-                  Text("确认提现信息",style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w600,color: ColorX.color_091722),),
-                  SizedBox(height: 16.h,),
+                  WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true),
                   Container(
-                    decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(12.r),),
-                    padding: EdgeInsets.all(15.r),
+                    margin: EdgeInsets.symmetric(horizontal: 15.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          child: Text("提现账户",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
-                          padding: EdgeInsets.only(left: 12.w),
-                        ),
-                        SizedBox(height: 7.h,),
-                        Obx(() {
-                          return DropdownButtonHideUnderline(
-                            child: GFDropdown(
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(10.r),
-                              iconEnabledColor: ColorX.color_091722,
-                              dropdownButtonColor:  ColorX.color_f7f8fb,
-                              dropdownColor: Colors.white,
-                              isExpanded: true,
-                              itemHeight: 45.h,
-                              value: state.dropdownValue.value,
-                              onChanged: (newValue) {
-                                state.dropdownValue.value = newValue!;
-                                state.dropdownValue.refresh();
-                              },
-                              items: buildAccountItem(),
-                            ),
-                          );
-                        }),
                         SizedBox(height: 15.h,),
-                        Padding(
-                          child: Text("提现金额",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
-                          padding: EdgeInsets.only(left: 12.w),
-                        ),
-                        SizedBox(height: 7.h,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            buildBtnAmount(50),
-                            buildBtnAmount(100),
-                            buildBtnAmount(500),
-                            buildBtnAmount(1000),
-                            buildBtnAmount(3000),
-                          ],
-                        ),
-                        SizedBox(height: 10.h,),
-                        WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_091722, "¥ 或输入提现金额",backgroundColor: ColorX.color_f7f8fb),
-                        SizedBox(height: 15.h,),
-                        Padding(
-                          child: Text("提现密码",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
-                          padding: EdgeInsets.only(left: 12.w),
-                        ),
-                        SizedBox(height: 7.h,),
+                        Text(Intr().querentixianxinxi,style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w600,color: ColorX.text0917()),),
+                        SizedBox(height: 16.h,),
                         Container(
-                          decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
-                          child: Row(
+                          decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(12.r),),
+                          padding: EdgeInsets.all(15.r),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Padding(
+                                child: Text(Intr().tixianzhanghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w),
+                              ),
+                              SizedBox(height: 7.h,),
                               Obx(() {
-                                return WidgetUtils().buildTextField(275.w, 46.h, 14.sp,
-                                    ColorX.color_091722, "请输入提现密码",backgroundColor: Colors.transparent,
-                                    onChanged: (v)=> state.pwdValue = v,defText: state.pwdValue,
-                                    obscureText: !state.pwdVisible.value,inputType: TextInputType.visiblePassword);
+                                return DropdownButtonHideUnderline(
+                                  child: GFDropdown(
+                                    elevation: 0,
+                                    borderRadius: BorderRadius.circular(10.r),
+                                    iconEnabledColor: ColorX.icon586(),
+                                    dropdownButtonColor:  ColorX.cardBg2(),
+                                    dropdownColor: ColorX.pageBg(),
+                                    isExpanded: true,
+                                    itemHeight: 45.h,
+                                    value: state.dropdownValue.value,
+                                    onChanged: (newValue) {
+                                      state.dropdownValue.value = newValue!;
+                                      state.dropdownValue.refresh();
+                                    },
+                                    items: buildAccountItem(),
+                                  ),
+                                );
                               }),
-                              InkWell(
-                                onTap: ()=> state.pwdVisible.value = !state.pwdVisible.value,
-                                child: Obx(() {
-                                  return state.pwdVisible.value ? Image.asset(ImageX.icon_show,width: 30.w,):Image.asset(ImageX.icon_hide,width: 30.w,);
-                                }),
+                              SizedBox(height: 15.h,),
+                              Padding(
+                                child: Text(Intr().tixianjine,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w),
+                              ),
+                              SizedBox(height: 7.h,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  buildBtnAmount(50),
+                                  buildBtnAmount(100),
+                                  buildBtnAmount(500),
+                                  buildBtnAmount(1000),
+                                  buildBtnAmount(3000),
+                                ],
+                              ),
+                              SizedBox(height: 10.h,),
+
+                              Container(
+                                decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r),),
+                                child: Row(
+                                  children: [
+                                    WidgetUtils().buildTextField(275.w, 45.h, 14.sp, ColorX.text0917(),
+                                        Intr().qingshurutixianjine,backgroundColor: Colors.transparent,hintColor: ColorX.text586()),
+                                    Text("CNY",style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),),),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 15.h,),
+                              Padding(
+                                child: Text(Intr().tixianmima,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w),
+                              ),
+                              SizedBox(height: 7.h,),
+                              Container(
+                                decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r),),
+                                child: Row(
+                                  children: [
+                                    Obx(() {
+                                      return WidgetUtils().buildTextField(275.w, 46.h, 14.sp,
+                                          ColorX.text0917(), Intr().qingshurutixianmima,backgroundColor: Colors.transparent,
+                                          onChanged: (v)=> state.pwdValue = v,defText: state.pwdValue,hintColor: ColorX.text586(),
+                                          obscureText: !state.pwdVisible.value,inputType: TextInputType.visiblePassword);
+                                    }),
+                                    InkWell(
+                                      onTap: ()=> state.pwdVisible.value = !state.pwdVisible.value,
+                                      child: Obx(() {
+                                        return state.pwdVisible.value ? Image.asset(ImageX.icon_show,width: 30.w,color: ColorX.icon586(),):Image.asset(ImageX.icon_hide,width: 30.w,color: ColorX.icon586(),);
+                                      }),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 15.h,),
-                  Text("确认金额",style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w600,color: ColorX.color_091722),),
-                  SizedBox(height: 16.h,),
-                  Container(
-                    decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(12.r),),
-                    padding: EdgeInsets.all(15.r),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          child: Text("手续费",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
-                          padding: EdgeInsets.only(left: 12.w),
-                        ),
-                        SizedBox(height: 10.h,),
+                        SizedBox(height: 15.h,),
+                        Text(Intr().querenjine,style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w600,color: ColorX.text0917()),),
+                        SizedBox(height: 16.h,),
                         Container(
-                          decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
-                          padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 13.h),
-                          child: Row(
+                          decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(12.r),),
+                          padding: EdgeInsets.all(15.r),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("100",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                              Padding(
+                                child: Text(Intr().shouxufei,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w),
+                              ),
+                              SizedBox(height: 10.h,),
+                              Container(
+                                decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r),),
+                                padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 13.h),
+                                child: Row(
+                                  children: [
+                                    Text("100",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                child: Text(Intr().kedaozhangjine,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w,top: 16.h),
+                              ),
+                              SizedBox(height: 10.h,),
+                              Container(
+                                decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r),),
+                                padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 13.h),
+                                child: Row(
+                                  children: [
+                                    Text("100",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),
-                        Padding(
-                          child: Text("可到账金额",style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
-                          padding: EdgeInsets.only(left: 12.w,top: 16.h),
-                        ),
-                        SizedBox(height: 10.h,),
-                        Container(
-                          decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
-                          padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 13.h),
-                          child: Row(
-                            children: [
-                              Text("100",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                            ],
-                          ),
-                        ),
+                        SizedBox(height: 28.h,),
+                        WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+                          Get.toNamed(Routes.withdraw_result);
+                        }),
+                        SizedBox(height: 20.h,),
                       ],
                     ),
-                  ),
-                  SizedBox(height: 28.h,),
-                  WidgetUtils().buildElevatedButton("确定", 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-                    Get.toNamed(Routes.withdraw_result);
-                  }),
-                  SizedBox(height: 20.h,),
+                  )
                 ],
               ),
             ],
           )
-        ),
       ),
     );
   }
@@ -190,7 +205,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
         child: Row(
           children: [
             SizedBox(width: 5.w,),
-            Text(e.language.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
+            Text(e.language.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
           ],
         ),
       );
@@ -200,10 +215,10 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
 
   Widget buildBtnAmount(int i) {
     return Container(
-      decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r)),
+      decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r)),
       alignment: Alignment.center,
       height: 40.h,width: 55.w,
-      child: Text("$i",style: TextStyle(fontSize: 14.sp,color: Colors.black,fontWeight: FontWeight.w600),),
+      child: Text("$i",style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w600),),
     );
   }
 

@@ -37,7 +37,7 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().zxndbz,msg: true),
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Column(
           children: [

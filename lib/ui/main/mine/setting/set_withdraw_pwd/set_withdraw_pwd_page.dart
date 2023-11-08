@@ -22,8 +22,8 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("设置提现密码",msg: true,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().shezhitixianmima,msg: true,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,7 +33,7 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
             child: Row(
               children: [
                 Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                Text("原密码",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                Text(Intr().yuanmima,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
               ],
             ),
           ),
@@ -41,14 +41,14 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
           Center(
             child: Container(
               width: 335.w,
-              decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+              decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: Row(
                 children: [
                   Obx(() {
                     return WidgetUtils().buildTextField(285.w, 46.h, 14.sp,
-                        ColorX.color_091722, "输入原提现密码",backgroundColor: Colors.transparent,
-                        onChanged: (v)=> state.pwdValue = v,defText: state.pwdValue,
+                        ColorX.color_091722, Intr().shuruyuantixianmima,backgroundColor: Colors.transparent,
+                        onChanged: (v)=> state.pwdValue = v,defText: state.pwdValue,hintColor: ColorX.text586(),
                         obscureText: !state.pwdVisible.value,inputType: TextInputType.visiblePassword);
                   }),
                   InkWell(
@@ -67,7 +67,7 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
             child: Row(
               children: [
                 Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                Text("新密码",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                Text(Intr().xinmima,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
               ],
             ),
           ),
@@ -75,14 +75,14 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
           Center(
             child: Container(
               width: 335.w,
-              decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+              decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: Row(
                 children: [
                   Obx(() {
                     return WidgetUtils().buildTextField(285.w, 46.h, 14.sp,
-                        ColorX.color_091722, "输入6-12位新提现密码",backgroundColor: Colors.transparent,
-                        onChanged: (v)=> state.pwdNewValue = v,defText: state.pwdNewValue,
+                        ColorX.color_091722, Intr().shuruxintixianmima,backgroundColor: Colors.transparent,
+                        onChanged: (v)=> state.pwdNewValue = v,defText: state.pwdNewValue,hintColor: ColorX.text586(),
                         obscureText: !state.pwdNewVisible.value,inputType: TextInputType.visiblePassword);
                   }),
                   InkWell(
@@ -101,7 +101,7 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
             child: Row(
               children: [
                 Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                Text("再次确认",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                Text(Intr().zaiciqueren,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
               ],
             ),
           ),
@@ -109,14 +109,14 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
           Center(
             child: Container(
               width: 335.w,
-              decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+              decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: Row(
                 children: [
                   Obx(() {
                     return WidgetUtils().buildTextField(285.w, 46.h, 14.sp,
-                        ColorX.color_091722, "重复输入新提现密码",backgroundColor: Colors.transparent,
-                        onChanged: (v)=> state.pwdNew1Value = v,defText: state.pwdNew1Value,
+                        ColorX.color_091722, Intr().chongfushuru,backgroundColor: Colors.transparent,
+                        onChanged: (v)=> state.pwdNew1Value = v,defText: state.pwdNew1Value,hintColor: ColorX.text586(),
                         obscureText: !state.pwdNewVisible.value,inputType: TextInputType.visiblePassword);
                   }),
                   InkWell(
@@ -133,7 +133,7 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
             child: Container(
               alignment: Alignment.bottomCenter,
               margin: EdgeInsets.only(bottom: 20.h),
-              child: WidgetUtils().buildElevatedButton("确定", 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+              child: WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
 
               }),
             ),

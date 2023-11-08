@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 
 class PointsRecordState {
   PointsRecordState() {
@@ -6,8 +7,8 @@ class PointsRecordState {
   }
 
 
-  var currentTime = "今日".obs;
-  late var times = [currentTime.value,"7日","15日","30日"];
+  var currentTime = Intr().jinri.obs;
+  late var times = [currentTime.value,Intr().day_7,Intr().day_15,Intr().day_30];
 
   var record = ["","","","","","","","","","",""].obs;
 

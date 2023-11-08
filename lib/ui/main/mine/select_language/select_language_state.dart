@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 
@@ -7,14 +9,15 @@ class SelectLanguageState {
     ///Initialize variables
   }
 
-  var dropdownValue = LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh).obs;
 
-  late List<LanguageMenuEntity> country = [
-    dropdownValue.value,
-    LanguageMenuEntity(language: "English", icon: ImageX.icon_us),
-    LanguageMenuEntity(language: "Deutsch", icon: ImageX.icon_de),
-    LanguageMenuEntity(language: "Indonesia", icon: ImageX.icon_indonesia),
+  List<LanguageMenuEntity> country = [
+    LanguageMenuEntity(language: Intr().zhongwenjianti, icon: ImageX.icon_zh,locale: Intr().locales[0]),
+    LanguageMenuEntity(language: Intr().yingyu, icon: ImageX.icon_us,locale: Intr().locales[1]),
+    LanguageMenuEntity(language: Intr().yuenanyu, icon: ImageX.icon_vi,locale: Intr().locales[2]),
   ];
+
+  late var dropdownValue = country[AppData.localeIndex()].obs;
+
 
   late var countryList = country.obs;
 

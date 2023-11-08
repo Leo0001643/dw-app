@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
@@ -42,8 +43,8 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("更换头像",msg: true),
-      backgroundColor: ColorX.color_f7f8fb,
+      appBar: WidgetUtils().buildAppBar(Intr().genghuantouxiang,msg: true),
+      backgroundColor: ColorX.pageBg2(),
       body: Column(
         children: [
           Container(
@@ -64,7 +65,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: ColorX.cardBg(),
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
               ),
               padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -77,17 +78,17 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
                       length: state.tabs.length,
                       controller: _tabController,
                       tabBarHeight: 35.h,
-                      tabBarColor: Colors.white,
+                      tabBarColor: Colors.transparent,
                       indicatorSize: TabBarIndicatorSize.tab,
                       labelPadding: EdgeInsets.zero,
                       indicatorPadding: EdgeInsets.only(top: 30.h,left: 20.w,right: 20.w,bottom: 2.r),
                       indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(3.r),
-                        color: ColorX.color_091722,
+                        color: ColorX.text0917(),
                       ),
-                      labelColor: ColorX.color_091722,
-                      unselectedLabelColor: ColorX.color_58698d,
-                      width: 180.w,
+                      labelColor: ColorX.text0917(),
+                      unselectedLabelColor: ColorX.text586(),
+                      width: 0.55.sw,
                       tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
                     ),
                   ),
@@ -109,7 +110,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
                     }),
                   ),
                   SizedBox(height: 20.h,),
-                  WidgetUtils().buildElevatedButton("确定", 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+                  WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
 
                   }),
                   SizedBox(height: 20.h,),
@@ -134,7 +135,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: Colors.black,width: 2.r),
+              border: Border.all(color: ColorX.textBlack(),width: 3.r),
             ),
           ),
         ),

@@ -1,13 +1,12 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 
 class SelectThemeState {
   SelectThemeState() {
     ///Initialize variables
   }
 
-
-  var selectTheme = true.obs;
-
+  var selectTheme = AppData.theme().obs;
 
 
 }

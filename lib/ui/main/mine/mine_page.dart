@@ -27,13 +27,13 @@ class StateMinePage extends State<MinePage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(ImageX.my_bg),fit: BoxFit.fill,),
+                image: DecorationImage(image: AssetImage(ImageX.mybgT()),fit: BoxFit.fill,),
               ),
               child: Column(
                 children: [
@@ -69,12 +69,12 @@ class StateMinePage extends State<MinePage>{
                         children: [
                           Row(
                             children: [
-                              Text("Hala",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
+                              Text("Hala",style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontFamily: Constants.FONT_STD,fontWeight: FontWeight.w700),),
                               SizedBox(width: 5.w,),
                               Image.asset(ImageX.icon_vip),
                             ],
                           ),
-                          Text("昵称:晴子",style: TextStyle(fontSize: 10.sp,color: ColorX.color_58698d),),
+                          Text(Intr().nicheng_(["晴子"]),style: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),),
                         ],
                       ),
                       Expanded(child: Container()),
@@ -82,9 +82,9 @@ class StateMinePage extends State<MinePage>{
                         children: [
                           Row(
                             children: [
-                              Text("¥88.88\n奖金",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),textAlign: TextAlign.center,),
+                              Text("¥88.88\n${Intr().jiangjin}",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),textAlign: TextAlign.center,),
                               SizedBox(width: 10.w,),
-                              Text("1000\n积分",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,),textAlign: TextAlign.center,),
+                              Text("1000\n${Intr().jifen}",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862(),),textAlign: TextAlign.center,),
                             ],
                           ),
                         ],
@@ -96,7 +96,7 @@ class StateMinePage extends State<MinePage>{
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.r),
-                      image: DecorationImage(image: AssetImage(ImageX.my_card),fit: BoxFit.fill,),
+                      image: DecorationImage(image: AssetImage(ImageX.myCardT()),fit: BoxFit.fill,),
                     ),
                     padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
                     margin: EdgeInsets.symmetric(horizontal: 10.w),
@@ -110,11 +110,11 @@ class StateMinePage extends State<MinePage>{
                           child: Row(
                             children: [
                               Image.asset(ImageX.icon_rmb_grey),
-                              Text(Intr().rmbqb,style: TextStyle(fontSize: 11.sp,color: ColorX.color_091722),),
+                              Text(Intr().rmbqb,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
                               SizedBox(width: 5.w,),
                               Expanded(child: Container()),
-                              Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
-                              Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,fontWeight: FontWeight.w600),),
+                              Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
+                              Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862(),fontWeight: FontWeight.w600),),
                               SizedBox(width: 5.w,),
                               Image.asset(ImageX.icon_right_left,width: 10.w,),
                             ],
@@ -123,18 +123,19 @@ class StateMinePage extends State<MinePage>{
                         SizedBox(height: 10.h,),
                         Row(
                           children: [
-                            Text("余额：",style: TextStyle(fontSize: 15.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
-                            Text("¥8,888",style: TextStyle(fontSize: 18.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
+                            Text(Intr().yue_,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
+                            Text("¥8,888",style: TextStyle(fontSize: 18.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
                           ],
                         ),
                         SizedBox(height: 20.h,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            WidgetUtils().buildElevatedButton("提现", 131.w, 45.h, bg: ColorX.color_f7f8fb,textColor: ColorX.color_091722,onPressed: (){
+                            WidgetUtils().buildElevatedButton(Intr().tixian, 131.w, 45.h,
+                                bg: ColorX.cardBg5(),textColor: ColorX.text0917(),onPressed: (){
                               Get.toNamed(Routes.withdraw);
                             }),
-                            WidgetUtils().buildElevatedButton("充值", 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
+                            WidgetUtils().buildElevatedButton(Intr().chongzhi, 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
                               eventBus.fire(ChangeMainPageEvent(2));
                             }),
                           ],
@@ -149,24 +150,24 @@ class StateMinePage extends State<MinePage>{
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
-                color: Colors.white,
+                color: ColorX.cardBg5(),
               ),
               padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("我的钱包",style: TextStyle(fontSize: 15.sp,color: ColorX.color_091722),),
+                  Text(Intr().wodeqianbao,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
                   SizedBox(height: 10.h,),
                   Wrap(
                     runSpacing: 15.h,
                     children: [
-                      buildCategoryItem("币币交换",ImageX.icon_bb,0),
-                      buildCategoryItem("额度转换",ImageX.icon_edzh,1),
-                      buildCategoryItem("资金明细",ImageX.icon_zjmx,2),
-                      buildCategoryItem("提现密码",ImageX.icon_jymm,3),
-                      buildCategoryItem("绑定银行卡",ImageX.icon_bdyhk,4),
-                      buildCategoryItem("绑定USDT",ImageX.icon_bddt,5),
+                      buildCategoryItem(Intr().bibiduihuan,ImageX.icon_bb,0),
+                      buildCategoryItem(Intr().eduzhuanhuan,ImageX.icon_edzh,1),
+                      buildCategoryItem(Intr().zijinmingxi,ImageX.icon_zjmx,2),
+                      buildCategoryItem(Intr().tixianmima,ImageX.icon_jymm,3),
+                      buildCategoryItem(Intr().bangdingyinhangka,ImageX.icon_bdyhk,4),
+                      buildCategoryItem(Intr().bangdingusdt,ImageX.icon_bddt,5),
                     ],
                   ),
                 ],
@@ -176,22 +177,22 @@ class StateMinePage extends State<MinePage>{
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
-                color: Colors.white,
+                color: ColorX.cardBg5(),
               ),
               padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("我的投注",style: TextStyle(fontSize: 15.sp,color: ColorX.color_091722),),
+                  Text(Intr().wodetouzhu,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
                   SizedBox(height: 10.h,),
                   Wrap(
                     runSpacing: 15.h,
                     children: [
-                      buildCategoryItem("投注记录",ImageX.icon_tzjl,6),
-                      buildCategoryItem("积分记录",ImageX.icon_jfjl,7),
-                      buildCategoryItem("会员返水",ImageX.icon_fan,8),
-                      buildCategoryItem("红包和奖金",ImageX.icon_hbjj,9),
+                      buildCategoryItem(Intr().touzhujilu,ImageX.icon_tzjl,6),
+                      buildCategoryItem(Intr().jifenjilu,ImageX.icon_jfjl,7),
+                      buildCategoryItem(Intr().huiyuanfanshui,ImageX.icon_fan,8),
+                      buildCategoryItem(Intr().hongbaohejiangjin,ImageX.icon_hbjj,9),
                     ],
                   ),
                 ],
@@ -201,20 +202,20 @@ class StateMinePage extends State<MinePage>{
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
-                color: Colors.white,
+                color: ColorX.cardBg5(),
               ),
               padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("我的盈利",style: TextStyle(fontSize: 15.sp,color: ColorX.color_091722),),
+                  Text(Intr().wodeyinli,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
                   SizedBox(height: 10.h,),
                   Wrap(
                     runSpacing: 15.h,
                     children: [
-                      buildCategoryItem("推广赚钱",ImageX.icon_tuiguang,10),
-                      buildCategoryItem("代理注册",ImageX.icon_dai,11),
+                      buildCategoryItem(Intr().tuiguangzhuanqian,ImageX.icon_tuiguang,10),
+                      buildCategoryItem(Intr().dailizhuce,ImageX.icon_dai,11),
                       Container(width: 80.w,),
                       Container(width: 80.w,),
                     ],
@@ -226,21 +227,21 @@ class StateMinePage extends State<MinePage>{
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.r),
-                color: Colors.white,
+                color: ColorX.cardBg5(),
               ),
               padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("其他",style: TextStyle(fontSize: 15.sp,color: ColorX.color_091722),),
+                  Text(Intr().qita,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
                   SizedBox(height: 10.h,),
                   Wrap(
                     runSpacing: 15.h,
                     children: [
-                      buildCategoryItem("通用设置",ImageX.icon_setting,12),
-                      buildCategoryItem("帮助中心",ImageX.icon_bzzx,13),
-                      buildCategoryItem("关于我们",ImageX.icon_gywm,14),
+                      buildCategoryItem(Intr().tongyongshezhi,ImageX.icon_setting,12),
+                      buildCategoryItem(Intr().bangzhuzhongxin,ImageX.icon_bzzx,13),
+                      buildCategoryItem(Intr().gaunyuwomen,ImageX.icon_gywm,14),
                       Container(width: 80.w,),
                     ],
                   ),
@@ -263,7 +264,7 @@ class StateMinePage extends State<MinePage>{
           children: [
             Image.asset(icon),
             SizedBox(height: 3.h,),
-            Text(title,style: TextStyle(fontSize: 11.sp,color: ColorX.color_58698d),),
+            Text(title,style: TextStyle(fontSize: 11.sp,color: ColorX.text5862()),),
           ],
         ),
       ),

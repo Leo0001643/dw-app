@@ -433,9 +433,9 @@ class Intr extends Translations{
   String get yinlifanshui => 'yinlifanshui'.tr;
   String get zuhezhanbilv => 'zuhezhanbilv'.tr;
   String get jinri => 'jinri'.tr;
-  String get day_7 => '7ri'.tr;
-  String get day_15 => '15ri'.tr;
-  String get day_30 => '30ri'.tr;
+  String get day_7 => 'day_7'.tr;
+  String get day_15 => 'day_15'.tr;
+  String get day_30 => 'day_30'.tr;
   String get youxipingtai => 'youxipingtai'.tr;
   String get bishu => 'bishu'.tr;
   String get touzhue => 'touzhue'.tr;
@@ -501,7 +501,7 @@ class Intr extends Translations{
   String get yiban => 'yiban'.tr;
   String get henman => 'henman'.tr;
   String get bukeyong => 'bukeyong'.tr;
-
+  String get fanshuishuoming => 'fanshuishuoming'.tr;
 
 
 
@@ -981,6 +981,7 @@ class Intr extends Translations{
       "yiban":"一般",
       "henman":"很慢",
       "bukeyong":"不可用",
+      "fanshuishuoming":"返水说明",
 
 
 

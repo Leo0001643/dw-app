@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
@@ -28,8 +29,8 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("积分记录",msg: true,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().jifenjilu,msg: true,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,11 +53,11 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 15.w),
-              child: Text("注:北京时间 = 美东时间 + 12小时",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().zhu_beijingshijian,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
             ),
             SizedBox(height: 10.h,),
             Container(
-              color: ColorX.color_f7f8fb,
+              color: ColorX.cardBg3(),
               padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
               child: Row(
                 children: [
@@ -64,26 +65,26 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
                     flex: 25,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("日期 (美东)",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+                      child: Text(Intr().riqi_meidong,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
                   ),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("交易类别",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+                      child: Text(Intr().jiaoyileibie,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
                   ),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("交易额度",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+                      child: Text(Intr().jiaoyiedu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
                   ),
                   Expanded(
                     flex: 25,
                     child: Align(
                       alignment: Alignment.centerRight,
-                      child: Text("交易类别",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+                      child: Text(Intr().xianyouedu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
                   ),
                 ],
@@ -119,13 +120,13 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
   buildTimeTab(String name, bool select) {
     return Container(
       decoration: BoxDecoration(
-        color: select ? Colors.white:ColorX.color_f7f8fb,
+        color: select ? ColorX.cardBg():ColorX.cardBg3(),
         borderRadius: BorderRadius.circular(10.r),
         border: select ? Border.all(color: ColorX.color_fc243b,width: 1.r) : null,
       ),
       margin: EdgeInsets.only(left: 15.w),
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 8.h),
-      child: Text(name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.color_091722),),
+      child: Text(name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
     );
   }
 
@@ -138,26 +139,26 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
             flex: 25,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("2023-06-08",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+              child: Text("2023-06-08",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("下注积分奖励",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+              child: Text("下注积分奖励",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+              child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Align(
               alignment: Alignment.centerRight,
-              child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+              child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
         ],
@@ -174,21 +175,21 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
             flex: 25,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("总计",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,
+              child: Text(Intr().zongji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                   fontWeight: FontWeight.w600),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("下注积分奖励",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,
+              child: Text("下注积分奖励",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                   fontWeight: FontWeight.w600),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("1222.76",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,
+              child: Text("1222.76",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                   fontWeight: FontWeight.w600),),
             ),
           ),

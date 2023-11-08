@@ -28,60 +28,62 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Intr().login,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
+        title: Text(Intr().login,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: ColorX.pageBg(),
         elevation: 0,
         leadingWidth: 0,
+        leading: Container(),
         actions: [
           InkWell(
             onTap: ()=>Get.back(),
-            child: Image.asset(ImageX.icon_close),
+            child: Image.asset(ImageX.icon_close,color: ColorX.icon586(),),
           ),
         ],
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: ColorX.pageBg(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 20.h,),
           Padding(
             padding: EdgeInsets.only(left: 35.w),
-            child: Text(Intr().yhm,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+            child: Text(Intr().yhm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
           ),
           SizedBox(height: 10.h,),
           Center(
             child: Container(
               width: 335.w,
-              decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+              decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
               padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: WidgetUtils().buildTextField(325.w, 46.h, 14.sp, ColorX.color_949eb9, Intr().qsryhm,
+              child: WidgetUtils().buildTextField(325.w, 46.h, 14.sp, ColorX.text949(), Intr().qsryhm,hintColor: ColorX.text586(),
                   backgroundColor: Colors.transparent,onChanged: (v)=>logic.editChange(true, v)),
             ),
           ),
           SizedBox(height: 20.h,),
           Padding(
             padding: EdgeInsets.only(left: 35.w),
-            child: Text(Intr().mm,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+            child: Text(Intr().mm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
           ),
           SizedBox(height: 10.h,),
           Center(
             child: Container(
               width: 335.w,
-              decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+              decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: Row(
                 children: [
                   Obx(() {
                     return WidgetUtils().buildTextField(285.w, 46.h, 14.sp,
-                        ColorX.color_949eb9, Intr().qsrmm,backgroundColor: Colors.transparent,
-                        onChanged: (v)=> logic.editChange(false, v),defText: state.pwdValue,
+                        ColorX.text949(), Intr().qsrmm,backgroundColor: Colors.transparent,
+                        onChanged: (v)=> logic.editChange(false, v),defText: state.pwdValue,hintColor: ColorX.text586(),
                         obscureText: !state.pwdVisible.value,inputType: TextInputType.visiblePassword);
                   }),
                   InkWell(
                     onTap: ()=> state.pwdVisible.value = !state.pwdVisible.value,
                     child: Obx(() {
-                      return state.pwdVisible.value ? Image.asset(ImageX.icon_show,width: 30.w,):Image.asset(ImageX.icon_hide,width: 30.w,);
+                      return state.pwdVisible.value ? Image.asset(ImageX.icon_show,color: ColorX.icon586(),width: 30.w,)
+                          :Image.asset(ImageX.icon_hide,color: ColorX.icon586(),width: 30.w,);
                     }),
                   ),
                 ],
@@ -94,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.only(right: 20.w),
               child: InkWell(
                 onTap: (){},
-                child: Text(Intr().wjmm,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                child: Text(Intr().wjmm,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
               ),
             ),
             alignment: Alignment.centerRight,
@@ -102,7 +104,8 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(height: 20.h,),
           Center(
             child: Obx(() {
-              return WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h, bg: state.btnEnable.value ? ColorX.color_fd273e:ColorX.color_ff5163,
+              return WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
+                  bg: state.btnEnable.value ? ColorX.color_fd273e:ColorX.color_ff5163,
                   textColor: Colors.white,textSize: 16.sp,onPressed: ()=>logic.clickLogin());
             }),
           ),
@@ -116,8 +119,8 @@ class _LoginPageState extends State<LoginPage> {
                   onTap: ()=> Get.toNamed(Routes.register),
                   child: Row(
                     children: [
-                      Text(Intr().cjygzxh,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-                      Image.asset(ImageX.icon_right_black),
+                      Text(Intr().cjygzxh,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
+                      Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
                     ],
                   ),
                 ),
@@ -126,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                     eventBus.fire(ChangeMainPageEvent(3));
                     Get.back();
                   },
-                  child: Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                  child: Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
                 ),
               ],
             ),

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -11,6 +12,7 @@ import 'package:leisure_games/ui/bean/html_event.dart';
 
 import 'about_logic.dart';
 
+///帮助中心
 class AboutPage extends StatefulWidget {
   const AboutPage({Key? key}) : super(key: key);
 
@@ -31,8 +33,8 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("关于我们",msg: true),
-      backgroundColor: ColorX.color_f7f8fb,
+      appBar: WidgetUtils().buildAppBar(Intr().guanyuwomen,msg: true),
+      backgroundColor: ColorX.pageBg2(),
       body: Container(
         decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(12.r),),
         margin: EdgeInsets.symmetric(horizontal: 12.w,vertical: 15.h),

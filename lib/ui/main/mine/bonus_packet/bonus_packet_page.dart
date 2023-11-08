@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -30,8 +31,8 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("红包与奖金",msg: true,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().hongbaohejiangjin,msg: true,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +55,7 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
             ),
             SizedBox(height: 10.h,),
             Container(
-              color: ColorX.color_f7f8fb,
+              color: ColorX.cardBg3(),
               padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
               child: Row(
                 children: [
@@ -62,21 +63,21 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
                     flex: 25,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("有效期",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,
+                      child: Text(Intr().youxiaoqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                       fontWeight: FontWeight.w500,),),
                     ),
                   ),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("金额",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,
+                      child: Text(Intr().jine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                         fontWeight: FontWeight.w500,),),
                     ),
                   ),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("需要打码量",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,
+                      child: Text(Intr().xuyaodamaliang,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                         fontWeight: FontWeight.w500,),),
                     ),
                   ),
@@ -84,7 +85,7 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
                     flex: 25,
                     child: Align(
                       alignment: Alignment.centerRight,
-                      child: Text("交易类别",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,
+                      child: Text(Intr().jiaoyileibie,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                         fontWeight: FontWeight.w500,),),
                     ),
                   ),
@@ -112,7 +113,7 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
   Widget buildWalletTab(BillWalletEntity item,bool select) {
     return Container(
       decoration: BoxDecoration(
-        color: select ? Colors.white:ColorX.color_f7f8fb,
+        color: select ? ColorX.cardBg():ColorX.cardBg3(),
         borderRadius: BorderRadius.circular(10.r),
         border: select ? Border.all(color: ColorX.color_fc243b,width: 1.r) : null,
       ),
@@ -122,7 +123,7 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
         children: [
           Image.asset(select ? item.activeIcon:item.normalIcon),
           SizedBox(width: 3.w,),
-          Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.color_091722),),
+          Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
         ],
       ),
     );
@@ -140,33 +141,33 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
             flex: 25,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("2023-06-08",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+              child: Text("2023-06-08",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("36",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+              child: Text("36",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+              child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: InkWell(
               onTap: () {
-                if(!result){ showToast("提取成功"); }
+                if(!result){ showToast(Intr().tiquchenggong); }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(result ? "已提取" : "提取",style: TextStyle(fontSize: 14.sp, color: result ? ColorX.color_58698d : ColorX.color_0d192d,
+                  Text(result ? Intr().yitiqu : Intr().tiqu,style: TextStyle(fontSize: 14.sp, color: result ? ColorX.text5862() : ColorX.text0d1(),
                       decoration: result ? TextDecoration.underline : null),),
-                  Image.asset(ImageX.ic_into_right),
+                  Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
                 ],
               ),
             ),

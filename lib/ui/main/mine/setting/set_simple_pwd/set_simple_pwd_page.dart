@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -46,13 +47,13 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("设置简易密码",msg: true,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().shezhijianyimima,msg: true,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Column(
         children: [
           SizedBox(height: 20.h,),
           Obx(() {
-            return Text(state.pwdHint.value,style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722),);
+            return Text(state.pwdHint.value,style: TextStyle(fontSize: 20.sp,color: ColorX.text0917()),);
           }),
           SizedBox(height: 20.h,),
           Center(
@@ -64,7 +65,7 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage> {
                 margin: EdgeInsets.zero,
                 textStyle: TextStyle(fontSize: 40.sp,color: Colors.black),
                 decoration: BoxDecoration(
-                  color: ColorX.color_f7f8fb,
+                  color: ColorX.cardBg3(),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
               ),
@@ -79,18 +80,18 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage> {
               onCompleted: (v){
                 if(isEmpty(state.newPwd)){
                   state.newPwd = v;
-                  state.pwdHint.value = "确认简易密码";
+                  state.pwdHint.value = Intr().querenjianyimima;
                   _pwdController.text = '';
                 }else {
                   state.confirmPwd = v;
                   if(state.newPwd == state.confirmPwd){
-                    showToast("设置成功");
+                    showToast(Intr().shezhichenggong);
                   }else {
                     state.newPwd = '';
                     state.confirmPwd = '';
                     _pwdController.text = '';
-                    state.pwdHint.value = "输入简易密码";
-                    showToast("输入内容不一致，请重试");
+                    state.pwdHint.value = Intr().shurujianyimima;
+                    showToast(Intr().shuruneirongbuyizhi);
                   }
                 }
               },
@@ -99,8 +100,8 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage> {
           SizedBox(height: 27.h,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Text("温馨提示:\n一些说明文字一些说明文字一些说明文字一些说明文字一些说明文字",
-              style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d,height: 1.8),),
+            child: Text(Intr().wenxintishi_jianyimima,
+              style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),height: 1.8),),
           ),
         ],
       ),

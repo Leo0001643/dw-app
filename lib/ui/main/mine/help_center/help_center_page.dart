@@ -35,18 +35,18 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
       appBar: WidgetUtils().buildAppBar(Intr().bangzhuzhongxin,msg: true),
       backgroundColor: ColorX.pageBg2(),
       body: Container(
-        decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(12.r),),
+        decoration: BoxDecoration(color: ColorX.cardBg5(),borderRadius: BorderRadius.circular(12.r),),
         margin: EdgeInsets.symmetric(horizontal: 12.w,vertical: 15.h),
         child: Obx(() {
           return ListView.separated(
               itemBuilder: (context,index){
                 var item = state.aboutList.value[index];
                 return GFListTile(
-                  title: Text(item,style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+                  title: Text(item,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                   shadow: BoxShadow(color: Colors.transparent),
                   padding: EdgeInsets.only(left: 5.w,top: 13.h,right: 9.w,bottom: 13.h),
                   margin: EdgeInsets.zero,
-                  icon: Image.asset(ImageX.icon_right_grey),
+                  icon: Image.asset(ImageX.icon_right_grey,color: ColorX.icon586(),),
                   onTap: (){
                     Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_html,pageTitle: item));
                   },

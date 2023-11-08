@@ -31,7 +31,7 @@ class StateSelectThemePage extends State<StatefulWidget>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().wgsz,msg: true),
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -47,26 +47,26 @@ class StateSelectThemePage extends State<StatefulWidget>{
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
-                    onTap: (){ state.selectTheme.value = true; },
+                    onTap: ()=> logic.changeTheme(true),
                     child: Row(
                       children: [
                         Obx(() {
                           return state.selectTheme.value ? Image.asset(ImageX.icon_select) : Image.asset(ImageX.icon_unselect);
                         }),
                         SizedBox(width: 9.w,),
-                        Text(Intr().qzb, style: TextStyle(fontSize: 16.sp, color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
+                        Text(Intr().qzb, style: TextStyle(fontSize: 16.sp, color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
                       ],
                     ),
                   ),
                   InkWell(
-                    onTap: (){ state.selectTheme.value = false; },
+                    onTap: ()=> logic.changeTheme(false),
                     child: Row(
                       children: [
                         Obx(() {
                           return state.selectTheme.value ? Image.asset(ImageX.icon_unselect) : Image.asset(ImageX.icon_select);
                         }),
                         SizedBox(width: 9.w,),
-                        Text(Intr().kxh, style: TextStyle(fontSize: 16.sp, color: ColorX.color_091722,fontWeight: FontWeight.w600,),),
+                        Text(Intr().kxh, style: TextStyle(fontSize: 16.sp, color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
                       ],
                     ),
                   ),

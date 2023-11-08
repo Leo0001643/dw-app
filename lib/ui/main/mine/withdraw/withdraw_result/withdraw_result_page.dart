@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -29,19 +30,19 @@ class _WithdrawResultPageState extends State<WithdrawResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Stack(
           children: [
             Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
+              decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage(ImageX.rechargeBgT()),fit: BoxFit.fill),
               ),
               height: 226.h,
             ),
             Column(
               children: [
-                WidgetUtils().buildAppBar("提现",bgColor: Colors.transparent,msg: true),
+                WidgetUtils().buildAppBar(Intr().tixian,bgColor: Colors.transparent,msg: true),
                 Container(
                   height: 115.h,
                   child: Column(
@@ -49,36 +50,36 @@ class _WithdrawResultPageState extends State<WithdrawResultPage> {
                     children: [
                       Image.asset(ImageX.icon_select,width: 24.r,height: 24.r,),
                       SizedBox(height: 5.r,),
-                      Text("提交成功",style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                      Text(Intr().tijiaochenggong,style: TextStyle(fontSize: 20.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                       // SizedBox(height: 5.r,),
                       // Text("请3分钟后刷新本页,查询进度",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
                     ],
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r)),
+                  decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r)),
                   margin: EdgeInsets.symmetric(horizontal: 20.w),
                   padding: EdgeInsets.all(15.r),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("提现详情",style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                      Text(Intr().tixianxiangqing,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                       SizedBox(height: 15.h,),
-                      buildInfoItem("提现账户","xxx"),
+                      buildInfoItem(Intr().tixianzhanghu,"xxx"),
                       SizedBox(height: 15.h,),
-                      buildInfoItem("提交时间","2023-07-05  11:45:10"),
+                      buildInfoItem(Intr().tijiaoshijian,"2023-07-05  11:45:10"),
                       SizedBox(height: 15.h,),
                       Row(
                         children: [
-                          buildInfoItem("提现金额","¥500"),
+                          buildInfoItem(Intr().tixianjine,"¥500"),
                           SizedBox(width: 3.w,),
-                          Text("(手续费:¥100)",style: TextStyle(fontSize: 12.sp,color: ColorX.color_62_586),),
+                          Text(Intr().shouxufei_(["¥100"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_62_586),),
                         ],
                       ),
                       SizedBox(height: 15.h,),
-                      buildInfoItem("到账金额","¥500"),
+                      buildInfoItem(Intr().daozhangjine,"¥500"),
                       SizedBox(height: 15.h,),
-                      buildInfoItem("账户余额","¥500"),
+                      buildInfoItem(Intr().zhanghuyue,"¥500"),
                     ],
                   ),
                 ),
@@ -86,8 +87,8 @@ class _WithdrawResultPageState extends State<WithdrawResultPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    WidgetUtils().buildElevatedButton("完成", 150.w, 40.h,bg: ColorX.color_fc243b,onPressed: (){
-                      Get.until(ModalRoute.withName(Routes.withdraw));
+                    WidgetUtils().buildElevatedButton(Intr().wancheng, 150.w, 40.h,bg: ColorX.color_fc243b,onPressed: (){
+                      Get.until(ModalRoute.withName(Routes.main));
                     }),
                   ],
                 ),
@@ -102,9 +103,9 @@ class _WithdrawResultPageState extends State<WithdrawResultPage> {
   Widget buildInfoItem(String key, String value) {
     return Row(
       children: [
-        Text(key,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+        Text(key,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
         SizedBox(width: 10.w,),
-        Text(value,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+        Text(value,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
       ],
     );
   }

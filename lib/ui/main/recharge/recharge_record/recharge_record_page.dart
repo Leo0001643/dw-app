@@ -40,7 +40,7 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().chongzhijilu,msg: true,bgColor: ColorX.appBarBg()),
-      backgroundColor: Colors.white,
+      backgroundColor: ColorX.pageBg(),
       body: Column(
         children: [
           Container(
@@ -81,8 +81,8 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(tab,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-            Image.asset(ImageX.icon_down_black),
+            Text(tab,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+            Image.asset(ImageX.icon_down_black,color: ColorX.icon586(),),
           ],
         ),
       ),
@@ -101,8 +101,8 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("银行卡转账",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                Text("6月1日  15:55",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                Text("银行卡转账",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                Text("6月1日  15:55",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               ],
             ),
           ),
@@ -111,7 +111,7 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text("¥188.00",style: TextStyle(fontSize: 14.sp,color: ColorX.color_23a81d),),
-                Text("成功",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                Text("成功",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               ],
             ),
           ),

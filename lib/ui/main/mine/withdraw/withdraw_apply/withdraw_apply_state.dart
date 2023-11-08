@@ -9,7 +9,7 @@ class WithdrawApplyState {
   }
 
 
-  var dropdownValue = LanguageMenuEntity(language: "请选择提现账户").obs;
+  var dropdownValue = LanguageMenuEntity(language: Intr().qingxuanzhetixianzhanghu).obs;
 
   late List<LanguageMenuEntity> country = [
     dropdownValue.value,

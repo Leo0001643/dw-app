@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -32,22 +33,22 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("盈利返水",msg: true,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().yinlifanshui,msg: true,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(
           children: [
             Container(
-              color: ColorX.color_f7f8fb,
+              color: ColorX.cardBg3(),
               padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("其他游戏 ( 07-07 至 07-07 )",style: TextStyle(fontSize: 16.sp,color: ColorX.color_0d192d,fontWeight: FontWeight.w500,),),
+                  Text(Intr().qitayouxi_(["07-07","07-07"]),style: TextStyle(fontSize: 16.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500,),),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("总计",style: TextStyle(fontSize: 16.sp,color: ColorX.color_0d192d,fontWeight: FontWeight.w500,),),
+                      Text(Intr().zongji,style: TextStyle(fontSize: 16.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500,),),
                       Text("¥0",style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500,),),
                     ],
                   ),
@@ -62,32 +63,32 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
                     flex: 23,
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text("日期",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().riqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Expanded(
                     flex: 18,
                     child: Center(
-                      child: Text("有效投注",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().youxiaotouzhu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Expanded(
                     flex: 18,
                     child: Center(
-                      child: Text("输赢",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Expanded(
                     flex: 18,
                     child: Center(
-                      child: Text("回水",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().huishui,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Expanded(
                     flex: 23,
                     child: Align(
                       alignment: Alignment.centerRight,
-                      child: Text("组合占比率",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().zuhezhanbilv,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                 ],
@@ -121,13 +122,13 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
             flex: 23,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("2023-07-07",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,),),
+              child: Text("2023-07-07",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
             flex: 18,
             child: Center(
-              child: Text("72.7600",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,),),
+              child: Text("72.7600",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
@@ -146,13 +147,17 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
             flex: 23,
             child: Align(
               alignment: Alignment.centerRight,
-              child: Text("0.00000",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,),),
+              child: Text("0.00000",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
         ],
       ),
     );
   }
+
+
+
+
 
 
 

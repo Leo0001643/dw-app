@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/ui/bean/html_event.dart';
 
 import 'mine_state.dart';
 
@@ -59,8 +62,11 @@ class MineLogic extends GetxController {
       case 12:
         Get.toNamed(Routes.setting);
         break;
+      case 13:
+        Get.toNamed(Routes.help_center);
+        break;
       case 14:
-        Get.toNamed(Routes.about);
+        Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_html,pageTitle: Intr().guanyuwomen));
         break;
     }
   }

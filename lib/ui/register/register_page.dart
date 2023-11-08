@@ -24,10 +24,16 @@ class _RegisterPageState extends State<RegisterPage> {
   final state = Get.find<RegisterLogic>().state;
 
   @override
+  void dispose() {
+    Get.delete<RegisterLogic>();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().cjzh,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().cjzh,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,41 +41,41 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().yhm,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().yhm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 10.h,),
             Center(
               child: Container(
                 width: 335.w,
-                decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: WidgetUtils().buildTextField(325.w, 46.h, 14.sp, ColorX.color_949eb9, Intr().qsryhm,
+                child: WidgetUtils().buildTextField(325.w, 46.h, 14.sp, ColorX.text949(), Intr().qsryhm,hintColor: ColorX.text586(),
                     backgroundColor: Colors.transparent,onChanged: (v)=>state.accountValue = v),
               ),
             ),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().mm,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().mm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 10.h,),
             Center(
               child: Container(
                 width: 335.w,
-                decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   children: [
                     Obx(() {
                       return WidgetUtils().buildTextField(285.w, 46.h, 14.sp,
-                          ColorX.color_949eb9, Intr().wszhzm,backgroundColor: Colors.transparent,
-                          onChanged: (v)=> state.pwdValue = v,defText: state.pwdValue,
+                          ColorX.text949(), Intr().wszhzm,backgroundColor: Colors.transparent,
+                          onChanged: (v)=> state.pwdValue = v,defText: state.pwdValue,hintColor: ColorX.text586(),
                           obscureText: !state.pwdVisible.value,inputType: TextInputType.visiblePassword);
                     }),
                     InkWell(
                       onTap: ()=> state.pwdVisible.value = !state.pwdVisible.value,
                       child: Obx(() {
-                        return state.pwdVisible.value ? Image.asset(ImageX.icon_show,width: 30.w,):Image.asset(ImageX.icon_hide,width: 30.w,);
+                        return state.pwdVisible.value ? Image.asset(ImageX.icon_show,color: ColorX.icon586(),width: 30.w,):Image.asset(ImageX.icon_hide,color: ColorX.icon586(),width: 30.w,);
                       }),
                     ),
                   ],
@@ -79,33 +85,33 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().zsxm,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().zsxm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 10.h,),
             Center(
               child: Container(
                 width: 335.w,
-                decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: WidgetUtils().buildTextField(325.w, 46.h, 14.sp, ColorX.color_949eb9, Intr().ytxyhkhmyz,
+                child: WidgetUtils().buildTextField(325.w, 46.h, 14.sp, ColorX.text949(), Intr().ytxyhkhmyz,hintColor: ColorX.text586(),
                     backgroundColor: Colors.transparent,onChanged: (v)=>state.accountValue = v),
               ),
             ),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().yzm,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().yzm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 10.h,),
             Center(
               child: Container(
                 width: 335.w,
-                decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    WidgetUtils().buildTextField(225.w, 46.h, 14.sp, ColorX.color_949eb9, Intr().qsrzcyzm,
+                    WidgetUtils().buildTextField(225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,hintColor: ColorX.text586(),
                         backgroundColor: Colors.transparent,onChanged: (v)=>state.accountValue = v),
                     Container(width: 73.w,height: 30.h,color: Colors.black54,),
                   ],
@@ -125,18 +131,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   WidgetSpan(child: SizedBox(width: 5.w,),),
-                  TextSpan(text: Intr().wywdbty,style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722)),
+                  TextSpan(text: Intr().wywdbty,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917())),
                   WidgetSpan(
                     child: InkWell(
                       onTap: (){},
-                      child: Text(Intr().yhtk,style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                      child: Text(Intr().yhtk,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                     ),
                   ),
-                  TextSpan(text: Intr().and,style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722)),
+                  TextSpan(text: Intr().and,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917())),
                   WidgetSpan(
                     child: InkWell(
                       onTap: (){},
-                      child: Text(Intr().ysxy,style: TextStyle(fontSize: 13.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                      child: Text(Intr().ysxy,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                     ),
                   ),
                 ]
@@ -182,9 +188,4 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  @override
-  void dispose() {
-    Get.delete<RegisterLogic>();
-    super.dispose();
-  }
 }

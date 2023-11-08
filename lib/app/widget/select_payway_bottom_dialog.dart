@@ -25,7 +25,7 @@ class StateSelectPaywayBottomDialog extends State<SelectPaywayBottomDialog>{
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ColorX.cardBg5(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
       height: 300.h,
@@ -67,7 +67,7 @@ class StateSelectPaywayBottomDialog extends State<SelectPaywayBottomDialog>{
     return Container(
       height: 40.h,
       alignment: Alignment.center,
-      child: Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+      child: Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
     );
   }
 

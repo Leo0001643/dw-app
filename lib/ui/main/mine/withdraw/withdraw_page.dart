@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -32,18 +33,18 @@ class _WithdrawPageState extends State<WithdrawPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorX.color_f7f8fb,
+      backgroundColor: ColorX.pageBg2(),
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage(ImageX.recharge_bg),fit: BoxFit.fill),
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(ImageX.rechargeBgT()),fit: BoxFit.fill),
             ),
             height: 226.h,
           ),
           Column(
             children: [
-              WidgetUtils().buildAppBar("提现中心",bgColor: Colors.transparent),
+              WidgetUtils().buildAppBar(Intr().tixianzhongxin,bgColor: Colors.transparent),
               Container(
                 height: 140.h,
                 alignment: Alignment.center,
@@ -55,12 +56,12 @@ class _WithdrawPageState extends State<WithdrawPage> {
                       radius: 20.r,
                     ),
                     SizedBox(height: 7.h,),
-                    Text("提现帐户: 2946781",style: TextStyle(fontSize: 12.sp,color: ColorX.color_091722),),
+                    Text(Intr().tixianzhanghu_(["2946781"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
                   ],
                 ),
               ),
-              buildCategoryItem("从CNY钱包提出", ImageX.icon_rmb_grey, 0),
-              buildCategoryItem("从USDT钱包提出", ImageX.icon_tjyhicon_ustd_greyk, 0),
+              buildCategoryItem(Intr().congcnyqianbaotichu, ImageX.icon_rmb_grey, 0),
+              buildCategoryItem(Intr().congusdtqianbaotichu, ImageX.icon_tjyhicon_ustd_greyk, 0),
 
             ],
           ),
@@ -76,17 +77,17 @@ class _WithdrawPageState extends State<WithdrawPage> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-          color: Colors.white,
+          color: ColorX.cardBg(),
         ),
         margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 10.h),
         padding: EdgeInsets.all(15.r),
         child: Row(
           children: [
-            Image.asset(icon,width: 18.r,),
+            Image.asset(icon,width: 18.r,color: ColorX.icon586(),),
             SizedBox(width: 5.w,),
-            Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d),),
+            Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
             Expanded(child: Container()),
-            Image.asset(ImageX.icon_right_grey),
+            Image.asset(ImageX.icon_right_grey,color: ColorX.icon586(),),
           ],
         ),
       ),

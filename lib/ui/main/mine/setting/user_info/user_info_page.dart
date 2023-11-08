@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
@@ -20,8 +23,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("完善资料",msg: true),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().wanshanziliao,msg: true),
+      backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,53 +32,56 @@ class _UserInfoPageState extends State<UserInfoPage> {
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text("用户名",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().yhm,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_62_586, "用户名",backgroundColor: ColorX.color_f7f8fb),
+              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_62_586,
+                  Intr().yhm,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586()),
             ),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text("昵称",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().nicheng,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_091722, "输入昵称",backgroundColor: ColorX.color_f7f8fb),
+              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(),
+                  Intr().shurunicheng,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586()),
             ),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text("手机号码",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().shoujihaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_091722, "输入真实有效的手机号码",
-                  backgroundColor: ColorX.color_f7f8fb,inputType: TextInputType.number),
+              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(), Intr().shuruzhenshiyouxiao,
+                  backgroundColor: ColorX.cardBg3(),inputType: TextInputType.number,hintColor: ColorX.text586()),
             ),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text("QQ号码",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().qqhaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_091722, "输入QQ号码",
-                  backgroundColor: ColorX.color_f7f8fb,inputType: TextInputType.number),
+              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_091722, Intr().shuruqqhaoma,
+                  backgroundColor: ColorX.cardBg3(),inputType: TextInputType.number,hintColor: ColorX.text586()),
             ),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text("微信",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().weixin,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_091722, "输入微信号",backgroundColor: ColorX.color_f7f8fb),
+              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(),
+                  Intr().shuruweixinhao,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586()),
             ),
             SizedBox(height: 100.h,),
             Center(
-              child: WidgetUtils().buildElevatedButton("确定", 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+              child: WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
 
               }),
             ),

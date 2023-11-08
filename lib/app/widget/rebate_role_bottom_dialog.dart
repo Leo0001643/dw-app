@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -38,7 +39,8 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
           Stack(
             children: [
               Center(
-                child: Text("返水说明",style: TextStyle(fontSize: 18.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
+                child: Text(Intr().fanshuishuoming
+                  ,style: TextStyle(fontSize: 18.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
               ),
               InkWell(
                 onTap: ()=> Navigator.of(context).pop(),

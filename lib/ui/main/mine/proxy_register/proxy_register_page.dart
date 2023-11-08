@@ -20,10 +20,17 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
   final state = Get.find<ProxyRegisterLogic>().state;
 
   @override
+  void dispose() {
+    Get.delete<ProxyRegisterLogic>();
+    super.dispose();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("代理注册",msg: true,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().dailizhuce,msg: true,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,13 +41,14 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
               child: Row(
                 children: [
                   Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                  Text("用户名",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                  Text(Intr().yhm,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                 ],
               ),
             ),
             SizedBox(height: 5.h,),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_62_586, "请输入用户名",backgroundColor: ColorX.color_f7f8fb),
+              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(),
+                  Intr().qsryhm,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586()),
             ),
             SizedBox(height: 20.h,),
             Padding(
@@ -48,7 +56,7 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
               child: Row(
                 children: [
                   Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                  Text("密码",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                  Text(Intr().mm,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                 ],
               ),
             ),
@@ -56,14 +64,14 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             Center(
               child: Container(
                 width: 335.w,
-                decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   children: [
                     Obx(() {
                       return WidgetUtils().buildTextField(285.w, 46.h, 14.sp,
-                          ColorX.color_091722, "8-12位数字或字母",backgroundColor: Colors.transparent,
-                          onChanged: (v)=> state.pwdValue = v,defText: state.pwdValue,
+                          ColorX.text0917(), Intr().wszhzm,backgroundColor: Colors.transparent,
+                          onChanged: (v)=> state.pwdValue = v,defText: state.pwdValue,hintColor: ColorX.text586(),
                           obscureText: !state.pwdVisible.value,inputType: TextInputType.visiblePassword);
                     }),
                     InkWell(
@@ -82,7 +90,7 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
               child: Row(
                 children: [
                   Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                  Text("确认密码",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                  Text(Intr().querenmima,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                 ],
               ),
             ),
@@ -90,14 +98,14 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             Center(
               child: Container(
                 width: 335.w,
-                decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   children: [
                     Obx(() {
                       return WidgetUtils().buildTextField(285.w, 46.h, 14.sp,
-                          ColorX.color_091722, "8-12位数字或字母",backgroundColor: Colors.transparent,
-                          onChanged: (v)=> state.pwd1Value = v,defText: state.pwd1Value,
+                          ColorX.text0917(), Intr().wszhzm,backgroundColor: Colors.transparent,
+                          onChanged: (v)=> state.pwd1Value = v,defText: state.pwd1Value,hintColor: ColorX.text586(),
                           obscureText: !state.pwd1Visible.value,inputType: TextInputType.visiblePassword);
                     }),
                     InkWell(
@@ -116,32 +124,33 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
               child: Row(
                 children: [
                   Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                  Text("真实姓名",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                  Text(Intr().zsxm,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                 ],
               ),
             ),
             SizedBox(height: 5.h,),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_62_586, "与提现银行卡户名一致",backgroundColor: ColorX.color_f7f8fb),
+              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(),
+                  Intr().ytxyhkhmyz,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586(),),
             ),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text("手机号码",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().shoujihaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
               child: Container(
                 width: 335.w,
-                decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r)),
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r)),
                 child: Row(
                   children: [
                     SizedBox(width: 15.w,),
-                    Text("+86",style: TextStyle(color: ColorX.color_091722,fontSize: 14.sp),),
+                    Text("+86",style: TextStyle(color: ColorX.text0917(),fontSize: 14.sp),),
                     SizedBox(width: 5.w,),
-                    Container(width: 2.w,height: 15.h,color: ColorX.color_949eb9,),
-                    WidgetUtils().buildTextField(285.w, 45.h, 14.sp, ColorX.color_091722, "请输入真实有效的手机号码",
-                        backgroundColor: ColorX.color_f7f8fb,inputType: TextInputType.phone),
+                    Container(width: 2.w,height: 15.h,color: ColorX.text949(),),
+                    WidgetUtils().buildTextField(285.w, 45.h, 14.sp, ColorX.text0917(), Intr().shuruzhenshiyouxiao,
+                        backgroundColor: Colors.transparent,inputType: TextInputType.phone,hintColor: ColorX.text586(),),
                   ],
                 ),
               ),
@@ -149,22 +158,22 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text("QQ号码",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().qqhaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_091722, "请输入QQ号码",
-                  backgroundColor: ColorX.color_f7f8fb,inputType: TextInputType.number),
+              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(), Intr().shuruqqhaoma,
+                  backgroundColor: ColorX.cardBg3(),inputType: TextInputType.number,hintColor: ColorX.text586(),),
             ),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text("电子邮箱",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+              child: Text(Intr().dianziyouxiang,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_091722, "请输入电子邮箱",
-                  backgroundColor: ColorX.color_f7f8fb,inputType: TextInputType.number),
+              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(), Intr().shurudianziyouxiang,
+                  backgroundColor: ColorX.cardBg3(),inputType: TextInputType.emailAddress,hintColor: ColorX.text586(),),
             ),
             SizedBox(height: 20.h,),
             Padding(
@@ -172,7 +181,7 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
               child: Row(
                 children: [
                   Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                  Text(Intr().yzm,style: TextStyle(fontSize: 13.sp,color: ColorX.color_58698d),),
+                  Text(Intr().yzm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                 ],
               ),
             ),
@@ -180,13 +189,13 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             Center(
               child: Container(
                 width: 335.w,
-                decoration: BoxDecoration(color: ColorX.color_f7f8fb,borderRadius: BorderRadius.circular(10.r),),
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    WidgetUtils().buildTextField(225.w, 46.h, 14.sp, ColorX.color_949eb9, Intr().qsrzcyzm,
-                        backgroundColor: Colors.transparent,onChanged: (v)=>state.accountValue = v),
+                    WidgetUtils().buildTextField(225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
+                        backgroundColor: Colors.transparent,hintColor: ColorX.text586(),onChanged: (v)=>state.accountValue = v),
                     Container(width: 73.w,height: 30.h,color: Colors.black54,),
                   ],
                 ),
@@ -194,7 +203,7 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             ),
             SizedBox(height: 20.h,),
             Center(
-              child: WidgetUtils().buildElevatedButton("确定", 335.w, 48.h, bg: ColorX.color_fd273e,
+              child: WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 48.h, bg: ColorX.color_fd273e,
                   textColor: Colors.white,textSize: 16.sp,onPressed: (){}),
             ),
             SizedBox(height: 20.h,),
@@ -202,8 +211,8 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
               padding: EdgeInsets.symmetric(horizontal: 27.w),
               child: Text.rich(TextSpan(
                   children: [
-                    TextSpan(text: "温馨提示:\n1.标有*号代表必须填写项目\n2.注册即代表您已同意各项“开户协议”",
-                      style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,height: 1.8),),
+                    TextSpan(text: Intr().wenxintishi_zhuce,
+                      style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),height: 1.8),),
                   ]
               ),),
             ),
@@ -215,9 +224,4 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
     );
   }
 
-  @override
-  void dispose() {
-    Get.delete<ProxyRegisterLogic>();
-    super.dispose();
-  }
 }

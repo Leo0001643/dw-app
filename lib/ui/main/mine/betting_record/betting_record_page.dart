@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -31,8 +32,8 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("投注记录",msg: true,bgColor: Colors.white),
-      backgroundColor: Colors.white,
+      appBar: WidgetUtils().buildAppBar(Intr().touzhujilu,msg: true,bgColor: ColorX.appBarBg()),
+      backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,23 +56,23 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             ),
             SizedBox(height: 20.h,),
             Container(
-              color: ColorX.color_f7f8fb,
+              color: ColorX.cardBg2(),
               padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
               child: Row(
                 children: [
                   Expanded(
                     flex: 40,
-                    child: Text("投注日期 (东美时间)",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+                    child: Text(Intr().touzhuriqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                   ),
                   Expanded(
                     flex: 30,
-                    child: Text("输赢",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+                    child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                   ),
                   Expanded(
                     flex: 30,
                     child: Align(
                       alignment: Alignment.centerRight,
-                      child: Text("有效投注",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d),),
+                      child: Text(Intr().youxiaotouzhu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
                   ),
                 ],
@@ -109,7 +110,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
   Widget buildWalletTab(BillWalletEntity item,bool select) {
     return Container(
       decoration: BoxDecoration(
-        color: select ? Colors.white:ColorX.color_f7f8fb,
+        color: select ? ColorX.cardBg():ColorX.cardBg3(),
         borderRadius: BorderRadius.circular(10.r),
         border: select ? Border.all(color: ColorX.color_fc243b,width: 1.r) : null,
       ),
@@ -119,7 +120,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
         children: [
           Image.asset(select ? item.activeIcon:item.normalIcon),
           SizedBox(width: 3.w,),
-          Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.color_091722),),
+          Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
         ],
       ),
     );
@@ -132,7 +133,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
         children: [
           Expanded(
             flex: 40,
-            child: Text("总计",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,fontWeight: FontWeight.w600),),
+            child: Text(Intr().zongji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
           ),
           Expanded(
             flex: 30,
@@ -142,7 +143,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             flex: 30,
             child: Align(
               alignment: Alignment.centerRight,
-              child: Text("1234.0",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,fontWeight: FontWeight.w600),),
+              child: Text("1234.0",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
             ),
           ),
         ],
@@ -160,17 +161,18 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
           children: [
             Expanded(
               flex: 40,
-              child: Text("2023-06-06",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,),),
+              child: Text("2023-06-06",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
             Expanded(
               flex: 30,
-              child: Text("${result ? "+" : "-"}897.0",style: TextStyle(fontSize: 14.sp,color: result ? ColorX.color_23a81d : ColorX.color_fc243b,),),
+              child: Text("${result ? "+" : "-"}897.0",
+                style: TextStyle(fontSize: 14.sp,color: result ? ColorX.color_23a81d : ColorX.color_fc243b,),),
             ),
             Expanded(
               flex: 30,
               child: Align(
                 alignment: Alignment.centerRight,
-                child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.color_0d192d,),),
+                child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 
 class SelectAvatarState {
@@ -27,7 +28,7 @@ class SelectAvatarState {
   var selectionList = [ImageX.f1,ImageX.f2,ImageX.f3,ImageX.f4,ImageX.f5,ImageX.f6,ImageX.f7,ImageX.f8,ImageX.f9,ImageX.f10,ImageX.f11,ImageX.f12,ImageX.f13,ImageX.f14,ImageX.f15,
   ImageX.f16,ImageX.f17,ImageX.f18,ImageX.f19,ImageX.f20,ImageX.f21,ImageX.f22,ImageX.f23,ImageX.f24,];
 
-  var tabs = ["默认","QQ","精选"];
+  var tabs = [Intr().moren,Intr().qq,Intr().jingxuan];
 
 
 }
