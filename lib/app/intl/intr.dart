@@ -502,6 +502,7 @@ class Intr extends Translations{
   String get henman => 'henman'.tr;
   String get bukeyong => 'bukeyong'.tr;
   String get fanshuishuoming => 'fanshuishuoming'.tr;
+  String get jiazaizhong => 'jiazaizhong'.tr;
 
 
 
@@ -982,6 +983,7 @@ class Intr extends Translations{
       "henman":"很慢",
       "bukeyong":"不可用",
       "fanshuishuoming":"返水说明",
+      "jiazaizhong":"加载中...",
 
 
 

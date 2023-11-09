@@ -1,4 +1,7 @@
 
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
+
 class Constants {
 
   static const test_image = "http://ddm.dingdangmao6.cn/renren-fast/upload/2022112812_20221128211908.jpg";
@@ -10,6 +13,18 @@ class Constants {
 
   static const  FONT_STD = "ITCAvantGardeStd";
 
+  static const imageType = 2;//图片类别[1:A网pC,2:A网移动,3:c原pC,4:C网移动,5:B网PC,6:B网移动],示例值(1)
+
+  static const websocket = "ws://ws.by4aocqs.com:9999";
+
+  static String model(){
+    var info = AppData.deviceInfo();
+    return "${info.name}_${info.systemName}_${info.systemVersion}";
+  }
+
+  static String version(){
+    return AppData.deviceInfo().version.em();
+  }
 
 
 }

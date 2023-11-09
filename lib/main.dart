@@ -2,10 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:leisure_games/app/app_theme.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'app/app_data.dart';
 import 'app/global.dart';
@@ -30,10 +32,11 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,//强制竖屏
       DeviceOrientation.portraitDown
     ]);
+    HttpService.doInit();
     return ScreenUtilInit(
       //填入设计稿中设备的屏幕尺寸,单位dp
         designSize: const Size(375, 778),
-        builder: (context,e) => GetMaterialApp(
+        builder: (context,e)=> GetMaterialApp(
           translations: Intr(),
           enableLog: true,
           initialRoute: Routes.main,
@@ -51,13 +54,13 @@ class MyApp extends StatelessWidget {
           themeMode: AppTheme().currentTheme(),
           theme: AppTheme().lightTheme,
           darkTheme: AppTheme().darkTheme,
-          // builder: (context,widget){
-          //   return MediaQuery(///设置文字大小不随系统设置改变
-          //       data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-          //       child: widget ?? Container()
-          //   );
-          // },
-        )
+          builder: EasyLoading.init(
+              builder: (context,widget)=> MediaQuery(///设置文字大小不随系统设置改变
+                  data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                  child: widget ?? Container()
+              )
+          ),
+        ),
     );
   }
 }

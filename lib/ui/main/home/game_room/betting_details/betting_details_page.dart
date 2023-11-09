@@ -131,7 +131,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
               ),
             ),
             Container(
-              color: ColorX.color_f7f8fb,
+              color: ColorX.cardBg(),
               margin: EdgeInsets.only(top: 10.h),
               height: 40.h,
               child: Row(
@@ -139,13 +139,13 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text(Intr().xiaoji,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().xiaoji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text(Intr().xbi(["100"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w500),),
+                      child: Text(Intr().xbi(["100"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Expanded(

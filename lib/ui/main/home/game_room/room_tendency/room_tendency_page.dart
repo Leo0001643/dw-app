@@ -91,7 +91,7 @@ class _RoomTendencyPageState extends State<RoomTendencyPage> with SingleTickerPr
   Widget buildTabItem(String tab, String icon) {
     return Tab(
       icon: Container(
-        decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r)),
+        decoration: BoxDecoration(color: ColorX.cardBg5(),borderRadius: BorderRadius.circular(10.r)),
         padding: EdgeInsets.all(8.r),
         child: Image.asset(icon),
       ),
