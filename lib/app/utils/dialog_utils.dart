@@ -23,6 +23,7 @@ import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/sign_success_dialog.dart';
 import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
+import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
 
@@ -130,8 +131,8 @@ class DialogUtils {
 
 
   ///选择房间
-  void showSelectRoomBtmDialog(BuildContext context){
-    showModalBottomSheet(
+  Future<Pc28LottoRoomsTables?> showSelectRoomBtmDialog(BuildContext context,Pc28LottoEntity pc28Lotto){
+    return showModalBottomSheet(
         context: context,
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
@@ -141,7 +142,7 @@ class DialogUtils {
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: SelectRoomBottomDialog(),
+            child: SelectRoomBottomDialog(pc28Lotto),
           );
         }
     );

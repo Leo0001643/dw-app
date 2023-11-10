@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -56,7 +57,7 @@ class WidgetUtils {
           Visibility(
             visible: msg,
             child: InkWell(
-              onTap: ()=> Get.toNamed(Routes.message_center),
+              onTap: ()=> goMessageCenter(),
               child: Padding(
                 padding: EdgeInsets.all(10.r),
                 child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
@@ -100,7 +101,7 @@ class WidgetUtils {
         Visibility(
           visible: msg,
           child: InkWell(
-            onTap: ()=> Get.toNamed(Routes.message_center),
+            onTap: ()=> goMessageCenter(),
             child: Padding(
               padding: EdgeInsets.all(10.r),
               child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
@@ -165,7 +166,7 @@ class WidgetUtils {
         Visibility(
           visible: msg,
           child: InkWell(
-            onTap: ()=> Get.toNamed(Routes.message_center),
+            onTap: ()=> goMessageCenter(),
             child: Padding(
               padding: EdgeInsets.all(10.r),
               child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
@@ -213,7 +214,7 @@ class WidgetUtils {
         Visibility(
           visible: msg,
           child: InkWell(
-            onTap: ()=> Get.toNamed(Routes.message_center),
+            onTap: ()=> goMessageCenter(),
             child: Padding(
               padding: EdgeInsets.all(10.r),
               child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
@@ -278,7 +279,7 @@ class WidgetUtils {
         Visibility(
           visible: msg,
           child: InkWell(
-            onTap: ()=> Get.toNamed(Routes.message_center),
+            onTap: ()=> goMessageCenter(),
             child: Padding(
               padding: EdgeInsets.all(10.r),
               child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
@@ -369,6 +370,14 @@ class WidgetUtils {
   void clickCopy(String value){
     Clipboard.setData(ClipboardData(text: value));
     showToast(Intr().fuzhichenggong);
+  }
+
+  void goMessageCenter() {
+    if(AppData.isLogin()){
+      Get.toNamed(Routes.message_center);
+    }else {
+      Get.toNamed(Routes.login);
+    }
   }
 
 

@@ -3,9 +3,9 @@ import 'package:leisure_games/ui/bean/act_status_entity.dart';
 
 ActStatusEntity $ActStatusEntityFromJson(Map<String, dynamic> json) {
   final ActStatusEntity actStatusEntity = ActStatusEntity();
-  final int? ctime = jsonConvert.convert<int>(json['ctime']);
-  if (ctime != null) {
-    actStatusEntity.ctime = ctime;
+  final int? cTime = jsonConvert.convert<int>(json['cTime']);
+  if (cTime != null) {
+    actStatusEntity.cTime = cTime;
   }
   final Map<String?, ActStatusList?>? list =
   (json['list'] as Map<String, dynamic>?)?.map(
@@ -20,18 +20,18 @@ ActStatusEntity $ActStatusEntityFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> $ActStatusEntityToJson(ActStatusEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
-  data['ctime'] = entity.ctime;
+  data['cTime'] = entity.cTime;
   data['list'] = entity.list;
   return data;
 }
 
 extension ActStatusEntityExtension on ActStatusEntity {
   ActStatusEntity copyWith({
-    int? ctime,
+    int? cTime,
     Map<String?, ActStatusList?>? list,
   }) {
     return ActStatusEntity()
-      ..ctime = ctime ?? this.ctime
+      ..cTime = cTime ?? this.cTime
       ..list = list ?? this.list;
   }
 }

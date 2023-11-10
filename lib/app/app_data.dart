@@ -57,4 +57,8 @@ class AppData {
     return DeviceInfo.fromJson(jsonDecode(json));
   }
 
+  static bool isLogin()=> false;
+
+
+
 }

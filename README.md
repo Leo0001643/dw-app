@@ -129,7 +129,22 @@ flutter pub run build_runner build
 
 
 
-
+url_getWebConfig,
+url_getSiteWalletConfig,
+url_getBalance,
+url_switchWallets,
+url_getCustomerService,
+url_getGameKind,
+url_getPC28Plan,
+url_getPc28LottoList,
+url_getRoomCopyWriting,
+url_getPic30,
+url_protect,
+url_getDomainConfig ，
+url_getNotice,
+url_getMessage,
+url_loginBusinessAgent
+url_getActStatus
 
 
 

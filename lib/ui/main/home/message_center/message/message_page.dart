@@ -39,7 +39,7 @@ class _MessagePageState extends State<MessagePage> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ColorX.color_f7f8fb,
+      color: ColorX.pageBg2(),
       child: SmartRefresher(
         controller: _refreshController,
         enablePullDown: true,
@@ -69,7 +69,7 @@ class _MessagePageState extends State<MessagePage> with SingleTickerProviderStat
       padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 11.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        color: Colors.white,
+        color: ColorX.cardBg(),
       ),
       child: Row(
         children: [
@@ -93,14 +93,14 @@ class _MessagePageState extends State<MessagePage> with SingleTickerProviderStat
                 Row(
                   children: [
                     Expanded(
-                      child: Text("欢迎光临",style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                      child: Text("欢迎光临",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                     ),
-                    Text("7分钟前",style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                    Text("7分钟前",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                   ],
                 ),
                 SizedBox(height: 3.h,),
                 Text("欢迎来到国际站,期待与您携手并进,再创佳绩!…",
-                  style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                  style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               ],
             ),
           ),

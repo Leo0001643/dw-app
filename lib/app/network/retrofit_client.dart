@@ -9,6 +9,8 @@ import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
+import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
+import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -21,9 +23,9 @@ abstract class RetrofitClient{
 
   factory RetrofitClient(Dio dio, {String? baseUrl}) = _RetrofitClient;
 
+  @GET('/ds-api-web/getGameKind')
+  Future<BaseResponseEntity<List<GameKindEntity>>> getGameKind();
 
-  @GET('/ds-api-web/getGameType')
-  Future<BaseResponseEntity<List<GameTypeEntity>>> getGameType();
 
 
 

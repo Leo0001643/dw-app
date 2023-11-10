@@ -2,8 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 import '/app/intl/intr.dart';
@@ -53,11 +56,19 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
               backgroundColor: ColorX.appBarBg(),
               curveSize: 58.r,
               itemBuilder: ItemBuilder(),
-              onTap: (i)=> state.pageController.jumpToPage(i),
+              onTap: jumpToPage,
               count: 5);
         },
       ),
     );
+  }
+
+  void jumpToPage(int i) {
+    if(AppData.isLogin() || (i != 2 && i != 4)){
+      state.pageController.jumpToPage(i);
+    } else {
+      Get.toNamed(Routes.login);
+    }
   }
 
 

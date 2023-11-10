@@ -12,6 +12,11 @@ import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
+import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
+import 'package:leisure_games/ui/bean/pic30_entity.dart';
+import 'package:leisure_games/ui/bean/web_config_entity.dart';
 
 class HttpService{
 
@@ -33,11 +38,11 @@ class HttpService{
         options.queryParameters["siteType"] = "1";
         options.queryParameters["terminal"] = "APP";
         options.queryParameters["version"] = Constants.version();
-        loggerArray(["发起请求",options.path,options.method,options.data ?? options.queryParameters,options.headers]);
+        loggerArray(["发起请求","${options.path}\n","${options.method}\n","${options.headers}\n",options.data ?? options.queryParameters]);
         handler.next(options);
       },
       onResponse: (response, handler){
-        loggerArray(["返回响应",response.requestOptions.path,response.statusCode,response.statusMessage,response.data]);
+        loggerArray(["返回响应",response.requestOptions.path,response.statusCode,"${response.statusMessage}\n",response.data]);
         if(response.statusCode == 200){
           handler.next(response);
         }else {
@@ -53,10 +58,9 @@ class HttpService{
   }
 
 
-  static Future<List<GameTypeEntity>> getGameType(){
-    return buildFuture<List<GameTypeEntity>>(()=> _client.getGameType());
+  static Future<List<GameKindEntity>> getGameKind(){
+    return buildFuture<List<GameKindEntity>>(()=> _client.getGameKind());
   }
-
 
 
 

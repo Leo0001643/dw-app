@@ -28,7 +28,7 @@ GameKindEntity $GameKindEntityFromJson(Map<String, dynamic> json) {
   if (gameName != null) {
     gameKindEntity.gameName = gameName;
   }
-  final dynamic gameCode = json['gameCode'];
+  final String? gameCode = jsonConvert.convert<String>(json['gameCode']);
   if (gameCode != null) {
     gameKindEntity.gameCode = gameCode;
   }
@@ -96,7 +96,7 @@ extension GameKindEntityExtension on GameKindEntity {
     String? gameKind,
     String? gameKindName,
     String? gameName,
-    dynamic gameCode,
+    String? gameCode,
     String? imageUrl,
     dynamic tags,
     String? host,

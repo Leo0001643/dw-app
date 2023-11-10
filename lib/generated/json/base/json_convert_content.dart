@@ -16,6 +16,8 @@ import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
+import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
+import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -222,6 +224,18 @@ class JsonConvert {
       return data.map<Pc28PlanAllJndx28Data>((Map<String, dynamic> e) =>
           Pc28PlanAllJndx28Data.fromJson(e)).toList() as M;
     }
+    if (<Pic30BackEntity>[] is M) {
+      return data.map<Pic30BackEntity>((Map<String, dynamic> e) =>
+          Pic30BackEntity.fromJson(e)).toList() as M;
+    }
+    if (<Pic30BackBack>[] is M) {
+      return data.map<Pic30BackBack>((Map<String, dynamic> e) =>
+          Pic30BackBack.fromJson(e)).toList() as M;
+    }
+    if (<Pic30Entity>[] is M) {
+      return data.map<Pic30Entity>((Map<String, dynamic> e) =>
+          Pic30Entity.fromJson(e)).toList() as M;
+    }
     if (<ProtectEntity>[] is M) {
       return data.map<ProtectEntity>((Map<String, dynamic> e) =>
           ProtectEntity.fromJson(e)).toList() as M;
@@ -349,6 +363,9 @@ class JsonConvertClassCollection {
     (Pc28PlanAll).toString(): Pc28PlanAll.fromJson,
     (Pc28PlanAllJndx28).toString(): Pc28PlanAllJndx28.fromJson,
     (Pc28PlanAllJndx28Data).toString(): Pc28PlanAllJndx28Data.fromJson,
+    (Pic30BackEntity).toString(): Pic30BackEntity.fromJson,
+    (Pic30BackBack).toString(): Pic30BackBack.fromJson,
+    (Pic30Entity).toString(): Pic30Entity.fromJson,
     (ProtectEntity).toString(): ProtectEntity.fromJson,
     (ProtectProtect).toString(): ProtectProtect.fromJson,
     (ProtectProtectKkwdsLive).toString(): ProtectProtectKkwdsLive.fromJson,

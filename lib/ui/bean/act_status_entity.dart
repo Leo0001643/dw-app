@@ -5,7 +5,7 @@ export 'package:leisure_games/generated/json/act_status_entity.g.dart';
 
 @JsonSerializable()
 class ActStatusEntity {
-	int? ctime;
+	int? cTime;
 	Map<String?,ActStatusList?>? list;
 
 	ActStatusEntity();

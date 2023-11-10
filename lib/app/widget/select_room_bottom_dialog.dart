@@ -3,12 +3,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 
 class SelectRoomBottomDialog extends StatefulWidget{
+  final Pc28LottoEntity pc28Lotto;
+
+  SelectRoomBottomDialog(this.pc28Lotto, {super.key});
 
   @override
   State<StatefulWidget> createState() =>StateSelectRoomBottomDialog();
@@ -17,7 +22,7 @@ class SelectRoomBottomDialog extends StatefulWidget{
 
 class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
 
-  var current = 0.obs;
+  var current = Pc28LottoRoomsTables().obs;
 
   @override
   Widget build(BuildContext context) {
@@ -41,21 +46,28 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
                 child: Padding(
                     padding: EdgeInsets.only(right: 15.w),
                   child: WidgetUtils().buildElevatedButton(Intr().confirm, 50.w, 26.h,textSize: 12.sp,
-                      bg:ColorX.color_fc243b,onPressed: (){}),
+                      bg:ColorX.color_fc243b,onPressed: (){
+                        if(unEmpty(current.value.name)){
+                          Navigator.of(context).pop(current.value);
+                        }
+                      }),
                 ),
               ),
             ],
           ),
           SizedBox(height: 10.h,),
-          buildCategoryItem("比特币1分28","00:00:29",0,1,2),
-          buildCategoryItem("台湾宾果28","00:00:29",3,4,5),
-          buildCategoryItem("加拿大28","00:00:29",6,7,8),
+          Column(
+            children: widget.pc28Lotto.rooms?.map((e) => buildCategoryItem(e, "00:00:29")).toList() ?? [],
+          ),
+          // buildCategoryItem("比特币1分28","00:00:29",0,1,2),
+          // buildCategoryItem("台湾宾果28","00:00:29",3,4,5),
+          // buildCategoryItem("加拿大28","00:00:29",6,7,8),
         ],
       ),
     );
   }
 
-  Widget buildCategoryItem(String name, String time,int i,int j,int h) {
+  Widget buildCategoryItem(Pc28LottoRooms rooms, String time) {
     return Column(
       children: [
         Padding(
@@ -63,7 +75,7 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(name,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
+              Text(rooms.memo.em(),style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
               Text(time,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
             ],
           ),
@@ -72,34 +84,26 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog>{
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.5.w),
           child: Row(
-            children: [
+            children: rooms.tables?.map((e) =>
               Expanded(
-                child: Obx(() {
-                  return InkWell(
-                    onTap: ()=> current.value = i,
-                    child: buildRoomItem(Intr().card_ptf,current.value == i),
-                  );
-                }),
+                child: Row(
+                  children: [
+                    Visibility(
+                      visible: rooms.tables?.indexOf(e) != 0,
+                      child: SizedBox(width: 10.w,),
+                    ),
+                    Expanded(
+                      child: Obx(() {
+                        return InkWell(
+                          onTap: ()=> current.value = e,
+                          child: buildRoomItem(e.name.em(), current.value == e),
+                        );
+                      }),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(width: 10.w,),
-              Expanded(
-                child: Obx(() {
-                  return InkWell(
-                    onTap: ()=> current.value = j,
-                    child: buildRoomItem(Intr().card_gjf, current.value == j),
-                  );
-                }),
-              ),
-              SizedBox(width: 10.w,),
-              Expanded(
-                child: Obx(() {
-                  return InkWell(
-                    onTap: ()=> current.value = h,
-                    child: buildRoomItem(Intr().card_gbf, current.value == h),
-                  );
-                }),
-              ),
-            ],
+            ).toList() ?? [],
           ),
         ),
         SizedBox(height: 27.h,),

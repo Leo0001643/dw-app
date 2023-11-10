@@ -503,6 +503,15 @@ class Intr extends Translations{
   String get bukeyong => 'bukeyong'.tr;
   String get fanshuishuoming => 'fanshuishuoming'.tr;
   String get jiazaizhong => 'jiazaizhong'.tr;
+  String get weikaishi => 'weikaishi'.tr;
+  String get jinxingzhong => 'jinxingzhong'.tr;
+  String get yijieshu => 'yijieshu'.tr;
+  String get hongbaohuodong => 'hongbaohuodong'.tr;
+
+
+
+
+
 
 
 
@@ -612,7 +621,7 @@ class Intr extends Translations{
       "card_ptf":"普通房",
       "card_gjf":"高级房",
       "card_gbf":"贵宾房",
-      "dangqianzaixian":"当前在线%s人|奖金池%s",
+      "dangqianzaixian":"%s|%s",
       "peilvshuoming":"赔率说明",
       "wanfaguizhe":"玩法规则",
       "youxishuyu":"游戏术语",
@@ -984,6 +993,10 @@ class Intr extends Translations{
       "bukeyong":"不可用",
       "fanshuishuoming":"返水说明",
       "jiazaizhong":"加载中...",
+      "weikaishi":"未开始",
+      "jinxingzhong":"进行中",
+      "yijieshu":"已结束",
+      "hongbaohuodong":"红包活动",
 
 
 

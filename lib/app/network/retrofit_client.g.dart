@@ -21,30 +21,30 @@ class _RetrofitClient implements RetrofitClient {
   String? baseUrl;
 
   @override
-  Future<BaseResponseEntity<List<GameTypeEntity>>> getGameType() async {
+  Future<BaseResponseEntity<List<GameKindEntity>>> getGameKind() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponseEntity<List<GameTypeEntity>>>(Options(
+        _setStreamType<BaseResponseEntity<List<GameKindEntity>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/ds-api-web/getGameType',
+              '/ds-api-web/getGameKind',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseResponseEntity<List<GameTypeEntity>>.fromJson(
+    final value = BaseResponseEntity<List<GameKindEntity>>.fromJson(
       _result.data!,
       (json) => json is List<dynamic>
           ? json
-              .map<GameTypeEntity>(
-                  (i) => GameTypeEntity.fromJson(i as Map<String, dynamic>))
+              .map<GameKindEntity>(
+                  (i) => GameKindEntity.fromJson(i as Map<String, dynamic>))
               .toList()
           : List.empty(),
     );

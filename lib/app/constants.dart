@@ -17,6 +17,8 @@ class Constants {
 
   static const websocket = "ws://ws.by4aocqs.com:9999";
 
+  static const PC28 = "PC28";
+
   static String model(){
     var info = AppData.deviceInfo();
     return "${info.name}_${info.systemName}_${info.systemVersion}";

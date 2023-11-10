@@ -56,8 +56,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
       child: SingleChildScrollView(
         child: Column(
           children: [
-            noLoginHeader(),
-            // userHeader(),
+            AppData.isLogin() ? userHeader(): noLoginHeader(),
             InkWell(
               onTap: (){
                 Navigator.of(context).pop();

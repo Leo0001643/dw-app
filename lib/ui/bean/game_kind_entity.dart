@@ -11,7 +11,7 @@ class GameKindEntity {
 	String? gameKind;
 	String? gameKindName;
 	String? gameName;
-	dynamic gameCode;
+	String? gameCode;
 	String? imageUrl;
 	dynamic tags;
 	String? host;
