@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -33,7 +34,11 @@ class _RoomListPageState extends State<RoomListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,onTap: (){
-        DialogUtils().showSelectRoomBtmDialog(context);
+        DialogUtils().showSelectRoomBtmDialog(context,state.pc28Lotto.value).then((value) {
+          if(unEmpty(value?.name)){
+            Get.toNamed(Routes.game_room);
+          }
+        });
       }),
       body: Container(
         decoration: BoxDecoration(
@@ -59,15 +64,19 @@ class _RoomListPageState extends State<RoomListPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(Intr().card_ptf,style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
-                        Text(Intr().dangqianzaixian(["10","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
-                      ],
-                    ),
+                    Obx(() {
+                      var room = state.room.value.tables?[0];
+                      if(isEmpty(room)){ return Container(); }
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
+                          Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                        ],
+                      );
+                    }),
                     InkWell(
-                      onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: Intr().peilvshuoming)),
+                      onTap: ()=> logic.clickRate(state.room.value.tables?[0],"LowRate"),
                       child: Wrap(
                         direction: Axis.horizontal,
                         crossAxisAlignment: WrapCrossAlignment.center,
@@ -97,15 +106,19 @@ class _RoomListPageState extends State<RoomListPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(Intr().card_gjf,style: TextStyle(fontSize: 20.sp,color: ColorX.color_344e7b,fontWeight: FontWeight.w600),),
-                        Text(Intr().dangqianzaixian(["14","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
-                      ],
-                    ),
+                    Obx(() {
+                      var room = state.room.value.tables?[1];
+                      if(isEmpty(room)){ return Container(); }
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
+                          Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                        ],
+                      );
+                    }),
                     InkWell(
-                      onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: Intr().peilvshuoming)),
+                      onTap: ()=> logic.clickRate(state.room.value.tables?[1],"MinRate"),
                       child: Wrap(
                         direction: Axis.horizontal,
                         crossAxisAlignment: WrapCrossAlignment.center,
@@ -135,15 +148,19 @@ class _RoomListPageState extends State<RoomListPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(Intr().card_gbf,style: TextStyle(fontSize: 20.sp,color: ColorX.color_4e3100,fontWeight: FontWeight.w600),),
-                        Text(Intr().dangqianzaixian(["17","\$8000"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
-                      ],
-                    ),
+                    Obx(() {
+                      var room = state.room.value.tables?[2];
+                      if(isEmpty(room)){ return Container(); }
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
+                          Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                        ],
+                      );
+                    }),
                     InkWell(
-                      onTap: ()=> Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_role,pageTitle: Intr().peilvshuoming)),
+                      onTap: ()=> logic.clickRate(state.room.value.tables?[2],"HighRate"),
                       child: Wrap(
                         direction: Axis.horizontal,
                         crossAxisAlignment: WrapCrossAlignment.center,
@@ -164,21 +181,21 @@ class _RoomListPageState extends State<RoomListPage> {
                 children: [
                   Expanded(
                     child: InkWell(
-                      onTap: ()=> DialogUtils().showGameRoleBtmDialog(context),
+                      onTap: ()=> DialogUtils().showGameRoleBtmDialog(context,0,logic),
                       child: buildRoleItem(Intr().wanfaguizhe,Intr().wanfaguizhe_jieshao,0),
                     ),
                   ),
                   SizedBox(width: 10.w,),
                   Expanded(
                     child: InkWell(
-                      onTap: ()=> DialogUtils().showGameRoleBtmDialog(context),
+                      onTap: ()=> DialogUtils().showGameRoleBtmDialog(context,1,logic),
                       child: buildRoleItem(Intr().youxishuyu,Intr().youxishuyu_jieshao, 1),
                     ),
                   ),
                   SizedBox(width: 10.w,),
                   Expanded(
                     child: InkWell(
-                      onTap: ()=> DialogUtils().showGameRoleBtmDialog(context),
+                      onTap: ()=> DialogUtils().showGameRoleBtmDialog(context,2,logic),
                       child: buildRoleItem(Intr().xiazhujiqiao,Intr().xiazhujiqiao_jieshao, 2),
                     ),
                   ),
@@ -210,7 +227,7 @@ class _RoomListPageState extends State<RoomListPage> {
             ],
           ),
           SizedBox(height: 5.h,),
-          Text(role,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+          Text(role,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),overflow: TextOverflow.ellipsis),maxLines: 2,),
         ],
       ),
     );

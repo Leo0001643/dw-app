@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 
@@ -10,7 +11,7 @@ class GameRoomLogic extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
+    loadData();
     super.onReady();
   }
 
@@ -36,6 +37,13 @@ class GameRoomLogic extends GetxController {
         Get.toNamed(Routes.room_tendency);
         break;
     }
+  }
+
+  void loadData() {
+    HttpService.getPc28LottoList().then((value) {
+      state.pc28Lotto.value = value;
+      state.pc28Lotto.refresh();
+    });
   }
 
 

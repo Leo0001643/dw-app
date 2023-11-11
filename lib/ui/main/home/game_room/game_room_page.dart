@@ -44,7 +44,9 @@ class _GameRoomPageState extends State<GameRoomPage> {
       appBar: WidgetUtils().buildGameBar(
           state.title, buildRoomType(),
           collect: false,msg: true,onTap: (){
-        DialogUtils().showSelectRoomBtmDialog(context);
+        DialogUtils().showSelectRoomBtmDialog(context,state.pc28Lotto.value).then((value) {
+
+        });
       }),
       backgroundColor: ColorX.pageBg2(),
       body: Container(
@@ -346,7 +348,9 @@ class _GameRoomPageState extends State<GameRoomPage> {
         children: [
           Image.asset(ImageX.icon_ntf,color: color,),
           SizedBox(width: 5.w,),
-          Text(text,style: TextStyle(fontSize: 12.sp,color: color),),
+          Expanded(
+            child: Text(text,style: TextStyle(fontSize: 12.sp,color: color),),
+          ),
         ],
       ),
     );
