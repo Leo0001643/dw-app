@@ -507,8 +507,7 @@ class Intr extends Translations{
   String get jinxingzhong => 'jinxingzhong'.tr;
   String get yijieshu => 'yijieshu'.tr;
   String get hongbaohuodong => 'hongbaohuodong'.tr;
-
-
+  String get xiangqing => 'xiangqing'.tr;
 
 
 
@@ -997,6 +996,7 @@ class Intr extends Translations{
       "jinxingzhong":"进行中",
       "yijieshu":"已结束",
       "hongbaohuodong":"红包活动",
+      "xiangqing":"详情",
 
 
 

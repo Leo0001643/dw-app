@@ -713,10 +713,10 @@ packages:
     dependency: "direct dev"
     description:
       name: retrofit_generator
-      sha256: "6dde5588800930fe6863df24022a88df8cb971f93cf5413adb2e5a05f4df4a9d"
+      sha256: "9499eb46b3657a62192ddbc208ff7e6c6b768b19e83c1ee6f6b119c864b99690"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "7.0.0"
+    version: "7.0.8"
   rxdart:
     dependency: "direct main"
     description:

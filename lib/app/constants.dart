@@ -14,6 +14,7 @@ class Constants {
   static const  FONT_STD = "ITCAvantGardeStd";
 
   static const imageType = 2;//图片类别[1:A网pC,2:A网移动,3:c原pC,4:C网移动,5:B网PC,6:B网移动],示例值(1)
+  static const pageSize = 20;
 
   static const websocket = "ws://ws.by4aocqs.com:9999";
 

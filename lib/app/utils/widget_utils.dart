@@ -10,6 +10,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/widget/language_dialog.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
 
@@ -377,6 +378,79 @@ class WidgetUtils {
       Get.toNamed(Routes.message_center);
     }else {
       Get.toNamed(Routes.login);
+    }
+  }
+
+
+  ImageProvider buildImageProvider(String image,{String defImage = ImageX.icon_user}){
+    try{
+      return image.isURL ? NetworkImage(image): AssetImage(defImage) as ImageProvider;
+    }catch(e){
+      return AssetImage(defImage);
+    }
+  }
+
+
+
+  Widget buildBallDraw(int lid,List<String> nums, String e) {
+    switch(lid){
+      case 9:  // 快三  3位 骰子
+      case 18:
+      case 19:
+      case 30:
+        return Image.asset(DataUtils.getDiceImg(e),width: 24.r,fit: BoxFit.fill,);
+      case 5:
+        return Image.asset(DataUtils.getFruitImg(e),width: 24.r,fit: BoxFit.fill,);
+      default:
+        return buildDrawNum(e, buildDrawBg(lid,nums,e));
+    }
+  }
+
+
+  Widget buildDrawNum(String num,Color bg) {
+    return Container(
+      width: 24.r,height: 24.r,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(color: bg,borderRadius: BorderRadius.circular(15.r),),
+      child: Text(num, style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+    );
+  }
+
+  Color buildDrawBg(int lid,List<String> nums,String e) {
+    switch(lid){
+      case 10: // PC系列 4位
+      case 11:
+      case 12:
+      case 13:
+      case 31:
+      case 33:
+      case 34:
+      case 32:
+      case 42:
+        if(nums.indexOf(e)+1 == nums.length){
+          return DataUtils.getBallBgColor(int.parse(e));
+        }else {
+          return ColorX.color_fe2427;
+        }
+      case 7:  // 六合彩  7位
+      case 20:
+        return DataUtils.getBallBgColor(int.parse(e));
+      case 6: // pK十系列 10位
+      case 22:
+        return DataUtils.getBallBgColor(int.parse(e));
+      case 56:
+      case 57:
+      case 58:
+      case 59:
+      case 60:
+      case 61:
+        if(int.parse(e) <= 40){
+          return ColorX.color_529aff;
+        }else {
+          return ColorX.color_fe2427;
+        }
+      default:
+        return ColorX.color_fe2427;
     }
   }
 

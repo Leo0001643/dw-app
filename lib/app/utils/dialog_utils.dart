@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,6 +27,7 @@ import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/room_list/room_list_logic.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
 
 class DialogUtils {
@@ -89,6 +92,7 @@ class DialogUtils {
     );
   }
 
+  ///退出登录
   Future<bool?> showLogoutDialog(BuildContext context){
     return showDialog<bool>(
         context: context,
@@ -204,7 +208,7 @@ class DialogUtils {
   }
 
   ///游戏规则
-  void showGameRoleBtmDialog(BuildContext context){
+  void showGameRoleBtmDialog(BuildContext context,int tabIndex,RoomListLogic logic){
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,
@@ -215,7 +219,7 @@ class DialogUtils {
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: GameRoleBottomDialog(),
+            child: GameRoleBottomDialog(tabIndex,logic),
           );
         }
     );

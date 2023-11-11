@@ -48,6 +48,22 @@ class AppData {
     return prefs?.getBool("theme") ?? true;
   }
 
+  static void setBgMusic(bool open){
+    prefs?.setBool("bg_music", open);
+  }
+
+  static bool bgMusic(){
+    return prefs?.getBool("bg_music") ?? true;
+  }
+
+  static void setPromptTone(bool open){
+    prefs?.setBool("prompt_tone", open);
+  }
+
+  static bool promptTone(){
+    return prefs?.getBool("prompt_tone") ?? true;
+  }
+
   static void setDeviceInfo(DeviceInfo info){
     prefs?.setString("device_info", jsonEncode(info.toJson()));
   }

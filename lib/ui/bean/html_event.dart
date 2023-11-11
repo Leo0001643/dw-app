@@ -9,6 +9,12 @@ class HtmlEvent{
 
   HtmlEvent({this.data, this.isHtmlData, this.pageTitle});
 
+
+  @override
+  String toString() {
+    return "data:${data},isHtmlData:${isHtmlData},pageTitle:${pageTitle}";
+  }
+
 }
 
 

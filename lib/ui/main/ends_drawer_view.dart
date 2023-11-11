@@ -11,6 +11,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
 class EndsDrawerView extends StatefulWidget{
@@ -25,8 +26,8 @@ class EndsDrawerView extends StatefulWidget{
 class StateEndsDrawerView extends State<EndsDrawerView>{
 
 
-  var musicToggle = false.obs;
-  var notifyToggle = false.obs;
+  var musicToggle = AppData.bgMusic().obs;
+  var notifyToggle = AppData.promptTone().obs;
 
 
 
@@ -99,7 +100,10 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                         Text(Intr().bjyy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                         Expanded(child: Container()),
                         GFToggle(
-                          onChanged: (value){},
+                          onChanged: (value){
+                            AppData.setBgMusic(value == true);
+                            musicToggle.value = value == true;
+                          },
                           value: musicToggle.value,
                           type: GFToggleType.ios,
                           disabledTrackColor: ColorX.text949(),
@@ -119,7 +123,10 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                         Text(Intr().tsy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                         Expanded(child: Container()),
                         GFToggle(
-                          onChanged: (value){},
+                          onChanged: (value){
+                            AppData.setPromptTone(value == true);
+                            notifyToggle.value = value == true;
+                          },
                           value: notifyToggle.value,
                           type: GFToggleType.ios,
                           disabledTrackColor: ColorX.text949(),
@@ -176,7 +183,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                           SizedBox(width: 5.w,),
                           Text(Intr().dx,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                           Expanded(child: Container()),
-                          Text(Intr().qk,style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+                          // Text(Intr().qk,style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
                           Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
                         ],
                       ),
@@ -196,7 +203,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               child: Column(
                 children: [
                   InkWell(
-                    onTap: ()=> Get.toNamed(Routes.promotion_profit),
+                    onTap: ()=> jumpToPage(Routes.promotion_profit),
                     child: Container(
                       margin: EdgeInsets.symmetric(vertical: 5.h),
                       child: Row(
@@ -231,24 +238,35 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               ),
             ),
             SizedBox(height: 8.h,),
-            Container(
-              decoration: BoxDecoration(
-                color: ColorX.cardBg5(),
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
-              margin: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Row(
-                children: [
-                  Image.asset(ImageX.icon_exist,color: ColorX.icon586()),
-                  SizedBox(width: 5.w,),
-                  Text(Intr().logout,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                  Expanded(child: Container()),
-                  Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
-                ],
+            Visibility(
+              visible: AppData.isLogin(),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: ColorX.cardBg5(),
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+                margin: EdgeInsets.symmetric(horizontal: 10.w),
+                child: InkWell(
+                  child: Row(
+                    children: [
+                      Image.asset(ImageX.icon_exist,color: ColorX.icon586()),
+                      SizedBox(width: 5.w,),
+                      Text(Intr().logout,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                      Expanded(child: Container()),
+                      Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                    ],
+                  ),
+                  onTap: ()=> DialogUtils().showLogoutDialog(context).then((value) {
+                    if(value  == true){
+                      Get.back();
+                    }
+                  }),
+                ),
               ),
             ),
             SizedBox(height: 30.h,),
+
           ],
         ),
       ),
@@ -430,6 +448,14 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
         ],
       ),
     );
+  }
+
+  void jumpToPage(String page) {
+    if(AppData.isLogin()){
+      Get.toNamed(page);
+    }else {
+      Get.toNamed(Routes.login);
+    }
   }
 
 

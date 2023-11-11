@@ -4,13 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
+import 'package:leisure_games/ui/main/home/room_list/room_list_logic.dart';
 
 class GameRoleBottomDialog extends StatefulWidget{
+
+  final int tabIndex;
+  final RoomListLogic logic;
+
+  GameRoleBottomDialog(this.tabIndex,this.logic, {super.key});
 
   @override
   State<StatefulWidget> createState() =>StateGameRoleBottomDialog();
@@ -20,6 +28,8 @@ class GameRoleBottomDialog extends StatefulWidget{
 class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleTickerProviderStateMixin{
 
   late TabController _tabController;
+  InAppWebViewController? controller;
+
 
   var progress = 0.0.obs;
   var progressVisible= true.obs;//显示隐藏
@@ -28,7 +38,10 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
 
   @override
   void initState() {
-    _tabController = TabController(length: tabs.length, vsync: this);
+    _tabController = TabController(initialIndex: widget.tabIndex,length: tabs.length, vsync: this)
+    ..addListener(() {
+      loadData(_tabController.index);
+    });
     super.initState();
   }
 
@@ -97,8 +110,24 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
                 ),
                 Expanded(
                   child: InAppWebView(
-                    // initialUrlRequest: URLRequest(url: Uri.tryParse('https://juejin.cn/user/1865248698012616')),
-                    initialData: InAppWebViewInitialData(data: Constants.test_role,),
+                    initialOptions: InAppWebViewGroupOptions(
+                      android: AndroidInAppWebViewOptions(
+                        loadWithOverviewMode: false,
+                        overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
+                        displayZoomControls: false,
+                        builtInZoomControls: false,
+                        useWideViewPort: false,
+                      ),
+                      ios: IOSInAppWebViewOptions(
+                        disallowOverScroll: true,
+                        enableViewportScale: true,
+                        ignoresViewportScaleLimits: true,
+                      ),
+                    ),
+                    onWebViewCreated: (ct){
+                      controller = ct;
+                      loadData(widget.tabIndex);
+                    },
                     onProgressChanged: (controller,pg){
                       progress.value = pg.toDouble();
                       progressVisible.value = pg != 100;
@@ -111,6 +140,23 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
         ],
       ),
     );
+  }
+
+  void loadData(int i) {
+    var tag = widget.logic.state.room.value.gameType.em();
+    switch(i){
+      case 0:
+        break;
+      case 1:
+        tag = "sy_$tag";
+        break;
+      case 2:
+        tag = "jq_$tag";
+        break;
+    }
+    HttpService.getGameRole(tag).then((value) {
+      controller?.loadData(data: value.content.em());
+    });
   }
 
 

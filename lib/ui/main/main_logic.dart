@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '/app/global.dart';
@@ -21,6 +22,7 @@ class MainLogic extends GetxController {
       state.pageController.jumpToPage(event.pageIndex);
       state.tabController?.animateTo(event.pageIndex);
     });
+    loadData();
     super.onReady();
   }
 
@@ -50,6 +52,12 @@ class MainLogic extends GetxController {
         showToast('permissionDenied'.tr + "=" + value.toString());
         return;
       }
+    });
+  }
+
+  void loadData() {
+    HttpService.getWebConfig().then((value) {
+      state.webConfig = value;
     });
   }
 

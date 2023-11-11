@@ -32,7 +32,7 @@ class BaseResponseEntity<T> {
 	Map<String,dynamic> toJson(){
 		final Map<String, dynamic> result = <String, dynamic>{};
 		result['code'] = code;
-		result['message'] = message;
+		result['message'] = message?.toJson();
 		result['data'] = JsonConvert.fromJsonAsT(data);
 		return result;
 	}

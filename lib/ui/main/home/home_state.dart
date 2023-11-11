@@ -32,6 +32,7 @@ class HomeState {
   ///活动内容
   var act = Pic30BackEntity().obs;
   var hongbaoVisible = false.obs;
+  var hongbaoManual = true.obs;//手动关闭
   Timer? timer;
 
 

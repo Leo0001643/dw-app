@@ -7,6 +7,7 @@ import 'package:leisure_games/app/app_data.dart';
 class ColorX{
 
   static const color_fc243b = Color(0xffFC243B);
+  static const color_fe2427 = Color(0xfffe2427);
 
   static const color_5b6d7b = Color(0xff5B6D7B);
   static const color_fff4f2 = Color(0xffFFF4F2);
@@ -34,6 +35,7 @@ class ColorX{
   static const color_62_586 = Color.fromRGBO(88,105,141,0.62);
   static const color_529aff = Color(0xff529AFF);
   static const color_23a81d = Color(0xff23A81D);
+  static const color_00ac47 = Color(0xff00ac47);
   static const color_6655e7 = Color(0xff6655E7);
   static const color_5583e7 = Color(0xff5583e7);
   static const color_e75555 = Color(0xffe75555);

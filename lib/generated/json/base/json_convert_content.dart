@@ -8,16 +8,23 @@ import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
+import 'package:leisure_games/ui/bean/dew_info_entity.dart';
+import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
+import 'package:leisure_games/ui/bean/history_hall_entity.dart';
+import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
 import 'package:leisure_games/ui/bean/language_msg_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
+import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
+import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
+import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -168,6 +175,14 @@ class JsonConvert {
       return data.map<DeviceInfo>((Map<String, dynamic> e) =>
           DeviceInfo.fromJson(e)).toList() as M;
     }
+    if (<DewInfoEntity>[] is M) {
+      return data.map<DewInfoEntity>((Map<String, dynamic> e) =>
+          DewInfoEntity.fromJson(e)).toList() as M;
+    }
+    if (<DomainConfigEntity>[] is M) {
+      return data.map<DomainConfigEntity>((Map<String, dynamic> e) =>
+          DomainConfigEntity.fromJson(e)).toList() as M;
+    }
     if (<GameKindEntity>[] is M) {
       return data.map<GameKindEntity>((Map<String, dynamic> e) =>
           GameKindEntity.fromJson(e)).toList() as M;
@@ -180,6 +195,14 @@ class JsonConvert {
       return data.map<GameTypeEntity>((Map<String, dynamic> e) =>
           GameTypeEntity.fromJson(e)).toList() as M;
     }
+    if (<HistoryHall>[] is M) {
+      return data.map<HistoryHall>((Map<String, dynamic> e) =>
+          HistoryHall.fromJson(e)).toList() as M;
+    }
+    if (<HistoryLottoEntity>[] is M) {
+      return data.map<HistoryLottoEntity>((Map<String, dynamic> e) =>
+          HistoryLottoEntity.fromJson(e)).toList() as M;
+    }
     if (<HomeGameMenuEntity>[] is M) {
       return data.map<HomeGameMenuEntity>((Map<String, dynamic> e) =>
           HomeGameMenuEntity.fromJson(e)).toList() as M;
@@ -191,6 +214,10 @@ class JsonConvert {
     if (<MessageItemEntity>[] is M) {
       return data.map<MessageItemEntity>((Map<String, dynamic> e) =>
           MessageItemEntity.fromJson(e)).toList() as M;
+    }
+    if (<NewsRateEntity>[] is M) {
+      return data.map<NewsRateEntity>((Map<String, dynamic> e) =>
+          NewsRateEntity.fromJson(e)).toList() as M;
     }
     if (<NoticeEntity>[] is M) {
       return data.map<NoticeEntity>((Map<String, dynamic> e) =>
@@ -235,6 +262,18 @@ class JsonConvert {
     if (<Pic30Entity>[] is M) {
       return data.map<Pic30Entity>((Map<String, dynamic> e) =>
           Pic30Entity.fromJson(e)).toList() as M;
+    }
+    if (<PromotionDetailEntity>[] is M) {
+      return data.map<PromotionDetailEntity>((Map<String, dynamic> e) =>
+          PromotionDetailEntity.fromJson(e)).toList() as M;
+    }
+    if (<PromotionTypeEntity>[] is M) {
+      return data.map<PromotionTypeEntity>((Map<String, dynamic> e) =>
+          PromotionTypeEntity.fromJson(e)).toList() as M;
+    }
+    if (<PromotionTypeKey>[] is M) {
+      return data.map<PromotionTypeKey>((Map<String, dynamic> e) =>
+          PromotionTypeKey.fromJson(e)).toList() as M;
     }
     if (<ProtectEntity>[] is M) {
       return data.map<ProtectEntity>((Map<String, dynamic> e) =>
@@ -349,12 +388,17 @@ class JsonConvertClassCollection {
     (CustomerServiceCusterServers).toString(): CustomerServiceCusterServers
         .fromJson,
     (DeviceInfo).toString(): DeviceInfo.fromJson,
+    (DewInfoEntity).toString(): DewInfoEntity.fromJson,
+    (DomainConfigEntity).toString(): DomainConfigEntity.fromJson,
     (GameKindEntity).toString(): GameKindEntity.fromJson,
     (GameKindGameKindList).toString(): GameKindGameKindList.fromJson,
     (GameTypeEntity).toString(): GameTypeEntity.fromJson,
+    (HistoryHall).toString(): HistoryHall.fromJson,
+    (HistoryLottoEntity).toString(): HistoryLottoEntity.fromJson,
     (HomeGameMenuEntity).toString(): HomeGameMenuEntity.fromJson,
     (LanguageMsgEntity).toString(): LanguageMsgEntity.fromJson,
     (MessageItemEntity).toString(): MessageItemEntity.fromJson,
+    (NewsRateEntity).toString(): NewsRateEntity.fromJson,
     (NoticeEntity).toString(): NoticeEntity.fromJson,
     (Pc28LottoEntity).toString(): Pc28LottoEntity.fromJson,
     (Pc28LottoRooms).toString(): Pc28LottoRooms.fromJson,
@@ -366,6 +410,9 @@ class JsonConvertClassCollection {
     (Pic30BackEntity).toString(): Pic30BackEntity.fromJson,
     (Pic30BackBack).toString(): Pic30BackBack.fromJson,
     (Pic30Entity).toString(): Pic30Entity.fromJson,
+    (PromotionDetailEntity).toString(): PromotionDetailEntity.fromJson,
+    (PromotionTypeEntity).toString(): PromotionTypeEntity.fromJson,
+    (PromotionTypeKey).toString(): PromotionTypeKey.fromJson,
     (ProtectEntity).toString(): ProtectEntity.fromJson,
     (ProtectProtect).toString(): ProtectProtect.fromJson,
     (ProtectProtectKkwdsLive).toString(): ProtectProtectKkwdsLive.fromJson,

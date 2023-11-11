@@ -166,8 +166,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     },
                     child: Row(
                       children: [
-                        Text(Intr().yyzh,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-                        Text(Intr().login,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,decoration: TextDecoration.underline),),
+                        Text(Intr().yyzh,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
+                        Text(Intr().login,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack(),decoration: TextDecoration.underline),),
                         Image.asset(ImageX.icon_right_black),
                       ],
                     ),

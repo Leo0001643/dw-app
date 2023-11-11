@@ -46,7 +46,7 @@ dependencies:
   common_utils: ^2.1.0
   #  webview_flutter: ^2.8.0
   getwidget: ^4.0.0
-  flutter_inappwebview: ^5.7.2+3
+  flutter_inappwebview: ^5.8.0
   flutter_screenutil: ^5.9.0
   convex_bottom_bar: ^3.2.0
   marquee: ^2.2.3
@@ -79,7 +79,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  retrofit_generator: ^7.0.0
+  retrofit_generator: ^7.0.8
   json_serializable: ^6.6.2
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -8,6 +8,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/draggable_widget.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/main/home/game_menu_view.dart';
 import 'package:marquee/marquee.dart';
@@ -186,12 +187,12 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                 ),
               ),
             ),
-            // Obx(() {
-            //   return Visibility(
-            //     visible: state.hongbaoVisible.value,
-            //     child: DraggableWidget(logic,state.act.value,),
-            //   );
-            // }),
+            Obx(() {
+              return Visibility(
+                visible: state.hongbaoVisible.value && state.hongbaoManual.value,
+                child: DraggableWidget(logic,state.act.value,),
+              );
+            }),
           ],
         );
       },

@@ -104,6 +104,29 @@ class HomeLogic extends GetxController {
       state.menuGroup.assignAll(value);
       state.menuGroup.refresh();
     });
+
+    //公告
+    HttpService.getNotice(1).then((value) {
+      state.noticeList.assignAll(value);
+      state.noticeList.refresh();
+    });
+
+    HttpService.getRotate().then((value) {
+      state.bannerList.assignAll(value);
+      state.bannerList.refresh();
+    });
+
+    HttpService.getActStatus().then((value) {
+      var hongbao = value.list?["hongbao"];
+      ///显示红包
+      if(hongbao?.status == 1){
+        startCountDown(value.cTime.em(),hongbao!);
+        HttpService.getActPic().then((value) {
+          state.act.value = value;
+          state.act.refresh();
+        });
+      }
+    });
   }
 
 

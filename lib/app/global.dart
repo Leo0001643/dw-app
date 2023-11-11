@@ -86,5 +86,11 @@ extension ListExtension on List? {
   }
 }
 
+extension MapExtension on Map? {
+  ///防止字段为空报错
+  int em(){
+    return this == null ? 0 : this!.length;
+  }
 
+}
 

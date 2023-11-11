@@ -69,7 +69,7 @@ class StateGameMenuView extends State<GameMenuView>{
 
   @override
   void dispose() {
-    scrollController.dispose();
+    // scrollController.dispose();
     super.dispose();
   }
 

@@ -68,6 +68,9 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
       state.pageController.jumpToPage(i);
     } else {
       Get.toNamed(Routes.login);
+      //切换到首页
+      state.pageController.jumpToPage(0);
+      state.tabController?.index = 0;
     }
   }
 
