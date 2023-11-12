@@ -60,6 +60,12 @@ class ErrorResponseHandler {
       case 900403://鉴权失败
         showToast(error["message"]);
         break;
+      case 900078://无效的请求方式
+        showToast(error["message"]);
+        break;
+      default:
+        showToast(error["message"]);
+        break;
     }
   }
 

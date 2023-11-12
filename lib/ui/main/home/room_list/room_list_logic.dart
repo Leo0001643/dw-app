@@ -27,17 +27,23 @@ class RoomListLogic extends GetxController {
   }
 
 
-  void loadData(GameKindGameKindList kind) {
+  void loadData(GameKindGameKindList? kind) {
     loggerArray(["收到页面参数",kind.toString()]);
     HttpService.getPc28LottoList().then((value) {
       state.pc28Lotto.value = value;
       state.pc28Lotto.refresh();
-      value.rooms?.forEach((element) {
-        if(element.gameType == kind.gameCode){
-          state.title.value = element.memo.em();
-          state.room.value = element;
-        }
-      });
+      ///可能没有传数据，默认使用第一条
+      if(isEmpty(kind)){
+        state.title.value = value.rooms?.first.memo ?? "";
+        state.room.value = value.rooms?.first ?? Pc28LottoRooms();
+      }else {
+        value.rooms?.forEach((element) {
+          if(element.gameType == kind?.gameCode){
+            state.title.value = element.memo.em();
+            state.room.value = element;
+          }
+        });
+      }
     });
   }
 

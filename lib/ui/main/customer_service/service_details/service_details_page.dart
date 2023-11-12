@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 
 import 'service_details_logic.dart';
 
@@ -20,11 +23,17 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
   final state = Get.find<ServiceDetailsLogic>().state;
 
   @override
+  void initState() {
+    state.detail = Get.arguments;
+    state.title.value = state.detail.name.em();
+    super.initState();
+  }
+
+  @override
   void dispose() {
     Get.delete<ServiceDetailsLogic>();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,36 +50,36 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                 height: 213.h,
                 child: WidgetUtils().buildRxAppBar(state.title,msg: true,bgColor: Colors.transparent),
               ),
-              Expanded(
-                child: Container(
-                  margin: EdgeInsets.only(top: 193.h),
-                  decoration: BoxDecoration(
-                    color: ColorX.cardBg5(),
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 10.h,),
-                      buildCategaryItem("客服小强","Johnny999",ImageX.icon_wechat, 0),
-                      buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 1),
-                      buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 2),
-                      buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 3),
-                      SizedBox(height: 10.h,),
-
-                      Padding(
-                        padding: EdgeInsets.only(left: 20.w),
-                        child: Text(Intr().wenxintishi_fuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),height: 1.5),),
-                      ),
-                      SizedBox(height: 32.h,),
-                      Center(
-                        child: WidgetUtils().buildElevatedButton(Intr().fanhui, 131.w, 40.h,
-                            bg: ColorX.cardBg3(),textColor: ColorX.text0917(),onPressed: (){
-                              Navigator.of(context).pop();
-                            }),
-                      ),
-                    ],
-                  ),
+              Container(
+                margin: EdgeInsets.only(top: 193.h),
+                decoration: BoxDecoration(
+                  color: ColorX.cardBg5(),
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10.h,),
+                    Column(
+                      children: state.detail.custerServers?.map((e) => buildCategaryItem(e, state.detail.custerServers!.indexOf(e))).toList() ?? [],
+                    ),
+                    // buildCategaryItem("客服小强","Johnny999",ImageX.icon_wechat, 0),
+                    // buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 1),
+                    // buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 2),
+                    // buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 3),
+                    SizedBox(height: 10.h,),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20.w),
+                      child: Text(Intr().wenxintishi_fuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),height: 1.5),),
+                    ),
+                    SizedBox(height: 32.h,),
+                    Center(
+                      child: WidgetUtils().buildElevatedButton(Intr().fanhui, 131.w, 40.h,
+                          bg: ColorX.cardBg3(),textColor: ColorX.text0917(),onPressed: (){
+                            Navigator.of(context).pop();
+                          }),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -80,7 +89,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
     );
   }
 
-  Widget buildCategaryItem(String name,String code, String icon, int i) {
+  Widget buildCategaryItem(CustomerServiceCusterServers server, int i) {
     return Column(
       children: [
         SizedBox(height: 10.h,),
@@ -95,20 +104,24 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
           height:  72.h,
           child: Row(
             children: [
-              Image.asset(icon,),
+              GFAvatar(
+                backgroundImage: WidgetUtils().buildImageProvider("${server.url}${server.image}"),
+                shape: GFAvatarShape.circle,
+                radius: 18.r,
+              ),
               SizedBox(width: 8.w,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                  Text(server.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                   SizedBox(height: 5.h,),
-                  Text(code,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                  Text(server.number.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                 ],
               ),
               Expanded(child: Container(),),
               InkWell(
-                onTap: ()=> WidgetUtils().clickCopy(code),
+                onTap: ()=> WidgetUtils().clickCopy(server.number.em()),
                 child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
                     decoration: TextDecoration.underline),),
               ),

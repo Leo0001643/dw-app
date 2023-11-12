@@ -575,19 +575,21 @@ class _RetrofitClient implements RetrofitClient {
 
   @override
   Future<BaseResponseEntity<DewInfoEntity>> getDewInfo(
-    int gameType,
-    int countTerm,
+    String gameType,
+    String countTerm,
+    String lotteryVersion,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'gameType': gameType,
       r'countTerm': countTerm,
+      r'lotteryVersion': lotteryVersion,
     };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponseEntity<DewInfoEntity>>(Options(
-      method: 'POST',
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )

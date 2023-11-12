@@ -111,6 +111,8 @@ import 'package:leisure_games/ui/main/mine/withdraw/withdraw_page.dart';
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_result/withdraw_result_binding.dart';
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_result/withdraw_result_page.dart';
 import 'package:leisure_games/ui/main/preferential/preferential_binding.dart';
+import 'package:leisure_games/ui/main/preferential/preferential_detail/preferential_detail_binding.dart';
+import 'package:leisure_games/ui/main/preferential/preferential_detail/preferential_detail_page.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_binding.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_category_binding.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_category_page.dart';
@@ -180,6 +182,7 @@ class Routes {
   static const String points_lottery = "/home/points_lottery";
   static const String table_game_list = "/home/table_game_list";
   static const String chess_game_list = "/home/chess_game_list";
+  static const String preferential_detail = "/preferential/detail";
 
 
 
@@ -246,6 +249,7 @@ class Routes {
     GetPage(name: points_lottery,binding: PointsLotteryBinding(), page: () => PointsLotteryPage()),
     GetPage(name: chess_game_list,binding: ChessGameListBinding(), page: () => ChessGameListPage()),
     GetPage(name: table_game_list,binding: TableGameListBinding(), page: () => TableGameListPage()),
+    GetPage(name: preferential_detail,binding: PreferentialDetailBinding(), page: () => PreferentialDetailPage()),
 
   ];
   

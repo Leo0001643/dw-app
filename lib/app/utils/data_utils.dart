@@ -103,6 +103,46 @@ class DataUtils{
     }
   }
 
+  static Color getBallColor2(int num){
+    switch(num){
+      case 01:
+      case 02:
+      case 07:
+      case 08:
+      case 12:
+      case 13:
+      case 18:
+      case 19:
+      case 23:
+      case 24:///绿波
+        return ColorX.color_00ac47;
+      case 00:
+      case 05:
+      case 06:
+      case 11:
+      case 16:
+      case 17:
+      case 21:
+      case 22:
+      case 27:///红波
+        return ColorX.color_fe2427;
+      case 03:
+      case 04:
+      case 09:
+      case 10:
+      case 14:
+      case 15:
+      case 20:
+      case 25:
+      case 26:///蓝波
+        return ColorX.color_529aff;
+      default:
+        return ColorX.color_fe2427;
+    }
+  }
+
+
+
   static String getDiceImg(String num){
     switch(num){
       case "2":
@@ -161,6 +201,21 @@ class DataUtils{
       default:
         return ImageX.fruit_1;
     }
+  }
+
+
+  ///lid转为支持的游戏类型
+  static String getGameTypeByLid(int? lid) {
+    if (lid == 10) {
+      return "keno28";
+    } else if (lid == 11) {
+      return "xj28";
+    } else if (lid == 32) {
+      return "jndx28";
+    } else if (lid == 31) {
+      return "tw28";
+    }
+    return "";
   }
 
 

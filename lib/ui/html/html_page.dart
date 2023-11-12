@@ -40,6 +40,20 @@ class _HtmlPageState extends State<HtmlPage> {
           Expanded(
             child: InAppWebView(
               onWebViewCreated: (controller)=> logic.loadPage(controller),
+              initialOptions: InAppWebViewGroupOptions(
+                android: AndroidInAppWebViewOptions(
+                  loadWithOverviewMode: false,
+                  overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
+                  displayZoomControls: false,
+                  builtInZoomControls: false,
+                  useWideViewPort: false,
+                ),
+                ios: IOSInAppWebViewOptions(
+                  disallowOverScroll: true,
+                  enableViewportScale: true,
+                  ignoresViewportScaleLimits: true,
+                ),
+              ),
               onProgressChanged: (controller,pg){
                 state.progress.value = pg.toDouble();
                 state.progressVisible.value = pg != 100;

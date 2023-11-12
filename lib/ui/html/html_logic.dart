@@ -25,7 +25,7 @@ class HtmlLogic extends GetxController {
   }
 
   void loadPage(InAppWebViewController controller){
-    print("收到数据了吧 ${state.htmlEvent.value}");
+    print("收到数据了吧 ${state.htmlEvent.value.toString()}");
     if(state.htmlEvent.value.isHtmlData == true){
       controller.loadData(data: state.htmlEvent.value.data.em());
     }else {

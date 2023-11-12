@@ -24,7 +24,9 @@ class BaseResponseEntity<T> {
 		if(result is Map){
 			response.code = result['code'];
 			response.message = LanguageMsgEntity.fromJson(result['message']);
-			response.data = fromJsonT.call(result['data']);//JsonConvert.fromJsonAsT(result['data']);
+			if(result['data'] != null){
+				response.data = fromJsonT.call(result['data']);//JsonConvert.fromJsonAsT(result['data']);
+			}
 		}
 		return response;
 	}

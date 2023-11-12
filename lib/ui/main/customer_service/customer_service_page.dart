@@ -3,10 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 
 import 'customer_service_logic.dart';
 
@@ -53,19 +55,11 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
                 ],
               ),
             ),
-            buildCategaryItem("Skype：Johnny999",ImageX.icon_skype,0),
-            buildCategaryItem("微信：Sherry888",ImageX.icon_wechat,1),
-            buildCategaryItem("Telegram：09987234998",ImageX.icon_telegram,2),
-            buildCategaryItem("letstalk：09987234998",ImageX.icon_letstalk,3),
-            buildCategaryItem("whatsapp：09987234998",ImageX.icon_whatsapp,4),
-            buildCategaryItem("QQ：09987234998",ImageX.icon_qq,5),
-            buildCategaryItem("支付宝：09987234998",ImageX.icon_alibb,6),
-            buildCategaryItem("洽洽：09987234998",ImageX.icon_qiaqia,7),
-            buildCategaryItem("facebook：09987234998",ImageX.icon_facebook,8),
-            buildCategaryItem("twitter：09987234998",ImageX.icon_twitter,9),
-            buildCategaryItem("line：09987234998",ImageX.icon_line,10),
-            buildCategaryItem("在线客服：09987234998",ImageX.icon_online,11),
-            buildCategaryItem("语音客服：09987234998",ImageX.icon_voice,12),
+            Obx(() {
+              return Column(
+                children: state.services.map((element)=> buildCategaryItem(element, state.services.indexOf(element))).toList(),
+              );
+            }),
             SizedBox(height: 50.h,),
           ],
         ),
@@ -73,7 +67,7 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
     );
   }
 
-  Widget buildCategaryItem(String name, String icon, int i) {
+  Widget buildCategaryItem(CustomerServiceEntity element, int i) {
     return Column(
       children: [
         SizedBox(height: 10.h,),
@@ -88,12 +82,12 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
           height:  72.h,
           child: Row(
             children: [
-              Image.asset(icon,),
+              Image.network(element.image.em(),width: 40.r,),
               SizedBox(width: 8.w,),
-              Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+              Text(element.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
               Expanded(child: Container(),),
               InkWell(
-                onTap: ()=> logic.clickService(i),
+                onTap: ()=> logic.clickService(element),
                 child: Text(Intr().djjr,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
                     decoration: TextDecoration.underline),),
               ),

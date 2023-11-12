@@ -1,3 +1,4 @@
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/dew_info_entity.g.dart';
 import 'dart:convert';
@@ -23,4 +24,15 @@ class DewInfoEntity {
 	String toString() {
 		return jsonEncode(this);
 	}
+
+	int listNum(int i,int j){
+		if((list?[i].em() ?? 0) > 2){
+			var ns = list?[i][2].split(",");
+			return int.parse(ns?[j] ?? "0");
+		}
+		return 0;
+	}
+
+
+
 }

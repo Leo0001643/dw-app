@@ -86,8 +86,8 @@ abstract class RetrofitClient{
   @GET('https://api.j7oum3yp.com/Infos/HistoryList')
   Future<TrendResponseEntity<List<HistoryLottoEntity>>> historyList(@Query('lid') int lid,@Query('pageIndex') int pageIndex,@Query('pageSize') int pageSize,);
 
-  @POST('/ds-api-web/getDewInfo')
-  Future<BaseResponseEntity<DewInfoEntity>> getDewInfo(@Query('gameType') int gameType,@Query('countTerm') int countTerm,);
+  @GET('/ds-api-web/getDewInfo')
+  Future<BaseResponseEntity<DewInfoEntity>> getDewInfo(@Query('gameType') String gameType,@Query('countTerm') String countTerm,@Query('lotteryVersion')String lotteryVersion,);
 
   @GET('/ds-api-web/getRoomCopyWriting')
   Future<BaseResponseEntity<List<RoomCopyWritingEntity>>> getRoomCopyWriting();

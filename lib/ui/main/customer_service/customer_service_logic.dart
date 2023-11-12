@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 
 import 'customer_service_state.dart';
 
@@ -8,7 +10,7 @@ class CustomerServiceLogic extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
+    loadData();
     super.onReady();
   }
 
@@ -18,8 +20,15 @@ class CustomerServiceLogic extends GetxController {
     super.onClose();
   }
 
-  void clickService(int index){
-    Get.toNamed(Routes.service_details);
+  void clickService(CustomerServiceEntity element){
+    Get.toNamed(Routes.service_details,arguments: element);
+  }
+
+  void loadData() {
+    HttpService.getCustomerService().then((value) {
+      state.services.assignAll(value);
+      state.services.refresh();
+    });
   }
 
 

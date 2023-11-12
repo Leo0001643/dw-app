@@ -9,6 +9,7 @@ import 'package:leisure_games/app/network/retrofit_client.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
+import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
@@ -131,6 +132,10 @@ class HttpService{
 
   static Future<List<HistoryLottoEntity>> historyList(int lid, int pageIndex, int pageSize){
     return buildTrendFuture<List<HistoryLottoEntity>>(()=> _client.historyList(lid, pageIndex, pageSize),loading: false);
+  }
+
+  static Future<DewInfoEntity> getDewInfo(String gameType,String countTerm,String lotteryVersion){
+    return buildFuture<DewInfoEntity>(()=> _client.getDewInfo(gameType, countTerm,lotteryVersion));
   }
 
   ///游戏返回体

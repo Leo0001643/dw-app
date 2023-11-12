@@ -15,5 +15,4 @@ class HtmlState {
 
   var htmlEvent = HtmlEvent().obs;
 
-
 }
