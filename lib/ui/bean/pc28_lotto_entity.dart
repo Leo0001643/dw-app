@@ -73,4 +73,11 @@ class Pc28LottoRoomsTables {
 	String toString() {
 		return jsonEncode(this);
 	}
+
+
+
+
+
+
+
 }

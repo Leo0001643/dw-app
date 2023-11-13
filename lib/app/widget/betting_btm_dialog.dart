@@ -311,10 +311,10 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
 
   String buildRoomHeadType() {
-    switch(widget.logic.state.roomType){
-      case 1:
-        return ImageX.ic_2room_head;
+    switch(widget.logic.state.roomType.value){
       case 2:
+        return ImageX.ic_2room_head;
+      case 3:
         return ImageX.ic_3room_head;
       default:
         return ImageX.ic_1room_head;
@@ -323,14 +323,14 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
   Color buildTextColor(){
     var color = ColorX.color_fc243b;
-    switch(widget.logic.state.roomType){
-      case 0:
+    switch(widget.logic.state.roomType.value){
+      case 1:
         color = ColorX.color_fc243b;
         break;
-      case 1:
+      case 2:
         color = ColorX.color_70b6ff;
         break;
-      case 2:
+      case 3:
         color = ColorX.color_ffe0ac;
         break;
     }

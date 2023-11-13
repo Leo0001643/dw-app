@@ -57,7 +57,11 @@ class RoomListLogic extends GetxController {
   }
 
 
-
+  void clickRoom(Pc28LottoRoomsTables? room){
+    if(unEmpty(room?.name)){
+      Get.toNamed(Routes.game_room,arguments: room);
+    }
+  }
 
 
 

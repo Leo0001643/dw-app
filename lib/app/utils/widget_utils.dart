@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -382,11 +383,29 @@ class WidgetUtils {
   }
 
 
-  ImageProvider buildImageProvider(String image,{String defImage = ImageX.icon_user}){
+  ImageProvider buildImageProvider(String image,{String defImage = ImageX.icon_avatar}){
     try{
-      return image.isURL ? NetworkImage(image): AssetImage(defImage) as ImageProvider;
+      return image.isURL ? NetworkImage(image): AssetImage(image) as ImageProvider;
     }catch(e){
       return AssetImage(defImage);
+    }
+  }
+
+  Image buildImage(String image,double width,double height,{String defImage = ImageX.icon_avatar,BoxFit? fit}){
+    try{
+      return Image.network(image,width: width,height: height,fit: fit,
+      errorBuilder: (context,error,stack){
+        loggerArray(["异常了妈啊",image,error,stack]);
+          if(unEmpty(defImage)){
+            return Image.asset(defImage,width: width,height: height,fit: fit,);
+          }else {
+            return SizedBox(width: width,height: height,);
+          }
+        },
+      );
+    }catch(e){
+      loggerArray(["异常了妈啊",image,e]);
+      return Image.asset(defImage,width: width,height: height,fit: fit,);
     }
   }
 

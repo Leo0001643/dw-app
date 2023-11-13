@@ -11,13 +11,16 @@ import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
+import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
+import 'package:leisure_games/ui/bean/phrase_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
@@ -137,6 +140,23 @@ class HttpService{
   static Future<DewInfoEntity> getDewInfo(String gameType,String countTerm,String lotteryVersion){
     return buildFuture<DewInfoEntity>(()=> _client.getDewInfo(gameType, countTerm,lotteryVersion));
   }
+
+  static Future<List<ExpressionEntity>> getExpression(){
+    return buildFuture<List<ExpressionEntity>>(()=> _client.getExpression(),loading: false);
+  }
+
+  static Future<List<PhraseEntity>> getPhrase(){
+    return buildFuture<List<PhraseEntity>>(()=> _client.getPhrase(),loading: false);
+  }
+
+  static Future<String> getPC28Odds(int id,){
+    return buildFuture<String>(()=> _client.getPC28Odds(id));
+  }
+
+  static Future<LoginUserEntity> login(Map<String,dynamic> params,){
+    return buildFuture<LoginUserEntity>(()=> _client.login(params));
+  }
+
 
   ///游戏返回体
   ///封装请求体，自动处理各种异常问题

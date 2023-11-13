@@ -8,14 +8,17 @@ import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
+import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
+import 'package:leisure_games/ui/bean/phrase_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
@@ -94,6 +97,19 @@ abstract class RetrofitClient{
 
   @GET('/ds-api-web/getPC28Plan')
   Future<BaseResponseEntity<Pc28PlanEntity>> getPC28Plan(@Query('termCount') int termCount,);
+
+  @GET('/ds-api-web/getExpression')
+  Future<BaseResponseEntity<List<ExpressionEntity>>> getExpression();
+
+  @GET('/ds-api-web/getPhrase')
+  Future<BaseResponseEntity<List<PhraseEntity>>> getPhrase();
+
+  @GET('/ds-api-web/getPC28Odds')
+  Future<BaseResponseEntity<String>> getPC28Odds(@Query('id') int id,);
+
+  @POST('/ds-api-web/login')
+  Future<BaseResponseEntity<LoginUserEntity>> login(@Body() Map<String,dynamic> params,);
+
 
 
 }

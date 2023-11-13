@@ -2,12 +2,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
 class BettingLeftItem extends StatefulWidget{
@@ -35,7 +37,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             child: Row(
               children: [
                 GFAvatar(
-                  backgroundImage: NetworkImage(Constants.test_image),
+                  backgroundImage: WidgetUtils().buildImageProvider(ImageX.icon_avatar,),
                   shape: GFAvatarShape.circle,
                   radius: 16.r,
                 ),
@@ -54,26 +56,37 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
               children: [
                 InkWell(
                   onTap: ()=> DialogUtils().showConfirmBetDialog(context,widget.logic),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 7.h,horizontal: 15.w,),
-                    decoration: BoxDecoration(
-                      color: buildTitleColor(),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text80091()),),
-                        Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
-                            Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: Obx(() {
+                    var color = ColorX.color_68_e2e;
+                    switch(widget.logic.state.roomType.value){
+                      case 2:
+                        color= ColorX.color_70_dee;
+                      case 3:
+                        color= ColorX.color_44_f0e;
+                      default:
+                        color= ColorX.color_68_e2e;
+                    }
+                    return Container(
+                      padding: EdgeInsets.symmetric(vertical: 7.h,horizontal: 15.w,),
+                      decoration: BoxDecoration(
+                        color: color,
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text80091()),),
+                          Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
+                              Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
                 ),
                 buildBettingInfoItem(),
                 buildBettingInfoItem(),
@@ -118,17 +131,6 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
         Divider(color: ColorX.color_10_949,height: 1.h,indent: 10.w,endIndent: 10.w,),
       ],
     );
-  }
-
-  buildTitleColor() {
-    switch(widget.logic.state.roomType){
-      case 1:
-        return ColorX.color_70_dee;
-      case 2:
-        return ColorX.color_44_f0e;
-      default:
-        return ColorX.color_68_e2e;
-    }
   }
 
 }

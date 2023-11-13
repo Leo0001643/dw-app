@@ -95,10 +95,10 @@ class StateHistoryLotteryBtmDialog extends State<HistoryLotteryBtmDialog>{
   }
 
   String buildRoomHeadType() {
-    switch(widget.logic.state.roomType){
-      case 1:
-        return ImageX.ic_2room_last;
+    switch(widget.logic.state.roomType.value){
       case 2:
+        return ImageX.ic_2room_last;
+      case 3:
         return ImageX.ic_3room_last;
       default:
         return ImageX.ic_1room_last;

@@ -216,14 +216,14 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
 
   List<Color> buildHeadColor(){
     var colors = [Color(0xffff5163),Color(0xfffd273e)];
-    switch(widget.logic.state.roomType){
-      case 0:
+    switch(widget.logic.state.roomType.value){
+      case 1:
         colors = [Color(0xffff5163),Color(0xfffd273e)];
         break;
-      case 1:
+      case 2:
         colors = [Color(0xff5f6e88),Color(0xff363f57),];
         break;
-      case 2:
+      case 3:
         colors = [Color(0xff88705f),Color(0xff574436),];
         break;
     }
@@ -232,14 +232,14 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
 
   Color buildBtnColor(){
     var color = ColorX.color_fc243b;
-    switch(widget.logic.state.roomType){
-      case 0:
+    switch(widget.logic.state.roomType.value){
+      case 1:
         color = ColorX.color_fc243b;
         break;
-      case 1:
+      case 2:
         color = Color(0xff363f57);
         break;
-      case 2:
+      case 3:
         color = ColorX.color_574436;
         break;
     }

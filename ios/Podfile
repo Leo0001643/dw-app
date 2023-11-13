@@ -1,5 +1,10 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '11.0'
+# 阿里云 pod 源
+source 'https://github.com/aliyun/aliyun-specs.git'
+
+# github 官方 pod 源
+source 'https://github.com/CocoaPods/Specs.git'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'

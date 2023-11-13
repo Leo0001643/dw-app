@@ -3,12 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 
 import 'setting_logic.dart';
 
@@ -235,6 +237,8 @@ class _SettingPageState extends State<SettingPage> {
                   45.h,textColor:ColorX.color_fc243b,bg:ColorX.cardBg(),onPressed: (){
                 DialogUtils().showLogoutDialog(context).then((value) {
                   if(value  == true){
+                    AppData.clear();
+                    eventBus.fire(LoginRefreshEvent());
                     Get.back();
                   }
                 });

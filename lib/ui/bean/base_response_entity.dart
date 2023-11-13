@@ -1,5 +1,8 @@
 
+import 'dart:convert';
+
 import 'package:json_annotation/json_annotation.dart' as JS;
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/language_msg_entity.dart';
 
@@ -25,7 +28,20 @@ class BaseResponseEntity<T> {
 			response.code = result['code'];
 			response.message = LanguageMsgEntity.fromJson(result['message']);
 			if(result['data'] != null){
-				response.data = fromJsonT.call(result['data']);//JsonConvert.fromJsonAsT(result['data']);
+				switch(T.toString()){
+					case "String":
+						// loggerArray(["泛型类型",T.toString(),result['result']]);
+						if(result['data'] is Map){
+							response.data = jsonEncode(result['data']) as T;
+						}else {
+							response.data = result['data']!.toString() as T;
+						}
+						break;
+					default:
+						response.data = fromJsonT.call(result['data']);
+						break;
+				}
+				// response.data = fromJsonT.call(result['data']);//JsonConvert.fromJsonAsT(result['data']);
 			}
 		}
 		return response;

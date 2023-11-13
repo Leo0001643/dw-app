@@ -4,6 +4,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '/app/global.dart';
@@ -73,8 +74,26 @@ class AppData {
     return DeviceInfo.fromJson(jsonDecode(json));
   }
 
-  static bool isLogin()=> false;
+  static void setUser(LoginUserEntity user){
+    prefs?.setString("login_user", jsonEncode(user.toJson()));
+  }
 
+  static LoginUserEntity? user() {
+    var json = prefs?.getString("login_user") ?? "";
+    if(isEmpty(json)){
+      return null;
+    }else {
+      return LoginUserEntity.fromJson(jsonDecode(json));
+    }
+  }
+
+
+  static bool isLogin()=> unEmpty(user());
+
+
+  static void clear(){
+    prefs?.remove("login_user");
+  }
 
 
 }

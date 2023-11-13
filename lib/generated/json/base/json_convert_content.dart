@@ -10,17 +10,21 @@ import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
+import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
 import 'package:leisure_games/ui/bean/language_msg_entity.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/pc28_odds_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
+import 'package:leisure_games/ui/bean/phrase_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
@@ -183,6 +187,10 @@ class JsonConvert {
       return data.map<DomainConfigEntity>((Map<String, dynamic> e) =>
           DomainConfigEntity.fromJson(e)).toList() as M;
     }
+    if (<ExpressionEntity>[] is M) {
+      return data.map<ExpressionEntity>((Map<String, dynamic> e) =>
+          ExpressionEntity.fromJson(e)).toList() as M;
+    }
     if (<GameKindEntity>[] is M) {
       return data.map<GameKindEntity>((Map<String, dynamic> e) =>
           GameKindEntity.fromJson(e)).toList() as M;
@@ -211,6 +219,10 @@ class JsonConvert {
       return data.map<LanguageMsgEntity>((Map<String, dynamic> e) =>
           LanguageMsgEntity.fromJson(e)).toList() as M;
     }
+    if (<LoginUserEntity>[] is M) {
+      return data.map<LoginUserEntity>((Map<String, dynamic> e) =>
+          LoginUserEntity.fromJson(e)).toList() as M;
+    }
     if (<MessageItemEntity>[] is M) {
       return data.map<MessageItemEntity>((Map<String, dynamic> e) =>
           MessageItemEntity.fromJson(e)).toList() as M;
@@ -235,6 +247,62 @@ class JsonConvert {
       return data.map<Pc28LottoRoomsTables>((Map<String, dynamic> e) =>
           Pc28LottoRoomsTables.fromJson(e)).toList() as M;
     }
+    if (<Pc28Odds11>[] is M) {
+      return data.map<Pc28Odds11>((Map<String, dynamic> e) =>
+          Pc28Odds11.fromJson(e)).toList() as M;
+    }
+    if (<Pc28OddsOdd>[] is M) {
+      return data.map<Pc28OddsOdd>((Map<String, dynamic> e) =>
+          Pc28OddsOdd.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds12>[] is M) {
+      return data.map<Pc28Odds12>((Map<String, dynamic> e) =>
+          Pc28Odds12.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds13>[] is M) {
+      return data.map<Pc28Odds13>((Map<String, dynamic> e) =>
+          Pc28Odds13.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds14>[] is M) {
+      return data.map<Pc28Odds14>((Map<String, dynamic> e) =>
+          Pc28Odds14.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds15>[] is M) {
+      return data.map<Pc28Odds15>((Map<String, dynamic> e) =>
+          Pc28Odds15.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds2>[] is M) {
+      return data.map<Pc28Odds2>((Map<String, dynamic> e) =>
+          Pc28Odds2.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds4>[] is M) {
+      return data.map<Pc28Odds4>((Map<String, dynamic> e) =>
+          Pc28Odds4.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds5>[] is M) {
+      return data.map<Pc28Odds5>((Map<String, dynamic> e) =>
+          Pc28Odds5.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds6>[] is M) {
+      return data.map<Pc28Odds6>((Map<String, dynamic> e) =>
+          Pc28Odds6.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds7>[] is M) {
+      return data.map<Pc28Odds7>((Map<String, dynamic> e) =>
+          Pc28Odds7.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds8>[] is M) {
+      return data.map<Pc28Odds8>((Map<String, dynamic> e) =>
+          Pc28Odds8.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds9>[] is M) {
+      return data.map<Pc28Odds9>((Map<String, dynamic> e) =>
+          Pc28Odds9.fromJson(e)).toList() as M;
+    }
+    if (<Pc28Odds10>[] is M) {
+      return data.map<Pc28Odds10>((Map<String, dynamic> e) =>
+          Pc28Odds10.fromJson(e)).toList() as M;
+    }
     if (<Pc28PlanEntity>[] is M) {
       return data.map<Pc28PlanEntity>((Map<String, dynamic> e) =>
           Pc28PlanEntity.fromJson(e)).toList() as M;
@@ -250,6 +318,10 @@ class JsonConvert {
     if (<Pc28PlanAllJndx28Data>[] is M) {
       return data.map<Pc28PlanAllJndx28Data>((Map<String, dynamic> e) =>
           Pc28PlanAllJndx28Data.fromJson(e)).toList() as M;
+    }
+    if (<PhraseEntity>[] is M) {
+      return data.map<PhraseEntity>((Map<String, dynamic> e) =>
+          PhraseEntity.fromJson(e)).toList() as M;
     }
     if (<Pic30BackEntity>[] is M) {
       return data.map<Pic30BackEntity>((Map<String, dynamic> e) =>
@@ -390,6 +462,7 @@ class JsonConvertClassCollection {
     (DeviceInfo).toString(): DeviceInfo.fromJson,
     (DewInfoEntity).toString(): DewInfoEntity.fromJson,
     (DomainConfigEntity).toString(): DomainConfigEntity.fromJson,
+    (ExpressionEntity).toString(): ExpressionEntity.fromJson,
     (GameKindEntity).toString(): GameKindEntity.fromJson,
     (GameKindGameKindList).toString(): GameKindGameKindList.fromJson,
     (GameTypeEntity).toString(): GameTypeEntity.fromJson,
@@ -397,16 +470,32 @@ class JsonConvertClassCollection {
     (HistoryLottoEntity).toString(): HistoryLottoEntity.fromJson,
     (HomeGameMenuEntity).toString(): HomeGameMenuEntity.fromJson,
     (LanguageMsgEntity).toString(): LanguageMsgEntity.fromJson,
+    (LoginUserEntity).toString(): LoginUserEntity.fromJson,
     (MessageItemEntity).toString(): MessageItemEntity.fromJson,
     (NewsRateEntity).toString(): NewsRateEntity.fromJson,
     (NoticeEntity).toString(): NoticeEntity.fromJson,
     (Pc28LottoEntity).toString(): Pc28LottoEntity.fromJson,
     (Pc28LottoRooms).toString(): Pc28LottoRooms.fromJson,
     (Pc28LottoRoomsTables).toString(): Pc28LottoRoomsTables.fromJson,
+    (Pc28Odds11).toString(): Pc28Odds11.fromJson,
+    (Pc28OddsOdd).toString(): Pc28OddsOdd.fromJson,
+    (Pc28Odds12).toString(): Pc28Odds12.fromJson,
+    (Pc28Odds13).toString(): Pc28Odds13.fromJson,
+    (Pc28Odds14).toString(): Pc28Odds14.fromJson,
+    (Pc28Odds15).toString(): Pc28Odds15.fromJson,
+    (Pc28Odds2).toString(): Pc28Odds2.fromJson,
+    (Pc28Odds4).toString(): Pc28Odds4.fromJson,
+    (Pc28Odds5).toString(): Pc28Odds5.fromJson,
+    (Pc28Odds6).toString(): Pc28Odds6.fromJson,
+    (Pc28Odds7).toString(): Pc28Odds7.fromJson,
+    (Pc28Odds8).toString(): Pc28Odds8.fromJson,
+    (Pc28Odds9).toString(): Pc28Odds9.fromJson,
+    (Pc28Odds10).toString(): Pc28Odds10.fromJson,
     (Pc28PlanEntity).toString(): Pc28PlanEntity.fromJson,
     (Pc28PlanAll).toString(): Pc28PlanAll.fromJson,
     (Pc28PlanAllJndx28).toString(): Pc28PlanAllJndx28.fromJson,
     (Pc28PlanAllJndx28Data).toString(): Pc28PlanAllJndx28Data.fromJson,
+    (PhraseEntity).toString(): PhraseEntity.fromJson,
     (Pic30BackEntity).toString(): Pic30BackEntity.fromJson,
     (Pic30BackBack).toString(): Pic30BackBack.fromJson,
     (Pic30Entity).toString(): Pic30Entity.fromJson,

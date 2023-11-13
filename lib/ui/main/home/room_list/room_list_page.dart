@@ -50,7 +50,7 @@ class _RoomListPageState extends State<RoomListPage> {
           children: [
             SizedBox(height: 20.h,),
             InkWell(
-              onTap: ()=> Get.toNamed(Routes.game_room,arguments: 0),
+              onTap: ()=> logic.clickRoom(state.room.value.tables?[0]),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.r),
@@ -92,7 +92,7 @@ class _RoomListPageState extends State<RoomListPage> {
             ),
             SizedBox(height: 20.h,),
             InkWell(
-              onTap: ()=> Get.toNamed(Routes.game_room,arguments: 1),
+              onTap: ()=> logic.clickRoom(state.room.value.tables?[1]),
               child: Container(
                 decoration: BoxDecoration(
                   image: const DecorationImage(image: AssetImage(ImageX.room2),fit: BoxFit.fill),
@@ -134,7 +134,7 @@ class _RoomListPageState extends State<RoomListPage> {
             ),
             SizedBox(height: 20.h,),
             InkWell(
-              onTap: ()=> Get.toNamed(Routes.game_room,arguments: 2),
+              onTap: ()=> logic.clickRoom(state.room.value.tables?[2]),
               child: Container(
                 decoration: BoxDecoration(
                   image: const DecorationImage(image: AssetImage(ImageX.room3),fit: BoxFit.fill),

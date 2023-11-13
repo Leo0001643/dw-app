@@ -148,14 +148,14 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
 
   Widget buildDrawResult(String result) {
     var color = ColorX.color_fc243b;
-    switch(widget.logic.state.roomType){
-      case 0:
+    switch(widget.logic.state.roomType.value){
+      case 1:
         color = ColorX.color_fc243b;
         break;
-      case 1:
+      case 2:
         color = ColorX.color_70b6ff;
         break;
-      case 2:
+      case 3:
         color = ColorX.color_ffe0ac;
         break;
     }

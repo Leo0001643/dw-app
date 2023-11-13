@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -33,56 +34,6 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
 
   var selectPhrases = (-1).obs;
 
-  ///常用短语
-  var commonPhrases = ["各位PC小王子、小公主们13... ","早上好呀 ~","中午好","晚上好","老板!精神 !",
-    "大! 大! 大!!!","小! 小! 小!!!","单! 单! 单!!!","大单! 开!!!","大双! 开!!!","双! 双! 双!!!","搏一搏单车变摩托 !!! ",
-    "大家好,我是福建人!! ","别人赌的是钱,我的赌的是命! ","哎呀,老司机一不小心翻车了!!! "];
-
-  ///其他短语
-  var otherPhrases = ["扎心了，老铁!","我觉得我还可以抢救一下。","一首凉凉送给大家...","瘫痪",
-    "宝宝心里苦，但宝宝不说。","感觉身体被掏空","贫穷使我清醒。","我是梅西，现在慌的一笔","风需萧兮易水塞，壮士一去兮不复还","这次第，怎一个愁字了得。",
-    "博彩致富，了解一下?","在暴富的边缘试探","大吉大利，今晚吃鸡"];
-
-  ///表情
-  var emotionExpression = [
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-    "https://mna82j1.ina6n.com/public/images/emoticon/tool/daily001.png",
-  ];
-
-
-  ///GIF
-  var gifExpression = [
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg1-min.gif",
-    "https://worldimgs.oss-cn-beijing.aliyuncs.com/public/images/gif_emoticon/other/32.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg5-min.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg9-min.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg1-min.gif",
-    "https://worldimgs.oss-cn-beijing.aliyuncs.com/public/images/gif_emoticon/other/32.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg5-min.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg9-min.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg1-min.gif",
-    "https://worldimgs.oss-cn-beijing.aliyuncs.com/public/images/gif_emoticon/other/32.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg5-min.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg9-min.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg1-min.gif",
-    "https://worldimgs.oss-cn-beijing.aliyuncs.com/public/images/gif_emoticon/other/32.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg5-min.gif",
-    "http://apipic.djx09yvi.com/public/images/gif_emoticon/zhouxingchi/timg9-min.gif",
-  ];
 
   ///实际显示使用的列表
   var showList = RxList.empty(growable: true);
@@ -92,25 +43,26 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
 
   @override
   void initState() {
-    showList.assignAll(commonPhrases);
+    loggerArray(["有弹幕数据",widget.logic.state.phrases]);
+    showList.assignAll(widget.logic.state.phrases[0].phrases ?? []);
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController.addListener(() {
       selectPhrases.value = -1;
       switch(_tabController.index){
         case 0:
-          showList.assignAll(commonPhrases);
+          showList.assignAll(widget.logic.state.phrases[0].phrases ?? []);
           showList.refresh();
           break;
         case 1:
-          showList.assignAll(otherPhrases);
+          showList.assignAll(widget.logic.state.phrases[1].phrases ?? []);
           showList.refresh();
           break;
         case 2:
-          showList.assignAll(emotionExpression);
+          showList.assignAll(widget.logic.state.expressions[1].images ?? []);
           showList.refresh();
           break;
         case 3:
-          showList.assignAll(gifExpression);
+          showList.assignAll(widget.logic.state.expressions[0].images ?? []);
           showList.refresh();
           break;
       }
@@ -203,14 +155,17 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                   SingleChildScrollView(
                     child: Obx(() {
                       var padding = _tabController.index == 3 ? EdgeInsets.all(1.r) : EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w);
-                      var spacing = _tabController.index == 3 ? 1.r: 10.r;
+                      var spacing = _tabController.index == 3 ? 0.0 : 10.r;
                       var alignment = _tabController.index > 1 ? WrapAlignment.spaceAround: WrapAlignment.start;
-                      return Padding(
+                      return Container(
                         padding: padding,
+                        width: 1.sw,
+                        // color: Colors.black,
                         child: Wrap(
                           runSpacing: spacing,
                           spacing: spacing,
                           alignment: alignment,
+                          crossAxisAlignment: WrapCrossAlignment.center,
                           children: showList.map((e){
                             switch(_tabController.index){
                               case 2:
@@ -255,10 +210,10 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
 
 
   String buildRoomHeadType() {
-    switch(widget.logic.state.roomType){
-      case 1:
-        return ImageX.ic_2room_head;
+    switch(widget.logic.state.roomType.value){
       case 2:
+        return ImageX.ic_2room_head;
+      case 3:
         return ImageX.ic_3room_head;
       default:
         return ImageX.ic_1room_head;
@@ -267,14 +222,14 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
 
   Color buildTextColor(){
     var color = ColorX.color_fc243b;
-    switch(widget.logic.state.roomType){
-      case 0:
+    switch(widget.logic.state.roomType.value){
+      case 1:
         color = ColorX.color_fc243b;
         break;
-      case 1:
+      case 2:
         color = ColorX.color_70b6ff;
         break;
-      case 2:
+      case 3:
         color = ColorX.color_ffe0ac;
         break;
     }
@@ -323,7 +278,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
         inputList.add(icon);
         inputList.refresh();
       },
-      child: Image.network(icon,width: 0.085.sw,height: 0.085.sw,fit: BoxFit.cover,),
+      child: WidgetUtils().buildImage(icon.trim(),0.085.sw,0.085.sw,fit: BoxFit.cover,),
     );
   }
 
@@ -334,7 +289,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
         inputList.add(icon);
         inputList.refresh();
       },
-      child: Image.network(icon,width: 0.24.sw,height: 0.24.sw,fit: BoxFit.cover,),
+      child: WidgetUtils().buildImage(icon.trim(),0.24.sw,0.24.sw,fit: BoxFit.cover,defImage: ""),
     );
   }
 
@@ -354,7 +309,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
   }
 
   Widget buildInputEmotionItem(String icon, int index){
-    return Image.network(icon,width: 20.r,height: 20.r,fit: BoxFit.cover,);
+    return WidgetUtils().buildImage(icon.trim(),20.r,20.r,fit: BoxFit.cover,);
   }
 
 }
