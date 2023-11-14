@@ -48,17 +48,6 @@ class HomeLogic extends GetxController {
           Get.toNamed(Routes.login);
         }
         break;
-      case 2:///抽奖
-        // DialogUtils().showAccessRouteDialog(context);
-        if(AppData.isLogin()){
-          Get.toNamed(Routes.points_lottery);
-        }else {
-          Get.toNamed(Routes.login);
-        }
-        break;
-      case 3:///走势
-        Get.toNamed(Routes.lottery_trend);
-        break;
       case 4:///签到抽奖
         if(AppData.isLogin()){
           Get.toNamed(Routes.sign_in);
@@ -66,10 +55,64 @@ class HomeLogic extends GetxController {
           Get.toNamed(Routes.login);
         }
         break;
-      case 5:///优惠活动
-        eventBus.fire(ChangeMainPageEvent(1));
+      case 5:///积分抽奖
+        // eventBus.fire(ChangeMainPageEvent(1));
+        // DialogUtils().showAccessRouteDialog(context);
+        if(AppData.isLogin()){
+          Get.toNamed(Routes.points_lottery);
+        }else {
+          Get.toNamed(Routes.login);
+        }
         break;
       case 6:///推荐有礼
+        if(AppData.isLogin()){
+          Get.toNamed(Routes.promotion_profit);
+        }else {
+          Get.toNamed(Routes.login);
+        }
+        break;
+      case 7:///个人中心
+        Navigator.pop(context);
+        if(AppData.isLogin()){
+          eventBus.fire(ChangeMainPageEvent(4));
+        }else {
+          Get.toNamed(Routes.login);
+        }
+        break;
+      case 8:///走势
+        Navigator.pop(context);
+        Get.toNamed(Routes.lottery_trend);
+        break;
+      case 9:///额度转换
+        Navigator.pop(context);
+
+        if(AppData.isLogin()){
+          Get.toNamed(Routes.quota_conversion);
+        }else {
+          Get.toNamed(Routes.login);
+        }
+        break;
+      case 10:///币币兑换
+        Navigator.pop(context);
+
+        if(AppData.isLogin()){
+          Get.toNamed(Routes.coin_exchange);
+        }else {
+          Get.toNamed(Routes.login);
+        }
+        break;
+      case 11:///投注记录
+        Navigator.pop(context);
+
+        if(AppData.isLogin()){
+          Get.toNamed(Routes.betting_record);
+        }else {
+          Get.toNamed(Routes.login);
+        }
+        break;
+      case 12:///推广赚钱
+        Navigator.pop(context);
+
         if(AppData.isLogin()){
           Get.toNamed(Routes.promotion_profit);
         }else {
@@ -79,6 +122,7 @@ class HomeLogic extends GetxController {
     }
 
   }
+
 
 
   void clickInfo(BuildContext context,int index){

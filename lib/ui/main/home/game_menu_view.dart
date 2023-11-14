@@ -13,6 +13,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
@@ -69,7 +70,7 @@ class StateGameMenuView extends State<GameMenuView>{
 
   @override
   void dispose() {
-    // scrollController.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
@@ -143,21 +144,6 @@ class StateGameMenuView extends State<GameMenuView>{
               child: buildGroupItem(e),
             );
           }).toList() ?? [],
-          // children: [
-          //   InkWell(
-          //     onTap: ()=> Get.toNamed(Routes.room_list),
-          //     child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
-          //   ),
-          //   InkWell(
-          //     onTap: ()=> Get.toNamed(Routes.chess_game_list),
-          //     child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
-          //   ),
-          //   InkWell(
-          //     onTap: ()=> Get.toNamed(Routes.table_game_list),
-          //     child: buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
-          //   ),
-          //   buildGroupItem(HomeGameMenuEntity(name:"Joke",group: element)),
-          // ],
         ),
         SizedBox(height: 10.h,),
       ],
@@ -166,7 +152,14 @@ class StateGameMenuView extends State<GameMenuView>{
 
 
   buildGroupTitle(GameKindEntity element) {
-    return Text(element.gameKindName.em(),style: TextStyle(fontWeight: FontWeight.w600,fontSize: 14.sp,color: ColorX.textBlack()),);
+    return Row(
+      children: [
+        WidgetUtils().buildImage(findImage(element), 20.r, 20.r,),
+        SizedBox(width: 3.w,),
+        Text(element.gameKindName.em(),
+          style: TextStyle(fontWeight: FontWeight.w600,fontSize: 14.sp,color: ColorX.textBlack()),),
+      ],
+    );
   }
 
   buildGroupItem(GameKindGameKindList element) {
@@ -177,7 +170,7 @@ class StateGameMenuView extends State<GameMenuView>{
           borderRadius: BorderRadius.all(Radius.circular(10.r)),
           child: Stack(
             children: [
-              Image.network(element.image(),width: 72.r,height: 72.r,fit: BoxFit.cover,),
+              Image.network(element.image(),width: 68.r,height: 68.r,fit: BoxFit.cover,),
               Positioned(
                 right: 0,
                 top: 0,
@@ -229,20 +222,30 @@ class StateGameMenuView extends State<GameMenuView>{
   Widget buildLeftMenu(GameKindEntity e,int index,bool select) {
     return InkWell(
       onTap: (){
+        logger(e.toJson());
         selectMenu.value = index;
         scroll2Item(index);
       },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
-          color: select ? Colors.transparent:ColorX.cardBg(),
-          border: select ? Border.all(color: ColorX.color_fc243b,width: 1.w): Border.all(color: Colors.transparent,width: 0),
+          color: select ? Colors.transparent:ColorX.cardBg3(),
+          image: select ? DecorationImage(image: WidgetUtils().buildImageProvider(ImageX.isSelectT()),fit: BoxFit.fill) : null,
+          // border: select ? Border.all(color: ColorX.color_fc243b,width: 1.w): Border.all(color: Colors.transparent,width: 0),
         ),
         alignment: Alignment.center,
-        width: 70.w,
-        height: 40.h,
+        width: 75.w,
+        height: 34.h,
         margin: EdgeInsets.only(bottom: 10.h),
-        child: Text(e.gameKindName.em(),style: TextStyle(fontSize: 12.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            WidgetUtils().buildImage(findImage(e), 20.r, 20.r,),
+            SizedBox(width: 3.w,),
+            Text(e.gameKindName.em(),
+              style: TextStyle(fontSize: 12.sp,color: select ? Colors.white:ColorX.text0917()),),
+          ],
+        ),
       ),
     );
   }
@@ -260,6 +263,25 @@ class StateGameMenuView extends State<GameMenuView>{
           Get.toNamed(Routes.login);
         }
         break;
+    }
+  }
+
+  String findImage(GameKindEntity e) {
+    switch(e.gameKind){
+      case "lottery":
+        return ImageX.ic_caipiao;
+      case "live":
+        return ImageX.ic_zhenren;
+      case "chess":
+        return ImageX.ic_qipai;
+      case "sport":
+        return ImageX.ic_tiyu;
+      case "game_fishing":
+        return ImageX.ic_boyu;
+      case "game":
+        return ImageX.ic_dianzi;
+      default:
+        return ImageX.fire;
     }
   }
 }

@@ -50,7 +50,7 @@ class WidgetUtils {
 
   Widget buildHomeAppBar({bool msg=false,bool drawer=false,}){
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 11.w),
+      padding: EdgeInsets.symmetric(vertical: 3.h,horizontal: 10.r),
       child: Row(
         children: [
           SizedBox(width: 10.w,),
@@ -92,6 +92,7 @@ class WidgetUtils {
       centerTitle: true,
       backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
+      toolbarHeight: 44.h,
       leading: Visibility(
         visible: back,
         child: InkWell(
@@ -100,25 +101,30 @@ class WidgetUtils {
         ),
       ),
       actions: [
-        Visibility(
-          visible: msg,
-          child: InkWell(
-            onTap: ()=> goMessageCenter(),
-            child: Padding(
-              padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
+        Row(
+          children: [
+            Visibility(
+              visible: msg,
+              child: InkWell(
+                onTap: ()=> goMessageCenter(),
+                child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
+                ),
+              ),
             ),
-          ),
-        ),
-        Visibility(
-          visible: drawer,
-          child: InkWell(
-            onTap: ()=> Get.find<MainLogic>().openDrawer(),
-            child: Padding(
-              padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_more,color: ColorX.icon586(),),
+            Visibility(
+              visible: drawer,
+              child: InkWell(
+                onTap: ()=> Get.find<MainLogic>().openDrawer(),
+                child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: Image.asset(ImageX.icon_more,color: ColorX.icon586(),),
+                ),
+              ),
             ),
-          ),
+            SizedBox(width: 10.w,),
+          ],
         ),
       ],
     );
@@ -135,6 +141,7 @@ class WidgetUtils {
       centerTitle: true,
       backgroundColor: ColorX.appBarBg(),
       elevation: 0,
+      toolbarHeight: 44.h,
       leading: InkWell(
         onTap: ()=>Get.back(),
         child: Image.asset(ImageX.icon_page_back),
@@ -157,6 +164,7 @@ class WidgetUtils {
       centerTitle: true,
       backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
+      toolbarHeight: 44.h,
       leading: Visibility(
         visible: back,
         child: InkWell(
@@ -205,6 +213,7 @@ class WidgetUtils {
       centerTitle: true,
       backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
+      toolbarHeight: 44.h,
       leading: Visibility(
         visible: back,
         child: InkWell(
@@ -260,6 +269,7 @@ class WidgetUtils {
       centerTitle: true,
       backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
+      toolbarHeight: 44.h,
       leading: Visibility(
         visible: back,
         child: InkWell(
@@ -268,25 +278,29 @@ class WidgetUtils {
         ),
       ),
       actions: [
-        Visibility(
-          visible: collect,
-          child: InkWell(
-            onTap: onCollect,
-            child: Padding(
-              padding: EdgeInsets.all(10.r),
-              child: Icon(Icons.collections_outlined,color: ColorX.color_091722,),
+        Row(
+          children: [
+            Visibility(
+              visible: collect,
+              child: InkWell(
+                onTap: onCollect,
+                child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: const Icon(Icons.collections_outlined,color: ColorX.color_091722,),
+                ),
+              ),
             ),
-          ),
-        ),
-        Visibility(
-          visible: msg,
-          child: InkWell(
-            onTap: ()=> goMessageCenter(),
-            child: Padding(
-              padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
+            Visibility(
+              visible: msg,
+              child: InkWell(
+                onTap: ()=> goMessageCenter(),
+                child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ],
     );
@@ -306,6 +320,7 @@ class WidgetUtils {
       centerTitle: true,
       backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
+      toolbarHeight: 44.h,
       leading: Visibility(
         visible: back,
         child: InkWell(
@@ -393,7 +408,7 @@ class WidgetUtils {
 
   Image buildImage(String image,double width,double height,{String defImage = ImageX.icon_avatar,BoxFit? fit}){
     try{
-      return Image.network(image,width: width,height: height,fit: fit,
+      return image.isURL ? Image.network(image,width: width,height: height,fit: fit,
       errorBuilder: (context,error,stack){
         loggerArray(["异常了妈啊",image,error,stack]);
           if(unEmpty(defImage)){
@@ -402,7 +417,7 @@ class WidgetUtils {
             return SizedBox(width: width,height: height,);
           }
         },
-      );
+      ) : Image.asset(image,width: width,height: height,fit: fit,);
     }catch(e){
       loggerArray(["异常了妈啊",image,e]);
       return Image.asset(defImage,width: width,height: height,fit: fit,);

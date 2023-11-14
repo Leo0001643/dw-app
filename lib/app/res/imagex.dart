@@ -471,9 +471,27 @@ class ImageX{
   static const ic_3room_dark = 'assets/images/ic_3room_dark.png';
   static const recharge_bg_dark = 'assets/images/recharge_bg_dark.png';
 
+  static const ic_sign = 'assets/images/ic_sign.png';
+  static const ic_sign_dark = 'assets/images/ic_sign_dark.png';
 
+  static const ic_gengduo_dark = 'assets/images/ic_gengduo_dark.png';
+  static const ic_gengduo = 'assets/images/ic_gengduo.png';
+  static const ic_qiehuan_dark = 'assets/images/ic_qiehuan_dark.png';
+  static const ic_qiehuan = 'assets/images/ic_qiehuan.png';
+  static const ic_shuaxin_dark = 'assets/images/ic_shuaxin_dark.png';
+  static const ic_shuaxin = 'assets/images/ic_shuaxin.png';
 
+  static const ic_tixian = 'assets/images/ic_tixian.png';
+  static const ic_tixian_dark = 'assets/images/ic_tixian_dark.png';
+  static const ic_chongzhi = 'assets/images/ic_chongzhi.png';
+  static const ic_chongzhi_dark = 'assets/images/ic_chongzhi_dark.png';
 
+  static const ic_zhenren = 'assets/images/ic_zhenren.png';
+  static const ic_tiyu = 'assets/images/ic_tiyu.png';
+  static const ic_dianzi = 'assets/images/ic_dianzi.png';
+  static const ic_caipiao = 'assets/images/ic_caipiao.png';
+  static const ic_boyu = 'assets/images/ic_boyu.png';
+  static const ic_qipai = 'assets/images/ic_qipai.png';
 
 
 
@@ -623,6 +641,15 @@ class ImageX{
     }
   }
 
+
+  static String icShuaxinT(){
+    return AppData.theme() ? ic_shuaxin : ic_shuaxin_dark;
+  }
+
+  static String icQiehuanT(){
+    return AppData.theme() ? ic_qiehuan : ic_qiehuan_dark;
+  }
+
   static String iconChargeT(){
     return AppData.theme() ? icon_charge : icon_charge_dark;
   }
@@ -633,6 +660,18 @@ class ImageX{
 
   static String iconDrawT(){
     return AppData.theme() ? icon_draw : icon_draw_dark;
+  }
+
+  static String icGengDuoT(){
+    return AppData.theme() ? ic_gengduo : ic_gengduo_dark;
+  }
+
+  static String icChongzhiT(){
+    return AppData.theme() ? ic_chongzhi : ic_chongzhi_dark;
+  }
+
+  static String icTixianT(){
+    return AppData.theme() ? ic_tixian : ic_tixian_dark;
   }
 
   static String iconTrendT(){
@@ -680,7 +719,7 @@ class ImageX{
   }
 
   static String yhhdT(){
-    return AppData.theme() ? yhhd : yhhd_dark;
+    return AppData.theme() ? ic_sign : ic_sign_dark;
   }
 
 }

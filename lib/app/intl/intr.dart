@@ -511,6 +511,7 @@ class Intr extends Translations{
   String get qingxiandenglu => 'qingxiandenglu'.tr;
   String get jingqingqidai => 'jingqingqidai'.tr;
   String get denglugengjingcai => 'denglugengjingcai'.tr;
+  String get gengduo => 'gengduo'.tr;
 
 
 
@@ -1002,6 +1003,7 @@ class Intr extends Translations{
       "qingxiandenglu":"您还没登录，请先登录~",
       "jingqingqidai":"敬请期待~",
       "denglugengjingcai":"登录更精彩",
+      "gengduo":"更多",
 
 
 

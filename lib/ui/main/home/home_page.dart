@@ -3,15 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/draggable_widget.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/main/home/game_menu_view.dart';
+import 'package:leisure_games/ui/main/home/more_tab_view.dart';
 import 'package:marquee/marquee.dart';
+import 'package:popover/popover.dart';
 import 'home_logic.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,7 +48,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                       if(isEmpty(state.bannerList)){ return Container(); }
                       return GFCarousel(
                           autoPlay: true,
-                          aspectRatio: 335/154,
+                          aspectRatio: 345/110,
                           viewportFraction: 1.0,
                           hasPagination: true,
                           passiveIndicator: Colors.white60,
@@ -59,102 +64,62 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                           }).toList()
                       );
                     }),
-                    SizedBox(height: 20.h,),
+                    SizedBox(height: 9.h,),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.w),
                       child: Container(
                         decoration: BoxDecoration(
-                          // gradient: const LinearGradient(
-                          //   colors: [ColorX.color_fff4f2,ColorX.color_fefff4],
-                          //   begin: Alignment.topLeft,
-                          //   end: Alignment.bottomRight,
-                          // ),
+                          gradient: const LinearGradient(
+                            colors: [ColorX.color_fff4f2,ColorX.color_fefff4],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
                           color: ColorX.cardBg(),
                           borderRadius: BorderRadius.all(Radius.circular(10.r)),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 12.h),
+                        height: 32.h,
+                        // padding: EdgeInsets.symmetric(vertical: 12.h),
                         child: Row(
                           children: [
-                            SizedBox(width: 16.w,),
+                            SizedBox(width: 10.w,),
                             Image.asset(ImageX.icon_ntf),
                             SizedBox(width: 5.w,),
                             Expanded(
-                              child: SizedBox(
-                                height: 40.h,
-                                child: Obx(() {
-                                  if(isEmpty(state.noticeList)){ return Container(); }
-                                  return Marquee(
-                                    text: buildNoticeString(state.noticeList.value),
-                                    style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),
-                                    scrollAxis: Axis.horizontal,
-                                    startPadding: 10.w,
-                                    blankSpace: 5.w,
-                                  );
-                                }),
-                              ),
+                              child: Obx(() {
+                                if(isEmpty(state.noticeList)){ return Container(); }
+                                return Marquee(
+                                  text: buildNoticeString(state.noticeList),
+                                  style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),
+                                  scrollAxis: Axis.horizontal,
+                                  startPadding: 10.w,
+                                  blankSpace: 5.w,
+                                );
+                              }),
                             ),
-                            SizedBox(width: 16.w,),
+                            SizedBox(width: 10.w,),
                           ],
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
+                      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 8.h),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          buildMenuItem(Intr().charge,ImageX.iconChargeT(),0),
-                          buildMenuItem(Intr().tixian,ImageX.iconWithdrawT(),1),
-                          buildMenuItem(Intr().choujiang,ImageX.iconDrawT(),2),
-                          buildMenuItem(Intr().zoushi,ImageX.iconTrendT(),3),
+                          Expanded(
+                            child: AppData.isLogin() ? userHeader():noLoginHeader(),
+                          ),
+                          SizedBox(width: 20.w,),
+                          buildMenuItem(Intr().charge,ImageX.icChongzhiT(),0),
+                          buildMenuItem(Intr().tixian,ImageX.icTixianT(),1),
+                          MoreTabView(logic),
+                          // buildMenuItem(Intr().zoushi,ImageX.iconTrendT(),3),
                         ],
                       ),
                     ),
-                    // Padding(
-                    //   padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-                    //   child: GFTabBar(
-                    //     length: 3,
-                    //     controller: _tabController,
-                    //     tabBarHeight: 35.h,
-                    //     tabBarColor: Colors.white,
-                    //     indicatorSize: TabBarIndicatorSize.label,
-                    //     indicatorPadding: EdgeInsets.only(top: 30.h,left: 13.w,right: 13.w),
-                    //     indicator: const BoxDecoration(
-                    //       shape: BoxShape.circle,
-                    //       color: ColorX.color_fc243b,
-                    //     ),
-                    //     labelColor: ColorX.color_fc243b,
-                    //     unselectedLabelColor: ColorX.color_091722,
-                    //     width: 180.w,
-                    //     tabs: [
-                    //       Text(Intr().remen,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                    //       Text(Intr().zuijin,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                    //       Text(Intr().shoucang,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-                    //     ],
-                    //   ),
-                    // ),
-                    // Container(
-                    //   alignment: Alignment.center,
-                    //   // child: EmptyDataWidget(iconWidth:88.r,iconHeight: 88.r,),
-                    //   child: GFCarousel(
-                    //     height: 100.h,
-                    //     viewportFraction: 0.23,
-                    //     autoPlay: true,
-                    //     autoPlayInterval: Duration(milliseconds: 3000),
-                    //     autoPlayAnimationDuration: Duration(milliseconds: 4000),
-                    //     items: [
-                    //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                    //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                    //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                    //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                    //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                    //       buildHotItem(HomeGameMenuEntity(name:"热门",group: "")),
-                    //     ],
-                    //   ),
-                    // ),
                     SizedBox(height: 10.h,),
                     SizedBox(
-                      height: 351.h,
+                      height: 400.h,
                       child: GameMenuView(logic),
                     ),
                     Container(
@@ -203,12 +168,15 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
   buildMenuItem(String text, String icon, int i) {
     return InkWell(
       onTap: ()=> logic.clickMenu(context,i),
-      child: Column(
-        children: [
-          Image.asset(icon,width: 48.h,),
-          SizedBox(height: 4.h,),
-          Text(text,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
-        ],
+      child: SizedBox(
+        width: 40.w,
+        child: Column(
+          children: [
+            Image.asset(icon,width: 20.r,fit: BoxFit.fill,),
+            SizedBox(height: 4.h,),
+            Text(text,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+          ],
+        ),
       ),
     );
   }
@@ -262,29 +230,67 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
     return builder.toString();
   }
 
-  // buildHotItem(HomeGameMenuEntity element) {
-  //   return Container(
-  //     child: Column(
-  //       mainAxisSize: MainAxisSize.min,
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         ClipRRect(
-  //           borderRadius: BorderRadius.all(Radius.circular(10.r)),
-  //           child: Image.network(state.test_image,width: 72.r,height: 72.r,fit: BoxFit.cover,),
-  //         ),
-  //         SizedBox(height: 5.h,),
-  //         Text(
-  //           element.name.em(),
-  //           style: TextStyle(
-  //             fontSize: 12.sp,
-  //             color: Colors.black54,
-  //             overflow: TextOverflow.ellipsis,
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+  ///登录后
+  Widget userHeader() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Text("Hala",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+            SizedBox(width: 5.w,),
+            Image.asset(ImageX.icon_vip),
+            Expanded(child: Container(),),
+            InkWell(
+              onTap: (){},
+              child: Image.asset(ImageX.icShuaxinT(),width: 17.r,fit: BoxFit.fill,),
+            ),
+            SizedBox(width: 3.w,),
+            Container(height: 10.h,width: 1.w,color: ColorX.color_091722,),
+            SizedBox(width: 5.w,),
+            InkWell(
+              onTap: (){},
+              child: Image.asset(ImageX.icQiehuanT(),width: 10.r,fit: BoxFit.fill,),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  Image.asset(ImageX.icon_rmb_grey,color: ColorX.icon586(),),
+                  SizedBox(width: 3.w,),
+                  Text("¥6666.6",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),overflow: TextOverflow.ellipsis,),maxLines: 1,),
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                Image.asset(ImageX.icon_ustd2_grey,),
+                SizedBox(width: 3.w,),
+                Text("₮6666.66",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,),maxLines: 1,)
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  ///未登录
+  Widget noLoginHeader() {
+    return Row(
+      children: [
+        WidgetUtils().buildElevatedButton(Intr().login, 88.w, 32.h,textSize: 13.sp,textColor: ColorX.color_091722,
+            bg: Colors.white,onPressed: ()=>Get.toNamed(Routes.login)),
+        SizedBox(width: 10.w,),
+        WidgetUtils().buildElevatedButton(Intr().register, 88.w, 32.h,textSize: 13.sp,
+            bg: ColorX.color_fe2427,onPressed: ()=>Get.toNamed(Routes.register)),
+      ],
+    );
+  }
+
 
 
 }
