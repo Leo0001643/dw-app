@@ -3,11 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/game_kind_entity.dart';
+import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'lottery_trend_logic.dart';
@@ -23,17 +27,17 @@ class LotteryTrendPage extends StatefulWidget {
 class _LotteryTrendPageState extends State<LotteryTrendPage> {
   final logic = Get.find<LotteryTrendLogic>();
   final state = Get.find<LotteryTrendLogic>().state;
-  late RefreshController _refreshController;
+  // late RefreshController _refreshController;
 
   @override
   void initState() {
-    _refreshController= RefreshController();
+    // _refreshController= RefreshController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _refreshController.dispose();
+    // _refreshController.dispose();
     Get.delete<LotteryTrendLogic>();
     super.dispose();
   }
@@ -44,25 +48,21 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().zoushi,msg: true),
       backgroundColor: ColorX.pageBg2(),
-      body: SmartRefresher(
-        controller: _refreshController,
-        enablePullDown: true,
-        enablePullUp: true,
-        onRefresh: ()=> _refreshController.refreshCompleted(),
-        onLoading: ()=> _refreshController.loadComplete(),
-        child: ListView.builder(
-          itemCount: 10,
+      body: Obx(() {
+        return ListView.builder(
+          itemCount: state.trendList.em(),
           itemBuilder: (context,index){
-            return buildLotteryItem(index);
+            return buildLotteryItem(state.trendList[index],index);
           },
-        ),
-      ),
+        );
+      }),
     );
   }
 
-  Widget buildLotteryItem(int index) {
+  Widget buildLotteryItem(HistoryHall item,int index) {
+    var nums = item.nums();
     return InkWell(
-      onTap: ()=> Get.toNamed(Routes.history_lottery),
+      onTap: ()=> Get.toNamed(Routes.history_lottery,arguments: item),
       child: Container(
         decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r)),
         margin: EdgeInsets.only(top: 10.h,left: 15.w,right: 15.w,),
@@ -74,7 +74,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GFAvatar(
-                    backgroundImage: NetworkImage(Constants.test_image),
+                    backgroundImage: WidgetUtils().buildImageProvider(item.imgUrl.em()),
                     radius: 21.r,
                   ),
                   SizedBox(width: 10.w,),
@@ -82,7 +82,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("台湾宾果PC28",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
+                        Text(item.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           runAlignment: WrapAlignment.center,
@@ -90,23 +90,15 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                           spacing: 3.w,
                           children: [
                             Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
-                            Text("112030767",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
+                            Text(item.qihao(),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
                             Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
                           ],
                         ),
                         SizedBox(height: 10.h,),
                         Wrap(
                           spacing: 5.w,
-                          children: [
-                            buildDrawNum("2", ColorX.color_fc243b),
-                            buildDrawNum("5", ColorX.color_fc243b),
-                            buildDrawNum("8", ColorX.color_fc243b),
-                            buildDrawNum("3", ColorX.color_fc243b),
-                            buildDrawNum("0", ColorX.color_fc243b),
-                            buildDrawNum("7", ColorX.color_fc243b),
-                            buildDrawNum("6", ColorX.color_529aff),
-                            buildDrawNum("4", ColorX.color_529aff),
-                          ],
+                          runSpacing: 5.h,
+                          children: nums.map((e) => WidgetUtils().buildBallDraw(item.lid.em(),nums,e)).toList(),
                         ),
                       ],
                     ),
@@ -121,7 +113,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
               child: Row(
                 children: [
                   InkWell(
-                    onTap: ()=> Get.toNamed(Routes.history_lottery),
+                    onTap: ()=> Get.toNamed(Routes.history_lottery,arguments: item),
                     child: Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
@@ -133,7 +125,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                   ),
                   SizedBox(width: 10.w,),
                   InkWell(
-                    onTap: ()=> Get.toNamed(Routes.history_trend),
+                    onTap: ()=> logic.clickHistoryTrend(item),
                     child: Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
@@ -145,7 +137,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                   ),
                   Expanded(child: Container(),),
                   InkWell(
-                    onTap: ()=> Get.toNamed(Routes.room_list),
+                    onTap: ()=> logic.clickGoucai(),
                     child: Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
@@ -165,14 +157,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
   }
 
 
-  Widget buildDrawNum(String num,Color bg) {
-    return Container(
-      width: 24.r,height: 24.r,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(color: bg,borderRadius: BorderRadius.circular(15.r),),
-      child: Text(num, style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
-    );
-  }
+
 
 
 }

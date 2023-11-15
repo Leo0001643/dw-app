@@ -512,6 +512,7 @@ class Intr extends Translations{
   String get jingqingqidai => 'jingqingqidai'.tr;
   String get denglugengjingcai => 'denglugengjingcai'.tr;
   String get gengduo => 'gengduo'.tr;
+  String get huishou => 'huishou'.tr;
 
 
 
@@ -805,7 +806,7 @@ class Intr extends Translations{
       "nicheng_":"昵称：%s",
       "wodeqianbao":"我的钱包",
       "tixianmima":"提现密码",
-      "zijinmingxi":"资金明细",
+      "zijinmingxi":"资金交易",
       "bangdingyinhangka":"绑定银行卡",
       "bangdingusdt":"绑定USDT",
       "wodetouzhu":"我的投注",
@@ -925,9 +926,9 @@ class Intr extends Translations{
       "yinlifanshui":"盈利返水",
       "zuhezhanbilv":"组合占比率",
       "jinri":"今日",
-      "day_7":"7日",
-      "day_15":"15日",
-      "day_30":"30日",
+      "day_7":"近7日",
+      "day_15":"近15日",
+      "day_30":"近30日",
       "youxipingtai":"游戏平台",
       "bishu":"笔数",
       "touzhue":"投注额",
@@ -1004,6 +1005,7 @@ class Intr extends Translations{
       "jingqingqidai":"敬请期待~",
       "denglugengjingcai":"登录更精彩",
       "gengduo":"更多",
+      "huishou":"回收",
 
 
 

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/game_kind_entity.dart';
+import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'history_lottery_logic.dart';
@@ -20,19 +24,22 @@ class HistoryLotteryPage extends StatefulWidget {
 class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
   final logic = Get.find<HistoryLotteryLogic>();
   final state = Get.find<HistoryLotteryLogic>().state;
-  late RefreshController _refreshController;
 
 
   @override
   void initState() {
-    _refreshController= RefreshController();
+    state.refreshController= RefreshController(initialRefresh: true);
+    state.refreshListener.addListener(() {
+      var refresh= state.refreshListener.value;
+      RefreshChangeNotifier.dataComplete(state.refreshController, refresh);
+    });
     super.initState();
   }
 
 
   @override
   void dispose() {
-    _refreshController.dispose();
+    state.refreshController.dispose();
     Get.delete<HistoryLotteryLogic>();
     super.dispose();
   }
@@ -45,25 +52,27 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
       body: Column(
         children: [
           Expanded(
-            child: SmartRefresher(
-              controller: _refreshController,
-              enablePullDown: true,
-              enablePullUp: true,
-              onRefresh: ()=> _refreshController.refreshCompleted(),
-              onLoading: ()=> _refreshController.loadComplete(),
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context,index){
-                  return buildLotteryItem(index);
-                },
-              ),
-            ),
+            child: Obx(() {
+              return SmartRefresher(
+                controller: state.refreshController,
+                enablePullDown: true,
+                enablePullUp: true,
+                onRefresh: ()=> logic.loadData(true),
+                onLoading: ()=> logic.loadData(false),
+                child: ListView.builder(
+                  itemCount: state.list.em(),
+                  itemBuilder: (context,index){
+                    return buildLotteryItem(state.list[index],index);
+                  },
+                ),
+              );
+            }),
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 10.h),
             alignment: Alignment.center,
             child: WidgetUtils().buildElevatedButton(Intr().goucai, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-              Get.toNamed(Routes.room_list);
+              logic.clickGoucai();
             }),
           ),
         ],
@@ -71,7 +80,8 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
     );
   }
 
-  Widget buildLotteryItem(int index) {
+  Widget buildLotteryItem(HistoryLottoEntity item,int index) {
+    var nums = item.nums();
     return Container(
       decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r),),
       margin: EdgeInsets.only(top: 10.h,left: 15.w,right: 15.w,),
@@ -79,7 +89,7 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("台湾宾果PC28",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
+          Text(state.hall.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
           Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,
             runAlignment: WrapAlignment.center,
@@ -87,23 +97,15 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
             spacing: 3.w,
             children: [
               Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
-              Text("112030767",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
+              Text(item.qiShu.em().toString(),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
               Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
             ],
           ),
           SizedBox(height: 10.h,),
           Wrap(
             spacing: 5.w,
-            children: [
-              buildDrawNum("2", ColorX.color_fc243b),
-              buildDrawNum("5", ColorX.color_fc243b),
-              buildDrawNum("8", ColorX.color_fc243b),
-              buildDrawNum("3", ColorX.color_fc243b),
-              buildDrawNum("0", ColorX.color_fc243b),
-              buildDrawNum("7", ColorX.color_fc243b),
-              buildDrawNum("6", ColorX.color_529aff),
-              buildDrawNum("4", ColorX.color_23a81d),
-            ],
+            runSpacing: 5.h,
+            children: nums.map((e) => WidgetUtils().buildBallDraw(state.hall.lid.em(), nums, e)).toList(),
           ),
         ],
       ),

@@ -44,6 +44,7 @@ class DialogUtils {
   factory DialogUtils() => getInstance();
 
 
+  ///选择语言
   void showLanguageDialog(BuildContext context){
     showDialog(
         context: context,
@@ -60,7 +61,7 @@ class DialogUtils {
     );
   }
 
-
+  ///选择钱包
   void showCurrencyDialog(BuildContext context){
     showDialog(
         context: context,
@@ -77,6 +78,7 @@ class DialogUtils {
     );
   }
 
+  ///选择线路
   void showAccessRouteDialog(BuildContext context){
     showDialog(
         context: context,

@@ -218,6 +218,15 @@ class DataUtils{
     return "";
   }
 
+  ///寻找头像
+  static String findAvatar(String avatar){
+    return "assets/images/${avatar}.png";
+  }
+
+  ///头像名
+  static String getAvatarName(String path){
+    return path.replaceAll("assets/images/", "").replaceAll(".png", "");
+  }
 
 }
 

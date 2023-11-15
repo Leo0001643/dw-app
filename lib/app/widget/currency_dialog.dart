@@ -49,7 +49,7 @@ class StateCurrencyDialog extends State<CurrencyDialog>{
                 alignment: Alignment.centerRight,
                 child: InkWell(
                   onTap: ()=> Navigator.of(context).pop(),
-                  child: Image.asset(ImageX.icon_close_dialog,color: ColorX.iconBlack(),width: 24.r,),
+                  child: Image.asset(ImageX.icon_close_dialog,width: 24.r,),
                 ),
               ),
             ],

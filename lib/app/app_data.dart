@@ -88,7 +88,7 @@ class AppData {
   }
 
 
-  static bool isLogin()=> unEmpty(user());
+  static bool isLogin()=> unEmpty(user()?.oid);
 
 
   static void clear(){

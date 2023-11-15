@@ -4,7 +4,9 @@ import 'dart:collection';
 import 'package:dio/dio.dart' hide Headers;
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
+import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
+import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
@@ -14,8 +16,10 @@ import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
+import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/bean/phrase_entity.dart';
@@ -109,6 +113,28 @@ abstract class RetrofitClient{
 
   @POST('/ds-api-web/login')
   Future<BaseResponseEntity<LoginUserEntity>> login(@Body() Map<String,dynamic> params,);
+
+
+  @GET('/ds-api-web/getBalance')
+  Future<BaseResponseEntity<BalanceEntity>> getBalance(@Queries() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/queryBonus')
+  Future<BaseResponseEntity<BonusTotalEntity>> queryBonus(@Queries() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/queryMemberPoint')
+  Future<BaseResponseEntity<MemberPointEntity>> queryMemberPoint(@Queries() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/getPaymentList')
+  Future<BaseResponseEntity<PaymentListEntity>> getPaymentList(@Query('oid') String oid,@Query('username') String username,);
+
+
+
+
+
+
+
+
+
 
 
 

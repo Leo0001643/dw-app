@@ -7,7 +7,9 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:leisure_games/app/network/retrofit_client.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
+import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
+import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
@@ -16,8 +18,10 @@ import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
+import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/bean/phrase_entity.dart';
@@ -156,6 +160,51 @@ class HttpService{
   static Future<LoginUserEntity> login(Map<String,dynamic> params,){
     return buildFuture<LoginUserEntity>(()=> _client.login(params));
   }
+
+  static Future<BalanceEntity> getBalance(Map<String,dynamic> params,){
+    return buildFuture<BalanceEntity>(()=> _client.getBalance(params),loading: false);
+  }
+
+  static Future<BonusTotalEntity> queryBonus(Map<String,dynamic> params,){
+    return buildFuture<BonusTotalEntity>(()=> _client.queryBonus(params));
+  }
+
+  static Future<MemberPointEntity> queryMemberPoint(Map<String,dynamic> params,){
+    return buildFuture<MemberPointEntity>(()=> _client.queryMemberPoint(params));
+  }
+
+  static Future<PaymentListEntity> getPaymentList(String oid,String username,){
+    return buildFuture<PaymentListEntity>(()=> _client.getPaymentList(oid,username));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   ///游戏返回体

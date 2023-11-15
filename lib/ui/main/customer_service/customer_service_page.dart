@@ -68,17 +68,17 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
   }
 
   Widget buildCategaryItem(CustomerServiceEntity element, int i) {
-    return Column(
-      children: [
-        SizedBox(height: 10.h,),
-        Container(
-          decoration: BoxDecoration(
-            color: ColorX.cardBg4(),
-            borderRadius: BorderRadius.circular(10.r),
-            // image: DecorationImage(image: AssetImage(ImageX.bg_customer),fit: BoxFit.fill),
-          ),
+    return Container(
+      margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 10.h),
+      decoration: BoxDecoration(
+        color: ColorX.cardBg4(),
+        borderRadius: BorderRadius.circular(10.r),
+        // image: DecorationImage(image: AssetImage(ImageX.bg_customer),fit: BoxFit.fill),
+      ),
+      child: InkWell(
+        onTap: ()=> logic.clickService(element),
+        child: Container(
           padding: EdgeInsets.all(10.r),
-          margin: EdgeInsets.symmetric(horizontal: 20.w),
           height:  72.h,
           child: Row(
             children: [
@@ -86,15 +86,11 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
               SizedBox(width: 8.w,),
               Text(element.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
               Expanded(child: Container(),),
-              InkWell(
-                onTap: ()=> logic.clickService(element),
-                child: Text(Intr().djjr,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
-                    decoration: TextDecoration.underline),),
-              ),
+              Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
             ],
           ),
         ),
-      ],
+      ),
     );
   }
 }
