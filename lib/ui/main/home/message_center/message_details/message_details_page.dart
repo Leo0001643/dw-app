@@ -21,6 +21,13 @@ class _MessageDetailsPageState extends State<MessageDetailsPage> {
   final state = Get.find<MessageDetailsLogic>().state;
 
   @override
+  void dispose() {
+    Get.delete<MessageDetailsLogic>();
+    super.dispose();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().gonggaoxiangqing,bgColor: ColorX.appBarBg()),
@@ -32,11 +39,11 @@ class _MessageDetailsPageState extends State<MessageDetailsPage> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(item.noteTitle.em(),style: TextStyle(fontSize: 18.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+              Text(item.username.em(),style: TextStyle(fontSize: 18.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
               SizedBox(height: 10.h,),
               Text(DateUtil.formatDateMs(item.addTime.em() * 1000),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
               SizedBox(height: 10.h,),
-              Text(item.noteContent.em(),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
+              Text(item.message.em(),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722),),
             ],
           );
         }),
@@ -44,9 +51,4 @@ class _MessageDetailsPageState extends State<MessageDetailsPage> {
     );
   }
 
-  @override
-  void dispose() {
-    Get.delete<MessageDetailsLogic>();
-    super.dispose();
-  }
 }

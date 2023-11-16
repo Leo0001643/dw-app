@@ -1,13 +1,13 @@
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
-import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'message_logic.dart';
 
@@ -21,17 +21,17 @@ class MessagePage extends StatefulWidget {
 class _MessagePageState extends State<MessagePage> with SingleTickerProviderStateMixin {
   final logic = Get.find<MessageLogic>();
   final state = Get.find<MessageLogic>().state;
-  late RefreshController _refreshController;
+  // late RefreshController _refreshController;
 
   @override
   void initState() {
-    _refreshController= RefreshController();
+    // _refreshController= RefreshController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _refreshController.dispose();
+    // _refreshController.dispose();
     super.dispose();
   }
 
@@ -40,26 +40,19 @@ class _MessagePageState extends State<MessagePage> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     return Container(
       color: ColorX.pageBg2(),
-      child: SmartRefresher(
-        controller: _refreshController,
-        enablePullDown: true,
-        enablePullUp: true,
-        onRefresh: ()=> _refreshController.refreshCompleted(),
-        onLoading: ()=> _refreshController.loadComplete(),
-        child: ListView.builder(
-          itemCount: 10,
+      child: Obx(() {
+        return ListView.builder(
+          itemCount: state.messageList.length,
           itemBuilder: (context,index){
-            var item = MessageItemEntity(id: 11217,noteContent: "欢迎来到国际站，期待与您携手并进，再创佳绩",
-              noteTitle: "欢迎光临",addTime: 1639991272,noteType: 2);
             return InkWell(
-              child: buildMessageItem(item),
+              child: buildMessageItem(state.messageList[index]),
               onTap: (){
-                Get.toNamed(Routes.message_details,arguments: item);
+                Get.toNamed(Routes.message_details,arguments: state.messageList[index]);
               },
             );
           },
-        ),
-      ),
+        );
+      }),
     );
   }
 
@@ -93,13 +86,13 @@ class _MessagePageState extends State<MessagePage> with SingleTickerProviderStat
                 Row(
                   children: [
                     Expanded(
-                      child: Text("欢迎光临",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                      child: Text(item.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                     ),
-                    Text("7分钟前",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                    Text(DateUtil.formatDateMs(item.addTime.em() * 1000),style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                   ],
                 ),
                 SizedBox(height: 3.h,),
-                Text("欢迎来到国际站,期待与您携手并进,再创佳绩!…",
+                Text(item.message.em(),
                   style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               ],
             ),
