@@ -513,6 +513,16 @@ class Intr extends Translations{
   String get denglugengjingcai => 'denglugengjingcai'.tr;
   String get gengduo => 'gengduo'.tr;
   String get huishou => 'huishou'.tr;
+  String get sishiershuzihuozimu => 'sishiershuzihuozimu'.tr;
+  String get bashiershuzihuozimu => 'bashiershuzihuozimu'.tr;
+  String get zhenshixingmingbunengkong => 'huishou'.tr;
+  String get yanzhengmabunengkong => 'yanzhengmabunengkong'.tr;
+  String get mimashurubuyizhi => 'mimashurubuyizhi'.tr;
+  String get usdt_coin => 'usdt_coin'.tr;
+  String get lianxizaixiankefu => 'lianxizaixiankefu'.tr;
+
+
+
 
 
 
@@ -608,8 +618,8 @@ class Intr extends Translations{
       "wszhzm":"8-12位数字或字母",
       "zsxm":"真实姓名",
       "yzm":"验证码",
-      "qsrzcyzm":"请输入左侧验证码",
-      "wywdbty":"我已阅读并同意",
+      "qsrzcyzm":"请输入右侧验证码",
+      "wywdbty":"注册即代表您已同意",
       "yhtk":"《用户条款》",
       "and":"和",
       "ysxy":"《隐私协议》",
@@ -1006,6 +1016,13 @@ class Intr extends Translations{
       "denglugengjingcai":"登录更精彩",
       "gengduo":"更多",
       "huishou":"回收",
+      "sishiershuzihuozimu":"用户名请输入4-12位数字或字母",
+      "bashiershuzihuozimu":"密码请输入8-12位数字或字母",
+      "zhenshixingmingbunengkong":"请输入真实姓名",
+      "yanzhengmabunengkong":"请输入验证码",
+      "mimashurubuyizhi":"两次密码输入不一致",
+      "usdt_coin":"USDT币",
+      "lianxizaixiankefu":"请联系在线客服",
 
 
 

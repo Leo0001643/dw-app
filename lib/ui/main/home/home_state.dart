@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
+import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
@@ -35,6 +37,12 @@ class HomeState {
   var hongbaoManual = true.obs;//手动关闭
   Timer? timer;
 
+
+  ///用户信息
+  var user = LoginUserEntity().obs;
+  ///余额
+  var usdtBal = BalanceEntity().obs;
+  var cnyBal = BalanceEntity().obs;
 
 
 }

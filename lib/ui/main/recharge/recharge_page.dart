@@ -4,11 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
 import 'recharge_logic.dart';
 
@@ -42,35 +45,20 @@ class _RechargePageState extends State<RechargePage> {
                 WidgetUtils().buildAppBar(Intr().chongzhizhongxin,bgColor: Colors.transparent, msg: true,drawer: true,back: false),
                 Container(
                   height: 100.h,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GFAvatar(
-                        backgroundImage: NetworkImage(Constants.test_image,),
-                        radius: 28.r,
-                      ),
-                      SizedBox(height: 7.h,),
-                      Text(Intr().chongzhizhanghu_(["2946781"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
-                    ],
-                  ),
+                  child: Obx(() {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GFAvatar(
+                          backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(state.user.value.avatar.em())),
+                          radius: 28.r,
+                        ),
+                        SizedBox(height: 7.h,),
+                        Text(Intr().chongzhizhanghu_([state.user.value.username.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+                      ],
+                    );
+                  }),
                 ),
-                SizedBox(height: 10.h,),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 27.w,vertical: 7.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(Intr().dangqianmoren([Intr().wallet_cny]),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
-                      Text("${Intr().yue_}¥666",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
-                    ],
-                  ),
-                ),
-                buildCategoryItem("财付通",ImageX.icon_cft,0),
-                buildCategoryItem("全民付",ImageX.icon_cft,1),
-                buildCategoryItem("银行卡转帐",ImageX.icon_cft,2),
-                buildCategoryItem("微信支付",ImageX.icon_cft,3),
-                buildCategoryItem("云闪付支付",ImageX.icon_cft,4),
-                buildCategoryItem("支付宝",ImageX.icon_cft,5),
                 SizedBox(height: 10.h,),
                 Padding(
                   padding: EdgeInsets.only(left: 27.w,right: 27.w,top: 10.h),
@@ -78,11 +66,32 @@ class _RechargePageState extends State<RechargePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(Intr().wallet_usdt,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
-                      Text("${Intr().yue_}\$666",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                      Obx(() {
+                        return Text("${Intr().yue_}₮${state.usdtBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
+                      }),
                     ],
                   ),
                 ),
-                buildCategoryItem("USDT币",ImageX.icon_dollar_grey,6),
+                buildCategoryItem(PaymentListBanks(bankName: Intr().usdt_coin,bankCode: ImageX.icon_dollar_grey),-1),
+                SizedBox(height: 10.h,),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 27.w,vertical: 7.h),
+                  child: Obx(() {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(Intr().dangqianmoren([Intr().wallet_cny]),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                        Text("${Intr().yue_}¥${state.cnyBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                      ],
+                    );
+                  }),
+                ),
+                Obx(() {
+                  var banks = state.paymentList.value.banks;
+                  return Column(
+                    children: banks?.map((e) => buildCategoryItem(e,banks.indexOf(e))).toList() ?? [],
+                  );
+                }),
                 SizedBox(height: 30.h,),
               ],
             ),
@@ -92,24 +101,26 @@ class _RechargePageState extends State<RechargePage> {
     );
   }
 
-  Widget buildCategoryItem(String title, String icon, int i) {
-    return InkWell(
-      onTap: ()=> Get.toNamed(Routes.recharge_category,arguments: i % 2 == 0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r),
-          color: ColorX.cardBg(),
-        ),
-        margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 10.h),
-        padding: EdgeInsets.all(15.r),
-        child: Row(
-          children: [
-            Image.asset(icon,width: 18.r,),
-            SizedBox(width: 5.w,),
-            Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
-            Expanded(child: Container()),
-            Image.asset(ImageX.icon_right_grey,color: ColorX.text586(),),
-          ],
+  Widget buildCategoryItem(PaymentListBanks item, int i) {
+    return Container(
+      margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 10.h),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.r),
+        color: ColorX.cardBg(),
+      ),
+      child: InkWell(
+        onTap: ()=> Get.toNamed(Routes.recharge_category,arguments: 0),
+        child: Container(
+          padding: EdgeInsets.all(15.r),
+          child: Row(
+            children: [
+              Image.asset(ImageX.icon_cft,width: 18.r,),
+              SizedBox(width: 5.w,),
+              Text(item.bankName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+              Expanded(child: Container()),
+              Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
+            ],
+          ),
         ),
       ),
     );

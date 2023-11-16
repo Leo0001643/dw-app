@@ -12,9 +12,13 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
+import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 class EndsDrawerView extends StatefulWidget{
 
@@ -59,7 +63,10 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
       child: SingleChildScrollView(
         child: Column(
           children: [
-            AppData.isLogin() ? userHeader(): noLoginHeader(),
+            Obx(() {
+              var logic = Get.find<HomeLogic>();
+              return AppData.isLogin() ? userHeader(logic,logic.state.user.value): noLoginHeader(logic.state.user.value);
+            }),
             InkWell(
               onTap: (){
                 Navigator.of(context).pop();
@@ -262,6 +269,8 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                   onTap: ()=> DialogUtils().showLogoutDialog(context).then((value) {
                     if(value  == true){
                       AppData.clear();
+                      ///退出登录需求切换页面到首页
+                      eventBus.fire(ChangeMainPageEvent(0));
                       eventBus.fire(LoginRefreshEvent());
                       Get.back();
                     }
@@ -278,7 +287,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
   }
 
 
-  Widget noLoginHeader() {
+  Widget noLoginHeader(LoginUserEntity user) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(ImageX.beforeLoginT()),fit: BoxFit.fill,),
@@ -310,7 +319,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
     );
   }
 
-  Widget userHeader() {
+  Widget userHeader(HomeLogic logic,LoginUserEntity user) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(ImageX.afterLoginT()),fit: BoxFit.fill,),
@@ -321,32 +330,39 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
           Row(
             children: [
               SizedBox(width: 17.w,),
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white,width: 2.r),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(22.r),
-                  child: Image.network(Constants.test_image,width: 42.r,height: 42.r,fit: BoxFit.cover,),
+              GFAvatar(
+                backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(user.avatar.em())),
+                shape: GFAvatarShape.circle,
+                radius: 23.r,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white,width: 2.r),
+                  ),
                 ),
               ),
               SizedBox(width: 8.w,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Hala",style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
+                  Text(user.username.em(),style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
                   Image.asset(ImageX.icon_vip),
                 ],
               ),
               Expanded(child: Container()),
               Align(
                 alignment: Alignment.centerRight,
-                child: Row(
-                  children: [
-                    Text(Intr().grzx,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
-                    Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
-                  ],
+                child: InkWell(
+                  onTap: (){
+                    eventBus.fire(ChangeMainPageEvent(4));
+                    Navigator.pop(context);
+                  },
+                  child: Row(
+                    children: [
+                      Text(Intr().grzx,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
+                      Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(width: 20.w,),
@@ -370,11 +386,15 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                   child: Row(
                     children: [
                       Image.asset(ImageX.icon_rmb_grey),
-                      Text(Intr().rmbqb,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
+                      SizedBox(width: 3.w,),
+                      Text(Intr().wallet_cny,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
                       SizedBox(width: 5.w,),
                       Expanded(child: Container()),
                       Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
-                      Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
+                      Obx(() {
+                        return Text("₮${logic.state.usdtBal.value.money.em()}",
+                          style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),);
+                      }),
                       SizedBox(width: 5.w,),
                       Image.asset(ImageX.icon_right_left,width: 10.w,),
                     ],
@@ -384,11 +404,10 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 Row(
                   children: [
                     Text(Intr().yue_,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
-                    Text("¥8,888",style: TextStyle(
-                      fontSize: 14.sp,
-                      color: ColorX.text0917(),
-                      fontWeight: FontWeight.w600,
-                    ),),
+                    Obx(() {
+                      return Text("¥${logic.state.cnyBal.value.money.em()}",
+                        style: TextStyle(fontSize: 14.sp, color: ColorX.text0917(), fontWeight: FontWeight.w600,),);
+                    }),
                   ],
                 ),
               ],

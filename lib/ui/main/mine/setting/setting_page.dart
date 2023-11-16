@@ -10,6 +10,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 
 import 'setting_logic.dart';
@@ -238,6 +239,8 @@ class _SettingPageState extends State<SettingPage> {
                 DialogUtils().showLogoutDialog(context).then((value) {
                   if(value  == true){
                     AppData.clear();
+                    ///退出登录需求切换页面到首页
+                    eventBus.fire(ChangeMainPageEvent(0));
                     eventBus.fire(LoginRefreshEvent());
                     Get.back();
                   }

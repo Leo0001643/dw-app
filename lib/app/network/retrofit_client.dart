@@ -2,6 +2,7 @@
 import 'dart:collection';
 
 import 'package:dio/dio.dart' hide Headers;
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
@@ -17,6 +18,7 @@ import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/member_point_entity.dart';
+import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
@@ -30,12 +32,13 @@ import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
+import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'retrofit_client.g.dart';
 
-@RestApi(baseUrl: 'http://soptj9qq.com:8860/',parser: Parser.JsonSerializable)
+@RestApi(baseUrl: Constants.base_url,parser: Parser.JsonSerializable)
 abstract class RetrofitClient{
 
   factory RetrofitClient(Dio dio, {String? baseUrl}) = _RetrofitClient;
@@ -43,6 +46,7 @@ abstract class RetrofitClient{
   @GET('/ds-api-web/getGameKind')
   Future<BaseResponseEntity<List<GameKindEntity>>> getGameKind();
 
+  ///公告类型【公告类型，1普通公告(主站)-11普通公告(副站)，2跳弹公告(主站)-21跳弹公告(副站)】
   @GET('/ds-api-web/getNotice')
   Future<BaseResponseEntity<List<NoticeEntity>>> getNotice(@Query('noteType') int noteType,);
 
@@ -127,12 +131,17 @@ abstract class RetrofitClient{
   @GET('/ds-api-web/getPaymentList')
   Future<BaseResponseEntity<PaymentListEntity>> getPaymentList(@Query('oid') String oid,@Query('username') String username,);
 
+  @GET('/ds-api-web/getVarcode')
+  Future<BaseResponseEntity<VarCodeEntity>> getVarcode(@Query('channel') String channel,);
 
+  @POST('/ds-api-web/memberRegCheck')
+  Future<BaseResponseEntity<String>> memberRegCheck(@Field('realName') String realName,);
 
+  @POST('/ds-api-web/userRegister')
+  Future<BaseResponseEntity<LoginUserEntity>> userRegister(@Body() Map<String,dynamic> params,);
 
-
-
-
+  @GET('/ds-api-web/getMessage')
+  Future<BaseResponseEntity<List<MessageItemEntity>>> getMessage(@Query('oid') String oid,@Query('username') String username,);
 
 
 

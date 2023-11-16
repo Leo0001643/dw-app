@@ -12,21 +12,29 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
+import 'package:leisure_games/ui/bean/login_refresh_event.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'home_state.dart';
 
 class HomeLogic extends GetxController {
   final HomeState state = HomeState();
+  StreamSubscription? loginStream;
 
   @override
   void onReady() {
     loadData();
+    loadUserData();
+    loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
+      loadUserData();
+    });
     super.onReady();
   }
 
   @override
   void onClose() {
     state.timer?.cancel();
+    loginStream?.cancel();
     super.onClose();
   }
 
@@ -200,6 +208,29 @@ class HomeLogic extends GetxController {
     });
 
 
+
+  }
+
+  ///加载用户登录信息
+  void loadUserData() {
+    if(AppData.isLogin()){
+      var user = AppData.user();
+      state.user.value = user!;
+      state.user.refresh();
+
+      HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+        state.cnyBal.value = value;
+        state.cnyBal.refresh();
+      });
+
+      HttpService.getBalance({ "cur":5, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+        state.usdtBal.value = value;
+        state.usdtBal.refresh();
+      });
+    }else {
+      state.user.value = LoginUserEntity();
+      state.user.refresh();
+    }
 
   }
 

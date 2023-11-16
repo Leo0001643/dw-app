@@ -6,12 +6,13 @@ export 'package:leisure_games/generated/json/message_item_entity.g.dart';
 @JsonSerializable()
 class MessageItemEntity {
 	int? id;
-	String? noteContent;
-	String? noteTitle;
+	String? message;
+	String? language;
+	int? mstatus;
+	String? username;
 	int? addTime;
-	int? noteType;
 
-	MessageItemEntity({this.id, this.noteContent, this.noteTitle, this.addTime, this.noteType});
+	MessageItemEntity({this.username,this.message,this.addTime});
 
   factory MessageItemEntity.fromJson(Map<String, dynamic> json) => $MessageItemEntityFromJson(json);
 
@@ -22,10 +23,3 @@ class MessageItemEntity {
 		return jsonEncode(this);
 	}
 }
-//        {
-//             "id": 11217,
-//             "noteContent": "欢迎来到国际站，期待与您携手并进，再创佳绩",
-//             "noteTitle": "欢迎光临",
-//             "addTime": 1639991272,
-//             "noteType": 2
-//         }

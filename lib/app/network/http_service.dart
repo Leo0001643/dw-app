@@ -19,6 +19,7 @@ import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/member_point_entity.dart';
+import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
@@ -30,6 +31,7 @@ import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
+import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
 
 class HttpService{
@@ -76,6 +78,7 @@ class HttpService{
     return buildFuture<List<GameKindEntity>>(()=> _client.getGameKind());
   }
 
+  ///公告类型【公告类型，1普通公告(主站)-11普通公告(副站)，2跳弹公告(主站)-21跳弹公告(副站)】
   static Future<List<NoticeEntity>> getNotice(int noteType){
     return buildFuture<List<NoticeEntity>>(()=> _client.getNotice(noteType));
   }
@@ -177,13 +180,22 @@ class HttpService{
     return buildFuture<PaymentListEntity>(()=> _client.getPaymentList(oid,username));
   }
 
+  ///渠道【登录:login,会员注册:register,代理注册:agentReg】
+  static Future<VarCodeEntity> getVarcode(String channel,){
+    return buildFuture<VarCodeEntity>(()=> _client.getVarcode(channel,));
+  }
 
+  static Future<String> memberRegCheck(String realName,){
+    return buildFuture<String>(()=> _client.memberRegCheck(realName,),loading: false);
+  }
 
+  static Future<LoginUserEntity> userRegister(Map<String,dynamic> params,){
+    return buildFuture<LoginUserEntity>(()=> _client.userRegister(params,),loading: false);
+  }
 
-
-
-
-
+  static Future<List<MessageItemEntity>> getMessage(String oid,String username,){
+    return buildFuture<List<MessageItemEntity>>(()=> _client.getMessage(oid,username));
+  }
 
 
 
@@ -215,7 +227,8 @@ class HttpService{
       var value = await callback.call();
       if(loading){ EasyLoading.dismiss(); }
       if(value.isOk()){
-        return Future.value(value.data);
+        ///data为null时处理
+        return Future.value(value.data ?? "");
       } else {
         if(errorHandler){ ErrorResponseHandler().onErrorHandle({"code": value.code,"message": value.message.toString()}); }
         return Future.error(value.message.toString());
@@ -237,7 +250,8 @@ class HttpService{
       var value = await callback.call();
       if(loading){ EasyLoading.dismiss(); }
       if(value.isOk()){
-        return Future.value(value.result);
+        ///data为null时处理
+        return Future.value(value.result ?? "");
       } else {
         if(errorHandler){ ErrorResponseHandler().onErrorHandle({"code": value.status,"message": value.message.toString()}); }
         return Future.error(value.message.toString());

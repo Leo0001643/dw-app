@@ -7,21 +7,25 @@ MessageItemEntity $MessageItemEntityFromJson(Map<String, dynamic> json) {
   if (id != null) {
     messageItemEntity.id = id;
   }
-  final String? noteContent = jsonConvert.convert<String>(json['noteContent']);
-  if (noteContent != null) {
-    messageItemEntity.noteContent = noteContent;
+  final String? message = jsonConvert.convert<String>(json['message']);
+  if (message != null) {
+    messageItemEntity.message = message;
   }
-  final String? noteTitle = jsonConvert.convert<String>(json['noteTitle']);
-  if (noteTitle != null) {
-    messageItemEntity.noteTitle = noteTitle;
+  final String? language = jsonConvert.convert<String>(json['language']);
+  if (language != null) {
+    messageItemEntity.language = language;
+  }
+  final int? mstatus = jsonConvert.convert<int>(json['mstatus']);
+  if (mstatus != null) {
+    messageItemEntity.mstatus = mstatus;
+  }
+  final String? username = jsonConvert.convert<String>(json['username']);
+  if (username != null) {
+    messageItemEntity.username = username;
   }
   final int? addTime = jsonConvert.convert<int>(json['addTime']);
   if (addTime != null) {
     messageItemEntity.addTime = addTime;
-  }
-  final int? noteType = jsonConvert.convert<int>(json['noteType']);
-  if (noteType != null) {
-    messageItemEntity.noteType = noteType;
   }
   return messageItemEntity;
 }
@@ -29,26 +33,29 @@ MessageItemEntity $MessageItemEntityFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> $MessageItemEntityToJson(MessageItemEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['id'] = entity.id;
-  data['noteContent'] = entity.noteContent;
-  data['noteTitle'] = entity.noteTitle;
+  data['message'] = entity.message;
+  data['language'] = entity.language;
+  data['mstatus'] = entity.mstatus;
+  data['username'] = entity.username;
   data['addTime'] = entity.addTime;
-  data['noteType'] = entity.noteType;
   return data;
 }
 
 extension MessageItemEntityExtension on MessageItemEntity {
   MessageItemEntity copyWith({
     int? id,
-    String? noteContent,
-    String? noteTitle,
+    String? message,
+    String? language,
+    int? mstatus,
+    String? username,
     int? addTime,
-    int? noteType,
   }) {
     return MessageItemEntity()
       ..id = id ?? this.id
-      ..noteContent = noteContent ?? this.noteContent
-      ..noteTitle = noteTitle ?? this.noteTitle
-      ..addTime = addTime ?? this.addTime
-      ..noteType = noteType ?? this.noteType;
+      ..message = message ?? this.message
+      ..language = language ?? this.language
+      ..mstatus = mstatus ?? this.mstatus
+      ..username = username ?? this.username
+      ..addTime = addTime ?? this.addTime;
   }
 }

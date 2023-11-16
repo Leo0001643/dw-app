@@ -57,7 +57,8 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().youhuizhongxin,msg: true,drawer: true,back: false,bgColor: ColorX.appBarBg()),
+      appBar: WidgetUtils().buildAppBar(Intr().youhuizhongxin,
+          msg: true,drawer: true,back: false,bgColor: ColorX.appBarBg()),
       backgroundColor: ColorX.pageBg(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,25 +1,43 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
+import 'package:leisure_games/ui/bean/login_refresh_event.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
 
 import 'mine_state.dart';
 
 class MineLogic extends GetxController {
   final MineState state = MineState();
+  StreamSubscription? loginStream;
 
   @override
   void onReady() {
-    // TODO: implement onReady
+    loadData();
+    loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
+      loadData();
+    });
     super.onReady();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
+    loginStream?.cancel();
     super.onClose();
   }
+
+
+
+
+
 
   void clickItem(int index){
     switch(index){
@@ -68,6 +86,40 @@ class MineLogic extends GetxController {
       case 14:
         Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_html,pageTitle: Intr().guanyuwomen));
         break;
+    }
+  }
+
+  void loadData() {
+    ///cur 币种类型【1:CNY,2:USD,3:KRW,4:INR,5:USDT,6:VND】
+    ///platform 平台【main,ag,bbin..等等】
+    if(AppData.isLogin()){
+      var user = AppData.user();
+      loggerArray(["用户信息",user?.toJson()]);
+      state.user.value = user!;
+      state.user.refresh();
+
+      HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+        state.cnyBal.value = value;
+        state.cnyBal.refresh();
+      });
+
+      HttpService.getBalance({ "cur":5, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+        state.usdtBal.value = value;
+        state.usdtBal.refresh();
+      });
+
+      HttpService.queryBonus({ "oid":user.oid,"username":user.username }).then((value) {
+        state.bonus.value = value;
+        state.bonus.refresh();
+      });
+
+      HttpService.queryMemberPoint({ "oid":user.oid,"username":user.username }).then((value) {
+        state.memberPoint.value = value;
+        state.memberPoint.refresh();
+      });
+    } else {
+      state.user.value = LoginUserEntity();
+      state.user.refresh();
     }
   }
 

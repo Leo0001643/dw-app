@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: WidgetUtils().buildTextField(325.w, 46.h, 14.sp, ColorX.text949(), Intr().qsryhm,hintColor: ColorX.text586(),
-                  backgroundColor: Colors.transparent,onChanged: (v)=>logic.editChange(true, v)),
+                  defText: state.accountValue,backgroundColor: Colors.transparent,onChanged: (v)=>logic.editChange(true, v)),
             ),
           ),
           SizedBox(height: 20.h,),
@@ -92,14 +92,14 @@ class _LoginPageState extends State<LoginPage> {
           ),
           SizedBox(height: 10.h,),
           Align(
+            alignment: Alignment.centerRight,
             child: Padding(
               padding: EdgeInsets.only(right: 20.w),
               child: InkWell(
-                onTap: (){},
+                onTap: ()=> showToast(Intr().lianxizaixiankefu),
                 child: Text(Intr().wjmm,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
               ),
             ),
-            alignment: Alignment.centerRight,
           ),
           SizedBox(height: 20.h,),
           Center(

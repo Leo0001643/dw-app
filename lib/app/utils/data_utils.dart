@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -220,13 +221,20 @@ class DataUtils{
 
   ///寻找头像
   static String findAvatar(String avatar){
-    return "assets/images/${avatar}.png";
+    if(isEmpty(avatar)){
+      return ImageX.q1;
+    }else {
+      return "assets/images/$avatar.png";
+    }
   }
 
   ///头像名
   static String getAvatarName(String path){
     return path.replaceAll("assets/images/", "").replaceAll(".png", "");
   }
+
+
+
 
 }
 

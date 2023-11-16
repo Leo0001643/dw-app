@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -336,7 +338,7 @@ class WidgetUtils {
   Widget buildTextField(double? width,double? height,double textSize,Color textColor,String? hint,
       {Color backgroundColor = Colors.white,Color hintColor = ColorX.color_5b6d7b, String? defText,ValueChanged<String>? onChanged,
         TextInputType? inputType,bool obscureText=false,bool autofocus=false,bool enabled = true,
-        bool suffixIcon=false,int maxLines=1,List<TextInputFormatter>? inputFormatters}){
+        bool suffixIcon=false,int maxLines=1,List<TextInputFormatter>? inputFormatters,FocusNode? focusNode}){
     return Container(
       decoration: BoxDecoration(
         color: backgroundColor,
@@ -356,6 +358,7 @@ class WidgetUtils {
         enabled: enabled,
         cursorHeight: textSize,
         maxLines: maxLines,
+        focusNode: focusNode,
         controller: TextEditingController.fromValue(
             TextEditingValue(
                 text: defText.em(),
@@ -399,8 +402,9 @@ class WidgetUtils {
 
 
   ImageProvider buildImageProvider(String image,{String defImage = ImageX.icon_avatar}){
+    if(isEmpty(image) || !image.isUrl() || !image.contains("assets")){ return AssetImage(defImage); }
     try{
-      return image.isURL ? NetworkImage(image): AssetImage(image) as ImageProvider;
+      return image.isUrl() ? NetworkImage(image,) : AssetImage(image) as ImageProvider;
     }catch(e){
       return AssetImage(defImage);
     }
@@ -408,7 +412,7 @@ class WidgetUtils {
 
   Image buildImage(String image,double width,double height,{String defImage = ImageX.icon_avatar,BoxFit? fit}){
     try{
-      return image.isURL ? Image.network(image,width: width,height: height,fit: fit,
+      return image.isUrl() ? Image.network(image,width: width,height: height,fit: fit,
       errorBuilder: (context,error,stack){
         loggerArray(["异常了妈啊",image,error,stack]);
           if(unEmpty(defImage)){
@@ -486,6 +490,16 @@ class WidgetUtils {
       default:
         return ColorX.color_fe2427;
     }
+  }
+
+  Widget buildVarCode(String code,GestureTapCallback onTap){
+    if(isEmpty(code)){ return Container();}
+    // 移除Base64头信息
+    String base64String = code.split(',').last;
+    return InkWell(
+      onTap: onTap,
+      child: Image.memory(base64Decode(base64String),width: 73.w,height: 30.h,),
+    );
   }
 
 

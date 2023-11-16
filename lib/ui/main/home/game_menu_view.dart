@@ -34,51 +34,40 @@ class StateGameMenuView extends State<GameMenuView>{
 
   var selectMenu = 0.obs;
 
-  var scrollController = ScrollController();
+  ScrollController? scrollController;
 
   var itemHeightMap = <int,double>{};
 
   @override
   void initState() {
-    scrollController.addListener(() {
-      // loggerArray(["滚动位置",scrollController.offset]);
-      if(scrollController.offset < ((itemHeightMap[0] ?? 0))){
-        selectMenu.value = 0;
-      }else if (scrollController.offset == scrollController.position.maxScrollExtent) {
-        selectMenu.value = itemHeightMap.length - 1;
-      } else {
-        itemHeightMap.forEach((key, value) {
-          if(scrollController.offset > value && scrollController.offset < (itemHeightMap[key + 1] ?? 0) ){
-            // loggerArray(["滚动位置",scrollController.offset,((itemHeightMap[0] ?? 0) + 50.h),scrollController.position.maxScrollExtent]);
-            selectMenu.value = key + 1;
-          }
-        });
-      }
-    });
-    widget.logic.state.menuGroup.listen((v) {
-      var data = <int,double>{};
-      for (var element in v) {
-        var height = measureItem(element);
-        var index = v.indexOf(element);
-        data[index] = height + (data[index - 1] ?? 0);
-      }
-      itemHeightMap.assignAll(data);
-      loggerArray(["数据吞吐量",itemHeightMap]);
-    });
+    initScrollListener();
     super.initState();
+  }
+
+  // @override
+  // void didUpdateWidget(covariant GameMenuView oldWidget) {
+  //   super.didUpdateWidget(oldWidget);
+  //   initScrollListener();
+  // }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    initScrollListener();
   }
 
   @override
   void dispose() {
-    scrollController.dispose();
+    scrollController?.dispose();
+    scrollController = null;
     super.dispose();
   }
 
   void scroll2Item(int index) {
     if(index == itemHeightMap.length - 1){
-      scrollController.jumpTo(scrollController.position.maxScrollExtent);
+      scrollController?.jumpTo(scrollController?.position.maxScrollExtent ?? 0);
     }else {
-      scrollController.jumpTo(itemHeightMap[index - 1] ?? 0);
+      scrollController?.jumpTo(itemHeightMap[index - 1] ?? 0);
     }
   }
 
@@ -111,16 +100,16 @@ class StateGameMenuView extends State<GameMenuView>{
             }),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              controller: scrollController,
-              child: Obx(() {
-                var menuGroup = widget.logic.state.menuGroup;
-                return Column(
+            child: Obx(() {
+              var menuGroup = widget.logic.state.menuGroup;
+              return SingleChildScrollView(
+                controller: scrollController,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: menuGroup.map((element) => buildCategoryItem(element)).toList(),
-                );
-              }),
-            ),
+                ),
+              );
+            }),
           ),
           SizedBox(width: 20.w,),
         ],
@@ -222,7 +211,6 @@ class StateGameMenuView extends State<GameMenuView>{
   Widget buildLeftMenu(GameKindEntity e,int index,bool select) {
     return InkWell(
       onTap: (){
-        logger(e.toJson());
         selectMenu.value = index;
         scroll2Item(index);
       },
@@ -284,6 +272,48 @@ class StateGameMenuView extends State<GameMenuView>{
         return ImageX.fire;
     }
   }
+
+  void initScrollListener() {
+    if(itemHeightMap.isEmpty){
+      widget.logic.state.menuGroup.listen((v) {
+        intItemHeight(v);
+      });
+      intItemHeight(widget.logic.state.menuGroup);
+    }
+    if(scrollController == null){
+      scrollController = ScrollController();
+      scrollController?.addListener(() {
+        if(scrollController!.offset < ((itemHeightMap[0] ?? 0))){
+          selectMenu.value = 0;
+        }else if (scrollController?.offset == scrollController?.position.maxScrollExtent) {
+          selectMenu.value = itemHeightMap.length - 1;
+        } else {
+          itemHeightMap.forEach((key, value) {
+            if(scrollController!.offset > value && scrollController!.offset < (itemHeightMap[key + 1] ?? 0) ){
+              // loggerArray(["滚动位置",scrollController.offset,((itemHeightMap[0] ?? 0) + 50.h),scrollController.position.maxScrollExtent]);
+              selectMenu.value = key + 1;
+            }
+          });
+        }
+        // loggerArray(["滚动位置",selectMenu.value,itemHeightMap.length,scrollController?.offset]);
+      });
+      // loggerArray(["滚动位置",selectMenu.value,itemHeightMap.length,widget.logic.state.menuGroup.length,]);
+    }
+
+  }
+
+  void intItemHeight(List<GameKindEntity> v) {
+    var data = <int,double>{};
+    for (var element in v) {
+      var height = measureItem(element);
+      var index = v.indexOf(element);
+      data[index] = height + (data[index - 1] ?? 0);
+    }
+    itemHeightMap.assignAll(data);
+    loggerArray(["数据吞吐量",itemHeightMap]);
+  }
+
+
 }
 
 

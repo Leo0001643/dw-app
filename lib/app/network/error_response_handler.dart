@@ -1,7 +1,10 @@
 
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 
 ///app全局错误监听处理
@@ -66,6 +69,7 @@ class ErrorResponseHandler {
           break;
         case 900403://鉴权失败
           ///登录权限已过期，或退出登录
+          Get.until((ModalRoute.withName(Routes.main)));
           eventBus.fire(LoginRefreshEvent());
           AppData.clear();///清除用户登录信息
           showToast(toast);

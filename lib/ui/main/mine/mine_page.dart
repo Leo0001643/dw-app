@@ -8,6 +8,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
@@ -45,17 +46,19 @@ class StateMinePage extends State<MinePage>{
                         onTap: ()=> Get.toNamed(Routes.select_avatar),
                         child: Stack(
                           children: [
-                            GFAvatar(
-                              backgroundImage: NetworkImage(Constants.test_image),
-                              shape: GFAvatarShape.circle,
-                              radius: 17.r,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.white,width: 2.r),
+                            Obx(() {
+                              return GFAvatar(
+                                backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(state.user.value.avatar.em())),
+                                shape: GFAvatarShape.circle,
+                                radius: 25.r,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: Colors.white,width: 2.r),
+                                  ),
                                 ),
-                              ),
-                            ),
+                              );
+                            }),
                             Positioned(
                               bottom: 0,right: 0,
                               child: Image.asset(ImageX.icon_edit_avatar),
@@ -67,14 +70,20 @@ class StateMinePage extends State<MinePage>{
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Obx(() {
+                            return Text(state.user.value.username.em(),style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),
+                                fontFamily: Constants.FONT_STD,fontWeight: FontWeight.w700),);
+                          }),
+                          SizedBox(height: 5.h,),
                           Row(
                             children: [
-                              Text("Hala",style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontFamily: Constants.FONT_STD,fontWeight: FontWeight.w700),),
-                              SizedBox(width: 5.w,),
                               Image.asset(ImageX.icon_vip),
+                              SizedBox(width: 3.w,),
+                              Obx(() {
+                                return Text(state.user.value.alias.em(),style: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),);
+                              }),
                             ],
                           ),
-                          Text(Intr().nicheng_(["晴子"]),style: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),),
                         ],
                       ),
                       Expanded(child: Container()),
@@ -82,9 +91,9 @@ class StateMinePage extends State<MinePage>{
                         children: [
                           Row(
                             children: [
-                              Text("¥88.88\n${Intr().jiangjin}",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),textAlign: TextAlign.center,),
+                              Text("¥${state.bonus.value.bonusTotal.em()}\n${Intr().jiangjin}",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),textAlign: TextAlign.center,),
                               SizedBox(width: 10.w,),
-                              Text("1000\n${Intr().jifen}",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862(),),textAlign: TextAlign.center,),
+                              Text("${state.memberPoint.value.point.em()}\n${Intr().jifen}",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862(),),textAlign: TextAlign.center,),
                             ],
                           ),
                         ],
@@ -110,11 +119,14 @@ class StateMinePage extends State<MinePage>{
                           child: Row(
                             children: [
                               Image.asset(ImageX.icon_rmb_grey),
-                              Text(Intr().rmbqb,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
+                              SizedBox(width: 2.w,),
+                              Text("CNY",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
                               SizedBox(width: 5.w,),
                               Expanded(child: Container()),
                               Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
-                              Text("\$6,666",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862(),fontWeight: FontWeight.w600),),
+                              Obx(() {
+                                return Text("₮${state.usdtBal.value.money.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862(),fontWeight: FontWeight.w600),);
+                              }),
                               SizedBox(width: 5.w,),
                               Image.asset(ImageX.icon_right_left,width: 10.w,),
                             ],
@@ -124,7 +136,9 @@ class StateMinePage extends State<MinePage>{
                         Row(
                           children: [
                             Text(Intr().yue_,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
-                            Text("¥8,888",style: TextStyle(fontSize: 18.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
+                            Obx(() {
+                              return Text("¥${state.cnyBal.value.money.em()}",style: TextStyle(fontSize: 18.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),);
+                            }),
                           ],
                         ),
                         SizedBox(height: 20.h,),

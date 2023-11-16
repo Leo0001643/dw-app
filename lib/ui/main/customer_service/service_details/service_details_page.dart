@@ -61,7 +61,8 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                   children: [
                     SizedBox(height: 10.h,),
                     Column(
-                      children: state.detail.custerServers?.map((e) => buildCategaryItem(e, state.detail.custerServers!.indexOf(e))).toList() ?? [],
+                      children: state.detail.custerServers?.map((e) =>
+                          buildCategaryItem(e, state.detail.custerServers!.indexOf(e))).toList() ?? [],
                     ),
                     // buildCategaryItem("客服小强","Johnny999",ImageX.icon_wechat, 0),
                     // buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 1),

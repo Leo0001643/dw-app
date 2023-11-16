@@ -12,6 +12,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/draggable_widget.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/main/home/game_menu_view.dart';
 import 'package:leisure_games/ui/main/home/more_tab_view.dart';
@@ -107,7 +108,9 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                            child: AppData.isLogin() ? userHeader():noLoginHeader(),
+                            child: Obx(() {
+                              return AppData.isLogin() ? userHeader(state.user.value):noLoginHeader(state.user.value);
+                            })
                           ),
                           SizedBox(width: 20.w,),
                           buildMenuItem(Intr().charge,ImageX.icChongzhiT(),0),
@@ -231,12 +234,12 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
   }
 
   ///登录后
-  Widget userHeader() {
+  Widget userHeader(LoginUserEntity user) {
     return Column(
       children: [
         Row(
           children: [
-            Text("Hala",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+            Text(user.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
             SizedBox(width: 5.w,),
             Image.asset(ImageX.icon_vip),
             Expanded(child: Container(),),
@@ -261,7 +264,10 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                 children: [
                   Image.asset(ImageX.icon_rmb_grey,color: ColorX.icon586(),),
                   SizedBox(width: 3.w,),
-                  Text("¥6666.6",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),overflow: TextOverflow.ellipsis,),maxLines: 1,),
+                  Obx(() {
+                    return Text("¥${state.cnyBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),overflow:
+                    TextOverflow.ellipsis,),maxLines: 1,);
+                  }),
                 ],
               ),
             ),
@@ -269,7 +275,9 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
               children: [
                 Image.asset(ImageX.icon_ustd2_grey,),
                 SizedBox(width: 3.w,),
-                Text("₮6666.66",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,),maxLines: 1,)
+                Obx(() {
+                  return Text("₮${state.usdtBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,),maxLines: 1,);
+                })
               ],
             ),
           ],
@@ -279,7 +287,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
   }
 
   ///未登录
-  Widget noLoginHeader() {
+  Widget noLoginHeader(LoginUserEntity user) {
     return Row(
       children: [
         WidgetUtils().buildElevatedButton(Intr().login, 88.w, 32.h,textSize: 13.sp,textColor: ColorX.color_091722,
