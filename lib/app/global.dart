@@ -38,7 +38,7 @@ extension StringExtension on String? {
 
   ///判断是否服务器链接
   bool isUrl(){
-    return unEmpty(this) && ( this!.startsWith("http") && GetUtils.isURL(this!) );
+    return unEmpty(this) && ( this!.startsWith("http"));// || GetUtils.isURL(this!)
   }
 
   int parseInt(){

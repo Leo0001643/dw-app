@@ -165,7 +165,7 @@ class HttpService{
   }
 
   static Future<BalanceEntity> getBalance(Map<String,dynamic> params,){
-    return buildFuture<BalanceEntity>(()=> _client.getBalance(params),loading: false);
+    return buildFuture<BalanceEntity>(()=> _client.getBalance(params));
   }
 
   static Future<BonusTotalEntity> queryBonus(Map<String,dynamic> params,){

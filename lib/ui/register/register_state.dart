@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
+import '../bean/var_code_entity.dart';
 
 class RegisterState {
   RegisterState() {
@@ -6,8 +9,9 @@ class RegisterState {
   }
 
   var pwdVisible = false.obs;
+  var confirmPwdVisible = false.obs;
 
-  var agreeCheck = false.obs;
+  var agreeCheck = true.obs;
 
   var accountValue = "";
 
@@ -15,10 +19,11 @@ class RegisterState {
   var confirmPwdValue = "";
 
   var realname = "";
+  var nameFocus = FocusNode();
 
   var vcode = "";
 
-
+  var varcode = VarCodeEntity().obs;
 
 
 }

@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -8,6 +11,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
+import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/login/login_logic.dart';
 
 import 'register_logic.dart';
@@ -24,8 +28,18 @@ class _RegisterPageState extends State<RegisterPage> {
   final state = Get.find<RegisterLogic>().state;
 
   @override
+  void initState() {
+    state.nameFocus.addListener(() {
+      ///当真实姓名输入框失去焦点时调用校验
+      if(!state.nameFocus.hasFocus){ logic.memberRegCheck(); }
+    });
+    super.initState();
+  }
+
+  @override
   void dispose() {
     Get.delete<RegisterLogic>();
+    state.nameFocus.dispose();
     super.dispose();
   }
 
@@ -41,7 +55,12 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().yhm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+              child: Row(
+                children: [
+                  Text("* ",style: TextStyle(color: ColorX.color_fe2427,fontSize: 14.sp),),
+                  Text(Intr().yhm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                ],
+              ),
             ),
             SizedBox(height: 10.h,),
             Center(
@@ -56,7 +75,12 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().mm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+              child: Row(
+                children: [
+                  Text("* ",style: TextStyle(color: ColorX.color_fe2427,fontSize: 14.sp),),
+                  Text(Intr().mm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                ],
+              ),
             ),
             SizedBox(height: 10.h,),
             Center(
@@ -85,7 +109,46 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().zsxm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+              child: Row(
+                children: [
+                  Text("* ",style: TextStyle(color: ColorX.color_fe2427,fontSize: 14.sp),),
+                  Text(Intr().querenmima,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                ],
+              ),
+            ),
+            SizedBox(height: 10.h,),
+            Center(
+              child: Container(
+                width: 335.w,
+                decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Row(
+                  children: [
+                    Obx(() {
+                      return WidgetUtils().buildTextField(285.w, 46.h, 14.sp,
+                          ColorX.text949(), Intr().wszhzm,backgroundColor: Colors.transparent,
+                          onChanged: (v)=> state.confirmPwdValue = v,defText: state.confirmPwdValue,hintColor: ColorX.text586(),
+                          obscureText: !state.confirmPwdVisible.value,inputType: TextInputType.visiblePassword);
+                    }),
+                    InkWell(
+                      onTap: ()=> state.confirmPwdVisible.value = !state.confirmPwdVisible.value,
+                      child: Obx(() {
+                        return state.confirmPwdVisible.value ? Image.asset(ImageX.icon_show,color: ColorX.icon586(),width: 30.w,):Image.asset(ImageX.icon_hide,color: ColorX.icon586(),width: 30.w,);
+                      }),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 20.h,),
+            Padding(
+              padding: EdgeInsets.only(left: 35.w),
+              child: Row(
+                children: [
+                  Text("* ",style: TextStyle(color: ColorX.color_fe2427,fontSize: 14.sp),),
+                  Text(Intr().zsxm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                ],
+              ),
             ),
             SizedBox(height: 10.h,),
             Center(
@@ -94,13 +157,18 @@ class _RegisterPageState extends State<RegisterPage> {
                 decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r),),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: WidgetUtils().buildTextField(325.w, 46.h, 14.sp, ColorX.text949(), Intr().ytxyhkhmyz,hintColor: ColorX.text586(),
-                    backgroundColor: Colors.transparent,onChanged: (v)=>state.accountValue = v),
+                    backgroundColor: Colors.transparent,onChanged: (v)=>state.realname = v,focusNode: state.nameFocus),
               ),
             ),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().yzm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+              child: Row(
+                children: [
+                  Text("* ",style: TextStyle(color: ColorX.color_fe2427,fontSize: 14.sp),),
+                  Text(Intr().yzm,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                ],
+              ),
             ),
             SizedBox(height: 10.h,),
             Center(
@@ -112,8 +180,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     WidgetUtils().buildTextField(225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,hintColor: ColorX.text586(),
-                        backgroundColor: Colors.transparent,onChanged: (v)=>state.accountValue = v),
-                    Container(width: 73.w,height: 30.h,color: Colors.black54,),
+                        backgroundColor: Colors.transparent,inputType: TextInputType.number,onChanged: (v)=>state.vcode = v),
+                    Obx(() {
+                      return WidgetUtils().buildVarCode(state.varcode.value.varCode.em(),(){
+                        logic.getVarcode();
+                      });
+                    }),
                   ],
                 ),
               ),
@@ -123,25 +195,29 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Text.rich(TextSpan(
                 children: [
                   WidgetSpan(
-                    child: InkWell(
-                      onTap: ()=> state.agreeCheck.value = !state.agreeCheck.value,
+                    // child: InkWell(
+                    //   onTap: ()=> state.agreeCheck.value = !state.agreeCheck.value,
                       child: Obx(() {
                         return Image.asset(state.agreeCheck.value ? ImageX.icon_select : ImageX.icon_unselect);
                       }),
-                    ),
+                    // ),
                   ),
                   WidgetSpan(child: SizedBox(width: 5.w,),),
                   TextSpan(text: Intr().wywdbty,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917())),
                   WidgetSpan(
                     child: InkWell(
-                      onTap: (){},
+                      onTap: (){
+                        Get.toNamed(Routes.html,arguments: HtmlEvent(data: Constants.contact,isHtmlData: false,pageTitle: Intr().yhtk));
+                      },
                       child: Text(Intr().yhtk,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                     ),
                   ),
                   TextSpan(text: Intr().and,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917())),
                   WidgetSpan(
                     child: InkWell(
-                      onTap: (){},
+                      onTap: (){
+                        Get.toNamed(Routes.html,arguments: HtmlEvent(data: Constants.contact,isHtmlData: false,pageTitle: Intr().ysxy));
+                      },
                       child: Text(Intr().ysxy,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                     ),
                   ),
@@ -177,7 +253,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       eventBus.fire(ChangeMainPageEvent(3));
                       Get.until((ModalRoute.withName(Routes.main)));
                     },
-                    child: Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                    child: Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w600),),
                   ),
                 ],
               ),

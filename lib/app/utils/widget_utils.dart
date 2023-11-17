@@ -402,7 +402,7 @@ class WidgetUtils {
 
 
   ImageProvider buildImageProvider(String image,{String defImage = ImageX.icon_avatar}){
-    if(isEmpty(image) || !image.isUrl() || !image.contains("assets")){ return AssetImage(defImage); }
+    if(isEmpty(image) || (!image.isUrl() && !image.contains("assets"))){ return AssetImage(defImage); }
     try{
       return image.isUrl() ? NetworkImage(image,) : AssetImage(image) as ImageProvider;
     }catch(e){

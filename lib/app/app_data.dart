@@ -74,6 +74,14 @@ class AppData {
     return DeviceInfo.fromJson(jsonDecode(json));
   }
 
+  static void setWallet(bool rmb){
+    prefs?.setBool("wallet_mode", rmb);
+  }
+  ///默认钱包类型 RMB 和 USDT
+  static bool wallet(){
+    return prefs?.getBool("wallet_mode") ?? true;
+  }
+
   static void setUser(LoginUserEntity user){
     prefs?.setString("login_user", jsonEncode(user.toJson()));
   }

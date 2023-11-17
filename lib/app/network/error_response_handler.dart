@@ -5,6 +5,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 
 ///app全局错误监听处理
@@ -26,9 +27,9 @@ class ErrorResponseHandler {
   var lastToast = "";
 
   void onErrorHandle(dynamic error, {dynamic stackTrace}) {
-    loggerArray(['onErrorHandle', error, stackTrace]);
+    loggerArray(['onErrorHandle',lastTime, error, stackTrace]);
     ///控制连续多次弹出同样内容的吐司
-    var current = DateTime.now().millisecond;
+    var current = DateTime.now().millisecondsSinceEpoch;
     if(error is Map){
       responseHandler(error);
     } else {
@@ -44,7 +45,7 @@ class ErrorResponseHandler {
   ///服务返回异常处理
   void responseHandler(Map<dynamic, dynamic> error) {
     var toast= error["message"];
-    var current = DateTime.now().millisecond;
+    var current = DateTime.now().millisecondsSinceEpoch;
     if(toast != lastToast || (current - lastTime) >= 5000){
       lastTime = current;
       lastToast = toast;
@@ -70,8 +71,12 @@ class ErrorResponseHandler {
         case 900403://鉴权失败
           ///登录权限已过期，或退出登录
           Get.until((ModalRoute.withName(Routes.main)));
+          ///刷新各页面数据
           eventBus.fire(LoginRefreshEvent());
-          AppData.clear();///清除用户登录信息
+          ///页面切换到首页
+          eventBus.fire(ChangeMainPageEvent(0));
+          ///清除用户登录信息
+          AppData.clear();
           showToast(toast);
           break;
         case 900078://无效的请求方式
