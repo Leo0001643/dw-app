@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -101,25 +102,23 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Image.asset(ImageX.icon_bgyy,color: ColorX.icon586(),),
-                        SizedBox(width: 5.w,),
-                        Text(Intr().bjyy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                        Expanded(child: Container()),
-                        GFToggle(
-                          onChanged: (value){
-                            AppData.setBgMusic(value == true);
-                            musicToggle.value = value == true;
-                          },
-                          value: musicToggle.value,
-                          type: GFToggleType.ios,
-                          disabledTrackColor: ColorX.text949(),
-                          enabledTrackColor: ColorX.color_69c25c,
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      Image.asset(ImageX.icon_bgyy,color: ColorX.icon586(),),
+                      SizedBox(width: 5.w,),
+                      Text(Intr().bjyy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                      Expanded(child: Container()),
+                      GFToggle(
+                        onChanged: (value){
+                          AppData.setBgMusic(value == true);
+                          musicToggle.value = value == true;
+                        },
+                        value: musicToggle.value,
+                        type: GFToggleType.ios,
+                        disabledTrackColor: ColorX.text949(),
+                        enabledTrackColor: ColorX.color_69c25c,
+                      ),
+                    ],
                   ),
                   SizedBox(height: 15.h,),
                   Divider(color: ColorX.color_10_949,height: 1.h,),
@@ -376,41 +375,31 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
             ),
             padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
             margin: EdgeInsets.symmetric(horizontal: 10.w),
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: (){
-                    Navigator.of(context).pop();
-                    Get.toNamed(Routes.select_currency);
-                  },
-                  child: Row(
-                    children: [
-                      Image.asset(ImageX.icon_rmb_grey),
-                      SizedBox(width: 3.w,),
-                      Text(Intr().wallet_cny,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
-                      SizedBox(width: 5.w,),
-                      Expanded(child: Container()),
-                      Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
-                      Obx(() {
-                        return Text("₮${logic.state.usdtBal.value.money.em()}",
-                          style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),);
-                      }),
-                      SizedBox(width: 5.w,),
-                      Image.asset(ImageX.icon_right_left,width: 10.w,),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10.h,),
-                Row(
+            child: GetBuilder<WalletController>(
+              id: WalletController.wallet_id,
+              builder: (ctl){
+                return Column(
                   children: [
-                    Text(Intr().yue_,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
-                    Obx(() {
-                      return Text("¥${logic.state.cnyBal.value.money.em()}",
-                        style: TextStyle(fontSize: 14.sp, color: ColorX.text0917(), fontWeight: FontWeight.w600,),);
-                    }),
+                    InkWell(
+                      onTap: (){
+                        Navigator.of(context).pop();
+                        Get.toNamed(Routes.select_currency);
+                      },
+                      child: buildWalletDefault(logic,ctl),
+                    ),
+                    SizedBox(height: 10.h,),
+                    Row(
+                      children: [
+                        Text(Intr().yue_,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
+                        Obx(() {
+                          return Text(ctl.wallet ? "¥${logic.state.cnyBal.value.money.em()}" : "₮${logic.state.usdtBal.value.money.em()}",
+                            style: TextStyle(fontSize: 14.sp, color: ColorX.text0917(), fontWeight: FontWeight.w600,),);
+                        }),
+                      ],
+                    ),
                   ],
-                ),
-              ],
+                );
+              },
             ),
           ),
           SizedBox(height: 8.h,),
@@ -479,6 +468,26 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
     }else {
       Get.toNamed(Routes.login);
     }
+  }
+
+  Widget buildWalletDefault(HomeLogic logic,WalletController ctl) {
+    return Row(
+      children: [
+        Image.asset(ctl.wallet ? ImageX.icon_rmb_grey : ImageX.icon_ustd2_grey),
+        SizedBox(width: 3.w,),
+        Text(ctl.wallet ? Intr().wallet_cny : Intr().wallet_usdt,
+          style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
+        SizedBox(width: 5.w,),
+        Expanded(child: Container()),
+        Text("${ctl.wallet ? "USDT" : "CNY"}:",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+        Obx(() {
+          return Text(ctl.wallet ? "₮${logic.state.usdtBal.value.money.em()}" : "¥${logic.state.cnyBal.value.money.em()}",
+            style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),);
+        }),
+        SizedBox(width: 5.w,),
+        Image.asset(ImageX.icon_right_left,width: 10.w,),
+      ],
+    );
   }
 
 

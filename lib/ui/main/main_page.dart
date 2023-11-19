@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -25,7 +26,8 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
 
   @override
   void initState() {
-    state.tabController = TabController(length: 5,vsync: this);
+    logic.initController();
+    state.tabController = TabController(length: state.pages.length,vsync: this);
     super.initState();
   }
 

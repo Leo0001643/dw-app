@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -109,52 +110,58 @@ class StateMinePage extends State<MinePage>{
                     ),
                     padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
                     margin: EdgeInsets.symmetric(horizontal: 10.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        InkWell(
-                          onTap: (){
-                            DialogUtils().showSelectWalletBtmDialog(context);
-                          },
-                          child: Row(
-                            children: [
-                              Image.asset(ImageX.icon_rmb_grey),
-                              SizedBox(width: 2.w,),
-                              Text("CNY",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
-                              SizedBox(width: 5.w,),
-                              Expanded(child: Container()),
-                              Text("USDT: ",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
-                              Obx(() {
-                                return Text("₮${state.usdtBal.value.money.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862(),fontWeight: FontWeight.w600),);
-                              }),
-                              SizedBox(width: 5.w,),
-                              Image.asset(ImageX.icon_right_left,width: 10.w,),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 10.h,),
-                        Row(
+                    child: GetBuilder<WalletController>(
+                      id: WalletController.wallet_id,
+                      builder: (ctl){
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(Intr().yue_,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
-                            Obx(() {
-                              return Text("¥${state.cnyBal.value.money.em()}",style: TextStyle(fontSize: 18.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),);
-                            }),
+                            InkWell(
+                              onTap: ()=> Get.toNamed(Routes.select_currency),
+                              child: Row(
+                                children: [
+                                  Image.asset(ctl.wallet ? ImageX.icon_rmb_grey : ImageX.icon_ustd2_grey),
+                                  SizedBox(width: 2.w,),
+                                  Text(ctl.wallet ? Intr().wallet_cny : Intr().wallet_usdt,
+                                    style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
+                                  SizedBox(width: 5.w,),
+                                  Expanded(child: Container()),
+                                  Text("${ctl.wallet ? "USDT" : "CNY"}:",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
+                                  Obx(() {
+                                    return Text(ctl.wallet ? "₮${logic.state.usdtBal.value.money.em()}" : "¥${logic.state.cnyBal.value.money.em()}",
+                                      style: TextStyle(fontSize: 12.sp,color: ColorX.text5862(),fontWeight: FontWeight.w600),);
+                                  }),
+                                  SizedBox(width: 5.w,),
+                                  Image.asset(ImageX.icon_right_left,width: 10.w,),
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 10.h,),
+                            Row(
+                              children: [
+                                Text(Intr().yue_,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
+                                Obx(() {
+                                  return Text(ctl.wallet ? "¥${logic.state.cnyBal.value.money.em()}" : "₮${logic.state.usdtBal.value.money.em()}",
+                                    style: TextStyle(fontSize: 18.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),);
+                                }),
+                              ],
+                            ),
+                            SizedBox(height: 20.h,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                WidgetUtils().buildElevatedButton(Intr().tixian, 131.w, 45.h,
+                                    bg: ColorX.cardBg5(),textColor: ColorX.text0917(),onPressed: (){
+                                      Get.toNamed(Routes.withdraw);
+                                    }),
+                                WidgetUtils().buildElevatedButton(Intr().chongzhi, 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
+                                  eventBus.fire(ChangeMainPageEvent(2));
+                                }),
+                              ],
+                            ),
                           ],
-                        ),
-                        SizedBox(height: 20.h,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            WidgetUtils().buildElevatedButton(Intr().tixian, 131.w, 45.h,
-                                bg: ColorX.cardBg5(),textColor: ColorX.text0917(),onPressed: (){
-                              Get.toNamed(Routes.withdraw);
-                            }),
-                            WidgetUtils().buildElevatedButton(Intr().chongzhi, 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
-                              eventBus.fire(ChangeMainPageEvent(2));
-                            }),
-                          ],
-                        ),
-                      ],
+                        );
+                      },
                     ),
                   ),
                   SizedBox(height: 10.r,),

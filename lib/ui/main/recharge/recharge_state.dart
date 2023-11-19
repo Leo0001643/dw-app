@@ -18,5 +18,6 @@ class RechargeState {
   ///支付方式
   var paymentList = PaymentListEntity().obs;
 
+  var usdtBank = PaymentListBanks().obs;
 
 }

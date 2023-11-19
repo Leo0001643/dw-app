@@ -10,6 +10,8 @@ import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
+import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
+import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -21,6 +23,7 @@ import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
@@ -143,7 +146,15 @@ abstract class RetrofitClient{
   @GET('/ds-api-web/getMessage')
   Future<BaseResponseEntity<List<MessageItemEntity>>> getMessage(@Query('oid') String oid,@Query('username') String username,);
 
+  @GET('/ds-api-web/getOnlineDigiccyChannel')
+  Future<BaseResponseEntity<DigiccyChannelEntity>> getOnlineDigiccyChannel(@Query('oid') String oid,@Query('username') String username,);
 
+  @GET('/ds-api-web/getPaymentChannel')
+  Future<BaseResponseEntity<PaymentChannelEntity>> getPaymentChannel(@Query('oid') String oid,
+      @Query('username') String username,@Query('bankCode') String bankCode,);
+
+  @POST('/ds-api-web/digiccyDeposit')
+  Future<BaseResponseEntity<DigiccyDepositDataEntity>> digiccyDeposit(@Body() Map<String,dynamic> params,);
 
 
 

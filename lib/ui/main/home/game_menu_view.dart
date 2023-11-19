@@ -159,7 +159,7 @@ class StateGameMenuView extends State<GameMenuView>{
           borderRadius: BorderRadius.all(Radius.circular(10.r)),
           child: Stack(
             children: [
-              Image.network(element.image(),width: 68.r,height: 68.r,fit: BoxFit.cover,),
+              WidgetUtils().buildImage(element.image(),  68.r,  68.r,fit: BoxFit.cover,),
               Positioned(
                 right: 0,
                 top: 0,
@@ -218,7 +218,8 @@ class StateGameMenuView extends State<GameMenuView>{
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
           color: select ? Colors.transparent:ColorX.cardBg3(),
-          image: select ? DecorationImage(image: WidgetUtils().buildImageProvider(ImageX.isSelectT()),fit: BoxFit.fill) : null,
+          image: select ?
+          DecorationImage(image: WidgetUtils().buildImageProvider(ImageX.isSelectT()),fit: BoxFit.fill) : null,
           // border: select ? Border.all(color: ColorX.color_fc243b,width: 1.w): Border.all(color: Colors.transparent,width: 0),
         ),
         alignment: Alignment.center,

@@ -1074,6 +1074,112 @@ class _RetrofitClient implements RetrofitClient {
     return value;
   }
 
+  @override
+  Future<BaseResponseEntity<DigiccyChannelEntity>> getOnlineDigiccyChannel(
+    String oid,
+    String username,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'oid': oid,
+      r'username': username,
+    };
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseEntity<DigiccyChannelEntity>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/ds-api-web/getOnlineDigiccyChannel',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseEntity<DigiccyChannelEntity>.fromJson(
+      _result.data!,
+      (json) => DigiccyChannelEntity.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseResponseEntity<PaymentChannelEntity>> getPaymentChannel(
+    String oid,
+    String username,
+    String bankCode,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'oid': oid,
+      r'username': username,
+      r'bankCode': bankCode,
+    };
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseEntity<PaymentChannelEntity>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/ds-api-web/getPaymentChannel',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseEntity<PaymentChannelEntity>.fromJson(
+      _result.data!,
+      (json) => PaymentChannelEntity.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseResponseEntity<DigiccyDepositDataEntity>> digiccyDeposit(
+      Map<String, dynamic> params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(params);
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseEntity<DigiccyDepositDataEntity>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/ds-api-web/digiccyDeposit',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseEntity<DigiccyDepositDataEntity>.fromJson(
+      _result.data!,
+      (json) => DigiccyDepositDataEntity.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

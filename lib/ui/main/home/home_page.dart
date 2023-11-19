@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/components/carousel/gf_carousel.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -112,7 +113,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                               return AppData.isLogin() ? userHeader(state.user.value):noLoginHeader(state.user.value);
                             })
                           ),
-                          SizedBox(width: 20.w,),
+                          SizedBox(width: 15.w,),
                           buildMenuItem(Intr().charge,ImageX.icChongzhiT(),0),
                           buildMenuItem(Intr().tixian,ImageX.icTixianT(),1),
                           MoreTabView(logic),
@@ -172,7 +173,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
     return InkWell(
       onTap: ()=> logic.clickMenu(context,i),
       child: SizedBox(
-        width: 40.w,
+        width: 50.w,
         child: Column(
           children: [
             Image.asset(icon,width: 20.r,fit: BoxFit.fill,),
@@ -196,12 +197,12 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
             onTap: ()=> logic.clickInfo(context, i),
             child: Text(t,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
           ),
-          SizedBox(height: 5.h,),
+          SizedBox(height: 10.h,),
           InkWell(
             onTap: ()=> logic.clickInfo(context, j),
             child: Text(u,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
           ),
-          SizedBox(height: 5.h,),
+          SizedBox(height: 10.h,),
           InkWell(
             onTap: ()=> logic.clickInfo(context, k),
             child: Text(v,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
@@ -244,43 +245,37 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
             Image.asset(ImageX.icon_vip),
             Expanded(child: Container(),),
             InkWell(
-              onTap: (){},
+              onTap: ()=> logic.loadUserData(),
               child: Image.asset(ImageX.icShuaxinT(),width: 17.r,fit: BoxFit.fill,),
             ),
             SizedBox(width: 3.w,),
             Container(height: 10.h,width: 1.w,color: ColorX.color_091722,),
             SizedBox(width: 5.w,),
             InkWell(
-              onTap: (){},
+              onTap: ()=> Get.toNamed(Routes.select_currency),
               child: Image.asset(ImageX.icQiehuanT(),width: 10.r,fit: BoxFit.fill,),
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Image.asset(ImageX.icon_rmb_grey,color: ColorX.icon586(),),
-                  SizedBox(width: 3.w,),
-                  Obx(() {
-                    return Text("¥${state.cnyBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),overflow:
-                    TextOverflow.ellipsis,),maxLines: 1,);
-                  }),
-                ],
-              ),
-            ),
-            Row(
+        GetBuilder<WalletController>(
+          id: WalletController.wallet_id,
+          builder: (ctl){
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(ImageX.icon_ustd2_grey,),
-                SizedBox(width: 3.w,),
-                Obx(() {
-                  return Text("₮${state.usdtBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,),maxLines: 1,);
-                })
+                Expanded(
+                  child: Obx(() {
+                    return buildWalletDefault(ctl.wallet ? "¥${state.cnyBal.value.money.em()}"
+                        : "₮${state.usdtBal.value.money.em()}", ctl.wallet ? ImageX.icon_rmb_grey : ImageX.icon_ustd2_grey);
+                  }),
+                ),
+               Obx(() {
+                 return buildWalletOther(ctl.wallet ? "₮${state.usdtBal.value.money.em()}"
+                     : "¥${state.cnyBal.value.money.em()}", ctl.wallet ? ImageX.icon_ustd2_grey : ImageX.icon_rmb_grey);
+               }),
               ],
-            ),
-          ],
+            );
+          },
         ),
       ],
     );
@@ -289,12 +284,34 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
   ///未登录
   Widget noLoginHeader(LoginUserEntity user) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        WidgetUtils().buildElevatedButton(Intr().login, 88.w, 32.h,textSize: 13.sp,textColor: ColorX.color_091722,
+        WidgetUtils().buildElevatedButton(Intr().login, 78.w, 32.h,textSize: 13.sp,textColor: ColorX.color_091722,
             bg: Colors.white,onPressed: ()=>Get.toNamed(Routes.login)),
-        SizedBox(width: 10.w,),
-        WidgetUtils().buildElevatedButton(Intr().register, 88.w, 32.h,textSize: 13.sp,
+        // SizedBox(width: 10.w,),
+        WidgetUtils().buildElevatedButton(Intr().register, 78.w, 32.h,textSize: 13.sp,
             bg: ColorX.color_fe2427,onPressed: ()=>Get.toNamed(Routes.register)),
+      ],
+    );
+  }
+
+  Widget buildWalletDefault(String value,String icon) {
+    return Row(
+      children: [
+        Image.asset(icon,),//color: ColorX.icon586(),
+        SizedBox(width: 3.w,),
+        Text(value,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),overflow:
+        TextOverflow.ellipsis,),maxLines: 1,),
+      ],
+    );
+  }
+
+  Widget buildWalletOther(String value,String icon) {
+    return  Row(
+      children: [
+        Image.asset(icon,),
+        SizedBox(width: 3.w,),
+        Text(value,style: TextStyle(fontSize: 14.sp,color: ColorX.color_58698d,),maxLines: 1,),
       ],
     );
   }

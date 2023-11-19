@@ -520,6 +520,13 @@ class Intr extends Translations{
   String get mimashurubuyizhi => 'mimashurubuyizhi'.tr;
   String get usdt_coin => 'usdt_coin'.tr;
   String get lianxizaixiankefu => 'lianxizaixiankefu'.tr;
+  String get shuruzhuanzhangqianbao => 'shuruzhuanzhangqianbao'.tr;
+  String get yiwanchengtijiaorukuan => 'yiwanchengtijiaorukuan'.tr;
+  String get qianbaodizhi => 'qianbaodizhi'.tr;
+  String get shifoujinxingzhuanzhang => 'shifoujinxingzhuanzhang'.tr;
+  String get tishi => 'tishi'.tr;
+  String get yinhangmingcheng => 'yinhangmingcheng'.tr;
+  String get xuanzhezhifuyinhang => 'xuanzhezhifuyinhang'.tr;
 
 
 
@@ -1023,6 +1030,13 @@ class Intr extends Translations{
       "mimashurubuyizhi":"两次密码输入不一致",
       "usdt_coin":"USDT币",
       "lianxizaixiankefu":"请联系在线客服",
+      "shuruzhuanzhangqianbao":"请输入您转账时使用的钱包地址",
+      "yiwanchengtijiaorukuan":"已完成转账，提交入款申请",
+      "qianbaodizhi":"钱包地址",
+      "shifoujinxingzhuanzhang":"您是否像收款账号进行了转账",
+      "tishi":"提示",
+      "yinhangmingcheng":"银行名称",
+      "xuanzhezhifuyinhang":"选择支付银行",
 
 
 

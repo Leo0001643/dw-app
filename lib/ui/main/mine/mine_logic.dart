@@ -37,8 +37,6 @@ class MineLogic extends GetxController {
 
 
 
-
-
   void clickItem(int index){
     switch(index){
       case 0:
@@ -122,6 +120,9 @@ class MineLogic extends GetxController {
       state.user.refresh();
     }
   }
+
+
+
 
 
 

@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -12,6 +14,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
+import 'package:sprintf/sprintf.dart';
 
 class DraggableWidget extends StatefulWidget{
 
@@ -96,11 +99,13 @@ class _StateDraggableWidget extends State<DraggableWidget>{
 
 //http://180.150.128.168:20001/#/Hongbao/63030302451ba3b3a8d30c29bf8ec4e6/xiao/en
   void onJumpWeb() {
-    var link = "http://soptj9qq.com/m";//Get.find<MainLogic>().state.webConfig?.agDomain?.list?.first;
+    // var link = "http://soptj9qq.com/m";//Get.find<MainLogic>().state.webConfig?.agDomain?.list?.first;
 
-    var path = "/#/Hongbao/1/2/3";///${Intr().currentLocale().languageCode}
+    // var path = "/#/Hongbao${AppData.user()?.oid}/2/3";///${Intr().currentLocale().languageCode}
 
-    Get.toNamed(Routes.html,arguments: HtmlEvent(data: "$link$path",isHtmlData: false,pageTitle: Intr().hongbaohuodong));
+    var path = sprintf(Constants.hongbao,[AppData.user()?.oid,AppData.user()?.username,Intr().currentLocale().languageCode]);
+
+    Get.toNamed(Routes.html,arguments: HtmlEvent(data: path,isHtmlData: false,pageTitle: Intr().hongbaohuodong));
 
   }
 

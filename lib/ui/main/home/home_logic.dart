@@ -216,7 +216,6 @@ class HomeLogic extends GetxController {
     if(AppData.isLogin()){
       var user = AppData.user();
       state.user.value = user!;
-      state.user.refresh();
 
       HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
         state.cnyBal.value = value;
@@ -227,6 +226,7 @@ class HomeLogic extends GetxController {
         state.usdtBal.value = value;
         state.usdtBal.refresh();
       });
+      state.user.refresh();
     }else {
       state.user.value = LoginUserEntity();
       state.user.refresh();

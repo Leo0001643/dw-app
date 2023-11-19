@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +10,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 
 import 'select_currency_logic.dart';
 
@@ -41,23 +43,23 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              margin: EdgeInsets.symmetric(horizontal: 12.w),
-              child: Row(
-                children: [
-                  SizedBox(width: 10.w,),
-                  Icon(Icons.search_rounded,size: 20.w,),
-                  WidgetUtils().buildTextField(
-                      321.w, 44.h, 15.sp, ColorX.color_091722, Intr().sszcbz,
-                      onChanged: (value)=> logic.searchCoin(value))
-                ],
-              ),
-            ),
-            SizedBox(height: 10.h,),
+            // Container(
+            //   decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.circular(10.r),
+            //   ),
+            //   margin: EdgeInsets.symmetric(horizontal: 12.w),
+            //   child: Row(
+            //     children: [
+            //       SizedBox(width: 10.w,),
+            //       Icon(Icons.search_rounded,size: 20.w,),
+            //       WidgetUtils().buildTextField(
+            //           321.w, 44.h, 15.sp, ColorX.color_091722, Intr().sszcbz,
+            //           onChanged: (value)=> logic.searchCoin(value))
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(height: 10.h,),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -76,16 +78,13 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
                       var item = state.coinList[index];
                       return Obx(() {
                         return ListTile(
-                          onTap: (){
-                            state.dropdownValue.value = item;
-                            state.dropdownValue.refresh();
-                          },
+                          onTap: ()=> logic.changeWallet(item),
                           title: Row(
                             children: [
                               Image.asset(item.icon.em(),width: 24.r,),
-                              SizedBox(width: 12.w,),
-                              Text(item.language.em(),
-                                style: TextStyle(fontSize: 14.sp,color: ColorX.color_3e3737),),
+                              SizedBox(width: 5.w,),
+                              Text("${item.language}${item.money}",
+                                style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                             ],
                           ),
                           trailing: state.dropdownValue.value == item
@@ -96,23 +95,33 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
               }),
             ),
             SizedBox(height: 10.h,),
-            InkWell(
-              onTap: (){},
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-                padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
-                margin: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Row(
-                  children: [
-                    Text(Intr().bbdh,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                    Expanded(child: Container()),
-                    Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                    Image.asset(ImageX.ic_into_right),
-                  ],
-                ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+              margin: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Row(
+                children: [
+                  InkWell(
+                    onTap: ()=> Get.toNamed(Routes.coin_exchange),
+                    child: Text(Intr().bbdh,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                  ),
+                  Expanded(child: Container()),
+                  InkWell(
+                    onTap: (){
+                      Get.until((ModalRoute.withName(Routes.main)));
+                      eventBus.fire(ChangeMainPageEvent(3));
+                    },
+                    child: Row(
+                      children: [
+                        Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
+                        Image.asset(ImageX.ic_into_right),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

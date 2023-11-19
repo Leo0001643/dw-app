@@ -11,6 +11,8 @@ import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
+import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
+import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -18,12 +20,14 @@ import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
+import 'package:leisure_games/ui/bean/jump_payment_entity.dart';
 import 'package:leisure_games/ui/bean/language_msg_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_odds_entity.dart';
@@ -196,6 +200,18 @@ class JsonConvert {
       return data.map<DewInfoEntity>((Map<String, dynamic> e) =>
           DewInfoEntity.fromJson(e)).toList() as M;
     }
+    if (<DigiccyChannelEntity>[] is M) {
+      return data.map<DigiccyChannelEntity>((Map<String, dynamic> e) =>
+          DigiccyChannelEntity.fromJson(e)).toList() as M;
+    }
+    if (<DigiccyChannelWallet>[] is M) {
+      return data.map<DigiccyChannelWallet>((Map<String, dynamic> e) =>
+          DigiccyChannelWallet.fromJson(e)).toList() as M;
+    }
+    if (<DigiccyDepositDataEntity>[] is M) {
+      return data.map<DigiccyDepositDataEntity>((Map<String, dynamic> e) =>
+          DigiccyDepositDataEntity.fromJson(e)).toList() as M;
+    }
     if (<DomainConfigEntity>[] is M) {
       return data.map<DomainConfigEntity>((Map<String, dynamic> e) =>
           DomainConfigEntity.fromJson(e)).toList() as M;
@@ -228,6 +244,14 @@ class JsonConvert {
       return data.map<HomeGameMenuEntity>((Map<String, dynamic> e) =>
           HomeGameMenuEntity.fromJson(e)).toList() as M;
     }
+    if (<JumpPaymentEntity>[] is M) {
+      return data.map<JumpPaymentEntity>((Map<String, dynamic> e) =>
+          JumpPaymentEntity.fromJson(e)).toList() as M;
+    }
+    if (<JumpPaymentBanks>[] is M) {
+      return data.map<JumpPaymentBanks>((Map<String, dynamic> e) =>
+          JumpPaymentBanks.fromJson(e)).toList() as M;
+    }
     if (<LanguageMsgEntity>[] is M) {
       return data.map<LanguageMsgEntity>((Map<String, dynamic> e) =>
           LanguageMsgEntity.fromJson(e)).toList() as M;
@@ -251,6 +275,14 @@ class JsonConvert {
     if (<NoticeEntity>[] is M) {
       return data.map<NoticeEntity>((Map<String, dynamic> e) =>
           NoticeEntity.fromJson(e)).toList() as M;
+    }
+    if (<PaymentChannelEntity>[] is M) {
+      return data.map<PaymentChannelEntity>((Map<String, dynamic> e) =>
+          PaymentChannelEntity.fromJson(e)).toList() as M;
+    }
+    if (<PaymentChannelBankSet>[] is M) {
+      return data.map<PaymentChannelBankSet>((Map<String, dynamic> e) =>
+          PaymentChannelBankSet.fromJson(e)).toList() as M;
     }
     if (<PaymentListEntity>[] is M) {
       return data.map<PaymentListEntity>((Map<String, dynamic> e) =>
@@ -492,6 +524,9 @@ class JsonConvertClassCollection {
         .fromJson,
     (DeviceInfo).toString(): DeviceInfo.fromJson,
     (DewInfoEntity).toString(): DewInfoEntity.fromJson,
+    (DigiccyChannelEntity).toString(): DigiccyChannelEntity.fromJson,
+    (DigiccyChannelWallet).toString(): DigiccyChannelWallet.fromJson,
+    (DigiccyDepositDataEntity).toString(): DigiccyDepositDataEntity.fromJson,
     (DomainConfigEntity).toString(): DomainConfigEntity.fromJson,
     (ExpressionEntity).toString(): ExpressionEntity.fromJson,
     (GameKindEntity).toString(): GameKindEntity.fromJson,
@@ -500,12 +535,16 @@ class JsonConvertClassCollection {
     (HistoryHall).toString(): HistoryHall.fromJson,
     (HistoryLottoEntity).toString(): HistoryLottoEntity.fromJson,
     (HomeGameMenuEntity).toString(): HomeGameMenuEntity.fromJson,
+    (JumpPaymentEntity).toString(): JumpPaymentEntity.fromJson,
+    (JumpPaymentBanks).toString(): JumpPaymentBanks.fromJson,
     (LanguageMsgEntity).toString(): LanguageMsgEntity.fromJson,
     (LoginUserEntity).toString(): LoginUserEntity.fromJson,
     (MemberPointEntity).toString(): MemberPointEntity.fromJson,
     (MessageItemEntity).toString(): MessageItemEntity.fromJson,
     (NewsRateEntity).toString(): NewsRateEntity.fromJson,
     (NoticeEntity).toString(): NoticeEntity.fromJson,
+    (PaymentChannelEntity).toString(): PaymentChannelEntity.fromJson,
+    (PaymentChannelBankSet).toString(): PaymentChannelBankSet.fromJson,
     (PaymentListEntity).toString(): PaymentListEntity.fromJson,
     (PaymentListBanks).toString(): PaymentListBanks.fromJson,
     (Pc28LottoEntity).toString(): Pc28LottoEntity.fromJson,

@@ -44,7 +44,7 @@ class MoreTabView extends StatelessWidget {
         );
       },
       child: SizedBox(
-        width: 40.w,
+        width: 50.w,
         child: Column(
           children: [
             Image.asset(ImageX.icGengDuoT(),width: 20.r,fit: BoxFit.fill,),

@@ -12,6 +12,8 @@ import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
+import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
+import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -22,6 +24,7 @@ import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
@@ -197,7 +200,17 @@ class HttpService{
     return buildFuture<List<MessageItemEntity>>(()=> _client.getMessage(oid,username));
   }
 
+  static Future<DigiccyChannelEntity> getOnlineDigiccyChannel(String oid,String username,){
+    return buildFuture<DigiccyChannelEntity>(()=> _client.getOnlineDigiccyChannel(oid,username));
+  }
 
+  static Future<PaymentChannelEntity> getPaymentChannel(String oid,String username,String bankCode,){
+    return buildFuture<PaymentChannelEntity>(()=> _client.getPaymentChannel(oid,username,bankCode));
+  }
+
+  static Future<DigiccyDepositDataEntity> digiccyDeposit(Map<String,dynamic> params,){
+    return buildFuture<DigiccyDepositDataEntity>(()=> _client.digiccyDeposit(params,));
+  }
 
 
 

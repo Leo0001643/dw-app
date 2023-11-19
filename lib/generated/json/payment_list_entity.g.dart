@@ -42,6 +42,10 @@ PaymentListBanks $PaymentListBanksFromJson(Map<String, dynamic> json) {
   if (bankName != null) {
     paymentListBanks.bankName = bankName;
   }
+  final String? icon = jsonConvert.convert<String>(json['icon']);
+  if (icon != null) {
+    paymentListBanks.icon = icon;
+  }
   return paymentListBanks;
 }
 
@@ -50,6 +54,7 @@ Map<String, dynamic> $PaymentListBanksToJson(PaymentListBanks entity) {
   data['id'] = entity.id;
   data['bankCode'] = entity.bankCode;
   data['bankName'] = entity.bankName;
+  data['icon'] = entity.icon;
   return data;
 }
 
@@ -58,10 +63,12 @@ extension PaymentListBanksExtension on PaymentListBanks {
     int? id,
     String? bankCode,
     String? bankName,
+    String? icon,
   }) {
     return PaymentListBanks()
       ..id = id ?? this.id
       ..bankCode = bankCode ?? this.bankCode
-      ..bankName = bankName ?? this.bankName;
+      ..bankName = bankName ?? this.bankName
+      ..icon = icon ?? this.icon;
   }
 }

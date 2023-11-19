@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -40,60 +41,68 @@ class _RechargePageState extends State<RechargePage> {
                 image: DecorationImage(image: AssetImage(ImageX.rechargeBgT()),fit: BoxFit.fill),
               ),
             ),
-            Column(
-              children: [
-                WidgetUtils().buildAppBar(Intr().chongzhizhongxin,bgColor: Colors.transparent, msg: true,drawer: true,back: false),
-                Container(
-                  height: 100.h,
-                  child: Obx(() {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GFAvatar(
-                          backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(state.user.value.avatar.em())),
-                          radius: 28.r,
-                        ),
-                        SizedBox(height: 7.h,),
-                        Text(Intr().chongzhizhanghu_([state.user.value.username.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
-                      ],
-                    );
-                  }),
-                ),
-                SizedBox(height: 10.h,),
-                Padding(
-                  padding: EdgeInsets.only(left: 27.w,right: 27.w,top: 10.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(Intr().wallet_usdt,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
-                      Obx(() {
-                        return Text("${Intr().yue_}₮${state.usdtBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
+            GetBuilder<WalletController>(
+              id: WalletController.wallet_id,
+              builder: (ctl){
+                return Column(
+                  children: [
+                    WidgetUtils().buildAppBar(Intr().chongzhizhongxin,bgColor: Colors.transparent, msg: true,drawer: true,back: false),
+                    Container(
+                      height: 100.h,
+                      child: Obx(() {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GFAvatar(
+                              backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(state.user.value.avatar.em())),
+                              radius: 28.r,
+                            ),
+                            SizedBox(height: 7.h,),
+                            Text(Intr().chongzhizhanghu_([state.user.value.username.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+                          ],
+                        );
                       }),
-                    ],
-                  ),
-                ),
-                buildCategoryItem(PaymentListBanks(bankName: Intr().usdt_coin,bankCode: ImageX.icon_dollar_grey),-1),
-                SizedBox(height: 10.h,),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 27.w,vertical: 7.h),
-                  child: Obx(() {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(Intr().dangqianmoren([Intr().wallet_cny]),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
-                        Text("${Intr().yue_}¥${state.cnyBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
-                      ],
-                    );
-                  }),
-                ),
-                Obx(() {
-                  var banks = state.paymentList.value.banks;
-                  return Column(
-                    children: banks?.map((e) => buildCategoryItem(e,banks.indexOf(e))).toList() ?? [],
-                  );
-                }),
-                SizedBox(height: 30.h,),
-              ],
+                    ),
+                    SizedBox(height: 10.h,),
+                    Padding(
+                      padding: EdgeInsets.only(left: 27.w,right: 27.w,top: 10.h),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(ctl.wallet ? Intr().wallet_usdt:Intr().dangqianmoren([Intr().wallet_usdt]),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                          Obx(() {
+                            return Text("${Intr().yue_}₮${state.usdtBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
+                          }),
+                        ],
+                      ),
+                    ),
+                    Obx(() {
+                      return buildCategoryItem(state.usdtBank.value,-1);
+                    }),
+                    SizedBox(height: 10.h,),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 27.w,vertical: 7.h),
+                      child: Obx(() {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(ctl.wallet ? Intr().dangqianmoren([Intr().wallet_cny]) : Intr().wallet_cny,
+                              style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                            Text("${Intr().yue_}¥${state.cnyBal.value.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                          ],
+                        );
+                      }),
+                    ),
+                    Obx(() {
+                      var banks = state.paymentList.value.banks;
+                      return Column(
+                        children: banks?.map((e) => buildCategoryItem(e,banks.indexOf(e))).toList() ?? [],
+                      );
+                    }),
+                    SizedBox(height: 30.h,),
+                  ],
+                );
+              },
             ),
           ],
         )
@@ -109,12 +118,18 @@ class _RechargePageState extends State<RechargePage> {
         color: ColorX.cardBg(),
       ),
       child: InkWell(
-        onTap: ()=> Get.toNamed(Routes.recharge_category,arguments: 0),
+        onTap: (){
+          if(i == -1){
+            Get.toNamed(Routes.recharge_digital,arguments: item);
+          } else {
+            Get.toNamed(Routes.recharge_category,arguments: item);
+          }
+        },
         child: Container(
           padding: EdgeInsets.all(15.r),
           child: Row(
             children: [
-              Image.asset(ImageX.icon_cft,width: 18.r,),
+              WidgetUtils().buildImage(item.icon.em(), 18.r, 18.r,),
               SizedBox(width: 5.w,),
               Text(item.bankName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
               Expanded(child: Container()),

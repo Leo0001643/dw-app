@@ -24,8 +24,9 @@ class PaymentListBanks {
 	int? id;
 	String? bankCode;
 	String? bankName;
+	String? icon;
 
-	PaymentListBanks({this.bankName,this.bankCode});
+	PaymentListBanks({this.bankName,this.icon,this.bankCode});
 
 	factory PaymentListBanks.fromJson(Map<String, dynamic> json) => $PaymentListBanksFromJson(json);
 

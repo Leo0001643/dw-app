@@ -12,6 +12,7 @@ class Constants {
 
   static const base_url = "http://soptj9qq.com:8860/";
   static const contact = "http://soptj9qq.com/m/#/detail/Contact";
+  static const hongbao = "http://soptj9qq.com/m/#/Hongbao/%s/%s/%s";
 
   static const  FONT_STD = "ITCAvantGardeStd";
 

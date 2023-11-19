@@ -6,8 +6,10 @@ export 'package:leisure_games/generated/json/balance_entity.g.dart';
 @JsonSerializable()
 class BalanceEntity {
 	double? money;
+	String? language;
+	String? icon;
 
-	BalanceEntity();
+	BalanceEntity({this.language,this.icon,this.money});
 
 	factory BalanceEntity.fromJson(Map<String, dynamic> json) => $BalanceEntityFromJson(json);
 

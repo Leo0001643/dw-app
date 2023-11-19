@@ -351,7 +351,7 @@ class WidgetUtils {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(child: Text(defText.em()==""?hint.em():defText.em(),style: TextStyle(fontSize: textSize,color: defText.em()==""?hintColor:textColor,overflow: TextOverflow.ellipsis),),),
-          Icon(Icons.keyboard_arrow_down,size: 18.r,color: Colors.black54),
+          // Icon(Icons.keyboard_arrow_down,size: 18.r,color: Colors.black54),
         ],
       ) :TextField(
         autofocus: autofocus,
@@ -388,8 +388,10 @@ class WidgetUtils {
 
 
   void clickCopy(String value){
-    Clipboard.setData(ClipboardData(text: value));
-    showToast(Intr().fuzhichenggong);
+    if(unEmpty(value)){
+      Clipboard.setData(ClipboardData(text: value));
+      showToast(Intr().fuzhichenggong);
+    }
   }
 
   void goMessageCenter() {
@@ -411,6 +413,9 @@ class WidgetUtils {
   }
 
   Image buildImage(String image,double width,double height,{String defImage = ImageX.icon_avatar,BoxFit? fit}){
+    if(isEmpty(image) || (!image.isUrl() && !image.contains("assets"))){
+      return Image.asset(defImage,width: width,height: height,fit: fit,);
+    }
     try{
       return image.isUrl() ? Image.network(image,width: width,height: height,fit: fit,
       errorBuilder: (context,error,stack){
@@ -503,6 +508,13 @@ class WidgetUtils {
   }
 
 
+
+  Widget buildQRCode(String code,double width,double height,){
+    if(isEmpty(code)){ return Container();}
+    // 移除Base64头信息
+    String base64String = code.split(',').last;
+    return Image.memory(base64Decode(base64String),fit: BoxFit.fill,width: width,height: height,);
+  }
 
 }
 

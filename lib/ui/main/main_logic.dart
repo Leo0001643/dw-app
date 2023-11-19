@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -30,6 +31,10 @@ class MainLogic extends GetxController {
   void onClose() {
     changePageSub?.cancel();
     super.onClose();
+  }
+
+  void initController(){
+    Get.put(WalletController());
   }
 
 
