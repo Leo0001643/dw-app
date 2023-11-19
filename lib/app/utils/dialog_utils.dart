@@ -235,7 +235,7 @@ class DialogUtils {
   }
 
   ///选择付款方式
-  Future<PaymentListBanks?> showSelectPaywayBtmDialog(BuildContext context,PaymentListEntity entity){
+  Future<PaymentListBanks?> showSelectPaywayBtmDialog(BuildContext context){
     return showModalBottomSheet<PaymentListBanks>(
         context: context,
         isScrollControlled: true,
@@ -246,7 +246,7 @@ class DialogUtils {
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: SelectPaywayBottomDialog(entity),
+            child: SelectPaywayBottomDialog(PaymentListEntity()),
           );
         }
     );
