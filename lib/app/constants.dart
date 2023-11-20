@@ -33,6 +33,17 @@ class Constants {
   }
 
 
+  static const code_usdt = "usdt";
+  static const code_wangyin = "wangyin";
+  static const code_zhifubao = "zhifubao";
+  static const code_weixin = "weixin";
+  static const code_ysfzf = "ysfzf";
+  static const code_caifutong = "caifutong";
+  static const code_qmf = "qmf";
+
+
+
+
 }
 
 

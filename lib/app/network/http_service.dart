@@ -8,6 +8,7 @@ import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:leisure_games/app/network/retrofit_client.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
+import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
@@ -212,9 +213,18 @@ class HttpService{
     return buildFuture<DigiccyDepositDataEntity>(()=> _client.digiccyDeposit(params,));
   }
 
+  static Future<DigiccyDepositDataEntity> companyDeposit(Map<String,dynamic> params,){
+    return buildFuture<DigiccyDepositDataEntity>(()=> _client.companyDeposit(params,));
+  }
 
+  ///type:列表类型【1:表示所有银行,2:表示出款银行(排除扫码银行)】
+  static Future<List<BankEntity>> getBanks(Map<String,dynamic> params,){
+    return buildFuture<List<BankEntity>>(()=> _client.getBanks(params,));
+  }
 
-
+  static Future<DigiccyDepositDataEntity> onlineDeposit(Map<String,dynamic> params,){
+    return buildFuture<DigiccyDepositDataEntity>(()=> _client.onlineDeposit(params,));
+  }
 
 
 

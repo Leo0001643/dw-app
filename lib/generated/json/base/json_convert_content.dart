@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart' show debugPrint;
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
+import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
@@ -175,6 +176,10 @@ class JsonConvert {
     if (<BalanceEntity>[] is M) {
       return data.map<BalanceEntity>((Map<String, dynamic> e) =>
           BalanceEntity.fromJson(e)).toList() as M;
+    }
+    if (<BankEntity>[] is M) {
+      return data.map<BankEntity>((Map<String, dynamic> e) =>
+          BankEntity.fromJson(e)).toList() as M;
     }
     if (<BonusTotalEntity>[] is M) {
       return data.map<BonusTotalEntity>((Map<String, dynamic> e) =>
@@ -517,6 +522,7 @@ class JsonConvertClassCollection {
     (ActStatusEntity).toString(): ActStatusEntity.fromJson,
     (ActStatusList).toString(): ActStatusList.fromJson,
     (BalanceEntity).toString(): BalanceEntity.fromJson,
+    (BankEntity).toString(): BankEntity.fromJson,
     (BonusTotalEntity).toString(): BonusTotalEntity.fromJson,
     (ChapterInfoEntity).toString(): ChapterInfoEntity.fromJson,
     (CustomerServiceEntity).toString(): CustomerServiceEntity.fromJson,

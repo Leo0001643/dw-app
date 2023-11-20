@@ -85,9 +85,7 @@ class _MessagePageState extends State<MessagePage> with SingleTickerProviderStat
               children: [
                 Row(
                   children: [
-                    Expanded(
-                      child: Text(item.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                    ),
+                    Expanded(child: Text(item.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),),
                     Text(DateUtil.formatDateMs(item.addTime.em() * 1000),style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                   ],
                 ),

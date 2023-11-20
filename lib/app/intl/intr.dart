@@ -298,7 +298,7 @@ class Intr extends Translations{
   String get dianjixiafangzhifu => 'dianjixiafangzhifu'.tr;
   String get wenxintishi_ => 'wenxintishi_'.tr;
   String get wenxintishi_1 => 'wenxintishi_1'.tr;
-  String get wenxintishi_2 => 'wenxintishi_2'.tr;
+  String wenxintishi_2(List<String> args) => 'wenxintishi_2'.trArgs(args);
   String wenxintishi_3(List<String> args) => 'wenxintishi_3'.trArgs(args);
   String get tianrujine => 'tianrujine'.tr;
   String get shoudongshuruhuoxuanzhe => 'shoudongshuruhuoxuanzhe'.tr;
@@ -527,7 +527,8 @@ class Intr extends Translations{
   String get tishi => 'tishi'.tr;
   String get yinhangmingcheng => 'yinhangmingcheng'.tr;
   String get xuanzhezhifuyinhang => 'xuanzhezhifuyinhang'.tr;
-
+  String zhifutiaozhuan_(List<String> args) => 'zhifutiaozhuan'.trArgs(args);
+  String get quedingtijiaodingdan => 'quedingtijiaodingdan'.tr;
 
 
 
@@ -808,7 +809,7 @@ class Intr extends Translations{
       "dianjixiafangzhifu":"点击下方支付跳转链接并阅读提示信息",
       "wenxintishi_":"温馨提示:",
       "wenxintishi_1":"1、系统将会自动打开一个网页，请按提示继续操作",
-      "wenxintishi_2":"2、手续费 1.22%,到账率高!",
+      "wenxintishi_2":"2、手续费 %s%,到账率高!",
       "wenxintishi_3":"3、%s",
       "tianrujine":"填入金额(1-0)并点击确定",
       "shoudongshuruhuoxuanzhe":"手动输入或下方选择金额",
@@ -1037,6 +1038,8 @@ class Intr extends Translations{
       "tishi":"提示",
       "yinhangmingcheng":"银行名称",
       "xuanzhezhifuyinhang":"选择支付银行",
+      "zhifutiaozhuan":"支付跳转%s",
+      "quedingtijiaodingdan":"确定要提交订单吗？",
 
 
 

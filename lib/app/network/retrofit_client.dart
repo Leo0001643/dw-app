@@ -6,6 +6,7 @@ import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
+import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
@@ -156,6 +157,15 @@ abstract class RetrofitClient{
   @POST('/ds-api-web/digiccyDeposit')
   Future<BaseResponseEntity<DigiccyDepositDataEntity>> digiccyDeposit(@Body() Map<String,dynamic> params,);
 
+  @POST('/ds-api-web/companyDeposit')
+  Future<BaseResponseEntity<DigiccyDepositDataEntity>> companyDeposit(@Body() Map<String,dynamic> params,);
+
+  ///type:列表类型【1:表示所有银行,2:表示出款银行(排除扫码银行)】
+  @POST('/ds-api-web/getBanks')
+  Future<BaseResponseEntity<List<BankEntity>>> getBanks(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/onlineDeposit')
+  Future<BaseResponseEntity<DigiccyDepositDataEntity>> onlineDeposit(@Body() Map<String,dynamic> params,);
 
 
 }
