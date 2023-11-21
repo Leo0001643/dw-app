@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -54,25 +56,27 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
                   ],
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r)),
-                margin: EdgeInsets.symmetric(horizontal: 20.w),
-                padding: EdgeInsets.all(15.r),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(Intr().chongzhixiangqing,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-                    SizedBox(height: 15.h,),
-                    buildInfoItem(Intr().chongzhixingming,"xxx"),
-                    SizedBox(height: 15.h,),
-                    buildInfoItem(Intr().dingdanbianhao,"947957829459679390"),
-                    SizedBox(height: 15.h,),
-                    buildInfoItem(Intr().tijiaoshijian,"2023-07-05  11:45:10"),
-                    SizedBox(height: 15.h,),
-                    buildInfoItem(Intr().chongzhijine,"¥500"),
-                  ],
-                ),
-              ),
+              Obx(() {
+                return Container(
+                  decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r)),
+                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                  padding: EdgeInsets.all(15.r),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(Intr().chongzhixiangqing,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                      SizedBox(height: 15.h,),
+                      buildInfoItem(Intr().chongzhixingming,AppData.user()!.username.em()),
+                      SizedBox(height: 15.h,),
+                      buildInfoItem(Intr().dingdanbianhao,state.result.value.orderId.em()),
+                      SizedBox(height: 15.h,),
+                      buildInfoItem(Intr().tijiaoshijian,state.result.value.date.em()),
+                      SizedBox(height: 15.h,),
+                      buildInfoItem(Intr().chongzhijine,"¥${state.result.value.money.em()}"),
+                    ],
+                  ),
+                );
+              }),
               SizedBox(height: 20.h,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

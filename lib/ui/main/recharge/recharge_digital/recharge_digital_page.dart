@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -11,6 +13,8 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
+import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
+import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'recharge_digital_logic.dart';
@@ -33,6 +37,20 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
     _tabController = TabController(length: state.tabs.length, vsync: this);
     _tabController.addListener(() {
       state.selectOnline.value = _tabController.index == 0;
+      switch(_tabController.index){
+        case 0:
+          if(unEmpty(state.walletList)){
+            state.currentAccount.value = state.walletList.first;
+            state.currentAccount.refresh();
+          }
+          break;
+        case 1:
+          if(unEmpty(state.agreeList)){
+            state.currentAccount.value = state.agreeList.first;
+            state.currentAccount.refresh();
+          }
+          break;
+      }
     });
     super.initState();
   }
@@ -58,15 +76,17 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
           Column(
             children: [
               WidgetUtils().buildRoomBar(state.title,bgColor: Colors.transparent,msg: true,onTap: (){
-                DialogUtils().showSelectPaywayBtmDialog(context).then((value) {
-                  if(unEmpty(value)){
-                    showToast("选择了${value}");
-                    if(value == 6){
-                    }else {///打开其他类型的选项
-                      Get.offAndToNamed(Routes.recharge_category,arguments: true);
+                if(unEmpty(state.paymentList.value)){
+                  DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
+                    if(unEmpty(value)){
+                      if(value!.id == state.paymentInfo.id){
+                        ///打开自己，不做任何操作
+                      } else {///打开其他类型的选项
+                        Get.offAndToNamed(Routes.recharge_category,arguments: value);
+                      }
                     }
-                  }
-                });
+                  });
+                }
               }),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
@@ -117,13 +137,32 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                               scrollDirection: Axis.horizontal,
                               child: Obx(() {
                                 var list = List<Widget>.empty(growable: true);
-                                state.agreeList.forEach((element) {
-                                  list.add(InkWell(
-                                    onTap: ()=> state.selectAgree.value = state.agreeList.indexOf(element),
-                                    child: buildAgreementItem(element, state.selectAgree.value == state.agreeList.indexOf(element)),
-                                  ));
-                                  list.add(SizedBox(width: 10.r,));
-                                });
+                                switch(_tabController.index){
+                                  case 0:
+                                    state.walletList.forEach((element) {
+                                      list.add(InkWell(
+                                        onTap: (){
+                                          state.currentAccount.value = element;
+                                          state.currentAccount.refresh();
+                                        },
+                                        child: buildAgreementItem(element, state.currentAccount.value == element),
+                                      ));
+                                      list.add(SizedBox(width: 10.r,));
+                                    });
+                                    break;
+                                  case 1:
+                                    state.agreeList.forEach((element) {
+                                      list.add(InkWell(
+                                        onTap: (){
+                                          state.currentAccount.value = element;
+                                          state.currentAccount.refresh();
+                                        },
+                                        child: buildAgreementItem(element, state.currentAccount.value == element),
+                                      ));
+                                      list.add(SizedBox(width: 10.r,));
+                                    });
+                                    break;
+                                }
                                 return Row(children: list,);
                               }),
                             ),
@@ -176,9 +215,9 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text("username",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                                        Text(AppData.user()!.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                                         InkWell(
-                                          onTap: ()=> WidgetUtils().clickCopy("username"),
+                                          onTap: ()=> WidgetUtils().clickCopy(AppData.user()!.username.em()),
                                           child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
                                         ),
                                       ],
@@ -187,11 +226,13 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                   SizedBox(height: 10.h,),
                                   Row(
                                     children: [
-                                      QrImageView(
-                                        data: "1234567890",
-                                        size: 112.r,
-                                        backgroundColor: Colors.white,
-                                      ),
+                                      Obx(() {
+                                        return QrImageView(
+                                          data: logic.getAddress(),
+                                          size: 112.r,
+                                          backgroundColor: Colors.white,
+                                        );
+                                      }),
                                       SizedBox(width: 17.w,),
                                       Expanded(
                                         child: Column(
@@ -208,10 +249,12 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.end,
                                                 children: [
-                                                  Text("TY7ZSy8Q3pXibU2m9FoAvAK9g36THYt8cL",
-                                                    style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+                                                  Obx(() {
+                                                    return Text(logic.getAddress(),
+                                                      style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),);
+                                                  }),
                                                   InkWell(
-                                                    onTap: ()=> WidgetUtils().clickCopy("TY7ZSy8Q3pXibU2m9FoAvAK9g36THYt8cL"),
+                                                    onTap: ()=> WidgetUtils().clickCopy(logic.getAddress(),),
                                                     child: Image.asset(ImageX.icon_copy,color: ColorX.text5862(),),
                                                   ),
                                                 ],
@@ -286,24 +329,25 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text("username",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                                          Text(AppData.user()!.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                                           InkWell(
-                                            onTap: ()=> WidgetUtils().clickCopy("username"),
+                                            onTap: ()=> WidgetUtils().clickCopy(AppData.user()!.username.em()),
                                             child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
                                           ),
                                         ],
                                       ),
                                     ),
                                     SizedBox(height: 10.h,),
-                                    Text(Intr().huikuanxingming,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                                    Text(Intr().qianbaodizhi,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                                     SizedBox(height: 10.h,),
-                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshuruhuikuanren,
-                                        backgroundColor: ColorX.cardBg2(),hintColor: ColorX.text586()),
+                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().shuruzhuanzhangqianbao,defText: state.walletAddress,
+                                        backgroundColor: ColorX.cardBg2(),hintColor: ColorX.text586(),onChanged: (v)=> state.walletAddress = v),
                                     SizedBox(height: 10.h,),
                                     Text(Intr().huikuanjine,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                                     SizedBox(height: 10.h,),
-                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshuruhuikuanjine,
-                                        backgroundColor: ColorX.cardBg2(), inputType: TextInputType.number,hintColor: ColorX.text586()),
+                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshuruhuikuanjine,defText: state.remitAmount,
+                                        backgroundColor: ColorX.cardBg2(), inputType: TextInputType.number,hintColor: ColorX.text586()
+                                        ,onChanged: (v)=> state.remitAmount = v),
                                   ],
                                 ),
                               ),
@@ -313,13 +357,18 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                       }),
                       SizedBox(height: 20.h,),
                       Obx(() {
-                        var tab = state.selectOnline.value ? Intr().fanhuishouye : Intr().tijiao;
+                        var tab = state.selectOnline.value ? Intr().fanhuishouye : Intr().yiwanchengtijiaorukuan;
                         return WidgetUtils().buildElevatedButton(tab, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
                           if(state.selectOnline.value){
                             eventBus.fire(ChangeMainPageEvent(0));
                             Get.back();
                           }else {
-                            Get.offAndToNamed(Routes.recharge_result);
+                            if(unEmpty(state.walletAddress)&& unEmpty(state.remitAmount)){
+                              DialogUtils().showMessageDialog(context, Intr().shifoujinxingzhuanzhang,onConfirm: (){
+                                Navigator.pop(context);
+                                logic.digiccyDeposit();
+                              },onCancel: ()=> Navigator.pop(context));
+                            }
                           }
                         });
                       }),
@@ -355,7 +404,6 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                         )),
                       ),
                       SizedBox(height: 50.h,),
-
                     ],
                   ),
                 ),
@@ -367,7 +415,13 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
     );
   }
 
-  Widget buildAgreementItem(String name,bool select) {
+  Widget buildAgreementItem(Object item,bool select) {
+    var name = "";
+    if(item is DigiccyChannelWallet){
+      name = (item).protocol.em();
+    }else if(item is PaymentChannelBankSet){
+      name = (item).bankName.em();
+    }
     return Stack(
       children: [
         Container(

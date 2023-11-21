@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -9,6 +10,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
 import 'recharge_category_logic.dart';
 
@@ -24,23 +26,21 @@ class RechargeCategoryPage extends StatefulWidget {
 class _RechargeCategoryPageState extends State<RechargeCategoryPage> with SingleTickerProviderStateMixin{
   final logic = Get.find<RechargeCategoryLogic>();
   final state = Get.find<RechargeCategoryLogic>().state;
-  late TabController _tabController;
 
   @override
   void initState() {
-    state.supportOnline.value = Get.arguments;
     //判断是否支持在线 不支持默认页面显示离线
     state.pageController = PageController(initialPage: state.supportOnline.value ? 0:1);
-    _tabController = TabController(length: state.tabs.length, vsync: this);
-    _tabController.addListener(() {
-      state.pageController.jumpToPage(_tabController.index);
+    state.tabController = TabController(length: state.tabs.length, vsync: this);
+    state.tabController.addListener(() {
+      state.pageController.jumpToPage(state.tabController.index);
     });
     super.initState();
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
+    state.tabController.dispose();
     state.pageController.dispose();
     Get.delete<RechargeCategoryLogic>();
     super.dispose();
@@ -61,17 +61,19 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
           Column(
             children: [
               WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: Colors.transparent,onTap: (){
-                DialogUtils().showSelectPaywayBtmDialog(context).then((value) {
-                  if(unEmpty(value)){
-                    showToast("选择了${value}");
-                    if(value == 6){
-                      Get.offAndToNamed(Routes.recharge_digital);
-                    }else {
-                      state.supportOnline.value = false;
-                      state.pageController.jumpToPage(1);
+                if(unEmpty(state.paymentList.value)){
+                  DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
+                    if(unEmpty(value)){
+                      if(value!.id == state.paymentInfo.id){
+                        ///打开自己，不做任何操作
+                      } else if(value.bankCode == Constants.code_usdt){
+                        Get.offAndToNamed(Routes.recharge_digital,arguments: value);
+                      } else {///打开其他类型的选项
+                        // logic.loadData(value);
+                      }
                     }
-                  }
-                });
+                  });
+                }
               }),
               Obx(() {
                 return Visibility(
@@ -80,7 +82,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
                     padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
                     child: LCTabBar(
                       length: state.tabs.length,
-                      controller: _tabController,
+                      controller: state.tabController,
                       tabBarHeight: 35.h,
                       tabBarColor: Colors.transparent,
                       indicatorSize: TabBarIndicatorSize.label,

@@ -7,7 +7,8 @@ class RechargeResultLogic extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
+    state.result.value = Get.arguments;
+    state.result.refresh();
     super.onReady();
   }
 

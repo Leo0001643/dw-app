@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/jump_payment_entity.dart';
 
 import 'recharge_online_logic.dart';
 
@@ -54,12 +57,35 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    buildPayItem("支付跳转1", true),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Obx(() {
+                        return Wrap(
+                          spacing: 5.w,
+                          children: state.paymentList.map((element) {
+                            var index = state.paymentList.indexOf(element);
+                            return buildPayItem(element, index, state.selectIndex.value == index);
+                          }).toList(),
+                        );
+                      }),
+                    ),
                     SizedBox(height: 10.h,),
                     Text(Intr().wenxintishi_,style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
                     Text(Intr().wenxintishi_1,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
-                    Text(Intr().wenxintishi_2,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
-                    Text(Intr().wenxintishi_3(["111"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_5583e7),),
+                    Obx(() {
+                      if(isEmpty(state.paymentList)){
+                        return Container();
+                      }
+                      return Text(Intr().wenxintishi_2(["${state.paymentList[state.selectIndex.value].rate.em()}"]),
+                        style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),);
+                    }),
+                    Obx(() {
+                      if(isEmpty(state.paymentList)){
+                        return Container();
+                      }
+                      return Text(Intr().wenxintishi_3([state.paymentList[state.selectIndex.value].mark.em()]),
+                        style: TextStyle(fontSize: 12.sp,color: ColorX.color_5583e7),);
+                    }),
                   ],
                 ),
               ),
@@ -102,17 +128,20 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("username",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                          Text(AppData.user()!.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                           InkWell(
-                            onTap: ()=> WidgetUtils().clickCopy("username"),
+                            onTap: ()=> WidgetUtils().clickCopy(AppData.user()!.username.em()),
                             child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
                           ),
                         ],
                       ),
                     ),
                     SizedBox(height: 10.h,),
-                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(),
-                        Intr().shoudongshuruhuoxuanzhe,backgroundColor: ColorX.appBarBg2(),hintColor: ColorX.text5d6()),
+                    Obx(() {
+                      return WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().shoudongshuruhuoxuanzhe,
+                          defText: state.remitAmount.value,backgroundColor: ColorX.appBarBg2(),inputType: TextInputType.number,
+                          hintColor: ColorX.text5d6(),onChanged: (v)=>state.remitAmount.value = v);
+                    }),
                     SizedBox(height: 10.h,),
                     SizedBox(
                       width: 300.w,
@@ -138,7 +167,6 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
           ),
           SizedBox(height: 20.h,),
           WidgetUtils().buildElevatedButton(Intr().tijiao, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-            Get.offAndToNamed(Routes.recharge_result);
           }),
           SizedBox(height: 20.h,),
           Row(
@@ -171,36 +199,43 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
   }
 
 
-  Widget buildPayItem(String name,bool select) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: select ? ColorX.color_fc243b : ColorX.color_e8e8e8,width: 1.w),
-            borderRadius: BorderRadius.circular(8.r),
+  Widget buildPayItem(JumpPaymentEntity payment,int index,bool select) {
+    return InkWell(
+      onTap: ()=> state.selectIndex.value = index,
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: select ? ColorX.color_fc243b : ColorX.color_e8e8e8,width: 1.w),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            width: 120.w,height: 40.h,
+            padding: EdgeInsets.symmetric(vertical: 5.h),
+            alignment: Alignment.center,
+            child: Text(Intr().zhifutiaozhuan_(["${index + 1}"]),
+              style: TextStyle(fontSize: 14.sp,color: select?ColorX.color_fc243b:ColorX.text0917(),fontWeight: FontWeight.w600),),
           ),
-          width: 120.w,height: 40.h,
-          padding: EdgeInsets.symmetric(vertical: 5.h),
-          alignment: Alignment.center,
-          child: Text(name,style: TextStyle(fontSize: 14.sp,color: select?ColorX.color_fc243b:ColorX.color_091722,fontWeight: FontWeight.w600),),
-        ),
-        Visibility(
-          visible: select,
-          child: Positioned(
-            right: 0,top: 0,
-            child: Image.asset(ImageX.icon_choose),
+          Visibility(
+            visible: select,
+            child: Positioned(
+              right: 0,top: 0,
+              child: Image.asset(ImageX.icon_choose),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   Widget buildBtnAmount(int i) {
-    return Container(
-      decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(5.r)),
-      alignment: Alignment.center,
-      height: 40.h,width: 65.w,
-      child: Text("$i",style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w600),),
+    return InkWell(
+      onTap: ()=> state.remitAmount.value = "$i",
+      child: Container(
+        decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(5.r)),
+        alignment: Alignment.center,
+        height: 40.h,width: 65.w,
+        child: Text("$i",style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w600),),
+      ),
     );
   }
 

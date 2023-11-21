@@ -19,6 +19,7 @@ import 'package:leisure_games/app/widget/history_lottery_btm_dialog.dart';
 import 'package:leisure_games/app/widget/language_dialog.dart';
 import 'package:leisure_games/app/widget/lucky_draw_dialog.dart';
 import 'package:leisure_games/app/widget/rebate_role_bottom_dialog.dart';
+import 'package:leisure_games/app/widget/select_bank_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_option_btm_dialog.dart';
 import 'package:leisure_games/app/widget/select_payway_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_room_bottom_dialog.dart';
@@ -26,6 +27,7 @@ import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/sign_success_dialog.dart';
 import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
+import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
@@ -235,7 +237,7 @@ class DialogUtils {
   }
 
   ///选择付款方式
-  Future<PaymentListBanks?> showSelectPaywayBtmDialog(BuildContext context){
+  Future<PaymentListBanks?> showSelectPaywayBtmDialog(BuildContext context,PaymentListEntity entity){
     return showModalBottomSheet<PaymentListBanks>(
         context: context,
         isScrollControlled: true,
@@ -246,7 +248,25 @@ class DialogUtils {
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: SelectPaywayBottomDialog(PaymentListEntity()),
+            child: SelectPaywayBottomDialog(entity),
+          );
+        }
+    );
+  }
+
+  ///选择银行
+  Future<BankEntity?> showSelectBankBtmDialog(BuildContext context,List<BankEntity> list){
+    return showModalBottomSheet<BankEntity>(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: ColorX.pageBg(),
+        builder: (context){
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: SelectBankBottomDialog(list),
           );
         }
     );
