@@ -1,3 +1,4 @@
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/payment_list_entity.g.dart';
 import 'dart:convert';
@@ -26,7 +27,7 @@ class PaymentListBanks {
 	String? bankName;
 	String? icon;
 
-	PaymentListBanks({this.bankName,this.icon,this.bankCode});
+	PaymentListBanks({this.bankName,this.icon,this.bankCode,this.id});
 
 	factory PaymentListBanks.fromJson(Map<String, dynamic> json) => $PaymentListBanksFromJson(json);
 
@@ -34,6 +35,6 @@ class PaymentListBanks {
 
 	@override
 	String toString() {
-		return jsonEncode(this);
+		return bankName.em();
 	}
 }

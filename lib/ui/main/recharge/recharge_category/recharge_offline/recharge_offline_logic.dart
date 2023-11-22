@@ -24,4 +24,41 @@ class RechargeOfflineLogic extends GetxController {
     super.onClose();
   }
 
+  void loadData(PaymentListBanks info,PaymentChannelEntity channel) {
+    state.paymentInfo.value = info;
+    state.paymentInfo.refresh();
+
+    state.agreeList.assignAll(channel.bankSet ?? []);
+    state.agreeList.refresh();
+    state.selectIndex.value = 0;
+
+    if(state.paymentInfo.value.bankCode == Constants.code_wangyin){
+      var params = <String,dynamic>{"oid":AppData.user()?.oid.em(),
+        "username":AppData.user()?.username.em(), "type":1,};
+      HttpService.getBanks(params).then((value) {
+        state.banks.assignAll(value);
+      });
+    }
+
+  }
+
+  void companyDeposit() {
+    var agree = state.agreeList[state.selectIndex.value];
+
+    ///如果是银行转账，传参不一样
+    var outBankId = (state.paymentInfo.value).id;
+    var outBankName = (state.paymentInfo.value).bankName;
+    if(unEmpty(state.selectBank.value)){
+      outBankId = state.selectBank.value.id;
+      outBankName = state.selectBank.value.bankName;
+    }
+
+    var params = <String,dynamic>{"oid":AppData.user()?.oid.em(),"username":AppData.user()?.username.em(),
+      "inBankSetId":agree.id,"money":state.remitAmount,
+      "userAddTime":DateUtil.formatDateMs(DateTime.now().millisecondsSinceEpoch),
+      "outBankId":outBankId,"outBankName":outBankName,"outCardUser":state.remitName,};
+    HttpService.companyDeposit(params).then((value) {
+      Get.offAndToNamed(Routes.recharge_result,arguments: value);
+    });
+  }
 }

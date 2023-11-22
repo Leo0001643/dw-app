@@ -10,6 +10,7 @@ import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
+import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
@@ -196,6 +197,10 @@ class JsonConvert {
     if (<CustomerServiceCusterServers>[] is M) {
       return data.map<CustomerServiceCusterServers>((Map<String, dynamic> e) =>
           CustomerServiceCusterServers.fromJson(e)).toList() as M;
+    }
+    if (<DepositLogEntity>[] is M) {
+      return data.map<DepositLogEntity>((Map<String, dynamic> e) =>
+          DepositLogEntity.fromJson(e)).toList() as M;
     }
     if (<DeviceInfo>[] is M) {
       return data.map<DeviceInfo>((Map<String, dynamic> e) =>
@@ -528,6 +533,7 @@ class JsonConvertClassCollection {
     (CustomerServiceEntity).toString(): CustomerServiceEntity.fromJson,
     (CustomerServiceCusterServers).toString(): CustomerServiceCusterServers
         .fromJson,
+    (DepositLogEntity).toString(): DepositLogEntity.fromJson,
     (DeviceInfo).toString(): DeviceInfo.fromJson,
     (DewInfoEntity).toString(): DewInfoEntity.fromJson,
     (DigiccyChannelEntity).toString(): DigiccyChannelEntity.fromJson,

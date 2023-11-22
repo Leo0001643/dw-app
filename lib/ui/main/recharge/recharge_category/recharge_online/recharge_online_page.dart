@@ -167,6 +167,9 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
           ),
           SizedBox(height: 20.h,),
           WidgetUtils().buildElevatedButton(Intr().tijiao, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+            if(unEmpty(state.remitAmount.value)){
+              logic.onlineDeposit(context);
+            }
           }),
           SizedBox(height: 20.h,),
           Row(

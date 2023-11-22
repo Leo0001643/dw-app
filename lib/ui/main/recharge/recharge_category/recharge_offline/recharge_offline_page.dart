@@ -299,7 +299,16 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
   }
 
   void submitDialog(BuildContext context) {
-
+    if(state.paymentInfo.value.bankCode == Constants.code_wangyin && isEmpty(state.selectBank.value)){
+      showToast(Intr().xuanzhezhifuyinhang);
+      return;
+    }
+    if(unEmpty(state.remitName) && unEmpty(state.remitAmount)){
+      DialogUtils().showMessageDialog(context, Intr().shifoujinxingzhuanzhang,onConfirm: (){
+        Navigator.pop(context);
+        logic.companyDeposit();
+      },onCancel: ()=> Navigator.pop(context));
+    }
   }
 
 

@@ -12,6 +12,7 @@ import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
+import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
@@ -226,8 +227,13 @@ class HttpService{
     return buildFuture<DigiccyDepositDataEntity>(()=> _client.onlineDeposit(params,));
   }
 
+  static Future<List<DepositLogEntity>> queryDepositLog(Map<String,dynamic> params,){
+    return buildFuture<List<DepositLogEntity>>(()=> _client.queryDepositLog(params,));
+  }
 
-
+  static Future<List<PaymentListBanks>> queryDepositType(Map<String,dynamic> params,){
+    return buildFuture<List<PaymentListBanks>>(()=> _client.queryDepositType(params,));
+  }
 
 
 

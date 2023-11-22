@@ -10,6 +10,7 @@ import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
+import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
@@ -166,6 +167,15 @@ abstract class RetrofitClient{
 
   @POST('/ds-api-web/onlineDeposit')
   Future<BaseResponseEntity<DigiccyDepositDataEntity>> onlineDeposit(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/queryDepositLog')
+  Future<BaseResponseEntity<List<DepositLogEntity>>> queryDepositLog(@Body() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/queryDepositType')
+  Future<BaseResponseEntity<List<PaymentListBanks>>> queryDepositType(@Queries() Map<String,dynamic> params,);
+
+
+
 
 
 }

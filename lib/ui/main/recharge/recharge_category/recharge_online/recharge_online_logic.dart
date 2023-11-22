@@ -28,6 +28,31 @@ class RechargeOnlineLogic extends GetxController {
   }
 
 
+  void loadData(PaymentListBanks info,PaymentChannelEntity channel) {
+    state.paymentInfo.value = info;
+    state.paymentInfo.refresh();
+
+    state.paymentList.assignAll(channel.jumpPayment ?? []);
+    state.paymentList.refresh();
+    state.selectIndex.value = 0;
+
+  }
+
+  void onlineDeposit(BuildContext context){
+    var item =state.paymentList[state.selectIndex.value];
+
+    var params = <String,dynamic>{"oid":AppData.user()?.oid.em(),"username":AppData.user()?.username.em(),
+      "id":item.id,"money":state.remitAmount,
+      "bankCode": item.banks?.first.bankCode};
+
+    HttpService.onlineDeposit(params).then((value) {
+      DialogUtils().showMessageDialog(context, Intr().quedingtijiaodingdan,onConfirm: (){
+        Navigator.pop(context);
+        Get.offAndToNamed(Routes.html,arguments: HtmlEvent(data: value.info.em(),isHtmlData: false,pageTitle: ""));
+      },onCancel: ()=> Navigator.pop(context));
+    });
+  }
+
 
 
 

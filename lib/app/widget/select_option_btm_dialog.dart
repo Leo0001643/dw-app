@@ -83,7 +83,7 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
     );
   }
 
-  Widget buildOptionItem(String option,bool select) {
+  Widget buildOptionItem(dynamic option,bool select) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       child: Column(
@@ -93,7 +93,7 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
             children: [
               Image.asset(select ? ImageX.icon_select : ImageX.icon_unselect),
               SizedBox(width: 5.w,),
-              Text(option,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+              Text(option.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
             ],
           ),
           SizedBox(height: 15.h,),

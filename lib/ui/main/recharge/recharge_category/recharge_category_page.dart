@@ -69,7 +69,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
                       } else if(value.bankCode == Constants.code_usdt){
                         Get.offAndToNamed(Routes.recharge_digital,arguments: value);
                       } else {///打开其他类型的选项
-                        // logic.loadData(value);
+                        logic.loadData(value);
                       }
                     }
                   });
