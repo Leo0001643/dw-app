@@ -1,11 +1,15 @@
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'recharge_record_logic.dart';
@@ -20,17 +24,17 @@ class RechargeRecordPage extends StatefulWidget {
 class _RechargeRecordPageState extends State<RechargeRecordPage> {
   final logic = Get.find<RechargeRecordLogic>();
   final state = Get.find<RechargeRecordLogic>().state;
-  late RefreshController _refreshController;
+  // late RefreshController _refreshController;
 
   @override
   void initState() {
-    _refreshController= RefreshController();
+    // _refreshController= RefreshController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _refreshController.dispose();
+    // _refreshController.dispose();
     Get.delete<RechargeRecordLogic>();
     super.dispose();
   }
@@ -47,26 +51,27 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
             height: 45.h,
             child: Row(
               children: [
-                buildFilterItem(state.filterStatus.first, state.filterStatus),
-                buildFilterItem(state.filterWays.first, state.filterWays),
-                buildFilterItem(state.filterTime.first, state.filterTime),
+                Obx(() {
+                  return buildFilterItem(0,state.selectStatus.value.bankName.em(), state.filterStatus);
+                }),
+                Obx(() {
+                  return buildFilterItem(1,state.selectWay.value.bankName.em(), state.filterWays);
+                }),
+                Obx(() {
+                  return buildFilterItem(2,state.selectTime.value.bankName.em(), state.filterTime);
+                }),
               ],
             ),
           ),
           Expanded(
-            child: SmartRefresher(
-              controller: _refreshController,
-              enablePullDown: true,
-              enablePullUp: true,
-              onRefresh: ()=> _refreshController.refreshCompleted(),
-              onLoading: ()=> _refreshController.loadComplete(),
-              child: ListView.builder(
-                itemCount: 20,
+            child: Obx(() {
+              return ListView.builder(
+                itemCount: state.data.length,
                 itemBuilder: (context,index){
-                  return buildBillItem(index);
+                  return buildBillItem(state.data[index],index);
                 },
-              ),
-            ),
+              );
+            })
           ),
         ],
       ),
@@ -74,10 +79,28 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
   }
 
 
-  Widget buildFilterItem(String tab,List<String> list) {
+  Widget buildFilterItem(int index,String tab,List list) {
     return Expanded(
       child: InkWell(
-        onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,Intr().qingxuanzhe,list),
+        onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,Intr().qingxuanzhe,list).then((value) {
+          if(unEmpty(value) && value is PaymentListBanks){
+            switch(index){
+              case 0:
+                state.selectStatus.value = value;
+                state.selectStatus.refresh();
+                break;
+              case 1:
+                state.selectWay.value = value;
+                state.selectWay.refresh();
+                break;
+              case 2:
+                state.selectTime.value = value;
+                state.selectTime.refresh();
+                break;
+            }
+            logic.loadData();
+          }
+        }),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -90,7 +113,7 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
   }
 
 
-  Widget buildBillItem(int index) {
+  Widget buildBillItem(DepositLogEntity item,int index) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       margin: EdgeInsets.only(top: 10.h),
@@ -101,8 +124,9 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("银行卡转账",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                Text("6月1日  15:55",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                Text(item.bankName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                Text(DateUtil.formatDateMs(item.addTime.em() * 1000),
+                  style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               ],
             ),
           ),
@@ -110,8 +134,8 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text("¥188.00",style: TextStyle(fontSize: 14.sp,color: ColorX.color_23a81d),),
-                Text("成功",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                Text("¥${item.money}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_23a81d),),
+                Text(item.statusText(),style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               ],
             ),
           ),

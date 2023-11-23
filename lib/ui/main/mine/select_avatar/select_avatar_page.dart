@@ -5,6 +5,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
@@ -50,17 +51,19 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
           Container(
             alignment: Alignment.center,
             height: 100.h,
-            child: GFAvatar(
-              backgroundImage: NetworkImage(Constants.test_image),
-              shape: GFAvatarShape.circle,
-              radius: 27.r,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white,width: 2.r),
+            child: Obx(() {
+              return GFAvatar(
+                backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(state.currentAvatar.value)),
+                shape: GFAvatarShape.circle,
+                radius: 27.r,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white,width: 2.r),
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
           ),
           Expanded(
             child: Container(
@@ -110,9 +113,8 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
                     }),
                   ),
                   SizedBox(height: 20.h,),
-                  WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-
-                  }),
+                  WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,bg: ColorX.color_fc243b,
+                      onPressed: ()=> logic.setAvatar()),
                   SizedBox(height: 20.h,),
                 ],
               ),

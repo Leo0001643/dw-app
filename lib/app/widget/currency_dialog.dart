@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 
 class CurrencyDialog extends StatefulWidget {
@@ -21,15 +25,17 @@ class CurrencyDialog extends StatefulWidget {
 
 class StateCurrencyDialog extends State<CurrencyDialog>{
 
-  var dropdownValue = LanguageMenuEntity(language: Intr().rmb, icon: ImageX.icon_jj_grey).obs;
-
-  late List<LanguageMenuEntity> country = [
-    dropdownValue.value,
-    LanguageMenuEntity(language: Intr().dollar, icon: ImageX.icon_dollar_grey),
-    LanguageMenuEntity(language: Intr().thb, icon: ImageX.icon_thb_grey),
-    LanguageMenuEntity(language: Intr().vnd, icon: ImageX.icon_vhd_grey),
+  List<BalanceEntity> country = [
+    BalanceEntity(language: Intr().wallet_cny, icon: ImageX.icon_jj_grey),
+    BalanceEntity(language: Intr().wallet_usdt, icon: ImageX.icon_dollar_grey),
   ];
+  var dropdownValue = BalanceEntity().obs;
 
+  @override
+  void initState() {
+    dropdownValue.value = country[AppData.wallet() ? 0 : 1];
+    super.initState();
+  }
 
 
   @override
@@ -89,14 +95,21 @@ class StateCurrencyDialog extends State<CurrencyDialog>{
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              WidgetUtils().buildElevatedButton(Intr().tiaoguo, 122.w, 45.h,
+              WidgetUtils().buildElevatedButton(Intr().bibiduihuan, 122.w, 45.h,
                   bg: ColorX.cardBg3(),textColor: ColorX.text0917(),onPressed: (){
-                    Navigator.of(context).pop();
+                    Get.offAndToNamed(Routes.coin_exchange);
                   }),
-
-              WidgetUtils().buildElevatedButton(Intr().queren, 122.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
-
-              }),
+              WidgetUtils().buildElevatedButton(Intr().queren, 122.w, 45.h,
+                  bg: ColorX.color_fc243b,onPressed: (){
+                    ///如果确实不一样在做切换
+                    var result = dropdownValue.value.language != (AppData.wallet() ? Intr().wallet_cny : Intr().wallet_usdt);
+                    if(result){
+                      AppData.setWallet(!AppData.wallet());
+                      ///切换钱包
+                      Get.find<WalletController>().changeWallet();
+                    }
+                    Navigator.pop(context,result);
+                  }),
             ],
           )
         ],
@@ -105,9 +118,9 @@ class StateCurrencyDialog extends State<CurrencyDialog>{
   }
 
 
-  List<DropdownMenuItem<LanguageMenuEntity>> buildLanguageItem() {
+  List<DropdownMenuItem<BalanceEntity>> buildLanguageItem() {
     return country.map((e) {
-      return DropdownMenuItem<LanguageMenuEntity>(
+      return DropdownMenuItem<BalanceEntity>(
         value: e,
         child: Row(
           children: [

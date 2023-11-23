@@ -20,6 +20,7 @@ import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/is_permit_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
@@ -32,6 +33,7 @@ import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/bean/phrase_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
+import 'package:leisure_games/ui/bean/platform_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
@@ -174,6 +176,21 @@ abstract class RetrofitClient{
   @GET('/ds-api-web/queryDepositType')
   Future<BaseResponseEntity<List<PaymentListBanks>>> queryDepositType(@Queries() Map<String,dynamic> params,);
 
+  @POST('/ds-api-web/updateUserAvatar')
+  Future<BaseResponseEntity<String>> updateUserAvatar(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/internalTransfer')
+  Future<BaseResponseEntity<String>> internalTransfer(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/getPlatformIsPermit')
+  Future<BaseResponseEntity<List<IsPermitEntity>>> getPlatformIsPermit(@Body() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/getPlatformList')
+  Future<BaseResponseEntity<List<PlatformEntity>>> getPlatformList(@Queries() Map<String,dynamic> params,);
+
+
+  @POST('/ds-api-web/transfer')
+  Future<BaseResponseEntity<String>> transfer(@Body() Map<String,dynamic> params,);
 
 
 

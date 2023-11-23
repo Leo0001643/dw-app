@@ -66,8 +66,8 @@ class DialogUtils {
   }
 
   ///选择钱包
-  void showCurrencyDialog(BuildContext context){
-    showDialog(
+  Future<bool?> showCurrencyDialog(BuildContext context){
+    return showDialog<bool?>(
         context: context,
         builder: (context){
           return AlertDialog(

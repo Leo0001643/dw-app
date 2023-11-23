@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -12,6 +14,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
 import 'recharge_logic.dart';
@@ -49,19 +52,21 @@ class _RechargePageState extends State<RechargePage> {
                     WidgetUtils().buildAppBar(Intr().chongzhizhongxin,bgColor: Colors.transparent, msg: true,drawer: true,back: false),
                     Container(
                       height: 100.h,
-                      child: Obx(() {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GFAvatar(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Obx(() {
+                            return GFAvatar(
                               backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(state.user.value.avatar.em())),
                               radius: 28.r,
-                            ),
-                            SizedBox(height: 7.h,),
-                            Text(Intr().chongzhizhanghu_([state.user.value.username.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
-                          ],
-                        );
-                      }),
+                            );
+                          }),
+                          SizedBox(height: 7.h,),
+                          Obx(() {
+                            return Text(Intr().chongzhizhanghu_([state.user.value.username.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
+                          }),
+                        ],
+                      ),
                     ),
                     SizedBox(height: 10.h,),
                     Padding(

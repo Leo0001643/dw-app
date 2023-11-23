@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -22,8 +22,13 @@ class MineLogic extends GetxController {
   @override
   void onReady() {
     loadData();
+    ///余额发生变化，刷新余额数据
     loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
       loadData();
+    });
+    Get.find<AvatarController>().addListener(() {
+      state.user.value = AppData.user() ?? LoginUserEntity();
+      state.user.refresh();
     });
     super.onReady();
   }

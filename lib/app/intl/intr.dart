@@ -529,6 +529,12 @@ class Intr extends Translations{
   String get xuanzhezhifuyinhang => 'xuanzhezhifuyinhang'.tr;
   String zhifutiaozhuan_(List<String> args) => 'zhifutiaozhuan'.trArgs(args);
   String get quedingtijiaodingdan => 'quedingtijiaodingdan'.tr;
+  String get caozuochenggong => 'caozuochenggong'.tr;
+  String get zhuzhanghao => 'zhuzhanghao'.tr;
+  String get qingxuanzhezhuanru => 'qingxuanzhezhuanru'.tr;
+  String get qingxuanzhezhuanchu => 'qingxuanzhezhuanchu'.tr;
+
+
 
 
 
@@ -1040,6 +1046,10 @@ class Intr extends Translations{
       "xuanzhezhifuyinhang":"选择支付银行",
       "zhifutiaozhuan":"支付跳转%s",
       "quedingtijiaodingdan":"确定要提交订单吗？",
+      "caozuochenggong":"操作成功",
+      "zhuzhanghao":"主账号",
+      "qingxuanzhezhuanru":"请选择转入账户",
+      "qingxuanzhezhuanchu":"请选择转出账户",
 
 
 

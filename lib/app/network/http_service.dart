@@ -21,6 +21,7 @@ import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/is_permit_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
@@ -33,6 +34,7 @@ import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/bean/phrase_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
+import 'package:leisure_games/ui/bean/platform_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
@@ -235,13 +237,25 @@ class HttpService{
     return buildFuture<List<PaymentListBanks>>(()=> _client.queryDepositType(params,));
   }
 
+  static Future<String> updateUserAvatar(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.updateUserAvatar(params,));
+  }
 
+  static Future<String> internalTransfer(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.internalTransfer(params,));
+  }
 
+  static Future<List<IsPermitEntity>> getPlatformIsPermit(Map<String,dynamic> params,){
+    return buildFuture<List<IsPermitEntity>>(()=> _client.getPlatformIsPermit(params,));
+  }
 
+  static Future<List<PlatformEntity>> getPlatformList(Map<String,dynamic> params,){
+    return buildFuture<List<PlatformEntity>>(()=> _client.getPlatformList(params,));
+  }
 
-
-
-
+  static Future<String> transfer(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.transfer(params,));
+  }
 
 
 

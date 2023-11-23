@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 
@@ -29,6 +31,12 @@ class SelectAvatarState {
   ImageX.f16,ImageX.f17,ImageX.f18,ImageX.f19,ImageX.f20,ImageX.f21,ImageX.f22,ImageX.f23,ImageX.f24,];
 
   var tabs = [Intr().moren,Intr().qq,Intr().jingxuan];
+
+  ///当前头像
+  var currentAvatar = AppData.user()!.avatar.em().obs;
+
+
+
 
 
 }
