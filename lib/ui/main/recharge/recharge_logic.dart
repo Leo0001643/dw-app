@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -56,25 +57,25 @@ class RechargeLogic extends GetxController {
         var usdtIndex = 0;
         value.banks?.forEach((element) {
           switch(element.bankCode){
-            case "caifutong":
+            case Constants.code_caifutong:
               element.icon = ImageX.icon_cft;
               break;
-            case "qmf":
+            case Constants.code_qmf:
               element.icon = ImageX.icon_qmf;
               break;
-            case "wangyin":
+            case Constants.code_wangyin:
               element.icon = ImageX.icon_yhkzz;
               break;
-            case "weixin":
+            case Constants.code_weixin:
               element.icon = ImageX.icon_wxpay;
               break;
-            case "ysfzf":
+            case Constants.code_ysfzf:
               element.icon = ImageX.icon_unipay;
               break;
-            case "zhifubao":
+            case Constants.code_zhifubao:
               element.icon = ImageX.icon_alipay;
               break;
-            case "usdt":
+            case Constants.code_usdt:
               element.icon = ImageX.icon_dollar_grey;
               state.usdtBank.value = element;
               state.usdtBank.refresh();

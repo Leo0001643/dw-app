@@ -1,5 +1,7 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
+import 'package:leisure_games/app/global.dart';
+
 
 BalanceEntity $BalanceEntityFromJson(Map<String, dynamic> json) {
   final BalanceEntity balanceEntity = BalanceEntity();

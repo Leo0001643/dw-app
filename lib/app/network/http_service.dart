@@ -38,8 +38,10 @@ import 'package:leisure_games/ui/bean/platform_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
+import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
+import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
 
 class HttpService{
 
@@ -256,6 +258,30 @@ class HttpService{
   static Future<String> transfer(Map<String,dynamic> params,){
     return buildFuture<String>(()=> _client.transfer(params,));
   }
+
+  static Future<UserDrawDetailEntity> getUserDrawDetail(Map<String,dynamic> params,){
+    return buildFuture<UserDrawDetailEntity>(()=> _client.getUserDrawDetail(params,));
+  }
+
+  static Future<WithdrawCheckEntity> withdrawCheck(Map<String,dynamic> params,){
+    return buildFuture<WithdrawCheckEntity>(()=> _client.withdrawCheck(params,));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

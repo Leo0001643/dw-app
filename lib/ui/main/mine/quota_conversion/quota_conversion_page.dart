@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
-import 'package:leisure_games/ui/bean/language_menu_entity.dart';
+import 'package:leisure_games/ui/bean/platform_entity.dart';
 
 import 'quota_conversion_logic.dart';
 
@@ -27,13 +28,13 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
 
   @override
   void initState() {
-    state.tabController = TabController(length: state.tabs.length, vsync: this);
+    // state.tabController = TabController(length: state.tabs.length, vsync: this);
     super.initState();
   }
 
   @override
   void dispose() {
-    state.tabController.dispose();
+    // state.tabController.dispose();
     super.dispose();
   }
 
@@ -58,26 +59,29 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                   children: [
                     Expanded(
                       flex: 40,
-                      child: Obx(() {
-                        return DropdownButtonHideUnderline(
-                          child: GFDropdown(
-                            elevation: 0,
-                            borderRadius: BorderRadius.circular(10.r),
-                            icon: Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
-                            border: BorderSide(color: Colors.transparent, width: 1.w),
-                            dropdownButtonColor: Colors.transparent,
-                            dropdownColor: ColorX.pageBg(),
-                            isExpanded: true,
-                            itemHeight: 45.h,
-                            value: state.dropdownValue.value,
-                            onChanged: (newValue) {
-                              state.dropdownValue.value = newValue!;
-                              state.dropdownValue.refresh();
-                            },
-                            items: buildCategoryItem(),
-                          ),
-                        );
-                      }),
+                      child: InkWell(
+                        onTap: ()=> DialogUtils().showCurrencyDialog(context).then((value) {
+                          if(value == true){
+                            logic.loadData();
+                            logic.loadBalance(false);
+                          }
+                        }),
+                        child: Container(
+                          height: 40.h,
+                          child: Obx(() {
+                            return Row(
+                              children: [
+                                SizedBox(width: 10.w,),
+                                WidgetUtils().buildImage(state.mainBal.value.icon.em(),24.r, 24.r,),
+                                SizedBox(width: 6.w,),
+                                Text(state.mainBal.value.language.em(), style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3(),),),
+                                Expanded(child: Container()),
+                                Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
+                              ],
+                            );
+                          }),
+                        ),
+                      ),
                     ),
                     Container(
                       color: ColorX.color_f7f8fb,
@@ -91,9 +95,12 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text("${Intr().yue_}¥8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+                            Obx(() {
+                              var symbol = AppData.wallet() ? "¥":"₮";
+                              return Text("${Intr().yue_}$symbol${state.leftAccount.value.money.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
+                            }),
                             InkWell(
-                              onTap: (){},
+                              onTap: ()=> logic.loadBalance(false),
                               child: Container(
                                 width: 20.w,
                                 alignment: Alignment.center,
@@ -119,37 +126,34 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                       child: Container(
                         decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r)),
                         margin: EdgeInsets.only(left: 15.w,top: 5.h,bottom: 5.h),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Obx(() {
-                              return DropdownButtonHideUnderline(
-                                child: GFDropdown(
-                                  elevation: 0,
-                                  borderRadius: BorderRadius.circular(10.r),
-                                  icon: Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
-                                  dropdownButtonColor: Colors.transparent,
-                                  dropdownColor: ColorX.pageBg(),
-                                  isExpanded: true,
-                                  itemHeight: 35.h,
-                                  value: state.leftAccount.value,
-                                  onChanged: (newValue) {
-                                    state.leftAccount.value = newValue!;
-                                  },
-                                  items: buildLeftAccount(),
+                        padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 8.w),
+                        child: Obx(() {
+                          var symbol = AppData.wallet() ? "¥":"₮";
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                onTap:()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().qingxuanzhezhuanchu, state.platforms).then((value) {
+                                  if(unEmpty(value)){
+                                    state.leftAccount.value = value;
+                                    state.leftAccount.refresh();
+                                  }
+                                }),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(state.leftAccount.value.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                                    ),
+                                    WidgetUtils().buildImage(ImageX.icon_down_grey, 15.r, 15.r,),
+                                  ],
                                 ),
-                              );
-                            }),
-                            Row(
-                              children: [
-                                SizedBox(width: 5.w,),
-                                Text("${Intr().yue_}¥8,888",
-                                  style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                              ],
-                            ),
-                            SizedBox(height: 10.h,),
-                          ],
-                        ),
+                              ),
+                              SizedBox(height: 5.h,),
+                              Text("${Intr().yue_}$symbol${state.leftAccount.value.money.em()}",
+                                style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                            ],
+                          );
+                        }),
                       ),
                     ),
                     Container(
@@ -160,37 +164,34 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                       child: Container(
                         decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r)),
                         margin: EdgeInsets.only(right: 15.w,top: 5.h,bottom: 5.h),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Obx(() {
-                              return DropdownButtonHideUnderline(
-                                child: GFDropdown(
-                                  elevation: 0,
-                                  borderRadius: BorderRadius.circular(10.r),
-                                  icon: Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
-                                  dropdownButtonColor: Colors.transparent,
-                                  dropdownColor: ColorX.pageBg(),
-                                  isExpanded: true,
-                                  itemHeight: 35.h,
-                                  value: state.rightAccount.value,
-                                  onChanged: (newValue) {
-                                    state.rightAccount.value = newValue!;
-                                  },
-                                  items: buildLeftAccount(),
+                        padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 8.w),
+                        child: Obx(() {
+                          var symbol = AppData.wallet() ? "¥":"₮";
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                onTap:()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().qingxuanzhezhuanru, state.platforms).then((value) {
+                                  if(unEmpty(value)){
+                                    state.rightAccount.value = value;
+                                    state.rightAccount.refresh();
+                                  }
+                                }),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(state.rightAccount.value.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                                    ),
+                                    WidgetUtils().buildImage(ImageX.icon_down_grey, 15.r, 15.r,),
+                                  ],
                                 ),
-                              );
-                            }),
-                            Row(
-                              children: [
-                                SizedBox(width: 5.w,),
-                                Text("${Intr().yue_}¥8,888",
-                                  style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                              ],
-                            ),
-                            SizedBox(height: 10.h,),
-                          ],
-                        ),
+                              ),
+                              SizedBox(height: 5.h,),
+                              Text("${Intr().yue_}$symbol${state.rightAccount.value.money.em()}",
+                                style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                            ],
+                          );
+                        }),
                       ),
                     ),
                   ],
@@ -205,27 +206,28 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                 child: Row(
                   children: [
                     Image.asset(ImageX.icon_dollar_grey,width: 24.r,),
-                    WidgetUtils().buildTextField(230.w, 42.h, 14.sp,
-                        ColorX.text586(), Intr().qingshurujine,backgroundColor: Colors.transparent,
-                        hintColor: ColorX.text586(), inputType: TextInputType.number),
+                    Obx(() {
+                      return WidgetUtils().buildTextField(230.w, 42.h, 14.sp,
+                          ColorX.text586(), Intr().qingshurujine,backgroundColor: Colors.transparent,
+                          defText: state.inputAmount.value,inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),],
+                          hintColor: ColorX.text586(), inputType: TextInputType.number,onChanged: (v)=> state.inputAmount.value = v);
+                    }),
                   ],
                 ),
               ),
               SizedBox(height: 24.h,),
-              WidgetUtils().buildElevatedButton(Intr().querenhuazhuan, 351.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-
-              }),
+              WidgetUtils().buildElevatedButton(Intr().querenhuazhuan, 351.w, 50.h,bg: ColorX.color_fc243b,
+                  onPressed: ()=> logic.transferConfirm()),
               SizedBox(height: 10.h,),
               Row(
                 children: [
                   WidgetUtils().buildElevatedButton(Intr().yijianguiji, 168.w, 40.h,
-                      bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
-
-                      }),
+                      bg: ColorX.cardBg(),textColor: ColorX.text0917(),
+                      onPressed: ()=> logic.oneKeyCollect()),
                   SizedBox(width: 10.w,),
                   WidgetUtils().buildElevatedButton(Intr().chongzhi, 168.w, 40.h,
                       bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
-                        eventBus.fire(ChangeMainPageEvent(3));
+                        eventBus.fire(ChangeMainPageEvent(2));
                         Get.back();
                       })
                 ],
@@ -235,29 +237,14 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                 decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r)),
                 child: Column(
                   children: [
-                    SizedBox(height: 10.h,),
+                    SizedBox(height: 15.h,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        LCTabBar(
-                          length: state.tabs.length,
-                          controller: state.tabController,
-                          tabBarHeight: 35.h,
-                          tabBarColor: Colors.transparent,
-                          indicatorSize: TabBarIndicatorSize.tab,
-                          labelPadding: EdgeInsets.zero,
-                          indicatorPadding: EdgeInsets.only(top: 32.h,left: 30.w,right: 30.w),
-                          indicator: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3.r),
-                            color: ColorX.text0917(),
-                          ),
-                          labelColor: ColorX.text0917(),
-                          unselectedLabelColor: ColorX.text586(),
-                          width: 240.w,
-                          tabs: state.tabs.map((e) => Text(e ,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w500),),).toList(),
-                        ),
+                        SizedBox(width: 30.w,),
+                        Text(Intr().gezhanghumingxi,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                         InkWell(
-                          onTap: (){},
+                          onTap: ()=> logic.loadData(),
                           child: Container(
                             width: 20.w,
                             alignment: Alignment.center,
@@ -267,24 +254,16 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                         ),
                       ],
                     ),
-                    SizedBox(height: 10.h,),
-                    Wrap(
-                      runSpacing: 10.h,
-                      spacing: 10.w,
-                      children: [
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                        buildQuotaItem(),
-                      ],
-                    )
+                    SizedBox(height: 15.h,),
+                    Obx(() {
+                      ///不显示主账号的
+                      if(state.platforms.em() <= 1){ return Container();}
+                      return Wrap(
+                        runSpacing: 10.h,
+                        spacing: 10.w,
+                        children: state.platforms.sublist(1).map((element) => buildQuotaItem(element)).toList(),
+                      );
+                    }),
                   ],
                 ),
               ),
@@ -297,31 +276,9 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
 
 
 
-  List<DropdownMenuItem<LanguageMenuEntity>> buildCategoryItem() {
-    return state.country.map((e) {
-      return DropdownMenuItem<LanguageMenuEntity>(
-        value: e,
-        child: Row(
-          children: [
-            Image.asset(e.icon.em(),width: 24.r,),
-            SizedBox(width: 6.w,),
-            Text(e.language.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3(),),),
-          ],
-        ),
-      );
-    }).toList();
-  }
+  Widget buildQuotaItem(PlatformEntity item) {
+    var symbol = AppData.wallet() ? "¥":"₮";
 
-  List<DropdownMenuItem<String>> buildLeftAccount() {
-    return state.accounts.map((e) {
-      return DropdownMenuItem<String>(
-        value: e,
-        child: Text(e,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-      );
-    }).toList();
-  }
-
-  Widget buildQuotaItem() {
     return Container(
       decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r)),
       width: 155.w,
@@ -333,16 +290,25 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("BTBT",style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
-              Text(Intr().zhuanru,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862(),decoration: TextDecoration.underline),),
+              Text(item.liveName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+              InkWell(
+                onTap: (){
+                  state.rightAccount.value = item;
+                  state.rightAccount.refresh();
+                },
+                child: Text(Intr().zhuanru,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862(),decoration: TextDecoration.underline),),
+              ),
             ],
           ),
           SizedBox(height: 10.h,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("¥8,888",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-              Text(Intr().zhuanru,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862(),decoration: TextDecoration.underline),),
+              Text("$symbol${item.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+              InkWell(
+                onTap: ()=> logic.transfer(item),
+                child: Text(Intr().huishou,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862(),decoration: TextDecoration.underline),),
+              ),
             ],
           ),
         ],

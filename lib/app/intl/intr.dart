@@ -341,11 +341,14 @@ class Intr extends Translations{
   String get qingxuanzhetixianzhanghu => 'qingxuanzhetixianzhanghu'.tr;
   String get querenjihexinxi => 'querenjihexinxi'.tr;
   String zitixianhouzongtouzhu_(List<String> args) => 'zitixianhouzongtouzhu_'.trArgs(args);
-  String get meiyoutongguoyouhui => 'meiyoutongguoyouhui'.tr;
+  String meiyoutongguoyouhui_(List<String> args) => 'meiyoutongguoyouhui'.trArgs(args);
+  String get tongguoyouhuijihe => 'tongguoyouhuijihe'.tr;
   String get changtaixingjihe => 'changtaixingjihe'.tr;
   String get tongguochangtaixing => 'tongguochangtaixing'.tr;
+  String meiyoutongguochangtaixing_(List<String> args) => 'meiyoutongguochangtaixing'.trArgs(args);
   String get duocitixian => 'duocitixian'.tr;
-  String get yixiaoshineimian => 'yixiaoshineimian'.tr;
+  String yixiaoshineimian_(List<String> args) => 'yixiaoshineimian'.trArgs(args);
+  String xukouchushouxufei_(List<String> args) => 'xukouchushouxufei'.trArgs(args);
   String get shixiaoshouxufei => 'shixiaoshouxufei'.tr;
   String get mianshoushouxufei => 'mianshoushouxufei'.tr;
   String get cichijiheshijian => 'cichijiheshijian'.tr;
@@ -533,8 +536,8 @@ class Intr extends Translations{
   String get zhuzhanghao => 'zhuzhanghao'.tr;
   String get qingxuanzhezhuanru => 'qingxuanzhezhuanru'.tr;
   String get qingxuanzhezhuanchu => 'qingxuanzhezhuanchu'.tr;
-
-
+  String shixiaokouchu_(List<String> args) => 'shixiaokouchu'.trArgs(args);
+  String shixiaomianshou_(List<String> args) => 'shixiaomianshou'.trArgs(args);
 
 
 
@@ -860,13 +863,18 @@ class Intr extends Translations{
       "querenjihexinxi":"确认稽核信息",
       "zitixianhouzongtouzhu_":"自提现后第一次存款之后总有效投注: %s",
       "youhuijihe":"优惠稽核",
-      "meiyoutongguoyouhui":"没有通过优惠稽核,需扣除优惠 100",
+      "meiyoutongguoyouhui":"没有通过优惠稽核，需扣除优惠%s",
+      "tongguoyouhuijihe":"通过优惠稽核，不需扣除存款优惠",
       "changtaixingjihe":"常态性稽核",
-      "tongguochangtaixing":"通过常态性稽核,不收取行政费用!",
+      "tongguochangtaixing":"通过常态性稽核，不收取行政费用!",
+      "meiyoutongguochangtaixing":"没有通过常态性稽核，需扣除行政费用%s",
       "duocitixian":"多次提现手续费",
-      "yixiaoshineimian":"1小时内 1 次提现,免手续费!",
+      "yixiaoshineimian":"%s小时内%s次提现，%s",
+      "xukouchushouxufei":"需扣除手续费%s",
       "shixiaoshouxufei":"时效手续费",
       "mianshoushouxufei":"免收手续费!",
+      "shixiaokouchu":"距最近一次存款%s小时内出款，将扣除出款金额%s的手续费",
+      "shixiaomianshou":"距最近一次存款%s小时内出款，免收手续费!",
       "cichijiheshijian":"此次稽核时间",
       "meidongshijian_":"美东时间:%s",
       "jixutixian":"继续提现",

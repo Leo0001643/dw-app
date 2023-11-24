@@ -1,31 +1,23 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/ui/bean/language_menu_entity.dart';
+import 'package:leisure_games/ui/bean/balance_entity.dart';
+import 'package:leisure_games/ui/bean/platform_entity.dart';
 
 class QuotaConversionState {
   QuotaConversionState() {
     ///Initialize variables
   }
 
+  var leftAccount = PlatformEntity().obs;
+  var rightAccount = PlatformEntity().obs;
 
-  var dropdownValue = LanguageMenuEntity(language: Intr().wallet_cny, icon: ImageX.icon_rmb_grey).obs;
+  ///平台列表
+  var platforms = RxList<PlatformEntity>.empty(growable: true);
 
-  late List<LanguageMenuEntity> country = [
-    dropdownValue.value,
-    LanguageMenuEntity(language: Intr().wallet_usdt, icon: ImageX.icon_ustd2_grey),
-  ];
+  ///输入的金额
+  var inputAmount = "".obs;
 
-  var leftAccount = "主账号".obs;
-  var rightAccount = "AG".obs;
-
-  late List<String> accounts = [leftAccount.value,rightAccount.value,];
-
-
-  late TabController tabController;
-
-  var tabs = [Intr().gezhanghumingxi,Intr().huazhuanjilu];
+  ///主账户余额
+  var mainBal = BalanceEntity().obs;
 
 
 }

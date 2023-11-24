@@ -43,8 +43,10 @@ import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
+import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
+import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 
@@ -448,6 +450,14 @@ class JsonConvert {
       return data.map<RoomCopyWritingContent>((Map<String, dynamic> e) =>
           RoomCopyWritingContent.fromJson(e)).toList() as M;
     }
+    if (<UserDrawDetailEntity>[] is M) {
+      return data.map<UserDrawDetailEntity>((Map<String, dynamic> e) =>
+          UserDrawDetailEntity.fromJson(e)).toList() as M;
+    }
+    if (<UserDrawDetailBanks>[] is M) {
+      return data.map<UserDrawDetailBanks>((Map<String, dynamic> e) =>
+          UserDrawDetailBanks.fromJson(e)).toList() as M;
+    }
     if (<VarCodeEntity>[] is M) {
       return data.map<VarCodeEntity>((Map<String, dynamic> e) =>
           VarCodeEntity.fromJson(e)).toList() as M;
@@ -512,6 +522,10 @@ class JsonConvert {
     if (<WebConfigRegisterOption>[] is M) {
       return data.map<WebConfigRegisterOption>((Map<String, dynamic> e) =>
           WebConfigRegisterOption.fromJson(e)).toList() as M;
+    }
+    if (<WithdrawCheckEntity>[] is M) {
+      return data.map<WithdrawCheckEntity>((Map<String, dynamic> e) =>
+          WithdrawCheckEntity.fromJson(e)).toList() as M;
     }
 
     debugPrint("$M not found");
@@ -605,6 +619,8 @@ class JsonConvertClassCollection {
     (ProtectProtectBbSport).toString(): ProtectProtectBbSport.fromJson,
     (RoomCopyWritingEntity).toString(): RoomCopyWritingEntity.fromJson,
     (RoomCopyWritingContent).toString(): RoomCopyWritingContent.fromJson,
+    (UserDrawDetailEntity).toString(): UserDrawDetailEntity.fromJson,
+    (UserDrawDetailBanks).toString(): UserDrawDetailBanks.fromJson,
     (VarCodeEntity).toString(): VarCodeEntity.fromJson,
     (WebConfigEntity).toString(): WebConfigEntity.fromJson,
     (WebConfigDomainPc28).toString(): WebConfigDomainPc28.fromJson,
@@ -626,6 +642,7 @@ class JsonConvertClassCollection {
     (WebConfigDomainMJingdiancai).toString(): WebConfigDomainMJingdiancai
         .fromJson,
     (WebConfigRegisterOption).toString(): WebConfigRegisterOption.fromJson,
+    (WithdrawCheckEntity).toString(): WithdrawCheckEntity.fromJson,
   };
 
   bool containsKey(String type) {
