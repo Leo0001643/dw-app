@@ -22,6 +22,8 @@ class WithdrawCheckEntity {
 	int? takeMoneyMin;//最小出款金额
 	String? addTime;//稽核时间
 
+	int? checkType;//稽核类型  1 CNY  5USDT
+
 	WithdrawCheckEntity();
 
 	factory WithdrawCheckEntity.fromJson(Map<String, dynamic> json) => $WithdrawCheckEntityFromJson(json);

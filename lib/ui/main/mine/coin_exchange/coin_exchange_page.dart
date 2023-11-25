@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -50,39 +52,56 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
                   decoration: BoxDecoration(
                       color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r)),
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: Row(
-                    children: [
-                      Image.asset(ImageX.icon_rmb,width: 18.w,),
-                      SizedBox(width: 5.w,),
-                      Text(Intr().wallet_cny,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                      SizedBox(width: 5.w,),
-                      Container(
-                        color: ColorX.color_10_949,
-                        width: 1.w,height: 20.h,
-                      ),
-                      Expanded(
-                        child: WidgetUtils().buildTextField(170.w, 42.h, 14.sp,
-                            ColorX.color_58698d, Intr().qingshurujine,backgroundColor: Colors.transparent,hintColor: ColorX.text586(),
-                            inputType: TextInputType.number),
-                      ),
-                      InkWell(
-                        onTap: (){},
-                        child: Text(Intr().quanbu,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
-                      ),
-                    ],
-                  ),
+                  child: Obx(() {
+                    var balance = state.c2u.value ? state.cnyBal.value : state.usdtBal.value;
+                    return Row(
+                      children: [
+                        WidgetUtils().buildImage(balance.icon.em(),18.r, 18.r),
+                        SizedBox(width: 5.w,),
+                        Text(balance.language.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                        SizedBox(width: 5.w,),
+                        Container(
+                          color: ColorX.color_10_949,
+                          width: 1.w,height: 20.h,
+                        ),
+                        Expanded(
+                          child: Obx(() {
+                            return WidgetUtils().buildTextField(170.w, 42.h, 14.sp, ColorX.color_58698d, Intr().qingshurujine,
+                                backgroundColor: Colors.transparent,hintColor: ColorX.text586(),defText: state.fromAmount.value,
+                                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),],
+                                inputType: TextInputType.number,onChanged: (v)=> logic.exchangeCoin(v));
+                          }),
+                        ),
+                        InkWell(
+                          onTap: ()=> logic.exchangeCoin((balance.money.em().toInt()).toString()),
+                          child: Text(Intr().quanbu,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                        ),
+                      ],
+                    );
+                  }),
                 ),
                 SizedBox(height: 8.h,),
-                Text("${Intr().yue_}¥8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+                Obx(() {
+                  var balance = state.c2u.value ? state.cnyBal.value : state.usdtBal.value;
+                  var symbol = state.c2u.value ? "¥":"₮";
+                  return Text("${Intr().yue_}$symbol${balance.money}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
+                }),
               ],
             ),
           ),
           SizedBox(height: 15.h,),
-          Container(
-            decoration: BoxDecoration(
-                color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r)),
-            padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-            child: Image.asset(ImageX.icon_down_up,color: ColorX.icon586(),),
+          InkWell(
+            onTap: (){
+              state.fromAmount.value = "";
+              state.toAmount.value = "";
+              state.c2u.value = !state.c2u.value;
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r)),
+              padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
+              child: Image.asset(ImageX.icon_down_up,color: ColorX.icon586(),),
+            ),
           ),
           SizedBox(height: 15.h,),
           Container(
@@ -98,52 +117,59 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
                   decoration: BoxDecoration(
                       color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r)),
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: Row(
-                    children: [
-                      Image.asset(ImageX.icon_dollar_grey),
-                      SizedBox(width: 5.w,),
-                      Text(Intr().wallet_usdt,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                      SizedBox(width: 5.w,),
-                      Container(
-                        color: ColorX.color_10_949,
-                        width: 1.w,height: 20.h,
-                      ),
-                      Expanded(
-                        child: WidgetUtils().buildTextField(170.w, 42.h, 14.sp,
-                            ColorX.text586(), Intr().qingshurujine,backgroundColor: Colors.transparent,hintColor: ColorX.text586(),
-                            inputType: TextInputType.number),
-                      ),
-                    ],
-                  ),
+                  child: Obx(() {
+                    var balance = state.c2u.value ? state.usdtBal.value : state.cnyBal.value;
+                    return Row(
+                      children: [
+                        WidgetUtils().buildImage(balance.icon.em(),18.r, 18.r),
+                        SizedBox(width: 5.w,),
+                        Text(balance.language.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                        SizedBox(width: 5.w,),
+                        Container(
+                          color: ColorX.color_10_949,
+                          width: 1.w,height: 20.h,
+                        ),
+                        Expanded(
+                          child: WidgetUtils().buildTextField(170.w, 42.h, 14.sp, ColorX.text586(), "",
+                              backgroundColor: Colors.transparent,hintColor: ColorX.text586(),defText: state.toAmount.value,suffixIcon: true,),
+                        ),
+                      ],
+                    );
+                  }),
                 ),
                 SizedBox(height: 8.h,),
-                Text("${Intr().yue_}¥8,888",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+                Obx(() {
+                  var balance = state.c2u.value ? state.cnyBal.value : state.usdtBal.value;
+                  var symbol = state.c2u.value ? "₮":"¥";
+                  return Text("${Intr().yue_}$symbol${balance.money}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
+                }),
               ],
             ),
-          ),
+          ),//
+          //
           Container(
             padding: EdgeInsets.only(left: 20.w,top: 10.h),
             child: Row(
               children: [
-                Text(Intr().huilv_(["1 CNY = 0.14 USDT"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
-                InkWell(
-                  onTap: (){},
-                  child: SizedBox(
-                    width: 25.w,
-                    child: Icon(Icons.refresh_rounded,size: 15.r,color: ColorX.text5862(),),
-                  ),
-                ),
+                Obx(() {
+                  var rate = state.c2u.value ? "1 CNY = ${state.usdtRate} USDT":"1 USDT = ${state.cnyRate} CNY";
+                  return Text(Intr().huilv_([rate]),style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),);
+                }),
+                // InkWell(
+                //   onTap: (){},
+                //   child: SizedBox(
+                //     width: 25.w,
+                //     child: Icon(Icons.refresh_rounded,size: 15.r,color: ColorX.text5862(),),
+                //   ),
+                // ),
               ],
             ),
           ),
-          Expanded(
-            child: Container(
-              margin: EdgeInsets.only(bottom: 20.h),
-              alignment: Alignment.bottomCenter,
-              child: WidgetUtils().buildElevatedButton(Intr().duihuan, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-                Get.toNamed(Routes.withdraw_result);
-              }),
-            ),
+          Container(
+            margin: EdgeInsets.only(top: 20.h),
+            alignment: Alignment.bottomCenter,
+            child: WidgetUtils().buildElevatedButton(Intr().duihuan, 335.w, 50.h,
+                bg: ColorX.color_fc243b, onPressed: ()=> logic.exchange()),
           ),
         ],
       ),

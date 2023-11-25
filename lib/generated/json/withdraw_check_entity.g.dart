@@ -1,5 +1,9 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
+import 'package:leisure_games/app/global.dart';
+
+import 'package:leisure_games/app/intl/intr.dart';
+
 
 WithdrawCheckEntity $WithdrawCheckEntityFromJson(Map<String, dynamic> json) {
   final WithdrawCheckEntity withdrawCheckEntity = WithdrawCheckEntity();
@@ -61,6 +65,10 @@ WithdrawCheckEntity $WithdrawCheckEntityFromJson(Map<String, dynamic> json) {
   if (addTime != null) {
     withdrawCheckEntity.addTime = addTime;
   }
+  final int? checkType = jsonConvert.convert<int>(json['checkType']);
+  if (checkType != null) {
+    withdrawCheckEntity.checkType = checkType;
+  }
   return withdrawCheckEntity;
 }
 
@@ -80,6 +88,7 @@ Map<String, dynamic> $WithdrawCheckEntityToJson(WithdrawCheckEntity entity) {
   data['takeMoneyMax'] = entity.takeMoneyMax;
   data['takeMoneyMin'] = entity.takeMoneyMin;
   data['addTime'] = entity.addTime;
+  data['checkType'] = entity.checkType;
   return data;
 }
 
@@ -99,6 +108,7 @@ extension WithdrawCheckEntityExtension on WithdrawCheckEntity {
     int? takeMoneyMax,
     int? takeMoneyMin,
     String? addTime,
+    int? checkType,
   }) {
     return WithdrawCheckEntity()
       ..allNeedFee = allNeedFee ?? this.allNeedFee
@@ -114,6 +124,7 @@ extension WithdrawCheckEntityExtension on WithdrawCheckEntity {
       ..totalValidamount = totalValidamount ?? this.totalValidamount
       ..takeMoneyMax = takeMoneyMax ?? this.takeMoneyMax
       ..takeMoneyMin = takeMoneyMin ?? this.takeMoneyMin
-      ..addTime = addTime ?? this.addTime;
+      ..addTime = addTime ?? this.addTime
+      ..checkType = checkType ?? this.checkType;
   }
 }

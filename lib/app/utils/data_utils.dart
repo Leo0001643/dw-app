@@ -220,7 +220,7 @@ class DataUtils{
   }
 
   ///寻找头像
-  static String findAvatar(String avatar){
+  static String findAvatar(String? avatar){
     if(isEmpty(avatar)){
       return ImageX.q1;
     }else {

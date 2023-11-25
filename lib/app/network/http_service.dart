@@ -37,6 +37,7 @@ import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
+import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
@@ -265,6 +266,14 @@ class HttpService{
 
   static Future<WithdrawCheckEntity> withdrawCheck(Map<String,dynamic> params,){
     return buildFuture<WithdrawCheckEntity>(()=> _client.withdrawCheck(params,));
+  }
+
+  static Future<List<SiteWalletConfigEntity>> getSiteWalletConfig(Map<String,dynamic> params,){
+    return buildFuture<List<SiteWalletConfigEntity>>(()=> _client.getSiteWalletConfig(params,));
+  }
+
+  static Future<List<SiteWalletConfigEntity>> takeSubmit(Map<String,dynamic> params,){
+    return buildFuture<List<SiteWalletConfigEntity>>(()=> _client.takeSubmit(params,));
   }
 
 

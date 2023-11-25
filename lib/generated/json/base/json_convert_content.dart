@@ -43,6 +43,7 @@ import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
+import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -450,6 +451,10 @@ class JsonConvert {
       return data.map<RoomCopyWritingContent>((Map<String, dynamic> e) =>
           RoomCopyWritingContent.fromJson(e)).toList() as M;
     }
+    if (<SiteWalletConfigEntity>[] is M) {
+      return data.map<SiteWalletConfigEntity>((Map<String, dynamic> e) =>
+          SiteWalletConfigEntity.fromJson(e)).toList() as M;
+    }
     if (<UserDrawDetailEntity>[] is M) {
       return data.map<UserDrawDetailEntity>((Map<String, dynamic> e) =>
           UserDrawDetailEntity.fromJson(e)).toList() as M;
@@ -619,6 +624,7 @@ class JsonConvertClassCollection {
     (ProtectProtectBbSport).toString(): ProtectProtectBbSport.fromJson,
     (RoomCopyWritingEntity).toString(): RoomCopyWritingEntity.fromJson,
     (RoomCopyWritingContent).toString(): RoomCopyWritingContent.fromJson,
+    (SiteWalletConfigEntity).toString(): SiteWalletConfigEntity.fromJson,
     (UserDrawDetailEntity).toString(): UserDrawDetailEntity.fromJson,
     (UserDrawDetailBanks).toString(): UserDrawDetailBanks.fromJson,
     (VarCodeEntity).toString(): VarCodeEntity.fromJson,

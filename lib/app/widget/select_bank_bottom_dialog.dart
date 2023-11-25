@@ -16,7 +16,7 @@ import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 class SelectBankBottomDialog extends StatefulWidget{
 
   final List<BankEntity> list;
-  SelectBankBottomDialog(this.list, {super.key});
+  const SelectBankBottomDialog(this.list, {super.key});
 
   @override
   State<StatefulWidget> createState() =>StateSelectBankBottomDialog();

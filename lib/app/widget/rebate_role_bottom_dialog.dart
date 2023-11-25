@@ -14,6 +14,8 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 ///返水说明
 class RebateRoleBottomDialog extends StatefulWidget{
 
+  const RebateRoleBottomDialog({super.key});
+
   @override
   State<StatefulWidget> createState() =>StateRebateRoleBottomDialog();
 

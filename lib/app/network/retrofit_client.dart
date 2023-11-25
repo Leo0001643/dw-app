@@ -38,6 +38,7 @@ import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
+import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
@@ -196,9 +197,17 @@ abstract class RetrofitClient{
   @GET('/ds-api-web/getUserDrawDetail')
   Future<BaseResponseEntity<UserDrawDetailEntity>> getUserDrawDetail(@Queries() Map<String,dynamic> params,);
 
-
   @POST('/ds-api-web/withdrawCheck')
   Future<BaseResponseEntity<WithdrawCheckEntity>> withdrawCheck(@Body() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/getSiteWalletConfig')
+  Future<BaseResponseEntity<List<SiteWalletConfigEntity>>> getSiteWalletConfig(@Queries() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/takeSubmit')
+  Future<BaseResponseEntity<WithdrawCheckEntity>> takeSubmit(@Body() Map<String,dynamic> params,);
+
+
+
 
 
 
@@ -206,5 +215,24 @@ abstract class RetrofitClient{
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

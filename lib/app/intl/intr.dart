@@ -538,6 +538,8 @@ class Intr extends Translations{
   String get qingxuanzhezhuanchu => 'qingxuanzhezhuanchu'.tr;
   String shixiaokouchu_(List<String> args) => 'shixiaokouchu'.trArgs(args);
   String shixiaomianshou_(List<String> args) => 'shixiaomianshou'.trArgs(args);
+  String get qingxuanzhetikuanzhanghu => 'qingxuanzhetikuanzhanghu'.tr;
+  String get dianjitianjiazhanghu => 'dianjitianjiazhanghu'.tr;
 
 
 
@@ -1058,6 +1060,8 @@ class Intr extends Translations{
       "zhuzhanghao":"主账号",
       "qingxuanzhezhuanru":"请选择转入账户",
       "qingxuanzhezhuanchu":"请选择转出账户",
+      "qingxuanzhetikuanzhanghu":"请选择提款账户",
+      "dianjitianjiazhanghu":"点击添加账户",
 
 
 
