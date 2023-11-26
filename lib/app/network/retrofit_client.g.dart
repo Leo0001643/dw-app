@@ -1628,7 +1628,7 @@ class _RetrofitClient implements RetrofitClient {
   }
 
   @override
-  Future<BaseResponseEntity<WithdrawCheckEntity>> takeSubmit(
+  Future<BaseResponseEntity<String>> takeSubmit(
       Map<String, dynamic> params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1636,7 +1636,7 @@ class _RetrofitClient implements RetrofitClient {
     final _data = <String, dynamic>{};
     _data.addAll(params);
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponseEntity<WithdrawCheckEntity>>(Options(
+        _setStreamType<BaseResponseEntity<String>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -1652,9 +1652,73 @@ class _RetrofitClient implements RetrofitClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = BaseResponseEntity<WithdrawCheckEntity>.fromJson(
+    final value = BaseResponseEntity<String>.fromJson(
       _result.data!,
-      (json) => WithdrawCheckEntity.fromJson(json as Map<String, dynamic>),
+      (json) => json as String,
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseResponseEntity<FlowDataEntity>> sys800(
+      Map<String, dynamic> params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(params);
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseEntity<FlowDataEntity>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/ds-api-web/sys800',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseEntity<FlowDataEntity>.fromJson(
+      _result.data!,
+      (json) => FlowDataEntity.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseResponseEntity<String>> changeGetpassword(
+      Map<String, dynamic> params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(params);
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseEntity<String>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/ds-api-web/changeGetpassword',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseEntity<String>.fromJson(
+      _result.data!,
+      (json) => json as String,
     );
     return value;
   }

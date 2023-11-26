@@ -17,6 +17,7 @@ import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
+import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
@@ -234,6 +235,18 @@ class JsonConvert {
     if (<ExpressionEntity>[] is M) {
       return data.map<ExpressionEntity>((Map<String, dynamic> e) =>
           ExpressionEntity.fromJson(e)).toList() as M;
+    }
+    if (<FlowDataEntity>[] is M) {
+      return data.map<FlowDataEntity>((Map<String, dynamic> e) =>
+          FlowDataEntity.fromJson(e)).toList() as M;
+    }
+    if (<FlowDataList>[] is M) {
+      return data.map<FlowDataList>((Map<String, dynamic> e) =>
+          FlowDataList.fromJson(e)).toList() as M;
+    }
+    if (<FlowDataPagation>[] is M) {
+      return data.map<FlowDataPagation>((Map<String, dynamic> e) =>
+          FlowDataPagation.fromJson(e)).toList() as M;
     }
     if (<GameKindEntity>[] is M) {
       return data.map<GameKindEntity>((Map<String, dynamic> e) =>
@@ -570,6 +583,9 @@ class JsonConvertClassCollection {
     (DigiccyDepositDataEntity).toString(): DigiccyDepositDataEntity.fromJson,
     (DomainConfigEntity).toString(): DomainConfigEntity.fromJson,
     (ExpressionEntity).toString(): ExpressionEntity.fromJson,
+    (FlowDataEntity).toString(): FlowDataEntity.fromJson,
+    (FlowDataList).toString(): FlowDataList.fromJson,
+    (FlowDataPagation).toString(): FlowDataPagation.fromJson,
     (GameKindEntity).toString(): GameKindEntity.fromJson,
     (GameKindGameKindList).toString(): GameKindGameKindList.fromJson,
     (GameTypeEntity).toString(): GameTypeEntity.fromJson,

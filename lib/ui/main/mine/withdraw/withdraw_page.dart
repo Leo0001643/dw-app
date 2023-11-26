@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
 import 'withdraw_logic.dart';
@@ -52,17 +55,26 @@ class _WithdrawPageState extends State<WithdrawPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GFAvatar(
-                      backgroundImage: NetworkImage(Constants.test_image,),
+                      backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(AppData.user()?.avatar)),
                       radius: 20.r,
                     ),
                     SizedBox(height: 7.h,),
-                    Text(Intr().tixianzhanghu_(["2946781"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+                    Text(Intr().tixianzhanghu_([AppData.user()?.username ?? ""]),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
                   ],
                 ),
               ),
-              buildCategoryItem(Intr().congcnyqianbaotichu, ImageX.icon_rmb_grey, 0),
-              buildCategoryItem(Intr().congusdtqianbaotichu, ImageX.icon_tjyhicon_ustd_greyk, 0),
-
+              Obx(() {
+                return Visibility(
+                  visible: unEmpty(state.userDraw.value.banks) != null,
+                  child: buildCategoryItem(Intr().congcnyqianbaotichu, ImageX.icon_jj_grey, 1),
+                );
+              }),
+              Obx(() {
+                return Visibility(
+                  visible: unEmpty(state.userDraw.value.dcBanks) != null,
+                  child: buildCategoryItem(Intr().congusdtqianbaotichu, ImageX.icon_dollar_grey, 5),
+                );
+              }),
             ],
           ),
         ],
@@ -73,7 +85,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
 
   Widget buildCategoryItem(String title, String icon, int i) {
     return InkWell(
-      onTap: ()=> Get.toNamed(i==0 ? Routes.withdraw_check:Routes.withdraw_apply),
+      onTap: ()=> Get.toNamed(Routes.withdraw_check,arguments: i),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
@@ -83,7 +95,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
         padding: EdgeInsets.all(15.r),
         child: Row(
           children: [
-            Image.asset(icon,width: 18.r,color: ColorX.icon586(),),
+            Image.asset(icon,width: 18.r,),
             SizedBox(width: 5.w,),
             Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
             Expanded(child: Container()),

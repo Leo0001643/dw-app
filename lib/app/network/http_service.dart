@@ -18,6 +18,7 @@ import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
+import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
@@ -272,10 +273,17 @@ class HttpService{
     return buildFuture<List<SiteWalletConfigEntity>>(()=> _client.getSiteWalletConfig(params,));
   }
 
-  static Future<List<SiteWalletConfigEntity>> takeSubmit(Map<String,dynamic> params,){
-    return buildFuture<List<SiteWalletConfigEntity>>(()=> _client.takeSubmit(params,));
+  static Future<String> takeSubmit(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.takeSubmit(params,));
   }
 
+  static Future<FlowDataEntity> sys800(Map<String,dynamic> params,){
+    return buildFuture<FlowDataEntity>(()=> _client.sys800(params,),loading: false);
+  }
+
+  static Future<String> changeGetpassword(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.changeGetpassword(params,),loading: false);
+  }
 
 
 

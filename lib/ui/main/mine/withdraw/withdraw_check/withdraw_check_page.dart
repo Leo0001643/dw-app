@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -55,95 +56,100 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
                       SizedBox(height: 15.h,),
                       Text(Intr().querenjihexinxi,style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w600,color: ColorX.text0917()),),
                       SizedBox(height: 7.h,),
-                      Text(Intr().zitixianhouzongtouzhu_(["991.73"]),style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                      Obx(() {
+                        return Text(Intr().zitixianhouzongtouzhu_(["${state.withdrawCheck.value.totalValidamount.em()}"]),style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),);
+                      }),
                       SizedBox(height: 16.h,),
                       Container(
                         decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(12.r),),
                         padding: EdgeInsets.all(15.r),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              child: Text(Intr().youhuijihe,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
-                              padding: EdgeInsets.only(left: 12.w),
-                            ),
-                            SizedBox(height: 7.h,),
-                            GFListTile(
-                              onTap: (){},
-                              title: Text(Intr().meiyoutongguoyouhui,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-                              padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
-                              margin: EdgeInsets.zero,
-                              radius: 10.r,
-                              color: ColorX.cardBg2(),
-                              shadow: BoxShadow(color: Colors.transparent),
-                            ),
-                            SizedBox(height: 15.h,),
-                            Padding(
-                              child: Text(Intr().changtaixingjihe,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
-                              padding: EdgeInsets.only(left: 12.w),
-                            ),
-                            SizedBox(height: 7.h,),
-                            GFListTile(
-                              onTap: (){},
-                              title: Text(Intr().tongguochangtaixing,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-                              padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
-                              margin: EdgeInsets.zero,
-                              radius: 10.r,
-                              color: ColorX.cardBg2(),
-                              shadow: BoxShadow(color: Colors.transparent),
-                            ),
-                            SizedBox(height: 15.h,),
-                            Padding(
-                              child: Text(Intr().duocitixian,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
-                              padding: EdgeInsets.only(left: 12.w),
-                            ),
-                            SizedBox(height: 7.h,),
-                            GFListTile(
-                              onTap: (){},
-                              title: Text(Intr().yixiaoshineimian,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-                              padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
-                              margin: EdgeInsets.zero,
-                              radius: 10.r,
-                              color: ColorX.cardBg2(),
-                              shadow: BoxShadow(color: Colors.transparent),
-                            ),
-                            SizedBox(height: 15.h,),
-                            Padding(
-                              child: Text(Intr().shixiaoshouxufei,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
-                              padding: EdgeInsets.only(left: 12.w),
-                            ),
-                            SizedBox(height: 7.h,),
-                            GFListTile(
-                              onTap: (){},
-                              title: Text(Intr().mianshoushouxufei,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-                              padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
-                              margin: EdgeInsets.zero,
-                              radius: 10.r,
-                              color: ColorX.cardBg2(),
-                              shadow: BoxShadow(color: Colors.transparent),
-                            ),
-                            SizedBox(height: 15.h,),
-                            Padding(
-                              child: Text(Intr().cichijiheshijian,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
-                              padding: EdgeInsets.only(left: 12.w),
-                            ),
-                            SizedBox(height: 7.h,),
-                            GFListTile(
-                              onTap: (){},
-                              title: Text(Intr().meidongshijian_(["2023 - 07- 05 08:29:25"]),
-                                style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-                              padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
-                              margin: EdgeInsets.zero,
-                              radius: 10.r,
-                              color: ColorX.cardBg2(),
-                              shadow: BoxShadow(color: Colors.transparent),
-                            ),
-                          ],
-                        ),
+                        child: Obx(() {
+                          var detail = state.withdrawCheck.value;
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                child: Text(Intr().youhuijihe,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w),
+                              ),
+                              SizedBox(height: 7.h,),
+                              GFListTile(
+                                onTap: (){},
+                                title: Text(detail.poromsFeeHint(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                                padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
+                                margin: EdgeInsets.zero,
+                                radius: 10.r,
+                                color: ColorX.cardBg2(),
+                                shadow: BoxShadow(color: Colors.transparent),
+                              ),
+                              SizedBox(height: 15.h,),
+                              Padding(
+                                child: Text(Intr().changtaixingjihe,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w),
+                              ),
+                              SizedBox(height: 7.h,),
+                              GFListTile(
+                                onTap: (){},
+                                title: Text(detail.normalFeeHint(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                                padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
+                                margin: EdgeInsets.zero,
+                                radius: 10.r,
+                                color: ColorX.cardBg2(),
+                                shadow: BoxShadow(color: Colors.transparent),
+                              ),
+                              SizedBox(height: 15.h,),
+                              Padding(
+                                child: Text(Intr().duocitixian,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w),
+                              ),
+                              SizedBox(height: 7.h,),
+                              GFListTile(
+                                onTap: (){},
+                                title: Text(detail.replyFeeHint(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                                padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
+                                margin: EdgeInsets.zero,
+                                radius: 10.r,
+                                color: ColorX.cardBg2(),
+                                shadow: BoxShadow(color: Colors.transparent),
+                              ),
+                              SizedBox(height: 15.h,),
+                              Padding(
+                                child: Text(Intr().shixiaoshouxufei,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w),
+                              ),
+                              SizedBox(height: 7.h,),
+                              GFListTile(
+                                onTap: (){},
+                                title: Text(detail.timeFeeHint(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                                padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
+                                margin: EdgeInsets.zero,
+                                radius: 10.r,
+                                color: ColorX.cardBg2(),
+                                shadow: BoxShadow(color: Colors.transparent),
+                              ),
+                              SizedBox(height: 15.h,),
+                              Padding(
+                                child: Text(Intr().cichijiheshijian,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                padding: EdgeInsets.only(left: 12.w),
+                              ),
+                              SizedBox(height: 7.h,),
+                              GFListTile(
+                                onTap: (){},
+                                title: Text(Intr().meidongshijian_([state.withdrawCheck.value.addTime.em()]),
+                                  style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                                padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 8.w),
+                                margin: EdgeInsets.zero,
+                                radius: 10.r,
+                                color: ColorX.cardBg2(),
+                                shadow: BoxShadow(color: Colors.transparent),
+                              ),
+                            ],
+                          );
+                        }),
                       ),
                       SizedBox(height: 20.h,),
                       WidgetUtils().buildElevatedButton(Intr().jixutixian, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-                        Get.toNamed(Routes.withdraw_apply);
+                        Get.toNamed(Routes.withdraw_apply,arguments: state.withdrawCheck.value);
                       }),
                     ],
                   ),

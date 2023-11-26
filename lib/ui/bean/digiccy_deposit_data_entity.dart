@@ -11,7 +11,7 @@ class DigiccyDepositDataEntity {
 	String? orderId;
 	String? status;
 
-	DigiccyDepositDataEntity();
+	DigiccyDepositDataEntity({this.date,this.info,this.money,this.orderId,this.status});
 
 	factory DigiccyDepositDataEntity.fromJson(Map<String, dynamic> json) => $DigiccyDepositDataEntityFromJson(json);
 

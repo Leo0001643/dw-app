@@ -30,6 +30,7 @@ class RouteObservers extends NavigatorObserver{
   void didStartUserGesture(Route route, Route? previousRoute) {
     // TODO: implement didStartUserGesture
     super.didStartUserGesture(route, previousRoute);
+    logger("didStartUserGesture: ${route.settings.name}");
   }
 
   @override

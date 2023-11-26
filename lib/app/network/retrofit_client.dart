@@ -16,6 +16,7 @@ import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
+import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
@@ -204,11 +205,13 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<List<SiteWalletConfigEntity>>> getSiteWalletConfig(@Queries() Map<String,dynamic> params,);
 
   @POST('/ds-api-web/takeSubmit')
-  Future<BaseResponseEntity<WithdrawCheckEntity>> takeSubmit(@Body() Map<String,dynamic> params,);
+  Future<BaseResponseEntity<String>> takeSubmit(@Body() Map<String,dynamic> params,);
 
+  @POST('/ds-api-web/sys800')
+  Future<BaseResponseEntity<FlowDataEntity>> sys800(@Body() Map<String,dynamic> params,);
 
-
-
+  @POST('/ds-api-web/changeGetpassword')
+  Future<BaseResponseEntity<String>> changeGetpassword(@Body() Map<String,dynamic> params,);
 
 
 
