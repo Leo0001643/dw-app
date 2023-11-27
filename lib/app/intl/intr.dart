@@ -445,6 +445,7 @@ class Intr extends Translations{
   String youxiaotouzhu_(List<String> args) => 'youxiaotouzhu_'.trArgs(args);
   String get touzhuriqi => 'touzhuriqi'.tr;
   String wodeyinhangka_(List<String> args) => 'wodeyinhangka_'.trArgs(args);
+  String wodeshuzhiqianbao_(List<String> args) => 'wodeshuzhiqianbao_'.trArgs(args);
   String get tianjiayinhangka => 'tianjiayinhangka'.tr;
   String get wenxintixing_yinhangka => 'wenxintixing_yinhangka'.tr;
   String get tianjiashuziqianbao => 'tianjiashuziqianbao'.tr;
@@ -540,7 +541,20 @@ class Intr extends Translations{
   String shixiaomianshou_(List<String> args) => 'shixiaomianshou'.trArgs(args);
   String get qingxuanzhetikuanzhanghu => 'qingxuanzhetikuanzhanghu'.tr;
   String get dianjitianjiazhanghu => 'dianjitianjiazhanghu'.tr;
-
+  String get ninhaimeibangdingyhkzhanghu => 'ninhaimeibangdingyhkzhanghu'.tr;
+  String get ninhaimeibangdingusdtzhanghu => 'ninhaimeibangdingusdtzhanghu'.tr;
+  String get qubangding => 'qubangding'.tr;
+  String get chukuanzhanghu => 'chukuanzhanghu'.tr;
+  String get kaihudizhi => 'kaihudizhi'.tr;
+  String get yanzhengchukuanmima => 'yanzhengchukuanmima'.tr;
+  String get shuruyinhangkakaihudizhi => 'shuruyinhangkakaihudizhi'.tr;
+  String get liudao12weishuzihuozimu => 'liudao12weishuzihuozimu'.tr;
+  String get yigezhanghaosanzhangyinhangka => 'yigezhanghaosanzhangyinhangka'.tr;
+  String get qingshuruqukuanmima => 'qingshuruqukuanmima'.tr;
+  String get qianbaoxieyi => 'qianbaoxieyi'.tr;
+  String get yanzhengzijinmima => 'yanzhengzijinmima'.tr;
+  String get qingshuruqianbaodizhi => 'qingshuruqianbaodizhi'.tr;
+  String get chukuanyinhang => 'chukuanyinhang'.tr;
 
 
 
@@ -969,6 +983,7 @@ class Intr extends Translations{
       "youxiaotouzhu_":"有效投注: %s 投注额: %s",
       "touzhuriqi":"投注日期 (东美时间)",
       "wodeyinhangka_":"我的银行卡:已绑定%s张 (还可以绑定%s张)",
+      "wodeshuzhiqianbao_":"我的数字钱包:已绑定%s张 (还可以绑定%s张)",
       "tianjiayinhangka":"添加银行卡",
       "zuiduoketianjia_":"(最多可添加%s张)",
       "wenxintixing_yinhangka":"温馨提醒:\n1.银行卡账户持有人姓名必须与注册时输入的姓名一致,否则无法申请提款;\n2.每个用户最多可以绑定 3 张银行卡;\n3.一经绑定不能擅自修改,如需修改请",
@@ -1062,7 +1077,20 @@ class Intr extends Translations{
       "qingxuanzhezhuanchu":"请选择转出账户",
       "qingxuanzhetikuanzhanghu":"请选择提款账户",
       "dianjitianjiazhanghu":"点击添加账户",
-
+      "ninhaimeibangdingyhkzhanghu":"您还没绑定银行卡账户",
+      "ninhaimeibangdingusdtzhanghu":"您还没绑定USDT账户",
+      "qubangding":"去绑定",
+      "chukuanzhanghu":"出款账户",
+      "chukuanyinhang":"出款银行",
+      "kaihudizhi":"开户地址",
+      "yanzhengchukuanmima":"验证出款密码",
+      "shuruyinhangkakaihudizhi":"验证出款密码",
+      "liudao12weishuzihuozimu":"6-12位数字或字母",
+      "yigezhanghaosanzhangyinhangka":"1.一个账号只能绑定三张提现银行卡；\n2.如需修改请联系客服人员",
+      "qingshuruqianbaodizhi":"请输入钱包地址",
+      "qingshuruqukuanmima":"请输入取款密码",
+      "qianbaoxieyi":"钱包协议",
+      "yanzhengzijinmima":"验证资金密码",
 
 
     },

@@ -142,8 +142,11 @@ class DialogUtils {
   }
 
   ///信息确认弹窗
-  Future<bool?> showMessageDialog(BuildContext context,String msg,{String? title,VoidCallback? onConfirm,VoidCallback? onCancel}){
+  Future<bool?> showMessageDialog(BuildContext context,String msg,{String? title,String? btnConfirm,String? btnCancel,VoidCallback? onConfirm,VoidCallback? onCancel}){
     title = title ?? Intr().tishi;
+    btnConfirm = btnConfirm ?? Intr().confirm;
+    btnCancel = btnCancel ?? Intr().cancel;
+
     return showDialog<bool>(
         context: context,
         builder: (context){
@@ -171,10 +174,10 @@ class DialogUtils {
             ),
             actionsPadding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 15.h),
             actions: [
-              WidgetUtils().buildElevatedButton(Intr().cancel, 116.w, 40.h,
+              WidgetUtils().buildElevatedButton(btnCancel.em(), 116.w, 40.h,
                   bg: ColorX.cardBg3(),textColor: ColorX.text586(),onPressed: onCancel),
               SizedBox(width: 10.w,),
-              WidgetUtils().buildElevatedButton(Intr().confirm, 116.w, 40.h,
+              WidgetUtils().buildElevatedButton(btnConfirm.em(), 116.w, 40.h,
                   bg: ColorX.color_fc243b,textColor: Colors.white,onPressed: onConfirm)
             ],
           );

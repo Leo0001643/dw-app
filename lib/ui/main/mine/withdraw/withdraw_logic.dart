@@ -26,4 +26,11 @@ class WithdrawLogic extends GetxController {
       state.userDraw.refresh();
     });
   }
+
+
+
+
+
+
+
 }
