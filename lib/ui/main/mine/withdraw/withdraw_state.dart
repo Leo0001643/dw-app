@@ -6,6 +6,7 @@ class WithdrawState {
     ///Initialize variables
   }
 
+  ///提现信息，银行卡和数字钱包
   var userDraw = UserDrawDetailEntity().obs;
 
 }

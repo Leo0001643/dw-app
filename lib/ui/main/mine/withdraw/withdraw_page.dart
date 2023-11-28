@@ -28,7 +28,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
   final logic = Get.find<WithdrawLogic>();
   final state = Get.find<WithdrawLogic>().state;
 
-  
+  ///需要根据有无绑定账户跳转相应处理页面
   void clickItem(BuildContext context, int i) {
     var msg = "";
     var route = "";

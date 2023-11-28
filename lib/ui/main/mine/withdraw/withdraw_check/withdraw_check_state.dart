@@ -6,7 +6,7 @@ class WithdrawCheckState {
     ///Initialize variables
   }
 
-
+  ///稽核信息
    var withdrawCheck = WithdrawCheckEntity().obs;
 
 

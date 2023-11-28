@@ -64,8 +64,8 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                child: Text(Intr().tixianzhanghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w),
+                                child: Text(Intr().tixianzhanghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 7.h,),
                               InkWell(
@@ -95,8 +95,8 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                               ),
                               SizedBox(height: 15.h,),
                               Padding(
-                                child: Text(Intr().tixianjine,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w),
+                                child: Text(Intr().tixianjine,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 7.h,),
                               Row(
@@ -129,8 +129,8 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                               ),
                               SizedBox(height: 15.h,),
                               Padding(
-                                child: Text(Intr().tixianmima,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w),
+                                child: Text(Intr().tixianmima,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 7.h,),
                               Container(
@@ -165,8 +165,8 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                child: Text(Intr().shouxufei,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w),
+                                child: Text(Intr().shouxufei,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 10.h,),
                               Container(
@@ -178,8 +178,8 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                 }),
                               ),
                               Padding(
-                                child: Text(Intr().kedaozhangjine,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w,top: 16.h),
+                                child: Text(Intr().kedaozhangjine,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 10.h,),
                               Container(

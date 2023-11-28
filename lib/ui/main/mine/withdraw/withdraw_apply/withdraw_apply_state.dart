@@ -11,16 +11,18 @@ class WithdrawApplyState {
     ///Initialize variables
   }
 
+  ///页面类型
+  var pageType = 1.obs;
+
   ///稽核信息
   WithdrawCheckEntity? check;
 
+  ///下拉数据值
   var dropdownValue = UserDrawDetailBanks(bankName: Intr().qingxuanzhetixianzhanghu).obs;
 
+  ///密码属性
   var pwdVisible = false.obs;
   var pwdValue = "";
-
-  ///页面类型
-  var pageType = 1.obs;
 
   ///余额
   var balance = BalanceEntity().obs;

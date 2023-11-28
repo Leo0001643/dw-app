@@ -69,8 +69,8 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                child: Text(Intr().youhuijihe,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w),
+                                child: Text(Intr().youhuijihe,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 7.h,),
                               GFListTile(
@@ -84,8 +84,8 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
                               ),
                               SizedBox(height: 15.h,),
                               Padding(
-                                child: Text(Intr().changtaixingjihe,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w),
+                                child: Text(Intr().changtaixingjihe,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 7.h,),
                               GFListTile(
@@ -99,8 +99,8 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
                               ),
                               SizedBox(height: 15.h,),
                               Padding(
-                                child: Text(Intr().duocitixian,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w),
+                                child: Text(Intr().duocitixian,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 7.h,),
                               GFListTile(
@@ -114,8 +114,8 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
                               ),
                               SizedBox(height: 15.h,),
                               Padding(
-                                child: Text(Intr().shixiaoshouxufei,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w),
+                                child: Text(Intr().shixiaoshouxufei,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 7.h,),
                               GFListTile(
@@ -129,8 +129,8 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
                               ),
                               SizedBox(height: 15.h,),
                               Padding(
-                                child: Text(Intr().cichijiheshijian,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                                 padding: EdgeInsets.only(left: 12.w),
+                                child: Text(Intr().cichijiheshijian,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                               ),
                               SizedBox(height: 7.h,),
                               GFListTile(

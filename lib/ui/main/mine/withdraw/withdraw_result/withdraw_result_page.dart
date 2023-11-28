@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -60,28 +61,25 @@ class _WithdrawResultPageState extends State<WithdrawResultPage> {
                   decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r)),
                   margin: EdgeInsets.symmetric(horizontal: 20.w),
                   padding: EdgeInsets.all(15.r),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(Intr().tixianxiangqing,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-                      SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().tixianzhanghu,"xxx"),
-                      SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().tijiaoshijian,"2023-07-05  11:45:10"),
-                      SizedBox(height: 15.h,),
-                      Row(
-                        children: [
-                          buildInfoItem(Intr().tixianjine,"¥500"),
-                          SizedBox(width: 3.w,),
-                          Text(Intr().shouxufei_(["¥100"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_62_586),),
-                        ],
-                      ),
-                      SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().daozhangjine,"¥500"),
-                      SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().zhanghuyue,"¥500"),
-                    ],
-                  ),
+                  child: Obx(() {
+                    var symbol = state.result.value.status == "1" ? "¥":"₮";
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(Intr().tixianxiangqing,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                        SizedBox(height: 15.h,),
+                        buildInfoItem(Intr().tixianzhanghu, state.result.value.info.em()),
+                        SizedBox(height: 15.h,),
+                        buildInfoItem(Intr().tijiaoshijian,state.result.value.date.em()),
+                        SizedBox(height: 15.h,),
+                        buildInfoItem(Intr().tixianjine,"$symbol${state.result.value.money.em()}"),
+                        SizedBox(height: 15.h,),
+                        buildInfoItem(Intr().daozhangjine,"$symbol${state.result.value.status.em()}"),
+                        SizedBox(height: 15.h,),
+                        buildInfoItem(Intr().zhanghuyue,"$symbol${state.balance.value}"),
+                      ],
+                    );
+                  }),
                 ),
                 SizedBox(height: 24.h,),
                 Row(
