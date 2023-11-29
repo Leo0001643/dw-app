@@ -14,4 +14,7 @@ class SetWithdrawPwdState {
   var pwdNew1Visible = false.obs;
   var pwdNew1Value = "";
 
+
+
+
 }

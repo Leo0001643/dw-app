@@ -1,0 +1,249 @@
+{
+  "Often": [
+    "China +86",
+    "Hongkong +852",
+    "Macao +853",
+    "Taiwan +886"
+  ],
+  "A": [
+    "Afghanistan +93",
+    "Albania +355",
+    "Algeria +213",
+    "Andorra +376",
+    "Angola +244",
+    "Anguilla +1264",
+    "AntiguaandBarbuda +1268",
+    "Argentina +54",
+    "Armenia +374",
+    "Ascension +247",
+    "Australia +61",
+    "Austria +43",
+    "Azerbaijan +994"
+  ],
+  "B": [
+    "Bahamas +1242",
+    "Bahrain +973",
+    "Bangladesh +880",
+    "Barbados +1246",
+    "Belarus +375",
+    "Belgium +32",
+    "Belize +501",
+    "Benin +229",
+    "BermudaIs. +1441",
+    "Bolivia +591",
+    "Botswana +267",
+    "Brazil +55",
+    "Brunei +673",
+    "Bulgaria +359",
+    "Burkina-faso +226",
+    "Burma +95",
+    "Burundi +257"
+  ],
+  "C": [
+    "Cameroon +237",
+    "Canada +1",
+    "CaymanIs. +1345",
+    "CentralAfricanRepublic +236",
+    "Chad +235",
+    "Chile +56",
+    "China +86",
+    "Colombia +57",
+    "Congo +242",
+    "CookIs. +682",
+    "CostaRica +506",
+    "Cuba +53",
+    "Cyprus +357",
+    "Czech +420",
+    "CzechRepublic +420"
+  ],
+  "D": [
+    "Denmark +45",
+    "Djibouti +253",
+    "DominicaRep. +1890"
+  ],
+  "E": [
+    "EISalvador +503",
+    "Ecuador +593",
+    "Egypt +20",
+    "Estonia +372",
+    "Ethiopia +251"
+  ],
+  "F": [
+    "Fiji +679",
+    "Finland +358",
+    "France +33",
+    "FrenchGuiana +594",
+    "FrenchPolynesia +689"
+  ],
+  "G": [
+    "Gabon +241",
+    "Gambia +220",
+    "Georgia +995",
+    "Germany +49",
+    "Ghana +233",
+    "Gibraltar +350",
+    "Greece +30",
+    "Grenada +1809",
+    "Guam +1671",
+    "Guatemala +502",
+    "Guinea +224",
+    "Guyana +592"
+  ],
+  "H": [
+    "Haiti +509",
+    "Honduras +504",
+    "Hongkong +852",
+    "Hungary +36"
+  ],
+  "I": [
+    "Iceland +354",
+    "India +91",
+    "Indonesia +62",
+    "Iran +98",
+    "Iraq +964",
+    "Ireland +353",
+    "Israel +972",
+    "Italy +39",
+    "IvoryCoast +225"
+  ],
+  "J": [
+    "Jamaica +1876",
+    "Japan +81",
+    "Jordan +962"
+  ],
+  "K": [
+    "Kampuchea(Cambodia) +855",
+    "Kazakstan +327",
+    "Kenya +254",
+    "Korea +82",
+    "Kuwait +965",
+    "Kyrgyzstan +331"
+  ],
+  "L": [
+    "Laos +856",
+    "Latvia +371",
+    "Lebanon +961",
+    "Lesotho +266",
+    "Liberia +231",
+    "Libya +218",
+    "Liechtenstein +423",
+    "Lithuania +370",
+    "Luxembourg +352"
+  ],
+  "M": [
+    "Macao +853",
+    "Madagascar +261",
+    "Malawi +265",
+    "Malaysia +60",
+    "Maldives +960",
+    "Mali +223",
+    "Malta +356",
+    "MarianaIs +1670",
+    "Martinique +596",
+    "Mauritius +230",
+    "Mexico +52",
+    "Moldova,Republicof +373",
+    "Monaco +377",
+    "Mongolia +976",
+    "MontserratIs +1664",
+    "Morocco +212",
+    "Mozambique +258"
+  ],
+  "N": [
+    "Namibia +264",
+    "Nauru +674",
+    "Nepal +977",
+    "NetheriandsAntilles +599",
+    "Netherlands +31",
+    "NewZealand +64",
+    "Nicaragua +505",
+    "Niger +977",
+    "Nigeria +234",
+    "NorthKorea +850",
+    "Norway +47"
+  ],
+  "O": [
+    "Oman +968"
+  ],
+  "P": [
+    "Pakistan +92",
+    "Palestine +970",
+    "Panama +507",
+    "PapuaNewCuinea +675",
+    "Paraguay +595",
+    "Peru +51",
+    "Philippines +63",
+    "Poland +48",
+    "Portugal +351",
+    "PuertoRico +1787"
+  ],
+  "Q": [
+    "Qatar +974"
+  ],
+  "R": [
+    "RepublicofIvoryCoast +225",
+    "Reunion +262",
+    "Romania +40",
+    "Russia +7"
+  ],
+  "S": [
+    "SaintVincent +1784",
+    "SamoaEastern +684",
+    "SanMarino +378",
+    "SanMarino +685",
+    "SaoTomeandPrincipe +239",
+    "SaudiArabia +966",
+    "Senegal +221",
+    "Seychelles +248",
+    "SierraLeone +232",
+    "Singapore +65",
+    "Slovakia +421",
+    "Slovenia +386",
+    "SolomonIs +677",
+    "Somali +252",
+    "SouthAfrica +27",
+    "Spain +34",
+    "SriLanka +94",
+    "St.Lucia +1758",
+    "Sudan +249",
+    "Surizh +597",
+    "Swaziland +268",
+    "Sweden +46",
+    "Switzerland +41",
+    "Syria +963"
+  ],
+  "T": [
+    "Taiwan +886",
+    "Tajikstan +992",
+    "Tanzania +255",
+    "Thailand +66",
+    "Togo +228",
+    "Tonga +676",
+    "TrinidadandTobago +1809",
+    "Tunisia +216",
+    "Turkey +90",
+    "Turkmenistan +993"
+  ],
+  "U": [
+    "Uganda +256",
+    "Ukraine +380",
+    "UnitedArabEmirates +971",
+    "UnitedKiongdom +44",
+    "UnitedStatesofAmerica +1",
+    "Uruguay +598",
+    "Uzbekistan +233"
+  ],
+  "V": [
+    "Venezuela +58",
+    "Vietnam +84"
+  ],
+  "Y": [
+    "Yemen +967",
+    "Yugoslavia +381"
+  ],
+  "Z": [
+    "Zaire +243",
+    "Zambia +260",
+    "Zimbabwe +263"
+  ]
+}

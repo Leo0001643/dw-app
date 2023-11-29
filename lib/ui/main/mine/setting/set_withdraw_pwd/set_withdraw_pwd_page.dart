@@ -5,8 +5,9 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-
 import 'set_withdraw_pwd_logic.dart';
+
+
 
 class SetWithdrawPwdPage extends StatefulWidget {
   const SetWithdrawPwdPage({Key? key}) : super(key: key);
@@ -117,7 +118,7 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
                     return WidgetUtils().buildTextField(285.w, 46.h, 14.sp,
                         ColorX.color_091722, Intr().chongfushuru,backgroundColor: Colors.transparent,
                         onChanged: (v)=> state.pwdNew1Value = v,defText: state.pwdNew1Value,hintColor: ColorX.text586(),
-                        obscureText: !state.pwdNewVisible.value,inputType: TextInputType.visiblePassword);
+                        obscureText: !state.pwdNew1Visible.value,inputType: TextInputType.visiblePassword);
                   }),
                   InkWell(
                     onTap: ()=> state.pwdNew1Visible.value = !state.pwdNew1Visible.value,
@@ -133,9 +134,8 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
             child: Container(
               alignment: Alignment.bottomCenter,
               margin: EdgeInsets.only(bottom: 20.h),
-              child: WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-
-              }),
+              child: WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,
+                  bg: ColorX.color_fc243b,onPressed: ()=> logic.changePassword()),
             ),
           ),
         ],

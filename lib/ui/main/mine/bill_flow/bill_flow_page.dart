@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
+import 'package:leisure_games/ui/bean/flow_data_entity.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'bill_flow_logic.dart';
 ///资金明细
@@ -20,6 +25,16 @@ class BillFlowPage extends StatefulWidget {
 class _BillFlowPageState extends State<BillFlowPage> {
   final logic = Get.find<BillFlowLogic>();
   final state = Get.find<BillFlowLogic>().state;
+
+  @override
+  void initState() {
+    state.refreshController= RefreshController(initialRefresh: true);
+    state.refreshListener.addListener(() {
+      var refresh= state.refreshListener.value;
+      RefreshChangeNotifier.dataComplete(state.refreshController, refresh);
+    });
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -44,6 +59,8 @@ class _BillFlowPageState extends State<BillFlowPage> {
                     onTap: (){
                       state.currentWallet.value = e;
                       state.currentWallet.refresh();
+                      state.selectIndex = state.wallets.indexOf(e);
+                      state.refreshController.requestRefresh();
                     },
                     child: buildWalletTab(e, state.currentWallet.value == e ),
                   );
@@ -58,22 +75,36 @@ class _BillFlowPageState extends State<BillFlowPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,
-                      Intr().xuanzheriqi,[Intr().jinri,Intr().day_7,Intr().day_15,Intr().day_30,]),
+                  onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().xuanzheriqi,state.filterTime).then((value) {
+                    if(unEmpty(value) && value is PaymentListBanks){
+                      state.selectTime.value = value;
+                      state.selectTime.refresh();
+                      state.refreshController.requestRefresh();
+                    }
+                  }),
                   child: Row(
                     children: [
-                      Text(Intr().jinri,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                      Obx(() {
+                        return Text(state.selectTime.value.bankName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),);
+                      }),
                       SizedBox(width: 5.w,),
                       Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
                     ],
                   ),
                 ),
                 InkWell(
-                  onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,Intr().shaixuan,
-                      [Intr().quanbu,Intr().cunqukuan,Intr().zhuanzhang]),
+                  onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,Intr().shaixuan, state.filterStatus).then((value) {
+                    if(unEmpty(value) && value is PaymentListBanks){
+                      state.selectStatus.value = value;
+                      state.selectStatus.refresh();
+                      state.refreshController.requestRefresh();
+                    }
+                  }),
                   child: Row(
                     children: [
-                      Text(Intr().shaixuan, style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                      Obx(() {
+                        return Text(state.selectStatus.value.bankName.em(), style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),);
+                      }),
                       SizedBox(width: 5.w,),
                       Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
                     ],
@@ -88,51 +119,22 @@ class _BillFlowPageState extends State<BillFlowPage> {
               decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r)),
               child: Column(
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: ColorX.cardBg4(),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
-                    ),
-                    height: 54.h,
-                    padding: EdgeInsets.symmetric(horizontal: 15.w),
-                    alignment: Alignment.center,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(Intr().jinri,style: TextStyle(fontSize: 18.sp,color: ColorX.text0917(),
-                              fontWeight: FontWeight.w600),),
-                        ),
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Text(Intr().zhichu,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
-                                  fontWeight: FontWeight.w500),),
-                              Text("¥12,345",style: TextStyle(fontSize: 16.sp,
-                                  color: ColorX.color_fc243b,fontWeight: FontWeight.w500),),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(Intr().shouru,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
-                                  fontWeight: FontWeight.w500),),
-                              Text("¥12,345",style: TextStyle(fontSize: 16.sp,
-                                  color: ColorX.color_23a81d,fontWeight: FontWeight.w500),),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   Expanded(
-                    child: ListView.builder(
-                      itemCount: 20,
-                      itemBuilder: (context,index){
-                        return buildBillItem(index);
-                      },
-                    ),
+                    child: Obx(() {
+                      return SmartRefresher(
+                        controller: state.refreshController,
+                        enablePullDown: true,
+                        enablePullUp: true,
+                        onRefresh: ()=> logic.loadData(true),
+                        onLoading: ()=> logic.loadData(false),
+                        child: ListView.builder(
+                          itemCount: state.list.em(),
+                          itemBuilder: (context,index){
+                            return buildBillItem(state.list[index]);
+                          },
+                        ),
+                      );
+                    }),
                   ),
                 ],
               ),
@@ -162,32 +164,31 @@ class _BillFlowPageState extends State<BillFlowPage> {
     );
   }
 
-  Widget buildBillItem(int index) {
+  Widget buildBillItem(FlowDataList item) {
+    var symbol = item.transType == "IN" ? "+":"-";
+    var color = item.transType == "IN" ? ColorX.color_23a81d:ColorX.color_fc243b;
+    var icon = state.selectIndex == 0 ? ImageX.icon_jj_grey:ImageX.icon_dollar_grey;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       margin: EdgeInsets.only(top: 10.h),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
         children: [
-          Image.asset(ImageX.icon_jj_grey),
-          SizedBox(width: 3.w,),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("奖金提取",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                Text("6月1日  15:55",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
-              ],
-            ),
+          Row(
+            children: [
+              Image.asset(icon),
+              SizedBox(width: 3.w,),
+              Expanded(
+                child: Text(item.mtype.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+              ),
+              Text("$symbol ${item.mgold.em()}",style: TextStyle(fontSize: 14.sp,color: color),),
+            ],
           ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text("+¥188.00",style: TextStyle(fontSize: 14.sp,color: ColorX.color_23a81d),),
-                Text("${Intr().yue_}11,888",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(item.time.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              Text("${Intr().yue_}${item.afterMoney.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+            ],
           ),
         ],
       ),

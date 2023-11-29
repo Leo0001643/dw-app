@@ -555,6 +555,13 @@ class Intr extends Translations{
   String get yanzhengzijinmima => 'yanzhengzijinmima'.tr;
   String get qingshuruqianbaodizhi => 'qingshuruqianbaodizhi'.tr;
   String get chukuanyinhang => 'chukuanyinhang'.tr;
+  String get shuruyinhangzhanghao => 'shuruyinhangzhanghao'.tr;
+  String get qingxuanzhechukuanyinhang => 'qingxuanzhechukuanyinhang'.tr;
+  String get qingshuruchukuanmima => 'qingshuruchukuanmima'.tr;
+  String get trc20_show => 'trc20_show'.tr;
+  String get erc20_show => 'erc20_show'.tr;
+  String get omni_show => 'omni_show'.tr;
+
 
 
 
@@ -988,7 +995,7 @@ class Intr extends Translations{
       "zuiduoketianjia_":"(最多可添加%s张)",
       "wenxintixing_yinhangka":"温馨提醒:\n1.银行卡账户持有人姓名必须与注册时输入的姓名一致,否则无法申请提款;\n2.每个用户最多可以绑定 3 张银行卡;\n3.一经绑定不能擅自修改,如需修改请",
       "tianjiashuziqianbao":"添加数字钱包",
-      "wenxintixing_usdt":"温馨提醒:\n1.每个用户最多可以绑定 3 个UDDT钱包账户(不同协议分别可以绑定一个;\n2.一经绑定不能擅自修改,如需修改请",
+      "wenxintixing_usdt":"温馨提醒:\n1.每个用户最多可以绑定 3 个USDT钱包账户(不同协议分别可以绑定一个;\n2.一经绑定不能擅自修改,如需修改请",
       "dizhi":"地址",
       "suoshuxieyi":"所属协议",
       "hongbao":"红包",
@@ -1084,18 +1091,23 @@ class Intr extends Translations{
       "chukuanyinhang":"出款银行",
       "kaihudizhi":"开户地址",
       "yanzhengchukuanmima":"验证出款密码",
-      "shuruyinhangkakaihudizhi":"验证出款密码",
+      "shuruyinhangkakaihudizhi":"输入银行卡开户地址",
       "liudao12weishuzihuozimu":"6-12位数字或字母",
       "yigezhanghaosanzhangyinhangka":"1.一个账号只能绑定三张提现银行卡；\n2.如需修改请联系客服人员",
       "qingshuruqianbaodizhi":"请输入钱包地址",
       "qingshuruqukuanmima":"请输入取款密码",
       "qianbaoxieyi":"钱包协议",
       "yanzhengzijinmima":"验证资金密码",
+      "shuruyinhangzhanghao":"输入银行账号",
+      "qingxuanzhechukuanyinhang":"请选择出款银行",
+      "qingshuruchukuanmima":"请输入出款密码",
+      "trc20_show":"TRC20 (波场网络)",
+      "erc20_show":"ERC20 (以太网)",
+      "omni_show":"OMNI (比特币网络)",
 
 
     },
   };
-
 
 }
 

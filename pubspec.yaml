@@ -68,6 +68,8 @@ dependencies:
   package_info_plus: ^4.2.0
   popover: ^0.2.8+2
   custom_pop_up_menu: ^1.2.4
+  azlistview: ^2.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -101,6 +103,7 @@ flutter:
     - assets/images/
     - assets/font/
     - assets/music/
+    - assets/json/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

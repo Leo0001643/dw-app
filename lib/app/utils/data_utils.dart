@@ -1,11 +1,14 @@
 
 
+import 'dart:convert';
 import 'dart:ui';
 
+import 'package:flutter/services.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/res/jsonx.dart';
 
 class DataUtils{
 
@@ -233,7 +236,20 @@ class DataUtils{
     return path.replaceAll("assets/images/", "").replaceAll(".png", "");
   }
 
+  ///读取手机区号
+  static Future<Map<String,List<String>>> readPhoneData() async {
+    Map<String,List<String>> data = Map.identity();
 
+    String jsonString = await rootBundle.loadString(JsonX.phoneData());
+    Map<String,dynamic> jsonData = json.decode(jsonString);
+
+    jsonData.forEach((key, value) {
+      List<String> v1 = List.empty(growable: true);
+      (value as List).forEach((element) { v1.add(element.toString()); });
+      data[key] = v1;
+    });
+    return Future.value(data);
+  }
 
 
 }
