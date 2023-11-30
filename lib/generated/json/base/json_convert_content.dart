@@ -7,6 +7,7 @@ import 'package:flutter/material.dart' show debugPrint;
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
+import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
@@ -40,11 +41,13 @@ import 'package:leisure_games/ui/bean/phrase_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
+import 'package:leisure_games/ui/bean/point_record_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
+import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -187,6 +190,14 @@ class JsonConvert {
     if (<BankEntity>[] is M) {
       return data.map<BankEntity>((Map<String, dynamic> e) =>
           BankEntity.fromJson(e)).toList() as M;
+    }
+    if (<BetRecordGroupEntity>[] is M) {
+      return data.map<BetRecordGroupEntity>((Map<String, dynamic> e) =>
+          BetRecordGroupEntity.fromJson(e)).toList() as M;
+    }
+    if (<BetRecordGroupRecord>[] is M) {
+      return data.map<BetRecordGroupRecord>((Map<String, dynamic> e) =>
+          BetRecordGroupRecord.fromJson(e)).toList() as M;
     }
     if (<BonusTotalEntity>[] is M) {
       return data.map<BonusTotalEntity>((Map<String, dynamic> e) =>
@@ -428,6 +439,14 @@ class JsonConvert {
       return data.map<PlatformEntity>((Map<String, dynamic> e) =>
           PlatformEntity.fromJson(e)).toList() as M;
     }
+    if (<PointRecordEntity>[] is M) {
+      return data.map<PointRecordEntity>((Map<String, dynamic> e) =>
+          PointRecordEntity.fromJson(e)).toList() as M;
+    }
+    if (<PointRecordRecord>[] is M) {
+      return data.map<PointRecordRecord>((Map<String, dynamic> e) =>
+          PointRecordRecord.fromJson(e)).toList() as M;
+    }
     if (<PromotionDetailEntity>[] is M) {
       return data.map<PromotionDetailEntity>((Map<String, dynamic> e) =>
           PromotionDetailEntity.fromJson(e)).toList() as M;
@@ -467,6 +486,10 @@ class JsonConvert {
     if (<SiteWalletConfigEntity>[] is M) {
       return data.map<SiteWalletConfigEntity>((Map<String, dynamic> e) =>
           SiteWalletConfigEntity.fromJson(e)).toList() as M;
+    }
+    if (<UsdtChannelEntity>[] is M) {
+      return data.map<UsdtChannelEntity>((Map<String, dynamic> e) =>
+          UsdtChannelEntity.fromJson(e)).toList() as M;
     }
     if (<UserDrawDetailEntity>[] is M) {
       return data.map<UserDrawDetailEntity>((Map<String, dynamic> e) =>
@@ -570,6 +593,8 @@ class JsonConvertClassCollection {
     (ActStatusList).toString(): ActStatusList.fromJson,
     (BalanceEntity).toString(): BalanceEntity.fromJson,
     (BankEntity).toString(): BankEntity.fromJson,
+    (BetRecordGroupEntity).toString(): BetRecordGroupEntity.fromJson,
+    (BetRecordGroupRecord).toString(): BetRecordGroupRecord.fromJson,
     (BonusTotalEntity).toString(): BonusTotalEntity.fromJson,
     (ChapterInfoEntity).toString(): ChapterInfoEntity.fromJson,
     (CustomerServiceEntity).toString(): CustomerServiceEntity.fromJson,
@@ -631,6 +656,8 @@ class JsonConvertClassCollection {
     (Pic30BackBack).toString(): Pic30BackBack.fromJson,
     (Pic30Entity).toString(): Pic30Entity.fromJson,
     (PlatformEntity).toString(): PlatformEntity.fromJson,
+    (PointRecordEntity).toString(): PointRecordEntity.fromJson,
+    (PointRecordRecord).toString(): PointRecordRecord.fromJson,
     (PromotionDetailEntity).toString(): PromotionDetailEntity.fromJson,
     (PromotionTypeEntity).toString(): PromotionTypeEntity.fromJson,
     (PromotionTypeKey).toString(): PromotionTypeKey.fromJson,
@@ -641,6 +668,7 @@ class JsonConvertClassCollection {
     (RoomCopyWritingEntity).toString(): RoomCopyWritingEntity.fromJson,
     (RoomCopyWritingContent).toString(): RoomCopyWritingContent.fromJson,
     (SiteWalletConfigEntity).toString(): SiteWalletConfigEntity.fromJson,
+    (UsdtChannelEntity).toString(): UsdtChannelEntity.fromJson,
     (UserDrawDetailEntity).toString(): UserDrawDetailEntity.fromJson,
     (UserDrawDetailBanks).toString(): UserDrawDetailBanks.fromJson,
     (VarCodeEntity).toString(): VarCodeEntity.fromJson,

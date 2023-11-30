@@ -8,6 +8,7 @@ import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
+import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
@@ -35,12 +36,14 @@ import 'package:leisure_games/ui/bean/phrase_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
+import 'package:leisure_games/ui/bean/point_record_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
+import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -212,6 +215,21 @@ abstract class RetrofitClient{
 
   @POST('/ds-api-web/changeGetpassword')
   Future<BaseResponseEntity<String>> changeGetpassword(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/bindDrawDetail')
+  Future<BaseResponseEntity<String>> bindDrawDetail(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/getVMDrawDetail')
+  Future<BaseResponseEntity<List<UsdtChannelEntity>>> getVMDrawDetail(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/bindVMDrawDetail')
+  Future<BaseResponseEntity<String>> bindVMDrawDetail(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/getRecordGroupDay')
+  Future<BaseResponseEntity<BetRecordGroupEntity>> getRecordGroupDay(@Body() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/queryPointLog')
+  Future<BaseResponseEntity<PointRecordEntity>> queryPointLog(@Queries() Map<String,dynamic> params,);
 
 
 

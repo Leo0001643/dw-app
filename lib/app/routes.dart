@@ -57,8 +57,12 @@ import 'package:leisure_games/ui/main/mine/betting_record/betting_record_binding
 import 'package:leisure_games/ui/main/mine/betting_record/betting_record_page.dart';
 import 'package:leisure_games/ui/main/mine/bill_flow/bill_flow_binding.dart';
 import 'package:leisure_games/ui/main/mine/bill_flow/bill_flow_page.dart';
+import 'package:leisure_games/ui/main/mine/bind_bank/add_bank/add_bank_binding.dart';
+import 'package:leisure_games/ui/main/mine/bind_bank/add_bank/add_bank_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_bank/bind_bank_page.dart';
+import 'package:leisure_games/ui/main/mine/bind_usdt/add_usdt/add_usdt_binding.dart';
+import 'package:leisure_games/ui/main/mine/bind_usdt/add_usdt/add_usdt_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_page.dart';
 import 'package:leisure_games/ui/main/mine/bonus_packet/bonus_packet_binding.dart';
@@ -183,6 +187,8 @@ class Routes {
   static const String table_game_list = "/home/table_game_list";
   static const String chess_game_list = "/home/chess_game_list";
   static const String preferential_detail = "/preferential/detail";
+  static const String add_bank = "/mine/add_bank";
+  static const String add_usdt = "/mine/add_usdt";
 
 
 
@@ -250,6 +256,8 @@ class Routes {
     GetPage(name: chess_game_list,binding: ChessGameListBinding(), page: () => ChessGameListPage()),
     GetPage(name: table_game_list,binding: TableGameListBinding(), page: () => TableGameListPage()),
     GetPage(name: preferential_detail,binding: PreferentialDetailBinding(), page: () => PreferentialDetailPage()),
+    GetPage(name: add_bank,binding: AddBankBinding(), page: () => AddBankPage()),
+    GetPage(name: add_usdt,binding: AddUsdtBinding(), page: () => AddUsdtPage()),
 
   ];
   

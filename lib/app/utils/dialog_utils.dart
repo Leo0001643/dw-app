@@ -1,8 +1,5 @@
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -20,10 +17,12 @@ import 'package:leisure_games/app/widget/language_dialog.dart';
 import 'package:leisure_games/app/widget/lucky_draw_dialog.dart';
 import 'package:leisure_games/app/widget/rebate_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_account_btm_dialog.dart';
+import 'package:leisure_games/app/widget/select_area_btm_dialog.dart';
 import 'package:leisure_games/app/widget/select_bank_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_option_btm_dialog.dart';
 import 'package:leisure_games/app/widget/select_payway_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_room_bottom_dialog.dart';
+import 'package:leisure_games/app/widget/select_usdt_btm_dialog.dart';
 import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/sign_success_dialog.dart';
 import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
@@ -31,6 +30,7 @@ import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_logic.dart';
@@ -309,6 +309,36 @@ class DialogUtils {
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
             child: RebateRoleBottomDialog(),
           );
+        }
+    );
+  }
+
+  ///底部区号选择弹窗
+  Future<String?> showSelectAreaBtmDialog(BuildContext context,Map<String, List<String>> data){
+    return showModalBottomSheet<String>(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: ColorX.pageBg(),
+        builder: (context){
+          return SelectAreaBtmDialog(data);
+        }
+    );
+  }
+
+  ///底部区号选择弹窗
+  Future<UsdtChannelEntity?> showSelectUsdtBtmDialog(BuildContext context,List<UsdtChannelEntity> data){
+    return showModalBottomSheet<UsdtChannelEntity>(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: ColorX.pageBg(),
+        builder: (context){
+          return SelectUsdtBtmDialog(data);
         }
     );
   }
