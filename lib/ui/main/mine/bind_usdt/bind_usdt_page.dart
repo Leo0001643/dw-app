@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
+import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
 import 'bind_usdt_logic.dart';
 
@@ -38,51 +43,66 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
           children: [
             Padding(
               padding: EdgeInsets.only(left: 27.w,top: 30.h),
-              child: Text(Intr().wodeyinhangka_(["1","3"]),
-                style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
+              child: Obx(() {
+                var length = state.userDraw.value.dcBanks.em();
+                return Text(Intr().wodeshuzhiqianbao_(["$length","${state.maxCount - length}"]),
+                  style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),);
+              }),
             ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h),
-              child: GFCarousel(
-                height: 205.h,
-                viewportFraction: 0.9,
-                enableInfiniteScroll: false,
-                items: [
-                  buildUsdtItem(0),
-                  buildUsdtItem(1),
-                  buildUsdtItem(2),
-                ],
-              ),
-            ),
-            SizedBox(height: 10.h,),
-            Container(
-              decoration: BoxDecoration(
-                color: ColorX.cardBg3(),
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              height: 181.h,
-              // padding: EdgeInsets.symmetric(vertical: 17.h,horizontal: 27.w),
-              margin: EdgeInsets.symmetric(horizontal: 27.w),
-              child: GFBorder(
-                dashedLine: [5,7],
-                color: ColorX.text586(),
-                type: GFBorderType.rRect,
-                radius: Radius.circular(10.r),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                      child: Icon(Icons.add_circle_outline_rounded,color: ColorX.iconBlack(),size: 24.r,),
-                    ),
-                    SizedBox(height: 5.h,),
-                    Text(Intr().tianjiashuziqianbao,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-                    SizedBox(height: 3.h,),
-                    Text(Intr().zuiduoketianjia_(["2"]),style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
-                  ],
+            Obx(() {
+              return Visibility(
+                visible: unEmpty(state.userDraw.value.dcBanks),
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 10.h),
+                  child: GFCarousel(
+                    height: 205.h,
+                    viewportFraction: 0.9,
+                    enableInfiniteScroll: false,
+                    scrollPhysics: NeverScrollableScrollPhysics(),
+                    items: state.userDraw.value.dcBanks?.map((e) => buildUsdtItem(e)).toList() ?? [],
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
+            SizedBox(height: 10.h,),
+            Obx(() {
+              return Visibility(
+                visible: state.userDraw.value.dcBanks.em() < state.maxCount,
+                child: InkWell(
+                  onTap: ()=> DialogUtils().showSelectUsdtBtmDialog(context, state.list ?? []).then((value){
+                    if(unEmpty(value)){ Get.toNamed(Routes.add_usdt,arguments: value); }
+                  }),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: ColorX.cardBg3(),
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    height: 181.h,
+                    // padding: EdgeInsets.symmetric(vertical: 17.h,horizontal: 27.w),
+                    margin: EdgeInsets.symmetric(horizontal: 27.w),
+                    child: GFBorder(
+                      dashedLine: [5,7],
+                      color: ColorX.text586(),
+                      type: GFBorderType.rRect,
+                      radius: Radius.circular(10.r),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: Icon(Icons.add_circle_outline_rounded,color: ColorX.iconBlack(),size: 24.r,),
+                          ),
+                          SizedBox(height: 5.h,),
+                          Text(Intr().tianjiashuziqianbao,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                          SizedBox(height: 3.h,),
+                          Text(Intr().zuiduoketianjia_(["${state.maxCount}"]),style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }),
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 27.w),
@@ -92,7 +112,10 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
                       style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),height: 1.8),),
                     WidgetSpan(
                       child: InkWell(
-                        onTap: (){},
+                        onTap: (){
+                          eventBus.fire(ChangeMainPageEvent(3));//转到客服显示
+                          Get.until((ModalRoute.withName(Routes.main)));
+                        },
                         child: Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),height: 1.8,decoration: TextDecoration.underline),),
                       ),
                     ),
@@ -106,7 +129,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
   }
 
 
-  Widget buildUsdtItem(int index) {
+  Widget buildUsdtItem(UserDrawDetailBanks item) {
     return Container(
       decoration: BoxDecoration(
         color: ColorX.color_529aff,
@@ -122,14 +145,15 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
           ),
           SizedBox(height: 10.h,),
           Text(Intr().dizhi,style: TextStyle(fontSize: 12.sp,color: Colors.white),),
-          Text("thidfhsglhgslhhhkshk9t9hi",
+          Text(item.bankAccount.em(),
             style: TextStyle(fontSize: 20.sp,color: Colors.white),),
           SizedBox(height: 10.h,),
           Text(Intr().suoshuxieyi,style: TextStyle(fontSize: 12.sp,color: Colors.white),),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("USDT_TRC20", style: TextStyle(fontSize: 20.sp,color: Colors.white),),
+              Text(item.bankName.em(), style: TextStyle(fontSize: 20.sp,color: Colors.white),),
               Align(
                 alignment: Alignment.centerRight,
                 child: Image.asset(ImageX.icon_usdt_grey),

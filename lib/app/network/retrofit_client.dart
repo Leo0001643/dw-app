@@ -5,11 +5,14 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
+import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
+import 'package:leisure_games/ui/bean/back_water_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
+import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
@@ -230,6 +233,19 @@ abstract class RetrofitClient{
 
   @GET('/ds-api-web/queryPointLog')
   Future<BaseResponseEntity<PointRecordEntity>> queryPointLog(@Queries() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/backWaterTotal')
+  Future<BaseResponseEntity<List<BackWaterEntity>>> backWaterTotal(@Queries() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/getPic30')
+  Future<BaseResponseEntity<BackWaterDescEntity>> getNewsBack(@Field('classify') String classify,
+      @Field('tag') String tag,@Field('imageType') int imageType,);
+
+  @GET('/ds-api-web/queryConstituteRatio')
+  Future<BaseResponseEntity<ConstituteRatioEntity>> queryConstituteRatio(@Queries() Map<String,dynamic> params,);
+
+
+
 
 
 

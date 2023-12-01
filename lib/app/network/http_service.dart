@@ -7,11 +7,14 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:leisure_games/app/network/retrofit_client.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
+import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
+import 'package:leisure_games/ui/bean/back_water_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
+import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
@@ -308,6 +311,17 @@ class HttpService{
     return buildFuture<PointRecordEntity>(()=> _client.queryPointLog(params,),loading: false);
   }
 
+  static Future<List<BackWaterEntity>> backWaterTotal(Map<String,dynamic> params,){
+    return buildFuture<List<BackWaterEntity>>(()=> _client.backWaterTotal(params,),loading: false);
+  }
+
+  static Future<BackWaterDescEntity> getNewsBack(String tag){
+    return buildFuture<BackWaterDescEntity>(()=> _client.getNewsBack("news",tag,Constants.imageType));
+  }
+
+  static Future<ConstituteRatioEntity> queryConstituteRatio(Map<String,dynamic> params,){
+    return buildFuture<ConstituteRatioEntity>(()=> _client.queryConstituteRatio(params));
+  }
 
 
 

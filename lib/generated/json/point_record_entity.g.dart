@@ -1,5 +1,7 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/point_record_entity.dart';
+import 'package:leisure_games/app/global.dart';
+
 
 PointRecordEntity $PointRecordEntityFromJson(Map<String, dynamic> json) {
   final PointRecordEntity pointRecordEntity = PointRecordEntity();
