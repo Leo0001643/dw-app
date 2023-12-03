@@ -14,6 +14,7 @@ import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
+import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
@@ -45,11 +46,14 @@ import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
 import 'package:leisure_games/ui/bean/point_record_entity.dart';
+import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
+import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
+import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
@@ -229,6 +233,14 @@ class JsonConvert {
     if (<CustomerServiceCusterServers>[] is M) {
       return data.map<CustomerServiceCusterServers>((Map<String, dynamic> e) =>
           CustomerServiceCusterServers.fromJson(e)).toList() as M;
+    }
+    if (<DayReturnWaterDetailsEntity>[] is M) {
+      return data.map<DayReturnWaterDetailsEntity>((Map<String, dynamic> e) =>
+          DayReturnWaterDetailsEntity.fromJson(e)).toList() as M;
+    }
+    if (<DayReturnWaterDetailsRecord>[] is M) {
+      return data.map<DayReturnWaterDetailsRecord>((Map<String, dynamic> e) =>
+          DayReturnWaterDetailsRecord.fromJson(e)).toList() as M;
     }
     if (<DepositLogEntity>[] is M) {
       return data.map<DepositLogEntity>((Map<String, dynamic> e) =>
@@ -462,6 +474,14 @@ class JsonConvert {
       return data.map<PointRecordRecord>((Map<String, dynamic> e) =>
           PointRecordRecord.fromJson(e)).toList() as M;
     }
+    if (<PrizeListEntity>[] is M) {
+      return data.map<PrizeListEntity>((Map<String, dynamic> e) =>
+          PrizeListEntity.fromJson(e)).toList() as M;
+    }
+    if (<PrizeListPrizes>[] is M) {
+      return data.map<PrizeListPrizes>((Map<String, dynamic> e) =>
+          PrizeListPrizes.fromJson(e)).toList() as M;
+    }
     if (<PromotionDetailEntity>[] is M) {
       return data.map<PromotionDetailEntity>((Map<String, dynamic> e) =>
           PromotionDetailEntity.fromJson(e)).toList() as M;
@@ -501,6 +521,18 @@ class JsonConvert {
     if (<SiteWalletConfigEntity>[] is M) {
       return data.map<SiteWalletConfigEntity>((Map<String, dynamic> e) =>
           SiteWalletConfigEntity.fromJson(e)).toList() as M;
+    }
+    if (<SpreadPromosDataEntity>[] is M) {
+      return data.map<SpreadPromosDataEntity>((Map<String, dynamic> e) =>
+          SpreadPromosDataEntity.fromJson(e)).toList() as M;
+    }
+    if (<SpreadPromosDataList>[] is M) {
+      return data.map<SpreadPromosDataList>((Map<String, dynamic> e) =>
+          SpreadPromosDataList.fromJson(e)).toList() as M;
+    }
+    if (<SpreadUserEntity>[] is M) {
+      return data.map<SpreadUserEntity>((Map<String, dynamic> e) =>
+          SpreadUserEntity.fromJson(e)).toList() as M;
     }
     if (<UsdtChannelEntity>[] is M) {
       return data.map<UsdtChannelEntity>((Map<String, dynamic> e) =>
@@ -618,6 +650,10 @@ class JsonConvertClassCollection {
     (CustomerServiceEntity).toString(): CustomerServiceEntity.fromJson,
     (CustomerServiceCusterServers).toString(): CustomerServiceCusterServers
         .fromJson,
+    (DayReturnWaterDetailsEntity).toString(): DayReturnWaterDetailsEntity
+        .fromJson,
+    (DayReturnWaterDetailsRecord).toString(): DayReturnWaterDetailsRecord
+        .fromJson,
     (DepositLogEntity).toString(): DepositLogEntity.fromJson,
     (DeviceInfo).toString(): DeviceInfo.fromJson,
     (DewInfoEntity).toString(): DewInfoEntity.fromJson,
@@ -676,6 +712,8 @@ class JsonConvertClassCollection {
     (PlatformEntity).toString(): PlatformEntity.fromJson,
     (PointRecordEntity).toString(): PointRecordEntity.fromJson,
     (PointRecordRecord).toString(): PointRecordRecord.fromJson,
+    (PrizeListEntity).toString(): PrizeListEntity.fromJson,
+    (PrizeListPrizes).toString(): PrizeListPrizes.fromJson,
     (PromotionDetailEntity).toString(): PromotionDetailEntity.fromJson,
     (PromotionTypeEntity).toString(): PromotionTypeEntity.fromJson,
     (PromotionTypeKey).toString(): PromotionTypeKey.fromJson,
@@ -686,6 +724,9 @@ class JsonConvertClassCollection {
     (RoomCopyWritingEntity).toString(): RoomCopyWritingEntity.fromJson,
     (RoomCopyWritingContent).toString(): RoomCopyWritingContent.fromJson,
     (SiteWalletConfigEntity).toString(): SiteWalletConfigEntity.fromJson,
+    (SpreadPromosDataEntity).toString(): SpreadPromosDataEntity.fromJson,
+    (SpreadPromosDataList).toString(): SpreadPromosDataList.fromJson,
+    (SpreadUserEntity).toString(): SpreadUserEntity.fromJson,
     (UsdtChannelEntity).toString(): UsdtChannelEntity.fromJson,
     (UserDrawDetailEntity).toString(): UserDrawDetailEntity.fromJson,
     (UserDrawDetailBanks).toString(): UserDrawDetailBanks.fromJson,

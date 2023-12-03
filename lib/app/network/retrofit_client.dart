@@ -1,9 +1,6 @@
 
-import 'dart:collection';
-
 import 'package:dio/dio.dart' hide Headers;
 import 'package:leisure_games/app/constants.dart';
-import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
@@ -14,6 +11,7 @@ import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
+import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
@@ -23,7 +21,6 @@ import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
-import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/is_permit_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
@@ -40,11 +37,14 @@ import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
 import 'package:leisure_games/ui/bean/point_record_entity.dart';
+import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
+import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
+import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
@@ -244,10 +244,23 @@ abstract class RetrofitClient{
   @GET('/ds-api-web/queryConstituteRatio')
   Future<BaseResponseEntity<ConstituteRatioEntity>> queryConstituteRatio(@Queries() Map<String,dynamic> params,);
 
+  @GET('/ds-api-web/dayReturnWaterDetails')
+  Future<BaseResponseEntity<DayReturnWaterDetailsEntity>> dayReturnWaterDetails(@Queries() Map<String,dynamic> params,);
 
+  @GET('/ds-api-web/getPrize')
+  Future<BaseResponseEntity<PrizeListEntity>> getPrize(@Queries() Map<String,dynamic> params,);
 
+  @GET('/ds-api-web/getSpreadUser')
+  Future<BaseResponseEntity<List<SpreadUserEntity>>> getSpreadUser(@Queries() Map<String,dynamic> params,);
 
+  @GET('/ds-api-web/getSpreadPromos')
+  Future<BaseResponseEntity<SpreadPromosDataEntity>> getSpreadPromos(@Queries() Map<String,dynamic> params,);
 
+  @POST('/ds-api-web/checkAgentReg')
+  Future<BaseResponseEntity<String>> checkAgentReg(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/agentRegister')
+  Future<BaseResponseEntity<String>> agentRegister(@Body() Map<String,dynamic> params,);
 
 
 

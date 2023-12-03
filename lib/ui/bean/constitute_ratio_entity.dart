@@ -8,7 +8,7 @@ class ConstituteRatioEntity {
 	double? lossMoney;
 	double? lossMoneyBonus;
 	double? combinBetMoney;
-	double? combinBetRatio;
+	double? combinBetRatio;//组合占比
 	double? activityMode;
 	double? basicBetMoney;
 	int? betTermCount;

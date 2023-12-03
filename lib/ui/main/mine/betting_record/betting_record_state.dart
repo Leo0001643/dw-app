@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 
 class BettingRecordState {
@@ -15,7 +16,8 @@ class BettingRecordState {
     BillWalletEntity(Intr().wallet_usdt, ImageX.icon_dollar_grey,ImageX.icon_dollar_red),
   ];
 
-  var record = ["","","","","","","","","",""].obs;
+  ///投注记录
+  var record = BetRecordGroupEntity().obs;
 
 
 }

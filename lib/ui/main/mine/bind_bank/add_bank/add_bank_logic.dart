@@ -49,12 +49,15 @@ class AddBankLogic extends GetxController {
 
 
   void bindBank(){
-    var mobile = isEmpty(state.detail.value.mobile) ? state.bankMobile.value.em() : state.detail.value.mobile;
-    if(isEmpty(mobile)){
-      showToast(Intr().shuruzhenshiyouxiao);
-      return;
+    String? mobile;
+    if(isEmpty(state.detail.value.mobile)){
+      mobile = state.bankMobile.value.em();
+      if(isEmpty(mobile)){
+        showToast(Intr().shuruzhenshiyouxiao);
+        return;
+      }
+      mobile = "${state.areaNo.value}$mobile";
     }
-    mobile = "${state.areaNo.value}$mobile";
     if(isEmpty(state.selectBank.value.bankName)){
       showToast(Intr().qingxuanzhechukuanyinhang);
       return;
@@ -75,7 +78,12 @@ class AddBankLogic extends GetxController {
 
     var params = <String,dynamic>{"oid":user?.oid,"username":user?.username,
       "realname":state.detail.value.realname.em(),"bankId":state.selectBank.value.id,"bankAccount":state.bankAccount.value,
-      "bankAddress":state.openAddress.value,"getPassword":state.bankPwd.value,"mobile":mobile};
+      "bankAddress":state.openAddress.value,"getPassword":state.bankPwd.value};
+
+    ///如果没绑定过手机号，需要传手机号
+    if(unEmpty(mobile)){
+      params["mobile"] = mobile;
+    }
 
     HttpService.bindDrawDetail(params).then((value) {
       showToast(Intr().caozuochenggong);

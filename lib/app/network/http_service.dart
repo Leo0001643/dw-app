@@ -16,6 +16,7 @@ import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
+import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
@@ -35,15 +36,17 @@ import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
-import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/bean/phrase_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
 import 'package:leisure_games/ui/bean/point_record_entity.dart';
+import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
+import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
+import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
@@ -322,6 +325,36 @@ class HttpService{
   static Future<ConstituteRatioEntity> queryConstituteRatio(Map<String,dynamic> params,){
     return buildFuture<ConstituteRatioEntity>(()=> _client.queryConstituteRatio(params));
   }
+
+  static Future<DayReturnWaterDetailsEntity> dayReturnWaterDetails(Map<String,dynamic> params,){
+    return buildFuture<DayReturnWaterDetailsEntity>(()=> _client.dayReturnWaterDetails(params));
+  }
+
+  static Future<PrizeListEntity> getPrize(Map<String,dynamic> params,){
+    return buildFuture<PrizeListEntity>(()=> _client.getPrize(params));
+  }
+
+  static Future<List<SpreadUserEntity>> getSpreadUser(Map<String,dynamic> params,){
+    return buildFuture<List<SpreadUserEntity>>(()=> _client.getSpreadUser(params));
+  }
+
+  static Future<SpreadPromosDataEntity> getSpreadPromos(Map<String,dynamic> params,){
+    return buildFuture<SpreadPromosDataEntity>(()=> _client.getSpreadPromos(params));
+  }
+
+  static Future<String> checkAgentReg(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.checkAgentReg(params));
+  }
+
+  static Future<String> agentRegister(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.agentRegister(params));
+  }
+
+
+
+
+
+
 
 
 
