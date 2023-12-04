@@ -27,6 +27,7 @@ import 'package:leisure_games/app/widget/select_wallet_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/sign_success_dialog.dart';
 import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
+import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -296,7 +297,7 @@ class DialogUtils {
   }
 
   ///返水比例
-  void showRebateRoleBtmDialog(BuildContext context){
+  void showRebateRoleBtmDialog(BuildContext context,BackWaterDescEntity desc){
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,
@@ -307,7 +308,7 @@ class DialogUtils {
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: RebateRoleBottomDialog(),
+            child: RebateRoleBottomDialog(desc),
           );
         }
     );

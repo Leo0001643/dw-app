@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -8,6 +9,9 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/empty_data_widget.dart';
+import 'package:leisure_games/ui/bean/back_water_entity.dart';
+import 'package:leisure_games/ui/bean/day_return_water_details_params.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
 import 'member_rebate_logic.dart';
 ///会员返水
@@ -45,12 +49,14 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                 scrollDirection: Axis.horizontal,
                 child: Obx(() {
                   return Row(
-                    children: state.times.map((e){
+                    children: state.filterTime.map((e){
                       return GestureDetector(
                         onTap: (){
-                          state.currentTime.value = e;
+                          state.selectTime.value = e;
+                          state.selectTime.refresh();
+                          logic.loadList();
                         },
-                        child: buildTimeTab(e, state.currentTime.value == e ),
+                        child: buildTimeTab(e, state.selectTime.value == e ),
                       );
                     }).toList(),
                   );
@@ -72,7 +78,9 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                     color: ColorX.textBlack()),),
                     InkWell(
                       onTap: (){
-                        DialogUtils().showRebateRoleBtmDialog(context);
+                        if(unEmpty(state.backWaterDesc)){
+                          DialogUtils().showRebateRoleBtmDialog(context,state.backWaterDesc!);
+                        }
                       },
                       child: Image.asset(ImageX.icon_bzzx),
                     ),
@@ -114,19 +122,24 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
               ),
               Column(
                 children: [
-                  InkWell(
-                    onTap: ()=> Get.toNamed(Routes.profit_rebate),
-                    child: buildProfitItem(),
-                  ),
-                  InkWell(
-                    onTap: ()=> Get.toNamed(Routes.profit_rebate),
-                    child: buildProfitItem(),
-                  ),
-                  InkWell(
-                    onTap: ()=> Get.toNamed(Routes.profit_rebate),
-                    child: buildProfitItem(),
-                  ),
-                  buildRebateTotal(Intr().xiaoji,"¥0"),
+                  Obx(() {
+                    if(state.list.em() < 2){
+                      return Container();
+                    }
+                    var dateRange = logic.getRangeDate();
+                    return InkWell(
+                      onTap: ()=> Get.toNamed(Routes.profit_rebate,arguments:
+                      DayReturnWaterDetailsParams(details:state.list.first, beginDate:dateRange.first,
+                          endDate:dateRange.last)),
+                      child: buildProfitItem(state.list.first),
+                    );
+                  }),
+                  Obx(() {
+                    if(state.list.em() < 2){
+                      return Container();
+                    }
+                    return buildRebateTotal(Intr().xiaoji,"¥${state.list.first.lossMoneyBonus.em()}");
+                  }),
                 ],
               ),
               SizedBox(height: 17.h,),
@@ -140,7 +153,9 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                         color: ColorX.textBlack(),),),
                     InkWell(
                       onTap: (){
-                        DialogUtils().showRebateRoleBtmDialog(context);
+                        if(unEmpty(state.backWaterDesc)){
+                          DialogUtils().showRebateRoleBtmDialog(context,state.backWaterDesc!);
+                        }
                       },
                       child: Image.asset(ImageX.icon_bzzx),
                     ),
@@ -176,21 +191,27 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
               ),
               Column(
                 children: [
-                  InkWell(
-                    onTap: ()=> Get.toNamed(Routes.bet_amount_rebate),
-                    child: buildBetAmountItem(),
-                  ),
-                  InkWell(
-                    onTap: ()=> Get.toNamed(Routes.bet_amount_rebate),
-                    child: buildBetAmountItem(),
-                  ),
-                  InkWell(
-                    onTap: ()=> Get.toNamed(Routes.bet_amount_rebate),
-                    child: buildBetAmountItem(),
-                  ),
+                  Obx(() {
+                    if(state.list.em() < 2){
+                      return Container();
+                    }
+                    var dateRange = logic.getRangeDate();
+                    return InkWell(
+                      onTap: ()=> Get.toNamed(Routes.bet_amount_rebate,arguments:
+                      DayReturnWaterDetailsParams(details:state.list.last, beginDate:dateRange.first, endDate:dateRange.last)),
+                      child: buildBetAmountItem(state.list.last),
+                    );
+                  }),
+                  Obx(() {
+                    if(state.list.em() < 2){
+                      return Container();
+                    }
+                    var total = 0.0;
+                    state.list.forEach((element) { total += element.lossMoneyBonus.em(); });
+                    return buildRebateTotal(Intr().zongji, "¥$total");
+                  }),
                 ],
               ),
-              buildRebateTotal(Intr().zongji, "¥0"),
               SizedBox(height: 10.h,),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
@@ -198,7 +219,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(Intr().jinrizuhezhanbilv,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
-                    Text("0%",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
+                    Text("${state.constituteRatio.value.combinBetRatio.em()}%",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
                   ],
                 ),
               ),
@@ -214,7 +235,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
 
 
 
-  buildTimeTab(String name, bool select) {
+  buildTimeTab(PaymentListBanks item, bool select) {
     return Container(
       decoration: BoxDecoration(
         color: select ? ColorX.cardBg():ColorX.cardBg3(),
@@ -223,12 +244,12 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
       ),
       margin: EdgeInsets.only(left: 15.w),
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 8.h),
-      child: Text(name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
+      child: Text(item.bankName.em(),style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
     );
   }
 
   ///负盈利
-  Widget buildProfitItem() {
+  Widget buildProfitItem(BackWaterEntity item) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
       child: Row(
@@ -237,19 +258,20 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
             flex: 25,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("PC28",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(item.gameName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("72.7600",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(item.validBetMoney.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("37.2400",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(item.lossMoney.em(),style: TextStyle(fontSize: 14.sp,
+                color: ColorX.color_fe2427,fontWeight: FontWeight.w600),),
             ),
           ),
           Expanded(
@@ -257,7 +279,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("0.00000",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+                Text("${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
                 Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
               ],
             ),
@@ -280,7 +302,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
     );
   }
 
-  Widget buildBetAmountItem() {
+  Widget buildBetAmountItem(BackWaterEntity item) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
       child: Row(
@@ -289,13 +311,13 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
             flex: 25,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("PC28",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(item.gameName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("72.7600",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(item.validBetMoney.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
@@ -303,7 +325,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("0.00000",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+                Text("${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
                 Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
               ],
             ),

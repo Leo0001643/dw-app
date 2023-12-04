@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
-import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
 
 import 'profit_rebate_logic.dart';
 
@@ -41,19 +41,22 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
             Container(
               color: ColorX.cardBg3(),
               padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(Intr().qitayouxi_(["07-07","07-07"]),style: TextStyle(fontSize: 16.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500,),),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(Intr().zongji,style: TextStyle(fontSize: 16.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500,),),
-                      Text("¥0",style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500,),),
-                    ],
-                  ),
-                ],
-              ),
+              child: Obx(() {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("${state.params.value.details?.gameName.em()}（${state.params.value.beginDateStr()} - ${state.params.value.endDateStr()}）",
+                      style: TextStyle(fontSize: 16.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500,),),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(Intr().zongji,style: TextStyle(fontSize: 16.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500,),),
+                        Text("¥${state.params.value.details?.lossMoneyBonus.em()}",style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500,),),
+                      ],
+                    ),
+                  ],
+                );
+              }),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
@@ -95,15 +98,18 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
               ),
             ),
             Expanded(
-              child: ListView.separated(
-                itemBuilder: (context,index){
-                  return buildProfitItem();
-                },
-                separatorBuilder: (context,index){
-                  return Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,);
-                },
-                itemCount: state.record.value.length,
-              ),
+              child: Obx(() {
+                return ListView.separated(
+                  itemBuilder: (context,index){
+                    var item = state.record.value.record![index];
+                    return buildProfitItem(item);
+                  },
+                  separatorBuilder: (context,index){
+                    return Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,);
+                  },
+                  itemCount: state.record.value.record.em(),
+                );
+              }),
             ),
           ],
         ),
@@ -113,7 +119,7 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
 
 
   ///负盈利
-  Widget buildProfitItem() {
+  Widget buildProfitItem(DayReturnWaterDetailsRecord item) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
       child: Row(
@@ -122,32 +128,32 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
             flex: 23,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("2023-07-07",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(item.date.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
             flex: 18,
             child: Center(
-              child: Text("72.7600",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(item.validBetMoney.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
             flex: 18,
             child: Center(
-              child: Text("37.2400",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,),),
+              child: Text("${item.lossMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,),),
             ),
           ),
           Expanded(
             flex: 18,
             child: Center(
-              child: Text("37.2400",style: TextStyle(fontSize: 14.sp,color: ColorX.color_23a81d,),),
+              child: Text(item.lossMoneyBonus.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.color_23a81d,),),
             ),
           ),
           Expanded(
             flex: 23,
             child: Align(
               alignment: Alignment.centerRight,
-              child: Text("0.00000",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text("${item.combinBetRatio.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
         ],

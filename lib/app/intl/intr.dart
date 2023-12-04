@@ -458,6 +458,9 @@ class Intr extends Translations{
   String get youxiaoqi => 'youxiaoqi'.tr;
   String get xuyaodamaliang => 'xuyaodamaliang'.tr;
   String get yitiqu => 'yitiqu'.tr;
+  String get weijihuo => 'weijihuo'.tr;
+  String get yijihuo => 'yijihuo'.tr;
+  String get yishixiao => 'yishixiao'.tr;
   String get tiqu => 'tiqu'.tr;
   String get tiquchenggong => 'tiquchenggong'.tr;
   String get duihuan => 'duihuan'.tr;
@@ -561,6 +564,8 @@ class Intr extends Translations{
   String get trc20_show => 'trc20_show'.tr;
   String get erc20_show => 'erc20_show'.tr;
   String get omni_show => 'omni_show'.tr;
+  String get tuiguanghongli => 'tuiguanghongli'.tr;
+  String get sidao12shuzihuozimu => 'sidao12shuzihuozimu'.tr;
 
 
 
@@ -958,7 +963,7 @@ class Intr extends Translations{
       "tuiguangerweima":"推广二维码",
       "baocuntupian":"保存图片",
       "fuzhilianjie":"复制链接",
-      "huiyuanliebiao":"会员列表(通过 sp=495 注册的会员如下",
+      "huiyuanliebiao":"会员列表",
       "riqi":"日期",
       "xiaxiancunkuan":"下线存款",
       "zhuanquhongli":"赚取红利",
@@ -1003,6 +1008,9 @@ class Intr extends Translations{
       "youxiaoqi":"有效期",
       "xuyaodamaliang":"需要打码量",
       "yitiqu":"已提取",
+      "weijihuo":"未激活",
+      "yijihuo":"已激活",
+      "yishixiao":"已失效",
       "tiqu":"提取",
       "tiquchenggong":"提取成功",
       "duihuan":"兑换",
@@ -1104,6 +1112,11 @@ class Intr extends Translations{
       "trc20_show":"TRC20 (波场网络)",
       "erc20_show":"ERC20 (以太网)",
       "omni_show":"OMNI (比特币网络)",
+      "tuiguanghongli":"推广红利",
+      "sidao12shuzihuozimu":"4-12位数字或字母",
+
+
+
 
 
     },

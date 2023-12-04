@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
+import 'package:leisure_games/ui/bean/point_record_entity.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'points_record_logic.dart';
 //积分记录
@@ -18,6 +23,15 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
   final logic = Get.find<PointsRecordLogic>();
   final state = Get.find<PointsRecordLogic>().state;
 
+  @override
+  void initState() {
+    state.refreshController= RefreshController(initialRefresh: true);
+    state.refreshListener.addListener(() {
+      var refresh= state.refreshListener.value;
+      RefreshChangeNotifier.dataComplete(state.refreshController, refresh);
+    });
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -39,12 +53,14 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
               scrollDirection: Axis.horizontal,
               child: Obx(() {
                 return Row(
-                  children: state.times.map((e){
+                  children: state.filterTime.map((e){
                     return GestureDetector(
                       onTap: (){
-                        state.currentTime.value = e;
+                        state.selectTime.value = e;
+                        state.selectTime.refresh();
+                        state.refreshController.requestRefresh();
                       },
-                      child: buildTimeTab(e, state.currentTime.value == e ),
+                      child: buildTimeTab(e, state.selectTime.value == e ),
                     );
                   }).toList(),
                 );
@@ -91,25 +107,35 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
               ),
             ),
             Expanded(
-              child: ListView.separated(
-                itemBuilder: (context,index){
-                  if((index + 1) < state.record.value.length){
-                    return buildRecordItem(index);
-                  } else {
-                    return Column(
-                      children: [
-                        buildRecordItem(index),
-                        Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,),
-                        buildTotalFooter()
-                      ],
-                    );
-                  }
-                },
-                separatorBuilder: (context,index){
-                  return Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,);
-                },
-                itemCount: state.record.value.length,
-              ),
+              child: Obx(() {
+                return SmartRefresher(
+                  controller: state.refreshController,
+                  enablePullDown: true,
+                  enablePullUp: true,
+                  onRefresh: ()=> logic.loadData(true),
+                  onLoading: ()=> logic.loadData(false),
+                  child: ListView.separated(
+                    itemBuilder: (context,index){
+                      var item = state.list[index];
+                      // if((index + 1) < state.list.em()){
+                      return buildRecordItem(item);
+                      // } else {
+                      //   return Column(
+                      //     children: [
+                      //       buildRecordItem(index),
+                      //       Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,),
+                      //       buildTotalFooter()
+                      //     ],
+                      //   );
+                      // }
+                    },
+                    separatorBuilder: (context,index){
+                      return Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,);
+                    },
+                    itemCount: state.list.em(),
+                  ),
+                );
+              }),
             ),
           ],
         ),
@@ -117,7 +143,7 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
     );
   }
 
-  buildTimeTab(String name, bool select) {
+  buildTimeTab(PaymentListBanks item, bool select) {
     return Container(
       decoration: BoxDecoration(
         color: select ? ColorX.cardBg():ColorX.cardBg3(),
@@ -126,11 +152,11 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
       ),
       margin: EdgeInsets.only(left: 15.w),
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 8.h),
-      child: Text(name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
+      child: Text(item.bankName.em(),style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
     );
   }
 
-  Widget buildRecordItem(int index) {
+  Widget buildRecordItem(PointRecordRecord item) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
       child: Row(
@@ -139,72 +165,72 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
             flex: 25,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("2023-06-08",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text(item.dateStr(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("下注积分奖励",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text(item.remark.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text(item.transPoint.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Align(
               alignment: Alignment.centerRight,
-              child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text(item.afterPoint.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
         ],
       ),
     );
   }
-
-  Widget buildTotalFooter() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 25,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(Intr().zongji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
-                  fontWeight: FontWeight.w600),),
-            ),
-          ),
-          Expanded(
-            flex: 25,
-            child: Center(
-              child: Text("下注积分奖励",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
-                  fontWeight: FontWeight.w600),),
-            ),
-          ),
-          Expanded(
-            flex: 25,
-            child: Center(
-              child: Text("1222.76",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
-                  fontWeight: FontWeight.w600),),
-            ),
-          ),
-          Expanded(
-            flex: 25,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Text("+659.0",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,
-              fontWeight: FontWeight.w600),),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  //
+  // Widget buildTotalFooter() {
+  //   return Container(
+  //     padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
+  //     child: Row(
+  //       children: [
+  //         Expanded(
+  //           flex: 25,
+  //           child: Align(
+  //             alignment: Alignment.centerLeft,
+  //             child: Text(Intr().zongji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
+  //                 fontWeight: FontWeight.w600),),
+  //           ),
+  //         ),
+  //         Expanded(
+  //           flex: 25,
+  //           child: Center(
+  //             child: Text("下注积分奖励",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
+  //                 fontWeight: FontWeight.w600),),
+  //           ),
+  //         ),
+  //         Expanded(
+  //           flex: 25,
+  //           child: Center(
+  //             child: Text("1222.76",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
+  //                 fontWeight: FontWeight.w600),),
+  //           ),
+  //         ),
+  //         Expanded(
+  //           flex: 25,
+  //           child: Align(
+  //             alignment: Alignment.centerRight,
+  //             child: Text("+659.0",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,
+  //             fontWeight: FontWeight.w600),),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
 
 }

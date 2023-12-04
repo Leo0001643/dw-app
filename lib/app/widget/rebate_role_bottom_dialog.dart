@@ -5,16 +5,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 
 ///返水说明
 class RebateRoleBottomDialog extends StatefulWidget{
 
-  const RebateRoleBottomDialog({super.key});
+  final BackWaterDescEntity desc;
+
+  const RebateRoleBottomDialog(this.desc,{super.key});
 
   @override
   State<StatefulWidget> createState() =>StateRebateRoleBottomDialog();
@@ -41,7 +45,7 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
           Stack(
             children: [
               Center(
-                child: Text(Intr().fanshuishuoming
+                child: Text(widget.desc.name.em()
                   ,style: TextStyle(fontSize: 18.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
               ),
               InkWell(
@@ -72,12 +76,25 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
                 ),
                 Expanded(
                   child: InAppWebView(
-                    // initialUrlRequest: URLRequest(url: Uri.tryParse('https://juejin.cn/user/1865248698012616')),
-                    initialData: InAppWebViewInitialData(data: Constants.test_role,),
+                    initialData: InAppWebViewInitialData(data: widget.desc.content.em(),),
                     onProgressChanged: (controller,pg){
                       progress.value = pg.toDouble();
                       progressVisible.value = pg != 100;
                     },
+                    initialOptions: InAppWebViewGroupOptions(
+                      android: AndroidInAppWebViewOptions(
+                        loadWithOverviewMode: false,
+                        overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
+                        displayZoomControls: false,
+                        builtInZoomControls: false,
+                        useWideViewPort: false,
+                      ),
+                      ios: IOSInAppWebViewOptions(
+                        disallowOverScroll: true,
+                        enableViewportScale: true,
+                        ignoresViewportScaleLimits: true,
+                      ),
+                    ),
                   ),
                 ),
               ],
