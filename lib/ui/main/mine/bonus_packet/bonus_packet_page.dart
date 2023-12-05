@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,9 +10,11 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
+import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 
 import 'bonus_packet_logic.dart';
 
+///红包和奖金
 class BonusPacketPage extends StatefulWidget {
   const BonusPacketPage({Key? key}) : super(key: key);
 
@@ -46,6 +51,7 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
                       onTap: (){
                         state.currentWallet.value = e;
                         state.currentWallet.refresh();
+                        logic.changeTab();
                       },
                       child: buildWalletTab(e, state.currentWallet.value == e ),
                     );
@@ -93,15 +99,17 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
               ),
             ),
             Expanded(
-              child: ListView.separated(
+              child: Obx(() {
+                return ListView.separated(
                   itemBuilder: (context,index){
-                    return buildBonusItem(index);
+                    return buildBonusItem(state.record[index]);
                   },
                   separatorBuilder: (context,index){
                     return Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,);
                   },
                   itemCount: state.record.length,
-              ),
+                );
+              }),
             ),
           ],
         ),
@@ -130,8 +138,8 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
   }
 
 
-  Widget buildBonusItem(int index) {
-    var result = index%2 == 1;
+  Widget buildBonusItem(PrizeListPrizes item) {
+    // var result = index%2 == 1;
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
@@ -141,32 +149,33 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
             flex: 25,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("2023-06-08",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text(DateUtil.formatDateMs(item.endTime.em() * 1000,format: DateFormats.y_mo_d),
+                style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("36",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text("${item.bonusMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("0",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text("${item.bonusMoneyCode.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: InkWell(
               onTap: () {
-                if(!result){ showToast(Intr().tiquchenggong); }
+                // if(!result){ showToast(Intr().tiquchenggong); }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(result ? Intr().yitiqu : Intr().tiqu,style: TextStyle(fontSize: 14.sp, color: result ? ColorX.text5862() : ColorX.text0d1(),
-                      decoration: result ? TextDecoration.underline : null),),
+                  Text(item.statusString(),style: TextStyle(fontSize: 14.sp, color: true ? ColorX.text5862() : ColorX.text0d1(),
+                      decoration: true ? TextDecoration.underline : null),),
                   Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
                 ],
               ),

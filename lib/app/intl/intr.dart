@@ -944,7 +944,7 @@ class Intr extends Translations{
       "shuruneirongbuyizhi":"输入内容不一致，请重试",
       "wenxintishi_jianyimima":"温馨提示:\n一些说明文字一些说明文字一些说明文字一些说明文字一些说明文字",
       "shuruyuandenglumima":"输入原登录密码",
-      "shuruxindenglumima":"输入6-12位新登录密码",
+      "shuruxindenglumima":"输入8-12位新登录密码",
       "chongfushuruxindenglumima":"重复输入新登录密码",
       "genghuantouxiang":"更换头像",
       "moren":"默认",

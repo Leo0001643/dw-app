@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
+import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 
 class BonusPacketState {
   BonusPacketState() {
@@ -18,8 +19,11 @@ class BonusPacketState {
   ];
 
 
-  var record = ["","","","","","","","","","",""].obs;
+  ///记录
+  var record = RxList<PrizeListPrizes>.empty(growable: true);
 
+  ///详情
+  var detail = PrizeListEntity();
 
 
 }

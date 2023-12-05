@@ -25,6 +25,7 @@ import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
+import 'package:leisure_games/ui/bean/help_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
@@ -55,6 +56,7 @@ import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
+import 'package:leisure_games/ui/bean/user_detail_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -298,6 +300,10 @@ class JsonConvert {
       return data.map<GameTypeEntity>((Map<String, dynamic> e) =>
           GameTypeEntity.fromJson(e)).toList() as M;
     }
+    if (<HelpEntity>[] is M) {
+      return data.map<HelpEntity>((Map<String, dynamic> e) =>
+          HelpEntity.fromJson(e)).toList() as M;
+    }
     if (<HistoryHall>[] is M) {
       return data.map<HistoryHall>((Map<String, dynamic> e) =>
           HistoryHall.fromJson(e)).toList() as M;
@@ -538,6 +544,10 @@ class JsonConvert {
       return data.map<UsdtChannelEntity>((Map<String, dynamic> e) =>
           UsdtChannelEntity.fromJson(e)).toList() as M;
     }
+    if (<UserDetailEntity>[] is M) {
+      return data.map<UserDetailEntity>((Map<String, dynamic> e) =>
+          UserDetailEntity.fromJson(e)).toList() as M;
+    }
     if (<UserDrawDetailEntity>[] is M) {
       return data.map<UserDrawDetailEntity>((Map<String, dynamic> e) =>
           UserDrawDetailEntity.fromJson(e)).toList() as M;
@@ -668,6 +678,7 @@ class JsonConvertClassCollection {
     (GameKindEntity).toString(): GameKindEntity.fromJson,
     (GameKindGameKindList).toString(): GameKindGameKindList.fromJson,
     (GameTypeEntity).toString(): GameTypeEntity.fromJson,
+    (HelpEntity).toString(): HelpEntity.fromJson,
     (HistoryHall).toString(): HistoryHall.fromJson,
     (HistoryLottoEntity).toString(): HistoryLottoEntity.fromJson,
     (HomeGameMenuEntity).toString(): HomeGameMenuEntity.fromJson,
@@ -728,6 +739,7 @@ class JsonConvertClassCollection {
     (SpreadPromosDataList).toString(): SpreadPromosDataList.fromJson,
     (SpreadUserEntity).toString(): SpreadUserEntity.fromJson,
     (UsdtChannelEntity).toString(): UsdtChannelEntity.fromJson,
+    (UserDetailEntity).toString(): UserDetailEntity.fromJson,
     (UserDrawDetailEntity).toString(): UserDrawDetailEntity.fromJson,
     (UserDrawDetailBanks).toString(): UserDrawDetailBanks.fromJson,
     (VarCodeEntity).toString(): VarCodeEntity.fromJson,

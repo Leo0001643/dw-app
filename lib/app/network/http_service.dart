@@ -26,6 +26,7 @@ import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
+import 'package:leisure_games/ui/bean/help_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/is_permit_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
@@ -49,6 +50,7 @@ import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
+import 'package:leisure_games/ui/bean/user_detail_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -349,6 +351,35 @@ class HttpService{
   static Future<String> agentRegister(Map<String,dynamic> params,){
     return buildFuture<String>(()=> _client.agentRegister(params));
   }
+
+  static Future<List<HelpEntity>> getHelpCenter(){
+    return buildFuture<List<HelpEntity>>(()=> _client.getHelpCenter("newstag",Constants.imageType));
+  }
+
+  static Future<UserDetailEntity> getUserDetail(Map<String,dynamic> params,){
+    return buildFuture<UserDetailEntity>(()=> _client.getUserDetail(params));
+  }
+
+  static Future<String> updateUserDetail(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.updateUserDetail(params));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

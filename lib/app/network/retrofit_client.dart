@@ -21,6 +21,7 @@ import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/game_type_entity.dart';
+import 'package:leisure_games/ui/bean/help_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/is_permit_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
@@ -47,6 +48,7 @@ import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/trend_response_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
+import 'package:leisure_games/ui/bean/user_detail_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -261,6 +263,16 @@ abstract class RetrofitClient{
 
   @POST('/ds-api-web/agentRegister')
   Future<BaseResponseEntity<String>> agentRegister(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/getPic30')
+  Future<BaseResponseEntity<List<HelpEntity>>> getHelpCenter(@Field('classify') String classify,
+      @Field('imageType') int imageType,);
+
+  @GET('/ds-api-web/getUserDetail')
+  Future<BaseResponseEntity<UserDetailEntity>> getUserDetail(@Queries() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/updateUserDetail')
+  Future<BaseResponseEntity<String>> updateUserDetail(@Body() Map<String,dynamic> params,);
 
 
 
