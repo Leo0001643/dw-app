@@ -364,6 +364,9 @@ class HttpService{
     return buildFuture<String>(()=> _client.updateUserDetail(params));
   }
 
+  static Future<String> changePassword(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.changePassword(params));
+  }
 
 
 

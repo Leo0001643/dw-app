@@ -49,8 +49,6 @@ import 'package:leisure_games/ui/main/home/table_game_list/table_game_list_bindi
 import 'package:leisure_games/ui/main/home/table_game_list/table_game_list_page.dart';
 import 'package:leisure_games/ui/main/main_binding.dart';
 import 'package:leisure_games/ui/main/main_page.dart';
-import 'package:leisure_games/ui/main/mine/about/about_binding.dart';
-import 'package:leisure_games/ui/main/mine/about/about_page.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting_detail_binding.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting_detail_page.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_record_binding.dart';
@@ -164,7 +162,7 @@ class Routes {
   static const String promotion_profit = "/mine/promotion_profit";
   static const String proxy_register = "/mine/proxy_register";
   static const String quota_conversion = "/mine/quota_conversion";
-  static const String about = "/mine/about";
+  // static const String about = "/mine/about";
   static const String help_center = "/mine/help_center";
 
   static const String coin_exchange = "/mine/coin_exchange";
@@ -229,7 +227,7 @@ class Routes {
     GetPage(name: promotion_profit,binding: PromotionProfitBinding(), page: () => PromotionProfitPage()),
     GetPage(name: proxy_register,binding: ProxyRegisterBinding(), page: () => ProxyRegisterPage()),
     GetPage(name: quota_conversion,binding: QuotaConversionBinding(), page: () => QuotaConversionPage()),
-    GetPage(name: about,binding: AboutBinding(), page: () => AboutPage()),
+    // GetPage(name: about,binding: AboutBinding(), page: () => AboutPage()),
     GetPage(name: help_center,binding: HelpCenterBinding(), page: () => HelpCenterPage()),
     GetPage(name: coin_exchange,binding: CoinExchangeBinding(), page: () => CoinExchangePage()),
     GetPage(name: bill_flow,binding: BillFlowBinding(), page: () => BillFlowPage()),

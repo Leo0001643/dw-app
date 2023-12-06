@@ -26,12 +26,12 @@ class PromotionProfitLogic extends GetxController {
 
     //http://soptj9qq.com/#/register?sp=100001547
     //100001547
+    var user = AppData.user();
 
-    state.userCode.value = "${AppData.user()?.id ?? 0}";
+    state.userCode.value = "${user?.id ?? 0}";
 
     state.userLink.value = "${Constants.host}/#/register?sp=${AppData.user()?.id ?? 0}";
 
-    var user = AppData.user();
     var params = {"oid":user?.oid,"username":user?.username,"pageSize":Constants.pageSize,"page":1};
 
     HttpService.getSpreadPromos(params).then((value) {

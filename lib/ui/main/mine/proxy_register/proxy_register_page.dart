@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
 import 'proxy_register_logic.dart';
@@ -48,7 +50,8 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             SizedBox(height: 5.h,),
             Center(
               child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(),
-                  Intr().qsryhm,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586()),
+                  Intr().sidao12shuzihuozimu,defText: state.username.value,onChanged: (v)=> state.username.value = v,
+                  backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586()),
             ),
             SizedBox(height: 20.h,),
             Padding(
@@ -131,7 +134,8 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             SizedBox(height: 5.h,),
             Center(
               child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(),
-                  Intr().ytxyhkhmyz,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586(),),
+                  Intr().ytxyhkhmyz,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586(),
+              defText: state.realname.value,onChanged: (v)=> state.realname.value = v),
             ),
             SizedBox(height: 20.h,),
             Padding(
@@ -146,11 +150,24 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
                 child: Row(
                   children: [
                     SizedBox(width: 15.w,),
-                    Text("+86",style: TextStyle(color: ColorX.text0917(),fontSize: 14.sp),),
+                    InkWell(
+                      onTap: ()=> DialogUtils().showSelectAreaBtmDialog(context, state.phoneData ?? {}).then((value) {
+                        if(unEmpty(value)){ state.areaNo.value = value!; }
+                      }),
+                      child: Row(
+                        children: [
+                          Obx(() {
+                            return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),);
+                          }),
+                          WidgetUtils().buildImage(ImageX.icon_down_black, 15.w, 15.w),
+                        ],
+                      ),
+                    ),
                     SizedBox(width: 5.w,),
                     Container(width: 2.w,height: 15.h,color: ColorX.text949(),),
-                    WidgetUtils().buildTextField(285.w, 45.h, 14.sp, ColorX.text0917(), Intr().shuruzhenshiyouxiao,
-                        backgroundColor: Colors.transparent,inputType: TextInputType.phone,hintColor: ColorX.text586(),),
+                    WidgetUtils().buildTextField(245.w, 45.h, 14.sp, ColorX.text0917(), Intr().shuruzhenshiyouxiao,
+                        backgroundColor: Colors.transparent,inputType: TextInputType.phone,hintColor: ColorX.text586(),
+                    defText: state.phone.value,onChanged: (v)=> state.phone.value = v),
                   ],
                 ),
               ),
@@ -163,7 +180,8 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             SizedBox(height: 5.h,),
             Center(
               child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(), Intr().shuruqqhaoma,
-                  backgroundColor: ColorX.cardBg3(),inputType: TextInputType.number,hintColor: ColorX.text586(),),
+                  backgroundColor: ColorX.cardBg3(),inputType: TextInputType.number,hintColor: ColorX.text586(),
+                  defText: state.qq.value,onChanged: (v)=> state.qq.value = v),
             ),
             SizedBox(height: 20.h,),
             Padding(
@@ -173,7 +191,8 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             SizedBox(height: 5.h,),
             Center(
               child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(), Intr().shurudianziyouxiang,
-                  backgroundColor: ColorX.cardBg3(),inputType: TextInputType.emailAddress,hintColor: ColorX.text586(),),
+                  backgroundColor: ColorX.cardBg3(),inputType: TextInputType.emailAddress,hintColor: ColorX.text586(),
+                  defText: state.email.value,onChanged: (v)=> state.email.value = v),
             ),
             SizedBox(height: 20.h,),
             Padding(
@@ -195,8 +214,13 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     WidgetUtils().buildTextField(225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
-                        backgroundColor: Colors.transparent,hintColor: ColorX.text586(),onChanged: (v)=>state.accountValue = v),
-                    Container(width: 73.w,height: 30.h,color: Colors.black54,),
+                        backgroundColor: Colors.transparent,hintColor: ColorX.text586(),
+                        onChanged: (v)=>state.validCode.value = v,defText: state.validCode.value),
+                    Obx(() {
+                      return WidgetUtils().buildVarCode(state.varcode.value.varCode.em(),(){
+                        logic.getVarcode();
+                      });
+                    }),
                   ],
                 ),
               ),
@@ -204,7 +228,7 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             SizedBox(height: 20.h,),
             Center(
               child: WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 48.h, bg: ColorX.color_fd273e,
-                  textColor: Colors.white,textSize: 16.sp,onPressed: (){}),
+                  textColor: Colors.white,textSize: 16.sp,onPressed: ()=> logic.register()),
             ),
             SizedBox(height: 20.h,),
             Padding(

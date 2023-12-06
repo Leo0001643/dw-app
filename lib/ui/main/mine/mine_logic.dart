@@ -78,7 +78,10 @@ class MineLogic extends GetxController {
         Get.toNamed(Routes.promotion_profit);
         break;
       case 11:
-        Get.toNamed(Routes.proxy_register);
+        var user = AppData.user();
+        HttpService.checkAgentReg({"username":user?.username}).then((value) {
+          Get.toNamed(Routes.proxy_register);
+        });
         break;
       case 12:
         Get.toNamed(Routes.setting);
@@ -87,7 +90,10 @@ class MineLogic extends GetxController {
         Get.toNamed(Routes.help_center);
         break;
       case 14:
-        Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: Constants.test_html,pageTitle: Intr().guanyuwomen));
+        HttpService.getNewsRate("about").then((value) {
+          Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: value.content.em(),
+              pageTitle: Intr().guanyuwomen));
+        });
         break;
     }
   }
