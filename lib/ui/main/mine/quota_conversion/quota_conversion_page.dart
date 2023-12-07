@@ -66,7 +66,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                             logic.loadBalance(false);
                           }
                         }),
-                        child: Container(
+                        child: SizedBox(
                           height: 40.h,
                           child: Obx(() {
                             return Row(
@@ -156,7 +156,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                         }),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: 60.w,
                       child: Image.asset(ImageX.icon_right_left),
                     ),

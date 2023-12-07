@@ -12,7 +12,6 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
-import 'package:leisure_games/ui/login/login_logic.dart';
 
 import 'register_logic.dart';
 

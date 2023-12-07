@@ -11,6 +11,8 @@ import 'select_theme_logic.dart';
 ///
 /// 深浅色开关
 class SelectThemePage extends StatefulWidget {
+  const SelectThemePage({super.key});
+
   @override
   State<StatefulWidget> createState() => StateSelectThemePage();
 

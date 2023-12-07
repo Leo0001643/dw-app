@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
 
 class SettingState {
   SettingState() {
@@ -6,10 +8,11 @@ class SettingState {
   }
 
   //简易密码
-  var jymmToggle = false.obs;
+  var jymmToggle = unEmpty(AppData.simplePwd()).obs;
   //背景音乐
-  var bjyyToggle = false.obs;
+  var bjyyToggle = AppData.bgMusic().obs;
   //提示音
-  var tsyToggle = false.obs;
+  var tsyToggle = AppData.promptTone().obs;
+
 
 }

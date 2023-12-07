@@ -58,7 +58,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
                     height: 205.h,
                     viewportFraction: 0.9,
                     enableInfiniteScroll: false,
-                    scrollPhysics: NeverScrollableScrollPhysics(),
+                    scrollPhysics: const NeverScrollableScrollPhysics(),
                     items: state.userDraw.value.dcBanks?.map((e) => buildUsdtItem(e)).toList() ?? [],
                   ),
                 ),
@@ -81,7 +81,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
                     // padding: EdgeInsets.symmetric(vertical: 17.h,horizontal: 27.w),
                     margin: EdgeInsets.symmetric(horizontal: 27.w),
                     child: GFBorder(
-                      dashedLine: [5,7],
+                      dashedLine: const [5,7],
                       color: ColorX.text586(),
                       type: GFBorderType.rRect,
                       radius: Radius.circular(10.r),

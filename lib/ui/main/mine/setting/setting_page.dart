@@ -5,6 +5,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -99,7 +100,7 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     Divider(color: ColorX.color_10_949,height: 1.h,),
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w),
+                      padding: EdgeInsets.symmetric(horizontal: 12.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -110,15 +111,19 @@ class _SettingPageState extends State<SettingPage> {
                               Image.asset(ImageX.icon_wenhao,color: ColorX.text586(),)
                             ],
                           ),
-                          GFToggle(
-                            onChanged: (value){
-                              Get.toNamed(Routes.set_simple_pwd);
-                            },
-                            value: state.jymmToggle.value,
-                            type: GFToggleType.ios,
-                            disabledTrackColor: ColorX.text949(),
-                            enabledTrackColor: ColorX.color_69c25c,
-                          ),
+                          Obx(() {
+                            return Switch(
+                                value: state.jymmToggle.value,
+                                inactiveTrackColor: ColorX.text949(),
+                                activeTrackColor: ColorX.color_69c25c,
+                                activeColor: Colors.white,
+                                onChanged: (value){
+                              Get.toNamed(Routes.set_simple_pwd)?.then((value) {
+                                state.jymmToggle.value = unEmpty(AppData.simplePwd());
+                                loggerArray(["返回数据了吗",value,state.jymmToggle.value]);
+                              });
+                            });
+                          }),
                         ],
                       ),
                     ),
@@ -154,34 +159,40 @@ class _SettingPageState extends State<SettingPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 12.w),
+                      padding: EdgeInsets.symmetric(horizontal: 12.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(Intr().bjyy,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
-                          GFToggle(
-                            onChanged: (value){},
+                          Switch(
+                            onChanged: (value){
+                              AppData.setBgMusic(value == true);
+                              state.bjyyToggle.value = value == true;
+                            },
                             value: state.bjyyToggle.value,
-                            type: GFToggleType.ios,
-                            disabledTrackColor: ColorX.text949(),
-                            enabledTrackColor: ColorX.color_69c25c,
+                            inactiveTrackColor: ColorX.text949(),
+                            activeTrackColor: ColorX.color_69c25c,
+                            activeColor: Colors.white,
                           ),
                         ],
                       ),
                     ),
                     Divider(color: ColorX.color_10_949,height: 1.h,),
                     Container(
-                      padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w),
+                      padding: EdgeInsets.symmetric(horizontal: 12.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(Intr().tsy,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
-                          GFToggle(
-                            onChanged: (value){},
+                          Switch(
+                            onChanged: (value){
+                              AppData.setPromptTone(value == true);
+                              state.tsyToggle.value = value == true;
+                            },
                             value: state.tsyToggle.value,
-                            type: GFToggleType.ios,
-                            disabledTrackColor: ColorX.text949(),
-                            enabledTrackColor: ColorX.color_69c25c,
+                            inactiveTrackColor: ColorX.text949(),
+                            activeTrackColor: ColorX.color_69c25c,
+                            activeColor: Colors.white,
                           ),
                         ],
                       ),

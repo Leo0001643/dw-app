@@ -12,6 +12,8 @@ import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 import 'select_language_logic.dart';
 
 class SelectLanguagePage extends StatefulWidget {
+  const SelectLanguagePage({super.key});
+
   @override
   State<StatefulWidget> createState() => StateSelectLanguagePage();
 
