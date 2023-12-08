@@ -43,7 +43,7 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                 color: ColorX.cardBg3(),
                 borderRadius: BorderRadius.circular(10.r),
               ),
-              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
+              padding: EdgeInsets.symmetric(horizontal: 13.w),
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 children: [
@@ -55,12 +55,12 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                         Text(Intr().cksl,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),
                         decoration: TextDecoration.underline),),
                         Expanded(child: Container()),
-                        GFToggle(
+                        Switch(
                           onChanged: (value){},
                           value: state.entertainedAnim.value,
-                          type: GFToggleType.ios,
-                          disabledTrackColor: ColorX.text949(),
-                          enabledTrackColor: ColorX.color_69c25c,
+                          inactiveTrackColor: ColorX.text949(),
+                          activeTrackColor: ColorX.color_69c25c,
+                          activeColor: Colors.white,
                         ),
                       ],
                     ),
@@ -76,12 +76,12 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                         Text(Intr().cksl,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),
                             decoration: TextDecoration.underline),),
                         Expanded(child: Container()),
-                        GFToggle(
+                        Switch(
                           onChanged: (value){},
                           value: state.lotteryAnim.value,
-                          type: GFToggleType.ios,
-                          disabledTrackColor: ColorX.text949(),
-                          enabledTrackColor: ColorX.color_69c25c,
+                          inactiveTrackColor: ColorX.text949(),
+                          activeTrackColor: ColorX.color_69c25c,
+                          activeColor: Colors.white,
                         ),
                       ],
                     ),
@@ -97,12 +97,12 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                         Text(Intr().cksl,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),
                             decoration: TextDecoration.underline),),
                         Expanded(child: Container()),
-                        GFToggle(
+                        Switch(
                           onChanged: (value){},
                           value: state.countdownAnim.value,
-                          type: GFToggleType.ios,
-                          disabledTrackColor: ColorX.text949(),
-                          enabledTrackColor: ColorX.color_69c25c,
+                          inactiveTrackColor: ColorX.text949(),
+                          activeTrackColor: ColorX.color_69c25c,
+                          activeColor: Colors.white,
                         ),
                       ],
                     ),

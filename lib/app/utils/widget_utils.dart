@@ -397,7 +397,15 @@ class WidgetUtils {
   void goMessageCenter() {
     if(AppData.isLogin()){
       Get.toNamed(Routes.message_center);
-    }else {
+    } else {
+      goLogin();
+    }
+  }
+
+  void goLogin(){
+    if(unEmpty(AppData.simplePwd())){
+      Get.toNamed(Routes.simple_login);
+    } else {
       Get.toNamed(Routes.login);
     }
   }

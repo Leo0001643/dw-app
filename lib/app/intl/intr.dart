@@ -566,6 +566,7 @@ class Intr extends Translations{
   String get omni_show => 'omni_show'.tr;
   String get tuiguanghongli => 'tuiguanghongli'.tr;
   String get sidao12shuzihuozimu => 'sidao12shuzihuozimu'.tr;
+  String get mimacuowu => 'mimacuowu'.tr;
 
 
 
@@ -1114,6 +1115,7 @@ class Intr extends Translations{
       "omni_show":"OMNI (比特币网络)",
       "tuiguanghongli":"推广红利",
       "sidao12shuzihuozimu":"4-12位数字或字母",
+      "mimacuowu":"密码错误",
 
 
 

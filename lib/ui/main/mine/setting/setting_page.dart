@@ -118,11 +118,16 @@ class _SettingPageState extends State<SettingPage> {
                                 activeTrackColor: ColorX.color_69c25c,
                                 activeColor: Colors.white,
                                 onChanged: (value){
-                              Get.toNamed(Routes.set_simple_pwd)?.then((value) {
-                                state.jymmToggle.value = unEmpty(AppData.simplePwd());
-                                loggerArray(["返回数据了吗",value,state.jymmToggle.value]);
-                              });
-                            });
+                                  if(isEmpty(AppData.simplePwd())){
+                                    Get.toNamed(Routes.set_simple_pwd)?.then((value) {
+                                      state.jymmToggle.value = unEmpty(AppData.simplePwd());
+                                      loggerArray(["返回数据了吗",value,state.jymmToggle.value]);
+                                    });
+                                  }else {///清空简易密码
+                                    AppData.setSimplePwd("");
+                                    state.jymmToggle.value = unEmpty(AppData.simplePwd());
+                                  }
+                                });
                           }),
                         ],
                       ),

@@ -287,7 +287,9 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         WidgetUtils().buildElevatedButton(Intr().login, 78.w, 32.h,textSize: 13.sp,textColor: ColorX.color_091722,
-            bg: Colors.white,onPressed: ()=>Get.toNamed(Routes.login)),
+            bg: Colors.white,onPressed: (){
+              WidgetUtils().goLogin();
+            }),
         // SizedBox(width: 10.w,),
         WidgetUtils().buildElevatedButton(Intr().register, 78.w, 32.h,textSize: 13.sp,
             bg: ColorX.color_fe2427,onPressed: ()=>Get.toNamed(Routes.register)),

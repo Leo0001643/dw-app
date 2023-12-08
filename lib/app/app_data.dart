@@ -82,12 +82,37 @@ class AppData {
     return prefs?.getBool("wallet_mode") ?? true;
   }
 
+  ///简易密码
+  static void setSimplePwd(String pwd){
+    prefs?.setString("simple_pwd", pwd);
+  }
+
+  static String simplePwd(){
+    return prefs?.getString("simple_pwd",) ?? "";
+  }
+
+  static void setLoginPwd(String pwd){
+    prefs?.setString("login_pwd", pwd);
+  }
+
+  static String loginPwd(){
+    return prefs?.getString("login_pwd",) ?? "";
+  }
+
+  static void setLoginUser(String user){
+    prefs?.setString("login_user", user);
+  }
+
+  static String loginUser(){
+    return prefs?.getString("login_user",) ?? "";
+  }
+
   static void setUser(LoginUserEntity user){
-    prefs?.setString("login_user", jsonEncode(user.toJson()));
+    prefs?.setString("user", jsonEncode(user.toJson()));
   }
 
   static LoginUserEntity? user() {
-    var json = prefs?.getString("login_user") ?? "";
+    var json = prefs?.getString("user") ?? "";
     if(isEmpty(json)){
       return null;
     }else {
@@ -95,13 +120,12 @@ class AppData {
     }
   }
 
-
   static bool isLogin()=> unEmpty(user()?.oid);
 
-
   static void clear(){
-    prefs?.remove("login_user");
+    prefs?.remove("user");
   }
+
 
 
 }

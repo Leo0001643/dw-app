@@ -42,11 +42,14 @@ class LoginLogic extends GetxController {
       "username": state.accountValue,
       "password": state.pwdValue,
       "scene": "nc_login_h5",
-      // "token": state.accountValue,
+      "token": -1,
     };
     HttpService.login(params).then((value) {
       eventBus.fire(LoginRefreshEvent());
       AppData.setUser(value);
+      AppData.setLoginUser(state.accountValue);
+      AppData.setLoginPwd(state.pwdValue);
+
       Get.until((ModalRoute.withName(Routes.main)));
     });
   }

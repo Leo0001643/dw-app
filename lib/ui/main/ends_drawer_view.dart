@@ -97,7 +97,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 color: ColorX.cardBg5(),
                 borderRadius: BorderRadius.circular(10.r),
               ),
-              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
+              padding: EdgeInsets.symmetric(horizontal: 13.w),
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 children: [
@@ -107,21 +107,19 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                       SizedBox(width: 5.w,),
                       Text(Intr().bjyy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                       Expanded(child: Container()),
-                      GFToggle(
+                      Switch(
                         onChanged: (value){
                           AppData.setBgMusic(value == true);
                           musicToggle.value = value == true;
                         },
                         value: musicToggle.value,
-                        type: GFToggleType.ios,
-                        disabledTrackColor: ColorX.text949(),
-                        enabledTrackColor: ColorX.color_69c25c,
+                        inactiveTrackColor: ColorX.text949(),
+                        activeTrackColor: ColorX.color_69c25c,
+                        activeColor: Colors.white,
                       ),
                     ],
                   ),
-                  SizedBox(height: 15.h,),
                   Divider(color: ColorX.color_10_949,height: 1.h,),
-                  SizedBox(height: 15.h,),
                   Container(
                     child: Row(
                       children: [
@@ -129,15 +127,15 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                         SizedBox(width: 5.w,),
                         Text(Intr().tsy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                         Expanded(child: Container()),
-                        GFToggle(
+                        Switch(
                           onChanged: (value){
                             AppData.setPromptTone(value == true);
                             notifyToggle.value = value == true;
                           },
                           value: notifyToggle.value,
-                          type: GFToggleType.ios,
-                          disabledTrackColor: ColorX.text949(),
-                          enabledTrackColor: ColorX.color_69c25c,
+                          inactiveTrackColor: ColorX.text949(),
+                          activeTrackColor: ColorX.color_69c25c,
+                          activeColor: Colors.white,
                         ),
                       ],
                     ),
@@ -307,7 +305,7 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
 
               WidgetUtils().buildElevatedButton(Intr().login, 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
                 Navigator.of(context).pop();
-                Get.toNamed(Routes.login);
+                WidgetUtils().goLogin();
               }),
             ],
           ),
@@ -464,8 +462,8 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
   void jumpToPage(String page) {
     if(AppData.isLogin()){
       Get.toNamed(page);
-    }else {
-      Get.toNamed(Routes.login);
+    } else {
+      WidgetUtils().goLogin();
     }
   }
 

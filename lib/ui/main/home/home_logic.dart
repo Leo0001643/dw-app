@@ -9,6 +9,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
@@ -47,23 +48,23 @@ class HomeLogic extends GetxController {
         // DialogUtils().showLanguageDialog(context);
         if(AppData.isLogin()){
           eventBus.fire(ChangeMainPageEvent(2));
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
       case 1:///提现
         // DialogUtils().showCurrencyDialog(context);
         if(AppData.isLogin()){
           Get.toNamed(Routes.withdraw);
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
       case 4:///签到抽奖
         if(AppData.isLogin()){
           Get.toNamed(Routes.sign_in);
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
       case 5:///积分抽奖
@@ -71,23 +72,23 @@ class HomeLogic extends GetxController {
         // DialogUtils().showAccessRouteDialog(context);
         if(AppData.isLogin()){
           Get.toNamed(Routes.points_lottery);
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
       case 6:///推荐有礼
         if(AppData.isLogin()){
           Get.toNamed(Routes.promotion_profit);
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
       case 7:///个人中心
         Navigator.pop(context);
         if(AppData.isLogin()){
           eventBus.fire(ChangeMainPageEvent(4));
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
       case 8:///走势
@@ -99,8 +100,8 @@ class HomeLogic extends GetxController {
 
         if(AppData.isLogin()){
           Get.toNamed(Routes.quota_conversion);
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
       case 10:///币币兑换
@@ -108,26 +109,23 @@ class HomeLogic extends GetxController {
 
         if(AppData.isLogin()){
           Get.toNamed(Routes.coin_exchange);
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
       case 11:///投注记录
         Navigator.pop(context);
 
-        if(AppData.isLogin()){
-          Get.toNamed(Routes.betting_record);
-        }else {
-          Get.toNamed(Routes.login);
-        }
+        WidgetUtils().goLogin();
+
         break;
       case 12:///推广赚钱
         Navigator.pop(context);
 
         if(AppData.isLogin()){
           Get.toNamed(Routes.promotion_profit);
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
     }

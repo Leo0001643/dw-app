@@ -248,8 +248,8 @@ class StateGameMenuView extends State<GameMenuView>{
       default:
         if(AppData.isLogin()){
 
-        }else {
-          Get.toNamed(Routes.login);
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
     }

@@ -85,7 +85,7 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage> {
                 }else {
                   state.confirmPwd = v;
                   if(state.newPwd == state.confirmPwd){
-                    showToast(Intr().shezhichenggong);
+                    logic.setPwd();
                   }else {
                     state.newPwd = '';
                     state.confirmPwd = '';

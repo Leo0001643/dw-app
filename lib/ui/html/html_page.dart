@@ -28,13 +28,13 @@ class _HtmlPageState extends State<HtmlPage> {
       body: Column(
         children: [
           Obx(() => Visibility(
+            visible: state.progressVisible.value,
             child: LinearProgressIndicator(
               value: state.progress.value/100,//取值为0-1
               minHeight: 3,
-              valueColor: AlwaysStoppedAnimation(Colors.amberAccent),
+              valueColor: const AlwaysStoppedAnimation(Colors.amberAccent),
               backgroundColor: Colors.white,
             ),
-            visible: state.progressVisible.value,
           ),
           ),
           Expanded(

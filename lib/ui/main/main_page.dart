@@ -8,6 +8,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 import '/app/intl/intr.dart';
@@ -69,7 +70,7 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
     if(AppData.isLogin() || (i != 2 && i != 4)){
       state.pageController.jumpToPage(i);
     } else {
-      Get.toNamed(Routes.login);
+      WidgetUtils().goLogin();
       //切换到首页
       state.pageController.jumpToPage(0);
       state.tabController?.index = 0;

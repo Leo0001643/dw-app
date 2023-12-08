@@ -4,6 +4,8 @@ import 'package:leisure_games/ui/html/html_binding.dart';
 import 'package:leisure_games/ui/html/html_page.dart';
 import 'package:leisure_games/ui/login/login_binding.dart';
 import 'package:leisure_games/ui/login/login_page.dart';
+import 'package:leisure_games/ui/login/simple_login/simple_login_binding.dart';
+import 'package:leisure_games/ui/login/simple_login/simple_login_page.dart';
 import 'package:leisure_games/ui/main/customer_service/customer_service_binding.dart';
 import 'package:leisure_games/ui/main/customer_service/service_details/service_details_binding.dart';
 import 'package:leisure_games/ui/main/customer_service/service_details/service_details_page.dart';
@@ -187,6 +189,7 @@ class Routes {
   static const String preferential_detail = "/preferential/detail";
   static const String add_bank = "/mine/add_bank";
   static const String add_usdt = "/mine/add_usdt";
+  static const String simple_login = "/login/simple_login";
 
 
 
@@ -256,6 +259,7 @@ class Routes {
     GetPage(name: preferential_detail,binding: PreferentialDetailBinding(), page: () => PreferentialDetailPage()),
     GetPage(name: add_bank,binding: AddBankBinding(), page: () => AddBankPage()),
     GetPage(name: add_usdt,binding: AddUsdtBinding(), page: () => AddUsdtPage()),
+    GetPage(name: simple_login,binding: SimpleLoginBinding(), page: () => SimpleLoginPage()),
 
   ];
   
