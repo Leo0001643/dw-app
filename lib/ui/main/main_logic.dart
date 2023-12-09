@@ -56,7 +56,7 @@ class MainLogic extends GetxController {
     ].request();
     statuses.forEach((key, value) {
       if(value.isDenied){///被拒绝了
-        showToast('permissionDenied'.tr + "=" + value.toString());
+        showToast("${'permissionDenied'.tr}=$value");
         return;
       }
     });

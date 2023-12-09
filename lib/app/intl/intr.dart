@@ -144,6 +144,8 @@ class Intr extends Translations{
   String get mipai => 'mipai'.tr;
   String get qushi => 'qushi'.tr;
   String dixqi(List<String> args) => 'dixqi'.trArgs(args);
+  String juelidixqi(List<String> args) => 'juelidixqi'.trArgs(args);
+
   String get zongyue => 'zongyue'.tr;
   String get touzhu => 'touzhu'.tr;
   String get bet_da => 'bet_da'.tr;
@@ -567,6 +569,12 @@ class Intr extends Translations{
   String get tuiguanghongli => 'tuiguanghongli'.tr;
   String get sidao12shuzihuozimu => 'sidao12shuzihuozimu'.tr;
   String get mimacuowu => 'mimacuowu'.tr;
+  String get zhanghaomimadenglu => 'zhanghaomimadenglu'.tr;
+  String get chongzhijymm => 'chongzhijymm'.tr;
+  String get chongzhijymmtishi => 'chongzhijymmtishi'.tr;
+  String get qingzaiciyanzhenghaxizhi => 'qingzaiciyanzhenghaxizhi'.tr;
+
+
 
 
 
@@ -693,6 +701,7 @@ class Intr extends Translations{
       "mipai":"咪牌",
       "qushi":"趋势",
       "dixqi":"第%s期",
+      "juelidixqi":"距离第%s期",
       "zongyue":"总余额",
       "touzhu":"投注",
       "bet_da":"小",
@@ -1116,6 +1125,10 @@ class Intr extends Translations{
       "tuiguanghongli":"推广红利",
       "sidao12shuzihuozimu":"4-12位数字或字母",
       "mimacuowu":"密码错误",
+      "zhanghaomimadenglu":"账号密码登录",
+      "chongzhijymm":"重置简易密码",
+      "chongzhijymmtishi":"重置简易密码后，将清空您设置的简易密码，请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
+      "qingzaiciyanzhenghaxizhi":"请在此处输入或粘贴你想要验证的哈希值",
 
 
 

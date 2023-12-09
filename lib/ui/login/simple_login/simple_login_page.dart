@@ -107,16 +107,16 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
               children: [
                 InkWell(
                   onTap:()=> Get.toNamed(Routes.login),
-                  child: Text("账号密码登录",style: TextStyle(fontSize: 15.sp,color: ColorX.text5862()),),
+                  child: Text(Intr().zhanghaomimadenglu,style: TextStyle(fontSize: 15.sp,color: ColorX.text5862()),),
                 ),
                 InkWell(
-                  onTap:()=> DialogUtils().showMessageDialog(context, "重置简易密码后，将清空您设置的简易密码，请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
+                  onTap:()=> DialogUtils().showMessageDialog(context, Intr().chongzhijymmtishi,
                   onCancel: ()=> Navigator.pop(context),onConfirm: (){
                     AppData.setSimplePwd("");
                     Navigator.pop(context);
                     Get.offAndToNamed(Routes.login);
                   }),
-                  child: Text("重置简易密码",style: TextStyle(fontSize: 15.sp,color: ColorX.text5862(),),),
+                  child: Text(Intr().chongzhijymm,style: TextStyle(fontSize: 15.sp,color: ColorX.text5862(),),),
                 ),
               ],
             ),

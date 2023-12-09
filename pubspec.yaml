@@ -69,6 +69,9 @@ dependencies:
   popover: ^0.2.8+2
   custom_pop_up_menu: ^1.2.4
   azlistview: ^2.0.0
+  crypto: ^3.0.3
+
+
 
 
 dev_dependencies:

@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
-import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
-
 import 'preferential_logic.dart';
 
 ///优惠中心
 class PreferentialPage extends StatefulWidget {
+  const PreferentialPage({super.key});
+
 
   @override
   State<StatefulWidget> createState() => StatePreferentialPage();
@@ -87,7 +84,6 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
           ),
           Expanded(
             child: Container(
-              color: Colors.black12,
               child: Obx(() {
                 return ListView.builder(
                   itemCount: state.list.length,
@@ -97,6 +93,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
                   },
                 );
               }),
+              color: Colors.black12,
             ),
           ),
         ],
@@ -108,7 +105,6 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
     return InkWell(
       onTap: ()=> logic.onClickType(item),
       child: Container(
-        margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 15.h),
         decoration: BoxDecoration(
           color: ColorX.cardBg(),
           borderRadius: BorderRadius.circular(10.r),
@@ -146,6 +142,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
             ),
           ],
         ),
+        margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 15.h),
       ),
     );
   }

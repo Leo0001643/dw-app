@@ -24,6 +24,12 @@ class Constants {
 
   static const PC28 = "PC28";
 
+
+  static const html_btc = "https://btc.com";
+  static const html_blockchain = "https://www.blockchain.com/btc/unconfirmed-transactions";
+
+
+
   static String model(){
     var info = AppData.deviceInfo();
     return "${info.name}_${info.systemName}_${info.systemVersion}";

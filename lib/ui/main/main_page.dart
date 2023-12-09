@@ -17,6 +17,8 @@ import 'main_logic.dart';
 import 'main_state.dart';
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
   @override
   _MainPageState createState() => _MainPageState();
 }
