@@ -11,6 +11,7 @@ import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
+import 'package:leisure_games/ui/bean/current_bet_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
@@ -280,6 +281,9 @@ abstract class RetrofitClient{
 
   @GET('/ds-api-web/getBtcSource')
   Future<BaseResponseEntity<List<BtcSourceEntity>>> getBtcSource(@Queries() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/getGameCurrentBet')
+  Future<BaseResponseEntity<CurrentBetEntity>> getGameCurrentBet(@Queries() Map<String,dynamic> params,);
 
 
 

@@ -48,33 +48,33 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 28,
                     child: Text(Intr().youxipingtai,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+                    flex: 28,
                   ),
                   Expanded(
-                    flex: 18,
                     child: Center(
                       child: Text(Intr().bishu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
+                    flex: 18,
                   ),
                   Expanded(
-                    flex: 18,
                     child: Center(
                        child: Text(Intr().touzhue,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
+                    flex: 18,
                   ),
                   Expanded(
-                    flex: 18,
                     child: Center(
                       child:  Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
+                    flex: 18,
                   ),
                   Expanded(
-                    flex: 18,
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(Intr().youxiaotouzhu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
+                    flex: 18,
                   ),
                 ],
               ),

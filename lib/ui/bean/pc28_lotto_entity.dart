@@ -1,3 +1,4 @@
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/pc28_lotto_entity.g.dart';
 import 'dart:convert';
@@ -37,7 +38,7 @@ class Pc28LottoRooms {
 	int? id;
 	int? state;
 
-	Pc28LottoRooms();
+	Pc28LottoRooms({this.memo});
 
 	factory Pc28LottoRooms.fromJson(Map<String, dynamic> json) => $Pc28LottoRoomsFromJson(json);
 
@@ -45,7 +46,7 @@ class Pc28LottoRooms {
 
 	@override
 	String toString() {
-		return jsonEncode(this);
+		return memo.em();
 	}
 }
 

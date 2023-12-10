@@ -16,6 +16,7 @@ import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
+import 'package:leisure_games/ui/bean/current_bet_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
@@ -373,6 +374,9 @@ class HttpService{
     return buildFuture<List<BtcSourceEntity>>(()=> _client.getBtcSource(params));
   }
 
+  static Future<CurrentBetEntity> getGameCurrentBet(Map<String,dynamic> params,){
+    return buildFuture<CurrentBetEntity>(()=> _client.getGameCurrentBet(params));
+  }
 
 
 

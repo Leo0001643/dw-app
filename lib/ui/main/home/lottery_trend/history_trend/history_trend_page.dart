@@ -6,6 +6,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/app/widget/line_painter.dart';
@@ -30,7 +31,23 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
 
   @override
   void initState() {
-    _tabController = TabController(length: state.tabs.length, vsync: this);
+    _tabController = TabController(length: state.tabs.length, vsync: this)
+    ..addListener(() {
+      switch(_tabController.index){
+        case 0://特码
+          logic.refreshChart(0, 3, 28);
+          break;
+        case 1://第一球
+          logic.refreshChart(1, 0, 10);
+          break;
+        case 2://第二球
+          logic.refreshChart(2, 1, 10);
+          break;
+        case 3://第三球
+          logic.refreshChart(3, 2, 10);
+          break;
+      }
+    });
     _listViewController.addListener(_scrollListener);
     _scrollViewController.addListener(_scrollListener);
     super.initState();
@@ -87,16 +104,16 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                   SizedBox(height: 1.h,child: Container(color: ColorX.color_10_949,),),
                   Expanded(
                     child: Obx(() {
-                      if(isEmpty(state.data)){ return Container(); }
+                      if(isEmpty(state.leftData)){ return Container(); }
                       return ListView.builder(
                         controller: _listViewController,
-                        itemCount: state.data.length - 1,
+                        itemCount: state.leftData.length,
                         itemBuilder: (context,index){
                           return Container(
                             height: 35.h,
                             alignment: Alignment.center,
                             color: index % 2 == 1 ? ColorX.color_10_949:Colors.white,
-                            child: Text("1120307$index",style: TextStyle(fontSize: 12.sp,color: ColorX.color_3e3737,),),
+                            child: Text(state.leftData[index],style: TextStyle(fontSize: 12.sp,color: ColorX.color_3e3737,),),
                           );
                         },
                       );
@@ -130,53 +147,41 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                   ),
                   Divider(height: 1.h,color: ColorX.color_10_949,),
                   Expanded(
-                    child: SingleChildScrollView(
-                      scrollDirection : Axis.vertical,
-                      controller: _scrollViewController,
+                    child: Container(
                       child: SingleChildScrollView(
-                        scrollDirection : Axis.horizontal,
-                        child: Obx(() {
-                          var widgets = List<Widget>.empty(growable: true);
-                          state.data.forEach((element) {
-                            var index = state.data.indexOf(element);
-                            widgets.add(buildNumberRow(state.data.length,index));
-                            if(index == 0){
-                              widgets.add(Container(color: ColorX.color_10_949,alignment: Alignment.centerLeft,height: 1.h,width: 31.w * state.data.length,));
+                        scrollDirection : Axis.vertical,
+                        controller: _scrollViewController,
+                        child: SingleChildScrollView(
+                          scrollDirection : Axis.horizontal,
+                          child: Obx(() {
+                            var widgets = List<Widget>.empty(growable: true);
+                            var screenWidth = (30.w + 1.w) * (isEmpty(state.data) ? 0 :state.data[0].length);
+                            for (var element in state.data) {
+                              var index = state.data.indexOf(element);
+                              widgets.add(buildNumberRow(element,index));
+                              if(index == 0){
+                                widgets.add(Container(color: ColorX.color_10_949,alignment: Alignment.centerLeft,height: 1.h,width: screenWidth,));
+                              }
                             }
-                          });
-                          return Stack(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: widgets,
-                              ),
-                              SizedBox(
-                                width: (30.w + 1.w) * state.data.length ,
-                                height:(35.h) * state.data.length ,
-                                child: Stack(
-                                  children: [
-                                    ///折线渲染
-                                    buildLine(Size(1, 1),Size(5, 5),),
-                                    buildLine(Size(5, 5),Size(2, 7),),
-                                    buildLine(Size(2, 7),Size(8, 10),),
-                                    buildLine(Size(8, 10),Size(15, 12),),
-                                    buildLine(Size(15, 12),Size(20, 18),),
-                                    buildLine(Size(20, 18),Size(2, 25),),
-
-                                    ///最上层点渲染
-                                    buildDrawNum(Size(1, 1),"35",ColorX.color_fc243b),
-                                    buildDrawNum(Size(5, 5),"12",ColorX.color_60c549),
-                                    buildDrawNum(Size(2, 7),"33",ColorX.color_fc243b),
-                                    buildDrawNum(Size(8, 10),"83",ColorX.color_5583e7),
-                                    buildDrawNum(Size(15, 12),"09",ColorX.color_fc243b),
-                                    buildDrawNum(Size(20, 18),"78",ColorX.color_60c549),
-                                    buildDrawNum(Size(2, 25),"13",ColorX.color_5583e7),
-                                  ],
+                            return Stack(
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: widgets,
                                 ),
-                              ),
-                            ],
-                          );
-                        }),
+                                SizedBox(
+                                  width: screenWidth,
+                                  height:(35.h) * state.data.length ,
+                                  child: Obx(() {
+                                    return Stack(
+                                      children: buildLineChart(state.lottoData),
+                                    );
+                                  }),
+                                ),
+                              ],
+                            );
+                          }),
+                        ),
                       ),
                     ),
                   ),
@@ -199,14 +204,14 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
     );
   }
 
-  Widget buildNumberRow(int count,int index) {
+  Widget buildNumberRow(List<String> element,int index) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      children: List.generate(count, (i) {
+      children: List.generate(element.length, (i) {
         return Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            buildNumberItem("12",index == 0 || (index%2 == 1) ? Colors.white : ColorX.color_f7f8fb),
+            buildNumberItem(element[i],index == 0 || (index%2 == 1) ? Colors.white : ColorX.color_f7f8fb),
             Container(height: 35.h,width:1.r,color: ColorX.color_10_949,),
           ],
         );
@@ -240,6 +245,26 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
         ),
       ),
     );
+  }
+
+  List<Widget> buildLineChart(Map<int,int> value) {
+    var list = List<Widget>.empty(growable: true);
+
+    ///折线渲染
+    value.forEach((k, v) {
+      if(unEmpty(value[k+1])){
+        list.add(buildLine(Size(v.toDouble(), k.toDouble()), Size((value[k+1])!.toDouble(), (k+1).toDouble())));
+      }
+    });
+
+
+    ///最上层点渲染
+    value.forEach((k, v) {
+      var color = _tabController.index == 0 ? DataUtils.getBallColor2(v): ColorX.color_58698d;
+
+      list.add(buildDrawNum(Size(v.toDouble(), k.toDouble()), "$v", color));
+    });
+    return list;
   }
 
 

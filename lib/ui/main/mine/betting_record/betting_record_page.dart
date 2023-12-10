@@ -66,19 +66,19 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
               child: Row(
                 children: [
                   Expanded(
-                    flex: 40,
                     child: Text(Intr().touzhuriqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+                    flex: 40,
                   ),
                   Expanded(
-                    flex: 30,
                     child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+                    flex: 30,
                   ),
                   Expanded(
-                    flex: 30,
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(Intr().youxiaotouzhu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
+                    flex: 30,
                   ),
                 ],
               ),
@@ -120,8 +120,8 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
   Widget buildWalletTab(BillWalletEntity item,bool select) {
     return Container(
       decoration: BoxDecoration(
-        color: select ? ColorX.cardBg():ColorX.cardBg3(),
         borderRadius: BorderRadius.circular(10.r),
+        color: select ? ColorX.cardBg():ColorX.cardBg3(),
         border: select ? Border.all(color: ColorX.color_fc243b,width: 1.r) : null,
       ),
       margin: EdgeInsets.only(left: 15.w),
@@ -142,20 +142,20 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
       child: Row(
         children: [
           Expanded(
-            flex: 40,
             child: Text(Intr().zongji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
+            flex: 40,
           ),
           Expanded(
-            flex: 30,
             child: Text("${(group.winloseTotal.em() >= 0) ? "+" : "-"}${group.winloseTotal.em()}",
               style: TextStyle(fontSize: 14.sp,color: (group.winloseTotal.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,fontWeight: FontWeight.w600),),
+            flex: 30,
           ),
           Expanded(
-            flex: 30,
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(group.validAmountTotal.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
             ),
+            flex: 30,
           ),
         ],
       ),

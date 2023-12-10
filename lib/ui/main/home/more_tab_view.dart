@@ -15,7 +15,7 @@ class MoreTabView extends StatelessWidget {
   final HomeLogic logic;
   MoreTabView(this.logic, {super.key});
 
-  var homeMenu = [HomeGameMenuEntity(name: "个人中心",group: ImageX.icon_dai,),
+  var homeMenu = [HomeGameMenuEntity(name: Intr().grzx,group: ImageX.icon_dai,),
     HomeGameMenuEntity(name: Intr().zoushi,group: ImageX.icon_gywm,),
     HomeGameMenuEntity(name: Intr().eduzhuanhuan,group: ImageX.icon_edzh,),
     HomeGameMenuEntity(name: Intr().bibiduihuan,group: ImageX.icon_bb,),
@@ -33,7 +33,7 @@ class MoreTabView extends StatelessWidget {
             alignment: WrapAlignment.center,
             children: homeMenu.map((e) => buildMenuItem(context,e,homeMenu.indexOf(e))).toList(),
           ),
-          onPop: () => print('Popover was popped!'),
+          onPop: (){},
           direction: PopoverDirection.bottom,
           backgroundColor: ColorX.cardBg5(),
           barrierColor: Colors.transparent,

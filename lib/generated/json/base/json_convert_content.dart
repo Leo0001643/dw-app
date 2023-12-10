@@ -14,6 +14,7 @@ import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
 import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
+import 'package:leisure_games/ui/bean/current_bet_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
@@ -232,6 +233,14 @@ class JsonConvert {
     if (<ConstituteRatioEntity>[] is M) {
       return data.map<ConstituteRatioEntity>((Map<String, dynamic> e) =>
           ConstituteRatioEntity.fromJson(e)).toList() as M;
+    }
+    if (<CurrentBetEntity>[] is M) {
+      return data.map<CurrentBetEntity>((Map<String, dynamic> e) =>
+          CurrentBetEntity.fromJson(e)).toList() as M;
+    }
+    if (<CurrentBetContent>[] is M) {
+      return data.map<CurrentBetContent>((Map<String, dynamic> e) =>
+          CurrentBetContent.fromJson(e)).toList() as M;
     }
     if (<CustomerServiceEntity>[] is M) {
       return data.map<CustomerServiceEntity>((Map<String, dynamic> e) =>
@@ -663,6 +672,8 @@ class JsonConvertClassCollection {
     (BtcSourceEntity).toString(): BtcSourceEntity.fromJson,
     (ChapterInfoEntity).toString(): ChapterInfoEntity.fromJson,
     (ConstituteRatioEntity).toString(): ConstituteRatioEntity.fromJson,
+    (CurrentBetEntity).toString(): CurrentBetEntity.fromJson,
+    (CurrentBetContent).toString(): CurrentBetContent.fromJson,
     (CustomerServiceEntity).toString(): CustomerServiceEntity.fromJson,
     (CustomerServiceCusterServers).toString(): CustomerServiceCusterServers
         .fromJson,
