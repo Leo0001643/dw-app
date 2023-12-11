@@ -22,5 +22,7 @@ class MineState {
   ///用户信息
   var user = LoginUserEntity().obs;
 
+  var jymmToggle = false.obs;
+
 
 }
