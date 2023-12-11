@@ -175,8 +175,6 @@ class StateMinePage extends State<MinePage>{
                 borderRadius: BorderRadius.circular(10.r),
                 color: ColorX.cardBg5(),
               ),
-              padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
-              margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -195,6 +193,8 @@ class StateMinePage extends State<MinePage>{
                   ),
                 ],
               ),
+              padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+              margin: EdgeInsets.symmetric(horizontal: 10.w),
             ),
             SizedBox(height: 10.r,),
             Container(
@@ -202,8 +202,6 @@ class StateMinePage extends State<MinePage>{
                 borderRadius: BorderRadius.circular(10.r),
                 color: ColorX.cardBg5(),
               ),
-              padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
-              margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -220,6 +218,8 @@ class StateMinePage extends State<MinePage>{
                   ),
                 ],
               ),
+              padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+              margin: EdgeInsets.symmetric(horizontal: 10.w),
             ),
             SizedBox(height: 10.r,),
             Container(

@@ -251,9 +251,13 @@ class DataUtils{
     return Future.value(data);
   }
 
-  static String addSpacesToNumber(String em) {
-    return "";
+  static String addSpacesToNumber(String input) {
+    List<String> characters = input.split(''); // 将字符串拆分为单个字符的列表
+    String result = characters.join(' '); // 使用空格连接字符
+    return result;
   }
+
+
 
 
 }

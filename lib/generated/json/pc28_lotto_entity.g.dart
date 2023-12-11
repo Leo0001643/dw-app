@@ -1,5 +1,7 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/app/global.dart';
+
 
 Pc28LottoEntity $Pc28LottoEntityFromJson(Map<String, dynamic> json) {
   final Pc28LottoEntity pc28LottoEntity = Pc28LottoEntity();
@@ -73,14 +75,6 @@ Pc28LottoRooms $Pc28LottoRoomsFromJson(Map<String, dynamic> json) {
   if (stateMsg != null) {
     pc28LottoRooms.stateMsg = stateMsg;
   }
-  final List<Pc28LottoRoomsTables>? tables = (json['tables'] as List<dynamic>?)
-      ?.map(
-          (e) =>
-      jsonConvert.convert<Pc28LottoRoomsTables>(e) as Pc28LottoRoomsTables)
-      .toList();
-  if (tables != null) {
-    pc28LottoRooms.tables = tables;
-  }
   final int? createTime = jsonConvert.convert<int>(json['createTime']);
   if (createTime != null) {
     pc28LottoRooms.createTime = createTime;
@@ -109,6 +103,14 @@ Pc28LottoRooms $Pc28LottoRoomsFromJson(Map<String, dynamic> json) {
   if (state != null) {
     pc28LottoRooms.state = state;
   }
+  final List<Pc28LottoRoomsTables>? tables = (json['tables'] as List<dynamic>?)
+      ?.map(
+          (e) =>
+      jsonConvert.convert<Pc28LottoRoomsTables>(e) as Pc28LottoRoomsTables)
+      .toList();
+  if (tables != null) {
+    pc28LottoRooms.tables = tables;
+  }
   return pc28LottoRooms;
 }
 
@@ -116,7 +118,6 @@ Map<String, dynamic> $Pc28LottoRoomsToJson(Pc28LottoRooms entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['gameType'] = entity.gameType;
   data['stateMsg'] = entity.stateMsg;
-  data['tables'] = entity.tables?.map((v) => v.toJson()).toList();
   data['createTime'] = entity.createTime;
   data['memo2'] = entity.memo2;
   data['memo'] = entity.memo;
@@ -124,6 +125,7 @@ Map<String, dynamic> $Pc28LottoRoomsToJson(Pc28LottoRooms entity) {
   data['updateTime'] = entity.updateTime;
   data['id'] = entity.id;
   data['state'] = entity.state;
+  data['tables'] = entity.tables?.map((v) => v.toJson()).toList();
   return data;
 }
 
@@ -131,7 +133,6 @@ extension Pc28LottoRoomsExtension on Pc28LottoRooms {
   Pc28LottoRooms copyWith({
     String? gameType,
     String? stateMsg,
-    List<Pc28LottoRoomsTables>? tables,
     int? createTime,
     String? memo2,
     String? memo,
@@ -139,18 +140,19 @@ extension Pc28LottoRoomsExtension on Pc28LottoRooms {
     int? updateTime,
     int? id,
     int? state,
+    List<Pc28LottoRoomsTables>? tables,
   }) {
     return Pc28LottoRooms()
       ..gameType = gameType ?? this.gameType
       ..stateMsg = stateMsg ?? this.stateMsg
-      ..tables = tables ?? this.tables
       ..createTime = createTime ?? this.createTime
       ..memo2 = memo2 ?? this.memo2
       ..memo = memo ?? this.memo
       ..siteId = siteId ?? this.siteId
       ..updateTime = updateTime ?? this.updateTime
       ..id = id ?? this.id
-      ..state = state ?? this.state;
+      ..state = state ?? this.state
+      ..tables = tables ?? this.tables;
   }
 }
 

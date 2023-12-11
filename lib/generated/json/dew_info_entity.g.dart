@@ -10,14 +10,6 @@ DewInfoEntity $DewInfoEntityFromJson(Map<String, dynamic> json) {
   if (longTop != null) {
     dewInfoEntity.longTop = longTop;
   }
-  final List<List<int>>? threeNumCount = (json['threeNumCount'] as List<
-      dynamic>?)?.map(
-          (e) =>
-          (e as List<dynamic>).map(
-                  (e) => jsonConvert.convert<int>(e) as int).toList()).toList();
-  if (threeNumCount != null) {
-    dewInfoEntity.threeNumCount = threeNumCount;
-  }
   final List<List<int>>? count = (json['count'] as List<dynamic>?)?.map(
           (e) =>
           (e as List<dynamic>).map(
@@ -33,14 +25,6 @@ DewInfoEntity $DewInfoEntityFromJson(Map<String, dynamic> json) {
       .toList();
   if (list != null) {
     dewInfoEntity.list = list;
-  }
-  final List<List<int>>? luckyNumCount = (json['luckyNumCount'] as List<
-      dynamic>?)?.map(
-          (e) =>
-          (e as List<dynamic>).map(
-                  (e) => jsonConvert.convert<int>(e) as int).toList()).toList();
-  if (luckyNumCount != null) {
-    dewInfoEntity.luckyNumCount = luckyNumCount;
   }
   final List<List<int>>? oneNumCount = (json['oneNumCount'] as List<dynamic>?)
       ?.map(
@@ -60,38 +44,54 @@ DewInfoEntity $DewInfoEntityFromJson(Map<String, dynamic> json) {
   if (twoNumCount != null) {
     dewInfoEntity.twoNumCount = twoNumCount;
   }
+  final List<List<int>>? threeNumCount = (json['threeNumCount'] as List<
+      dynamic>?)?.map(
+          (e) =>
+          (e as List<dynamic>).map(
+                  (e) => jsonConvert.convert<int>(e) as int).toList()).toList();
+  if (threeNumCount != null) {
+    dewInfoEntity.threeNumCount = threeNumCount;
+  }
+  final List<List<int>>? luckyNumCount = (json['luckyNumCount'] as List<
+      dynamic>?)?.map(
+          (e) =>
+          (e as List<dynamic>).map(
+                  (e) => jsonConvert.convert<int>(e) as int).toList()).toList();
+  if (luckyNumCount != null) {
+    dewInfoEntity.luckyNumCount = luckyNumCount;
+  }
   return dewInfoEntity;
 }
 
 Map<String, dynamic> $DewInfoEntityToJson(DewInfoEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['longTop'] = entity.longTop;
-  data['threeNumCount'] = entity.threeNumCount;
   data['count'] = entity.count;
   data['list'] = entity.list;
-  data['luckyNumCount'] = entity.luckyNumCount;
   data['oneNumCount'] = entity.oneNumCount;
   data['twoNumCount'] = entity.twoNumCount;
+  data['threeNumCount'] = entity.threeNumCount;
+  data['luckyNumCount'] = entity.luckyNumCount;
   return data;
 }
 
 extension DewInfoEntityExtension on DewInfoEntity {
   DewInfoEntity copyWith({
     List<String>? longTop,
-    List<List<int>>? threeNumCount,
     List<List<int>>? count,
     List<List<String>>? list,
-    List<List<int>>? luckyNumCount,
     List<List<int>>? oneNumCount,
     List<List<int>>? twoNumCount,
+    List<List<int>>? threeNumCount,
+    List<List<int>>? luckyNumCount,
   }) {
     return DewInfoEntity()
       ..longTop = longTop ?? this.longTop
-      ..threeNumCount = threeNumCount ?? this.threeNumCount
       ..count = count ?? this.count
       ..list = list ?? this.list
-      ..luckyNumCount = luckyNumCount ?? this.luckyNumCount
       ..oneNumCount = oneNumCount ?? this.oneNumCount
-      ..twoNumCount = twoNumCount ?? this.twoNumCount;
+      ..twoNumCount = twoNumCount ?? this.twoNumCount
+      ..threeNumCount = threeNumCount ?? this.threeNumCount
+      ..luckyNumCount = luckyNumCount ?? this.luckyNumCount;
   }
 }

@@ -25,8 +25,8 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
   final logic = Get.find<HistoryTrendLogic>();
   final state = Get.find<HistoryTrendLogic>().state;
   late TabController _tabController;
-  ScrollController _listViewController = ScrollController();
-  ScrollController _scrollViewController = ScrollController();
+  final ScrollController _listViewController = ScrollController();
+  final ScrollController _scrollViewController = ScrollController();
   bool _isScrolling = false;
 
   @override
@@ -98,8 +98,8 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                 children: [
                   Container(
                     height: 76.h,
-                    alignment: Alignment.center,
                     child: Text(Intr().qihao,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),),),
+                    alignment: Alignment.center,
                   ),
                   SizedBox(height: 1.h,child: Container(color: ColorX.color_10_949,),),
                   Expanded(

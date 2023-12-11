@@ -57,11 +57,32 @@ class HistoryTrendLogic extends GetxController {
       // ///图表背景数据
       state.data.add(row);
     }
+    changeCml(state.data);
     loggerArray(["整理出来的数据",state.data.length,state.data]);
     state.data.insert(0, state.nums.sublist(0,length));
     state.data.refresh();
     state.lottoData.refresh();
 
+  }
+
+  List<List<String>> changeCml(List<List<String>> row) {
+    ///遍历每一行
+    for(var i=0;i<row.length;i++){
+      ///遍历每一行的每一列
+      for(var j=0;j<row[i].length;j++){
+        if(row[i][j] == "0"){
+          zLoop:
+          for(var z=i-1;z>=0;z--){
+            if(row[z][j] != "0"){
+              row[z][j] = "${i-z}";
+            }else {
+              break zLoop;
+            }
+          }
+        }
+      }
+    }
+    return row;
   }
 
 

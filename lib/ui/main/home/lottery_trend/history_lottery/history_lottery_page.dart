@@ -69,11 +69,11 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
             }),
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 10.h),
             alignment: Alignment.center,
             child: WidgetUtils().buildElevatedButton(Intr().goucai, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
               logic.clickGoucai();
             }),
+            margin: EdgeInsets.symmetric(vertical: 10.h),
           ),
         ],
       ),

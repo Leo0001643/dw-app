@@ -29,7 +29,6 @@ class Pc28LottoEntity {
 class Pc28LottoRooms {
 	String? gameType;
 	String? stateMsg;
-	List<Pc28LottoRoomsTables>? tables;
 	int? createTime;
 	String? memo2;
 	String? memo;
@@ -37,6 +36,7 @@ class Pc28LottoRooms {
 	int? updateTime;
 	int? id;
 	int? state;
+	List<Pc28LottoRoomsTables>? tables;
 
 	Pc28LottoRooms({this.memo});
 

@@ -32,8 +32,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
           children: [
             SizedBox(height: 20.h,),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().yhm,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              padding: EdgeInsets.symmetric(horizontal: 35.w),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -45,8 +45,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().nicheng,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              padding: EdgeInsets.symmetric(horizontal: 35.w),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -58,8 +58,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().shoujihaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              padding: EdgeInsets.symmetric(horizontal: 35.w),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -71,8 +71,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().qqhaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              padding: EdgeInsets.symmetric(horizontal: 35.w),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -84,8 +84,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().weixin,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              padding: EdgeInsets.symmetric(horizontal: 35.w),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -97,8 +97,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().dianziyouxiang,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              padding: EdgeInsets.symmetric(horizontal: 35.w),
             ),
             SizedBox(height: 5.h,),
             Center(

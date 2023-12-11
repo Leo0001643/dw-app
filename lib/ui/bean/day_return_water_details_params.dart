@@ -4,9 +4,9 @@ import 'package:leisure_games/ui/bean/back_water_entity.dart';
 
 class DayReturnWaterDetailsParams{
 
-  BackWaterEntity? details;
   String? beginDate;
   String? endDate;
+  BackWaterEntity? details;
 
   DayReturnWaterDetailsParams({this.details, this.beginDate, this.endDate});
 
