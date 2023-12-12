@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
 import 'prize_number_state.dart';
 
@@ -7,7 +9,7 @@ class PrizeNumberLogic extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
+    loadData();
     super.onReady();
   }
 
@@ -16,4 +18,17 @@ class PrizeNumberLogic extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
+
+  void loadData() {
+
+    HttpService.getBtcSource({"gameType":Get.find<GameRoomLogic>().state.room.value.gameType}).then((value) {
+      state.data.assignAll(value);
+      state.data.refresh();
+    });
+  }
+
+
+
+
+
 }

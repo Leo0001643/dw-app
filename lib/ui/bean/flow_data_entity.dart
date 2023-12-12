@@ -5,8 +5,8 @@ export 'package:leisure_games/generated/json/flow_data_entity.g.dart';
 
 @JsonSerializable()
 class FlowDataEntity {
-	List<FlowDataList>? list;
 	FlowDataPagation? pagation;
+	List<FlowDataList>? list;
 
 	FlowDataEntity();
 
@@ -26,9 +26,9 @@ class FlowDataList {
 	String? transType;
 	String? remark;
 	String? time;
-	double? afterMoney;
 	String? mgold;
 	String? billno;
+	double? afterMoney;
 
 	FlowDataList();
 

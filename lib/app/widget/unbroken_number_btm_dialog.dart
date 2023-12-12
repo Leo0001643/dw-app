@@ -1,4 +1,5 @@
 
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,8 +9,12 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/btc_source_entity.dart';
 
 class UnbrokenNumberBtnDialog extends StatefulWidget{
+
+  final BtcSourceEntity item;
+  const UnbrokenNumberBtnDialog(this.item, {super.key});
 
   @override
   State<StatefulWidget> createState() =>StateUnbrokenNumberBtnDialog();
@@ -22,6 +27,25 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
 
   @override
   Widget build(BuildContext context) {
+
+    var num1 = "";
+    var num2 = "";
+    var num3 = "";
+    var list = widget.item.btcHash.em().split(",");
+    for(var i=0;i<list.em();i++){
+      switch(i){
+        case 0:
+          num1 = list[i];
+          break;
+        case 1:
+          num2 = list[i];
+          break;
+        case 2:
+          num3 = list[i];
+          break;
+      }
+    }
+
     return Container(
       decoration: BoxDecoration(
         color: ColorX.cardBg5(),
@@ -63,15 +87,15 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(Intr().qihao_(["12312132"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),height: 1.5)),
-                Text(Intr().zhuaqushijian(["2023 - 06 - 16 08:25:02"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),height: 1.5)),
+                Text(Intr().qihao_(["${widget.item.term.em()}"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),height: 1.5)),
+                Text(Intr().zhuaqushijian([DateUtil.formatDateMs(widget.item.openTime.em())]),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),height: 1.5)),
               ],
             ),
           ),
           SizedBox(height: 10.h,),
-          buildNumberItem("1","6cce4fc7e14b54ce50999d89a8e841730b69276cce4fc7e14b54ce50999d89a8e841730b6927"),
-          buildNumberItem("2","6cce4fc7e14b54ce50999d89a8e841730b69276cce4fc7e14b54ce50999d89a8e841730b6927"),
-          buildNumberItem("3","6cce4fc7e14b54ce50999d89a8e841730b69276cce4fc7e14b54ce50999d89a8e841730b6927"),
+          buildNumberItem("1",num1),
+          buildNumberItem("2",num2),
+          buildNumberItem("3",num3),
           Padding(
             padding: EdgeInsets.only(left: 15.w),
             child: Text(Intr().shuominghaoyuan,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),

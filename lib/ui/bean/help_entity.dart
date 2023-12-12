@@ -7,9 +7,10 @@ export 'package:leisure_games/generated/json/help_entity.g.dart';
 class HelpEntity {
 	String? name;
 	String? confirmid;
+	String? tag;
+
 	@JSONField(name: "lang_type")
 	String? langType;
-	String? tag;
 
 	HelpEntity();
 

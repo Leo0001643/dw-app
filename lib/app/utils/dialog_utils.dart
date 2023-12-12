@@ -29,6 +29,7 @@ import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
+import 'package:leisure_games/ui/bean/btc_source_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
@@ -157,7 +158,7 @@ class DialogUtils {
             ),
             backgroundColor: ColorX.cardBg5(),
             titlePadding: EdgeInsets.only(top: 10.h),
-            contentPadding: EdgeInsets.zero,
+            contentPadding: EdgeInsets.all(15.r),
             title: Center(
               child: Text(title.em(),style: TextStyle(fontSize: 16.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w600,),),
             ),
@@ -165,7 +166,6 @@ class DialogUtils {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  height: 50.h,
                   alignment: Alignment.center,
                   child: Text(msg,
                     style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
@@ -346,7 +346,7 @@ class DialogUtils {
 
   ///单选底部弹窗
   Future<dynamic> showSelectOptionBtmDialog(BuildContext context,String title,List data){
-    return showModalBottomSheet(
+    return showModalBottomSheet<dynamic>(
         context: context,
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
@@ -381,7 +381,7 @@ class DialogUtils {
   }
 
   ///完整号源
-  Future<dynamic> showUnbrokenNumberBtmDialog(BuildContext context){
+  Future<dynamic> showUnbrokenNumberBtmDialog(BuildContext context,BtcSourceEntity item){
     return showModalBottomSheet(
         context: context,
         isScrollControlled: true,
@@ -392,7 +392,7 @@ class DialogUtils {
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: UnbrokenNumberBtnDialog(),
+            child: UnbrokenNumberBtnDialog(item),
           );
         }
     );

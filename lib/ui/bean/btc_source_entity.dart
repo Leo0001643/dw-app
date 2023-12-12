@@ -7,9 +7,7 @@ export 'package:leisure_games/generated/json/btc_source_entity.g.dart';
 
 @JsonSerializable()
 class BtcSourceEntity {
-	String? originalNum;
-	String? gameType;
-	String? btcHash;
+
 	int? billCount;
 	int? closeTime;
 	int? term;
@@ -17,6 +15,10 @@ class BtcSourceEntity {
 	int? state;
 	int? openTime;
 	String? luckyNum;
+	String? originalNum;
+	String? gameType;
+	String? btcHash;
+
 
 	BtcSourceEntity();
 

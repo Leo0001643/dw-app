@@ -36,7 +36,7 @@ class _RoomListPageState extends State<RoomListPage> {
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,onTap: (){
         DialogUtils().showSelectRoomBtmDialog(context,state.pc28Lotto.value).then((value) {
           if(unEmpty(value?.name)){
-            Get.toNamed(Routes.game_room);
+            Get.toNamed(Routes.game_room,arguments: value);
           }
         });
       }),
