@@ -5,9 +5,9 @@ export 'package:leisure_games/generated/json/digiccy_channel_entity.g.dart';
 
 @JsonSerializable()
 class DigiccyChannelEntity {
-	List<DigiccyChannelWallet>? wallet;
 	double? moneyDown;
 	double? moneyUp;
+	List<DigiccyChannelWallet>? wallet;
 
 	DigiccyChannelEntity();
 

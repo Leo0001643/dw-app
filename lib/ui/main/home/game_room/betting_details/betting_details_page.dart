@@ -1,17 +1,22 @@
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
+import 'package:leisure_games/ui/bean/current_bet_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'betting_details_logic.dart';
 
+///注单
 class BettingDetailsPage extends StatefulWidget {
   const BettingDetailsPage({Key? key}) : super(key: key);
 
@@ -22,18 +27,22 @@ class BettingDetailsPage extends StatefulWidget {
 class _BettingDetailsPageState extends State<BettingDetailsPage> {
   final logic = Get.find<BettingDetailsLogic>();
   final state = Get.find<BettingDetailsLogic>().state;
-  late RefreshController _refreshController;
+  // late RefreshController _refreshController;
 
   @override
   void initState() {
-    _refreshController= RefreshController();
+    state.refreshController= RefreshController(initialRefresh: true);
+    state.refreshListener.addListener(() {
+      var refresh= state.refreshListener.value;
+      RefreshChangeNotifier.dataComplete(state.refreshController, refresh);
+    });
     super.initState();
   }
 
 
   @override
   void dispose() {
-    _refreshController.dispose();
+    state.refreshController.dispose();
     Get.delete<BettingDetailsLogic>();
     super.dispose();
   }
@@ -45,11 +54,18 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
       Padding(
         padding: EdgeInsets.only(right: 10.w),
         child: InkWell(
-          onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().quanbujilu,
-              ["比特币1分28","加拿大28","加拿大西28","台湾宾果28"]),
+          onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().quanbujilu,state.types).then((value) {
+            if(unEmpty(value)){
+              state.type.value = value;
+              state.type.refresh();
+              state.refreshController.requestRefresh();
+            }
+          }),
           child: Row(
             children: [
-              Text(Intr().quanbujilu,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+              Obx(() {
+                return Text(state.type.value.memo.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
+              }),
               Image.asset(ImageX.icon_down_black,color: ColorX.iconBlack(),),
             ],
           ),
@@ -113,22 +129,25 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
               ),
             ),
             Expanded(
-              child: SmartRefresher(
-                controller: _refreshController,
-                enablePullDown: true,
-                enablePullUp: true,
-                onRefresh: ()=> _refreshController.refreshCompleted(),
-                onLoading: ()=> _refreshController.loadComplete(),
-                child: ListView.separated(
-                  itemCount: 20,
-                  itemBuilder: (context,index){
-                    return buildBetItem(index);
-                  },
-                  separatorBuilder: (context,index){
-                    return Divider(height: 1.r,color: ColorX.color_10_949,);
-                  },
-                ),
-              ),
+              child: Obx(() {
+                return SmartRefresher(
+                  controller: state.refreshController,
+                  enablePullDown: true,
+                  enablePullUp: true,
+                  onRefresh: ()=> logic.loadData(true),
+                  onLoading: ()=> logic.loadData(false),
+                  child: ListView.separated(
+                    itemCount: state.list.em(),
+                    itemBuilder: (context,index){
+                      var item = state.list[index];
+                      return buildBetItem(item);
+                    },
+                    separatorBuilder: (context,index){
+                      return Divider(height: 1.r,color: ColorX.color_10_949,);
+                    },
+                  ),
+                );
+              }),
             ),
             Container(
               color: ColorX.cardBg(),
@@ -145,19 +164,33 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text(Intr().xbi(["100"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
+                      child: Obx(() {
+                        return Text(Intr().xbi(["${state.list.em()}"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),);
+                      }),
                     ),
                   ),
                   Expanded(
                       flex: 25,
                       child: Center(
-                        child: Text("¥123.98",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),),
+                        child: Obx(() {
+                          var betTotal = 0.0;
+                          state.list.forEach((element) {
+                            betTotal += element.betMoney.em();
+                          });
+                          return Text("¥$betTotal",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
+                        }),
                       )
                   ),
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Text("¥678",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),),
+                      child: Obx(() {
+                        var winTotal = 0.0;
+                        state.list.forEach((element) {
+                          winTotal += element.winMoneyExpected.em();
+                        });
+                        return Text("¥$winTotal",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
+                      }),
                     ),
                   ),
                 ],
@@ -189,17 +222,17 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
     );
   }
 
-  Widget buildBetItem(int index) {
+  Widget buildBetItem(CurrentBetContent item) {
     return Container(
       color: ColorX.cardBg(),
-      height: 94.h,
+      // height: 94.h,
       child: Row(
         children: [
           Expanded(
             flex: 25,
             child: Container(
               padding: EdgeInsets.all(10.r),
-              child: Text("45_MAX4_CNY45_MAX4_CNY",
+              child: Text(item.billNo.em(),
                 style: TextStyle(
                   fontSize: 14.sp,
                   color: ColorX.color_5583e7,
@@ -218,27 +251,12 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  GFTypography(
-                    text: Intr().qihao_(["762252\n加拿大西28"]),
-                    textColor: ColorX.text0917(),
-                    type: GFTypographyType.typo6,
-                    showDivider: false,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  const GFTypography(
-                    text: "大1.881/1.888",
-                    textColor: ColorX.color_fc243b,
-                    type: GFTypographyType.typo6,
-                    showDivider: false,
-                    fontWeight: FontWeight.normal,
-                  ),
-                  const GFTypography(
-                    text: "07-03 09:0026",
-                    textColor: ColorX.color_6655e7,
-                    type: GFTypographyType.typo6,
-                    showDivider: false,
-                    fontWeight: FontWeight.normal,
-                  ),
+                  Text(Intr().qihao_(["${item.term.em()}\n${item.gameType.em()}"]),
+                  style: TextStyle(color: ColorX.text0917(),fontSize: 12.sp,),),
+                  Text("${item.betMsg.em()}${item.betOddsExpected.em()}/${item.betOdds1314.em()}",
+                    style: TextStyle(color: ColorX.color_fc243b,fontSize: 12.sp,),),
+                  Text(DateUtil.formatDateMs(item.createTime.em(),format: "MM-dd HH:mm:ss"),
+                    style: TextStyle(color: ColorX.color_6655e7,fontSize: 12.sp,),),
                 ],
               ),
             ),
@@ -247,14 +265,14 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
           Expanded(
               flex: 25,
               child: Center(
-                child: Text("¥459.9",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,),),
+                child: Text("¥${item.betMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,),),
               )
           ),
           Container(height: 94.h,width: 1.r,color: ColorX.color_10_949,),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("8.88/8.88",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
+              child: Text("${item.winMoneyExpected.em()}/${item.winMoney1314.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
             ),
           ),
         ],

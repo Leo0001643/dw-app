@@ -10,11 +10,11 @@ class LoginState {
   var pwdVisible = false.obs;
 
 
-  var accountValue = "dsa0001";
-  var pwdValue = "aeuio888";
+  // var accountValue = "dsa0001";
+  // var pwdValue = "aeuio888";
 
-  // var accountValue = "dms001";
-  // var pwdValue = "12345678";
+  var accountValue = "dms001";
+  var pwdValue = "12345678";
 
   var btnEnable = false.obs;
 

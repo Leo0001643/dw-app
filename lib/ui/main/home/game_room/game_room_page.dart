@@ -10,6 +10,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/betting_left_item.dart';
@@ -69,7 +70,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                             Container(
                               margin: EdgeInsets.all(2.r),
                               child: GFAvatar(
-                                backgroundImage: WidgetUtils().buildImageProvider(ImageX.icon_avatar),
+                                backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(AppData.user()?.avatar)),
                                 shape: GFAvatarShape.circle,
                                 radius: 17.r,
                               ),
@@ -291,8 +292,10 @@ class _GameRoomPageState extends State<GameRoomPage> {
         color = ColorX.color_ffe0ac;
         break;
     }
-    return Text("\$8888.66",
-      style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w500),);
+    return Obx(() {
+      return Text("¥${state.userBal.value.money.em()}",
+        style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w500),);
+    });
   }
 
   Widget buildCurrentTermType() {
@@ -393,7 +396,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(Intr().zongyue, style: TextStyle(fontSize: 12.sp,color: textColor),),
+          Text(AppData.user()!.username.em(), style: TextStyle(fontSize: 12.sp,color: textColor),),
           SizedBox(height: 3.h,),
           buildBalanceType(),
         ],
@@ -402,7 +405,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
       return InkWell(
         onTap: (){
           Get.until((ModalRoute.withName(Routes.main)));
-          Get.toNamed(Routes.login);
+          WidgetUtils().goLogin();
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

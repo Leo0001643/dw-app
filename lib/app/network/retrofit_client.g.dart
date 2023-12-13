@@ -21,41 +21,6 @@ class _RetrofitClient implements RetrofitClient {
   String? baseUrl;
 
   @override
-  Future<BaseResponseEntity<List<GameKindEntity>>> getGameKind() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponseEntity<List<GameKindEntity>>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/ds-api-web/getGameKind',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = BaseResponseEntity<List<GameKindEntity>>.fromJson(
-      _result.data!,
-      (json) => json is List<dynamic>
-          ? json
-              .map<GameKindEntity>(
-                  (i) => GameKindEntity.fromJson(i as Map<String, dynamic>))
-              .toList()
-          : List.empty(),
-    );
-    return value;
-  }
-
-  @override
   Future<BaseResponseEntity<List<NoticeEntity>>> getNotice(int noteType) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'noteType': noteType};
@@ -275,6 +240,41 @@ class _RetrofitClient implements RetrofitClient {
     final value = BaseResponseEntity<NewsRateEntity>.fromJson(
       _result.data!,
       (json) => NewsRateEntity.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseResponseEntity<List<GameKindEntity>>> getGameKind() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseEntity<List<GameKindEntity>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/ds-api-web/getGameKind',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseEntity<List<GameKindEntity>>.fromJson(
+      _result.data!,
+      (json) => json is List<dynamic>
+          ? json
+              .map<GameKindEntity>(
+                  (i) => GameKindEntity.fromJson(i as Map<String, dynamic>))
+              .toList()
+          : List.empty(),
     );
     return value;
   }

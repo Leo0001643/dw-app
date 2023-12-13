@@ -11,9 +11,9 @@ class CurrentBetEntity {
 	int? size;
 	int? totalPages;
 	dynamic sort;
-	List<CurrentBetContent>? content;
 	bool? first;
 	int? totalElements;
+	List<CurrentBetContent>? content;
 
 	CurrentBetEntity();
 

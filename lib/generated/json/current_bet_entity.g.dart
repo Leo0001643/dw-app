@@ -28,13 +28,6 @@ CurrentBetEntity $CurrentBetEntityFromJson(Map<String, dynamic> json) {
   if (sort != null) {
     currentBetEntity.sort = sort;
   }
-  final List<CurrentBetContent>? content = (json['content'] as List<dynamic>?)
-      ?.map(
-          (e) => jsonConvert.convert<CurrentBetContent>(e) as CurrentBetContent)
-      .toList();
-  if (content != null) {
-    currentBetEntity.content = content;
-  }
   final bool? first = jsonConvert.convert<bool>(json['first']);
   if (first != null) {
     currentBetEntity.first = first;
@@ -42,6 +35,13 @@ CurrentBetEntity $CurrentBetEntityFromJson(Map<String, dynamic> json) {
   final int? totalElements = jsonConvert.convert<int>(json['totalElements']);
   if (totalElements != null) {
     currentBetEntity.totalElements = totalElements;
+  }
+  final List<CurrentBetContent>? content = (json['content'] as List<dynamic>?)
+      ?.map(
+          (e) => jsonConvert.convert<CurrentBetContent>(e) as CurrentBetContent)
+      .toList();
+  if (content != null) {
+    currentBetEntity.content = content;
   }
   return currentBetEntity;
 }
@@ -54,9 +54,9 @@ Map<String, dynamic> $CurrentBetEntityToJson(CurrentBetEntity entity) {
   data['size'] = entity.size;
   data['totalPages'] = entity.totalPages;
   data['sort'] = entity.sort;
-  data['content'] = entity.content?.map((v) => v.toJson()).toList();
   data['first'] = entity.first;
   data['totalElements'] = entity.totalElements;
+  data['content'] = entity.content?.map((v) => v.toJson()).toList();
   return data;
 }
 
@@ -68,9 +68,9 @@ extension CurrentBetEntityExtension on CurrentBetEntity {
     int? size,
     int? totalPages,
     dynamic sort,
-    List<CurrentBetContent>? content,
     bool? first,
     int? totalElements,
+    List<CurrentBetContent>? content,
   }) {
     return CurrentBetEntity()
       ..number = number ?? this.number
@@ -79,9 +79,9 @@ extension CurrentBetEntityExtension on CurrentBetEntity {
       ..size = size ?? this.size
       ..totalPages = totalPages ?? this.totalPages
       ..sort = sort ?? this.sort
-      ..content = content ?? this.content
       ..first = first ?? this.first
-      ..totalElements = totalElements ?? this.totalElements;
+      ..totalElements = totalElements ?? this.totalElements
+      ..content = content ?? this.content;
   }
 }
 

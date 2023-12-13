@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -36,21 +37,33 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(Intr().shuruduiyinghaoyuan,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                Text(Intr().shuruduiyinghaoyuan,
+                  style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                 WidgetUtils().buildElevatedButton(Intr().jiaoyan, 50.w, 26.h,textSize: 12.sp,
-                    bg:ColorX.color_fc243b,onPressed: (){}),
+                    bg:ColorX.color_fc243b,onPressed: ()=> logic.onValid(),),
               ],
             ),
             SizedBox(height: 10.h,),
-            WidgetUtils().buildTextField(333.w, 124.h, 14.sp, ColorX.text0917(), "",
-            backgroundColor: ColorX.cardBg(),),
+            WidgetUtils().buildTextField(333.w, 124.h, 14.sp, ColorX.text0917(), Intr().qingzaiciyanzhenghaxizhi,
+            maxLines: 10,
+            backgroundColor: ColorX.cardBg3(),defText: state.inputHash,onChanged: (v)=>state.inputHash = v,),
             SizedBox(height: 25.h,),
             Text(Intr().jiaoyanjieguo,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-            buildCheckItem(Intr().sha256zhuanhuahzi,"sdsdfsdf"),
-            buildCheckItem(Intr().quqianshiliuwei,"sdsdfsdf"),
-            buildCheckItem(Intr().shijinweizhuanhuan,"sdsdfsdf"),
-            buildCheckItem(Intr().chuyierde64cifang,"sdsdfsdf"),
-            buildCheckItem(Intr().zuizhongkaijianghaoma,"sdsdfsdf"),
+            Obx(() {
+              return buildCheckItem(Intr().sha256zhuanhuahzi,state.sha256.value);
+            }),
+            Obx(() {
+              return buildCheckItem(Intr().quqianshiliuwei,state.before16.value);
+            }),
+            Obx(() {
+              return buildCheckItem(Intr().shijinweizhuanhuan,state.convert10.value);
+            }),
+            Obx(() {
+              return buildCheckItem(Intr().chuyierde64cifang,state.equation2_64.value);
+            }),
+            Obx(() {
+              return buildCheckItem(Intr().zuizhongkaijianghaoma,state.lottery_num.value);
+            }),
             SizedBox(height: 25.h,),
             Text(Intr().shuoming,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             Text(Intr().shuoming_jieshao,
@@ -60,10 +73,10 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
             SizedBox(height: 10.h,),
             Row(
               children: [
-                Text("https://modao.cc",style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),),),
+                Text(Constants.html_btc,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),),),
                 SizedBox(width: 5.w,),
                 InkWell(
-                  onTap: ()=> WidgetUtils().clickCopy("https://modao.cc"),
+                  onTap: ()=> WidgetUtils().clickCopy(Constants.html_btc),
                   child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),decoration: TextDecoration.underline,),),
                 ),
               ],
@@ -71,10 +84,12 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
             SizedBox(height: 10.h,),
             Row(
               children: [
-                Text("https://modao.cc",style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),),),
+                Expanded(
+                  child: Text(Constants.html_blockchain,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),),),
+                ),
                 SizedBox(width: 5.w,),
                 InkWell(
-                  onTap: ()=> WidgetUtils().clickCopy("https://modao.cc"),
+                  onTap: ()=> WidgetUtils().clickCopy(Constants.html_blockchain),
                   child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),decoration: TextDecoration.underline,),),
                 ),
               ],

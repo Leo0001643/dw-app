@@ -3,11 +3,6 @@ import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
 
 ChapterInfoEntity $ChapterInfoEntityFromJson(Map<String, dynamic> json) {
   final ChapterInfoEntity chapterInfoEntity = ChapterInfoEntity();
-  final List<String>? children = (json['children'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<String>(e) as String).toList();
-  if (children != null) {
-    chapterInfoEntity.children = children;
-  }
   final int? courseId = jsonConvert.convert<int>(json['courseId']);
   if (courseId != null) {
     chapterInfoEntity.courseId = courseId;
@@ -34,38 +29,43 @@ ChapterInfoEntity $ChapterInfoEntityFromJson(Map<String, dynamic> json) {
   if (visible != null) {
     chapterInfoEntity.visible = visible;
   }
+  final List<String>? children = (json['children'] as List<dynamic>?)?.map(
+          (e) => jsonConvert.convert<String>(e) as String).toList();
+  if (children != null) {
+    chapterInfoEntity.children = children;
+  }
   return chapterInfoEntity;
 }
 
 Map<String, dynamic> $ChapterInfoEntityToJson(ChapterInfoEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
-  data['children'] = entity.children;
   data['courseId'] = entity.courseId;
   data['name'] = entity.name;
   data['order'] = entity.order;
   data['parentChapterId'] = entity.parentChapterId;
   data['userControlSetTop'] = entity.userControlSetTop;
   data['visible'] = entity.visible;
+  data['children'] = entity.children;
   return data;
 }
 
 extension ChapterInfoEntityExtension on ChapterInfoEntity {
   ChapterInfoEntity copyWith({
-    List<String>? children,
     int? courseId,
     String? name,
     int? order,
     int? parentChapterId,
     bool? userControlSetTop,
     int? visible,
+    List<String>? children,
   }) {
     return ChapterInfoEntity()
-      ..children = children ?? this.children
       ..courseId = courseId ?? this.courseId
       ..name = name ?? this.name
       ..order = order ?? this.order
       ..parentChapterId = parentChapterId ?? this.parentChapterId
       ..userControlSetTop = userControlSetTop ?? this.userControlSetTop
-      ..visible = visible ?? this.visible;
+      ..visible = visible ?? this.visible
+      ..children = children ?? this.children;
   }
 }

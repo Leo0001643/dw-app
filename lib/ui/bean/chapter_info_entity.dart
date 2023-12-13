@@ -6,14 +6,14 @@ import '/generated/json/chapter_info_entity.g.dart';
 @JsonSerializable()
 class ChapterInfoEntity {
 
-	List<String>? children;
 	int? courseId;
 	String? name;
 	int? order;
 	int? parentChapterId;
 	bool? userControlSetTop;
 	int? visible;
-  
+  List<String>? children;
+
   ChapterInfoEntity();
 
   factory ChapterInfoEntity.fromJson(Map<String, dynamic> json) => $ChapterInfoEntityFromJson(json);

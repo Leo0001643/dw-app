@@ -64,9 +64,6 @@ abstract class RetrofitClient{
 
   factory RetrofitClient(Dio dio, {String? baseUrl}) = _RetrofitClient;
 
-  @GET('/ds-api-web/getGameKind')
-  Future<BaseResponseEntity<List<GameKindEntity>>> getGameKind();
-
   ///公告类型【公告类型，1普通公告(主站)-11普通公告(副站)，2跳弹公告(主站)-21跳弹公告(副站)】
   @GET('/ds-api-web/getNotice')
   Future<BaseResponseEntity<List<NoticeEntity>>> getNotice(@Query('noteType') int noteType,);
@@ -90,6 +87,11 @@ abstract class RetrofitClient{
   @POST('/ds-api-web/getPic30')
   Future<BaseResponseEntity<NewsRateEntity>> getNewsRate(@Field('classify') String classify,
       @Field('tag') String tag,@Field('imageType') int imageType,);
+
+
+  @GET('/ds-api-web/getGameKind')
+  Future<BaseResponseEntity<List<GameKindEntity>>> getGameKind();
+
 
   @POST('/ds-api-web/getActStatus')
   Future<BaseResponseEntity<ActStatusEntity>> getActStatus();

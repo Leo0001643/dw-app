@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -16,6 +18,7 @@ class GameRoomLogic extends GetxController {
 
   @override
   void onReady() {
+    loadBalance();
     super.onReady();
   }
 
@@ -32,7 +35,11 @@ class GameRoomLogic extends GetxController {
         Get.toNamed(Routes.number_source);
         break;
       case 1:
-        Get.toNamed(Routes.betting_details);
+        if(AppData.isLogin()){
+          Get.toNamed(Routes.betting_details);
+        } else {
+          showToast(Intr().qingxiandenglu);
+        }
         break;
       case 2:
         DialogUtils().showSqueezeBtmDialog(context,this);
@@ -82,5 +89,16 @@ class GameRoomLogic extends GetxController {
     });
   }
 
+  void loadBalance() {
+
+    var user = AppData.user();
+    HttpService.getBalance({ "cur":1, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
+      state.userBal.value = value;
+      state.userBal.refresh();
+    });
+
+  }
+
+  //
 
 }
