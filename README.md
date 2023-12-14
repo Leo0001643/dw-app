@@ -13,6 +13,9 @@ https://github.com/Leo0001643/dw-app.git
 Lancebyebye
 19931125Tu
 
+邮箱是pitching39@gmail.com
+19931125Tu
+
 
 https://Lancebyebye:19931125Tu@github.com/Leo0001643/dw-app.git
 
@@ -20,6 +23,12 @@ https://Lancebyebye:19931125Tu@github.com/Leo0001643/dw-app.git
 git config user.name "Lance"
 git config user.email "Lance@gmail.com"
 
+
+https://9000vlmdm4.kj99883.com
+
+wss://9000ywfjn2.uy4ayov.com:443
+
+网页版的api 请求头 和websocket地址 有变动
 
 
 # 国际站新版app ui调整

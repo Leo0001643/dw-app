@@ -1,9 +1,13 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
-import 'package:leisure_games/ui/main/main_logic.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import 'promotion_profit_state.dart';
 
@@ -32,6 +36,13 @@ class PromotionProfitLogic extends GetxController {
 
     state.userLink.value = "${Constants.host}/#/register?sp=${AppData.user()?.id ?? 0}";
 
+    var painter = QrPainter(data: state.userLink.value, version: QrVersions.auto, gapless: true,
+      errorCorrectionLevel: QrErrorCorrectLevel.L,);
+    painter.toImageData(116.r).then((value) {
+      state.qrLinkData.value = value!.buffer.asUint8List();
+    });
+
+
     var params = {"oid":user?.oid,"username":user?.username,"pageSize":Constants.pageSize,"page":1};
 
     HttpService.getSpreadPromos(params).then((value) {
@@ -46,6 +57,7 @@ class PromotionProfitLogic extends GetxController {
   }
 
   void clickTab(int index) {
+
     switch(index){
       case 0:
         state.showList.assignAll(state.spreadPromos);
@@ -57,5 +69,19 @@ class PromotionProfitLogic extends GetxController {
         break;
     }
   }
+
+  void saveQrLink() async {
+    if(state.qrLinkData.value.isEmpty){ return; }
+
+    var result = await ImageGallerySaver.saveImage(state.qrLinkData.value);
+    loggerArray(["文件保存目录存在",result]);
+    ///{filePath: content://media/external/images/media/1000000036, errorMessage: null, isSuccess: true}
+    if(unEmpty(result) && result is Map && result["isSuccess"] == true){
+      showToast(Intr().baocunchenggong);
+    }
+  }
+
+
+
 
 }

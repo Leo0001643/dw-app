@@ -12,7 +12,6 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 import 'recharge_offline_logic.dart';
 

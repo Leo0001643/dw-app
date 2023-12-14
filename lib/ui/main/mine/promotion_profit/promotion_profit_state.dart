@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
@@ -22,6 +24,8 @@ class PromotionProfitState {
   var userCode = "".obs;
 
   var userLink = "".obs;
+
+  var qrLinkData = Uint8List(0).obs;
 
 
 }

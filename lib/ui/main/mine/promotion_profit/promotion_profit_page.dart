@@ -11,7 +11,6 @@ import 'package:leisure_games/app/widget/empty_data_widget.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 import 'promotion_profit_logic.dart';
 
@@ -108,8 +107,8 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                 ),
               ),
               Padding(
-                child: Text(Intr().tuiguangerweima,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
                 padding: EdgeInsets.only(left: 12.w,bottom: 10.h,top: 20.h),
+                child: Text(Intr().tuiguangerweima,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
               ),
               Container(
                 decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(12.r),),
@@ -117,17 +116,17 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                 child: Row(
                   children: [
                     Obx(() {
-                      return QrImageView(
-                        data: state.userLink.value,
-                        size: 136.r,
-                        backgroundColor: Colors.white,
+                      if(state.qrLinkData.value.isEmpty){ return Container(); }
+                      return Padding(
+                        padding: EdgeInsets.all(10.r),
+                        child: Image.memory(state.qrLinkData.value),
                       );
                     }),
                     SizedBox(width: 36.w,),
                     Column(
                       children: [
                         WidgetUtils().buildElevatedButton(Intr().baocuntupian, 132.w, 40.h,
-                            bg: ColorX.cardBg2(),textColor:ColorX.text0917(),onPressed: (){}),
+                            bg: ColorX.cardBg2(),textColor:ColorX.text0917(),onPressed: ()=> logic.saveQrLink()),
                         SizedBox(height: 15.h,),
                         WidgetUtils().buildElevatedButton(Intr().fuzhilianjie, 132.w, 40.h,
                             bg: ColorX.cardBg2(),textColor:ColorX.text0917(),

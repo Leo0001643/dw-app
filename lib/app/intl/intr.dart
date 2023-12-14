@@ -573,9 +573,9 @@ class Intr extends Translations{
   String get chongzhijymm => 'chongzhijymm'.tr;
   String get chongzhijymmtishi => 'chongzhijymmtishi'.tr;
   String get qingzaiciyanzhenghaxizhi => 'qingzaiciyanzhenghaxizhi'.tr;
-
-
-
+  String get baocunchenggong => 'baocunchenggong'.tr;
+  String get geshangqi => 'geshangqi'.tr;
+  String get jinrikai => 'jinrikai'.tr;
 
 
 
@@ -704,8 +704,8 @@ class Intr extends Translations{
       "juelidixqi":"距离第%s期",
       "zongyue":"总余额",
       "touzhu":"投注",
-      "bet_da":"小",
-      "bet_xiao":"大",
+      "bet_da":"大",
+      "bet_xiao":"小",
       "bet_dan":"单",
       "bet_shuang":"双",
       "di":"第",
@@ -972,6 +972,7 @@ class Intr extends Translations{
       "lianjie":"链接",
       "tuiguangerweima":"推广二维码",
       "baocuntupian":"保存图片",
+      "baocunchenggong":"保存成功",
       "fuzhilianjie":"复制链接",
       "huiyuanliebiao":"会员列表",
       "riqi":"日期",
@@ -1129,6 +1130,8 @@ class Intr extends Translations{
       "chongzhijymm":"重置简易密码",
       "chongzhijymmtishi":"重置简易密码后，将清空您设置的简易密码，请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
       "qingzaiciyanzhenghaxizhi":"请在此处输入或粘贴你想要验证的哈希值",
+      "geshangqi":"隔上期",
+      "jinrikai":"今日开",
 
 
 

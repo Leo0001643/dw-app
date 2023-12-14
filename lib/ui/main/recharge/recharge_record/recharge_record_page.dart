@@ -10,7 +10,6 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'recharge_record_logic.dart';
 ///充值记录
