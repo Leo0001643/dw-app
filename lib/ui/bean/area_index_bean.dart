@@ -1,5 +1,5 @@
 
-import 'package:azlistview/azlistview.dart';
+import 'package:leisure_games/app/widget/azlistview/az_common.dart';
 
 class AreaIndexBean extends ISuspensionBean{
 
