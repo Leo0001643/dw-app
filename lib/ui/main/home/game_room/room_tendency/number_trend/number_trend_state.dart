@@ -7,7 +7,7 @@ class NumberTrendState {
   }
 
 
-  RxList<NumberData> data = RxList.empty(growable: true);
+  RxList<SalesData> data = RxList.empty(growable: true);
 
   var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
 
