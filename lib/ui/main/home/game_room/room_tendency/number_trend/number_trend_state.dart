@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 
 class NumberTrendState {
@@ -7,19 +6,21 @@ class NumberTrendState {
   }
 
 
-  RxList<SalesData> data = RxList.empty(growable: true);
+  RxList<NumberData> data = RxList.empty(growable: true);
 
   var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
 
+  ///默认tab在特码
+  int tabIndex = 0;
 
 }
 
 
-class SalesData {
-  SalesData(this.year, this.sales);
+class NumberData {
+  NumberData(this.term, this.value);
 
-  final String year;
-  final int sales;
+  final String term;
+  final int value;
 }
 
 
