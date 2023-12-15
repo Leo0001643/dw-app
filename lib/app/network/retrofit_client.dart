@@ -19,6 +19,7 @@ import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
+import 'package:leisure_games/ui/bean/draw_lottery_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -121,7 +122,7 @@ abstract class RetrofitClient{
   Future<TrendResponseEntity<List<HistoryLottoEntity>>> historyList(@Query('lid') int lid,@Query('pageIndex') int pageIndex,@Query('pageSize') int pageSize,);
 
   @GET('/ds-api-web/getDewInfo')
-  Future<BaseResponseEntity<DewInfoEntity>> getDewInfo(@Query('gameType') String gameType,@Query('countTerm') String countTerm,@Query('lotteryVersion')String lotteryVersion,);
+  Future<BaseResponseEntity<DewInfoEntity>> getDewInfo(@Queries() Map<String,dynamic> params,);
 
   @GET('/ds-api-web/getRoomCopyWriting')
   Future<BaseResponseEntity<List<RoomCopyWritingEntity>>> getRoomCopyWriting();
@@ -286,6 +287,10 @@ abstract class RetrofitClient{
 
   @GET('/ds-api-web/getGameCurrentBet')
   Future<BaseResponseEntity<CurrentBetEntity>> getGameCurrentBet(@Queries() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/getDrawLotteryData')
+  Future<BaseResponseEntity<List<DrawLotteryEntity>>> getDrawLotteryData(@Queries() Map<String,dynamic> params,);
+
 
 
 

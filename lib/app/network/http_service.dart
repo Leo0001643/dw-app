@@ -24,6 +24,7 @@ import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
+import 'package:leisure_games/ui/bean/draw_lottery_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -168,8 +169,8 @@ class HttpService{
     return buildTrendFuture<List<HistoryLottoEntity>>(()=> _client.historyList(lid, pageIndex, pageSize),loading: false);
   }
 
-  static Future<DewInfoEntity> getDewInfo(String gameType,String countTerm,String lotteryVersion){
-    return buildFuture<DewInfoEntity>(()=> _client.getDewInfo(gameType, countTerm,lotteryVersion));
+  static Future<DewInfoEntity> getDewInfo(Map<String,dynamic> params,){
+    return buildFuture<DewInfoEntity>(()=> _client.getDewInfo(params));
   }
 
   static Future<List<ExpressionEntity>> getExpression(){
@@ -378,6 +379,9 @@ class HttpService{
     return buildFuture<CurrentBetEntity>(()=> _client.getGameCurrentBet(params));
   }
 
+  static Future<List<DrawLotteryEntity>> getDrawLotteryData(Map<String,dynamic> params,){
+    return buildFuture<List<DrawLotteryEntity>>(()=> _client.getDrawLotteryData(params));
+  }
 
 
 

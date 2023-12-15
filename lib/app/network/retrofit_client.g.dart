@@ -13,7 +13,7 @@ class _RetrofitClient implements RetrofitClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://soptj9qq.com:8860/';
+    baseUrl ??= 'https://9000vlmdm4.kj99883.com/';
   }
 
   final Dio _dio;
@@ -575,16 +575,10 @@ class _RetrofitClient implements RetrofitClient {
 
   @override
   Future<BaseResponseEntity<DewInfoEntity>> getDewInfo(
-    String gameType,
-    String countTerm,
-    String lotteryVersion,
-  ) async {
+      Map<String, dynamic> params) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'gameType': gameType,
-      r'countTerm': countTerm,
-      r'lotteryVersion': lotteryVersion,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(params);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -2395,6 +2389,43 @@ class _RetrofitClient implements RetrofitClient {
     final value = BaseResponseEntity<CurrentBetEntity>.fromJson(
       _result.data!,
       (json) => CurrentBetEntity.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseResponseEntity<List<DrawLotteryEntity>>> getDrawLotteryData(
+      Map<String, dynamic> params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(params);
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseEntity<List<DrawLotteryEntity>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/ds-api-web/getDrawLotteryData',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseEntity<List<DrawLotteryEntity>>.fromJson(
+      _result.data!,
+      (json) => json is List<dynamic>
+          ? json
+              .map<DrawLotteryEntity>(
+                  (i) => DrawLotteryEntity.fromJson(i as Map<String, dynamic>))
+              .toList()
+          : List.empty(),
     );
     return value;
   }

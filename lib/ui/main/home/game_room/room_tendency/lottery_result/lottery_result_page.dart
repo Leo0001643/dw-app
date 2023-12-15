@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/controller/room_tendency_controller.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'lottery_result_logic.dart';
@@ -15,10 +18,14 @@ class LotteryResultPage extends StatefulWidget {
   State<LotteryResultPage> createState() => _LotteryResultPageState();
 }
 
-class _LotteryResultPageState extends State<LotteryResultPage> {
+class _LotteryResultPageState extends State<LotteryResultPage> with AutomaticKeepAliveClientMixin  {
   final logic = Get.find<LotteryResultLogic>();
   final state = Get.find<LotteryResultLogic>().state;
   late RefreshController _refreshController;
+
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -29,7 +36,6 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
   @override
   void dispose() {
     _refreshController.dispose();
-    // Get.delete<LotteryResultLogic>();
     super.dispose();
   }
 
@@ -37,24 +43,34 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
   Widget build(BuildContext context) {
     return Container(
       color: ColorX.pageBg2(),
-      child: SmartRefresher(
-        controller: _refreshController,
-        enablePullDown: true,
-        enablePullUp: true,
-        onRefresh: ()=> _refreshController.refreshCompleted(),
-        onLoading: ()=> _refreshController.loadComplete(),
-        child: ListView.builder(
-          itemCount: 20,
-          itemBuilder: (context,index){
-            return buildLotteryItem(index);
-          },
-        ),
+      child: GetBuilder<RoomTendencyController>(
+        id: RoomTendencyController.room_tendency_id,
+        builder: (ctx){
+          return ListView.builder(
+            itemCount: ctx.data?.list.em() ?? 0,
+            itemBuilder: (context,index){
+              if(isEmpty(ctx.data?.list)){ return Container(); }
+              return buildLotteryItem(ctx.data!.list![index]);
+            },
+          );
+        },
       ),
     );
   }
 
 
-  Widget buildLotteryItem(int index) {
+  Widget buildLotteryItem(List<String> item) {
+    if(item.length < 3){ return Container(); }
+    var chars = item[2].em().split(",");
+    if(chars.length < 4){ return Container(); }
+    ///大小  单双
+    var result = int.parse(chars[3]);
+
+    ///大小
+    var size = DataUtils.getDx(result);
+    ///单双
+    var sd = DataUtils.getDs(result);
+
     return Container(
       decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r),),
       margin: EdgeInsets.only(top: 10.h,left: 15.w,right: 15.w,),
@@ -68,24 +84,24 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
             spacing: 3.w,
             children: [
               Text(Intr().di,style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
-              Text("112030767",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),),
+              Text(item.first.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),),
               Text(Intr().qi,style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
             ],
           ),
           SizedBox(width: 3.w,),
-          buildDrawNum("5"),
+          buildDrawNum(chars[0]),
           buildDrawMark("+"),
-          buildDrawNum("8"),
+          buildDrawNum(chars[1]),
           buildDrawMark("+"),
-          buildDrawNum("5"),
+          buildDrawNum(chars[2]),
           buildDrawMark("="),
-          buildDrawResult("22"),
+          buildDrawResult(chars[3]),
           Wrap(
             children: [
-              Text("(",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-              Text("小",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
+              Text(" (",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              Text(size,style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
               SizedBox(width: 3.w,),
-              Text("双",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
+              Text(sd,style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
               Text(")",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             ],
           ),
@@ -115,10 +131,11 @@ class _LotteryResultPageState extends State<LotteryResultPage> {
     return Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: ColorX.color_10_fc2,borderRadius: BorderRadius.circular(15.r),),
-      child: Text(result, style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
+      decoration: BoxDecoration(color:  DataUtils.getBallBgColor(int.parse(result)),borderRadius: BorderRadius.circular(15.r),),
+      child: Text(result, style: TextStyle(fontSize: 14.sp,color:Colors.white,fontWeight: FontWeight.w600),),
     );
   }
+
 
 
 

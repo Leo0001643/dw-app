@@ -24,7 +24,8 @@ class HistoryTrendLogic extends GetxController {
 
   void loadData(HistoryHall item) {
     state.title.value = item.name.em();
-    HttpService.getDewInfo(DataUtils.getGameTypeByLid(item.lid), "50","200").then((value) {
+    var params = {"countTerm":50,"gameType":DataUtils.getGameTypeByLid(item.lid),"lotteryVersion":200};
+    HttpService.getDewInfo(params).then((value) {
       ///倒序
       value.list = value.list?.reversed.toList();
       state.info = value;

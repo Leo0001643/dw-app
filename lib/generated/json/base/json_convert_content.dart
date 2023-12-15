@@ -23,6 +23,7 @@ import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
+import 'package:leisure_games/ui/bean/draw_lottery_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -285,6 +286,10 @@ class JsonConvert {
     if (<DomainConfigEntity>[] is M) {
       return data.map<DomainConfigEntity>((Map<String, dynamic> e) =>
           DomainConfigEntity.fromJson(e)).toList() as M;
+    }
+    if (<DrawLotteryEntity>[] is M) {
+      return data.map<DrawLotteryEntity>((Map<String, dynamic> e) =>
+          DrawLotteryEntity.fromJson(e)).toList() as M;
     }
     if (<ExpressionEntity>[] is M) {
       return data.map<ExpressionEntity>((Map<String, dynamic> e) =>
@@ -688,6 +693,7 @@ class JsonConvertClassCollection {
     (DigiccyChannelWallet).toString(): DigiccyChannelWallet.fromJson,
     (DigiccyDepositDataEntity).toString(): DigiccyDepositDataEntity.fromJson,
     (DomainConfigEntity).toString(): DomainConfigEntity.fromJson,
+    (DrawLotteryEntity).toString(): DrawLotteryEntity.fromJson,
     (ExpressionEntity).toString(): ExpressionEntity.fromJson,
     (FlowDataEntity).toString(): FlowDataEntity.fromJson,
     (FlowDataList).toString(): FlowDataList.fromJson,

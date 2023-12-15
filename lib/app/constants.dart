@@ -10,8 +10,12 @@ class Constants {
 
   static const test_role = "<span> \r\n<div id=\"mid_box\" class=\"mid_box\" style=\"padding:0px;margin:0px;border:none;font-family:PingFangSC-Regular;\">\r\n\t<div class=\"aboutDetailPage\" style=\"padding:0px;margin:0px;border:none;background-color:#FFFFFF;font-size:0.32rem;\">\r\n\t\t<div class=\"contentPage\" style=\"padding:0.2rem;margin:0px 0px 0.2rem;border:none;\">\r\n\t\t\t<p style=\"font-family:&quot;font-size:1.25em;color:#333333;\">\r\n\t\t\t\t<span class=\"md-expand\" style=\"font-family:PingFangSC-Regular;font-size:12px;\"><span style=\"font-weight:bolder;font-size:12px;\">比特币1分28玩法说明</span></span> \r\n\t\t\t</p>\r\n\t\t\t<p class=\"md-end-block\" style=\"font-family:&quot;font-size:16px;color:#333333;\">\r\n\t\t\t\t<span class=\"\" style=\"font-family:PingFangSC-Regular;\"><span style=\"font-weight:bolder;\"><br />\r\n</span></span> \r\n\t\t\t</p>\r\n\t\t\t<p class=\"md-end-block\" style=\"font-family:&quot;font-size:16px;color:#333333;\">\r\n\t\t\t\t<span class=\"\" style=\"font-family:PingFangSC-Regular;font-size:14px;\"><span style=\"font-weight:bolder;\">开奖时间</span></span><span class=\"\" style=\"font-family:PingFangSC-Regular;font-size:14px;\">：第一期开盘时间 00:00:00 -00:00:55。</span> \r\n\t\t\t</p>\r\n\t\t\t<p class=\"md-end-block\" style=\"font-family:&quot;font-size:16px;color:#333333;\">\r\n\t\t\t\t<span class=\"\" style=\"font-family:PingFangSC-Regular;font-size:14px;\"><span style=\"font-weight:bolder;\">开奖次数</span></span><span class=\"\" style=\"font-family:PingFangSC-Regular;font-size:14px;\">：每1分钟一期，每天1440期。</span> \r\n\t\t\t</p>\r\n\t\t\t<p class=\"md-end-block md-focus\" style=\"font-family:&quot;font-size:16px;color:#333333;\">\r\n\t\t\t\t<span class=\"\" style=\"font-family:PingFangSC-Regular;font-size:14px;\"><span style=\"font-weight:bolder;\">开奖号码</span></span><span class=\"md-expand\" style=\"font-family:PingFangSC-Regular;font-size:14px;\">：每期开奖号码取转换结果，小数点后3位数为定位球开奖号码，三位号码相加为特码。</span> \r\n\t\t\t</p>\r\n\t\t\t<p class=\"md-end-block\" style=\"font-family:&quot;font-size:16px;color:#333333;\">\r\n\t\t\t\t<span class=\"\" style=\"font-family:PingFangSC-Regular;font-size:14px;\"><span style=\"font-weight:bolder;\">开奖机制</span></span><span class=\"\" style=\"font-family:PingFangSC-Regular;font-size:14px;\">：具体取号机制详见号源校验。</span> \r\n\t\t\t</p>\r\n\t\t\t<p class=\"md-end-block\" style=\"font-family:&quot;font-size:16px;color:#333333;\">\r\n\t\t\t\t<br />\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n</span>";
 
-  static const host = "http://soptj9qq.com";
-  static const base_url = "$host:8860/";
+
+
+  // static const host = "http://soptj9qq.com";
+  static const host = "https://9000vlmdm4.kj99883.com";
+
+  static const base_url = "$host/";//:8860
   static const contact = "$host/m/#/detail/Contact";
   static const hongbao = "$host/m/#/Hongbao/%s/%s/%s";
 
@@ -20,7 +24,9 @@ class Constants {
   static const imageType = 2;//图片类别[1:A网pC,2:A网移动,3:c原pC,4:C网移动,5:B网PC,6:B网移动],示例值(1)
   static const pageSize = 20;
 
-  static const websocket = "ws://ws.by4aocqs.com:9999";
+  // static const websocket = "ws://ws.by4aocqs.com:9999";
+  static const websocket = "wss://9000ywfjn2.uy4ayov.com:443";
+
 
   static const PC28 = "PC28";
 

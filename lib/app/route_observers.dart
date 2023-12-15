@@ -1,8 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
-import '/app/logger.dart';
 
-import 'global.dart';
+import '/app/logger.dart';
 
 //监听页面路由跳转
 class RouteObservers extends NavigatorObserver{

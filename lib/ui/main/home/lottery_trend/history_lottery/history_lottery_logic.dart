@@ -7,8 +7,6 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
-import 'package:leisure_games/ui/bean/game_kind_entity.dart';
-import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 
 import 'history_lottery_state.dart';
 

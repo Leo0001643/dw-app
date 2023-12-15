@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
+
 import 'preferential_logic.dart';
 
 ///优惠中心

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -23,6 +21,14 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final logic = Get.find<LoginLogic>();
   final state = Get.find<LoginLogic>().state;
+
+
+  @override
+  void dispose() {
+    Get.delete<LoginLogic>();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -139,9 +145,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  @override
-  void dispose() {
-    Get.delete<LoginLogic>();
-    super.dispose();
-  }
 }

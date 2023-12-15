@@ -1,6 +1,4 @@
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/app/global.dart';
 
 import 'service_details_state.dart';
 

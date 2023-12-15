@@ -1,14 +1,18 @@
-import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/controller/room_tendency_controller.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/data_analysis/data_analysis_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/double_queue/double_queue_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/ds_dew/ds_dew_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/dx_dew/dx_dew_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/lottery_result/lottery_result_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/number_trend/number_trend_logic.dart';
 
 import 'room_tendency_logic.dart';
 
@@ -32,13 +36,19 @@ class _RoomTendencyPageState extends State<RoomTendencyPage> with SingleTickerPr
       // state.pageIndex.value = _tabController.index;
       state.pageController.jumpToPage(_tabController.index);
     });
-
     super.initState();
   }
 
   @override
   void dispose() {
     _tabController.dispose();
+    Get.delete<DataAnalysisLogic>();
+    Get.delete<DoubleQueueLogic>();
+    Get.delete<DsDewLogic>();
+    Get.delete<DxDewLogic>();
+    Get.delete<LotteryResultLogic>();
+    Get.delete<NumberTrendLogic>();
+    Get.delete<RoomTendencyController>();
     Get.delete<RoomTendencyLogic>();
     super.dispose();
   }
