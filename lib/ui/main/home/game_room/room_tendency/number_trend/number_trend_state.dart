@@ -1,3 +1,4 @@
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 
 class NumberTrendState {
@@ -21,6 +22,12 @@ class NumberData {
 
   final String term;
   final int value;
+}
+class SalesData {
+  SalesData(this.year, this.sales);
+
+  final String year;
+  final int sales;
 }
 
 
