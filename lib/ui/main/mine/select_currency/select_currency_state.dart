@@ -4,7 +4,6 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
-import 'package:leisure_games/ui/main/mine/mine_logic.dart';
 
 class SelectCurrencyState {
   SelectCurrencyState() {

@@ -10,11 +10,8 @@ class SettingState {
   //简易密码
   var jymmToggle = unEmpty(AppData.simplePwd()).obs;
 
-
   //背景音乐
   var bjyyToggle = AppData.bgMusic().obs;
-
-
 
   //提示音
   var tsyToggle = AppData.promptTone().obs;

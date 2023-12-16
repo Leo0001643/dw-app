@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+
 import 'points_lottery_state.dart';
 
 class PointsLotteryLogic extends GetxController {

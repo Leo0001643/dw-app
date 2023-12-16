@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
-import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
 

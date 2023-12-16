@@ -3,7 +3,6 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
-import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 
 import 'select_currency_state.dart';
 

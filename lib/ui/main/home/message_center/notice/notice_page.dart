@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+
 import 'notice_logic.dart';
 
 class NoticePage extends StatefulWidget {
