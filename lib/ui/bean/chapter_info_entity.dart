@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:leisure_games/generated/json/base/json_field.dart';
+
 import '/generated/json/chapter_info_entity.g.dart';
 
 @JsonSerializable()

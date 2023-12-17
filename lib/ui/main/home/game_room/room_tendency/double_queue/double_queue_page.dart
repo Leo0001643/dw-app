@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/controller/room_tendency_controller.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'double_queue_logic.dart';
 
@@ -15,20 +16,23 @@ class DoubleQueuePage extends StatefulWidget {
   State<DoubleQueuePage> createState() => _DoubleQueuePageState();
 }
 
-class _DoubleQueuePageState extends State<DoubleQueuePage> {
+class _DoubleQueuePageState extends State<DoubleQueuePage> with AutomaticKeepAliveClientMixin {
   final logic = Get.find<DoubleQueueLogic>();
   final state = Get.find<DoubleQueueLogic>().state;
-  late RefreshController _refreshController;
+  // late RefreshController _refreshController;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
-    _refreshController= RefreshController();
+    // _refreshController= RefreshController();
     super.initState();
   }
 
   @override
   void dispose() {
-    _refreshController.dispose();
+    // _refreshController.dispose();
     // Get.delete<DoubleQueueLogic>();
     super.dispose();
   }
@@ -37,23 +41,31 @@ class _DoubleQueuePageState extends State<DoubleQueuePage> {
   Widget build(BuildContext context) {
     return Container(
       color: ColorX.pageBg2(),
-      child: SmartRefresher(
-        controller: _refreshController,
-        enablePullDown: true,
-        enablePullUp: true,
-        onRefresh: ()=> _refreshController.refreshCompleted(),
-        onLoading: ()=> _refreshController.loadComplete(),
-        child: ListView.builder(
-          itemCount: 20,
-          itemBuilder: (context,index){
-            return buildLotteryItem(index);
-          },
-        ),
+      child: GetBuilder<RoomTendencyController>(
+        id: RoomTendencyController.room_tendency_id,
+        builder: (ctr){
+          return ListView.builder(
+            itemCount: ctr.data?.longTop.em(),
+            itemBuilder: (context,index){
+              var item =  ctr.data!.longTop![index];
+              return buildLotteryItem(item);
+            },
+          );
+        },
       ),
     );
   }
 
-  Widget buildLotteryItem(int index) {
+  Widget buildLotteryItem(String item) {
+    var type = "";
+    var num = "";
+    item.split("|").forEach((element) {
+      if(isEmpty(type)){
+        type = element;
+      } else {
+        num = element;
+      }
+    });
     return Container(
       decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(10.r),),
       margin: EdgeInsets.only(top: 10.h,left: 15.w,right: 15.w,),
@@ -61,8 +73,8 @@ class _DoubleQueuePageState extends State<DoubleQueuePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("${Intr().diyiqiu} - ${Intr().bet_dan}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
-          Text("5${Intr().qi}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
+          Text(type,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
+          Text("$num${Intr().qi}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
         ],
       ),
     );

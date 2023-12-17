@@ -2,7 +2,6 @@
 import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart' as JS;
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/language_msg_entity.dart';
 

@@ -1,6 +1,8 @@
-import 'package:leisure_games/generated/json/base/json_field.dart';
-import 'package:leisure_games/generated/json/back_water_entity.g.dart';
 import 'dart:convert';
+
+import 'package:leisure_games/generated/json/back_water_entity.g.dart';
+import 'package:leisure_games/generated/json/base/json_field.dart';
+
 export 'package:leisure_games/generated/json/back_water_entity.g.dart';
 
 @JsonSerializable()

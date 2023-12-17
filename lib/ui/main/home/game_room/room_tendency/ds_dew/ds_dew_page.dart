@@ -1,10 +1,13 @@
+import 'dart:convert';
+
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/controller/room_tendency_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
@@ -18,14 +21,21 @@ class DsDewPage extends StatefulWidget {
   State<DsDewPage> createState() => _DsDewPageState();
 }
 
-class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMixin{
+class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMixin,AutomaticKeepAliveClientMixin{
   final logic = Get.find<DsDewLogic>();
   final state = Get.find<DsDewLogic>().state;
   late TabController _tabController;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   void initState() {
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: state.tabs.length, vsync: this);
+    _tabController.addListener(() {
+      state.tabIndex = _tabController.index;
+      Get.find<RoomTendencyController>().updateTabIndex();
+    });
     super.initState();
   }
 
@@ -60,49 +70,64 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
             // width: 300.w,
             tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),).toList(),
           ),
-          Container(
-            height: 40.h,
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            color: ColorX.cardBg(),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(Intr().dalu,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
+          GetBuilder<RoomTendencyController>(
+            id: RoomTendencyController.room_tendency_id,
+            builder: (ctl){
+              if(isEmpty(ctl.getDxDsCount(state.tabIndex)) || ctl.getDxDsCount(state.tabIndex)!.length < 2){ return Container(); }
+              var count = ctl.getDxDsCount(state.tabIndex)!;
+              return Container(
+                height: 40.h,
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                color: ColorX.cardBg(),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    buildDrawText(Intr().bet_dan, ColorX.color_fc243b,20.r,12.sp),
-                    SizedBox(width: 5.w,),
-                    Text("232",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                    SizedBox(width: 10.w,),
-                    buildDrawText(Intr().bet_shuang, ColorX.color_5583e7,20.r,12.sp),
-                    SizedBox(width: 5.w,),
-                    Text("232",style: TextStyle(fontSize: 14.sp,color: ColorX.color_5583e7),),
+                    Text(Intr().dalu,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        buildDrawText(Intr().bet_dan, ColorX.color_fc243b,20.r,12.sp),
+                        SizedBox(width: 5.w,),
+                        Text("${count[2]}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
+                        SizedBox(width: 10.w,),
+                        buildDrawText(Intr().bet_shuang, ColorX.color_5583e7,20.r,12.sp),
+                        SizedBox(width: 5.w,),
+                        Text("${count[3]}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_5583e7),),
+                      ],
+                    ),
                   ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
           SizedBox(
             height: 110.h,
-            child: Obx(() {
-              if(isEmpty(state.bigRoads.value)){ return Container(); }
-              return DataTable2(
-                columnSpacing: 0,
-                horizontalMargin: 0,
-                fixedLeftColumns: 0,
-                fixedTopRows: 0,
-                dataRowHeight: 18.h,
-                headingRowHeight: 18.h,
-                dividerThickness: 0,
-                border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
-                headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
-                dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
-                minWidth: 100.w + (state.bigRoads.value.length -1) * 40.w,
-                columns: buildBigTitle(),
-                rows: List<DataRow>.generate(5, (index)=> DataRow(cells: buildBigCell(index))),
-              );
-            }),
+            child: GetBuilder<RoomTendencyController>(
+              id: RoomTendencyController.room_tendency_id,
+              builder: (ctl){
+                if(isEmpty(ctl.data?.list)){ return Container(); }
+                var list = ctl.changeDsTab(state.tabIndex);
+                loggerArray(["内部数据",jsonEncode(list)]);
+                var titleRow = list.first;
+                var childsRow = list.sublist(1,list.length);
+                return DataTable2(
+                  columnSpacing: 0,
+                  horizontalMargin: 0,
+                  fixedLeftColumns: 0,
+                  fixedTopRows: 0,
+                  dataRowHeight: 18.h,
+                  headingRowHeight: 18.h,
+                  dividerThickness: 0,
+                  border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
+                  headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                  dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                  minWidth: titleRow.length * 30.w,
+                  columns: buildBigTitle(titleRow),
+                  rows: List<DataRow>.generate(childsRow.length,
+                          (index)=> DataRow(cells: buildBigCell(index,childsRow[index]))),
+                );
+              },
+            ),
           ),
           Container(height: 30.h,color: ColorX.cardBg(),),
           Container(
@@ -118,24 +143,31 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
           ),
           SizedBox(
             height: 110.h,
-            child: Obx(() {
-              if(isEmpty(state.beadRoads.value)){ return Container(); }
-              return DataTable2(
-                columnSpacing: 0,
-                horizontalMargin: 0,
-                fixedLeftColumns: 0,
-                fixedTopRows: 0,
-                dataRowHeight: 18.h,
-                headingRowHeight: 18.h,
-                dividerThickness: 0,
-                border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
-                headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
-                dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
-                minWidth: 100.w + (state.beadRoads.value.length -1) * 20.w,
-                columns: buildBeadTitle(),
-                rows: List<DataRow>.generate(5, (index)=> DataRow(cells: buildBeadCell(index))),
-              );
-            }),
+            child: GetBuilder<RoomTendencyController>(
+              id: RoomTendencyController.room_tendency_id,
+              builder: (ctl){
+                if(isEmpty(ctl.data?.list)){ return Container(); }
+                var list = ctl.changeZpTab(state.tabIndex);
+                loggerArray(["内部数据",jsonEncode(list)]);
+                var titleRow = list.first;
+                var childsRow = list.sublist(1,list.length);
+                return DataTable2(
+                  columnSpacing: 0,
+                  horizontalMargin: 0,
+                  fixedLeftColumns: 0,
+                  fixedTopRows: 0,
+                  dataRowHeight: 18.h,
+                  headingRowHeight: 18.h,
+                  dividerThickness: 0,
+                  border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
+                  headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                  dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                  minWidth: titleRow.length * 20.w,
+                  columns: buildBeadTitle(titleRow),
+                  rows: List<DataRow>.generate(childsRow.length, (index)=> DataRow(cells: buildBeadCell(index,childsRow[index]))),
+                );
+              },
+            ),
           ),
           Expanded(
             child: Container(color: ColorX.pageBg(),),
@@ -145,52 +177,72 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
     );
   }
 
-  List<DataColumn2> buildBigTitle() {
+  List<DataColumn2> buildBigTitle(List<String> childs) {
     var columns = List<DataColumn2>.empty(growable: true);
-    state.bigRoads.value.forEach((element) {
-      var index = state.bigRoads.value.indexOf(element);
-      columns.add(DataColumn2(
-        numeric: true,
-        label: buildBigItem(ColorX.color_fc243b),
-        fixedWidth: 18.w,
-      ));
+    childs.forEach((element) {
+      // var index = state.bigRoads.value.indexOf(element);
+      if(isEmpty(element)){
+        columns.add(DataColumn2(label: Container()));
+      }else {
+        columns.add(DataColumn2(
+          numeric: true,
+          label: buildBigItem(element == "1" ? ColorX.color_fc243b:ColorX.color_5583e7),
+          fixedWidth: 30.w,
+        ));
+      }
     });
     return columns;
   }
 
-  List<DataCell> buildBigCell(int index) {
+  List<DataCell> buildBigCell(int index,List<String> childs) {
     var cells = List<DataCell>.empty(growable: true);
-    state.bigRoads.value.forEach((element) {
-      var i = state.bigRoads.value.indexOf(element);
-      var text = i == 0 ? "23445673":element;
-      cells.add(DataCell(
-        buildBigItem(ColorX.color_5583e7),
-      ));
+    childs.forEach((element) {
+      if(isEmpty(element)){
+        cells.add(DataCell(Container()));
+      } else {
+        cells.add(DataCell(
+          buildBigItem(element == "1" ? ColorX.color_fc243b:ColorX.color_5583e7),
+        ));
+      }
     });
     return cells;
   }
 
-  List<DataColumn2> buildBeadTitle() {
+  List<DataColumn2> buildBeadTitle(List<String> childs) {
     var columns = List<DataColumn2>.empty(growable: true);
-    state.bigRoads.value.forEach((element) {
-      var index = state.bigRoads.value.indexOf(element);
-      columns.add(DataColumn2(
-        numeric: true,
-        label: buildDrawText("双",ColorX.color_fc243b,14.r,8.sp),
-        fixedWidth: 18.w,
-      ));
+    childs.forEach((element) {
+      // var index = state.bigRoads.value.indexOf(element);
+      if(isEmpty(element) || element == "-1"){
+        columns.add(DataColumn2(
+          numeric: true,
+          label: Container(),
+          fixedWidth: 18.w,
+        ));
+      } else {
+        columns.add(DataColumn2(
+          numeric: true,
+          label: buildDrawText(element == "1"? Intr().bet_dan:Intr().bet_shuang,
+              element == "1" ? ColorX.color_fc243b:ColorX.color_5583e7,14.r,8.sp),
+          fixedWidth: 18.w,
+        ));
+      }
     });
     return columns;
   }
 
-  List<DataCell> buildBeadCell(int index) {
+  List<DataCell> buildBeadCell(int index,List<String> childs) {
     var cells = List<DataCell>.empty(growable: true);
-    state.bigRoads.value.forEach((element) {
-      var i = state.bigRoads.value.indexOf(element);
-      var text = i == 0 ? "23445673":element;
-      cells.add(DataCell(
-        buildDrawText("单",ColorX.color_5583e7,14.r,8.sp),
-      ));
+    childs.forEach((element) {
+      // var i = state.bigRoads.value.indexOf(element);
+      // var text = i == 0 ? "23445673":element;
+      if(isEmpty(element) || element == "-1"){
+        cells.add(DataCell(Container(),));
+      } else {
+        cells.add(DataCell(
+          buildDrawText(element == "1"? Intr().bet_dan:Intr().bet_shuang,
+              element == "1" ? ColorX.color_fc243b:ColorX.color_5583e7,14.r,8.sp),
+        ));
+      }
     });
     return cells;
   }
@@ -199,8 +251,9 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
     return Padding(
       padding: EdgeInsets.all(1.r),
       child: Container(
-        width: 14.r,
-        height: 14.r,
+        width: 28.r,
+        height: 28.r,
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(color: color,width: 2.r),
