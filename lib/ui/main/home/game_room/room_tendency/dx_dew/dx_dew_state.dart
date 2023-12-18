@@ -14,6 +14,7 @@ class DxDewState {
 
   var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
 
-
+  ///默认tab在特码
+  int tabIndex = 0;
 
 }

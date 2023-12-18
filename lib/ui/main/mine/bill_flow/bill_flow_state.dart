@@ -4,7 +4,6 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
-import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
