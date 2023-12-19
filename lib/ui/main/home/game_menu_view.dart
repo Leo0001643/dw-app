@@ -1,28 +1,24 @@
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/components/typography/gf_typography.dart';
-import 'package:getwidget/getwidget.dart';
-import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/nested_inner_scroll_child.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
-import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 class GameMenuView extends StatefulWidget{
 
   final HomeLogic logic;
+  final NestedInnerScrollCoordinator coordinator;
 
-  GameMenuView(this.logic, {super.key});
+  const GameMenuView(this.logic, this.coordinator, {super.key});
 
   @override
   State<StatefulWidget> createState() => StateGameMenuView();
@@ -34,9 +30,10 @@ class StateGameMenuView extends State<GameMenuView>{
 
   var selectMenu = 0.obs;
 
-  ScrollController? scrollController;
+  // ScrollController? scrollController;
 
   var itemHeightMap = <int,double>{};
+  final Key _firstInnerKey = const ValueKey("first");
 
   @override
   void initState() {
@@ -58,16 +55,17 @@ class StateGameMenuView extends State<GameMenuView>{
 
   @override
   void dispose() {
-    scrollController?.dispose();
-    scrollController = null;
+    widget.coordinator.dispose();
+    // scrollController = null;
     super.dispose();
   }
 
   void scroll2Item(int index) {
+    var controller =  widget.coordinator.innerController;
     if(index == itemHeightMap.length - 1){
-      scrollController?.jumpTo(scrollController?.position.maxScrollExtent ?? 0);
+      controller.jumpTo(controller.position.maxScrollExtent ?? 0);
     }else {
-      scrollController?.jumpTo(itemHeightMap[index - 1] ?? 0);
+      controller.jumpTo(itemHeightMap[index - 1] ?? 0);
     }
   }
 
@@ -102,10 +100,11 @@ class StateGameMenuView extends State<GameMenuView>{
           Expanded(
             child: Obx(() {
               var menuGroup = widget.logic.state.menuGroup;
-              return SingleChildScrollView(
-                controller: scrollController,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              return NestedInnerScrollChild(
+                scrollKey: _firstInnerKey,
+                coordinator: widget.coordinator,
+                child: ListView(
+                  controller: widget.coordinator.innerController,
                   children: menuGroup.map((element) => buildCategoryItem(element)).toList(),
                 ),
               );
@@ -240,21 +239,6 @@ class StateGameMenuView extends State<GameMenuView>{
   }
 
 
-  void jumpGameRoom(GameKindGameKindList element) {
-    switch(element.gameKind){
-      case Constants.PC28:
-        Get.toNamed(Routes.room_list,arguments: element);
-        break;
-      default:
-        if(AppData.isLogin()){
-
-        } else {
-          WidgetUtils().goLogin();
-        }
-        break;
-    }
-  }
-
   String findImage(GameKindEntity e) {
     switch(e.gameKind){
       case "lottery":
@@ -281,16 +265,17 @@ class StateGameMenuView extends State<GameMenuView>{
       });
       intItemHeight(widget.logic.state.menuGroup);
     }
-    if(scrollController == null){
-      scrollController = ScrollController();
-      scrollController?.addListener(() {
-        if(scrollController!.offset < ((itemHeightMap[0] ?? 0))){
+    // if(scrollController == null){
+    //   scrollController = ScrollController();
+    var controller =  widget.coordinator.innerController;
+    controller.addListener(() {
+        if(controller.offset < ((itemHeightMap[0] ?? 0))){
           selectMenu.value = 0;
-        }else if (scrollController?.offset == scrollController?.position.maxScrollExtent) {
+        }else if (controller.offset == controller.position.maxScrollExtent) {
           selectMenu.value = itemHeightMap.length - 1;
         } else {
           itemHeightMap.forEach((key, value) {
-            if(scrollController!.offset > value && scrollController!.offset < (itemHeightMap[key + 1] ?? 0) ){
+            if(controller.offset > value && controller.offset < (itemHeightMap[key + 1] ?? 0) ){
               // loggerArray(["滚动位置",scrollController.offset,((itemHeightMap[0] ?? 0) + 50.h),scrollController.position.maxScrollExtent]);
               selectMenu.value = key + 1;
             }
@@ -299,7 +284,7 @@ class StateGameMenuView extends State<GameMenuView>{
         // loggerArray(["滚动位置",selectMenu.value,itemHeightMap.length,scrollController?.offset]);
       });
       // loggerArray(["滚动位置",selectMenu.value,itemHeightMap.length,widget.logic.state.menuGroup.length,]);
-    }
+    // }
 
   }
 
@@ -312,6 +297,11 @@ class StateGameMenuView extends State<GameMenuView>{
     }
     itemHeightMap.assignAll(data);
     loggerArray(["数据吞吐量",itemHeightMap]);
+  }
+
+  ///游戏跳转
+  void jumpGameRoom(GameKindGameKindList element) {
+
   }
 
 

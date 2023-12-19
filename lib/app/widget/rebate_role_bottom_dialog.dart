@@ -1,16 +1,11 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
-import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
-import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 
 ///返水说明
@@ -65,13 +60,13 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
             child: Column(
               children: [
                 Obx(() => Visibility(
+                    visible: progressVisible.value,
                     child: LinearProgressIndicator(
                       value: progress.value/100,//取值为0-1
                       minHeight: 3,
                       valueColor: AlwaysStoppedAnimation(Colors.amberAccent),
                       backgroundColor: Colors.white,
                     ),
-                    visible: progressVisible.value,
                   ),
                 ),
                 Expanded(

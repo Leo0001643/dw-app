@@ -1,7 +1,8 @@
-import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/language_msg_entity.g.dart';
+
 export 'package:leisure_games/generated/json/language_msg_entity.g.dart';
 
 @JsonSerializable()

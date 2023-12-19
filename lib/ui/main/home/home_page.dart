@@ -2,23 +2,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/components/carousel/gf_carousel.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/draggable_widget.dart';
+import 'package:leisure_games/app/widget/nested_inner_scroll_child.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/main/home/game_menu_view.dart';
 import 'package:leisure_games/ui/main/home/more_tab_view.dart';
 import 'package:marquee/marquee.dart';
-import 'package:popover/popover.dart';
+
 import 'home_logic.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,130 +32,138 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
   final logic = Get.find<HomeLogic>();
   final state = Get.find<HomeLogic>().state;
 
+  final NestedInnerScrollCoordinator _coordinator = NestedInnerScrollCoordinator(ScrollController());
+
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GetMaterialController>(
       builder: (ct){
         return Stack(
           children: [
-            SingleChildScrollView(
-              child: Container(
-                color: ColorX.pageBg(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: ScreenUtil().statusBarHeight,),
-                    WidgetUtils().buildHomeAppBar(msg: true,drawer: true),
-                    Obx(() {
-                      if(isEmpty(state.bannerList)){ return Container(); }
-                      return GFCarousel(
-                          autoPlay: true,
-                          aspectRatio: 345/110,
-                          viewportFraction: 1.0,
-                          hasPagination: true,
-                          passiveIndicator: Colors.white60,
-                          activeIndicator: Colors.white,
-                          items: state.bannerList.map((e) {
-                            return Container(
-                              margin: EdgeInsets.symmetric(horizontal: 20.w),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.all(Radius.circular(20.r)),
-                                child: Image.network("${e.url}${e.picurl}", fit: BoxFit.cover,width: 1000,),
-                              ),
-                            );
-                          }).toList()
-                      );
-                    }),
-                    SizedBox(height: 9.h,),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [ColorX.color_fff4f2,ColorX.color_fefff4],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          color: ColorX.cardBg(),
-                          borderRadius: BorderRadius.all(Radius.circular(10.r)),
-                        ),
-                        height: 32.h,
-                        // padding: EdgeInsets.symmetric(vertical: 12.h),
-                        child: Row(
-                          children: [
-                            SizedBox(width: 10.w,),
-                            Image.asset(ImageX.icon_ntf),
-                            SizedBox(width: 5.w,),
-                            Expanded(
-                              child: Obx(() {
-                                if(isEmpty(state.noticeList)){ return Container(); }
-                                return Marquee(
-                                  text: buildNoticeString(state.noticeList),
-                                  style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),
-                                  scrollAxis: Axis.horizontal,
-                                  startPadding: 10.w,
-                                  blankSpace: 5.w,
+            CustomScrollView(
+              controller: _coordinator.outerController,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Container(
+                    color: ColorX.pageBg(),
+                    child: Column(
+                      children: [
+                        SizedBox(height: ScreenUtil().statusBarHeight,),
+                        WidgetUtils().buildHomeAppBar(msg: true,drawer: true),
+                        Obx(() {
+                          if(isEmpty(state.bannerList)){ return Container(); }
+                          return GFCarousel(
+                              autoPlay: true,
+                              aspectRatio: 345/110,
+                              viewportFraction: 1.0,
+                              hasPagination: true,
+                              passiveIndicator: Colors.white60,
+                              activeIndicator: Colors.white,
+                              items: state.bannerList.map((e) {
+                                return Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.all(Radius.circular(20.r)),
+                                    child: Image.network("${e.url}${e.picurl}", fit: BoxFit.cover,width: 1000,),
+                                  ),
                                 );
-                              }),
+                              }).toList()
+                          );
+                        }),
+                        SizedBox(height: 9.h,),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [ColorX.color_fff4f2,ColorX.color_fefff4],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              color: ColorX.cardBg(),
+                              borderRadius: BorderRadius.all(Radius.circular(10.r)),
                             ),
-                            SizedBox(width: 10.w,),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 8.h),
-                      child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Obx(() {
-                              return AppData.isLogin() ? userHeader(state.user.value):noLoginHeader(state.user.value);
-                            })
+                            height: 32.h,
+                            // padding: EdgeInsets.symmetric(vertical: 12.h),
+                            child: Row(
+                              children: [
+                                SizedBox(width: 10.w,),
+                                Image.asset(ImageX.icon_ntf),
+                                SizedBox(width: 5.w,),
+                                Expanded(
+                                  child: Obx(() {
+                                    if(isEmpty(state.noticeList)){ return Container(); }
+                                    return Marquee(
+                                      text: buildNoticeString(state.noticeList),
+                                      style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),
+                                      scrollAxis: Axis.horizontal,
+                                      startPadding: 10.w,
+                                      blankSpace: 5.w,
+                                    );
+                                  }),
+                                ),
+                                SizedBox(width: 10.w,),
+                              ],
+                            ),
                           ),
-                          SizedBox(width: 15.w,),
-                          buildMenuItem(Intr().charge,ImageX.icChongzhiT(),0),
-                          buildMenuItem(Intr().tixian,ImageX.icTixianT(),1),
-                          MoreTabView(logic),
-                          // buildMenuItem(Intr().zoushi,ImageX.iconTrendT(),3),
-                        ],
-                      ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 8.h),
+                          child: Row(
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                  child: Obx(() {
+                                    return AppData.isLogin() ? userHeader(state.user.value):noLoginHeader(state.user.value);
+                                  })
+                              ),
+                              SizedBox(width: 15.w,),
+                              buildMenuItem(Intr().charge,ImageX.icChongzhiT(),0),
+                              buildMenuItem(Intr().tixian,ImageX.icTixianT(),1),
+                              MoreTabView(logic),
+                              // buildMenuItem(Intr().zoushi,ImageX.iconTrendT(),3),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 10.h,),
+                        SizedBox(
+                          height: 400.h,
+                          child: GameMenuView(logic,_coordinator),
+                        ),
+                        Container(
+                          color: ColorX.pageBg(),
+                          margin: EdgeInsets.only(top: 10.h,bottom: 10.h),
+                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              buildActivityItem(4,ImageX.yhhdT(),Intr().qiandaoyouli),
+                              buildActivityItem(5,ImageX.qdyjT(),Intr().jifenyaojiang),
+                              buildActivityItem(6,ImageX.tjylT(),Intr().tuijianyouli),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 225.h,
+                          color: ColorX.cardBg(),
+                          padding: EdgeInsets.only(left: 20.w,top: 30.h),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              buildComInfo(Intr().gaunyuwomen,Intr().guanwangjieshao,0,Intr().xiazhaiyingyong,1,Intr().pingtaifuwu,2),
+                              buildComInfo(Intr().yonghuzhongxin,Intr().huiyuan,3,Intr().chongzhijilu,4,Intr().qiandaochoujiang,5),
+                              buildComInfo(Intr().jishuzhichi,Intr().fangjiechijiaocheng,6,Intr().shiyongbangzhu,7,"",-1),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 10.h,),
-                    SizedBox(
-                      height: 400.h,
-                      child: GameMenuView(logic),
-                    ),
-                    Container(
-                      color: ColorX.pageBg(),
-                      margin: EdgeInsets.only(top: 10.h,bottom: 10.h),
-                      padding: EdgeInsets.symmetric(horizontal: 10.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          buildActivityItem(4,ImageX.yhhdT(),Intr().qiandaoyouli),
-                          buildActivityItem(5,ImageX.qdyjT(),Intr().jifenyaojiang),
-                          buildActivityItem(6,ImageX.tjylT(),Intr().tuijianyouli),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 225.h,
-                      color: ColorX.cardBg(),
-                      padding: EdgeInsets.only(left: 20.w,top: 30.h),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          buildComInfo(Intr().gaunyuwomen,Intr().guanwangjieshao,0,Intr().xiazhaiyingyong,1,Intr().pingtaifuwu,2),
-                          buildComInfo(Intr().yonghuzhongxin,Intr().huiyuan,3,Intr().chongzhijilu,4,Intr().qiandaochoujiang,5),
-                          buildComInfo(Intr().jishuzhichi,Intr().fangjiechijiaocheng,6,Intr().shiyongbangzhu,7,"",-1),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                )
+              ],
             ),
+            // NestedInnerScrollDemo(),
             Obx(() {
               return Visibility(
                 visible: state.hongbaoVisible.value && state.hongbaoManual.value,
