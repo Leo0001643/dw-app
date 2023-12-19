@@ -523,17 +523,9 @@ class JsonConvert {
       return data.map<ProtectEntity>((Map<String, dynamic> e) =>
           ProtectEntity.fromJson(e)).toList() as M;
     }
-    if (<ProtectProtect>[] is M) {
-      return data.map<ProtectProtect>((Map<String, dynamic> e) =>
-          ProtectProtect.fromJson(e)).toList() as M;
-    }
     if (<ProtectProtectKkwdsLive>[] is M) {
       return data.map<ProtectProtectKkwdsLive>((Map<String, dynamic> e) =>
           ProtectProtectKkwdsLive.fromJson(e)).toList() as M;
-    }
-    if (<ProtectProtectBbSport>[] is M) {
-      return data.map<ProtectProtectBbSport>((Map<String, dynamic> e) =>
-          ProtectProtectBbSport.fromJson(e)).toList() as M;
     }
     if (<RoomCopyWritingEntity>[] is M) {
       return data.map<RoomCopyWritingEntity>((Map<String, dynamic> e) =>
@@ -752,9 +744,7 @@ class JsonConvertClassCollection {
     (PromotionTypeEntity).toString(): PromotionTypeEntity.fromJson,
     (PromotionTypeKey).toString(): PromotionTypeKey.fromJson,
     (ProtectEntity).toString(): ProtectEntity.fromJson,
-    (ProtectProtect).toString(): ProtectProtect.fromJson,
     (ProtectProtectKkwdsLive).toString(): ProtectProtectKkwdsLive.fromJson,
-    (ProtectProtectBbSport).toString(): ProtectProtectBbSport.fromJson,
     (RoomCopyWritingEntity).toString(): RoomCopyWritingEntity.fromJson,
     (RoomCopyWritingContent).toString(): RoomCopyWritingContent.fromJson,
     (SiteWalletConfigEntity).toString(): SiteWalletConfigEntity.fromJson,
