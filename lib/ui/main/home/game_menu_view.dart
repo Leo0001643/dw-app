@@ -3,15 +3,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/nested_inner_scroll_child.dart';
+import 'package:leisure_games/ui/bean/chess_event.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
+import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
+import 'package:leisure_games/ui/main/main_logic.dart';
 
 class GameMenuView extends StatefulWidget{
 
@@ -128,7 +136,7 @@ class StateGameMenuView extends State<GameMenuView>{
           runSpacing: 10.h,
           children: element.gameKindList?.map((e){
             return InkWell(
-              onTap: ()=> jumpGameRoom(e),
+              onTap: ()=> jumpGameRoom(element,e),
               child: buildGroupItem(e),
             );
           }).toList() ?? [],
@@ -300,8 +308,103 @@ class StateGameMenuView extends State<GameMenuView>{
   }
 
   ///游戏跳转
-  void jumpGameRoom(GameKindGameKindList element) {
+  void jumpGameRoom(GameKindEntity parent,GameKindGameKindList element) {
+    switch(element.gameKind){
+      case Constants.PC28:
+        Get.toNamed(Routes.room_list,arguments: element);
+        break;
+      default:
+        var webConfig = Get.find<MainLogic>().state.webConfig;
+        if(AppData.isLogin()){
+          var protect = Get.find<MainLogic>().state.protect;
+          var hint = "";
+          protect?.protect?.forEach((key, value) {
+            //维护状态【1:启用,2:维护】
+            if(element.gameKind == key && value?.status == "2"){
+              hint = value?.notice ?? '';
+            }
+          });
+          if(unEmpty(hint)){
+            showToast(hint);
+            return;
+          }
+          if(element.liveName == "jingdian_lotto"){///经典彩
+            if(webConfig?.domainMJingdiancai?.list.em() == 1){
+              var urlPath = webConfig?.domainMJingdiancai?.urlPath.em();
+              var url = webConfig?.domainMJingdiancai?.list!.first;
+              if(unEmpty(url)){ openGamePage(element,url: "$url$urlPath");  }
+            } else if(unEmpty(webConfig?.domainMJingdiancai?.list)){
+              var list = webConfig?.domainMJingdiancai?.list;
+              var path = webConfig?.domainMJingdiancai?.checkPath;
+              var urlPath = webConfig?.domainMJingdiancai?.urlPath.em();
+              DialogUtils().showAccessRouteDialog(context,list!,path!).then((value) {
+                if(unEmpty(value)){ openGamePage(element,url: "$value$urlPath");  }
+              });
+            }else {
+              loggerArray(["无可用线路"]);
+            }
+          } else if(element.liveName == "fenfen_lotto"){///官方彩
+            ///官方彩不需要拼接urlpath
+            if(webConfig?.domainMGuanfangcai?.list.em() == 1){
+              // var urlPath = webConfig?.domainMGuanfangcai?.urlPath.em();
+              var url = webConfig?.domainMGuanfangcai?.list!.first;
+              if(unEmpty(url)){ openGamePage(element,url: url);  }
+            } else if(unEmpty(webConfig?.domainMGuanfangcai?.list)){
+              var list = webConfig?.domainMGuanfangcai?.list;
+              var path = webConfig?.domainMGuanfangcai?.checkPath;
+              ///官方彩不需要拼接urlpath
+              // var urlPath = webConfig?.domainMGuanfangcai?.urlPath.em();
+              DialogUtils().showAccessRouteDialog(context,list!,path!).then((value) {
+                if(unEmpty(value)){ openGamePage(element,url: value);  }
+              });
+            }else {
+              loggerArray(["无可用线路"]);
+            }
+          }else if(element.gameKind == "live"){///真人
+            openGamePage(element);
+          }else if(element.gameKind == "chess"){///棋牌
+            Get.toNamed(Routes.chess_game_list,arguments: ChessEvent(parent, element));
+          }else if(element.gameKind == "sport"){///体育
+            openGamePage(element,lid: false);
+          }else if(element.gameKind == "game_fishing"){///捕鱼
+            openGamePage(element,lid: false);
+          }else if(element.gameKind == "game"){
+            Get.toNamed(Routes.table_game_list,arguments: ChessEvent(parent, element));
+          }
+        } else {
+          showToast(Intr().qingxiandenglu);
+        }
+        break;
+    }
+  }
 
+  ///打开游戏页面
+  void openGamePage(GameKindGameKindList element, {String? url,bool lid = true}) {
+    var cur = AppData.wallet() ? 1: 5;
+
+    var user = AppData.user();
+
+    //"gameType":gameType,
+    var params = <String,dynamic>{ "cur":cur, "tags":element.tags,
+      "platform":element.liveName,
+    "oid":user?.oid,"username":user?.username,"platformURL": Constants.host};
+    if(unEmpty(url)){
+      params["line"] = url;
+    }
+    if(unEmpty(element.gameCode)){
+      if(lid){
+        params["lid"] = element.gameCode;
+      }else {
+        params["gameCode"] = element.gameCode;
+      }
+    }
+    HttpService.loginBusinessAgent(params).then((value) {
+      if(value is Map){
+        Get.toNamed(Routes.html,arguments: HtmlEvent(data: value["gameUrl"],isHtmlData:false,pageTitle: ""));
+      }else {
+        Get.toNamed(Routes.html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: ""));
+      }
+    });
   }
 
 
