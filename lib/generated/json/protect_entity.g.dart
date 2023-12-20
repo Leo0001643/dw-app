@@ -3,8 +3,12 @@ import 'package:leisure_games/ui/bean/protect_entity.dart';
 
 ProtectEntity $ProtectEntityFromJson(Map<String, dynamic> json) {
   final ProtectEntity protectEntity = ProtectEntity();
-  final ProtectProtect? protect = jsonConvert.convert<ProtectProtect>(
-      json['protect']);
+  final Map<String, ProtectProtectKkwdsLive?>? protect =
+  (json['protect'] as Map<String, dynamic>?)?.map(
+          (k, e) =>
+          MapEntry(k,
+              e == null ? null : jsonConvert.convert<ProtectProtectKkwdsLive>(
+                  e)));
   if (protect != null) {
     protectEntity.protect = protect;
   }
@@ -30,7 +34,7 @@ ProtectEntity $ProtectEntityFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> $ProtectEntityToJson(ProtectEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
-  data['protect'] = entity.protect?.toJson();
+  data['protect'] = entity.protect;
   data['userRegister'] = entity.userRegister;
   data['agentRegister'] = entity.agentRegister;
   data['vcode'] = entity.vcode;
@@ -40,7 +44,7 @@ Map<String, dynamic> $ProtectEntityToJson(ProtectEntity entity) {
 
 extension ProtectEntityExtension on ProtectEntity {
   ProtectEntity copyWith({
-    ProtectProtect? protect,
+    Map<String, ProtectProtectKkwdsLive?>? protect,
     int? userRegister,
     int? agentRegister,
     String? vcode,
@@ -52,39 +56,6 @@ extension ProtectEntityExtension on ProtectEntity {
       ..agentRegister = agentRegister ?? this.agentRegister
       ..vcode = vcode ?? this.vcode
       ..registerCode = registerCode ?? this.registerCode;
-  }
-}
-
-ProtectProtect $ProtectProtectFromJson(Map<String, dynamic> json) {
-  final ProtectProtect protectProtect = ProtectProtect();
-  final ProtectProtectKkwdsLive? kkwdsLive = jsonConvert.convert<
-      ProtectProtectKkwdsLive>(json['kkwds_live']);
-  if (kkwdsLive != null) {
-    protectProtect.kkwdsLive = kkwdsLive;
-  }
-  final ProtectProtectBbSport? bbSport = jsonConvert.convert<
-      ProtectProtectBbSport>(json['bb_sport']);
-  if (bbSport != null) {
-    protectProtect.bbSport = bbSport;
-  }
-  return protectProtect;
-}
-
-Map<String, dynamic> $ProtectProtectToJson(ProtectProtect entity) {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['kkwds_live'] = entity.kkwdsLive?.toJson();
-  data['bb_sport'] = entity.bbSport?.toJson();
-  return data;
-}
-
-extension ProtectProtectExtension on ProtectProtect {
-  ProtectProtect copyWith({
-    ProtectProtectKkwdsLive? kkwdsLive,
-    ProtectProtectBbSport? bbSport,
-  }) {
-    return ProtectProtect()
-      ..kkwdsLive = kkwdsLive ?? this.kkwdsLive
-      ..bbSport = bbSport ?? this.bbSport;
   }
 }
 
@@ -128,53 +99,6 @@ extension ProtectProtectKkwdsLiveExtension on ProtectProtectKkwdsLive {
     String? notice,
   }) {
     return ProtectProtectKkwdsLive()
-      ..tags = tags ?? this.tags
-      ..title = title ?? this.title
-      ..status = status ?? this.status
-      ..notice = notice ?? this.notice;
-  }
-}
-
-ProtectProtectBbSport $ProtectProtectBbSportFromJson(
-    Map<String, dynamic> json) {
-  final ProtectProtectBbSport protectProtectBbSport = ProtectProtectBbSport();
-  final String? tags = jsonConvert.convert<String>(json['tags']);
-  if (tags != null) {
-    protectProtectBbSport.tags = tags;
-  }
-  final String? title = jsonConvert.convert<String>(json['title']);
-  if (title != null) {
-    protectProtectBbSport.title = title;
-  }
-  final String? status = jsonConvert.convert<String>(json['status']);
-  if (status != null) {
-    protectProtectBbSport.status = status;
-  }
-  final String? notice = jsonConvert.convert<String>(json['notice']);
-  if (notice != null) {
-    protectProtectBbSport.notice = notice;
-  }
-  return protectProtectBbSport;
-}
-
-Map<String, dynamic> $ProtectProtectBbSportToJson(
-    ProtectProtectBbSport entity) {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['tags'] = entity.tags;
-  data['title'] = entity.title;
-  data['status'] = entity.status;
-  data['notice'] = entity.notice;
-  return data;
-}
-
-extension ProtectProtectBbSportExtension on ProtectProtectBbSport {
-  ProtectProtectBbSport copyWith({
-    String? tags,
-    String? title,
-    String? status,
-    String? notice,
-  }) {
-    return ProtectProtectBbSport()
       ..tags = tags ?? this.tags
       ..title = title ?? this.title
       ..status = status ?? this.status

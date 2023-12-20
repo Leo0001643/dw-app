@@ -3,8 +3,8 @@ import 'package:leisure_games/ui/bean/web_config_entity.dart';
 
 WebConfigEntity $WebConfigEntityFromJson(Map<String, dynamic> json) {
   final WebConfigEntity webConfigEntity = WebConfigEntity();
-  final WebConfigDomainPc28? domainPc28 = jsonConvert.convert<
-      WebConfigDomainPc28>(json['domain_pc28']);
+  final WebConfigDomainMGuanfangcai? domainPc28 = jsonConvert.convert<
+      WebConfigDomainMGuanfangcai>(json['domain_pc28']);
   if (domainPc28 != null) {
     webConfigEntity.domainPc28 = domainPc28;
   }
@@ -39,8 +39,8 @@ WebConfigEntity $WebConfigEntityFromJson(Map<String, dynamic> json) {
   if (lottoLineUrl != null) {
     webConfigEntity.lottoLineUrl = lottoLineUrl;
   }
-  final WebConfigDomainJingdiancai? domainJingdiancai = jsonConvert.convert<
-      WebConfigDomainJingdiancai>(json['domain_jingdiancai']);
+  final WebConfigDomainMGuanfangcai? domainJingdiancai = jsonConvert.convert<
+      WebConfigDomainMGuanfangcai>(json['domain_jingdiancai']);
   if (domainJingdiancai != null) {
     webConfigEntity.domainJingdiancai = domainJingdiancai;
   }
@@ -48,8 +48,8 @@ WebConfigEntity $WebConfigEntityFromJson(Map<String, dynamic> json) {
   if (qRCode != null) {
     webConfigEntity.qRCode = qRCode;
   }
-  final WebConfigDomainGuanfangcai? domainGuanfangcai = jsonConvert.convert<
-      WebConfigDomainGuanfangcai>(json['domain_guanfangcai']);
+  final WebConfigDomainMGuanfangcai? domainGuanfangcai = jsonConvert.convert<
+      WebConfigDomainMGuanfangcai>(json['domain_guanfangcai']);
   if (domainGuanfangcai != null) {
     webConfigEntity.domainGuanfangcai = domainGuanfangcai;
   }
@@ -63,13 +63,13 @@ WebConfigEntity $WebConfigEntityFromJson(Map<String, dynamic> json) {
   if (domainMGuanfangcai != null) {
     webConfigEntity.domainMGuanfangcai = domainMGuanfangcai;
   }
-  final WebConfigDomainMPc28? domainMPc28 = jsonConvert.convert<
-      WebConfigDomainMPc28>(json['domain_m_pc28']);
+  final WebConfigDomainMGuanfangcai? domainMPc28 = jsonConvert.convert<
+      WebConfigDomainMGuanfangcai>(json['domain_m_pc28']);
   if (domainMPc28 != null) {
     webConfigEntity.domainMPc28 = domainMPc28;
   }
-  final WebConfigDomainMJingdiancai? domainMJingdiancai = jsonConvert.convert<
-      WebConfigDomainMJingdiancai>(json['domain_m_jingdiancai']);
+  final WebConfigDomainMGuanfangcai? domainMJingdiancai = jsonConvert.convert<
+      WebConfigDomainMGuanfangcai>(json['domain_m_jingdiancai']);
   if (domainMJingdiancai != null) {
     webConfigEntity.domainMJingdiancai = domainMJingdiancai;
   }
@@ -108,20 +108,20 @@ Map<String, dynamic> $WebConfigEntityToJson(WebConfigEntity entity) {
 
 extension WebConfigEntityExtension on WebConfigEntity {
   WebConfigEntity copyWith({
-    WebConfigDomainPc28? domainPc28,
+    WebConfigDomainMGuanfangcai? domainPc28,
     WebConfigDcHelpDomain? dcHelpDomain,
     String? codeTotal,
     List<String>? otherConfig,
     WebConfigPtgamehost? ptgamehost,
     WebConfigAppDownload? appDownload,
     WebConfigLottoLineUrl? lottoLineUrl,
-    WebConfigDomainJingdiancai? domainJingdiancai,
+    WebConfigDomainMGuanfangcai? domainJingdiancai,
     String? qRCode,
-    WebConfigDomainGuanfangcai? domainGuanfangcai,
+    WebConfigDomainMGuanfangcai? domainGuanfangcai,
     WebConfigAgDomain? agDomain,
     WebConfigDomainMGuanfangcai? domainMGuanfangcai,
-    WebConfigDomainMPc28? domainMPc28,
-    WebConfigDomainMJingdiancai? domainMJingdiancai,
+    WebConfigDomainMGuanfangcai? domainMPc28,
+    WebConfigDomainMGuanfangcai? domainMJingdiancai,
     List<WebConfigRegisterOption>? registerOption,
   }) {
     return WebConfigEntity()
@@ -140,45 +140,6 @@ extension WebConfigEntityExtension on WebConfigEntity {
       ..domainMPc28 = domainMPc28 ?? this.domainMPc28
       ..domainMJingdiancai = domainMJingdiancai ?? this.domainMJingdiancai
       ..registerOption = registerOption ?? this.registerOption;
-  }
-}
-
-WebConfigDomainPc28 $WebConfigDomainPc28FromJson(Map<String, dynamic> json) {
-  final WebConfigDomainPc28 webConfigDomainPc28 = WebConfigDomainPc28();
-  final String? checkPath = jsonConvert.convert<String>(json['check_path']);
-  if (checkPath != null) {
-    webConfigDomainPc28.checkPath = checkPath;
-  }
-  final List<String>? list = (json['list'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<String>(e) as String).toList();
-  if (list != null) {
-    webConfigDomainPc28.list = list;
-  }
-  final String? urlPath = jsonConvert.convert<String>(json['url_path']);
-  if (urlPath != null) {
-    webConfigDomainPc28.urlPath = urlPath;
-  }
-  return webConfigDomainPc28;
-}
-
-Map<String, dynamic> $WebConfigDomainPc28ToJson(WebConfigDomainPc28 entity) {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['check_path'] = entity.checkPath;
-  data['list'] = entity.list;
-  data['url_path'] = entity.urlPath;
-  return data;
-}
-
-extension WebConfigDomainPc28Extension on WebConfigDomainPc28 {
-  WebConfigDomainPc28 copyWith({
-    String? checkPath,
-    List<String>? list,
-    String? urlPath,
-  }) {
-    return WebConfigDomainPc28()
-      ..checkPath = checkPath ?? this.checkPath
-      ..list = list ?? this.list
-      ..urlPath = urlPath ?? this.urlPath;
   }
 }
 
@@ -443,107 +404,6 @@ extension WebConfigLottoLineUrlExtension on WebConfigLottoLineUrl {
   }
 }
 
-WebConfigDomainJingdiancai $WebConfigDomainJingdiancaiFromJson(
-    Map<String, dynamic> json) {
-  final WebConfigDomainJingdiancai webConfigDomainJingdiancai = WebConfigDomainJingdiancai();
-  final String? checkPath = jsonConvert.convert<String>(json['check_path']);
-  if (checkPath != null) {
-    webConfigDomainJingdiancai.checkPath = checkPath;
-  }
-  final List<String>? list = (json['list'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<String>(e) as String).toList();
-  if (list != null) {
-    webConfigDomainJingdiancai.list = list;
-  }
-  final String? urlPath = jsonConvert.convert<String>(json['url_path']);
-  if (urlPath != null) {
-    webConfigDomainJingdiancai.urlPath = urlPath;
-  }
-  return webConfigDomainJingdiancai;
-}
-
-Map<String, dynamic> $WebConfigDomainJingdiancaiToJson(
-    WebConfigDomainJingdiancai entity) {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['check_path'] = entity.checkPath;
-  data['list'] = entity.list;
-  data['url_path'] = entity.urlPath;
-  return data;
-}
-
-extension WebConfigDomainJingdiancaiExtension on WebConfigDomainJingdiancai {
-  WebConfigDomainJingdiancai copyWith({
-    String? checkPath,
-    List<String>? list,
-    String? urlPath,
-  }) {
-    return WebConfigDomainJingdiancai()
-      ..checkPath = checkPath ?? this.checkPath
-      ..list = list ?? this.list
-      ..urlPath = urlPath ?? this.urlPath;
-  }
-}
-
-WebConfigDomainGuanfangcai $WebConfigDomainGuanfangcaiFromJson(
-    Map<String, dynamic> json) {
-  final WebConfigDomainGuanfangcai webConfigDomainGuanfangcai = WebConfigDomainGuanfangcai();
-  final List<String>? listTestNew = (json['list_test_new'] as List<dynamic>?)
-      ?.map(
-          (e) => jsonConvert.convert<String>(e) as String)
-      .toList();
-  if (listTestNew != null) {
-    webConfigDomainGuanfangcai.listTestNew = listTestNew;
-  }
-  final List<String>? listNew = (json['list_new'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<String>(e) as String).toList();
-  if (listNew != null) {
-    webConfigDomainGuanfangcai.listNew = listNew;
-  }
-  final String? checkPath = jsonConvert.convert<String>(json['check_path']);
-  if (checkPath != null) {
-    webConfigDomainGuanfangcai.checkPath = checkPath;
-  }
-  final List<String>? listTest = (json['list_test'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<String>(e) as String).toList();
-  if (listTest != null) {
-    webConfigDomainGuanfangcai.listTest = listTest;
-  }
-  final List<String>? list = (json['list'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<String>(e) as String).toList();
-  if (list != null) {
-    webConfigDomainGuanfangcai.list = list;
-  }
-  return webConfigDomainGuanfangcai;
-}
-
-Map<String, dynamic> $WebConfigDomainGuanfangcaiToJson(
-    WebConfigDomainGuanfangcai entity) {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['list_test_new'] = entity.listTestNew;
-  data['list_new'] = entity.listNew;
-  data['check_path'] = entity.checkPath;
-  data['list_test'] = entity.listTest;
-  data['list'] = entity.list;
-  return data;
-}
-
-extension WebConfigDomainGuanfangcaiExtension on WebConfigDomainGuanfangcai {
-  WebConfigDomainGuanfangcai copyWith({
-    List<String>? listTestNew,
-    List<String>? listNew,
-    String? checkPath,
-    List<String>? listTest,
-    List<String>? list,
-  }) {
-    return WebConfigDomainGuanfangcai()
-      ..listTestNew = listTestNew ?? this.listTestNew
-      ..listNew = listNew ?? this.listNew
-      ..checkPath = checkPath ?? this.checkPath
-      ..listTest = listTest ?? this.listTest
-      ..list = list ?? this.list;
-  }
-}
-
 WebConfigAgDomain $WebConfigAgDomainFromJson(Map<String, dynamic> json) {
   final WebConfigAgDomain webConfigAgDomain = WebConfigAgDomain();
   final String? name = jsonConvert.convert<String>(json['name']);
@@ -605,6 +465,10 @@ WebConfigDomainMGuanfangcai $WebConfigDomainMGuanfangcaiFromJson(
   if (list != null) {
     webConfigDomainMGuanfangcai.list = list;
   }
+  final String? urlPath = jsonConvert.convert<String>(json['url_path']);
+  if (urlPath != null) {
+    webConfigDomainMGuanfangcai.urlPath = urlPath;
+  }
   return webConfigDomainMGuanfangcai;
 }
 
@@ -616,6 +480,7 @@ Map<String, dynamic> $WebConfigDomainMGuanfangcaiToJson(
   data['check_path'] = entity.checkPath;
   data['list_test'] = entity.listTest;
   data['list'] = entity.list;
+  data['url_path'] = entity.urlPath;
   return data;
 }
 
@@ -626,91 +491,13 @@ extension WebConfigDomainMGuanfangcaiExtension on WebConfigDomainMGuanfangcai {
     String? checkPath,
     List<String>? listTest,
     List<String>? list,
+    String? urlPath,
   }) {
     return WebConfigDomainMGuanfangcai()
       ..listTestNew = listTestNew ?? this.listTestNew
       ..listNew = listNew ?? this.listNew
       ..checkPath = checkPath ?? this.checkPath
       ..listTest = listTest ?? this.listTest
-      ..list = list ?? this.list;
-  }
-}
-
-WebConfigDomainMPc28 $WebConfigDomainMPc28FromJson(Map<String, dynamic> json) {
-  final WebConfigDomainMPc28 webConfigDomainMPc28 = WebConfigDomainMPc28();
-  final String? checkPath = jsonConvert.convert<String>(json['check_path']);
-  if (checkPath != null) {
-    webConfigDomainMPc28.checkPath = checkPath;
-  }
-  final List<String>? list = (json['list'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<String>(e) as String).toList();
-  if (list != null) {
-    webConfigDomainMPc28.list = list;
-  }
-  final String? urlPath = jsonConvert.convert<String>(json['url_path']);
-  if (urlPath != null) {
-    webConfigDomainMPc28.urlPath = urlPath;
-  }
-  return webConfigDomainMPc28;
-}
-
-Map<String, dynamic> $WebConfigDomainMPc28ToJson(WebConfigDomainMPc28 entity) {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['check_path'] = entity.checkPath;
-  data['list'] = entity.list;
-  data['url_path'] = entity.urlPath;
-  return data;
-}
-
-extension WebConfigDomainMPc28Extension on WebConfigDomainMPc28 {
-  WebConfigDomainMPc28 copyWith({
-    String? checkPath,
-    List<String>? list,
-    String? urlPath,
-  }) {
-    return WebConfigDomainMPc28()
-      ..checkPath = checkPath ?? this.checkPath
-      ..list = list ?? this.list
-      ..urlPath = urlPath ?? this.urlPath;
-  }
-}
-
-WebConfigDomainMJingdiancai $WebConfigDomainMJingdiancaiFromJson(
-    Map<String, dynamic> json) {
-  final WebConfigDomainMJingdiancai webConfigDomainMJingdiancai = WebConfigDomainMJingdiancai();
-  final String? checkPath = jsonConvert.convert<String>(json['check_path']);
-  if (checkPath != null) {
-    webConfigDomainMJingdiancai.checkPath = checkPath;
-  }
-  final List<String>? list = (json['list'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<String>(e) as String).toList();
-  if (list != null) {
-    webConfigDomainMJingdiancai.list = list;
-  }
-  final String? urlPath = jsonConvert.convert<String>(json['url_path']);
-  if (urlPath != null) {
-    webConfigDomainMJingdiancai.urlPath = urlPath;
-  }
-  return webConfigDomainMJingdiancai;
-}
-
-Map<String, dynamic> $WebConfigDomainMJingdiancaiToJson(
-    WebConfigDomainMJingdiancai entity) {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['check_path'] = entity.checkPath;
-  data['list'] = entity.list;
-  data['url_path'] = entity.urlPath;
-  return data;
-}
-
-extension WebConfigDomainMJingdiancaiExtension on WebConfigDomainMJingdiancai {
-  WebConfigDomainMJingdiancai copyWith({
-    String? checkPath,
-    List<String>? list,
-    String? urlPath,
-  }) {
-    return WebConfigDomainMJingdiancai()
-      ..checkPath = checkPath ?? this.checkPath
       ..list = list ?? this.list
       ..urlPath = urlPath ?? this.urlPath;
   }

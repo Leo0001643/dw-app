@@ -30,6 +30,7 @@ import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
+import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
@@ -87,8 +88,8 @@ class DialogUtils {
   }
 
   ///选择线路
-  void showAccessRouteDialog(BuildContext context){
-    showDialog(
+  Future<String?> showAccessRouteDialog(BuildContext context,List<String> list,String path){
+    return showDialog<String>(
         context: context,
         builder: (context){
           return AlertDialog(
@@ -96,7 +97,8 @@ class DialogUtils {
               borderRadius: BorderRadius.circular(16.r),
             ),
             contentPadding: EdgeInsets.zero,
-            content: AccessRouteDialog(),
+            backgroundColor: ColorX.cardBg5(),
+            content: AccessRouteDialog(list,path),
           );
         }
     );
@@ -207,8 +209,8 @@ class DialogUtils {
 
 
   ///游戏品牌
-  void showGameBrandBtmDialog(BuildContext context){
-    showModalBottomSheet(
+  Future<GameKindGameKindList?> showGameBrandBtmDialog(BuildContext context,List<GameKindGameKindList> list){
+    return showModalBottomSheet<GameKindGameKindList>(
         context: context,
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
@@ -218,7 +220,7 @@ class DialogUtils {
         builder: (context){
           return SingleChildScrollView(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: GameBrandBottomDialog(),
+            child: GameBrandBottomDialog(list),
           );
         }
     );

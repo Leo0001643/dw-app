@@ -1,6 +1,8 @@
+import 'dart:convert';
+
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/site_wallet_config_entity.g.dart';
-import 'dart:convert';
+
 export 'package:leisure_games/generated/json/site_wallet_config_entity.g.dart';
 
 @JsonSerializable()

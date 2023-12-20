@@ -13,6 +13,7 @@ import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
 import 'package:leisure_games/ui/bean/chapter_info_entity.dart';
+import 'package:leisure_games/ui/bean/chess_info_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/current_bet_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
@@ -35,6 +36,7 @@ import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
 import 'package:leisure_games/ui/bean/is_permit_entity.dart';
 import 'package:leisure_games/ui/bean/jump_payment_entity.dart';
 import 'package:leisure_games/ui/bean/language_msg_entity.dart';
+import 'package:leisure_games/ui/bean/login_game_agent_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
@@ -56,6 +58,7 @@ import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
+import 'package:leisure_games/ui/bean/socket_base_entity.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
@@ -231,6 +234,10 @@ class JsonConvert {
       return data.map<ChapterInfoEntity>((Map<String, dynamic> e) =>
           ChapterInfoEntity.fromJson(e)).toList() as M;
     }
+    if (<ChessInfoEntity>[] is M) {
+      return data.map<ChessInfoEntity>((Map<String, dynamic> e) =>
+          ChessInfoEntity.fromJson(e)).toList() as M;
+    }
     if (<ConstituteRatioEntity>[] is M) {
       return data.map<ConstituteRatioEntity>((Map<String, dynamic> e) =>
           ConstituteRatioEntity.fromJson(e)).toList() as M;
@@ -350,6 +357,14 @@ class JsonConvert {
     if (<LanguageMsgEntity>[] is M) {
       return data.map<LanguageMsgEntity>((Map<String, dynamic> e) =>
           LanguageMsgEntity.fromJson(e)).toList() as M;
+    }
+    if (<LoginGameAgentEntity>[] is M) {
+      return data.map<LoginGameAgentEntity>((Map<String, dynamic> e) =>
+          LoginGameAgentEntity.fromJson(e)).toList() as M;
+    }
+    if (<LoginGameAgentParams>[] is M) {
+      return data.map<LoginGameAgentParams>((Map<String, dynamic> e) =>
+          LoginGameAgentParams.fromJson(e)).toList() as M;
     }
     if (<LoginUserEntity>[] is M) {
       return data.map<LoginUserEntity>((Map<String, dynamic> e) =>
@@ -523,17 +538,9 @@ class JsonConvert {
       return data.map<ProtectEntity>((Map<String, dynamic> e) =>
           ProtectEntity.fromJson(e)).toList() as M;
     }
-    if (<ProtectProtect>[] is M) {
-      return data.map<ProtectProtect>((Map<String, dynamic> e) =>
-          ProtectProtect.fromJson(e)).toList() as M;
-    }
     if (<ProtectProtectKkwdsLive>[] is M) {
       return data.map<ProtectProtectKkwdsLive>((Map<String, dynamic> e) =>
           ProtectProtectKkwdsLive.fromJson(e)).toList() as M;
-    }
-    if (<ProtectProtectBbSport>[] is M) {
-      return data.map<ProtectProtectBbSport>((Map<String, dynamic> e) =>
-          ProtectProtectBbSport.fromJson(e)).toList() as M;
     }
     if (<RoomCopyWritingEntity>[] is M) {
       return data.map<RoomCopyWritingEntity>((Map<String, dynamic> e) =>
@@ -546,6 +553,10 @@ class JsonConvert {
     if (<SiteWalletConfigEntity>[] is M) {
       return data.map<SiteWalletConfigEntity>((Map<String, dynamic> e) =>
           SiteWalletConfigEntity.fromJson(e)).toList() as M;
+    }
+    if (<SocketBaseEntity>[] is M) {
+      return data.map<SocketBaseEntity>((Map<String, dynamic> e) =>
+          SocketBaseEntity.fromJson(e)).toList() as M;
     }
     if (<SpreadPromosDataEntity>[] is M) {
       return data.map<SpreadPromosDataEntity>((Map<String, dynamic> e) =>
@@ -583,10 +594,6 @@ class JsonConvert {
       return data.map<WebConfigEntity>((Map<String, dynamic> e) =>
           WebConfigEntity.fromJson(e)).toList() as M;
     }
-    if (<WebConfigDomainPc28>[] is M) {
-      return data.map<WebConfigDomainPc28>((Map<String, dynamic> e) =>
-          WebConfigDomainPc28.fromJson(e)).toList() as M;
-    }
     if (<WebConfigDcHelpDomain>[] is M) {
       return data.map<WebConfigDcHelpDomain>((Map<String, dynamic> e) =>
           WebConfigDcHelpDomain.fromJson(e)).toList() as M;
@@ -612,14 +619,6 @@ class JsonConvert {
       return data.map<WebConfigLottoLineUrl>((Map<String, dynamic> e) =>
           WebConfigLottoLineUrl.fromJson(e)).toList() as M;
     }
-    if (<WebConfigDomainJingdiancai>[] is M) {
-      return data.map<WebConfigDomainJingdiancai>((Map<String, dynamic> e) =>
-          WebConfigDomainJingdiancai.fromJson(e)).toList() as M;
-    }
-    if (<WebConfigDomainGuanfangcai>[] is M) {
-      return data.map<WebConfigDomainGuanfangcai>((Map<String, dynamic> e) =>
-          WebConfigDomainGuanfangcai.fromJson(e)).toList() as M;
-    }
     if (<WebConfigAgDomain>[] is M) {
       return data.map<WebConfigAgDomain>((Map<String, dynamic> e) =>
           WebConfigAgDomain.fromJson(e)).toList() as M;
@@ -627,14 +626,6 @@ class JsonConvert {
     if (<WebConfigDomainMGuanfangcai>[] is M) {
       return data.map<WebConfigDomainMGuanfangcai>((Map<String, dynamic> e) =>
           WebConfigDomainMGuanfangcai.fromJson(e)).toList() as M;
-    }
-    if (<WebConfigDomainMPc28>[] is M) {
-      return data.map<WebConfigDomainMPc28>((Map<String, dynamic> e) =>
-          WebConfigDomainMPc28.fromJson(e)).toList() as M;
-    }
-    if (<WebConfigDomainMJingdiancai>[] is M) {
-      return data.map<WebConfigDomainMJingdiancai>((Map<String, dynamic> e) =>
-          WebConfigDomainMJingdiancai.fromJson(e)).toList() as M;
     }
     if (<WebConfigRegisterOption>[] is M) {
       return data.map<WebConfigRegisterOption>((Map<String, dynamic> e) =>
@@ -676,6 +667,7 @@ class JsonConvertClassCollection {
     (BonusTotalEntity).toString(): BonusTotalEntity.fromJson,
     (BtcSourceEntity).toString(): BtcSourceEntity.fromJson,
     (ChapterInfoEntity).toString(): ChapterInfoEntity.fromJson,
+    (ChessInfoEntity).toString(): ChessInfoEntity.fromJson,
     (ConstituteRatioEntity).toString(): ConstituteRatioEntity.fromJson,
     (CurrentBetEntity).toString(): CurrentBetEntity.fromJson,
     (CurrentBetContent).toString(): CurrentBetContent.fromJson,
@@ -709,6 +701,8 @@ class JsonConvertClassCollection {
     (JumpPaymentEntity).toString(): JumpPaymentEntity.fromJson,
     (JumpPaymentBanks).toString(): JumpPaymentBanks.fromJson,
     (LanguageMsgEntity).toString(): LanguageMsgEntity.fromJson,
+    (LoginGameAgentEntity).toString(): LoginGameAgentEntity.fromJson,
+    (LoginGameAgentParams).toString(): LoginGameAgentParams.fromJson,
     (LoginUserEntity).toString(): LoginUserEntity.fromJson,
     (MemberPointEntity).toString(): MemberPointEntity.fromJson,
     (MessageItemEntity).toString(): MessageItemEntity.fromJson,
@@ -752,12 +746,11 @@ class JsonConvertClassCollection {
     (PromotionTypeEntity).toString(): PromotionTypeEntity.fromJson,
     (PromotionTypeKey).toString(): PromotionTypeKey.fromJson,
     (ProtectEntity).toString(): ProtectEntity.fromJson,
-    (ProtectProtect).toString(): ProtectProtect.fromJson,
     (ProtectProtectKkwdsLive).toString(): ProtectProtectKkwdsLive.fromJson,
-    (ProtectProtectBbSport).toString(): ProtectProtectBbSport.fromJson,
     (RoomCopyWritingEntity).toString(): RoomCopyWritingEntity.fromJson,
     (RoomCopyWritingContent).toString(): RoomCopyWritingContent.fromJson,
     (SiteWalletConfigEntity).toString(): SiteWalletConfigEntity.fromJson,
+    (SocketBaseEntity).toString(): SocketBaseEntity.fromJson,
     (SpreadPromosDataEntity).toString(): SpreadPromosDataEntity.fromJson,
     (SpreadPromosDataList).toString(): SpreadPromosDataList.fromJson,
     (SpreadUserEntity).toString(): SpreadUserEntity.fromJson,
@@ -767,7 +760,6 @@ class JsonConvertClassCollection {
     (UserDrawDetailBanks).toString(): UserDrawDetailBanks.fromJson,
     (VarCodeEntity).toString(): VarCodeEntity.fromJson,
     (WebConfigEntity).toString(): WebConfigEntity.fromJson,
-    (WebConfigDomainPc28).toString(): WebConfigDomainPc28.fromJson,
     (WebConfigDcHelpDomain).toString(): WebConfigDcHelpDomain.fromJson,
     (WebConfigPtgamehost).toString(): WebConfigPtgamehost.fromJson,
     (WebConfigAppDownload).toString(): WebConfigAppDownload.fromJson,
@@ -775,15 +767,8 @@ class JsonConvertClassCollection {
     (WebConfigAppDownloadIos1Config).toString(): WebConfigAppDownloadIos1Config
         .fromJson,
     (WebConfigLottoLineUrl).toString(): WebConfigLottoLineUrl.fromJson,
-    (WebConfigDomainJingdiancai).toString(): WebConfigDomainJingdiancai
-        .fromJson,
-    (WebConfigDomainGuanfangcai).toString(): WebConfigDomainGuanfangcai
-        .fromJson,
     (WebConfigAgDomain).toString(): WebConfigAgDomain.fromJson,
     (WebConfigDomainMGuanfangcai).toString(): WebConfigDomainMGuanfangcai
-        .fromJson,
-    (WebConfigDomainMPc28).toString(): WebConfigDomainMPc28.fromJson,
-    (WebConfigDomainMJingdiancai).toString(): WebConfigDomainMJingdiancai
         .fromJson,
     (WebConfigRegisterOption).toString(): WebConfigRegisterOption.fromJson,
     (WithdrawCheckEntity).toString(): WithdrawCheckEntity.fromJson,

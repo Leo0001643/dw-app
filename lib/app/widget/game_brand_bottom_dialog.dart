@@ -3,11 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 
 class GameBrandBottomDialog extends StatefulWidget{
+
+  final List<GameKindGameKindList> list;
+
+  const GameBrandBottomDialog(this.list, {super.key});
 
   @override
   State<StatefulWidget> createState() =>StateGameBrandBottomDialog();
@@ -16,7 +22,7 @@ class GameBrandBottomDialog extends StatefulWidget{
 
 class StateGameBrandBottomDialog extends State<GameBrandBottomDialog>{
 
-  var current = (-1).obs;
+  // var current = (-1).obs;
 
   @override
   Widget build(BuildContext context) {
@@ -47,54 +53,51 @@ class StateGameBrandBottomDialog extends State<GameBrandBottomDialog>{
               ),
             ],
           ),
-          buildAllBrand(0),
-          buildBrandItem(1),
-          buildBrandItem(2),
-          buildBrandItem(3),
-          buildBrandItem(4),
+          // buildAllBrand(0),
+          ...widget.list.map((e) => buildBrandItem(e)).toList(),
         ],
       ),
     );
   }
 
-  Widget buildAllBrand(int i) {
-    return Column(
-      children: [
-        InkWell(
-          onTap: ()=> current.value = i,
-          child: Obx(() {
-            return Container(
-              height: 57.h,
-              alignment: Alignment.center,
-              color: current.value == i ? Colors.black12 : ColorX.cardBg(),
-              child: Text(Intr().quanbuyouxi,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-            );
-          }),
-        ),
-        Divider(color: ColorX.color_10_949,height: 1.h,indent: 10.w,endIndent: 10.w,),
-      ],
-    );
-  }
+  // Widget buildAllBrand(int i) {
+  //   return Column(
+  //     children: [
+  //       InkWell(
+  //         onTap: ()=> current.value = i,
+  //         child: Obx(() {
+  //           return Container(
+  //             height: 57.h,
+  //             alignment: Alignment.center,
+  //             color: current.value == i ? Colors.black12 : ColorX.cardBg(),
+  //             child: Text(Intr().quanbuyouxi,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+  //           );
+  //         }),
+  //       ),
+  //       Divider(color: ColorX.color_10_949,height: 1.h,indent: 10.w,endIndent: 10.w,),
+  //     ],
+  //   );
+  // }
 
-  Widget buildBrandItem(int i) {
+  Widget buildBrandItem(GameKindGameKindList item) {
     return Column(
       children: [
         InkWell(
-          onTap: ()=> current.value = i,
-          child: Obx(() {
-            return Container(
-              height: 57.h,
-              color: current.value == i ? Colors.black12 : ColorX.cardBg(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.network(Constants.test_image,width: 15.r,),
-                  SizedBox(width: 5.w,),
-                  Text("AG电子",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
-                ],
-              ),
-            );
-          }),
+          onTap: (){
+            Navigator.pop(context,item);
+          },
+          child: Container(
+            height: 57.h,
+            // color: current.value == i ? Colors.black12 : ColorX.cardBg(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.network("${item.host.em()}${item.imageUrl.em()}",width: 25.r,),
+                SizedBox(width: 5.w,),
+                Text(item.gameName.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
+              ],
+            ),
+          ),
         ),
         Divider(color: ColorX.color_10_949,height: 1.h,indent: 10.w,endIndent: 10.w,),
       ],

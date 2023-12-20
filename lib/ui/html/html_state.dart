@@ -1,6 +1,7 @@
 
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
+import 'package:leisure_games/ui/bean/login_game_agent_entity.dart';
 
 class HtmlState {
   HtmlState() {
@@ -12,6 +13,9 @@ class HtmlState {
 
   var pageTitle = "".obs;//页面标题
 
-  var htmlEvent = HtmlEvent().obs;
+  HtmlEvent? htmlEvent;
+
+  LoginGameAgentEntity? gameEvent;
+
 
 }

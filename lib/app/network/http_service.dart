@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:leisure_games/app/constants.dart';
@@ -15,6 +17,7 @@ import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
+import 'package:leisure_games/ui/bean/chess_info_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/current_bet_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
@@ -32,6 +35,7 @@ import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/help_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/is_permit_entity.dart';
+import 'package:leisure_games/ui/bean/login_game_agent_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
@@ -48,6 +52,7 @@ import 'package:leisure_games/ui/bean/point_record_entity.dart';
 import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
+import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
@@ -74,16 +79,13 @@ class HttpService{
         //网站ID
         //机器型号
         //系统版本号【APP强制使用】
-        options.queryParameters["machineModel"] = Constants.model();
-        options.queryParameters["siteId"] = "9000";
-        options.queryParameters["siteType"] = "1";
-        options.queryParameters["terminal"] = "APP";
-        options.queryParameters["version"] = Constants.version();
+        var commonParams = {"machineModel":Constants.model(),"siteId":"9000","siteType":"1","terminal":"APP","version":Constants.version()};
+        options.queryParameters.addAll(commonParams);
         loggerArray(["发起请求","${options.path}\n","${options.method}\n","${options.headers}\n",options.data ?? options.queryParameters]);
         handler.next(options);
       },
       onResponse: (response, handler){
-        loggerArray(["返回响应",response.requestOptions.path,response.statusCode,"${response.statusMessage}\n",response.data]);
+        loggerArray(["返回响应",response.requestOptions.path,response.statusCode,"${response.statusMessage}\n",jsonEncode(response.data)]);
         if(response.statusCode == 200){
           handler.next(response);
         }else {
@@ -383,14 +385,17 @@ class HttpService{
     return buildFuture<List<DrawLotteryEntity>>(()=> _client.getDrawLotteryData(params));
   }
 
+  static Future<dynamic> loginBusinessAgent(Map<String,dynamic> params,){
+    return buildFuture<dynamic>(()=> _client.loginBusinessAgent(params));
+  }
 
+  static Future<ProtectEntity> protect(){
+    return buildFuture<ProtectEntity>(()=> _client.protect());
+  }
 
-
-
-
-
-
-
+  static Future<List<ChessInfoEntity>> getChessList(Map<String,dynamic> params,){
+    return buildFuture<List<ChessInfoEntity>>(()=> _client.getChessList(params));
+  }
 
 
 

@@ -10,6 +10,7 @@ import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
+import 'package:leisure_games/ui/bean/chess_info_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/current_bet_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
@@ -27,6 +28,7 @@ import 'package:leisure_games/ui/bean/game_type_entity.dart';
 import 'package:leisure_games/ui/bean/help_entity.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/is_permit_entity.dart';
+import 'package:leisure_games/ui/bean/login_game_agent_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
@@ -290,6 +292,23 @@ abstract class RetrofitClient{
 
   @GET('/ds-api-web/getDrawLotteryData')
   Future<BaseResponseEntity<List<DrawLotteryEntity>>> getDrawLotteryData(@Queries() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/loginBusinessAgent')
+  Future<BaseResponseEntity<dynamic>> loginBusinessAgent(@Body() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/getChessList')
+  Future<BaseResponseEntity<List<ChessInfoEntity>>> getChessList(@Queries() Map<String,dynamic> params,);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
