@@ -35,7 +35,7 @@ class _TableGameListPageState extends State<TableGameListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: ColorX.appBarBg(),onTap: (){
-        DialogUtils().showGameBrandBtmDialog(context);
+        // DialogUtils().showGameBrandBtmDialog(context);
       }),
       backgroundColor: ColorX.pageBg(),
       body: Container(

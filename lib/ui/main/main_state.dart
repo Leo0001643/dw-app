@@ -31,7 +31,7 @@ class MainState {
   //服务配置
   WebConfigEntity? webConfig;
 
-
+  var protect;
 
 
 }
