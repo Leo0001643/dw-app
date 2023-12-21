@@ -21,6 +21,8 @@ import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/draw_lottery_entity.dart';
+import 'package:leisure_games/ui/bean/ds_game_entity.dart';
+import 'package:leisure_games/ui/bean/ele_game_type_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -299,10 +301,14 @@ abstract class RetrofitClient{
   @GET('/ds-api-web/getChessList')
   Future<BaseResponseEntity<List<ChessInfoEntity>>> getChessList(@Queries() Map<String,dynamic> params,);
 
+  @POST('/ds-api-web/getGameTypeList')
+  Future<BaseResponseEntity<List<EleGameTypeEntity>>> getGameTypeList(@Body() Map<String,dynamic> params,);
 
+  @POST('/ds-api-web/dsgame')
+  Future<BaseResponseEntity<DsGameEntity>> getDsgame(@Body() Map<String,dynamic> params,);
 
-
-
+  @POST('/ds-api-web/gameFav')
+  Future<BaseResponseEntity<String>> gameFav(@Body() Map<String,dynamic> params,);
 
 
 

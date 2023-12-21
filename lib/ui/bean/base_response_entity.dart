@@ -17,7 +17,7 @@ class BaseResponseEntity<T> {
 	BaseResponseEntity({this.code,this.message});
 
 	bool isOk(){
-		return code == 100000;
+		return code == 100000 ||code == 100002 ||code == 100001;
 	}
 
   factory BaseResponseEntity.fromJson(dynamic result,T Function(Object?) fromJsonT){

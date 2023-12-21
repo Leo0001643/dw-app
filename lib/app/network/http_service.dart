@@ -28,6 +28,8 @@ import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/draw_lottery_entity.dart';
+import 'package:leisure_games/ui/bean/ds_game_entity.dart';
+import 'package:leisure_games/ui/bean/ele_game_type_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -397,9 +399,17 @@ class HttpService{
     return buildFuture<List<ChessInfoEntity>>(()=> _client.getChessList(params));
   }
 
+  static Future<List<EleGameTypeEntity>> getGameTypeList(Map<String,dynamic> params,){
+    return buildFuture<List<EleGameTypeEntity>>(()=> _client.getGameTypeList(params));
+  }
 
+  static Future<DsGameEntity> getDsgame(Map<String,dynamic> params,){
+    return buildFuture<DsGameEntity>(()=> _client.getDsgame(params));
+  }
 
-
+  static Future<String> gameFav(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.gameFav(params),needMsg: true);
+  }
 
 
 
@@ -420,14 +430,14 @@ class HttpService{
 
   ///游戏返回体
   ///封装请求体，自动处理各种异常问题
-  static Future<T> buildFuture<T>(RequestCallback callback,{bool loading = true,bool errorHandler = true}) async {
+  static Future<T> buildFuture<T>(RequestCallback callback,{bool loading = true,bool needMsg = false,bool errorHandler = true}) async {
     if(loading){ EasyLoading.show(maskType: EasyLoadingMaskType.black,status: Intr().jiazaizhong); }
     try{
       var value = await callback.call();
       if(loading){ EasyLoading.dismiss(); }
       if(value.isOk()){
         ///data为null时处理
-        return Future.value(value.data ?? "");
+        return Future.value(value.data ?? (needMsg ? value.message.toString():""));
       } else {
         if(errorHandler){ ErrorResponseHandler().onErrorHandle({"code": value.code,"message": value.message.toString()}); }
         return Future.error(value.message.toString());

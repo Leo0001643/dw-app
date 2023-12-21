@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_page.dart';
 
@@ -28,10 +29,11 @@ class MainState {
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  //服务配置
+  ///服务配置
   WebConfigEntity? webConfig;
 
-  var protect;
 
+  ///站点维护
+  ProtectEntity? protect;
 
 }

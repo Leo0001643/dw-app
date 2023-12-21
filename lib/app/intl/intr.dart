@@ -576,6 +576,7 @@ class Intr extends Translations{
   String get baocunchenggong => 'baocunchenggong'.tr;
   String get geshangqi => 'geshangqi'.tr;
   String get jinrikai => 'jinrikai'.tr;
+  String get wodeshoucang => 'wodeshoucang'.tr;
 
 
 
@@ -1132,6 +1133,7 @@ class Intr extends Translations{
       "qingzaiciyanzhenghaxizhi":"请在此处输入或粘贴你想要验证的哈希值",
       "geshangqi":"隔上期",
       "jinrikai":"今日开",
+      "wodeshoucang":"我的收藏",
 
 
 

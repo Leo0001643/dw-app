@@ -425,7 +425,7 @@ class WidgetUtils {
     try{
       return image.isUrl() ? Image.network(image,width: width,height: height,fit: fit,
       errorBuilder: (context,error,stack){
-        loggerArray(["异常了妈啊",image,error,stack]);
+        loggerArray(["异常了",image,error,stack]);
           if(unEmpty(defImage)){
             return Image.asset(defImage,width: width,height: height,fit: fit,);
           }else {
@@ -434,7 +434,7 @@ class WidgetUtils {
         },
       ) : Image.asset(image,width: width,height: height,fit: fit,);
     }catch(e){
-      loggerArray(["异常了妈啊",image,e]);
+      loggerArray(["异常了",image,e]);
       return Image.asset(defImage,width: width,height: height,fit: fit,);
     }
   }

@@ -63,9 +63,17 @@ class MainLogic extends GetxController {
   }
 
   void loadData() {
+
     HttpService.getWebConfig().then((value) {
       state.webConfig = value;
     });
+
+    HttpService.protect().then((value) {
+      state.protect = value;
+    });
+
+
+
   }
 
 }

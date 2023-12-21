@@ -25,6 +25,8 @@ import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/draw_lottery_entity.dart';
+import 'package:leisure_games/ui/bean/ds_game_entity.dart';
+import 'package:leisure_games/ui/bean/ele_game_type_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -297,6 +299,18 @@ class JsonConvert {
     if (<DrawLotteryEntity>[] is M) {
       return data.map<DrawLotteryEntity>((Map<String, dynamic> e) =>
           DrawLotteryEntity.fromJson(e)).toList() as M;
+    }
+    if (<DsGameEntity>[] is M) {
+      return data.map<DsGameEntity>((Map<String, dynamic> e) =>
+          DsGameEntity.fromJson(e)).toList() as M;
+    }
+    if (<DsGameGamesZm>[] is M) {
+      return data.map<DsGameGamesZm>((Map<String, dynamic> e) =>
+          DsGameGamesZm.fromJson(e)).toList() as M;
+    }
+    if (<EleGameTypeEntity>[] is M) {
+      return data.map<EleGameTypeEntity>((Map<String, dynamic> e) =>
+          EleGameTypeEntity.fromJson(e)).toList() as M;
     }
     if (<ExpressionEntity>[] is M) {
       return data.map<ExpressionEntity>((Map<String, dynamic> e) =>
@@ -686,6 +700,9 @@ class JsonConvertClassCollection {
     (DigiccyDepositDataEntity).toString(): DigiccyDepositDataEntity.fromJson,
     (DomainConfigEntity).toString(): DomainConfigEntity.fromJson,
     (DrawLotteryEntity).toString(): DrawLotteryEntity.fromJson,
+    (DsGameEntity).toString(): DsGameEntity.fromJson,
+    (DsGameGamesZm).toString(): DsGameGamesZm.fromJson,
+    (EleGameTypeEntity).toString(): EleGameTypeEntity.fromJson,
     (ExpressionEntity).toString(): ExpressionEntity.fromJson,
     (FlowDataEntity).toString(): FlowDataEntity.fromJson,
     (FlowDataList).toString(): FlowDataList.fromJson,

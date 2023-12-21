@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/chess_info_entity.dart';
 
 import 'chess_game_list_logic.dart';
 
@@ -37,7 +38,15 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: ColorX.appBarBg(),onTap: (){
-        // DialogUtils().showGameBrandBtmDialog(context);
+        if(unEmpty(state.kindList)){
+          DialogUtils().showGameBrandBtmDialog(context,state.kindList!).then((value) {
+            if(unEmpty(value)){
+              state.current = value;
+              state.title.value = value!.gameName.em();
+              logic.loadData(value);
+            }
+          });
+        }
       }),
       backgroundColor: ColorX.pageBg(),
       body: Container(
@@ -45,7 +54,7 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: ColorX.cardBg(),
+                color: ColorX.appBarBg3(),
                 borderRadius: BorderRadius.circular(8.r),
               ),
               margin: EdgeInsets.symmetric(horizontal: 12.w),
@@ -60,6 +69,7 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
                           hintColor: ColorX.text586(),
                           defText: state.searchWord.value,inputType:TextInputType.text,onChanged: (v){
                             state.searchWord.value = v;
+                            logic.loadByKeyword(v);
                           });
                     }),
                   ),
@@ -67,7 +77,10 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
                     return Visibility(
                       visible: unEmpty(state.searchWord.value),
                       child: InkWell(
-                        onTap: ()=> state.searchWord.value = "",
+                        onTap: (){
+                          state.searchWord.value = "";
+                          logic.loadByKeyword("");
+                        },
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.w,vertical: 5.h,),
                           child: Image.asset(ImageX.ic_delete_grey),
@@ -82,41 +95,15 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
             Expanded(
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 10.w,),
+                width: 1.sw,
                 child: SingleChildScrollView(
-                  child: Wrap(
-                    runSpacing: 10.h,
-                    spacing: 12.w,
-                    children: [
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                      buildGameItem(0),
-                    ],
-                  ),
+                  child: Obx(() {
+                    return Wrap(
+                      runSpacing: 10.h,
+                      spacing: 12.w,
+                      children: state.list.map((e) => buildGameItem(e)).toList(),
+                    );
+                  }),
                 ),
               ),
             ),
@@ -126,19 +113,22 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
     );
   }
 
-  Widget buildGameItem(int index) {
-    return Container(
-      width: 0.2.sw,
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10.r),
-            child: Image.network(Constants.test_image,width: 0.2.sw,height: 0.2.sw,fit: BoxFit.fill,),
-          ),
-          SizedBox(height: 7.h,),
-          Text("棋牌小游戏棋棋牌小游戏棋",
-            style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),overflow: TextOverflow.ellipsis),maxLines: 2,),
-        ],
+  Widget buildGameItem(ChessInfoEntity chess) {
+    return InkWell(
+      onTap: ()=> logic.openGamePage(chess),
+      child: Container(
+        width: 0.2.sw,
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10.r),
+              child: WidgetUtils().buildImage("${chess.imageHost.em()}${chess.gamepic.em()}",0.2.sw,0.15.sw,fit: BoxFit.fill,),
+            ),
+            SizedBox(height: 7.h,),
+            Text(chess.gamename.em(),
+              style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),overflow: TextOverflow.ellipsis),maxLines: 2,),
+          ],
+        ),
       ),
     );
   }
