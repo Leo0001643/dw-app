@@ -4,6 +4,7 @@ import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/chess_event.dart';
 import 'package:leisure_games/ui/bean/chess_info_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -70,13 +71,7 @@ class ChessGameListLogic extends GetxController {
     var params = <String,dynamic>{ "cur":cur, "tags":element.tag,
       "platform":element.platformName,"gameCode":element.gameidstr,
       "oid":user?.oid,"username":user?.username,"platformURL": Constants.host};
-    HttpService.loginBusinessAgent(params).then((value) {
-      if(value is Map){
-        Get.toNamed(Routes.html,arguments: HtmlEvent(data: value["gameUrl"],isHtmlData:false,pageTitle: ""));
-      }else {
-        Get.toNamed(Routes.html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: ""));
-      }
-    });
+    WidgetUtils().loginJump(params);
   }
 
 

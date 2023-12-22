@@ -398,13 +398,7 @@ class StateGameMenuView extends State<GameMenuView>{
         params["gameCode"] = element.gameCode;
       }
     }
-    HttpService.loginBusinessAgent(params).then((value) {
-      if(value is Map){
-        Get.toNamed(Routes.html,arguments: HtmlEvent(data: value["gameUrl"],isHtmlData:false,pageTitle: ""));
-      }else {
-        Get.toNamed(Routes.html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: ""));
-      }
-    });
+    WidgetUtils().loginJump(params);
   }
 
 

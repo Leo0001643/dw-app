@@ -1,7 +1,10 @@
 
 
 import 'dart:convert';
-
+import 'dart:io';
+import 'package:crypto/crypto.dart';
+import 'package:leisure_games/app/logger.dart';
+import 'package:uuid/uuid.dart';
 import 'package:flutter/services.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -485,7 +488,9 @@ class DataUtils{
   }
 
 
-
+  static String randomUuid(){
+    return const Uuid().v4();
+  }
 
 
 

@@ -9,11 +9,16 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
+import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+import 'package:http/http.dart' as http;
 
 class WidgetUtils {
 
@@ -521,6 +526,50 @@ class WidgetUtils {
     String base64String = code.split(',').last;
     return Image.memory(base64Decode(base64String),fit: BoxFit.fill,width: width,height: height,);
   }
+
+
+  void loginJump(Map<String,dynamic> params,){
+    HttpService.loginBusinessAgent(params).then((value) {
+      if(value is Map){
+        launchUrl(Uri.parse(value["gameUrl"]),mode: LaunchMode.externalApplication);
+        // Get.toNamed(Routes.html,arguments: HtmlEvent(data: value["gameUrl"],isHtmlData:false,pageTitle: ""));
+      } else {
+        // loggerArray(["打印网页数据提取",value.toString().split("\n")]);
+        /*var params = <String,String>{};
+        var url = "";
+        value.toString().replaceAll("type=\"hidden\"", "").replaceAll("type=\'hidden\'", "")
+            .split("\n").forEach((element) {
+              if(element.contains("action=\"")){
+                url = element.replaceAll("<form method=\"post\" name=\"form1\" action=\"", "").replaceAll("\">", "");
+              } else {
+                var list = element.replaceAll(" ", "").split("value=");
+                if(unEmpty(list) && list.length == 2){
+                  params[list[0].replaceAll("<inputname=\"", "").replaceAll("\"]", "").replaceAll("\"", "")]
+                  = list[1].replaceAll("/>]", "").replaceAll("\"", "").replaceAll("/>", "").replaceAll(">", "");
+                }
+              }
+        });
+        loggerArray(["截取出来的数据处理",url,params]);*/
+        Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: ""));
+      }
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

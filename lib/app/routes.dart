@@ -1,5 +1,7 @@
 
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:leisure_games/ui/game_html/game_html_binding.dart';
+import 'package:leisure_games/ui/game_html/game_html_page.dart';
 import 'package:leisure_games/ui/html/html_binding.dart';
 import 'package:leisure_games/ui/html/html_page.dart';
 import 'package:leisure_games/ui/login/login_binding.dart';
@@ -136,6 +138,7 @@ class Routes {
   static const String login = "/login";
   static const String register = "/register";
   static const String html = "/html";
+  static const String game_html = "/game_html";
   static const String select_currency = "/select_currency";
   static const String select_language = "/select_language";
   static const String room_list = "/home/room_list";
@@ -204,6 +207,7 @@ class Routes {
     GetPage(name: login,binding: LoginBinding(), page: () => LoginPage()),
     GetPage(name: register,binding: RegisterBinding(), page: () => RegisterPage()),
     GetPage(name: html,binding: HtmlBinding(), page: () => HtmlPage()),
+    GetPage(name: game_html,binding: GameHtmlBinding(), page: () => GameHtmlPage()),
     GetPage(name: select_currency,binding: SelectCurrencyBinding(), page: () => SelectCurrencyPage()),
     GetPage(name: message_center,binding: MessageCenterBinding(),bindings: [NoticeBinding(),MessageBinding()], page: () => MessageCenterPage()),
     GetPage(name: select_language,binding: SelectLanguageBinding(), page: () => SelectLanguagePage()),
