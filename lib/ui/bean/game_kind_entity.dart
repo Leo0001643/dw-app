@@ -19,7 +19,7 @@ class GameKindEntity {
 	String? host;
 	int? orderby;
 	int? hot;
-	dynamic advertImage;
+	String? advertImage;
 	List<GameKindGameKindList>? gameKindList;
 
 	GameKindEntity();
@@ -48,7 +48,7 @@ class GameKindGameKindList {
 	String? host;
 	int? orderby;
 	int? hot;
-	dynamic advertImage;
+	String? advertImage;
 	List<dynamic>? gameKindList;
 
 	GameKindGameKindList({this.gameCode});

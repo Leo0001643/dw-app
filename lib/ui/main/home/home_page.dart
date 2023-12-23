@@ -65,7 +65,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                                   margin: EdgeInsets.symmetric(horizontal: 20.w),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.all(Radius.circular(20.r)),
-                                    child: Image.network("${e.url}${e.picurl}", fit: BoxFit.cover,width: 1000,),
+                                    child: Image.network("${e.url}${e.picurl}", fit: BoxFit.fill,width: 1000,),
                                   ),
                                 );
                               }).toList()
@@ -134,9 +134,9 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                         Container(
                           color: ColorX.pageBg(),
                           margin: EdgeInsets.only(top: 10.h,bottom: 10.h),
-                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          padding: EdgeInsets.symmetric(horizontal: 15.w),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               buildActivityItem(4,ImageX.yhhdT(),Intr().qiandaoyouli),
                               buildActivityItem(5,ImageX.qdyjT(),Intr().jifenyaojiang),
@@ -145,15 +145,18 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                           ),
                         ),
                         Container(
-                          height: 225.h,
                           color: ColorX.cardBg(),
-                          padding: EdgeInsets.only(left: 20.w,top: 30.h),
-                          child: Row(
+                          margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 15.w),
+                          alignment: Alignment.topLeft,
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              buildComInfo(Intr().gaunyuwomen,Intr().guanwangjieshao,0,Intr().xiazhaiyingyong,1,Intr().pingtaifuwu,2),
-                              buildComInfo(Intr().yonghuzhongxin,Intr().huiyuan,3,Intr().chongzhijilu,4,Intr().qiandaochoujiang,5),
-                              buildComInfo(Intr().jishuzhichi,Intr().fangjiechijiaocheng,6,Intr().shiyongbangzhu,7,"",-1),
+                              Wrap(
+                                direction: Axis.horizontal,
+                                children: state.labelBtm.map((e) => buildComInfo(e,state.labelBtm.last == e)).toList(),
+                              ),
+                              SizedBox(height: 5.h,),
+                              Text(Intr().guojizhan2023,style: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),),
                             ],
                           ),
                         ),
@@ -194,29 +197,17 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
   }
 
 
-  buildComInfo(String title, String t, int i, String u, int j, String v, int k) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-          SizedBox(height: 14.h,),
-          InkWell(
-            onTap: ()=> logic.clickInfo(context, i),
-            child: Text(t,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-          ),
-          SizedBox(height: 10.h,),
-          InkWell(
-            onTap: ()=> logic.clickInfo(context, j),
-            child: Text(u,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-          ),
-          SizedBox(height: 10.h,),
-          InkWell(
-            onTap: ()=> logic.clickInfo(context, k),
-            child: Text(v,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-          ),
-        ],
-      ),
+  Widget buildComInfo(String title,bool last) {
+    return Wrap(
+      children: [
+        InkWell(
+          onTap: ()=> logic.clickInfo(context, title),
+          child: Text(title,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
+        ),
+        SizedBox(width: 5.w,),
+        last ? Container() : Text("|",style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
+        SizedBox(width: 5.w,),
+      ],
     );
   }
 
@@ -224,7 +215,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
     return InkWell(
       onTap: ()=> logic.clickMenu(context, i),
       child: Container(
-        width: 105.w,height: 95.h,
+        width: 85.w,height: 77.h,
         decoration: BoxDecoration(image: DecorationImage(image: AssetImage(bg), fit: BoxFit.fill,),),
         alignment: Alignment.topCenter,
         padding: EdgeInsets.only(top: 10.h),

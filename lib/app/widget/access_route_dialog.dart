@@ -161,6 +161,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
 
 
   Future<RouteTest> testApiDelay(String baseUrl,String apiurl) async {
+    apiurl = apiurl.startsWith("http") ? apiurl : "http://${apiurl}";
     final uri = Uri.parse(apiurl); // 替换为你要测试的接口地址
     final stopwatch = Stopwatch();
     stopwatch.start(); // 启动计时器

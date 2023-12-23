@@ -112,6 +112,7 @@ class StateGameMenuView extends State<GameMenuView>{
                 scrollKey: _firstInnerKey,
                 coordinator: widget.coordinator,
                 child: ListView(
+                  padding: EdgeInsets.zero,
                   controller: widget.coordinator.innerController,
                   children: menuGroup.map((element) => buildCategoryItem(element)).toList(),
                 ),
@@ -125,8 +126,10 @@ class StateGameMenuView extends State<GameMenuView>{
   }
 
 
-  Column buildCategoryItem(GameKindEntity element) {
+  Widget buildCategoryItem(GameKindEntity element) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         buildGroupTitle(element),
@@ -148,12 +151,25 @@ class StateGameMenuView extends State<GameMenuView>{
 
 
   buildGroupTitle(GameKindEntity element) {
-    return Row(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        WidgetUtils().buildImage(findImage(element), 20.r, 20.r,),
-        SizedBox(width: 3.w,),
-        Text(element.gameKindName.em(),
-          style: TextStyle(fontWeight: FontWeight.w600,fontSize: 14.sp,color: ColorX.textBlack()),),
+        Row(
+          children: [
+            WidgetUtils().buildImage(findImage(element), 20.r, 20.r,fit: BoxFit.fill),
+            SizedBox(width: 3.w,),
+            Text(element.gameKindName.em(),
+              style: TextStyle(fontWeight: FontWeight.w600,fontSize: 14.sp,color: ColorX.textBlack()),),
+          ],
+        ),
+        SizedBox(height: 5.h,),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10.r),
+          child: isEmpty(element.advertImage) ? null : WidgetUtils().buildImage(element.advertImage.em(),
+              1.sw, 80.h,fit: BoxFit.fill),
+        ),
       ],
     );
   }
@@ -167,18 +183,18 @@ class StateGameMenuView extends State<GameMenuView>{
           child: Stack(
             children: [
               WidgetUtils().buildImage(element.image(),  68.r,  68.r,fit: BoxFit.cover,),
-              Positioned(
-                right: 0,
-                top: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black38,
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                  margin: EdgeInsets.all(3.r),
-                  child: Image.asset(ImageX.icon_heart,/*color: Colors.white,*/),
-                ),
-              ),
+              // Positioned(
+              //   right: 0,
+              //   top: 0,
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       color: Colors.black38,
+              //       borderRadius: BorderRadius.circular(10.r),
+              //     ),
+              //     margin: EdgeInsets.all(3.r),
+              //     child: Image.asset(ImageX.icon_heart,/*color: Colors.white,*/),
+              //   ),
+              // ),
               Visibility(
                 visible: element.gameKind == Constants.PC28,
                 child: Positioned(

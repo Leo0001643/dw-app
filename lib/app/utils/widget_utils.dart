@@ -550,6 +550,7 @@ class WidgetUtils {
               }
         });
         loggerArray(["截取出来的数据处理",url,params]);*/
+        ///url_launcher可以打开文件 ，可以把value数据写到本地文件里然后用他打开
         Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: ""));
       }
     });

@@ -9,11 +9,14 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
+import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
+import 'package:leisure_games/ui/bean/notice_entity.dart';
 
 import 'home_state.dart';
 
@@ -135,20 +138,39 @@ class HomeLogic extends GetxController {
 
 
 
-  void clickInfo(BuildContext context,int index){
-    switch(index){
-      case 0:
-
-        break;
-      case 1:
-
-        break;
-      case 2:
-
-        break;
-      case 3:
-
-        break;
+  void clickInfo(BuildContext context,String title){
+    if(Intr().guanyuwomen == title){
+      HttpService.getNewsRate("about").then((value) {
+        Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: value.content.em(),
+            pageTitle: Intr().guanyuwomen));
+      });
+    }else if(Intr().yonghuzhongxin == title){
+      if(AppData.isLogin()){
+        eventBus.fire(ChangeMainPageEvent(4));
+      } else {
+        WidgetUtils().goLogin();
+      }
+    }else if(Intr().lianxiwomen == title){
+      HttpService.getNewsRate("llwm").then((value) {
+        Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: value.content.em(),
+            pageTitle: Intr().lianxiwomen));
+      });
+    }else if(Intr().eduzhuanhuan == title){
+      if(AppData.isLogin()){
+        Get.toNamed(Routes.quota_conversion);
+      } else {
+        WidgetUtils().goLogin();
+      }
+    }else if(Intr().jishuzhichi == title){
+      HttpService.getNewsRate("wenti").then((value) {
+        Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: value.content.em(),
+            pageTitle: Intr().jishuzhichi));
+      });
+    }else if(Intr().fangjiechijiaocheng == title){
+      HttpService.getNewsRate("jiechijiaocheng").then((value) {
+        Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: value.content.em(),
+            pageTitle: Intr().fangjiechijiaocheng));
+      });
     }
 
   }
@@ -229,11 +251,26 @@ class HomeLogic extends GetxController {
         state.usdtBal.refresh();
       });
       state.user.refresh();
+
+      //2跳弹公告
+      HttpService.getNotice(2).then((value) {
+        if(unEmpty(value)){
+          showNotice(value,0);
+        }
+      });
     }else {
       state.user.value = LoginUserEntity();
       state.user.refresh();
     }
 
+  }
+
+  void showNotice(List<NoticeEntity> value, int i) {
+    if(value.length > i){
+      DialogUtils().showNoticeDialog(Get.context!,value[i].noteTitle.em(), value[i].noteContent.em()).then((v){
+        showNotice(value, i+1);
+      });
+    }
   }
 
 

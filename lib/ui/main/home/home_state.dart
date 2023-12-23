@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
@@ -35,6 +36,9 @@ class HomeState {
   ///余额
   var usdtBal = BalanceEntity().obs;
   var cnyBal = BalanceEntity().obs;
+
+  var labelBtm = [Intr().guanyuwomen,Intr().yonghuzhongxin,Intr().lianxiwomen,Intr().eduzhuanhuan,Intr().jishuzhichi,Intr().fangjiechijiaocheng];
+
 
 
 }

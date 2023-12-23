@@ -54,9 +54,10 @@ class RechargeOfflineLogic extends GetxController {
     }
 
     var params = <String,dynamic>{"oid":AppData.user()?.oid.em(),"username":AppData.user()?.username.em(),
-      "inBankSetId":agree.id,"money":state.remitAmount,
+      "inBankSetId":agree.bankId,"money":state.remitAmount,
       "userAddTime":DateUtil.formatDateMs(DateTime.now().millisecondsSinceEpoch),
       "outBankId":outBankId,"outBankName":outBankName,"outCardUser":state.remitName,};
+
     HttpService.companyDeposit(params).then((value) {
       Get.offAndToNamed(Routes.recharge_result,arguments: value);
     });

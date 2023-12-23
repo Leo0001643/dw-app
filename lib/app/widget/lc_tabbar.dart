@@ -197,6 +197,8 @@ class _LCTabBarState extends State<LCTabBar> {
               indicatorPadding: widget.indicatorPadding,
               indicatorWeight: widget.indicatorWeight,
               tabs: widget.tabs,
+              dividerHeight: 0,
+              padding: EdgeInsets.zero,
             ),
           ),
         ),

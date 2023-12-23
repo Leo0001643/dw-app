@@ -34,6 +34,7 @@ class GameHtmlLogic extends GetxController {
 
 
   void loadPage(InAppWebViewController controller){
+    state.controller = controller;
     loggerArray(["收到数据了吧 ${state.htmlEvent} ${state.gameEvent}"]);
     if(unEmpty(state.htmlEvent)){
       if(state.htmlEvent?.isHtmlData == true){

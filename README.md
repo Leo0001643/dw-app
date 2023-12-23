@@ -9,20 +9,6 @@ https://www.figma.com/team_invite/redeem/2TeFBk4OwM7y0FwXUmruLr
 ### git
 https://github.com/Leo0001643/dw-app.git
 
-### git 账号
-Lancebyebye
-19931125Tu
-
-邮箱是pitching39@gmail.com
-19931125Tu
-
-
-https://Lancebyebye:19931125Tu@github.com/Leo0001643/dw-app.git
-
-
-git config user.name "Lance"
-git config user.email "Lance@gmail.com"
-
 
 https://9000vlmdm4.kj99883.com
 

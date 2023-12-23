@@ -72,8 +72,6 @@ class MainLogic extends GetxController {
       state.protect = value;
     });
 
-
-
   }
 
 }

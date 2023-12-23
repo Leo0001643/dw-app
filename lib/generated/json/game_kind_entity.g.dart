@@ -52,7 +52,7 @@ GameKindEntity $GameKindEntityFromJson(Map<String, dynamic> json) {
   if (hot != null) {
     gameKindEntity.hot = hot;
   }
-  final dynamic advertImage = json['advertImage'];
+  final String? advertImage = jsonConvert.convert<String>(json['advertImage']);
   if (advertImage != null) {
     gameKindEntity.advertImage = advertImage;
   }
@@ -102,7 +102,7 @@ extension GameKindEntityExtension on GameKindEntity {
     String? host,
     int? orderby,
     int? hot,
-    dynamic advertImage,
+    String? advertImage,
     List<GameKindGameKindList>? gameKindList,
   }) {
     return GameKindEntity()
@@ -174,7 +174,7 @@ GameKindGameKindList $GameKindGameKindListFromJson(Map<String, dynamic> json) {
   if (hot != null) {
     gameKindGameKindList.hot = hot;
   }
-  final dynamic advertImage = json['advertImage'];
+  final String? advertImage = jsonConvert.convert<String>(json['advertImage']);
   if (advertImage != null) {
     gameKindGameKindList.advertImage = advertImage;
   }
@@ -221,7 +221,7 @@ extension GameKindGameKindListExtension on GameKindGameKindList {
     String? host,
     int? orderby,
     int? hot,
-    dynamic advertImage,
+    String? advertImage,
     List<dynamic>? gameKindList,
   }) {
     return GameKindGameKindList()

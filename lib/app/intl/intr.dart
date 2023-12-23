@@ -577,6 +577,8 @@ class Intr extends Translations{
   String get geshangqi => 'geshangqi'.tr;
   String get jinrikai => 'jinrikai'.tr;
   String get wodeshoucang => 'wodeshoucang'.tr;
+  String get lianxiwomen => 'lianxiwomen'.tr;
+  String get guojizhan2023 => '2023guojizhan'.tr;
 
 
 
@@ -1134,6 +1136,8 @@ class Intr extends Translations{
       "geshangqi":"隔上期",
       "jinrikai":"今日开",
       "wodeshoucang":"我的收藏",
+      "lianxiwomen":"联系我们",
+      "2023guojizhan":"@2023国际站",
 
 
 

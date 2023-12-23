@@ -198,6 +198,7 @@ class _LCSegmentTabsState extends State<LCSegmentTabs> {
               indicatorPadding: widget.indicatorPadding,
               indicatorWeight: widget.indicatorWeight,
               tabs: widget.tabs,
+              dividerHeight: 0,
             ),
           ),
         ),
