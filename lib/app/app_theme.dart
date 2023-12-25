@@ -6,6 +6,8 @@ import 'package:leisure_games/app/res/colorx.dart';
 class AppTheme{
   AppTheme._internal();
 
+
+
   static AppTheme? instance;
 
   static getInstance() {
