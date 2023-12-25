@@ -26,6 +26,7 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
 
   @override
   void initState() {
+    logic.checkPermission(context);
     logic.initController();
     state.tabController = TabController(length: state.pages.length,vsync: this);
     super.initState();

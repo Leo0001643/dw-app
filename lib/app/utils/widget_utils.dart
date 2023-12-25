@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,8 +15,11 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
+import 'package:open_filex/open_filex.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:http/http.dart' as http;
@@ -40,7 +44,28 @@ class WidgetUtils {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r),),
+        backgroundColor: bg,
+        minimumSize: Size(width, height),
+        maximumSize: Size(width, height),
+        padding: EdgeInsets.zero,
+      ),
+      child: Text(text,
+        style: TextStyle(fontSize: textSize.sp,color: textColor,fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+
+  Widget buildOutlineButton(String text,double width,double height,Color lineColor,
+      {Color? bg,Color textColor = Colors.white,double textSize = 14,VoidCallback? onPressed}){
+    return OutlinedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: lineColor,width: 2.r),
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+        shadowColor: Colors.black,
         backgroundColor: bg,
         minimumSize: Size(width, height),
         maximumSize: Size(width, height),
@@ -527,32 +552,63 @@ class WidgetUtils {
     return Image.memory(base64Decode(base64String),fit: BoxFit.fill,width: width,height: height,);
   }
 
+  ///打开游戏页面
+  void loginJump(String title,Map<String,dynamic> params,){
 
-  void loginJump(Map<String,dynamic> params,){
     HttpService.loginBusinessAgent(params).then((value) {
-      if(value is Map){
-        launchUrl(Uri.parse(value["gameUrl"]),mode: LaunchMode.externalApplication);
-        // Get.toNamed(Routes.html,arguments: HtmlEvent(data: value["gameUrl"],isHtmlData:false,pageTitle: ""));
-      } else {
-        // loggerArray(["打印网页数据提取",value.toString().split("\n")]);
-        /*var params = <String,String>{};
-        var url = "";
-        value.toString().replaceAll("type=\"hidden\"", "").replaceAll("type=\'hidden\'", "")
-            .split("\n").forEach((element) {
-              if(element.contains("action=\"")){
-                url = element.replaceAll("<form method=\"post\" name=\"form1\" action=\"", "").replaceAll("\">", "");
-              } else {
-                var list = element.replaceAll(" ", "").split("value=");
-                if(unEmpty(list) && list.length == 2){
-                  params[list[0].replaceAll("<inputname=\"", "").replaceAll("\"]", "").replaceAll("\"", "")]
-                  = list[1].replaceAll("/>]", "").replaceAll("\"", "").replaceAll("/>", "").replaceAll(">", "");
-                }
+      // if(GetPlatform.isIOS){
+        if(value is Map){
+          Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value["gameUrl"],isHtmlData:false,pageTitle: title));
+        } else {
+          /*var params = <String,String>{};
+          var url = "";
+          value.toString().replaceAll("type=\"hidden\"", "").replaceAll("type=\'hidden\'", "")
+              .split("\n").forEach((element) {
+            if(element.contains("action=\"")){
+              url = element.replaceAll("<form method=\"post\" name=\"form1\" action=\"", "").replaceAll("\">", "");
+            } else {
+              var list = element.replaceAll(" ", "").split("value=");
+              if(unEmpty(list) && list.length == 2){
+                params[list[0].replaceAll("<inputname=\"", "").replaceAll("\"]", "").replaceAll("\"", "")]
+                = list[1].replaceAll("/>]", "").replaceAll("\"", "").replaceAll("/>", "").replaceAll(">", "");
               }
-        });
-        loggerArray(["截取出来的数据处理",url,params]);*/
-        ///url_launcher可以打开文件 ，可以把value数据写到本地文件里然后用他打开
-        Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: ""));
-      }
+            }
+          });
+          loggerArray(["截取出来的数据处理",url,params]);
+          launchUrl(Uri.dataFromString(url,parameters: params),mode: LaunchMode.externalApplication);*/
+          Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: title));
+        }
+        return;
+      // }
+      DialogUtils().showLoadGameDialog(Get.context!, title,).then((inapp) {
+        if(unEmpty(inapp)){
+          if(value is Map){
+            if(inapp!){
+              Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value["gameUrl"],isHtmlData:false,pageTitle: title));
+            } else {
+              launchUrl(Uri.parse(value["gameUrl"]),mode: LaunchMode.externalApplication);
+            }
+          } else {
+            // loggerArray(["打印网页数据提取",value.toString().split("\n")]);
+            if(inapp!){
+              Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: title));
+            } else {
+              ///OpenFilex可以打开文件 ，可以把value数据写到本地文件里然后用他打开
+              getTemporaryDirectory().then((cpath) {
+                var path = '${cpath.path}/${title}.html';
+                var file = File(path);
+                file.writeAsString(value).then((value) {
+                  var url = "file:$path";
+                  loggerArray(["显示文件",path,url]);
+                  OpenFilex.open(path,type: "text/html",uti: "public.html").then((result) {
+                    loggerArray(["文件打开结果",result.type,result.message]);
+                  });
+                });
+              });
+            }
+          }
+        }
+      });
     });
   }
 

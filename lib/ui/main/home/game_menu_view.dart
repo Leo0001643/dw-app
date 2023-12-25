@@ -414,7 +414,7 @@ class StateGameMenuView extends State<GameMenuView>{
         params["gameCode"] = element.gameCode;
       }
     }
-    WidgetUtils().loginJump(params);
+    WidgetUtils().loginJump(element.gameName.em(),params);
   }
 
 

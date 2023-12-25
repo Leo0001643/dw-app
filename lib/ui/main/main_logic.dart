@@ -49,10 +49,7 @@ class MainLogic extends GetxController {
     ///iOS
     // You can request multiple permissions at once.
     Map<Permission, PermissionStatus> statuses = await [
-      Permission.phone,
       Permission.storage,
-      Permission.mediaLibrary,
-      Permission.photos,
     ].request();
     statuses.forEach((key, value) {
       if(value.isDenied){///被拒绝了

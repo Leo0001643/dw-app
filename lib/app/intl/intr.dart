@@ -579,6 +579,12 @@ class Intr extends Translations{
   String get wodeshoucang => 'wodeshoucang'.tr;
   String get lianxiwomen => 'lianxiwomen'.tr;
   String get guojizhan2023 => '2023guojizhan'.tr;
+  String get yingyongneijiazai => 'yingyongneijiazai'.tr;
+  String get liulanqidakai => 'liulanqidakai'.tr;
+
+
+
+
 
 
 
@@ -1138,6 +1144,8 @@ class Intr extends Translations{
       "wodeshoucang":"我的收藏",
       "lianxiwomen":"联系我们",
       "2023guojizhan":"@2023国际站",
+      "yingyongneijiazai":"应用内轻加载",
+      "liulanqidakai":"使用系统默认浏览器打开",
 
 
 

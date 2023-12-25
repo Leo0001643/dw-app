@@ -149,7 +149,7 @@ class StateMinePage extends State<MinePage>{
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                WidgetUtils().buildElevatedButton(Intr().tixian, 131.w, 45.h,
+                                WidgetUtils().buildOutlineButton(Intr().tixian, 131.w, 45.h,Colors.black,
                                     bg: ColorX.cardBg5(),textColor: ColorX.text0917(),onPressed: (){
                                       Get.toNamed(Routes.withdraw);
                                     }),

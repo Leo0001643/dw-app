@@ -135,7 +135,7 @@ class TableGameListLogic extends GetxController {
       "platform":element.platformName,"gameCode":element.gameidstr,
       "oid":user?.oid,"username":user?.username,"platformURL": Constants.host};
 
-    WidgetUtils().loginJump(params);
+    WidgetUtils().loginJump(element.gamename.em(),params);
   }
 
 

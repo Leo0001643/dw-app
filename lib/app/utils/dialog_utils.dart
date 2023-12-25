@@ -15,6 +15,7 @@ import 'package:leisure_games/app/widget/game_brand_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/game_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/history_lottery_btm_dialog.dart';
 import 'package:leisure_games/app/widget/language_dialog.dart';
+import 'package:leisure_games/app/widget/load_game_dialog.dart';
 import 'package:leisure_games/app/widget/lucky_draw_dialog.dart';
 import 'package:leisure_games/app/widget/message_dialog.dart';
 import 'package:leisure_games/app/widget/notice_dialog.dart';
@@ -148,6 +149,16 @@ class DialogUtils {
     );
   }
 
+  ///游戏页面加载选择弹窗
+  Future<bool?> showLoadGameDialog(BuildContext context,String title){
+    return showDialog<bool>(
+        context: context,
+        builder: (context){
+          return LoadGameDialog().create(context, title);
+        }
+    );
+  }
+
   ///信息确认弹窗
   Future<bool?> showMessageDialog(BuildContext context,String msg,
       {String? title,String? btnConfirm,String? btnCancel,VoidCallback? onConfirm,VoidCallback? onCancel}){
@@ -174,7 +185,6 @@ class DialogUtils {
         }
     );
   }
-
 
   ///选择房间
   Future<Pc28LottoRoomsTables?> showSelectRoomBtmDialog(BuildContext context,Pc28LottoEntity pc28Lotto){
