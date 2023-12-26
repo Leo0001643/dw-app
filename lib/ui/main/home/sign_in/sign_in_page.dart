@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/check_in_info_entity.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import 'sign_in_logic.dart';
@@ -26,7 +28,7 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   void initState() {
-    state.currentDate.value = DateUtil.formatDate(DateTime.now(),format: Intr().nianyueri);
+    // state.currentDate.value = DateUtil.formatDate(DateTime.now(),format: Intr().nianyueri);
     super.initState();
   }
 
@@ -47,40 +49,34 @@ class _SignInPageState extends State<SignInPage> {
         children: [
           WidgetUtils().buildAppBar(Intr().qiandaoyouli,msg: true,bgColor: Colors.transparent),
           Container(
-            height: 87.h,
+            height: 0.14.sh,
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.symmetric(horizontal: 25.w,),
-            child: Wrap(
-              crossAxisAlignment: WrapCrossAlignment.end,
-              children: [
-                Text("12.19",style: TextStyle(fontSize: 32.sp,color: ColorX.color_091722,decoration: TextDecoration.none),),
-                SizedBox(width: 5.w,),
-                Text(Intr().jifen,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none,),),
-              ],
-            ),
+            child: Obx(() {
+              return Text.rich(TextSpan(
+                children: [
+                  TextSpan(text: Intr().jifen,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none,),),
+                  WidgetSpan(child: SizedBox(width: 5.w,)),
+                  TextSpan(text:state.checkInfo.value.point.em(),style: TextStyle(fontSize: 32.sp,color: ColorX.color_091722,fontWeight: FontWeight.w700),),
+                ],
+              ));
+            }),
           ),
           Container(
-            height: 60.h,
+            height: 0.08.sh,
             // color: Colors.black12,
-            padding: EdgeInsets.symmetric(horizontal: 10.w,),
+            padding: EdgeInsets.symmetric(horizontal: 30.w,),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 20.w,top: 15.h,),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(Intr().benyueyiqian(["2"]),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none),),
-                      Text(Intr().zongjifen_(["6.19"]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d,decoration: TextDecoration.none),),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 40.w,top: 17.h,),
-                  child: Text(state.currentDate.value,style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none),),
-                ),
+                Obx(() {
+                  return Text(Intr().benyueyiqian([state.checkInfo.value.signInNum.em()]),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none),);
+                }),
+                Obx(() {
+                  var date = DateUtil.formatDateMs(state.checkInfo.value.timestamp.em() * 1000,isUtc: true,format: Intr().nianyueri);
+                  return Text(date,style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none),);
+                }),
               ],
             ),
           ),
@@ -89,27 +85,47 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.symmetric(horizontal: 15.w,),
             color: Colors.transparent,
             elevation: 0,
-            content: buildCalendar(),
+            content: Column(
+              children: [
+                Obx(() {
+                  return buildCalendar(state.checkInfo.value);
+                }),
+                SizedBox(height: 15.h,),
+                Obx(() {
+                  var date = DateUtil.getDateTimeByMs(state.checkInfo.value.timestamp.em() * 1000,isUtc: true,);
+                  if(state.checkInfo.value.log?.contains("${date.day}") == true){
+                    return WidgetUtils().buildElevatedButton(Intr().yiqiandao, 320.w, 48.h, bg: ColorX.color_ffe0ac,onPressed: (){});
+                  } else {
+                    return WidgetUtils().buildElevatedButton(Intr().lijiqiandao, 320.w, 48.h, bg: ColorX.color_fc9824,onPressed: (){
+                      logic.checkInPoint(context);
+                    });
+                  }
+                }),
+              ],
+            ),
           ),
-          SizedBox(height: 15.h,),
-          WidgetUtils().buildElevatedButton(Intr().lijiqiandao, 320.w, 48.h, bg: ColorX.color_fc9824,onPressed: (){
-            DialogUtils().showSignSuccessDialog(context, logic);
-          }),
+          Expanded(
+            child: Container(
+              // color: Colors.black12,
+              alignment: Alignment.center,
+              child: Text(Intr().biaozhunshijian,style: TextStyle(fontSize: 14.sp,color: Colors.white,),textAlign: TextAlign.center,),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget buildCalendar() {
-    var now = DateTime.now();
+  Widget buildCalendar(CheckInInfoEntity check) {
+    var now = DateUtil.getDateTimeByMs(check.timestamp.em() * 1000,isUtc: true);
     return TableCalendar(
       firstDay: DateTime.utc(now.year, now.month, 1),
       lastDay: DateTime.utc(now.year, now.month + 1, 0),
       focusedDay: now,
       locale: 'zh_ZH',
       headerVisible: false,
-      rowHeight: 52.h,
-      daysOfWeekHeight: 45.h,
+      rowHeight: 40.h,
+      daysOfWeekHeight: 35.h,
       calendarBuilders: CalendarBuilders(
         dowBuilder: (context,day){
           var text = DataUtils.getWeekday(day);
@@ -123,8 +139,8 @@ class _SignInPageState extends State<SignInPage> {
             ///只渲染当月数据
             if(day.day <= focusedDay.day){
               ///已签到 || 当天
-              if(day.day % 2 == 0 || day.day == focusedDay.day){
-                var text = day.day == focusedDay.day ? "•":"√";
+              if(check.log?.contains("${day.day}") ==  true || day.day == focusedDay.day){
+                var text = check.log?.contains("${day.day}") ==  true ? "√":"•";
                 return Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18.r),
@@ -139,11 +155,12 @@ class _SignInPageState extends State<SignInPage> {
                   padding: EdgeInsets.symmetric(vertical: 1.h,),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Text("${day.day}",
                         textAlign: TextAlign.center,style: TextStyle(fontSize: 14.sp,
-                          color: Colors.white,fontWeight: FontWeight.w500,),),
-                      Text(text,style: TextStyle(fontSize: 14.sp,color: Colors.white,),),
+                          color: Colors.white,fontWeight: FontWeight.w700,),),
+                      Text(text,style: TextStyle(fontSize: 12.sp,color: Colors.white,fontWeight: FontWeight.w700,),),
                     ],
                   ),
                 );

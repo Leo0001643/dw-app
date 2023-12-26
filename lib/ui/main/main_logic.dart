@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -52,6 +53,7 @@ class MainLogic extends GetxController {
       Permission.storage,
     ].request();
     statuses.forEach((key, value) {
+      loggerArray(['拒绝的权限',key,value]);
       if(value.isDenied){///被拒绝了
         showToast("${'permissionDenied'.tr}=$value");
         return;

@@ -33,7 +33,9 @@ import 'package:leisure_games/app/widget/squeeze_btm_dialog.dart';
 import 'package:leisure_games/app/widget/unbroken_number_btm_dialog.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
+import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
+import 'package:leisure_games/ui/bean/check_point_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -484,21 +486,21 @@ class DialogUtils {
 
 
   ///确认签到
-  void showSignSuccessDialog(BuildContext context,SignInLogic logic){
+  void showSignSuccessDialog(BuildContext context,SignInLogic logic,CheckPointEntity check){
     showDialog(
         context: context,
         builder: (context){
-          return SignSuccessDialog(logic);
+          return SignSuccessDialog(logic,check);
         }
     );
   }
 
   ///抽奖详情
-  void showLuckyDrawDialog(BuildContext context){
-    showDialog(
+  Future<bool?> showLuckyDrawDialog(BuildContext context,List<BetShakeEntity> result){
+    return showDialog<bool>(
         context: context,
         builder: (context){
-          return LuckyDrawDialog();
+          return LuckyDrawDialog(result);
         }
     );
   }

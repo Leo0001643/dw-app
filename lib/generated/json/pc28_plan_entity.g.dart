@@ -102,6 +102,14 @@ Pc28PlanAllJndx28 $Pc28PlanAllJndx28FromJson(Map<String, dynamic> json) {
   if (refreshTime != null) {
     pc28PlanAllJndx28.refreshTime = refreshTime;
   }
+  final String? code = jsonConvert.convert<String>(json['code']);
+  if (code != null) {
+    pc28PlanAllJndx28.code = code;
+  }
+  final String? msg = jsonConvert.convert<String>(json['msg']);
+  if (msg != null) {
+    pc28PlanAllJndx28.msg = msg;
+  }
   return pc28PlanAllJndx28;
 }
 
@@ -109,6 +117,8 @@ Map<String, dynamic> $Pc28PlanAllJndx28ToJson(Pc28PlanAllJndx28 entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['data'] = entity.data?.map((v) => v.toJson()).toList();
   data['refreshTime'] = entity.refreshTime;
+  data['code'] = entity.code;
+  data['msg'] = entity.msg;
   return data;
 }
 
@@ -116,10 +126,14 @@ extension Pc28PlanAllJndx28Extension on Pc28PlanAllJndx28 {
   Pc28PlanAllJndx28 copyWith({
     List<Pc28PlanAllJndx28Data>? data,
     int? refreshTime,
+    String? code,
+    String? msg,
   }) {
     return Pc28PlanAllJndx28()
       ..data = data ?? this.data
-      ..refreshTime = refreshTime ?? this.refreshTime;
+      ..refreshTime = refreshTime ?? this.refreshTime
+      ..code = code ?? this.code
+      ..msg = msg ?? this.msg;
   }
 }
 

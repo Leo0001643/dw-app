@@ -2,17 +2,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/check_point_entity.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
 
 ///确认注单
 class SignSuccessDialog extends StatefulWidget{
 
   final SignInLogic logic;
-  SignSuccessDialog(this.logic, {super.key});
+  final CheckPointEntity check;
+  const SignSuccessDialog(this.logic, this.check,{super.key});
 
   @override
   State<StatefulWidget> createState() =>StateConfirmBetDialog();
@@ -33,12 +36,14 @@ class StateConfirmBetDialog extends State<SignSuccessDialog> with SingleTickerPr
           Text.rich(TextSpan(
             children: [
               TextSpan(text: Intr().bencijiangli,style: TextStyle(fontSize: 18.sp,color: Colors.white,decoration: TextDecoration.none,),),
-              TextSpan(text: " 6 ",style: TextStyle(fontSize: 28.sp,color: Colors.white,decoration: TextDecoration.none,),),
+              TextSpan(text: " ${widget.check.point} ",style: TextStyle(fontSize: 28.sp,color: Colors.white,decoration: TextDecoration.none,),),
               TextSpan(text: Intr().jifen,style: TextStyle(fontSize: 18.sp,color: Colors.white,decoration: TextDecoration.none,),),
             ]
           )),
           Text(Intr().gongxiwancheng,style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none,),),
-          Text(Intr().xiaciqiandao([" +1"," 7 "]),style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none,),),
+          Text(Intr().xiaciqiandao([" +${widget.check.nextPoint.em() - widget.check.point.em()}",
+            " ${widget.check.nextPoint} "]),style: TextStyle(fontSize: 14.sp,color: Colors.white,
+            decoration: TextDecoration.none,),),
           SizedBox(height: 25.h,),
           WidgetUtils().buildElevatedButton(Intr().mingtianjixue, 233.w, 48.h, bg: ColorX.color_fc9824,onPressed: (){
             Navigator.of(context).pop();

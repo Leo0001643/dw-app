@@ -2,16 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
+import 'package:leisure_games/ui/bean/shake_info_entity.dart';
 
 import 'points_lottery_state.dart';
 
 class PointsLotteryLogic extends GetxController {
   final PointsLotteryState state = PointsLotteryState();
   Timer? timer;
-  Timer? circleTimer;
+  // Timer? circleTimer;
 
 
   @override
@@ -19,38 +23,80 @@ class PointsLotteryLogic extends GetxController {
     timer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
       state.wheelState.value = !state.wheelState.value;
     });
+    getShakeInfo();
     super.onReady();
   }
 
   @override
   void onClose() {
     timer?.cancel();
-    circleTimer?.cancel();
+    // circleTimer?.cancel();
     state.wheelController.reset();
     super.onClose();
   }
 
-  void start(){
+  void start(int count){
     if(state.wheelController.isAnimating){
       return;
     }
     state.wheelController.reset();
     state.wheelController.start();
+    ///次数
+    state.continuousCount = count;
 
-    circleTimer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
-      state.wheelController.stop();
-      circleTimer?.cancel();
-      circleTimer = null;
+    var user = AppData.user();
+    var params = {"oid":user?.oid,"username":user?.username,"betCount":count};
+
+    HttpService.betShake(params).then((value) {
+      ///设置抽奖结果
+      state.result = value;
+      if(unEmpty(value)){
+        var last = value.last;
+        var index = state.lotterys.indexOf(last.bonus.em());
+        state.wheelController.stop(atIndex: index);
+        ///刷新剩余积分
+        state.pointLottery.value.point = last.point;
+        state.pointLottery.refresh();
+      }
     });
+
+    // circleTimer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
+    //   state.wheelController.stop();
+    //   circleTimer?.cancel();
+    //   circleTimer = null;
+    // });
 
   }
 
+  ///中奖结果展示
   void onResult(BuildContext context,int v){
-    ///最终转盘结果回调
-    showToast("${state.lotterys[v]}");
-    loggerArray(["旋转结果回调",v,state.lotterys[v]]);
-    DialogUtils().showLuckyDrawDialog(context);
+    if(unEmpty(state.result)){
+      DialogUtils().showLuckyDrawDialog(context,state.result!);
+    }
+    // var value = state.lotterys[v];
+    // ShakeInfoShakes? result;
+    // state.pointLottery.value.shakes?.forEach((element) {
+    //   if(element.money == value){
+    //     result = element;
+    //   }
+    // });
+    // ///最终转盘结果回调
+    // if(unEmpty(result?.money)){
+    //   showToast("${result?.money}");
+    //   // loggerArray(["旋转结果回调",v,state.lotterys[v]]);
+    //
+    //   DialogUtils().showLuckyDrawDialog(context);
+    // }
+  }
 
+  void getShakeInfo() {
+    var user = AppData.user();
+    var params = {"oid":user?.oid,"username":user?.username};
+
+    HttpService.getShakeInfo(params).then((value) {
+      state.pointLottery.value = value;
+      state.pointLottery.refresh();
+    });
   }
 
 

@@ -2,13 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 
 class LuckyDrawDialog extends StatefulWidget{
 
-  LuckyDrawDialog({super.key});
+  final List<BetShakeEntity> result;
+  const LuckyDrawDialog(this.result,{super.key});
 
   @override
   State<StatefulWidget> createState() =>StateLuckyDrawDialog();
@@ -24,7 +27,7 @@ class StateLuckyDrawDialog extends State<LuckyDrawDialog> with SingleTickerProvi
       height: 180.h,
       width: 195.w,
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage(ImageX.wins),fit: BoxFit.fill),
         ),
         height: 180.h,
@@ -32,12 +35,10 @@ class StateLuckyDrawDialog extends State<LuckyDrawDialog> with SingleTickerProvi
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-
-            // buildSingleDraw(),
-            buildMultipleDraw(),
+            widget.result.length == 1 ?buildSingleDraw(widget.result.first):buildMultipleDraw(widget.result),
             SizedBox(height: 15.h,),
             GestureDetector(
-              onTap: ()=> Navigator.of(context).pop(),
+              onTap: ()=> Navigator.pop(context,true),
               child: Image.asset(ImageX.close_btn,width: 94.w,height: 28.h,fit: BoxFit.fill,),
             ),
           ],
@@ -46,34 +47,37 @@ class StateLuckyDrawDialog extends State<LuckyDrawDialog> with SingleTickerProvi
     );
   }
 
-  Widget buildSingleDraw() {
+  Widget buildSingleDraw(BetShakeEntity shake) {
     return Column(
       children: [
         SizedBox(height: 10.h,),
         Container(
           height: 60.h,
           alignment: Alignment.center,
-          child: Text(Intr().gongxininhuode,style: TextStyle(fontSize: 20.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600,decoration: TextDecoration.none),),
+          child: Text(shake.bonus.em() > 0 ? Intr().gongxininhuode:Intr().zhuninxiacizdj,style: TextStyle(fontSize: 20.sp,color: ColorX.color_fc243b,
+              fontWeight: FontWeight.w600,decoration: TextDecoration.none),),
         ),
         Container(color: ColorX.color_fc243b,height: 0.5.h,width: 150.w,),
         SizedBox(height: 10.h,),
-        Text("${Intr().jiangjin}¥15.8",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600,decoration: TextDecoration.none,),),
+        Text(shake.bonus.em() > 0 ? "${Intr().jiangjin}¥${shake.bonus}" : Intr().jiangjinfengfu,
+          style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600,decoration: TextDecoration.none,),),
       ],
     );
   }
 
-  Widget buildMultipleDraw() {
+  Widget buildMultipleDraw(List<BetShakeEntity> result) {
     return Container(
       height: 100.h,
       child: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height: 20.h,),
-            buildMultipleItem("${Intr().cishu}1","${Intr().jiangjin}¥15.8"),
-            buildMultipleItem("${Intr().cishu}2","${Intr().jiangjin}¥15.8"),
-            buildMultipleItem("${Intr().cishu}3","${Intr().jiangjin}¥15.8"),
-            buildMultipleItem("${Intr().cishu}4","${Intr().jiangjin}¥15.8"),
-            buildMultipleItem("${Intr().cishu}5","${Intr().jiangjin}¥15.8"),
+            ...result.map((e) => buildMultipleItem("${Intr().cishu}${result.indexOf(e) + 1}","${Intr().jiangjin}¥${e.bonus.em()}")),
+            // buildMultipleItem("${Intr().cishu}1","${Intr().jiangjin}¥15.8"),
+            // buildMultipleItem("${Intr().cishu}2","${Intr().jiangjin}¥15.8"),
+            // buildMultipleItem("${Intr().cishu}3","${Intr().jiangjin}¥15.8"),
+            // buildMultipleItem("${Intr().cishu}4","${Intr().jiangjin}¥15.8"),
+            // buildMultipleItem("${Intr().cishu}5","${Intr().jiangjin}¥15.8"),
           ],
         ),
       ),

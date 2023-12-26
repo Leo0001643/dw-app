@@ -12,6 +12,7 @@ import 'package:luckywheel/luckywheel.dart';
 
 import 'points_lottery_logic.dart';
 
+///积分摇奖
 class PointsLotteryPage extends StatefulWidget {
   const PointsLotteryPage({Key? key}) : super(key: key);
 
@@ -57,11 +58,14 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
               decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage(ImageX.accountBg),fit: BoxFit.fill,),
               ),
-              width: 120.r,
+              // width: 120.r,
               height: 22.r,
-              padding: EdgeInsets.only(left: 28.w),
-              alignment: Alignment.centerLeft,
-              child: Text(Intr().jifenmeici(["90.06"]),style: TextStyle(fontSize: 12.sp,color: Colors.white,),),
+              padding: EdgeInsets.only(left: 30.w,right: 10.w),
+              // alignment: Alignment.centerLeft,
+              child: Obx(() {
+                return Text(Intr().jifenmeici(["${state.pointLottery.value.point.em()}"]),
+                  style: TextStyle(fontSize: 12.sp,color: Colors.white,),);
+              }),
             ),
             SizedBox(height: 10.h,),
             Obx(() {
@@ -93,7 +97,7 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
                       padding: EdgeInsets.only(bottom: 30.h,),
                       child: InkWell(
                         child: Image.asset(ImageX.drawBtnP(),),
-                        onTap: ()=> logic.start(),
+                        onTap: ()=> logic.start(1),
                       ),
                     ),
                   ),
@@ -103,10 +107,10 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
             SizedBox(height: 10.h,),
             Row(
               children: [
-                buildFastPoints(Intr().lianyao5),
-                buildFastPoints(Intr().lianyao10),
-                buildFastPoints(Intr().lianyao15),
-                buildFastPoints(Intr().lianyao20),
+                buildFastPoints(Intr().lianyao5,5),
+                buildFastPoints(Intr().lianyao10,10),
+                buildFastPoints(Intr().lianyao15,15),
+                buildFastPoints(Intr().lianyao20,20),
               ],
             ),
             Expanded(child: Container()),
@@ -133,10 +137,10 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
     );
   }
 
-  Widget buildFastPoints(String text) {
+  Widget buildFastPoints(String text,int index) {
     return Expanded(
       child: InkWell(
-        onTap: ()=> logic.start(),
+        onTap: ()=> logic.start(index),
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(image: AssetImage(ImageX.btn_bg),fit: BoxFit.fill,),

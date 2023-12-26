@@ -15,8 +15,11 @@ import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
+import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
+import 'package:leisure_games/ui/bean/check_in_info_entity.dart';
+import 'package:leisure_games/ui/bean/check_point_entity.dart';
 import 'package:leisure_games/ui/bean/chess_info_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/current_bet_entity.dart';
@@ -46,6 +49,7 @@ import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/bean/phrase_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
@@ -55,6 +59,7 @@ import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
+import 'package:leisure_games/ui/bean/shake_info_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
@@ -411,9 +416,25 @@ class HttpService{
     return buildFuture<String>(()=> _client.gameFav(params),needMsg: true);
   }
 
+  static Future<CheckInInfoEntity> queryCheckInInfo(Map<String,dynamic> params,){
+    return buildFuture<CheckInInfoEntity>(()=> _client.queryCheckInInfo(params));
+  }
 
+  static Future<CheckPointEntity> checkInPoint(Map<String,dynamic> params,){
+    return buildFuture<CheckPointEntity>(()=> _client.checkInPoint(params));
+  }
 
+  static Future<ShakeInfoEntity> getShakeInfo(Map<String,dynamic> params,){
+    return buildFuture<ShakeInfoEntity>(()=> _client.getShakeInfo(params));
+  }
 
+  static Future<List<BetShakeEntity>> betShake(Map<String,dynamic> params,){
+    return buildFuture<List<BetShakeEntity>>(()=> _client.betShake(params),loading: false);
+  }
+
+  static Future<Pc28PlanEntity> getPC28Plan(int termCount,){
+    return buildFuture<Pc28PlanEntity>(()=> _client.getPC28Plan(termCount),loading: false);
+  }
 
 
 

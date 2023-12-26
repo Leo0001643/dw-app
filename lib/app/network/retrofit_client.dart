@@ -8,8 +8,11 @@ import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
+import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
+import 'package:leisure_games/ui/bean/check_in_info_entity.dart';
+import 'package:leisure_games/ui/bean/check_point_entity.dart';
 import 'package:leisure_games/ui/bean/chess_info_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/current_bet_entity.dart';
@@ -50,6 +53,7 @@ import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
+import 'package:leisure_games/ui/bean/shake_info_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
@@ -309,6 +313,34 @@ abstract class RetrofitClient{
 
   @POST('/ds-api-web/gameFav')
   Future<BaseResponseEntity<String>> gameFav(@Body() Map<String,dynamic> params,);
+
+
+  @GET('/ds-api-web/queryCheckInInfo')
+  Future<BaseResponseEntity<CheckInInfoEntity>> queryCheckInInfo(@Queries() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/checkInPoint')
+  Future<BaseResponseEntity<CheckPointEntity>> checkInPoint(@Body() Map<String,dynamic> params,);
+
+  @GET('/ds-api-web/getShakeInfo')
+  Future<BaseResponseEntity<ShakeInfoEntity>> getShakeInfo(@Queries() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/betShake')
+  Future<BaseResponseEntity<List<BetShakeEntity>>> betShake(@Queries() Map<String,dynamic> params,);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

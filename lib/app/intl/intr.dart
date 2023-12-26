@@ -239,7 +239,7 @@ class Intr extends Translations{
   String get qiandaoyouli => 'qiandaoyouli'.tr;
   String get jifen => 'jifen'.tr;
   String benyueyiqian(List<String> args) => 'benyueyiqian'.trArgs(args);
-  String zongjifen_(List<String> args) => 'zongjifen_'.trArgs(args);
+  String get zongjifen => 'zongjifen'.tr;
   String get lijiqiandao => 'lijiqiandao'.tr;
   String get day_yi => 'day_yi'.tr;
   String get day_er => 'day_er'.tr;
@@ -581,10 +581,10 @@ class Intr extends Translations{
   String get guojizhan2023 => '2023guojizhan'.tr;
   String get yingyongneijiazai => 'yingyongneijiazai'.tr;
   String get liulanqidakai => 'liulanqidakai'.tr;
-
-
-
-
+  String get biaozhunshijian => 'biaozhunshijian'.tr;
+  String get yiqiandao => 'yiqiandao'.tr;
+  String get zhuninxiacizdj => 'zhuninxiacizdj'.tr;
+  String get jiangjinfengfu => 'jiangjinfengfu'.tr;
 
 
 
@@ -804,8 +804,9 @@ class Intr extends Translations{
       "qiandaoyouli":"签到有礼",
       "jifen":"积分",
       "benyueyiqian":"本月已签到%s次",
-      "zongjifen_":"总积分%s",
+      "zongjifen":"总积分",
       "lijiqiandao":"立即签到",
+      "yiqiandao":"已签到",
       "day_yi":"一",
       "day_er":"二",
       "day_san":"三",
@@ -1146,6 +1147,9 @@ class Intr extends Translations{
       "2023guojizhan":"@2023国际站",
       "yingyongneijiazai":"应用内轻加载",
       "liulanqidakai":"使用系统默认浏览器打开",
+      "biaozhunshijian":"本站标准时间以美东时间为准\n美东时间=北京时间-12小时",
+      "zhuninxiacizdj":"祝您下次中大奖",
+      "jiangjinfengfu":"奖金丰富 抢到赚到...",
 
 
 

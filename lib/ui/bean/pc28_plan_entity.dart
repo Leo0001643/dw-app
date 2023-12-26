@@ -46,6 +46,9 @@ class Pc28PlanAll {
 class Pc28PlanAllJndx28 {
 	List<Pc28PlanAllJndx28Data>? data;
 	int? refreshTime;
+	String? code;
+	String? msg;
+
 
 	Pc28PlanAllJndx28();
 
