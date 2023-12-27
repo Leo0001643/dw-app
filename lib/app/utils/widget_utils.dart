@@ -62,10 +62,9 @@ class WidgetUtils {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: lineColor,width: 2.r),
           borderRadius: BorderRadius.circular(10.r),
         ),
-        shadowColor: Colors.black,
+        side: BorderSide(color: lineColor,width: 1.r),
         backgroundColor: bg,
         minimumSize: Size(width, height),
         maximumSize: Size(width, height),

@@ -585,8 +585,12 @@ class Intr extends Translations{
   String get yiqiandao => 'yiqiandao'.tr;
   String get zhuninxiacizdj => 'zhuninxiacizdj'.tr;
   String get jiangjinfengfu => 'jiangjinfengfu'.tr;
-
-
+  String get dengdaikaipan => 'dengdaikaipan'.tr;
+  String get weihuzhong => 'weihuzhong'.tr;
+  String get yiguanpan => 'yiguanpan'.tr;
+  String get yixiushi => 'yixiushi'.tr;
+  String yichenggongqiehuan_(List<String> args) => 'yichenggongqiehuan_'.trArgs(args);
+  String get jifenbuzu => 'jifenbuzu'.tr;
 
 
 
@@ -782,6 +786,7 @@ class Intr extends Translations{
       "dixqitouzhu":"第%s期，投注: %s",
       "dixqikaijiang":"第%s期，开奖: %s",
       "fengpanzhong":"封盘中",
+      "dengdaikaipan":"等待开盘",
       "shuaxin":"刷新",
       "kaijiangjieguo":"开奖结果",
       "shujufenxi":"数据分析",
@@ -1150,7 +1155,11 @@ class Intr extends Translations{
       "biaozhunshijian":"本站标准时间以美东时间为准\n美东时间=北京时间-12小时",
       "zhuninxiacizdj":"祝您下次中大奖",
       "jiangjinfengfu":"奖金丰富 抢到赚到...",
-
+      "weihuzhong":"维护中",
+      "yiguanpan":"已关盘",
+      "yixiushi":"已休市",
+      "yichenggongqiehuan_":"已成功切换为 %s 钱包,\n进入游戏将使用%s",
+      "jifenbuzu":"积分不足",
 
 
 

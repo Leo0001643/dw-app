@@ -43,18 +43,20 @@ class RechargeOfflineLogic extends GetxController {
   }
 
   void companyDeposit() {
+
     var agree = state.agreeList[state.selectIndex.value];
 
     ///如果是银行转账，传参不一样
     var outBankId = (state.paymentInfo.value).id;
     var outBankName = (state.paymentInfo.value).bankName;
-    if(unEmpty(state.selectBank.value)){
+
+    if(unEmpty(state.selectBank.value.bankName)){
       outBankId = state.selectBank.value.id;
       outBankName = state.selectBank.value.bankName;
     }
 
     var params = <String,dynamic>{"oid":AppData.user()?.oid.em(),"username":AppData.user()?.username.em(),
-      "inBankSetId":agree.bankId,"money":state.remitAmount,
+      "inBankSetId":agree.id,"money":state.remitAmount,
       "userAddTime":DateUtil.formatDateMs(DateTime.now().millisecondsSinceEpoch),
       "outBankId":outBankId,"outBankName":outBankName,"outCardUser":state.remitName,};
 

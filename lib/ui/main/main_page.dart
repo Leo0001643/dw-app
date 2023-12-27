@@ -49,7 +49,7 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
         controller: state.pageController,
         children: state.pages,
       ),
-      endDrawer: EndsDrawerView(),
+      endDrawer: const EndsDrawerView(),
       bottomNavigationBar: GetBuilder<GetMaterialController>(
         builder: (ct){
           return ConvexAppBar.builder(

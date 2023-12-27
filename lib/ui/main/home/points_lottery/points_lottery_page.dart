@@ -121,7 +121,7 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
-                    onTap: ()=> showToast("暂无活动规则"),
+                    onTap: ()=> logic.lotteryRole(),
                     child: Text(Intr().huodongguizhe,style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc9824,),),
                   ),
                   InkWell(

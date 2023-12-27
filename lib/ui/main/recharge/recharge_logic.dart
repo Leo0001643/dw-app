@@ -53,6 +53,7 @@ class RechargeLogic extends GetxController {
         state.usdtBal.value = value;
         state.usdtBal.refresh();
       });
+
       HttpService.getPaymentList(user.oid.em(), user.username.em()).then((value) {
         var usdtIndex = 0;
         value.banks?.forEach((element) {

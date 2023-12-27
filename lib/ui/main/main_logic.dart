@@ -1,6 +1,7 @@
 
 import 'dart:async';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
@@ -50,10 +51,14 @@ class MainLogic extends GetxController {
     ///android权限申请需要在AndroidManifest.xml里添加对应的权限声明
     ///iOS
     // You can request multiple permissions at once.
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.storage,
-    ].request();
-    statuses.forEach((key, value) {
+    Map<Permission, PermissionStatus>? statuses ;
+    if(GetPlatform.isAndroid){
+      final androidInfo = await DeviceInfoPlugin().androidInfo;
+      statuses = await [androidInfo.version.sdkInt <= 32 ? Permission.storage:Permission.photos].request();
+    } else if(GetPlatform.isIOS){
+      statuses = await [Permission.photos,].request();
+    }
+    statuses?.forEach((key, value) {
       loggerArray(['拒绝的权限',key,value]);
       if(value.isDenied){///被拒绝了
         showToast("${'permissionDenied'.tr}=$value");

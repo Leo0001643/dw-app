@@ -20,6 +20,7 @@ import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 class EndsDrawerView extends StatefulWidget{
+  const EndsDrawerView({super.key});
 
 
   @override
@@ -222,6 +223,22 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                       ),
                     ),
                   ),
+                  // SizedBox(height: 15.h,),
+                  // Divider(color: ColorX.color_10_949,height: 1.h,),
+                  // SizedBox(height: 15.h,),
+                  // Container(
+                  //   margin: EdgeInsets.symmetric(vertical: 5.h),
+                  //   child: Row(
+                  //     children: [
+                  //       Image.asset(ImageX.icon_download,color: ColorX.icon586()),
+                  //       SizedBox(width: 5.w,),
+                  //       Text(Intr().xzapp,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                  //       Expanded(child: Container()),
+                  //       Text(Intr().lxjbhb,style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+                  //       Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),

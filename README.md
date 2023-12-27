@@ -121,27 +121,14 @@ dart pub run build_runner build
 flutter pub run build_runner build
 
 
+测试文档：
+
+https://docs.google.com/spreadsheets/d/1wZa11cDB_2ldGqhj7n0fwRjgJkav3ccKnKKCGZ_JE8k/edit?usp=sharing
 
 
 
-url_getWebConfig,
-url_getSiteWalletConfig,
-url_getBalance,
-url_switchWallets,
-url_getCustomerService,
-url_getGameKind,
-url_getPC28Plan,
-url_getPc28LottoList,
-url_getRoomCopyWriting,
-url_getPic30,
-url_protect,
-url_getDomainConfig ，
-url_getNotice,
-url_getMessage,
-url_loginBusinessAgent
-url_getActStatus
-
-
+1.需要优化走势页面的数据处理，把计算逻辑放到异步；
+2.维护接口还有，网站是否开启了会员注册，代理注册功能，如果没有开启 是不允许会员注册的。
 
 
 

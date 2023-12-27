@@ -30,6 +30,13 @@ class Constants {
 
   static const PC28 = "PC28";
 
+  ///PC28游戏类型
+  static const fastbtb28Code = "fastbtb28";
+  static const jndx28Code = "jndx28";
+  static const keno28Code = "keno28";
+  static const tw28Code = "tw28";
+
+
 
   static const html_btc = "https://btc.com";
   static const html_blockchain = "https://www.blockchain.com/btc/unconfirmed-transactions";

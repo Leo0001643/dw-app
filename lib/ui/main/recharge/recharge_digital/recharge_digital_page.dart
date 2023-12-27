@@ -416,9 +416,9 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
   Widget buildAgreementItem(Object item,bool select) {
     var name = "";
     if(item is DigiccyChannelWallet){
-      name = (item).protocol.em();
+      name = "${(item).protocol.em()} ${Intr().chongzhi}";
     }else if(item is PaymentChannelBankSet){
-      name = (item).bankName.em();
+      name = "${(item).bankName.em()} ${Intr().chongzhi}\n${item.bankBranch.em()}";
     }
     return Stack(
       children: [
@@ -428,8 +428,8 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
             gradient: select ? const LinearGradient(colors: [ColorX.color_ff5164,ColorX.color_fd273e],begin: Alignment.topLeft,end:
             Alignment.bottomRight) : const LinearGradient(colors: [Colors.white,Colors.white]),
           ),
-          width: 150.w,height: 50.h,
-          padding: EdgeInsets.symmetric(vertical: 5.h),
+          width: 150.w,
+          padding: EdgeInsets.symmetric(vertical: 10.h),
           alignment: Alignment.center,
           child: Text(name,style: TextStyle(fontSize: 16.sp,color: select?Colors.white:ColorX.color_091722,fontWeight: FontWeight.w600),),
         ),
