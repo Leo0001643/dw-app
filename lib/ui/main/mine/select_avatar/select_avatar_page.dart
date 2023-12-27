@@ -44,7 +44,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().genghuantouxiang,msg: true),
+      appBar: WidgetUtils().buildAppBar(Intr().genghuantouxiang,msg: true,drawer:true),
       backgroundColor: ColorX.pageBg2(),
       body: Column(
         children: [
