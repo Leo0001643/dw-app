@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
@@ -8,7 +10,7 @@ class SelectAvatarState {
   SelectAvatarState() {
     ///Initialize variables
   }
-
+  final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
   var selectIndex = (-1).obs;
 
   var tabIndex = 0.obs;

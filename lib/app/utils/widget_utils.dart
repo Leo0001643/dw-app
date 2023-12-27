@@ -111,7 +111,7 @@ class WidgetUtils {
     );
   }
 
-  AppBar buildAppBar(String? title,{bool msg = false,bool drawer=false,bool back=true,Color? bgColor}){
+  AppBar buildAppBar(String? title,{bool msg = false,bool drawer=false,bool back=true,Color? bgColor,Function? drawEnd}){
     return AppBar(
       title: Text(title.em(),
         style: TextStyle(
@@ -146,7 +146,13 @@ class WidgetUtils {
             Visibility(
               visible: drawer,
               child: InkWell(
-                onTap: ()=> Get.find<MainLogic>().openDrawer(),
+                onTap: (){
+                  if(drawEnd!=null) {
+                    drawEnd();
+                  }else{
+                    Get.find<MainLogic>().openDrawer();
+                  }
+                },
                 child: Padding(
                   padding: EdgeInsets.all(10.r),
                   child: Image.asset(ImageX.icon_more,color: ColorX.icon586(),),

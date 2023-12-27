@@ -43,6 +43,7 @@ class MainLogic extends GetxController {
 
   void openDrawer() {
     state.scaffoldKey.currentState?.openEndDrawer();
+    update();
   }
 
   Future<void> checkPermission(BuildContext context) async {
