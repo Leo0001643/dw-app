@@ -7,7 +7,8 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
 class MessageDialog{
-
+  bool? divider=true;
+  MessageDialog({this.divider});
   AlertDialog create(BuildContext context,String msg,{String? title,String? btnConfirm,String? btnCancel,VoidCallback? onConfirm,VoidCallback? onCancel}){
     return AlertDialog(
       shape: RoundedRectangleBorder(
@@ -27,7 +28,9 @@ class MessageDialog{
             child: Text(msg,
               style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
           ),
-          Divider(color: ColorX.color_10_949,height: 1.h,),
+          Visibility(
+            visible: this.divider==true,
+              child: Divider(color: ColorX.color_10_949,height: 1.h,)),
         ],
       ),
       actionsPadding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 15.h),

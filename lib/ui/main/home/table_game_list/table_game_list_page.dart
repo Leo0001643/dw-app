@@ -113,25 +113,30 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
               // padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
               color: ColorX.cardBg(),
               width: 1.sw,
+              alignment: Alignment.topLeft,
               child: Obx(() {
                 return LCTabBar(
                   length: state.typeList.length,
                   controller: _tabController,
-                  tabBarHeight: 35.h,
+                  tabBarHeight: 45.h,
                   tabBarColor: Colors.transparent,
                   indicatorSize: TabBarIndicatorSize.label,
-                  indicatorPadding: EdgeInsets.only(top: 20.h,),
+                  indicatorPadding: EdgeInsets.only(top: 40.h,left: 12,right: 12),
                   indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(3.r),
                     color: ColorX.text0917(),
                   ),
                   isScrollable: true,
-                  labelPadding: EdgeInsets.symmetric(horizontal: 5.w,vertical: 0),
+                  labelPadding: EdgeInsets.only(top: 10),
+
                   labelColor: ColorX.text0917(),
-                  unselectedLabelColor: ColorX.text586(),
+                  unselectedLabelColor: Colors.black54,
                   // width: 0.55.sw,
-                  tabs: state.typeList.map((e) => Text(e.gametype.em(),
-                    style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),).toList(),
+                  tabs: state.typeList.map((e) =>Container(
+                    margin: EdgeInsets.only(bottom: 14,left: 6,right: 6),
+                    child:  Text(e.gametype.em(),
+                      style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                  ),).toList(),
                 );
               }),
             ),

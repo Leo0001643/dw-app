@@ -173,7 +173,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             ),
             Expanded(
               flex: 30,
-              child: Text("${(item.winlose.em() >= 0) ? "+" : "-"}${item.winlose.em()}",
+              child: Text("${(item.winlose.em() >= 0) ? "+" : ""}${item.winlose.em()}",
                 style: TextStyle(fontSize: 14.sp,color: (item.winlose.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
             ),
             Expanded(

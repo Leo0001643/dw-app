@@ -163,7 +163,7 @@ class DialogUtils {
 
   ///信息确认弹窗
   Future<bool?> showMessageDialog(BuildContext context,String msg,
-      {String? title,String? btnConfirm,String? btnCancel,VoidCallback? onConfirm,VoidCallback? onCancel}){
+      {String? title,String? btnConfirm,String? btnCancel,VoidCallback? onConfirm,VoidCallback? onCancel,bool? divider=false}){
     title = title ?? Intr().tishi;
     btnConfirm = btnConfirm ?? Intr().confirm;
     btnCancel = btnCancel ?? Intr().cancel;
@@ -171,7 +171,7 @@ class DialogUtils {
     return showDialog<bool>(
         context: context,
         builder: (context){
-          return MessageDialog().create(context, msg,title: title,btnConfirm: btnConfirm,
+          return MessageDialog(divider: divider).create(context, msg,title: title,btnConfirm: btnConfirm,
               btnCancel: btnCancel,onConfirm: onConfirm,onCancel: onCancel);
         }
     );

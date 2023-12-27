@@ -128,7 +128,10 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
             flex: 23,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(item.date.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(item.date.em(),
+                maxLines: 1,
+                style: TextStyle(
+                fontSize: 10.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(

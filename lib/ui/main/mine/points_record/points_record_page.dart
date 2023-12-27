@@ -168,6 +168,7 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
               child: Text(item.dateStr(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
+
           Expanded(
             flex: 25,
             child: Center(

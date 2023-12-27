@@ -48,7 +48,7 @@ class RechargeOnlineLogic extends GetxController {
       DialogUtils().showMessageDialog(context, Intr().quedingtijiaodingdan,onConfirm: (){
         Navigator.pop(context);
         Get.offAndToNamed(Routes.html,arguments: HtmlEvent(data: value.info.em(),isHtmlData: false,pageTitle: ""));
-      },onCancel: ()=> Navigator.pop(context));
+      },onCancel: ()=> Navigator.pop(context),divider: false);
     });
   }
 
