@@ -94,12 +94,17 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                                 Expanded(
                                   child: Obx(() {
                                     if(isEmpty(state.noticeList)){ return Container(); }
-                                    return Marquee(
-                                      text: buildNoticeString(state.noticeList),
-                                      style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),
-                                      scrollAxis: Axis.horizontal,
-                                      startPadding: 10.w,
-                                      blankSpace: 5.w,
+                                    return InkWell(
+                                      onTap: (){
+                                        WidgetUtils().goMessageCenter();
+                                      },
+                                      child: Marquee(
+                                        text: buildNoticeString(state.noticeList),
+                                        style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),
+                                        scrollAxis: Axis.horizontal,
+                                        startPadding: 10.w,
+                                        blankSpace: 5.w,
+                                      ),
                                     );
                                   }),
                                 ),
@@ -244,7 +249,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
             Image.asset(ImageX.icon_vip),
             Expanded(child: Container(),),
             InkWell(
-              onTap: ()=> logic.loadUserData(),
+              onTap: ()=> logic.loadUserData(jumpNotice: false),
               child: Image.asset(ImageX.icShuaxinT(),width: 17.r,fit: BoxFit.fill,),
             ),
             SizedBox(width: 3.w,),

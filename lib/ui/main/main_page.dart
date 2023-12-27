@@ -92,7 +92,7 @@ class ItemBuilder extends DelegateBuilder{
       case 1:
         return buildNormalLabel(Intr().preferential,ImageX.icon_youhui1,ImageX.icon_youhui,24.r,active);
       case 2:
-        return buildNormalLabel(Intr().charge,ImageX.icon_charge_coin,ImageX.icon_charge_coin,48.r,active);
+        return buildNormalLabel(Intr().charge,ImageX.icon_charge_coin1,ImageX.icon_charge_coin,48.r,active);
       case 3:
         return buildNormalLabel(Intr().customer_service,ImageX.icon_custome_1,ImageX.icon_customer,24.r,active);
       case 4:

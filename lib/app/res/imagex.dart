@@ -10,6 +10,7 @@ class ImageX{
   static const icon_back = 'assets/images/icon_back.png';
   static const icon_barrage = 'assets/images/icon_barrage.png';
   static const icon_charge_coin = 'assets/images/icon_charge_coin.png';
+  static const icon_charge_coin1 = 'assets/images/icon_charge_coin1.png';
   static const icon_charge = 'assets/images/icon_charge.png';
   static const icon_choose = 'assets/images/icon_choose.png';
   static const icon_clear = 'assets/images/icon_clear.png';

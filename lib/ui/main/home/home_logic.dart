@@ -236,7 +236,7 @@ class HomeLogic extends GetxController {
   }
 
   ///加载用户登录信息
-  void loadUserData() {
+  void loadUserData({bool jumpNotice=true}) {
     if(AppData.isLogin()){
       var user = AppData.user();
       state.user.value = user!;
@@ -251,13 +251,15 @@ class HomeLogic extends GetxController {
         state.usdtBal.refresh();
       });
       state.user.refresh();
+      if(jumpNotice) {
+        //2跳弹公告
+        HttpService.getNotice(2).then((value) {
+          if(unEmpty(value)){
+            showNotice(value,0);
+          }
+        });
+      }
 
-      //2跳弹公告
-      HttpService.getNotice(2).then((value) {
-        if(unEmpty(value)){
-          showNotice(value,0);
-        }
-      });
     }else {
       state.user.value = LoginUserEntity();
       state.user.refresh();

@@ -137,16 +137,17 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(bottom: 10.h,top: 20.h),
                 // color: ColorX.cardBg(),
+                margin: EdgeInsets.only(top: 10),
                 width: 1.sw,
                 child: LCTabBar(
+
                   length: state.tabs.length,
                   controller: _tabController,
-                  tabBarHeight: 35.h,
+                  tabBarHeight: 45,
                   tabBarColor: Colors.transparent,
                   indicatorSize: TabBarIndicatorSize.label,
-                  indicatorPadding: EdgeInsets.only(top: 32.h,left: 20.w,right: 20.w,bottom: 1.h),
+                  indicatorPadding: EdgeInsets.only(top: 42,left:90,right: 90,bottom: 1.h),
                   indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(3.r),
                     color: ColorX.text0917(),
@@ -155,7 +156,11 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                   labelColor: ColorX.text0917(),
                   unselectedLabelColor: ColorX.text586(),
                   // width: 0.55.sw,
-                  tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
+                  tabs: state.tabs.map((e) => Container(
+                    height: 45,
+                    alignment: Alignment.center,
+                    child: Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
+                  ),).toList(),
                 ),
               ),
               Container(
