@@ -21,12 +21,18 @@ class SelectAvatarLogic extends GetxController {
     super.onClose();
   }
 
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    initAvater();
+  }
 
-  void setAvatar(){
-    if(state.selectIndex.value >= 0){
+  void setAvatar() {
+    if (state.selectIndex.value >= 0) {
       var user = AppData.user()!;
       var avatar = "";
-      switch(state.tabIndex.value){
+      switch (state.tabIndex.value) {
         case 0:
           avatar = state.defaultList[state.selectIndex.value];
           break;
@@ -39,16 +45,39 @@ class SelectAvatarLogic extends GetxController {
       }
       user.avatar = DataUtils.getAvatarName(avatar);
 
-      HttpService.updateUserAvatar({"oid":user.oid,"username":user.username,"avatar":user.avatar}).then((value) {
+      HttpService.updateUserAvatar(
+          {"oid": user.oid, "username": user.username, "avatar": user.avatar})
+          .then((value) {
         state.currentAvatar.value = user.avatar.em();
         AppData.setUser(user);
+
         ///切换头像
         Get.find<AvatarController>().refresh();
       });
-
     }
   }
 
+  void initAvater() {
+    List<String> list= findAvater();
+    String current = DataUtils.findAvatar(state.currentAvatar.value);
+    for (int i = 0; i<list.length;i++) {
+     if(current==list[i]) {
+       state.selectIndex.value =i;
+       break;
+     }
+    }
+    update();
+  }
 
-
+  List<String> findAvater() {
+    switch (state.tabIndex.value) {
+      case 0:
+        return state.defaultList;
+      case 1:
+        return state.qqList;
+      case 2:
+        return state.selectionList;
+    }
+    return [];
+  }
 }

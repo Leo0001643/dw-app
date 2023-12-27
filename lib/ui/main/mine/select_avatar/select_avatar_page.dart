@@ -29,6 +29,7 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
     ..addListener(() {
       state.selectIndex.value = -1;
       state.tabIndex.value = _tabController.index;
+      logic.initAvater();
     });
     super.initState();
   }
