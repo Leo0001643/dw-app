@@ -132,6 +132,8 @@ class StateGameMenuView extends State<GameMenuView>{
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Divider(height: 1,color: Colors.black26,),
+        SizedBox(height: 10.h,),
         buildGroupTitle(element),
         SizedBox(height: 10.h,),
         Wrap(
