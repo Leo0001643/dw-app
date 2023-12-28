@@ -41,8 +41,8 @@ class _BindBankPageState extends State<BindBankPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 27.w,top: 30.h),
+            Container(
+              padding: EdgeInsets.only(left: 27.w,top: 31.h,bottom: 20.h),
               child: Obx(() {
                 var length = state.userDraw.value.banks.em();
                 return Text(Intr().wodeyinhangka_(["$length","${state.maxCount - length}"]),
@@ -53,17 +53,13 @@ class _BindBankPageState extends State<BindBankPage> {
               return Visibility(
                 visible: unEmpty(state.userDraw.value.banks),
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 10.h),
-                  child: GFCarousel(
-                    height: 205.h,
-                    viewportFraction: 0.9,
-                    enableInfiniteScroll: false,
-                    items: state.userDraw.value.banks?.map((e) => buildBankItem(e)).toList() ?? [],
-                  ),
+                  height: state.userDraw.value.banks==null?0:181.h*state.userDraw.value.banks!.length+30*state.userDraw.value.banks!.length,
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  child: ListView(children: state.userDraw.value.banks?.map((e) => buildBankItem(e)).toList() ?? [],
+                  physics: NeverScrollableScrollPhysics(),),
                 ),
               );
             }),
-            SizedBox(height: 10.h,),
             Obx(() {
               return Visibility(
                 visible: state.userDraw.value.banks.em() < state.maxCount,
@@ -126,12 +122,13 @@ class _BindBankPageState extends State<BindBankPage> {
   }
 
   Widget buildBankItem(UserDrawDetailBanks item) {
-    return Container(
+    return Expanded(child: Container(
+      margin: EdgeInsets.only(bottom: 20.h),
       decoration: BoxDecoration(
         color: ColorX.color_ff5164,
         borderRadius: BorderRadius.circular(10.r),
       ),
-      width: 321.w,
+      width: 240.w,
       padding: EdgeInsets.symmetric(vertical: 17.h,horizontal: 27.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,7 +156,8 @@ class _BindBankPageState extends State<BindBankPage> {
           ),
         ],
       ),
-    );
+    ))
+    ;
   }
 
 }
