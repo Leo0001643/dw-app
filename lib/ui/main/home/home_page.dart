@@ -64,7 +64,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                                 return Container(
                                   margin: EdgeInsets.symmetric(horizontal: 20.w),
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.all(Radius.circular(20.r)),
+                                    borderRadius: BorderRadius.all(Radius.circular(12.r)),
                                     child: Image.network("${e.url}${e.picurl}", fit: BoxFit.fill,width: 1000,),
                                   ),
                                 );
@@ -252,13 +252,14 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
               onTap: ()=> logic.loadUserData(jumpNotice: false),
               child: Image.asset(ImageX.icShuaxinT(),width: 17.r,fit: BoxFit.fill,),
             ),
-            SizedBox(width: 3.w,),
+            SizedBox(width: 8.w,),
             Container(height: 10.h,width: 1.w,color: ColorX.color_091722,),
-            SizedBox(width: 5.w,),
+            SizedBox(width: 8.w,),
             InkWell(
               onTap: ()=> Get.toNamed(Routes.select_currency),
               child: Image.asset(ImageX.icQiehuanT(),width: 10.r,fit: BoxFit.fill,),
             ),
+            SizedBox(width: 8.w,),
           ],
         ),
         GetBuilder<WalletController>(
@@ -290,12 +291,13 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        WidgetUtils().buildElevatedButton(Intr().login, 78.w, 32.h,textSize: 13.sp,textColor: ColorX.color_091722,
+        WidgetUtils().buildNoElevatedButton(Intr().login, 78.w, 32.h,textSize: 13.sp,textColor: ColorX.color_091722,
             bg: Colors.white,onPressed: (){
               WidgetUtils().goLogin();
             }),
         // SizedBox(width: 10.w,),
-        WidgetUtils().buildElevatedButton(Intr().register, 78.w, 32.h,textSize: 13.sp,
+
+        WidgetUtils().buildNoElevatedButton(Intr().register, 78.w, 32.h,textSize: 13.sp,
             bg: ColorX.color_fe2427,onPressed: ()=>Get.toNamed(Routes.register)),
       ],
     );

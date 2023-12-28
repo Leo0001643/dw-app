@@ -38,7 +38,21 @@ class WidgetUtils {
   factory WidgetUtils() => getInstance();
 
 
-
+  Widget buildNoElevatedButton(String text,double width,double height,
+      {Color? bg,Color textColor = Colors.white,double textSize = 14,VoidCallback? onPressed}){
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: bg,
+        minimumSize: Size(width, height),
+        maximumSize: Size(width, height),
+        padding: EdgeInsets.zero,
+      ),
+      child: Text(text,
+        style: TextStyle(fontSize: textSize.sp,color: textColor,fontWeight: FontWeight.w600),
+      ),
+    );
+  }
   Widget buildElevatedButton(String text,double width,double height,
       {Color? bg,Color textColor = Colors.white,double textSize = 14,VoidCallback? onPressed}){
     return ElevatedButton(
