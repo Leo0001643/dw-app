@@ -13,7 +13,8 @@ class Constants {
 
 
   // static const host = "http://soptj9qq.com";
-  static const host = "https://9000vlmdm4.kj99883.com";
+  // static const host = "https://9000vlmdm4.kj99883.com";
+  static const host = "http://soptj9qq.com";
 
   static const base_url = "$host/";//:8860
   static const contact = "$host/m/#/detail/Contact";
