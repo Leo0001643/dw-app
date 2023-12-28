@@ -33,8 +33,8 @@ class StateMinePage extends State<MinePage>{
         child: Column(
           children: [
             Container(
-              height: 320,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     decoration: BoxDecoration(

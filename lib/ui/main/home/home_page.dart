@@ -34,7 +34,6 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
 
   final NestedInnerScrollCoordinator _coordinator = NestedInnerScrollCoordinator(ScrollController());
 
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GetMaterialController>(
