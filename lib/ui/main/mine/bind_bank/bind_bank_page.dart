@@ -58,7 +58,6 @@ class _BindBankPageState extends State<BindBankPage> {
                     height: 205.h,
                     viewportFraction: 0.9,
                     enableInfiniteScroll: false,
-                    scrollPhysics: NeverScrollableScrollPhysics(),
                     items: state.userDraw.value.banks?.map((e) => buildBankItem(e)).toList() ?? [],
                   ),
                 ),
