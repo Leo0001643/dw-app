@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -65,7 +66,7 @@ class MoreTabView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(e.group.em(),width: 24.r,fit: BoxFit.fill,),
+            buildImageItem(e.group.em(),),
             SizedBox(height: 4.h,),
             Text(e.name.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
           ],
@@ -73,11 +74,23 @@ class MoreTabView extends StatelessWidget {
       ),
     );
   }
-
-
-
-
-
+  Widget buildImageItem(String icon) {
+    if (icon.contains("about_us.svg")||icon.contains("daili.svg")) {
+      return SvgPicture.asset(
+        icon,
+        width: 24.w,
+        height: 24.w,
+        fit: BoxFit.contain,
+      );
+    }else{
+      return Image.asset(
+        icon,
+        width: 24.w,
+        height: 24.w,
+        fit: BoxFit.contain,
+      );
+    }
+  }
 
 }
 

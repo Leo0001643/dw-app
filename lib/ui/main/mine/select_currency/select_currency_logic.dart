@@ -52,11 +52,11 @@ class SelectCurrencyLogic extends GetxController {
   void changeWallet(BalanceEntity item) {
     if(item != state.dropdownValue.value){
       print("=====>${jsonEncode(state.dropdownValue.value.toJson())}");
-      if(item.language?.contains("USDT")==true) {
-        showToast("已成功切换成USDT钱包\n 进入游戏将使用USDT");
-      }else{
-        showToast("已成功切换成CNY钱包\n 进入游戏将使用CNY");
-      }
+      // if(item.language?.contains("USDT")==true) {
+      //   // showToast("已成功切换成USDT钱包\n 进入游戏将使用USDT");
+      // }else{
+      //   // showToast("已成功切换成CNY钱包\n 进入游戏将使用CNY");
+      // }
 
       ///更新选中数据
       state.dropdownValue.value = item;

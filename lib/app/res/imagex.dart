@@ -104,7 +104,8 @@ class ImageX{
   static const icon_cft = 'assets/images/icon_cft.png';
   static const icon_check_black = 'assets/images/icon_check_black.png';
   static const icon_copy = 'assets/images/icon_copy.png';
-  static const icon_dai = 'assets/images/icon_dai.png';
+  static const icon_dai = 'assets/images/icon_daili.svg';
+  static const icon_zoushi = 'assets/images/icon_zoushi.png';
   static const icon_dollar_grey = 'assets/images/icon_dollar_grey.png';
   static const icon_dollar_red = 'assets/images/icon_dollar_red.png';
   static const icon_down_up = 'assets/images/icon_down_up.png';
@@ -116,7 +117,7 @@ class ImageX{
   static const icon_exist = 'assets/images/icon_exist.png';
   static const icon_fan = 'assets/images/icon_fan.png';
   static const icon_game_cards = 'assets/images/icon_game_cards.png';
-  static const icon_gywm = 'assets/images/icon_gywm.png';
+  static const icon_gywm = 'assets/images/icon_about_us.svg';
   static const icon_hbjj = 'assets/images/icon_hbjj.png';
   static const icon_hy_grey = 'assets/images/icon_hy_grey.png';
   static const icon_hy_red = 'assets/images/icon_hy_red.png';
