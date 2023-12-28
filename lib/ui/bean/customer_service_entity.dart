@@ -13,7 +13,7 @@ class CustomerServiceEntity {
 	String? image;
 	String? comments;
 	List<CustomerServiceCusterServers>? custerServers;
-
+	bool? isChat=false;
 	CustomerServiceEntity();
 
 	factory CustomerServiceEntity.fromJson(Map<String, dynamic> json) => $CustomerServiceEntityFromJson(json);

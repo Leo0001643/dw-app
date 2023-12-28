@@ -291,7 +291,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        WidgetUtils().buildNoElevatedButton(Intr().login, 78.w, 32.h,textSize: 13.sp,textColor: ColorX.color_091722,
+        WidgetUtils().buildNoElevatedButton(Intr().login, 78.w, 32.h,textSize: 13.sp,textColor: ColorX.color_091722,showBorder: true,
             bg: Colors.white,onPressed: (){
               WidgetUtils().goLogin();
             }),

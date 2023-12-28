@@ -27,6 +27,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
     state.detail = Get.arguments;
     state.title.value = state.detail.name.em();
     super.initState();
+    print("====== isChat 》${state.detail.isChat}");
   }
 
   @override
@@ -121,9 +122,11 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                 ],
               ),
               Expanded(child: Container(),),
+
+
               InkWell(
                 onTap: ()=> WidgetUtils().clickCopy(server.number.em()),
-                child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
+                child: Text((state?.detail.isChat==true)?Intr().nowChat:Intr().dianjifuzhi,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
                     decoration: TextDecoration.underline),),
               ),
             ],

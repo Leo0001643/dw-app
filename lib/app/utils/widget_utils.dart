@@ -39,17 +39,22 @@ class WidgetUtils {
 
 
   Widget buildNoElevatedButton(String text,double width,double height,
-      {Color? bg,Color textColor = Colors.white,double textSize = 14,VoidCallback? onPressed}){
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        backgroundColor: bg,
-        minimumSize: Size(width, height),
-        maximumSize: Size(width, height),
-        padding: EdgeInsets.zero,
-      ),
-      child: Text(text,
-        style: TextStyle(fontSize: textSize.sp,color: textColor,fontWeight: FontWeight.w600),
+
+      {Color? bg,Color textColor = Colors.white,double textSize = 14,bool  showBorder=false,VoidCallback? onPressed}){
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        width: width,
+        height: height,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: bg,
+          borderRadius: BorderRadius.all(Radius.circular(6)),
+          border: showBorder==true?Border.all(color: Colors.grey,width: 1):Border.all(color: Colors.transparent)
+        ),
+        child: Text(text,
+          style: TextStyle(fontSize: textSize.sp,color: textColor,fontWeight: FontWeight.w600),
+        ),
       ),
     );
   }

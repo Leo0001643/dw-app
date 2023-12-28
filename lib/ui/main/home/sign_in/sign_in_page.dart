@@ -49,7 +49,7 @@ class _SignInPageState extends State<SignInPage> {
         children: [
           WidgetUtils().buildAppBar(Intr().qiandaoyouli,msg: true,bgColor: Colors.transparent),
           Container(
-            height: 0.14.sh,
+            height: 0.125.sh,
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.symmetric(horizontal: 25.w,),
             child: Obx(() {
@@ -73,6 +73,7 @@ class _SignInPageState extends State<SignInPage> {
                 Obx(() {
                   return Text(Intr().benyueyiqian([state.checkInfo.value.signInNum.em()]),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none),);
                 }),
+
                 Obx(() {
                   var date = DateUtil.formatDateMs(state.checkInfo.value.timestamp.em() * 1000,isUtc: true,format: Intr().nianyueri);
                   return Text(date,style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none),);

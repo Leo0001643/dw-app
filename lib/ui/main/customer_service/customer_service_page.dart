@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -74,7 +76,15 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
         // image: DecorationImage(image: AssetImage(ImageX.bg_customer),fit: BoxFit.fill),
       ),
       child: InkWell(
-        onTap: ()=> logic.clickService(element),
+        onTap: (){
+          bool nowChat=false;
+          if(element.type=="zaixian"||element.type=="yuyin"){
+             nowChat=true;
+          }
+          element.isChat=nowChat;
+          logic.clickService(element);
+
+        },
         child: Container(
           padding: EdgeInsets.all(10.r),
           height:  72.h,

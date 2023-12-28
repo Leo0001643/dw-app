@@ -208,6 +208,7 @@ class Intr extends Translations{
   String get shuoming_jieshao => 'shuoming_jieshao'.tr;
   String get haoyuanchaxun => 'haoyuanchaxun'.tr;
   String get dianjifuzhi => 'dianjifuzhi'.tr;
+  String get nowChat => 'nowChat'.tr;
   String get jiaoyanshuoming => 'jiaoyanshuoming'.tr;
   String get jiaoyanshuoming1 => 'jiaoyanshuoming1'.tr;
   String get jiaoyanshuoming2 => 'jiaoyanshuoming2'.tr;
@@ -778,6 +779,7 @@ class Intr extends Translations{
       "shuoming_jieshao":"用户可通过相关在线SHA256函数查询网站,复述上述全部哈希值字符串,进行查询,下方提供查询网址:",
       "haoyuanchaxun":"号源查询",
       "dianjifuzhi":"点击复制",
+      "nowChat":"点击洽谈",
       "jiaoyanshuoming":"校验说明",
       "jiaoyanshuoming1":"1.开奖时,抓取最新时间段内交易的哈希值集合,将其平成长字符串",
       "jiaoyanshuoming2":"2.将上述字符串进行SHA256转化",
