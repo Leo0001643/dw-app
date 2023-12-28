@@ -16,6 +16,7 @@ class LCTabBar extends StatefulWidget {
     required this.tabs,
     required this.controller,
     this.isScrollable = false,
+    this.tabAlignment,
     this.tabBarHeight,
     this.tabBarColor,
     this.indicatorColor,
@@ -158,6 +159,8 @@ class LCTabBar extends StatefulWidget {
   /// defines the shape of tabBar
   final ShapeBorder? shape;
 
+   final TabAlignment? tabAlignment;
+
   // Width of TabBar.
   // If this property is null, TabBar width is full screen
   final double? width;
@@ -184,6 +187,7 @@ class _LCTabBarState extends State<LCTabBar> {
             type: MaterialType.button,
             color: widget.tabBarColor ?? GFColors.PRIMARY,
             child: TabBar(
+              tabAlignment:widget.tabAlignment??TabAlignment.center,
               labelPadding: widget.labelPadding,
               isScrollable: widget.isScrollable,
               controller: widget.controller,

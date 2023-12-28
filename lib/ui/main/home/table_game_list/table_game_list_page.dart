@@ -119,6 +119,7 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
                   length: state.typeList.length,
                   controller: _tabController,
                   tabBarHeight: 45.h,
+                  tabAlignment:TabAlignment.start,
                   tabBarColor: Colors.transparent,
                   indicatorSize: TabBarIndicatorSize.label,
                   indicatorPadding: EdgeInsets.only(top: 40.h,left: 12,right: 12),
