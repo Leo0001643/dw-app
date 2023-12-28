@@ -92,7 +92,7 @@ class ItemBuilder extends DelegateBuilder{
       case 1:
         return buildNormalLabel(Intr().preferential,ImageX.icon_youhui1,ImageX.icon_youhui,24.r,active);
       case 2:
-        return buildNormalLabel(Intr().charge,ImageX.icon_charge_coin1,ImageX.icon_charge_coin,48.r,active);
+        return buildNormalLabel(Intr().charge,ImageX.icon_charge_coin1,ImageX.icon_charge_coin,48.r,active,index:2);
       case 3:
         return buildNormalLabel(Intr().customer_service,ImageX.icon_custome_1,ImageX.icon_customer,24.r,active);
       case 4:
@@ -108,11 +108,14 @@ class ItemBuilder extends DelegateBuilder{
     return true;
   }
 
-  Widget buildNormalLabel(String label, String icon,String activeicon,double iconsize, bool active) {
+  Widget buildNormalLabel(String label, String icon,String activeicon,double iconsize, bool active,{int index=0}) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Image.asset(active ? activeicon: icon,width: iconsize,height: iconsize,),
+        Visibility(
+          visible: index==2,
+            child: SizedBox(height: 5,)),
         Text(
           label,
           style: TextStyle(

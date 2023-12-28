@@ -100,6 +100,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
                     } else {
                       return Container();
                     }
+
                   },
                   separatorBuilder: (context,index){
                     return Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,);
@@ -143,7 +144,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             flex: 40,
           ),
           Expanded(
-            child: Text("${(group.winloseTotal.em() >= 0) ? "+" : "-"}${group.winloseTotal.em()}",
+            child: Text("${(group.winloseTotal.em() >= 0) ? "+" : ""}${group.winloseTotal.em()}",
               style: TextStyle(fontSize: 14.sp,color: (group.winloseTotal.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,fontWeight: FontWeight.w600),),
             flex: 30,
           ),

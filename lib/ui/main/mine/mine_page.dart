@@ -188,13 +188,17 @@ class StateMinePage extends State<MinePage>{
                       children: [
                         Text(Intr().wodeqianbao,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
                         SizedBox(height: 10.h,),
-                        Wrap(
-                          runSpacing: 15.h,
+                        Row(
                           children: [
                             buildCategoryItem(Intr().bibiduihuan,ImageX.icon_bb,0),
                             buildCategoryItem(Intr().eduzhuanhuan,ImageX.icon_edzh,1),
                             buildCategoryItem(Intr().zijinmingxi,ImageX.icon_zjmx,2),
                             buildCategoryItem(Intr().tixianmima,ImageX.icon_jymm,3),
+                          ],
+                        ),
+                        Row(
+                          children: [
+
                             buildCategoryItem(Intr().bangdingyinhangka,ImageX.icon_bdyhk,4),
                             buildCategoryItem(Intr().bangdingusdt,ImageX.icon_bddt,5),
                           ],
@@ -215,8 +219,7 @@ class StateMinePage extends State<MinePage>{
                       children: [
                         Text(Intr().wodetouzhu,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
                         SizedBox(height: 10.h,),
-                        Wrap(
-                          runSpacing: 15.h,
+                        Row(
                           children: [
                             buildCategoryItem(Intr().touzhujilu,ImageX.icon_tzjl,6),
                             buildCategoryItem(Intr().jifenjilu,ImageX.icon_jfjl,7),
@@ -242,8 +245,7 @@ class StateMinePage extends State<MinePage>{
                       children: [
                         Text(Intr().wodeyinli,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
                         SizedBox(height: 10.h,),
-                        Wrap(
-                          runSpacing: 15.h,
+                        Row(
                           children: [
                             buildCategoryItem(Intr().tuiguangzhuanqian,ImageX.icon_tuiguang,10),
                             buildCategoryItem(Intr().dailizhuce,ImageX.icon_dai,11),
@@ -267,8 +269,7 @@ class StateMinePage extends State<MinePage>{
                       children: [
                         Text(Intr().qita,style: TextStyle(fontSize: 15.sp,color: ColorX.text0917()),),
                         SizedBox(height: 10.h,),
-                        Wrap(
-                          runSpacing: 15.h,
+                        Row(
                           children: [
                             buildCategoryItem(Intr().tongyongshezhi,ImageX.icon_setting,12),
                             buildCategoryItem(Intr().bangzhuzhongxin,ImageX.icon_bzzx,13),
@@ -297,9 +298,10 @@ class StateMinePage extends State<MinePage>{
       onTap: ()=> logic.clickItem(index),
       child: Container(
         width: 80.w,
+        height: 55.w,
         child: Column(
           children: [
-            Image.asset(icon),
+            Image.asset(icon,width: 24.w,height: 24.w,fit: BoxFit.contain,),
             SizedBox(height: 3.h,),
             Text(title,style: TextStyle(fontSize: 11.sp,color: ColorX.text5862()),),
           ],

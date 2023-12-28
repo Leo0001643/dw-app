@@ -30,7 +30,7 @@ class _RechargePageState extends State<RechargePage> {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().chongzhizhongxin,
           msg: true, drawer: true, back: false),
-      backgroundColor: ColorX.pageBg(),
+      backgroundColor:Color(0xFFF7F8FB),
       body: SingleChildScrollView(
         child: GetBuilder<WalletController>(
           id: WalletController.wallet_id,
@@ -38,6 +38,11 @@ class _RechargePageState extends State<RechargePage> {
             return Column(
               children: [
                 Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/icon_bg_my.png"),
+                    )
+                  ),
                   height: 100.h,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -67,7 +72,8 @@ class _RechargePageState extends State<RechargePage> {
                 SizedBox(
                   height: 10.h,
                 ),
-                Padding(
+                Container(
+                  color: Color(0xFFF7F8FB),
                   padding: EdgeInsets.only(left: 27.w, right: 27.w, top: 10.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,13 +83,13 @@ class _RechargePageState extends State<RechargePage> {
                             ? Intr().wallet_usdt
                             : Intr().dangqianmoren([Intr().wallet_usdt]),
                         style: TextStyle(
-                            fontSize: 14.sp, color: ColorX.text5862()),
+                            fontSize: 14.sp, fontWeight:FontWeight.w600,color: ColorX.text5862()),
                       ),
                       Obx(() {
                         return Text(
                           "${Intr().yue_}₮${state.usdtBal.value.money.em()}",
                           style: TextStyle(
-                              fontSize: 14.sp, color: ColorX.text5862()),
+                              fontSize: 14.sp, fontWeight:FontWeight.w600, color: ColorX.text5862()),
                         );
                       }),
                     ],
@@ -107,11 +113,13 @@ class _RechargePageState extends State<RechargePage> {
                               ? Intr().dangqianmoren([Intr().wallet_cny])
                               : Intr().wallet_cny,
                           style: TextStyle(
+                              fontWeight:FontWeight.w600,
                               fontSize: 14.sp, color: ColorX.text5862()),
                         ),
                         Text(
                           "${Intr().yue_}¥${state.cnyBal.value.money.em()}",
                           style: TextStyle(
+                              fontWeight:FontWeight.w600,
                               fontSize: 14.sp, color: ColorX.text5862()),
                         ),
                       ],
@@ -167,7 +175,7 @@ class _RechargePageState extends State<RechargePage> {
               ),
               Text(
                 item.bankName.em(),
-                style: TextStyle(fontSize: 14.sp, color: ColorX.text5862()),
+                style: TextStyle(fontSize: 14.sp, color: ColorX.text5862(),fontWeight: FontWeight.w600),
               ),
               Expanded(child: Container()),
               Image.asset(
