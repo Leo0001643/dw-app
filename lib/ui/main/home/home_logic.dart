@@ -30,7 +30,7 @@ class HomeLogic extends GetxController {
     loadUserData();
     ///余额发生变化，刷新余额数据
     loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
-      loadUserData();
+      loadUserData(jumpNotice: event.show_notice);
     });
     Get.find<AvatarController>().addListener(() {
       state.user.value = AppData.user() ?? LoginUserEntity();

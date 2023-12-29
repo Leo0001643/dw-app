@@ -93,7 +93,7 @@ class CoinExchangeLogic extends GetxController {
 
     HttpService.internalTransfer(params).then((value) {
       ///兑换成功余额变化
-      eventBus.fire(LoginRefreshEvent());
+      eventBus.fire(LoginRefreshEvent(show_notice: false));
       showToast(Intr().caozuochenggong);
     });
   }
