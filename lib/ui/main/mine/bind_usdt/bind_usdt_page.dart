@@ -42,7 +42,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 27.w,top: 30.h),
+              padding: EdgeInsets.only(left: 27.w,top: 30.h,bottom: 20.h),
               child: Obx(() {
                 var length = state.userDraw.value.dcBanks.em();
                 return Text(Intr().wodeshuzhiqianbao_(["$length","${state.maxCount - length}"]),
@@ -53,14 +53,10 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
               return Visibility(
                 visible: unEmpty(state.userDraw.value.dcBanks),
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 10.h),
-                  child: GFCarousel(
-                    height: 205.h,
-                    viewportFraction: 0.9,
-                    enableInfiniteScroll: false,
-                    scrollPhysics: const NeverScrollableScrollPhysics(),
-                    items: state.userDraw.value.dcBanks?.map((e) => buildUsdtItem(e)).toList() ?? [],
-                  ),
+                  height: state.userDraw.value.dcBanks==null?0:181.h*state.userDraw.value.dcBanks!.length+30*state.userDraw.value.dcBanks!.length,
+                  margin: EdgeInsets.symmetric(horizontal: 15),
+                  child: ListView(children: state.userDraw.value.dcBanks?.map((e) => buildUsdtItem(e)).toList() ?? [],
+                    physics: NeverScrollableScrollPhysics(),),
                 ),
               );
             }),
@@ -131,6 +127,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
 
   Widget buildUsdtItem(UserDrawDetailBanks item) {
     return Container(
+      margin: EdgeInsets.only(bottom: 20.h),
       decoration: BoxDecoration(
         color: ColorX.color_529aff,
         borderRadius: BorderRadius.circular(10.r),

@@ -122,7 +122,7 @@ class _BindBankPageState extends State<BindBankPage> {
   }
 
   Widget buildBankItem(UserDrawDetailBanks item) {
-    return Expanded(child: Container(
+    return Container(
       margin: EdgeInsets.only(bottom: 20.h),
       decoration: BoxDecoration(
         color: ColorX.color_ff5164,
@@ -156,7 +156,7 @@ class _BindBankPageState extends State<BindBankPage> {
           ),
         ],
       ),
-    ))
+    )
     ;
   }
 
