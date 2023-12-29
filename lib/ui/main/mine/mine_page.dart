@@ -280,9 +280,6 @@ class StateMinePage extends State<MinePage> {
                               },
                             ),
                           ),
-                          SizedBox(
-                            height: 10.r,
-                          ),
                         ],
                       ),
                     ),
@@ -293,6 +290,9 @@ class StateMinePage extends State<MinePage> {
                   child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: 10.r,
+                    ),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.r),
