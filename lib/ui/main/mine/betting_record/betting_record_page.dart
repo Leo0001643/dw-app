@@ -8,6 +8,9 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
+import '../../main_logic.dart';
 import 'betting_record_logic.dart';
 
 ///投注记录
@@ -33,7 +36,11 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().touzhujilu,msg: true,bgColor: ColorX.appBarBg()),
+      key: state.scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().touzhujilu,msg: true,bgColor: ColorX.appBarBg(),drawer:true,drawEnd:(){
+        state.scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(

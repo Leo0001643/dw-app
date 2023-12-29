@@ -10,6 +10,8 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
 import 'bonus_packet_logic.dart';
 
 ///红包和奖金
@@ -34,7 +36,11 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().hongbaohejiangjin,msg: true,bgColor: ColorX.appBarBg()),
+      key: scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().hongbaohejiangjin,msg: true,drawer:true,drawEnd:(){
+        scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(

@@ -12,6 +12,8 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
 import 'bind_usdt_logic.dart';
 
 class BindUsdtPage extends StatefulWidget {
@@ -35,7 +37,11 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().bangdingusdt,msg: true,bgColor: ColorX.appBarBg()),
+      key: scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().bangdingusdt,msg: true,drawer:true,drawEnd:(){
+        scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(

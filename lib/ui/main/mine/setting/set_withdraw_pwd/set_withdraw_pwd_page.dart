@@ -6,6 +6,8 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
+import '../../../../../main.dart';
+import '../../../ends_drawer_view.dart';
 import 'set_withdraw_pwd_logic.dart';
 
 
@@ -24,7 +26,11 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().shezhitixianmima,msg: true,bgColor: ColorX.appBarBg()),
+      key: scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().shezhitixianmima,msg: true,drawer:true,drawEnd:(){
+        scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

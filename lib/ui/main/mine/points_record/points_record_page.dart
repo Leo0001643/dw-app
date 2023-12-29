@@ -10,6 +10,8 @@ import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/point_record_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
 import 'points_record_logic.dart';
 //积分记录
 class PointsRecordPage extends StatefulWidget {
@@ -43,7 +45,11 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().jifenjilu,msg: true,bgColor: ColorX.appBarBg()),
+      key: scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().jifenjilu,msg: true,drawer:true,drawEnd:(){
+        scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(

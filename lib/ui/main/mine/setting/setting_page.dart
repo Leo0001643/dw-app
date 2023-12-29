@@ -13,6 +13,8 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
 import 'setting_logic.dart';
 
 ///通用设置
@@ -51,7 +53,11 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().shezhi, msg: true),
+      key: scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().shezhi,msg: true,drawer:true,drawEnd:(){
+        scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg2(),
       body: Container(
         child: SingleChildScrollView(

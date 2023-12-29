@@ -8,6 +8,8 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
 import 'help_center_logic.dart';
 
 class HelpCenterPage extends StatefulWidget {
@@ -30,7 +32,11 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().bangzhuzhongxin,msg: true),
+      key: scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().bangzhuzhongxin,msg: true,drawer:true,drawEnd:(){
+        scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg2(),
       body: Container(
         decoration: BoxDecoration(color: ColorX.cardBg5(),borderRadius: BorderRadius.circular(12.r),),

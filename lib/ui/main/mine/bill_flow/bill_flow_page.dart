@@ -13,6 +13,8 @@ import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
 import 'bill_flow_logic.dart';
 ///资金明细
 class BillFlowPage extends StatefulWidget {
@@ -45,7 +47,11 @@ class _BillFlowPageState extends State<BillFlowPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().zijinmingxi,msg: true,),
+      key: scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().zijinmingxi,msg: true,drawer:true,drawEnd:(){
+        scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg2(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -12,6 +12,8 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
 import 'quota_conversion_logic.dart';
 
 class QuotaConversionPage extends StatefulWidget {
@@ -40,7 +42,11 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().eduzhuanhuan,msg: true),
+      key: scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().eduzhuanhuan,msg: true,drawer:true,drawEnd:(){
+        scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Container(

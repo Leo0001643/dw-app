@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 
@@ -6,6 +7,7 @@ class CoinExchangeState {
   CoinExchangeState() {
     ///Initialize variables
   }
+  final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
 
   ///余额
   var usdtBal = BalanceEntity().obs;

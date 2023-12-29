@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -8,6 +9,7 @@ class BettingRecordState {
   BettingRecordState() {
     ///Initialize variables
   }
+  final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
 
   var currentWallet = BillWalletEntity(Intr().wallet_cny, ImageX.icon_jj_grey,ImageX.icon_jj_red).obs;
 

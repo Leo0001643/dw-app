@@ -16,6 +16,7 @@ import 'app/intl/intr.dart';
 import 'app/logger.dart';
 import 'app/route_observers.dart';
 import 'app/routes.dart';
+final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
 
 void main() {
   Logger.init(tag: 'leisure_games',isDebug: isDebug);

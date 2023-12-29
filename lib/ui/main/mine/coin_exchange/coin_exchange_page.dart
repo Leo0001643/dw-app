@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
+import '../../ends_drawer_view.dart';
 import 'coin_exchange_logic.dart';
 
 ///
@@ -33,7 +34,11 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().bibiduihuan,msg: true),
+      key: state.scaffoldMineKey,
+      appBar: WidgetUtils().buildAppBar(Intr().bibiduihuan,msg: true,drawer:true,drawEnd:(){
+        state.scaffoldMineKey.currentState?.openEndDrawer();
+      }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg2(),
       body: Column(
         children: [
