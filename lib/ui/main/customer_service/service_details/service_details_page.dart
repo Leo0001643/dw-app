@@ -9,6 +9,8 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 
+import '../../../../app/routes.dart';
+import '../../../bean/html_event.dart';
 import 'service_details_logic.dart';
 
 class ServiceDetailsPage extends StatefulWidget {
@@ -46,40 +48,63 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
             children: [
               Container(
                 decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage(ImageX.kefudetail),fit: BoxFit.cover,),
+                  image: DecorationImage(
+                    image: AssetImage(ImageX.kefudetail),
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 height: 213.h,
-                child: WidgetUtils().buildRxAppBar(state.title,msg: true,bgColor: Colors.transparent),
+                child: WidgetUtils().buildRxAppBar(state.title,
+                    msg: true, bgColor: Colors.transparent),
               ),
               Container(
                 margin: EdgeInsets.only(top: 193.h),
                 decoration: BoxDecoration(
                   color: ColorX.cardBg5(),
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.r),
+                      topRight: Radius.circular(20.r)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     Column(
-                      children: state.detail.custerServers?.map((e) =>
-                          buildCategaryItem(e, state.detail.custerServers!.indexOf(e))).toList() ?? [],
+                      children: state.detail.custerServers
+                              ?.map((e) => buildCategaryItem(
+                                  e, state.detail.custerServers!.indexOf(e)))
+                              .toList() ??
+                          [],
                     ),
                     // buildCategaryItem("客服小强","Johnny999",ImageX.icon_wechat, 0),
                     // buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 1),
                     // buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 2),
                     // buildCategaryItem("客服小强", "Johnny999",ImageX.icon_wechat, 3),
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     Padding(
                       padding: EdgeInsets.only(left: 20.w),
-                      child: Text(Intr().wenxintishi_fuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),height: 1.5),),
+                      child: Text(
+                        Intr().wenxintishi_fuzhi,
+                        style: TextStyle(
+                            fontSize: 14.sp,
+                            color: ColorX.text586(),
+                            height: 1.5),
+                      ),
                     ),
-                    SizedBox(height: 32.h,),
+                    SizedBox(
+                      height: 32.h,
+                    ),
                     Center(
-                      child: WidgetUtils().buildElevatedButton(Intr().fanhui, 131.w, 40.h,
-                          bg: ColorX.cardBg3(),textColor: ColorX.text0917(),onPressed: (){
-                            Navigator.of(context).pop();
-                          }),
+                      child: WidgetUtils().buildElevatedButton(
+                          Intr().fanhui, 131.w, 40.h,
+                          bg: ColorX.cardBg3(),
+                          textColor: ColorX.text0917(), onPressed: () {
+                        Navigator.of(context).pop();
+                      }),
                     ),
                   ],
                 ),
@@ -94,40 +119,69 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
   Widget buildCategaryItem(CustomerServiceCusterServers server, int i) {
     return Column(
       children: [
-        SizedBox(height: 10.h,),
+        SizedBox(
+          height: 10.h,
+        ),
         Container(
           decoration: BoxDecoration(
             color: ColorX.cardBg3(),
             borderRadius: BorderRadius.circular(10.r),
             // image: DecorationImage(image: AssetImage(ImageX.bg_customer),fit: BoxFit.fill),
           ),
-          padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 15.w),
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
           margin: EdgeInsets.symmetric(horizontal: 20.w),
-          height:  72.h,
+          height: 72.h,
           child: Row(
             children: [
               GFAvatar(
-                backgroundImage: WidgetUtils().buildImageProvider("${server.url}${server.image}"),
+                backgroundImage: WidgetUtils()
+                    .buildImageProvider("${server.url}${server.image}"),
                 shape: GFAvatarShape.circle,
                 radius: 18.r,
               ),
-              SizedBox(width: 8.w,),
+              SizedBox(
+                width: 8.w,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(server.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                  SizedBox(height: 5.h,),
-                  Text(server.number.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                  Text(
+                    server.name.em(),
+                    style: TextStyle(fontSize: 14.sp, color: ColorX.text0917()),
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Text(
+                    server.number.em(),
+                    style: TextStyle(
+                        fontSize: 14.sp,
+                        color: ColorX.text0917(),
+                        fontWeight: FontWeight.w600),
+                  ),
                 ],
               ),
-              Expanded(child: Container(),),
-
-
+              Expanded(
+                child: Container(),
+              ),
               InkWell(
-                onTap: ()=> WidgetUtils().clickCopy(server.number.em()),
-                child: Text((state?.detail.isChat==true)?Intr().nowChat:Intr().dianjifuzhi,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),
-                    decoration: TextDecoration.underline),),
+                onTap: () {
+                  if(state?.detail.isChat == true){
+                    Get.toNamed(Routes.html,arguments: HtmlEvent(data: "http://soptj9qq.com/m/www.baidu.com",isHtmlData: false,pageTitle: ""));
+                  }else{
+                    WidgetUtils().clickCopy(server.number.em());
+                  }
+                },
+                child: Text(
+                  (state?.detail.isChat == true)
+                      ? Intr().nowChat
+                      : Intr().dianjifuzhi,
+                  style: TextStyle(
+                      fontSize: 12.sp,
+                      color: ColorX.text0917(),
+                      decoration: TextDecoration.underline),
+                ),
               ),
             ],
           ),
@@ -135,5 +189,4 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
       ],
     );
   }
-
 }
