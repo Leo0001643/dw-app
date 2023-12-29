@@ -138,7 +138,7 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
                 ),
                 SizedBox(height: 8.h,),
                 Obx(() {
-                  var balance = state.c2u.value ? state.cnyBal.value : state.usdtBal.value;
+                  var balance = state.c2u.value ?  state.usdtBal.value:state.cnyBal.value;
                   var symbol = state.c2u.value ? "₮":"¥";
                   return Text("${Intr().yue_}$symbol${balance.money}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
                 }),
@@ -151,7 +151,7 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
             child: Row(
               children: [
                 Obx(() {
-                  var rate = state.c2u.value ? "1 CNY = ${state.usdtRate} USDT":"1 USDT = ${state.cnyRate} CNY";
+                  var rate = state.c2u.value ? "1 CNY = ${(1 / state.usdtRate.toDouble()).toStringAsFixed(6)} USDT":"1 USDT = ${state.usdtRate} CNY";
                   return Text(Intr().huilv_([rate]),style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),);
                 }),
                 // InkWell(

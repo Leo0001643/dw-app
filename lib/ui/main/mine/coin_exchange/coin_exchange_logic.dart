@@ -66,7 +66,7 @@ class CoinExchangeLogic extends GetxController {
     if(unEmpty(value) && value.isNum){
       var v =  int.parse(value);
       state.fromAmount.value = v.toString();
-      var amount = state.c2u.value ? v * state.usdtRate.value : v * state.cnyRate.value;
+      var amount = state.c2u.value ?  v * state.cnyRate.value:v * state.usdtRate.value ;
       state.toAmount.value = amount.toInt().toString();
     }else {
       state.fromAmount.value = "";
@@ -82,7 +82,7 @@ class CoinExchangeLogic extends GetxController {
 
     var user = AppData.user();
     var params = <String,dynamic>{"oid":user?.oid,"username":user?.username,
-    "money":state.fromAmount.value,"tout":state.toAmount.value};
+    "money":state.fromAmount.value,"tout":1};
 
     //转出币种类型【1:CNY,2:USD,3:KRW,4:INR,5:USDT,6:VND】
     if(state.c2u.value){
