@@ -15,8 +15,8 @@ class MoreTabView extends StatelessWidget {
   final HomeLogic logic;
   MoreTabView(this.logic, {super.key});
 
-  var homeMenu = [HomeGameMenuEntity(name: Intr().grzx,group: ImageX.icon_dai,),
-    HomeGameMenuEntity(name: Intr().zoushi,group: ImageX.icon_gywm,),
+  var homeMenu = [HomeGameMenuEntity(name: Intr().grzx,group: ImageX.icon_mine_svg,),
+    HomeGameMenuEntity(name: Intr().zoushi,group: ImageX.icon_zoushi,),
     HomeGameMenuEntity(name: Intr().eduzhuanhuan,group: ImageX.icon_edzh,),
     HomeGameMenuEntity(name: Intr().bibiduihuan,group: ImageX.icon_bb,),
     HomeGameMenuEntity(name: Intr().touzhujilu,group: ImageX.icon_tzjl,),
@@ -75,7 +75,7 @@ class MoreTabView extends StatelessWidget {
     );
   }
   Widget buildImageItem(String icon) {
-    if (icon.contains("about_us.svg")||icon.contains("daili.svg")) {
+    if (icon.contains("mine.svg")||icon.contains("zoushi.svg")) {
       return SvgPicture.asset(
         icon,
         width: 24.w,

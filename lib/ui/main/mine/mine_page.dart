@@ -483,7 +483,7 @@ class StateMinePage extends State<MinePage> {
   }
 
   Widget buildImageItem(String icon) {
-    if (icon.contains("about_us.svg")||icon.contains("daili.svg")) {
+    if (icon.contains("icon_agency.svg")||icon.contains("guanyu.svg")) {
       return SvgPicture.asset(
         icon,
         width: 24.w,
