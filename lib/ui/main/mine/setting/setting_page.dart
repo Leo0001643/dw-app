@@ -27,19 +27,18 @@ class _SettingPageState extends State<SettingPage> {
   final logic = Get.find<SettingLogic>();
   final state = Get.find<SettingLogic>().state;
 
-
   @override
   void dispose() {
     Get.delete<SettingLogic>();
     super.dispose();
   }
 
-  String theme(){
-    return AppData.theme() ? Intr().qzb:Intr().kxh;
+  String theme() {
+    return AppData.theme() ? Intr().qzb : Intr().kxh;
   }
 
-  String language(){
-    switch(AppData.localeIndex()){
+  String language() {
+    switch (AppData.localeIndex()) {
       case 1:
         return Intr().yingyu;
       case 2:
@@ -52,52 +51,70 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().shezhi,msg: true),
+      appBar: WidgetUtils().buildAppBar(Intr().shezhi, msg: true),
       backgroundColor: ColorX.pageBg2(),
       body: Container(
         child: SingleChildScrollView(
-          child:Column(
+          child: Column(
             children: [
               InkWell(
-                onTap: ()=> Get.toNamed(Routes.user_info),
+                onTap: () => Get.toNamed(Routes.user_info),
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.r),
-                      color: ColorX.cardBg()
-                  ),
-                  margin: EdgeInsets.only(left: 15.w,right: 15.w,top: 10.h),
-                  padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 12.w),
+                      color: ColorX.cardBg()),
+                  margin: EdgeInsets.only(left: 15.w, right: 15.w, top: 10.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 12.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(Intr().gerenziliao,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
-                      Image.asset(ImageX.icon_right_grey,color: ColorX.icon586(),),
+                      Text(
+                        Intr().gerenziliao,
+                        style:
+                            TextStyle(fontSize: 12.sp, color: ColorX.text0d1()),
+                      ),
+                      Image.asset(
+                        ImageX.icon_right_grey,
+                        color: ColorX.icon586(),
+                      ),
                     ],
                   ),
                 ),
               ),
               Container(
                 decoration: BoxDecoration(
-                 borderRadius: BorderRadius.circular(10.r), color: ColorX.cardBg()
-                ),
-                margin: EdgeInsets.only(left: 15.w,right: 15.w,top: 10.h),
+                    borderRadius: BorderRadius.circular(10.r),
+                    color: ColorX.cardBg()),
+                margin: EdgeInsets.only(left: 15.w, right: 15.w, top: 10.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: ()=> Get.toNamed(Routes.set_login_pwd),
+                      onTap: () => Get.toNamed(Routes.set_login_pwd),
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 12.w),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 15.h, horizontal: 12.w),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(Intr().shezhidenglumima,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
-                            Image.asset(ImageX.icon_right_grey,color: ColorX.icon586(),)
+                            Text(
+                              Intr().shezhidenglumima,
+                              style: TextStyle(
+                                  fontSize: 12.sp, color: ColorX.text0d1()),
+                            ),
+                            Image.asset(
+                              ImageX.icon_right_grey,
+                              color: ColorX.icon586(),
+                            )
                           ],
                         ),
                       ),
                     ),
-                    Divider(color: ColorX.color_10_949,height: 1.h,),
+                    Divider(
+                      color: ColorX.color_10_949,
+                      height: 1.h,
+                    ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 12.w),
                       child: Row(
@@ -105,26 +122,54 @@ class _SettingPageState extends State<SettingPage> {
                         children: [
                           Row(
                             children: [
-                              Text(Intr().shezhijianyimima,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
-                              SizedBox(width: 3.w,),
-                              Image.asset(ImageX.icon_wenhao,color: ColorX.text586(),)
+                              Text(
+                                Intr().shezhijianyimima,
+                                style: TextStyle(
+                                    fontSize: 12.sp, color: ColorX.text0d1()),
+                              ),
+                              SizedBox(
+                                width: 3.w,
+                              ),
+                              Image.asset(
+                                ImageX.icon_wenhao,
+                                color: ColorX.text586(),
+                              )
                             ],
                           ),
                           Obx(() {
                             return Switch(
+                                thumbColor:
+                                    MaterialStateColor.resolveWith((states) {
+                                  // 根据状态返回相应的颜色
+                                  if (states.contains(MaterialState.selected)) {
+                                    // Switch 处于激活状态时的颜色
+                                    return Colors.white;
+                                  }
+                                  // Switch 处于非激活状态时的颜色
+                                  return Colors.white; // 你可以根据需要修改颜色
+                                }),
+                                // 使用 const 表达式，也可以直接使用 Colors.white
                                 value: state.jymmToggle.value,
-                                inactiveTrackColor: ColorX.text949(),
-                                activeTrackColor: ColorX.color_69c25c,
+                                inactiveTrackColor: Color(0xff949EB9),
+                                // 设置关闭时的填充颜色
                                 activeColor: Colors.white,
-                                onChanged: (value){
-                                  if(isEmpty(AppData.simplePwd())){
-                                    Get.toNamed(Routes.set_simple_pwd)?.then((value) {
-                                      state.jymmToggle.value = unEmpty(AppData.simplePwd());
-                                      loggerArray(["返回数据了吗",value,state.jymmToggle.value]);
+                                onChanged: (value) {
+                                  if (isEmpty(AppData.simplePwd())) {
+                                    Get.toNamed(Routes.set_simple_pwd)
+                                        ?.then((value) {
+                                      state.jymmToggle.value =
+                                          unEmpty(AppData.simplePwd());
+                                      loggerArray([
+                                        "返回数据了吗",
+                                        value,
+                                        state.jymmToggle.value
+                                      ]);
                                     });
-                                  }else {///清空简易密码
+                                  } else {
+                                    ///清空简易密码
                                     AppData.setSimplePwd("");
-                                    state.jymmToggle.value = unEmpty(AppData.simplePwd());
+                                    state.jymmToggle.value =
+                                        unEmpty(AppData.simplePwd());
                                   }
                                 });
                           }),
@@ -135,20 +180,31 @@ class _SettingPageState extends State<SettingPage> {
                 ),
               ),
               InkWell(
-                onTap: ()=> Get.toNamed(Routes.select_language),
+                onTap: () => Get.toNamed(Routes.select_language),
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.r),
-                      color: ColorX.cardBg()
-                  ),
-                  margin: EdgeInsets.only(left: 15.w,right: 15.w,top: 10.h),
-                  padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 12.w),
+                      color: ColorX.cardBg()),
+                  margin: EdgeInsets.only(left: 15.w, right: 15.w, top: 10.h),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 12.w),
                   child: Row(
                     children: [
-                      Text(Intr().dyy,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
+                      Text(
+                        Intr().dyy,
+                        style:
+                            TextStyle(fontSize: 12.sp, color: ColorX.text0d1()),
+                      ),
                       Expanded(child: Container()),
-                      Text(language(),style: TextStyle(fontSize: 12.sp,color: ColorX.text949()),),
-                      Image.asset(ImageX.icon_right_grey,color: ColorX.text586(),)
+                      Text(
+                        language(),
+                        style:
+                            TextStyle(fontSize: 12.sp, color: ColorX.text949()),
+                      ),
+                      Image.asset(
+                        ImageX.icon_right_grey,
+                        color: ColorX.text586(),
+                      )
                     ],
                   ),
                 ),
@@ -156,9 +212,8 @@ class _SettingPageState extends State<SettingPage> {
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.r),
-                    color: ColorX.cardBg()
-                ),
-                margin: EdgeInsets.only(left: 15.w,right: 15.w,top: 10.h),
+                    color: ColorX.cardBg()),
+                margin: EdgeInsets.only(left: 15.w, right: 15.w, top: 10.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -167,37 +222,73 @@ class _SettingPageState extends State<SettingPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(Intr().bjyy,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
-                          Switch(
-                            onChanged: (value){
-                              AppData.setBgMusic(value == true);
-                              state.bjyyToggle.value = value == true;
-                            },
-                            value: state.bjyyToggle.value,
-                            inactiveTrackColor: ColorX.text949(),
-                            activeTrackColor: ColorX.color_69c25c,
-                            activeColor: Colors.white,
+                          Text(
+                            Intr().bjyy,
+                            style: TextStyle(
+                                fontSize: 12.sp, color: ColorX.text0d1()),
                           ),
+                          Obx(() {
+                            return Switch(
+                              thumbColor:
+                                  MaterialStateColor.resolveWith((states) {
+                                // 根据状态返回相应的颜色
+                                if (states.contains(MaterialState.selected)) {
+                                  // Switch 处于激活状态时的颜色
+                                  return Colors.white;
+                                }
+                                // Switch 处于非激活状态时的颜色
+                                return Colors.white; // 你可以根据需要修改颜色
+                              }),
+                              onChanged: (value) {
+                                AppData.setBgMusic(value);
+                                state.bjyyToggle.value = !value;
+                              },
+                              value: !state.bjyyToggle.value,
+                              inactiveTrackColor: ColorX.text949(),
+                              activeTrackColor: ColorX.color_69c25c,
+                              activeColor: Colors.white,
+                            );
+                          }),
                         ],
                       ),
                     ),
-                    Divider(color: ColorX.color_10_949,height: 1.h,),
+                    Divider(
+                      color: ColorX.color_10_949,
+                      height: 1.h,
+                    ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 12.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(Intr().tsy,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
-                          Switch(
-                            onChanged: (value){
+                          Text(
+                            Intr().tsy,
+                            style: TextStyle(
+                                fontSize: 12.sp, color: ColorX.text0d1()),
+                          ),
+                        Obx(() {
+                          return Switch(
+                            thumbColor:
+                            MaterialStateColor.resolveWith((states) {
+                              // 根据状态返回相应的颜色
+                              if (states.contains(MaterialState.selected)) {
+                                // Switch 处于激活状态时的颜色
+                                return Colors.white;
+                              }
+                              // Switch 处于非激活状态时的颜色
+                              return Colors.white; // 你可以根据需要修改颜色
+                            }),
+                            onChanged: (value) {
                               AppData.setPromptTone(value == true);
-                              state.tsyToggle.value = value == true;
+                              state.tsyToggle.value = !value;
                             },
-                            value: state.tsyToggle.value,
+                            value: !state.tsyToggle.value,
                             inactiveTrackColor: ColorX.text949(),
                             activeTrackColor: ColorX.color_69c25c,
                             activeColor: Colors.white,
-                          ),
+                          );
+                        })
+
                         ],
                       ),
                     ),
@@ -207,39 +298,61 @@ class _SettingPageState extends State<SettingPage> {
               Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.r),
-                    color: ColorX.cardBg()
-                ),
-                margin: EdgeInsets.only(left: 15.w,right: 15.w,top: 10.h),
+                    color: ColorX.cardBg()),
+                margin: EdgeInsets.only(left: 15.w, right: 15.w, top: 10.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: ()=> Get.toNamed(Routes.select_theme),
+                      onTap: () => Get.toNamed(Routes.select_theme),
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 12.w),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 15.h, horizontal: 12.w),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(Intr().wgys,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
+                            Text(
+                              Intr().wgys,
+                              style: TextStyle(
+                                  fontSize: 12.sp, color: ColorX.text0d1()),
+                            ),
                             Expanded(child: Container()),
-                            Text(theme(),style: TextStyle(fontSize: 12.sp,color: ColorX.text949()),),
-                            Image.asset(ImageX.icon_right_grey,color: ColorX.text586())
+                            Text(
+                              theme(),
+                              style: TextStyle(
+                                  fontSize: 12.sp, color: ColorX.text949()),
+                            ),
+                            Image.asset(ImageX.icon_right_grey,
+                                color: ColorX.text586())
                           ],
                         ),
                       ),
                     ),
-                    Divider(color: ColorX.color_10_949,height: 1.h,),
+                    Divider(
+                      color: ColorX.color_10_949,
+                      height: 1.h,
+                    ),
                     InkWell(
-                      onTap: ()=> Get.toNamed(Routes.select_animation),
+                      onTap: () => Get.toNamed(Routes.select_animation),
                       child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 12.w),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 12.w),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(Intr().dx,style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
+                            Text(
+                              Intr().dx,
+                              style: TextStyle(
+                                  fontSize: 12.sp, color: ColorX.text0d1()),
+                            ),
                             Expanded(child: Container()),
-                            Text(Intr().quankai,style: TextStyle(fontSize: 12.sp,color: ColorX.text949()),),
-                            Image.asset(ImageX.icon_right_grey,color: ColorX.text586())
+                            Text(
+                              Intr().quankai,
+                              style: TextStyle(
+                                  fontSize: 12.sp, color: ColorX.text949()),
+                            ),
+                            Image.asset(ImageX.icon_right_grey,
+                                color: ColorX.text586())
                           ],
                         ),
                       ),
@@ -247,13 +360,17 @@ class _SettingPageState extends State<SettingPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 10.h,),
-
-              WidgetUtils().buildElevatedButton(Intr().tuichudenglu, 335.w,
-                  45.h,textColor:ColorX.color_fc243b,bg:ColorX.cardBg(),onPressed: (){
+              SizedBox(
+                height: 10.h,
+              ),
+              WidgetUtils().buildElevatedButton(
+                  Intr().tuichudenglu, 335.w, 45.h,
+                  textColor: ColorX.color_fc243b,
+                  bg: ColorX.cardBg(), onPressed: () {
                 DialogUtils().showLogoutDialog(context).then((value) {
-                  if(value  == true){
+                  if (value == true) {
                     AppData.clear();
+
                     ///退出登录需求切换页面到首页
                     eventBus.fire(ChangeMainPageEvent(0));
                     eventBus.fire(LoginRefreshEvent());
@@ -267,5 +384,4 @@ class _SettingPageState extends State<SettingPage> {
       ),
     );
   }
-
 }
