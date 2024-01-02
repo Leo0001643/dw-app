@@ -78,6 +78,7 @@ dependencies:
   open_filex: ^4.3.4
   flutter_svg: ^2.0.9
   flutter_aliyun_captcha: ^1.0.5
+  flutter_tencent_captcha: ^0.1.2
 dependency_overrides:
   meta: ^1.10.0 # 替换为你需要的meta库的版本号
 

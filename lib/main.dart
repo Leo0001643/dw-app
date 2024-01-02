@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_tencent_captcha/tencent_captcha.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:leisure_games/app/app_theme.dart';
 import 'package:leisure_games/app/network/http_service.dart';
@@ -19,6 +20,9 @@ import 'app/routes.dart';
 final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // 请填写你自己的 AppId
+  TencentCaptcha.init('<your appid>');
   Logger.init(tag: 'leisure_games',isDebug: isDebug);
   WidgetsFlutterBinding.ensureInitialized();
   AppData.initData().then((value) => runApp(MyApp()));///初始化本地数据
