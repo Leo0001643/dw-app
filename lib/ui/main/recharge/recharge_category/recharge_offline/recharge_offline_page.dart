@@ -207,8 +207,9 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
     return InkWell(
       onTap: ()=>state.selectIndex.value = index,
       child: Container(
+
         decoration: BoxDecoration(color: getCardBgColor(),borderRadius: BorderRadius.circular(12.r)),
-        padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
+        padding: EdgeInsets.symmetric(vertical: 9.h,horizontal: 20.w),
         alignment: Alignment.centerLeft,
         margin: EdgeInsets.only(right: 15.w),
         child: Column(
@@ -237,7 +238,15 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
                       Text(Intr().kahao,style: TextStyle(fontSize: 12.sp,color: Colors.white70),),
                       Row(
                         children: [
-                          Text(item.cardNumber.em(),style:TextStyle(fontSize: 14.sp,color: Colors.white),),
+                          Container(width: 140,
+                            child: SingleChildScrollView(
+                              scrollDirection:Axis.horizontal,
+                              child:   Row(
+                                children: [
+                                  Text(item.cardNumber.em(),style:TextStyle(fontSize: 14.sp,color: Colors.white),),
+                                ],
+                              ),
+                            ),),
                           InkWell(
                             onTap: ()=> WidgetUtils().clickCopy(item.cardNumber.em()),
                             child: Image.asset(ImageX.icon_copy,),

@@ -146,8 +146,8 @@ class StateGameMenuView extends State<GameMenuView> {
         Visibility(
             visible: element != widget.logic.state.menuGroup[0],
             child: Divider(
-              height: 1,
-              color: Colors.black26,
+              height: 0.5,
+              color: Colors.black12,
             )),
         SizedBox(
           height: 10.h,
@@ -203,8 +203,13 @@ class StateGameMenuView extends State<GameMenuView> {
           borderRadius: BorderRadius.circular(10.r),
           child: isEmpty(element.advertImage)
               ? null
-              : WidgetUtils().buildImage(element.advertImage.em(), 1.sw, 80.h,
-                  fit: BoxFit.fill),
+              : Center(
+                child: Center(
+                  child: WidgetUtils().buildImage(element.advertImage.em(), 0.65.sw, 80.h,
+
+                      fit: BoxFit.fill),
+                ),
+              ),
         ),
       ],
     );
