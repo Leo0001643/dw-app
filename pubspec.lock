@@ -294,6 +294,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_aliyun_captcha:
+    dependency: "direct main"
+    description:
+      name: flutter_aliyun_captcha
+      sha256: a4e757e4f44c778bd61341d20db69bdd2c5e921c4609fb712de480028ed44cb0
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.5"
   flutter_easyloading:
     dependency: "direct main"
     description:
