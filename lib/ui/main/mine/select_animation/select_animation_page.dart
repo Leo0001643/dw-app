@@ -53,13 +53,27 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                         Text(Intr().cksl,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),
                         decoration: TextDecoration.underline),),
                         Expanded(child: Container()),
-                        Switch(
-                          onChanged: (value){},
-                          value: state.entertainedAnim.value,
-                          inactiveTrackColor: ColorX.text949(),
-                          activeTrackColor: ColorX.color_69c25c,
-                          activeColor: Colors.white,
-                        ),
+                        Obx(() {
+                          return Switch(
+                            thumbColor:
+                            MaterialStateColor.resolveWith((states) {
+                              // 根据状态返回相应的颜色
+                              if (states.contains(MaterialState.selected)) {
+                                // Switch 处于激活状态时的颜色
+                                return Colors.white;
+                              }
+                              // Switch 处于非激活状态时的颜色
+                              return Colors.white; // 你可以根据需要修改颜色
+                            }),
+                            onChanged: (value) {
+                              state.entertainedAnim.value = value == true;
+                            },
+                            value: state.entertainedAnim.value,
+                            inactiveTrackColor: ColorX.text949(),
+                            activeTrackColor: ColorX.color_69c25c,
+                            activeColor: Colors.white,
+                          );
+                        }),
                       ],
                     ),
                   ),
@@ -74,13 +88,27 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                         Text(Intr().cksl,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),
                             decoration: TextDecoration.underline),),
                         Expanded(child: Container()),
-                        Switch(
-                          onChanged: (value){},
-                          value: state.lotteryAnim.value,
-                          inactiveTrackColor: ColorX.text949(),
-                          activeTrackColor: ColorX.color_69c25c,
-                          activeColor: Colors.white,
-                        ),
+                        Obx(() {
+                          return Switch(
+                            thumbColor:
+                            MaterialStateColor.resolveWith((states) {
+                              // 根据状态返回相应的颜色
+                              if (states.contains(MaterialState.selected)) {
+                                // Switch 处于激活状态时的颜色
+                                return Colors.white;
+                              }
+                              // Switch 处于非激活状态时的颜色
+                              return Colors.white; // 你可以根据需要修改颜色
+                            }),
+                            onChanged: (value) {
+                              state.lotteryAnim.value = value == true;
+                            },
+                            value: state.lotteryAnim.value,
+                            inactiveTrackColor: ColorX.text949(),
+                            activeTrackColor: ColorX.color_69c25c,
+                            activeColor: Colors.white,
+                          );
+                        }),
                       ],
                     ),
                   ),
@@ -95,13 +123,27 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                         Text(Intr().cksl,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),
                             decoration: TextDecoration.underline),),
                         Expanded(child: Container()),
-                        Switch(
-                          onChanged: (value){},
-                          value: state.countdownAnim.value,
-                          inactiveTrackColor: ColorX.text949(),
-                          activeTrackColor: ColorX.color_69c25c,
-                          activeColor: Colors.white,
-                        ),
+                        Obx(() {
+                          return Switch(
+                            thumbColor:
+                            MaterialStateColor.resolveWith((states) {
+                              // 根据状态返回相应的颜色
+                              if (states.contains(MaterialState.selected)) {
+                                // Switch 处于激活状态时的颜色
+                                return Colors.white;
+                              }
+                              // Switch 处于非激活状态时的颜色
+                              return Colors.white; // 你可以根据需要修改颜色
+                            }),
+                            onChanged: (value) {
+                              state.countdownAnim.value = value == true;
+                            },
+                            value: state.countdownAnim.value,
+                            inactiveTrackColor: ColorX.text949(),
+                            activeTrackColor: ColorX.color_69c25c,
+                            activeColor: Colors.white,
+                          );
+                        }),
                       ],
                     ),
                   ),

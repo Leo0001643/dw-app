@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -19,26 +17,19 @@ import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 
-class EndsDrawerView extends StatefulWidget{
+class EndsDrawerView extends StatefulWidget {
   const EndsDrawerView({super.key});
-
 
   @override
   State<StatefulWidget> createState() => StateEndsDrawerView();
-
 }
 
-
-class StateEndsDrawerView extends State<EndsDrawerView>{
-
-
+class StateEndsDrawerView extends State<EndsDrawerView> {
   var musicToggle = AppData.bgMusic().obs;
   var notifyToggle = AppData.promptTone().obs;
 
-
-
-  String language(){
-    switch(AppData.localeIndex()){
+  String language() {
+    switch (AppData.localeIndex()) {
       case 1:
         return Intr().yingyu;
       case 2:
@@ -48,11 +39,9 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
     }
   }
 
-
-  String theme(){
-    return AppData.theme() ? Intr().qzb:Intr().kxh;
+  String theme() {
+    return AppData.theme() ? Intr().qzb : Intr().kxh;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +54,12 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
           children: [
             Obx(() {
               var logic = Get.find<HomeLogic>();
-              return AppData.isLogin() ? userHeader(logic,logic.state.user.value): noLoginHeader(logic.state.user.value);
+              return AppData.isLogin()
+                  ? userHeader(logic, logic.state.user.value)
+                  : noLoginHeader(logic.state.user.value);
             }),
             InkWell(
-              onTap: (){
+              onTap: () {
                 Navigator.of(context).pop();
                 Get.toNamed(Routes.select_language);
               },
@@ -77,21 +68,39 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                   color: ColorX.cardBg5(),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+                padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 13.w),
                 margin: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   children: [
-                    Image.asset(ImageX.icon_language,color: ColorX.icon586(),),
-                    SizedBox(width: 5.w,),
-                    Text(Intr().dyy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                    Image.asset(
+                      ImageX.icon_language,
+                      color: ColorX.icon586(),
+                    ),
+                    SizedBox(
+                      width: 5.w,
+                    ),
+                    Text(
+                      Intr().dyy,
+                      style:
+                          TextStyle(fontSize: 14.sp, color: ColorX.text0917()),
+                    ),
                     Expanded(child: Container()),
-                    Text(language(),style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
-                    Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
+                    Text(
+                      language(),
+                      style:
+                          TextStyle(fontSize: 14.sp, color: ColorX.text949()),
+                    ),
+                    Image.asset(
+                      ImageX.ic_into_right,
+                      color: ColorX.icon586(),
+                    ),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 8.h,),
+            SizedBox(
+              height: 8.h,
+            ),
             Container(
               decoration: BoxDecoration(
                 color: ColorX.cardBg5(),
@@ -103,53 +112,98 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 children: [
                   Row(
                     children: [
-                      Image.asset(ImageX.icon_bgyy,color: ColorX.icon586(),),
-                      SizedBox(width: 5.w,),
-                      Text(Intr().bjyy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                      Expanded(child: Container()),
-                      Switch(
-                        onChanged: (value){
-                          AppData.setBgMusic(value == true);
-                          musicToggle.value = value == true;
-                        },
-                        value: musicToggle.value,
-                        inactiveTrackColor: ColorX.text949(),
-                        activeTrackColor: ColorX.color_69c25c,
-                        activeColor: Colors.white,
+                      Image.asset(
+                        ImageX.icon_bgyy,
+                        color: ColorX.icon586(),
                       ),
-                    ],
-                  ),
-                  Divider(color: ColorX.color_10_949,height: 1.h,),
-                  Container(
-                    child: Row(
-                      children: [
-                        Image.asset(ImageX.icon_tsy,color: ColorX.icon586(),),
-                        SizedBox(width: 5.w,),
-                        Text(Intr().tsy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                        Expanded(child: Container()),
-                        Switch(
-                          onChanged: (value){
-                            AppData.setPromptTone(value == true);
-                            notifyToggle.value = value == true;
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      Text(
+                        Intr().bjyy,
+                        style: TextStyle(
+                            fontSize: 14.sp, color: ColorX.text0917()),
+                      ),
+                      Expanded(child: Container()),
+                      Obx(() {
+                        return Switch(
+                          thumbColor:
+                          MaterialStateColor.resolveWith((states) {
+                            // 根据状态返回相应的颜色
+                            if (states.contains(MaterialState.selected)) {
+                              // Switch 处于激活状态时的颜色
+                              return Colors.white;
+                            }
+                            // Switch 处于非激活状态时的颜色
+                            return Colors.white; // 你可以根据需要修改颜色
+                          }),
+                          onChanged: (value) {
+                            musicToggle.value = value == true;
                           },
-                          value: notifyToggle.value,
+                          value: musicToggle.value,
                           inactiveTrackColor: ColorX.text949(),
                           activeTrackColor: ColorX.color_69c25c,
                           activeColor: Colors.white,
+                        );
+                      }),
+                    ],
+                  ),
+                  Divider(
+                    color: ColorX.color_10_949,
+                    height: 1.h,
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          ImageX.icon_tsy,
+                          color: ColorX.icon586(),
                         ),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        Text(
+                          Intr().tsy,
+                          style: TextStyle(
+                              fontSize: 14.sp, color: ColorX.text0917()),
+                        ),
+                        Expanded(child: Container()),
+                        Obx(() {
+                          return Switch(
+                            thumbColor:
+                            MaterialStateColor.resolveWith((states) {
+                              // 根据状态返回相应的颜色
+                              if (states.contains(MaterialState.selected)) {
+                                // Switch 处于激活状态时的颜色
+                                return Colors.white;
+                              }
+                              // Switch 处于非激活状态时的颜色
+                              return Colors.white; // 你可以根据需要修改颜色
+                            }),
+                            onChanged: (value) {
+                              notifyToggle.value = value == true;
+                            },
+                            value: notifyToggle.value,
+                            inactiveTrackColor: ColorX.text949(),
+                            activeTrackColor: ColorX.color_69c25c,
+                            activeColor: Colors.white,
+                          );
+                        }),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 8.h,),
+            SizedBox(
+              height: 8.h,
+            ),
             Container(
               decoration: BoxDecoration(
                 color: ColorX.cardBg5(),
                 borderRadius: BorderRadius.circular(10.r),
               ),
-              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
+              padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 13.w),
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 children: [
@@ -158,25 +212,43 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                       margin: EdgeInsets.symmetric(vertical: 5.h),
                       child: Row(
                         children: [
-                          Image.asset(ImageX.icon_wg,color: ColorX.icon586()),
-                          SizedBox(width: 5.w,),
-                          Text(Intr().wgys,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                          Image.asset(ImageX.icon_wg, color: ColorX.icon586()),
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          Text(
+                            Intr().wgys,
+                            style: TextStyle(
+                                fontSize: 14.sp, color: ColorX.text0917()),
+                          ),
                           Expanded(child: Container()),
-                          Text(theme(),style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
-                          Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                          Text(
+                            theme(),
+                            style: TextStyle(
+                                fontSize: 14.sp, color: ColorX.text949()),
+                          ),
+                          Image.asset(ImageX.ic_into_right,
+                              color: ColorX.icon586()),
                         ],
                       ),
                     ),
-                    onTap: (){
+                    onTap: () {
                       Navigator.of(context).pop();
                       Get.toNamed(Routes.select_theme);
                     },
                   ),
-                  SizedBox(height: 15.h,),
-                  Divider(color: ColorX.color_10_949,height: 1.h,),
-                  SizedBox(height: 15.h,),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  Divider(
+                    color: ColorX.color_10_949,
+                    height: 1.h,
+                  ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       Navigator.of(context).pop();
                       Get.toNamed(Routes.select_animation);
                     },
@@ -184,12 +256,19 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                       margin: EdgeInsets.symmetric(vertical: 5.h),
                       child: Row(
                         children: [
-                          Image.asset(ImageX.icon_dx,color: ColorX.icon586()),
-                          SizedBox(width: 5.w,),
-                          Text(Intr().dx,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                          Image.asset(ImageX.icon_dx, color: ColorX.icon586()),
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          Text(
+                            Intr().dx,
+                            style: TextStyle(
+                                fontSize: 14.sp, color: ColorX.text0917()),
+                          ),
                           Expanded(child: Container()),
                           // Text(Intr().qk,style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
-                          Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                          Image.asset(ImageX.ic_into_right,
+                              color: ColorX.icon586()),
                         ],
                       ),
                     ),
@@ -197,28 +276,42 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 ],
               ),
             ),
-            SizedBox(height: 8.h,),
+            SizedBox(
+              height: 8.h,
+            ),
             Container(
               decoration: BoxDecoration(
                 color: ColorX.cardBg5(),
                 borderRadius: BorderRadius.circular(10.r),
               ),
-              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w),
+              padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 13.w),
               margin: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 children: [
                   InkWell(
-                    onTap: ()=> jumpToPage(Routes.promotion_profit),
+                    onTap: () => jumpToPage(Routes.promotion_profit),
                     child: Container(
                       margin: EdgeInsets.symmetric(vertical: 5.h),
                       child: Row(
                         children: [
-                          Image.asset(ImageX.icon_share,color: ColorX.icon586()),
-                          SizedBox(width: 5.w,),
-                          Text(Intr().fxghy,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                          Image.asset(ImageX.icon_share,
+                              color: ColorX.icon586()),
+                          SizedBox(
+                            width: 5.w,
+                          ),
+                          Text(
+                            Intr().fxghy,
+                            style: TextStyle(
+                                fontSize: 14.sp, color: ColorX.text0917()),
+                          ),
                           Expanded(child: Container()),
-                          Text(Intr().ycfx,style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
-                          Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                          Text(
+                            Intr().ycfx,
+                            style: TextStyle(
+                                fontSize: 14.sp, color: ColorX.text949()),
+                          ),
+                          Image.asset(ImageX.ic_into_right,
+                              color: ColorX.icon586()),
                         ],
                       ),
                     ),
@@ -242,7 +335,9 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 ],
               ),
             ),
-            SizedBox(height: 8.h,),
+            SizedBox(
+              height: 8.h,
+            ),
             Visibility(
               visible: AppData.isLogin(),
               child: Container(
@@ -250,21 +345,30 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                   color: ColorX.cardBg5(),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+                padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 13.w),
                 margin: EdgeInsets.symmetric(horizontal: 10.w),
                 child: InkWell(
                   child: Row(
                     children: [
-                      Image.asset(ImageX.icon_exist,color: ColorX.icon586()),
-                      SizedBox(width: 5.w,),
-                      Text(Intr().logout,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                      Image.asset(ImageX.icon_exist, color: ColorX.icon586()),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      Text(
+                        Intr().logout,
+                        style: TextStyle(
+                            fontSize: 14.sp, color: ColorX.text0917()),
+                      ),
                       Expanded(child: Container()),
-                      Image.asset(ImageX.ic_into_right,color: ColorX.icon586()),
+                      Image.asset(ImageX.ic_into_right,
+                          color: ColorX.icon586()),
                     ],
                   ),
-                  onTap: ()=> DialogUtils().showLogoutDialog(context).then((value) {
-                    if(value  == true){
+                  onTap: () =>
+                      DialogUtils().showLogoutDialog(context).then((value) {
+                    if (value == true) {
                       AppData.clear();
+
                       ///退出登录需求切换页面到首页
                       eventBus.fire(ChangeMainPageEvent(0));
                       eventBus.fire(LoginRefreshEvent());
@@ -274,74 +378,106 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
                 ),
               ),
             ),
-            SizedBox(height: 30.h,),
-
+            SizedBox(
+              height: 30.h,
+            ),
           ],
         ),
       ),
     );
   }
 
-
   Widget noLoginHeader(LoginUserEntity user) {
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(ImageX.beforeLoginT()),fit: BoxFit.fill,),
+        image: DecorationImage(
+          image: AssetImage(ImageX.beforeLoginT()),
+          fit: BoxFit.fill,
+        ),
       ),
       child: Column(
         children: [
-          SizedBox(height: 50.h,),
-          Text(Intr().hyld,style: TextStyle(fontSize: 20.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-          Text(Intr().qqzlxd,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-          SizedBox(height: 20.h,),
+          SizedBox(
+            height: 50.h,
+          ),
+          Text(
+            Intr().hyld,
+            style: TextStyle(
+                fontSize: 20.sp,
+                color: ColorX.text0917(),
+                fontWeight: FontWeight.w600),
+          ),
+          Text(
+            Intr().qqzlxd,
+            style: TextStyle(fontSize: 14.sp, color: ColorX.text0917()),
+          ),
+          SizedBox(
+            height: 20.h,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               WidgetUtils().buildElevatedButton(Intr().register, 131.w, 45.h,
-                  bg: ColorX.cardBg3(),textColor: ColorX.text0917(),onPressed: (){
-                    Navigator.of(context).pop();
-                    Get.toNamed(Routes.register);
-                  }),
-
-              WidgetUtils().buildElevatedButton(Intr().login, 131.w, 45.h,bg: ColorX.color_fc243b,onPressed: (){
+                  bg: ColorX.cardBg3(),
+                  textColor: ColorX.text0917(), onPressed: () {
+                Navigator.of(context).pop();
+                Get.toNamed(Routes.register);
+              }),
+              WidgetUtils().buildElevatedButton(Intr().login, 131.w, 45.h,
+                  bg: ColorX.color_fc243b, onPressed: () {
                 Navigator.of(context).pop();
                 WidgetUtils().goLogin();
               }),
             ],
           ),
-          SizedBox(height: 20.h,),
+          SizedBox(
+            height: 20.h,
+          ),
         ],
       ),
     );
   }
 
-  Widget userHeader(HomeLogic logic,LoginUserEntity user) {
+  Widget userHeader(HomeLogic logic, LoginUserEntity user) {
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(ImageX.afterLoginT()),fit: BoxFit.fill,),
+        image: DecorationImage(
+          image: AssetImage(ImageX.afterLoginT()),
+          fit: BoxFit.fill,
+        ),
       ),
       child: Column(
         children: [
-          SizedBox(height: 50.h,),
+          SizedBox(
+            height: 50.h,
+          ),
           Row(
             children: [
-              SizedBox(width: 17.w,),
+              SizedBox(
+                width: 17.w,
+              ),
               GFAvatar(
-                backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(user.avatar.em())),
+                backgroundImage: WidgetUtils()
+                    .buildImageProvider(DataUtils.findAvatar(user.avatar.em())),
                 shape: GFAvatarShape.circle,
                 radius: 23.r,
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white,width: 2.r),
+                    border: Border.all(color: Colors.white, width: 2.r),
                   ),
                 ),
               ),
-              SizedBox(width: 8.w,),
+              SizedBox(
+                width: 8.w,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(user.username.em(),style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
+                  Text(
+                    user.username.em(),
+                    style: TextStyle(fontSize: 16.sp, color: ColorX.text0917()),
+                  ),
                   Image.asset(ImageX.icon_vip),
                 ],
               ),
@@ -349,48 +485,73 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               Align(
                 alignment: Alignment.centerRight,
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     eventBus.fire(ChangeMainPageEvent(4));
                     Navigator.pop(context);
                   },
                   child: Row(
                     children: [
-                      Text(Intr().grzx,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
-                      Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
+                      Text(
+                        Intr().grzx,
+                        style:
+                            TextStyle(fontSize: 14.sp, color: ColorX.text586()),
+                      ),
+                      Image.asset(
+                        ImageX.ic_into_right,
+                        color: ColorX.icon586(),
+                      ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(width: 20.w,),
+              SizedBox(
+                width: 20.w,
+              ),
             ],
           ),
-          SizedBox(height: 20.h,),
+          SizedBox(
+            height: 20.h,
+          ),
           Container(
             decoration: BoxDecoration(
               color: ColorX.cardBg8(),
               borderRadius: BorderRadius.circular(10.r),
             ),
-            padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+            padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 13.w),
             margin: EdgeInsets.symmetric(horizontal: 10.w),
             child: GetBuilder<WalletController>(
               id: WalletController.wallet_id,
-              builder: (ctl){
+              builder: (ctl) {
                 return Column(
                   children: [
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Navigator.of(context).pop();
                         Get.toNamed(Routes.select_currency);
                       },
-                      child: buildWalletDefault(logic,ctl),
+                      child: buildWalletDefault(logic, ctl),
                     ),
-                    SizedBox(height: 10.h,),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     Row(
                       children: [
-                        Text(Intr().yue_,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
+                        Text(
+                          Intr().yue_,
+                          style: TextStyle(
+                              fontSize: 11.sp, color: ColorX.text0917()),
+                        ),
                         Obx(() {
-                          return Text(ctl.wallet ? "¥${logic.state.cnyBal.value.money.em()}" : "₮${logic.state.usdtBal.value.money.em()}",
-                            style: TextStyle(fontSize: 14.sp, color: ColorX.text0917(), fontWeight: FontWeight.w600,),);
+                          return Text(
+                            ctl.wallet
+                                ? "¥${logic.state.cnyBal.value.money.em()}"
+                                : "₮${logic.state.usdtBal.value.money.em()}",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              color: ColorX.text0917(),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          );
                         }),
                       ],
                     ),
@@ -399,98 +560,140 @@ class StateEndsDrawerView extends State<EndsDrawerView>{
               },
             ),
           ),
-          SizedBox(height: 8.h,),
+          SizedBox(
+            height: 8.h,
+          ),
           Container(
             decoration: BoxDecoration(
               color: ColorX.cardBg5(),
               borderRadius: BorderRadius.circular(10.r),
             ),
-            padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
+            padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 13.w),
             margin: EdgeInsets.symmetric(horizontal: 10.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InkWell(
-                  onTap: ()=> Get.toNamed(Routes.quota_conversion),
+                  onTap: () => Get.toNamed(Routes.quota_conversion),
                   child: Column(
                     children: [
                       Image.asset(ImageX.icon_edzh),
-                      SizedBox(height: 5.h,),
-                      Text(Intr().edzh,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Text(
+                        Intr().edzh,
+                        style: TextStyle(
+                            fontSize: 11.sp, color: ColorX.text0917()),
+                      ),
                     ],
                   ),
                 ),
                 InkWell(
-                  onTap: ()=> Get.toNamed(Routes.betting_details),
+                  onTap: () => Get.toNamed(Routes.betting_details),
                   child: Column(
                     children: [
                       Image.asset(ImageX.icon_pc),
-                      SizedBox(height: 5.h,),
-                      Text(Intr().pcxq,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Text(
+                        Intr().pcxq,
+                        style: TextStyle(
+                            fontSize: 11.sp, color: ColorX.text0917()),
+                      ),
                     ],
                   ),
                 ),
                 InkWell(
-                  onTap: ()=> Get.toNamed(Routes.betting_record),
+                  onTap: () => Get.toNamed(Routes.betting_record),
                   child: Column(
                     children: [
                       Image.asset(ImageX.icon_tzjl),
-                      SizedBox(height: 5.h,),
-                      Text(Intr().tzjl,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Text(
+                        Intr().tzjl,
+                        style: TextStyle(
+                            fontSize: 11.sp, color: ColorX.text0917()),
+                      ),
                     ],
                   ),
                 ),
                 InkWell(
-                  onTap: ()=> Get.toNamed(Routes.set_simple_pwd),
+                  onTap: () => Get.toNamed(Routes.set_simple_pwd),
                   child: Column(
                     children: [
                       Image.asset(ImageX.icon_jymm),
-                      SizedBox(height: 5.h,),
-                      Text(Intr().jymm,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Text(
+                        Intr().jymm,
+                        style: TextStyle(
+                            fontSize: 11.sp, color: ColorX.text0917()),
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 8.h,),
+          SizedBox(
+            height: 8.h,
+          ),
         ],
       ),
     );
   }
 
   void jumpToPage(String page) {
-    if(AppData.isLogin()){
+    if (AppData.isLogin()) {
       Get.toNamed(page);
     } else {
       WidgetUtils().goLogin();
     }
   }
 
-  Widget buildWalletDefault(HomeLogic logic,WalletController ctl) {
+  Widget buildWalletDefault(HomeLogic logic, WalletController ctl) {
     return Row(
       children: [
         Image.asset(ctl.wallet ? ImageX.icon_rmb_grey : ImageX.icon_ustd2_grey),
-        SizedBox(width: 3.w,),
-        Text(ctl.wallet ? Intr().wallet_cny : Intr().wallet_usdt,
-          style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
-        SizedBox(width: 5.w,),
+        SizedBox(
+          width: 3.w,
+        ),
+        Text(
+          ctl.wallet ? Intr().wallet_cny : Intr().wallet_usdt,
+          style: TextStyle(fontSize: 11.sp, color: ColorX.text0917()),
+        ),
+        SizedBox(
+          width: 5.w,
+        ),
         Expanded(child: Container()),
-        Text("${ctl.wallet ? "USDT" : "CNY"}:",style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+        Text(
+          "${ctl.wallet ? "USDT" : "CNY"}:",
+          style: TextStyle(fontSize: 12.sp, color: ColorX.text586()),
+        ),
         Obx(() {
-          return Text(ctl.wallet ? "₮${logic.state.usdtBal.value.money.em()}" : "¥${logic.state.cnyBal.value.money.em()}",
-            style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),);
+          return Text(
+            ctl.wallet
+                ? "₮${logic.state.usdtBal.value.money.em()}"
+                : "¥${logic.state.cnyBal.value.money.em()}",
+            style: TextStyle(
+                fontSize: 12.sp,
+                color: ColorX.text586(),
+                fontWeight: FontWeight.w600),
+          );
         }),
-        SizedBox(width: 5.w,),
-        Image.asset(ImageX.icon_right_left,width: 10.w,),
+        SizedBox(
+          width: 5.w,
+        ),
+        Image.asset(
+          ImageX.icon_right_left,
+          width: 10.w,
+        ),
       ],
     );
   }
-
-
-
-
 }
-
-
-
