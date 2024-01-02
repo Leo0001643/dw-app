@@ -30,6 +30,8 @@ class GameMenuView extends StatefulWidget {
 }
 
 class StateGameMenuView extends State<GameMenuView> {
+  ScrollController innerController = ScrollController();
+
   var selectMenu = 0.obs;
 
   // ScrollController? scrollController;
@@ -63,7 +65,7 @@ class StateGameMenuView extends State<GameMenuView> {
   }
 
   void scroll2Item(int index) {
-    var controller = widget.coordinator.innerController;
+    var controller = innerController;
     if (index == itemHeightMap.length - 1) {
       controller.jumpTo(controller.position.maxScrollExtent ?? 0);
     } else {
@@ -107,7 +109,7 @@ class StateGameMenuView extends State<GameMenuView> {
                 coordinator: widget.coordinator,
                 child: ListView(
                   padding: EdgeInsets.zero,
-                  controller: widget.coordinator.innerController,
+                  controller:innerController,
                   children: menuGroup
                       .map((element) => buildCategoryItem(element))
                       .toList(),
@@ -120,6 +122,18 @@ class StateGameMenuView extends State<GameMenuView> {
           ),
         ],
       ),
+    );
+
+  }
+  void scrollToPosition(int index) {
+    double itemHeight = 50.0; // 你的每个项目的高度
+    double desiredPosition = index * itemHeight;
+
+    // 滚动到期望的位置
+    innerController.animateTo(
+      desiredPosition,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
     );
   }
 
