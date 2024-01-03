@@ -35,13 +35,14 @@ class MoreTabView extends StatelessWidget {
               return buildMenuItem(context,e,homeMenu.indexOf(e));
             }, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
+
           ),
           ),
           onPop: (){},
           direction: PopoverDirection.bottom,
           backgroundColor: ColorX.cardBg5(),
           barrierColor: Colors.transparent,
-          width: 250.w,
+          width: 80*homeMenu.length*1.0/2,
           height: 200.h,
           arrowHeight: 5.r,
           arrowWidth: 8.r,
@@ -63,8 +64,9 @@ class MoreTabView extends StatelessWidget {
   Widget buildMenuItem(BuildContext context,HomeGameMenuEntity e,int index) {
     return InkWell(
       onTap: ()=> logic.clickMenu(context, 7+index),
-      child: SizedBox(
-        width: 68.w,
+      child: Container(
+        color: Colors.transparent,
+        width: 68,
         height: 65.h,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
