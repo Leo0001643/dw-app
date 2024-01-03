@@ -16,8 +16,11 @@ import 'package:leisure_games/app/widget/nested_inner_scroll_child.dart';
 import 'package:leisure_games/ui/bean/chess_event.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
+import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
+
+import '../text_timer_page.dart';
 
 class GameMenuView extends StatefulWidget {
   final HomeLogic logic;
@@ -86,11 +89,11 @@ class StateGameMenuView extends State<GameMenuView> {
 
   @override
   Widget build(BuildContext context) {
-
     return NotificationListener<ScrollNotification>(
       onNotification: (notification) {
         if (notification is ScrollEndNotification &&
-            notification.metrics.pixels == notification.metrics.maxScrollExtent) {
+            notification.metrics.pixels ==
+                notification.metrics.maxScrollExtent) {
           // 内部滚动到达底部，滚动到底部
           widget.coordinator.outerController.animateTo(
             widget.coordinator.outerController.position.maxScrollExtent,
@@ -98,7 +101,8 @@ class StateGameMenuView extends State<GameMenuView> {
             curve: Curves.easeInOut,
           );
         } else if (notification is ScrollStartNotification &&
-            notification.metrics.pixels == notification.metrics.minScrollExtent) {
+            notification.metrics.pixels ==
+                notification.metrics.minScrollExtent) {
           // 内部滚动到达顶部，通知外部进行处理
           widget.coordinator.outerController.animateTo(
             0,
@@ -132,7 +136,7 @@ class StateGameMenuView extends State<GameMenuView> {
                 padding: EdgeInsets.zero,
                 controller: innerController,
                 children: menuGroup
-                    .map((element) => buildCategoryItem(element))
+                    .map((element) => buildCategoryItem(element, timerGroup))
                     .toList(),
               );
             }),
@@ -157,7 +161,8 @@ class StateGameMenuView extends State<GameMenuView> {
     );
   }
 
-  Widget buildCategoryItem(GameKindEntity element) {
+  Widget buildCategoryItem(
+      GameKindEntity element, Rx<Pc28PlanEntity> timerGroup) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -182,7 +187,7 @@ class StateGameMenuView extends State<GameMenuView> {
           children: element.gameKindList?.map((e) {
                 return InkWell(
                   onTap: () => jumpGameRoom(element, e),
-                  child: buildGroupItem(e),
+                  child: buildGroupItem(e, timerGroup),
                 );
               }).toList() ??
               [],
@@ -235,7 +240,7 @@ class StateGameMenuView extends State<GameMenuView> {
     );
   }
 
-  buildGroupItem(GameKindGameKindList element) {
+  buildGroupItem(GameKindGameKindList element, Rx<Pc28PlanEntity> timerGroup) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -261,7 +266,7 @@ class StateGameMenuView extends State<GameMenuView> {
               //     child: Image.asset(ImageX.icon_heart,/*color: Colors.white,*/),
               //   ),
               // ),
-              countDownText(element),
+              countDownText(element, timerGroup),
             ],
           ),
         ),
@@ -284,7 +289,8 @@ class StateGameMenuView extends State<GameMenuView> {
     );
   }
 
-  Widget countDownText(GameKindGameKindList element) {
+  Widget countDownText(
+      GameKindGameKindList element, Rx<Pc28PlanEntity> timerGroup) {
     return Visibility(
       visible: element.gameKind == Constants.PC28,
       child: Positioned(
@@ -292,18 +298,24 @@ class StateGameMenuView extends State<GameMenuView> {
         left: 0,
         bottom: 0,
         child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black38,
-            borderRadius: BorderRadius.circular(10.r),
-          ),
-          alignment: Alignment.center,
-          margin: EdgeInsets.symmetric(vertical: 5.r, horizontal: 10.r),
-          child: Text(
-            "00:00:33",
-            style: TextStyle(fontSize: 10.sp, color: Colors.white),
-          ),
-        ),
+            decoration: BoxDecoration(
+              color: Colors.black38,
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            alignment: Alignment.center,
+            margin: EdgeInsets.symmetric(vertical: 5.r, horizontal: 10.r),
+            child: TextTimerPage(timerGroup)),
       ),
+    );
+  }
+
+  Widget timerText(Rx<Pc28PlanEntity> timerGroup) {
+    var startTime=timerGroup.value.all?.fastbtb28!.data![0].openTime.toString();
+    var end_time=timerGroup.value.all?.fastbtb28!.data![0].closeTime.toString();
+    var now_time=DateTime.now().toString();
+    return Text(
+      timerGroup.value.all?.fastbtb28!.data![0].closeTime.toString() ?? "",
+      style: TextStyle(fontSize: 10.sp, color: Colors.white),
     );
   }
 
