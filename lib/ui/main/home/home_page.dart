@@ -144,7 +144,7 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
                             children: [
                               buildActivityItem(4,ImageX.yhhdT(),Intr().qiandaoyouli),
                               buildActivityItem(5,ImageX.qdyjT(),Intr().jifenyaojiang),
-                              buildActivityItem(6,ImageX.tjylT(),Intr().tuijianyouli),
+                              buildActivityItem(6,ImageX.tjylT(),Intr().qianghongbao),
                             ],
                           ),
                         ),
@@ -171,12 +171,13 @@ class StateHomePage extends State<HomePage> with SingleTickerProviderStateMixin{
               ],
             ),
             // NestedInnerScrollDemo(),
-            Obx(() {
-              return Visibility(
-                visible: state.hongbaoVisible.value && state.hongbaoManual.value,
-                child: DraggableWidget(logic,state.act.value,),
-              );
-            }),
+            //隐藏红包雨
+            // Obx(() {
+            //   return Visibility(
+            //     visible: state.hongbaoVisible.value && state.hongbaoManual.value,
+            //     child: DraggableWidget(logic,state.act.value,),
+            //   );
+            // }),
           ],
         );
       },

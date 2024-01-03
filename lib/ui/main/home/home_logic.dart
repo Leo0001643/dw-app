@@ -17,6 +17,7 @@ import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:sprintf/sprintf.dart';
 
 import 'home_state.dart';
 
@@ -90,10 +91,10 @@ class HomeLogic extends GetxController {
         }
         break;
       case 6:
-
-        ///推荐有礼
+        ///抢红包
         if (AppData.isLogin()) {
-          Get.toNamed(Routes.promotion_profit);
+          var path = sprintf("http://soptj9qq.com/m/#/Hongbao/1/2/3",[AppData.user()?.oid,AppData.user()?.username,Intr().currentLocale().languageCode]);
+          Get.toNamed(Routes.html,arguments: HtmlEvent(data: path,isHtmlData: false,pageTitle: Intr().hongbaohuodong));
         } else {
           WidgetUtils().goLogin();
         }

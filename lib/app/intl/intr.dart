@@ -506,6 +506,7 @@ class Intr extends Translations{
   String get qiehuanquanjuqianbao => 'qiehuanquanjuqianbao'.tr;
   String get tuijianyouli => 'tuijianyouli'.tr;
   String get zanwuyouxi => 'zanwuyouxi'.tr;
+  String get qianghongbao => 'qianghongbao'.tr;
   String get fangwenluxian => 'fangwenluxian'.tr;
   String get kuai => 'kuai'.tr;
   String get yiban => 'yiban'.tr;
@@ -1080,6 +1081,7 @@ class Intr extends Translations{
       "fuzhichenggong":"复制成功",
       "qiehuanquanjuqianbao":"切换全局钱包",
       "tuijianyouli":"推荐有礼",
+      "qianghongbao":"抢红包",
       "zanwuyouxi":"暂无游戏~",
       "fangwenluxian":"访问路线选择",
       "kuai":"快",
