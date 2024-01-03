@@ -94,7 +94,7 @@ class StateGameMenuView extends State<GameMenuView> {
           // 内部滚动到达底部，滚动到底部
           widget.coordinator.outerController.animateTo(
             widget.coordinator.outerController.position.maxScrollExtent,
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 200),
             curve: Curves.easeInOut,
           );
         } else if (notification is ScrollStartNotification &&
@@ -102,7 +102,7 @@ class StateGameMenuView extends State<GameMenuView> {
           // 内部滚动到达顶部，通知外部进行处理
           widget.coordinator.outerController.animateTo(
             0,
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 200),
             curve: Curves.easeInOut,
           );
         }

@@ -14,6 +14,7 @@ class LoginLogic extends GetxController {
   @override
   void onReady() {
     // TODO: implement onReady
+    getVarcode();
     super.onReady();
   }
 
@@ -22,7 +23,13 @@ class LoginLogic extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
+  void getVarcode() {
+    HttpService.getVarcode("register").then((value) {
+      state.varcode.value = value;
+      state.varcode.refresh();
 
+    });
+  }
   void editChange(bool account,String value){
     if(account){
       state.accountValue = value;
@@ -36,7 +43,7 @@ class LoginLogic extends GetxController {
     }
   }
 
-  void clickLogin(){
+  void clickLogin({dynamic data}){
     if(!state.btnEnable.value){ return; }
     var params = <String,dynamic>{
       "username": state.accountValue,
@@ -44,6 +51,36 @@ class LoginLogic extends GetxController {
       "scene": "nc_login_h5",
       "token": -1,
     };
+    if (data != null &&
+        state.varcode.value.status == 1 &&
+        state.varcode.value.type == 2) {
+      //阿里的滑动
+
+      //@ApiModelProperty(value = "阿里云签名串")
+      //     private String sign;
+      //
+      //     @ApiModelProperty(value = "阿里云会话ID")
+      //     private String sessionId;
+      //
+      //     @ApiModelProperty(value = "阿里云唯一标识")
+      //     private String token;
+      //
+      //     @ApiModelProperty(value = "阿里云场景标识")
+      //     private String scene;
+      params["sign"] = data["sig"];
+      params["sessionId"] = data["sessionId"];
+      params["sign"] = data["sig"];
+      params["token"] = data["token"];
+    }
+    //腾讯的滑动验证
+    //
+    if (data != null &&
+        state.varcode.value.status == 1 &&
+        state.varcode.value.type == 3) {
+      params["ticket"] = data["ticket"];
+      params["randstr"] = data["randstr"];
+      params["token"] = -1;
+    }
     HttpService.login(params).then((value) {
       eventBus.fire(LoginRefreshEvent());
       AppData.setUser(value);

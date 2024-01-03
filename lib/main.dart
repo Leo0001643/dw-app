@@ -22,7 +22,7 @@ final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // 请填写你自己的 AppId
-  TencentCaptcha.init('<your appid>');
+  TencentCaptcha.init("189921981");
   Logger.init(tag: 'leisure_games',isDebug: isDebug);
   WidgetsFlutterBinding.ensureInitialized();
   AppData.initData().then((value) => runApp(MyApp()));///初始化本地数据

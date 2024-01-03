@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 
+import '../bean/var_code_entity.dart';
+
 class LoginState {
   LoginState() {
     ///Initialize variables
@@ -23,7 +25,7 @@ class LoginState {
   // var pwdValue = "";
 
   var btnEnable = false.obs;
-
-
+  var vcode = "";
+  var varcode = VarCodeEntity().obs;
 
 }

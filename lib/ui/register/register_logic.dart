@@ -24,8 +24,10 @@ class RegisterLogic extends GetxController {
     super.onClose();
   }
 
-  void memberRegCheck(){
-    if(isEmpty(state.realname)){ return; }
+  void memberRegCheck() {
+    if (isEmpty(state.realname)) {
+      return;
+    }
     HttpService.memberRegCheck(state.realname).then((value) {
       //验证通过不处理
     });
@@ -38,34 +40,68 @@ class RegisterLogic extends GetxController {
     });
   }
 
-
-  void clickRegister(){
-    if(isEmpty(state.accountValue)){
+  void clickRegister({dynamic data}) {
+    if (isEmpty(state.accountValue)) {
       showToast(Intr().sishiershuzihuozimu);
       return;
     }
-    if(isEmpty(state.pwdValue)){
+    if (isEmpty(state.pwdValue)) {
       showToast(Intr().bashiershuzihuozimu);
       return;
     }
-    if(isEmpty(state.realname)){
+    if (isEmpty(state.realname)) {
       showToast(Intr().zhenshixingmingbunengkong);
       return;
     }
-    if(isEmpty(state.vcode)){
+    if (isEmpty(state.vcode) && state.varcode.value.status != 1) {
       showToast(Intr().yanzhengmabunengkong);
       return;
     }
-    var params = {"username":state.accountValue,"password":state.pwdValue,"confirmPwd":state.confirmPwdValue,
-    "realName":state.realname,"scene":"nc_login_h5","varCode":state.vcode,"varCodeId":state.varcode.value.varCodeId,
-    "agree":1,};
+    var params = {
+      "username": state.accountValue,
+      "password": state.pwdValue,
+      "confirmPwd": state.confirmPwdValue,
+      "realName": state.realname,
+      "scene": "nc_login_h5",
+      "varCode": state.vcode,
+      "varCodeId": state.varcode.value.varCodeId,
+      "agree": 1,
+    };
+    //阿里的滑动验证
+    if (data != null &&
+        state.varcode.value.status == 1 &&
+        state.varcode.value.type == 2) {
+      //阿里的滑动
+
+      //@ApiModelProperty(value = "阿里云签名串")
+      //     private String sign;
+      //
+      //     @ApiModelProperty(value = "阿里云会话ID")
+      //     private String sessionId;
+      //
+      //     @ApiModelProperty(value = "阿里云唯一标识")
+      //     private String token;
+      //
+      //     @ApiModelProperty(value = "阿里云场景标识")
+      //     private String scene;
+      params["sign"] = data["sig"];
+      params["sessionId"] = data["sessionId"];
+      params["sign"] = data["sig"];
+      params["token"] = data["token"];
+    }
+    //腾讯的滑动验证
+    //
+    if (data != null &&
+        state.varcode.value.status == 1 &&
+        state.varcode.value.type == 3) {
+      params["ticket"] = data["ticket"];
+      params["randstr"] = data["randstr"];
+      params["token"] = -1;
+    }
     HttpService.userRegister(params).then((value) {
       eventBus.fire(LoginRefreshEvent());
       AppData.setUser(value);
       Get.until((ModalRoute.withName(Routes.main)));
     });
-
   }
-
-
 }
