@@ -126,6 +126,7 @@ class StateGameMenuView extends State<GameMenuView> {
           Expanded(
             child: Obx(() {
               var menuGroup = widget.logic.state.menuGroup;
+              var timerGroup = widget.logic.state.timerEntity;
               return ListView(
                 key: listKey, // Pass the key to the ListView
                 padding: EdgeInsets.zero,

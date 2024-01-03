@@ -118,7 +118,7 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
                 return LCTabBar(
                   length: state.typeList.length,
                   controller: _tabController,
-                  tabBarHeight: 45.h,
+                  tabBarHeight: 60.h,
                   tabAlignment:TabAlignment.start,
                   tabBarColor: Colors.transparent,
                   indicatorSize: TabBarIndicatorSize.label,
@@ -129,7 +129,6 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
                   ),
                   isScrollable: true,
                   labelPadding: EdgeInsets.only(top: 10),
-
                   labelColor: ColorX.text0917(),
                   unselectedLabelColor: Colors.black54,
                   // width: 0.55.sw,

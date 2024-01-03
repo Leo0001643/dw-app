@@ -9,6 +9,7 @@ import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 
+import '../../bean/pc28_plan_entity.dart';
 import '../../bean/pic28_count_time_text.dart';
 
 class HomeState {
@@ -28,6 +29,7 @@ class HomeState {
   // var bannerList = RxList<Pic30Entity>.empty(growable: true);
   var timerList = RxList<TimeDataContent>.empty(growable: true);
 
+  var timerEntity=Pc28PlanEntity().obs;
 
   ///活动内容
   var act = Pic30BackEntity().obs;
