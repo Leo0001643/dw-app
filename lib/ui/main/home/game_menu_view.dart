@@ -38,6 +38,7 @@ class StateGameMenuView extends State<GameMenuView> {
 
   var itemHeightMap = <int, double>{};
   final Key _firstInnerKey = const ValueKey("first");
+  GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
 
   @override
   void initState() {
@@ -85,7 +86,28 @@ class StateGameMenuView extends State<GameMenuView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+
+    return NotificationListener<ScrollNotification>(
+      onNotification: (notification) {
+        if (notification is ScrollEndNotification &&
+            notification.metrics.pixels == notification.metrics.maxScrollExtent) {
+          // 内部滚动到达底部，滚动到底部
+          widget.coordinator.outerController.animateTo(
+            widget.coordinator.outerController.position.maxScrollExtent,
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        } else if (notification is ScrollStartNotification &&
+            notification.metrics.pixels == notification.metrics.minScrollExtent) {
+          // 内部滚动到达顶部，通知外部进行处理
+          widget.coordinator.outerController.animateTo(
+            0,
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        }
+        return false;
+      },
       child: Row(
         children: [
           Container(
@@ -104,16 +126,13 @@ class StateGameMenuView extends State<GameMenuView> {
           Expanded(
             child: Obx(() {
               var menuGroup = widget.logic.state.menuGroup;
-              return NestedInnerScrollChild(
-                scrollKey: _firstInnerKey,
-                coordinator: widget.coordinator,
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  controller:innerController,
-                  children: menuGroup
-                      .map((element) => buildCategoryItem(element))
-                      .toList(),
-                ),
+              return ListView(
+                key: listKey, // Pass the key to the ListView
+                padding: EdgeInsets.zero,
+                controller: innerController,
+                children: menuGroup
+                    .map((element) => buildCategoryItem(element))
+                    .toList(),
               );
             }),
           ),
@@ -123,8 +142,8 @@ class StateGameMenuView extends State<GameMenuView> {
         ],
       ),
     );
-
   }
+
   void scrollToPosition(int index) {
     double itemHeight = 50.0; // 你的每个项目的高度
     double desiredPosition = index * itemHeight;
@@ -204,12 +223,12 @@ class StateGameMenuView extends State<GameMenuView> {
           child: isEmpty(element.advertImage)
               ? null
               : Center(
-                child: Center(
-                  child: WidgetUtils().buildImage(element.advertImage.em(), 0.65.sw, 80.h,
-
-                      fit: BoxFit.fill),
+                  child: Center(
+                    child: WidgetUtils().buildImage(
+                        element.advertImage.em(), 0.65.sw, 80.h,
+                        fit: BoxFit.fill),
+                  ),
                 ),
-              ),
         ),
       ],
     );
@@ -241,27 +260,7 @@ class StateGameMenuView extends State<GameMenuView> {
               //     child: Image.asset(ImageX.icon_heart,/*color: Colors.white,*/),
               //   ),
               // ),
-              Visibility(
-                visible: element.gameKind == Constants.PC28,
-                child: Positioned(
-                  right: 0,
-                  left: 0,
-                  bottom: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.black38,
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    alignment: Alignment.center,
-                    margin:
-                        EdgeInsets.symmetric(vertical: 5.r, horizontal: 10.r),
-                    child: Text(
-                      "00:00:33",
-                      style: TextStyle(fontSize: 10.sp, color: Colors.white),
-                    ),
-                  ),
-                ),
-              ),
+              countDownText(element),
             ],
           ),
         ),
@@ -281,6 +280,29 @@ class StateGameMenuView extends State<GameMenuView> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget countDownText(GameKindGameKindList element) {
+    return Visibility(
+      visible: element.gameKind == Constants.PC28,
+      child: Positioned(
+        right: 0,
+        left: 0,
+        bottom: 0,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.black38,
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          alignment: Alignment.center,
+          margin: EdgeInsets.symmetric(vertical: 5.r, horizontal: 10.r),
+          child: Text(
+            "00:00:33",
+            style: TextStyle(fontSize: 10.sp, color: Colors.white),
+          ),
+        ),
+      ),
     );
   }
 
@@ -356,7 +378,7 @@ class StateGameMenuView extends State<GameMenuView> {
     }
     // if(scrollController == null){
     //   scrollController = ScrollController();
-    var controller = widget.coordinator.innerController;
+    var controller = innerController;
     controller.addListener(() {
       if (controller.offset < ((itemHeightMap[0] ?? 0))) {
         selectMenu.value = 0;

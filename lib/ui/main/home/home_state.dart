@@ -23,6 +23,8 @@ class HomeState {
   ///轮播图
   var bannerList = RxList<Pic30Entity>.empty(growable: true);
 
+  // var bannerList = RxList<Pic30Entity>.empty(growable: true);
+
   ///活动内容
   var act = Pic30BackEntity().obs;
   ///红包是否可见

@@ -432,7 +432,7 @@ class HttpService{
     return buildFuture<List<BetShakeEntity>>(()=> _client.betShake(params),loading: false);
   }
 
-  static Future<Pc28PlanEntity> getPC28Plan(int termCount,){
+  static Future<Pc28PlanEntity> getPC28Plan(int termCount){
     return buildFuture<Pc28PlanEntity>(()=> _client.getPC28Plan(termCount),loading: false);
   }
 

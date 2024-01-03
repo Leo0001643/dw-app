@@ -191,6 +191,11 @@ class HomeLogic extends GetxController {
       state.bannerList.assignAll(value);
       state.bannerList.refresh();
     });
+    //到机器请求5期
+    // HttpService.getPC28Plan(5).then((value) {
+    //   // state.bannerList.assignAll(value);
+    //   state.bannerList.refresh();
+    // });
 
     HttpService.getActStatus().then((value) {
       var hongbao = value.list?["hongbao"];
