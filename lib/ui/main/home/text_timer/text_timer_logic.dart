@@ -11,37 +11,43 @@ import '../../../bean/pc28_plan_entity.dart';
 /**
  * 参考count_down_text.dart
  */
-class TextTimerLogic extends GetxController {
+class TextTimerLogic {
   final TextTimerState state = TextTimerState();
   StreamSubscription? loginStream;
-  var count=100;
+  var count = 100;
+  String? type;
 
-  @override
+  TextTimerLogic({required this.type});
+
   void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
+    if (type.toString() == "jndx28") {
+      count = 200;
+    }
+    if (type.toString() == "keno28") {
+      count = 300;
+    }
+    if (type.toString() == "fastbtb28") {
+      count = 400;
+    }
   }
 
   void loadData(
       GameKindGameKindList gameKind, Pc28LottoEntity pc28lottoEntity) {
+    onReady();
     HttpService.getPc28LottoList().then((value) {
       state.pc28Lotto.value = value;
       state.pc28Lotto.refresh();
-      print(">>item.gameType>>>" +gameKind.gameCode.toString());
+      print(">>item.gameType>>>" + gameKind.gameCode.toString());
       // Timer.periodic(Duration(seconds: 1), (timer) {
       //   count--;
-      //   state.text_timer.value=count.toString();
+      //   state.text_timer.value = count.toString();
       // });
       for (Pc28LottoRooms item in pc28lottoEntity.rooms!) {
         print(">>item.gameType" + item.gameType.toString());
         // 判断 gameCode 和 gameType 是否相等
         if (gameKind.gameCode == item.gameType) {
           // 执行倒计时逻辑
-          state.text_timer.value=gameKind.gameCode.toString();
+          state.text_timer.value = gameKind.gameCode.toString();
           loadTimerData(item);
           break; // 找到匹配的 gameType 后可以退出循环
         }
@@ -139,7 +145,7 @@ class TextTimerLogic extends GetxController {
           }
         }
       }
-      state.text_timer.value=roomcountdown[key + 'Time'];
+      state.text_timer.value = roomcountdown[key + 'Time'];
     }
   }
 

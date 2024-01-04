@@ -47,7 +47,6 @@ class StateGameMenuView extends State<GameMenuView> {
 
   @override
   void initState() {
-    Get.put(TextTimerLogic());
     initScrollListener();
     super.initState();
   }
@@ -174,10 +173,10 @@ class StateGameMenuView extends State<GameMenuView> {
       children: [
         Visibility(
             visible: element != widget.logic.state.menuGroup[0],
-            child:Container(
-              margin: EdgeInsets.only(left: 6,right: 22),
+            child: Container(
+              margin: EdgeInsets.only(left: 6, right: 22),
               height: 1,
-              child:  Divider(
+              child: Divider(
                 height: 0.5,
                 color: Colors.black12,
               ),
@@ -195,7 +194,7 @@ class StateGameMenuView extends State<GameMenuView> {
           children: element.gameKindList?.map((e) {
                 return InkWell(
                   onTap: () => jumpGameRoom(element, e),
-                  child: buildGroupItem(e, timerGroup),
+                  child: buildGroupItem(element.gameKindList!, e, timerGroup),
                 );
               }).toList() ??
               [],
@@ -248,7 +247,8 @@ class StateGameMenuView extends State<GameMenuView> {
     );
   }
 
-  buildGroupItem(GameKindGameKindList element, Rx<Pc28LottoEntity> timerGroup) {
+  buildGroupItem(List<GameKindGameKindList> list, GameKindGameKindList element,
+      Rx<Pc28LottoEntity> timerGroup) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -274,7 +274,7 @@ class StateGameMenuView extends State<GameMenuView> {
               //     child: Image.asset(ImageX.icon_heart,/*color: Colors.white,*/),
               //   ),
               // ),
-              countDownText(element, timerGroup),
+              countDownText(list, element, timerGroup),
             ],
           ),
         ),
@@ -297,7 +297,7 @@ class StateGameMenuView extends State<GameMenuView> {
     );
   }
 
-  Widget countDownText(
+  Widget countDownText(List<GameKindGameKindList> list,
       GameKindGameKindList element, Rx<Pc28LottoEntity> timerGroup) {
     return Visibility(
       visible: element.gameKind == Constants.PC28,
@@ -312,22 +312,11 @@ class StateGameMenuView extends State<GameMenuView> {
             ),
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(vertical: 5.r, horizontal: 10.r),
-            child: TextTimerPage(element, timerGroup)),
+            child: TextTimerPage(TextTimerLogic(type:element.gameCode ),element, timerGroup)),
       ),
     );
   }
 
-  Widget timerText(Rx<Pc28PlanEntity> timerGroup) {
-    var startTime =
-        timerGroup.value.all?.fastbtb28!.data![0].openTime.toString();
-    var end_time =
-        timerGroup.value.all?.fastbtb28!.data![0].closeTime.toString();
-    var now_time = DateTime.now().toString();
-    return Text(
-      timerGroup.value.all?.fastbtb28!.data![0].closeTime.toString() ?? "",
-      style: TextStyle(fontSize: 10.sp, color: Colors.white),
-    );
-  }
 
   Widget buildLeftMenu(GameKindEntity e, int index, bool select) {
     return InkWell(
