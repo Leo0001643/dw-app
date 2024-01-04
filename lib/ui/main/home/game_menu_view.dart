@@ -174,9 +174,13 @@ class StateGameMenuView extends State<GameMenuView> {
       children: [
         Visibility(
             visible: element != widget.logic.state.menuGroup[0],
-            child: Divider(
-              height: 0.5,
-              color: Colors.black12,
+            child:Container(
+              margin: EdgeInsets.only(left: 6,right: 22),
+              height: 1,
+              child:  Divider(
+                height: 0.5,
+                color: Colors.black12,
+              ),
             )),
         SizedBox(
           height: 10.h,
@@ -229,7 +233,7 @@ class StateGameMenuView extends State<GameMenuView> {
           height: 5.h,
         ),
         ClipRRect(
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(20.r),
           child: isEmpty(element.advertImage)
               ? null
               : Center(

@@ -1,4 +1,8 @@
+import 'package:common_utils/common_utils.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
 
 import 'betting_detail_state.dart';
 
@@ -9,7 +13,34 @@ class BettingDetailLogic extends GetxController {
   void onReady() {
     // TODO: implement onReady
     super.onReady();
+    loadData();
   }
+  void loadData() {
+    var user = AppData.user();
+    var params = <String,dynamic>{"oid":user?.oid,"username":user?.username,
+      "beginTime":"00:00:00","endTime":"23:59:59","beginDate":state.betRecordGroupRecord.value.time
+      ,"endDate":state.betRecordGroupRecord.value.time,
+    "cur":state.betRecordGroupRecord.value.cur,};
+    var endTime = DateTime.now();
+    var beginTime = endTime.subtract(const Duration(days: 7));
+    params["beginDate"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
+    params["endDate"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
+
+    HttpService.getRecordGroupType(params).then((value) {
+      state.record.value = value;
+
+      for(BetDetailItemEntity item in value.record??[]) {
+        state?.betamount.value=((item?.betamount??0)+ state.betamount.value).toDouble();
+        state?.validamount.value=((item?.validamount??0)+ state.validamount.value).toDouble();
+        state?.winlose.value=((item?.winlose??0)+ state.winlose.value).toDouble();
+        state?.betCount.value=((item?.betamount??0)+ state.betCount.value).toDouble();
+      }
+      state.record.refresh();
+    });
+
+
+  }
+
 
   @override
   void onClose() {
