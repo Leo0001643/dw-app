@@ -133,11 +133,14 @@ import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_p
 import 'package:leisure_games/ui/register/register_binding.dart';
 import 'package:leisure_games/ui/register/register_page.dart';
 
+import '../ui/main/home/text_timer/text_timer_page.dart';
+
 class Routes {
   static const String main = "/";
   static const String login = "/login";
   static const String register = "/register";
   static const String html = "/html";
+  static const String text_timer = "/text_timer";
   static const String game_html = "/game_html";
   static const String select_currency = "/select_currency";
   static const String select_language = "/select_language";

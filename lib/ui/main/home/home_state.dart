@@ -9,6 +9,7 @@ import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 
+import '../../bean/pc28_lotto_entity.dart';
 import '../../bean/pc28_plan_entity.dart';
 import '../../bean/pic28_count_time_text.dart';
 
@@ -29,24 +30,34 @@ class HomeState {
   // var bannerList = RxList<Pic30Entity>.empty(growable: true);
   var timerList = RxList<TimeDataContent>.empty(growable: true);
 
-  var timerEntity=Pc28PlanEntity().obs;
+  var timerEntity = Pc28PlanEntity().obs;
+
+  ///房型选择
+  var pc28Lotto = Pc28LottoEntity().obs;
 
   ///活动内容
   var act = Pic30BackEntity().obs;
+
   ///红包是否可见
   var hongbaoVisible = false.obs;
-  var hongbaoManual = true.obs;//手动关闭
+  var hongbaoManual = true.obs; //手动关闭
   Timer? timer;
 
+  var text_timer = "测试".obs; //倒计时显示
 
   ///用户信息
   var user = LoginUserEntity().obs;
+
   ///余额
   var usdtBal = BalanceEntity().obs;
   var cnyBal = BalanceEntity().obs;
 
-  var labelBtm = [Intr().guanyuwomen,Intr().yonghuzhongxin,Intr().lianxiwomen,Intr().eduzhuanhuan,Intr().jishuzhichi,Intr().fangjiechijiaocheng];
-
-
-
+  var labelBtm = [
+    Intr().guanyuwomen,
+    Intr().yonghuzhongxin,
+    Intr().lianxiwomen,
+    Intr().eduzhuanhuan,
+    Intr().jishuzhichi,
+    Intr().fangjiechijiaocheng
+  ];
 }

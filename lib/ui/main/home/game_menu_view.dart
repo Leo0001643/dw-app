@@ -18,9 +18,11 @@ import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
+import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
 
-import '../text_timer_page.dart';
+import '../../bean/pc28_lotto_entity.dart';
+import 'text_timer/text_timer_page.dart';
 
 class GameMenuView extends StatefulWidget {
   final HomeLogic logic;
@@ -45,6 +47,7 @@ class StateGameMenuView extends State<GameMenuView> {
 
   @override
   void initState() {
+    Get.put(TextTimerLogic());
     initScrollListener();
     super.initState();
   }
@@ -130,13 +133,14 @@ class StateGameMenuView extends State<GameMenuView> {
           Expanded(
             child: Obx(() {
               var menuGroup = widget.logic.state.menuGroup;
-              var timerGroup = widget.logic.state.timerEntity;
+              var pc28LottoEntity = widget.logic.state.pc28Lotto;
               return ListView(
                 key: listKey, // Pass the key to the ListView
                 padding: EdgeInsets.zero,
                 controller: innerController,
                 children: menuGroup
-                    .map((element) => buildCategoryItem(element, timerGroup))
+                    .map((element) =>
+                        buildCategoryItem(element, pc28LottoEntity))
                     .toList(),
               );
             }),
@@ -162,7 +166,7 @@ class StateGameMenuView extends State<GameMenuView> {
   }
 
   Widget buildCategoryItem(
-      GameKindEntity element, Rx<Pc28PlanEntity> timerGroup) {
+      GameKindEntity element, Rx<Pc28LottoEntity> timerGroup) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -240,7 +244,7 @@ class StateGameMenuView extends State<GameMenuView> {
     );
   }
 
-  buildGroupItem(GameKindGameKindList element, Rx<Pc28PlanEntity> timerGroup) {
+  buildGroupItem(GameKindGameKindList element, Rx<Pc28LottoEntity> timerGroup) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -290,7 +294,7 @@ class StateGameMenuView extends State<GameMenuView> {
   }
 
   Widget countDownText(
-      GameKindGameKindList element, Rx<Pc28PlanEntity> timerGroup) {
+      GameKindGameKindList element, Rx<Pc28LottoEntity> timerGroup) {
     return Visibility(
       visible: element.gameKind == Constants.PC28,
       child: Positioned(
@@ -304,15 +308,17 @@ class StateGameMenuView extends State<GameMenuView> {
             ),
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(vertical: 5.r, horizontal: 10.r),
-            child: TextTimerPage(timerGroup)),
+            child: TextTimerPage(element, timerGroup)),
       ),
     );
   }
 
   Widget timerText(Rx<Pc28PlanEntity> timerGroup) {
-    var startTime=timerGroup.value.all?.fastbtb28!.data![0].openTime.toString();
-    var end_time=timerGroup.value.all?.fastbtb28!.data![0].closeTime.toString();
-    var now_time=DateTime.now().toString();
+    var startTime =
+        timerGroup.value.all?.fastbtb28!.data![0].openTime.toString();
+    var end_time =
+        timerGroup.value.all?.fastbtb28!.data![0].closeTime.toString();
+    var now_time = DateTime.now().toString();
     return Text(
       timerGroup.value.all?.fastbtb28!.data![0].closeTime.toString() ?? "",
       style: TextStyle(fontSize: 10.sp, color: Colors.white),
