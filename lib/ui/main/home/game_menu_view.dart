@@ -171,7 +171,7 @@ class StateGameMenuView extends State<GameMenuView> {
         Visibility(
             visible: element != widget.logic.state.menuGroup[0],
             child:Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              margin: EdgeInsets.only(left: 6,right: 22),
               height: 1,
               child:  Divider(
                 height: 0.5,
