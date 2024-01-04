@@ -55,6 +55,8 @@ import 'package:leisure_games/ui/main/main_binding.dart';
 import 'package:leisure_games/ui/main/main_page.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting_detail_binding.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting_detail_page.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_detail_child/betting_detail_child_binding.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_detail_child/betting_detail_child_page.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_record_binding.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_record_page.dart';
 import 'package:leisure_games/ui/main/mine/bill_flow/bill_flow_binding.dart';
@@ -177,6 +179,7 @@ class Routes {
   static const String bill_flow = "/mine/bill_flow";
   static const String betting_record = "/mine/betting_record";
   static const String betting_detail = "/mine/betting_record/betting_detail";
+  static const String betting_detail_child = "/mine/betting_record/betting_detail_child";
   static const String points_record = "/mine/points_record";
   static const String member_rebate = "/mine/member_rebate";
   static const String profit_rebate = "/mine/profit_rebate";
@@ -267,7 +270,7 @@ class Routes {
     GetPage(name: add_bank,binding: AddBankBinding(), page: () => AddBankPage()),
     GetPage(name: add_usdt,binding: AddUsdtBinding(), page: () => AddUsdtPage()),
     GetPage(name: simple_login,binding: SimpleLoginBinding(), page: () => SimpleLoginPage()),
-
+    GetPage(name: betting_detail_child,binding: BettingDetailChildBinding(), page: () => BettingDetailChildPage()),
   ];
   
   

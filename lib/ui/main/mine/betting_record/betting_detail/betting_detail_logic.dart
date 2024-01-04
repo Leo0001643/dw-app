@@ -34,7 +34,7 @@ class BettingDetailLogic extends GetxController {
         state?.betamount.value=((item?.betamount??0)+ state.betamount.value).toDouble();
         state?.validamount.value=((item?.validamount??0)+ state.validamount.value).toDouble();
         state?.winlose.value=((item?.winlose??0)+ state.winlose.value).toDouble();
-        state?.betCount.value=((item?.betCount??0)+ state.betCount.value).toDouble();
+        state?.betCount.value=((item?.betCount??0)+ state.betCount.value).toInt();
       }
       state.record.refresh();
     });
@@ -47,12 +47,12 @@ class BettingDetailLogic extends GetxController {
     state?.validamount.value=0;
     state?.winlose.value=0;
     state?.betCount.value=0;
-    state.title.value= value?.gameName??"";
+    state.title.value= value?.gameName??value?.gameKindName??"";
     for(BetDetailItemEntity item in value?.record??[]) {
       state?.betamount.value=((item?.betamount??0)+ state.betamount.value).toDouble();
       state?.validamount.value=((item?.validamount??0)+ state.validamount.value).toDouble();
       state?.winlose.value=((item?.winlose??0)+ state.winlose.value).toDouble();
-      state?.betCount.value=((item?.betCount??0)+ state.betCount.value).toDouble();
+      state?.betCount.value=((item?.betCount??0)+ state.betCount.value).toInt();
     }
     state.record.refresh();
   }
