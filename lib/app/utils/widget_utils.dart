@@ -129,7 +129,7 @@ class WidgetUtils {
     );
   }
 
-  AppBar buildAppBar(String? title,{bool msg = false,bool drawer=false,bool back=true,Color? bgColor,Function? drawEnd}){
+  AppBar buildAppBar(String? title,{bool msg = false,bool back=true,Color? bgColor,bool drawer=false,Function? drawEnd}){
     return AppBar(
       title: Text(title.em(),
         style: TextStyle(
@@ -205,7 +205,7 @@ class WidgetUtils {
   }
 
 
-  AppBar buildRxAppBar(RxString title,{bool msg = false,bool back=true,Color? bgColor}){
+  AppBar buildRxAppBar(RxString title,{bool msg = false,bool back=true,Color? bgColor,bool drawer=false,Function? drawEnd}){
     return AppBar(
       title: Obx(() {
         return Text(title.value,
@@ -237,6 +237,23 @@ class WidgetUtils {
             ),
           ),
         ),
+        Visibility(
+          visible: drawer,
+          child: InkWell(
+            onTap: (){
+              if(drawEnd!=null) {
+                drawEnd();
+              }else{
+                Get.find<MainLogic>().openDrawer();
+              }
+            },
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(ImageX.icon_more,color: ColorX.icon586(),),
+            ),
+          ),
+        ),
+        SizedBox(width: 10.w,),
       ],
     );
   }

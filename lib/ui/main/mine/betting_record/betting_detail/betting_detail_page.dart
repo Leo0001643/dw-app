@@ -34,7 +34,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
   @override
   void initState() {
     state.betRecordGroupRecord.value=BetRecordGroupRecord.fromJson(jsonDecode(Get.arguments["data"]??""));
-
+    state.originetRecordGroupRecord.value=  state.betRecordGroupRecord.value;
     setState(() {
     });
     super.initState();
@@ -51,9 +51,11 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: state.scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().touzhujilu,msg: true,bgColor: ColorX.appBarBg(),drawer:true,drawEnd:(){
+      appBar: WidgetUtils().buildRxAppBar(logic.state.title,msg: true,bgColor: ColorX.appBarBg()
+          ,drawer:true,drawEnd:(){
         state.scaffoldMineKey.currentState?.openEndDrawer();
       }),
+
       endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg(),
       body: Container(
@@ -187,6 +189,8 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
       onTap:(){
         if (item?.record?.isNotEmpty==true){
           logic.setCurrentBet(item);
+        }else{
+          Get.toNamed(Routes.betting_detail_child,arguments: {"data":jsonEncode(item?.toJson()??""),"origin":jsonEncode(state.originetRecordGroupRecord.value?.toJson()??"")});
         }
       },
       child: Container(
@@ -207,6 +211,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               child: Text("${item?.betamount??0}",
                 style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
             ),
+
             Expanded(
               flex: 30,
               child: Text("${((item?.winlose.em()??0) >= 0) ? "+" : ""}${item?.winlose.em()}",
@@ -220,7 +225,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               ),
             ),
             Visibility(
-                visible: (item?.record?.isNotEmpty==true),
+                visible: true,
                 child:
                 Icon(
                   Icons.arrow_right,
