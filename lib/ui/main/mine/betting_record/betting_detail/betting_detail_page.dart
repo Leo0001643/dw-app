@@ -165,11 +165,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               child: Text("${((state?.winlose.value.em()??0) >= 0) ? "+" : ""}${state?.winlose.value.em()}",
                 style: TextStyle(fontSize: 14.sp,color: ((state?.winlose.value.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
             ),
-            Expanded(
-              flex: 30,
-              child: Text("${((state?.validamount.value.em()??0) >= 0) ? "+" : ""}${state?.winlose.value.em()}",
-                style: TextStyle(fontSize: 14.sp,color: ((state?.winlose.value.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
-            ),
+
             Expanded(
               flex: 30,
               child: Align(
