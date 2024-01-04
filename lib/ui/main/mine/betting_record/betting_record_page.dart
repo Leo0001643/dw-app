@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
@@ -170,7 +171,11 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
   Widget buildBettingItem(BetRecordGroupRecord item) {
     // var result = index%2 == 1;
     return InkWell(
-      // onTap: ()=> Get.toNamed(Routes.betting_detail,arguments: "2023-06-06"),
+      onTap:(){
+        if(num.parse(item.validamount??"0")>0){
+          Get.toNamed(Routes.betting_detail,arguments: "2023-06-06");
+        }
+      },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
         child: Row(
@@ -191,6 +196,14 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
                 child: Text(item.validamount.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
               ),
             ),
+            Visibility(
+                visible: (num.parse(item.validamount??"0")>0),
+                child:
+            Icon(
+              Icons.arrow_right,
+              color: Colors.grey,
+              size: 20,
+            ))
           ],
         ),
       ),
