@@ -16,6 +16,8 @@ class BettingDetailLogic extends GetxController {
     loadData();
   }
   void loadData() {
+    state.title.value= state.betRecordGroupRecord.value.title??"";
+    state.title.refresh();
     var user = AppData.user();
     var params = <String,dynamic>{"oid":user?.oid,"username":user?.username,
       "beginTime":"00:00:00","endTime":"23:59:59","beginDate":state.betRecordGroupRecord.value.time
@@ -28,23 +30,38 @@ class BettingDetailLogic extends GetxController {
 
     HttpService.getRecordGroupType(params).then((value) {
       state.record.value = value;
-
       for(BetDetailItemEntity item in value.record??[]) {
         state?.betamount.value=((item?.betamount??0)+ state.betamount.value).toDouble();
         state?.validamount.value=((item?.validamount??0)+ state.validamount.value).toDouble();
         state?.winlose.value=((item?.winlose??0)+ state.winlose.value).toDouble();
-        state?.betCount.value=((item?.betamount??0)+ state.betCount.value).toDouble();
+        state?.betCount.value=((item?.betCount??0)+ state.betCount.value).toDouble();
       }
       state.record.refresh();
     });
 
 
   }
-
+  void setCurrentBet(BetDetailItemEntity? value) {
+    state.record.value = value??BetDetailItemEntity();
+    state?.betamount.value=0;
+    state?.validamount.value=0;
+    state?.winlose.value=0;
+    state?.betCount.value=0;
+    state.title.value= value?.gameName??"";
+    for(BetDetailItemEntity item in value?.record??[]) {
+      state?.betamount.value=((item?.betamount??0)+ state.betamount.value).toDouble();
+      state?.validamount.value=((item?.validamount??0)+ state.validamount.value).toDouble();
+      state?.winlose.value=((item?.winlose??0)+ state.winlose.value).toDouble();
+      state?.betCount.value=((item?.betCount??0)+ state.betCount.value).toDouble();
+    }
+    state.record.refresh();
+  }
 
   @override
   void onClose() {
     // TODO: implement onClose
     super.onClose();
   }
+
+
 }
