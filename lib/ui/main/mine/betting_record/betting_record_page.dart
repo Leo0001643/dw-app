@@ -175,6 +175,12 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
     return InkWell(
       onTap:(){
         if(num.parse(item.validamount??"0")>0){
+          if(state.currentWallet.value == state.wallets.first){
+            item.cur = "1";
+          } else {
+            item.cur = "5";
+          }
+          item.title=item.time;
           Get.toNamed(Routes.betting_detail,arguments: {"data":jsonEncode(item.toJson())});
         }
       },

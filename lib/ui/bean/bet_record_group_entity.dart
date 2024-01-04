@@ -32,7 +32,8 @@ class BetRecordGroupRecord {
 	double? winlose;
 	String? betCount;
 	String? time;
-
+	String? title;
+	String? cur;
 	BetRecordGroupRecord();
 
 	factory BetRecordGroupRecord.fromJson(Map<String, dynamic> json) => $BetRecordGroupRecordFromJson(json);
