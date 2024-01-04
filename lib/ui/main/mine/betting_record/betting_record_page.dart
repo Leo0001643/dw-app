@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -173,7 +175,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
     return InkWell(
       onTap:(){
         if(num.parse(item.validamount??"0")>0){
-          Get.toNamed(Routes.betting_detail,arguments: "2023-06-06");
+          Get.toNamed(Routes.betting_detail,arguments: {"data":jsonEncode(item.toJson())});
         }
       },
       child: Container(
