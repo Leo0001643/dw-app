@@ -25,7 +25,7 @@ class BettingDetailLogic extends GetxController {
     params["beginDate"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
     params["endDate"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
 
-    HttpService.getRecordGroupDay(params).then((value) {
+    HttpService.getRecordGroupType(params).then((value) {
       state.record.value = value;
       state.record.refresh();
     });
