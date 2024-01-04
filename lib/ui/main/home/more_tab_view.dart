@@ -27,22 +27,25 @@ class MoreTabView extends StatelessWidget {
     return InkWell(
       onTap: () {
         showPopover(
+          arrowDyOffset:ScreenUtil().screenHeight*0.16,
+          arrowDxOffset: ScreenUtil().screenWidth*0.15,
           context: context,
           bodyBuilder: (context) => GridView.builder(
             itemCount:homeMenu.length ,
+            padding: EdgeInsets.zero,
             itemBuilder: (context,index){
               var e=homeMenu[index];
               return buildMenuItem(context,e,homeMenu.indexOf(e));
             }, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
-
           ),
           ),
           onPop: (){},
-          direction: PopoverDirection.bottom,
+          direction: PopoverDirection.left,
           backgroundColor: ColorX.cardBg5(),
           barrierColor: Colors.transparent,
-          width: 80*homeMenu.length*1.0/2,
+          width: 100*homeMenu.length*1.0/2,
+
           height: 200.h,
           arrowHeight: 5.r,
           arrowWidth: 8.r,
