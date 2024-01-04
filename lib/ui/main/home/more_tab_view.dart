@@ -47,8 +47,8 @@ class MoreTabView extends StatelessWidget {
           width: 100*homeMenu.length*1.0/2,
 
           height: 200.h,
-          arrowHeight: 5.r,
-          arrowWidth: 8.r,
+          arrowHeight: 0.r,
+          arrowWidth: 0.r,
         );
       },
       child: SizedBox(
