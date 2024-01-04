@@ -14,5 +14,8 @@ class BettingDetailState {
 
   var record =BetDetailItemEntity().obs;
 
-
+  var betamount=0.0.obs;
+  var validamount=0.0.obs;
+  var winlose=0.0.obs;
+  var betCount=0.0.obs;
 }

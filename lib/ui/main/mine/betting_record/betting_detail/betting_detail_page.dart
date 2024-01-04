@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,9 +11,13 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
+import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
+import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart' as B;
+import 'package:leisure_games/ui/bean/bet_record_group_entity.dart'  as L;
+
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
+import '../../../../bean/bet_record_group_entity.dart';
 import 'betting_detail_logic.dart';
 
 //投注详情
@@ -29,7 +34,6 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
 
   @override
   void initState() {
-    state.title.value = Get.arguments;
     state.betRecordGroupRecord.value=BetRecordGroupRecord.fromJson(jsonDecode(Get.arguments["data"]??""));
     state.title.value= state.betRecordGroupRecord.value.title??"";
     super.initState();
@@ -62,11 +66,25 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Text(Intr().touzhuriqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+                    child: Text(Intr().youxipingtai,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     flex: 40,
                   ),
                   Expanded(
-                    child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+                    child: Text(Intr().bishu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+                    flex: 30,
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(Intr().touzhue,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+                    ),
+                    flex: 30,
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+                    ),
                     flex: 30,
                   ),
                   Expanded(
@@ -86,11 +104,11 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
                     if(unEmpty(state.record.value.record)){
                       var item = state.record.value.record![index];
                       if((index + 1) < state.record.value.record.em()){
-                        return buildBettingItem(item);
+                        return buildBettingItem(state.record.value.record?[index + 1]);
                       } else {
                         return Column(
                           children: [
-                            buildBettingItem(item),
+                            buildBettingItem(state.record.value.record?[index]),
                             Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,),
                             buildTotalFooter(state.record.value)
                           ],
@@ -113,14 +131,14 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
       ),
     );
   }
-  Widget buildBettingItem(BetRecordGroupRecord item) {
-    // var result = index%2 == 1;
+
+  Widget buildTotalFooter(BetDetailItemEntity? group) {
     return InkWell(
       onTap:(){
-        if(num.parse(item.validamount??"0")>0){
-          item.title=item.time;
-          Get.toNamed(Routes.betting_detail,arguments: {"data":jsonEncode(item.toJson())});
-        }
+        // if(num.parse(item.validamount??"0")>0){
+        //   item.title=item.time;
+        //   Get.toNamed(Routes.betting_detail,arguments: {"data":jsonEncode(item.toJson())});
+        // }
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
@@ -128,28 +146,77 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
           children: [
             Expanded(
               flex: 40,
-              child: Text(item.time.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text("总计",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
             Expanded(
               flex: 30,
-              child: Text("${(item.winlose.em() >= 0) ? "+" : ""}${item.winlose.em()}",
-                style: TextStyle(fontSize: 14.sp,color: (item.winlose.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
+              child: Text("${state?.betCount}",
+                style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
+            ),
+            Expanded(
+              flex: 30,
+              child: Text("${state?.betamount??0}",
+                style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
+            ),
+            Expanded(
+              flex: 30,
+              child: Text("${((state?.winlose.value.em()??0) >= 0) ? "+" : ""}${state?.winlose.value.em()}",
+                style: TextStyle(fontSize: 14.sp,color: ((state?.winlose.value.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
             ),
             Expanded(
               flex: 30,
               child: Align(
                 alignment: Alignment.centerRight,
-                child: Text(item.validamount.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+                child: Text("${state?.validamount??0}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
               ),
             ),
-            Visibility(
-                visible: (num.parse(item.validamount??"0")>0),
-                child:
-                Icon(
-                  Icons.arrow_right,
-                  color: Colors.grey,
-                  size: 20,
-                ))
+          ],
+        ),
+      ),
+    );
+  }
+
+
+
+  Widget buildBettingItem(BetDetailItemEntity? item) {
+    // var result = index%2 == 1;
+    return InkWell(
+      onTap:(){
+        // if(num.parse(item.validamount??"0")>0){
+        //   item.title=item.time;
+        //   Get.toNamed(Routes.betting_detail,arguments: {"data":jsonEncode(item.toJson())});
+        // }
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 40,
+              child: Text(item?.gameKindName??"",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+            ),
+            Expanded(
+              flex: 30,
+              child: Text("${item?.betCount}",
+                style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
+            ),
+            Expanded(
+              flex: 30,
+              child: Text("${item?.betamount??0}",
+                style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
+            ),
+            Expanded(
+              flex: 30,
+              child: Text("${((item?.winlose.em()??0) >= 0) ? "+" : ""}${item?.winlose.em()}",
+                style: TextStyle(fontSize: 14.sp,color: ((item?.winlose.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
+            ),
+            Expanded(
+              flex: 30,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text("${item?.validamount??0}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              ),
+            ),
           ],
         ),
       ),
