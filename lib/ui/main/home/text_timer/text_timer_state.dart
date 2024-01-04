@@ -17,7 +17,5 @@ class TextTimerState {
     ///Initialize variables
   }
 
-  var pc28Lotto = Pc28LottoEntity().obs;
-  var timerEntity = Pc28PlanEntity().obs;
-  var text_timer = "00:00:00".obs; //倒计时显示
+  var text_timer = "等待开盘".obs; //倒计时显示
 }

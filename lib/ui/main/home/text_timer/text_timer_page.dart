@@ -32,10 +32,10 @@ class _TextTimerPageState extends State<TextTimerPage> {
     super.initState();
     // 初始时调用一次
     timerGroup = widget.timerGroup;
-    widget.logic.loadData(widget.gamekindGroup, timerGroup.value);
+    widget.logic.loadData(widget.gamekindGroup);
     // 设置定时任务，每120秒执行一次
     _timer = Timer.periodic(Duration(seconds: 120), (Timer timer) {
-      widget.logic.loadData(widget.gamekindGroup, timerGroup.value);
+      widget.logic.loadData(widget.gamekindGroup);
     });
   }
 

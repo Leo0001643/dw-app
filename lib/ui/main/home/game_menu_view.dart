@@ -306,17 +306,17 @@ class StateGameMenuView extends State<GameMenuView> {
         left: 0,
         bottom: 0,
         child: Container(
+            alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Colors.black38,
-              borderRadius: BorderRadius.circular(10.r),
+              borderRadius: BorderRadius.circular(2.r),
             ),
-            alignment: Alignment.center,
-            margin: EdgeInsets.symmetric(vertical: 5.r, horizontal: 10.r),
-            child: TextTimerPage(TextTimerLogic(type:element.gameCode ),element, timerGroup)),
+            margin: EdgeInsets.symmetric(vertical: 5.r, horizontal: 5.r),
+            child: TextTimerPage(
+                TextTimerLogic(type: element.gameCode), element, timerGroup)),
       ),
     );
   }
-
 
   Widget buildLeftMenu(GameKindEntity e, int index, bool select) {
     return InkWell(

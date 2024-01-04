@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
@@ -20,37 +21,13 @@ class TextTimerLogic {
 
   TextTimerLogic({required this.type});
 
-  void onReady() {
-    if (type.toString() == "jndx28") {
-      count = 200;
-    }
-    if (type.toString() == "keno28") {
-      count = 300;
-    }
-    if (type.toString() == "fastbtb28") {
-      count = 400;
-    }
-  }
-
-  void loadData(
-      GameKindGameKindList gameKind, Pc28LottoEntity pc28lottoEntity) {
+  void loadData(GameKindGameKindList gameKind) {
     //测试用
-    onReady();
     HttpService.getPc28LottoList().then((value) {
-      state.pc28Lotto.value = value;
-      state.pc28Lotto.refresh();
-      print(">>item.gameType>>>" + gameKind.gameCode.toString());
-      /*   //测试用
-      // Timer.periodic(Duration(seconds: 1), (timer) {
-      //   count--;
-      //   state.text_timer.value = count.toString();
-      // });*/
-      for (Pc28LottoRooms item in pc28lottoEntity.rooms!) {
-        print(">>item.gameType" + item.gameType.toString());
+      for (Pc28LottoRooms item in value.rooms!) {
         // 判断 gameCode 和 gameType 是否相等
         if (gameKind.gameCode == item.gameType) {
           // 执行倒计时逻辑
-          state.text_timer.value = gameKind.gameCode.toString();
           loadTimerData(item);
         }
       }
@@ -60,10 +37,7 @@ class TextTimerLogic {
   void loadTimerData(Pc28LottoRooms pc28lottoRoom) {
     //请求倒计时
     HttpService.getPC28Plan(5).then((value) {
-      state.timerEntity.value = value;
-      state.timerEntity.refresh();
-      // 模拟异步获取的数据
-      _calculateCountdown(pc28lottoRoom, state.timerEntity.value);
+      _calculateCountdown(pc28lottoRoom, value);
     });
   }
 
@@ -74,26 +48,34 @@ class TextTimerLogic {
     var diffTime =
         pc28PlanEntity.timestamp! - DateTime.now().millisecondsSinceEpoch;
     countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
-      /*  测试
-   count--;
-      state.text_timer.value = count.toString();*/
       timeCountOnly(diffTime, pc28lottoRoom, pc28PlanEntity);
       // 如果倒计时结束，取消计时器
       if (count <= 0) {
         countdownTimer?.cancel();
-        // 你可能还想执行一些其他操作，或者重新启动倒计时
-        // 例如，重新调用 _calculateCountdown 或执行其他逻辑
       }
     });
   }
-
   void timeCountOnly(
       diffTime, Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28planEntity) {
     Map<String, dynamic> allTime = pc28planEntity.all!.toJson();
     Map<String, dynamic> roomcountdown = {};
     Map<String, dynamic> roominf = pc28lottoRoom.toJson();
-
-    for (String key in allTime.keys) {
+    String key = pc28lottoRoom.gameType.toString();
+    if (pc28lottoRoom.stateMsg != "0") {
+      if (pc28lottoRoom.stateMsg == 1) {
+        roomcountdown[key + 'Time'] = "维护中";
+      } else if (pc28lottoRoom.stateMsg == 3) {
+        roomcountdown[key + 'Time'] = "已关盘";
+      } else if (pc28lottoRoom.stateMsg == 4) {
+        roomcountdown[key + 'Time'] = "已休市";
+      }
+      roomcountdown[key + 'Term'] = '--';
+      roomcountdown[key + 'Notice'] = allTime[key]['msg'] ?? '';
+    } else if (allTime[key]['code'] == 100020) {
+      roomcountdown[key + 'Time'] = "等待开盘";
+      roomcountdown[key + 'Term'] = '--';
+      roomcountdown[key + 'Notice'] = allTime[key]['msg'];
+    } else {
       if (allTime[key]['data'].length > 1) {
         for (int s = 0; s < allTime[key]['data'].length - 1; s++) {
           int onlineT = DateTime.now().millisecondsSinceEpoch +
@@ -125,8 +107,8 @@ class TextTimerLogic {
           }
         }
       } else if (allTime[key]['data'].length == 1) {
-        int onlineT =
-            DateTime.now().millisecondsSinceEpoch + int.parse(diffTime);
+        int onlineT = DateTime.now().millisecondsSinceEpoch +
+            int.parse(diffTime.toString());
         if (onlineT < allTime[key]['data'][0]['closeTime'] &&
             onlineT > allTime[key]['data'][0]['openTime']) {
           int rrtime = allTime[key]['data'][0]['closeTime'];
@@ -139,9 +121,8 @@ class TextTimerLogic {
           roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
         }
       }
-      state.text_timer.value = roomcountdown[key + 'Time'];
-
     }
+    state.text_timer.value = roomcountdown[key + 'Time'];
   }
 
   String secToTime(int sec) {
