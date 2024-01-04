@@ -31,11 +31,12 @@ class BettingDetailPage extends StatefulWidget {
 class _BettingDetailPageState extends State<BettingDetailPage> {
   final logic = Get.find<BettingDetailLogic>();
   final state = Get.find<BettingDetailLogic>().state;
-
   @override
   void initState() {
     state.betRecordGroupRecord.value=BetRecordGroupRecord.fromJson(jsonDecode(Get.arguments["data"]??""));
-    state.title.value= state.betRecordGroupRecord.value.title??"";
+
+    setState(() {
+    });
     super.initState();
   }
 
@@ -141,6 +142,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
         // }
       },
       child: Container(
+        color: Colors.black12,
         padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
         child: Row(
           children: [
@@ -163,6 +165,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               child: Text("${((state?.winlose.value.em()??0) >= 0) ? "+" : ""}${state?.winlose.value.em()}",
                 style: TextStyle(fontSize: 14.sp,color: ((state?.winlose.value.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
             ),
+
             Expanded(
               flex: 30,
               child: Align(
@@ -182,10 +185,9 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
     // var result = index%2 == 1;
     return InkWell(
       onTap:(){
-        // if(num.parse(item.validamount??"0")>0){
-        //   item.title=item.time;
-        //   Get.toNamed(Routes.betting_detail,arguments: {"data":jsonEncode(item.toJson())});
-        // }
+        if (item?.record?.isNotEmpty==true){
+          logic.setCurrentBet(item);
+        }
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
@@ -193,7 +195,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
           children: [
             Expanded(
               flex: 40,
-              child: Text(item?.gameKindName??"",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(item?.gameName??item?.gameKindName??"",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
             Expanded(
               flex: 30,
@@ -217,6 +219,14 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
                 child: Text("${item?.validamount??0}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
               ),
             ),
+            Visibility(
+                visible: (item?.record?.isNotEmpty==true),
+                child:
+                Icon(
+                  Icons.arrow_right,
+                  color: Colors.grey,
+                  size: 20,
+                ))
           ],
         ),
       ),
