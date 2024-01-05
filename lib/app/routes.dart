@@ -136,6 +136,7 @@ import 'package:leisure_games/ui/register/register_binding.dart';
 import 'package:leisure_games/ui/register/register_page.dart';
 
 import '../ui/main/home/text_timer/text_timer_page.dart';
+import '../ui/main/mine/setting/set_simple_pwd/set_simple_pwd_page2.dart';
 
 class Routes {
   static const String main = "/";
@@ -228,7 +229,7 @@ class Routes {
     GetPage(name: user_info,binding: UserInfoBinding(), page: () => UserInfoPage()),
     GetPage(name: set_withdraw_pwd,binding: SetWithdrawPwdBinding(), page: () => SetWithdrawPwdPage()),
     GetPage(name: set_login_pwd,binding: SetLoginPwdBinding(), page: () => SetLoginPwdPage()),
-    GetPage(name: set_simple_pwd,binding: SetSimplePwdBinding(), page: () => SetSimplePwdPage()),
+    GetPage(name: set_simple_pwd,binding: SetSimplePwdBinding(), page: () => SetSimplePwdPage2()),
     GetPage(name: recharge_digital,binding: RechargeDigitalBinding(), page: () => RechargeDigitalPage()),
     GetPage(name: recharge_result,binding: RechargeResultBinding(), page: () => RechargeResultPage()),
     GetPage(name: withdraw,binding: WithdrawBinding(), page: () => WithdrawPage()),
