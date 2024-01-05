@@ -54,7 +54,8 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().shezhi,msg: true,drawer:true,drawEnd:(){
+      appBar: WidgetUtils().buildAppBar(Intr().shezhi, msg: true, drawer: true,
+          drawEnd: () {
         scaffoldMineKey.currentState?.openEndDrawer();
       }),
       endDrawer: EndsDrawerView(),
@@ -144,40 +145,31 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                           Obx(() {
                             return Switch(
-                                thumbColor:
-                                    MaterialStateColor.resolveWith((states) {
-                                  // 根据状态返回相应的颜色
-                                  if (states.contains(MaterialState.selected)) {
-                                    // Switch 处于激活状态时的颜色
-                                    return Colors.white;
-                                  }
-                                  // Switch 处于非激活状态时的颜色
-                                  return Colors.white; // 你可以根据需要修改颜色
-                                }),
-                                // 使用 const 表达式，也可以直接使用 Colors.white
-                                value: state.jymmToggle.value,
-                                inactiveTrackColor: Color(0xff949EB9),
-                                // 设置关闭时的填充颜色
-                                activeColor: Colors.white,
-                                onChanged: (value) {
-                                  if (isEmpty(AppData.simplePwd())) {
-                                    Get.toNamed(Routes.set_simple_pwd)
-                                        ?.then((value) {
-                                      state.jymmToggle.value =
-                                          unEmpty(AppData.simplePwd());
-                                      loggerArray([
-                                        "返回数据了吗",
-                                        value,
-                                        state.jymmToggle.value
-                                      ]);
-                                    });
-                                  } else {
-                                    ///清空简易密码
-                                    AppData.setSimplePwd("");
-                                    state.jymmToggle.value =
-                                        unEmpty(AppData.simplePwd());
-                                  }
+                              thumbColor:
+                                  MaterialStateColor.resolveWith((states) {
+                                // 根据状态返回相应的颜色
+                                if (states.contains(MaterialState.selected)) {
+                                  // Switch 处于激活状态时的颜色
+                                  return Colors.white;
+                                }
+                                // Switch 处于非激活状态时的颜色
+                                return Colors.white; // 你可以根据需要修改颜色
+                              }),
+                              onChanged: (value) {
+                                Get.toNamed(Routes.set_simple_pwd)
+                                    ?.then((gestureValue) {
+                                  AppData.setJymm(value);
+                                  //全局设置手势密码
+                                  AppData.setGestureValue(gestureValue);
+                                  state.jymmToggle.value = !value;
+                                  print("geture>>" + gestureValue);
                                 });
+                              },
+                              value: !state.jymmToggle.value,
+                              inactiveTrackColor: ColorX.text949(),
+                              activeTrackColor: ColorX.color_69c25c,
+                              activeColor: Colors.white,
+                            );
                           }),
                         ],
                       ),
@@ -272,29 +264,28 @@ class _SettingPageState extends State<SettingPage> {
                             style: TextStyle(
                                 fontSize: 12.sp, color: ColorX.text0d1()),
                           ),
-                        Obx(() {
-                          return Switch(
-                            thumbColor:
-                            MaterialStateColor.resolveWith((states) {
-                              // 根据状态返回相应的颜色
-                              if (states.contains(MaterialState.selected)) {
-                                // Switch 处于激活状态时的颜色
-                                return Colors.white;
-                              }
-                              // Switch 处于非激活状态时的颜色
-                              return Colors.white; // 你可以根据需要修改颜色
-                            }),
-                            onChanged: (value) {
-                              AppData.setPromptTone(value == true);
-                              state.tsyToggle.value = !value;
-                            },
-                            value: !state.tsyToggle.value,
-                            inactiveTrackColor: ColorX.text949(),
-                            activeTrackColor: ColorX.color_69c25c,
-                            activeColor: Colors.white,
-                          );
-                        })
-
+                          Obx(() {
+                            return Switch(
+                              thumbColor:
+                                  MaterialStateColor.resolveWith((states) {
+                                // 根据状态返回相应的颜色
+                                if (states.contains(MaterialState.selected)) {
+                                  // Switch 处于激活状态时的颜色
+                                  return Colors.white;
+                                }
+                                // Switch 处于非激活状态时的颜色
+                                return Colors.white; // 你可以根据需要修改颜色
+                              }),
+                              onChanged: (value) {
+                                AppData.setPromptTone(value == true);
+                                state.tsyToggle.value = !value;
+                              },
+                              value: !state.tsyToggle.value,
+                              inactiveTrackColor: ColorX.text949(),
+                              activeTrackColor: ColorX.color_69c25c,
+                              activeColor: Colors.white,
+                            );
+                          })
                         ],
                       ),
                     ),

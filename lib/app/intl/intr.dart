@@ -502,6 +502,7 @@ class Intr extends Translations{
   String get biaoqing => 'biaoqing'.tr;
   String get gif => 'gif'.tr;
   String get shifoutuichudenglu => 'shifoutuichudenglu'.tr;
+  String get shifouchongxinhuizhi => 'shifouchongxinhuizhi'.tr;
   String get fuzhichenggong => 'fuzhichenggong'.tr;
   String get qiehuanquanjuqianbao => 'qiehuanquanjuqianbao'.tr;
   String get tuijianyouli => 'tuijianyouli'.tr;
@@ -595,6 +596,9 @@ class Intr extends Translations{
   String yichenggongqiehuan_(List<String> args) => 'yichenggongqiehuan_'.trArgs(args);
   String get jifenbuzu => 'jifenbuzu'.tr;
   String get chonxinshezhi => 'chonxinshezhi'.tr;
+  String get huizhisige => 'huizhisige'.tr;
+  String get huizhibuyiyang => 'huizhibuyiyang'.tr;
+  String get zaicihuizhi => 'zaicihuizhi'.tr;
 
 
 
@@ -1168,6 +1172,10 @@ class Intr extends Translations{
       "jifenbuzu":"积分不足",
       "huizhijiesuo":"绘制解锁图案",
       "chonxinshezhi":"重新设置",
+      "huizhisige":"请至少绘制四个点",
+      "huizhibuyiyang":"与上一次绘制不一致请重新绘制",
+      "zaicihuizhi":"请再次绘制解锁图案",
+      "shifouchongxinhuizhi":"是否要重新绘制解锁图案？",
 
 
 

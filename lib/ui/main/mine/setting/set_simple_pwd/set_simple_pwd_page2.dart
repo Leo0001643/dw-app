@@ -9,6 +9,7 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../../../app/res/imagex.dart';
+import '../../../../../app/utils/dialog_utils.dart';
 import 'set_simple_pwd_logic.dart';
 
 class SetSimplePwdPage2 extends StatefulWidget {
@@ -23,7 +24,10 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
   final state = Get.find<SetSimplePwdLogic>().state;
   late TextEditingController _pwdController;
   late FocusNode _pinFocusNode;
-  var _points = [0, 1, 2, 4, 7];
+  List<int> _points = [];
+
+  var firstGesture = 0; //第一次绘制的手势
+  var isRed = false; //错误显示用红色
 
   @override
   void initState() {
@@ -73,7 +77,7 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
               state.gesturetext.value,
               style: TextStyle(
                 fontSize: 16.0,
-                color: ColorX.appTextBg(),
+                color: isRed ? Colors.red : ColorX.appTextBg(),
               ),
             );
           }),
@@ -90,32 +94,64 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
               normalItem: NormalCircleLayout(),
               selectedItem: SelectedCircleLayout(),
               color: ColorX.appBarBg(),
-              // errorArrowItem: Image.asset(
-              //   'images/arrow.png',
-              //   width: 20.0,
-              //   height: 20.0,
-              //   fit: BoxFit.fill,
-              //   color: const Color(0xffFB2E4E),
-              // ),
               answer: _points,
               onComplete: (data) {
                 setState(() {
-                  if (_points.toString() == data.toString()) {
-                    state.gesturetext.value = data.toString();
+                  //第二次绘制
+                  if (firstGesture >= 1) {
+                    if (data.length < 4) {
+                      isRed = true;
+                      state.gesturetext.value = Intr().huizhisige;
+                      return;
+                    } else {
+                      //第二次确定 绘制确定成功
+                      if (_points.toString() == data.toString()) {
+                        showToast(Intr().shezhichenggong);
+                        Get.back(result: data.toString());
+                      } else {
+                        isRed = true;
+                        state.gesturetext.value = Intr().huizhibuyiyang;
+                      }
+                    }
                   } else {
-                    state.gesturetext.value = "与上一次绘制不一致请重新绘制";
+                    if (data.length < 4) {
+                      isRed = true;
+                      state.gesturetext.value = Intr().huizhisige;
+                      return;
+                    } else {
+                      isRed = false;
+                      //第一次绘制成功了
+                      firstGesture++;
+                      _points = data.map((int? value) => value ?? 0).toList();
+                      state.gesturetext.value = Intr().zaicihuizhi;
+                    }
                   }
                 });
               },
             ),
           ),
-          Text(
-            Intr().chonxinshezhi,
-            style: TextStyle(
-              fontSize: 16.0,
-              color: ColorX.icon586(),
-            ),
-          )
+          SizedBox(
+            height: 20.h,
+          ),
+          InkWell(
+              child: Text(
+                Intr().chonxinshezhi,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: ColorX.icon586(),
+                ),
+              ),
+              onTap: () {
+                if(firstGesture!=0){
+                  DialogUtils().showGetureDialog(context).then((value) {
+                    if (value == true) {
+                      state.gesturetext.value = Intr().huizhijiesuo;
+                      firstGesture=0;
+                      isRed=false;
+                    }
+                  });
+                }
+              })
         ],
       ),
     );

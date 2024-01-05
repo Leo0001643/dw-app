@@ -8,9 +8,11 @@ class SettingState {
   }
 
   //简易密码
-  var jymmToggle = unEmpty(AppData.simplePwd()).obs;
+  // var jymmToggle = unEmpty(AppData.simplePwd()).obs;
 
-  //背景音乐
+  //简易密码
+  var jymmToggle = AppData.bgJymm().obs;
+
   var bjyyToggle = AppData.bgMusic().obs;
 
   //提示音

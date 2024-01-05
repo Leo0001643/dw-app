@@ -149,6 +149,47 @@ class DialogUtils {
           );
         }
     );
+  }///
+
+  //重新绘制
+  Future<bool?> showGetureDialog(BuildContext context){
+    return showDialog<bool>(
+        context: context,
+        builder: (context){
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            backgroundColor: ColorX.cardBg5(),
+            titlePadding: EdgeInsets.zero,
+            contentPadding: EdgeInsets.zero,
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  height: 70.h,
+                  alignment: Alignment.center,
+                  child: Text(Intr().shifouchongxinhuizhi
+                    ,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
+                ),
+                Divider(color: ColorX.color_10_949,height: 1.h,),
+              ],
+            ),
+            actionsPadding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 15.h),
+            actions: [
+              WidgetUtils().buildElevatedButton(Intr().cancel, 116.w, 40.h,
+                  bg: ColorX.cardBg3(),textColor: ColorX.text586(),onPressed: (){
+                Navigator.of(context).pop(false);
+              }),
+              SizedBox(width: 10.w,),
+              WidgetUtils().buildElevatedButton(Intr().confirm, 116.w, 40.h,
+                  bg: ColorX.color_fc243b,textColor: Colors.white,onPressed: (){
+                    Navigator.of(context).pop(true);
+              })
+            ],
+          );
+        }
+    );
   }
 
   ///游戏页面加载选择弹窗
