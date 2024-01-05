@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:pinput/pinput.dart';
 
+import '../../../../../app/res/imagex.dart';
 import 'set_simple_pwd_logic.dart';
 
 class SetSimplePwdPage2 extends StatefulWidget {
@@ -22,6 +23,7 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
   final state = Get.find<SetSimplePwdLogic>().state;
   late TextEditingController _pwdController;
   late FocusNode _pinFocusNode;
+  var _points = [0, 1, 2, 4, 7];
 
   @override
   void initState() {
@@ -49,16 +51,37 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().shezhijianyimima,
           msg: true, bgColor: ColorX.appBarBg()),
-      backgroundColor: Colors.white,
+      backgroundColor: ColorX.pageBg(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(
+            height: 40.h,
+          ),
+          Image.asset(
+            ImageX.icon_shoushi_bg,
+            width: 34.w,
+            height: 30.h,
+            fit: BoxFit.fill,
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          Obx(() {
+            return Text(
+              state.gesturetext.value,
+              style: TextStyle(
+                fontSize: 16.0,
+                color: ColorX.appTextBg(),
+              ),
+            );
+          }),
           SizedBox(
             height: 20.h,
           ),
           Center(
-            child:  GesturePasswordWidget(
+            child: GesturePasswordWidget(
               lineColor: const Color(0xffFF8216),
               errorLineColor: const Color(0xffFB2E4E),
               singleLineCount: 3,
@@ -66,6 +89,7 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
               minLength: 4,
               normalItem: NormalCircleLayout(),
               selectedItem: SelectedCircleLayout(),
+              color: ColorX.appBarBg(),
               // errorArrowItem: Image.asset(
               //   'images/arrow.png',
               //   width: 20.0,
@@ -73,14 +97,25 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
               //   fit: BoxFit.fill,
               //   color: const Color(0xffFB2E4E),
               // ),
-              answer: [0, 1, 2, 4, 7],
+              answer: _points,
               onComplete: (data) {
                 setState(() {
-                  // result = data.join(', ');
+                  if (_points.toString() == data.toString()) {
+                    state.gesturetext.value = data.toString();
+                  } else {
+                    state.gesturetext.value = "与上一次绘制不一致请重新绘制";
+                  }
                 });
               },
             ),
           ),
+          Text(
+            Intr().chonxinshezhi,
+            style: TextStyle(
+              fontSize: 16.0,
+              color: ColorX.icon586(),
+            ),
+          )
         ],
       ),
     );
@@ -143,7 +178,7 @@ class NormalCircleLayout extends StatelessWidget {
       height: 66.0,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Color(0xffF5F5F5).withOpacity(0.05), // 5% 不透明度
+        color: Color(0xffF5F5F5), // 5% 不透明度
       ),
     );
   }

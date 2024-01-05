@@ -591,8 +591,10 @@ class Intr extends Translations{
   String get weihuzhong => 'weihuzhong'.tr;
   String get yiguanpan => 'yiguanpan'.tr;
   String get yixiushi => 'yixiushi'.tr;
+  String get huizhijiesuo => 'huizhijiesuo'.tr;
   String yichenggongqiehuan_(List<String> args) => 'yichenggongqiehuan_'.trArgs(args);
   String get jifenbuzu => 'jifenbuzu'.tr;
+  String get chonxinshezhi => 'chonxinshezhi'.tr;
 
 
 
@@ -1164,7 +1166,8 @@ class Intr extends Translations{
       "yixiushi":"已休市",
       "yichenggongqiehuan_":"已成功切换为 %s 钱包,\n进入游戏将使用%s",
       "jifenbuzu":"积分不足",
-
+      "huizhijiesuo":"绘制解锁图案",
+      "chonxinshezhi":"重新设置",
 
 
 

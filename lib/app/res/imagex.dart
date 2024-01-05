@@ -495,8 +495,7 @@ class ImageX{
   static const ic_caipiao = 'assets/images/ic_caipiao.png';
   static const ic_boyu = 'assets/images/ic_boyu.png';
   static const ic_qipai = 'assets/images/ic_qipai.png';
-
-
+  static const icon_shoushi_bg =  'assets/images/icon_shoushi_bg.png';
 
 
 

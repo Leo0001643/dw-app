@@ -12,6 +12,8 @@ class SetSimplePwdState {
 
   var confirmPwd = '';
 
+  var gesturetext = '绘制解锁图案'.obs;
+
 
 
 }

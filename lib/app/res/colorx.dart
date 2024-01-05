@@ -81,6 +81,12 @@ class ColorX{
   static Color appBarBg(){
     return AppData.theme() ? Colors.white : Colors.black;
   }
+  static Color appTextBg(){
+    return AppData.theme() ? Colors.black : Colors.white;
+  }
+  static Color appTextSettingBg(){
+    return AppData.theme() ? Colors.black : Colors.white;
+  }
 
   static Color appBarBg2(){
     return AppData.theme() ? ColorX.color_f7f8fb : Colors.black;
