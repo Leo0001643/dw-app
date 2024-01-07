@@ -148,7 +148,7 @@ class HttpService{
   }
 
   static Future<Pc28LottoEntity> getPc28LottoList(){
-    return buildFuture<Pc28LottoEntity>(()=> _client.getPc28LottoList());
+    return buildFuture<Pc28LottoEntity>(()=> _client.getPc28LottoList(),loading: false);
   }
 
   static Future<ActStatusEntity> getActStatus(){

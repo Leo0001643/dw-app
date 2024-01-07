@@ -44,6 +44,7 @@ import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_logic.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
 
+import '../widget/bottom_access_route_dialog.dart';
 import '../widget/jump_type_dialog.dart';
 
 class DialogUtils {
@@ -105,6 +106,14 @@ class DialogUtils {
             content: AccessRouteDialog(list, path),
           );
         });
+  }
+  Future<String?> showAccessRouteDialog2(
+      BuildContext context) {
+    return showModalBottomSheet<String>(
+      backgroundColor:  ColorX.appBottomDialog(), // 设置底部模态表单的背景颜色
+      context: context,
+      builder: (context) => BottomAccessRouteDialog(),
+    );
   }
 
   ///退出登录

@@ -6,6 +6,7 @@ class ColorX{
 
   static const color_fc243b = Color(0xffFC243B);
   static const color_fe2427 = Color(0xfffe2427);
+  static const color_202020 = Color(0xfff202020);
 
   static const color_5b6d7b = Color(0xff5B6D7B);
   static const color_fff4f2 = Color(0xffFFF4F2);
@@ -81,6 +82,9 @@ class ColorX{
   static Color appBarBg(){
     return AppData.theme() ? Colors.white : Colors.black;
   }
+  static Color appBottomDialog(){
+    return AppData.theme() ? Colors.white : ColorX.color_202020;
+  }
   static Color appTextBg(){
     return AppData.theme() ? Colors.black : Colors.white;
   }
@@ -134,6 +138,12 @@ class ColorX{
 
   static Color cardBg8(){
     return AppData.theme() ? Colors.white60 : Color.fromRGBO(30, 31, 31, 0.5);
+  }
+  static Color cardBg9(){
+    return !AppData.theme() ? ColorX.color_fc243b : ColorX.color_fc243b;
+  }
+  static Color cardBg10(){
+    return AppData.theme() ? ColorX.color_e8e8e8 : ColorX.color_333333;
   }
 
   static Color text0917(){

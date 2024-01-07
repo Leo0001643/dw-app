@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:io';
 
@@ -25,7 +24,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:http/http.dart' as http;
 
 class WidgetUtils {
-
   WidgetUtils._internal();
 
   static WidgetUtils? instance;
@@ -37,10 +35,12 @@ class WidgetUtils {
 
   factory WidgetUtils() => getInstance();
 
-
-  Widget buildNoElevatedButton(String text,double width,double height,
-
-      {Color? bg,Color textColor = Colors.white,double textSize = 14,bool  showBorder=false,VoidCallback? onPressed}){
+  Widget buildNoElevatedButton(String text, double width, double height,
+      {Color? bg,
+      Color textColor = Colors.white,
+      double textSize = 14,
+      bool showBorder = false,
+      VoidCallback? onPressed}) {
     return InkWell(
       onTap: onPressed,
       child: Container(
@@ -48,79 +48,132 @@ class WidgetUtils {
         height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: bg,
-          borderRadius: BorderRadius.all(Radius.circular(6)),
-          border: showBorder==true?Border.all(color: Colors.grey,width: 1):Border.all(color: Colors.transparent)
-        ),
-        child: Text(text,
-          style: TextStyle(fontSize: textSize.sp,color: textColor,fontWeight: FontWeight.w600),
+            color: bg,
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+            border: showBorder == true
+                ? Border.all(color: Colors.grey, width: 1)
+                : Border.all(color: Colors.transparent)),
+        child: Text(
+          text,
+          style: TextStyle(
+              fontSize: textSize.sp,
+              color: textColor,
+              fontWeight: FontWeight.w600),
         ),
       ),
     );
   }
-  Widget buildElevatedButton(String text,double width,double height,
-      {Color? bg,Color textColor = Colors.white,double textSize = 14,VoidCallback? onPressed}){
+
+  Widget buildElevatedButton(String text, double width, double height,
+      {Color? bg,
+      Color textColor = Colors.white,
+      double textSize = 14,
+      VoidCallback? onPressed}) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r),),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.r),
+        ),
         backgroundColor: bg,
         minimumSize: Size(width, height),
         maximumSize: Size(width, height),
         padding: EdgeInsets.zero,
       ),
-      child: Text(text,
-        style: TextStyle(fontSize: textSize.sp,color: textColor,fontWeight: FontWeight.w600),
+      child: Text(
+        text,
+        style: TextStyle(
+            fontSize: textSize.sp,
+            color: textColor,
+            fontWeight: FontWeight.w600),
       ),
     );
   }
 
-  Widget buildOutlineButton(String text,double width,double height,Color lineColor,
-      {Color? bg,Color textColor = Colors.white,double textSize = 14,VoidCallback? onPressed}){
+  Widget buildOutlineButton(
+      String text, double width, double height, Color lineColor,
+      {Color? bg,
+      Color textColor = Colors.white,
+      double textSize = 14,
+      VoidCallback? onPressed}) {
     return OutlinedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.r),
         ),
-        side: BorderSide(color: lineColor,width: 1.r),
+        side: BorderSide(color: lineColor, width: 1.r),
         backgroundColor: bg,
         minimumSize: Size(width, height),
         maximumSize: Size(width, height),
         padding: EdgeInsets.zero,
       ),
-      child: Text(text,
-        style: TextStyle(fontSize: textSize.sp,color: textColor,fontWeight: FontWeight.w600),
+      child: Text(
+        text,
+        style: TextStyle(
+            fontSize: textSize.sp,
+            color: textColor,
+            fontWeight: FontWeight.w600),
       ),
     );
   }
 
-
-  Widget buildHomeAppBar({bool msg=false,bool drawer=false,}){
+  Widget buildHomeAppBar(
+    context, {
+    bool msg = false,
+    bool drawer = false,
+  }) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 3.h,horizontal: 10.r),
+      padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 10.r),
       child: Row(
         children: [
-          SizedBox(width: 10.w,),
-          Image.asset(ImageX.icon_logo,),
+          SizedBox(
+            width: 10.w,
+          ),
+          Image.asset(
+            ImageX.icon_logo,
+          ),
           Expanded(child: Container()),
           Visibility(
             visible: msg,
             child: InkWell(
-              onTap: ()=> goMessageCenter(),
+              onTap: () => goJumpRouteCenter(context),
+              child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: Row(
+                    children: [
+                      Text("线路5",style: TextStyle(color: ColorX.iconBlack())),
+                      Image.asset(
+                        ImageX.icon_down_arrow,
+                        color: ColorX.icon586(),
+                      ),
+                    ],
+                  )),
+            ),
+          ),
+          Visibility(
+            visible: msg,
+            child: InkWell(
+              onTap: () => goMessageCenter(),
               child: Padding(
                 padding: EdgeInsets.all(10.r),
-                child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
+                child: Image.asset(
+                  ImageX.icon_user_msg,
+                  color: ColorX.icon586(),
+                ),
               ),
             ),
           ),
           Visibility(
             visible: drawer,
             child: InkWell(
-              onTap: ()=> Get.find<MainLogic>().openDrawer(),
+              onTap: () => Get.find<MainLogic>().openDrawer(),
               child: Padding(
                 padding: EdgeInsets.all(10.r),
-                child: Image.asset(ImageX.icon_more,color: ColorX.icon586(),),
+                child: Image.asset(
+                  ImageX.icon_more,
+                  color: ColorX.icon586(),
+                ),
               ),
             ),
           ),
@@ -129,9 +182,15 @@ class WidgetUtils {
     );
   }
 
-  AppBar buildAppBar(String? title,{bool msg = false,bool back=true,Color? bgColor,bool drawer=false,Function? drawEnd}){
+  AppBar buildAppBar(String? title,
+      {bool msg = false,
+      bool back = true,
+      Color? bgColor,
+      bool drawer = false,
+      Function? drawEnd}) {
     return AppBar(
-      title: Text(title.em(),
+      title: Text(
+        title.em(),
         style: TextStyle(
             fontSize: 16.sp,
             color: ColorX.text0917(),
@@ -144,8 +203,10 @@ class WidgetUtils {
       leading: Visibility(
         visible: back,
         child: InkWell(
-          onTap: ()=>Get.back(),
-          child: Image.asset(ImageX.icon_page_back,),
+          onTap: () => Get.back(),
+          child: Image.asset(
+            ImageX.icon_page_back,
+          ),
         ),
       ),
       actions: [
@@ -154,39 +215,48 @@ class WidgetUtils {
             Visibility(
               visible: msg,
               child: InkWell(
-                onTap: ()=> goMessageCenter(),
+                onTap: () => goMessageCenter(),
                 child: Padding(
                   padding: EdgeInsets.all(10.r),
-                  child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
+                  child: Image.asset(
+                    ImageX.icon_user_msg,
+                    color: ColorX.icon586(),
+                  ),
                 ),
               ),
             ),
             Visibility(
               visible: drawer,
               child: InkWell(
-                onTap: (){
-                  if(drawEnd!=null) {
+                onTap: () {
+                  if (drawEnd != null) {
                     drawEnd();
-                  }else{
+                  } else {
                     Get.find<MainLogic>().openDrawer();
                   }
                 },
                 child: Padding(
                   padding: EdgeInsets.all(10.r),
-                  child: Image.asset(ImageX.icon_more,color: ColorX.icon586(),),
+                  child: Image.asset(
+                    ImageX.icon_more,
+                    color: ColorX.icon586(),
+                  ),
                 ),
               ),
             ),
-            SizedBox(width: 10.w,),
+            SizedBox(
+              width: 10.w,
+            ),
           ],
         ),
       ],
     );
   }
 
-  AppBar buildAppBarBtn(String? title,Widget right){
+  AppBar buildAppBarBtn(String? title, Widget right) {
     return AppBar(
-      title: Text(title.em(),
+      title: Text(
+        title.em(),
         style: TextStyle(
             fontSize: 16.sp,
             color: ColorX.text0917(),
@@ -197,18 +267,23 @@ class WidgetUtils {
       elevation: 0,
       toolbarHeight: 44.h,
       leading: InkWell(
-        onTap: ()=>Get.back(),
+        onTap: () => Get.back(),
         child: Image.asset(ImageX.icon_page_back),
       ),
       actions: [right],
     );
   }
 
-
-  AppBar buildRxAppBar(RxString title,{bool msg = false,bool back=true,Color? bgColor,bool drawer=false,Function? drawEnd}){
+  AppBar buildRxAppBar(RxString title,
+      {bool msg = false,
+      bool back = true,
+      Color? bgColor,
+      bool drawer = false,
+      Function? drawEnd}) {
     return AppBar(
       title: Obx(() {
-        return Text(title.value,
+        return Text(
+          title.value,
           style: TextStyle(
               fontSize: 16.sp,
               color: ColorX.text0917(),
@@ -222,7 +297,7 @@ class WidgetUtils {
       leading: Visibility(
         visible: back,
         child: InkWell(
-          onTap: ()=>Get.back(),
+          onTap: () => Get.back(),
           child: Image.asset(ImageX.icon_page_back),
         ),
       ),
@@ -230,36 +305,49 @@ class WidgetUtils {
         Visibility(
           visible: msg,
           child: InkWell(
-            onTap: ()=> goMessageCenter(),
+            onTap: () => goMessageCenter(),
             child: Padding(
               padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
+              child: Image.asset(
+                ImageX.icon_user_msg,
+                color: ColorX.icon586(),
+              ),
             ),
           ),
         ),
         Visibility(
           visible: drawer,
           child: InkWell(
-            onTap: (){
-              if(drawEnd!=null) {
+            onTap: () {
+              if (drawEnd != null) {
                 drawEnd();
-              }else{
+              } else {
                 Get.find<MainLogic>().openDrawer();
               }
             },
             child: Padding(
               padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_more,color: ColorX.icon586(),),
+              child: Image.asset(
+                ImageX.icon_more,
+                color: ColorX.icon586(),
+              ),
             ),
           ),
         ),
-        SizedBox(width: 10.w,),
+        SizedBox(
+          width: 10.w,
+        ),
       ],
     );
   }
 
-  AppBar buildRoomBar(RxString title,{bool msg = false,bool back=true,
-    Color? bgColor,GestureTapCallback? onTap,}){
+  AppBar buildRoomBar(
+    RxString title, {
+    bool msg = false,
+    bool back = true,
+    Color? bgColor,
+    GestureTapCallback? onTap,
+  }) {
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -269,15 +357,21 @@ class WidgetUtils {
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             Obx(() {
-              return Text(title.value,
+              return Text(
+                title.value,
                 style: TextStyle(
                     fontSize: 16.sp,
                     color: ColorX.text0917(),
                     fontWeight: FontWeight.w600),
               );
             }),
-            SizedBox(width: 5.w,),
-            Image.asset(ImageX.icon_down_black,color: ColorX.icon586(),),
+            SizedBox(
+              width: 5.w,
+            ),
+            Image.asset(
+              ImageX.icon_down_black,
+              color: ColorX.icon586(),
+            ),
           ],
         ),
       ),
@@ -288,7 +382,7 @@ class WidgetUtils {
       leading: Visibility(
         visible: back,
         child: InkWell(
-          onTap: ()=>Get.back(),
+          onTap: () => Get.back(),
           child: Image.asset(ImageX.icon_page_back),
         ),
       ),
@@ -296,10 +390,13 @@ class WidgetUtils {
         Visibility(
           visible: msg,
           child: InkWell(
-            onTap: ()=> goMessageCenter(),
+            onTap: () => goMessageCenter(),
             child: Padding(
               padding: EdgeInsets.all(10.r),
-              child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
+              child: Image.asset(
+                ImageX.icon_user_msg,
+                color: ColorX.icon586(),
+              ),
             ),
           ),
         ),
@@ -307,9 +404,16 @@ class WidgetUtils {
     );
   }
 
-
-  AppBar buildGameBar(RxString title,Widget subTitle,{bool msg = false,bool collect = false, bool back=true,
-    Color? bgColor,GestureTapCallback? onTap,GestureTapCallback? onCollect,}){
+  AppBar buildGameBar(
+    RxString title,
+    Widget subTitle, {
+    bool msg = false,
+    bool collect = false,
+    bool back = true,
+    Color? bgColor,
+    GestureTapCallback? onTap,
+    GestureTapCallback? onCollect,
+  }) {
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -321,18 +425,23 @@ class WidgetUtils {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Obx(() {
-                  return Text(title.value,
+                  return Text(
+                    title.value,
                     style: TextStyle(
                         fontSize: 16.sp,
                         color: ColorX.text0917(),
                         fontWeight: FontWeight.w600),
                   );
                 }),
-                SizedBox(width: 5.w,),
+                SizedBox(
+                  width: 5.w,
+                ),
                 Image.asset(ImageX.icon_down_black),
               ],
             ),
-            SizedBox(height: 3.h,),
+            SizedBox(
+              height: 3.h,
+            ),
             subTitle,
           ],
         ),
@@ -344,7 +453,7 @@ class WidgetUtils {
       leading: Visibility(
         visible: back,
         child: InkWell(
-          onTap: ()=>Get.back(),
+          onTap: () => Get.back(),
           child: Image.asset(ImageX.icon_page_back),
         ),
       ),
@@ -357,17 +466,23 @@ class WidgetUtils {
                 onTap: onCollect,
                 child: Padding(
                   padding: EdgeInsets.all(10.r),
-                  child: const Icon(Icons.collections_outlined,color: ColorX.color_091722,),
+                  child: const Icon(
+                    Icons.collections_outlined,
+                    color: ColorX.color_091722,
+                  ),
                 ),
               ),
             ),
             Visibility(
               visible: msg,
               child: InkWell(
-                onTap: ()=> goMessageCenter(),
+                onTap: () => goMessageCenter(),
                 child: Padding(
                   padding: EdgeInsets.all(10.r),
-                  child: Image.asset(ImageX.icon_user_msg,color: ColorX.icon586(),),
+                  child: Image.asset(
+                    ImageX.icon_user_msg,
+                    color: ColorX.icon586(),
+                  ),
                 ),
               ),
             ),
@@ -377,11 +492,11 @@ class WidgetUtils {
     );
   }
 
-
-  AppBar buildHtmlBar(RxString title,{bool back=true,Color? bgColor}){
+  AppBar buildHtmlBar(RxString title, {bool back = true, Color? bgColor}) {
     return AppBar(
       title: Obx(() {
-        return Text(title.value,
+        return Text(
+          title.value,
           style: TextStyle(
               fontSize: 16.sp,
               color: ColorX.text0917(),
@@ -395,19 +510,30 @@ class WidgetUtils {
       leading: Visibility(
         visible: back,
         child: InkWell(
-          onTap: ()=>Get.back(),
-          child: Image.asset(ImageX.icon_page_back,),
+          onTap: () => Get.back(),
+          child: Image.asset(
+            ImageX.icon_page_back,
+          ),
         ),
       ),
     );
   }
 
-
   ///构建文本框
-  Widget buildTextField(double? width,double? height,double textSize,Color textColor,String? hint,
-      {Color backgroundColor = Colors.white,Color hintColor = ColorX.color_5b6d7b, String? defText,ValueChanged<String>? onChanged,
-        TextInputType? inputType,bool obscureText=false,bool autofocus=false,bool enabled = true,
-        bool suffixIcon=false,int maxLines=1,List<TextInputFormatter>? inputFormatters,FocusNode? focusNode}){
+  Widget buildTextField(double? width, double? height, double textSize,
+      Color textColor, String? hint,
+      {Color backgroundColor = Colors.white,
+      Color hintColor = ColorX.color_5b6d7b,
+      String? defText,
+      ValueChanged<String>? onChanged,
+      TextInputType? inputType,
+      bool obscureText = false,
+      bool autofocus = false,
+      bool enabled = true,
+      bool suffixIcon = false,
+      int maxLines = 1,
+      List<TextInputFormatter>? inputFormatters,
+      FocusNode? focusNode}) {
     return Container(
       decoration: BoxDecoration(
         color: backgroundColor,
@@ -416,128 +542,195 @@ class WidgetUtils {
       padding: EdgeInsets.symmetric(horizontal: 10.r),
       width: width,
       height: height,
-      child: suffixIcon ? Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(child: Text(defText.em()==""?hint.em():defText.em(),style: TextStyle(fontSize: textSize,color: defText.em()==""?hintColor:textColor,overflow: TextOverflow.ellipsis),),),
-          // Icon(Icons.keyboard_arrow_down,size: 18.r,color: Colors.black54),
-        ],
-      ) :TextField(
-        autofocus: autofocus,
-        enabled: enabled,
-        cursorHeight: textSize,
-        maxLines: maxLines,
-        focusNode: focusNode,
-        controller: TextEditingController.fromValue(
-            TextEditingValue(
-                text: defText.em(),
-                selection: TextSelection.fromPosition(TextPosition(affinity: TextAffinity.downstream, offset: defText.em().length))
-            )),
-        onChanged: onChanged,
-        keyboardType: inputType,
-        inputFormatters: inputFormatters,
-        obscureText: obscureText,
-        style: TextStyle(fontSize: textSize,color: textColor),
-        decoration: InputDecoration(
-          hintText: hint,
-          border: InputBorder.none,
-          enabled: enabled,
-          errorBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
-          focusedErrorBorder: InputBorder.none,
-          enabledBorder: InputBorder.none,
-          disabledBorder: InputBorder.none,
-          hintStyle: TextStyle(fontSize: textSize,color: hintColor),
-          labelStyle: TextStyle(fontSize: textSize,color: hintColor),
-          errorStyle: TextStyle(fontSize: textSize,color: hintColor),
-        ),
-      ),
+      child: suffixIcon
+          ? Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Text(
+                    defText.em() == "" ? hint.em() : defText.em(),
+                    style: TextStyle(
+                        fontSize: textSize,
+                        color: defText.em() == "" ? hintColor : textColor,
+                        overflow: TextOverflow.ellipsis),
+                  ),
+                ),
+                // Icon(Icons.keyboard_arrow_down,size: 18.r,color: Colors.black54),
+              ],
+            )
+          : TextField(
+              autofocus: autofocus,
+              enabled: enabled,
+              cursorHeight: textSize,
+              maxLines: maxLines,
+              focusNode: focusNode,
+              controller: TextEditingController.fromValue(TextEditingValue(
+                  text: defText.em(),
+                  selection: TextSelection.fromPosition(TextPosition(
+                      affinity: TextAffinity.downstream,
+                      offset: defText.em().length)))),
+              onChanged: onChanged,
+              keyboardType: inputType,
+              inputFormatters: inputFormatters,
+              obscureText: obscureText,
+              style: TextStyle(fontSize: textSize, color: textColor),
+              decoration: InputDecoration(
+                hintText: hint,
+                border: InputBorder.none,
+                enabled: enabled,
+                errorBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                focusedErrorBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                hintStyle: TextStyle(fontSize: textSize, color: hintColor),
+                labelStyle: TextStyle(fontSize: textSize, color: hintColor),
+                errorStyle: TextStyle(fontSize: textSize, color: hintColor),
+              ),
+            ),
     );
   }
 
-
-  void clickCopy(String value){
-    if(unEmpty(value)){
+  void clickCopy(String value) {
+    if (unEmpty(value)) {
       Clipboard.setData(ClipboardData(text: value));
       showToast(Intr().fuzhichenggong);
     }
   }
 
   void goMessageCenter() {
-    if(AppData.isLogin()){
+    if (AppData.isLogin()) {
       Get.toNamed(Routes.message_center);
     } else {
       goLogin();
     }
   }
 
-  void goLogin(){
-    if(unEmpty(AppData.simplePwd())){
+  //跳转路线
+  void goJumpRouteCenter(BuildContext context) {
+    if (AppData.isLogin()) {
+      DialogUtils().showAccessRouteDialog2(context);
+    } else {
+      goLogin();
+    }
+  }
+
+  void goLogin() {
+    if (unEmpty(AppData.simplePwd())) {
       Get.toNamed(Routes.simple_login);
     } else {
       Get.toNamed(Routes.login);
     }
   }
 
-
-  ImageProvider buildImageProvider(String image,{String defImage = ImageX.icon_avatar}){
-    if(isEmpty(image) || (!image.isUrl() && !image.contains("assets"))){ return AssetImage(defImage); }
-    try{
-      return image.isUrl() ? NetworkImage(image,) : AssetImage(image) as ImageProvider;
-    }catch(e){
+  ImageProvider buildImageProvider(String image,
+      {String defImage = ImageX.icon_avatar}) {
+    if (isEmpty(image) || (!image.isUrl() && !image.contains("assets"))) {
+      return AssetImage(defImage);
+    }
+    try {
+      return image.isUrl()
+          ? NetworkImage(
+              image,
+            )
+          : AssetImage(image) as ImageProvider;
+    } catch (e) {
       return AssetImage(defImage);
     }
   }
 
-  Image buildImage(String image,double width,double height,{String defImage = ImageX.icon_avatar,BoxFit? fit}){
-    if(isEmpty(image) || (!image.isUrl() && !image.contains("assets"))){
-      return Image.asset(defImage,width: width,height: height,fit: fit,);
+  Image buildImage(String image, double width, double height,
+      {String defImage = ImageX.icon_avatar, BoxFit? fit}) {
+    if (isEmpty(image) || (!image.isUrl() && !image.contains("assets"))) {
+      return Image.asset(
+        defImage,
+        width: width,
+        height: height,
+        fit: fit,
+      );
     }
-    try{
-      return image.isUrl() ? Image.network(image,width: width,height: height,fit: fit,
-      errorBuilder: (context,error,stack){
-        loggerArray(["异常了",image,error,stack]);
-          if(unEmpty(defImage)){
-            return Image.asset(defImage,width: width,height: height,fit: fit,);
-          }else {
-            return SizedBox(width: width,height: height,);
-          }
-        },
-      ) : Image.asset(image,width: width,height: height,fit: fit,);
-    }catch(e){
-      loggerArray(["异常了",image,e]);
-      return Image.asset(defImage,width: width,height: height,fit: fit,);
+    try {
+      return image.isUrl()
+          ? Image.network(
+              image,
+              width: width,
+              height: height,
+              fit: fit,
+              errorBuilder: (context, error, stack) {
+                loggerArray(["异常了", image, error, stack]);
+                if (unEmpty(defImage)) {
+                  return Image.asset(
+                    defImage,
+                    width: width,
+                    height: height,
+                    fit: fit,
+                  );
+                } else {
+                  return SizedBox(
+                    width: width,
+                    height: height,
+                  );
+                }
+              },
+            )
+          : Image.asset(
+              image,
+              width: width,
+              height: height,
+              fit: fit,
+            );
+    } catch (e) {
+      loggerArray(["异常了", image, e]);
+      return Image.asset(
+        defImage,
+        width: width,
+        height: height,
+        fit: fit,
+      );
     }
   }
 
-
-
-  Widget buildBallDraw(int lid,List<String> nums, String e) {
-    switch(lid){
-      case 9:  // 快三  3位 骰子
+  Widget buildBallDraw(int lid, List<String> nums, String e) {
+    switch (lid) {
+      case 9: // 快三  3位 骰子
       case 18:
       case 19:
       case 30:
-        return Image.asset(DataUtils.getDiceImg(e),width: 24.r,fit: BoxFit.fill,);
+        return Image.asset(
+          DataUtils.getDiceImg(e),
+          width: 24.r,
+          fit: BoxFit.fill,
+        );
       case 5:
-        return Image.asset(DataUtils.getFruitImg(e),width: 24.r,fit: BoxFit.fill,);
+        return Image.asset(
+          DataUtils.getFruitImg(e),
+          width: 24.r,
+          fit: BoxFit.fill,
+        );
       default:
-        return buildDrawNum(e, buildDrawBg(lid,nums,e));
+        return buildDrawNum(e, buildDrawBg(lid, nums, e));
     }
   }
 
-
-  Widget buildDrawNum(String num,Color bg) {
+  Widget buildDrawNum(String num, Color bg) {
     return Container(
-      width: 24.r,height: 24.r,
+      width: 24.r,
+      height: 24.r,
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: bg,borderRadius: BorderRadius.circular(15.r),),
-      child: Text(num, style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(15.r),
+      ),
+      child: Text(
+        num,
+        style: TextStyle(
+            fontSize: 14.sp, color: Colors.white, fontWeight: FontWeight.w600),
+      ),
     );
   }
 
-  Color buildDrawBg(int lid,List<String> nums,String e) {
-    switch(lid){
+  Color buildDrawBg(int lid, List<String> nums, String e) {
+    switch (lid) {
       case 10: // PC系列 4位
       case 11:
       case 12:
@@ -547,12 +740,12 @@ class WidgetUtils {
       case 34:
       case 32:
       case 42:
-        if(nums.indexOf(e)+1 == nums.length){
+        if (nums.indexOf(e) + 1 == nums.length) {
           return DataUtils.getBallBgColor(int.parse(e));
-        }else {
+        } else {
           return ColorX.color_fe2427;
         }
-      case 7:  // 六合彩  7位
+      case 7: // 六合彩  7位
       case 20:
         return DataUtils.getBallBgColor(int.parse(e));
       case 6: // pK十系列 10位
@@ -564,9 +757,9 @@ class WidgetUtils {
       case 59:
       case 60:
       case 61:
-        if(int.parse(e) <= 40){
+        if (int.parse(e) <= 40) {
           return ColorX.color_529aff;
-        }else {
+        } else {
           return ColorX.color_fe2427;
         }
       default:
@@ -574,28 +767,45 @@ class WidgetUtils {
     }
   }
 
-  Widget buildVarCode(String code,GestureTapCallback onTap){
-    if(isEmpty(code)){ return Container();}
+  Widget buildVarCode(String code, GestureTapCallback onTap) {
+    if (isEmpty(code)) {
+      return Container();
+    }
     // 移除Base64头信息
     String base64String = code.split(',').last;
     return InkWell(
       onTap: onTap,
-      child: Image.memory(base64Decode(base64String),width: 73.w,height: 30.h,),
+      child: Image.memory(
+        base64Decode(base64String),
+        width: 73.w,
+        height: 30.h,
+      ),
     );
   }
 
-
-
-  Widget buildQRCode(String code,double width,double height,){
-    if(isEmpty(code)){ return Container();}
+  Widget buildQRCode(
+    String code,
+    double width,
+    double height,
+  ) {
+    if (isEmpty(code)) {
+      return Container();
+    }
     // 移除Base64头信息
     String base64String = code.split(',').last;
-    return Image.memory(base64Decode(base64String),fit: BoxFit.fill,width: width,height: height,);
+    return Image.memory(
+      base64Decode(base64String),
+      fit: BoxFit.fill,
+      width: width,
+      height: height,
+    );
   }
 
   ///打开游戏页面
-  void loginJump(String title,Map<String,dynamic> params,){
-
+  void loginJump(
+    String title,
+    Map<String, dynamic> params,
+  ) {
     HttpService.loginBusinessAgent(params).then((value) {
       // if(GetPlatform.isIOS){
       //   if(value is Map){
@@ -619,56 +829,49 @@ class WidgetUtils {
       //     launchUrl(Uri.dataFromString(url,parameters: params),mode: LaunchMode.externalApplication);*/
       //     Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: title));
 
-          DialogUtils().showLoadGameDialog(Get.context!, title,).then((inapp) {
-            if(unEmpty(inapp)){
-              if(value is Map){
-                if(inapp!){
-                  Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value["gameUrl"],isHtmlData:false,pageTitle: title));
-                } else {
-                  launchUrl(Uri.parse(value["gameUrl"]),mode: LaunchMode.externalApplication);
-                }
-              } else {
-                // loggerArray(["打印网页数据提取",value.toString().split("\n")]);
-                if(inapp!){
-                  Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: title));
-                } else {
-                  ///OpenFilex可以打开文件 ，可以把value数据写到本地文件里然后用他打开
-                  getTemporaryDirectory().then((cpath) {
-                    var path = '${cpath.path}/${title}.html';
-                    var file = File(path);
-                    file.writeAsString(value).then((value) {
-                      var url = "file:$path";
-                      loggerArray(["显示文件",path,url]);
-                      OpenFilex.open(path,type: "text/html",uti: "public.html").then((result) {
-                        loggerArray(["文件打开结果",result.type,result.message]);
-                      });
-                    });
-                  });
-                }
-              }
+      DialogUtils()
+          .showLoadGameDialog(
+        Get.context!,
+        title,
+      )
+          .then((inapp) {
+        if (unEmpty(inapp)) {
+          if (value is Map) {
+            if (inapp!) {
+              Get.toNamed(Routes.game_html,
+                  arguments: HtmlEvent(
+                      data: value["gameUrl"],
+                      isHtmlData: false,
+                      pageTitle: title));
+            } else {
+              launchUrl(Uri.parse(value["gameUrl"]),
+                  mode: LaunchMode.externalApplication);
             }
-          });
+          } else {
+            // loggerArray(["打印网页数据提取",value.toString().split("\n")]);
+            if (inapp!) {
+              Get.toNamed(Routes.game_html,
+                  arguments: HtmlEvent(
+                      data: value, isHtmlData: true, pageTitle: title));
+            } else {
+              ///OpenFilex可以打开文件 ，可以把value数据写到本地文件里然后用他打开
+              getTemporaryDirectory().then((cpath) {
+                var path = '${cpath.path}/${title}.html';
+                var file = File(path);
+                file.writeAsString(value).then((value) {
+                  var url = "file:$path";
+                  loggerArray(["显示文件", path, url]);
+                  OpenFilex.open(path, type: "text/html", uti: "public.html")
+                      .then((result) {
+                    loggerArray(["文件打开结果", result.type, result.message]);
+                  });
+                });
+              });
+            }
+          }
+        }
+      });
       // }
-
     });
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-

@@ -52,6 +52,7 @@ class Intr extends Translations{
   String get qiandaochoujiang => 'qiandaochoujiang'.tr;
   String get jishuzhichi => 'jishuzhichi'.tr;
   String get fangjiechijiaocheng => 'fangjiechijiaocheng'.tr;
+  String get fangjiechi => 'fangjiechi'.tr;
   String get shiyongbangzhu => 'shiyongbangzhu'.tr;
   String get shedingyuyan => 'shedingyuyan'.tr;
   String get morenyuyan => 'morenyuyan'.tr;
@@ -235,6 +236,7 @@ class Intr extends Translations{
   String get hao_value => 'hao_value'.tr;
   String get qingshuruyouximingcheng => 'qingshuruyouximingcheng'.tr;
   String get xuanzhe => 'xuanzhe'.tr;
+  String get xuanzhexl => 'xuanzhe'.tr;
   String get quanbuyouxi => 'quanbuyouxi'.tr;
   String get shoucangla => 'shoucangla'.tr;
   String get qiandaoyouli => 'qiandaoyouli'.tr;
@@ -631,6 +633,7 @@ class Intr extends Translations{
       "qiandaochoujiang": "签到抽奖",
       "jishuzhichi": "技术支持",
       "fangjiechijiaocheng": "防劫持教程",
+      "fangjiechi": "防劫持",
       "shiyongbangzhu": "使用帮助",
       "xuanzeyuyan":"选择语言",
       "shedingyuyan":"* 请选择默认语言，您可以稍后在“更多”或“我的-设置”中进行设定",
@@ -814,6 +817,7 @@ class Intr extends Translations{
       "hao_value":"号{value}",
       "qingshuruyouximingcheng":"请输入游戏名称",
       "xuanzhe":"选择",
+      "xuanzhexl":"选择线路",
       "quanbuyouxi":"全部游戏",
       "shoucangla":"收藏啦",
       "qiandaoyouli":"签到有礼",

@@ -52,7 +52,7 @@ class StateHomePage extends State<HomePage>
                         SizedBox(
                           height: ScreenUtil().statusBarHeight,
                         ),
-                        WidgetUtils().buildHomeAppBar(msg: true, drawer: true),
+                        WidgetUtils().buildHomeAppBar(context,msg: true, drawer: true),
                         Obx(() {
                           if (isEmpty(state.bannerList)) {
                             return Container();
