@@ -599,6 +599,7 @@ class Intr extends Translations{
   String get huizhisige => 'huizhisige'.tr;
   String get huizhibuyiyang => 'huizhibuyiyang'.tr;
   String get zaicihuizhi => 'zaicihuizhi'.tr;
+  // String get yingyongneijiazai => 'yingyongneijiazai'.tr;
 
 
 
@@ -1176,8 +1177,7 @@ class Intr extends Translations{
       "huizhibuyiyang":"与上一次绘制不一致请重新绘制",
       "zaicihuizhi":"请再次绘制解锁图案",
       "shifouchongxinhuizhi":"是否要重新绘制解锁图案？",
-
-
+      // "yingyongneijiazai":"应用内轻快加载",
 
     },
   };

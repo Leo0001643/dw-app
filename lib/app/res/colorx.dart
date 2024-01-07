@@ -151,6 +151,9 @@ class ColorX{
   static Color textBlack(){
     return AppData.theme() ? Colors.black : Colors.white;
   }
+  static Color textWhite(){
+    return AppData.theme() ? Colors.white : Colors.black;
+  }
 
 
   static Color text5d6(){

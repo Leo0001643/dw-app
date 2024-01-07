@@ -106,7 +106,7 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
                     } else {
                       //第二次确定 绘制确定成功
                       if (_points.toString() == data.toString()) {
-                        showToast(Intr().shezhichenggong);
+                        showToast(Intr().caozuochenggong);
                         Get.back(result: data.toString());
                       } else {
                         isRed = true;
