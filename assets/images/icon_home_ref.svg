@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12.9774757px" height="12.9773767px" viewBox="0 0 12.9774757 12.9773767" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/刷新</title>
+    <g id="页面调整" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="1-3" transform="translate(-174.168231, -310.717709)" stroke="#0E0E0E" stroke-width="2">
+            <g id="编组-5" transform="translate(176.000000, 312.000000)">
+                <g id="icon/刷新" transform="translate(-0.465744, 0.083734)">
+                    <g id="编组备份" transform="translate(5.122595, 5.122595) rotate(30.000000) translate(-5.122595, -5.122595) translate(1.372595, 1.372595)">
+                        <path d="M7.5,2.46028905 C6.9576978,1.02457941 5.5359463,-6.66133815e-16 3.86739969,-6.66133815e-16 C1.73149382,-6.66133815e-16 -8.8817842e-16,1.67893219 -8.8817842e-16,3.75 C-8.8817842e-16,5.82106781 1.73149382,7.5 3.86739969,7.5 C5.37361648,7.5 6.67872273,6.66508184 7.3173319,5.44650467" id="路径"></path>
+                        <line x1="7.38972322" y1="2.49288792" x2="5.02654265" y2="2.7747391" id="直线"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

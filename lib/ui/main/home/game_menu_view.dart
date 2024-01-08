@@ -308,10 +308,10 @@ class StateGameMenuView extends State<GameMenuView> {
         child: Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Colors.black38,
-              borderRadius: BorderRadius.circular(2.r),
+              color: Colors.black54,
+              borderRadius: BorderRadius.circular(100.r),
             ),
-            margin: EdgeInsets.symmetric(vertical: 5.r, horizontal: 5.r),
+            margin: EdgeInsets.symmetric(vertical: 2.r, horizontal: 1.r),
             child: TextTimerPage(
                 TextTimerLogic(type: element.gameCode), element, timerGroup)),
       ),

@@ -108,21 +108,41 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 27.w),
-              child: Text.rich(TextSpan(
+              child: Text.rich(
+                TextSpan(
                   children: [
-                    TextSpan(text: Intr().wenxintixing_usdt,
-                      style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),height: 1.8),),
+                    TextSpan(
+                      text: Intr().wenxintixing_usdt,
+                      style: TextStyle(fontSize: 14.sp, color: ColorX.text586(), height: 1.8),
+                    ),
                     WidgetSpan(
+                      alignment: PlaceholderAlignment.baseline,
+                      baseline: TextBaseline.alphabetic,
                       child: InkWell(
-                        onTap: (){
-                          eventBus.fire(ChangeMainPageEvent(3));//转到客服显示
+                        onTap: () {
+                          eventBus.fire(ChangeMainPageEvent(3)); //转到客服显示
                           Get.until((ModalRoute.withName(Routes.main)));
                         },
-                        child: Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),height: 1.8,decoration: TextDecoration.underline),),
+                        child:
+                        Padding(child: Text(
+                          Intr().lxkf,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.sp,
+                            color: ColorX.text0917(),
+                            height: 1.8,
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 3.0,
+                            decorationColor: Colors.black, // 设置下划线颜色
+                          ),
+                        ),padding: EdgeInsets.only(left: 5.w),)
+
                       ),
                     ),
-                  ]
-              ),),
+                  ],
+                ),
+              )
+              ,
             ),
           ],
         ),

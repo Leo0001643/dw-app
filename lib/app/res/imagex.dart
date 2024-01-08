@@ -482,7 +482,7 @@ class ImageX{
   static const ic_qiehuan_dark = 'assets/images/ic_qiehuan_dark.png';
   static const ic_qiehuan = 'assets/images/ic_qiehuan.png';
   static const ic_shuaxin_dark = 'assets/images/ic_shuaxin_dark.png';
-  static const ic_shuaxin = 'assets/images/ic_shuaxin.png';
+  static const ic_shuaxin = 'assets/images/icon_home_ref.svg';
 
   static const ic_tixian = 'assets/images/ic_tixian.png';
   static const ic_tixian_dark = 'assets/images/ic_tixian_dark.png';

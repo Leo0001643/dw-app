@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
@@ -52,7 +53,8 @@ class StateHomePage extends State<HomePage>
                         SizedBox(
                           height: ScreenUtil().statusBarHeight,
                         ),
-                        WidgetUtils().buildHomeAppBar(context,msg: true, drawer: true),
+                        WidgetUtils()
+                            .buildHomeAppBar(context, msg: true, drawer: true),
                         Obx(() {
                           if (isEmpty(state.bannerList)) {
                             return Container();
@@ -335,10 +337,12 @@ class StateHomePage extends State<HomePage>
             ),
             InkWell(
               onTap: () => logic.loadUserData(jumpNotice: false),
-              child: Image.asset(
+              child: SvgPicture.asset(
                 ImageX.icShuaxinT(),
-                width: 17.r,
-                fit: BoxFit.fill,
+                width: 20.w,
+                height: 20.w,
+                color: ColorX.iconBlack(),
+                fit: BoxFit.contain,
               ),
             ),
             SizedBox(
@@ -354,10 +358,13 @@ class StateHomePage extends State<HomePage>
             ),
             InkWell(
               onTap: () => Get.toNamed(Routes.select_currency),
-              child: Image.asset(
+              child:
+              SvgPicture.asset(
                 ImageX.icQiehuanT(),
-                width: 10.r,
-                fit: BoxFit.fill,
+                width: 20.w,
+                height: 20.w,
+                color: ColorX.iconBlack(),
+                fit: BoxFit.contain,
               ),
             ),
             SizedBox(

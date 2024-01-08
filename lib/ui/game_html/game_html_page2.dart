@@ -5,14 +5,16 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 
+import 'FloatExpendButton.dart';
+import 'float_menu_button.dart';
 import 'game_html_logic.dart';
 
-class GameHtmlPage extends StatefulWidget {
+class GameHtmlPage2 extends StatefulWidget {
   @override
-  State<GameHtmlPage> createState() => _GameHtmlPageState();
+  State<GameHtmlPage2> createState() => _GameHtmlPageState();
 }
 
-class _GameHtmlPageState extends State<GameHtmlPage> {
+class _GameHtmlPageState extends State<GameHtmlPage2> {
   final logic = Get.find<GameHtmlLogic>();
   final state = Get.find<GameHtmlLogic>().state;
 
@@ -62,28 +64,26 @@ class _GameHtmlPageState extends State<GameHtmlPage> {
                       state.progressVisible.value = pg != 100;
                     },
                   ),
-
-                  InkWell(
-                    onTap: () async {
-                      if(await state.controller?.canGoBack() == true){
-                        state.controller?.goBack();
-                      }else {
-                        Get.back();
-                      }
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 15.h,left: 5.w),
-                      color: Colors.white,
-                      width: 45.w,
-                      height: 20.h,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.arrow_back_outlined,size: 15.r,color: Colors.black,),
-                          Text(Intr().fanhui,style: TextStyle(fontSize: 12.sp,color: Colors.black),),
-                        ],
+                  FloatExpendButton(
+                    //菜单图标组
+                    [
+                      Icon(
+                        Icons.add,
+                        size: 10,
                       ),
-                    ),
+                      Icon(Icons.share, size: 15)
+                    ],
+                    //点击事件回调
+                    callback: (int index) {
+                      print("点击");
+                      print(index);
+                    },
+                    tabcolor: Colors.yellow,
+                    MainTabBeginColor: Colors.black,
+                    MainTabAfterColor: Colors.blue,
+                    fabHeight: 30,
+                    tabspace: 5,
+                    type: ButtonType.Top,
                   ),
                 ],
               ),

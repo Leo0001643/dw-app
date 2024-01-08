@@ -135,6 +135,7 @@ import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_p
 import 'package:leisure_games/ui/register/register_binding.dart';
 import 'package:leisure_games/ui/register/register_page.dart';
 
+import '../ui/game_html/game_html_page2.dart';
 import '../ui/main/home/text_timer/text_timer_page.dart';
 import '../ui/main/mine/setting/set_simple_pwd/set_simple_pwd_page2.dart';
 
@@ -214,7 +215,7 @@ class Routes {
     GetPage(name: login,binding: LoginBinding(), page: () => LoginPage()),
     GetPage(name: register,binding: RegisterBinding(), page: () => RegisterPage()),
     GetPage(name: html,binding: HtmlBinding(), page: () => HtmlPage()),
-    GetPage(name: game_html,binding: GameHtmlBinding(), page: () => GameHtmlPage()),
+    GetPage(name: game_html,binding: GameHtmlBinding(), page: () => GameHtmlPage2()),
     GetPage(name: select_currency,binding: SelectCurrencyBinding(), page: () => SelectCurrencyPage()),
     GetPage(name: message_center,binding: MessageCenterBinding(),bindings: [NoticeBinding(),MessageBinding()], page: () => MessageCenterPage()),
     GetPage(name: select_language,binding: SelectLanguageBinding(), page: () => SelectLanguagePage()),

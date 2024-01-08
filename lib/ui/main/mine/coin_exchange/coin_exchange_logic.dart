@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
@@ -38,7 +39,6 @@ class CoinExchangeLogic extends GetxController {
       value.language = Intr().wallet_cny;
       state.cnyBal.value = value;
       state.cnyBal.refresh();
-      state.c2u.value = true;
     });
 
     HttpService.getBalance({ "cur":5, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
@@ -82,14 +82,17 @@ class CoinExchangeLogic extends GetxController {
 
     var user = AppData.user();
     var params = <String,dynamic>{"oid":user?.oid,"username":user?.username,
-    "money":state.fromAmount.value,"tout":1};
+    "money":state.fromAmount.value};
 
     //转出币种类型【1:CNY,2:USD,3:KRW,4:INR,5:USDT,6:VND】
     if(state.c2u.value){
       params["tin"] = 5;
+      params["tout"] = 1;
     } else {
       params["tin"] = 1;
+      params["tout"] = 5;
     }
+
 
     HttpService.internalTransfer(params).then((value) {
       ///兑换成功余额变化

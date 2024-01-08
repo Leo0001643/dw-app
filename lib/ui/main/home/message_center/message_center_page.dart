@@ -62,7 +62,7 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
               labelPadding: EdgeInsets.zero,
               labelColor: ColorX.text0917(),
               unselectedLabelColor: ColorX.text586(),
-              width: 0.55.sw,
+              width: 0.33.sw,
               tabs: state.tabs.map((e) => buildTabBarItem(e, 0)).toList(),
             ),
           ),

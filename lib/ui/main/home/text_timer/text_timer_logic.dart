@@ -6,6 +6,7 @@ import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 
+import '../../../../app/intl/intr.dart';
 import '../../../bean/game_kind_entity.dart';
 import '../../../bean/pc28_plan_entity.dart';
 
@@ -63,16 +64,16 @@ class TextTimerLogic {
     String key = pc28lottoRoom.gameType.toString();
     if (pc28lottoRoom.stateMsg != "0") {
       if (pc28lottoRoom.stateMsg == 1) {
-        roomcountdown[key + 'Time'] = "维护中";
+        roomcountdown[key + 'Time'] = Intr().weihuzhong;
       } else if (pc28lottoRoom.stateMsg == 3) {
-        roomcountdown[key + 'Time'] = "已关盘";
+        roomcountdown[key + 'Time'] = Intr().yiguanpan;
       } else if (pc28lottoRoom.stateMsg == 4) {
-        roomcountdown[key + 'Time'] = "已休市";
+        roomcountdown[key + 'Time'] = Intr().yixiushi;
       }
       roomcountdown[key + 'Term'] = '--';
       roomcountdown[key + 'Notice'] = allTime[key]['msg'] ?? '';
     } else if (allTime[key]['code'] == 100020) {
-      roomcountdown[key + 'Time'] = "等待开盘";
+      roomcountdown[key + 'Time'] = Intr().dengdaikaipan;
       roomcountdown[key + 'Term'] = '--';
       roomcountdown[key + 'Notice'] = allTime[key]['msg'];
     } else {

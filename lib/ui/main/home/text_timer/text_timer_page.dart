@@ -9,6 +9,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 
+import '../../../../app/intl/intr.dart';
 import '../../../bean/game_kind_entity.dart';
 import '../../../bean/pc28_lotto_entity.dart';
 
@@ -49,7 +50,11 @@ class _TextTimerPageState extends State<TextTimerPage> {
   Widget build(BuildContext context) {
     // 在这里构建你的 UI，使用 roomInf 数据
     return Obx(() {
-      return Text(widget.logic.state.text_timer.value);
+      if(!widget.logic.state.text_timer.value.contains(Intr().fengpanzhong)){
+        return Text(widget.logic.state.text_timer.value);
+      }else{
+        return Text(widget.logic.state.text_timer.value,style: TextStyle(color: Colors.red),);
+      }
     });
   }
 }
