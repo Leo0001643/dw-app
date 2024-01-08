@@ -14,11 +14,11 @@ import '../../../bean/game_kind_entity.dart';
 import '../../../bean/pc28_lotto_entity.dart';
 
 class TextTimerPage extends StatefulWidget {
-   TextTimerLogic logic;
+  TextTimerLogic logic;
   final GameKindGameKindList gamekindGroup;
   final Rx<Pc28LottoEntity> timerGroup;
 
-  TextTimerPage(this.logic,this.gamekindGroup, this.timerGroup);
+  TextTimerPage(this.logic, this.gamekindGroup, this.timerGroup);
 
   @override
   _TextTimerPageState createState() => _TextTimerPageState();
@@ -28,6 +28,7 @@ class _TextTimerPageState extends State<TextTimerPage> {
   late Timer _timer;
   Map<String, dynamic> roomInf = {};
   late final Rx<Pc28LottoEntity> timerGroup;
+
   @override
   void initState() {
     super.initState();
@@ -50,10 +51,18 @@ class _TextTimerPageState extends State<TextTimerPage> {
   Widget build(BuildContext context) {
     // 在这里构建你的 UI，使用 roomInf 数据
     return Obx(() {
-      if(!widget.logic.state.text_timer.value.contains(Intr().fengpanzhong)){
-        return Text(widget.logic.state.text_timer.value);
-      }else{
-        return Text(widget.logic.state.text_timer.value,style: TextStyle(color: Colors.red),);
+      if (!widget.logic.state.text_timer.value.contains(Intr().fengpanzhong)) {
+        if (widget.logic.state.text_timer.value.startsWith (Intr().dengdaikaipan)) {
+          return Text(widget.logic.state.text_timer.value,
+              style: TextStyle(color: Colors.greenAccent));
+        }
+        return Text(widget.logic.state.text_timer.value,
+            style: TextStyle(fontWeight: FontWeight.w500));
+      } else {
+        return Text(
+          widget.logic.state.text_timer.value,
+          style: TextStyle(color: Colors.red),
+        );
       }
     });
   }

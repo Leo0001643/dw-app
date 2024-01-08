@@ -77,6 +77,9 @@ class TextTimerLogic {
       roomcountdown[key + 'Term'] = '--';
       roomcountdown[key + 'Notice'] = allTime[key]['msg'];
     } else {
+     if(allTime[key]['data']==null) {
+       state.text_timer.value = Intr().dengdaikaipan;
+     }
       if (allTime[key]['data'].length > 1) {
         for (int s = 0; s < allTime[key]['data'].length - 1; s++) {
           int onlineT = DateTime.now().millisecondsSinceEpoch +

@@ -608,11 +608,7 @@ class WidgetUtils {
 
   //跳转路线
   void goJumpRouteCenter(BuildContext context) {
-    if (AppData.isLogin()) {
-      DialogUtils().showAccessRouteDialog2(context);
-    } else {
-      goLogin();
-    }
+    DialogUtils().showAccessRouteDialog2(context);
   }
 
   void goLogin() {
