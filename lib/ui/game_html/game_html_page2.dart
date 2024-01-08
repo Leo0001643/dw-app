@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 
+import '../../app/global.dart';
 import 'FloatExpendButton.dart';
 import 'float_menu_button.dart';
 import 'game_html_logic.dart';
@@ -17,6 +19,15 @@ class GameHtmlPage2 extends StatefulWidget {
 class _GameHtmlPageState extends State<GameHtmlPage2> {
   final logic = Get.find<GameHtmlLogic>();
   final state = Get.find<GameHtmlLogic>().state;
+  bool isLandscape = false;
+  List<DeviceOrientation> orientations = [
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ];
+  List<DeviceOrientation> orientations2 = [
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ];
 
   @override
   void dispose() {
@@ -30,21 +41,23 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
       body: SafeArea(
         child: Column(
           children: [
-            Obx(() => Visibility(
-              visible: state.progressVisible.value,
-              child: LinearProgressIndicator(
-                value: state.progress.value/100,//取值为0-1
-                minHeight: 3,
-                valueColor: const AlwaysStoppedAnimation(Colors.amberAccent),
-                backgroundColor: Colors.white,
+            Obx(
+              () => Visibility(
+                visible: state.progressVisible.value,
+                child: LinearProgressIndicator(
+                  value: state.progress.value / 100, //取值为0-1
+                  minHeight: 3,
+                  valueColor: const AlwaysStoppedAnimation(Colors.amberAccent),
+                  backgroundColor: Colors.white,
+                ),
               ),
-            ),
             ),
             Expanded(
               child: Stack(
                 children: [
                   InAppWebView(
-                    onWebViewCreated: (controller)=> logic.loadPage(controller),
+                    onWebViewCreated: (controller) =>
+                        logic.loadPage(controller),
                     initialOptions: InAppWebViewGroupOptions(
                       android: AndroidInAppWebViewOptions(
                         loadWithOverviewMode: false,
@@ -59,32 +72,46 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                         ignoresViewportScaleLimits: true,
                       ),
                     ),
-                    onProgressChanged: (controller,pg){
+                    onProgressChanged: (controller, pg) {
                       state.progress.value = pg.toDouble();
                       state.progressVisible.value = pg != 100;
                     },
                   ),
-                  FloatExpendButton(
-                    //菜单图标组
-                    [
-                      Icon(
-                        Icons.add,
-                        size: 10,
-                      ),
-                      Icon(Icons.share, size: 15)
-                    ],
-                    //点击事件回调
-                    callback: (int index) {
-                      print("点击");
-                      print(index);
-                    },
-                    tabcolor: Colors.yellow,
-                    MainTabBeginColor: Colors.black,
-                    MainTabAfterColor: Colors.blue,
-                    fabHeight: 30,
-                    tabspace: 5,
-                    type: ButtonType.Top,
-                  ),
+                  Positioned(
+                    bottom: 130,
+                    right: 20,
+                    child: FloatExpendButton(
+                      //菜单图标组
+                      const [
+                        Icon(
+                          Icons.screen_rotation,
+                          size: 25,
+                        ),
+                        Icon(Icons.backspace, size: 25)
+                      ],
+                      //点击事件回调
+                      callback: (int index) {
+                        if (index == 0) {
+                          setState(() {
+                            isLandscape = !isLandscape;
+                            showToast(isLandscape ? '横屏' : '竖屏');
+                          });
+                          //旋转屏幕
+                          SystemChrome.setPreferredOrientations(
+                              isLandscape ? orientations : orientations2);
+                        } else if (index == 1) {
+                          Get.back();
+                          //关闭
+                        }
+                      },
+                      tabcolor: Colors.blue,
+                      MainTabBeginColor: Colors.blue,
+                      MainTabAfterColor: Colors.blue,
+                      fabHeight: 42,
+                      tabspace: 20,
+                      type: ButtonType.Top,
+                    ),
+                  )
                 ],
               ),
             ),
@@ -93,7 +120,4 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
       ),
     );
   }
-
-
-
 }

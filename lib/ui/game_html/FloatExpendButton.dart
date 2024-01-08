@@ -39,7 +39,7 @@ class FloatExpendButton extends StatefulWidget {
 
   FloatExpendButton(this.iconList,
       {required this.callback,
-      this.fabHeight = 69,
+      this.fabHeight = 40,
       this.tabspace = 10,
       this.tabcolor = Colors.blue,
       this.MainTabBeginColor = Colors.red,
