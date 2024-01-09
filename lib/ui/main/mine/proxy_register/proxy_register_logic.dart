@@ -39,7 +39,7 @@ class ProxyRegisterLogic extends GetxController {
   }
 
 
-  void register(){
+  void register({dynamic data}){
     if(isEmpty(state.username)){
       showToast(Intr().qsryhm);
       return;
@@ -77,6 +77,36 @@ class ProxyRegisterLogic extends GetxController {
     }
     if(unEmpty(state.qq.value)){
       params["qq"] = state.qq.value;
+    }
+    if (data != null &&
+        state.varcode.value.status == 1 &&
+        state.varcode.value.type == 2) {
+      //阿里的滑动
+
+      //@ApiModelProperty(value = "阿里云签名串")
+      //     private String sign;
+      //
+      //     @ApiModelProperty(value = "阿里云会话ID")
+      //     private String sessionId;
+      //
+      //     @ApiModelProperty(value = "阿里云唯一标识")
+      //     private String token;
+      //
+      //     @ApiModelProperty(value = "阿里云场景标识")
+      //     private String scene;
+      params["sign"] = data["sig"];
+      params["sessionId"] = data["sessionId"];
+      params["sign"] = data["sig"];
+      params["token"] = data["token"];
+    }
+    //腾讯的滑动验证
+    //
+    if (data != null &&
+        state.varcode.value.status == 1 &&
+        state.varcode.value.type == 3) {
+      params["ticket"] = data["ticket"];
+      params["randstr"] = data["randstr"];
+      params["token"] = -1;
     }
 
     HttpService.agentRegister(params).then((value) {

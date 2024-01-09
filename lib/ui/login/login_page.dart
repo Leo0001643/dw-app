@@ -259,12 +259,10 @@ class _LoginPageState extends State<LoginPage> {
                         backgroundColor: Colors.transparent,
                         inputType: TextInputType.number,
                         onChanged: (v) => state.vcode = v),
-                    Obx(() {
-                      return WidgetUtils()
-                          .buildVarCode(state.varcode.value.varCode.em(), () {
-                        logic.getVarcode();
-                      });
-                    }),
+                    WidgetUtils().buildVarCode(state.varcode.value.varCode.em(),
+                        () {
+                      logic.getVarcode();
+                    })
                   ],
                 ),
               ),
@@ -276,20 +274,18 @@ class _LoginPageState extends State<LoginPage> {
         return _getAliCode();
       } else {
         return Center(
-          child: Obx(() {
-            return WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
-                bg: state.btnEnable.value
-                    ? ColorX.color_fd273e
-                    : ColorX.color_ff5163,
-                textColor: Colors.white,
-                textSize: 16.sp, onPressed: () {
-              if (state.varcode.value.status == 1 &&
-                  state.varcode.value.type == 3) {
-                _handleClickVerify();
-              } else {
-                logic.clickLogin();
-              }
-            });
+          child: WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
+              bg: state.btnEnable.value
+                  ? ColorX.color_fd273e
+                  : ColorX.color_ff5163,
+              textColor: Colors.white,
+              textSize: 16.sp, onPressed: () {
+            if (state.varcode.value.status == 1 &&
+                state.varcode.value.type == 3) {
+              _handleClickVerify();
+            } else {
+              logic.clickLogin();
+            }
           }),
         );
       }
@@ -360,7 +356,7 @@ class _LoginPageState extends State<LoginPage> {
       config: config,
       onLoaded: (dynamic data) {},
       onSuccess: (dynamic data) {
-        print("onSuccess>>data>>"+data.toString());
+        print("onSuccess>>data>>" + data.toString());
         logic.clickLogin(data: data);
       },
       onFail: (dynamic data) {},
