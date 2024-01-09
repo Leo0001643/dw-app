@@ -88,6 +88,9 @@ class ColorX{
   static Color appTextBg(){
     return AppData.theme() ? Colors.black : Colors.white;
   }
+  static Color appSelectTextBg(){
+    return AppData.theme() ? Colors.black : Colors.red;
+  }
   static Color appTextSettingBg(){
     return AppData.theme() ? Colors.black : Colors.white;
   }

@@ -357,7 +357,7 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
           ],
         ),
       ),
-      bottomNavigationBar:   _getCode(),
+      bottomNavigationBar: _getCode(),
 
     );
   }
@@ -417,7 +417,13 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
           state.varcode.value.type == 2) {
         return _getAliCode();
       } else {
-        return Center(
+        return Container(
+          margin: EdgeInsets.only(
+            top: 10,
+            bottom: 10,
+            left: 16,
+            right: 16,
+          ),
           child:  WidgetUtils().buildElevatedButton(
               Intr().confirm, 335.w, 48.h,
               bg: ColorX.color_fd273e,

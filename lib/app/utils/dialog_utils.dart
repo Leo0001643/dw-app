@@ -46,6 +46,7 @@ import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
 
 import '../widget/bottom_access_route_dialog.dart';
 import '../widget/jump_type_dialog.dart';
+import '../widget/select_option_btm_gird_dialog.dart';
 
 class DialogUtils {
   DialogUtils._internal();
@@ -462,6 +463,24 @@ class DialogUtils {
         });
   }
 
+  Future<dynamic> showSelectOptionBtmGirdDialog(
+      BuildContext context, String title, List data) {
+    return showModalBottomSheet<dynamic>(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: ColorX.pageBg(),
+        builder: (context) {
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: SelectOptionBtmGirdDialog(title, data),
+          );
+        });
+  }
   ///选择账户弹窗
   Future<UserDrawDetailBanks?> showSelectAccountBtmDialog(
       BuildContext context, List<UserDrawDetailBanks> data) {

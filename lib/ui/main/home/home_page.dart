@@ -339,8 +339,8 @@ class StateHomePage extends State<HomePage>
               onTap: () => logic.loadUserData(jumpNotice: false),
               child: SvgPicture.asset(
                 ImageX.icShuaxinT(),
-                width: 20.w,
-                height: 20.w,
+                width: 18.w,
+                height: 18.w,
                 color: ColorX.iconBlack(),
                 fit: BoxFit.contain,
               ),
@@ -361,8 +361,8 @@ class StateHomePage extends State<HomePage>
               child:
               SvgPicture.asset(
                 ImageX.icQiehuanT(),
-                width: 20.w,
-                height: 20.w,
+                width: 12.w,
+                height: 12.w,
                 color: ColorX.iconBlack(),
                 fit: BoxFit.contain,
               ),

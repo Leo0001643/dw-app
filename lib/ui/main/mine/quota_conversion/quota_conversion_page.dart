@@ -138,7 +138,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               InkWell(
-                                onTap:()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().qingxuanzhezhuanchu, state.platforms).then((value) {
+                                onTap:()=> DialogUtils().showSelectOptionBtmGirdDialog(context, Intr().qingxuanzhezhuanchu, state.platforms).then((value) {
                                   if(unEmpty(value)){
                                     state.leftAccount.value = value;
                                     state.leftAccount.refresh();
@@ -176,7 +176,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               InkWell(
-                                onTap:()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().qingxuanzhezhuanru, state.platforms).then((value) {
+                                onTap:()=> DialogUtils().showSelectOptionBtmGirdDialog(context, Intr().qingxuanzhezhuanru, state.platforms).then((value) {
                                   if(unEmpty(value)){
                                     state.rightAccount.value = value;
                                     state.rightAccount.refresh();
