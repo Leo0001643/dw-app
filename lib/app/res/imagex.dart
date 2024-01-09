@@ -480,7 +480,7 @@ class ImageX{
   static const ic_gengduo_dark = 'assets/images/ic_gengduo_dark.png';
   static const ic_gengduo = 'assets/images/ic_gengduo.png';
   static const ic_qiehuan_dark = 'assets/images/ic_qiehuan_dark.png';
-  static const ic_qiehuan = 'assets/images/ic_qiehuan.png';
+  static const ic_qiehuan = 'assets/images/icon_home_qh.svg';
   static const ic_shuaxin_dark = 'assets/images/ic_shuaxin_dark.png';
   static const ic_shuaxin = 'assets/images/icon_home_ref.svg';
 

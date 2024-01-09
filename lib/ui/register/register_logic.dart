@@ -53,7 +53,7 @@ class RegisterLogic extends GetxController {
       showToast(Intr().zhenshixingmingbunengkong);
       return;
     }
-    if (isEmpty(state.vcode) && state.varcode.value.status != 1) {
+    if (isEmpty(state.vcode) && state.varcode.value.status == 1&& state.varcode.value.type == 1) {
       showToast(Intr().yanzhengmabunengkong);
       return;
     }

@@ -340,7 +340,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   InkWell(
                     onTap: () {
                       //腾讯验证滑动测试
-
                       Get.until((ModalRoute.withName(Routes.main)));
                       Get.toNamed(Routes.login);
                     },
