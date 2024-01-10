@@ -40,8 +40,6 @@ class _FloatMenuButtonState extends State<FloatMenuButton> {
                     print(index);
                   },
                   tabcolor: Colors.yellow,
-                  MainTabBeginColor: Colors.black,
-                  MainTabAfterColor: Colors.blue,
                   tabspace: 5,
                   type: ButtonType.Top,
                 ),
@@ -63,8 +61,6 @@ class _FloatMenuButtonState extends State<FloatMenuButton> {
                     print(index);
                   },
                   tabcolor: Colors.red,
-                  MainTabBeginColor: Colors.green,
-                  MainTabAfterColor: Colors.black45,
                   fabHeight: 50,
                   tabspace: 10,
                   type: ButtonType.Left,
@@ -87,8 +83,6 @@ class _FloatMenuButtonState extends State<FloatMenuButton> {
                     print(index);
                   },
                   tabcolor: Colors.green,
-                  MainTabBeginColor: Colors.black,
-                  MainTabAfterColor: Colors.blue,
                   fabHeight: 60,
                   tabspace: 5,
                   type: ButtonType.Right,
@@ -110,9 +104,6 @@ class _FloatMenuButtonState extends State<FloatMenuButton> {
                     print("点击");
                     print(index);
                   },
-                  tabcolor: Colors.blue,
-                  MainTabBeginColor: Colors.deepOrange,
-                  MainTabAfterColor: Colors.orangeAccent,
                   fabHeight: 30,
                   tabspace: 15,
                   type: ButtonType.Bottom,

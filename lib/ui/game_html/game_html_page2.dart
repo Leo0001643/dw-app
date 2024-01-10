@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -82,12 +83,9 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                     right: 20,
                     child: FloatExpendButton(
                       //菜单图标组
-                      const [
-                        Icon(
-                          Icons.screen_rotation,
-                          size: 25,
-                        ),
-                        Icon(Icons.backspace, size: 25)
+                       [
+                         buildSvgImageItem( ImageX.icHtmXZT()),
+                         buildSvgImageItem( ImageX.icHtmlBackT())
                       ],
                       //点击事件回调
                       callback: (int index) {
@@ -104,9 +102,6 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                           //关闭
                         }
                       },
-                      tabcolor: Colors.blue,
-                      MainTabBeginColor: Colors.blue,
-                      MainTabAfterColor: Colors.blue,
                       fabHeight: 42,
                       tabspace: 20,
                       type: ButtonType.Top,
@@ -119,5 +114,14 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
         ),
       ),
     );
+  }
+  Widget buildSvgImageItem(String icon) {
+      return SvgPicture.asset(
+        icon,
+        width: 48.w,
+        height: 48.w,
+        fit: BoxFit.contain,
+      );
+
   }
 }

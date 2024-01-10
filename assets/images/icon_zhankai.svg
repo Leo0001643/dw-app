@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/第三方展开更多@1x</title>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="6.16297582e-31%" id="linearGradient-1">
+            <stop stop-color="#FC243B" offset="0%"></stop>
+            <stop stop-color="#FF472D" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="21" cy="21" r="21"></circle>
+        <filter x="-16.7%" y="-11.9%" width="133.3%" height="133.3%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.372609812 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面调整" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="默认" transform="translate(-314, -710)">
+            <g id="icon/第三方展开更多" transform="translate(318, 712)">
+                <g id="椭圆形">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+                <g id="icon/ic_add/" transform="translate(10.9167, 10.9167)" fill="#FFFFFF">
+                    <path d="M10.0833333,4.8125 C10.7161596,4.8125 11.2291667,5.32550706 11.2291667,5.95833333 L11.2283333,9.1665 L14.4375,9.16666667 C15.0703263,9.16666667 15.5833333,9.67967372 15.5833333,10.3125 C15.5833333,10.9453263 15.0703263,11.4583333 14.4375,11.4583333 L11.2283333,11.4575 L11.2291667,14.6666667 C11.2291667,15.2994929 10.7161596,15.8125 10.0833333,15.8125 C9.45050706,15.8125 8.9375,15.2994929 8.9375,14.6666667 L8.93733333,11.4575 L5.72916667,11.4583333 C5.09634039,11.4583333 4.58333333,10.9453263 4.58333333,10.3125 C4.58333333,9.67967372 5.09634039,9.16666667 5.72916667,9.16666667 L8.93733333,9.1665 L8.9375,5.95833333 C8.9375,5.32550706 9.45050706,4.8125 10.0833333,4.8125 Z" id="形状结合"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

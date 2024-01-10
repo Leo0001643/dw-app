@@ -483,6 +483,9 @@ class ImageX{
   static const ic_qiehuan = 'assets/images/icon_home_qh.svg';
   static const ic_shuaxin_dark = 'assets/images/ic_shuaxin_dark.png';
   static const ic_shuaxin = 'assets/images/icon_home_ref.svg';
+  static const ic_html_back = 'assets/images/icon_fanhui_syj.svg';
+  static const ic_html_zk = 'assets/images/icon_zhankai.svg';
+  static const ic_html_xz = 'assets/images/icon_xuanzhuan.svg';
 
   static const ic_tixian = 'assets/images/ic_tixian.png';
   static const ic_tixian_dark = 'assets/images/ic_tixian_dark.png';
@@ -647,6 +650,16 @@ class ImageX{
   static String icShuaxinT(){
     return AppData.theme() ? ic_shuaxin : ic_shuaxin_dark;
   }
+  static String icHtmlBackT(){
+    return AppData.theme() ? ic_html_back : ic_html_back;
+  }
+  static String icHtmXZT(){
+    return AppData.theme() ? ic_html_xz : ic_html_xz;
+  }
+  static String icHtmlZkT(){
+    return AppData.theme() ? ic_html_zk : ic_html_zk;
+  }
+
 
   static String icQiehuanT(){
     return AppData.theme() ? ic_qiehuan : ic_qiehuan_dark;

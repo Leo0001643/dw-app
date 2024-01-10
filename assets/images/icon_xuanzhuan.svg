@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 9@1x</title>
+    <defs>
+        <circle id="path-1" cx="21" cy="21" r="21"></circle>
+        <filter x="-16.7%" y="-11.9%" width="133.3%" height="133.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.372609812 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面调整" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="展开" transform="translate(-314, -656)">
+            <g id="编组-9" transform="translate(318, 658)">
+                <g id="椭圆形备份">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="icon/旋转屏幕" transform="translate(9, 9)">
+                    <rect id="矩形" x="0" y="0" width="24" height="24"></rect>
+                    <rect id="矩形" stroke="#1D1B1B" stroke-width="2" x="11" y="2" width="11" height="15" rx="2"></rect>
+                    <line x1="11" y1="12" x2="22" y2="12" id="直线" stroke="#1D1B1B" stroke-width="2" stroke-linecap="square"></line>
+                    <path d="M19,19.9492579 L19,19.9492579 L19,20 C19,21.1045695 18.1572419,22 17.1176471,22 L4.88235294,22 C3.84275812,22 3,21.1045695 3,20 L3,12 C3,10.8954305 3.84275812,10 4.88235294,10 L7.66297616,10 L7.66297616,10" id="路径" stroke="#1D1B1B" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M8,3.5 C5.790861,3.5 4,5.290861 4,7.5" id="路径" stroke="#1D1B1B" stroke-width="2" stroke-linecap="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

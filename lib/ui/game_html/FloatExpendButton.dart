@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_svg/svg.dart';
 
 /**
  * created by:number9
@@ -8,7 +9,7 @@ import 'package:flutter/painting.dart';
  */
 class FloatExpendButton extends StatefulWidget {
   //按钮图标
-  List<Icon> iconList;
+  List<Widget> iconList;
 
   //按钮高度
   double? fabHeight;
@@ -23,10 +24,10 @@ class FloatExpendButton extends StatefulWidget {
   Color? tabcolor;
 
   //主菜单卡收起后颜色
-  Color? MainTabBeginColor;
+  Color? MainTabBeginColor=Colors.red;
 
   //主菜单卡展开后颜色
-  Color? MainTabAfterColor;
+  Color? MainTabAfterColor=Colors.red;
 
   //主菜单卡变化图标（动画图标）
   AnimatedIconData? MainAnimatedIcon;
@@ -41,9 +42,7 @@ class FloatExpendButton extends StatefulWidget {
       {required this.callback,
       this.fabHeight = 40,
       this.tabspace = 10,
-      this.tabcolor = Colors.blue,
-      this.MainTabBeginColor = Colors.red,
-      this.MainTabAfterColor = Colors.grey,
+      this.tabcolor = Colors.transparent,
       this.MainAnimatedIcon = AnimatedIcons.menu_close,
       this.iconsize = 15,
       this.type = ButtonType.Left});
@@ -161,8 +160,8 @@ class _FloatExpendState extends State<FloatExpendButton>
             height: widget.fabHeight,
             //margin: EdgeInsets.only(left: 10),
             child: FloatingActionButton(
+              shape: CircleBorder(),
               heroTag: "$i",
-              elevation: 0.5,
               backgroundColor: widget.tabcolor,
               onPressed: () {
                 // //点击菜单子选项要求菜单弹缩回去
@@ -173,13 +172,7 @@ class _FloatExpendState extends State<FloatExpendButton>
                 }
                 //}
               },
-              child: Icon(
-                widget.iconList[i].icon,
-                key: widget.iconList[i].key,
-                size: widget.iconList[i].size,
-                semanticLabel: widget.iconList[i].semanticLabel,
-                textDirection: widget.iconList[i].textDirection,
-              ),
+              child:  widget.iconList[i],
             ),
           ),
         ),
@@ -216,6 +209,7 @@ class _FloatExpendState extends State<FloatExpendButton>
         backgroundColor: _animateColor.value, // _animateColor.value
         onPressed: floatClick,
         elevation: 0.5,
+        shape: CircleBorder(),
         //通过AnimatedIcon实现标签的过渡
         child: AnimatedIcon(
           icon: widget.MainAnimatedIcon!,
