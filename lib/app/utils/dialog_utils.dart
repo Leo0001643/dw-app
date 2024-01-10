@@ -39,6 +39,7 @@ import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
+import 'package:leisure_games/ui/bean/usdt_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_logic.dart';
@@ -46,6 +47,7 @@ import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
 
 import '../widget/bottom_access_route_dialog.dart';
 import '../widget/jump_type_dialog.dart';
+import '../widget/select_account_btm_usdt_dialog.dart';
 import '../widget/select_option_btm_gird_dialog.dart';
 
 class DialogUtils {
@@ -512,6 +514,26 @@ class DialogUtils {
           );
         });
   }
+
+  Future<UsdtEntity?> showSelectAccountBtmUsdtDialog(
+      BuildContext context, List<UsdtEntity> data) {
+    return showModalBottomSheet<UsdtEntity>(
+        context: context,
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
+        ),
+        backgroundColor: ColorX.pageBg(),
+        builder: (context) {
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: SelectAccountBtmUsdtDialog(data),
+          );
+        });
+  }
+
 
   ///完整号源
   Future<dynamic> showUnbrokenNumberBtmDialog(

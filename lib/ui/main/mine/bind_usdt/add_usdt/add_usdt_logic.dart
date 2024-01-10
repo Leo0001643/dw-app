@@ -58,7 +58,7 @@ class AddUsdtLogic extends GetxController {
     //协议类型【1:TRC20,2:ERC20,3:OMNI】
     var params = <String,dynamic>{"oid":user?.oid,"username":user?.username,
       "bankAccount":state.openAddress.value,
-      "protocolType":state.channel.value.typeId(),"bankPassword":state.bankPwd.value,"mobile":mobile};
+      "bankCode":state.channel.value.typeId(),"bankPassword":state.bankPwd.value,"mobile":mobile};
 
     HttpService.bindVMDrawDetail(params).then((value) {
       showToast(Intr().caozuochenggong);

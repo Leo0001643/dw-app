@@ -8,7 +8,9 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
+import '../../../../bean/usdt_entity.dart';
 import 'withdraw_apply_logic.dart';
 
 ///
@@ -69,11 +71,20 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                 onTap: (){
                                   var list  = state.pageType.value==1 ? state.userDraw.value.banks : state.userDraw.value.dcBanks;
                                   if(isEmpty(list)){ return; }
-                                  DialogUtils().showSelectAccountBtmDialog(context, list!).then((value) {
-                                    if(unEmpty(value)){
-                                      state.dropdownValue.value = value!;
-                                    }
-                                  });
+                                  if(state.pageType.value==1){
+                                    DialogUtils().showSelectAccountBtmDialog(context, state.userDraw.value.banks!).then((value) {
+                                      if(unEmpty(value)){
+                                        state.dropdownValue.value = value!;
+                                      }
+                                    });
+                                  }else{
+                                    DialogUtils().showSelectAccountBtmUsdtDialog(context, state.userDraw.value.dcBanks!).then((value) {
+                                      if(unEmpty(value)){
+                                        // state.dropdownValue.value = value! as UsdtEntity;
+                                      }
+                                    });
+                                  }
+
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r),),

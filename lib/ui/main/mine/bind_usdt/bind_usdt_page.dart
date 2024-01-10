@@ -10,6 +10,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
+import 'package:leisure_games/ui/bean/usdt_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
 import '../../../../main.dart';
@@ -151,7 +152,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
   }
 
 
-  Widget buildUsdtItem(UserDrawDetailBanks item) {
+  Widget buildUsdtItem(UsdtEntity item) {
     return Container(
       margin: EdgeInsets.only(bottom: 20.h),
       decoration: BoxDecoration(
@@ -168,7 +169,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
           ),
           SizedBox(height: 10.h,),
           Text(Intr().dizhi,style: TextStyle(fontSize: 12.sp,color: Colors.white),),
-          Text(item.bankAccount.em(),
+          Text(item.account.em(),
             style: TextStyle(fontSize: 20.sp,color: Colors.white),),
           SizedBox(height: 10.h,),
           Text(Intr().suoshuxieyi,style: TextStyle(fontSize: 12.sp,color: Colors.white),),
@@ -176,7 +177,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(item.bankName.em(), style: TextStyle(fontSize: 20.sp,color: Colors.white),),
+              Text(item.type.em(), style: TextStyle(fontSize: 20.sp,color: Colors.white),),
               Align(
                 alignment: Alignment.centerRight,
                 child: Image.asset(ImageX.icon_usdt_grey),

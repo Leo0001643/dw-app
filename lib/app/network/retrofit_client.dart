@@ -239,10 +239,10 @@ abstract class RetrofitClient{
   @POST('/ds-api-web/bindDrawDetail')
   Future<BaseResponseEntity<String>> bindDrawDetail(@Body() Map<String,dynamic> params,);
 
-  @POST('/ds-api-web/getVMDrawDetail')
+  @POST('/ds-api-web/getDigitalWalletDrawDetail')
   Future<BaseResponseEntity<List<UsdtChannelEntity>>> getVMDrawDetail(@Body() Map<String,dynamic> params,);
 
-  @POST('/ds-api-web/bindVMDrawDetail')
+  @POST('/ds-api-web/bindDigitalWallet')
   Future<BaseResponseEntity<String>> bindVMDrawDetail(@Body() Map<String,dynamic> params,);
 
   @POST('/ds-api-web/getRecordGroupDay')
