@@ -29,6 +29,7 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
   ];
+  Offset position = Offset(130, 20);
 
   @override
   void dispose() {
@@ -79,32 +80,64 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                     },
                   ),
                   Positioned(
-                    bottom: 130,
-                    right: 20,
-                    child: FloatExpendButton(
-                      //菜单图标组
-                       [
-                         buildSvgImageItem( ImageX.icHtmXZT()),
-                         buildSvgImageItem( ImageX.icHtmlBackT())
-                      ],
-                      //点击事件回调
-                      callback: (int index) {
-                        if (index == 0) {
-                          setState(() {
-                            isLandscape = !isLandscape;
-                            showToast(isLandscape ? '横屏' : '竖屏');
-                          });
-                          //旋转屏幕
-                          SystemChrome.setPreferredOrientations(
-                              isLandscape ? orientations : orientations2);
-                        } else if (index == 1) {
-                          Get.back();
-                          //关闭
-                        }
+                    bottom: position.dy,
+                    right: position.dx,
+                    child: Draggable(
+                      feedback: FloatExpendButton(
+                        //菜单图标组
+                        [
+                          buildSvgImageItem(ImageX.icHtmXZT()),
+                          buildSvgImageItem(ImageX.icHtmlBackT())
+                        ],
+                        //点击事件回调
+                        callback: (int index) {
+                          if (index == 0) {
+                            setState(() {
+                              isLandscape = !isLandscape;
+                              showToast(isLandscape ? '横屏' : '竖屏');
+                            });
+                            //旋转屏幕
+                            SystemChrome.setPreferredOrientations(
+                                isLandscape ? orientations : orientations2);
+                          } else if (index == 1) {
+                            Get.back();
+                            //关闭
+                          }
+                        },
+                        fabHeight: 42,
+                        tabspace: 20,
+                        type: ButtonType.Top,
+                      ),
+                      child: FloatExpendButton(
+                        //菜单图标组
+                        [
+                          buildSvgImageItem(ImageX.icHtmXZT()),
+                          buildSvgImageItem(ImageX.icHtmlBackT())
+                        ],
+                        //点击事件回调
+                        callback: (int index) {
+                          if (index == 0) {
+                            setState(() {
+                              isLandscape = !isLandscape;
+                              showToast(isLandscape ? '横屏' : '竖屏');
+                            });
+                            //旋转屏幕
+                            SystemChrome.setPreferredOrientations(
+                                isLandscape ? orientations : orientations2);
+                          } else if (index == 1) {
+                            Get.back();
+                            //关闭
+                          }
+                        },
+                        fabHeight: 42,
+                        tabspace: 20,
+                        type: ButtonType.Top,
+                      ),
+                      onDragEnd: (details) {
+                        setState(() {
+                          position=details.offset;
+                        });
                       },
-                      fabHeight: 42,
-                      tabspace: 20,
-                      type: ButtonType.Top,
                     ),
                   )
                 ],
@@ -115,13 +148,13 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
       ),
     );
   }
-  Widget buildSvgImageItem(String icon) {
-      return SvgPicture.asset(
-        icon,
-        width: 48.w,
-        height: 48.w,
-        fit: BoxFit.contain,
-      );
 
+  Widget buildSvgImageItem(String icon) {
+    return SvgPicture.asset(
+      icon,
+      width: 48.w,
+      height: 48.w,
+      fit: BoxFit.contain,
+    );
   }
 }
