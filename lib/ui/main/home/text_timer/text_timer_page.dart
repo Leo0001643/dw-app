@@ -57,7 +57,7 @@ class _TextTimerPageState extends State<TextTimerPage> {
               style: TextStyle(color: Colors.greenAccent));
         }
         return Text(widget.logic.state.text_timer.value,
-            style: TextStyle(fontWeight: FontWeight.w500));
+            style: TextStyle(fontWeight: FontWeight.w500,color: Colors.white));
       } else {
         return Text(
           widget.logic.state.text_timer.value,
