@@ -108,10 +108,10 @@ class DialogUtils {
           );
         });
   }
-  Future<String?> showAccessRouteDialog2(
-      BuildContext context) {
+
+  Future<String?> showAccessRouteDialog2(BuildContext context) {
     return showModalBottomSheet<String>(
-      backgroundColor:  ColorX.appBottomDialog(), // 设置底部模态表单的背景颜色
+      backgroundColor: ColorX.appBottomDialog(), // 设置底部模态表单的背景颜色
       context: context,
       builder: (context) => BottomAccessRouteDialog(),
     );
@@ -144,25 +144,36 @@ class DialogUtils {
                   color: ColorX.color_10_949,
                   height: 1.h,
                 ),
+                Align(
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 15),
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        WidgetUtils().buildElevatedButton(
+                            Intr().cancel, 116.w, 40.h,
+                            bg: ColorX.cardBg3(),
+                            textColor: ColorX.text586(), onPressed: () {
+                          Navigator.of(context).pop(false);
+                        }),
+                        SizedBox(
+                          width: 10.w,
+                        ),
+                        WidgetUtils().buildElevatedButton(
+                            Intr().confirm, 116.w, 40.h,
+                            bg: ColorX.color_fc243b,
+                            textColor: Colors.white, onPressed: () {
+                          Navigator.of(context).pop(true);
+                        })
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
-            actionsPadding:
-                EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
-            actions: [
-              WidgetUtils().buildElevatedButton(Intr().cancel, 116.w, 40.h,
-                  bg: ColorX.cardBg3(),
-                  textColor: ColorX.text586(), onPressed: () {
-                Navigator.of(context).pop(false);
-              }),
-              SizedBox(
-                width: 10.w,
-              ),
-              WidgetUtils().buildElevatedButton(Intr().confirm, 116.w, 40.h,
-                  bg: ColorX.color_fc243b,
-                  textColor: Colors.white, onPressed: () {
-                Navigator.of(context).pop(true);
-              })
-            ],
           );
         });
   }
@@ -481,6 +492,7 @@ class DialogUtils {
           );
         });
   }
+
   ///选择账户弹窗
   Future<UserDrawDetailBanks?> showSelectAccountBtmDialog(
       BuildContext context, List<UserDrawDetailBanks> data) {

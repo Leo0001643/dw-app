@@ -31,16 +31,36 @@ class MessageDialog{
           Visibility(
             visible: this.divider==true,
               child: Divider(color: ColorX.color_10_949,height: 1.h,)),
+          Align(
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 15),
+              width: double.infinity,
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  WidgetUtils().buildElevatedButton(
+                      btnCancel.em(), 116.w, 40.h,
+                      bg: ColorX.cardBg3(),
+                      textColor: ColorX.text586(), onPressed: () {
+                    Navigator.of(context).pop(false);
+                  }),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  WidgetUtils().buildElevatedButton(
+                      btnConfirm.em(), 116.w, 40.h,
+                      bg: ColorX.color_fc243b,
+                      textColor: Colors.white, onPressed: () {
+                    Navigator.of(context).pop(true);
+                  })
+                ],
+              ),
+            ),
+          )
         ],
       ),
-      actionsPadding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 15.h),
-      actions: [
-        WidgetUtils().buildElevatedButton(btnCancel.em(), 116.w, 40.h,
-            bg: ColorX.cardBg3(),textColor: ColorX.text586(),onPressed: onCancel),
-        SizedBox(width: 10.w,),
-        WidgetUtils().buildElevatedButton(btnConfirm.em(), 116.w, 40.h,
-            bg: ColorX.color_fc243b,textColor: ColorX.textBlack(),onPressed: onConfirm)
-      ],
     );
   }
 

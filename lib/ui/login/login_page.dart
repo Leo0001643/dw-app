@@ -49,13 +49,14 @@ class _LoginPageState extends State<LoginPage> {
         leadingWidth: 0,
         leading: Container(),
         actions: [
-          InkWell(
+          Container(child: InkWell(
             onTap: () => Get.back(),
             child: Image.asset(
               ImageX.icon_close,
               color: ColorX.icon586(),
             ),
-          ),
+          ), margin: EdgeInsets.only(right: 10.w),)
+
         ],
       ),
       backgroundColor: ColorX.pageBg(),
