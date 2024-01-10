@@ -8,7 +8,7 @@ class BindUsdtState {
   }
 
   ///最大绑卡数量
-  var maxCount = 3;
+  var maxCount = 4;
 
   ///提现账户
   var userDraw = UserDrawDetailEntity().obs;

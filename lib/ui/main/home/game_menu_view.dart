@@ -289,8 +289,7 @@ class StateGameMenuView extends State<GameMenuView> {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 12.sp,
-              color: Colors.black54,
-            ),
+              color: ColorX.textBlack()),
           ),
         ),
       ],

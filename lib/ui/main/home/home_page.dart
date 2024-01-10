@@ -338,7 +338,7 @@ class StateHomePage extends State<HomePage>
             InkWell(
               onTap: () => logic.loadUserData(jumpNotice: false),
               child: SvgPicture.asset(
-                ImageX.icShuaxinT(),
+                ImageX.ic_shuaxin,
                 width: 18.w,
                 height: 18.w,
                 color: ColorX.iconBlack(),
@@ -360,7 +360,7 @@ class StateHomePage extends State<HomePage>
               onTap: () => Get.toNamed(Routes.select_currency),
               child:
               SvgPicture.asset(
-                ImageX.icQiehuanT(),
+                ImageX.ic_qiehuan,
                 width: 12.w,
                 height: 12.w,
                 color: ColorX.iconBlack(),
