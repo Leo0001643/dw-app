@@ -45,16 +45,26 @@ class StateHomePage extends State<HomePage>
             CustomScrollView(
               controller: _coordinator.outerController,
               slivers: [
+                SliverAppBar(
+                    backgroundColor: ColorX.pageBg(),
+                    // 设置背景颜色
+                    actions: <Widget>[
+                      Container(), // Setting the menu icon to null
+                    ],
+                    pinned: true,
+                    floating: false,
+                    expandedHeight: ScreenUtil().statusBarHeight,
+                    flexibleSpace: Container(
+                      padding: EdgeInsets.only(top: ScreenUtil().statusBarHeight),
+                      alignment: Alignment.center,
+                      child: WidgetUtils()
+                          .buildHomeAppBar(context, msg: true, drawer: false),
+                    )),
                 SliverToBoxAdapter(
                   child: Container(
                     color: ColorX.pageBg(),
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: ScreenUtil().statusBarHeight,
-                        ),
-                        WidgetUtils()
-                            .buildHomeAppBar(context, msg: true, drawer: true),
                         Obx(() {
                           if (isEmpty(state.bannerList)) {
                             return Container();
@@ -243,10 +253,12 @@ class StateHomePage extends State<HomePage>
         width: 50.w,
         child: Column(
           children: [
-            Image.asset(
+            SvgPicture.asset(
               icon,
-              width: 20.r,
-              fit: BoxFit.fill,
+              width: 20.w,
+              height: 20.w,
+              color: ColorX.iconBlack(),
+              fit: BoxFit.contain,
             ),
             SizedBox(
               height: 4.h,
@@ -358,8 +370,7 @@ class StateHomePage extends State<HomePage>
             ),
             InkWell(
               onTap: () => Get.toNamed(Routes.select_currency),
-              child:
-              SvgPicture.asset(
+              child: SvgPicture.asset(
                 ImageX.ic_qiehuan,
                 width: 12.w,
                 height: 12.w,

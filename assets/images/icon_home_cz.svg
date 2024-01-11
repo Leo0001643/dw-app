@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21.08px" height="21.08px" viewBox="0 0 21.08 21.08" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/充值</title>
+    <g id="页面调整" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-3" transform="translate(-243.000000, -288.000000)">
+            <g id="icon/充值" transform="translate(242.000000, 287.000000)">
+                <rect id="矩形" x="0" y="0" width="24" height="24"></rect>
+                <g id="编组-16" transform="translate(2.000000, 2.000000)">
+                    <polyline id="路径" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" transform="translate(9.540000, 9.540000) rotate(45.000000) translate(-9.540000, -9.540000) " points="11.925 11.925 7.155 11.925 7.155 7.155 11.925 7.155"></polyline>
+                    <path d="M19.08,9.54 C19.08,4.27120349 14.8087965,0 9.54,0 C4.27120349,0 0,4.27120349 0,9.54 C0,14.8087965 4.27120349,19.08 9.54,19.08" id="路径" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+                    <rect id="矩形" fill="#FFFFFF" x="11.925" y="14.31" width="7.95" height="1.59" rx="0.795"></rect>
+                    <path d="M12.72,14.31 L19.08,14.31 C19.5190664,14.31 19.875,14.6659336 19.875,15.105 C19.875,15.5440664 19.5190664,15.9 19.08,15.9 L12.72,15.9 C12.2809336,15.9 11.925,15.5440664 11.925,15.105 C11.925,14.6659336 12.2809336,14.31 12.72,14.31 Z" id="矩形" fill="#FFFFFF" transform="translate(15.900000, 15.105000) rotate(-90.000000) translate(-15.900000, -15.105000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

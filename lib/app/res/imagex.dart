@@ -478,7 +478,7 @@ class ImageX{
   static const ic_sign_dark = 'assets/images/ic_sign_dark.png';
 
   static const ic_gengduo_dark = 'assets/images/ic_gengduo_dark.png';
-  static const ic_gengduo = 'assets/images/ic_gengduo.png';
+  static const ic_gengduo = 'assets/images/icon_home_gd.svg';
   static const ic_qiehuan_dark = 'assets/images/ic_qiehuan_dark.png';
   static const ic_qiehuan = 'assets/images/icon_home_qh.svg';
   static const ic_shuaxin_dark = 'assets/images/ic_shuaxin_dark.png';
@@ -487,9 +487,9 @@ class ImageX{
   static const ic_html_zk = 'assets/images/icon_zhankai.svg';
   static const ic_html_xz = 'assets/images/icon_xuanzhuan.svg';
 
-  static const ic_tixian = 'assets/images/ic_tixian.png';
+  static const ic_tixian = 'assets/images/icon_home_tx.svg';
   static const ic_tixian_dark = 'assets/images/ic_tixian_dark.png';
-  static const ic_chongzhi = 'assets/images/ic_chongzhi.png';
+  static const ic_chongzhi = 'assets/images/icon_home_cz.svg';
   static const ic_chongzhi_dark = 'assets/images/ic_chongzhi_dark.png';
 
   static const ic_zhenren = 'assets/images/ic_zhenren.png';
@@ -678,15 +678,15 @@ class ImageX{
   }
 
   static String icGengDuoT(){
-    return AppData.theme() ? ic_gengduo : ic_gengduo_dark;
+    return AppData.theme() ? ic_gengduo : ic_gengduo;
   }
 
   static String icChongzhiT(){
-    return AppData.theme() ? ic_chongzhi : ic_chongzhi_dark;
+    return AppData.theme() ? ic_chongzhi : ic_chongzhi;
   }
 
   static String icTixianT(){
-    return AppData.theme() ? ic_tixian : ic_tixian_dark;
+    return AppData.theme() ? ic_tixian : ic_tixian;
   }
 
   static String iconTrendT(){

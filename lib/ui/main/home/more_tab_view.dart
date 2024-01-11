@@ -55,7 +55,13 @@ class MoreTabView extends StatelessWidget {
         width: 50.w,
         child: Column(
           children: [
-            Image.asset(ImageX.icGengDuoT(),width: 20.r,fit: BoxFit.fill,),
+            SvgPicture.asset(
+              ImageX.icGengDuoT(),
+              width: 20.w,
+              height: 20.w,
+              color: ColorX.iconBlack(),
+              fit: BoxFit.contain,
+            ),
             SizedBox(height: 4.h,),
             Text(Intr().gengduo,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
           ],
