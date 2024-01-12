@@ -9,6 +9,8 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
 import 'room_list_logic.dart';
 
 class RoomListPage extends StatefulWidget {
@@ -31,13 +33,17 @@ class _RoomListPageState extends State<RoomListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: scaffoldMineKey,
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,onTap: (){
         DialogUtils().showSelectRoomBtmDialog(context,state.pc28Lotto.value).then((value) {
           if(unEmpty(value?.name)){
             Get.toNamed(Routes.game_room,arguments: value);
           }
         });
+      },drawEnd: () {
+        scaffoldMineKey.currentState?.openEndDrawer();
       }),
+        endDrawer: EndsDrawerView(),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

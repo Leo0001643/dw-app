@@ -37,10 +37,10 @@ class WidgetUtils {
 
   Widget buildNoElevatedButton(String text, double width, double height,
       {Color? bg,
-      Color textColor = Colors.white,
-      double textSize = 14,
-      bool showBorder = false,
-      VoidCallback? onPressed}) {
+        Color textColor = Colors.white,
+        double textSize = 14,
+        bool showBorder = false,
+        VoidCallback? onPressed}) {
     return InkWell(
       onTap: onPressed,
       child: Container(
@@ -66,9 +66,9 @@ class WidgetUtils {
 
   Widget buildElevatedButton(String text, double width, double height,
       {Color? bg,
-      Color textColor = Colors.white,
-      double textSize = 14,
-      VoidCallback? onPressed}) {
+        Color textColor = Colors.white,
+        double textSize = 14,
+        VoidCallback? onPressed}) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -90,12 +90,12 @@ class WidgetUtils {
     );
   }
 
-  Widget buildOutlineButton(
-      String text, double width, double height, Color lineColor,
+  Widget buildOutlineButton(String text, double width, double height,
+      Color lineColor,
       {Color? bg,
-      Color textColor = Colors.white,
-      double textSize = 14,
-      VoidCallback? onPressed}) {
+        Color textColor = Colors.white,
+        double textSize = 14,
+        VoidCallback? onPressed}) {
     return OutlinedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -118,8 +118,7 @@ class WidgetUtils {
     );
   }
 
-  Widget buildHomeAppBar(
-    context, {
+  Widget buildHomeAppBar(context, {
     bool msg = false,
     bool drawer = false,
   }) {
@@ -142,7 +141,8 @@ class WidgetUtils {
                   padding: EdgeInsets.all(10.r),
                   child: Row(
                     children: [
-                      Text("线路5",style: TextStyle(color: ColorX.iconBlack())),
+                      Text(
+                          "线路5", style: TextStyle(color: ColorX.iconBlack())),
                       Image.asset(
                         ImageX.icon_down_arrow,
                         color: ColorX.icon586(),
@@ -184,10 +184,10 @@ class WidgetUtils {
 
   AppBar buildAppBar(String? title,
       {bool msg = false,
-      bool back = true,
-      Color? bgColor,
-      bool drawer = false,
-      Function? drawEnd}) {
+        bool back = true,
+        Color? bgColor,
+        bool drawer = false,
+        Function? drawEnd}) {
     return AppBar(
       title: Text(
         title.em(),
@@ -276,10 +276,10 @@ class WidgetUtils {
 
   AppBar buildRxAppBar(RxString title,
       {bool msg = false,
-      bool back = true,
-      Color? bgColor,
-      bool drawer = false,
-      Function? drawEnd}) {
+        bool back = true,
+        Color? bgColor,
+        bool drawer = false,
+        Function? drawEnd}) {
     return AppBar(
       title: Obx(() {
         return Text(
@@ -341,11 +341,12 @@ class WidgetUtils {
     );
   }
 
-  AppBar buildRoomBar(
-    RxString title, {
+  AppBar buildRoomBar(RxString title, {
     bool msg = false,
     bool back = true,
     Color? bgColor,
+    bool drawer = true,
+    Function? drawEnd,
     GestureTapCallback? onTap,
   }) {
     return AppBar(
@@ -400,20 +401,38 @@ class WidgetUtils {
             ),
           ),
         ),
+        Visibility(
+          visible: drawer,
+          child: InkWell(
+            onTap: () {
+              if (drawEnd != null) {
+                drawEnd();
+              } else {
+                Get.find<MainLogic>().openDrawer();
+              }
+            },
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(
+                ImageX.icon_more,
+                color: ColorX.icon586(),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
 
-  AppBar buildGameBar(
-    RxString title,
-    Widget subTitle, {
-    bool msg = false,
-    bool collect = false,
-    bool back = true,
-    Color? bgColor,
-    GestureTapCallback? onTap,
-    GestureTapCallback? onCollect,
-  }) {
+  AppBar buildGameBar(RxString title, Widget subTitle,
+      {bool msg = false,
+        bool collect = false,
+        bool back = true,
+        bool drawer = true,
+        Color? bgColor,
+        GestureTapCallback? onTap,
+        GestureTapCallback? onCollect,
+        Function? drawEnd}) {
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -486,6 +505,26 @@ class WidgetUtils {
                 ),
               ),
             ),
+            Visibility(
+              visible: drawer,
+              child: InkWell(
+                onTap: () {
+                  if (drawEnd != null) {
+                    drawEnd();
+                  } else {
+                    Get.find<MainLogic>().openDrawer();
+                  }
+                },
+                child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: Image.asset(
+                    ImageX.icon_more,
+                    color: ColorX.icon586(),
+                  ),
+                ),
+              ),
+            ),
+
           ],
         ),
       ],
@@ -523,17 +562,17 @@ class WidgetUtils {
   Widget buildTextField(double? width, double? height, double textSize,
       Color textColor, String? hint,
       {Color backgroundColor = Colors.white,
-      Color hintColor = ColorX.color_5b6d7b,
-      String? defText,
-      ValueChanged<String>? onChanged,
-      TextInputType? inputType,
-      bool obscureText = false,
-      bool autofocus = false,
-      bool enabled = true,
-      bool suffixIcon = false,
-      int maxLines = 1,
-      List<TextInputFormatter>? inputFormatters,
-      FocusNode? focusNode}) {
+        Color hintColor = ColorX.color_5b6d7b,
+        String? defText,
+        ValueChanged<String>? onChanged,
+        TextInputType? inputType,
+        bool obscureText = false,
+        bool autofocus = false,
+        bool enabled = true,
+        bool suffixIcon = false,
+        int maxLines = 1,
+        List<TextInputFormatter>? inputFormatters,
+        FocusNode? focusNode}) {
     return Container(
       decoration: BoxDecoration(
         color: backgroundColor,
@@ -544,50 +583,52 @@ class WidgetUtils {
       height: height,
       child: suffixIcon
           ? Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Text(
-                    defText.em() == "" ? hint.em() : defText.em(),
-                    style: TextStyle(
-                        fontSize: textSize,
-                        color: defText.em() == "" ? hintColor : textColor,
-                        overflow: TextOverflow.ellipsis),
-                  ),
-                ),
-                // Icon(Icons.keyboard_arrow_down,size: 18.r,color: Colors.black54),
-              ],
-            )
-          : TextField(
-              autofocus: autofocus,
-              enabled: enabled,
-              cursorHeight: textSize,
-              maxLines: maxLines,
-              focusNode: focusNode,
-              controller: TextEditingController.fromValue(TextEditingValue(
-                  text: defText.em(),
-                  selection: TextSelection.fromPosition(TextPosition(
-                      affinity: TextAffinity.downstream,
-                      offset: defText.em().length)))),
-              onChanged: onChanged,
-              keyboardType: inputType,
-              inputFormatters: inputFormatters,
-              obscureText: obscureText,
-              style: TextStyle(fontSize: textSize, color: textColor),
-              decoration: InputDecoration(
-                hintText: hint,
-                border: InputBorder.none,
-                enabled: enabled,
-                errorBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                focusedErrorBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
-                hintStyle: TextStyle(fontSize: textSize, color: hintColor),
-                labelStyle: TextStyle(fontSize: textSize, color: hintColor),
-                errorStyle: TextStyle(fontSize: textSize, color: hintColor),
-              ),
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Text(
+              defText.em() == "" ? hint.em() : defText.em(),
+              style: TextStyle(
+                  fontSize: textSize,
+                  color: defText.em() == "" ? hintColor : textColor,
+                  overflow: TextOverflow.ellipsis),
             ),
+          ),
+          // Icon(Icons.keyboard_arrow_down,size: 18.r,color: Colors.black54),
+        ],
+      )
+          : TextField(
+        autofocus: autofocus,
+        enabled: enabled,
+        cursorHeight: textSize,
+        maxLines: maxLines,
+        focusNode: focusNode,
+        controller: TextEditingController.fromValue(TextEditingValue(
+            text: defText.em(),
+            selection: TextSelection.fromPosition(TextPosition(
+                affinity: TextAffinity.downstream,
+                offset: defText
+                    .em()
+                    .length)))),
+        onChanged: onChanged,
+        keyboardType: inputType,
+        inputFormatters: inputFormatters,
+        obscureText: obscureText,
+        style: TextStyle(fontSize: textSize, color: textColor),
+        decoration: InputDecoration(
+          hintText: hint,
+          border: InputBorder.none,
+          enabled: enabled,
+          errorBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          focusedErrorBorder: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          disabledBorder: InputBorder.none,
+          hintStyle: TextStyle(fontSize: textSize, color: hintColor),
+          labelStyle: TextStyle(fontSize: textSize, color: hintColor),
+          errorStyle: TextStyle(fontSize: textSize, color: hintColor),
+        ),
+      ),
     );
   }
 
@@ -627,8 +668,8 @@ class WidgetUtils {
     try {
       return image.isUrl()
           ? NetworkImage(
-              image,
-            )
+        image,
+      )
           : AssetImage(image) as ImageProvider;
     } catch (e) {
       return AssetImage(defImage);
@@ -648,33 +689,33 @@ class WidgetUtils {
     try {
       return image.isUrl()
           ? Image.network(
-              image,
-              width: width,
-              height: height,
-              fit: fit,
-              errorBuilder: (context, error, stack) {
-                loggerArray(["异常了", image, error, stack]);
-                if (unEmpty(defImage)) {
-                  return Image.asset(
-                    defImage,
-                    width: width,
-                    height: height,
-                    fit: fit,
-                  );
-                } else {
-                  return SizedBox(
-                    width: width,
-                    height: height,
-                  );
-                }
-              },
-            )
-          : Image.asset(
-              image,
+        image,
+        width: width,
+        height: height,
+        fit: fit,
+        errorBuilder: (context, error, stack) {
+          loggerArray(["异常了", image, error, stack]);
+          if (unEmpty(defImage)) {
+            return Image.asset(
+              defImage,
               width: width,
               height: height,
               fit: fit,
             );
+          } else {
+            return SizedBox(
+              width: width,
+              height: height,
+            );
+          }
+        },
+      )
+          : Image.asset(
+        image,
+        width: width,
+        height: height,
+        fit: fit,
+      );
     } catch (e) {
       loggerArray(["异常了", image, e]);
       return Image.asset(
@@ -768,7 +809,9 @@ class WidgetUtils {
       return Container();
     }
     // 移除Base64头信息
-    String base64String = code.split(',').last;
+    String base64String = code
+        .split(',')
+        .last;
     return InkWell(
       onTap: onTap,
       child: Image.memory(
@@ -779,16 +822,16 @@ class WidgetUtils {
     );
   }
 
-  Widget buildQRCode(
-    String code,
-    double width,
-    double height,
-  ) {
+  Widget buildQRCode(String code,
+      double width,
+      double height,) {
     if (isEmpty(code)) {
       return Container();
     }
     // 移除Base64头信息
-    String base64String = code.split(',').last;
+    String base64String = code
+        .split(',')
+        .last;
     return Image.memory(
       base64Decode(base64String),
       fit: BoxFit.fill,
@@ -798,10 +841,8 @@ class WidgetUtils {
   }
 
   ///打开游戏页面
-  void loginJump(
-    String title,
-    Map<String, dynamic> params,
-  ) {
+  void loginJump(String title,
+      Map<String, dynamic> params,) {
     HttpService.loginBusinessAgent(params).then((value) {
       // if(GetPlatform.isIOS){
       //   if(value is Map){

@@ -15,6 +15,8 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/betting_left_item.dart';
 
+import '../../../../main.dart';
+import '../../ends_drawer_view.dart';
 import 'game_room_logic.dart';
 
 class GameRoomPage extends StatefulWidget {
@@ -44,13 +46,17 @@ class _GameRoomPageState extends State<GameRoomPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldMineKey,
       appBar: WidgetUtils().buildGameBar(
           state.title, buildRoomType(),
           collect: false,msg: true,onTap: (){
         DialogUtils().showSelectRoomBtmDialog(context,state.pc28Lotto.value).then((value) {
           if(unEmpty(value?.name)){ logic.changeRoomType(value!); }
-        });
+        },);
+      },drawEnd: () {
+        scaffoldMineKey.currentState?.openEndDrawer();
       }),
+      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg2(),
       body: Container(
         child: Column(
