@@ -22,7 +22,6 @@ class GameRoomHeadWidget extends StatelessWidget {
       GameRoomState state = logic.state;
       var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
       return  Container(
-        height: 95.w,
         child: Row(
           children: [
             Stack(
