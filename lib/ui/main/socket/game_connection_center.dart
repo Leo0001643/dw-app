@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'package:leisure_games/app/res/game_request.dart';
+import 'package:leisure_games/app/res/game_response.dart';
 import 'package:web_socket_channel/io.dart';
 
 import '../../bean/device_info.dart';
+import 'status/game_connection_status.dart';
 
 /// 长连接参数，用于构造连接地址
 class GameConnectionParams {
@@ -86,7 +89,7 @@ class GameConnectionParams {
     params["jwtToken"] = _token;
     params["userId"] = _userId;
     params["remark"] = connectSessionId;
-    // DzLogger.i("建立连接参数 = $params");
+    // print("建立连接参数 = $params");
     String applicationId = _applicationId; // 应用id
     int platformId = _platformId; // 平台
     String version = _version; // 版本
@@ -203,8 +206,8 @@ class GameConnectionCenter {
 
   /// 更新用户信息
   void updateConnectDomianList(List? domianList) {
-    // DzLogger.i('子线程拿到的《所有》domain ====> $domianList');
-    // DzLogger.i('子线程拿到的《无效》domain ====> $_badDomianList');
+    // print('子线程拿到的《所有》domain ====> $domianList');
+    // print('子线程拿到的《无效》domain ====> $_badDomianList');
     // 更新用户信息
     _domianList = [];
     reconectCount = 0;
@@ -231,30 +234,29 @@ class GameConnectionCenter {
   Future<void> _connect() async {
     try {
       String url =
-          await _connectionParams.generateUrl(sessionId, "");
+          await _connectionParams.generateUrl("", "9000vlmdm4.kj99883.com");
       if (url.isEmpty) {
         connecSocketState = ConnectStatus.emptyUrl;
         return;
       }
-      DzLogger.i("connecSocketState ConnectStatus.connecting");
+      print("connecSocketState ConnectStatus.connecting");
       connecSocketState = ConnectStatus.connecting;
       if (onConnecting != null) {
         onConnecting!(); // 状态同步走到另外一个Isolate
       }
-      DzLogger.i("发起建立连接的 url = $url");
+      print("发起建立连接的 url = $url");
       // url = ""; //move test
       _channel = IOWebSocketChannel.connect(url,
           connectTimeout: const Duration(seconds: 4));
       await _channel?.ready;
       //
-      DzLogger.i("连接状态: ${_channel?.innerWebSocket?.readyState}");
+      print("连接状态: ${_channel?.innerWebSocket?.readyState}");
       //连接成功
       if (_channel?.innerWebSocket?.readyState == 1) {
         reconectCount = 0;
         firstReconnectTime = 0;
         connecSocketState = ConnectStatus.connected;
-        connectSessionId = sessionId;
-        DzLogger.i('建立连接成功的 connectSessionId =====> $connectSessionId');
+        print('建立连接成功的 connectSessionId =====> $connectSessionId');
         stopTimer();
         // 开启监听
         streamSubscription = _channel!.stream
@@ -264,7 +266,7 @@ class GameConnectionCenter {
         }
       }
     } catch (e) {
-      DzLogger.i('建立连接失败，继续重连 $e');
+      print('建立连接失败，继续重连 $e');
       connecSocketState = ConnectStatus.failed;
       if (_backoffTimer == null) {
         reconnect();
@@ -305,14 +307,14 @@ class GameConnectionCenter {
     //连接中或者已经连接上了不需要重连
     if (connecSocketState == ConnectStatus.emptyUrl ||
         connecSocketState == ConnectStatus.connecting) {
-      DzLogger.i('不需要重连');
+      print('不需要重连');
       return false;
     }
     return true;
   }
 
   void reconnect({bool force = false}) async {
-    DzLogger.i('重连开始 force:$force');
+    print('重连开始 force:$force');
     if (!force) {
       // 如果强制重连会
       stopTimer();
@@ -323,12 +325,12 @@ class GameConnectionCenter {
       //连接中或者已经连接上了不需要重连
       if (connecSocketState == ConnectStatus.emptyUrl ||
           connecSocketState == ConnectStatus.connecting) {
-        DzLogger.i('不需要重连');
+        print('不需要重连');
         return;
       }
     }
     resetFlag();
-    DzLogger.i('重连之前关闭之前连接');
+    print('重连之前关闭之前连接');
     closeSocket();
 
     if (firstReconnectTime == 0) {
@@ -340,7 +342,7 @@ class GameConnectionCenter {
         // _isManualClose = true;
         // closeSocket();
         firstReconnectTime = 0;
-        DzLogger.i('重连超时，不再重连');
+        print('重连超时，不再重连');
         if (onLogout != null) {
           onLogout!();
         }
@@ -351,7 +353,7 @@ class GameConnectionCenter {
     reconectCount++;
     if (reconectCount > 3) {
       //三次重连超时 切换域名
-      DzLogger.i("重连继续，3次后切换域名");
+      print("重连继续，3次后切换域名");
       exchangeDomain();
       await _connect();
     } else {
@@ -380,18 +382,18 @@ class GameConnectionCenter {
 
   void _onError(err) {
     // 出现错误，需要根据错误信息来分开处理
-    DzLogger.i("=======>_onError  = $onError");
+    print("=======>_onError  = $onError");
     connecSocketState = ConnectStatus.failed;
     reconnect();
     if (onError != null) {
-      DzLogger.i("=======>_onError  = $onError");
+      print("=======>_onError  = $onError");
       onError!(err);
     }
   }
 
   void _onDone() {
     //_channel被关闭调用
-    DzLogger.i("==============>_onDone closeCode = ${_channel?.closeCode}");
+    print("==============>_onDone closeCode = ${_channel?.closeCode}");
     connecSocketState = ConnectStatus.failed;
     if (_backoffTimer == null) {
       reconnect();
@@ -406,7 +408,7 @@ class GameConnectionCenter {
     streamSubscription = null;
     connectSessionId = null;
     _channel?.sink.close();
-    DzLogger.i('关闭长连接完成');
+    print('关闭长连接完成');
     if (_channel != null) {
       _channel = null;
     }
@@ -440,7 +442,7 @@ class GameConnectionCenter {
       return true;
     }
     // 用户主动触发连接操作，需要强制重连
-    DzLogger.i("发送消息发现断连请求重连===>readState = $connecSocketState");
+    print("发送消息发现断连请求重连===>readState = $connecSocketState");
     reconnect(force: true);
     return false;
   }
@@ -458,7 +460,7 @@ class GameConnectionCenter {
       }
       _channel!.sink.add(jsonData);
     } catch (error, stackTrace) {
-      DzLogger.i("_sendMessage excpetion = $error stackTree = $stackTrace");
+      print("_sendMessage excpetion = $error stackTree = $stackTrace");
     }
     //
     if (needReconnectWhenTimeOut(request.requestTypeId)) {
@@ -466,16 +468,16 @@ class GameConnectionCenter {
     } else {
       request.timeout = 3000;
     }
-    DzLogger.i("关键协议【${request.requestTypeId}】发送，该协议超时时间: ${request.timeout}");
+    print("关键协议【${request.requestTypeId}】发送，该协议超时时间: ${request.timeout}");
     // 添加超时操作
     await Future.delayed(Duration(milliseconds: request.timeout), () {
-      DzLogger.i("abc2-${request.requestTypeId}");
+      print("abc2-${request.requestTypeId}");
       GameRequest? cachedRequest = _removeRequestCache(requestKey);
       if (cachedRequest != null) {
         // 消息没有返回，则触发重连机制
         cachedRequest.requestTimeout();
         if (needReconnectWhenTimeOut(cachedRequest.requestTypeId)) {
-          DzLogger.i('协议超时重连 requestTypeId == ${cachedRequest.requestTypeId}');
+          print('协议超时重连 requestTypeId == ${cachedRequest.requestTypeId}');
           reconnect(force: true); //立刻重连
         }
         if (onTimeout != null) {
@@ -484,7 +486,7 @@ class GameConnectionCenter {
         }
       }
     });
-    DzLogger.i("abc1-${request.requestTypeId}");
+    print("abc1-${request.requestTypeId}");
   }
 
   // 超时重连协议
@@ -516,34 +518,18 @@ class GameConnectionCenter {
 
   // 接收协议并处理【网络线程】
   void _receivedData(dynamic data) {
-    DzLogger.i("_receivedData ${DateTime.now().millisecondsSinceEpoch}");
+    print("_receivedData ${DateTime.now().millisecondsSinceEpoch}");
     //消息解秘
-    Map<String, dynamic> json = GameEncryptCenter.instance.decryptData(data);
-    GameResponse response = GameResponse.fromJson(json);
+    GameResponse response = GameResponse.fromJson(data);
     if (onReceivedData != null) {
       onReceivedData!(response);
     }
-    // 判断下发的数据是请求还是通知，先简单处理
-    if (response.responseTypeId == GameResponseType.kickout.number) {
-      // 标识被踢
-      _isKickout = true;
-      // 收到被踢通知
-      if (needKickOut(response)) {
-        // 只有是当前连接收到踢人 才去踢
-        response.response();
-      }
-    } else if (response.responseTypeId == GameResponseType.heartBeat.number) {
-      // 子心跳
-      response.response();
-    } else if (response.responseTypeId >= 10000) {
-      // 处理响应
-      response.response();
-    } else {
+   {
       // 请求响应处理
       String responseKey = response.responseKey();
       GameRequest? request = _removeRequestCache(responseKey);
       if (request != null) {
-        DzLogger.i(
+        print(
             ">>>>>>请求响应 成功!!! code ${response.code}  请求协议  ${response.responseTypeId} messageId ${response.messageId}");
         // 响应成功，通知上层
         if (onSuccess != null) {
@@ -554,54 +540,19 @@ class GameConnectionCenter {
     }
     //
     if (response.responseTypeId == 100) {
-      DzLogger.i(">>>>>>>>>>收到 100消息");
+      print(">>>>>>>>>>收到 100消息");
       return;
-    }
-    // 服务器升级完毕检测
-    if (_isServerUpgrade && response.code == 0) {
-      // 升级状态中，2消息滤掉
-      if (response.responseTypeId == GameRequestType.queryInfo.number) {
-        return;
-      }
-      // 升级状态中，心跳包滤掉
-      if (response.responseTypeId == GameRequestType.heartbeat.number) {
-        return;
-      }
-      // 升级状态中，大厅服务过滤掉
-      if (response.serviceTypeId == GameServiceType.club.number) {
-        return;
-      }
-      _isServerUpgrade = false;
-      _upgradeOver(json);
-      DzLogger.i("服务器1升级结束 ${response.responseTypeId} ");
-    }
-    // 服务器升级开始检测
-    if (response.code == GameResponseType.serverUpgradeStart.number) {
-      _isServerUpgrade = true;
-      // 克隆一个消息返回
-      GameResponse tmpResponse = response.clone();
-      tmpResponse.responseTypeId = GameResponseType.serverUpgradeStart.number;
-      tmpResponse.response();
-      DzLogger.i("服务器1升级开始 ${response.responseTypeId} ");
     }
   }
 
-  // 升级完毕
-  void _upgradeOver(Map<String, dynamic> json) {
-    // 非服务器原版消息（模拟消息）
-    DzLogger.i(">>>>>>>>升级完成>>>>");
-    GameResponse responseProxy = GameResponse.fromJson(json);
-    responseProxy.responseTypeId = GameResponseType.serverUpgradeEnd.number;
-    responseProxy.response();
-  }
 
   bool needKickOut(GameResponse response) {
     String? sessionId = response.data["remark"];
-    DzLogger.i('remark === $sessionId');
-    DzLogger.i('connectSessionId === $connectSessionId}');
+    print('remark === $sessionId');
+    print('connectSessionId === $connectSessionId}');
     if (sessionId != null && sessionId != connectSessionId) {
       //sessionId ！= null 则是重复链接 且被踢的sessionid不是当前链接的connectSessionId
-      DzLogger.i('不需要被踢出登录');
+      print('不需要被踢出登录');
       return false;
     }
     return true;

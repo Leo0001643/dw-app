@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 
 class GameIsolateParam {
@@ -83,7 +84,7 @@ class GameIsolate extends ChangeNotifier {
 
     StreamSubscription? streamSubscription;
     streamSubscription = receivePort.listen((message) async {
-      // DzLogger.i("root message = $message, ${Isolate.current.debugName}");
+      // print("root message = $message, ${Isolate.current.debugName}");
       // 主线程监听数据
       if (message is SendPort) {
         _gameSendPort = message;
@@ -200,24 +201,24 @@ class GameIsolate extends ChangeNotifier {
         GameIsolateParam(completer: completer, request: request);
     String paramKey = param.paramKey;
     _maps[paramKey] = param;
-    DzLogger.i(
+    print(
         "runRequestInGameIsolate $_isolate, $_gameSendPort, $request, $paramKey");
     completer.future.then((value) {
       GameResponse response = value;
-      DzLogger.i("BB发送消息回来 ${request.requestTypeId}-${completer.hashCode}");
+      print("BB发送消息回来 ${request.requestTypeId}-${completer.hashCode}");
       notifierResponse = response;
       notifyListeners();
     });
-    DzLogger.i("BB发送消息前 ${request.requestTypeId}-${completer.hashCode}");
+    print("BB发送消息前 ${request.requestTypeId}-${completer.hashCode}");
     _gameSendPort.send(request);
-    DzLogger.i("BB发送消息后 ${request.requestTypeId}-${completer.hashCode}");
+    print("BB发送消息后 ${request.requestTypeId}-${completer.hashCode}");
     return completer.future;
   }
 
   /// 子线程执行命令
   Future<void> runInGameIsolate(String message,
       {Map<String, dynamic>? params}) async {
-    DzLogger.i("runInGameIsolate message = $message");
+    print("runInGameIsolate message = $message");
     Completer<void> completer = Completer<void>();
     GameIsolateParam param =
         GameIsolateParam(completer: completer, message: message);
@@ -245,24 +246,24 @@ class GameIsolate extends ChangeNotifier {
 
     // 由于主线程与子线程是隔离的，所以通知主线程当前sendPort
     _mainSendPort = sendPort;
-    DzLogger.i(
+    print(
         "doWorkInGameIsolate mainSendPort = $_mainSendPort, ${Isolate.current.debugName}");
     sendPort.send(_gameSendPort);
 
     StreamSubscription? streamSubscription;
     streamSubscription = gameReceivePort.listen((message) async {
-      DzLogger.i("${Isolate.current.debugName} message = $message");
+      print("${Isolate.current.debugName} message = $message");
       // 游戏线程监听数据
       if (message is Map<String, dynamic>) {
         GameRequest request = GameRequest.fromMap(message);
         GameResponse response = await request.requestData();
-        DzLogger.i("isolate response = $response ${response.responseKey()}");
+        print("isolate response = $response ${response.responseKey()}");
         sendPort.send(response);
       } else if (message is GameRequest) {
         GameRequest request = message;
-        DzLogger.i("isolate request = $request ${request.requestKey()}");
+        print("isolate request = $request ${request.requestKey()}");
         GameResponse response = await request.requestData();
-        DzLogger.i("isolate response = $response ${response.responseKey()}");
+        print("isolate response = $response ${response.responseKey()}");
         sendPort.send(response);
       } else if (message is String) {
         if (message == "startConnection") {

@@ -259,5 +259,12 @@ class GameResponse {
     responseTypeId = json["responseTypeId"];
     serviceTypeId = json["serviceTypeId"];
   }
+  String messageId="";
+  String responseKey() {
+    if (messageId != null) {
+      return "$responseTypeId-$messageId";
+    }
+    return "$responseTypeId";
+  }
 }
 
