@@ -14,10 +14,12 @@ import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/betting_left_item.dart';
+import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
 
 import '../../../../main.dart';
 import '../../ends_drawer_view.dart';
 import 'game_room_logic.dart';
+import 'widget/game_room_head_widget.dart';
 
 class GameRoomPage extends StatefulWidget {
   const GameRoomPage({Key? key}) : super(key: key);
@@ -69,37 +71,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                 padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 15.w),
                 child: Column(
                   children: [
-                    Row(
-                      children: [
-                        Stack(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.all(2.r),
-                              child: GFAvatar(
-                                backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(AppData.user()?.avatar)),
-                                shape: GFAvatarShape.circle,
-                                radius: 17.r,
-                              ),
-                            ),
-                            Center(child: buildAvatarType(),),
-                          ],
-                        ),
-                        SizedBox(width: 3.w,),
-                        buildYueHeader(),
-                        SizedBox(width: 50.w,),
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              buildUserTab(0,Intr().haoyuan, ImageX.icon_radio_uncheck,textColor),
-                              buildUserTab(1,Intr().zhudan, ImageX.icon_dan2,textColor),
-                              buildUserTab(2,Intr().mipai, ImageX.icon_pai2,textColor),
-                              buildUserTab(3,Intr().qushi, ImageX.icon_qs_hei,textColor),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                    GameRoomHeadWidget(),
                     SizedBox(height: 10.h,),
                     Divider(height: 1.h,color: ColorX.color_f1f1f1,),
                     SizedBox(height: 10.h,),
@@ -167,8 +139,79 @@ class _GameRoomPageState extends State<GameRoomPage> {
       ),
     );
   }
-
-
+  Widget buildYueHeader(GameRoomLogic logic) {
+    GameRoomState state = logic.state;
+    var textColor =
+    state.roomType.value == 1 ? ColorX.text0917() : Colors.white;
+    if (AppData.isLogin()) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            AppData.user()!.username?.em() ?? "",
+            style: TextStyle(fontSize: 12.sp, color: textColor),
+          ),
+          SizedBox(
+            height: 3.h,
+          ),
+          buildBalanceType(logic),
+        ],
+      );
+    } else {
+      return InkWell(
+        onTap: () {
+          Get.until((ModalRoute.withName(Routes.main)));
+          WidgetUtils().goLogin();
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  Intr().login,
+                  style: TextStyle(fontSize: 12.sp, color: textColor),
+                ),
+                Image.asset(
+                  ImageX.icon_right_grey,
+                  color: ColorX.icon586(),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 3.h,
+            ),
+            Text(
+              Intr().denglugengjingcai,
+              style: TextStyle(fontSize: 12.sp, color: textColor),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+  Widget buildBalanceType(GameRoomLogic logic) {
+    GameRoomState state = logic.state;
+    var color = ColorX.color_fc243b;
+    switch (state.roomType.value) {
+      case 1:
+        color = ColorX.color_fc243b;
+        break;
+      case 2:
+        color = ColorX.color_70b6ff;
+        break;
+      case 3:
+        color = ColorX.color_ffe0ac;
+        break;
+    }
+    return Obx(() {
+      return Text(
+        "¥${state.userBal.value.money.em()}",
+        style: TextStyle(
+            fontSize: 14.sp, color: color, fontWeight: FontWeight.w500),
+      );
+    });
+  }
   Widget buildUserTab(int i, String tab, String icon,Color color) {
     return InkWell(
       onTap: ()=> logic.onTabClick(context,i),
@@ -179,6 +222,30 @@ class _GameRoomPageState extends State<GameRoomPage> {
         ],
       ),
     );
+  }
+
+  Widget buildAvatarType(GameRoomLogic logic) {
+    GameRoomState state = logic.state;
+    switch (state.roomType.value) {
+      case 2:
+        return Image.asset(
+          ImageX.ic_2avatar,
+          fit: BoxFit.fill,
+          width: 38.r,
+        );
+      case 3:
+        return Image.asset(
+          ImageX.ic_3avatar,
+          fit: BoxFit.fill,
+          width: 38.r,
+        );
+      default:
+        return Image.asset(
+          ImageX.ic_1avatar,
+          fit: BoxFit.fill,
+          width: 38.r,
+        );
+    }
   }
 
   Widget buildDrawNum(String num) {
@@ -255,16 +322,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     });
   }
 
-  Widget buildAvatarType() {
-    switch(state.roomType.value){
-      case 2:
-        return Image.asset(ImageX.ic_2avatar,fit: BoxFit.fill,width: 38.r,);
-      case 3:
-        return Image.asset(ImageX.ic_3avatar,fit: BoxFit.fill,width: 38.r,);
-      default:
-        return Image.asset(ImageX.ic_1avatar,fit: BoxFit.fill,width: 38.r,);
-    }
-  }
+
 
   BoxDecoration buildBoxDecorationType() {
     var color = Colors.white;
@@ -285,24 +343,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     );
   }
 
-  Widget buildBalanceType() {
-    var color = ColorX.color_fc243b;
-    switch(state.roomType.value){
-      case 1:
-        color = ColorX.color_fc243b;
-        break;
-      case 2:
-        color = ColorX.color_70b6ff;
-        break;
-      case 3:
-        color = ColorX.color_ffe0ac;
-        break;
-    }
-    return Obx(() {
-      return Text("¥${state.userBal.value.money.em()}",
-        style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w500),);
-    });
-  }
+
 
   Widget buildCurrentTermType() {
     var color = state.roomType.value == 1 ? ColorX.text0917():ColorX.color_ffe0ac;
@@ -396,39 +437,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     });
   }
 
-  Widget buildYueHeader() {
-    var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
-    if(AppData.isLogin()){
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(AppData.user()!.username.em(), style: TextStyle(fontSize: 12.sp,color: textColor),),
-          SizedBox(height: 3.h,),
-          buildBalanceType(),
-        ],
-      );
-    }else {
-      return InkWell(
-        onTap: (){
-          Get.until((ModalRoute.withName(Routes.main)));
-          WidgetUtils().goLogin();
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(Intr().login, style: TextStyle(fontSize: 12.sp,color: textColor),),
-                Image.asset(ImageX.icon_right_grey,color: ColorX.icon586(),),
-              ],
-            ),
-            SizedBox(height: 3.h,),
-            Text(Intr().denglugengjingcai, style: TextStyle(fontSize: 12.sp,color: textColor),),
-          ],
-        ),
-      );
-    }
-  }
+
 
 
 
