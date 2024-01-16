@@ -233,8 +233,7 @@ class GameConnectionCenter {
 
   Future<void> _connect() async {
     try {
-      String url =
-          await _connectionParams.generateUrl("", "9000vlmdm4.kj99883.com");
+      String url ="wss://9000ywfjn2.uy4ayov.com?language=zh";
       if (url.isEmpty) {
         connecSocketState = ConnectStatus.emptyUrl;
         return;

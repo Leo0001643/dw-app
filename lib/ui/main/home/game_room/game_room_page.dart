@@ -35,6 +35,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   @override
   void initState() {
+
     state.room.value = Get.arguments;
     logic.loadData(state.room.value);
     super.initState();

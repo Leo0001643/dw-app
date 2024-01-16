@@ -6,13 +6,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
+import 'package:leisure_games/ui/main/socket/game_connection_service_center.dart';
+import 'package:leisure_games/ui/main/socket/status/websocket_connect_status.dart';
 
 class GameIsolateParam {
   Completer completer;
-
   /// 请求
   GameRequest? request;
-
   /// 命令
   String? message;
 
@@ -291,28 +291,6 @@ class GameIsolate extends ChangeNotifier {
         }
       } else if (message is List) {
         if (message[0] is String) {
-          if (message[0] == "updateUserInfos") {
-            Map<String, dynamic> params = message[1];
-            GameConnectionServiceCenter.instance.updateUserInfos(
-              params["userId"] ?? "",
-              params["token"] ?? "",
-              params['serverTimeInterval'] ?? 0,
-              params['envir'] ?? "",
-            );
-            sendPort.send(message[0]);
-          } else if (message[0] == "updateTableId") {
-            Map<String, dynamic> params = message[1];
-            GameConnectionServiceCenter.instance.updateTableId(
-              params["tableId"],
-            );
-            sendPort.send(message[0]);
-          } else if (message[0] == "updateConnectDomianList") {
-            Map<String, dynamic> params = message[1];
-            GameConnectionServiceCenter.instance.updateConnectDomianList(
-              params["urlList"],
-            );
-            sendPort.send(message[0]);
-          }
         }
       }
     });

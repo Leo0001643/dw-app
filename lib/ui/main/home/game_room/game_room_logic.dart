@@ -10,6 +10,8 @@ import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/main/socket/game_data_service_center.dart';
+import 'package:leisure_games/ui/main/socket/game_isolate.dart';
 
 import 'game_room_state.dart';
 
@@ -50,7 +52,12 @@ class GameRoomLogic extends GetxController {
     }
   }
 
-  void loadData(Pc28LottoRoomsTables room) {
+  Future<void> loadData(Pc28LottoRoomsTables room) async {
+    await GameIsolate.instance.startGameIsolate();
+    GameDataServiceCenter.instance.startConnection(onConnected: () async {
+
+
+    });
     loggerArray(["房型数据",state.room.toJson()]);
     state.roomType.value = room.level ?? 1;
 
@@ -78,6 +85,11 @@ class GameRoomLogic extends GetxController {
     
   }
 
+  void connectWebSocket({Function? onConnected}) async {
+    if (AppData.isLogin()) {
+      // GameDataServiceCenter.instance.startConnection(onConnected: onConnected);
+    }
+  }
   void changeRoomType(Pc28LottoRoomsTables room) {
     state.pc28Lotto.value.rooms?.forEach((element) {
       if(element.gameType == room.gameType){
