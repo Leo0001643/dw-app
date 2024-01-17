@@ -23,7 +23,7 @@ class GameConnectionParams {
   int get serverTimeInterval => _serverTimeInterval;
 
   GameConnectionParams() {
-    _url = "";
+    _url = "wss://9000ywfjn2.uy4ayov.com?language=zh";
     _userId = "";
     _token = "";
     _deviceId = "";

@@ -1,6 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/res/game_request.dart';
+import 'package:leisure_games/app/res/game_response.dart';
+import 'package:leisure_games/app/res/request/login_request.dart';
+import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
+import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
+import 'package:leisure_games/ui/main/socket/app/ws_main_service.dart';
 import 'package:leisure_games/ui/main/socket/game_isolate.dart';
 class GameResultData {
   dynamic entity;
@@ -46,6 +53,22 @@ class GameDataServiceCenter {
   void stopConnection() {
     GameIsolate.instance.stopConnection();
   }
+  void wSLogin({String? table_id,String? room_id,String? game_type}) async{
+    LoginRequest loginRequest=LoginRequest(table_id:table_id,room_id:room_id,game_type:game_type);
+    GameResponse response = await requestData(loginRequest);
+  }
 
+
+  /// 统一请求函数，方便调整内部逻辑
+  Future<GameResponse> requestData(GameRequest request) async {
+    //
+    IsolateService? serv = AppInst.gameIsolate.mainService();
+    if (serv != null && serv is WSMainService) {
+      GameResponse response = await serv.sendRequest(request);
+      int currentTime = DateTime.now().millisecondsSinceEpoch;
+      return response;
+    }
+    return GameResponse.errResponse();
+  }
 
 }

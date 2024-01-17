@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/ui/main/socket/game_connection_center.dart';
 
@@ -24,9 +25,9 @@ class GameRequest {
 
   /// 超时时间，默认3000毫秒
   late int timeout;
-
+  String? type;
   /// 请求参数
-  late Map<String, dynamic>? _params;
+  Map<String, dynamic>? params;
 
   /// 请求成功回调函数
   Function? onSuccess;
@@ -43,8 +44,7 @@ class GameRequest {
   /// 当前请求次数
   late int _tryCount;
 
-  GameRequest({
-    required this.requestTypeId,
+  GameRequest(this.type,{
     this.serviceTypeId = 0,
     this.timeout = 3000,
     this.onSuccess,
@@ -53,7 +53,7 @@ class GameRequest {
     // 生成消息id，用于日志与去重，暂时使用微秒，如1686033253595526
     _messageId = "${DateTime.now().microsecondsSinceEpoch}";
     _tryCount = 0;
-    _params = null;
+    params = null;
   }
 
   GameResponse _customResponse() {
@@ -137,27 +137,23 @@ class GameRequest {
     String requestTime = "${currentTime + serverTimeInterval}";
 
     // 设置公共参数
-    Map<String, dynamic> headers = <String, dynamic>{};
-    headers["requestTypeId"] = requestTypeId;
-    headers["serviceTypeId"] = serviceTypeId;
-    headers["messageId"] = _messageId; // 消息ID，暂时以时间作为id，微秒
-    headers["requestTime"] = requestTime; // 请求时间
+    Map<String, dynamic> headers = {"machineModel":Constants.model(),
+      "siteId":"9000",
+      "siteType":"1",
+      "terminal":"APP",
+      "version":Constants.version()};
     headers["userId"] = userId; // 用户ID
     // 具体请求参数
-    Map<String, dynamic>? params = _params ?? requestParams();
-    if (params != null && params.isNotEmpty) {
-      headers["param"] = jsonEncode(params);
-      // 生成签名信息
-    } else {
-      headers["param"] = "";
-    }
+    Map<String, dynamic>? params_ = requestParams();
+    params_?.forEach((key, value) =>headers[key]=value
+    );
     return headers;
   }
-
   Map<String, dynamic>? requestParams() {
     // 封装请求参数，子类实现
-    return null;
+    return params;
   }
+ 
 
   // 获取userId（当前方法处理子线程中）
   String get userId {
@@ -171,7 +167,7 @@ class GameRequest {
     map["requestTypeId"] = requestTypeId;
     map["serviceTypeId"] = serviceTypeId;
     map["timeout"] = timeout;
-    map["params"] = _params ?? requestParams();
+    map["params"] = params ?? requestParams();
     return map;
   }
 
@@ -180,14 +176,14 @@ class GameRequest {
     requestTypeId = map["requestTypeId"];
     serviceTypeId = map["serviceTypeId"];
     timeout = map["timeout"];
-    _params = map["params"];
+    params = map["params"];
 
     // 由于线程隔离，所以主线程使用userId时返回为空
-    if (_params != null &&
-        _params!["userId"] != null &&
-        _params!["userId"].isEmpty) {
+    if (params != null &&
+        params!["userId"] != null &&
+        params!["userId"].isEmpty) {
       // 此处在子线程中重新赋值
-      _params!["userId"] = userId;
+      params!["userId"] = userId;
     }
   }
 }

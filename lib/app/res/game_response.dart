@@ -266,5 +266,9 @@ class GameResponse {
     }
     return "$responseTypeId";
   }
+  static GameResponse errResponse() {
+    return GameResponse();
+  }
+
 }
 
