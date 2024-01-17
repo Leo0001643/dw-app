@@ -30,21 +30,20 @@ class GameRoomLogic extends GetxController {
     super.onClose();
   }
 
-
-  void onTabClick(BuildContext context,int index){
-    switch(index){
+  void onTabClick(BuildContext context, int index) {
+    switch (index) {
       case 0:
         Get.toNamed(Routes.number_source);
         break;
       case 1:
-        if(AppData.isLogin()){
+        if (AppData.isLogin()) {
           Get.toNamed(Routes.betting_details);
         } else {
           showToast(Intr().qingxiandenglu);
         }
         break;
       case 2:
-        DialogUtils().showSqueezeBtmDialog(context,this);
+        DialogUtils().showSqueezeBtmDialog(context, this);
         break;
       case 3:
         Get.toNamed(Routes.room_tendency);
@@ -53,24 +52,21 @@ class GameRoomLogic extends GetxController {
   }
 
   Future<void> loadData(Pc28LottoRoomsTables room) async {
-    await GameIsolate.instance.startGameIsolate();
-    GameDataServiceCenter.instance.startConnection(onConnected: () async {
-
-
-    });
-    loggerArray(["房型数据",state.room.toJson()]);
+    GameDataServiceCenter.instance.startConnection(onConnected: () async {});
+    loggerArray(["房型数据", state.room.toJson()]);
     state.roomType.value = room.level ?? 1;
 
     HttpService.getPc28LottoList().then((value) {
       state.pc28Lotto.value = value;
       state.pc28Lotto.refresh();
       changeRoomType(room);
-    });
+    })q;
 
     HttpService.getPC28Odds(room.id.em()).then((value) {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
-      Map<String,dynamic> map = jsonDecode(value,);
-
+      Map<String, dynamic> map = jsonDecode(
+        value,
+      );
     });
 
     ///表情
@@ -82,7 +78,6 @@ class GameRoomLogic extends GetxController {
     HttpService.getPhrase().then((value) {
       state.phrases.assignAll(value);
     });
-    
   }
 
   void connectWebSocket({Function? onConnected}) async {
@@ -90,9 +85,10 @@ class GameRoomLogic extends GetxController {
       // GameDataServiceCenter.instance.startConnection(onConnected: onConnected);
     }
   }
+
   void changeRoomType(Pc28LottoRoomsTables room) {
     state.pc28Lotto.value.rooms?.forEach((element) {
-      if(element.gameType == room.gameType){
+      if (element.gameType == room.gameType) {
         state.title.value = element.memo.em();
         state.room.value = room;
         state.roomType.value = room.level ?? 1;
@@ -102,15 +98,17 @@ class GameRoomLogic extends GetxController {
   }
 
   void loadBalance() {
-
     var user = AppData.user();
-    HttpService.getBalance({ "cur":1, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
+    HttpService.getBalance({
+      "cur": 1,
+      "platform": "main",
+      "oid": user?.oid,
+      "username": user?.username
+    }).then((value) {
       state.userBal.value = value;
       state.userBal.refresh();
     });
-
   }
 
-  //
-
+//
 }

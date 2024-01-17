@@ -246,7 +246,7 @@ class GameConnectionCenter {
       print("发起建立连接的 url = $url");
       // url = ""; //move test
       _channel = IOWebSocketChannel.connect(url,
-          connectTimeout: const Duration(seconds: 4));
+          connectTimeout: const Duration(seconds: 15));
       await _channel?.ready;
       //
       print("连接状态: ${_channel?.innerWebSocket?.readyState}");

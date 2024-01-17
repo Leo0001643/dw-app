@@ -54,7 +54,7 @@ class GameIsolate extends ChangeNotifier {
   }
 
   late Isolate _isolate;
-  late SendPort _gameSendPort;
+   SendPort? _gameSendPort;
 
   /// 使用静态变量记录sendPort，否则子线程里无法取到值
   static SendPort? _mainSendPort;
@@ -96,6 +96,7 @@ class GameIsolate extends ChangeNotifier {
             _connectedCallback!();
           }
           GameIsolateParam? param = _maps.remove(message);
+
           if (param != null) {
             param.completer.complete();
           }
@@ -210,7 +211,7 @@ class GameIsolate extends ChangeNotifier {
       notifyListeners();
     });
     print("BB发送消息前 ${request.requestTypeId}-${completer.hashCode}");
-    _gameSendPort.send(request);
+    _gameSendPort?.send(request);
     print("BB发送消息后 ${request.requestTypeId}-${completer.hashCode}");
     return completer.future;
   }
@@ -226,9 +227,11 @@ class GameIsolate extends ChangeNotifier {
     String paramKey = param.paramKey;
     _maps[paramKey] = param;
     if (params == null || params.isEmpty) {
-      _gameSendPort.send(message);
+      if(_gameSendPort!=null) {
+        _gameSendPort?.send(message);
+      }
     } else {
-      _gameSendPort.send([message, params]);
+        _gameSendPort?.send([message, params]);
     }
 
     return completer.future;

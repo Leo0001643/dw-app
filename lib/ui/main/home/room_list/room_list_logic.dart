@@ -6,6 +6,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/main/socket/game_isolate.dart';
 
 import 'room_list_state.dart';
 
@@ -15,6 +16,7 @@ class RoomListLogic extends GetxController {
   @override
   void onReady() {
     loadData(Get.arguments);
+    GameIsolate.instance.startGameIsolate();
     super.onReady();
   }
 
