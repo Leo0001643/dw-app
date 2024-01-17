@@ -124,7 +124,7 @@ class WSService extends IsolateService {
     _heartbeatTimer?.cancel();
     _heartbeatTimer = null;
     // 每秒监控一次，如果不小于3秒，则重新发送心跳
-    _heartbeatTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
+    _heartbeatTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
       int now = DateTime.now().millisecondsSinceEpoch;
       if (now - _lastHeartbeatSecond >= 1950) {
         _lastHeartbeatSecond = now;

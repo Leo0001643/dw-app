@@ -114,7 +114,7 @@ class WSMainService extends IsolateService {
     completer.future.then((value) {
       // GameResponse response = value;
       print(
-          "WSMainService 请求返回 ${request.requestTypeId}-${completer.hashCode}");
+          "WSMainService 请求返回 ${request.type}-${completer.hashCode}");
       // notifierResponse = response;
       // notifyListeners();
     });
@@ -173,11 +173,10 @@ class WSMainService extends IsolateService {
   // 事件通知
   @override
   void dispatchResponse(GameResponse response) {
-    if (response.responseTypeId == 1) {
+    if (response.type == "ping") {
       // 收到心跳包 特殊处理
       // print("na = ${response.responseTypeId}");
     } else {
-      print("WSMainService na = ${response.responseTypeId}");
     }
     String paramKey = response.responseKey();
     DXIsolateParam? tmpIsolatePram = mRequestMap.remove(paramKey);

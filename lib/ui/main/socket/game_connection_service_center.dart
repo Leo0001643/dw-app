@@ -129,7 +129,7 @@ class GameConnectionServiceCenter {
   // 成功
   void _onSuccess(GameResponse response) {
     // 请求成功，重置超时次数
-    if (response.responseTypeId == GameRequestType.heartbeat.number) {
+    if (response?.type == GameRequestType.heartbeat.number) {
       serverTime = response.data["serverTime"]; // 心跳请求则更新服务器时间
       _heartbeatTimeout = 0;
       // 心跳包也向上层反

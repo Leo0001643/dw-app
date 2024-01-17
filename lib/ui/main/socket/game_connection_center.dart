@@ -462,46 +462,31 @@ class GameConnectionCenter {
       print("_sendMessage excpetion = $error stackTree = $stackTrace");
     }
     //
-    if (needReconnectWhenTimeOut(request.requestTypeId)) {
+    if (needReconnectWhenTimeOut(request.type)) {
       request.timeout = 10000;
     } else {
       request.timeout = 3000;
     }
-    print("关键协议【${request.requestTypeId}】发送，该协议超时时间: ${request.timeout}");
+    print("关键协议【${request.type}】发送，该协议超时时间: ${request.timeout}");
     // 添加超时操作
     await Future.delayed(Duration(milliseconds: request.timeout), () {
-      print("abc2-${request.requestTypeId}");
+      print("abc2-${request.type}");
       GameRequest? cachedRequest = _removeRequestCache(requestKey);
       if (cachedRequest != null) {
         // 消息没有返回，则触发重连机制
         cachedRequest.requestTimeout();
-        if (needReconnectWhenTimeOut(cachedRequest.requestTypeId)) {
-          print('协议超时重连 requestTypeId == ${cachedRequest.requestTypeId}');
-          reconnect(force: true); //立刻重连
-        }
         if (onTimeout != null) {
           // 通知上层某个请求类型出现超时
-          onTimeout!(cachedRequest.requestTypeId);
+          onTimeout!(cachedRequest.type);
         }
       }
     });
-    print("abc1-${request.requestTypeId}");
+    print("abc1-${request.type}");
   }
 
   // 超时重连协议
-  bool needReconnectWhenTimeOut(int requestTypeId) {
-    if (requestTypeId == 100 ||
-        requestTypeId == 101 ||
-        requestTypeId == 102 ||
-        requestTypeId == 103 ||
-        requestTypeId == 104 ||
-        requestTypeId == 105 ||
-        requestTypeId == 107 ||
-        requestTypeId == 110 ||
-        requestTypeId == 112 ||
-        requestTypeId == 117 ||
-        requestTypeId == 119 ||
-        requestTypeId == 120) {
+  bool needReconnectWhenTimeOut(String? type) {
+    if (type == "reconnect") {
       return true;
     }
     return false;
@@ -529,7 +514,7 @@ class GameConnectionCenter {
       GameRequest? request = _removeRequestCache(responseKey);
       if (request != null) {
         print(
-            ">>>>>>请求响应 成功!!! code ${response.code}  请求协议  ${response.responseTypeId} messageId ${response.messageId}");
+            ">>>>>>请求响应 成功!!! code ${response.code}  请求协议  ${response.type} messageId ${response.messageId}");
         // 响应成功，通知上层
         if (onSuccess != null) {
           onSuccess!(response);
@@ -538,7 +523,7 @@ class GameConnectionCenter {
       }
     }
     //
-    if (response.responseTypeId == 100) {
+    if (response.type == 100) {
       print(">>>>>>>>>>收到 100消息");
       return;
     }

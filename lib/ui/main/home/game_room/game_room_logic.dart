@@ -64,6 +64,10 @@ class GameRoomLogic extends GetxController {
       changeRoomType(room);
     }) ;
 
+    Future.delayed(Duration(seconds: 2),(){
+      GameDataServiceCenter.instance.wSLogin(table_id:"${room.id??0}",room_id:"${ room.roomId??0}",game_type:"${state.roomType.value}" );
+    });
+
     HttpService.getPC28Odds(room.id.em()).then((value) {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
       Map<String, dynamic> map = jsonDecode(
@@ -81,8 +85,19 @@ class GameRoomLogic extends GetxController {
       state.phrases.assignAll(value);
     });
   }
+  /**
+   * 判断是不是登录了，如果登录成功，则重新登录ws
+   */
+ void isLoginToLogin() {
+  if (!AppData.isLogin()) {
 
-  void connectWebSocket({Function? onConnected}) async {
+  }
+}
+
+
+
+
+void connectWebSocket({Function? onConnected}) async {
     if (AppData.isLogin()) {
       // GameDataServiceCenter.instance.startConnection(onConnected: onConnected);
     }

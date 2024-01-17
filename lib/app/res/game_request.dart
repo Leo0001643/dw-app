@@ -16,8 +16,6 @@ enum GameRequestType {
 
 /// 请求
 class GameRequest {
-  /// 请求类型
-  late int requestTypeId;
 
   /// 请求的服务类型，0 网关，1 德州，2 短牌 3 大厅
   late int? serviceTypeId;
@@ -58,7 +56,7 @@ class GameRequest {
 
   GameResponse _customResponse() {
     GameResponse response = GameResponse();
-    response.responseTypeId = requestTypeId;
+    response.type = type;
     response.data = null; // 空结果
     return response;
   }
@@ -83,7 +81,7 @@ class GameRequest {
 
   void requestTimeout() {
     // 106 解散房间 / 109 实时账单 / 111 补充筹码
-    if (requestTypeId == 106 || requestTypeId == 109 || requestTypeId == 111) {
+    if (type == 106 || type == 109 || type == 111) {
       // 请求超时，重新生成messageId 用于新的请求
       _messageId = "${DateTime.now().microsecondsSinceEpoch}";
       _sendRequest();
@@ -127,7 +125,7 @@ class GameRequest {
   /// 记录消息id
   late String _messageId;
   String requestKey() {
-    return "$requestTypeId-$_messageId";
+    return "$type";
   }
 
   /// 获取包数据
@@ -164,16 +162,17 @@ class GameRequest {
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = <String, dynamic>{};
     map["messageId"] = _messageId;
-    map["requestTypeId"] = requestTypeId;
+    map["type"] = type;
     map["serviceTypeId"] = serviceTypeId;
     map["timeout"] = timeout;
-    map["params"] = params ?? requestParams();
+    var tmpParams = params ?? requestParams();
+    tmpParams?.forEach((key, value) { map[key]=value;});
     return map;
   }
 
   GameRequest.fromMap(Map<String, dynamic> map) {
     _messageId = map["messageId"];
-    requestTypeId = map["requestTypeId"];
+    type = map["type"];
     serviceTypeId = map["serviceTypeId"];
     timeout = map["timeout"];
     params = map["params"];

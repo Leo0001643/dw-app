@@ -206,13 +206,13 @@ class GameIsolate extends ChangeNotifier {
         "runRequestInGameIsolate $_isolate, $_gameSendPort, $request, $paramKey");
     completer.future.then((value) {
       GameResponse response = value;
-      print("BB发送消息回来 ${request.requestTypeId}-${completer.hashCode}");
+      print("BB发送消息回来 ${request.type}-${completer.hashCode}");
       notifierResponse = response;
       notifyListeners();
     });
-    print("BB发送消息前 ${request.requestTypeId}-${completer.hashCode}");
+    print("BB发送消息前 ${request.type}-${completer.hashCode}");
     _gameSendPort?.send(request);
-    print("BB发送消息后 ${request.requestTypeId}-${completer.hashCode}");
+    print("BB发送消息后 ${request.type}-${completer.hashCode}");
     return completer.future;
   }
 

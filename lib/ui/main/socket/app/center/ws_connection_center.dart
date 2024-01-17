@@ -175,7 +175,7 @@ class WsConnectionCenter {
     dzLog("发起建立连接的 url = $url");
     try {
       _channel = IOWebSocketChannel.connect(url,
-          connectTimeout: const Duration(seconds: 4));
+          connectTimeout: const Duration(seconds: 10));
       await _channel?.ready;
     } catch (err) {
       dzLog('建立连接失败，继续重连 $err');
@@ -302,34 +302,31 @@ class WsConnectionCenter {
     // 发送给ws服务
     mWsService.target?.onReceivedData(response);
     // 判断下发的数据是请求还是通知，先简单处理
-    if (response.responseTypeId == GameResponseType.kickout.number) {
+    if (response.type == GameResponseType.kickout.number) {
       // 收到被踢通知，只有是当前连接收到踢人 才去踢
       _isKickout = _needKickOut(response);
       if (_isKickout) {
         mWsService.target?.processResponse(response);
       }
-    } else if (response.responseTypeId ==
+    } else if (response.type ==
         GameResponseType.heartBeatTop.number) {
       // 主心跳处理
       mWsService.target?.processHeart(response);
-    } else if (response.responseTypeId == GameResponseType.heartBeat.number) {
+    } else if (response.type == GameResponseType.heartBeat.number) {
       // 子心跳包处理
       mWsService.target?.processResponse(response);
-    } else if (response.responseTypeId >= 10000) {
-      // 处理响应
-      mWsService.target?.processResponse(response);
-    } else {
+    }else {
       // 请求响应处理
       String responseKey = response.responseKey();
       GameRequest? request = _removeRequestCache(responseKey);
       if (request != null) {
         dzLog(
-            "响应成功!!! code ${response.code}  请求协议  ${response.responseTypeId} messageId ${response.messageId}");
+            "响应成功!!! code ${response.code}  请求协议  ${response.type} messageId ${response.messageId}");
         mWsService.target?.processResponse(response);
       }
     }
     //
-    if (response.responseTypeId == 100) {
+    if (response.type == 100) {
       dzLog(">>>>>>>>>>收到 100消息");
       return;
     }
@@ -382,46 +379,35 @@ class WsConnectionCenter {
       dzLog("sendRequest excpetion = $error stackTree = $stackTrace");
     }
     //
-    if (needReconnectWhenTimeOut(request.requestTypeId!)) {
+    if (needReconnectWhenTimeOut(request.type)) {
       request.timeout = 10000;
     } else {
       request.timeout = 3000;
     }
-    dzLog("关键协议【${request.requestTypeId}】发送，超时时间: ${request.timeout}");
+    dzLog("关键协议【${request.type}】发送，超时时间: ${request.timeout}");
     // 添加超时操作
     await Future.delayed(Duration(milliseconds: request.timeout!), () {
-      dzLog("abc2-${request.requestTypeId}");
+      dzLog("abc2-${request.type}");
       GameRequest? cachedRequest = _removeRequestCache(requestKey);
       if (cachedRequest != null) {
         // 消息没有返回，则触发重连机制
         cachedRequest.requestTimeout();
-        if (needReconnectWhenTimeOut(cachedRequest.requestTypeId!)) {
-          dzLog('协议超时重连 requestTypeId == ${cachedRequest.requestTypeId}');
+        if (needReconnectWhenTimeOut(cachedRequest.type!)) {
+          dzLog('协议超时重连 type == ${cachedRequest.type}');
           reconnect(force: true); //立刻重连
         }
         if (onTimeout != null) {
           // 通知上层某个请求类型出现超时
-          onTimeout!(cachedRequest.requestTypeId);
+          onTimeout!(cachedRequest.type);
         }
       }
     });
-    dzLog("abc1-${request.requestTypeId}");
+    dzLog("abc1-${request.type}");
   }
 
   // 超时重连协议
-  bool needReconnectWhenTimeOut(int requestTypeId) {
-    if (requestTypeId == 100 ||
-        requestTypeId == 101 ||
-        requestTypeId == 102 ||
-        requestTypeId == 103 ||
-        requestTypeId == 104 ||
-        requestTypeId == 105 ||
-        requestTypeId == 107 ||
-        requestTypeId == 110 ||
-        requestTypeId == 112 ||
-        requestTypeId == 117 ||
-        requestTypeId == 119 ||
-        requestTypeId == 120) {
+  bool needReconnectWhenTimeOut(String? type) {
+    if (type == "connect") {
       return true;
     }
     return false;

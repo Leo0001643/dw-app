@@ -245,9 +245,7 @@ class GameResponse {
   /// 响应数据，json对象
   late dynamic data;
 
-  /// 协议类型
-  late int responseTypeId = 0;
-
+  String? type;
   /// 区分 德州/短牌 ，默认是德州 1
   int serviceTypeId = 1;
 
@@ -256,15 +254,15 @@ class GameResponse {
   GameResponse.fromJson(Map<String, dynamic> json) {
     code = json["code"];
     msg = json["msg"];
-    responseTypeId = json["responseTypeId"];
+    type = json["type"];
     serviceTypeId = json["serviceTypeId"];
   }
   String messageId="";
   String responseKey() {
     if (messageId != null) {
-      return "$responseTypeId-$messageId";
+      return "$type-$messageId";
     }
-    return "$responseTypeId";
+    return "$type";
   }
   static GameResponse errResponse() {
     return GameResponse();

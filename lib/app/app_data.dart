@@ -94,6 +94,10 @@ class AppData {
 
   static DeviceInfo deviceInfo() {
     var json = prefs?.getString("device_info") ?? "";
+    if(json.isEmpty) {
+      return DeviceInfo(name:"name",model: "sansung");
+    }
+
     return DeviceInfo.fromJson(jsonDecode(json));
   }
 
