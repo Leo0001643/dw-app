@@ -682,13 +682,43 @@ class GameRuleUtil {
       qiShu = qiShu.substring(qiShu.length - 8, qiShu.length);
       String di = "第";
       String qi = "期";
-      ssb = " ${di} $qiShu $qi";
+      ssb = " ${di} 2024$qiShu $qi";
       // ssb.setSpan(
       //     new ForegroundColorSpan(Color.parseColor("#fe2427")), di.length(),
       //     di.length() + qiShu.length(),
       //     Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
     }
     return ssb;
+  }
+
+  /**
+   *  返回当前使用钱包的   钱币符号
+   *     1:CNY,2:USD,3:KRW,4:INR,5:USDT
+   */
+  static String getMoneySymbol(String type) {
+    String result = "￥";
+    switch (type) {
+      case "CNY":
+        result = "￥";
+        break;
+      case "USD":
+        result = "\$";
+        break;
+      case "KRW":
+        result = "₩";
+        break;
+      case "INR":
+        result = "₹";
+        break;
+      case "USDT":
+        result = "₮";
+        break;
+      case "VND":
+        result = "₫";
+        break;
+    }
+
+    return result;
   }
 
   /**

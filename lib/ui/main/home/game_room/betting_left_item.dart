@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,11 +16,13 @@ import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
+import 'utils/game_rule_util.dart';
+
 class BettingLeftItem extends StatefulWidget{
 
   final int index;
   final GameRoomLogic logic;
-  final GameRoomItemEntity<WsBetResultEntity> gameRoomItemEntity;
+  final GameRoomItemEntity<dynamic> gameRoomItemEntity;
   const BettingLeftItem(this.index,this.logic,this.gameRoomItemEntity, {super.key});
 
   @override
@@ -29,9 +33,16 @@ class BettingLeftItem extends StatefulWidget{
 class StateBettingLeftItem extends State<BettingLeftItem>{
   @override
   Widget build(BuildContext context) {
-    WsBetResultEntity? wsBetResultEntity=widget.gameRoomItemEntity.data;
+    WsBetResultEntity? wsBetResultEntity=widget.gameRoomItemEntity.data as WsBetResultEntity;
+    String termData=GameRuleUtil.getSSB(wsBetResultEntity?.term??""); // 4
+    int allMonny=0;
+    for(Content c in wsBetResultEntity?.content??[]) {
+      String betMoney = c?.c??"0";
+      allMonny+=int.tryParse(betMoney)??0;
+    }
     return Container(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: 10.h,),
           Padding(
@@ -50,7 +61,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
           ),
           GFCard(
             padding: EdgeInsets.zero,
-            margin: EdgeInsets.only(left: 50.w,right: 53.w,bottom: 5.h),
+            margin: EdgeInsets.only(left: 50.w,right: 20.w,bottom: 5.h),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
             color: ColorX.cardBg(),
             elevation: 3.r,
@@ -71,18 +82,24 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                     return Container(
                       padding: EdgeInsets.symmetric(vertical: 7.h,horizontal: 15.w,),
                       decoration: BoxDecoration(
-                        color: color,
+                        gradient: LinearGradient(colors: [
+                          Color(0xFFF87687),
+                          Color(0xFFF7566A),
+                        ],
+
+
+                        ),
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text80091()),),
+                          Text(Intr().dixqi([termData]),style: TextStyle(fontSize: 14.sp,color:Colors.white),),
                           Wrap(
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
-                              Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.textBlack()),),
-                              Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
+                              Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: Colors.white),),
+                              Image.asset(ImageX.icon_right_black,color: Colors.white,),
                             ],
                           ),
                         ],
@@ -90,20 +107,30 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                     );
                   }),
                 ),
-                buildBettingInfoItem(),
-                buildBettingInfoItem(),
-                buildBettingInfoItem(),
-                buildBettingInfoItem(),
-                buildBettingInfoItem(),
+
+
+                ListView.separated(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: wsBetResultEntity.content?.length??0,
+                    separatorBuilder: (context,index){
+                      return Divider(height: 1.h,color: ColorX.color_f1f1f1,);
+                    },
+                    itemBuilder: (context,index){
+                      Content? item= wsBetResultEntity.content?[index];
+                      return buildBettingInfoItem(wsBetResultEntity,item);
+                    }
+                    ),
+
                 Container(
                   padding: EdgeInsets.only(right: 10.w,top: 8.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(Intr().zhudan_,style: TextStyle(fontSize: 13.sp,color: ColorX.text605()),),
-                      Text("4",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
+                      Text("${wsBetResultEntity.content?.length??0}",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
                       Text(Intr().zongji_,style: TextStyle(fontSize: 13.sp,color: ColorX.text605()),),
-                      Text("¥80",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
+                      Text("${GameRuleUtil.getMoneySymbol(wsBetResultEntity?.moneyType??"CNY")}${allMonny}",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
                     ],
                   ),
                 ),
@@ -117,7 +144,27 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
   }
 
 
-  Widget buildBettingInfoItem() {
+  Widget buildBettingInfoItem(WsBetResultEntity? wsBetResultEntity,Content? c) {
+   String betType = c?.a??"";
+   String betNum = c?.b??"";
+   String betMoney = c?.c??"";
+   String betOddsExpected = c?.d??"";
+   String betOdds1314 = c?.e??"";
+   print("=======>c${jsonEncode(c?.toJson())}");
+    String? qiShu=wsBetResultEntity?.term;
+    String betName = GameRuleUtil.getBetTypeName(betType, betNum);
+    String partMsg = "x"+ GameRuleUtil.getMoneySymbol(wsBetResultEntity?.moneyType??"CNY");
+    String betOdds="";
+    print("=====>betMoney ${betMoney}  betOdds1314 ${betOdds1314}");
+    if (betOddsExpected==(betOdds1314)||betMoney.isEmpty==true|| betOdds1314=="null"||betOdds1314.isEmpty==true) {
+      betOdds ="${betOddsExpected} ${partMsg} ${betMoney}";
+    } else {
+      betOdds ="${betOddsExpected}/${betOdds1314??""}${partMsg}${betMoney}";
+    }
+    // length = bet.betOdds.length() - c.betMoney.length() - 2;
+    // bet.betOdds.setSpan(colorRed, 0, length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+    // bet.betOdds.setSpan(colorBlue, length + 1, bet.betOdds.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+    // String moneyAll = BigDecimalUtil.addPlay(msg.moneyAll, c.betMoney);
     return Column(
       children: [
         Container(
@@ -125,8 +172,8 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("First ball - 3",style: TextStyle(fontSize: 13.sp,color: ColorX.text333()),),
-              Text("8.666 x \$5",style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+              Text("${betName}",style: TextStyle(fontSize: 13.sp,color: ColorX.text333()),),
+              Text("${betOdds} ",style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
             ],
           ),
         ),

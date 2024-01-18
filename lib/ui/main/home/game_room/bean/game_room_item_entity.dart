@@ -1,6 +1,6 @@
 class GameRoomItemEntity<T> {
   String? type;
-  T? data;
+  dynamic? data;
   GameRoomItemEntity({this.type, this.data});
 
   GameRoomItemEntity.fromJson(Map<String, dynamic> json) {

@@ -84,6 +84,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
               child: GetBuilder<GameRoomLogic>(
                 id: "gameRoomLogicList",
                 builder: (logic){
+                  print("=====>6");
                   return Stack(
                     children: [
                       ListView.builder(
@@ -200,7 +201,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
   Widget buildItemWidget(int index, GameRoomLogic logic, GameRoomItemEntity gameRoomItemEntity) {
     print("----------index ${index}  ");
     if(gameRoomItemEntity.type=="bet_result") {
-      return BettingLeftItem(index,logic,gameRoomItemEntity as GameRoomItemEntity<WsBetResultEntity>);
+      return BettingLeftItem(index,logic,gameRoomItemEntity  );
     }
      return SizedBox();
   }

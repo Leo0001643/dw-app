@@ -224,11 +224,13 @@ void connectWebSocket({Function? onConnected}) async {
     if (AppData.user()?.username == result.username) {
     } else {
     }
+    print("=====>3");
     GameRoomItemEntity gameRoomItemEntity=GameRoomItemEntity(type: type,data: result);
     state.gameRoomItemEntityList .add(gameRoomItemEntity);
     if(scrollController.hasClients) {
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
     }
+    print("=====>4");
     update(["gameRoomLogicList"]);
   }
 
