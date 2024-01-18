@@ -1,4 +1,6 @@
 
+import 'package:leisure_games/app/app_data.dart';
+
 import '../game_request.dart';
 
 class LoginRequest extends GameRequest {
@@ -15,6 +17,8 @@ class LoginRequest extends GameRequest {
     params["table_id"] = table_id; // 房间id
     params["game_type"] = game_type; // 房间id
     params["room_id"] = room_id; // 房间id
+    params["oid"] =  AppData.user()?.oid??"";
+    params["type"] = "login"; // 房间id
     return params;
   }
 }

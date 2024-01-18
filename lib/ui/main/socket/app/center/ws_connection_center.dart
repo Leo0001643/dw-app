@@ -98,7 +98,7 @@ class WsConnectionCenter {
         // 开启心跳
         mWsService.target?.startHeart();
       } else if (connectStatus == WebSocketConnectStatus.failed) {
-        // reconnect();
+        reconnect();
       } else if (connectStatus == WebSocketConnectStatus.reconnect) {
         if (prepareReConnect()) {
           reconnect();
@@ -185,7 +185,7 @@ class WsConnectionCenter {
     //连接成功
     mReconectCount = 0;
     firstReconnectTime = 0;
-    dzLog('建立连接成功的 connectSessionId =====> $connectSessionId');
+    dzLog('建立连接成功的 ');
     // 开启监听
     streamSubscription = _channel!.stream.handleError((err) {
       if (err is WebSocketChannelException) {
@@ -194,6 +194,7 @@ class WsConnectionCenter {
         dzLog("流错误2");
       }
     }).listen((event) {
+      print("=========>有数据过来了");
       // 监听Socket正常返回数据
       _onData(event);
     }, onError: (err) {
@@ -202,7 +203,7 @@ class WsConnectionCenter {
       _syncConnectState(WebSocketConnectStatus.failed);
     }, onDone: () {
       // 监听socket关闭或者服务器发送关闭
-      dzLog("onDone ");
+      dzLog("onDone-----> ");
       _syncConnectState(WebSocketConnectStatus.failed);
     });
     // 同步连接成功状态
@@ -296,7 +297,7 @@ class WsConnectionCenter {
   // 业务处理
   void _onData(event) {
     // 处理接收到的数据
-    dzLog("接收消息 ${DateTime.now().millisecondsSinceEpoch}");
+    dzLog("======>Socket接收消息   ${event}");
     //消息解密
     GameResponse response = GameResponse.fromJson(event);
     // 发送给ws服务
@@ -373,7 +374,10 @@ class WsConnectionCenter {
     try {
       if (jsonData is String) {
         jsonData = utf8.encode(jsonData);
+      }else{
+        jsonData = jsonEncode(jsonData);
       }
+      print("发送数据----->   ${jsonData}");
       _channel!.sink.add(jsonData);
     } catch (error, stackTrace) {
       dzLog("sendRequest excpetion = $error stackTree = $stackTrace");
@@ -384,31 +388,29 @@ class WsConnectionCenter {
     } else {
       request.timeout = 3000;
     }
-    dzLog("关键协议【${request.type}】发送，超时时间: ${request.timeout}");
     // 添加超时操作
-    await Future.delayed(Duration(milliseconds: request.timeout!), () {
-      dzLog("abc2-${request.type}");
-      GameRequest? cachedRequest = _removeRequestCache(requestKey);
-      if (cachedRequest != null) {
-        // 消息没有返回，则触发重连机制
-        cachedRequest.requestTimeout();
-        if (needReconnectWhenTimeOut(cachedRequest.type!)) {
-          dzLog('协议超时重连 type == ${cachedRequest.type}');
-          reconnect(force: true); //立刻重连
-        }
-        if (onTimeout != null) {
-          // 通知上层某个请求类型出现超时
-          onTimeout!(cachedRequest.type);
-        }
-      }
-    });
-    dzLog("abc1-${request.type}");
+    // await Future.delayed(Duration(milliseconds: request.timeout!), () {
+    //   dzLog("abc2-${request.type}");
+    //   GameRequest? cachedRequest = _removeRequestCache(requestKey);
+    //   if (cachedRequest != null) {
+    //     // 消息没有返回，则触发重连机制
+    //     cachedRequest.requestTimeout();
+    //     if (needReconnectWhenTimeOut(cachedRequest.type!)) {
+    //       dzLog('协议超时重连 type == ${cachedRequest.type}');
+    //       reconnect(force: true); //立刻重连
+    //     }
+    //     if (onTimeout != null) {
+    //       // 通知上层某个请求类型出现超时
+    //       onTimeout!(cachedRequest.type);
+    //     }
+    //   }
+    // });
   }
 
   // 超时重连协议
   bool needReconnectWhenTimeOut(String? type) {
     if (type == "connect") {
-      return true;
+      return false;
     }
     return false;
   }

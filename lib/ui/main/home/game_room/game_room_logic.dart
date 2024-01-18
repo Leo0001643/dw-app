@@ -65,7 +65,7 @@ class GameRoomLogic extends GetxController {
     }) ;
 
     Future.delayed(Duration(seconds: 2),(){
-      GameDataServiceCenter.instance.wSLogin(table_id:"${room.id??0}",room_id:"${ room.roomId??0}",game_type:"${state.roomType.value}" );
+      GameDataServiceCenter.instance.wSLogin(table_id:"${room.id??0}",room_id:"${ room.roomId??0}",game_type:"${state.room.value.gameType}" );
     });
 
     HttpService.getPC28Odds(room.id.em()).then((value) {

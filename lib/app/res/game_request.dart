@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/ui/main/socket/game_connection_center.dart';
@@ -135,16 +136,16 @@ class GameRequest {
     String requestTime = "${currentTime + serverTimeInterval}";
 
     // 设置公共参数
-    Map<String, dynamic> headers = {"machineModel":Constants.model(),
+    Map<String, dynamic> headers =
+    {"machineModel":Constants.model(),
       "siteId":"9000",
       "siteType":"1",
       "terminal":"APP",
       "version":Constants.version()};
-    headers["userId"] = userId; // 用户ID
+
     // 具体请求参数
-    Map<String, dynamic>? params_ = requestParams();
-    params_?.forEach((key, value) =>headers[key]=value
-    );
+    params  = requestParams();
+    params?.forEach((key, value) { headers[key]=value;});
     return headers;
   }
   Map<String, dynamic>? requestParams() {
@@ -165,8 +166,7 @@ class GameRequest {
     map["type"] = type;
     map["serviceTypeId"] = serviceTypeId;
     map["timeout"] = timeout;
-    var tmpParams = params ?? requestParams();
-    tmpParams?.forEach((key, value) { map[key]=value;});
+    map["params"] = params ?? requestParams();
     return map;
   }
 
