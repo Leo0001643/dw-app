@@ -1,5 +1,6 @@
 
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
 
 import '../game_request.dart';
 
@@ -18,7 +19,11 @@ class LoginRequest extends GameRequest {
     params["game_type"] = game_type; // 房间id
     params["room_id"] = room_id; // 房间id
     params["oid"] =  AppData.user()?.oid??"";
-    params["type"] = "login"; // 房间id
+    params["client_name"] =  AppData.user()?.username??"";
+    params["site_id"] =  "9000";
+    params["terminal"] =  "APP";
+    params["version"] =  Constants.version();
+
     return params;
   }
 }

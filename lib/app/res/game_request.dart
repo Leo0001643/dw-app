@@ -137,11 +137,9 @@ class GameRequest {
 
     // 设置公共参数
     Map<String, dynamic> headers =
-    {"machineModel":Constants.model(),
-      "siteId":"9000",
-      "siteType":"1",
-      "terminal":"APP",
-      "version":Constants.version()};
+    {
+      "type": type,
+    };
 
     // 具体请求参数
     params  = requestParams();

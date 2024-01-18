@@ -21,7 +21,9 @@ class GameRoomComputeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return GetBuilder<GameRoomLogic>(builder: (logic) {
+    return GetBuilder<GameRoomLogic>(
+        id: "gameRoomComputeWidget",
+        builder: (logic) {
       GameRoomState state = logic.state;
       var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
       return  Container(

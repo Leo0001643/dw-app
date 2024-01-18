@@ -194,7 +194,6 @@ class WsConnectionCenter {
         dzLog("流错误2");
       }
     }).listen((event) {
-      print("=========>有数据过来了");
       // 监听Socket正常返回数据
       _onData(event);
     }, onError: (err) {
@@ -297,10 +296,12 @@ class WsConnectionCenter {
   // 业务处理
   void _onData(event) {
     // 处理接收到的数据
-    dzLog("======>Socket接收消息   ${event}");
+
     //消息解密
     GameResponse response = GameResponse.fromJson(event);
-    // 发送给ws服务
+    // 发送给ws服务haohao
+    dzLog("======>Socket接收消息  ${response.type }");
+
     mWsService.target?.onReceivedData(response);
     // 判断下发的数据是请求还是通知，先简单处理
     if (response.type == GameResponseType.kickout.number) {
@@ -317,6 +318,8 @@ class WsConnectionCenter {
       // 子心跳包处理
       mWsService.target?.processResponse(response);
     }else {
+
+      dzLog("======>成功2  ${response.type }");
       // 请求响应处理
       String responseKey = response.responseKey();
       GameRequest? request = _removeRequestCache(responseKey);
@@ -377,7 +380,7 @@ class WsConnectionCenter {
       }else{
         jsonData = jsonEncode(jsonData);
       }
-      print("发送数据----->   ${jsonData}");
+      dzLog("发送数据----->   ${jsonData}");
       _channel!.sink.add(jsonData);
     } catch (error, stackTrace) {
       dzLog("sendRequest excpetion = $error stackTree = $stackTrace");

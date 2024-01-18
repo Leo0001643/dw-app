@@ -49,7 +49,12 @@ class TextTimerLogic {
     var diffTime =
         pc28PlanEntity.timestamp! - DateTime.now().millisecondsSinceEpoch;
     countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
-      timeCountOnly(diffTime, pc28lottoRoom, pc28PlanEntity);
+      try{
+        timeCountOnly(diffTime, pc28lottoRoom, pc28PlanEntity);
+      }catch(e) {
+        print("loadTimerData  倒计时  报错");
+      }
+
       // 如果倒计时结束，取消计时器
       if (count <= 0) {
         countdownTimer?.cancel();
@@ -80,7 +85,7 @@ class TextTimerLogic {
      if(allTime[key]['data']==null) {
        state.text_timer.value = Intr().dengdaikaipan;
      }
-      if (allTime[key]['data'].length > 1) {
+      if (allTime[key]['data']?.length > 1) {
         for (int s = 0; s < allTime[key]['data'].length - 1; s++) {
           int onlineT = DateTime.now().millisecondsSinceEpoch +
               int.parse(diffTime.toString());
