@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,8 +14,10 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
+import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 class GameRoomComputeWidget extends StatelessWidget {
   final logic = Get.find<GameRoomLogic>();
@@ -24,8 +28,13 @@ class GameRoomComputeWidget extends StatelessWidget {
     return GetBuilder<GameRoomLogic>(
         id: "gameRoomComputeWidget",
         builder: (logic) {
+          int a;
       GameRoomState state = logic.state;
       var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
+      WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
+      String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
+      print("数据: ${jsonEncode(headWSLotteryEntityData?.toJson())}");
+      print("----->termData ${termData}");
       return  Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -45,7 +54,7 @@ class GameRoomComputeWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                        Text(Intr().dixqi([termData]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
