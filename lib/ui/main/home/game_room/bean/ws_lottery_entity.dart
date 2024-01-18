@@ -51,14 +51,14 @@ class WSLotteryEntityData {
         this.luckyNum});
 
   WSLotteryEntityData.fromJson(Map<String, dynamic> json) {
-    originalNum = json['originalNum'];
-    gameType = json['gameType'];
-    billCount = json['billCount'];
-    closeTime = json['closeTime'];
-    term = json['term'];
-    state = json['state'];
-    openTime = json['openTime'];
-    luckyNum = json['luckyNum'];
+    originalNum = "${json['originalNum']}";
+    gameType = "${json['gameType']}";
+    billCount = "${json['billCount']}";
+    closeTime = "${json['closeTime']}";
+    term ="${json['term']}";
+    state = "${json['state']}";
+    openTime = "${json['openTime']}";
+    luckyNum ="${json['luckyNum']}";
   }
 
   Map<String, dynamic> toJson() {

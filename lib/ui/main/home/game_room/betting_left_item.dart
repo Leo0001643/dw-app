@@ -10,13 +10,16 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
 class BettingLeftItem extends StatefulWidget{
 
   final int index;
   final GameRoomLogic logic;
-  BettingLeftItem(this.index,this.logic);
+  final GameRoomItemEntity<WsBetResultEntity> gameRoomItemEntity;
+  BettingLeftItem(this.index,this.logic,this.gameRoomItemEntity);
 
   @override
   State<StatefulWidget> createState() =>StateBettingLeftItem();
@@ -24,10 +27,9 @@ class BettingLeftItem extends StatefulWidget{
 }
 
 class StateBettingLeftItem extends State<BettingLeftItem>{
-
-
   @override
   Widget build(BuildContext context) {
+    WsBetResultEntity? wsBetResultEntity=widget.gameRoomItemEntity.data;
     return Container(
       child: Column(
         children: [
@@ -37,12 +39,12 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             child: Row(
               children: [
                 GFAvatar(
-                  backgroundImage: WidgetUtils().buildImageProvider(ImageX.icon_avatar,),
+                  backgroundImage: WidgetUtils().buildImageProvider(wsBetResultEntity?.avatar??ImageX.icon_avatar,),
                   shape: GFAvatarShape.circle,
                   radius: 16.r,
                 ),
                 SizedBox(width: 5.w,),
-                Text("Zoe",style: TextStyle(fontSize: 14.sp,color: ColorX.text606(),),),
+                Text(wsBetResultEntity?.nickname??"",style: TextStyle(fontSize: 14.sp,color: ColorX.text606(),),),
               ],
             ),
           ),

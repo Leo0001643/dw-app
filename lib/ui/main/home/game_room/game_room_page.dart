@@ -13,6 +13,8 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/betting_left_item.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/game_room_compute_widget.dart';
@@ -83,9 +85,12 @@ class _GameRoomPageState extends State<GameRoomPage> {
               child: Stack(
                 children: [
                   ListView.builder(
-                    itemCount: 10,
+                    controller: logic.scrollController,
+                    itemCount: state.gameRoomItemEntityList.length,
                     itemBuilder: (context,index){
-                      return BettingLeftItem(index,logic);
+                      GameRoomItemEntity gameRoomItemEntity=state.gameRoomItemEntityList[index];
+                     return buildItemWidget(index,logic,gameRoomItemEntity);
+
                     },
                   ),
                   buildFloatingBtn((){ DialogUtils().showBulletBtmDialog(context, logic,(v){
@@ -186,6 +191,14 @@ class _GameRoomPageState extends State<GameRoomPage> {
         ),
       );
     });
+  }
+
+  Widget buildItemWidget(int index, GameRoomLogic logic, GameRoomItemEntity gameRoomItemEntity) {
+
+    if(gameRoomItemEntity.type=="bet_result") {
+      return BettingLeftItem(index,logic,gameRoomItemEntity as GameRoomItemEntity<WsBetResultEntity>);
+    }
+     return SizedBox();
   }
 
 }

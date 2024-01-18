@@ -12,7 +12,11 @@ import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_gif_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_pic_entity.dart';
 import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
 import 'package:leisure_games/ui/main/socket/app/center/impl/game_notification_center.dart';
 import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
@@ -24,6 +28,7 @@ import 'game_room_state.dart';
 
 class GameRoomLogic extends GetxController  implements GameNotificationListener{
   final GameRoomState state = GameRoomState();
+  ScrollController scrollController=ScrollController();
   WSLotteryEntityData? headWSLotteryEntityData;
   @override
   void onReady() {
@@ -159,9 +164,12 @@ void connectWebSocket({Function? onConnected}) async {
   @override
   void notificationCallBack(GameResponse response) {
     print("------>response   ${response.data}");
-    switch(response.type) {
+    Map<String,dynamic> data=jsonDecode(response.data);
+    String type=data["type"]??"";
+    print("------>response  222");
+    switch(type) {
       case "bet_result":
-
+        handleBetResult(type,response);
         break;
       case "lottery":
         handleLottery(response);
@@ -170,10 +178,10 @@ void connectWebSocket({Function? onConnected}) async {
 
         break;
       case "msg_get_pic":
-
+        handleMsgGetPic(response);
         break;
       case "msg_get_gif":
-
+        handleMsgGetGif(response);
         break;
 
     }
@@ -209,5 +217,35 @@ void connectWebSocket({Function? onConnected}) async {
     // TODO: implement dispose
     super.dispose();
   }
+
+  void handleBetResult(String type,GameResponse response) {
+
+    WsBetResultEntity result=WsBetResultEntity.fromJson(jsonDecode(response.data));
+    if (AppData.user()?.username == result.username) {
+    } else {
+    }
+    GameRoomItemEntity gameRoomItemEntity=GameRoomItemEntity(type: type,data: result);
+    state.gameRoomItemEntityList .add(gameRoomItemEntity);
+    if(scrollController.hasClients) {
+      scrollController.jumpTo(scrollController.position.maxScrollExtent);
+    }
+    update();
+  }
+
+  void handleMsgGetGif(GameResponse response) {
+    WsMsgGetGifEntity result=WsMsgGetGifEntity.fromJson(jsonDecode(response.data));
+
+
+
+  }
+
+  void handleMsgGetPic(GameResponse response) {
+    WsMsgGetPicEntity wsLotteryEntity=WsMsgGetPicEntity.fromJson(jsonDecode(response.data));
+
+
+  }
+
+
+
 //
 }
