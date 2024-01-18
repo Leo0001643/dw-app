@@ -725,7 +725,7 @@ class Intr extends Translations{
       "zhudan":"注单",
       "mipai":"咪牌",
       "qushi":"趋势",
-      "dixqi":"第%s期",
+      "dixqi":"%s",
       "juelidixqi":"距离第%s期",
       "zongyue":"总余额",
       "touzhu":"投注",

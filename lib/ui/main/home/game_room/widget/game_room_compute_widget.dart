@@ -34,7 +34,6 @@ class GameRoomComputeWidget extends StatelessWidget {
       WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
       String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
       print("数据: ${jsonEncode(headWSLotteryEntityData?.toJson())}");
-      print("----->termData ${termData}");
       return  Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -246,38 +245,46 @@ class GameRoomComputeWidget extends StatelessWidget {
 
   Widget buildCurrentTermType(GameRoomLogic logic,BuildContext context) {
     GameRoomState state = logic.state;
+    WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
+    String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
+    print("数据: ${jsonEncode(headWSLotteryEntityData?.toJson())}");
+    List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
     var color = state.roomType.value == 1 ? ColorX.text0917():ColorX.color_ffe0ac;
+
+
+    // var color = state.roomType.value == 1 ? ColorX.color_10_fc2:ColorX.color_c7956f;
+    var textColor = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
     return InkWell(
       onTap: ()=> DialogUtils().showHistoryLotteryBtmDialog(context,logic),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
+          Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
           SizedBox(width: 5.w,),
-          buildDrawNum("5",logic),
+          buildDrawNum("${arr2[0]}",logic),
           buildDrawMark("+",color),
-          buildDrawNum("8",logic),
+          buildDrawNum("${arr2[1]}",logic),
           buildDrawMark("+",color),
-          buildDrawNum("5",logic),
+          buildDrawNum("${arr2[2]}",logic),
           buildDrawMark("=",color),
-          buildDrawResult("22",logic),
+          buildDrawResult("${arr2[3]}",logic,color: GameRuleUtil.getBallNewColor(arr2[3])),
           // SizedBox(width: 5.w,),
-          Text("(大 小)",style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),),
+          Text("${ GameRuleUtil.getDXDS(arr2[3])}",style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),),
           Image.asset(ImageX.icon_down_black,color: color,),
         ],
       ),
     );
   }
 
-  Widget buildDrawResult(String result ,GameRoomLogic logic) {
+  Widget buildDrawResult(String result ,GameRoomLogic logic,{Color? color,Color? textColor}) {
   GameRoomState state = logic.state;
-    var color = state.roomType.value == 1 ? ColorX.color_10_fc2:ColorX.color_c7956f;
-    var textColor = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
+  var color1 = state.roomType.value == 1 ? ColorX.color_10_fc2:ColorX.color_c7956f;
+  var textColor1 = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
     return Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: color,borderRadius: BorderRadius.circular(15.r),),
-      child: Text(result, style: TextStyle(fontSize: 14.sp,color: textColor,fontWeight: FontWeight.w600),),
+      decoration: BoxDecoration(color: color??color1,borderRadius: BorderRadius.circular(15.r),),
+      child: Text(result, style: TextStyle(fontSize: 14.sp,color: textColor??textColor1,fontWeight: FontWeight.w600),),
     );
   }
 

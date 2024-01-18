@@ -275,7 +275,7 @@ class GameRuleUtil {
    * @param sum
    * @return
    */
-  static Widget getBallNewColor(int sum) {
+  static Color getBallNewColor(int sum) {
     // List<int> redBall = new List<int> { 1, 2, 7, 8, 12, 13, 18, 19, 23, 24 };
     // List<int> blueBall = new List<int> { 3, 4, 9, 10, 14, 15, 20, 25, 26 };
     // List<int> greenBall = new List<int> { 0, 5, 6, 11, 16, 17, 21, 22, 27 };
@@ -298,13 +298,7 @@ class GameRuleUtil {
       case 45: //红波
       case 46: //红波
 
-        return Container(
-          width: 24,
-          height: 24,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              border: Border.all(color: Colors.red, width: 5)),
-        );
+        return Colors.red;
 
       case 3:
       case 4:
@@ -323,13 +317,7 @@ class GameRuleUtil {
       case 47: //蓝波
       case 48: //蓝波
 
-        return Container(
-          width: 24,
-          height: 24,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              border: Border.all(color: Color(0xFFC3866c5), width: 5)),
-        );
+        return Color(0xFFC3866c5);
       case 0:
       case 5:
       case 6:
@@ -347,21 +335,9 @@ class GameRuleUtil {
       case 43: //绿波
       case 44: //绿波
       case 49: //绿波
-        return Container(
-          width: 24,
-          height: 24,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              border: Border.all(color: Colors.green, width: 5)),
-        );
+        return  Colors.green;
       default:
-        return Container(
-          width: 24,
-          height: 24,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              border: Border.all(color: Colors.green, width: 5)),
-        );
+        return  Colors.green;
     }
   }
 

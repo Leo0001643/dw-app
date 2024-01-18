@@ -31,7 +31,7 @@ class WSLotteryEntity {
 }
 
 class WSLotteryEntityData {
-  String? originalNum;
+  String?   originalNum;
   String? gameType;
   String? billCount;
   String? closeTime;
