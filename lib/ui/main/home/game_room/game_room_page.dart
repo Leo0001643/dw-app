@@ -18,6 +18,7 @@ import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.d
 import 'package:leisure_games/ui/main/home/game_room/betting_left_item.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/game_room_compute_widget.dart';
+import 'package:leisure_games/ui/main/home/game_room/widget/open_lottery_item.dart';
 
 import '../../../../main.dart';
 import '../../ends_drawer_view.dart';
@@ -202,6 +203,8 @@ class _GameRoomPageState extends State<GameRoomPage> {
     print("----------index ${index}  ");
     if(gameRoomItemEntity.type=="bet_result") {
       return BettingLeftItem(index,logic,gameRoomItemEntity  );
+    }else if(gameRoomItemEntity.type=="lottery") {
+      return OpenLotteryItem(index,logic,gameRoomItemEntity  );
     }
      return SizedBox();
   }

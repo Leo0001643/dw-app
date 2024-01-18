@@ -676,13 +676,13 @@ class GameRuleUtil {
   /**
    * 获取第几期样式
    */
-  static String getSSB(String qiShu) {
+  static String getSSB(String qiShu,{String? year="2024"}) {
     String ssb = "";
     if (qiShu.isNotEmpty == true && qiShu.length > 8) {
       qiShu = qiShu.substring(qiShu.length - 8, qiShu.length);
       String di = "第";
       String qi = "期";
-      ssb = " ${di} 2024$qiShu $qi";
+      ssb = " ${di}${year}$qiShu $qi";
       // ssb.setSpan(
       //     new ForegroundColorSpan(Color.parseColor("#fe2427")), di.length(),
       //     di.length() + qiShu.length(),

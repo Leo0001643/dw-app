@@ -245,7 +245,7 @@ class GameRoomComputeWidget extends StatelessWidget {
   Widget buildCurrentTermType(GameRoomLogic logic,BuildContext context) {
     GameRoomState state = logic.state;
     WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
-    String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
+    String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??"",year:""); // 4
     List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
     var color = state.roomType.value == 1 ? ColorX.text0917():ColorX.color_ffe0ac;
 
@@ -254,22 +254,25 @@ class GameRoomComputeWidget extends StatelessWidget {
     var textColor = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
     return InkWell(
       onTap: ()=> DialogUtils().showHistoryLotteryBtmDialog(context,logic),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
-          SizedBox(width: 5.w,),
-          buildDrawNum("${arr2[0]}",logic),
-          buildDrawMark("+",color),
-          buildDrawNum("${arr2[1]}",logic),
-          buildDrawMark("+",color),
-          buildDrawNum("${arr2[2]}",logic),
-          buildDrawMark("=",color),
-          buildDrawResult("${arr2[3]}",logic,color: GameRuleUtil.getBallNewColor(arr2[3])),
-          // SizedBox(width: 5.w,),
-          Text("${ GameRuleUtil.getDXDS(arr2[3])}",style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),),
-          Image.asset(ImageX.icon_down_black,color: color,),
-        ],
+      child:SingleChildScrollView(
+        scrollDirection:Axis.horizontal,
+        child:  Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
+            SizedBox(width: 5.w,),
+            buildDrawNum("${arr2[0]}",logic),
+            buildDrawMark("+",color),
+            buildDrawNum("${arr2[1]}",logic),
+            buildDrawMark("+",color),
+            buildDrawNum("${arr2[2]}",logic),
+            buildDrawMark("=",color),
+            buildDrawResult("${arr2[3]}",logic,color: GameRuleUtil.getBallNewColor(arr2[3])),
+            // SizedBox(width: 5.w,),
+            Text("${ GameRuleUtil.getDXDS(arr2[3])}",style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),),
+            Image.asset(ImageX.icon_down_black,color: color,),
+          ],
+        ),
       ),
     );
   }
@@ -281,7 +284,9 @@ class GameRoomComputeWidget extends StatelessWidget {
     return Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: color??color1,borderRadius: BorderRadius.circular(15.r),),
+      decoration: BoxDecoration(
+        border: Border.all( color: color??color1,width: 2)
+        ,borderRadius: BorderRadius.circular(15.r),),
       child: Text(result, style: TextStyle(fontSize: 14.sp,color: textColor??textColor1,fontWeight: FontWeight.w600),),
     );
   }

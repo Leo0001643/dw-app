@@ -3,6 +3,7 @@
 
 import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
 import 'package:leisure_games/ui/main/socket/app/ws_main_service.dart';
+import 'package:leisure_games/ui/main/socket/game_data_service_center.dart';
 
 import 'game_isolate.dart';
 
@@ -46,8 +47,7 @@ class AppInst {
   // 关闭Ws
   void stopWs() {
     print("AppInst 关闭长连接");
-    // GameDataServiceCenter.instance.stopConnection();
-    // GameDataServiceCenter.instance.updateUserInfos('', '', 0, envir);
+    GameDataServiceCenter.instance.stopConnection();
   }
 
   // App是可见状态并且接受用户的交互

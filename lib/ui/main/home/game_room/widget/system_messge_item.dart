@@ -16,7 +16,7 @@ import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
-import 'utils/game_rule_util.dart';
+import '../utils/game_rule_util.dart';
 
 class SystemMessgeItem extends StatefulWidget{
 
