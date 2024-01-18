@@ -19,7 +19,7 @@ class BettingLeftItem extends StatefulWidget{
   final int index;
   final GameRoomLogic logic;
   final GameRoomItemEntity<WsBetResultEntity> gameRoomItemEntity;
-  BettingLeftItem(this.index,this.logic,this.gameRoomItemEntity);
+  const BettingLeftItem(this.index,this.logic,this.gameRoomItemEntity, {super.key});
 
   @override
   State<StatefulWidget> createState() =>StateBettingLeftItem();

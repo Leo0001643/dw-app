@@ -229,7 +229,7 @@ void connectWebSocket({Function? onConnected}) async {
     if(scrollController.hasClients) {
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
     }
-    update();
+    update(["gameRoomLogicList"]);
   }
 
   void handleMsgGetGif(GameResponse response) {

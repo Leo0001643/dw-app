@@ -68,7 +68,6 @@ class _GameRoomPageState extends State<GameRoomPage> {
         child: Column(
           children: [
             Obx(() {
-              var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
               return Container(
                 decoration: buildBoxDecorationType(),
                 margin: EdgeInsets.only(left: 10.w,right: 10.w,top: 10.h),
@@ -82,21 +81,26 @@ class _GameRoomPageState extends State<GameRoomPage> {
               );
             }),
             Expanded(
-              child: Stack(
-                children: [
-                  ListView.builder(
-                    controller: logic.scrollController,
-                    itemCount: state.gameRoomItemEntityList.length,
-                    itemBuilder: (context,index){
-                      GameRoomItemEntity gameRoomItemEntity=state.gameRoomItemEntityList[index];
-                     return buildItemWidget(index,logic,gameRoomItemEntity);
+              child: GetBuilder<GameRoomLogic>(
+                id: "gameRoomLogicList",
+                builder: (logic){
+                  return Stack(
+                    children: [
+                      ListView.builder(
+                        controller: logic.scrollController,
+                        itemCount: state.gameRoomItemEntityList.length,
+                        itemBuilder: (context,index){
+                          GameRoomItemEntity gameRoomItemEntity=state.gameRoomItemEntityList[index];
+                          return buildItemWidget(index,logic,gameRoomItemEntity);
 
-                    },
-                  ),
-                  buildFloatingBtn((){ DialogUtils().showBulletBtmDialog(context, logic,(v){
-                    showToast("${v.length}");
-                  }); }),
-                ],
+                        },
+                      ),
+                      buildFloatingBtn((){ DialogUtils().showBulletBtmDialog(context, logic,(v){
+                        showToast("${v.length}");
+                      }); }),
+                    ],
+                  );
+                },
               ),
             ),
             Container(
@@ -194,7 +198,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
   }
 
   Widget buildItemWidget(int index, GameRoomLogic logic, GameRoomItemEntity gameRoomItemEntity) {
-
+    print("----------index ${index}  ");
     if(gameRoomItemEntity.type=="bet_result") {
       return BettingLeftItem(index,logic,gameRoomItemEntity as GameRoomItemEntity<WsBetResultEntity>);
     }
