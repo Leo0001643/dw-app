@@ -40,6 +40,8 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
       String betMoney = c?.c??"0";
       allMonny+=int.tryParse(betMoney)??0;
     }
+
+    print("=========>avatar  ${wsBetResultEntity?.avatar}");
     return Container(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -50,7 +52,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             child: Row(
               children: [
                 GFAvatar(
-                  backgroundImage: WidgetUtils().buildImageProvider(wsBetResultEntity?.avatar??ImageX.icon_avatar,),
+                  backgroundImage: AssetImage('assets/images/${wsBetResultEntity?.avatar??ImageX.icon_avatar}.png'),
                   shape: GFAvatarShape.circle,
                   radius: 16.r,
                 ),
