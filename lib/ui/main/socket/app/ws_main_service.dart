@@ -173,24 +173,25 @@ class WSMainService extends IsolateService {
   // 事件通知
   @override
   void dispatchResponse(GameResponse response) {
+    print("===========>到了这里  ${_responseListeners.length}");
     if (response.type == "ping") {
       // 收到心跳包 特殊处理
       // print("na = ${response.responseTypeId}");
     } else {
     }
-    String paramKey = response.responseKey();
-    DXIsolateParam? tmpIsolatePram = mRequestMap.remove(paramKey);
-    if (tmpIsolatePram != null) {
-      print("WSMainService 处理Request = $paramKey");
-      tmpIsolatePram.completer.complete(response);
-    } else {
+    // String paramKey = response.responseKey();
+    // DXIsolateParam? tmpIsolatePram = mRequestMap.remove(paramKey);
+    // if (tmpIsolatePram != null) {
+    //   print("WSMainService 处理Request = $paramKey");
+    //   tmpIsolatePram.completer.complete(response);
+    // } else {
       // 转发出去
       for (var listener in _responseListeners) {
         if (listener.supportHandleResponse(response)) {
           listener.notificationCallBack(response);
         }
       }
-    }
+    // }
   }
   //!end class ws service
 }

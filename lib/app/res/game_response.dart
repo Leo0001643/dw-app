@@ -237,13 +237,13 @@ enum GameResponseErrorCode {
 
 class GameResponse {
   /// 状态码
-  late int code;
+   int? code;
 
   /// 消息提示
-  late String? msg;
+   String? msg;
 
   /// 响应数据，json对象
-  late dynamic data;
+   dynamic data;
 
   String? type;
   /// 区分 德州/短牌 ，默认是德州 1
@@ -251,13 +251,10 @@ class GameResponse {
 
   GameResponse();
 
-  GameResponse.fromJson(Map<String, dynamic> json) {
-    code = json["code"];
-    msg = json["msg"];
-    type = json["type"];
-    serviceTypeId = json["serviceTypeId"];
+  GameResponse.fromJson(String json) {
+    data=json;
   }
-  String messageId="";
+  String? messageId="";
   String responseKey() {
     if (messageId != null) {
       return "$type-$messageId";

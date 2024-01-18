@@ -175,7 +175,7 @@ class WsConnectionCenter {
     dzLog("发起建立连接的 url = $url");
     try {
       _channel = IOWebSocketChannel.connect(url,
-          connectTimeout: const Duration(seconds: 10));
+          connectTimeout: const Duration(seconds: 3));
       await _channel?.ready;
     } catch (err) {
       dzLog('建立连接失败，继续重连 $err');
@@ -296,12 +296,10 @@ class WsConnectionCenter {
   // 业务处理
   void _onData(event) {
     // 处理接收到的数据
-
+    dzLog("======>Socket接收消息${event}  ");
     //消息解密
     GameResponse response = GameResponse.fromJson(event);
     // 发送给ws服务haohao
-    dzLog("======>Socket接收消息  ${response.type }");
-
     mWsService.target?.onReceivedData(response);
     // 判断下发的数据是请求还是通知，先简单处理
     if (response.type == GameResponseType.kickout.number) {
@@ -321,13 +319,13 @@ class WsConnectionCenter {
 
       dzLog("======>成功2  ${response.type }");
       // 请求响应处理
-      String responseKey = response.responseKey();
-      GameRequest? request = _removeRequestCache(responseKey);
-      if (request != null) {
+      // String responseKey = response.responseKey();
+      // GameRequest? request = _removeRequestCache(responseKey);
+      // if (request != null) {
         dzLog(
             "响应成功!!! code ${response.code}  请求协议  ${response.type} messageId ${response.messageId}");
         mWsService.target?.processResponse(response);
-      }
+      // }
     }
     //
     if (response.type == 100) {

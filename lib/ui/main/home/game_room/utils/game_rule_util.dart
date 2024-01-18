@@ -205,7 +205,7 @@ class GameRuleUtil {
    * @param sum
    * @return
    */
- static String getBallColor(var sum) {
+  static String getBallColor(var sum) {
     // List<int> redBall = new List<int> { 1, 2, 7, 8, 12, 13, 18, 19, 23, 24 };
     // List<int> blueBall = new List<int> { 3, 4, 9, 10, 14, 15, 20, 25, 26 };
     // List<int> greenBall = new List<int> { 0, 5, 6, 11, 16, 17, 21, 22, 27 };
@@ -335,9 +335,9 @@ class GameRuleUtil {
       case 43: //绿波
       case 44: //绿波
       case 49: //绿波
-        return  Colors.green;
+        return Colors.green;
       default:
-        return  Colors.green;
+        return Colors.green;
     }
   }
 
@@ -677,14 +677,17 @@ class GameRuleUtil {
    * 获取第几期样式
    */
   static String getSSB(String qiShu) {
-    qiShu = qiShu.substring(qiShu.length - 8, qiShu.length);
-    String di = "第";
-    String qi = "期";
-    String ssb = " ${di} $qiShu $qi";
-    // ssb.setSpan(
-    //     new ForegroundColorSpan(Color.parseColor("#fe2427")), di.length(),
-    //     di.length() + qiShu.length(),
-    //     Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+    String ssb = "";
+    if (qiShu.isNotEmpty == true && qiShu.length > 8) {
+      qiShu = qiShu.substring(qiShu.length - 8, qiShu.length);
+      String di = "第";
+      String qi = "期";
+      ssb = " ${di} $qiShu $qi";
+      // ssb.setSpan(
+      //     new ForegroundColorSpan(Color.parseColor("#fe2427")), di.length(),
+      //     di.length() + qiShu.length(),
+      //     Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+    }
     return ssb;
   }
 

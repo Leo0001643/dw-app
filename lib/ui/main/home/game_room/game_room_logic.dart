@@ -151,7 +151,7 @@ void connectWebSocket({Function? onConnected}) async {
       GameResponse gameResponse=GameResponse();
       gameResponse.data=json;
       gameResponse.type="lottery";
-      notificationCallBack(gameResponse);
+      // notificationCallBack(gameResponse);
 
     });
 
@@ -182,7 +182,7 @@ void connectWebSocket({Function? onConnected}) async {
 
   @override
   bool supportHandleResponse(GameResponse response) {
-    return false;
+    return true;
   }
 
   void handleLottery(GameResponse response) {

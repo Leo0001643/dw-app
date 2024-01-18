@@ -33,7 +33,6 @@ class GameRoomComputeWidget extends StatelessWidget {
       var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
       WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
       String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
-      print("数据: ${jsonEncode(headWSLotteryEntityData?.toJson())}");
       return  Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -247,7 +246,6 @@ class GameRoomComputeWidget extends StatelessWidget {
     GameRoomState state = logic.state;
     WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
     String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
-    print("数据: ${jsonEncode(headWSLotteryEntityData?.toJson())}");
     List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
     var color = state.roomType.value == 1 ? ColorX.text0917():ColorX.color_ffe0ac;
 
