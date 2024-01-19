@@ -4,12 +4,12 @@ import 'package:leisure_games/app/constants.dart';
 
 import '../game_request.dart';
 
-class LoginRequest extends GameRequest {
+class WsLoginRequest extends GameRequest {
   String? table_id;
   String? room_id;
 
   String? game_type;
-  LoginRequest({this.table_id,this.room_id,this.game_type})
+  WsLoginRequest({this.table_id,this.room_id,this.game_type})
       : super("login");
 
   @override

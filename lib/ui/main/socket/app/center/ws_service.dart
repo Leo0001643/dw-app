@@ -276,7 +276,7 @@ class WSService extends IsolateService {
           Map<String, dynamic> params = message[1];
           mLocation = params["location"];
         } else if (message[0] == "startConnection") {
-          mConnection?.reconnect(force: true);
+          mConnection?.connect();
         } else if (message[0] == "stopConnection") {
           stopConnection();
         } else if (message[0] == "entryResumeState") {

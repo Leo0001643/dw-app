@@ -111,16 +111,16 @@ class GameRequest {
   }
 
   void cancel() {
-    // 连接超时，子类可重写
-    GameResponse response = _customResponse();
-    response.code = GameResponseErrorCode.autoCancel.number;
-    response.msg = null;
-    if (_completer != null) {
-      _completer!.complete(response);
-    }
-    if (onCancelled != null) {
-      onCancelled!(response);
-    }
+    // // 连接超时，子类可重写
+    // GameResponse response = _customResponse();
+    // response.code = GameResponseErrorCode.autoCancel.number;
+    // response.msg = null;
+    // if (_completer != null) {
+    //   _completer!.complete(response);
+    // }
+    // if (onCancelled != null) {
+    //   onCancelled!(response);
+    // }
   }
 
   /// 记录消息id

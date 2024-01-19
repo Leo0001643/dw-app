@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
+import 'package:leisure_games/app/res/request/login_request.dart';
 import 'package:leisure_games/ui/main/socket/game_connection_center.dart';
 import 'package:leisure_games/ui/main/socket/status/websocket_connect_status.dart';
 import 'package:web_socket_channel/io.dart';
@@ -38,6 +40,7 @@ class WsConnectionCenter {
   /// close关闭
   Function? onClose;
 
+  WsLoginRequest? loginRequest;
   /// 长链接状态
   late WebSocketConnectStatus connectStatus;
 
@@ -97,14 +100,8 @@ class WsConnectionCenter {
       if (connectStatus == WebSocketConnectStatus.connected) {
         // 开启心跳
         mWsService.target?.startHeart();
-      } else if (connectStatus == WebSocketConnectStatus.failed) {
-        reconnect();
-      } else if (connectStatus == WebSocketConnectStatus.reconnect) {
-        if (prepareReConnect()) {
-          reconnect();
-        } else {
-          _syncConnectState(WebSocketConnectStatus.failed);
-        }
+      } else if (connectStatus == WebSocketConnectStatus.failed||connectStatus == WebSocketConnectStatus.reconnect) {
+          startReconnect();
       } else if (connectStatus == WebSocketConnectStatus.connecting) {
         // connecting
       } else if (connectStatus == WebSocketConnectStatus.disconnecting) {
@@ -120,6 +117,8 @@ class WsConnectionCenter {
       }
       // 同步到主线程
       mWsService.target?.syncNetState(connectStatus);
+    }else if(conState==WebSocketConnectStatus.reconnect) {
+      startReconnect();
     }
   }
 
@@ -163,7 +162,7 @@ class WsConnectionCenter {
   }
 
   // 内部重连
-  Future<bool> _connect() async {
+  Future<bool> connect() async {
 
     // 开始重连
     String url = "wss://9000ywfjn2.uy4ayov.com?language=zh";
@@ -178,7 +177,7 @@ class WsConnectionCenter {
           connectTimeout: const Duration(seconds: 3));
       await _channel?.ready;
     } catch (err) {
-      dzLog('建立连接失败，继续重连 $err');
+      print('socket链接 建立连接失败，准备重连 $err');
       _syncConnectState(WebSocketConnectStatus.reconnect);
       return false;
     }
@@ -237,17 +236,18 @@ class WsConnectionCenter {
     mReconectCount++;
     if (mReconectCount > 3) {
       // 三次重连超时 切换域名
+      return false;
       mReconectCount = 0;
       try {
-        for (WsDomain element in mDomainList) {
-          if (element.mUrl == mCurDomain) {
-            element.mBad = true;
-          }
-        }
-        //
-        WsDomain wsMain =
-            mDomainList.firstWhere((element) => element.mBad == false);
-        mCurDomain = wsMain.mUrl; // 需要clone string
+        // for (WsDomain element in mDomainList) {
+        //   if (element.mUrl == mCurDomain) {
+        //     element.mBad = true;
+        //   }
+        // }
+        // //
+        // WsDomain wsMain =
+        //     mDomainList.firstWhere((element) => element.mBad == false);
+        mCurDomain ="wss://9000ywfjn2.uy4ayov.com?language=zh";; // 需要clone string
         dzLog("切换域名成功 $mCurDomain");
         return true;
       } catch (err) {
@@ -261,36 +261,34 @@ class WsConnectionCenter {
   }
 
   // 连接（重连）函数
-  Future<void> reconnect({bool force = false}) async {
+  Future<bool> reconnect({bool force = false}) async {
     dzLog('重连开始 force:$force');
     if (!force) {
       // 手动下线或者被踢  不需要再重连
       if (_isManualClose || _isKickout) {
-        return;
+        return false;
       }
       //连接中或者已经连接上了不需要重连
       if (connectStatus == WebSocketConnectStatus.emptyUrl ||
           connectStatus == WebSocketConnectStatus.connecting) {
         dzLog('不需要重连');
-        return;
+        return false;
       }
     }
     resetFlag();
     dzLog('重连之前关闭之前连接');
     closeSocket();
-    // 重连计时
-    // if (firstReconnectTime == 0) {
-    //   firstReconnectTime = DateTime.now().millisecondsSinceEpoch;
-    // } else {
-    //   if (DateTime.now().millisecondsSinceEpoch - firstReconnectTime >
-    //       resetContentTime) {
-    //     firstReconnectTime = 0;
-    //     dzLog('重连超时，不再重连');
-    //     return;
-    //   }
-    // }
-    //
-    await _connect();
+    bool success=   await connect();
+    if(success) {
+      if(loginRequest!=null) {
+        print("准备登录消息  ");
+        Future.delayed(Duration(seconds: 2),(){
+          print("发送登录消息  ${jsonEncode(loginRequest?.params)}");
+          sendRequest(loginRequest!,reconnect: true);
+        });
+      }
+    }
+    return success;
   }
 
   // 业务处理
@@ -347,26 +345,21 @@ class WsConnectionCenter {
 
   /// 主动断开连接，可能要转为对外接口
   void closeSocket({bool isMunual = false}) {
-    _isManualClose = isMunual;
-    _syncConnectState(WebSocketConnectStatus.disconnecting);
     _clearWhenSocketClose(); //清理ws相关
-    _syncConnectState(WebSocketConnectStatus.disconnected);
-    // if (!_isManualClose) {
-    //   //不是手动断开 会通知上层
-    //   if (onDisconnect != null) {
-    //     onDisconnect!();
-    //   }
-    // } else {
-    //   if (onClose != null) {
-    //     onClose!();
-    //   }
-    // }
   }
 
-  Future<void> sendRequest(GameRequest request) async {
+  Future<void> sendRequest(GameRequest request,{bool reconnect=false}) async {
     // 添加到请求服务中
     String requestKey = request.requestKey();
     _requestCaches[requestKey] = request;
+    if(request.type=="login"&&(reconnect==false)) {
+      loginRequest=WsLoginRequest();
+      loginRequest?.table_id=request.params?["table_id"];
+      loginRequest?.type=request.type;
+      loginRequest?.room_id=request.params?["room_id"];
+      loginRequest?.game_type=request.params?["game_type"];
+      loginRequest?.params=request.params;
+    }
     // 补充公共数据
     // 将数据交给长连接通道
     dynamic jsonData =
@@ -432,6 +425,17 @@ class WsConnectionCenter {
   void dzLog(String message) {
     // debugPrint("dispatchLoggerMessage-$hashCode-$message");
     mWsService.target?.dzLog("WsConnectionCenter $message");
+  }
+
+  void startReconnect() {
+    if (prepareReConnect()) {
+      Future.delayed(Duration(seconds: 2),(){
+        reconnect();
+      });
+    } else {
+      print("重连失败放弃");
+      // _syncConnectState(WebSocketConnectStatus.failed);
+    }
   }
 
   //！end class

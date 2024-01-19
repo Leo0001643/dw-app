@@ -54,7 +54,7 @@ class GameDataServiceCenter {
     GameIsolate.instance.stopConnection();
   }
   void wSLogin({String? table_id,String? room_id,String? game_type}) async{
-    LoginRequest loginRequest=LoginRequest(table_id:table_id,room_id:room_id,game_type:game_type);
+    WsLoginRequest loginRequest=WsLoginRequest(table_id:table_id,room_id:room_id,game_type:game_type);
     GameResponse response = await requestData(loginRequest);
   }
 
