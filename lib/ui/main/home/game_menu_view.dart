@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -298,6 +300,8 @@ class StateGameMenuView extends State<GameMenuView> {
 
   Widget countDownText(List<GameKindGameKindList> list,
       GameKindGameKindList element, Rx<Pc28LottoEntity> timerGroup) {
+    print("-------->timerGroup:  ${jsonEncode(timerGroup.value)}");
+    print("-------->timerGroup:  ${jsonEncode(element)}");
     return Visibility(
       visible: element.gameKind == Constants.PC28,
       child: Positioned(
@@ -312,6 +316,7 @@ class StateGameMenuView extends State<GameMenuView> {
             ),
             margin: EdgeInsets.symmetric(vertical: 2.r, horizontal: 1.r),
             child: TextTimerPage(
+
                 TextTimerLogic(type: element.gameCode), element, timerGroup)),
       ),
     );

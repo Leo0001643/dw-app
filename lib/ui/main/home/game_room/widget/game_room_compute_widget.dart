@@ -42,39 +42,6 @@ class GameRoomComputeWidget extends StatelessWidget {
             SizedBox(height: 10.h,),
             buildCurrentTermType(logic,context),
             SizedBox(height: 10.h,),
-            Container(
-              decoration: buildRoomBoxType(),
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(Intr().dixqi([termData]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
-                        Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            buildDrawTime("00"),
-                            Text(" : ",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
-                            buildDrawTime("02"),
-                            Text(" : ",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
-                            buildDrawTime("53"),
-                            // SizedBox(width: 10.w,),
-                            // Text("End",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 6.h,),
-                  buildNotifyItem("⎡20:00] ：The game is over in 3 minutes !",state.roomType.value == 1 ? ColorX.color_091722:Colors.white),
-                  buildNotifyItem("⎡21:00] ：The game begins. 18 people in here!",state.roomType.value == 1 ? ColorX.color_091722:Colors.white),
-                  SizedBox(height: 10.h,),
-                ],
-              ),
-            ),
           ],
         ),
       );
@@ -113,7 +80,8 @@ class GameRoomComputeWidget extends StatelessWidget {
     );
   }
   Widget buildDrawTime(String time) {
-    return Container(
+    return time=="-1"?Image(image: AssetImage(ImageX.icon_room_mask),width: 24,height: 24,):
+    Container(
       width:26.r,height: 26.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -281,7 +249,7 @@ class GameRoomComputeWidget extends StatelessWidget {
   GameRoomState state = logic.state;
   var color1 = state.roomType.value == 1 ? ColorX.color_10_fc2:ColorX.color_c7956f;
   var textColor1 = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
-    return Container(
+    return (result=="-1")?Image(image: AssetImage(ImageX.icon_room_mask2),width: 46,height: 18,):Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -300,7 +268,7 @@ class GameRoomComputeWidget extends StatelessWidget {
   Widget buildDrawNum(String num,GameRoomLogic logic) {
     GameRoomState state = logic.state;
     var color = state.roomType.value == 1 ? ColorX.color_f7f8fb:ColorX.color_c7956f;
-    return Container(
+    return (num=="-1")?Image(image: AssetImage(ImageX.icon_room_mask),width: 24,height: 24,):Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(color: color,borderRadius: BorderRadius.circular(15.r),),

@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,12 +15,15 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/betting_left_item.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/game_room_compute_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/open_lottery_item.dart';
+import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
+import 'package:leisure_games/ui/main/home/text_timer/text_timer_page.dart';
 
 import '../../../../main.dart';
 import '../../ends_drawer_view.dart';
@@ -75,6 +80,15 @@ class _GameRoomPageState extends State<GameRoomPage> {
                 padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 15.w),
                 child: Column(
                   children: [
+                    // Container(
+                    //     alignment: Alignment.center,
+                    //     decoration: BoxDecoration(
+                    //       color: Colors.black54,
+                    //       borderRadius: BorderRadius.circular(100.r),
+                    //     ),
+                    //     margin: EdgeInsets.symmetric(vertical: 2.r, horizontal: 1.r),
+                    //     child: TextTimerPage(
+                    //         TextTimerLogic(type: game.gameCode), game, logic.state.pc28Lotto)),
                     GameRoomHeadWidget(),
                     GameRoomComputeWidget(),
                   ],

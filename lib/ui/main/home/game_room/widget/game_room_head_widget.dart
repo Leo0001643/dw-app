@@ -44,6 +44,7 @@ class GameRoomHeadWidget extends StatelessWidget {
               width: 3.w,
             ),
             buildYueHeader(logic),
+
             SizedBox(
               width: 50.w,
             ),

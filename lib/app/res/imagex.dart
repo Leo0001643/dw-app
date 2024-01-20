@@ -56,6 +56,8 @@ class ImageX{
   static const icon_rad_selector = 'assets/images/icon_rad_selector.png';
   static const icon_radio_check = 'assets/images/icon_radio_check.png';
   static const icon_radio_uncheck = 'assets/images/icon_radio_uncheck.png';
+  static const icon_room_mask2 = 'assets/images/icon_room_mask2.png';
+  static const icon_room_mask = 'assets/images/icon_room_mask.png';
   static const icon_result = 'assets/images/icon_result.png';
   static const icon_right_arrow = 'assets/images/icon_right_arrow.png';
   static const icon_right_black = 'assets/images/icon_right_black.png';
