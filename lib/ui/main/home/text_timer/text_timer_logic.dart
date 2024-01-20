@@ -34,6 +34,19 @@ class TextTimerLogic {
       }
     });
   }
+  void loadDataGameCode(String gameCode) {
+    //测试用
+    HttpService.getPc28LottoList().then((value) {
+      for (Pc28LottoRooms item in value.rooms!) {
+        // 判断 gameCode 和 gameType 是否相等
+        if (gameCode == item.gameType) {
+          // 执行倒计时逻辑
+          loadTimerData(item);
+        }
+      }
+    });
+  }
+
 
   void loadTimerData(Pc28LottoRooms pc28lottoRoom) {
     //请求倒计时

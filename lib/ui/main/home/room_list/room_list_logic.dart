@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -62,6 +64,7 @@ class RoomListLogic extends GetxController {
 
   void clickRoom(Pc28LottoRoomsTables? room){
     if(unEmpty(room?.name)){
+      print("跳转传入${jsonEncode(room?.toJson())}");
       Get.toNamed(Routes.game_room,arguments: room);
     }
   }

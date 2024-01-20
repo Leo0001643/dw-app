@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -37,6 +39,7 @@ class _RoomListPageState extends State<RoomListPage> {
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,onTap: (){
         DialogUtils().showSelectRoomBtmDialog(context,state.pc28Lotto.value).then((value) {
           if(unEmpty(value?.name)){
+            print("跳转传入2 ${jsonEncode(value?.toJson())}");
             Get.toNamed(Routes.game_room,arguments: value);
           }
         });
