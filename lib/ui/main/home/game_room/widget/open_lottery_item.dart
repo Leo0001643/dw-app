@@ -37,9 +37,15 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
     WSLotteryEntity? wsBetResultEntity =
         widget.gameRoomItemEntity.data as WSLotteryEntity;
     WSLotteryEntityData? wSLotteryEntityData=wsBetResultEntity.data?[0];
-    int a=int.tryParse(wSLotteryEntityData!.originalNum?[0]??"0")??0;
-    int b=int.tryParse(wSLotteryEntityData!.originalNum?[1]??"0")??0;
-    int c=int.tryParse(wSLotteryEntityData!.originalNum?[2]??"0")??0;
+    int a=-1;
+    int b=-1;
+    int c=-1;
+    if((wSLotteryEntityData?.originalNum?.length??0)==3){
+       a=int.tryParse(wSLotteryEntityData?.originalNum?[0]??"0")??0;
+       b=int.tryParse(wSLotteryEntityData?.originalNum?[1]??"0")??0;
+       c=int.tryParse(wSLotteryEntityData?.originalNum?[2]??"0")??0;
+    }
+
     return Container(
       height: 50,
       margin: EdgeInsets.only(left: 50.w,right: 20.w,bottom: 8.w,top: 8.w),
