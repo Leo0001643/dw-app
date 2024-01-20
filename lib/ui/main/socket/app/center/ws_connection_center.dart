@@ -286,9 +286,9 @@ class WsConnectionCenter {
         print("准备登录消息  ");
         Future.delayed(Duration(seconds: 2),(){
           print("发送登录消息  ${jsonEncode(loginRequest?.params)}");
-          if(loginRequest!.params?["oid"]==null) {
+          if(loginRequest!.params?["oid"]==null||"${loginRequest!.params?["oid"]}".isEmpty==true) {
             var user = AppData.user();
-            print("user  ${jsonEncode(user?.toJson())} ");
+            print("从序列化找到oid  ${jsonEncode(user?.toJson())} ");
 
             if(isEmpty(user)){
               print("user为空  放弃登录 ");
