@@ -111,15 +111,18 @@ class _GameRoomPageState extends State<GameRoomPage> {
                     child: Column(
                       children: [
                         GameRoomHotWidget(),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          controller: logic.scrollController,
-                          itemCount: state.gameRoomItemEntityList.length,
-                          itemBuilder: (context,index){
-                            GameRoomItemEntity gameRoomItemEntity=state.gameRoomItemEntityList[index];
-                            return buildItemWidget(index,logic,gameRoomItemEntity);
+                        Container(
+                          height: 450,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            controller: logic.scrollController,
+                            itemCount: state.gameRoomItemEntityList.length,
+                            itemBuilder: (context,index){
+                              GameRoomItemEntity gameRoomItemEntity=state.gameRoomItemEntityList[index];
+                              return buildItemWidget(index,logic,gameRoomItemEntity);
 
-                          },
+                            },
+                          ),
                         ),
                         buildFloatingBtn((){ DialogUtils().showBulletBtmDialog(context, logic,(v){
                           showToast("${v.length}");

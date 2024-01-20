@@ -82,11 +82,11 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                         color= ColorX.color_68_e2e;
                     }
                     return Container(
-                      padding: EdgeInsets.symmetric(vertical: 7.h,horizontal: 15.w,),
+                      padding: EdgeInsets.symmetric(vertical: 4.w,horizontal: 15.w,),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(colors: [
-                          Color(0xFFF87687),
-                          Color(0xFFF7566A),
+                          Color(0xFFFF697A).withOpacity(0.9),
+                          Color(0xFFFC4559).withOpacity(0.9),
                         ],
 
 
