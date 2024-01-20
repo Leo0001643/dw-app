@@ -41,7 +41,6 @@ class GameRoomComputeWidget extends StatelessWidget {
             Divider(height: 1.h,color: ColorX.color_f1f1f1,),
             SizedBox(height: 10.h,),
             buildCurrentTermType(logic,context),
-            SizedBox(height: 10.h,),
           ],
         ),
       );

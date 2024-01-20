@@ -260,6 +260,8 @@ class Assets {
   static const String imagesIconRightLeft = 'assets/images/icon_right_left.png';
   static const String imagesIconRmb = 'assets/images/icon_rmb.png';
   static const String imagesIconRmbGrey = 'assets/images/icon_rmb_grey.png';
+  static const String imagesIconRoomBg = 'assets/images/icon_room_bg.png';
+  static const String imagesIconRoomFire = 'assets/images/icon_room_fire.png';
   static const String imagesIconRoomMask = 'assets/images/icon_room_mask.png';
   static const String imagesIconRoomMask2 = 'assets/images/icon_room_mask2.png';
   static const String imagesIconRsGrey = 'assets/images/icon_rs_grey.png';

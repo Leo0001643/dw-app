@@ -29,6 +29,7 @@ import '../../../../main.dart';
 import '../../ends_drawer_view.dart';
 import 'game_room_logic.dart';
 import 'widget/game_room_head_widget.dart';
+import 'widget/game_room_hot_widget.dart';
 
 class GameRoomPage extends StatefulWidget {
   const GameRoomPage({Key? key}) : super(key: key);
@@ -77,7 +78,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
               return Container(
                 decoration: buildBoxDecorationType(),
                 margin: EdgeInsets.only(left: 10.w,right: 10.w,top: 10.h),
-                padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 15.w),
+                padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 15.w),
                 child: Column(
                   children: [
                     // Container(
@@ -95,30 +96,39 @@ class _GameRoomPageState extends State<GameRoomPage> {
                 ),
               );
             }),
-            Expanded(
-              child: GetBuilder<GameRoomLogic>(
+            GetBuilder<GameRoomLogic>(
                 id: "gameRoomLogicList",
                 builder: (logic){
                   print("=====>6");
-                  return Stack(
-                    children: [
-                      ListView.builder(
-                        controller: logic.scrollController,
-                        itemCount: state.gameRoomItemEntityList.length,
-                        itemBuilder: (context,index){
-                          GameRoomItemEntity gameRoomItemEntity=state.gameRoomItemEntityList[index];
-                          return buildItemWidget(index,logic,gameRoomItemEntity);
+                  return Expanded(child: Container(
+                    margin:EdgeInsets.only(right: 10.w,left:10.w,top: 12.w) ,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(ImageX.icon_room_bg),
+                            fit: BoxFit.fill
+                        )
+                    ),
+                    child: Column(
+                      children: [
+                        GameRoomHotWidget(),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          controller: logic.scrollController,
+                          itemCount: state.gameRoomItemEntityList.length,
+                          itemBuilder: (context,index){
+                            GameRoomItemEntity gameRoomItemEntity=state.gameRoomItemEntityList[index];
+                            return buildItemWidget(index,logic,gameRoomItemEntity);
 
-                        },
-                      ),
-                      buildFloatingBtn((){ DialogUtils().showBulletBtmDialog(context, logic,(v){
-                        showToast("${v.length}");
-                      }); }),
-                    ],
-                  );
+                          },
+                        ),
+                        buildFloatingBtn((){ DialogUtils().showBulletBtmDialog(context, logic,(v){
+                          showToast("${v.length}");
+                        }); }),
+                      ],
+                    ),
+                  ));
                 },
               ),
-            ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10.h),
               alignment: Alignment.center,

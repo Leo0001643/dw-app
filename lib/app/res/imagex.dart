@@ -58,6 +58,7 @@ class ImageX{
   static const icon_radio_uncheck = 'assets/images/icon_radio_uncheck.png';
   static const icon_room_mask2 = 'assets/images/icon_room_mask2.png';
   static const icon_room_mask = 'assets/images/icon_room_mask.png';
+  static const icon_room_bg = 'assets/images/icon_room_bg.png';
   static const icon_result = 'assets/images/icon_result.png';
   static const icon_right_arrow = 'assets/images/icon_right_arrow.png';
   static const icon_right_black = 'assets/images/icon_right_black.png';
@@ -177,6 +178,8 @@ class ImageX{
   static const icon_whatsapp = 'assets/images/icon_whatsapp.png';
 
   static const accountBg = 'assets/images/accountBg.png';
+  static const icon_room_fire = 'assets/images/icon_room_fire.png';
+
   static const afterLogin = 'assets/images/afterLogin.png';
   static const beforeLogin = 'assets/images/beforeLogin.png';
   static const btn_bg = 'assets/images/btn_bg.png';
