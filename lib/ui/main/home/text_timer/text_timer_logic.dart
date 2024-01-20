@@ -153,4 +153,13 @@ class TextTimerLogic {
     int seconds = sec % 60;
     return '$hours:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
   }
+
+  String subToTime(String sec) {
+    if(sec.length<3) {
+      return sec;
+    }
+    String result= sec.substring(2,sec.length);
+    print("result ${result}");
+    return result;
+  }
 }

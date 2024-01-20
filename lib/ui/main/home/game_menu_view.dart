@@ -301,7 +301,7 @@ class StateGameMenuView extends State<GameMenuView> {
   Widget countDownText(List<GameKindGameKindList> list,
       GameKindGameKindList element, Rx<Pc28LottoEntity> timerGroup) {
     print("-------->timerGroup:  ${jsonEncode(timerGroup.value)}");
-    print("-------->timerGroup:  ${jsonEncode(element)}");
+    print("-------->timerGroup2:  ${jsonEncode(element)}");
     return Visibility(
       visible: element.gameKind == Constants.PC28,
       child: Positioned(

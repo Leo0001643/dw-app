@@ -11,8 +11,10 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
+import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/text_timer_item.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 
@@ -21,7 +23,11 @@ class GameRoomHotWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return GetBuilder<GameRoomLogic>(builder: (logic) {
+
       GameRoomState state = logic.state;
+      WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
+      String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??"",year:""); // 4
+
       var textColor =
           state.roomType.value == 1 ? ColorX.text0917() : Colors.white;
       return Container(
@@ -44,7 +50,7 @@ class GameRoomHotWidget extends StatelessWidget {
                  width: 4.w,
                ),
                Text(
-                 "第789999期",
+                 "${termData}",
                  style: TextStyle(
                      fontSize: 12,
                      color: Color(0xFF091722),

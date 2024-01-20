@@ -36,7 +36,7 @@ class _TextTimerItemState extends State<TextTimerItem> {
     timerGroup = widget.timerGroup;
     widget.logic.loadDataGameCode(widget.gameCode);
     // 设置定时任务，每120秒执行一次
-    _timer = Timer.periodic(Duration(seconds: 120), (Timer timer) {
+    _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
       widget.logic.loadDataGameCode(widget.gameCode);
     });
   }
@@ -51,55 +51,67 @@ class _TextTimerItemState extends State<TextTimerItem> {
   Widget build(BuildContext context) {
     // 在这里构建你的 UI，使用 roomInf 数据
     return Obx(() {
-      if (!widget.logic.state.text_timer.value.contains(Intr().fengpanzhong)) {
-        if (widget.logic.state.text_timer.value.startsWith (Intr().dengdaikaipan)) {
-          return Text(widget.logic.state.text_timer.value,
-              style: TextStyle(color: Colors.greenAccent));
-        }
-        return Text(widget.logic.state.text_timer.value,
-            style: TextStyle(fontWeight: FontWeight.w500,color: Colors.white));
+      String result = "";
+      if ("封盘中" == widget.logic.state.text_timer.value) {
+        result = "封盘中";
       } else {
-        return Text(
-          widget.logic.state.text_timer.value,
-          style: TextStyle(color: Colors.red),
-        );
+        result = widget.logic.subToTime(widget.logic.state.text_timer.value);
       }
+      if (widget.logic.state.text_timer.value
+          .startsWith(Intr().dengdaikaipan)) {
+        return Text(widget.logic.state.text_timer.value,
+            style: TextStyle(color: Colors.greenAccent));
+      }
+      return Container(
+          height: 20,
+          padding: EdgeInsets.symmetric(
+            horizontal: 4.w,
+          ),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(6.w)),
+              color: Color(0xFFFC243B)),
+          child: Text(
+          result,
+          style:
+          TextStyle(fontWeight: FontWeight.w500, color: Colors.white,fontSize: 12,)));
+
     });
   }
 
-  buildText(){
-    return     Row(
+  buildText() {
+    return Row(
       children: [
         buildTime("02"),
-        Text(" : ",
-          style: TextStyle(fontSize: 12,color:Color(0xFFFC243B) ),),
+        Text(
+          " : ",
+          style: TextStyle(fontSize: 12, color: Color(0xFFFC243B)),
+        ),
         buildTime("59"),
-        Text(" 后结束 ",
-          style: TextStyle(fontSize: 12,color:Color(0xFFFC243B) ),),
+        Text(
+          " 后结束 ",
+          style: TextStyle(fontSize: 12, color: Color(0xFFFC243B)),
+        ),
       ],
     );
   }
-  Widget buildTime(String time)
 
-  {
-    return     Container(
+  Widget buildTime(String time) {
+    return Container(
       width: 20.w,
       height: 20.w,
       alignment: Alignment.center,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(6.w)),
-          color:Color(0xFFFC243B)
-      ),
+          color: Color(0xFFFC243B)),
       child: Text(
         "${time}",
         style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 12,
-            color: Colors.white
-        ),
+            fontWeight: FontWeight.w700, fontSize: 12, color: Colors.white),
       ),
     );
   }
+
   Widget buildUserTab(int i, String tab, String icon, Color color,
       BuildContext context, GameRoomLogic logic) {
     return InkWell(
@@ -118,5 +130,4 @@ class _TextTimerItemState extends State<TextTimerItem> {
       ),
     );
   }
-
 }

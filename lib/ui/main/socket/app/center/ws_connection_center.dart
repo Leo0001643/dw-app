@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/res/request/login_request.dart';
@@ -284,6 +286,16 @@ class WsConnectionCenter {
         print("准备登录消息  ");
         Future.delayed(Duration(seconds: 2),(){
           print("发送登录消息  ${jsonEncode(loginRequest?.params)}");
+          if(loginRequest!.params?["oid"]==null) {
+            var user = AppData.user();
+            print("user  ${jsonEncode(user?.toJson())} ");
+
+            if(isEmpty(user)){
+              print("user为空  放弃登录 ");
+              return; }
+            print("oid  ${user?.oid} ");
+            loginRequest?.params?["oid"]=user?.oid;
+          }
           sendRequest(loginRequest!,reconnect: true);
         });
       }
