@@ -41,17 +41,22 @@ class TextItemLogic extends GetxController {
   StreamSubscription? loginStream;
   var count = 100;
   String? type;
-  String? status = "分盘中";
+  String? status = "封盘中";
   String? lastStatus;
+  bool alreadyShowStop = false;
   Timer? countdownTimer;
 
   int fiveCountDownTime = -1;
+  bool showStopBetting = false;
+  bool showStartBetting = false;
+  bool firstShowStartBettingInPeriod = true;
   LotteryStatus currentStatus = LotteryStatus.initStatus;
-  setType(String? type)
-  {
-    this.type=type;
+
+  setType(String? type) {
+    this.type = type;
   }
-  TextItemLogic({ this.type});
+
+  TextItemLogic({this.type});
 
   void loadData(GameKindGameKindList gameKind) {
     //测试用
@@ -140,6 +145,7 @@ class TextItemLogic extends GetxController {
       roomcountdown[key + 'Term'] = '--';
       roomcountdown[key + 'Notice'] = allTime[key]['msg'];
     } else {
+      resetStatusWhenStart();
       if (allTime[key]['data'] == null) {
         print("++++++++++++++++等待开盘2");
         state.text_timer.value = Intr().dengdaikaipan;
@@ -163,6 +169,7 @@ class TextItemLogic extends GetxController {
             if (onlineT < allTime[key]['data'][s]['closeTime'] &&
                 onlineT > allTime[key]['data'][s]['openTime']) {
               print("显示倒计时");
+              showStartBettingTime();
               int rrtime = allTime[key]['data'][s]['closeTime'];
               int showT = (rrtime - onlineT) ~/ 1000;
               String showtime = secToTime(showT);
@@ -171,13 +178,16 @@ class TextItemLogic extends GetxController {
               if (showT <= 5) {
                 showOverTime(showT);
               }
+
               break;
             } else if (onlineT > allTime[key]['data'][s]['closeTime'] &&
                 onlineT < allTime[key]['data'][s + 1]['openTime']) {
               //现在时间  大于关闭时间，小于下一期开奖时间， 则显示封盘中
               print("封盘中");
+
               roomcountdown[key + 'Time'] = "封盘中";
               roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
+              showStartBet(roomcountdown[key + 'Time']);
               break;
             }
           }
@@ -195,13 +205,15 @@ class TextItemLogic extends GetxController {
           int showT = (rrtime - onlineT) ~/ 1000;
           if (showT <= 5) {
             showOverTime(showT);
-          }else{
+          } else {
             showOverTime(-1);
           }
           String showtime = secToTime(showT);
           roomcountdown[key + 'Time'] = showtime;
           roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
         } else if (onlineT < allTime[key]['data'][0]['openTime']) {
+          resetStatusWhenClosed();
+
           //现在时间 opentime直接显示封盘中
           print("为1  封盘中");
           roomcountdown[key + 'Time'] = "封盘中";
@@ -241,5 +253,46 @@ class TextItemLogic extends GetxController {
       fiveCountDownTime = -1;
     }
     update(["fiveCountDownStatus"]);
+  }
+
+  showStartBet(String currentStatus) {
+    print("=========>lastStatus ${lastStatus}  status ${currentStatus}");
+    if (lastStatus == "0:00:00" &&
+        currentStatus == "封盘中" &&
+        alreadyShowStop == false) {
+      alreadyShowStop = true;
+      showStopBetting = true;
+      update((["showStopBetting"]));
+      Future.delayed(
+          Duration(
+            seconds: 2,
+          ), () {
+        showStopBetting = false;
+        update((["showStopBetting"]));
+      });
+    }
+  }
+
+  resetStatusWhenStart() {
+    alreadyShowStop = false;
+  }
+
+  resetStatusWhenClosed() {
+    firstShowStartBettingInPeriod = true;
+  }
+
+  showStartBettingTime() {
+    if (firstShowStartBettingInPeriod) {
+      firstShowStartBettingInPeriod = false;
+      showStartBetting = true;
+      update((["showStartBetting"]));
+      Future.delayed(
+          Duration(
+            seconds: 2,
+          ), () {
+        showStartBetting = false;
+        update((["showStartBetting"]));
+      });
+    }
   }
 }

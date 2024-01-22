@@ -8,11 +8,6 @@ class Assets {
   static const String fontITCAvantGardeStdBk = 'assets/font/ITCAvantGardeStd-Bk.otf';
   static const String fontITCAvantGardeStdDemi = 'assets/font/ITCAvantGardeStd-Demi.otf';
   static const String fontITCAvantGardeStdMd = 'assets/font/ITCAvantGardeStd-Md.otf';
-  static const String images1 = 'assets/images/1.png';
-  static const String images2 = 'assets/images/count2.png';
-  static const String images3 = 'assets/images/count3.png';
-  static const String images4 = 'assets/images/count4.png';
-  static const String images5 = 'assets/images/count5.png';
   static const String imagesAccountBg = 'assets/images/accountBg.png';
   static const String imagesAfterLogin = 'assets/images/afterLogin.png';
   static const String imagesAfterLoginDark = 'assets/images/afterLogin_dark.png';
@@ -38,6 +33,11 @@ class Assets {
   static const String imagesCloseEn = 'assets/images/close_en.png';
   static const String imagesCloseVi = 'assets/images/close_vi.png';
   static const String imagesColorPillar = 'assets/images/color_pillar.png';
+  static const String imagesCount1 = 'assets/images/count1.png';
+  static const String imagesCount2 = 'assets/images/count2.png';
+  static const String imagesCount3 = 'assets/images/count3.png';
+  static const String imagesCount4 = 'assets/images/count4.png';
+  static const String imagesCount5 = 'assets/images/count5.png';
   static const String imagesDelete = 'assets/images/delete.png';
   static const String imagesDice1 = 'assets/images/dice_1.png';
   static const String imagesDice2 = 'assets/images/dice_2.png';

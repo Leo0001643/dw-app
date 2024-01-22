@@ -265,7 +265,6 @@ class _GameRoomPageState extends State<GameRoomPage> {
       );
     });
   }
-
   Widget buildItemWidget(
       int index, GameRoomLogic logic, GameRoomItemEntity gameRoomItemEntity) {
     print("----------index ${index}  ");

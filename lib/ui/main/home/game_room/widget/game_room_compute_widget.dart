@@ -22,6 +22,8 @@ import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 class GameRoomComputeWidget extends StatelessWidget {
   final logic = Get.find<GameRoomLogic>();
   final state = Get.find<GameRoomLogic>().state;
+
+   GameRoomComputeWidget({super.key});
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

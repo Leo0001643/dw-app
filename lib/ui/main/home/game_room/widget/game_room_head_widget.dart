@@ -15,6 +15,8 @@ import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
 
 class GameRoomHeadWidget extends StatelessWidget {
+  const GameRoomHeadWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

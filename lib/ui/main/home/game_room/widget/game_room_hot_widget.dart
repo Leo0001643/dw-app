@@ -63,7 +63,9 @@ class GameRoomHotWidget extends StatelessWidget {
 
            ),
 
-
+           Row(
+             children: [ buildSealingPlateStatus(),buildStartBettingStatus(),],
+           ),
             TextTimerItem( state.room.value.gameType??"",state.pc28Lotto)
           ],
         ),
@@ -168,5 +170,41 @@ class GameRoomHotWidget extends StatelessWidget {
             fontSize: 14.sp, color: color, fontWeight: FontWeight.w500),
       );
     });
+  }
+
+  buildSealingPlateStatus() {
+    return GetBuilder<TextItemLogic>(
+        id: "showStopBetting",
+        builder: (logic) {
+          return Visibility(
+              visible: logic.showStopBetting,
+              child: SizedBox(
+                  height: 34,
+                  child: Image(
+                    image: AssetImage(buildImage()),
+                  )));
+        });
+
+
+  }
+ buildStartBettingStatus() {
+   return GetBuilder<TextItemLogic>(
+       id: "showStartBetting",
+       builder: (logic) {
+         return Visibility(
+             visible: logic.showStartBetting,
+             child: SizedBox(
+                 height: 34,
+                 child: Image(
+                   image: AssetImage(ImageX.start),
+                 )));
+       });
+
+
+ }
+
+  String buildImage() {
+
+    return ImageX.close;
   }
 }
