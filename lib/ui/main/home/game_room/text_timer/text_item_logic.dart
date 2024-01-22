@@ -47,8 +47,11 @@ class TextItemLogic extends GetxController {
 
   int fiveCountDownTime = -1;
   LotteryStatus currentStatus = LotteryStatus.initStatus;
-
-  TextItemLogic({required this.type});
+  setType(String? type)
+  {
+    this.type=type;
+  }
+  TextItemLogic({ this.type});
 
   void loadData(GameKindGameKindList gameKind) {
     //测试用
@@ -229,9 +232,6 @@ class TextItemLogic extends GetxController {
 
   //倒计时5s
   showOverTime(int second) {
-    if(second>5) {
-      return;
-    }
     fiveCountDownTime = second;
     update(["fiveCountDownStatus"]);
   }

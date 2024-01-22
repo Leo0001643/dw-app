@@ -20,8 +20,7 @@ import 'package:leisure_games/ui/main/home/game_room/text_timer/text_timer_item.
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 
 class GameRoomHotWidget extends StatelessWidget {
-  final TextItemLogic? timeLogic;
- const GameRoomHotWidget({super.key,this.timeLogic});
+ const GameRoomHotWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +64,7 @@ class GameRoomHotWidget extends StatelessWidget {
            ),
 
 
-            TextTimerItem( logic:timeLogic, state.room.value.gameType??"",state.pc28Lotto)
+            TextTimerItem( state.room.value.gameType??"",state.pc28Lotto)
           ],
         ),
       );

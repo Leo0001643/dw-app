@@ -43,11 +43,13 @@ class _GameRoomPageState extends State<GameRoomPage> {
   final logic = Get.find<GameRoomLogic>();
   final state = Get.find<GameRoomLogic>().state;
   TextItemLogic? timeLogic;
+
   @override
   void initState() {
     state.room.value = Get.arguments;
+    TextItemLogic textItemLogic=Get.find<TextItemLogic>();
+    textItemLogic.setType( state.room.value.gameType);
     logic.loadData(state.room.value);
-    timeLogic= Get.put(TextItemLogic(type: state.room.value.gameType));
     super.initState();
   }
 
@@ -115,7 +117,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                           fit: BoxFit.fill)),
                   child: Column(
                     children: [
-                      GameRoomHotWidget(timeLogic:this.timeLogic),
+                      GameRoomHotWidget(),
                       Expanded(
                           child: Stack(
                         children: [
@@ -278,38 +280,37 @@ class _GameRoomPageState extends State<GameRoomPage> {
   buildContiner() {
     return GetBuilder<TextItemLogic>(
         id: "fiveCountDownStatus",
+
         builder: (logic) {
-          return
-            Visibility(
-                visible: logic.fiveCountDownTime!=-1,
-                child: Container(
-                height: 50,
-                child: Image(
-                  image: AssetImage(buildImage(logic.fiveCountDownTime)),
-                  width: 172,
-                  height: 36,
-                )));
+          return Visibility(
+              visible: logic.fiveCountDownTime<=5&&(logic.fiveCountDownTime>0),
+              child: SizedBox(
+              height: 50,
+              child: Image(
+                image: AssetImage(buildImage(logic.fiveCountDownTime)),
+                width: 172,
+                height: 36,
+              )));
         });
   }
 
-  String buildImage(int second){
-    String result=ImageX.countDown5;
-    switch(second) {
-
+  String buildImage(int second) {
+    String result = ImageX.countDown5;
+    switch (second) {
       case 5:
-        result=ImageX.countDown5;
+        result = ImageX.countDown5;
         break;
       case 4:
-        result=ImageX.countDown4;
+        result = ImageX.countDown4;
         break;
       case 3:
-        result=ImageX.countDown3;
+        result = ImageX.countDown3;
         break;
       case 2:
-        result=ImageX.countDown2;
+        result = ImageX.countDown2;
         break;
       case 1:
-        result=ImageX.countDown1;
+        result = ImageX.countDown1;
         break;
     }
     return result;

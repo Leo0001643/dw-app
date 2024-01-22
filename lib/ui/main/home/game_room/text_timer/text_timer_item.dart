@@ -15,30 +15,30 @@ import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 
 class TextTimerItem extends StatefulWidget {
-  TextItemLogic? logic;
+ 
   final String gameCode;
   final Rx<Pc28LottoEntity> timerGroup;
 
-  TextTimerItem( this.gameCode, this.timerGroup,{super.key,this.logic});
+  TextTimerItem( this.gameCode, this.timerGroup,{super.key });
 
   @override
-  _TextTimerItemState createState() => _TextTimerItemState();
+  TextTimerItemState createState() => TextTimerItemState();
 }
 
-class _TextTimerItemState extends State<TextTimerItem> {
+class TextTimerItemState extends State<TextTimerItem> {
   late Timer _timer;
   Map<String, dynamic> roomInf = {};
   late final Rx<Pc28LottoEntity> timerGroup;
-
+  TextItemLogic? logic=Get.find<TextItemLogic>();
   @override
   void initState() {
     super.initState();
     // 初始时调用一次
     timerGroup = widget.timerGroup;
-    widget.logic?.loadDataGameCode(widget.gameCode);
+    logic?.loadDataGameCode(widget.gameCode);
     // 设置定时任务，每120秒执行一次
     _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
-      widget.logic?.loadDataGameCode(widget.gameCode);
+      logic?.loadDataGameCode(widget.gameCode);
     });
   }
 
@@ -56,11 +56,11 @@ class _TextTimerItemState extends State<TextTimerItem> {
         builder: (logic) {
           print("开始刷新logic");
           String result = "";
-          if ("封盘中" == widget.logic?.state.text_timer.value) {
+          if ("封盘中" == logic?.state.text_timer.value) {
             result = "封盘中";
           } else {
             result =
-                widget.logic?.subToTime(widget.logic!.state.text_timer.value)??"";
+                logic?.subToTime(logic!.state.text_timer.value)??"";
           }
 
           return Container(
