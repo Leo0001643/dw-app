@@ -184,6 +184,7 @@ class TextItemLogic extends GetxController {
                 onlineT < allTime[key]['data'][s + 1]['openTime']) {
               //现在时间  大于关闭时间，小于下一期开奖时间， 则显示封盘中
               print("封盘中");
+              resetStatusWhenClosed();
 
               roomcountdown[key + 'Time'] = "封盘中";
               roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
@@ -282,6 +283,8 @@ class TextItemLogic extends GetxController {
   }
 
   showStartBettingTime() {
+    print("=====>firstShowStartBettingInPeriod  ${firstShowStartBettingInPeriod}");
+
     if (firstShowStartBettingInPeriod) {
       firstShowStartBettingInPeriod = false;
       showStartBetting = true;
