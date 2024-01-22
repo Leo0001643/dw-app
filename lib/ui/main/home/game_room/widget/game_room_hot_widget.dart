@@ -14,11 +14,15 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
+import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
-import 'package:leisure_games/ui/main/home/game_room/widget/text_timer_item.dart';
+import 'package:leisure_games/ui/main/home/game_room/text_timer/text_timer_item.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 
 class GameRoomHotWidget extends StatelessWidget {
+  final TextItemLogic? timeLogic;
+ const GameRoomHotWidget({super.key,this.timeLogic});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -59,7 +63,9 @@ class GameRoomHotWidget extends StatelessWidget {
              ],
 
            ),
-            TextTimerItem( TextTimerLogic(type: state.room.value.gameType), state.room.value.gameType??"",state.pc28Lotto)
+
+
+            TextTimerItem( logic:timeLogic, state.room.value.gameType??"",state.pc28Lotto)
           ],
         ),
       );

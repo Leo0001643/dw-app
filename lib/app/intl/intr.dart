@@ -799,7 +799,7 @@ class Intr extends Translations{
       "dixqitouzhu":"第%s期，投注: %s",
       "dixqikaijiang":"第%s期，开奖: %s",
       "fengpanzhong":"封盘中",
-      "dengdaikaipan":"等待开盘",
+      "dengdaikaipan":"等待开盘22",
       "shuaxin":"刷新",
       "kaijiangjieguo":"开奖结果",
       "shujufenxi":"数据分析",

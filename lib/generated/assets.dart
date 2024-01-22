@@ -8,6 +8,11 @@ class Assets {
   static const String fontITCAvantGardeStdBk = 'assets/font/ITCAvantGardeStd-Bk.otf';
   static const String fontITCAvantGardeStdDemi = 'assets/font/ITCAvantGardeStd-Demi.otf';
   static const String fontITCAvantGardeStdMd = 'assets/font/ITCAvantGardeStd-Md.otf';
+  static const String images1 = 'assets/images/1.png';
+  static const String images2 = 'assets/images/count2.png';
+  static const String images3 = 'assets/images/count3.png';
+  static const String images4 = 'assets/images/count4.png';
+  static const String images5 = 'assets/images/count5.png';
   static const String imagesAccountBg = 'assets/images/accountBg.png';
   static const String imagesAfterLogin = 'assets/images/afterLogin.png';
   static const String imagesAfterLoginDark = 'assets/images/afterLogin_dark.png';

@@ -10,15 +10,16 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 
 class TextTimerItem extends StatefulWidget {
-  TextTimerLogic logic;
+  TextItemLogic? logic;
   final String gameCode;
   final Rx<Pc28LottoEntity> timerGroup;
 
-  TextTimerItem(this.logic, this.gameCode, this.timerGroup);
+  TextTimerItem( this.gameCode, this.timerGroup,{super.key,this.logic});
 
   @override
   _TextTimerItemState createState() => _TextTimerItemState();
@@ -34,10 +35,10 @@ class _TextTimerItemState extends State<TextTimerItem> {
     super.initState();
     // 初始时调用一次
     timerGroup = widget.timerGroup;
-    widget.logic.loadDataGameCode(widget.gameCode);
+    widget.logic?.loadDataGameCode(widget.gameCode);
     // 设置定时任务，每120秒执行一次
     _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
-      widget.logic.loadDataGameCode(widget.gameCode);
+      widget.logic?.loadDataGameCode(widget.gameCode);
     });
   }
 
@@ -50,33 +51,34 @@ class _TextTimerItemState extends State<TextTimerItem> {
   @override
   Widget build(BuildContext context) {
     // 在这里构建你的 UI，使用 roomInf 数据
-    return Obx(() {
-      String result = "";
-      if ("封盘中" == widget.logic.state.text_timer.value) {
-        result = "封盘中";
-      } else {
-        result = widget.logic.subToTime(widget.logic.state.text_timer.value);
-      }
-      if (widget.logic.state.text_timer.value
-          .startsWith(Intr().dengdaikaipan)) {
-        return Text(widget.logic.state.text_timer.value,
-            style: TextStyle(color: Colors.greenAccent));
-      }
-      return Container(
-          height: 20,
-          padding: EdgeInsets.symmetric(
-            horizontal: 4.w,
-          ),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(6.w)),
-              color: Color(0xFFFC243B)),
-          child: Text(
-          result,
-          style:
-          TextStyle(fontWeight: FontWeight.w500, color: Colors.white,fontSize: 12,)));
+    return GetBuilder<TextItemLogic>(
+        id: "textTimerItem",
+        builder: (logic) {
+          print("开始刷新logic");
+          String result = "";
+          if ("封盘中" == widget.logic?.state.text_timer.value) {
+            result = "封盘中";
+          } else {
+            result =
+                widget.logic?.subToTime(widget.logic!.state.text_timer.value)??"";
+          }
 
-    });
+          return Container(
+              height: 20,
+              padding: EdgeInsets.symmetric(
+                horizontal: 4.w,
+              ),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(6.w)),
+                  color: Color(0xFFFC243B)),
+              child: Text(result,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    fontSize: 12,
+                  )));
+        });
   }
 
   buildText() {

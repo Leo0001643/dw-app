@@ -251,6 +251,12 @@ class ImageX{
   static const m9 = 'assets/images/m9.png';
   static const m10 = 'assets/images/m10.png';
   static const mipaibg = 'assets/images/mipaibg.png';
+
+  static const countDown1 = 'assets/images/count1.png';
+  static const countDown2 = 'assets/images/count2.png';
+  static const countDown3 = 'assets/images/count3.png';
+  static const countDown4 = 'assets/images/count4.png';
+  static const countDown5 = 'assets/images/count5.png';
   static const money_icon = 'assets/images/money_icon.png';
   static const my_bg = 'assets/images/my_bg.png';
   static const my_card = 'assets/images/my_card.png';
