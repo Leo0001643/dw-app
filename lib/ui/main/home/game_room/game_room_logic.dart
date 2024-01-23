@@ -31,6 +31,7 @@ import 'game_room_state.dart';
 class GameRoomLogic extends GetxController  implements GameNotificationListener{
   final GameRoomState state = GameRoomState();
   ScrollController scrollController=ScrollController();
+  RxString term="".obs;
   WSLotteryEntityData? headWSLotteryEntityData;
   @override
   void onReady() {
