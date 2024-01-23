@@ -33,6 +33,8 @@ class GameRoomLogic extends GetxController  implements GameNotificationListener{
   ScrollController scrollController=ScrollController();
   RxString term="".obs;
   WSLotteryEntityData? headWSLotteryEntityData;
+
+  Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
   @override
   void onReady() {
     loadBalance();
@@ -114,6 +116,14 @@ class GameRoomLogic extends GetxController  implements GameNotificationListener{
     textItemLogic.countDownLotteryEntity.stream.listen((value) {
           print("修改了值");
           handleMessage(value);
+    });
+
+    textItemLogic.currentStatus.stream.listen((value) {
+      print("修改了值");
+      currentStatus.value=value;
+      currentStatus.refresh();
+      update(["gameRoomComputeWidget"]);
+
     });
     // test();
   }

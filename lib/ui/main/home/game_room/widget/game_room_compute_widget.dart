@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
+import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 class GameRoomComputeWidget extends StatelessWidget {
@@ -230,15 +232,17 @@ class GameRoomComputeWidget extends StatelessWidget {
           children: [
             Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
             SizedBox(width: 5.w,),
-            buildDrawNum("${arr2[0]}",logic),
+            buildDrawNum("${arr2[0]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
             buildDrawMark("+",color),
-            buildDrawNum("${arr2[1]}",logic),
+            buildDrawNum("${arr2[1]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
             buildDrawMark("+",color),
-            buildDrawNum("${arr2[2]}",logic),
+            buildDrawNum("${arr2[2]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
             buildDrawMark("=",color),
-            buildDrawResult("${arr2[3]}",logic,color: GameRuleUtil.getBallNewColor(arr2[3])),
+            buildDrawResult("${arr2[3]}",logic,color: GameRuleUtil.getBallNewColor(arr2[3]),showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
             // SizedBox(width: 5.w,),
-            Text("${ GameRuleUtil.getDXDS(arr2[3])}",style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),),
+            Visibility(
+              visible:  logic.currentStatus.value!=LotteryStatus.sealingPlateStatus,
+                child:  Text("${ GameRuleUtil.getDXDS(arr2[3])}",style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),)),
             Image.asset(ImageX.icon_down_black,color: color,),
           ],
         ),
@@ -246,11 +250,11 @@ class GameRoomComputeWidget extends StatelessWidget {
     );
   }
 
-  Widget buildDrawResult(String result ,GameRoomLogic logic,{Color? color,Color? textColor}) {
+  Widget buildDrawResult(String result ,GameRoomLogic logic,{Color? color,Color? textColor  ,showWaittingImg=false}) {
   GameRoomState state = logic.state;
   var color1 = state.roomType.value == 1 ? ColorX.color_10_fc2:ColorX.color_c7956f;
   var textColor1 = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
-    return (result=="-1")?Image(image: AssetImage(ImageX.icon_room_mask2),width: 46,height: 18,):Container(
+    return (result=="-1"||showWaittingImg==true)?Image(image: AssetImage(ImageX.icon_room_mask2),width: 46,height: 18,):Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -266,10 +270,10 @@ class GameRoomComputeWidget extends StatelessWidget {
       child: Text(mark,style: TextStyle(fontSize: 18.sp,color: color,fontWeight: FontWeight.w500),),
     );
   }
-  Widget buildDrawNum(String num,GameRoomLogic logic) {
+  Widget buildDrawNum(String num,GameRoomLogic logic,{showWaittingImg=false}) {
     GameRoomState state = logic.state;
     var color = state.roomType.value == 1 ? ColorX.color_f7f8fb:ColorX.color_c7956f;
-    return (num=="-1")?Image(image: AssetImage(ImageX.icon_room_mask),width: 24,height: 24,):Container(
+    return (num=="-1"||showWaittingImg==true)?Image(image: AssetImage(ImageX.icon_room_mask),width: 24,height: 24,):Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(color: color,borderRadius: BorderRadius.circular(15.r),),
