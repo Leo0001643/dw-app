@@ -12,11 +12,13 @@ import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_gif_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_pic_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
 import 'package:leisure_games/ui/main/socket/app/center/impl/game_notification_center.dart';
 import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
@@ -105,6 +107,13 @@ class GameRoomLogic extends GetxController  implements GameNotificationListener{
       state.phrases.assignAll(value);
     });
     initTimer();
+
+    TextItemLogic textItemLogic=Get.find<TextItemLogic>();
+
+    textItemLogic.countDownLotteryEntity.stream.listen((value) {
+          print("修改了值");
+          handleMessage(value);
+    });
     // test();
   }
   /**
@@ -202,6 +211,7 @@ void connectWebSocket({Function? onConnected}) async {
 
 
     });
+
   }
 
   @override
@@ -225,7 +235,6 @@ void connectWebSocket({Function? onConnected}) async {
     update(["gameRoomLogicList"]);
   }
   void handleBetResult(String type,GameResponse response) {
-
     WsBetResultEntity result=WsBetResultEntity.fromJson(jsonDecode(response.data));
     if (AppData.user()?.username == result.username) {
     } else {
@@ -239,7 +248,15 @@ void connectWebSocket({Function? onConnected}) async {
     print("=====>4");
     update(["gameRoomLogicList"]);
   }
-
+  void handleSystemMessgeResult(String type,GameResponse response) {
+    GameRoomItemEntity gameRoomItemEntity=GameRoomItemEntity(type: type,data: response.data);
+    state.gameRoomItemEntityList .add(gameRoomItemEntity);
+    if(scrollController.hasClients) {
+      scrollController.jumpTo(scrollController.position.maxScrollExtent);
+    }
+    print("=====>4");
+    update(["gameRoomLogicList"]);
+  }
   void handleMsgGetGif(GameResponse response) {
     WsMsgGetGifEntity result=WsMsgGetGifEntity.fromJson(jsonDecode(response.data));
 
@@ -249,11 +266,14 @@ void connectWebSocket({Function? onConnected}) async {
 
   void handleMsgGetPic(GameResponse response) {
     WsMsgGetPicEntity wsLotteryEntity=WsMsgGetPicEntity.fromJson(jsonDecode(response.data));
-
-
   }
-
-
-
-//
+  void handleMessage(CountDownLotteryEntity countDownLotteryEntity) {
+    if(countDownLotteryEntity.status=="countDownStatus") {
+      CountDownLotteryEntity item=CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
+      GameResponse gameResponse=GameResponse();
+      gameResponse.type="countTime";
+      gameResponse.data=item;
+      handleSystemMessgeResult( gameResponse.type??"",gameResponse);
+    }
+  }
 }

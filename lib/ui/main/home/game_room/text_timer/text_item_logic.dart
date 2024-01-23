@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -8,6 +9,7 @@ import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 
 enum LotteryStatus {
@@ -33,19 +35,22 @@ enum LotteryStatus {
   const LotteryStatus(this.num);
 }
 
+typedef KeyListener =Function(int showTime,LotteryStatus status );
+
 /**
  * 参考count_down_text.dart
  */
 class TextItemLogic extends GetxController {
+  Rx<CountDownLotteryEntity>   countDownLotteryEntity=CountDownLotteryEntity().obs;
   final TextTimerState state = TextTimerState();
   StreamSubscription? loginStream;
   var count = 100;
   String? type;
   String? status = "封盘中";
   String? lastStatus;
+  int lastShowTime=-1;
   bool alreadyShowStop = false;
   Timer? countdownTimer;
-
   int fiveCountDownTime = -1;
   bool showStopBetting = false;
   bool showStartBetting = false;
@@ -72,7 +77,6 @@ class TextItemLogic extends GetxController {
       }
     });
   }
-
   void loadDataGameCode(String gameCode) {
     //测试用
     HttpService.getPc28LottoList().then((value) {
@@ -169,16 +173,19 @@ class TextItemLogic extends GetxController {
             if (onlineT < allTime[key]['data'][s]['closeTime'] &&
                 onlineT > allTime[key]['data'][s]['openTime']) {
               print("显示倒计时");
-              showStartBettingTime();
+
               int rrtime = allTime[key]['data'][s]['closeTime'];
               int showT = (rrtime - onlineT) ~/ 1000;
               String showtime = secToTime(showT);
               roomcountdown[key + 'Time'] = showtime;
               roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
+              showKeyCountTime(showT);
+
+              showStartBettingTime(showT);
               if (showT <= 5) {
                 showOverTime(showT);
               }
-
+              lastShowTime=showT;
               break;
             } else if (onlineT > allTime[key]['data'][s]['closeTime'] &&
                 onlineT < allTime[key]['data'][s + 1]['openTime']) {
@@ -281,11 +288,16 @@ class TextItemLogic extends GetxController {
   resetStatusWhenClosed() {
     firstShowStartBettingInPeriod = true;
   }
-
-  showStartBettingTime() {
-    print("=====>firstShowStartBettingInPeriod  ${firstShowStartBettingInPeriod}");
-
-    if (firstShowStartBettingInPeriod) {
+  showKeyCountTime(int showT) {
+    if((showT==30||showT==15||showT==10) &&(lastShowTime!=showT)){
+      countDownLotteryEntity.value.status=LotteryStatus.countDownStatus.name;
+      countDownLotteryEntity.value.time=showT;
+      countDownLotteryEntity.refresh();
+    }
+  }
+  showStartBettingTime(int showT) {
+    print("=====>firstShowStartBettingInPeriod  ${firstShowStartBettingInPeriod}  showT  ${showT}");
+    if (firstShowStartBettingInPeriod&&showT>45) {
       firstShowStartBettingInPeriod = false;
       showStartBetting = true;
       update((["showStartBetting"]));
