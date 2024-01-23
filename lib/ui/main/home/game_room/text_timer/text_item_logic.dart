@@ -28,7 +28,9 @@ enum LotteryStatus {
   //开盘
   openingQuotationStatus(9),
   //开奖中
-  openLotteryStatus(10);
+  openLotteryStatus(10),
+  //等待开盘
+  wattingLotteryStatus(11);
 
   final int num;
 
@@ -48,8 +50,10 @@ class TextItemLogic extends GetxController {
   var count = 100;
   String? type;
   String? status = "封盘中";
-  String? lastStatus;
+  String? lastStatusContent;
   int lastShowTime = -1;
+
+
   bool alreadyShowStop = false;
   Timer? countdownTimer;
   int fiveCountDownTime = -1;
@@ -57,7 +61,7 @@ class TextItemLogic extends GetxController {
   bool showStartBetting = false;
   bool firstShowStartBettingInPeriod = true;
   LotteryStatus currentStatus = LotteryStatus.initStatus;
-
+  LotteryStatus lastStatus =LotteryStatus.initStatus;
   setType(String? type) {
     this.type = type;
   }
@@ -118,7 +122,7 @@ class TextItemLogic extends GetxController {
       try {
         timeCountOnly(diffTime, pc28lottoRoom, pc28PlanEntity);
       } catch (e) {
-        print("loadTimerData  倒计时  报错  ${e.toString()}");
+        print("loadTimerData22  倒计时  报错  ${e.toString()}");
       }
 
       // 如果倒计时结束，取消计时器
@@ -149,19 +153,28 @@ class TextItemLogic extends GetxController {
       }
       roomcountdown[key + 'Term'] = '--';
       roomcountdown[key + 'Notice'] = allTime[key]['msg'] ?? '';
+
+      lastStatus=LotteryStatus.initStatus;
     } else if (allTime[key]['code'] == 100020) {
+      currentStatus=LotteryStatus.wattingLotteryStatus;
       print("++++++++++++++++等待开盘");
       roomcountdown[key + 'Time'] = Intr().dengdaikaipan;
       roomcountdown[key + 'Term'] = '--';
       roomcountdown[key + 'Notice'] = allTime[key]['msg'];
+
+
+      lastStatus=LotteryStatus.wattingLotteryStatus;
     } else {
       resetStatusWhenStart();
       if (allTime[key]['data'] == null) {
+        currentStatus=LotteryStatus.wattingLotteryStatus;
         print("++++++++++++++++等待开盘2");
         state.text_timer.value = Intr().dengdaikaipan;
+        lastStatus=LotteryStatus.wattingLotteryStatus;
       }
       if (allTime[key]['data']?.length > 1) {
         for (int s = 0; s < allTime[key]['data'].length - 1; s++) {
+          String term= "${allTime[key]['data'][s]['term']}";
           //差异时间
           int onlineT = DateTime.now().millisecondsSinceEpoch +
               int.parse(diffTime.toString());
@@ -178,6 +191,7 @@ class TextItemLogic extends GetxController {
             //现在时间  小于关闭时间，大于开始时间， 则显示倒计时
             if (onlineT < allTime[key]['data'][s]['closeTime'] &&
                 onlineT > allTime[key]['data'][s]['openTime']) {
+              currentStatus=LotteryStatus.countDownStatus;
               print("显示倒计时");
 
               int rrtime = allTime[key]['data'][s]['closeTime'];
@@ -185,7 +199,7 @@ class TextItemLogic extends GetxController {
               String showtime = secToTime(showT);
               roomcountdown[key + 'Time'] = showtime;
               roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
-              String term= "${allTime[key]['data'][s]['term']}";
+
               showKeyCountTime(showT,term);
 
               showStartBettingTime(showT);
@@ -193,21 +207,24 @@ class TextItemLogic extends GetxController {
                 showOverTime(showT);
               }
               lastShowTime = showT;
+              lastStatus=LotteryStatus.countDownStatus;
               break;
             } else if (onlineT > allTime[key]['data'][s]['closeTime'] &&
                 onlineT < allTime[key]['data'][s + 1]['openTime']) {
+              currentStatus=LotteryStatus.sealingPlateStatus;
               //现在时间  大于关闭时间，小于下一期开奖时间， 则显示封盘中
               print("封盘中");
               resetStatusWhenClosed();
-
               roomcountdown[key + 'Time'] = "封盘中";
               roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
-              showStartBet(roomcountdown[key + 'Time']);
+              showStartBet(roomcountdown[key + 'Time'],term);
+              lastStatus=LotteryStatus.sealingPlateStatus;
               break;
             }
           }
         }
       } else if (allTime[key]['data'].length == 1) {
+        currentStatus=LotteryStatus.countDownStatus;
         //倒计时长度为1 的情况
         print("==========倒计时长度为1");
         int onlineT = DateTime.now().millisecondsSinceEpoch +
@@ -226,6 +243,7 @@ class TextItemLogic extends GetxController {
           String showtime = secToTime(showT);
           roomcountdown[key + 'Time'] = showtime;
           roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
+          lastStatus=LotteryStatus.countDownStatus;
         } else if (onlineT < allTime[key]['data'][0]['openTime']) {
           resetStatusWhenClosed();
 
@@ -233,11 +251,12 @@ class TextItemLogic extends GetxController {
           print("为1  封盘中");
           roomcountdown[key + 'Time'] = "封盘中";
           roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
+          lastStatus=LotteryStatus.sealingPlateStatus;
         }
       }
     }
     state.text_timer.value = roomcountdown[key + 'Time'];
-    lastStatus = roomcountdown[key + 'Time'];
+    lastStatusContent = roomcountdown[key + 'Time'];
     update(["textTimerItem"]);
   }
 
@@ -270,11 +289,11 @@ class TextItemLogic extends GetxController {
     update(["fiveCountDownStatus"]);
   }
 
-  showStartBet(String currentStatus) {
-    print("=========>lastStatus ${lastStatus}  status ${currentStatus}");
-    if (lastStatus == "0:00:00" &&
+  showStartBet(String currentStatus,String term) {
+     if (lastStatusContent == "0:00:00" &&
         currentStatus == "封盘中" &&
         alreadyShowStop == false) {
+      showCloseOver(term);
       alreadyShowStop = true;
       showStopBetting = true;
       update((["showStopBetting"]));
@@ -299,11 +318,35 @@ class TextItemLogic extends GetxController {
   showKeyCountTime(int showT,String term) {
     if ((showT == 30 || showT == 15 || showT == 10) &&
         (lastShowTime != showT)) {
+      countDownLotteryEntity.value.type = "countTime";
       countDownLotteryEntity.value.status = LotteryStatus.countDownStatus.name;
       countDownLotteryEntity.value.time = showT;
       countDownLotteryEntity.value.term = term;
+      countDownLotteryEntity.value.title = "系统消息";
+      countDownLotteryEntity.value.subTitile = "距离封盘还有${showT}秒";
       countDownLotteryEntity.refresh();
     }
+  }
+
+  showOpen(int showT,String term) {
+    if ((lastStatus != currentStatus)) {
+      countDownLotteryEntity.value.type = "openOver";
+      countDownLotteryEntity.value.title = "开始下注";
+      countDownLotteryEntity.value.titleColor=0xFF51AC57;
+      countDownLotteryEntity.value.term = term;
+      countDownLotteryEntity.value.subTitile = "开始下注";
+      countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
+      countDownLotteryEntity.refresh();
+    }
+  }
+  showCloseOver(String term) {
+      countDownLotteryEntity.value.type = "closeOver";
+      countDownLotteryEntity.value.title = "封盘信息";
+      countDownLotteryEntity.value.titleColor=0xFFFC243B;
+      countDownLotteryEntity.value.term = term;
+      countDownLotteryEntity.value.subTitile = "开始封盘";
+      countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
+      countDownLotteryEntity.refresh();
   }
 
   showStartBettingTime(int showT) {

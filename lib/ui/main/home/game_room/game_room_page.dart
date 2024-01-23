@@ -273,11 +273,9 @@ class _GameRoomPageState extends State<GameRoomPage> {
       return BettingLeftItem(index, logic, gameRoomItemEntity);
     } else if (gameRoomItemEntity.type == "lottery") {
       return OpenLotteryItem(index, logic, gameRoomItemEntity);
-    }else if (gameRoomItemEntity.type == "countTime") {
+    }else if (gameRoomItemEntity.type == "countTime"||gameRoomItemEntity.type == "closeOver"||gameRoomItemEntity.type == "openOver") {
       return CountDownItemWidget(index, logic, gameRoomItemEntity);
     }
-
-
     return SizedBox();
   }
 

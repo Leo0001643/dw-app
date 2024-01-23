@@ -110,7 +110,7 @@ class GameRoomLogic extends GetxController  implements GameNotificationListener{
     initTimer();
 
     TextItemLogic textItemLogic=Get.find<TextItemLogic>();
-
+    // test();
     textItemLogic.countDownLotteryEntity.stream.listen((value) {
           print("修改了值");
           handleMessage(value);
@@ -163,11 +163,22 @@ void connectWebSocket({Function? onConnected}) async {
   {
     Timer timer=Timer.periodic(Duration(seconds:1), (timer) {
 
-      var json="{\"data\":[{\"originalNum\":\"758\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576550000\",\"term\":\"202401181156\",\"state\":\"0\",\"openTime\":\"1705576560000\",\"luckyNum\":\"20\"},{\"originalNum\":\"772\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576490000\",\"term\":\"202401181155\",\"state\":\"0\",\"openTime\":\"1705576500000\",\"luckyNum\":\"16\"},{\"originalNum\":\"073\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576430000\",\"term\":\"202401181154\",\"state\":\"0\",\"openTime\":\"1705576440000\",\"luckyNum\":\"10\"},{\"originalNum\":\"601\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576370000\",\"term\":\"202401181153\",\"state\":\"0\",\"openTime\":\"1705576380000\",\"luckyNum\":\"7\"},{\"originalNum\":\"420\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576310000\",\"term\":\"202401181152\",\"state\":\"0\",\"openTime\":\"1705576320000\",\"luckyNum\":\"6\"},{\"originalNum\":\"770\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576250000\",\"term\":\"202401181151\",\"state\":\"0\",\"openTime\":\"1705576260000\",\"luckyNum\":\"14\"},{\"originalNum\":\"654\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576190000\",\"term\":\"202401181150\",\"state\":\"0\",\"openTime\":\"1705576200000\",\"luckyNum\":\"15\"},{\"originalNum\":\"330\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576130000\",\"term\":\"202401181149\",\"state\":\"0\",\"openTime\":\"1705576140000\",\"luckyNum\":\"6\"},{\"originalNum\":\"278\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576070000\",\"term\":\"202401181148\",\"state\":\"0\",\"openTime\":\"1705576080000\",\"luckyNum\":\"17\"},{\"originalNum\":\"903\",\"gameType\":\"fastbtb28\",\"billCount\":\"0\",\"closeTime\":\"1705576010000\",\"term\":\"202401181147\",\"state\":\"0\",\"openTime\":\"1705576020000\",\"luckyNum\":\"12\"}],\"time\":1705576582,\"type\":\"lottery\",\"status\":\"10000\"}";
       GameResponse gameResponse=GameResponse();
       gameResponse.data=json;
-      gameResponse.type="lottery";
-      notificationCallBack(gameResponse);
+      gameResponse.type="closeOver";
+
+      CountDownLotteryEntity item=CountDownLotteryEntity();
+      // item.title="封盘信息";
+      // item.titleColor=0xFFFC243B;
+      // item.subTitile="开始封盘";
+      // item.term="20251232131";
+      // gameResponse.data=item;
+
+
+
+
+      gameResponse.data=item;
+      handleSystemMessgeResult("closeOver",gameResponse);
 
     });
 
@@ -255,7 +266,6 @@ void connectWebSocket({Function? onConnected}) async {
     if(scrollController.hasClients) {
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
     }
-    print("=====>4");
     update(["gameRoomLogicList"]);
   }
   void handleMsgGetGif(GameResponse response) {
@@ -269,12 +279,10 @@ void connectWebSocket({Function? onConnected}) async {
     WsMsgGetPicEntity wsLotteryEntity=WsMsgGetPicEntity.fromJson(jsonDecode(response.data));
   }
   void handleMessage(CountDownLotteryEntity countDownLotteryEntity) {
-    if(countDownLotteryEntity.status=="countDownStatus") {
       CountDownLotteryEntity item=CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
       GameResponse gameResponse=GameResponse();
-      gameResponse.type="countTime";
+      gameResponse.type=countDownLotteryEntity.type;
       gameResponse.data=item;
       handleSystemMessgeResult( gameResponse.type??"",gameResponse);
-    }
   }
 }

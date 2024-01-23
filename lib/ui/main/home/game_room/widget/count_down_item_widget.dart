@@ -37,6 +37,7 @@ class StateCountDownItemWidget extends State<CountDownItemWidget> {
   Widget build(BuildContext context) {
     CountDownLotteryEntity? wsBetResultEntity =
         widget.gameRoomItemEntity.data as CountDownLotteryEntity;
+    print("======>  ${jsonEncode(   widget.gameRoomItemEntity.data )}");
     return Container(
       height: 50,
       margin: EdgeInsets.only(left: 50.w,right: 20.w,bottom: 8.w,top: 8.w),
@@ -47,8 +48,8 @@ class StateCountDownItemWidget extends State<CountDownItemWidget> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            "系统消息",
-            style: TextStyle(fontSize: 14, color: Color(0xFF58698D)),
+            "${wsBetResultEntity.title}",
+            style: TextStyle(fontSize: 14, fontWeight:FontWeight.w700,color: Color(wsBetResultEntity.titleColor??0xFF58698D)),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -61,11 +62,11 @@ class StateCountDownItemWidget extends State<CountDownItemWidget> {
                   ),
                   Text(
                     "${wsBetResultEntity?.term}",
-                    style: TextStyle(fontSize: 14, color: Color(0xFFE62912)),
+                    style: TextStyle(fontSize: 14, fontWeight:FontWeight.w700, color: Color(0xFFE62912)),
                   ),
-                  Text(
+                  const Text(
                     "】",
-                    style: TextStyle(fontSize: 14, color: Color(0xFF596A8D)),
+                    style: TextStyle(fontSize: 14,  fontWeight:FontWeight.w700,color: Color(0xFF596A8D)),
                   ),
                 ],
               ),
@@ -73,10 +74,9 @@ class StateCountDownItemWidget extends State<CountDownItemWidget> {
               Row(
                 children: [
                   Text(
-                    "距离封盘还有${wsBetResultEntity?.time}秒",
+                    wsBetResultEntity.subTitile??"距离封盘还有${wsBetResultEntity?.time}秒",
                     style: TextStyle(fontSize: 14, color: Color(0xFF596A8D)),
                   ),
-
                 ],
               )
             ],
