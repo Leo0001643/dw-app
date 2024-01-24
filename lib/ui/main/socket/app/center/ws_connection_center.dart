@@ -269,7 +269,7 @@ class WsConnectionCenter {
     dzLog('重连开始 force:$force');
     if (!force) {
       // 手动下线或者被踢  不需要再重连
-      if (_isManualClose || _isKickout) {
+      if (_isManualClose) {
         return false;
       }
       //连接中或者已经连接上了不需要重连
@@ -317,10 +317,11 @@ class WsConnectionCenter {
     // 发送给ws服务haohao
     mWsService.target?.onReceivedData(response);
     // 判断下发的数据是请求还是通知，先简单处理
-    if (response.type == GameResponseType.kickout.number) {
+    if (response.type == "logout") {
       // 收到被踢通知，只有是当前连接收到踢人 才去踢
-      _isKickout = _needKickOut(response);
+      _isKickout = true;
       if (_isKickout) {
+        _syncConnectState(WebSocketConnectStatus.disconnected);
         mWsService.target?.processResponse(response);
       }
     } else if (response.type ==

@@ -15,17 +15,18 @@ import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_gif_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_pic_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
 import 'package:leisure_games/ui/main/socket/app/center/impl/game_notification_center.dart';
 import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
 import 'package:leisure_games/ui/main/socket/app/ws_main_service.dart';
 import 'package:leisure_games/ui/main/socket/game_data_service_center.dart';
-import 'package:leisure_games/ui/main/socket/game_isolate.dart';
-
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
 import 'game_room_state.dart';
 
 class GameRoomLogic extends GetxController implements GameNotificationListener {
@@ -33,7 +34,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
   ScrollController scrollController = ScrollController();
   RxString term = "".obs;
   WSLotteryEntityData? headWSLotteryEntityData;
-
+  RxList<WS.Content> odds=<WS.Content>[].obs;
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
 
   @override
@@ -98,9 +99,8 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
     HttpService.getPC28Odds(room.id.em()).then((value) {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
-      Map<String, dynamic> map = jsonDecode(
-        value,
-      );
+      Map<String, dynamic> map = jsonDecode(value,);
+      odds.value=GameRuleUtil.getOddsbean(map).content??[];
     });
 
     ///表情
@@ -322,7 +322,5 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
         return;
       }
     }
-
-
   }
 }

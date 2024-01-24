@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
+import 'package:leisure_games/ui/main/home/game_room/dialog/betting_child_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
 class BettingBtmDialog extends StatefulWidget {
@@ -34,6 +35,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
   @override
   void initState() {
     _tabController = TabController(length: tabs.length, vsync: this);
+    initData();
     super.initState();
   }
 
@@ -131,70 +133,14 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
             ),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child:Container(
-                margin: EdgeInsets.symmetric(horizontal: 15.w,vertical: 8.h),
-                child: Wrap(
-                  runAlignment: WrapAlignment.center,
-                  alignment: WrapAlignment.center,
-                  runSpacing: 6.w,
-                  spacing: 6.h,
-                  children: [
-                    buildSizeCard(""),
-                    buildSizeCard(""),
-                    buildSizeCard(""),
-                    buildSizeCard(""),
-                    buildSizeCard(""),
-                    buildSizeCard(""),
-                    buildSizeCard(""),
-                    buildSizeCard(""),
-                    buildSizeCard(""),
-                    buildSizeCard(""),
-                    buildWaveCard(""),
-                    buildWaveCard(""),
-                    buildWaveCard(""),
-                    buildWaveCard(""),
-                    buildWaveCard(""),
-                    buildWaveCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                    buildNumCard(""),
-                  ],
-                ),
-              ),
+            child:TabBarView(
+              controller: _tabController,
+              children: [
+                BettingChildPage(0,"first"),
+                BettingChildPage(1,"second"),
+                BettingChildPage(2,"three"),
+                BettingChildPage(3,"three"),
+              ],
             ),
           ),
           Container(
@@ -348,137 +294,17 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       child: Text(time,style: TextStyle(fontSize: 16.sp,color: Colors.white,fontWeight: FontWeight.w600),),
     );
   }
-
-  Widget buildSizeCard(String item) {
-    return SizedBox(
-      width: 64.w,
-      child: GFCard(
-        margin: EdgeInsets.zero,
-        padding: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        elevation: 1.r,
-        content: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r),
-            gradient: LinearGradient(
-              colors: ColorX.cardColors(),
-              // colors: [Color(0xffffeed4),Color(0xfffff5d0)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          width: 64.w,
-          height: 63.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 6.h,),
-              Text("大",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
-              SizedBox(height: 15.h,),
-              Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.textd53()),),
-              SizedBox(height: 6.h,),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-
-  Widget buildWaveCard(String item) {
-    return SizedBox(
-      width: 52.w,
-      child: GFCard(
-        margin: EdgeInsets.zero,
-        padding: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        elevation: 1.r,
-        content: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r),
-            gradient: LinearGradient(
-              colors: ColorX.cardColors(),
-              // colors: [Color(0xffffeed4),Color(0xfffff5d0)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          width: 52.w,
-          height: 59.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 3.h,),
-              Text("大",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
-              SizedBox(height: 15.h,),
-              Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.textd53()),),
-              SizedBox(height: 3.h,),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildNumCard(String item) {
-    return SizedBox(
-      width: 52.w,
-      child: GFCard(
-        margin: EdgeInsets.zero,
-        padding: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        elevation: 1.r,
-        content: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.r),
-            gradient: LinearGradient(
-              colors: ColorX.cardColors(),
-              // colors: [Color(0xffffeed4),Color(0xfffff5d0)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          width: 52.w,
-          height: 59.h,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 3.h,),
-              Container(
-                alignment: Alignment.center,
-                width: 28.r,height: 28.r,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.r),
-                  border: Border.all(color: ColorX.color_e7ebf4,width: 1.r),
-                ),
-                child: Text("04",style: TextStyle(fontSize: 14.sp,color: ColorX.color_5583e7),),
-              ),
-              SizedBox(height: 3.h,),
-              Text("4.2",style: TextStyle(fontSize: 13.sp,color: ColorX.textd53()),),
-              SizedBox(height: 3.h,),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildChipItem(String icon,int index,double top,double btm) {
+  Widget buildChipItem(String icon, int index, double top, double btm) {
     return InkWell(
-      onTap: ()=> chipIndex.value = index,
+      onTap: () => chipIndex.value = index,
       child: Container(
-        margin: EdgeInsets.only(left: 5.w,right: 5.w,top: top,bottom: btm),
-        child: Image.asset(icon,width: 45.r,height: 45.r,fit: BoxFit.fill,),
+        margin: EdgeInsets.only(left: 5.w, right: 5.w, top: top, bottom: btm),
+        child: Image.asset(icon, width: 45.r, height: 45.r, fit: BoxFit.fill,),
       ),
     );
   }
 
+  void initData() {}
 }
 
 

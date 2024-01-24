@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' ;
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
+
+
 
 class GameRuleUtil {
   /**
@@ -690,6 +694,43 @@ class GameRuleUtil {
     }
     return ssb;
   }
+   static WSGameOddsServer getOddsbean( Map<String,dynamic> totalMap) {
+    WSGameOddsServer result =  WSGameOddsServer();
+      result.content = [];
+      Iterable<String> keys = totalMap.keys;
+      if (keys .isNotEmpty) {
+        WS.Content row;
+        keys.map((e){
+          WS.Content row= WS.Content();
+          try {
+            Map<String,dynamic> childMap=totalMap[e];
+            childMap.keys.map((childKey){
+              Map<String,dynamic> subMap=childMap[childKey];
+              row?.id ="${subMap["id"]}";
+              row?.parentId ="${subMap["parentId"]}";
+              row?.enabled ="${subMap["enabled"]}";
+              row?.createTime ="${subMap["createTime"]}";
+              row?.updateTime ="${subMap["updateTime"]}";
+              row?.name ="${subMap["name"]}";
+              row?.play ="${subMap["play"]}";
+              row?.type ="${subMap["type"]}";
+              result.content?.add(row);
+            }).toList();
+
+
+
+            return row;
+          } catch ( e) {
+            print("解析失败 e  ${e.toString()}");
+          }
+          return row;
+
+        }).toList();
+
+      }
+    return result;
+  }
+
 
   /**
    *  返回当前使用钱包的   钱币符号
@@ -865,6 +906,89 @@ class GameRuleUtil {
       return true;
     }
     return false;
+  }
+  static void dealData(List<WS.Content> odds,String mBallName) {
+
+    List<WS.Content> data = [];
+    List<WS.Content> data1 = [];
+    List<WS.Content> data2 = [];
+    List<WS.Content> data3 = [];
+
+    Map<int, WS.Content> arrayMap = {};
+
+    if ("firstBall".contains(mBallName)) {
+      for (int i = 0; i < odds.length; i++) {
+        WS.Content content = odds[i];
+        if (content.type?.contains(GameRuleUtil.GameType_First)==true) {
+          data1.add(content);
+        } else if (content.type?.contains(GameRuleUtil.GameType_First_String)==true) {
+          setSecondBallData(arrayMap, content);
+        } else if (content.type?.contains(GameRuleUtil.GameType_dragon)==true) {
+          data3.add(content);
+        }
+      }
+
+    } else if ("secondBall".contains(mBallName)) {
+      for (int i = 0; i < odds.length; i++) {
+        WS.Content content = odds[i];
+        if (content.type?.contains(GameRuleUtil.GameType_Second_String)==true || content.type?.contains(GameRuleUtil.GameType_equal)==true) {
+          if (content.type?.contains(GameRuleUtil.GameType_Second)==true) {
+            data1.add(content);
+          } else if (content.type?.contains(GameRuleUtil.GameType_Second_String)==true) {
+            setSecondBallData(arrayMap, content);
+
+          } else if (content.type?.contains(GameRuleUtil.GameType_equal)==true) {
+            data3.add(content);
+          }
+        }
+
+      }
+
+    } else if ("threeBall".contains(mBallName)) {
+      for (int i = 0; i < odds.length; i++) {
+        WS.Content content = odds[i];
+        if (content.type?.contains(GameRuleUtil.GameType_Three_String)==true || content.type?.contains(GameRuleUtil.GameType_tiger)==true) {
+          if (content.type?.contains(GameRuleUtil.GameType_Three)==true) {
+            data1.add(content);
+          } else if (content.type?.contains(GameRuleUtil.GameType_Three_String)==true) {
+            setSecondBallData(arrayMap, content);
+          } else if (content.type?.contains(GameRuleUtil.GameType_tiger)==true) {
+            data3.add(content);
+          }
+        }
+      }
+    }
+    data1.sort((left,right)=>left.type?.compareTo(right?.type??"")??1);
+
+    // Comparator<WS.Content> comparator =  Comparator<WS.Content>() {
+    //   public int compare(WS.Content s1, WS.Content s2) {
+    //     return s1.type.compareTo(s2.type);
+    //   }
+    // };
+    // Collections.sort(data1, comparator);
+    for (int i = 0; i < arrayMap.length; i++) {
+      data2.add(arrayMap[i]??Content());
+    }
+    data.addAll(data1);
+    data.addAll(data2);
+    data.addAll(data3);
+    // for (int i = 0; i < mViews.size() && i < data.size(); i++) {
+    //   initDataTeMa(mViews.get(i), data.get(i));
+    // }
+  }
+   static void setSecondBallData(Map<int, WS.Content> arrayMap, WS.Content content) {
+    if (content.type?.contains(GameRuleUtil.GameType_Big)==true) {
+      arrayMap[0]= content;
+    }
+    if (content.type?.contains(GameRuleUtil.GameType_Small)==true) {
+      arrayMap[1]= content;
+    }
+    if (content.type?.contains(GameRuleUtil.GameType_Odd)==true) {
+      arrayMap[2]= content;
+    }
+    if (content.type?.contains(GameRuleUtil.GameType_Even)==true) {
+      arrayMap[3]= content;
+    }
   }
 
   static String getWhereBallName(String betType) {
