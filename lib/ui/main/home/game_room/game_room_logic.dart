@@ -28,13 +28,14 @@ import 'package:leisure_games/ui/main/socket/game_isolate.dart';
 
 import 'game_room_state.dart';
 
-class GameRoomLogic extends GetxController  implements GameNotificationListener{
+class GameRoomLogic extends GetxController implements GameNotificationListener {
   final GameRoomState state = GameRoomState();
-  ScrollController scrollController=ScrollController();
-  RxString term="".obs;
+  ScrollController scrollController = ScrollController();
+  RxString term = "".obs;
   WSLotteryEntityData? headWSLotteryEntityData;
 
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
+
   @override
   void onReady() {
     loadBalance();
@@ -78,7 +79,6 @@ class GameRoomLogic extends GetxController  implements GameNotificationListener{
       print("大厅系统监听消息失败！");
     }
 
-
     // GameDataServiceCenter.instance.startConnection(onConnected: () async {});
     loggerArray(["房型数据", state.room.toJson()]);
     state.roomType.value = room.level ?? 1;
@@ -87,10 +87,13 @@ class GameRoomLogic extends GetxController  implements GameNotificationListener{
       state.pc28Lotto.value = value;
       state.pc28Lotto.refresh();
       changeRoomType(room);
-    }) ;
+    });
 
-    Future.delayed(Duration(seconds: 2),(){
-      GameDataServiceCenter.instance.wSLogin(table_id:"${room.id??0}",room_id:"${ room.roomId??0}",game_type:"${state.room.value.gameType}" );
+    Future.delayed(Duration(seconds: 2), () {
+      GameDataServiceCenter.instance.wSLogin(
+          table_id: "${room.id ?? 0}",
+          room_id: "${room.roomId ?? 0}",
+          game_type: "${state.room.value.gameType}");
     });
 
     HttpService.getPC28Odds(room.id.em()).then((value) {
@@ -111,36 +114,30 @@ class GameRoomLogic extends GetxController  implements GameNotificationListener{
     });
     initTimer();
 
-    TextItemLogic textItemLogic=Get.find<TextItemLogic>();
+    TextItemLogic textItemLogic = Get.find<TextItemLogic>();
     // test();
     textItemLogic.countDownLotteryEntity.stream.listen((value) {
-          print("修改了值");
-          handleMessage(value);
+      print("修改了值");
+      handleMessage(value);
     });
 
     textItemLogic.currentStatus.stream.listen((value) {
       print("修改了值");
-      currentStatus.value=value;
+      currentStatus.value = value;
       currentStatus.refresh();
       update(["gameRoomComputeWidget"]);
-
     });
     // test();
   }
+
   /**
    * 判断是不是登录了，如果登录成功，则重新登录ws
    */
- void isLoginToLogin() {
-  if (!AppData.isLogin()) {
-
+  void isLoginToLogin() {
+    if (!AppData.isLogin()) {}
   }
 
-}
-
-
-
-
-void connectWebSocket({Function? onConnected}) async {
+  void connectWebSocket({Function? onConnected}) async {
     if (AppData.isLogin()) {
       // GameDataServiceCenter.instance.startConnection(onConnected: onConnected);
     }
@@ -169,45 +166,39 @@ void connectWebSocket({Function? onConnected}) async {
       state.userBal.refresh();
     });
   }
-  void test()
-  {
-    Timer timer=Timer.periodic(Duration(seconds:1), (timer) {
 
-      GameResponse gameResponse=GameResponse();
-      gameResponse.data=json;
-      gameResponse.type="closeOver";
+  void test() {
+    Timer timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      GameResponse gameResponse = GameResponse();
+      gameResponse.data = json;
+      gameResponse.type = "closeOver";
 
-      CountDownLotteryEntity item=CountDownLotteryEntity();
+      CountDownLotteryEntity item = CountDownLotteryEntity();
       // item.title="封盘信息";
       // item.titleColor=0xFFFC243B;
       // item.subTitile="开始封盘";
       // item.term="20251232131";
       // gameResponse.data=item;
 
-
-
-
-      gameResponse.data=item;
-      handleSystemMessgeResult("closeOver",gameResponse);
-
+      gameResponse.data = item;
+      // handleSystemMessgeResult("closeOver",gameResponse);
     });
-
   }
+
   @override
   void notificationCallBack(GameResponse response) {
     print("------>response   ${response.data}");
-    Map<String,dynamic> data=jsonDecode(response.data);
-    String type=data["type"]??"";
+    Map<String, dynamic> data = jsonDecode(response.data);
+    String type = data["type"] ?? "";
     print("------>response  222");
-    switch(type) {
+    switch (type) {
       case "bet_result":
-        handleBetResult(type,response);
+        handleBetResult(type, response);
         break;
       case "lottery":
-        handleLottery(type,response);
+        handleLottery(type, response);
         break;
       case "logout":
-
         break;
       case "msg_get_pic":
         handleMsgGetPic(response);
@@ -215,9 +206,7 @@ void connectWebSocket({Function? onConnected}) async {
       case "msg_get_gif":
         handleMsgGetGif(response);
         break;
-
     }
-
   }
 
   @override
@@ -225,15 +214,11 @@ void connectWebSocket({Function? onConnected}) async {
     return true;
   }
 
-
   Timer? timer;
   int refershTime = 0;
+
   void initTimer() {
-    timer=Timer.periodic(Duration(seconds: 1), (timer) {
-
-
-    });
-
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {});
   }
 
   @override
@@ -243,56 +228,101 @@ void connectWebSocket({Function? onConnected}) async {
     // TODO: implement dispose
     super.dispose();
   }
-  void handleLottery(String type,GameResponse response) {
-    WSLotteryEntity wsLotteryEntity=WSLotteryEntity.fromJson(jsonDecode(response.data));
-    if(wsLotteryEntity.data?.isNotEmpty==true) {
-      headWSLotteryEntityData=wsLotteryEntity.data?[0];
+
+  void handleLottery(String type, GameResponse response) {
+    WSLotteryEntity wsLotteryEntity =
+        WSLotteryEntity.fromJson(jsonDecode(response.data));
+    if (wsLotteryEntity.data?.isNotEmpty == true) {
+      headWSLotteryEntityData = wsLotteryEntity.data?[0];
+      term.value = headWSLotteryEntityData?.term ?? "";
       update(["gameRoomComputeWidget"]);
     }
-    GameRoomItemEntity gameRoomItemEntity=GameRoomItemEntity(type: type,data: wsLotteryEntity);
-    state.gameRoomItemEntityList .add(gameRoomItemEntity);
-    if(scrollController.hasClients) {
+    GameRoomItemEntity gameRoomItemEntity =
+        GameRoomItemEntity(type: type, data: wsLotteryEntity);
+    state.gameRoomItemEntityList.add(gameRoomItemEntity);
+    if (scrollController.hasClients) {
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
     }
     update(["gameRoomLogicList"]);
   }
-  void handleBetResult(String type,GameResponse response) {
-    WsBetResultEntity result=WsBetResultEntity.fromJson(jsonDecode(response.data));
+
+  void handleBetResult(String type, GameResponse response) {
+    WsBetResultEntity result =
+        WsBetResultEntity.fromJson(jsonDecode(response.data));
     if (AppData.user()?.username == result.username) {
-    } else {
-    }
+    } else {}
     print("=====>3");
-    GameRoomItemEntity gameRoomItemEntity=GameRoomItemEntity(type: type,data: result);
-    state.gameRoomItemEntityList .add(gameRoomItemEntity);
-    if(scrollController.hasClients) {
+    GameRoomItemEntity gameRoomItemEntity =
+        GameRoomItemEntity(type: type, data: result);
+    state.gameRoomItemEntityList.add(gameRoomItemEntity);
+    if (scrollController.hasClients) {
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
     }
     print("=====>4");
     update(["gameRoomLogicList"]);
   }
-  void handleSystemMessgeResult(String type,GameResponse response) {
-    GameRoomItemEntity gameRoomItemEntity=GameRoomItemEntity(type: type,data: response.data);
-    state.gameRoomItemEntityList .add(gameRoomItemEntity);
-    if(scrollController.hasClients) {
+
+  void handleSystemMessgeResult(String type, GameResponse response) {
+    GameRoomItemEntity gameRoomItemEntity =
+        GameRoomItemEntity(type: type, data: response.data);
+
+    state.gameRoomItemEntityList.add(gameRoomItemEntity);
+    if (scrollController.hasClients) {
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
     }
     update(["gameRoomLogicList"]);
   }
+
   void handleMsgGetGif(GameResponse response) {
-    WsMsgGetGifEntity result=WsMsgGetGifEntity.fromJson(jsonDecode(response.data));
-
-
-
+    WsMsgGetGifEntity result =
+        WsMsgGetGifEntity.fromJson(jsonDecode(response.data));
   }
 
   void handleMsgGetPic(GameResponse response) {
-    WsMsgGetPicEntity wsLotteryEntity=WsMsgGetPicEntity.fromJson(jsonDecode(response.data));
+    WsMsgGetPicEntity wsLotteryEntity =
+        WsMsgGetPicEntity.fromJson(jsonDecode(response.data));
   }
+
   void handleMessage(CountDownLotteryEntity countDownLotteryEntity) {
-      CountDownLotteryEntity item=CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
-      GameResponse gameResponse=GameResponse();
-      gameResponse.type=countDownLotteryEntity.type;
-      gameResponse.data=item;
-      handleSystemMessgeResult( gameResponse.type??"",gameResponse);
+    CountDownLotteryEntity item =
+        CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
+    GameResponse gameResponse = GameResponse();
+    gameResponse.type = countDownLotteryEntity.type;
+    gameResponse.data = item;
+    term.value = item?.term ?? "";
+    update(["gameRoomComputeWidget"]);
+    handleSystemMessgeResult(gameResponse.type ?? "", gameResponse);
+  }
+
+  /**
+   *  if (!LoginServiceProvider.isLogin()) {
+
+      LoginServiceProvider.login(this, Observer {
+      if (it != null && it) {
+      ws.wsLoginMsg()
+      btn_bet_show.performClick()
+      }
+      })
+      return
+      }
+   */
+  void startBet(BuildContext context) {
+    // AppInst.instance.startWs();
+    // 监听网络状态
+    IsolateService? serv = AppInst.gameIsolate.mainService();
+    if (serv != null && serv is WSMainService) {
+      if (serv != null && serv is WSMainService) {
+        serv.doWhenConnectCallBack(() {
+          DialogUtils().showBulletBtmDialog(context, this, (v) {
+            showToast("${v.length}");
+          });
+        }, onFail: () {
+          showToast("链接服务失败，稍后再试");
+        });
+        return;
+      }
+    }
+
+
   }
 }

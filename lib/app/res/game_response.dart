@@ -252,7 +252,10 @@ class GameResponse {
   GameResponse();
 
   GameResponse.fromJson(String json) {
+
     data=json;
+    Map<String,dynamic>dataMap=jsonDecode(json);
+    type="${dataMap["type"]??""}";
   }
   String? messageId="";
   String responseKey() {

@@ -118,10 +118,11 @@ class WsConnectionCenter {
         // timeout 连接超时
       }
       // 同步到主线程
-      mWsService.target?.syncNetState(connectStatus);
+
     }else if(conState==WebSocketConnectStatus.reconnect) {
       startReconnect();
     }
+    mWsService.target?.syncNetState(connectStatus);
   }
 
   /// 清空缓存
@@ -194,6 +195,7 @@ class WsConnectionCenter {
       } else {
         dzLog("流错误2");
       }
+      _syncConnectState(WebSocketConnectStatus.failed);
     }).listen((event) {
       // 监听Socket正常返回数据
       _onData(event);
@@ -307,6 +309,9 @@ class WsConnectionCenter {
   void _onData(event) {
     // 处理接收到的数据
     dzLog("======>Socket接收消息${event}  ");
+
+
+
     //消息解密
     GameResponse response = GameResponse.fromJson(event);
     // 发送给ws服务haohao
@@ -322,9 +327,10 @@ class WsConnectionCenter {
         GameResponseType.heartBeatTop.number) {
       // 主心跳处理
       mWsService.target?.processHeart(response);
-    } else if (response.type == GameResponseType.heartBeat.number) {
+    } else if (response.type =="ping") {
       // 子心跳包处理
-      mWsService.target?.processResponse(response);
+      // mWsService.target?.processResponse(response);
+      _syncConnectState(WebSocketConnectStatus.connected);
     }else {
 
       dzLog("======>成功2  ${response.type }");

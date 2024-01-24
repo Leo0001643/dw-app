@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:isolate';
 
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/ui/main/socket/app/center/game_isolate_param.dart';
@@ -13,12 +15,16 @@ import 'service/isolate_service.dart';
 class WSMainService extends IsolateService {
   // 状态监听器
   late List<GameConnectionListener> _connectionListeners;
+
   // 响应监听器
   late List<GameNotificationListener> _responseListeners;
+
   // 网络状态
   WebSocketConnectStatus mWsSate = WebSocketConnectStatus.none;
+
   // 消息缓存
   late List<List> mMsgCache = <List>[];
+
   // 阻塞请求缓存
   Map<String, DXIsolateParam> mRequestMap = <String, DXIsolateParam>{};
 
@@ -52,15 +58,11 @@ class WSMainService extends IsolateService {
 
   // 更新Domain
   void updateDomain() {
-   
     if (mChildPort != null) {
       mChildPort?.send({});
-    } else {
-    }
+    } else {}
   }
 
- 
-  
   // 长链接管理
   void startWsConnect() {
     List msgParams = ["startConnection"];
@@ -68,6 +70,32 @@ class WSMainService extends IsolateService {
       mChildPort?.send(msgParams);
     } else {
       mMsgCache.add(msgParams);
+    }
+  }
+
+  void doWhenConnectCallBack(Function success, {Function? onFail}) async {
+    int timeout = 3;
+    if (isConnect()) {
+      success();
+      return;
+    }
+    showToast("正在重连");
+    while (!isConnect()) {
+      if (timeout < 0) {
+        if (onFail != null) {
+          onFail();
+        }
+        break;
+      }
+      if (isConnect()) {
+        success();
+        timeout = 3;
+        break;
+      } else {
+        startWsConnect();
+        sleep(Duration(seconds: 2));
+        timeout--;
+      }
     }
   }
 
@@ -113,8 +141,7 @@ class WSMainService extends IsolateService {
     //
     completer.future.then((value) {
       // GameResponse response = value;
-      print(
-          "WSMainService 请求返回 ${request.type}-${completer.hashCode}");
+      print("WSMainService 请求返回 ${request.type}-${completer.hashCode}");
       // notifierResponse = response;
       // notifyListeners();
     });
@@ -175,23 +202,20 @@ class WSMainService extends IsolateService {
   void dispatchResponse(GameResponse response) {
     print("===========>到了这里  ${_responseListeners.length}");
     if (response.type == "ping") {
-      // 收到心跳包 特殊处理
-      // print("na = ${response.responseTypeId}");
-    } else {
-    }
+    } else {}
     // String paramKey = response.responseKey();
     // DXIsolateParam? tmpIsolatePram = mRequestMap.remove(paramKey);
     // if (tmpIsolatePram != null) {
     //   print("WSMainService 处理Request = $paramKey");
     //   tmpIsolatePram.completer.complete(response);
     // } else {
-      // 转发出去
-      for (var listener in _responseListeners) {
-        if (listener.supportHandleResponse(response)) {
-          listener.notificationCallBack(response);
-        }
+    // 转发出去
+    for (var listener in _responseListeners) {
+      if (listener.supportHandleResponse(response)) {
+        listener.notificationCallBack(response);
       }
+    }
     // }
   }
-  //!end class ws service
+//!end class ws service
 }

@@ -137,10 +137,8 @@ class _GameRoomPageState extends State<GameRoomPage> {
                           ),
                           Positioned(left: 0, right: 0, child: buildContiner()),
                           buildFloatingBtn(() {
-                            DialogUtils().showBulletBtmDialog(context, logic,
-                                (v) {
-                              showToast("${v.length}");
-                            });
+                            logic.startBet(context);
+
                           }),
                         ],
                       ))

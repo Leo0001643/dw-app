@@ -29,8 +29,8 @@ class GameRoomHotWidget extends StatelessWidget {
 
       GameRoomState state = logic.state;
       WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
-      String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??"",year:""); // 4
-
+      // String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??"",year:""); // 4
+      String termData=GameRuleUtil.getSSB(logic.term.value,year:"");
       var textColor =
           state.roomType.value == 1 ? ColorX.text0917() : Colors.white;
       return Container(
