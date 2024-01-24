@@ -96,7 +96,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
           room_id: "${room.roomId ?? 0}",
           game_type: "${state.room.value.gameType}");
     });
-
+    print("=========>room.id ${room.id}");
     HttpService.getPC28Odds(room.id.em()).then((value) {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
       Map<String, dynamic> map = jsonDecode(value,);

@@ -206,7 +206,7 @@ class ColorX{
   }
 
   static List<Color> cardColors(){
-    return AppData.theme() ? [Colors.white,Color(0xfff3f4f9)] : [Color.fromRGBO(30, 31, 31, 1),Color.fromRGBO(30, 31, 31, 1)];
+    return AppData.theme() ? [Colors.white,const Color(0xfff3f4f9)] : [Color.fromRGBO(30, 31, 31, 1),Color.fromRGBO(30, 31, 31, 1)];
   }
 
 

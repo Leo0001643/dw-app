@@ -708,6 +708,8 @@ class GameRuleUtil {
               Map<String,dynamic> subMap=childMap[childKey];
               row?.id ="${subMap["id"]}";
               row?.parentId ="${subMap["parentId"]}";
+              row?.jsonKey =childKey;
+
               row?.enabled ="${subMap["enabled"]}";
               row?.createTime ="${subMap["createTime"]}";
               row?.updateTime ="${subMap["updateTime"]}";
@@ -907,7 +909,7 @@ class GameRuleUtil {
     }
     return false;
   }
-  static void dealData(List<WS.Content> odds,String mBallName) {
+  static  List<WS.Content>  dealData(List<WS.Content> odds,String mBallName) {
 
     List<WS.Content> data = [];
     List<WS.Content> data1 = [];
@@ -972,6 +974,7 @@ class GameRuleUtil {
     data.addAll(data1);
     data.addAll(data2);
     data.addAll(data3);
+    return data;
     // for (int i = 0; i < mViews.size() && i < data.size(); i++) {
     //   initDataTeMa(mViews.get(i), data.get(i));
     // }
