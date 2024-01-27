@@ -35,6 +35,10 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
   RxString term = "".obs;
   WSLotteryEntityData? headWSLotteryEntityData;
   RxList<WS.Content> odds=<WS.Content>[].obs;
+
+  RxList<WS.Content> dataBettingList=<WS.Content>[].obs;
+
+
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
 
   @override
@@ -101,6 +105,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
       Map<String, dynamic> map = jsonDecode(value,);
       odds.value=GameRuleUtil.getOddsbean(map).content??[];
+      dataBettingList.value=    GameRuleUtil.dealData(odds.value);
     });
 
     ///表情

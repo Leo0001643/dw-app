@@ -909,7 +909,7 @@ class GameRuleUtil {
     }
     return false;
   }
-  static  List<WS.Content>  dealData(List<WS.Content> odds,String mBallName) {
+  static  List<WS.Content>  dealData(List<WS.Content> odds,{String mBallName="first"}) {
 
     List<WS.Content> data = [];
     List<WS.Content> data1 = [];

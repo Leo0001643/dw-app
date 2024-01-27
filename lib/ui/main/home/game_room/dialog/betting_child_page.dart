@@ -15,6 +15,7 @@ import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.da
 
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
+import 'package:leisure_games/ui/main/home/game_room/widget/betting_dialog_item_widget.dart';
 
 class BettingChildPage extends StatefulWidget {
   String ballName;
@@ -46,11 +47,10 @@ class BettingChildPageState extends State<BettingChildPage> {
     return GetBuilder<GameRoomLogic>(builder: (logic) {
       Map<int, WS.Content> arrayMap = {};
 
-      List<WS.Content> data =
-          GameRuleUtil.dealData(logic.odds.value, widget.ballName);
-      print("--------->数据${data.length}");
+      print("--------->数据${logic.dataBettingList.length}");
       return Container(
         width: 1.sw,
+        padding: EdgeInsets.only(left: 15.w,right: 15.w,top:8.w),
         child: CustomScrollView(slivers: [
           SliverToBoxAdapter(
             child: Container(
@@ -59,12 +59,12 @@ class BettingChildPageState extends State<BettingChildPage> {
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 6,
                     crossAxisSpacing: 6.0,
-                    mainAxisSpacing: 4,
-                    childAspectRatio: 70 / 90,
+                    mainAxisSpacing: 6,
+                    childAspectRatio: 64 / 64,
                   ),
-                  itemCount: data.length,
+                  itemCount: logic.dataBettingList.length,
                   itemBuilder: (BuildContext context, int index) {
-                   return buildSizeCard(data[index]);
+                   return BettingDialogItemWidget(index);
                   }),
             ),
           )

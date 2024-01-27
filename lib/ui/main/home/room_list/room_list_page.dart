@@ -16,7 +16,7 @@ import '../../ends_drawer_view.dart';
 import 'room_list_logic.dart';
 
 class RoomListPage extends StatefulWidget {
-  const RoomListPage({Key? key}) : super(key: key);
+  const RoomListPage({super.key});
 
   @override
   State<RoomListPage> createState() => _RoomListPageState();

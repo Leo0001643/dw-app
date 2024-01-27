@@ -34,8 +34,7 @@ import 'widget/game_room_head_widget.dart';
 import 'widget/game_room_hot_widget.dart';
 
 class GameRoomPage extends StatefulWidget {
-  const GameRoomPage({Key? key}) : super(key: key);
-
+  const GameRoomPage({super.key});
   @override
   State<GameRoomPage> createState() => _GameRoomPageState();
 }

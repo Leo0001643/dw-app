@@ -51,7 +51,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       height: 0.77.sh,
       width: 1.sw,
       decoration: BoxDecoration(
-        color: ColorX.pageBg4(),
+        // color: ColorX.pageBg4(),
+        color: Color(0xFFF7F8FB),
         borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
       ),
       child: Column(
