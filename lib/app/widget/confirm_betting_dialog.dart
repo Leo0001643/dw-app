@@ -3,12 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/controller/wallet_controller.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
+import 'package:leisure_games/ui/main/mine/mine_logic.dart';
 
 ///确认注单
 class ConfirmBettingDialog extends StatefulWidget{
@@ -69,7 +73,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("${Intr().yue_}¥ 6666.00",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
+                buildMonney(),
                 LCSegmentTabs(
                   length: payWays.length,
                   width: 88.w,
@@ -264,6 +268,39 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
       String termData=GameRuleUtil.getSSB(logic.term.value,year:"");
       return  Text(Intr().dixqi([termData]),style: TextStyle(fontSize: 14.sp,color: Colors.white,),);
     });
+  }
+
+  buildMonney() {
+
+    return GetBuilder<WalletController>(builder: (logic){
+      MineLogic   logic = Get.find<MineLogic>();
+      return    Row(
+        children: [
+          Text(
+            Intr().yue_,
+            style: TextStyle(
+                fontSize: 15.sp,
+                color: ColorX.text0917(),
+                fontWeight: FontWeight.w500),
+          ),
+          Obx(() {
+            return Text(
+              AppData.wallet()
+                  ? "¥${logic.state.cnyBal.value.money?.em()}"
+                  : "₮${logic.state.usdtBal.value.money.em()}",
+
+
+              style: TextStyle(
+                fontSize: 18.sp,
+                color: ColorX.text0917(),
+                fontWeight: FontWeight.w600,
+              ),
+            );
+          }),
+        ],
+      );
+    });
+
   }
 }
 
