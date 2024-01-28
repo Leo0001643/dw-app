@@ -44,9 +44,10 @@ class BettingChildPageState extends State<BettingChildPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<GameRoomLogic>(builder: (logic) {
+    return GetBuilder<GameRoomLogic>(
+        id: "bettingList",
+        builder: (logic) {
       Map<int, WS.Content> arrayMap = {};
-
       print("--------->数据${logic.dataBettingList.length}");
       return Container(
         width: 1.sw,
@@ -64,6 +65,7 @@ class BettingChildPageState extends State<BettingChildPage> {
                   ),
                   itemCount: logic.dataBettingList.length,
                   itemBuilder: (BuildContext context, int index) {
+                      print("===== index ${index}   ${logic.dataBettingList[index].hashCode} ");
                    return BettingDialogItemWidget(index);
                   }),
             ),

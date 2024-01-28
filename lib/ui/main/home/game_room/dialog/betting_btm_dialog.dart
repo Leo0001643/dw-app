@@ -10,6 +10,9 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_child_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
+
+import '../utils/game_rule_util.dart';
 
 class BettingBtmDialog extends StatefulWidget {
   final GameRoomLogic logic;
@@ -47,6 +50,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
+    String termData=GameRuleUtil.getSSB(widget.logic.term.value,year:"");
+
     return Container(
       height: 0.77.sh,
       width: 1.sw,
@@ -94,17 +99,11 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(Intr().dixqi(["1231312"]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                        Text(Intr().dixqi(["${termData}"]),style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            buildDrawTime("00"),
-                            Text(" : ",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
-                            buildDrawTime("02"),
-                            Text(" : ",style: TextStyle(fontSize: 18.sp,color: Colors.white,fontWeight: FontWeight.w600),),
-                            buildDrawTime("53"),
-                            SizedBox(width: 5.w,),
-                            Text(Intr().end,style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                            getTimer()
                           ],
                         ),
                       ],
@@ -267,6 +266,99 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
     }
   }
 
+
+  Widget getTimer() {
+    // 在这里构建你的 UI，使用 roomInf 数据
+    return GetBuilder<TextItemLogic>(
+        id: "textTimerItem",
+        builder: (logic) {
+          print("开始刷新logic");
+          String result = "";
+          int type=0;
+          String term1="";
+          String term2="";
+          if ("封盘中" == logic?.state.text_timer.value) {
+            result = "封盘中";
+            type=0;
+          } else {
+            type=1;
+            result =
+                logic?.subToTime(logic!.state.text_timer.value)??"";
+            try{
+              term1=result.split(":")[0];
+              term2=result.split(":")[1];
+            }catch(e){
+              print("==========>${e.toString()}");
+            }
+          }
+          return type==0?Container(
+            width: 50.w,
+            height: 20.w,
+            padding: EdgeInsets.symmetric(
+              horizontal: 4.w,
+            ),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(4.w)),
+                color: Color(0xFFFF7F8C)),
+            child:  Text("封盘中",
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  fontSize: 12,
+                )),
+          ):
+          Row(
+            children: [
+              Container(
+                  height: 24.w,
+                  padding: EdgeInsets.symmetric(
+                    horizontal:6.w,
+                  ),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(6.w)),
+                      color: Colors.white),
+                  child: Text(term1,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFFFC243B),
+                        fontSize: 16,
+                      ))),
+              SizedBox(width:4.w,),
+              Text(":",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    fontSize: 16,
+                  )),
+              SizedBox(width:4.w,),
+              Container(
+                  height: 24.w,
+                  padding: EdgeInsets.symmetric(
+                    horizontal:6.w,
+                  ),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(6.w)),
+                      color: Colors.white),
+                  child: Text(term2,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFFFC243B),
+                        fontSize: 16,
+                      ))),
+              SizedBox(width:4.w,),
+              Text("后结束",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    fontSize: 16,
+                  )),
+            ],
+          );
+        });
+  }
   Color buildTextColor(){
     var color = ColorX.color_fc243b;
     switch(widget.logic.state.roomType.value){

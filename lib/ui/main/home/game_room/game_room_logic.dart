@@ -328,4 +328,9 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
       }
     }
   }
+
+  void updateBettingDialogItemWidget(WS.Content content) {
+    content.check=!(content?.check??false);
+    update(["bettingList"]);
+  }
 }

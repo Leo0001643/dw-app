@@ -11,6 +11,15 @@ import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.da
 
 
 class GameRuleUtil {
+
+  static final String Key_Min ="Key_Min";// 最小限额
+  static final String Key_Max = "Key_Max";// 最大限额
+   static final String Key_Type ="Key_Type";// 投注类型
+   static final String Key_Name = "Key_Name";// 投注类型名称
+   static final String Key_Num = "Key_Num";// 单点数字
+   static final String Key_Odds = "Key_Odds";// 常规赔率
+   static final String Key_Odds_1314 ="Key_Odds_1314";// 特殊赔率
+
   /**
    * "大"
    */
@@ -701,15 +710,15 @@ class GameRuleUtil {
       if (keys .isNotEmpty) {
         WS.Content row;
         keys.map((e){
-          WS.Content row= WS.Content();
+
           try {
             Map<String,dynamic> childMap=totalMap[e];
             childMap.keys.map((childKey){
+              WS.Content row= WS.Content();
               Map<String,dynamic> subMap=childMap[childKey];
               row?.id ="${subMap["id"]}";
               row?.parentId ="${subMap["parentId"]}";
               row?.jsonKey =childKey;
-
               row?.enabled ="${subMap["enabled"]}";
               row?.createTime ="${subMap["createTime"]}";
               row?.updateTime ="${subMap["updateTime"]}";
@@ -721,11 +730,10 @@ class GameRuleUtil {
 
 
 
-            return row;
+
           } catch ( e) {
             print("解析失败 e  ${e.toString()}");
           }
-          return row;
 
         }).toList();
 
