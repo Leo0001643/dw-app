@@ -12,6 +12,7 @@ import 'package:leisure_games/ui/main/home/game_room/dialog/betting_child_page.d
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 
+import '../../../../../app/utils/dialog_utils.dart';
 import '../utils/game_rule_util.dart';
 
 class BettingBtmDialog extends StatefulWidget {
@@ -237,9 +238,10 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                             padding: EdgeInsets.only(top: 30.h),
                             alignment: Alignment.center,
                             width: 90.w,
+
                             child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
                               ///确认投注
-                              // DialogUtils().showConfirmBetDialog(context, widget.logic);
+                              DialogUtils().showConfirmBetDialog(context, widget.logic);
                             }),
                           ),
                         ],
@@ -389,7 +391,12 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
   }
   Widget buildChipItem(String icon, int index, double top, double btm) {
     return InkWell(
-      onTap: () => chipIndex.value = index,
+      onTap: () {
+        chipIndex.value = index;
+        inputAmt.value=switchChipMonney(index);
+        setState(() {
+        });
+      },
       child: Container(
         margin: EdgeInsets.only(left: 5.w, right: 5.w, top: top, bottom: btm),
         child: Image.asset(icon, width: 45.r, height: 45.r, fit: BoxFit.fill,),
@@ -398,6 +405,41 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
   }
 
   void initData() {}
+
+  String switchChipMonney(int index) {
+    String result="";
+    switch(index) {
+      case 0:
+        result="1";
+        break;
+      case 1:
+        result="5";
+        break;
+      case 2:
+        result="10";
+        break;
+      case 3:
+        result="50";
+        break;
+      case 4:
+        result="100";
+        break;
+      case 5:
+        result="500";
+        break;
+      case 6:
+        result="1000";
+        break;
+      case 7:
+        result="5000";
+        break;
+      case 8:
+        result="10000";
+        break;
+    }
+
+    return result;
+  }
 }
 
 

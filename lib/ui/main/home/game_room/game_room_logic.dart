@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
@@ -40,6 +41,8 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
 
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
+
+
 
   @override
   void onReady() {
@@ -240,7 +243,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     if (wsLotteryEntity.data?.isNotEmpty == true) {
       headWSLotteryEntityData = wsLotteryEntity.data?[0];
       term.value = headWSLotteryEntityData?.term ?? "";
-      update(["gameRoomComputeWidget"]);
+      update(["gameRoomComputeWidget","gameRoomTimer"]);
     }
     GameRoomItemEntity gameRoomItemEntity =
         GameRoomItemEntity(type: type, data: wsLotteryEntity);

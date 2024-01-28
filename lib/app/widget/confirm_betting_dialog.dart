@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 ///确认注单
 class ConfirmBettingDialog extends StatefulWidget{
@@ -57,7 +59,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("请确认注单",style: TextStyle(fontSize: 14.sp,color: Colors.white,),),
-                Text(Intr().dixqi([" 1231312 "]),style: TextStyle(fontSize: 14.sp,color: Colors.white,),),
+                buildTimer(),
               ],
             ),
           ),
@@ -70,16 +72,28 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
                 Text("${Intr().yue_}¥ 6666.00",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
                 LCSegmentTabs(
                   length: payWays.length,
+                  width: 88.w,
                   labelColor: Colors.white,
                   unselectedLabelColor: ColorX.text0917(),
-                  width: 88.w,
-                  height: 22.h,
                   border: Border.all(color: Colors.transparent),
                   borderRadius: BorderRadius.circular(15.r),
                   tabBarColor: ColorX.cardBg6(),
-                  indicatorColor: buildBtnColor(),
+                  indicatorWeight: 0,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  indicatorColor: ColorX.color_fc243b,
                   labelPadding: EdgeInsets.zero,
-                  tabs: payWays.map((e) => Text(e,style: TextStyle(fontSize: 12.sp),)).toList(),
+                  tabs: payWays.map((e){
+                    return Text("    $e   ",style: TextStyle(fontSize: 12.sp),);
+                    // return Container(
+                    //   width: 42.w,
+                    //   height: 20.w,
+                    //   decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(10.w),
+                    //     color: payWays[_tabController.index]==e? ColorX.color_fc243b:ColorX.cardBg6(),
+                    //   ),
+                    //   child: Text(e,style: TextStyle(fontSize: 12.sp),),
+                    // );
+                  }).toList(),
                   tabController: _tabController,
                 ),
               ],
@@ -245,6 +259,12 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
     return color;
   }
 
+  buildTimer() {
+    return GetBuilder<GameRoomLogic>(builder: (logic){
+      String termData=GameRuleUtil.getSSB(logic.term.value,year:"");
+      return  Text(Intr().dixqi([termData]),style: TextStyle(fontSize: 14.sp,color: Colors.white,),);
+    });
+  }
 }
 
 

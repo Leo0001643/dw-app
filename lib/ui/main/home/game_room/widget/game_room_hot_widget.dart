@@ -25,7 +25,9 @@ class GameRoomHotWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return GetBuilder<GameRoomLogic>(builder: (logic) {
+    return GetBuilder<GameRoomLogic>(
+        id: "gameRoomTimer",
+        builder: (logic) {
 
       GameRoomState state = logic.state;
       WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
