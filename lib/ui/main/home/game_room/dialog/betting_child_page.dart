@@ -31,7 +31,7 @@ class BettingChildPage extends StatefulWidget {
 
 class BettingChildPageState extends State<BettingChildPage> {
   var selectPhrases = (-1).obs;
-
+  List<WS.Content> dataBettingList=<WS.Content>[];
   ///实际显示使用的列表
   var showList = RxList.empty(growable: true);
 
@@ -48,7 +48,7 @@ class BettingChildPageState extends State<BettingChildPage> {
         id: "bettingList",
         builder: (logic) {
       Map<int, WS.Content> arrayMap = {};
-      print("--------->数据${logic.dataBettingList.length}");
+      print("--------->数据${dataBettingList.length}");
       return Container(
         width: 1.sw,
         padding: EdgeInsets.only(left: 15.w,right: 15.w,top:8.w),
@@ -63,10 +63,10 @@ class BettingChildPageState extends State<BettingChildPage> {
                     mainAxisSpacing: 6,
                     childAspectRatio: 64 / 64,
                   ),
-                  itemCount: logic.dataBettingList.length,
+                  itemCount: dataBettingList.length,
                   itemBuilder: (BuildContext context, int index) {
-                      print("===== index ${index}   ${logic.dataBettingList[index].hashCode} ");
-                   return BettingDialogItemWidget(index);
+                      print("===== index ${index}   ${dataBettingList[index].hashCode} ");
+                   return BettingDialogItemWidget(index,dataBettingList[index]);
                   }),
             ),
           )
@@ -293,5 +293,10 @@ class BettingChildPageState extends State<BettingChildPage> {
     );
   }
 
-  void initItem() {}
+  void initItem() {
+    GameRoomLogic logic=Get.find<GameRoomLogic>();
+    dataBettingList=logic.getDataBettingList(widget.index);
+    setState(() {
+    });
+  }
 }

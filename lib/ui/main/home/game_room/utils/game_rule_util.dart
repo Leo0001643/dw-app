@@ -703,6 +703,19 @@ class GameRuleUtil {
     }
     return ssb;
   }
+
+  static String getSimpleSSB(String qiShu,{String? year="2024"}) {
+    String ssb = "";
+    if (qiShu.isNotEmpty == true && qiShu.length > 8) {
+      qiShu = qiShu.substring(qiShu.length - 8, qiShu.length);
+      ssb = "${year}$qiShu";
+      // ssb.setSpan(
+      //     new ForegroundColorSpan(Color.parseColor("#fe2427")), di.length(),
+      //     di.length() + qiShu.length(),
+      //     Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+    }
+    return ssb;
+  }
    static WSGameOddsServer getOddsbean( Map<String,dynamic> totalMap) {
     WSGameOddsServer result =  WSGameOddsServer();
       result.content = [];

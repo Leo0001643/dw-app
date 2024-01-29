@@ -574,7 +574,7 @@ class DialogUtils {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: HistoryLotteryBtmDialog(logic),
+            child: HistoryLotteryBtmDialog(),
           );
         });
   }

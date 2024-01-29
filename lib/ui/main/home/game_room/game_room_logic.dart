@@ -44,6 +44,8 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
 
+  RxList<WSLotteryEntityData>   recentlyWSLotteryEntityData=<WSLotteryEntityData>[].obs;
+
   RxDouble inputAmt = (0.0).obs;
 
   @override
@@ -110,8 +112,9 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
       Map<String, dynamic> map = jsonDecode(value,);
       odds.value=GameRuleUtil.getOddsbean(map).content??[];
-      dataBettingList.value=    GameRuleUtil.dealData(odds.value);
+
     });
+
 
     ///表情
     HttpService.getExpression().then((value) {
@@ -140,6 +143,26 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     // test();
   }
 
+  List<WS.Content>  getDataBettingList(int index,){
+    String mBallName="";
+    switch(index) {
+      case 0:
+        mBallName="first";
+        break;
+      case 1:
+        mBallName="first";
+        break;
+      case 2:
+        mBallName="second";
+        break;
+      case 3:
+        mBallName="three";
+        break;
+    }
+
+    var  dataBettingList=    GameRuleUtil.dealData(odds.value,mBallName:mBallName);
+    return dataBettingList;
+  }
   /**
    * 判断是不是登录了，如果登录成功，则重新登录ws
    */
@@ -242,6 +265,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
   void handleLottery(String type, GameResponse response) {
     WSLotteryEntity wsLotteryEntity =
         WSLotteryEntity.fromJson(jsonDecode(response.data));
+    recentlyWSLotteryEntityData.value=wsLotteryEntity.data??[];
     if (wsLotteryEntity.data?.isNotEmpty == true) {
       headWSLotteryEntityData = wsLotteryEntity.data?[0];
       term.value = headWSLotteryEntityData?.term ?? "";

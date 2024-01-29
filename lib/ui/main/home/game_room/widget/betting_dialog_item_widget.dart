@@ -13,13 +13,13 @@ import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 class BettingDialogItemWidget extends StatelessWidget {
   Map<String,String> keyMap={};
   int index=0;
-  BettingDialogItemWidget(this.index,{super.key});
+  WS.Content  content;
+  BettingDialogItemWidget(this.index,this.content,{super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GameRoomLogic>(
         builder: (logic){
-      WS.Content content= logic.dataBettingList.value[index];
       String ssb=saveColorType(content);
       // String play=getTag(key)
       print("=====>${jsonEncode(content.toJson())}");
