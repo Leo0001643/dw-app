@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -33,6 +34,7 @@ import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/check_point_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
@@ -41,9 +43,11 @@ import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_btm_dialog.dart';
+import 'package:leisure_games/ui/main/home/game_room/dialog/not_sufficient_funds_dialog.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_logic.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
+import 'package:leisure_games/ui/main/mine/mine_logic.dart';
 
 import '../widget/bottom_access_route_dialog.dart';
 import '../widget/jump_type_dialog.dart';
@@ -612,7 +616,16 @@ class DialogUtils {
   }
 
   ///确认注单
-  void showConfirmBetDialog(BuildContext context, GameRoomLogic logic) {
+  void showConfirmBetDialog(BuildContext context, GameRoomLogic logic,{double total=0}) {
+    MineLogic   mineLogic = Get.find<MineLogic>();
+    double selfMoney=mineLogic.state.cnyBal.value.money??0;
+    if(selfMoney<total) {
+      showMessageDialog(context,"余额不足,投注失败。是否前往充值",title:"提示",onConfirm: (){
+        eventBus.fire(ChangeMainPageEvent(2));
+        Navigator.pop(context);
+      });
+      return;
+    }
     showDialog(
         context: context,
         builder: (context) {

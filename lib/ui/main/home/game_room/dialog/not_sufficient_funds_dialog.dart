@@ -15,16 +15,16 @@ import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/mine/mine_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
 ///确认注单
-class ConfirmBettingDialog extends StatefulWidget{
+class NotSufficientFundsDialog extends StatefulWidget{
 
   final GameRoomLogic logic;
-  ConfirmBettingDialog(this.logic, {super.key});
+  const NotSufficientFundsDialog(this.logic, {super.key});
 
   @override
   State<StatefulWidget> createState() =>StateConfirmBettingDialog();
 }
 
-class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleTickerProviderStateMixin{
+class StateConfirmBettingDialog extends State<NotSufficientFundsDialog> with SingleTickerProviderStateMixin{
 
   var payWays = ["RMB","USDT"];
   late TabController _tabController;
@@ -45,9 +45,9 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 0.5.sh,
       width: 0.92.sw,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
@@ -158,22 +158,24 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
           ),
           SizedBox(height: 8.h,),
           Divider(height: 2.h,color: ColorX.color_10_949,),
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                WidgetUtils().buildElevatedButton("取消", 135.w, 40.h,
-                    bg: ColorX.cardBg3(),textColor: ColorX.text586(),onPressed: (){
-                      Navigator.of(context).pop(false);
-                    }),
-                SizedBox(width: 10.w,),
-                WidgetUtils().buildElevatedButton("确定", 135.w, 40.h,
-                    bg: buildBtnColor(),textColor: Colors.white,onPressed: (){
-                      Navigator.of(context).pop(true);
-                    })
-              ],
+          Expanded(
+            child: Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  WidgetUtils().buildElevatedButton("取消", 135.w, 40.h,
+                      bg: ColorX.cardBg3(),textColor: ColorX.text586(),onPressed: (){
+                        Navigator.of(context).pop(false);
+                      }),
+                  SizedBox(width: 10.w,),
+                  WidgetUtils().buildElevatedButton("确定", 135.w, 40.h,
+                      bg: buildBtnColor(),textColor: Colors.white,onPressed: (){
+                        Navigator.of(context).pop(true);
+                      })
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

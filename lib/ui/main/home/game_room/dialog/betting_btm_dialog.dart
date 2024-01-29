@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -11,6 +12,7 @@ import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_child_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
+import 'package:leisure_games/ui/main/mine/mine_logic.dart';
 
 import '../../../../../app/utils/dialog_utils.dart';
 import '../utils/game_rule_util.dart';
@@ -26,7 +28,7 @@ class BettingBtmDialog extends StatefulWidget {
 
 class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerProviderStateMixin{
   late TabController _tabController;
-
+  int type=0;
   var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
 
   var chips = [ImageX.chip1,ImageX.chip5,ImageX.chip10,ImageX.chip50,ImageX.chip100,ImageX.chip500,ImageX.chip1000,
@@ -216,8 +218,9 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),),
-                                          Text("¥ 35000000",style: TextStyle(fontSize: 14.sp,color: buildTextColor(),),),
+                                          Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight:FontWeight.w700,),),
+                                          Text("${widget.logic.selectBettingList.length*(double.tryParse(inputAmt.value)??0)}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),),
+
                                         ],
                                       ),
                                     ),
@@ -240,8 +243,20 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                             width: 90.w,
 
                             child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
+                              if(type==0) {
+                                showToast("封盘中");
+                                return;
+                              }
+                              if (widget.logic.selectBettingList.isEmpty) {
+                                showToast("请选择投注项目");
+                                return;
+                              } else if (inputAmt.value.isEmpty) {
+                                showToast("下注金额为空");
+                                return;
+                              }
+                              double totalMony=widget.logic.selectBettingList.length*(double.tryParse(inputAmt.value)??0);
                               ///确认投注
-                              DialogUtils().showConfirmBetDialog(context, widget.logic);
+                              DialogUtils().showConfirmBetDialog(context, widget.logic,total: totalMony);
                             }),
                           ),
                         ],
@@ -276,7 +291,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
         builder: (logic) {
           print("开始刷新logic");
           String result = "";
-          int type=0;
+
           String term1="";
           String term2="";
           if ("封盘中" == logic?.state.text_timer.value) {
