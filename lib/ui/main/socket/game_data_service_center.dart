@@ -5,10 +5,12 @@ import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/res/request/login_request.dart';
+import 'package:leisure_games/app/res/request/sumbit_bet_request.dart';
 import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
 import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
 import 'package:leisure_games/ui/main/socket/app/ws_main_service.dart';
 import 'package:leisure_games/ui/main/socket/game_isolate.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
 class GameResultData {
   dynamic entity;
   int code;
@@ -54,6 +56,18 @@ class GameDataServiceCenter {
     GameIsolate.instance.stopConnection();
   }
   void wSLogin({String? table_id,String? room_id,String? game_type}) async{
+    WsLoginRequest loginRequest=WsLoginRequest(table_id:table_id,room_id:room_id,game_type:game_type);
+    GameResponse response = await requestData(loginRequest);
+  }
+
+  void wSBet({String? table_id,String? room_id,String? game_type,  String? moneyType,
+    String? nowTerm,
+    List<WS.Content>? betList}) async{
+    SubmitBetRequest loginRequest=SubmitBetRequest(table_id:table_id,room_id:room_id,game_type:game_type,moneyType:moneyType,nowTerm:nowTerm,betList:betList);
+    GameResponse response = await requestData(loginRequest);
+  }
+
+  void sumbitBet({String? table_id,String? room_id,String? game_type}) async{
     WsLoginRequest loginRequest=WsLoginRequest(table_id:table_id,room_id:room_id,game_type:game_type);
     GameResponse response = await requestData(loginRequest);
   }

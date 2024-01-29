@@ -772,7 +772,7 @@ class GameRuleUtil {
   /**
    * 根据betType返回投注类型的中文名称,当以cao开头时，betNum对应特码数字
    */
-  static String getBetTypeName(String betType, String betNum) {
+  static String getBetTypeName(String betType) {
     if (GameType_Big == (betType)) {
       return "特码-大";
     } else if (GameType_Small == (betType)) {

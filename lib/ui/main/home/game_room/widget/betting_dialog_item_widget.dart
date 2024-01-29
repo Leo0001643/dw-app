@@ -25,6 +25,7 @@ class BettingDialogItemWidget extends StatelessWidget {
       print("=====>${jsonEncode(content.toJson())}");
       return InkWell(
         onTap: (){
+          content.contentMap=keyMap;
           logic.updateBettingDialogItemWidget(content);
         },
         child: Container(
@@ -122,10 +123,10 @@ class BettingDialogItemWidget extends StatelessWidget {
          String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Even);
          ssb = betTypeName;
        } else {
-          setTag(GameRuleUtil.Key_Odds, con.play);
           ssb =con.name??"";
        }
      }
+     setTag(GameRuleUtil.Key_Odds, con.play);
      return ssb;
   }
 

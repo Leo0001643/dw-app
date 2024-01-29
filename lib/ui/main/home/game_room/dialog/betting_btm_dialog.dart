@@ -27,6 +27,11 @@ class BettingBtmDialog extends StatefulWidget {
 }
 
 class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerProviderStateMixin{
+  static final riKey1 = const Key('__RIKEY1__');
+  static final riKey2 = const Key('__RIKEY2__');
+  static final riKey3 = const Key('__RIKEY3__');
+  static final riKey4 = const Key('__RIKEY4__');
+
   late TabController _tabController;
   int type=0;
   var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
@@ -139,10 +144,10 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
             child:TabBarView(
               controller: _tabController,
               children: [
-                BettingChildPage(0,"first"),
-                BettingChildPage(1,"second"),
-                BettingChildPage(2,"three"),
-                BettingChildPage(3,"three"),
+                BettingChildPage(0,"first",key: riKey1,),
+                BettingChildPage(1,"second",key: riKey2),
+                BettingChildPage(2,"three",key: riKey3),
+                BettingChildPage(3,"three",key: riKey4),
               ],
             ),
           ),
@@ -411,7 +416,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       onTap: () {
         chipIndex.value = index;
         widget.logic.inputAmt.value=switchChipMonney(index);
-        widget.logic.selectBettingList;
+        widget.logic.setItemMoney(widget.logic.inputAmt.value);
         setState(() {
         });
       },

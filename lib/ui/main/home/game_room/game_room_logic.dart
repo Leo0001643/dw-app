@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -335,6 +336,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
   void updateBettingDialogItemWidget(WS.Content content) {
     content.check=!(content?.check??false);
+    print("=======> inputAmt.value   ${inputAmt.value}");
     if( content.check==true) {
       content.money=inputAmt.value;
       selectBettingList.add(content);
@@ -351,11 +353,38 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
       content.money=money;
     }
   }
-  String sumData(String monney){
+  double sumData(){
+    double total=0;
+    for(WS.Content content  in selectBettingList) {
+      total+= (content?.money??0);
+    }
+    return total;
+  }
+  double sumOddsData(){
+    double total=0;
+    for(WS.Content content  in selectBettingList) {
+      total+=( (content?.money??0)*(double.tryParse(content.contentMap["Key_Odds"]??"0")??0));
+    }
+    return total;
+  }
+  void removeSelect(WS.Content content) {
+      selectBettingList.remove(content);
+      selectBettingList.refresh();
+      update(["bettingList"]);
+  }
 
-    return "";
-
-
+  void sumbitBets(double allMoney) {
+    if(LotteryStatus.sealingPlateStatus==currentStatus.value) {
+      showToast("封盘中");
+      return;
+    }
+    GameDataServiceCenter.instance.wSBet(
+        table_id: "${state.room.value.id ?? 0}",
+        room_id: "${state.room.value.roomId ?? 0}",
+        game_type: "${state.room.value.gameType}",
+      moneyType: "CNY",
+      nowTerm: "${term}",
+      betList: selectBettingList.value,);
 
 
   }

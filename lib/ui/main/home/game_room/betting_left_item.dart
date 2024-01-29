@@ -154,7 +154,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
    String betOdds1314 = c?.e??"";
    print("=======>c${jsonEncode(c?.toJson())}");
     String? qiShu=wsBetResultEntity?.term;
-    String betName = GameRuleUtil.getBetTypeName(betType, betNum);
+    String betName = GameRuleUtil.getBetTypeName(betType);
     String partMsg = "x"+ GameRuleUtil.getMoneySymbol(wsBetResultEntity?.moneyType??"CNY");
     String betOdds="";
     print("=====>betMoney ${betMoney}  betOdds1314 ${betOdds1314}");
