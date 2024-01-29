@@ -39,6 +39,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
   RxList<WS.Content> dataBettingList=<WS.Content>[].obs;
 
+  RxList<WS.Content> selectBettingList=<WS.Content>[].obs;
 
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
 
@@ -334,6 +335,12 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
   void updateBettingDialogItemWidget(WS.Content content) {
     content.check=!(content?.check??false);
+    if( content.check==true) {
+      selectBettingList.add(content);
+    }else{
+      selectBettingList.remove(content);
+
+    }
     update(["bettingList"]);
   }
 }

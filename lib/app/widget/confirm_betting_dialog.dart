@@ -13,7 +13,7 @@ import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/mine/mine_logic.dart';
-
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
 ///确认注单
 class ConfirmBettingDialog extends StatefulWidget{
 
@@ -87,7 +87,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
                   indicatorColor: ColorX.color_fc243b,
                   labelPadding: EdgeInsets.zero,
                   tabs: payWays.map((e){
-                    return Text("    $e   ",style: TextStyle(fontSize: 12.sp),);
+                    return Text("  $e  ",style: TextStyle(fontSize: 12.sp),);
                     // return Container(
                     //   width: 42.w,
                     //   height: 20.w,
@@ -125,9 +125,9 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
             ),
           ),
           Divider(height: 2.h,color: ColorX.color_10_949,),
-          buildBetItem(),
-          buildBetItem(),
-          buildBetItem(),
+          buildListItem(),
+
+
           Divider(height: 2.h,color: ColorX.color_10_949,),
           SizedBox(height: 8.h,),
           Container(
@@ -181,7 +181,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
     );
   }
 
-  Widget buildBetItem() {
+  Widget buildBetItem(WS.Content content) {
     return Container(
       height: 42.h,
       padding: EdgeInsets.symmetric(horizontal: 15.w,),
@@ -301,6 +301,19 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
       );
     });
 
+  }
+
+  buildListItem() {
+    return GetX<GameRoomLogic>(builder: (logic){
+      return ListView.builder(
+         shrinkWrap: true,
+          itemCount:logic.selectBettingList.length ,
+          itemBuilder: (context,index){
+            WS.Content content= logic.selectBettingList[index];
+
+            return buildBetItem(content);
+          });
+    });
   }
 }
 
