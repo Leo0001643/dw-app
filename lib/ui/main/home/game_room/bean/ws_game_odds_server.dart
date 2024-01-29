@@ -33,6 +33,8 @@ class Content {
   String? type;
   String? updateTime;
   bool? check=false;
+  double? money ;
+  Map<String,String> contentMap={};
   Content(
       {this.createTime,
         this.enabled,
@@ -44,6 +46,7 @@ class Content {
         this.tableId,
         this.type,
         this.check,
+        this.money,
         this.updateTime});
 
   Content.fromJson(Map<String, dynamic> json) {
@@ -58,6 +61,9 @@ class Content {
     type = json['type'];
     updateTime = json['updateTime'];
     check = json['check'];
+
+    money = json['money'];
+
 
 
   }
@@ -75,6 +81,7 @@ class Content {
     data['type'] = this.type;
     data['updateTime'] = this.updateTime;
     data['check'] = this.check;
+    data['money'] = this.money;
     return data;
   }
 }

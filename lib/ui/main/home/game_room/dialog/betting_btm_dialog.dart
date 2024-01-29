@@ -36,7 +36,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
   var chipIndex = (-1).obs;
 
-  var inputAmt = "".obs;
+
 
   @override
   void initState() {
@@ -209,7 +209,9 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                       child: Obx(() {
                                         return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, Intr().qingshurujine,
                                             backgroundColor: ColorX.cardBg(),hintColor: ColorX.text586(),
-                                            defText: inputAmt.value,inputType: TextInputType.number,onChanged: (v)=> inputAmt.value = v);
+                                            defText: "${widget.logic.inputAmt.value}",inputType: TextInputType.number,onChanged: (v){
+                                              widget.logic.inputAmt.value =double.tryParse(  v)??0;
+                                            });
                                       }),
                                     ),
                                     SizedBox(width: 10.w,),
@@ -219,7 +221,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight:FontWeight.w700,),),
-                                          Text("${widget.logic.selectBettingList.length*(double.tryParse(inputAmt.value)??0)}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),),
+                                          Text("${widget.logic.selectBettingList.length*(widget.logic.inputAmt.value??0)}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),),
 
                                         ],
                                       ),
@@ -227,7 +229,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                     SizedBox(width: 10.w,),
                                     InkWell(
                                       onTap: (){
-                                        inputAmt.value = "";
+                                        widget.logic.inputAmt.value = 0;
                                         chipIndex.value = -1;
                                       },
                                       child: Image.asset(ImageX.icon_clear,width: 48.w,height: 40.h,),
@@ -250,13 +252,13 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               if (widget.logic.selectBettingList.isEmpty) {
                                 showToast("请选择投注项目");
                                 return;
-                              } else if (inputAmt.value.isEmpty) {
+                              } else if (widget.logic.inputAmt.value==0) {
                                 showToast("下注金额为空");
                                 return;
                               }
-                              double totalMony=widget.logic.selectBettingList.length*(double.tryParse(inputAmt.value)??0);
+                              double totalMony=widget.logic.selectBettingList.length*(widget.logic.inputAmt.value??0);
                               ///确认投注
-                              DialogUtils().showConfirmBetDialog(context, widget.logic,total: totalMony);
+                              DialogUtils().showConfirmBetDialog(context, widget.logic,total: totalMony,inputAmt:widget.logic.inputAmt.value);
                             }),
                           ),
                         ],
@@ -408,7 +410,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
     return InkWell(
       onTap: () {
         chipIndex.value = index;
-        inputAmt.value=switchChipMonney(index);
+        widget.logic.inputAmt.value=switchChipMonney(index);
+        widget.logic.selectBettingList;
         setState(() {
         });
       },
@@ -421,35 +424,35 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
   void initData() {}
 
-  String switchChipMonney(int index) {
-    String result="";
+  double switchChipMonney(int index) {
+    double result=0;
     switch(index) {
       case 0:
-        result="1";
+        result=1;
         break;
       case 1:
-        result="5";
+        result=5;
         break;
       case 2:
-        result="10";
+        result=10;
         break;
       case 3:
-        result="50";
+        result=50;
         break;
       case 4:
-        result="100";
+        result=100;
         break;
       case 5:
-        result="500";
+        result=500;
         break;
       case 6:
-        result="1000";
+        result=1000;
         break;
       case 7:
-        result="5000";
+        result=5000;
         break;
       case 8:
-        result="10000";
+        result=10000;
         break;
     }
 

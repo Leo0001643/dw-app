@@ -727,10 +727,6 @@ class GameRuleUtil {
               row?.type ="${subMap["type"]}";
               result.content?.add(row);
             }).toList();
-
-
-
-
           } catch ( e) {
             print("解析失败 e  ${e.toString()}");
           }
@@ -740,6 +736,7 @@ class GameRuleUtil {
       }
     return result;
   }
+
 
 
   /**

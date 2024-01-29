@@ -1,5 +1,8 @@
 
 
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -16,9 +19,10 @@ import 'package:leisure_games/ui/main/mine/mine_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
 ///确认注单
 class ConfirmBettingDialog extends StatefulWidget{
-
+  double total=0;
+  double inputAmt=0;
   final GameRoomLogic logic;
-  ConfirmBettingDialog(this.logic, {super.key});
+  ConfirmBettingDialog(this.logic,this.total,this.inputAmt, {super.key});
 
   @override
   State<StatefulWidget> createState() =>StateConfirmBettingDialog();
@@ -136,14 +140,8 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text.rich(TextSpan(
-                    children: [
-                      TextSpan(text: "若中奖, 奖金",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
-                      TextSpan(text: "¥60.000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
-                      TextSpan(text: ", 盈利 ",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
-                      TextSpan(text: "¥30.000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
-                    ]
-                )),
+                buildTips(),
+
                 SizedBox(height: 8.h,),
                 Text.rich(TextSpan(
                     children: [
@@ -180,6 +178,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
   }
 
   Widget buildBetItem(WS.Content content) {
+    print("======>${jsonEncode(content.toJson())}");
     return Container(
       height: 42.h,
       padding: EdgeInsets.symmetric(horizontal: 15.w,),
@@ -192,7 +191,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
           ),
           Expanded(
             flex: 35,
-            child: Text("1.8884/1.555",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,),),
+            child: Text("${content.play}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,),),
           ),
           Expanded(
             flex: 40,
@@ -267,11 +266,31 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
       return  Text(Intr().dixqi([termData]),style: TextStyle(fontSize: 14.sp,color: Colors.white,),);
     });
   }
+  buildTips() {
 
+    return GetBuilder<GameRoomLogic>(builder: (logic){
+      MineLogic   mineLogic = Get.find<MineLogic>();
+
+      return    Row(
+        children: [
+          Text.rich(TextSpan(
+              children: [
+                TextSpan(text: "若中奖, 奖金",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
+                TextSpan(text: "¥60.000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
+                TextSpan(text: ", 盈利 ",style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
+                TextSpan(text: "¥30.000",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
+              ]
+          )),
+
+        ],
+      );
+    });
+
+  }
   buildMonney() {
 
     return GetBuilder<WalletController>(builder: (logic){
-      MineLogic   logic = Get.find<MineLogic>();
+      MineLogic   mineLogic = Get.find<MineLogic>();
       return    Row(
         children: [
           Text(
@@ -284,8 +303,8 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog> with SingleT
           Obx(() {
             return Text(
               AppData.wallet()
-                  ? "¥${logic.state.cnyBal.value.money?.em()}"
-                  : "₮${logic.state.usdtBal.value.money.em()}",
+                  ? "¥${mineLogic.state.cnyBal.value.money?.em()}"
+                  : "₮${mineLogic.state.usdtBal.value.money.em()}",
 
 
               style: TextStyle(

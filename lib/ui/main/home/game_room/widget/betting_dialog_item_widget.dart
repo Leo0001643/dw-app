@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,6 @@ class BettingDialogItemWidget extends StatelessWidget {
       return InkWell(
         onTap: (){
           logic.updateBettingDialogItemWidget(content);
-
         },
         child: Container(
           width: 64.w,

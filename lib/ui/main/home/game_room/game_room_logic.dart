@@ -43,7 +43,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
 
-
+  RxDouble inputAmt = (0.0).obs;
 
   @override
   void onReady() {
@@ -336,11 +336,27 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
   void updateBettingDialogItemWidget(WS.Content content) {
     content.check=!(content?.check??false);
     if( content.check==true) {
+      content.money=inputAmt.value;
       selectBettingList.add(content);
     }else{
       selectBettingList.remove(content);
-
+      content.money=0;
     }
     update(["bettingList"]);
+  }
+
+
+  void setItemMoney(double money) {
+    for(WS.Content content  in selectBettingList) {
+      content.money=money;
+    }
+  }
+  String sumData(String monney){
+
+    return "";
+
+
+
+
   }
 }

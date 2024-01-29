@@ -13,7 +13,7 @@ class _RetrofitClient implements RetrofitClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://9000vlmdm4.kj99883.com/';
+    baseUrl ??= 'http://soptj9qq.com/';
   }
 
   final Dio _dio;
@@ -1802,7 +1802,7 @@ class _RetrofitClient implements RetrofitClient {
     )
             .compose(
               _dio.options,
-              '/ds-api-web/bindVMDrawDetail',
+              '/ds-api-web/bindDigitalWallet',
               queryParameters: queryParameters,
               data: _data,
             )

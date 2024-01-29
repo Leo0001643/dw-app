@@ -616,7 +616,7 @@ class DialogUtils {
   }
 
   ///确认注单
-  void showConfirmBetDialog(BuildContext context, GameRoomLogic logic,{double total=0}) {
+  void showConfirmBetDialog(BuildContext context, GameRoomLogic logic,{double total=0,double inputAmt=0}) {
     MineLogic   mineLogic = Get.find<MineLogic>();
     double selfMoney=mineLogic.state.cnyBal.value.money??0;
     if(selfMoney<total) {
@@ -635,7 +635,7 @@ class DialogUtils {
             ),
             backgroundColor: ColorX.cardBg5(),
             contentPadding: EdgeInsets.zero,
-            content: ConfirmBettingDialog(logic),
+            content: ConfirmBettingDialog(logic,total,inputAmt),
           );
         });
   }
