@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/res/request/login_request.dart';
@@ -63,13 +64,16 @@ class GameDataServiceCenter {
   void wSBet({String? table_id,String? room_id,String? game_type,  String? moneyType,
     String? nowTerm,
     List<WS.Content>? betList}) async{
+
     SubmitBetRequest loginRequest=SubmitBetRequest(table_id:table_id,room_id:room_id,game_type:game_type,moneyType:moneyType,nowTerm:nowTerm,betList:betList);
     GameResponse response = await requestData(loginRequest);
+
   }
 
   void sumbitBet({String? table_id,String? room_id,String? game_type}) async{
     WsLoginRequest loginRequest=WsLoginRequest(table_id:table_id,room_id:room_id,game_type:game_type);
     GameResponse response = await requestData(loginRequest);
+
   }
 
 

@@ -409,7 +409,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
       moneyType: "CNY",
       nowTerm: "${term}",
       betList: selectBettingList.value,);
-
+    showToast("投注成功");
 
   }
 }
