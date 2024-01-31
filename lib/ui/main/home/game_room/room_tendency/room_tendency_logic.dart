@@ -25,6 +25,7 @@ class RoomTendencyLogic extends GetxController {
 
   void loadData(Pc28LottoRoomsTables room) {
     state.room = room;
+    print("=======>${room.gameType}");
     HttpService.getDewInfo({"countTerm":50,"gameType":room.gameType,"lotteryVersion":200}).then((value) {
       loggerArray(["走势数据",jsonEncode(value)]);
       Get.find<RoomTendencyController>().updateTendency(value);

@@ -76,7 +76,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
         DialogUtils().showSqueezeBtmDialog(context, this);
         break;
       case 3:
-        Get.toNamed(Routes.room_tendency);
+        Get.toNamed(Routes.room_tendency,arguments: state.room.value);
         break;
     }
   }

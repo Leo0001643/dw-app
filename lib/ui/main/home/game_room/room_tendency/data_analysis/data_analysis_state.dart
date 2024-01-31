@@ -21,5 +21,5 @@ class DataAnalysisState {
   ///默认tab在特码
   int tabIndex = 0;
 
-  late PageController pageController;
+  late PageController   pageController;
 }

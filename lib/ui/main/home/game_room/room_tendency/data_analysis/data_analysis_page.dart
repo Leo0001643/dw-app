@@ -67,21 +67,96 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
               indicatorWeight: 2,
               indicatorPadding: EdgeInsets.only(top:35.w,left: 40.w,right: 40.w),
               unselectedLabelColor: ColorX.color_58698D,
-              labelColor: ColorX.color_091722,
               width: 1.sw,
               tabs: state.tabs.map((e) => Expanded(child: Container(child: Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),))).toList(),
             ),
             Divider(height: 1.h,color: ColorX.color_10_949,),
-
-            Expanded(
-              child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: state.pageController,
-                children: state.pages,
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
+              color: ColorX.cardBg(),
+              child: GetBuilder<RoomTendencyController>(
+                id: RoomTendencyController.room_tendency_id,
+                builder: (ctl){
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(Intr().lx_tongji([ctl.getTitle(state.tabIndex)]),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
+                      Text(Intr().xianshiqishu_(["${ctl.data?.list.em()}"]),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
+                    ],
+                  );
+                },
               ),
             ),
-
-
+            SizedBox(
+              height: 90.h,
+              child: GetBuilder<RoomTendencyController>(
+                id: RoomTendencyController.room_tendency_id,
+                builder: (ctl){
+                  if(isEmpty(ctl.getNumberCount(state.tabIndex))){ return Container(); }
+                  var list = ctl.getNumberCount(state.tabIndex)!;
+                  var clm1 = List<String>.empty(growable: true);
+                  var clm2 = List<String>.empty(growable: true);
+                  var clm3 = List<String>.empty(growable: true);
+                  clm1.add(Intr().tema);
+                  clm2.add(Intr().geshangqi);
+                  clm3.add(Intr().jinrikai);
+                  list.forEach((element) {
+                    if(element.length >= 3 ){
+                     clm1.add(element[0].toString());
+                     clm2.add(element[1].toString());
+                     clm3.add(element[2].toString());
+                    }
+                  });
+                  return DataTable2(
+                    columnSpacing: 0,
+                    horizontalMargin: 0,
+                    fixedLeftColumns: 1,
+                    fixedTopRows: 0,
+                    dataRowHeight: 30.h,
+                    headingRowHeight: 30.h,
+                    dividerThickness: 0,
+                    border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
+                    headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                    dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                    minWidth: clm1.length * 40.w + 1000.w,
+                    columns: buildTotalTitle(clm1),
+                    rows: [
+                      DataRow(cells: buildTotalCell(clm2)),
+                      DataRow(cells: buildTotalCell(clm3)),
+                    ],
+                  );
+                },
+              ),
+            ),
+            Container(height: 10.h,color: ColorX.pageBg2(),),
+            Expanded(
+              child: GetBuilder<RoomTendencyController>(
+                id: RoomTendencyController.room_tendency_id,
+                builder: (ctl){
+                  if(isEmpty(ctl.data?.list)){ return Container(); }
+                  var list = ctl.data!.list!;
+                  var titles = logic.buildFormTitle(ctl.data!);
+                  var minWidth = titles.length * 50.w + 100.w;
+                  var items = logic.buildFormData(ctl.data!,list,state.tabIndex);
+                  return DataTable2(
+                      columnSpacing: 0,
+                      horizontalMargin: 0,
+                      minWidth: minWidth,
+                      dividerThickness: 0,
+                      headingRowColor: MaterialStateProperty.all(ColorX.color_10_949),
+                      dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                      fixedLeftColumns: 1,
+                      dataRowHeight: 30.h,
+                      headingRowHeight: 30.h,
+                      fixedTopRows: 0,
+                      border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
+                      columns: buildFormTitle(titles),
+                      rows: List<DataRow>.generate(items.length,
+                              (index) => DataRow(cells: buildFormCell(index,items[index]),))
+                  );
+                },
+              ),
+            ),
           ],
         )
     );

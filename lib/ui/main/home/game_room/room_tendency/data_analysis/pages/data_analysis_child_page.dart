@@ -11,7 +11,7 @@ import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
 ///数据分析
 class DataAnalysisChildPage extends StatefulWidget {
-  const DataAnalysisChildPage({Key? key}) : super(key: key);
+  const DataAnalysisChildPage({super.key}) ;
 
   @override
   State<DataAnalysisChildPage> createState() => _DataAnalysisChildPageState();
@@ -28,6 +28,8 @@ class _DataAnalysisChildPageState extends State<DataAnalysisChildPage> with Sing
     return Column(
       children: [
         Container(
+          width: 200,
+        height: 200,
         color: Colors.red,
         child: Text("13123123")),
       ],

@@ -63,19 +63,22 @@ class _RoomTendencyPageState extends State<RoomTendencyPage>
         children: [
           LCTabBar(
             length: state.pages.length,
-            tabBarHeight: 100.w,
+            tabBarHeight: 84.h,
+            tabAlignment: TabAlignment.fill,
             controller: _tabController,
             tabBarColor: Colors.white,
             isScrollable: false,
             labelPadding: EdgeInsets.zero,
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: BoxDecoration(
-              color: ColorX.color_F7F8FB,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r)),
+              color: ColorX.cardBg3(),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.r),
+                  topRight: Radius.circular(10.r)),
             ),
             labelStyle: TextStyle(color: ColorX.text0917(), fontSize: 11.sp),
             unselectedLabelStyle:
-                TextStyle( color: ColorX.appBarBg(),  fontSize: 11.sp),
+                TextStyle(color: ColorX.text586(), fontSize: 11.sp),
             labelColor: ColorX.text0917(),
             unselectedLabelColor: ColorX.text586(),
             tabs: [
@@ -100,21 +103,15 @@ class _RoomTendencyPageState extends State<RoomTendencyPage>
   }
 
   Widget buildTabItem(String tab, String icon) {
-    return Container(
-        width: 62.w,
-        height: 84.w,
-        child: Tab(
-          iconMargin: EdgeInsets.only(bottom: 14.w),
-          height: 84.w,
-          icon: Container(
-            width: 40.w,
-            height: 40.w,
-            decoration: BoxDecoration(
-                color: ColorX.cardBg5(),
-                borderRadius: BorderRadius.circular(10.r)),
-            child: Image.asset(icon),
-          ),
-          text: tab,
-        ));
+    return Tab(
+      icon: Container(
+        decoration: BoxDecoration(
+            color: ColorX.cardBg5(), borderRadius: BorderRadius.circular(10.r)),
+        padding: EdgeInsets.all(8.r),
+        child: Image.asset(icon),
+      ),
+      iconMargin: EdgeInsets.only(bottom: 3.h),
+      text: tab,
+    );
   }
 }

@@ -6,7 +6,12 @@ import 'data_analysis_state.dart';
 
 class DataAnalysisLogic extends GetxController {
   final DataAnalysisState state = DataAnalysisState();
-
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    loadData();
+  }
   @override
   void onReady() {
     // loadData();
@@ -19,21 +24,21 @@ class DataAnalysisLogic extends GetxController {
     super.onClose();
   }
 
-  // void loadData() async {
-  //   state.formTitle.value.addAll([Intr().qihao,Intr().zhi,Intr().bet_xiao,
-  //     Intr().bet_da,Intr().bet_dan,Intr().bet_shuang,Intr().jixiao,Intr().jida,]);
-  //   for(var i=0;i<50;i++){
-  //     state.formTitle.value.add('$i');
-  //   }
-  //
-  //   for(var i=0;i<50;i++){
-  //     state.totalTitle.value.add('$i');
-  //   }
-  //
-  //   state.formTitle.refresh();
-  //   state.totalTitle.refresh();
-  //
-  // }
+  void loadData() async {
+    state.formTitle.value.addAll([Intr().qihao,Intr().zhi,Intr().bet_xiao,
+      Intr().bet_da,Intr().bet_dan,Intr().bet_shuang,Intr().jixiao,Intr().jida,]);
+    for(var i=0;i<50;i++){
+      state.formTitle.value.add('$i');
+    }
+
+    for(var i=0;i<50;i++){
+      state.totalTitle.value.add('$i');
+    }
+
+    state.formTitle.refresh();
+    state.totalTitle.refresh();
+
+  }
 
   ///构造一行的数据
   List<String> buildFormTitle(DewInfoEntity info){
