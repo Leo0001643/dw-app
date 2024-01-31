@@ -34,6 +34,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   permission_handler: ^11.1.0
+  expansion_datagrid: ^1.0.8
   rxdart: ^0.27.7
   event_bus: ^2.0.0
   pull_to_refresh: ^2.0.0

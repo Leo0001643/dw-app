@@ -8,10 +8,14 @@ class ColorX{
   static const color_fe2427 = Color(0xfffe2427);
   static const color_202020 = Color(0xfff202020);
 
+  static const color_F7F8FB = Color(0xffF7F8FB);
   static const color_5b6d7b = Color(0xff5B6D7B);
   static const color_fff4f2 = Color(0xffFFF4F2);
   static const color_fefff4 = Color(0xfffefff4);
   static const color_091722 = Color(0xff091722);
+  static const color_58698D = Color(0xff58698D);
+
+
   static const color_f7f8fb = Color(0xfff7f8fb);
   static const color_3e3737 = Color(0xff3e3737);
   static const color_58698d = Color(0xff58698d);
