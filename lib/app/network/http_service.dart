@@ -180,8 +180,8 @@ class HttpService{
     return buildTrendFuture<List<HistoryLottoEntity>>(()=> _client.historyList(lid, pageIndex, pageSize),loading: false);
   }
 
-  static Future<DewInfoEntity> getDewInfo(Map<String,dynamic> params,){
-    return buildFuture<DewInfoEntity>(()=> _client.getDewInfo(params));
+  static Future<DewInfoEntity> getDewInfo(Map<String,dynamic> params,{bool loading=true}){
+    return buildFuture<DewInfoEntity>(()=> _client.getDewInfo(params),loading: loading);
   }
 
   static Future<List<ExpressionEntity>> getExpression(){
