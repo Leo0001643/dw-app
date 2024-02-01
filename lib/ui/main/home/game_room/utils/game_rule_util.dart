@@ -927,6 +927,23 @@ class GameRuleUtil {
     }
     return false;
   }
+  static  List<WS.Content>  requestTema(List<WS.Content> odds,{String mBallName="first"}) {
+    var  dataBettingList=<WS.Content>[];
+
+    for(WS.Content con in odds) {
+
+      if (GameRuleUtil.GameType_Big==con.type) {
+
+
+
+      }
+
+
+    }
+
+
+    return dataBettingList;
+  }
   static  List<WS.Content>  dealData(List<WS.Content> odds,{String mBallName="first"}) {
 
     List<WS.Content> data = [];
