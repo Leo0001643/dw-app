@@ -152,7 +152,7 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
                       border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
                       columns: buildFormTitle(titles),
                       rows: List<DataRow>.generate(items.length,
-                              (index) => DataRow(cells: buildFormCell(index,items[index]),))
+                              (index) => DataRow(cells: buildFormCell(index,items[index]),)).reversed.toList()
                   );
                 },
               ),
