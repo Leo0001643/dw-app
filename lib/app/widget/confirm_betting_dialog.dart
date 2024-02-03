@@ -12,6 +12,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/utils/format_util.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/mine/mine_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart'
@@ -33,10 +34,17 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     with SingleTickerProviderStateMixin {
   var payWays = ["RMB", "USDT"];
   late TabController _tabController;
-
+  int index=0;
   @override
   void initState() {
     _tabController = TabController(length: payWays.length, vsync: this);
+    _tabController.addListener(() {
+
+      index=_tabController.index;
+      print("=======>index  $index");
+      setState(() {
+      });
+    });
     super.initState();
   }
 
@@ -257,7 +265,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "¥",
+                            index==0?"¥":"\$",
                             style: TextStyle(
                               fontSize: 12.sp,
                               color: ColorX.text586(),
@@ -352,7 +360,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
               ),
             ),
             TextSpan(
-              text: "${logic.sumOddsData()}",
+              text: "${rakebackFormat(logic.sumOddsData())}",
               style: TextStyle(
                 fontSize: 12.sp,
                 color: ColorX.color_fc243b,
@@ -366,8 +374,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
               ),
             ),
             TextSpan(
-              text: "¥${logic.sumOddsData()-logic.sumData()}",
-
+              text: "${index==0?"¥":"\$"}${rakebackFormat(logic.sumOddsData()-logic.sumData())}",
               style: TextStyle(
                 fontSize: 12.sp,
                 color: ColorX.color_fc243b,
@@ -462,7 +469,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                 ),
               ),
               TextSpan(
-                text: "¥${logic.sumData()}",
+                text: "${index==0?"¥":"\$"}${rakebackFormat(logic.sumData())}",
                 style: TextStyle(
                   fontSize: 12.sp,
                   color: ColorX.color_fc243b,

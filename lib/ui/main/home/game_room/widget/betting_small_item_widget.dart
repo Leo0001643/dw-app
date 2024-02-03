@@ -14,7 +14,8 @@ class BettingSmallItemWidget extends StatelessWidget {
   Map<String,String> keyMap={};
   int index=0;
   WS.Content  content;
-  BettingSmallItemWidget(this.index,this.content,{super.key});
+  bool? useNoColor=false;
+  BettingSmallItemWidget(this.index,this.content,{super.key,this.useNoColor});
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +90,7 @@ class BettingSmallItemWidget extends StatelessWidget {
                 ),
                 child: Text("${result}",style: TextStyle(
                     fontSize:13,
-                    color: GameRuleUtil.colorMap[index%6]??Color(0xFF06A100),
+                    color:useNoColor==true?Color(0xFF091722):GameRuleUtil.colorMap[index%6]??Color(0xFF06A100),
                     fontWeight: FontWeight.w700
                 ),),
               ),

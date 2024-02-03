@@ -16,6 +16,7 @@ import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.da
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_dialog_item_widget.dart';
+import 'package:leisure_games/ui/main/home/game_room/widget/betting_small_item_widget.dart';
 
 class BettingChildPage extends StatefulWidget {
   String ballName;
@@ -31,7 +32,8 @@ class BettingChildPage extends StatefulWidget {
 
 class BettingChildPageState extends State<BettingChildPage> {
   var selectPhrases = (-1).obs;
-  List<WS.Content> dataBettingList=<WS.Content>[];
+  List<WS.Content> dataBettingList1=<WS.Content>[];
+  List<WS.Content> dataBettingList2=<WS.Content>[];
   ///实际显示使用的列表
   var showList = RxList.empty(growable: true);
 
@@ -48,7 +50,7 @@ class BettingChildPageState extends State<BettingChildPage> {
         id: "bettingList",
         builder: (logic) {
       Map<int, WS.Content> arrayMap = {};
-      print("--------->数据${dataBettingList.length}");
+      print("--------->数据${dataBettingList1.length}");
       return Container(
         width: 1.sw,
         padding: EdgeInsets.only(left: 15.w,right: 15.w,top:8.w),
@@ -61,12 +63,30 @@ class BettingChildPageState extends State<BettingChildPage> {
                     crossAxisCount: 6,
                     crossAxisSpacing: 6.0,
                     mainAxisSpacing: 6,
+                    childAspectRatio: 52 / 65,
+                  ),
+                  itemCount: dataBettingList1.length,
+                  itemBuilder: (BuildContext context, int index) {
+                      print("===== index ${index}   ${dataBettingList1[index].hashCode} ");
+                   return BettingSmallItemWidget(index,dataBettingList1[index],useNoColor:true);
+                  }),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              margin: EdgeInsets.only(top: 6.w),
+              child: GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 5,
+                    crossAxisSpacing: 6.0,
+                    mainAxisSpacing: 6,
                     childAspectRatio: 64 / 64,
                   ),
-                  itemCount: dataBettingList.length,
+                  itemCount: dataBettingList2.length,
                   itemBuilder: (BuildContext context, int index) {
-                      print("===== index ${index}   ${dataBettingList[index].hashCode} ");
-                   return BettingDialogItemWidget(index,dataBettingList[index]);
+                    print("===== index ${index}   ${dataBettingList2[index].hashCode} ");
+                    return BettingDialogItemWidget(index,dataBettingList2[index]);
                   }),
             ),
           )
@@ -295,7 +315,11 @@ class BettingChildPageState extends State<BettingChildPage> {
 
   void initItem() {
     GameRoomLogic logic=Get.find<GameRoomLogic>();
-    dataBettingList=logic.getDataBettingList(widget.index);
+    List<WS.Content> total=logic.getDataBettingList(widget.index);
+    if(total.length>5) {
+      dataBettingList1=total.sublist(0,total.length-5);
+      dataBettingList2=total.sublist(total.length-5,total.length);
+    }
     setState(() {
     });
   }
