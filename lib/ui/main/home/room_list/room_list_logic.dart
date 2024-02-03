@@ -16,12 +16,16 @@ import 'room_list_state.dart';
 
 class RoomListLogic extends GetxController {
   final RoomListState state = RoomListState();
-
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    startIsolator();
+  }
   @override
   void onReady() {
     loadData(Get.arguments);
-    var isolateInitializer=IsolateInitializer();
-    isolateInitializer.init();
+
     // GameIsolate.instance.startGameIsolate();
     super.onReady();
   }
@@ -29,7 +33,7 @@ class RoomListLogic extends GetxController {
   @override
   void onClose() {
     // TODO: implement onClose
-     AppInst.instance.stopWs();
+
     super.onClose();
   }
 
@@ -67,8 +71,35 @@ class RoomListLogic extends GetxController {
   void clickRoom(Pc28LottoRoomsTables? room){
     if(unEmpty(room?.name)){
       print("跳转传入${jsonEncode(room?.toJson())}");
-      Get.toNamed(Routes.game_room,arguments: room);
+      Get.toNamed(Routes.game_room,arguments: room)?.then((value) {
+        update();
+      });
     }
+  }
+
+  void startIsolator() async {
+    try{
+      var isolateInitializer=IsolateInitializer();
+      isolateInitializer.init();
+    }catch(e) {
+      print("开启时异常 ${e.toString()}");
+
+    }
+
+  }
+  @override
+  void dispose() {
+    super.dispose();
+    destroyIsolator();
+  }
+
+  void destroyIsolator() {
+      try{
+        AppInst.instance.destroy();
+      }catch(e) {
+        print("关闭时异常  ${e.toString()}");
+      }
+
   }
 
 

@@ -135,14 +135,9 @@ class TextItemLogic extends GetxController {
   void timeCountOnly(
       diffTime, Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28planEntity) {
     Map<String, dynamic> allTime = pc28planEntity.all!.toJson();
-    print("--------->diffTime  ${diffTime}");
-
     Map<String, dynamic> roomcountdown = {};
     Map<String, dynamic> roominf = pc28lottoRoom.toJson();
     String key = pc28lottoRoom.gameType.toString();
-    print(
-        "--------->key   ${key}  pc28lottoRoom.stateMsg  ${pc28lottoRoom.stateMsg}");
-    print("--------->allTime   ${jsonEncode(allTime[key])}");
     if (pc28lottoRoom.stateMsg != "0") {
       if (pc28lottoRoom.stateMsg == 1) {
         roomcountdown[key + 'Time'] = Intr().weihuzhong;

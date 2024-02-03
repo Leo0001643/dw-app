@@ -126,6 +126,7 @@ class _SignInPageState extends State<SignInPage> {
       locale: 'zh_ZH',
       headerVisible: false,
       rowHeight: 40.h,
+
       daysOfWeekHeight: 35.h,
       calendarBuilders: CalendarBuilders(
         dowBuilder: (context,day){
@@ -141,10 +142,11 @@ class _SignInPageState extends State<SignInPage> {
             if(day.day <= focusedDay.day){
               ///已签到 || 当天
               if(check.log?.contains("${day.day}") ==  true || day.day == focusedDay.day){
-                var text = check.log?.contains("${day.day}") ==  true ? "√":"•";
+                // var text = check.log?.contains("${day.day}") ==  true ? "√":"•";
+                var text = check.log?.contains("${day.day}") ==  true ? "•":"•";
                 return Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18.r),
+                    borderRadius: BorderRadius.all(Radius.circular(12.w)),
                     gradient: const LinearGradient(
                       colors: [Color(0xfffeab4a),Color(0xfffc8f24),],
                       begin: Alignment.topLeft,
@@ -152,7 +154,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ),
                   width: 24.w,
-                  height: 38.h,
+                  height: 40.w,
                   padding: EdgeInsets.symmetric(vertical: 1.h,),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -161,6 +163,13 @@ class _SignInPageState extends State<SignInPage> {
                       Text("${day.day}",
                         textAlign: TextAlign.center,style: TextStyle(fontSize: 14.sp,
                           color: Colors.white,fontWeight: FontWeight.w700,),),
+                      text=="•"?Container(
+                        width: 8.w,
+                        height: 8.w,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(12.w))),
+                        ):
                       Text(text,style: TextStyle(fontSize: 12.sp,color: Colors.white,fontWeight: FontWeight.w700,),),
                     ],
                   ),

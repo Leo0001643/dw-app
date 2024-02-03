@@ -48,6 +48,10 @@ class AppInst {
   void stopWs() {
     print("AppInst 关闭长连接");
     GameDataServiceCenter.instance.stopConnection();
+
+  }
+  void destroy() {
+    AppInst.gameIsolate.destroy();
   }
 
   // App是可见状态并且接受用户的交互
