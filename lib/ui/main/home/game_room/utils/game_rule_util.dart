@@ -179,34 +179,34 @@ class GameRuleUtil {
   static String GameType_Second_Bet = "第二球";
   static String GameType_Thire_Bet = "第三球";
 
-  var GameType_Cao_00 = 0;
-  var GameType_Cao_01 = 1;
-  var GameType_Cao_02 = 2;
-  var GameType_Cao_03 = 3;
-  var GameType_Cao_04 = 4;
-  var GameType_Cao_05 = 5;
-  var GameType_Cao_06 = 6;
-  var GameType_Cao_07 = 7;
-  var GameType_Cao_08 = 8;
-  var GameType_Cao_09 = 9;
-  var GameType_Cao_10 = 10;
-  var GameType_Cao_11 = 11;
-  var GameType_Cao_12 = 12;
-  var GameType_Cao_13 = 13;
-  var GameType_Cao_14 = 14;
-  var GameType_Cao_15 = 15;
-  var GameType_Cao_16 = 16;
-  var GameType_Cao_17 = 17;
-  var GameType_Cao_18 = 18;
-  var GameType_Cao_19 = 19;
-  var GameType_Cao_20 = 20;
-  var GameType_Cao_21 = 21;
-  var GameType_Cao_22 = 22;
-  var GameType_Cao_23 = 23;
-  var GameType_Cao_24 = 24;
-  var GameType_Cao_25 = 25;
-  var GameType_Cao_26 = 26;
-  var GameType_Cao_27 = 27;
+  static const int GameType_Cao_00 = 0;
+  static const int GameType_Cao_01 = 1;
+  static const int GameType_Cao_02 = 2;
+  static const int GameType_Cao_03 = 3;
+  static const int GameType_Cao_04 = 4;
+  static const int GameType_Cao_05 = 5;
+  static const int GameType_Cao_06 = 6;
+  static const int GameType_Cao_07 = 7;
+  static const int GameType_Cao_08 = 8;
+  static const int GameType_Cao_09 = 9;
+  static const int GameType_Cao_10 = 10;
+  static const int GameType_Cao_11 = 11;
+  static const int GameType_Cao_12 = 12;
+  static const int GameType_Cao_13 = 13;
+  static const int GameType_Cao_14 = 14;
+  static const int GameType_Cao_15 = 15;
+  static const int GameType_Cao_16 = 16;
+  static const int GameType_Cao_17 = 17;
+  static const int GameType_Cao_18 = 18;
+  static const int GameType_Cao_19 = 19;
+  static const int GameType_Cao_20 = 20;
+  static const int GameType_Cao_21 = 21;
+  static const int GameType_Cao_22 = 22;
+  static const int GameType_Cao_23 = 23;
+  static const int GameType_Cao_24 = 24;
+  static const int GameType_Cao_25 = 25;
+  static const int GameType_Cao_26 = 26;
+  static const int GameType_Cao_27 = 27;
 
   static var ballColorRed = Color(0xffe6250a);
   static var ballColorBlue = Color(0xff2585fd);
@@ -927,21 +927,244 @@ class GameRuleUtil {
     }
     return false;
   }
-  static  List<WS.Content>  requestTema(List<WS.Content> odds,{String mBallName="first"}) {
+
+  /**
+   * type=0
+   * type=1
+   * type=2
+   */
+  static  List<WS.Content>  requestTema(List<WS.Content> odds,{int? type=0}) {
     var  dataBettingList=<WS.Content>[];
-
+    var  middleBettingList=<WS.Content>[];
+    var  smallDataBettingList=<WS.Content>[];
     for(WS.Content con in odds) {
-
       if (GameRuleUtil.GameType_Big==con.type) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=1;
+        dataBettingList.add(item);
+      }else if (GameRuleUtil.GameType_Odd==(con.type)){
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=2;
+        dataBettingList.add(item);
+      } else if (GameRuleUtil.GameType_BigOdd==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=3;
+        dataBettingList.add(item);
+      }else if (GameRuleUtil.GameType_SmallOdd==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=4;
+        dataBettingList.add(item);
+      } else if (GameRuleUtil.GameType_Max==con.type){
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=5;
+        dataBettingList.add(item);
+      } else if (GameRuleUtil.GameType_Small==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=6;
+        dataBettingList.add(item);
+      }else if (GameRuleUtil.GameType_Even==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=7;
+        dataBettingList.add(item);
+      }else if (GameRuleUtil.GameType_BigEven==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=8;
+        dataBettingList.add(item);
+      }else if (GameRuleUtil.GameType_SmallEven==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=9;
+        dataBettingList.add(item);
+      } else if (GameRuleUtil.GameType_Min==(con.type)) {
+//
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=10;
+        dataBettingList.add(item);
+      }else if (GameRuleUtil.GameType_Red==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=11;
+        middleBettingList.add(item);
 
+      }else if (GameRuleUtil.GameType_Blue==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=12;
+        middleBettingList.add(item);
+      }else if (GameRuleUtil.GameType_Green==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=13;
+        middleBettingList.add(item);
+      }else if (GameRuleUtil.GameType_Straight==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=14;
+        middleBettingList.add(item);
+      } else if (GameRuleUtil.GameType_Leopard==(con.type)) {
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=15;
+        middleBettingList.add(item);
+      } else if (GameRuleUtil.GameType_Pair==(con.type)) {
+//
+        WS.Content item= WS.Content.fromJson(con.contentMap);
+        item.level=16;
+        middleBettingList.add(item);
+      } else {
+         int  sum = int.tryParse(con.type??"1")??-1;
+         switch (sum) {
+           case GameRuleUtil.GameType_Cao_00:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=0;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_01:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=1;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_02:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=2;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_03:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=3;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_04:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=4;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_05:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=5;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_06:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=6;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_07:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=7;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_08:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=8;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_09:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=9;
+             smallDataBettingList.add(item);
 
-
+             break;
+           case GameRuleUtil.GameType_Cao_10:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=10;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_11:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=11;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_12:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=12;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_13:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=13;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_14:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=14;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_15:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=15;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_16:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=16;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_17:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=17;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_18:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=18;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_19:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=19;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_20:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=20;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_21:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=21;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_22:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=22;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_23:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=23;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_24:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=24;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_25:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=25;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_26:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=26;
+             smallDataBettingList.add(item);
+             break;
+           case GameRuleUtil.GameType_Cao_27:
+             WS.Content item= WS.Content.fromJson(con.contentMap);
+             item.level=27;
+             smallDataBettingList.add(item);
+             break;
+           default:
+           // SysoManager.println("未知类型未知草");
+             break;
+         }
       }
-
-
     }
-
-
+    if(type==0) {
+      dataBettingList.sort((a, b) => (a?.level??0).compareTo((b?.level??0)));
+      return dataBettingList;
+    }else if(type==1) {
+      middleBettingList.sort((a, b) => (a?.level??0).compareTo((b?.level??0)));
+      return middleBettingList;
+    }else if(type==2) {
+      smallDataBettingList.sort((a, b) => (a?.level??0).compareTo((b?.level??0)));
+      return smallDataBettingList;
+    }
     return dataBettingList;
   }
   static  List<WS.Content>  dealData(List<WS.Content> odds,{String mBallName="first"}) {

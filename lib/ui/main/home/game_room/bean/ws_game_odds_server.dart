@@ -22,6 +22,7 @@ class WSGameOddsServer {
 }
 
 class Content {
+  int? level;
   String? createTime;
   String? enabled;
   String? id;
@@ -47,6 +48,7 @@ class Content {
         this.type,
         this.check,
         this.money,
+        this.level,
         this.updateTime});
 
   Content.fromJson(Map<String, dynamic> json) {
@@ -61,7 +63,7 @@ class Content {
     type = json['type'];
     updateTime = json['updateTime'];
     check = json['check'];
-
+    level = json['level'];
     money = json['money'];
 
 
@@ -82,6 +84,8 @@ class Content {
     data['updateTime'] = this.updateTime;
     data['check'] = this.check;
     data['money'] = this.money;
+    data['level'] = this.level;
+
     return data;
   }
 }

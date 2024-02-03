@@ -116,7 +116,6 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
               child: Obx(() {
                 return SmartRefresher(
                   controller: state.refreshController,
-                  enablePullDown: true,
                   enablePullUp: true,
                   onRefresh: ()=> logic.loadData(true),
                   onLoading: ()=> logic.loadData(false),

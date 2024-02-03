@@ -143,15 +143,14 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     // test();
   }
 
-  List<WS.Content>  getDataBettingList(int index,){
+  List<WS.Content>  getDataBettingList(int index,{int? type=0}){
     String mBallName="";
     switch(index) {
       case 0:
         mBallName="tema";
         var  dataBettingList=<WS.Content>[];
-        dataBettingList= GameRuleUtil.requestTema(odds.value);
+        dataBettingList= GameRuleUtil.requestTema(odds.value,type:type);
         return dataBettingList;
-        break;
       case 1:
         mBallName="first";
         break;
