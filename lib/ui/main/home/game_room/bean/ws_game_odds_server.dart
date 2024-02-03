@@ -35,6 +35,8 @@ class Content {
   String? updateTime;
   bool? check=false;
   double? money ;
+  int? color=0xFF091722;
+  int? titleColor=0xFF091722;
   Map<String,String> contentMap={};
   Content(
       {this.createTime,
@@ -49,6 +51,8 @@ class Content {
         this.check,
         this.money,
         this.level,
+        this.color,
+        this.titleColor,
         this.updateTime});
 
   Content.fromJson(Map<String, dynamic> json) {
@@ -65,6 +69,8 @@ class Content {
     check = json['check'];
     level = json['level'];
     money = json['money'];
+    color= json['color'];
+    titleColor= json['titleColor'];
 
 
 
@@ -85,6 +91,8 @@ class Content {
     data['check'] = this.check;
     data['money'] = this.money;
     data['level'] = this.level;
+    data['color'] = this.color;
+    data['titleColor'] = this.titleColor;
 
     return data;
   }

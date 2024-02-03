@@ -16,6 +16,7 @@ import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.da
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_dialog_item_widget.dart';
+import 'package:leisure_games/ui/main/home/game_room/widget/betting_middle_item_widget.dart';
 
 class BettingTemaPage extends StatefulWidget {
   String ballName;
@@ -74,17 +75,18 @@ class BettingChildPageState extends State<BettingTemaPage> {
           ),
           SliverToBoxAdapter(
             child: Container(
+              margin: EdgeInsets.only(top: 6.w),
               child: GridView.builder(
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 6,
                     crossAxisSpacing: 6.0,
                     mainAxisSpacing: 6,
-                    childAspectRatio: 64 / 64,
+                    childAspectRatio: 52 / 59,
                   ),
                   itemCount:dataBettingList1.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return BettingDialogItemWidget(index,dataBettingList1[index]);
+                    return BettingMiddleItemWidget(index,dataBettingList1[index]);
                   }),
             ),
           ),
