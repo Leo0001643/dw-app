@@ -10,6 +10,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_child_page.dart';
+import 'package:leisure_games/ui/main/home/game_room/dialog/betting_tema_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/mine/mine_logic.dart';
@@ -144,7 +145,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
             child:TabBarView(
               controller: _tabController,
               children: [
-                BettingChildPage(0,"first",key: riKey1,),
+                BettingTemaPage(0,"first",key: riKey1,),
                 BettingChildPage(1,"second",key: riKey2),
                 BettingChildPage(2,"three",key: riKey3),
                 BettingChildPage(3,"three",key: riKey4),
