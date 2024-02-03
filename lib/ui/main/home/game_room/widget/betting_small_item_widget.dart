@@ -10,11 +10,11 @@ import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
-class BettingMiddleItemWidget extends StatelessWidget {
+class BettingSmallItemWidget extends StatelessWidget {
   Map<String,String> keyMap={};
   int index=0;
   WS.Content  content;
-  BettingMiddleItemWidget(this.index,this.content,{super.key});
+  BettingSmallItemWidget(this.index,this.content,{super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,10 @@ class BettingMiddleItemWidget extends StatelessWidget {
         builder: (logic){
       String ssb=saveColorType(content);
       // String play=getTag(key)
+      String result="$index";
+      if(index<10) {
+        result="0$index";
+      }
       print("=====>${jsonEncode(content.toJson())}");
       return InkWell(
         onTap: (){
@@ -29,8 +33,8 @@ class BettingMiddleItemWidget extends StatelessWidget {
           logic.updateBettingDialogItemWidget(content);
         },
         child: Container(
-          width: 64.w,
-          height: 63.2.w,
+          width: 52.w,
+          height: 59.w,
           padding: EdgeInsets.only(top: 9.w,bottom:7.w ),
           decoration:
 
@@ -71,11 +75,24 @@ class BettingMiddleItemWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("${ssb}",style: TextStyle(
-                  fontSize:13,
-                  color: Color(content?.color??0xFF091722),
-                  fontWeight: FontWeight.w700
-              ),),
+              Container(
+                width: 28.w,
+                height: 28.w,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(
+                      width: 1,
+                      color:Color(0xFFE7EBF4)
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(28)),
+                ),
+                child: Text("${result}",style: TextStyle(
+                    fontSize:13,
+                    color: GameRuleUtil.colorMap[index%6]??Color(0xFF06A100),
+                    fontWeight: FontWeight.w700
+                ),),
+              ),
               Text("${content.play}",style: TextStyle(
                   fontSize:13,
                   color: Color(0xFFD73547),

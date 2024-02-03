@@ -212,7 +212,15 @@ class GameRuleUtil {
   static var ballColorRed = Color(0xffe6250a);
   static var ballColorBlue = Color(0xff2585fd);
   static var ballColorGreen = Color(0xff4ca953);
+  static var colorMap={
+    0:Color(0xFF06A100),
+    1:Color(0xFFFC243B),
+    2:Color(0xFFFC243B),
+    3:Color(0xFF5583E7),
+    4:Color(0xFF5583E7),
+    5:Color(0xFF06A100),
 
+  };
   /**
    * sum为-1时，表示问号，显示红色
    *
@@ -1118,7 +1126,7 @@ class GameRuleUtil {
       middleBettingList.sort((a, b) => (a?.level??0).compareTo((b?.level??0)));
       return middleBettingList;
     }else if(type==2) {
-      smallDataBettingList.sort((a, b) => (a?.level??0).compareTo((b?.level??0)));
+      smallDataBettingList.sort((a, b) => (b?.level??0).compareTo((a?.level??0)));
       return smallDataBettingList;
     }
     return dataBettingList;
