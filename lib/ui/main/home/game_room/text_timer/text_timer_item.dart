@@ -30,6 +30,7 @@ class TextTimerItemState extends State<TextTimerItem> {
   Map<String, dynamic> roomInf = {};
   late final Rx<Pc28LottoEntity> timerGroup;
   TextItemLogic? logic=Get.find<TextItemLogic>();
+  String timer="";
   @override
   void initState() {
     super.initState();

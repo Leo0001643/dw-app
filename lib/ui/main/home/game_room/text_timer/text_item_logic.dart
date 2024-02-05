@@ -37,7 +37,7 @@ enum LotteryStatus {
   const LotteryStatus(this.num);
 }
 
-typedef KeyListener = Function(int showTime, LotteryStatus status);
+typedef TimerListener = Function(int showTime, LotteryStatus status);
 
 /**
  * 参考count_down_text.dart
@@ -52,6 +52,7 @@ class TextItemLogic extends GetxController {
   String? status = "封盘中";
   String? lastStatusContent;
   int lastShowTime = -1;
+
 
 
   bool alreadyShowStop = false;

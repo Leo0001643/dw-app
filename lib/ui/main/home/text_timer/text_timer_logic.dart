@@ -41,27 +41,30 @@ class TextTimerLogic {
         // 判断 gameCode 和 gameType 是否相等
         if (gameCode == item.gameType) {
           // 执行倒计时逻辑
-          loadTimerData(item);
+          loadTimerData(item,gameCode:gameCode);
         }
       }
     });
   }
 
 
-  void loadTimerData(Pc28LottoRooms pc28lottoRoom) {
+  void loadTimerData(Pc28LottoRooms pc28lottoRoom,{String? gameCode}) {
     //请求倒计时
     HttpService.getPC28Plan(5).then((value) {
-      _calculateCountdown(pc28lottoRoom, value);
+      _calculateCountdown(pc28lottoRoom, value,gameCode:gameCode);
     });
   }
 
   void _calculateCountdown(
-      Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28PlanEntity) {
+      Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28PlanEntity,{String? gameCode}) {
     countdownTimer?.cancel();
     // 服务器的误差时间
     var diffTime =
         pc28PlanEntity.timestamp! - DateTime.now().millisecondsSinceEpoch;
     countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if(gameCode=="keno28"){
+        print("======>");
+      }
       // try{
         timeCountOnly(diffTime, pc28lottoRoom, pc28PlanEntity);
       // }catch(e) {

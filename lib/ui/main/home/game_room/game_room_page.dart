@@ -281,12 +281,14 @@ class _GameRoomPageState extends State<GameRoomPage> {
         builder: (logic) {
           return Visibility(
               visible: logic.fiveCountDownTime<=5&&(logic.fiveCountDownTime>0),
-              child: SizedBox(
-              height: 50,
+              child: Container(
+                  width: 0.7.sw,
+                  height: 0.2.sh,
               child: Image(
                 image: AssetImage(buildImage(logic.fiveCountDownTime)),
-                width: 172,
-                height: 36,
+                width: 0.7.sw,
+                height: 0.2.sh,
+                fit: BoxFit.fill,
               )));
         });
   }
