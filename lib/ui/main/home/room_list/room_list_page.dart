@@ -35,7 +35,6 @@ class _RoomListPageState extends State<RoomListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: scaffoldMineKey,
         appBar: WidgetUtils().buildRoomBar(state.title,msg: true,onTap: (){
           DialogUtils().showSelectRoomBtmDialog(context,state.pc28Lotto.value).then((value) {
             if(unEmpty(value?.name)){

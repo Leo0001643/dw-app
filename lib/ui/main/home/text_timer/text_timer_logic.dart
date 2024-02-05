@@ -62,11 +62,11 @@ class TextTimerLogic {
     var diffTime =
         pc28PlanEntity.timestamp! - DateTime.now().millisecondsSinceEpoch;
     countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
-      try{
+      // try{
         timeCountOnly(diffTime, pc28lottoRoom, pc28PlanEntity);
-      }catch(e) {
-        print("loadTimerData  倒计时  报错");
-      }
+      // }catch(e) {
+      //   print("loadTimerData  倒计时  报错  ${e.toString()}");
+      // }
 
       // 如果倒计时结束，取消计时器
       if (count <= 0) {
@@ -98,7 +98,7 @@ class TextTimerLogic {
      if(allTime[key]['data']==null) {
        state.text_timer.value = Intr().dengdaikaipan;
      }
-      if (allTime[key]['data']?.length > 1) {
+      if ((allTime[key]['data']??"").length > 1) {
         for (int s = 0; s < allTime[key]['data'].length - 1; s++) {
           int onlineT = DateTime.now().millisecondsSinceEpoch +
               int.parse(diffTime.toString());
@@ -128,7 +128,7 @@ class TextTimerLogic {
             }
           }
         }
-      } else if (allTime[key]['data'].length == 1) {
+      } else if ((allTime[key]['data']??"").length == 1) {
         int onlineT = DateTime.now().millisecondsSinceEpoch +
             int.parse(diffTime.toString());
         if (onlineT < allTime[key]['data'][0]['closeTime'] &&
@@ -144,7 +144,7 @@ class TextTimerLogic {
         }
       }
     }
-    state.text_timer.value = roomcountdown[key + 'Time'];
+    state.text_timer.value = roomcountdown[key + 'Time']??"";
 
   }
 
