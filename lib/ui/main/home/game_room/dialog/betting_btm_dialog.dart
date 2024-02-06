@@ -252,7 +252,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
                             child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
                               if(type==0) {
-                                showToast("封盘中");
+                                showToast("fengpanzhong".tr);
                                 return;
                               }
                               if (widget.logic.selectBettingList.isEmpty) {
@@ -302,8 +302,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
           String term1="";
           String term2="";
-          if ("封盘中" == logic?.state.text_timer.value) {
-            result = "封盘中";
+          if ("fengpanzhong".tr == logic?.state.text_timer.value) {
+            result = "fengpanzhong".tr;
             type=0;
           } else {
             type=1;
@@ -326,7 +326,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(4.w)),
                 color: Color(0xFFFF7F8C)),
-            child:  Text("封盘中",
+            child:  Text("fengpanzhong".tr,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   color: Colors.white,

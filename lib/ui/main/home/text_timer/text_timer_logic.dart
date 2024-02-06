@@ -125,7 +125,7 @@ class TextTimerLogic {
               break;
             } else if (onlineT > allTime[key]['data'][s]['closeTime'] &&
                 onlineT < allTime[key]['data'][s + 1]['openTime']) {
-              roomcountdown[key + 'Time'] = "封盘中";
+              roomcountdown[key + 'Time'] = "fengpanzhong".tr;
               roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
               break;
             }
@@ -142,7 +142,7 @@ class TextTimerLogic {
           roomcountdown[key + 'Time'] = showtime;
           roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
         } else if (onlineT < allTime[key]['data'][0]['openTime']) {
-          roomcountdown[key + 'Time'] = "封盘中";
+          roomcountdown[key + 'Time'] = "fengpanzhong".tr;
           roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
         }
       }

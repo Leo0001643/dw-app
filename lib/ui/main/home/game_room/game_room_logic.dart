@@ -401,7 +401,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
   void sumbitBets(double allMoney) {
     if(LotteryStatus.sealingPlateStatus==currentStatus.value) {
-      showToast("封盘中");
+      showToast("fengpanzhong".tr);
       return;
     }
     GameDataServiceCenter.instance.wSBet(

@@ -49,7 +49,7 @@ class TextItemLogic extends GetxController {
   StreamSubscription? loginStream;
   var count = 100;
   String? type;
-  String? status = "封盘中";
+  String? status = "fengpanzhong".tr;
   String? lastStatusContent;
   int lastShowTime = -1;
 
@@ -209,9 +209,9 @@ class TextItemLogic extends GetxController {
                 onlineT < allTime[key]['data'][s + 1]['openTime']) {
               currentStatus.value=LotteryStatus.sealingPlateStatus;
               //现在时间  大于关闭时间，小于下一期开奖时间， 则显示封盘中
-              print("封盘中");
+              print("fengpanzhong".tr);
               resetStatusWhenClosed();
-              roomcountdown[key + 'Time'] = "封盘中";
+              roomcountdown[key + 'Time'] = "fengpanzhong".tr;
               roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
               showStartBet(roomcountdown[key + 'Time'],term);
               lastStatus=LotteryStatus.sealingPlateStatus;
@@ -245,7 +245,7 @@ class TextItemLogic extends GetxController {
 
           //现在时间 opentime直接显示封盘中
           print("为1  封盘中");
-          roomcountdown[key + 'Time'] = "封盘中";
+          roomcountdown[key + 'Time'] = "fengpanzhong".tr;
           roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
           lastStatus=LotteryStatus.sealingPlateStatus;
         }
@@ -287,7 +287,7 @@ class TextItemLogic extends GetxController {
 
   showStartBet(String currentStatus,String term) {
      if (lastStatusContent == "0:00:00" &&
-        currentStatus== "封盘中" &&
+        currentStatus== "fengpanzhong".tr &&
         alreadyShowStop == false) {
       showCloseOver(term);
       alreadyShowStop = true;

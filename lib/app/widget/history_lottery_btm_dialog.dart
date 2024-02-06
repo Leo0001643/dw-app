@@ -186,8 +186,8 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
 
           String term1 = "";
           String term2 = "";
-          if ("封盘中" == logic?.state.text_timer.value) {
-            result = "封盘中";
+          if ("fengpanzhong".tr == logic?.state.text_timer.value) {
+            result = "fengpanzhong".tr;
             type = 0;
           } else {
             type = 1;
@@ -210,7 +210,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(4.w)),
                 color: Color(0xFFFF7F8C)),
-            child: Text("封盘中",
+            child: Text("fengpanzhong".tr,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
