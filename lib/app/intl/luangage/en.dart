@@ -790,7 +790,7 @@ class EN{
     "tixianzhongxin":"Withdrawal Center",
     "tixianzhanghu_":"Withdrawal account:%s",
     "congcnyqianbaotichu":"Withdrawal from CNY wallet",
-    "congusdtqianbaotichu":"从USDT钱包提出",
+    "congusdtqianbaotichu":"Withdrawal from USDT wallet",
     "tixianxinxi":"Withdrawal information",
     "querentixianxinxi":"Confirm withdrawal information",
     "tixianjine":"Withdrawal amount",
