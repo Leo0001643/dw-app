@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -462,7 +463,7 @@ class HttpService{
   ///游戏返回体
   ///封装请求体，自动处理各种异常问题
   static Future<T> buildFuture<T>(RequestCallback callback,{bool loading = true,bool needMsg = false,bool errorHandler = true}) async {
-    if(loading){ EasyLoading.show(maskType: EasyLoadingMaskType.black,status: Intr().jiazaizhong); }
+    if(loading){ EasyLoading.show(maskType: EasyLoadingMaskType.black,status:"loading".tr); }
     try{
       var value = await callback.call();
       if(loading){ EasyLoading.dismiss(); }
@@ -485,7 +486,7 @@ class HttpService{
   ///彩票返回体
   ///封装请求体，自动处理各种异常问题
   static Future<T> buildTrendFuture<T>(RequestTrendCallback callback,{bool loading = true,bool errorHandler = true}) async {
-    if(loading){ EasyLoading.show(maskType: EasyLoadingMaskType.black,status: Intr().jiazaizhong); }
+    if(loading){ EasyLoading.show(maskType: EasyLoadingMaskType.black,status: "loading".tr); }
     try{
       var value = await callback.call();
       if(loading){ EasyLoading.dismiss(); }

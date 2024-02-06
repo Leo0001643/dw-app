@@ -88,15 +88,15 @@ class ItemBuilder extends DelegateBuilder{
   Widget build(BuildContext context, int index, bool active) {
     switch(index){
       case 0:
-        return buildNormalLabel(Intr().home,ImageX.icon_home1,ImageX.icon_home,24.r,active);
+        return buildNormalLabel("home_home".tr,ImageX.icon_home1,ImageX.icon_home,24.r,active);
       case 1:
-        return buildNormalLabel(Intr().preferential,ImageX.icon_youhui1,ImageX.icon_youhui,24.r,active);
+        return buildNormalLabel("home_discount".tr,ImageX.icon_youhui1,ImageX.icon_youhui,24.r,active);
       case 2:
-        return buildNormalLabel(Intr().charge,ImageX.icon_charge_coin1,ImageX.icon_charge_coin,48.r,active,index:2);
+        return buildNormalLabel("home_recharge".tr,ImageX.icon_charge_coin1,ImageX.icon_charge_coin,48.r,active,index:2);
       case 3:
-        return buildNormalLabel(Intr().customer_service,ImageX.icon_custome_1,ImageX.icon_customer,24.r,active);
+        return buildNormalLabel("home_kefu".tr,ImageX.icon_custome_1,ImageX.icon_customer,24.r,active);
       case 4:
-        return buildNormalLabel(Intr().mine,ImageX.icon_mine1,ImageX.icon_mine,24.r,active);
+        return buildNormalLabel("home_mine".tr,ImageX.icon_mine1,ImageX.icon_mine,24.r,active);
       default :
         return Container();
     }

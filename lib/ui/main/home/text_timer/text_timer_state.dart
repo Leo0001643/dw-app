@@ -17,5 +17,5 @@ class TextTimerState {
     ///Initialize variables
   }
 
-  var text_timer = "等待开盘".obs; //倒计时显示
+  var text_timer = Intr().dengdaikaipan.obs; //倒计时显示
 }

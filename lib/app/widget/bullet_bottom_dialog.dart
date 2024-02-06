@@ -26,7 +26,7 @@ class BulletBottomDialog extends StatefulWidget {
 class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTickerProviderStateMixin{
   late TabController _tabController;
 
-  var tabs = [Intr().changyongduanyu,Intr().qitaduanyu,Intr().biaoqing,Intr().gif];
+  var tabs = ["changyongduanyu".tr,"qitaduanyu".tr,"biaoqing".tr,"gif".tr];
 
   var selectPhrases = (-1).obs;
 

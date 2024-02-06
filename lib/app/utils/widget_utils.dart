@@ -635,7 +635,7 @@ class WidgetUtils {
   void clickCopy(String value) {
     if (unEmpty(value)) {
       Clipboard.setData(ClipboardData(text: value));
-      showToast(Intr().fuzhichenggong);
+      showToast("copy_suc".tr);
     }
   }
 

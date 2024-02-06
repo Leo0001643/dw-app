@@ -9,7 +9,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '/app/global.dart';
-
 /// 应用内数据缓存处理
 /// @author SouShin
 /// @time 2021/8/10 10:22
@@ -39,6 +38,7 @@ class AppData {
           model: deviceInfo.model,
           version: packageInfo.version));
     }
+
     return Future.value(true);
   }
 

@@ -38,7 +38,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
             children: [
               Center(
                 child: Text(
-                  Intr().fangwenluxian,
+                  "fangwenluxian".tr,
                   style: TextStyle(fontSize: 16.sp, color: ColorX.appTextBg()),
                 ),
               ),
@@ -54,7 +54,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                     color: ColorX.color_fc243b,
                   ),
                   child: Text(
-                    Intr().queren,
+                    "dialog_see_more".tr,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
@@ -86,7 +86,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                         width: 7.h,
                       ),
                       Text(
-                        Intr().kuai,
+                        "kuai".tr,
                         style: TextStyle(
                             fontSize: 14.sp, color: ColorX.color_58698d),
                       ),
@@ -108,7 +108,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                         width: 7.h,
                       ),
                       Text(
-                        Intr().yiban,
+                        "yiban".tr,
                         style: TextStyle(
                             fontSize: 14.sp, color: ColorX.color_58698d),
                       ),
@@ -130,7 +130,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                         width: 7.h,
                       ),
                       Text(
-                        Intr().henman,
+                        "henman".tr,
                         style: TextStyle(
                             fontSize: 14.sp, color: ColorX.color_58698d),
                       ),
@@ -152,7 +152,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                         width: 7.h,
                       ),
                       Text(
-                        Intr().bukeyong,
+                       "bukeyong".tr,
                         style: TextStyle(
                             fontSize: 14.sp, color: ColorX.color_58698d),
                       ),
@@ -166,7 +166,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      Intr().fangjiechi,
+                      "fangjiechi".tr,
                       style: TextStyle(
                           fontSize: 14.sp, color: ColorX.color_58698d),
                     ),

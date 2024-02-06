@@ -142,7 +142,7 @@ class DialogUtils {
                   height: 70.h,
                   alignment: Alignment.center,
                   child: Text(
-                    Intr().shifoutuichudenglu,
+                   "shifoutuichudenglu".tr,
                     style: TextStyle(fontSize: 16.sp, color: ColorX.text0917()),
                   ),
                 ),
@@ -160,7 +160,7 @@ class DialogUtils {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         WidgetUtils().buildElevatedButton(
-                            Intr().cancel, 116.w, 40.h,
+                            "com_cancel".tr, 116.w, 40.h,
                             bg: ColorX.cardBg3(),
                             textColor: ColorX.text586(), onPressed: () {
                           Navigator.of(context).pop(false);
@@ -169,7 +169,7 @@ class DialogUtils {
                           width: 10.w,
                         ),
                         WidgetUtils().buildElevatedButton(
-                            Intr().confirm, 116.w, 40.h,
+                            "sure2".tr, 116.w, 40.h,
                             bg: ColorX.color_fc243b,
                             textColor: Colors.white, onPressed: () {
                           Navigator.of(context).pop(true);
@@ -205,7 +205,7 @@ class DialogUtils {
                   height: 70.h,
                   alignment: Alignment.center,
                   child: Text(
-                    Intr().shifouchongxinhuizhi,
+                    "shifouchongxinhuizhi".tr,
                     style: TextStyle(fontSize: 16.sp, color: ColorX.text0917()),
                   ),
                 ),
@@ -218,7 +218,7 @@ class DialogUtils {
             actionsPadding:
                 EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
             actions: [
-              WidgetUtils().buildElevatedButton(Intr().cancel, 116.w, 40.h,
+              WidgetUtils().buildElevatedButton("com_cancel".tr, 116.w, 40.h,
                   bg: ColorX.cardBg3(),
                   textColor: ColorX.text586(), onPressed: () {
                 Navigator.of(context).pop(false);
@@ -226,7 +226,7 @@ class DialogUtils {
               SizedBox(
                 width: 10.w,
               ),
-              WidgetUtils().buildElevatedButton(Intr().confirm, 116.w, 40.h,
+              WidgetUtils().buildElevatedButton("sure2".tr, 116.w, 40.h,
                   bg: ColorX.color_fc243b,
                   textColor: Colors.white, onPressed: () {
                 Navigator.of(context).pop(true);
@@ -254,9 +254,9 @@ class DialogUtils {
       VoidCallback? onConfirm,
       VoidCallback? onCancel,
       bool? divider = false}) {
-    title = title ?? Intr().tishi;
-    btnConfirm = btnConfirm ?? Intr().confirm;
-    btnCancel = btnCancel ?? Intr().cancel;
+    title = title ??"com_tip".tr;
+    btnConfirm = btnConfirm ?? "sure2".tr;
+    btnCancel = btnCancel ?? "com_cancel".tr;
 
     return showDialog<bool>(
         context: context,

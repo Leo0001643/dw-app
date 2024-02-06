@@ -336,7 +336,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     return GetBuilder<GameRoomLogic>(builder: (logic) {
       String termData = GameRuleUtil.getSSB(logic.term.value, year: "");
       return Text(
-        Intr().dixqi([termData]),
+        "dixqi".tr.trArgs([termData]),
         style: TextStyle(
           fontSize: 14.sp,
           color: Colors.white,

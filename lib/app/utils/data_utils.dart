@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:crypto/crypto.dart';
+import 'package:get/get.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter/services.dart';
@@ -21,25 +22,25 @@ class DataUtils{
     String weekday = "";
     switch (dateTime.weekday) {
       case 1:
-        weekday = Intr().day_yi;
+        weekday = "day_yi".tr;
         break;
       case 2:
-        weekday = Intr().day_er;
+        weekday = "day_er".tr;
         break;
       case 3:
-        weekday = Intr().day_san;
+        weekday ="day_san".tr;
         break;
       case 4:
-        weekday = Intr().day_si;
+        weekday = "day_si".tr;
         break;
       case 5:
-        weekday = Intr().day_wu;
+        weekday ="day_wu".tr;
         break;
       case 6:
-        weekday = Intr().day_liu;
+        weekday = "day_liu".tr;
         break;
       case 7:
-        weekday = Intr().day_ri;
+        weekday ="day_ri".tr;
         break;
       default:
         break;
@@ -257,8 +258,8 @@ class DataUtils{
     if (sum == -1) {
       ssb = "?";
     } else {
-      String da = Intr().bet_da;
-      String xiao = Intr().bet_xiao;
+      String da = "bet_da".tr;
+      String xiao = "bet_xiao".tr;
       // String shuang = Intr().bet_shuang;
       // String dan = Intr().bet_dan;
 
@@ -278,8 +279,8 @@ class DataUtils{
     } else {
       // String da = Intr().bet_da;
       // String xiao = Intr().bet_xiao;
-      String shuang = Intr().bet_shuang;
-      String dan = Intr().bet_dan;
+      String shuang = "bet_shuang".tr;
+      String dan ="bet_dan".tr;
 
       // String qian = sum < 14 ? xiao : da;
       String hou = sum % 2 == 0 ? shuang : dan;

@@ -28,15 +28,15 @@ class RoomTendencyController extends GetxController{
   String getTitle(int tabIndex){
     switch(tabIndex){
       case 0:
-        return Intr().tema;
+        return "room_tema".tr;
       case 1:
-        return Intr().diyiqiu;
+        return"room_diyiqiu".tr;
       case 2:
-        return Intr().dierqiu;
+        return "room_dierqiu".tr;
       case 3:
-        return Intr().disanqiu;
+        return "room_disanqiu".tr;
     }
-    return Intr().tema;
+    return "room_tema".tr;
   }
 
   List<List<int>>? getNumberCount(var tabIndex){

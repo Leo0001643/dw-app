@@ -354,12 +354,15 @@ class StateGameMenuView extends State<GameMenuView> {
             SizedBox(
               width: 3.w,
             ),
-            Text(
-              e.gameKindName.em(),
-              style: TextStyle(
-                  fontSize: 12.sp,
-                  color: select ? Colors.white : ColorX.text0917()),
-            ),
+           Container(width: 50.w,
+             child:  Text(
+               e.gameKindName.em(),
+               textAlign: TextAlign.center,
+               style: TextStyle(
+                   fontSize: 12.sp,
+                   color: select ? Colors.white : ColorX.text0917()),
+             ),
+           ),
           ],
         ),
       ),
