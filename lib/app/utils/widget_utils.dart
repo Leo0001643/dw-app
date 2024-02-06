@@ -142,7 +142,7 @@ class WidgetUtils {
                   child: Row(
                     children: [
                       Text(
-                          "线路5", style: TextStyle(color: ColorX.iconBlack())),
+                          "xianlu5".tr, style: TextStyle(color: ColorX.iconBlack())),
                       Image.asset(
                         ImageX.icon_down_arrow,
                         color: ColorX.icon586(),
@@ -729,7 +729,7 @@ class WidgetUtils {
 
   Widget buildBallDraw(int lid, List<String> nums, String e) {
     switch (lid) {
-      case 9: // 快三  3位 骰子
+      case 9: // 快三  3 位 骰子
       case 18:
       case 19:
       case 30:
@@ -768,7 +768,7 @@ class WidgetUtils {
 
   Color buildDrawBg(int lid, List<String> nums, String e) {
     switch (lid) {
-      case 10: // PC系列 4位
+      case 10: // PC 系列 4 位
       case 11:
       case 12:
       case 13:
@@ -782,10 +782,10 @@ class WidgetUtils {
         } else {
           return ColorX.color_fe2427;
         }
-      case 7: // 六合彩  7位
+      case 7: // 六合彩  7 位
       case 20:
         return DataUtils.getBallBgColor(int.parse(e));
-      case 6: // pK十系列 10位
+      case 6: // pK 十系列 10 位
       case 22:
         return DataUtils.getBallBgColor(int.parse(e));
       case 56:
@@ -808,7 +808,7 @@ class WidgetUtils {
     if (isEmpty(code)) {
       return Container();
     }
-    // 移除Base64头信息
+    // 移除 Base64 头信息
     String base64String = code
         .split(',')
         .last;
@@ -828,7 +828,7 @@ class WidgetUtils {
     if (isEmpty(code)) {
       return Container();
     }
-    // 移除Base64头信息
+    // 移除 Base64 头信息
     String base64String = code
         .split(',')
         .last;
@@ -891,7 +891,7 @@ class WidgetUtils {
                   arguments: HtmlEvent(
                       data: value, isHtmlData: true, pageTitle: title));
             } else {
-              ///OpenFilex可以打开文件 ，可以把value数据写到本地文件里然后用他打开
+              ///OpenFilex 可以打开文件，可以把 value 数据写到本地文件里然后用他打开
               getTemporaryDirectory().then((cpath) {
                 var path = '${cpath.path}/${title}.html';
                 var file = File(path);

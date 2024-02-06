@@ -78,7 +78,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
               labelPadding: EdgeInsets.zero,
               labelColor: ColorX.textBlack(),
               unselectedLabelColor: ColorX.textBlack(),
-              width: 0.483.sw,
+              width: 0.583.sw,
               tabs: state.tabs.map((e) => buildTabBarItem(e, 0)).toList(),
             ),
           ),

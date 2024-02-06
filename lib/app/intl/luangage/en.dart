@@ -1034,6 +1034,13 @@ class EN{
     "yichenggongqiehuan_":"Successfully switched to%s wallet, \ n entering the game will use%s",
     "jifenbuzu":"Insufficient points",
 
+
+    "xianlu1":"Line 1",
+    "xianlu2":"Line 2",
+    "xianlu3":"Line 3",
+    "xianlu4":"Line 4",
+    "xianlu5":"Line 5",
+    "xianlu6":"Line 6",
   };
 
 }

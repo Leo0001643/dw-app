@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../res/colorx.dart';
 
@@ -11,7 +12,7 @@ class MyRoteGridView extends StatefulWidget {
 class _MyGridViewState extends State<MyRoteGridView> {
   int selectedTileIndex = -1;
 
-  List<String> titles = ['线路1', '线路2', '线路3', '线路4', '线路5', '线路6'];
+  List<String> titles = ['xianlu1'.tr, 'xianlu2'.tr, 'xianlu3'.tr, 'xianlu4'.tr, 'xianlu5'.tr, 'xianlu6'.tr];
   List<String> contents = [
     '285ms',
     '255ms',

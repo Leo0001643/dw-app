@@ -465,8 +465,10 @@ class StateMinePage extends State<MinePage> {
       onTap: () => logic.clickItem(index),
       child: Container(
         width: 80.w,
-        height: 55.w,
+        height: 60.w,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             buildImageItem(icon),
             SizedBox(
@@ -474,6 +476,7 @@ class StateMinePage extends State<MinePage> {
             ),
             Text(
               title,
+              textAlign: TextAlign.center,
               style: TextStyle(fontSize: 11.sp, color: ColorX.text5862()),
             ),
           ],

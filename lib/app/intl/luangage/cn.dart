@@ -966,6 +966,16 @@ class CN {
     "yixiushi":"已休市",
     "yichenggongqiehuan_":"已成功切换为 %s 钱包,\n进入游戏将使用%s",
     "jifenbuzu":"积分不足",
+
+
+    "xianlu1":"线路1",
+    "xianlu2":"线路2",
+    "xianlu3":"线路3",
+    "xianlu4":"线路4",
+    "xianlu5":"线路5",
+    "xianlu6":"线路6",
+
+
   };
 
 }

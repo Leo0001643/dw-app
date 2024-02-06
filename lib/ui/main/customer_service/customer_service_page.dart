@@ -45,8 +45,12 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(Intr().xszxkf,
-                        style: TextStyle(fontSize: 24.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
+                      Container(
+                        width: 0.6.sw,
+                        child:  Text(Intr().xszxkf,
+                          style: TextStyle(fontSize: 24.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
+                      ),
+
                       SizedBox(height: 10.h,),
                       Text(Intr().qthwnfw,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
                     ],
