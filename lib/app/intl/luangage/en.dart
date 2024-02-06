@@ -866,7 +866,7 @@ class EN{
     "huazhuanjilu":"Transfer Record",
     "dailizhuce":"Proxy registration",
     "querenmima":"Confirm password",
-    "dianziyouxiang":"电子邮箱",
+    "dianziyouxiang":"email",
     "wenxintishi_zhuce":"Reminder: \n1. Marked with an * indicates that the item must be filled out. \n2. Registration means that you have agreed to all \"account opening agreements\"”",
     "jieshaorenxinxi":"Referee Information",
     "daima":"code",
