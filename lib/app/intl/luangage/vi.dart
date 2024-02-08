@@ -968,7 +968,9 @@ class VI{
     "xianlu4":"Đường dây 4",
     "xianlu5":"Dòng 5",
     "xianlu6":"Đường dây 6",
-
-
+    "xitongxiaoxi":"Thông điệp hệ thống",
+    "julifengpan":"Vẫn còn thời gian đóng cửa.",
+    "miao":"giây",
+    "kaishixiazhu":"Bắt đầu đặt cược"
   };
 }

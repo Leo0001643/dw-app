@@ -56,7 +56,7 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            "开奖结果",
+            "kaijiangjieguo".tr,
             style: TextStyle(fontSize: 14, color: Color(0xFF4795FF)),
           ),
           Row(

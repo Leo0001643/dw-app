@@ -684,7 +684,8 @@ class EN{
     "dengdaikaipan":"Waiting for opening",
     "shuaxin":"Refresh",
     "kaijiangjieguo":"Lottery results",
-    "shujufenxi":"data analysis",
+    "xitongxiaoxi":"System messages",
+    "shujufenxi":"Data analysis",
     "shuangmianchanglong":"Double sided dragon",
     "danshuangluzhu":"Single and double dewdrops",
     "daxiaoluzhu":"Dewdrops of different sizes",
@@ -1041,6 +1042,9 @@ class EN{
     "xianlu4":"Line 4",
     "xianlu5":"Line 5",
     "xianlu6":"Line 6",
+    "julifengpan":"There is still time to close the disk",
+    "miao":"second",
+    "kaishixiazhu":"Start betting"
   };
 
 }

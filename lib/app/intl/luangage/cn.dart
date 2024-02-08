@@ -604,6 +604,7 @@ class CN {
     "dengdaikaipan":"等待开盘",
     "shuaxin":"刷新",
     "kaijiangjieguo":"开奖结果",
+    "xitongxiaoxi":"系统消息",
     "shujufenxi":"数据分析",
     "shuangmianchanglong":"双面长龙",
     "danshuangluzhu":"单双露珠",
@@ -968,8 +969,9 @@ class CN {
     "xianlu4":"线路4",
     "xianlu5":"线路5",
     "xianlu6":"线路6",
-
-
+    "julifengpan":"距离封盘时间还剩",
+    "miao":"秒",
+    "kaishixiazhu":"开始下注"
   };
 
 }

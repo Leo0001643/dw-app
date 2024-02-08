@@ -319,8 +319,8 @@ class TextItemLogic extends GetxController {
       countDownLotteryEntity.value.time = showT;
       countDownLotteryEntity.value.term = term;
       countDownLotteryEntity.value.titleColor =0xFF58698D;
-      countDownLotteryEntity.value.title = "系统消息";
-      countDownLotteryEntity.value.subTitile = "距离封盘还有${showT}秒";
+      countDownLotteryEntity.value.title = "xitongxiaoxi".tr;
+      countDownLotteryEntity.value.subTitile = "${"julifengpan".tr}${showT}${"miao".tr}";
       countDownLotteryEntity.refresh();
     }
   }
@@ -328,10 +328,10 @@ class TextItemLogic extends GetxController {
   showOpen(int showT,String term) {
     if ((lastStatus != currentStatus.value)) {
       countDownLotteryEntity.value.type = "openOver";
-      countDownLotteryEntity.value.title = "开始下注";
+      countDownLotteryEntity.value.title = "kaishixiazhu".tr;
       countDownLotteryEntity.value.titleColor=0xFF51AC57;
       countDownLotteryEntity.value.term = term;
-      countDownLotteryEntity.value.subTitile = "开始下注";
+      countDownLotteryEntity.value.subTitile = "kaishixiazhu".tr;
       countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
       countDownLotteryEntity.refresh();
     }
