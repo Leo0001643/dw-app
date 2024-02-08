@@ -43,7 +43,7 @@ class LoginLogic extends GetxController {
     }
   }
 
-  void clickLogin({dynamic data}){
+  void clickLogin({dynamic data,String? varCode,String?varCodeId}){
     if(!state.btnEnable.value){ return; }
     var params = <String,dynamic>{
       "username": state.accountValue,
@@ -51,6 +51,12 @@ class LoginLogic extends GetxController {
       "scene": "nc_login_h5",
       "token": -1,
     };
+    if(varCode?.isNotEmpty==true) {
+      params["varCode"]=varCode;
+    }
+    if(varCodeId?.isNotEmpty==true) {
+      params["varCodeId"]=varCodeId;
+    }
     if (data != null &&
         state.varcode.value.status == 1 &&
         state.varcode.value.type == 2) {

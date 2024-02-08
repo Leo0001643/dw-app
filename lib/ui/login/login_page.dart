@@ -49,14 +49,16 @@ class _LoginPageState extends State<LoginPage> {
         leadingWidth: 0,
         leading: Container(),
         actions: [
-          Container(child: InkWell(
-            onTap: () => Get.back(),
-            child: Image.asset(
-              ImageX.icon_close,
-              color: ColorX.icon586(),
+          Container(
+            child: InkWell(
+              onTap: () => Get.back(),
+              child: Image.asset(
+                ImageX.icon_close,
+                color: ColorX.icon586(),
+              ),
             ),
-          ), margin: EdgeInsets.only(right: 10.w),)
-
+            margin: EdgeInsets.only(right: 10.w),
+          )
         ],
       ),
       backgroundColor: ColorX.pageBg(),
@@ -221,6 +223,8 @@ class _LoginPageState extends State<LoginPage> {
    */
   Widget _getCode() {
     return Obx(() {
+      print(
+          "-------->类型  ${(state.varcode.value.status == 1 && state.varcode.value.type == 1)}");
       if (state.varcode.value.status == 1 && state.varcode.value.type == 1) {
         return Column(
           children: [
@@ -251,19 +255,41 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Column(
                   children: [
-                    WidgetUtils().buildTextField(
-                        225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
-                        hintColor: ColorX.text586(),
-                        backgroundColor: Colors.transparent,
-                        inputType: TextInputType.number,
-                        onChanged: (v) => state.vcode = v),
-                    WidgetUtils().buildVarCode(state.varcode.value.varCode.em(),
-                        () {
-                      logic.getVarcode();
-                    })
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        WidgetUtils().buildTextField(
+                            225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
+                            hintColor: ColorX.text586(),
+                            backgroundColor: Colors.transparent,
+                            inputType: TextInputType.number,
+                            onChanged: (v) => state.vcode = v),
+                        WidgetUtils().buildVarCode(state.varcode.value.varCode.em(),
+                                () {
+                              logic.getVarcode();
+                            })
+                      ],
+                    ),
+                    Center(
+                      child: WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
+                          bg: state.btnEnable.value
+                              ? ColorX.color_fd273e
+                              : ColorX.color_ff5163,
+                          textColor: Colors.white,
+                          textSize: 16.sp, onPressed: () {
+                            if (state.varcode.value.status == 1 &&
+                                state.varcode.value.type == 3) {
+                              _handleClickVerify();
+                            } else {
+                              String?varCodeId= state.varcode.value.varCodeId;
+
+                              logic.clickLogin(varCode:state.vcode,varCodeId:varCodeId);
+                            }
+                          }),
+                    ),
                   ],
                 ),
               ),
@@ -295,25 +321,28 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _getAliCode() {
     if (state.varcode.value.status == 1 && state.varcode.value.type == 2) {
-      return Container(
-        width: double.infinity,
-        height: 48,
-        margin: EdgeInsets.only(
-          top: 10,
-          bottom: 10,
-          left: 16,
-          right: 16,
-        ),
-        child: AliyunCaptchaButton(
-          type: AliyunCaptchaType.slide,
-          // 重要：请设置正确的类型
-          option: AliyunCaptchaOption(
-            appKey: 'FFFF0N00000000009A34',
-            scene: 'cn-hangzhou',
-            language: 'cn',
-            // 更多参数请参见：https://help.aliyun.com/document_detail/193141.html
-          ),
-          customStyle: '''
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: double.infinity,
+            height: 48,
+            margin: EdgeInsets.only(
+              top: 10,
+              bottom: 10,
+              left: 16,
+              right: 16,
+            ),
+            child: AliyunCaptchaButton(
+              type: AliyunCaptchaType.slide,
+              // 重要：请设置正确的类型
+              option: AliyunCaptchaOption(
+                appKey: 'FFFF0N00000000009A34',
+                scene: 'cn-hangzhou',
+                language: 'cn',
+                // 更多参数请参见：https://help.aliyun.com/document_detail/193141.html
+              ),
+              customStyle: '''
       .nc_scale {
         background: #eeeeee !important;
         /* 默认背景色 */
@@ -334,13 +363,30 @@ class _LoginPageState extends State<LoginPage> {
         color: #ef9f06 !important;
       }
     ''',
-          onSuccess: (dynamic data) {
-            // {"sig": "...", "token": "..."}
-            logic.clickLogin(data: data);
-          },
-          onFailure: (String failCode) {},
-          onError: (String errorCode) {},
-        ),
+              onSuccess: (dynamic data) {
+                // {"sig": "...", "token": "..."}
+                logic.clickLogin(data: data);
+              },
+              onFailure: (String failCode) {},
+              onError: (String errorCode) {},
+            ),
+          ),
+          Center(
+            child: WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
+                bg: state.btnEnable.value
+                    ? ColorX.color_fd273e
+                    : ColorX.color_ff5163,
+                textColor: Colors.white,
+                textSize: 16.sp, onPressed: () {
+              if (state.varcode.value.status == 1 &&
+                  state.varcode.value.type == 3) {
+                _handleClickVerify();
+              } else {
+                logic.clickLogin();
+              }
+            }),
+          ),
+        ],
       );
     } else {
       return Container();
