@@ -1,11 +1,5 @@
 class CN {
   static const Map<String, String> map = {
-
-
-
-
-
-
     "home_home": "首页",
     "home_discount": "优惠",
     "home_recharge": "充值",
