@@ -13,6 +13,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
+import 'package:leisure_games/ui/register/widget/form/theme_text_input.dart';
 
 import 'register_logic.dart';
 
@@ -49,7 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
-          WidgetUtils().buildAppBar(Intr().cjzh, bgColor: ColorX.appBarBg()),
+          WidgetUtils().buildAppBar("hyzc".tr, bgColor: ColorX.appBarBg()),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(
@@ -57,6 +58,18 @@ class _RegisterPageState extends State<RegisterPage> {
           children: [
             SizedBox(
               height: 20.h,
+            ),
+            ThemeTextInput(
+              name:"demo",
+              label: "deme1",
+              isRequired: true,
+              hintText: "请输入",
+              obscureText:true,
+              labelWidth: 60,
+              isDark: false,
+              onChange: (value) => (),
+              onFocusChanged: (focusIn) =>
+                 (),
             ),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
