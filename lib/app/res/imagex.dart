@@ -151,6 +151,9 @@ class ImageX{
   static const icon_unipay = 'assets/images/icon_unipay.png';
   static const icon_usdt_grey = 'assets/images/icon_usdt_grey.png';
   static const icon_ustd2 = 'assets/images/icon_ustd2.png';
+  static const usdt = 'assets/images/usdt.png';
+  static const jingdong = 'assets/images/jingdong.png';
+
   static const icon_ustd2_grey = 'assets/images/icon_ustd2_grey.png';
   static const icon_ustd2_red = 'assets/images/icon_ustd2_red.png';
   static const icon_tjyhicon_ustd_greyk = 'assets/images/icon_ustd_grey.png';

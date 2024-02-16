@@ -55,7 +55,12 @@ class RechargeLogic extends GetxController {
       });
 
       HttpService.getPaymentList(user.oid.em(), user.username.em()).then((value) {
-        var usdtIndex = 0;
+        // var usdtIndex = 0;
+        if(unEmpty(value.digitalWallet)){
+          state.usdtBank.value = value.digitalWallet!.first;
+          state.usdtBank.value.icon = ImageX.usdt;
+          state.usdtBank.refresh();
+        }
         value.banks?.forEach((element) {
           switch(element.bankCode){
             case Constants.code_caifutong:
@@ -76,18 +81,21 @@ class RechargeLogic extends GetxController {
             case Constants.code_zhifubao:
               element.icon = ImageX.icon_alipay;
               break;
-            case Constants.code_usdt:
-              element.icon = ImageX.icon_dollar_grey;
-              state.usdtBank.value = element;
-              state.usdtBank.refresh();
-              usdtIndex = value.banks!.indexOf(element);
+            case Constants.code_jingdong:
+              element.icon = ImageX.jingdong;
               break;
+            // case Constants.code_usdt:
+            //   element.icon = ImageX.icon_cft;
+            //   state.usdtBank.value = element;
+            //   state.usdtBank.refresh();
+              // usdtIndex = value.banks!.indexOf(element);
+              // break;
             default:
-              element.icon = ImageX.icon_cft;
+              element.icon = ImageX.usdt;
               break;
           }
         });
-        value.banks?.removeAt(usdtIndex);
+        // value.banks?.removeAt(usdtIndex);
         state.paymentList.value = value;
         state.paymentList.refresh();
       });
