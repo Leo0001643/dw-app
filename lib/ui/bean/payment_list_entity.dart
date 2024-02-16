@@ -9,8 +9,9 @@ export 'package:leisure_games/generated/json/payment_list_entity.g.dart';
 @JsonSerializable()
 class PaymentListEntity {
 	List<PaymentListBanks>? banks;
-
+	List<PaymentListBanks>? digitalWallet;
 	PaymentListEntity();
+
 
 	factory PaymentListEntity.fromJson(Map<String, dynamic> json) => $PaymentListEntityFromJson(json);
 

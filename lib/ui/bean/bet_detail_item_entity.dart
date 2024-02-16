@@ -1,20 +1,22 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'dart:convert';
 
-part 'bet_detail_item_entity.g.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/generated/json/bet_detail_item_entity.g.dart';
+
 
 @JsonSerializable()
 class BetDetailItemEntity {
-  final num? betamount;
-  final num? validamount;
-  final num? winlose;
-  final num? betCount;
-  final num? gameKind;
-  final String? gameKindName;
-  final String? gameName;
-  final num? gameType;
-  final String? currency;
-  final List<BetDetailItemEntity>? record;
-  const BetDetailItemEntity({
+  num? betamount;
+  num? validamount;
+  num? winlose;
+  num? betCount;
+  num? gameKind;
+  String? gameKindName;
+  String? gameName;
+  num? gameType;
+  String? currency;
+  List<BetDetailItemEntity>? record;
+  BetDetailItemEntity({
     this.betamount,
     this.validamount,
     this.winlose,
@@ -28,7 +30,13 @@ class BetDetailItemEntity {
   });
 
   factory BetDetailItemEntity.fromJson(Map<String, dynamic> json) =>
-      _$BetDetailItemEntityFromJson(json);
+      $BetDetailItemEntityFromJson(json);
 
-  Map<String, dynamic> toJson() => _$BetDetailItemEntityToJson(this);
+  Map<String, dynamic> toJson() => $BetDetailItemEntityToJson(this);
+
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
 }

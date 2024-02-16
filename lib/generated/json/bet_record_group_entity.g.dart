@@ -66,17 +66,6 @@ BetRecordGroupRecord $BetRecordGroupRecordFromJson(Map<String, dynamic> json) {
   if (betamount != null) {
     betRecordGroupRecord.betamount = betamount;
   }
-
-  final String? cur = jsonConvert.convert<String>(json['cur']);
-  if (betamount != null) {
-    betRecordGroupRecord.cur = cur;
-  }
-
-
-  final String? title = jsonConvert.convert<String>(json['title']);
-  if (betamount != null) {
-    betRecordGroupRecord.title = title;
-  }
   final String? validamount = jsonConvert.convert<String>(json['validamount']);
   if (validamount != null) {
     betRecordGroupRecord.validamount = validamount;
@@ -93,6 +82,14 @@ BetRecordGroupRecord $BetRecordGroupRecordFromJson(Map<String, dynamic> json) {
   if (time != null) {
     betRecordGroupRecord.time = time;
   }
+  final String? title = jsonConvert.convert<String>(json['title']);
+  if (title != null) {
+    betRecordGroupRecord.title = title;
+  }
+  final String? cur = jsonConvert.convert<String>(json['cur']);
+  if (cur != null) {
+    betRecordGroupRecord.cur = cur;
+  }
   return betRecordGroupRecord;
 }
 
@@ -105,7 +102,6 @@ Map<String, dynamic> $BetRecordGroupRecordToJson(BetRecordGroupRecord entity) {
   data['time'] = entity.time;
   data['title'] = entity.title;
   data['cur'] = entity.cur;
-
   return data;
 }
 
@@ -116,12 +112,16 @@ extension BetRecordGroupRecordExtension on BetRecordGroupRecord {
     double? winlose,
     String? betCount,
     String? time,
+    String? title,
+    String? cur,
   }) {
     return BetRecordGroupRecord()
       ..betamount = betamount ?? this.betamount
       ..validamount = validamount ?? this.validamount
       ..winlose = winlose ?? this.winlose
       ..betCount = betCount ?? this.betCount
-      ..time = time ?? this.time;
+      ..time = time ?? this.time
+      ..title = title ?? this.title
+      ..cur = cur ?? this.cur;
   }
 }

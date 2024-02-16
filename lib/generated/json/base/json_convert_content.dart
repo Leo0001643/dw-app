@@ -9,6 +9,8 @@ import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
+import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart';
+import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
@@ -69,7 +71,6 @@ import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_detail_entity.dart';
-import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
@@ -219,6 +220,22 @@ class JsonConvert {
     if (<BankEntity>[] is M) {
       return data.map<BankEntity>((Map<String, dynamic> e) =>
           BankEntity.fromJson(e)).toList() as M;
+    }
+    if (<BetDetailItemChildEntity>[] is M) {
+      return data.map<BetDetailItemChildEntity>((Map<String, dynamic> e) =>
+          BetDetailItemChildEntity.fromJson(e)).toList() as M;
+    }
+    if (<Record>[] is M) {
+      return data.map<Record>((Map<String, dynamic> e) => Record.fromJson(e))
+          .toList() as M;
+    }
+    if (<Total>[] is M) {
+      return data.map<Total>((Map<String, dynamic> e) => Total.fromJson(e))
+          .toList() as M;
+    }
+    if (<BetDetailItemEntity>[] is M) {
+      return data.map<BetDetailItemEntity>((Map<String, dynamic> e) =>
+          BetDetailItemEntity.fromJson(e)).toList() as M;
     }
     if (<BetRecordGroupEntity>[] is M) {
       return data.map<BetRecordGroupEntity>((Map<String, dynamic> e) =>
@@ -616,14 +633,6 @@ class JsonConvert {
       return data.map<UserDetailEntity>((Map<String, dynamic> e) =>
           UserDetailEntity.fromJson(e)).toList() as M;
     }
-    if (<UserDrawDetailEntity>[] is M) {
-      return data.map<UserDrawDetailEntity>((Map<String, dynamic> e) =>
-          UserDrawDetailEntity.fromJson(e)).toList() as M;
-    }
-    if (<UserDrawDetailBanks>[] is M) {
-      return data.map<UserDrawDetailBanks>((Map<String, dynamic> e) =>
-          UserDrawDetailBanks.fromJson(e)).toList() as M;
-    }
     if (<VarCodeEntity>[] is M) {
       return data.map<VarCodeEntity>((Map<String, dynamic> e) =>
           VarCodeEntity.fromJson(e)).toList() as M;
@@ -700,6 +709,10 @@ class JsonConvertClassCollection {
     (BackWaterEntity).toString(): BackWaterEntity.fromJson,
     (BalanceEntity).toString(): BalanceEntity.fromJson,
     (BankEntity).toString(): BankEntity.fromJson,
+    (BetDetailItemChildEntity).toString(): BetDetailItemChildEntity.fromJson,
+    (Record).toString(): Record.fromJson,
+    (Total).toString(): Total.fromJson,
+    (BetDetailItemEntity).toString(): BetDetailItemEntity.fromJson,
     (BetRecordGroupEntity).toString(): BetRecordGroupEntity.fromJson,
     (BetRecordGroupRecord).toString(): BetRecordGroupRecord.fromJson,
     (BetShakeEntity).toString(): BetShakeEntity.fromJson,
@@ -802,8 +815,6 @@ class JsonConvertClassCollection {
     (SpreadUserEntity).toString(): SpreadUserEntity.fromJson,
     (UsdtChannelEntity).toString(): UsdtChannelEntity.fromJson,
     (UserDetailEntity).toString(): UserDetailEntity.fromJson,
-    (UserDrawDetailEntity).toString(): UserDrawDetailEntity.fromJson,
-    (UserDrawDetailBanks).toString(): UserDrawDetailBanks.fromJson,
     (VarCodeEntity).toString(): VarCodeEntity.fromJson,
     (WebConfigEntity).toString(): WebConfigEntity.fromJson,
     (WebConfigDcHelpDomain).toString(): WebConfigDcHelpDomain.fromJson,

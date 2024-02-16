@@ -12,21 +12,32 @@ PaymentListEntity $PaymentListEntityFromJson(Map<String, dynamic> json) {
   if (banks != null) {
     paymentListEntity.banks = banks;
   }
+  final List<PaymentListBanks>? digitalWallet = (json['digitalWallet'] as List<
+      dynamic>?)
+      ?.map(
+          (e) => jsonConvert.convert<PaymentListBanks>(e) as PaymentListBanks)
+      .toList();
+  if (digitalWallet != null) {
+    paymentListEntity.digitalWallet = digitalWallet;
+  }
   return paymentListEntity;
 }
 
 Map<String, dynamic> $PaymentListEntityToJson(PaymentListEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['banks'] = entity.banks?.map((v) => v.toJson()).toList();
+  data['digitalWallet'] = entity.digitalWallet?.map((v) => v.toJson()).toList();
   return data;
 }
 
 extension PaymentListEntityExtension on PaymentListEntity {
   PaymentListEntity copyWith({
     List<PaymentListBanks>? banks,
+    List<PaymentListBanks>? digitalWallet,
   }) {
     return PaymentListEntity()
-      ..banks = banks ?? this.banks;
+      ..banks = banks ?? this.banks
+      ..digitalWallet = digitalWallet ?? this.digitalWallet;
   }
 }
 

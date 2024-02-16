@@ -1,71 +1,70 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'dart:convert';
 
-part 'bet_detail_item_child_entity.g.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/generated/json/bet_detail_item_child_entity.g.dart';
+
 
 @JsonSerializable()
 class BetDetailItemChildEntity {
-  final List<Record>? record;
-  final Total? total;
+  List<Record>? record;
+  Total? total;
 
-  const BetDetailItemChildEntity({
+  BetDetailItemChildEntity({
     this.record,
     this.total,
   });
 
-  factory BetDetailItemChildEntity.fromJson(Map<String, dynamic> json) =>
-      _$BetDetailItemChildEntityFromJson(json);
+  factory BetDetailItemChildEntity.fromJson(Map<String, dynamic> json) => $BetDetailItemChildEntityFromJson(json);
 
-  Map<String, dynamic> toJson() => _$BetDetailItemChildEntityToJson(this);
+  Map<String, dynamic> toJson() => $BetDetailItemChildEntityToJson(this);
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+
+
 }
 
 @JsonSerializable()
 class Record {
-  final String? username;
-  final num? betamount;
-  final num? validamount;
-  final num? winlose;
-  final String? betTime;
-  final String? gameType;
-  final String? gameName;
-  final String? billNo;
-  final String? qishu;
-  final String? item;
-  final String? play;
-  final String? odds;
-  final String? txt1;
-  final String? txt2;
+  String? username;
+  num? betamount;
+  num? validamount;
+  num? winlose;
+  String? betTime;
+  String? gameType;
+  String? gameName;
+  String? billNo;
+  String? qishu;
+  String? item;
+  String? play;
+  String? odds;
+  String? txt1;
+  String? txt2;
 
-  const Record({
-    this.username,
-    this.betamount,
-    this.validamount,
-    this.winlose,
-    this.betTime,
-    this.gameType,
-    this.gameName,
-    this.billNo,
-    this.qishu,
-    this.item,
-    this.play,
-    this.odds,
-    this.txt1,
-    this.txt2,
-  });
+  Record();
 
-  factory Record.fromJson(Map<String, dynamic> json) =>
-      _$RecordFromJson(json);
+  factory Record.fromJson(Map<String, dynamic> json) => $RecordFromJson(json);
 
-  Map<String, dynamic> toJson() => _$RecordToJson(this);
+  Map<String, dynamic> toJson() => $RecordToJson(this);
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+
+
 }
 
 @JsonSerializable()
 class Total {
-  final num? betAmountTotal;
-  final num? validAmountTotal;
-  final num? winloseTotal;
-  final num? betCountTotal;
+  num? betAmountTotal;
+  num? validAmountTotal;
+  num? winloseTotal;
+  num? betCountTotal;
 
-  const Total({
+  Total({
     this.betAmountTotal,
     this.validAmountTotal,
     this.winloseTotal,
@@ -73,7 +72,13 @@ class Total {
   });
 
   factory Total.fromJson(Map<String, dynamic> json) =>
-      _$TotalFromJson(json);
+      $TotalFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TotalToJson(this);
+  Map<String, dynamic> toJson() => $TotalToJson(this);
+
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
+
 }

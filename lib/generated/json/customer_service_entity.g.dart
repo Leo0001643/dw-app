@@ -33,6 +33,10 @@ CustomerServiceEntity $CustomerServiceEntityFromJson(
   if (custerServers != null) {
     customerServiceEntity.custerServers = custerServers;
   }
+  final bool? isChat = jsonConvert.convert<bool>(json['isChat']);
+  if (isChat != null) {
+    customerServiceEntity.isChat = isChat;
+  }
   return customerServiceEntity;
 }
 
@@ -45,6 +49,7 @@ Map<String, dynamic> $CustomerServiceEntityToJson(
   data['image'] = entity.image;
   data['comments'] = entity.comments;
   data['custerServers'] = entity.custerServers?.map((v) => v.toJson()).toList();
+  data['isChat'] = entity.isChat;
   return data;
 }
 
@@ -56,6 +61,7 @@ extension CustomerServiceEntityExtension on CustomerServiceEntity {
     String? image,
     String? comments,
     List<CustomerServiceCusterServers>? custerServers,
+    bool? isChat,
   }) {
     return CustomerServiceEntity()
       ..name = name ?? this.name
@@ -63,7 +69,8 @@ extension CustomerServiceEntityExtension on CustomerServiceEntity {
       ..type = type ?? this.type
       ..image = image ?? this.image
       ..comments = comments ?? this.comments
-      ..custerServers = custerServers ?? this.custerServers;
+      ..custerServers = custerServers ?? this.custerServers
+      ..isChat = isChat ?? this.isChat;
   }
 }
 
