@@ -28,115 +28,132 @@ class _RechargePageState extends State<RechargePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().chongzhizhongxin,
-          msg: true, drawer: true, back: false),
-      backgroundColor:ColorX.appBarBg(),
-      body: SingleChildScrollView(
-        child: GetBuilder<WalletController>(
-          id: WalletController.wallet_id,
-          builder: (ctl) {
-            return Column(
-              children: [
-                Container(
-                  height: 100.h,
+      backgroundColor:ColorX.cardBg2(),
+      body: GetBuilder<WalletController>(
+        id: WalletController.wallet_id,
+        builder: (ctl) {
+          return Stack(
+            children: [
+              Container(
+                width: 1.sw,
+                height: 0.28.sh,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(ImageX.mybgT()),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    WidgetUtils().buildAppBar(Intr().chongzhizhongxin,
+                        msg: true, drawer: true, back: false,bgColor: Colors.transparent),
+                    SizedBox(height: 10.h,),
+                    Obx(() {
+                      return GFAvatar(
+                        backgroundImage: WidgetUtils().buildImageProvider(
+                            DataUtils.findAvatar(
+                                state.user.value.avatar.em())),
+                        radius: 28.r,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                color: Colors.white,
+                                width: 2.r),
+                          ),
+                        ),
+                      );
+                    }),
+                    SizedBox(height: 7.h,),
+                    Obx(() {
+                      return Text(
+                        Intr().chongzhizhanghu_(
+                            [state.user.value.username.em()]),
+                        style: TextStyle(
+                            fontSize: 12.sp, color: ColorX.text0917(),fontWeight: FontWeight.w700),
+                      );
+                    }),
+                  ],
+                ),
+              ),
+              SingleChildScrollView(
+                child: Container(
+                  margin: EdgeInsets.only(top: 0.23.sh),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 27.w, right: 27.w, top: 10.h),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              ctl.wallet
+                                  ? Intr().wallet_usdt
+                                  : Intr().dangqianmoren([Intr().wallet_usdt]),
+                              style: TextStyle(
+                                  fontSize: 14.sp, fontWeight:FontWeight.w600,color: ColorX.text5862()),
+                            ),
+                            Obx(() {
+                              return Text(
+                                "${Intr().yue_}₮${state.usdtBal.value.money.em()}",
+                                style: TextStyle(
+                                    fontSize: 14.sp, fontWeight:FontWeight.w600, color: ColorX.text5862()),
+                              );
+                            }),
+                          ],
+                        ),
+                      ),
                       Obx(() {
-                        return GFAvatar(
-                          backgroundImage: WidgetUtils().buildImageProvider(
-                              DataUtils.findAvatar(
-                                  state.user.value.avatar.em())),
-                          radius: 28.r,
+                        return buildCategoryItem(state.usdtBank.value, -1);
+                      }),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Padding(
+                        padding:
+                        EdgeInsets.symmetric(horizontal: 27.w, vertical: 7.h),
+                        child: Obx(() {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                ctl.wallet
+                                    ? Intr().dangqianmoren([Intr().wallet_cny])
+                                    : Intr().wallet_cny,
+                                style: TextStyle(
+                                    fontWeight:FontWeight.w600,
+                                    fontSize: 14.sp, color: ColorX.text5862()),
+                              ),
+                              Text(
+                                "${Intr().yue_}¥${state.cnyBal.value.money.em()}",
+                                style: TextStyle(
+                                    fontWeight:FontWeight.w600,
+                                    fontSize: 14.sp, color: ColorX.text5862()),
+                              ),
+                            ],
+                          );
+                        }),
+                      ),
+                      Obx(() {
+                        var banks = state.paymentList.value.banks;
+                        return Column(
+                          children: banks
+                              ?.map((e) => buildCategoryItem(e, banks.indexOf(e)))
+                              .toList() ??
+                              [],
                         );
                       }),
                       SizedBox(
-                        height: 7.h,
+                        height: 30.h,
                       ),
-                      Obx(() {
-                        return Text(
-                          Intr().chongzhizhanghu_(
-                              [state.user.value.username.em()]),
-                          style: TextStyle(
-                              fontSize: 12.sp, color: ColorX.text0917()),
-                        );
-                      }),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Container(
-                 color: ColorX.cardBg(),
-                  padding: EdgeInsets.only(left: 27.w, right: 27.w, top: 10.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        ctl.wallet
-                            ? Intr().wallet_usdt
-                            : Intr().dangqianmoren([Intr().wallet_usdt]),
-                        style: TextStyle(
-                            fontSize: 14.sp, fontWeight:FontWeight.w600,color: ColorX.textBlack()),
-                      ),
-                      Obx(() {
-                        return Text(
-                          "${Intr().yue_}₮${state.usdtBal.value.money.em()}",
-                          style: TextStyle(
-                              fontSize: 14.sp, fontWeight:FontWeight.w600, color: ColorX.textBlack()),
-                        );
-                      }),
-                    ],
-                  ),
-                ),
-                Obx(() {
-                  return buildCategoryItem(state.usdtBank.value, -1);
-                }),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Padding(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 27.w, vertical: 7.h),
-                  child: Obx(() {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          ctl.wallet
-                              ? Intr().dangqianmoren([Intr().wallet_cny])
-                              : Intr().wallet_cny,
-                          style: TextStyle(
-                              fontWeight:FontWeight.w600,
-                              fontSize: 14.sp, color: ColorX.textBlack()),
-                        ),
-                        Text(
-                          "${Intr().yue_}¥${state.cnyBal.value.money.em()}",
-                          style: TextStyle(
-                              fontWeight:FontWeight.w600,
-                              fontSize: 14.sp, color: ColorX.textBlack()),
-                        ),
-                      ],
-                    );
-                  }),
-                ),
-                Obx(() {
-                  var banks = state.paymentList.value.banks;
-                  return Column(
-                    children: banks
-                        ?.map((e) => buildCategoryItem(e, banks.indexOf(e)))
-                        .toList() ??
-                        [],
-                  );
-                }),
-                SizedBox(
-                  height: 30.h,
-                ),
-              ],
-            );
-          },
-        ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
@@ -166,7 +183,7 @@ class _RechargePageState extends State<RechargePage> {
                 18.r,
               ),
               SizedBox(
-                width: 5.w,
+                width: 8.w,
               ),
               Text(
                 item.bankName.em(),
@@ -176,6 +193,8 @@ class _RechargePageState extends State<RechargePage> {
               Image.asset(
                 ImageX.ic_into_right,
                 color: ColorX.icon586(),
+                width: 15.r,
+                height: 15.r,
               ),
             ],
           ),

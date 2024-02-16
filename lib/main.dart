@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,//强制竖屏
       DeviceOrientation.portraitDown
     ]);
+
     HttpService.doInit();
     return ScreenUtilInit(
       //填入设计稿中设备的屏幕尺寸,单位dp
