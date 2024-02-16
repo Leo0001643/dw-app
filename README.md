@@ -132,3 +132,35 @@ https://docs.google.com/spreadsheets/d/1wZa11cDB_2ldGqhj7n0fwRjgJkav3ccKnKKCGZ_J
 
 
 
+原有接口名：getVmDrawDetail  替换成:getDigitalWalletDrawDetail
+请求报文不变，
+绑定USDT 和绑定其它钱包，只需要调用这一个接口就可以拿到对应的字段， getUserDrawDetail 这个接口可以不用调用了。
+
+===================================================
+
+接口：getUserDrawDetail  
+请求报文不变，返回报文添加所有数字钱包信息
+
+===================================================
+原有接口名：bindVmDrawDetail 替换成：bindDigitalWallet
+接口参数：protocolType  修改成 bankCode
+bankCode值=[USDT_TRC20,USDT_ERC20,USDT_OMNI,CGPAY,GOPAY,OKPAY,WEPAY,988PAY,KDPAY,EBPAY,ABPAY,BBPAY,CBPAY]
+
+=======================
+接口：getPaymentList
+参数不变
+返回结果区分普通支付通道，数字货币支付通道。
+
+===============
+接口： onlineDeposit
+排除在线USDT入款都走这个接口
+
+
+
+===========
+接口：/takeSubmit
+新增参数：bankCode ,参数值为接口getUserDrawDetail对应的type字段值，除去USDT ，cur字段都传默认值法币
+
+
+
+

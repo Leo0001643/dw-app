@@ -87,7 +87,13 @@ class _RoomListPageState extends State<RoomListPage> {
                           direction: Axis.horizontal,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                            Column(
+                              children: [
+                                Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015,),),
+                                Container(height: 1.h,width: 50.w,color: ColorX.color_c20015,),
+                              ],
+                            ),
+                            // Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015,decoration: TextDecoration.underline),),
                             Image.asset(ImageX.icon_right_black,color: ColorX.color_c20015,),
                           ],
                         ),
@@ -118,8 +124,8 @@ class _RoomListPageState extends State<RoomListPage> {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
-                            Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                            Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_344e7b,fontWeight: FontWeight.w600),),
+                            Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
                           ],
                         );
                       }),
@@ -129,7 +135,13 @@ class _RoomListPageState extends State<RoomListPage> {
                           direction: Axis.horizontal,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
+                            Column(
+                              children: [
+                                Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b,),),
+                                Container(height: 1.h,width: 50.w,color: ColorX.color_344e7b,),
+                              ],
+                            ),
+                            // Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b,decoration: TextDecoration.underline),),
                             Image.asset(ImageX.icon_right_black,color: ColorX.color_344e7b,),
                           ],
                         ),
@@ -160,8 +172,8 @@ class _RoomListPageState extends State<RoomListPage> {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
-                            Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
+                            Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_4e3100,fontWeight: FontWeight.w600),),
+                            Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
                           ],
                         );
                       }),
@@ -171,7 +183,12 @@ class _RoomListPageState extends State<RoomListPage> {
                           direction: Axis.horizontal,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
+                            Column(
+                              children: [
+                                Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100,),),
+                                Container(height: 1.h,width: 50.w,color: ColorX.color_4e3100,),
+                              ],
+                            ),
                             Image.asset(ImageX.icon_right_black,color: ColorX.color_4e3100,),
                           ],
                         ),
@@ -220,8 +237,11 @@ class _RoomListPageState extends State<RoomListPage> {
         color: Colors.white38,
         borderRadius: BorderRadius.circular(10.r),
       ),
+      height: 70.h,
       padding: EdgeInsets.all(10.r),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -232,8 +252,8 @@ class _RoomListPageState extends State<RoomListPage> {
               Image.asset(ImageX.ic_into_right),
             ],
           ),
-          SizedBox(height: 5.h,),
-          Text(role,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),overflow: TextOverflow.ellipsis),maxLines: 2,),
+          // SizedBox(height: 5.h,),
+          // Text(role,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),overflow: TextOverflow.ellipsis),maxLines: 2,),
         ],
       ),
     );

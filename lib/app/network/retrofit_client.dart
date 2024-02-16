@@ -242,6 +242,7 @@ abstract class RetrofitClient{
   @POST('/ds-api-web/getDigitalWalletDrawDetail')
   Future<BaseResponseEntity<List<UsdtChannelEntity>>> getVMDrawDetail(@Body() Map<String,dynamic> params,);
 
+
   @POST('/ds-api-web/bindDigitalWallet')
   Future<BaseResponseEntity<String>> bindVMDrawDetail(@Body() Map<String,dynamic> params,);
 
