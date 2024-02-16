@@ -101,7 +101,7 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
             },
           ),
           SizedBox(
-            height: 110.h,
+            height: 150.h,
             child: GetBuilder<RoomTendencyController>(
               id: RoomTendencyController.room_tendency_id,
               builder: (ctl){
@@ -115,8 +115,8 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
                   horizontalMargin: 0,
                   fixedLeftColumns: 0,
                   fixedTopRows: 0,
-                  dataRowHeight: 18.h,
-                  headingRowHeight: 18.h,
+                  dataRowHeight: 25.h,
+                  headingRowHeight: 25.h,
                   dividerThickness: 0,
                   border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
                   headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
