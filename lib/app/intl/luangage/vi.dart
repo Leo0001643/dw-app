@@ -769,7 +769,7 @@ class VI{
     "yuanmima":"Mật khẩu gốc",
     "shuruyuantixianmima":"Nhập mật khẩu rút tiền gốc",
     "xinmima":"Mật khẩu mới",
-    "shuruxintixianmima":"Nhập 6-12 mật khẩu rút tiền mới",
+    "shuruxintixianmima":"Nhập 4-12 mật khẩu rút tiền mới",
     "zaiciqueren":"Xác nhận lại",
     "chongfushuru":"Lặp lại nhập mật khẩu rút tiền mới",
     "querenjianyimima":"Xác nhận Easy Password",

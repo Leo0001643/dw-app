@@ -770,7 +770,7 @@ class CN {
     "yuanmima":"原密码",
     "shuruyuantixianmima":"输入原提现密码",
     "xinmima":"新密码",
-    "shuruxintixianmima":"输入6-12位新提现密码",
+    "shuruxintixianmima":"输入4-12位新提现密码",
     "zaiciqueren":"再次确认",
     "chongfushuru":"重复输入新提现密码",
     "querenjianyimima":"确认简易密码",

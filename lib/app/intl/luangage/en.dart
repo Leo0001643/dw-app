@@ -848,7 +848,7 @@ class EN{
     "yuanmima":"Original password",
     "shuruyuantixianmima":"Enter the original withdrawal password ",
     "xinmima":"Password",
-    "shuruxintixianmima":"Enter 6-12 digit new withdrawal password",
+    "shuruxintixianmima":"Enter 4-12 digit new withdrawal password",
     "zaiciqueren":"Reconfirm",
     "chongfushuru":"Repeatedly entering the new withdrawal password",
     "querenjianyimima":"Confirm simple password",
