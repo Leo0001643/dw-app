@@ -78,6 +78,7 @@ dependencies:
   uuid: ^4.3.0
   url_launcher: ^6.2.2
   open_filex: ^4.3.4
+  flutter_form_builder: ^9.2.1
   flutter_svg: ^2.0.9
   flutter_aliyun_captcha: ^1.0.5
   flutter_tencent_captcha: ^0.1.2

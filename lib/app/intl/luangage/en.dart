@@ -1044,7 +1044,8 @@ class EN{
     "xianlu6":"Line 6",
     "julifengpan":"There is still time to close the disk",
     "miao":"second",
-    "kaishixiazhu":"Start betting"
+    "kaishixiazhu":"Start betting",
+    "hyzc":"Đăng ký thành viên",
   };
 
 }
