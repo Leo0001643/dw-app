@@ -962,8 +962,6 @@ class CN {
     "yixiushi":"已休市",
     "yichenggongqiehuan_":"已成功切换为 %s 钱包,\n进入游戏将使用%s",
     "jifenbuzu":"积分不足",
-
-
     "xianlu1":"线路1",
     "xianlu2":"线路2",
     "xianlu3":"线路3",
@@ -972,7 +970,13 @@ class CN {
     "xianlu6":"线路6",
     "julifengpan":"距离封盘时间还剩",
     "miao":"秒",
-    "kaishixiazhu":"开始下注"
+    "kaishixiazhu":"开始下注",
+    "bangdingqitaqianbao":"绑定其他钱包",
+    "wodeqitaqianbao":"我的其他钱包：已绑定%s个(还可绑定%s个)",
+    "zuiduoketianjiaqianbao":"(最多可添加%s个)",
+    "qitaqianbaowenxintis":"温馨提示：\n1.每个用户最多可以绑定其他钱包账户数量:10(不同类型分别可以绑定一个)\n2.一经绑定不能擅自修改，如需修改请",
+    "qianbaoleixing":"钱包类型",
+
   };
 
 }

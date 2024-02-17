@@ -606,6 +606,13 @@ class Intr extends Translations{
   String get huizhibuyiyang => 'huizhibuyiyang'.tr;
   String get zaicihuizhi => 'zaicihuizhi'.tr;
   // String get yingyongneijiazai => 'yingyongneijiazai'.tr;
+  String get bangdingqitaqianbao => 'bangdingqitaqianbao'.tr;
+  String wodeqitaqianbao_(List<String> args) => 'wodeqitaqianbao'.trArgs(args);
+  String zuiduoketianjiaqianbao_(List<String> args) => 'zuiduoketianjiaqianbao'.trArgs(args);
+  String get qitaqianbaowenxintis => 'qitaqianbaowenxintis'.tr;
+  String get qianbaoleixing => 'qianbaoleixing'.tr;
+
+
 
   @override
   Map<String, Map<String, String>> get keys => {

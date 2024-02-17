@@ -971,6 +971,11 @@ class VI{
     "xitongxiaoxi":"Thông điệp hệ thống",
     "julifengpan":"Vẫn còn thời gian đóng cửa.",
     "miao":"giây",
-    "kaishixiazhu":"Bắt đầu đặt cược"
+    "kaishixiazhu":"Bắt đầu đặt cược",
+    "bangdingqitaqianbao":"绑定其他钱包",
+    "wodeqitaqianbao":"我的其他钱包：已绑定%s个(还可绑定%s个)",
+    "zuiduoketianjiaqianbao":"(最多可添加%s个)",
+    "qitaqianbaowenxintis":"温馨提示：\n1.每个用户最多可以绑定其他钱包账户数量:10(不同类型分别可以绑定一个)\n2.一经绑定不能擅自修改，如需修改请",
+    "qianbaoleixing":"钱包类型",
   };
 }
