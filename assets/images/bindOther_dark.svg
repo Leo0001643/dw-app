@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="18px" viewBox="0 0 24 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/绑定其他</title>
+    <g id="页面调整" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C-1-1个人中心" transform="translate(-216.000000, -443.000000)">
+            <g id="编组-10" transform="translate(12.000000, 325.000000)">
+                <g id="编组-17备份-3" transform="translate(182.000000, 114.000000)">
+                    <g id="icon/绑定其他" transform="translate(23.000000, 5.000000)">
+                        <path d="M15,5 L22,5 L22,5 L22,11 L15,11 C13.3431458,11 12,9.65685425 12,8 C12,6.34314575 13.3431458,5 15,5 Z" id="矩形" stroke="#FC243B" stroke-width="2"></path>
+                        <rect id="矩形" stroke="#FFFFFF" stroke-width="2" x="0" y="0" width="22" height="16" rx="3"></rect>
+                        <rect id="矩形" fill="#FC243B" x="14" y="7" width="2" height="2" rx="1"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
