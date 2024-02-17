@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
@@ -8,10 +8,10 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 
-import 'add_usdt_state.dart';
+import 'add_wallet_state.dart';
 
-class AddUsdtLogic extends GetxController {
-  final AddUsdtState state = AddUsdtState();
+class AddWalletLogic extends GetxController {
+  final AddWalletState state = AddWalletState();
 
   @override
   void onReady() {
@@ -24,6 +24,8 @@ class AddUsdtLogic extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
+
+
 
   void loadData(UsdtChannelEntity channel) {
     state.channel.value = channel;
@@ -47,7 +49,6 @@ class AddUsdtLogic extends GetxController {
       showToast(Intr().qingshuruqianbaodizhi);
       return;
     }
-
     if(isEmpty(state.bankPwd.value)){
       showToast(Intr().qingshuruqukuanmima);
       return;
@@ -63,6 +64,7 @@ class AddUsdtLogic extends GetxController {
     if(isEmpty(state.channel.value.mobile)){
       params["mobile"] = mobile;
     }
+
     HttpService.bindVMDrawDetail(params).then((value) {
       showToast(Intr().caozuochenggong);
       Get.until((ModalRoute.withName(Routes.main)));

@@ -2,34 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/main.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
+import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
+import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
-import 'bind_bank_logic.dart';
+import 'bind_wallet_logic.dart';
 
-///绑定银行卡
-class BindBankPage extends StatefulWidget {
-  const BindBankPage({Key? key}) : super(key: key);
+///绑定其他钱包
+class BindWalletPage extends StatefulWidget {
+  const BindWalletPage({Key? key}) : super(key: key);
 
   @override
-  State<BindBankPage> createState() => _BindBankPageState();
+  State<BindWalletPage> createState() => _BindWalletPageState();
 }
 
-class _BindBankPageState extends State<BindBankPage> {
-  final logic = Get.find<BindBankLogic>();
-  final state = Get.find<BindBankLogic>().state;
+class _BindWalletPageState extends State<BindWalletPage> {
+  final logic = Get.find<BindWalletLogic>();
+  final state = Get.find<BindWalletLogic>().state;
 
   @override
   void dispose() {
-    Get.delete<BindBankLogic>();
+    Get.delete<BindWalletLogic>();
     super.dispose();
   }
 
@@ -37,10 +39,10 @@ class _BindBankPageState extends State<BindBankPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().bangdingyinhangka,
+      appBar: WidgetUtils().buildAppBar(Intr().bangdingqitaqianbao,
           msg: true, drawer: true, drawEnd: () {
-        scaffoldMineKey.currentState?.openEndDrawer();
-      }),
+            scaffoldMineKey.currentState?.openEndDrawer();
+          }),
       backgroundColor: ColorX.pageBg(),
       endDrawer: EndsDrawerView(),
       body: SingleChildScrollView(
@@ -50,9 +52,9 @@ class _BindBankPageState extends State<BindBankPage> {
             Container(
               padding: EdgeInsets.only(left: 27.w, top: 31.h, bottom: 20.h),
               child: Obx(() {
-                var length = state.userDraw.value.banks.em();
+                var length = state.list.em();
                 return Text(
-                  Intr().wodeyinhangka_(
+                  Intr().wodeqitaqianbao_(
                       ["$length", "${state.maxCount - length}"]),
                   style: TextStyle(fontSize: 16.sp, color: ColorX.text0917()),
                 );
@@ -60,20 +62,24 @@ class _BindBankPageState extends State<BindBankPage> {
             ),
             Obx(() {
               return Visibility(
-                visible: unEmpty(state.userDraw.value.banks),
+                visible: unEmpty(state.list),
                 child: Column(
                   children: [
-                    ...state.userDraw.value.banks.map((e) => buildBankItem(e)).toList(),
+                    ...state.list.map((e) => buildBankItem(e)).toList(),
                   ],
                 ),
               );
             }),
             Obx(() {
               return Visibility(
-                visible: state.userDraw.value.banks.em() < state.maxCount,
+                visible: state.list.length < state.maxCount,
                 child: InkWell(
-                  onTap: () => Get.toNamed(Routes.add_bank,
-                      arguments: state.userDraw.value),
+                  onTap: ()=> DialogUtils().showSelectUsdtBtmDialog(context, state.dclist).then((value){
+                    if(unEmpty(value)){
+                      value!.mobile = state.userDraw.value.mobile;
+                      Get.toNamed(Routes.add_wallet,arguments: value);
+                    }
+                  }),
                   child: Container(
                     decoration: BoxDecoration(
                       color: ColorX.cardBg3(),
@@ -102,7 +108,7 @@ class _BindBankPageState extends State<BindBankPage> {
                             height: 5.h,
                           ),
                           Text(
-                            Intr().tianjiayinhangka,
+                            Intr().bangdingqitaqianbao,
                             style: TextStyle(
                                 fontSize: 16.sp,
                                 color: ColorX.text0917(),
@@ -112,7 +118,7 @@ class _BindBankPageState extends State<BindBankPage> {
                             height: 3.h,
                           ),
                           Text(
-                            Intr().zuiduoketianjia_(["${state.maxCount}"]),
+                            Intr().zuiduoketianjiaqianbao_(["${state.maxCount}"]),
                             style: TextStyle(
                                 fontSize: 13.sp, color: ColorX.text586()),
                           ),
@@ -131,7 +137,7 @@ class _BindBankPageState extends State<BindBankPage> {
               child: Text.rich(
                 TextSpan(children: [
                   TextSpan(
-                    text: Intr().wenxintixing_yinhangka,
+                    text: Intr().qitaqianbaowenxintis,
                     style: TextStyle(
                         fontSize: 14.sp, color: ColorX.text586(), height: 1.8),
                   ),
@@ -169,58 +175,52 @@ class _BindBankPageState extends State<BindBankPage> {
     );
   }
 
-  Widget buildBankItem(UserDrawDetailBanks item) {
+
+  Widget buildBankItem(UsdtChannelEntity item) {
     return Container(
       margin: EdgeInsets.only(bottom: 20.h,left: 20.w,right: 20.w),
       decoration: BoxDecoration(
-        color: ColorX.color_ff5164,
+        color: ColorX.color_244167,
         borderRadius: BorderRadius.circular(10.r),
       ),
+      // width: 240.w,
       padding: EdgeInsets.symmetric(vertical: 17.h, horizontal: 27.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            item.bankName.em(),
-            style: TextStyle(
-                fontSize: 20.sp,
-                color: Colors.white,
-                fontWeight: FontWeight.w600),
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Text(
-            Intr().kahao,
+            Intr().qianbaodizhi,
             style: TextStyle(fontSize: 12.sp, color: Colors.white),
           ),
           Text(
-            item.bankAccount.em(),
+            item.account.em(),
             style: TextStyle(fontSize: 20.sp, color: Colors.white),
           ),
           SizedBox(
             height: 10.h,
           ),
-          Text(
-            Intr().cikaren,
-            style: TextStyle(fontSize: 12.sp, color: Colors.white),
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                state.userDraw.value.realname.em(),
-                style: TextStyle(fontSize: 20.sp, color: Colors.white),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    Intr().qianbaoleixing,
+                    style: TextStyle(fontSize: 12.sp, color: Colors.white),
+                  ),
+                  Text(
+                    item.type.em(),
+                    style: TextStyle(fontSize: 20.sp, color: Colors.white),
+                  ),
+                ],
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Image.asset(ImageX.icon_union_grey),
-              ),
+              Image.asset(ImageX.other_logo,width: 30.w,fit: BoxFit.fill,),
             ],
           ),
         ],
       ),
     );
   }
+
 }

@@ -10,6 +10,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
+import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
@@ -51,29 +52,31 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
             Padding(
               padding: EdgeInsets.only(left: 27.w,top: 30.h,bottom: 20.h),
               child: Obx(() {
-                var length = state.userDraw.value.dcBanks.em();
+                var length = state.list.em();
                 return Text(Intr().wodeshuzhiqianbao_(["$length","${state.maxCount - length}"]),
                   style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),);
               }),
             ),
             Obx(() {
               return Visibility(
-                visible: unEmpty(state.userDraw.value.dcBanks),
-                child: Container(
-                  height: state.userDraw.value.dcBanks==null?0:181.h*state.userDraw.value.dcBanks!.length+30*state.userDraw.value.dcBanks!.length,
-                  margin: EdgeInsets.symmetric(horizontal: 15),
-                  child: ListView(children: state.userDraw.value.dcBanks?.map((e) => buildUsdtItem(e)).toList() ?? [],
-                    physics: NeverScrollableScrollPhysics(),),
+                visible: unEmpty(state.list),
+                child: Column(
+                  children: [
+                    ...state.list.map((e) => buildUsdtItem(e)).toList(),
+                  ],
                 ),
               );
             }),
             SizedBox(height: 10.h,),
             Obx(() {
               return Visibility(
-                visible: state.userDraw.value.dcBanks.em() < state.maxCount,
+                visible: state.list.em() < state.maxCount,
                 child: InkWell(
-                  onTap: ()=> DialogUtils().showSelectUsdtBtmDialog(context, state.list ?? []).then((value){
-                    if(unEmpty(value)){ Get.toNamed(Routes.add_usdt,arguments: value); }
+                  onTap: ()=> DialogUtils().showSelectUsdtBtmDialog(context, state.dclist).then((value){
+                    if(unEmpty(value)){
+                      value!.mobile = state.userDraw.value.mobile;
+                      Get.toNamed(Routes.add_usdt,arguments: value);
+                    }
                   }),
                   child: Container(
                     decoration: BoxDecoration(
@@ -125,7 +128,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
                           Get.until((ModalRoute.withName(Routes.main)));
                         },
                         child:
-                        Padding(child: Text(
+                        Padding(padding: EdgeInsets.only(left: 5.w),child: Text(
                           Intr().lxkf,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -136,8 +139,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
                             decorationThickness: 3.0,
                             decorationColor: Colors.black, // 设置下划线颜色
                           ),
-                        ),padding: EdgeInsets.only(left: 5.w),)
-
+                        ),)
                       ),
                     ),
                   ],
@@ -152,14 +154,13 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
   }
 
 
-  Widget buildUsdtItem(UsdtEntity item) {
+  Widget buildUsdtItem(UsdtChannelEntity item) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20.h),
+      margin: EdgeInsets.only(bottom: 20.h,left: 20.w,right: 20.w),
       decoration: BoxDecoration(
         color: ColorX.color_529aff,
         borderRadius: BorderRadius.circular(10.r),
       ),
-      width: 321.w,
       padding: EdgeInsets.symmetric(vertical: 17.h,horizontal: 27.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

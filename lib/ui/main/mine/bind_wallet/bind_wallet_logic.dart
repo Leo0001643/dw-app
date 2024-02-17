@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 
-import 'bind_usdt_state.dart';
+import 'bind_wallet_state.dart';
 
-class BindUsdtLogic extends GetxController {
-  final BindUsdtState state = BindUsdtState();
+class BindWalletLogic extends GetxController {
+  final BindWalletState state = BindWalletState();
 
   @override
   void onReady() {
@@ -32,7 +33,7 @@ class BindUsdtLogic extends GetxController {
     HttpService.getVMDrawDetail({"oid":user?.oid,"username":user?.username,}).then((value) {
       // state.list = value;
       value.list?.forEach((element) {
-        if(element.type?.startsWith('USDT') == true){
+        if(element.type?.startsWith('USDT') == false){
           if(unEmpty(element.account)){
             state.list.add(element);
           }else {///未绑定的
@@ -40,6 +41,7 @@ class BindUsdtLogic extends GetxController {
           }
         }
       });
+      loggerArray(['已绑定${state.list.em()}','未绑定${state.dclist.em()}']);
       state.list.refresh();
       state.userDraw.value = value;
       state.userDraw.refresh();
