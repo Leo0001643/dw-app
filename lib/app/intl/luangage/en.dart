@@ -1042,13 +1042,13 @@ class EN{
     "xianlu6":"Line 6",
     "julifengpan":"There is still time to close the disk",
     "miao":"second",
+    "hyzc":"Member registration",
     "kaishixiazhu":"Start betting",
-    "hyzc":"Đăng ký thành viên",
-    "bangdingqitaqianbao":"绑定其他钱包",
-    "wodeqitaqianbao":"我的其他钱包：已绑定%s个(还可绑定%s个)",
-    "zuiduoketianjiaqianbao":"(最多可添加%s个)",
-    "qitaqianbaowenxintis":"温馨提示：\n1.每个用户最多可以绑定其他钱包账户数量:10(不同类型分别可以绑定一个)\n2.一经绑定不能擅自修改，如需修改请",
-    "qianbaoleixing":"钱包类型",
+    "bangdingqitaqianbao":"Bind other wallets",
+    "wodeqitaqianbao":"My other wallets: %s bound (%s can still be bound)",
+    "zuiduoketianjiaqianbao":"(Up to %s can be added)",
+    "qitaqianbaowenxintis":"Tips: \n1. Each user can bind to a maximum of 10 other wallet accounts (one for different types)\n2. Once binding cannot be modified without authorization, if necessary, please modify",
+    "qianbaoleixing":"Type of wallet",
   };
 
 }

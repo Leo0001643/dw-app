@@ -971,11 +971,12 @@ class VI{
     "xitongxiaoxi":"Thông điệp hệ thống",
     "julifengpan":"Vẫn còn thời gian đóng cửa.",
     "miao":"giây",
+    "hyzc":"Đăng ký thành viên",
     "kaishixiazhu":"Bắt đầu đặt cược",
-    "bangdingqitaqianbao":"绑定其他钱包",
-    "wodeqitaqianbao":"我的其他钱包：已绑定%s个(还可绑定%s个)",
-    "zuiduoketianjiaqianbao":"(最多可添加%s个)",
-    "qitaqianbaowenxintis":"温馨提示：\n1.每个用户最多可以绑定其他钱包账户数量:10(不同类型分别可以绑定一个)\n2.一经绑定不能擅自修改，如需修改请",
-    "qianbaoleixing":"钱包类型",
+    "bangdingqitaqianbao":"Ràng buộc ví khác",
+    "wodeqitaqianbao":"Ví khác của tôi: đã ràng buộc %s (cũng có thể ràng buộc %s)",
+    "zuiduoketianjiaqianbao":"(lên đến %s)",
+    "qitaqianbaowenxintis":"Lời khuyên ấm áp: \n1. Mỗi người dùng có thể gắn lên số tài khoản ví khác nhau :10(các loại khác nhau có thể gắn một)\n2. Không thể thay đổi một khi ràng buộc, nếu bạn cần phải thay đổi, xin vui lòng",
+    "qianbaoleixing":"Loại ví",
   };
 }
