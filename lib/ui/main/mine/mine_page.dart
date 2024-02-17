@@ -295,6 +295,9 @@ class StateMinePage extends State<MinePage> {
                       borderRadius: BorderRadius.circular(10.r),
                       color: ColorX.cardBg5(),
                     ),
+                    padding: EdgeInsets.symmetric(
+                        vertical: 18.h, horizontal: 13.w),
+                    margin: EdgeInsets.symmetric(horizontal: 10.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -324,13 +327,12 @@ class StateMinePage extends State<MinePage> {
                                 ImageX.icon_bdyhk, 4),
                             buildCategoryItem(
                                 Intr().bangdingusdt, ImageX.icon_bddt, 5),
+                            buildCategoryItem(
+                                Intr().bangdingqitaqianbao, ImageX.bindOtherT(), 21),
                           ],
                         ),
                       ],
                     ),
-                    padding: EdgeInsets.symmetric(
-                        vertical: 18.h, horizontal: 13.w),
-                    margin: EdgeInsets.symmetric(horizontal: 10.w),
                   ),
                   SizedBox(
                     height: 10.r,
@@ -340,6 +342,9 @@ class StateMinePage extends State<MinePage> {
                       borderRadius: BorderRadius.circular(10.r),
                       color: ColorX.cardBg5(),
                     ),
+                    padding: EdgeInsets.symmetric(
+                        vertical: 18.h, horizontal: 13.w),
+                    margin: EdgeInsets.symmetric(horizontal: 10.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -365,9 +370,6 @@ class StateMinePage extends State<MinePage> {
                         ),
                       ],
                     ),
-                    padding: EdgeInsets.symmetric(
-                        vertical: 18.h, horizontal: 13.w),
-                    margin: EdgeInsets.symmetric(horizontal: 10.w),
                   ),
                   SizedBox(
                     height: 10.r,
@@ -482,11 +484,11 @@ class StateMinePage extends State<MinePage> {
   }
 
   Widget buildImageItem(String icon) {
-    if (icon.contains("icon_agency.svg")||icon.contains("guanyu.svg")) {
+    if (icon.contains(".svg")) {
       return SvgPicture.asset(
         icon,
-        width: 24.w,
-        height: 24.w,
+        width: 18.w,
+        height: 18.w,
         fit: BoxFit.contain,
       );
     }else{

@@ -58,6 +58,7 @@ class ColorX{
   static const color_e7ebf4 = Color(0xffe7ebf4);
   static const color_fc9824 = Color(0xfffc9824);
   static const color_2c2c2c = Color(0xff2c2c2c);
+  static const color_244167 = Color.fromRGBO(244, 167, 9, 1);
 
 
   static const color_10_fc2 = Color.fromRGBO(248, 0, 46, 0.1);

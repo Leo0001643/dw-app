@@ -72,6 +72,7 @@ import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
+import 'package:leisure_games/ui/bean/wallet_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
 
@@ -637,6 +638,10 @@ class JsonConvert {
       return data.map<VarCodeEntity>((Map<String, dynamic> e) =>
           VarCodeEntity.fromJson(e)).toList() as M;
     }
+    if (<WalletDrawDetailEntity>[] is M) {
+      return data.map<WalletDrawDetailEntity>((Map<String, dynamic> e) =>
+          WalletDrawDetailEntity.fromJson(e)).toList() as M;
+    }
     if (<WebConfigEntity>[] is M) {
       return data.map<WebConfigEntity>((Map<String, dynamic> e) =>
           WebConfigEntity.fromJson(e)).toList() as M;
@@ -816,6 +821,7 @@ class JsonConvertClassCollection {
     (UsdtChannelEntity).toString(): UsdtChannelEntity.fromJson,
     (UserDetailEntity).toString(): UserDetailEntity.fromJson,
     (VarCodeEntity).toString(): VarCodeEntity.fromJson,
+    (WalletDrawDetailEntity).toString(): WalletDrawDetailEntity.fromJson,
     (WebConfigEntity).toString(): WebConfigEntity.fromJson,
     (WebConfigDcHelpDomain).toString(): WebConfigDcHelpDomain.fromJson,
     (WebConfigPtgamehost).toString(): WebConfigPtgamehost.fromJson,

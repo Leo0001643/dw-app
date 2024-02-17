@@ -153,6 +153,8 @@ class ImageX{
   static const icon_ustd2 = 'assets/images/icon_ustd2.png';
   static const usdt = 'assets/images/usdt.png';
   static const jingdong = 'assets/images/jingdong.png';
+  static const bindOther_dark = 'assets/images/bindOther_dark.svg';
+  static const bindOther_light = 'assets/images/bindOther_light.svg';
 
   static const icon_ustd2_grey = 'assets/images/icon_ustd2_grey.png';
   static const icon_ustd2_red = 'assets/images/icon_ustd2_red.png';
@@ -164,6 +166,8 @@ class ImageX{
   static const icon_wxpay = 'assets/images/icon_wxpay.png';
   static const icon_yhkzz = 'assets/images/icon_yhkzz.png';
   static const icon_zjmx = 'assets/images/icon_zjmx.png';
+  static const other_logo = 'assets/images/other_logo.png';
+
 
   static const bg_customer = 'assets/images/bg_customer.png';
   static const icon_alibb = 'assets/images/icon_alibb.png';
@@ -749,6 +753,11 @@ class ImageX{
 
   static String yhhdT(){
     return AppData.theme() ? ic_sign : ic_sign_dark;
+  }
+
+
+  static String bindOtherT(){
+    return AppData.theme() ? bindOther_light : bindOther_dark;
   }
 
 }

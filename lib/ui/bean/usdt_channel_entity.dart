@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/usdt_channel_entity.g.dart';
@@ -35,9 +36,22 @@ class UsdtChannelEntity {
 		} else if(type?.contains("OMNI") == true){
 			return Intr().omni_show;
 		} else {
-			return "";
+			return type.em();
 		}
 	}
+
+	String typeCode(){
+		if(type?.contains("TRC20") == true){
+			return "USDT_TRC20";
+		} else if(type?.contains("ERC20") == true){
+			return "USDT_ERC20";
+		} else if(type?.contains("OMNI") == true){
+			return "USDT_OMNI";
+		} else {
+			return type.em();
+		}
+	}
+
 
 	//协议类型【1:TRC20,2:ERC20,3:OMNI】
 	int typeId(){

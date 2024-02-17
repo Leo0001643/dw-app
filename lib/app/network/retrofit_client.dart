@@ -64,6 +64,7 @@ import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_detail_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
+import 'package:leisure_games/ui/bean/wallet_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
 import 'package:retrofit/retrofit.dart';
@@ -240,7 +241,7 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<String>> bindDrawDetail(@Body() Map<String,dynamic> params,);
 
   @POST('/ds-api-web/getDigitalWalletDrawDetail')
-  Future<BaseResponseEntity<List<UsdtChannelEntity>>> getVMDrawDetail(@Body() Map<String,dynamic> params,);
+  Future<BaseResponseEntity<WalletDrawDetailEntity>> getVMDrawDetail(@Body() Map<String,dynamic> params,);
 
 
   @POST('/ds-api-web/bindDigitalWallet')

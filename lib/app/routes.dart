@@ -69,6 +69,10 @@ import 'package:leisure_games/ui/main/mine/bind_usdt/add_usdt/add_usdt_binding.d
 import 'package:leisure_games/ui/main/mine/bind_usdt/add_usdt/add_usdt_page.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_binding.dart';
 import 'package:leisure_games/ui/main/mine/bind_usdt/bind_usdt_page.dart';
+import 'package:leisure_games/ui/main/mine/bind_wallet/add_wallet/add_wallet_binding.dart';
+import 'package:leisure_games/ui/main/mine/bind_wallet/add_wallet/add_wallet_page.dart';
+import 'package:leisure_games/ui/main/mine/bind_wallet/bind_wallet_binding.dart';
+import 'package:leisure_games/ui/main/mine/bind_wallet/bind_wallet_page.dart';
 import 'package:leisure_games/ui/main/mine/bonus_packet/bonus_packet_binding.dart';
 import 'package:leisure_games/ui/main/mine/bonus_packet/bonus_packet_page.dart';
 import 'package:leisure_games/ui/main/mine/coin_exchange/coin_exchange_binding.dart';
@@ -171,6 +175,9 @@ class Routes {
   static const String withdraw_result = "/mine/withdraw_result";
   static const String bind_bank = "/mine/bind_bank";
   static const String bind_usdt = "/mine/bind_usdt";
+  static const String bind_wallet = "/mine/bind_wallet";
+  static const String add_wallet = "/mine/add_wallet";
+
   static const String promotion_profit = "/mine/promotion_profit";
   static const String proxy_register = "/mine/proxy_register";
   static const String quota_conversion = "/mine/quota_conversion";
@@ -236,6 +243,9 @@ class Routes {
     GetPage(name: withdraw,binding: WithdrawBinding(), page: () => WithdrawPage()),
     GetPage(name: bind_bank,binding: BindBankBinding(), page: () => BindBankPage()),
     GetPage(name: bind_usdt,binding: BindUsdtBinding(), page: () => BindUsdtPage()),
+    GetPage(name: bind_wallet,binding: BindWalletBinding(), page: () => BindWalletPage()),
+    GetPage(name: add_wallet,binding: AddWalletBinding(), page: () => AddWalletPage()),
+
     GetPage(name: withdraw_apply,binding: WithdrawApplyBinding(), page: () => WithdrawApplyPage()),
     GetPage(name: withdraw_check,binding: WithdrawCheckBinding(), page: () => WithdrawCheckPage()),
     GetPage(name: withdraw_result,binding: WithdrawResultBinding(), page: () => WithdrawResultPage()),

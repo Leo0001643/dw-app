@@ -71,6 +71,7 @@ import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/user_detail_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
+import 'package:leisure_games/ui/bean/wallet_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
 
@@ -315,8 +316,8 @@ class HttpService{
     return buildFuture<String>(()=> _client.bindDrawDetail(params,));
   }
 
-  static Future<List<UsdtChannelEntity>> getVMDrawDetail(Map<String,dynamic> params,){
-    return buildFuture<List<UsdtChannelEntity>>(()=> _client.getVMDrawDetail(params,));
+  static Future<WalletDrawDetailEntity> getVMDrawDetail(Map<String,dynamic> params,){
+    return buildFuture<WalletDrawDetailEntity>(()=> _client.getVMDrawDetail(params,));
   }
 
   static Future<String> bindVMDrawDetail(Map<String,dynamic> params,){

@@ -18,6 +18,9 @@ class LoginState {
   // var accountValue = "sansan01";
   // var pwdValue = "sansan01";
 
+  // var accountValue = "24010202";
+  // var pwdValue = "aeuio888";
+
   // var accountValue = "dms001";
   // var pwdValue = "12345678";
 

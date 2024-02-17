@@ -94,6 +94,9 @@ class MineLogic extends GetxController {
               pageTitle: Intr().guanyuwomen));
         });
         break;
+      case 21:
+        Get.toNamed(Routes.bind_wallet);
+        break;
     }
   }
 
