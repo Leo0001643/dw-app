@@ -55,6 +55,7 @@ import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_odds_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/bean/phrase_entity.dart';
+import 'package:leisure_games/ui/bean/pic28_count_time_text.dart';
 import 'package:leisure_games/ui/bean/pic30_back_entity.dart';
 import 'package:leisure_games/ui/bean/pic30_entity.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
@@ -538,6 +539,18 @@ class JsonConvert {
       return data.map<PhraseEntity>((Map<String, dynamic> e) =>
           PhraseEntity.fromJson(e)).toList() as M;
     }
+    if (<TimeDataContent>[] is M) {
+      return data.map<TimeDataContent>((Map<String, dynamic> e) =>
+          TimeDataContent.fromJson(e)).toList() as M;
+    }
+    if (<TimeDataItem>[] is M) {
+      return data.map<TimeDataItem>((Map<String, dynamic> e) =>
+          TimeDataItem.fromJson(e)).toList() as M;
+    }
+    if (<TimeDataItemData>[] is M) {
+      return data.map<TimeDataItemData>((Map<String, dynamic> e) =>
+          TimeDataItemData.fromJson(e)).toList() as M;
+    }
     if (<Pic30BackEntity>[] is M) {
       return data.map<Pic30BackEntity>((Map<String, dynamic> e) =>
           Pic30BackEntity.fromJson(e)).toList() as M;
@@ -796,6 +809,9 @@ class JsonConvertClassCollection {
     (Pc28PlanAllJndx28).toString(): Pc28PlanAllJndx28.fromJson,
     (Pc28PlanAllJndx28Data).toString(): Pc28PlanAllJndx28Data.fromJson,
     (PhraseEntity).toString(): PhraseEntity.fromJson,
+    (TimeDataContent).toString(): TimeDataContent.fromJson,
+    (TimeDataItem).toString(): TimeDataItem.fromJson,
+    (TimeDataItemData).toString(): TimeDataItemData.fromJson,
     (Pic30BackEntity).toString(): Pic30BackEntity.fromJson,
     (Pic30BackBack).toString(): Pic30BackBack.fromJson,
     (Pic30Entity).toString(): Pic30Entity.fromJson,
