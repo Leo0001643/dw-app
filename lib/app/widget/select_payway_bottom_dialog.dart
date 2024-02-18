@@ -12,7 +12,7 @@ import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 class SelectPaywayBottomDialog extends StatefulWidget{
 
   final PaymentListEntity entity;
-  SelectPaywayBottomDialog(this.entity, {super.key});
+  const SelectPaywayBottomDialog(this.entity, {super.key});
 
   @override
   State<StatefulWidget> createState() =>StateSelectPaywayBottomDialog();
@@ -25,6 +25,13 @@ class StateSelectPaywayBottomDialog extends State<SelectPaywayBottomDialog>{
 
   @override
   Widget build(BuildContext context) {
+    var list = List<PaymentListBanks>.empty(growable: true);
+    if(unEmpty(widget.entity.digitalWallet)){
+      list.addAll(widget.entity.digitalWallet!);
+    }
+    if(unEmpty(widget.entity.banks)){
+      list.addAll(widget.entity.banks!);
+    }
     return Container(
       decoration: BoxDecoration(
         color: ColorX.cardBg5(),
@@ -40,7 +47,7 @@ class StateSelectPaywayBottomDialog extends State<SelectPaywayBottomDialog>{
               onSelectedItemChanged: (int index) {
                 current = index;
               },
-              children: widget.entity.banks?.map((e) => buildPaywayItem(e)).toList() ?? [],
+              children: list.map((e) => buildPaywayItem(e)).toList(),
             ),
           ),
           Align(
@@ -48,7 +55,7 @@ class StateSelectPaywayBottomDialog extends State<SelectPaywayBottomDialog>{
             child: Padding(
               padding: EdgeInsets.only(right: 15.w),
               child: WidgetUtils().buildElevatedButton(Intr().tijiao, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-                Navigator.of(context).pop(widget.entity.banks?[current]);
+                Navigator.of(context).pop(list[current]);
               }),
             ),
           ),

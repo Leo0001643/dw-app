@@ -753,6 +753,8 @@ class EN{
     "bibiduihuan":"Currency exchange",
     "eduzhuanhuan":"Limit conversion",
     "zhifushuoming_rmb":"Payment instructions: \n1. How can company account funds be received from personal accounts? Regulations on the management of RMB bank settlement accounts. \n2. How can company account funds be received from personal accounts? Regulations on the management of RMB bank settlement accounts",
+    "zhifushuoming_wallet":"Payment Instructions :\n1. Please select the amount you want to recharge or other amount select the bank you want to use and click Recharge \n2 now. The system will automatically switch to the payment interface, please select the payment method \n3 according to the interface prompt. You can choose online banking or payment by scanning code. After successful payment, please manually return to the APP interface. The amount you recharge will be automatically added to your member account. If you find that the account has not arrived or have any problems, please contact customer service",
+
     "kahao":"Card number",
     "cikaren":"Cardholder",
     "beizhu":"notes",
@@ -760,7 +762,7 @@ class EN{
     "wenxintishi_":"Tips:",
     "wenxintishi_1":"1、The system will automatically open a webpage. Please follow the prompts to continue the operation",
     "wenxintishi_2":"2、Handling fee% s%, high arrival rate!",
-    "wenxintishi_3":"3、%s",
+    "wenxintishi_3":"%s、%s",
     "tianrujine":"Fill in the amount (1-0) and click OK",
     "shoudongshuruhuoxuanzhe":"Manually enter or select the amount below",
     "diyibu_xuanzhezhifuxieyi":"The first step is to select a payment agreement",

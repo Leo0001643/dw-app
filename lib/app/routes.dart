@@ -136,6 +136,8 @@ import 'package:leisure_games/ui/main/recharge/recharge_record/recharge_record_b
 import 'package:leisure_games/ui/main/recharge/recharge_record/recharge_record_page.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_binding.dart';
 import 'package:leisure_games/ui/main/recharge/recharge_result/recharge_result_page.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_wallet/recharge_wallet_binding.dart';
+import 'package:leisure_games/ui/main/recharge/recharge_wallet/recharge_wallet_page.dart';
 import 'package:leisure_games/ui/register/register_binding.dart';
 import 'package:leisure_games/ui/register/register_page.dart';
 
@@ -168,6 +170,8 @@ class Routes {
   static const String message_details = "/message_center/message_details";
   static const String recharge_category = "/recharge/recharge_category";
   static const String recharge_digital = "/recharge/recharge_digital";
+  static const String recharge_wallet = "/recharge/recharge_wallet";
+
   static const String recharge_result = "/recharge/recharge_result";
   static const String withdraw = "/mine/withdraw";
   static const String withdraw_check = "/mine/withdraw_check";
@@ -240,6 +244,8 @@ class Routes {
     GetPage(name: set_simple_pwd,binding: SetSimplePwdBinding(), page: () => SetSimplePwdPage2()),
     GetPage(name: recharge_digital,binding: RechargeDigitalBinding(), page: () => RechargeDigitalPage()),
     GetPage(name: recharge_result,binding: RechargeResultBinding(), page: () => RechargeResultPage()),
+    GetPage(name: recharge_wallet,binding: RechargeWalletBinding(),bindings: [RechargeOnlineBinding()], page: () => RechargeWalletPage()),
+
     GetPage(name: withdraw,binding: WithdrawBinding(), page: () => WithdrawPage()),
     GetPage(name: bind_bank,binding: BindBankBinding(), page: () => BindBankPage()),
     GetPage(name: bind_usdt,binding: BindUsdtBinding(), page: () => BindUsdtPage()),

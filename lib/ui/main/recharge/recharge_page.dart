@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -14,6 +15,7 @@ import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
 import 'recharge_logic.dart';
 
+///充值
 class RechargePage extends StatefulWidget {
   const RechargePage({Key? key}) : super(key: key);
 
@@ -167,11 +169,7 @@ class _RechargePageState extends State<RechargePage> {
       ),
       child: InkWell(
         onTap: () {
-          if (i == -1) {
-            Get.toNamed(Routes.recharge_digital, arguments: item);
-          } else {
-            Get.toNamed(Routes.recharge_category, arguments: item);
-          }
+          jumpPage(item);
         },
         child: Container(
           padding: EdgeInsets.all(15.r),
@@ -202,4 +200,25 @@ class _RechargePageState extends State<RechargePage> {
       ),
     );
   }
+
+  ///页面跳转逻辑
+  void jumpPage(PaymentListBanks item) {
+    switch(item.bankCode){
+      case Constants.code_usdt:
+        Get.toNamed(Routes.recharge_digital, arguments: item);
+        break;
+      case Constants.code_wangyin:
+      case Constants.code_zhifubao:
+      case Constants.code_weixin:
+      case Constants.code_ysfzf:
+      case Constants.code_qmf:
+      case Constants.code_caifutong:
+        Get.toNamed(Routes.recharge_category, arguments: item);
+        break;
+      default:
+        Get.toNamed(Routes.recharge_wallet, arguments: item);
+        break;
+    }
+  }
+
 }

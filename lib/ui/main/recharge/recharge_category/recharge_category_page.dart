@@ -9,6 +9,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
 import 'recharge_category_logic.dart';
 
@@ -61,15 +62,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
               WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: Colors.transparent,onTap: (){
                 if(unEmpty(state.paymentList.value)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
-                    if(unEmpty(value)){
-                      if(value!.id == state.paymentInfo.id){
-                        ///打开自己，不做任何操作
-                      } else if(value.bankCode == Constants.code_usdt){
-                        Get.offAndToNamed(Routes.recharge_digital,arguments: value);
-                      } else {///打开其他类型的选项
-                        logic.loadData(value);
-                      }
-                    }
+                    if(unEmpty(value)){ jumpPage(value!); }
                   });
                 }
               }),
@@ -112,6 +105,27 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
   }
 
 
-
+  void jumpPage(PaymentListBanks value) {
+    if(value.id == state.paymentInfo.id){
+      ///打开自己，不做任何操作
+    } else {///打开其他类型的选项
+      switch(value.bankCode){
+        case Constants.code_usdt:
+          Get.offAndToNamed(Routes.recharge_digital,arguments: value);
+          break;
+        case Constants.code_wangyin:
+        case Constants.code_zhifubao:
+        case Constants.code_weixin:
+        case Constants.code_ysfzf:
+        case Constants.code_qmf:
+        case Constants.code_caifutong:
+        logic.loadData(value);
+        break;
+        default:
+          Get.offAndToNamed(Routes.recharge_wallet, arguments: value);
+          break;
+      }
+    }
+  }
 
 }

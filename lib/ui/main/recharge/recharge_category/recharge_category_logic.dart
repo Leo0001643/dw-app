@@ -30,6 +30,7 @@ class RechargeCategoryLogic extends GetxController {
     ///只有银行转账和支付宝支持线下线上两种付款方式
     state.supportOnline.value = state.paymentInfo.bankCode == Constants.code_wangyin ||
         state.paymentInfo.bankCode == Constants.code_zhifubao;
+
     state.pageController.jumpToPage(state.supportOnline.value ? 0:1);
     state.tabController.index = state.supportOnline.value ? 0:1;
 
@@ -46,9 +47,6 @@ class RechargeCategoryLogic extends GetxController {
       }
       Get.find<RechargeOfflineLogic>().loadData(info, value);
     });
-
-
-
   }
 
 

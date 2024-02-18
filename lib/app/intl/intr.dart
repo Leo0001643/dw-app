@@ -301,6 +301,8 @@ class Intr extends Translations{
   String get bibiduihuan => 'bibiduihuan'.tr;
   String get eduzhuanhuan => 'eduzhuanhuan'.tr;
   String get zhifushuoming_rmb => 'zhifushuoming_rmb'.tr;
+  String get zhifushuoming_wallet => 'zhifushuoming_wallet'.tr;
+
   String get kahao => 'kahao'.tr;
   String get cikaren => 'cikaren'.tr;
   String get beizhu => 'beizhu'.tr;

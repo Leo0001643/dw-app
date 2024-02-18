@@ -674,6 +674,8 @@ class VI{
     "bibiduihuan":"Trao đổi Coin",
     "eduzhuanhuan":"Chuyển đổi hạn mức",
     "zhifushuoming_rmb":"Hướng dẫn thanh toán:\n1.Cách nhận tiền từ tài khoản công ty vào tài khoản cá nhân Nhân dân tệ Phương pháp quản lý tài khoản thanh toán ngân hàng\n2.Cách nhận tiền từ tài khoản công ty vào tài khoản cá nhân Nhân dân tệ Phương pháp quản lý tài khoản thanh toán ngân hàng",
+    "zhifushuoming_wallet":"Hướng dẫn thanh toán :\n1. Hệ thống sẽ tự động chuyển sang giao diện thanh toán, xin vui lòng chọn cách thanh toán \n3 dựa trên gợi ý giao diện. Bạn có thể chọn ngân hàng trực tuyến hoặc thanh toán quét mã số \n4. sau khi thanh toán thành công, xin vui lòng hướng dẫn sử dụng trở lại vào giao diện ứng dụng \n5. Số tiền nạp sẽ tự động thêm vào tài khoản thành viên của bạn. Nếu bạn tìm thấy không đến hoặc có bất kỳ câu hỏi nào xin vui lòng liên hệ với dịch vụ khách hàng",
+
     "kahao":"Số thẻ",
     "cikaren":"Chủ thẻ",
     "beizhu":"Ghi chú",
@@ -681,7 +683,7 @@ class VI{
     "wenxintishi_":"Gợi ý ấm áp:",
     "wenxintishi_1":"1、Hệ thống sẽ tự động mở một trang web, vui lòng nhấn vào dấu nhắc để tiếp tục.",
     "wenxintishi_2":"2、Phí xử lý %s%,Tỷ lệ tài khoản cao!",
-    "wenxintishi_3":"3、%s",
+    "wenxintishi_3":"%s、%s",
     "tianrujine":"Điền số tiền (1-0) và nhấp OK",
     "shoudongshuruhuoxuanzhe":"Nhập thủ công hoặc chọn số tiền bên dưới",
     "diyibu_xuanzhezhifuxieyi":"Bước 1: Chọn phương thức thanh toán",

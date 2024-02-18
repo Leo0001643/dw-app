@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -13,11 +14,12 @@ import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
+import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'recharge_digital_logic.dart';
 
-//usdt钱包充值
+///usdt钱包充值
 class RechargeDigitalPage extends StatefulWidget {
   const RechargeDigitalPage({Key? key}) : super(key: key);
 
@@ -76,13 +78,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
               WidgetUtils().buildRoomBar(state.title,bgColor: Colors.transparent,msg: true,onTap: (){
                 if(unEmpty(state.paymentList.value)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
-                    if(unEmpty(value)){
-                      if(value!.id == state.paymentInfo.id){
-                        ///打开自己，不做任何操作
-                      } else {///打开其他类型的选项
-                        Get.offAndToNamed(Routes.recharge_category,arguments: value);
-                      }
-                    }
+                    if(unEmpty(value)){ jumpPage(value!); }
                   });
                 }
               }),
@@ -435,6 +431,28 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
         ),
       ],
     );
+  }
+
+  void jumpPage(PaymentListBanks value) {
+    if(value.id == state.paymentInfo.id){
+      ///打开自己，不做任何操作
+    } else {///打开其他类型的选项
+      switch(value.bankCode){
+        case Constants.code_usdt:
+          break;
+        case Constants.code_wangyin:
+        case Constants.code_zhifubao:
+        case Constants.code_weixin:
+        case Constants.code_ysfzf:
+        case Constants.code_qmf:
+        case Constants.code_caifutong:
+          Get.offAndToNamed(Routes.recharge_category, arguments: value);
+          break;
+        default:
+          Get.offAndToNamed(Routes.recharge_wallet, arguments: value);
+          break;
+      }
+    }
   }
 
 
