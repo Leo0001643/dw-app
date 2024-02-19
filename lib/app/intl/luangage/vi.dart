@@ -922,6 +922,8 @@ class VI{
     "dianjitianjiazhanghu":"Click vào Add Account",
     "ninhaimeibangdingyhkzhanghu":"Bạn chưa liên kết tài khoản thẻ ngân hàng",
     "ninhaimeibangdingusdtzhanghu":"Bạn chưa liên kết tài khoản USDT",
+    "ninhaimeibangdingqianbao":"Bạn chưa ràng buộc loại ví này",
+
     "qubangding":"Bỏ ràng buộc",
     "chukuanzhanghu":"Tài khoản rút tiền",
     "chukuanyinhang":"Ngân hàng rút tiền",
@@ -980,5 +982,8 @@ class VI{
     "zuiduoketianjiaqianbao":"(lên đến %s)",
     "qitaqianbaowenxintis":"Lời khuyên ấm áp: \n1. Mỗi người dùng có thể gắn lên số tài khoản ví khác nhau :10(các loại khác nhau có thể gắn một)\n2. Không thể thay đổi một khi ràng buộc, nếu bạn cần phải thay đổi, xin vui lòng",
     "qianbaoleixing":"Loại ví",
+    "tixianfangshi":"Kênh rút tiền",
+    "yhk":"Thẻ ngân hàng",
+    "xqianbao":"%s ví",
   };
 }

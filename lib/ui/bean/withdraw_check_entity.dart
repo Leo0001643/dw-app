@@ -24,7 +24,7 @@ class WithdrawCheckEntity {
 	int? takeMoneyMin;//最小出款金额
 	String? addTime;//稽核时间
 
-	Object? checkType;//稽核类型  1 CNY  5USDT 钱包实体
+	dynamic checkType;//稽核类型  1 CNY  5USDT 钱包实体
 
 	WithdrawCheckEntity();
 

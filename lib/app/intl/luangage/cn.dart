@@ -923,6 +923,8 @@ class CN {
     "dianjitianjiazhanghu":"点击添加账户",
     "ninhaimeibangdingyhkzhanghu":"您还没绑定银行卡账户",
     "ninhaimeibangdingusdtzhanghu":"您还没绑定USDT账户",
+    "ninhaimeibangdingqianbao":"您还没绑定该类型钱包",
+
     "qubangding":"去绑定",
     "chukuanzhanghu":"出款账户",
     "chukuanyinhang":"出款银行",
@@ -977,6 +979,9 @@ class CN {
     "zuiduoketianjiaqianbao":"(最多可添加%s个)",
     "qitaqianbaowenxintis":"温馨提示：\n1.每个用户最多可以绑定其他钱包账户数量:10(不同类型分别可以绑定一个)\n2.一经绑定不能擅自修改，如需修改请",
     "qianbaoleixing":"钱包类型",
+    "tixianfangshi":"提现方式",
+    "yhk":"银行卡",
+    "xqianbao":"%s钱包",
 
   };
 

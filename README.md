@@ -162,5 +162,6 @@ bankCode值=[USDT_TRC20,USDT_ERC20,USDT_OMNI,CGPAY,GOPAY,OKPAY,WEPAY,988PAY,KDPA
 新增参数：bankCode ,参数值为接口getUserDrawDetail对应的type字段值，除去USDT ，cur字段都传默认值法币
 
 
-
+24010202
+aeuio888
 

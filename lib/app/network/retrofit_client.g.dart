@@ -13,7 +13,7 @@ class _RetrofitClient implements RetrofitClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://9000vlmdm4.kj99883.com/';
+    baseUrl ??= 'https://9000vlmdm4.kj99883.com';
   }
 
   final Dio _dio;

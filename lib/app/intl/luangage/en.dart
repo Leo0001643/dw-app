@@ -1000,6 +1000,8 @@ class EN{
     "dianjitianjiazhanghu":"Please select a withdrawal account",
     "ninhaimeibangdingyhkzhanghu":"You haven't linked your bank card account yet",
     "ninhaimeibangdingusdtzhanghu":"You haven't linked your USDT account yet",
+    "ninhaimeibangdingqianbao":"You have not tied this type of wallet",
+
     "qubangding":"Unbind",
     "chukuanzhanghu":"Disbursement account",
     "chukuanyinhang":"Disbursement Bank",
@@ -1051,6 +1053,9 @@ class EN{
     "zuiduoketianjiaqianbao":"(Up to %s can be added)",
     "qitaqianbaowenxintis":"Tips: \n1. Each user can bind to a maximum of 10 other wallet accounts (one for different types)\n2. Once binding cannot be modified without authorization, if necessary, please modify",
     "qianbaoleixing":"Type of wallet",
+    "tixianfangshi":"Withdrawal channel",
+    "yhk":"bank card",
+    "xqianbao":"%s Wallet",
   };
 
 }

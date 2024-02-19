@@ -65,7 +65,7 @@ WithdrawCheckEntity $WithdrawCheckEntityFromJson(Map<String, dynamic> json) {
   if (addTime != null) {
     withdrawCheckEntity.addTime = addTime;
   }
-  final String? checkType = jsonConvert.convert<String>(json['checkType']);
+  final dynamic checkType = json['checkType'];
   if (checkType != null) {
     withdrawCheckEntity.checkType = checkType;
   }
@@ -108,7 +108,7 @@ extension WithdrawCheckEntityExtension on WithdrawCheckEntity {
     int? takeMoneyMax,
     int? takeMoneyMin,
     String? addTime,
-    String? checkType,
+    dynamic checkType,
   }) {
     return WithdrawCheckEntity()
       ..allNeedFee = allNeedFee ?? this.allNeedFee
