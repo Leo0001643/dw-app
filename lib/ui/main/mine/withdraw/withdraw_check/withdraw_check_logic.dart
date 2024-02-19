@@ -19,16 +19,15 @@ class WithdrawCheckLogic extends GetxController {
     super.onClose();
   }
 
-  void loadData(int index) {
+  void loadData(Object index) {
     var user = AppData.user();
     // 币种【1:CNY,2:USD,3:KRW,4:INR,5:USDT,6:VND】
-    HttpService.withdrawCheck({"cur": index,"oid":user?.oid,"username":user?.username,}).then((value) {
+    var cur = index != '5' ? 1:5;
+    HttpService.withdrawCheck({"cur": cur,"oid":user?.oid,"username":user?.username,}).then((value) {
       value.checkType = index;//设置稽核类型 下个页面需要用到
       state.withdrawCheck.value = value;
       state.withdrawCheck.refresh();
     });
-    
-
   }
 
 

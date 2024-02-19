@@ -559,6 +559,7 @@ class Intr extends Translations{
   String get dianjitianjiazhanghu => 'dianjitianjiazhanghu'.tr;
   String get ninhaimeibangdingyhkzhanghu => 'ninhaimeibangdingyhkzhanghu'.tr;
   String get ninhaimeibangdingusdtzhanghu => 'ninhaimeibangdingusdtzhanghu'.tr;
+  String get ninhaimeibangdingqianbao => 'ninhaimeibangdingqianbao'.tr;
   String get qubangding => 'qubangding'.tr;
   String get chukuanzhanghu => 'chukuanzhanghu'.tr;
   String get kaihudizhi => 'kaihudizhi'.tr;
@@ -613,7 +614,9 @@ class Intr extends Translations{
   String zuiduoketianjiaqianbao_(List<String> args) => 'zuiduoketianjiaqianbao'.trArgs(args);
   String get qitaqianbaowenxintis => 'qitaqianbaowenxintis'.tr;
   String get qianbaoleixing => 'qianbaoleixing'.tr;
-
+  String get tixianfangshi => 'tixianfangshi'.tr;
+  String get yhk => 'yhk'.tr;
+  String xqianbao_(List<String> args) => 'xqianbao'.trArgs(args);
 
 
   @override

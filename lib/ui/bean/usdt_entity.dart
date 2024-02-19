@@ -1,34 +1,22 @@
-import 'dart:convert';
+
+import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/generated/json/usdt_entity.g.dart';
 
 /// account : "T456432748798545679999"
 /// status : 1
 /// type : "USDT_TRC20"
 
-UsdtEntity usdtEntityFromJson(String str) =>
-    UsdtEntity.fromJson(json.decode(str));
-
-String usdtEntityToJson(UsdtEntity data) => json.encode(data.toJson());
-
+@JsonSerializable()
 class UsdtEntity {
   UsdtEntity({
-    String? account,
-    num? status,
-    String? type,
-  }) {
-    _account = account;
-    _status = status;
-    _type = type;
-  }
+    this.account,
+    this.status,
+    this.type,
+  });
 
-  UsdtEntity.fromJson(dynamic json) {
-    _account = json['account'];
-    _status = json['status'];
-    _type = json['type'];
-  }
-
-  String? _account;
-  num? _status;
-  String? _type;
+  String? account;
+  num? status;
+  String? type;
 
   UsdtEntity copyWith({
     String? account,
@@ -36,22 +24,16 @@ class UsdtEntity {
     String? type,
   }) =>
       UsdtEntity(
-        account: account ?? _account,
-        status: status ?? _status,
-        type: type ?? _type,
+        account: account,
+        status: status,
+        type: type,
       );
 
-  String? get account => _account;
 
-  num? get status => _status;
+  factory UsdtEntity.fromJson(Map<String, dynamic> json) => $UsdtEntityFromJson(json);
 
-  String? get type => _type;
+  Map<String, dynamic> toJson() => $UsdtEntityToJson(this);
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['account'] = _account;
-    map['status'] = _status;
-    map['type'] = _type;
-    return map;
-  }
+
+
 }

@@ -6,6 +6,8 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
+import 'package:leisure_games/ui/bean/usdt_entity.dart';
+import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
 
 import 'withdraw_apply_state.dart';
@@ -28,10 +30,18 @@ class WithdrawApplyLogic extends GetxController {
   void loadData(WithdrawCheckEntity data) {
     state.check = data;
     var user = AppData.user();
+    if(data.checkType is UsdtEntity){
+      state.walletChannel = data.checkType as UsdtEntity;
+    }
+    state.pageType.value = data.checkType != '5' ? '1': '5';
 
-    state.pageType.value = data.checkType.em();
+    if(data.checkType is UsdtEntity){
+      var item = (data.checkType as UsdtEntity);
+      state.dropdownValue.value = UserDrawDetailBanks(bankName: item.type.em(),bankAccount: item.account.em());
+      state.dropdownValue.refresh();
+    }
 
-    HttpService.getBalance({ "cur":data.checkType, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
+    HttpService.getBalance({ "cur":state.pageType.value, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
       state.balance.value = value;
       state.balance.refresh();
     });
@@ -58,12 +68,18 @@ class WithdrawApplyLogic extends GetxController {
     }
 
     var user = AppData.user();
-    var params = {"oid":user?.oid,"username":user?.username,"cardNumber":state.dropdownValue.value.cardNumber,
-    "cur":state.pageType.value,"getPassword":state.pwdValue,"gold":state.actualAmount.value,"money":state.withdrawAmount.value};
+    var params = {"oid":user?.oid,"username":user?.username, "cur":state.pageType.value,
+      "getPassword":state.pwdValue,"gold":state.actualAmount.value,"money":state.withdrawAmount.value};
+    if(unEmpty(state.walletChannel)){
+      params["bankCode"] = state.walletChannel!.type.em();
+    } else {
+      params["bankCode"] = state.pageType.value;
+      // params["cardNumber"] = "${state.dropdownValue.value.cardNumber}";
+    }
     HttpService.takeSubmit(params).then((value) {
       Get.toNamed(Routes.withdraw_result,arguments: DigiccyDepositDataEntity(money: int.parse(state.withdrawAmount.value),
       date: DateUtil.formatDateMs(DateTime.now().millisecondsSinceEpoch),info:state.dropdownValue.value.info(),
-        orderId: state.actualAmount.value,status: "${state.pageType.value}"));
+        orderId: state.actualAmount.value,status: state.pageType.value));
     });
 
   }

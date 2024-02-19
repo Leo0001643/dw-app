@@ -117,6 +117,8 @@ import 'package:leisure_games/ui/main/mine/setting/user_info/user_info_page.dart
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_apply/withdraw_apply_binding.dart';
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_apply/withdraw_apply_page.dart';
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_channel/withdraw_channel_binding.dart';
+import 'package:leisure_games/ui/main/mine/withdraw/withdraw_channel/withdraw_channel_page.dart';
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_check/withdraw_check_binding.dart';
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_check/withdraw_check_page.dart';
 import 'package:leisure_games/ui/main/mine/withdraw/withdraw_page.dart';
@@ -177,6 +179,8 @@ class Routes {
   static const String withdraw_check = "/mine/withdraw_check";
   static const String withdraw_apply = "/mine/withdraw_apply";
   static const String withdraw_result = "/mine/withdraw_result";
+  static const String withdraw_channel = "/mine/withdraw_channel";
+
   static const String bind_bank = "/mine/bind_bank";
   static const String bind_usdt = "/mine/bind_usdt";
   static const String bind_wallet = "/mine/bind_wallet";
@@ -244,7 +248,7 @@ class Routes {
     GetPage(name: set_simple_pwd,binding: SetSimplePwdBinding(), page: () => SetSimplePwdPage2()),
     GetPage(name: recharge_digital,binding: RechargeDigitalBinding(), page: () => RechargeDigitalPage()),
     GetPage(name: recharge_result,binding: RechargeResultBinding(), page: () => RechargeResultPage()),
-    GetPage(name: recharge_wallet,binding: RechargeWalletBinding(),bindings: [RechargeOnlineBinding()], page: () => RechargeWalletPage()),
+    GetPage(name: recharge_wallet,binding: RechargeWalletBinding(), page: () => RechargeWalletPage()),
 
     GetPage(name: withdraw,binding: WithdrawBinding(), page: () => WithdrawPage()),
     GetPage(name: bind_bank,binding: BindBankBinding(), page: () => BindBankPage()),
@@ -252,6 +256,7 @@ class Routes {
     GetPage(name: bind_wallet,binding: BindWalletBinding(), page: () => BindWalletPage()),
     GetPage(name: add_wallet,binding: AddWalletBinding(), page: () => AddWalletPage()),
 
+    GetPage(name: withdraw_channel,binding: WithdrawChannelBinding(), page: () => WithdrawChannelPage()),
     GetPage(name: withdraw_apply,binding: WithdrawApplyBinding(), page: () => WithdrawApplyPage()),
     GetPage(name: withdraw_check,binding: WithdrawCheckBinding(), page: () => WithdrawCheckPage()),
     GetPage(name: withdraw_result,binding: WithdrawResultBinding(), page: () => WithdrawResultPage()),

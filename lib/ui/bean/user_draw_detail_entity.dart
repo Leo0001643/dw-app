@@ -1,7 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/generated/json/user_draw_detail_entity.g.dart';
 import 'package:leisure_games/ui/bean/usdt_entity.dart';
 
-import '../../app/global.dart';
-
+@JsonSerializable()
 class UserDrawDetailEntity {
 	List<UserDrawDetailBanks> banks;
 	List<UsdtEntity> dcBanks;
@@ -19,22 +21,16 @@ class UserDrawDetailEntity {
 		this.username,
 	});
 
-	factory UserDrawDetailEntity.fromJson(Map<String, dynamic> json) {
-		return UserDrawDetailEntity(
-			banks: List<UserDrawDetailBanks>.from(
-				json['banks'].map((bank) => UserDrawDetailBanks.fromJson(bank)),
-			),
-			dcBanks: List<UsdtEntity>.from(
-				json['dcBanks'].map((usdtEntity) => UsdtEntity.fromJson(usdtEntity)),
-			),
-			isSetBankPwd: json['isSetBankPwd'],
-			mobile: json['mobile'],
-			realname: json['realname'],
-			username: json['username'],
-		);
-	}
+
+
+	factory UserDrawDetailEntity.fromJson(Map<String, dynamic> json) => $UserDrawDetailEntityFromJson(json);
+
+	Map<String, dynamic> toJson() => $UserDrawDetailEntityToJson(this);
+
+
 }
 
+@JsonSerializable()
 class UserDrawDetailBanks {
 	String? bankAccount;
 	String? bankAddress;
@@ -52,21 +48,16 @@ class UserDrawDetailBanks {
 		this.cardNumber,
 	});
 
-	factory UserDrawDetailBanks.fromJson(Map<String, dynamic> json) {
-		return UserDrawDetailBanks(
-			bankAccount: json['bankAccount'],
-			bankAddress: json['bankAddress'],
-			bankId: json['bankId'],
-			bankName: json['bankName'],
-			bankStatus: json['bankStatus'],
-			cardNumber: json['cardNumber'],
-		);
-	}
+	factory UserDrawDetailBanks.fromJson(Map<String, dynamic> json) => $UserDrawDetailBanksFromJson(json);
+
+	Map<String, dynamic> toJson() => $UserDrawDetailBanksToJson(this);
+
+
 	String info(){
 		if(isEmpty(bankAccount)|| bankAccount!.em().length < 14 ){
 			return "$bankName${isEmpty(bankAccount) ? "" : "（${bankAccount.em()}）"}";
 		} else {
-			return "$bankName（${bankAccount!.substring(14)}）";
+			return "$bankName（***${bankAccount!.substring(14)}）";
 		}
 	}
 }

@@ -44,7 +44,11 @@ class MessageDialog{
                       btnCancel.em(), 116.w, 40.h,
                       bg: ColorX.cardBg3(),
                       textColor: ColorX.text586(), onPressed: () {
-                    Navigator.of(context).pop(false);
+                    if(onCancel == null){
+                      Navigator.of(context).pop(false);
+                    }else {
+                      onCancel.call();
+                    }
                   }),
                   SizedBox(
                     width: 10.w,
@@ -52,8 +56,12 @@ class MessageDialog{
                   WidgetUtils().buildElevatedButton(
                       btnConfirm.em(), 116.w, 40.h,
                       bg: ColorX.color_fc243b,
-                      textColor: Colors.white, onPressed: () {
-                    Navigator.of(context).pop(true);
+                      textColor: Colors.white, onPressed: (){
+                        if(onConfirm == null){
+                          Navigator.of(context).pop(true);
+                        }else {
+                          onConfirm.call();
+                        }
                   })
                 ],
               ),

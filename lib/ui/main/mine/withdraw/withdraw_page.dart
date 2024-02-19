@@ -39,10 +39,13 @@ class _WithdrawPageState extends State<WithdrawPage> {
       route = Routes.bind_usdt;
     }
     if(unEmpty(msg)){
-      DialogUtils().showMessageDialog(context, msg,btnConfirm: Intr().qubangding,onCancel: ()=> Navigator.pop(context),
-          onConfirm: ()=> Get.offAndToNamed(route));
+      DialogUtils().showMessageDialog(context, msg,btnConfirm: Intr().qubangding, onConfirm: ()=> Get.offAndToNamed(route));
     } else {
-      Get.toNamed(Routes.withdraw_check,arguments: i);
+      if(i == 1){
+        Get.toNamed(Routes.withdraw_channel,arguments: i.toString());
+      }else {
+        Get.toNamed(Routes.withdraw_check,arguments: i.toString());
+      }
     }
   }
   

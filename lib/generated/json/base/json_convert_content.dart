@@ -71,7 +71,9 @@ import 'package:leisure_games/ui/bean/socket_base_entity.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
+import 'package:leisure_games/ui/bean/usdt_entity.dart';
 import 'package:leisure_games/ui/bean/user_detail_entity.dart';
+import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/wallet_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
@@ -82,6 +84,15 @@ JsonConvert jsonConvert = JsonConvert();
 typedef JsonConvertFunction<T> = T Function(Map<String, dynamic> json);
 typedef EnumConvertFunction<T> = T Function(String value);
 typedef ConvertExceptionHandler = void Function(Object error, StackTrace stackTrace);
+extension MapSafeExt<K, V> on Map<K, V> {
+  T? getOrNull<T>(K? key) {
+    if (!containsKey(key) || key == null) {
+      return null;
+    } else {
+      return this[key] as T?;
+    }
+  }
+}
 
 class JsonConvert {
   static ConvertExceptionHandler? onError;
@@ -643,9 +654,21 @@ class JsonConvert {
       return data.map<UsdtChannelEntity>((Map<String, dynamic> e) =>
           UsdtChannelEntity.fromJson(e)).toList() as M;
     }
+    if (<UsdtEntity>[] is M) {
+      return data.map<UsdtEntity>((Map<String, dynamic> e) =>
+          UsdtEntity.fromJson(e)).toList() as M;
+    }
     if (<UserDetailEntity>[] is M) {
       return data.map<UserDetailEntity>((Map<String, dynamic> e) =>
           UserDetailEntity.fromJson(e)).toList() as M;
+    }
+    if (<UserDrawDetailEntity>[] is M) {
+      return data.map<UserDrawDetailEntity>((Map<String, dynamic> e) =>
+          UserDrawDetailEntity.fromJson(e)).toList() as M;
+    }
+    if (<UserDrawDetailBanks>[] is M) {
+      return data.map<UserDrawDetailBanks>((Map<String, dynamic> e) =>
+          UserDrawDetailBanks.fromJson(e)).toList() as M;
     }
     if (<VarCodeEntity>[] is M) {
       return data.map<VarCodeEntity>((Map<String, dynamic> e) =>
@@ -835,7 +858,10 @@ class JsonConvertClassCollection {
     (SpreadPromosDataList).toString(): SpreadPromosDataList.fromJson,
     (SpreadUserEntity).toString(): SpreadUserEntity.fromJson,
     (UsdtChannelEntity).toString(): UsdtChannelEntity.fromJson,
+    (UsdtEntity).toString(): UsdtEntity.fromJson,
     (UserDetailEntity).toString(): UserDetailEntity.fromJson,
+    (UserDrawDetailEntity).toString(): UserDrawDetailEntity.fromJson,
+    (UserDrawDetailBanks).toString(): UserDrawDetailBanks.fromJson,
     (VarCodeEntity).toString(): VarCodeEntity.fromJson,
     (WalletDrawDetailEntity).toString(): WalletDrawDetailEntity.fromJson,
     (WebConfigEntity).toString(): WebConfigEntity.fromJson,

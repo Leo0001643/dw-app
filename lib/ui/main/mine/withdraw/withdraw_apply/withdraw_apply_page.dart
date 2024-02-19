@@ -69,22 +69,15 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                               SizedBox(height: 7.h,),
                               InkWell(
                                 onTap: (){
-                                  var list  = state.pageType.value==1 ? state.userDraw.value.banks : state.userDraw.value.dcBanks;
-                                  if(isEmpty(list)){ return; }
-                                  if(state.pageType.value==1){
-                                    DialogUtils().showSelectAccountBtmDialog(context, state.userDraw.value.banks!).then((value) {
+                                  // var list  = state.pageType.value == '1' ? state.userDraw.value.banks : state.userDraw.value.dcBanks;
+                                  // if(isEmpty(state.userDraw.value.banks)){ return; }
+                                  if(state.pageType.value == '1' && unEmpty(state.userDraw.value.banks) && isEmpty(state.walletChannel)){
+                                    DialogUtils().showSelectAccountBtmDialog(context, state.userDraw.value.banks).then((value) {
                                       if(unEmpty(value)){
                                         state.dropdownValue.value = value!;
                                       }
                                     });
-                                  }else{
-                                    DialogUtils().showSelectAccountBtmUsdtDialog(context, state.userDraw.value.dcBanks!).then((value) {
-                                      if(unEmpty(value)){
-                                        // state.dropdownValue.value = value! as UsdtEntity;
-                                      }
-                                    });
                                   }
-
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r),),
@@ -96,7 +89,12 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                           return Text(state.dropdownValue.value.info(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
                                         }),
                                       ),
-                                      WidgetUtils().buildImage(ImageX.icon_down_grey, 15.r, 15.r,),
+                                      Obx(() {
+                                        return Visibility(
+                                          visible: unEmpty(state.pageType.value) && isEmpty(state.walletChannel),
+                                          child: WidgetUtils().buildImage(ImageX.icon_down_grey, 15.r, 15.r,),
+                                        );
+                                      }),
                                     ],
                                   ),
                                 ),
@@ -129,7 +127,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                           backgroundColor: Colors.transparent,hintColor: ColorX.text586());
                                     }),
                                     Obx(() {
-                                      var symbol = state.pageType.value == 1 ? "CNY":"USDT";
+                                      var symbol = state.pageType.value != '5' ? "CNY":"USDT";
                                       return Text(symbol,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),),);
                                     }),
                                   ],
