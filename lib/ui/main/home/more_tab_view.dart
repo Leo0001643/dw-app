@@ -82,7 +82,7 @@ class MoreTabView extends StatelessWidget {
           children: [
             buildImageItem(e.group.em(),),
             SizedBox(height: 4.h,),
-            Text(e.name.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+            Text(e.name.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),textAlign: TextAlign.center,),
           ],
         ),
       ),
