@@ -44,9 +44,8 @@ class MoreTabView extends StatelessWidget {
           direction: PopoverDirection.left,
           backgroundColor: ColorX.cardBg5(),
           barrierColor: Colors.transparent,
-          width: 100*homeMenu.length*1.0/2,
-
-          height: 200.h,
+          width: 80.w * homeMenu.length*1.0/2,
+          height: 160.h,
           arrowHeight: 0.r,
           arrowWidth: 0.r,
         );
