@@ -6,11 +6,11 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/main.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/point_record_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../../../../main.dart';
 import '../../ends_drawer_view.dart';
 import 'points_record_logic.dart';
 //积分记录
@@ -27,7 +27,7 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
 
   @override
   void initState() {
-    state.refreshController= RefreshController(initialRefresh: true);
+    state.refreshController= RefreshController(initialRefresh: false);
     state.refreshListener.addListener(() {
       var refresh= state.refreshListener.value;
       RefreshChangeNotifier.dataComplete(state.refreshController, refresh);
@@ -117,7 +117,8 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
                 return SmartRefresher(
                   controller: state.refreshController,
                   enablePullUp: true,
-                  onRefresh: ()=> logic.loadData(true),
+                  enablePullDown: false,///禁止下拉刷新
+                  // onRefresh: ()=> logic.loadData(true),
                   onLoading: ()=> logic.loadData(false),
                   child: ListView.separated(
                     itemBuilder: (context,index){

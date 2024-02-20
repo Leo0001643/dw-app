@@ -18,7 +18,7 @@ class Constants {
   // static const base_url = "$host:8860";
   static const base_url = "$host";
   static const contact = "$host/m/#/detail/Contact";
-  static const hongbao = "$host/m/#/Hongbao/%s/%s/%s";
+  static const hongbao = "http://soptj9qq.com/m/#/Hongbao/%s/%s/%s";
 
   static const  FONT_STD = "ITCAvantGardeStd";
 

@@ -12,6 +12,7 @@ class PointsRecordLogic extends GetxController {
 
   @override
   void onReady() {
+    loadData(true);
     super.onReady();
   }
 
