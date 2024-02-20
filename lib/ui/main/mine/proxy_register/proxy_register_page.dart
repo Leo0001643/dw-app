@@ -335,9 +335,24 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             SizedBox(
               height: 20.h,
             ),
-            // _getCode(),
+            _getCode(),
             SizedBox(
               height: 20.h,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
+              child:  WidgetUtils().buildElevatedButton(
+                  Intr().confirm, 335.w, 48.h,
+                  bg: ColorX.color_fd273e,
+                  textColor: Colors.white,
+                  textSize: 16.sp, onPressed: () {
+                if (state.varcode.value.status == 1 &&
+                    state.varcode.value.type == 3) {
+                  _handleClickVerify();
+                } else {
+                  logic.register();
+                }
+              }),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 27.w),
@@ -357,8 +372,6 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
           ],
         ),
       ),
-      bottomNavigationBar: _getCode(),
-
     );
   }
 
@@ -366,6 +379,7 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
     return Obx(() {
       if (state.varcode.value.status == 1 && state.varcode.value.type == 1) {
         return Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: EdgeInsets.only(left: 35.w),
@@ -417,26 +431,7 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
           state.varcode.value.type == 2) {
         return _getAliCode();
       } else {
-        return Container(
-          margin: EdgeInsets.only(
-            top: 10,
-            bottom: 10,
-            left: 16,
-            right: 16,
-          ),
-          child:  WidgetUtils().buildElevatedButton(
-              Intr().confirm, 335.w, 48.h,
-              bg: ColorX.color_fd273e,
-              textColor: Colors.white,
-              textSize: 16.sp, onPressed: () {
-            if (state.varcode.value.status == 1 &&
-                state.varcode.value.type == 3) {
-              _handleClickVerify();
-            } else {
-              logic.register();
-            }
-          }),
-        );
+        return Container();
       }
     });
   }

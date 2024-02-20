@@ -11,6 +11,7 @@ class PlatformEntity {
 	String? liveName;
 	String? currency;
 	double? money;
+	int? sequence;
 
 	PlatformEntity({this.liveId,this.liveName,this.currency,this.money});
 

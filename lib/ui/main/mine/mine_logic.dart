@@ -77,10 +77,10 @@ class MineLogic extends GetxController {
         Get.toNamed(Routes.promotion_profit);
         break;
       case 11:
-        var user = AppData.user();
-        HttpService.checkAgentReg({"username":user?.username}).then((value) {
-          Get.toNamed(Routes.proxy_register);
-        });
+        Get.toNamed(Routes.proxy_register);
+        // var user = AppData.user();
+        // HttpService.checkAgentReg({"username":user?.username}).then((value) {
+        // });
         break;
       case 12:
         Get.toNamed(Routes.setting);

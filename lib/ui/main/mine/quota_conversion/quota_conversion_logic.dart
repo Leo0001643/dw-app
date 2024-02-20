@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
@@ -33,14 +34,28 @@ class QuotaConversionLogic extends GetxController {
 
     HttpService.getPlatformList({"oid":user?.oid,"username":user?.username,"cur":cur}).then((value1) {
       ///平台开通状态 币种类型【1:CNY,2:USD,3:KRW,4:INR,5:USDT,6:VND】
-      HttpService.getPlatformIsPermit({"oid":user?.oid,"username":user?.username,"cur":cur}).then((value2) {
-        value1.forEach((e1) {
-          value2.forEach((e2) {
+      ///需要对活到的结果做一个冒泡排序
+      var n = value1.length;
+      for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+          if (value1[j].sequence.em() > value1[j + 1].sequence.em()) {
+            // 交换 arr[j] 和 arr[j+1]
+            var temp = value1[j];
+            value1[j] = value1[j + 1];
+            value1[j + 1] = temp;
+          }
+        }
+      }
+      state.platforms.addAll(value1);
+      state.platforms.refresh();
+      HttpService.getPlatformIsPermit({"oid":user?.oid,"username":user?.username,"cur":cur}).then((value2) async {
+        for (var e1 in value1) {
+          for (var e2 in value2) {
             ///平台状态【1:开启，2:关闭】
             if(e1.liveId == e2.id && e2.status == 1){
-              HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":e1.liveName}).then((v3) {
-                e1.money = v3.money;
-                state.platforms.add(e1);
+              HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":e1.liveName},loading: false).then((value3) {
+                e1.money = value3.money;
+                state.platforms[value1.indexOf(e1) + 1] = e1;
                 state.platforms.refresh();
                 if(isEmpty(state.rightAccount.value.liveName)){
                   state.rightAccount.value = e1;
@@ -48,8 +63,8 @@ class QuotaConversionLogic extends GetxController {
                 }
               });
             }
-          });
-        });
+          }
+        }
       });
     });
   }
