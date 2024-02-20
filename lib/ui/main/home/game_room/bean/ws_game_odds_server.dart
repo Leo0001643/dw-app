@@ -1,27 +1,22 @@
+
+import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/generated/json/ws_game_odds_server.g.dart';
+
+@JsonSerializable()
 class WSGameOddsServer {
-  List<Content>? content;
+  List<OddsContent>? content;
 
   WSGameOddsServer({this.content});
 
-  WSGameOddsServer.fromJson(Map<String, dynamic> json) {
-    if (json['content'] != null) {
-      content = <Content>[];
-      json['content'].forEach((v) {
-        content!.add(new Content.fromJson(v));
-      });
-    }
-  }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.content != null) {
-      data['content'] = this.content!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
+  factory WSGameOddsServer.fromJson(Map<String, dynamic> json) => $WSGameOddsServerFromJson(json);
+
+  Map<String, dynamic> toJson() => $WSGameOddsServerToJson(this);
+
 }
 
-class Content {
+@JsonSerializable()
+class OddsContent {
   int? level;
   String? createTime;
   String? enabled;
@@ -38,7 +33,7 @@ class Content {
   int? color=0xFF091722;
   int? titleColor=0xFF091722;
   Map<String,String> contentMap={};
-  Content(
+  OddsContent(
       {this.createTime,
         this.enabled,
         this.id,
@@ -55,45 +50,10 @@ class Content {
         this.titleColor,
         this.updateTime});
 
-  Content.fromJson(Map<String, dynamic> json) {
-    createTime = json['createTime'];
-    enabled = json['enabled'];
-    id = json['id'];
-    jsonKey = json['jsonKey'];
-    name = json['name'];
-    parentId = json['parentId'];
-    play = json['play'];
-    tableId = json['tableId'];
-    type = json['type'];
-    updateTime = json['updateTime'];
-    check = json['check'];
-    level = json['level'];
-    money = json['money'];
-    color= json['color'];
-    titleColor= json['titleColor'];
+  factory OddsContent.fromJson(Map<String, dynamic> json) => $OddsContentFromJson(json);
+
+  Map<String, dynamic> toJson() => $OddsContentToJson(this);
 
 
 
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['createTime'] = this.createTime;
-    data['enabled'] = this.enabled;
-    data['id'] = this.id;
-    data['jsonKey'] = this.jsonKey;
-    data['name'] = this.name;
-    data['parentId'] = this.parentId;
-    data['play'] = this.play;
-    data['tableId'] = this.tableId;
-    data['type'] = this.type;
-    data['updateTime'] = this.updateTime;
-    data['check'] = this.check;
-    data['money'] = this.money;
-    data['level'] = this.level;
-    data['color'] = this.color;
-    data['titleColor'] = this.titleColor;
-
-    return data;
-  }
 }

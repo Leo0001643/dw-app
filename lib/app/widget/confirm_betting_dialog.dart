@@ -11,12 +11,11 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/format_util.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/mine/mine_logic.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart'
-    as WS;
 
 ///确认注单
 class ConfirmBettingDialog extends StatefulWidget {
@@ -200,7 +199,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     );
   }
 
-  Widget buildBetItem(WS.Content content,GameRoomLogic logic) {
+  Widget buildBetItem(OddsContent content,GameRoomLogic logic) {
     print("======>212${jsonEncode(content.toJson())}");
     String betName = GameRuleUtil.getBetTypeName(content.type ?? "");
     // String partMsg = "x"+ GameRuleUtil.getMoneySymbol(content?.moneyType??"CNY");
@@ -425,7 +424,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           shrinkWrap: true,
           itemCount: logic.selectBettingList.length,
           itemBuilder: (context, index) {
-            WS.Content content = logic.selectBettingList[index];
+            OddsContent content = logic.selectBettingList[index];
 
             return buildBetItem(content,logic);
           });

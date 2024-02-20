@@ -10,10 +10,12 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/mine/mine_logic.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
+
+
 ///确认注单
 class NotSufficientFundsDialog extends StatefulWidget{
 
@@ -181,7 +183,7 @@ class StateConfirmBettingDialog extends State<NotSufficientFundsDialog> with Sin
     );
   }
 
-  Widget buildBetItem(WS.Content content) {
+  Widget buildBetItem(OddsContent content) {
     return Container(
       height: 42.h,
       padding: EdgeInsets.symmetric(horizontal: 15.w,),
@@ -309,7 +311,7 @@ class StateConfirmBettingDialog extends State<NotSufficientFundsDialog> with Sin
          shrinkWrap: true,
           itemCount:logic.selectBettingList.length ,
           itemBuilder: (context,index){
-            WS.Content content= logic.selectBettingList[index];
+            OddsContent content= logic.selectBettingList[index];
 
             return buildBetItem(content);
           });

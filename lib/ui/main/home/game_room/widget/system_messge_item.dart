@@ -22,7 +22,7 @@ class SystemMessgeItem extends StatefulWidget{
 
   final int index;
   final GameRoomLogic logic;
-  final GameRoomItemEntity<dynamic> gameRoomItemEntity;
+  final GameRoomItemEntity gameRoomItemEntity;
   const SystemMessgeItem(this.index,this.logic,this.gameRoomItemEntity, {super.key});
 
   @override

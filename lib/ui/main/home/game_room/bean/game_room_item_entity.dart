@@ -1,17 +1,15 @@
-class GameRoomItemEntity<T> {
+import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/generated/json/game_room_item_entity.g.dart';
+
+@JsonSerializable()
+class GameRoomItemEntity {
   String? type;
-  dynamic? data;
+  dynamic data;
   GameRoomItemEntity({this.type, this.data});
 
-  GameRoomItemEntity.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    data = json['data'];
-  }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['type'] = this.type;
-    data['data'] = this.data;
-    return data;
-  }
+  factory GameRoomItemEntity.fromJson(Map<String, dynamic> json) => $GameRoomItemEntityFromJson(json);
+
+  Map<String, dynamic> toJson() => $GameRoomItemEntityToJson(this);
+
 }

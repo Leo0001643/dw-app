@@ -22,7 +22,7 @@ import '../utils/game_rule_util.dart';
 class CountDownItemWidget extends StatefulWidget {
   final int index;
   final GameRoomLogic logic;
-  final GameRoomItemEntity<dynamic> gameRoomItemEntity;
+  final GameRoomItemEntity gameRoomItemEntity;
 
   const CountDownItemWidget(this.index, this.logic, this.gameRoomItemEntity,
       {super.key});

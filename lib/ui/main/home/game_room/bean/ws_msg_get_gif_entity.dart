@@ -1,3 +1,8 @@
+
+import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/generated/json/ws_msg_get_gif_entity.g.dart';
+
+@JsonSerializable()
 class WsMsgGetGifEntity {
   List<String>? msg;
   String? uniqueId;
@@ -22,31 +27,10 @@ class WsMsgGetGifEntity {
         this.username,
         this.status});
 
-  WsMsgGetGifEntity.fromJson(Map<String, dynamic> json) {
-    msg = json['msg'].cast<String>();
-    uniqueId = json['unique_id'];
-    nickname = json['nickname'];
-    siteId = json['site_id'];
-    avatar = json['avatar'];
-    time = json['time'];
-    type = json['type'];
-    tableId = json['table_id'];
-    username = json['username'];
-    status = json['status'];
-  }
+  factory WsMsgGetGifEntity.fromJson(Map<String, dynamic> json) => $WsMsgGetGifEntityFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['msg'] = this.msg;
-    data['unique_id'] = this.uniqueId;
-    data['nickname'] = this.nickname;
-    data['site_id'] = this.siteId;
-    data['avatar'] = this.avatar;
-    data['time'] = this.time;
-    data['type'] = this.type;
-    data['table_id'] = this.tableId;
-    data['username'] = this.username;
-    data['status'] = this.status;
-    return data;
-  }
+  Map<String, dynamic> toJson() => $WsMsgGetGifEntityToJson(this);
+
+
+
 }

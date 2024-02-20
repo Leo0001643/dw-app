@@ -9,6 +9,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -18,7 +19,7 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/betting_left_item.dart';
+import 'package:leisure_games/ui/main/home/game_room/widget/betting_left_item.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/count_down_item_widget.dart';
@@ -104,46 +105,45 @@ class _GameRoomPageState extends State<GameRoomPage> {
                 ),
               );
             }),
-            GetBuilder<GameRoomLogic>(
-              id: "gameRoomLogicList",
-              builder: (logic) {
-                print("=====>6");
-                return Expanded(
-                    child: Container(
-                  margin: EdgeInsets.only(right: 10.w, left: 10.w, top: 12.w),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(ImageX.icon_room_bg),
-                          fit: BoxFit.fill)),
-                  child: Column(
-                    children: [
-                      GameRoomHotWidget(),
-                      Expanded(
-                          child: Stack(
-                        children: [
-                          Container(
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              controller: logic.scrollController,
-                              itemCount: state.gameRoomItemEntityList.length,
-                              itemBuilder: (context, index) {
-                                GameRoomItemEntity gameRoomItemEntity =
-                                    state.gameRoomItemEntityList[index];
-                                return buildItemWidget(
-                                    index, logic, gameRoomItemEntity);
-                              },
-                            ),
-                          ),
-                          Positioned(left: 0, right: 0, child: buildContiner()),
-                          buildFloatingBtn(() {
-                            logic.startBet(context);
-                          }),
-                        ],
-                      ))
-                    ],
-                  ),
-                ));
-              },
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(right: 10.w, left: 10.w, top: 12.w),
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(ImageX.icon_room_bg),
+                        fit: BoxFit.fill)),
+                child: Column(
+                  children: [
+                    const GameRoomHotWidget(),
+                    Expanded(
+                      child: GetBuilder<GameRoomLogic>(
+                        id: "gameRoomLogicList",
+                        builder: (logic){
+                          return Stack(
+                            children: [
+                              ListView.builder(
+                                shrinkWrap: true,
+                                controller: logic.scrollController,
+                                itemCount: state.gameRoomItemEntityList.length,
+                                itemBuilder: (context, index) {
+                                  GameRoomItemEntity gameRoomItemEntity =
+                                  state.gameRoomItemEntityList[index];
+                                  return buildItemWidget(
+                                      index, logic, gameRoomItemEntity);
+                                },
+                              ),
+                              Positioned(left: 0, right: 0, child: buildContiner()),
+                              buildFloatingBtn(() {
+                                logic.startBet(context);
+                              }),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10.h),

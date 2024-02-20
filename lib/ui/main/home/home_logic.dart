@@ -151,8 +151,11 @@ class HomeLogic extends GetxController {
         ///投注记录
         Navigator.pop(context);
 
-        WidgetUtils().goLogin();
-
+        if (AppData.isLogin()) {
+          Get.toNamed(Routes.betting_record);
+        } else {
+          WidgetUtils().goLogin();
+        }
         break;
       case 12:
 

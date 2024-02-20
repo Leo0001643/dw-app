@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 class BettingMiddleItemWidget extends StatelessWidget {
   Map<String,String> keyMap={};
   int index=0;
-  WS.Content  content;
+  OddsContent  content;
   BettingMiddleItemWidget(this.index,this.content,{super.key});
 
   @override
@@ -87,7 +87,7 @@ class BettingMiddleItemWidget extends StatelessWidget {
       );
     });
   }
-  saveColorType( WS.Content con)
+  saveColorType(OddsContent con)
    {
      if (con.type?.contains(GameRuleUtil.GameType_Second)==true) {
        setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Second);

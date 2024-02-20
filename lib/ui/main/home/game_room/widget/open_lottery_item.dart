@@ -21,7 +21,7 @@ import '../utils/game_rule_util.dart';
 class OpenLotteryItem extends StatefulWidget {
   final int index;
   final GameRoomLogic logic;
-  final GameRoomItemEntity<dynamic> gameRoomItemEntity;
+  final GameRoomItemEntity gameRoomItemEntity;
 
   const OpenLotteryItem(this.index, this.logic, this.gameRoomItemEntity,
       {super.key});

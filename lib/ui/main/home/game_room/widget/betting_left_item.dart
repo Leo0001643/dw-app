@@ -16,13 +16,13 @@ import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
-import 'utils/game_rule_util.dart';
+import '../utils/game_rule_util.dart';
 
 class BettingLeftItem extends StatefulWidget{
 
   final int index;
   final GameRoomLogic logic;
-  final GameRoomItemEntity<dynamic> gameRoomItemEntity;
+  final GameRoomItemEntity gameRoomItemEntity;
   const BettingLeftItem(this.index,this.logic,this.gameRoomItemEntity, {super.key});
 
   @override
@@ -36,7 +36,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
     WsBetResultEntity? wsBetResultEntity=widget.gameRoomItemEntity.data as WsBetResultEntity;
     String termData=GameRuleUtil.getSSB(wsBetResultEntity?.term??""); // 4
     int allMonny=0;
-    for(Content c in wsBetResultEntity?.content??[]) {
+    for(BetContent c in wsBetResultEntity?.content??[]) {
       String betMoney = c?.c??"0";
       allMonny+=int.tryParse(betMoney)??0;
     }
@@ -119,7 +119,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                       return Divider(height: 1.h,color: ColorX.color_f1f1f1,);
                     },
                     itemBuilder: (context,index){
-                      Content? item= wsBetResultEntity.content?[index];
+                      BetContent? item= wsBetResultEntity.content?[index];
                       return buildBettingInfoItem(wsBetResultEntity,item);
                     }
                     ),
@@ -146,7 +146,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
   }
 
 
-  Widget buildBettingInfoItem(WsBetResultEntity? wsBetResultEntity,Content? c) {
+  Widget buildBettingInfoItem(WsBetResultEntity? wsBetResultEntity,BetContent? c) {
    String betType = c?.a??"";
    String betNum = c?.b??"";
    String betMoney = c?.c??"";

@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -251,8 +252,8 @@ class TextItemLogic extends GetxController {
         }
       }
     }
-    state.text_timer.value = roomcountdown[key + 'Time'];
-    lastStatusContent = roomcountdown[key + 'Time'];
+    state.text_timer.value = roomcountdown['${key}Time'] ?? '';
+    lastStatusContent = roomcountdown['${key}Time'] ?? '';
     update(["textTimerItem"]);
   }
 

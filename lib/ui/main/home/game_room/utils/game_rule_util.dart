@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' ;
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
 
@@ -730,23 +731,23 @@ class GameRuleUtil {
       result.content = [];
       Iterable<String> keys = totalMap.keys;
       if (keys .isNotEmpty) {
-        WS.Content row;
+        OddsContent row;
         keys.map((e){
 
           try {
             Map<String,dynamic> childMap=totalMap[e];
             childMap.keys.map((childKey){
-              WS.Content row= WS.Content();
+              OddsContent row= OddsContent();
               Map<String,dynamic> subMap=childMap[childKey];
-              row?.id ="${subMap["id"]}";
-              row?.parentId ="${subMap["parentId"]}";
-              row?.jsonKey =childKey;
-              row?.enabled ="${subMap["enabled"]}";
-              row?.createTime ="${subMap["createTime"]}";
-              row?.updateTime ="${subMap["updateTime"]}";
-              row?.name ="${subMap["name"]}";
-              row?.play ="${subMap["play"]}";
-              row?.type ="${subMap["type"]}";
+              row.id ="${subMap["id"]}";
+              row.parentId ="${subMap["parentId"]}";
+              row.jsonKey =childKey;
+              row.enabled ="${subMap["enabled"]}";
+              row.createTime ="${subMap["createTime"]}";
+              row.updateTime ="${subMap["updateTime"]}";
+              row.name ="${subMap["name"]}";
+              row.play ="${subMap["play"]}";
+              row.type ="${subMap["type"]}";
               result.content?.add(row);
             }).toList();
           } catch ( e) {
@@ -942,88 +943,88 @@ class GameRuleUtil {
    * type=1
    * type=2
    */
-  static  List<WS.Content>  requestTema(List<WS.Content> odds,{int? type=0}) {
-    List<WS.Content>  dataBettingList=<WS.Content>[];
-    List<WS.Content>  middleBettingList=<WS.Content>[];
-    List<WS.Content>  smallDataBettingList=<WS.Content>[];
-    for(WS.Content con in odds) {
+  static  List<OddsContent>  requestTema(List<OddsContent> odds,{int? type=0}) {
+    List<OddsContent>  dataBettingList=<OddsContent>[];
+    List<OddsContent>  middleBettingList=<OddsContent>[];
+    List<OddsContent>  smallDataBettingList=<OddsContent>[];
+    for(OddsContent con in odds) {
       if (GameRuleUtil.GameType_Big==con.type) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=1;
         dataBettingList.add(item);
       }else if (GameRuleUtil.GameType_Odd==(con.type)){
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=2;
         dataBettingList.add(item);
       } else if (GameRuleUtil.GameType_BigOdd==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=3;
         dataBettingList.add(item);
       }else if (GameRuleUtil.GameType_SmallOdd==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=4;
         dataBettingList.add(item);
       } else if (GameRuleUtil.GameType_Max==con.type){
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=5;
         dataBettingList.add(item);
       } else if (GameRuleUtil.GameType_Small==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=6;
 
         dataBettingList.add(item);
       }else if (GameRuleUtil.GameType_Even==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
 
         item.level=7;
         dataBettingList.add(item);
       }else if (GameRuleUtil.GameType_BigEven==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=8;
         dataBettingList.add(item);
       }else if (GameRuleUtil.GameType_SmallEven==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=9;
         dataBettingList.add(item);
       } else if (GameRuleUtil.GameType_Min==(con.type)) {
 //
 
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=10;
         dataBettingList.add(item);
       }else if (GameRuleUtil.GameType_Red==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=11;
         item.color=0xFFFC243B;
         middleBettingList.add(item);
 
       }else if (GameRuleUtil.GameType_Blue==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=12;
         item.color=0xFF5583E7;
         middleBettingList.add(item);
       }else if (GameRuleUtil.GameType_Green==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.color=0xFF06A100;
         item.level=13;
         middleBettingList.add(item);
       }else if (GameRuleUtil.GameType_Straight==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=14;
 
         middleBettingList.add(item);
       } else if (GameRuleUtil.GameType_Leopard==(con.type)) {
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=15;
         middleBettingList.add(item);
       } else if (GameRuleUtil.GameType_Pair==(con.type)) {
 //
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=16;
         middleBettingList.add(item);
       } else {
         int  sum = int.tryParse(con.type??"1")??-1;
-        WS.Content item= WS.Content.fromJson(con.toJson());
+        OddsContent item= OddsContent.fromJson(con.toJson());
         item.titleColor=GameRuleUtil.getBallColor(sum);
         switch (sum) {
           case GameRuleUtil.GameType_Cao_00:
@@ -1131,18 +1132,18 @@ class GameRuleUtil {
     }
     return dataBettingList;
   }
-  static  List<WS.Content>  dealData(List<WS.Content> odds,{String mBallName="first"}) {
+  static  List<OddsContent>  dealData(List<OddsContent> odds,{String mBallName="first"}) {
 
-    List<WS.Content> data = [];
-    List<WS.Content> data1 = [];
-    List<WS.Content> data2 = [];
-    List<WS.Content> data3 = [];
+    List<OddsContent> data = [];
+    List<OddsContent> data1 = [];
+    List<OddsContent> data2 = [];
+    List<OddsContent> data3 = [];
 
-    Map<int, WS.Content> arrayMap = {};
+    Map<int, OddsContent> arrayMap = {};
 
     if ("firstBall".contains(mBallName)) {
       for (int i = 0; i < odds.length; i++) {
-        WS.Content content = odds[i];
+        OddsContent content = odds[i];
         if (content.type?.contains(GameRuleUtil.GameType_First)==true) {
           data1.add(content);
         } else if (content.type?.contains(GameRuleUtil.GameType_First_String)==true) {
@@ -1154,7 +1155,7 @@ class GameRuleUtil {
 
     } else if ("secondBall".contains(mBallName)) {
       for (int i = 0; i < odds.length; i++) {
-        WS.Content content = odds[i];
+        OddsContent content = odds[i];
         if (content.type?.contains(GameRuleUtil.GameType_Second_String)==true || content.type?.contains(GameRuleUtil.GameType_equal)==true) {
           if (content.type?.contains(GameRuleUtil.GameType_Second)==true) {
             data1.add(content);
@@ -1170,7 +1171,7 @@ class GameRuleUtil {
 
     } else if ("threeBall".contains(mBallName)) {
       for (int i = 0; i < odds.length; i++) {
-        WS.Content content = odds[i];
+        OddsContent content = odds[i];
         if (content.type?.contains(GameRuleUtil.GameType_Three_String)==true || content.type?.contains(GameRuleUtil.GameType_tiger)==true) {
           if (content.type?.contains(GameRuleUtil.GameType_Three)==true) {
             data1.add(content);
@@ -1182,16 +1183,16 @@ class GameRuleUtil {
         }
       }
     }
-    data1.sort((left,right)=>left.type?.compareTo(right?.type??"")??1);
+    data1.sort((left,right)=>left.type?.compareTo(right.type??"")??1);
 
-    // Comparator<WS.Content> comparator =  Comparator<WS.Content>() {
-    //   public int compare(WS.Content s1, WS.Content s2) {
+    // Comparator<OddsContent> comparator =  Comparator<OddsContent>() {
+    //   public int compare(OddsContent s1, OddsContent s2) {
     //     return s1.type.compareTo(s2.type);
     //   }
     // };
     // Collections.sort(data1, comparator);
     for (int i = 0; i < arrayMap.length; i++) {
-      data2.add(arrayMap[i]??Content());
+      data2.add(arrayMap[i]??OddsContent());
     }
     data.addAll(data1);
     data.addAll(data2);
@@ -1201,7 +1202,7 @@ class GameRuleUtil {
     //   initDataTeMa(mViews.get(i), data.get(i));
     // }
   }
-   static void setSecondBallData(Map<int, WS.Content> arrayMap, WS.Content content) {
+   static void setSecondBallData(Map<int, OddsContent> arrayMap, OddsContent content) {
     if (content.type?.contains(GameRuleUtil.GameType_Big)==true) {
       arrayMap[0]= content;
     }

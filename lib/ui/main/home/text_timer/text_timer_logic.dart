@@ -62,9 +62,9 @@ class TextTimerLogic {
     var diffTime =
         pc28PlanEntity.timestamp! - DateTime.now().millisecondsSinceEpoch;
     countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if(gameCode=="keno28"){
-        print("======>");
-      }
+      // if(gameCode=="keno28"){
+      //   print("======>");
+      // }
       // try{
         timeCountOnly(diffTime, pc28lottoRoom, pc28PlanEntity);
       // }catch(e) {
@@ -77,6 +77,8 @@ class TextTimerLogic {
       }
     });
   }
+
+
   void timeCountOnly(
       diffTime, Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28planEntity) {
     Map<String, dynamic> allTime = pc28planEntity.all!.toJson();
@@ -147,7 +149,7 @@ class TextTimerLogic {
         }
       }
     }
-    state.text_timer.value = roomcountdown[key + 'Time']??"";
+    state.text_timer.value = roomcountdown['${key}Time'] ?? "";
 
   }
 

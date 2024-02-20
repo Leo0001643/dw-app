@@ -36,11 +36,11 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
   ScrollController scrollController = ScrollController();
   RxString term = "".obs;
   WSLotteryEntityData? headWSLotteryEntityData;
-  RxList<WS.Content> odds=<WS.Content>[].obs;
+  RxList<OddsContent> odds=<OddsContent>[].obs;
 
-  RxList<WS.Content> dataBettingList=<WS.Content>[].obs;
+  RxList<OddsContent> dataBettingList=<OddsContent>[].obs;
 
-  RxList<WS.Content> selectBettingList=<WS.Content>[].obs;
+  RxList<OddsContent> selectBettingList=<OddsContent>[].obs;
 
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
 
@@ -143,12 +143,12 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     // test();
   }
 
-  List<WS.Content>  getDataBettingList(int index,{int? type=0}){
+  List<OddsContent>  getDataBettingList(int index,{int? type=0}){
     String mBallName="";
     switch(index) {
       case 0:
         mBallName="tema";
-        var  dataBettingList=<WS.Content>[];
+        var  dataBettingList=<OddsContent>[];
         dataBettingList= GameRuleUtil.requestTema(odds.value,type:type);
         return dataBettingList;
       case 1:
@@ -260,7 +260,6 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
   void dispose() {
     timer?.cancel();
     AppInst.instance.stopWs();
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -276,37 +275,45 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     GameRoomItemEntity gameRoomItemEntity =
         GameRoomItemEntity(type: type, data: wsLotteryEntity);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
-    if (scrollController.hasClients) {
-      scrollController.jumpTo(scrollController.position.maxScrollExtent);
-    }
     update(["gameRoomLogicList"]);
+
+    Future.delayed(Duration(milliseconds: 100),(){
+      if (scrollController.hasClients) {
+        scrollController.jumpTo(scrollController.position.maxScrollExtent);
+      }
+    });
+
   }
 
   void handleBetResult(String type, GameResponse response) {
     WsBetResultEntity result =
         WsBetResultEntity.fromJson(jsonDecode(response.data));
-    if (AppData.user()?.username == result.username) {
-    } else {}
+    // if (AppData.user()?.username == result.username) {
+    // } else {}
     print("=====>3");
     GameRoomItemEntity gameRoomItemEntity =
         GameRoomItemEntity(type: type, data: result);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
-    if (scrollController.hasClients) {
-      scrollController.jumpTo(scrollController.position.maxScrollExtent);
-    }
-    print("=====>4");
     update(["gameRoomLogicList"]);
+
+    Future.delayed(Duration(milliseconds: 100),(){
+      if (scrollController.hasClients) {
+        scrollController.jumpTo(scrollController.position.maxScrollExtent);
+      }
+    });
+    print("=====>4");
   }
 
   void handleSystemMessgeResult(String type, GameResponse response) {
     GameRoomItemEntity gameRoomItemEntity =
         GameRoomItemEntity(type: type, data: response.data);
-
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
-    if (scrollController.hasClients) {
-      scrollController.jumpTo(scrollController.position.maxScrollExtent);
-    }
     update(["gameRoomLogicList"]);
+    Future.delayed(Duration(milliseconds: 100),(){
+      if (scrollController.hasClients) {
+        scrollController.jumpTo(scrollController.position.maxScrollExtent);
+      }
+    });
   }
 
   void handleMsgGetGif(GameResponse response) {
@@ -325,7 +332,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     GameResponse gameResponse = GameResponse();
     gameResponse.type = countDownLotteryEntity.type;
     gameResponse.data = item;
-    term.value = item?.term ?? "";
+    term.value = item.term ?? "";
     update(["gameRoomComputeWidget"]);
     handleSystemMessgeResult(gameResponse.type ?? "", gameResponse);
   }
@@ -360,8 +367,8 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     }
   }
 
-  void updateBettingDialogItemWidget(WS.Content content) {
-    content.check=!(content?.check??false);
+  void updateBettingDialogItemWidget(OddsContent content) {
+    content.check=!(content.check??false);
     print("=======> inputAmt.value   ${inputAmt.value}");
     if( content.check==true) {
       content.money=inputAmt.value;
@@ -375,25 +382,25 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
 
   void setItemMoney(double money) {
-    for(WS.Content content  in selectBettingList) {
+    for(OddsContent content  in selectBettingList) {
       content.money=money;
     }
   }
   double sumData(){
     double total=0;
-    for(WS.Content content  in selectBettingList) {
+    for(OddsContent content  in selectBettingList) {
       total+= (content?.money??0);
     }
     return total;
   }
   double sumOddsData(){
     double total=0;
-    for(WS.Content content  in selectBettingList) {
+    for(OddsContent content  in selectBettingList) {
       total+=( (content?.money??0)*(double.tryParse(content.contentMap["Key_Odds"]??"0")??0));
     }
     return total;
   }
-  void removeSelect(WS.Content content) {
+  void removeSelect(OddsContent content) {
       selectBettingList.remove(content);
       selectBettingList.refresh();
       update(["bettingList"]);

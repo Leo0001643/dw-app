@@ -33,6 +33,7 @@ class MainLogic extends GetxController {
   @override
   void onClose() {
     changePageSub?.cancel();
+    state.pageController.dispose();
     super.onClose();
   }
 

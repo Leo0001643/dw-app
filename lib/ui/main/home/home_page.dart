@@ -18,9 +18,6 @@ import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/main/home/game_menu_view.dart';
 import 'package:leisure_games/ui/main/home/more_tab_view.dart';
 import 'package:marquee/marquee.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../../../app/utils/dialog_utils.dart';
 import 'home_logic.dart';
 
 class HomePage extends StatefulWidget {

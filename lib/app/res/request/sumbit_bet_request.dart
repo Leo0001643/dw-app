@@ -1,9 +1,8 @@
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 
 import '../game_request.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart'
-    as WS;
 
 class SubmitBetRequest extends GameRequest {
   String? table_id;
@@ -12,7 +11,7 @@ class SubmitBetRequest extends GameRequest {
   String? game_type;
   String? moneyType;
   String? nowTerm;
-  List<WS.Content>? betList;
+  List<OddsContent>? betList;
 
   SubmitBetRequest(
       {this.table_id,
@@ -36,7 +35,7 @@ class SubmitBetRequest extends GameRequest {
     params["moneyType"] = moneyType; // 房间id
     params["now_term"] = nowTerm; // 房间id
     List<Map<String, String>> contentList = [];
-    for (WS.Content content in betList ?? []) {
+    for (OddsContent content in betList ?? []) {
       Map<String, String> map = {};
       map["type"] = content.type ?? "";
       map["money"] = "${content.money}";

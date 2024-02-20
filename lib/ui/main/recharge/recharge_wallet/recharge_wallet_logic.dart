@@ -7,10 +7,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
-import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_offline/recharge_offline_logic.dart';
 import 'package:leisure_games/app/global.dart';
-import 'package:leisure_games/ui/main/recharge/recharge_category/recharge_online/recharge_online_logic.dart';
-
 import 'recharge_wallet_state.dart';
 
 class RechargeWalletLogic extends GetxController {

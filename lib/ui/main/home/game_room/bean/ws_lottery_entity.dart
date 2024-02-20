@@ -1,3 +1,8 @@
+
+import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/generated/json/ws_lottery_entity.g.dart';
+
+@JsonSerializable()
 class WSLotteryEntity {
   List<WSLotteryEntityData>? data;
   int? time;
@@ -30,6 +35,7 @@ class WSLotteryEntity {
   }
 }
 
+@JsonSerializable()
 class WSLotteryEntityData {
   String?   originalNum;
   String? gameType;
@@ -50,27 +56,11 @@ class WSLotteryEntityData {
         this.openTime,
         this.luckyNum});
 
-  WSLotteryEntityData.fromJson(Map<String, dynamic> json) {
-    originalNum = "${json['originalNum']}";
-    gameType = "${json['gameType']}";
-    billCount = "${json['billCount']}";
-    closeTime = "${json['closeTime']}";
-    term ="${json['term']}";
-    state = "${json['state']}";
-    openTime = "${json['openTime']}";
-    luckyNum ="${json['luckyNum']}";
-  }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['originalNum'] = this.originalNum;
-    data['gameType'] = this.gameType;
-    data['billCount'] = this.billCount;
-    data['closeTime'] = this.closeTime;
-    data['term'] = this.term;
-    data['state'] = this.state;
-    data['openTime'] = this.openTime;
-    data['luckyNum'] = this.luckyNum;
-    return data;
-  }
+  factory WSLotteryEntityData.fromJson(Map<String, dynamic> json) => $WSLotteryEntityDataFromJson(json);
+
+  Map<String, dynamic> toJson() => $WSLotteryEntityDataToJson(this);
+
+
+
 }

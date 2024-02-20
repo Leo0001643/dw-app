@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
@@ -13,7 +14,7 @@ import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 class BettingSmallItemWidget extends StatelessWidget {
   Map<String,String> keyMap={};
   int index=0;
-  WS.Content  content;
+  OddsContent content;
   bool? useNoColor=false;
   BettingSmallItemWidget(this.index,this.content,{super.key,this.useNoColor});
 
@@ -50,7 +51,7 @@ class BettingSmallItemWidget extends StatelessWidget {
                 width: 0.5,
                 color:Colors.white
             ),
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: BorderRadius.all(Radius.circular(8.r)),
             gradient: const LinearGradient(
                 begin : Alignment.topCenter,
                 end : Alignment.bottomCenter,
@@ -68,7 +69,7 @@ class BettingSmallItemWidget extends StatelessWidget {
                 color:Colors.white
             ),
             borderRadius: BorderRadius.all(Radius.circular(8)),
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
                 begin : Alignment.topCenter,
                 end : Alignment.bottomCenter,
                 colors: [Colors.white, Color(0xFFF3F4F9)]),
@@ -88,15 +89,15 @@ class BettingSmallItemWidget extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(28)),
                 ),
-                child: Text("${result}",style: TextStyle(
+                child: Text(result,style: TextStyle(
                     fontSize:13,
                     color:useNoColor==true?Color(0xFF091722):GameRuleUtil.colorMap[index%6]??Color(0xFF06A100),
                     fontWeight: FontWeight.w700
                 ),),
               ),
               Text("${content.play}",style: TextStyle(
-                  fontSize:13,
-                  color: Color(0xFFD73547),
+                  fontSize:13.sp,
+                  color: const Color(0xFFD73547),
                   fontWeight: FontWeight.w500
               ),),
             ],
@@ -105,8 +106,7 @@ class BettingSmallItemWidget extends StatelessWidget {
       );
     });
   }
-  saveColorType( WS.Content con)
-   {
+  saveColorType(OddsContent con) {
      if (con.type?.contains(GameRuleUtil.GameType_Second)==true) {
        setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Second);
        setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Second_Cao_Bet);

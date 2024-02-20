@@ -7,11 +7,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/res/colorx.dart';
-import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart'
-    as WS;
 
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
@@ -32,8 +28,8 @@ class BettingChildPage extends StatefulWidget {
 
 class BettingChildPageState extends State<BettingChildPage> {
   var selectPhrases = (-1).obs;
-  List<WS.Content> dataBettingList1=<WS.Content>[];
-  List<WS.Content> dataBettingList2=<WS.Content>[];
+  List<OddsContent> dataBettingList1=<OddsContent>[];
+  List<OddsContent> dataBettingList2=<OddsContent>[];
   ///实际显示使用的列表
   var showList = RxList.empty(growable: true);
 
@@ -49,7 +45,7 @@ class BettingChildPageState extends State<BettingChildPage> {
     return GetBuilder<GameRoomLogic>(
         id: "bettingList",
         builder: (logic) {
-      Map<int, WS.Content> arrayMap = {};
+      Map<int, OddsContent> arrayMap = {};
       print("--------->数据${dataBettingList1.length}");
       return Container(
         width: 1.sw,
@@ -159,7 +155,7 @@ class BettingChildPageState extends State<BettingChildPage> {
     });
   }
 
-  Widget buildSizeCard(WS.Content  data ) {
+  Widget buildSizeCard(OddsContent  data ) {
     print("---->${jsonEncode(data.toJson())}");
     return  GFCard(
       height: 63.h,
@@ -315,7 +311,7 @@ class BettingChildPageState extends State<BettingChildPage> {
 
   void initItem() {
     GameRoomLogic logic=Get.find<GameRoomLogic>();
-    List<WS.Content> total=logic.getDataBettingList(widget.index);
+    List<OddsContent> total=logic.getDataBettingList(widget.index);
     if(total.length>5) {
       dataBettingList1=total.sublist(0,total.length-5);
       dataBettingList2=total.sublist(total.length-5,total.length);

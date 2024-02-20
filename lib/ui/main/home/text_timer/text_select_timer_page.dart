@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
@@ -54,14 +55,15 @@ class _TextTimerPageState extends State<TextSelectTimerPage> {
       if (!widget.logic.state.text_timer.value.contains(Intr().fengpanzhong)) {
         if (widget.logic.state.text_timer.value.startsWith (Intr().dengdaikaipan)) {
           return Text(widget.logic.state.text_timer.value,
-              style: TextStyle(color: Colors.greenAccent));
+              style: TextStyle(color: Colors.greenAccent,fontSize: 11.sp),textAlign: TextAlign.center,);
         }
         return Text(widget.logic.state.text_timer.value,
-            style: const TextStyle(fontWeight: FontWeight.w700,color: ColorX.color_333333));
+            style: TextStyle(fontWeight: FontWeight.w700,color: ColorX.color_333333,fontSize: 11.sp));
       } else {
         return Text(
           widget.logic.state.text_timer.value,
-          style: TextStyle(color: Colors.red,fontWeight: FontWeight.w700,),
+          style: TextStyle(color: Colors.red,fontWeight: FontWeight.w700,fontSize: 11.sp),
+          textAlign: TextAlign.center,
         );
       }
 
