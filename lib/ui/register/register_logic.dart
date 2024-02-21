@@ -102,6 +102,8 @@ class RegisterLogic extends GetxController {
       eventBus.fire(LoginRefreshEvent());
       AppData.setUser(value);
       Get.until((ModalRoute.withName(Routes.main)));
+    },onError: (error){
+      getVarcode();///出错需要刷新验证码
     });
   }
 }

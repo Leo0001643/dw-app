@@ -617,6 +617,8 @@ class Intr extends Translations{
   String get tixianfangshi => 'tixianfangshi'.tr;
   String get yhk => 'yhk'.tr;
   String xqianbao_(List<String> args) => 'xqianbao'.trArgs(args);
+  String xianlu_(List<String> args) => 'xianlu_'.trArgs(args);
+  String get entry => 'entry'.tr;
 
 
   @override

@@ -870,8 +870,8 @@ class VI{
     "chongzhixingming":"Name",
     "dingdanbianhao":"Số thứ tự",
     "chongzhijine":"Số tiền nạp",
-    "zhongwenjianti":"Tiếng Việt",
-    "yingyu":"Tiếng Việt",
+    "zhongwenjianti":"Trung quốc đơn giản",
+    "yingyu":"Tiếng anh",
     "yuenanyu":"Tiếng Việt",
     "jintian":"Hôm nay",
     "zuijin7tain":"7 ngày gần đây",
@@ -985,5 +985,7 @@ class VI{
     "tixianfangshi":"Kênh rút tiền",
     "yhk":"Thẻ ngân hàng",
     "xqianbao":"%s ví",
+    "xianlu_":"Tuyến đường %s",
+
   };
 }

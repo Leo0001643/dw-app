@@ -244,7 +244,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
     );
   }
 
-  Future<RouteTest> testApiDelay(String baseUrl, String apiurl) async {
+/*  Future<RouteTest> testApiDelay(String baseUrl, String apiurl) async {
     apiurl = apiurl.startsWith("http") ? apiurl : "http://${apiurl}";
     final uri = Uri.parse(apiurl); // 替换为你要测试的接口地址
     final stopwatch = Stopwatch();
@@ -253,6 +253,6 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
     stopwatch.stop(); // 停止计时器
     final duration = stopwatch.elapsed; // 获取经过的时间
     loggerArray(["访问延时，状态", duration.inMilliseconds, response.statusCode]);
-    return Future.value(RouteTest(duration.inMilliseconds, baseUrl));
-  }
+    return Future.value(RouteTest(duration.inMilliseconds,"", baseUrl));
+  }*/
 }

@@ -982,6 +982,8 @@ class CN {
     "tixianfangshi":"提现方式",
     "yhk":"银行卡",
     "xqianbao":"%s钱包",
+    "xianlu_":"线路%s",
+
 
   };
 

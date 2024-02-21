@@ -9,6 +9,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/route_test.dart';
 
 class AccessRouteDialog extends StatefulWidget{
@@ -30,11 +31,16 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
   @override
   void initState() {
     routes.clear();
-    widget.list.forEach((element) async {
-      var apiurl = element+widget.path;
-      loggerArray(["输出查询线路",element+widget.path]);
-      var route = await testApiDelay(element,apiurl);
-      routes.add(route);
+    for(var i=0;i<widget.list.length;i++){
+      routes.add(RouteTest(0, Intr().xianlu_(["${i+1}"]), widget.list[i]));
+    }
+    loggerArray(["输出查询线路",routes.value]);
+
+    routes.refresh();
+    routes.forEach((element) async {
+      var apiurl = element.url+widget.path;
+      element.delayTime = await testApiDelay(apiurl);
+      routes[routes.indexOf(element)] = element;
       routes.refresh();
     });
     super.initState();
@@ -149,10 +155,22 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
         child: Row(
           children: [
             SizedBox(width: 20.w,),
-            Text("${route.delayTime}mm",style: TextStyle(fontSize: 16.sp,color: color),),
-            Expanded(child: Container()),
-            Image.asset(ImageX.icon_right_black),
+            Text(route.title,style: TextStyle(fontSize: 16.sp,color: ColorX.color_333333),),
             SizedBox(width: 10.w,),
+            Expanded(
+              child: Visibility(
+                visible: route.delayTime > 0,
+                child: Text("${route.delayTime}mm",style: TextStyle(fontSize: 16.sp,color: color),),
+              ),
+            ),
+            // Image.asset(ImageX.icon_right_black),
+            Container(
+              height: 45.h,
+              width: 40.w,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(color: ColorX.color_68_e2e,borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),bottomRight: Radius.circular(10.r))),
+              child: Text(Intr().entry,style: TextStyle(fontSize: 14.sp,color: ColorX.color_333333),),
+            ),
           ],
         ),
       ),
@@ -160,7 +178,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
   }
 
 
-  Future<RouteTest> testApiDelay(String baseUrl,String apiurl) async {
+  Future<int> testApiDelay(String apiurl) async {
     apiurl = apiurl.startsWith("http") ? apiurl : "http://${apiurl}";
     final uri = Uri.parse(apiurl); // 替换为你要测试的接口地址
     final stopwatch = Stopwatch();
@@ -169,7 +187,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
     stopwatch.stop(); // 停止计时器
     final duration = stopwatch.elapsed; // 获取经过的时间
     loggerArray(["访问延时，状态",duration.inMilliseconds,response.statusCode]);
-    return Future.value(RouteTest(duration.inMilliseconds, baseUrl));
+    return Future.value(duration.inMilliseconds);
   }
 
 

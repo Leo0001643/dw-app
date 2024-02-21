@@ -94,6 +94,8 @@ class LoginLogic extends GetxController {
       AppData.setLoginPwd(state.pwdValue);
 
       Get.until((ModalRoute.withName(Routes.main)));
+    },onError: (error){
+      getVarcode();///出错需要刷新验证码
     });
   }
 

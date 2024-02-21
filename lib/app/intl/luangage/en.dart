@@ -1056,6 +1056,8 @@ class EN{
     "tixianfangshi":"Withdrawal channel",
     "yhk":"bank card",
     "xqianbao":"%s Wallet",
+    "xianlu_":"line %s",
+
   };
 
 }
