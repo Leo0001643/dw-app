@@ -337,7 +337,10 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<ShakeInfoEntity>> getShakeInfo(@Queries() Map<String,dynamic> params,);
 
   @POST('/ds-api-web/betShake')
-  Future<BaseResponseEntity<List<BetShakeEntity>>> betShake(@Queries() Map<String,dynamic> params,);
+  Future<BaseResponseEntity<List<BetShakeEntity>>> betShake(@Body() Map<String,dynamic> params,);
+
+  @POST('/ds-api-web/switchLanguage')
+  Future<BaseResponseEntity<String>> switchLanguage(@Body() Map<String,dynamic> params,);
 
 
 

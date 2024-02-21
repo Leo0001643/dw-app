@@ -113,6 +113,8 @@ class ProxyRegisterLogic extends GetxController {
       //{code: 100000, message: {zh: 成功}, data: 1000431}
       showToast(Intr().caozuochenggong);
       Get.back();
+    },onError: (error){
+      getVarcode();///出错需要刷新验证码
     });
 
   }

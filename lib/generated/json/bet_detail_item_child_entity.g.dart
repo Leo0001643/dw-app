@@ -39,19 +39,27 @@ extension BetDetailItemChildEntityExtension on BetDetailItemChildEntity {
 
 Record $RecordFromJson(Map<String, dynamic> json) {
   final Record record = Record();
+  final int? siteId = jsonConvert.convert<int>(json['siteId']);
+  if (siteId != null) {
+    record.siteId = siteId;
+  }
   final String? username = jsonConvert.convert<String>(json['username']);
   if (username != null) {
     record.username = username;
   }
-  final num? betamount = jsonConvert.convert<num>(json['betamount']);
+  final String? tableId = jsonConvert.convert<String>(json['tableId']);
+  if (tableId != null) {
+    record.tableId = tableId;
+  }
+  final String? betamount = jsonConvert.convert<String>(json['betamount']);
   if (betamount != null) {
     record.betamount = betamount;
   }
-  final num? validamount = jsonConvert.convert<num>(json['validamount']);
+  final String? validamount = jsonConvert.convert<String>(json['validamount']);
   if (validamount != null) {
     record.validamount = validamount;
   }
-  final num? winlose = jsonConvert.convert<num>(json['winlose']);
+  final int? winlose = jsonConvert.convert<int>(json['winlose']);
   if (winlose != null) {
     record.winlose = winlose;
   }
@@ -75,32 +83,26 @@ Record $RecordFromJson(Map<String, dynamic> json) {
   if (qishu != null) {
     record.qishu = qishu;
   }
-  final String? item = jsonConvert.convert<String>(json['item']);
-  if (item != null) {
-    record.item = item;
-  }
-  final String? play = jsonConvert.convert<String>(json['play']);
-  if (play != null) {
-    record.play = play;
-  }
   final String? odds = jsonConvert.convert<String>(json['odds']);
   if (odds != null) {
     record.odds = odds;
   }
+  final String? odds2 = jsonConvert.convert<String>(json['odds2']);
+  if (odds2 != null) {
+    record.odds2 = odds2;
+  }
   final String? txt1 = jsonConvert.convert<String>(json['txt1']);
   if (txt1 != null) {
     record.txt1 = txt1;
-  }
-  final String? txt2 = jsonConvert.convert<String>(json['txt2']);
-  if (txt2 != null) {
-    record.txt2 = txt2;
   }
   return record;
 }
 
 Map<String, dynamic> $RecordToJson(Record entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
+  data['siteId'] = entity.siteId;
   data['username'] = entity.username;
+  data['tableId'] = entity.tableId;
   data['betamount'] = entity.betamount;
   data['validamount'] = entity.validamount;
   data['winlose'] = entity.winlose;
@@ -109,33 +111,33 @@ Map<String, dynamic> $RecordToJson(Record entity) {
   data['gameName'] = entity.gameName;
   data['billNo'] = entity.billNo;
   data['qishu'] = entity.qishu;
-  data['item'] = entity.item;
-  data['play'] = entity.play;
   data['odds'] = entity.odds;
+  data['odds2'] = entity.odds2;
   data['txt1'] = entity.txt1;
-  data['txt2'] = entity.txt2;
   return data;
 }
 
 extension RecordExtension on Record {
   Record copyWith({
+    int? siteId,
     String? username,
-    num? betamount,
-    num? validamount,
-    num? winlose,
+    String? tableId,
+    String? betamount,
+    String? validamount,
+    int? winlose,
     String? betTime,
     String? gameType,
     String? gameName,
     String? billNo,
     String? qishu,
-    String? item,
-    String? play,
     String? odds,
+    String? odds2,
     String? txt1,
-    String? txt2,
   }) {
     return Record()
+      ..siteId = siteId ?? this.siteId
       ..username = username ?? this.username
+      ..tableId = tableId ?? this.tableId
       ..betamount = betamount ?? this.betamount
       ..validamount = validamount ?? this.validamount
       ..winlose = winlose ?? this.winlose
@@ -144,32 +146,35 @@ extension RecordExtension on Record {
       ..gameName = gameName ?? this.gameName
       ..billNo = billNo ?? this.billNo
       ..qishu = qishu ?? this.qishu
-      ..item = item ?? this.item
-      ..play = play ?? this.play
       ..odds = odds ?? this.odds
-      ..txt1 = txt1 ?? this.txt1
-      ..txt2 = txt2 ?? this.txt2;
+      ..odds2 = odds2 ?? this.odds2
+      ..txt1 = txt1 ?? this.txt1;
   }
 }
 
 Total $TotalFromJson(Map<String, dynamic> json) {
   final Total total = Total();
-  final num? betAmountTotal = jsonConvert.convert<num>(json['betAmountTotal']);
+  final int? betAmountTotal = jsonConvert.convert<int>(json['betAmountTotal']);
   if (betAmountTotal != null) {
     total.betAmountTotal = betAmountTotal;
   }
-  final num? validAmountTotal = jsonConvert.convert<num>(
+  final double? validAmountTotal = jsonConvert.convert<double>(
       json['validAmountTotal']);
   if (validAmountTotal != null) {
     total.validAmountTotal = validAmountTotal;
   }
-  final num? winloseTotal = jsonConvert.convert<num>(json['winloseTotal']);
+  final double? winloseTotal = jsonConvert.convert<double>(
+      json['winloseTotal']);
   if (winloseTotal != null) {
     total.winloseTotal = winloseTotal;
   }
-  final num? betCountTotal = jsonConvert.convert<num>(json['betCountTotal']);
+  final int? betCountTotal = jsonConvert.convert<int>(json['betCountTotal']);
   if (betCountTotal != null) {
     total.betCountTotal = betCountTotal;
+  }
+  final String? currency = jsonConvert.convert<String>(json['currency']);
+  if (currency != null) {
+    total.currency = currency;
   }
   return total;
 }
@@ -180,20 +185,23 @@ Map<String, dynamic> $TotalToJson(Total entity) {
   data['validAmountTotal'] = entity.validAmountTotal;
   data['winloseTotal'] = entity.winloseTotal;
   data['betCountTotal'] = entity.betCountTotal;
+  data['currency'] = entity.currency;
   return data;
 }
 
 extension TotalExtension on Total {
   Total copyWith({
-    num? betAmountTotal,
-    num? validAmountTotal,
-    num? winloseTotal,
-    num? betCountTotal,
+    int? betAmountTotal,
+    double? validAmountTotal,
+    double? winloseTotal,
+    int? betCountTotal,
+    String? currency,
   }) {
     return Total()
       ..betAmountTotal = betAmountTotal ?? this.betAmountTotal
       ..validAmountTotal = validAmountTotal ?? this.validAmountTotal
       ..winloseTotal = winloseTotal ?? this.winloseTotal
-      ..betCountTotal = betCountTotal ?? this.betCountTotal;
+      ..betCountTotal = betCountTotal ?? this.betCountTotal
+      ..currency = currency ?? this.currency;
   }
 }

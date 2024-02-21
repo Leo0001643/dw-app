@@ -581,68 +581,80 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                InkWell(
-                  onTap: () => Get.toNamed(Routes.quota_conversion),
-                  child: Column(
-                    children: [
-                      Image.asset(ImageX.icon_edzh),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Text(
-                        Intr().edzh,
-                        style: TextStyle(
-                            fontSize: 11.sp, color: ColorX.text0917()),
-                      ),
-                    ],
+                Expanded(
+                  child: InkWell(
+                    onTap: () => Get.toNamed(Routes.quota_conversion),
+                    child: Column(
+                      children: [
+                        Image.asset(ImageX.icon_edzh),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Text(
+                          Intr().edzh,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 11.sp, color: ColorX.text0917()),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                InkWell(
-                  onTap: () => Get.toNamed(Routes.betting_details),
-                  child: Column(
-                    children: [
-                      Image.asset(ImageX.icon_pc),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Text(
-                        Intr().pcxq,
-                        style: TextStyle(
-                            fontSize: 11.sp, color: ColorX.text0917()),
-                      ),
-                    ],
+                Expanded(
+                  child: InkWell(
+                    onTap: () => Get.toNamed(Routes.betting_details),
+                    child: Column(
+                      children: [
+                        Image.asset(ImageX.icon_pc),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Text(
+                          Intr().pcxq,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 11.sp, color: ColorX.text0917()),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                InkWell(
-                  onTap: () => Get.toNamed(Routes.betting_record),
-                  child: Column(
-                    children: [
-                      Image.asset(ImageX.icon_tzjl),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Text(
-                        Intr().tzjl,
-                        style: TextStyle(
-                            fontSize: 11.sp, color: ColorX.text0917()),
-                      ),
-                    ],
+                Expanded(
+                  child: InkWell(
+                    onTap: () => Get.toNamed(Routes.betting_record),
+                    child: Column(
+                      children: [
+                        Image.asset(ImageX.icon_tzjl),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Text(
+                          Intr().tzjl,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 11.sp, color: ColorX.text0917()),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                InkWell(
-                  onTap: () => Get.toNamed(Routes.set_simple_pwd),
-                  child: Column(
-                    children: [
-                      Image.asset(ImageX.icon_jymm),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      Text(
-                        Intr().jymm,
-                        style: TextStyle(
-                            fontSize: 11.sp, color: ColorX.text0917()),
-                      ),
-                    ],
+                Expanded(
+                  child: InkWell(
+                    onTap: () => Get.toNamed(Routes.set_simple_pwd),
+                    child: Column(
+                      children: [
+                        Image.asset(ImageX.icon_jymm),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        Text(
+                          Intr().jymm,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 11.sp, color: ColorX.text0917()),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

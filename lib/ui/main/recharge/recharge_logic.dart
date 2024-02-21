@@ -8,6 +8,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 
@@ -16,6 +17,7 @@ import 'recharge_state.dart';
 class RechargeLogic extends GetxController {
   final RechargeState state = RechargeState();
   StreamSubscription? loginStream;
+  StreamSubscription? languageStream;
 
   @override
   void onReady() {
@@ -28,11 +30,16 @@ class RechargeLogic extends GetxController {
       state.user.value = AppData.user() ?? LoginUserEntity();
       state.user.refresh();
     });
+    ///语言国际化更新
+    languageStream = eventBus.on<LanguageEvent>().listen((event) {
+      loadData();
+    });
     super.onReady();
   }
 
   @override
   void onClose() {
+    languageStream?.cancel();
     loginStream?.cancel();
     super.onClose();
   }

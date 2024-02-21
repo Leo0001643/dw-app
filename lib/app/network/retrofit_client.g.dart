@@ -2760,9 +2760,9 @@ class _RetrofitClient implements RetrofitClient {
       Map<String, dynamic> params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(params);
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(params);
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponseEntity<List<BetShakeEntity>>>(Options(
       method: 'POST',
@@ -2788,6 +2788,38 @@ class _RetrofitClient implements RetrofitClient {
                   (i) => BetShakeEntity.fromJson(i as Map<String, dynamic>))
               .toList()
           : List.empty(),
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseResponseEntity<String>> switchLanguage(
+      Map<String, dynamic> params) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(params);
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseEntity<String>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/ds-api-web/switchLanguage',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseEntity<String>.fromJson(
+      _result.data!,
+      (json) => json as String,
     );
     return value;
   }

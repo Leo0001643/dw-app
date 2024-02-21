@@ -448,7 +448,9 @@ class HttpService{
     return buildFuture<Pc28PlanEntity>(()=> _client.getPC28Plan(termCount),loading: false);
   }
 
-
+  static Future<String> switchLanguage(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.switchLanguage(params));
+  }
 
 
 

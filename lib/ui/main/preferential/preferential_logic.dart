@@ -1,23 +1,31 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 
 import 'preferential_state.dart';
 
 class PreferentialLogic extends GetxController {
   final PreferentialState state = PreferentialState();
+  StreamSubscription? languageStream;
 
   @override
   void onReady() {
     loadData();
+    ///语言国际化更新
+    languageStream = eventBus.on<LanguageEvent>().listen((event) {
+      loadData();
+    });
     super.onReady();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
+    languageStream?.cancel();
     super.onClose();
   }
 

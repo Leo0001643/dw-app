@@ -47,7 +47,9 @@ class _WithdrawChannelPageState extends State<WithdrawChannelPage> {
                 child: SingleChildScrollView(
                   child: Obx(() {
                     var list = List.empty(growable: true);
-                    if(unEmpty(state.userDraw.value.banks)){ list.addAll(state.userDraw.value.banks); }
+                    if(unEmpty(state.userDraw.value.banks)){
+                      list.add(state.userDraw.value.banks.first);
+                    }
                     state.userDraw.value.dcBanks.forEach((element) {
                       if(element.type?.startsWith('USDT') == false){
                         list.add(element);

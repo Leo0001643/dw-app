@@ -6,9 +6,14 @@ class RouteTest{
 
   String url;
 
-  RouteTest(this.delayTime, this.url);
+  String title;
 
+  RouteTest(this.delayTime, this.title, this.url);
 
+  @override
+  String toString() {
+    return title;
+  }
 
 }
 

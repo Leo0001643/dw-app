@@ -121,10 +121,10 @@ class _BettingDetailChildPageState extends State<BettingDetailChildPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                Wrap(
-                 children: [ Text("${item?.gameName}",style: TextStyle(color: Colors.red,fontSize: 12),),
-                   Text("${item?.play}",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                 children: [ Text("${item?.gameName.em()}",style: TextStyle(color: Colors.red,fontSize: 12),),
+                   Text("${item?.txt1.em()}",style: TextStyle(color: Colors.grey,fontSize: 12),),
                    Text("@",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                   Text("${item?.odds}",style: TextStyle(color: Colors.red,fontSize: 12),),
+                   Text("${item?.odds.em()} ${item?.odds2.em()}",style: TextStyle(color: Colors.red,fontSize: 12),),
                  ],
                )
               ],

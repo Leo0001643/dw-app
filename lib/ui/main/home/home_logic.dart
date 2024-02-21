@@ -7,6 +7,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -14,6 +15,7 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
+import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
@@ -28,6 +30,8 @@ import 'home_state.dart';
 class HomeLogic extends GetxController {
   final HomeState state = HomeState();
   StreamSubscription? loginStream;
+  StreamSubscription? languageStream;
+
   var count = 100; //测试倒计时
   @override
   void onReady() {
@@ -41,6 +45,11 @@ class HomeLogic extends GetxController {
       state.user.value = AppData.user() ?? LoginUserEntity();
       state.user.refresh();
     });
+    ///语言国际化更新
+    languageStream = eventBus.on<LanguageEvent>().listen((event) {
+      loadData();
+      loadUserData();
+    });
     super.onReady();
   }
 
@@ -48,6 +57,7 @@ class HomeLogic extends GetxController {
   void onClose() {
     state.timer?.cancel();
     loginStream?.cancel();
+    languageStream?.cancel();
     super.onClose();
   }
 

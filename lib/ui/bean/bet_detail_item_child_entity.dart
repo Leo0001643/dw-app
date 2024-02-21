@@ -28,20 +28,21 @@ class BetDetailItemChildEntity {
 
 @JsonSerializable()
 class Record {
+  int? siteId;
   String? username;
-  num? betamount;
-  num? validamount;
-  num? winlose;
+  String? tableId;
+  String? betamount;
+  String? validamount;
+  int? winlose;
   String? betTime;
   String? gameType;
   String? gameName;
   String? billNo;
   String? qishu;
-  String? item;
-  String? play;
   String? odds;
+  String? odds2;
   String? txt1;
-  String? txt2;
+
 
   Record();
 
@@ -59,17 +60,13 @@ class Record {
 
 @JsonSerializable()
 class Total {
-  num? betAmountTotal;
-  num? validAmountTotal;
-  num? winloseTotal;
-  num? betCountTotal;
+  int? betAmountTotal;
+  double? validAmountTotal;
+  double? winloseTotal;
+  int? betCountTotal;
+  String? currency;
 
-  Total({
-    this.betAmountTotal,
-    this.validAmountTotal,
-    this.winloseTotal,
-    this.betCountTotal,
-  });
+  Total();
 
   factory Total.fromJson(Map<String, dynamic> json) =>
       $TotalFromJson(json);
