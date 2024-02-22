@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' ;
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
@@ -625,28 +627,34 @@ class GameRuleUtil {
   /**
    * sum为-1时，显示问号
    */
-  static String getDXDS(int sum) {
-    String ssb;
+  static Widget getDXDS(int sum) {
     if (sum == -1) {
-      ssb = "(? ?)";
+      return Text("(? ?)",style: TextStyle(fontSize: 14.sp,color: ColorX.color_333333,fontWeight: FontWeight.w600),);
     } else {
-      String da = "大";
-      String xiao = "小";
-      String shaung = "双";
-      String dan = "单";
+      String da = Intr().bet_da;
+      String xiao = Intr().bet_xiao;
+      String shaung = Intr().bet_shuang;
+      String dan = Intr().bet_dan;
 
       String qian = sum < 14 ? xiao : da;
+      var qianColor = sum < 14 ? ColorX.color_5583e7:ColorX.color_fc243b;
       String hou = sum % 2 == 0 ? shaung : dan;
+      var houColor = sum % 2 == 0 ? ColorX.color_5583e7:ColorX.color_fc243b;
 
-      ssb = "(" + qian + " " + hou + ")";
+      return Text.rich(TextSpan(
+        children: [
+          TextSpan(text: "(",style: TextStyle(fontSize: 14.sp,color: ColorX.color_333333,fontWeight: FontWeight.w600),),
+          TextSpan(text: qian,style: TextStyle(fontSize: 14.sp,color: qianColor,fontWeight: FontWeight.w600),),
+          TextSpan(text: hou,style: TextStyle(fontSize: 14.sp,color: houColor,fontWeight: FontWeight.w600),),
+          TextSpan(text: ")",style: TextStyle(fontSize: 14.sp,color: ColorX.color_333333,fontWeight: FontWeight.w600),),
+        ]
+      ));
       // ssb.setSpan(new ForegroundColorSpan((sum < 14) ? HiRes.INSTANCE.getColor(R.color.number_blue) : Color.RED), 1, qian.length() + 1,
       // Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
       // ssb.setSpan(new ForegroundColorSpan((sum % 2 == 0) ? HiRes.INSTANCE.getColor(R.color.number_blue) : Color.RED), ("(" + qian + " ").length(), ("(" + qian + " " + hou).length(),
       // Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
       // }
-      return ssb;
     }
-    return "";
   }
 
   /**

@@ -161,8 +161,8 @@ class HttpService{
     return buildFuture<WebConfigEntity>(()=> _client.getWebConfig(),loading: false);
   }
 
-  static Future<DomainConfigEntity> getDomainConfig(){
-    return buildFuture<DomainConfigEntity>(()=> _client.getDomainConfig(),loading: false);
+  static Future<DomainConfigEntity> getDomainConfig(Map<String,dynamic> params){
+    return buildFuture<DomainConfigEntity>(()=> _client.getDomainConfig(params),loading: false);
   }
 
   static Future<List<GameTypeEntity>> getGameType(){

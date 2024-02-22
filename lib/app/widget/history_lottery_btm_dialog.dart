@@ -37,11 +37,10 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
         ),
         child:   Column(
           children: [
-
             buildHeadTime(logic),
             Container(
-              height:0.69.sh ,
-              child:  ListView.builder(
+              height: 0.69.sh,
+              child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: logic.recentlyWSLotteryEntityData.length,
                 itemBuilder: (context, index) {
@@ -49,7 +48,6 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
                 },
               ),
             )
-
           ],
         ),
       );
@@ -151,30 +149,26 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
     GameRuleUtil.getSSB(logic.term.value, year: "");
     return  Container(
       margin: EdgeInsets.only(left: 14.w,right: 14.w,top: 10.w),
-      decoration: BoxDecoration(
-        color: ColorX.color_fc243b,
-        borderRadius: BorderRadius.only(topRight: Radius.circular(12.w),topLeft: Radius.circular(12.w))
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 12.h),
+      decoration: buildRoomBoxType(logic),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
             Intr().dixqi(["${termData}"]),
             style: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 16.sp,
                 color: Colors.white,
-                fontWeight: FontWeight.w600),
+                fontWeight: FontWeight.w700),
           ),
-          Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [getTimer()],
-          ),
+          getTimer(),
         ],
       ),
     );
   }
+
+
 
   Widget getTimer() {
     // 在这里构建你的 UI，使用 roomInf 数据
@@ -201,71 +195,81 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
             }
           }
           return type == 0 ? Container(
-            width: 50.w,
-            height: 20.w,
-            padding: EdgeInsets.symmetric(
-              horizontal: 4.w,
-            ),
-            alignment: Alignment.center,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(4.w)),
-                color: Color(0xFFFF7F8C)),
+              borderRadius: BorderRadius.circular(5.r),
+              color: Colors.white54,
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 5.w,vertical: 2.h),
+            alignment: Alignment.center,
             child: Text("fengpanzhong".tr,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
-                  fontSize: 12,
+                  fontSize: 16.sp,
                 )),
           ) :
-          Row(
-            children: [
-              Container(
-                  height: 24.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 6.w,
-                  ),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(6.w)),
-                      color: Colors.white),
-                  child: Text(term1,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFFFC243B),
-                        fontSize: 16,
-                      ))),
-              SizedBox(width: 4.w,),
-              Text(":",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 16,
-                  )),
-              SizedBox(width: 4.w,),
-              Container(
-                  height: 24.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 6.w,
-                  ),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(6.w)),
-                      color: Colors.white),
-                  child: Text(term2,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFFFC243B),
-                        fontSize: 16,
-                      ))),
-              SizedBox(width: 4.w,),
-              Text("后结束",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 16,
-                  )),
-            ],
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.r),
+              color: Colors.white54,
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 5.w,vertical: 2.h),
+            child: Row(
+              children: [
+                Text(term1,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      fontSize: 16.sp,
+                    )),
+                SizedBox(width: 4.w,),
+                Text(":",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      fontSize: 16.sp,
+                    )),
+                SizedBox(width: 4.w,),
+                Text(term2,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white,
+                      fontSize: 16.sp,
+                    )),
+                // Text("后结束",
+                //     style: TextStyle(
+                //       fontWeight: FontWeight.w500,
+                //       color: Colors.white,
+                //       fontSize: 16,
+                //     )),
+              ],
+            ),
           );
         });
   }
+
+
+  BoxDecoration buildRoomBoxType(GameRoomLogic logic) {
+    var color = ColorX.color_fc243b;
+    switch (logic.state.roomType.value) {
+      case 1:
+        color = ColorX.color_fc243b;
+        break;
+      case 2:
+        color = Color(0xff363f57);
+        break;
+      case 3:
+        color = ColorX.color_574436;
+        break;
+    }
+    return BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.only(topLeft: Radius.circular(15.r),topRight: Radius.circular(15.r))
+    );
+  }
+
+
 }
+
+
+

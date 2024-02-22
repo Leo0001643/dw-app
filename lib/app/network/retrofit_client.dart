@@ -124,7 +124,7 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<WebConfigEntity>> getWebConfig();
 
   @POST('/ds-api-web/getDomainConfig')
-  Future<BaseResponseEntity<DomainConfigEntity>> getDomainConfig();
+  Future<BaseResponseEntity<DomainConfigEntity>> getDomainConfig(@Body() Map<String,dynamic> params,);
 
   @GET('https://api.j7oum3yp.com/Infos/HistoryHall')
   Future<TrendResponseEntity<String>> historyHall();
@@ -341,8 +341,6 @@ abstract class RetrofitClient{
 
   @POST('/ds-api-web/switchLanguage')
   Future<BaseResponseEntity<String>> switchLanguage(@Body() Map<String,dynamic> params,);
-
-
 
 
 

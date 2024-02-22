@@ -44,6 +44,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6.w),
                 color: Colors.white
             ),
+            alignment: Alignment.center,
             child: buildCurrentTermType(logic, context),
           );
         });
@@ -223,8 +224,8 @@ class GameRecentlyBetWidget extends StatelessWidget {
         headWSLotteryEntityData?.term ?? "", year: ""); // 4
     List<int> arr2 = GameRuleUtil.parseLottery(
         headWSLotteryEntityData?.originalNum ?? ""); //3
-    var color = state.roomType.value == 1 ? ColorX.text0917() : ColorX
-        .color_ffe0ac;
+    // var color = state.roomType.value == 1 ? ColorX.text0917() : ColorX
+    //     .color_ffe0ac;
     return InkWell(
       onTap: () => DialogUtils().showHistoryLotteryBtmDialog(context, logic),
       child: SingleChildScrollView(
@@ -235,14 +236,14 @@ class GameRecentlyBetWidget extends StatelessWidget {
           children: [
             Text.rich(TextSpan(children: [
               TextSpan(
-                text:  "  第",
+                text:  Intr().di,
                 style: TextStyle(
                   fontSize: 12.sp,
                   color: ColorX.color_333333,
                 ),
               ),
               TextSpan(
-                text: "${termData}",
+                text: termData,
                 style: TextStyle(
                   fontSize: 12.sp,
                   color:  ColorX.color_fc243b,
@@ -250,7 +251,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
                 ),
               ),
               TextSpan(
-                text: "期",
+                text: Intr().qi,
                 style: TextStyle(
                   fontSize: 12.sp,
                   color: ColorX.color_333333,
@@ -262,15 +263,15 @@ class GameRecentlyBetWidget extends StatelessWidget {
             buildDrawNum("${arr2[0]}", logic,
                 showWaittingImg: logic.currentStatus.value ==
                     LotteryStatus.sealingPlateStatus),
-            buildDrawMark("+", color),
+            buildDrawMark("+", ColorX.text0917()),
             buildDrawNum("${arr2[1]}", logic,
                 showWaittingImg: logic.currentStatus.value ==
                     LotteryStatus.sealingPlateStatus),
-            buildDrawMark("+", color),
+            buildDrawMark("+", ColorX.text0917()),
             buildDrawNum("${arr2[2]}", logic,
                 showWaittingImg: logic.currentStatus.value ==
                     LotteryStatus.sealingPlateStatus),
-            buildDrawMark("=", color),
+            buildDrawMark("=", ColorX.text0917()),
             buildDrawResult("${arr2[3]}", logic,
                 color: GameRuleUtil.getBallNewColor(arr2[3]),
                 showWaittingImg: logic.currentStatus.value ==
@@ -279,10 +280,8 @@ class GameRecentlyBetWidget extends StatelessWidget {
             Visibility(
                 visible: logic.currentStatus.value !=
                     LotteryStatus.sealingPlateStatus,
-                child: Text("${ GameRuleUtil.getDXDS(arr2[3])}",
-                  style: TextStyle(fontSize: 14.sp,
-                      color: color,
-                      fontWeight: FontWeight.w600),)),
+                child: GameRuleUtil.getDXDS(arr2[3]),
+            ),
           ],
         ),
       ),
@@ -294,7 +293,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
     GameRoomState state = logic.state;
     var color1 = state.roomType.value == 1 ? ColorX.color_10_fc2 : ColorX
         .color_c7956f;
-    var textColor1 = state.roomType.value == 1 ? ColorX.color_fc243b : ColorX
+    var textColor1 = state.roomType.value == 1 ? ColorX.color_333333 : ColorX
         .color_091722;
     return Container(
       width: 24.r,
@@ -319,15 +318,15 @@ class GameRecentlyBetWidget extends StatelessWidget {
 
   Widget buildDrawNum(String num, GameRoomLogic logic,
       {showWaittingImg = false}) {
-    GameRoomState state = logic.state;
-    var color = state.roomType.value == 1 ? ColorX.color_f7f8fb : ColorX
-        .color_c7956f;
+    // GameRoomState state = logic.state;
+    // var color = state.roomType.value == 1 ? ColorX.color_f7f8fb : ColorX
+    //     .color_c7956f;
     return Container(
       width: 24.r,
       height: 24.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: color, borderRadius: BorderRadius.circular(15.r),),
+        color: ColorX.color_f7f8fb, borderRadius: BorderRadius.circular(15.r),),
       child: Text(num, style: TextStyle(fontSize: 14.sp,
           color: ColorX.color_091722,
           fontWeight: FontWeight.w600),),

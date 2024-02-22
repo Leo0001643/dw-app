@@ -330,10 +330,19 @@ class HomeLogic extends GetxController {
           }
         });
       }
+
+      ///域名配置
+      HttpService.getDomainConfig({"oid": user.oid, "username": user.username}).then((value) {
+        state.domainConfig = value;
+      });
+
     } else {
       state.user.value = LoginUserEntity();
       state.user.refresh();
     }
+
+
+
   }
 
   void showNotice(List<NoticeEntity> value, int i) {

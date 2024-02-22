@@ -12,11 +12,11 @@ class Constants {
   //
 
 
-  // static const host = "http://soptj9qq.com";
-  static const host = "https://9000vlmdm4.kj99883.com";
+  static const host = "http://soptj9qq.com";
+  // static const host = "https://9000vlmdm4.kj99883.com";
 
-  // static const base_url = "$host:8860";
-  static const base_url = "$host";
+  static const base_url = "$host:8860";
+  // static const base_url = "$host";
   static const contact = "$host/m/#/detail/Contact";
   static const hongbao = "http://soptj9qq.com/m/#/Hongbao/%s/%s/%s";
 

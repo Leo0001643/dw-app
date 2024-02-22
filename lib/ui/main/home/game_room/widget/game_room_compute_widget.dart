@@ -241,8 +241,8 @@ class GameRoomComputeWidget extends StatelessWidget {
             buildDrawResult("${arr2[3]}",logic,color: GameRuleUtil.getBallNewColor(arr2[3]),showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
             // SizedBox(width: 5.w,),
             Visibility(
-              visible:  logic.currentStatus.value!=LotteryStatus.sealingPlateStatus,
-                child:  Text("${ GameRuleUtil.getDXDS(arr2[3])}",style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),)),
+              visible: logic.currentStatus.value!=LotteryStatus.sealingPlateStatus,
+                child: GameRuleUtil.getDXDS(arr2[3]),),
             Image.asset(ImageX.icon_down_black,color: color,),
           ],
         ),

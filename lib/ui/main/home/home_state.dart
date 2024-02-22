@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
+import 'package:leisure_games/ui/bean/domain_config_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
@@ -51,6 +52,9 @@ class HomeState {
   ///余额
   var usdtBal = BalanceEntity().obs;
   var cnyBal = BalanceEntity().obs;
+
+  ///域名配置
+  DomainConfigEntity? domainConfig;
 
   var labelBtm = [
     Intr().guanyuwomen,

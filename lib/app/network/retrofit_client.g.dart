@@ -471,11 +471,13 @@ class _RetrofitClient implements RetrofitClient {
   }
 
   @override
-  Future<BaseResponseEntity<DomainConfigEntity>> getDomainConfig() async {
+  Future<BaseResponseEntity<DomainConfigEntity>> getDomainConfig(
+      Map<String, dynamic> params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(params);
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseResponseEntity<DomainConfigEntity>>(Options(
       method: 'POST',
