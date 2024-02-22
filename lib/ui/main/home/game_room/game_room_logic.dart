@@ -190,6 +190,8 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
   }
 
   void loadBalance() {
+    if(!AppData.isLogin()) return;
+
     var user = AppData.user();
     HttpService.getBalance({
       "cur": 1,
@@ -356,8 +358,15 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     if (serv != null && serv is WSMainService) {
       serv.doWhenConnectCallBack(() {
         DialogUtils().showBulletBtmDialog(context, this, (v) {
-          showToast("${v.length}");
-          ///TODO（弹幕发送没做）
+          if(unEmpty(v)){
+            for (var element in (v as List<dynamic>)) {
+              GameDataServiceCenter.instance.submitBullet(table_id: "${state.room.value.id.em()}",
+                room_id: "${state.room.value.roomId.em()}",
+                game_type: "${state.room.value.gameType}",
+                msg: element,
+              );
+            }
+          }
         });
       }, onFail: () {
         showToast("链接服务失败，稍后再试");

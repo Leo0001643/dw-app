@@ -40,7 +40,9 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
   @override
   void initState() {
     loggerArray(["有弹幕数据",widget.logic.state.phrases]);
-    showList.assignAll(widget.logic.state.phrases[0].phrases ?? []);
+    if(unEmpty(widget.logic.state.phrases)){
+      showList.assignAll(widget.logic.state.phrases[0].phrases ?? []);
+    }
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController.addListener(() {
       selectPhrases.value = -1;

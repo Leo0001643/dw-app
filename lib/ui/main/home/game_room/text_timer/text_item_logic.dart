@@ -339,10 +339,10 @@ class TextItemLogic extends GetxController {
   }
   showCloseOver(String term) {
       countDownLotteryEntity.value.type = "closeOver";
-      countDownLotteryEntity.value.title = "封盘信息";
+      countDownLotteryEntity.value.title = Intr().fengpanxinxi;
       countDownLotteryEntity.value.titleColor=0xFFFC243B;
       countDownLotteryEntity.value.term = term;
-      countDownLotteryEntity.value.subTitile = "开始封盘";
+      countDownLotteryEntity.value.subTitile = Intr().kaishifengpan;
       countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
       countDownLotteryEntity.refresh();
   }

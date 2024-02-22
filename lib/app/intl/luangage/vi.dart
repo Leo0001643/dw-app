@@ -982,6 +982,8 @@ class VI{
     "julifengpanshijian":"%s giây trước khi đóng cửa",
     "dixqi":"Số %s",
     "no":"Số ",
+    "fengpanxinxi":"Thông tin niêm phong",
+    "kaishifengpan":"Bắt đầu phong ấn",
 
   };
 }

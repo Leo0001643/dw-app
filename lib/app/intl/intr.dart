@@ -621,6 +621,21 @@ class Intr extends Translations{
   String get entry => 'entry'.tr;
   String julifengpanshijian(List<String> args) => 'julifengpanshijian'.trArgs(args);
   String get no => "no".tr;
+  String get fengpanxinxi => "fengpanxinxi".tr;
+  String get kaishifengpan => "kaishifengpan".tr;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   @override

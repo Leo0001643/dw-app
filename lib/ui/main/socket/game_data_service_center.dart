@@ -1,8 +1,13 @@
 import 'dart:async';
+import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/res/request/login_request.dart';
+import 'package:leisure_games/app/res/request/msg_gif_request.dart';
+import 'package:leisure_games/app/res/request/msg_pic_request.dart';
 import 'package:leisure_games/app/res/request/sumbit_bet_request.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
 import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
@@ -71,6 +76,17 @@ class GameDataServiceCenter {
     WsLoginRequest loginRequest=WsLoginRequest(table_id:table_id,room_id:room_id,game_type:game_type);
     GameResponse response = await requestData(loginRequest);
 
+  }
+
+  void submitBullet({String? table_id,String? room_id,String? game_type,String? msg}) async{
+    GameRequest msgRequest;
+    if(msg.isUrl()){
+      msgRequest = WsMsgGifRequest(table_id: table_id,room_id: room_id,game_type: game_type,msg: [msg.em()]);
+    }else {
+      msgRequest = WsMsgPicRequest(table_id: table_id,room_id: room_id,game_type: game_type,msg: [msg.em()]);
+    }
+    GameResponse response = await requestData(msgRequest);
+    // loggerArray(['发送弹幕返回结果',response.code,response.msg,response.type]);
   }
 
 

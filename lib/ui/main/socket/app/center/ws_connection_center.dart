@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/res/request/login_request.dart';
@@ -310,8 +311,6 @@ class WsConnectionCenter {
     // 处理接收到的数据
     dzLog("======>Socket接收消息${event}  ");
 
-
-
     //消息解密
     GameResponse response = GameResponse.fromJson(event);
     // 发送给ws服务haohao
@@ -332,6 +331,10 @@ class WsConnectionCenter {
       // 子心跳包处理
       // mWsService.target?.processResponse(response);
       _syncConnectState(WebSocketConnectStatus.connected);
+    }else if(response.type == "msg_get_pic"){
+      loggerArray(["收到聊天消息PIC",event]);
+    }else if(response.type == "msg_get_gif"){
+      loggerArray(["收到聊天消息GIF",event]);
     }else {
 
       dzLog("======>成功2  ${response.type }");
@@ -343,11 +346,6 @@ class WsConnectionCenter {
             "响应成功!!! code ${response.code}  请求协议  ${response.type} messageId ${response.messageId}");
         mWsService.target?.processResponse(response);
       // }
-    }
-    //
-    if (response.type == 100) {
-      dzLog(">>>>>>>>>>收到 100消息");
-      return;
     }
   }
 

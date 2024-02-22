@@ -915,7 +915,7 @@ class WidgetUtils {
 
 
   Widget buildDixqi1(String term){
-    if(AppData.localeIndex() == 1){
+    if(AppData.localeIndex() == 0){
       return Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         runAlignment: WrapAlignment.center,
@@ -944,7 +944,7 @@ class WidgetUtils {
 
 
   Widget buildDixqi2(String term){
-    if(AppData.localeIndex() == 1){
+    if(AppData.localeIndex() == 0){
       return Text.rich(TextSpan(children: [
         TextSpan(
           text:  Intr().di,

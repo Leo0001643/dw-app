@@ -202,7 +202,10 @@ class WSMainService extends IsolateService {
   void dispatchResponse(GameResponse response) {
     print("===========>到了这里  ${_responseListeners.length}");
     if (response.type == "ping") {
-    } else {}
+
+    } else {
+
+    }
     // String paramKey = response.responseKey();
     // DXIsolateParam? tmpIsolatePram = mRequestMap.remove(paramKey);
     // if (tmpIsolatePram != null) {

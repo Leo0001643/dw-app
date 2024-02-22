@@ -981,6 +981,10 @@ class CN {
     "julifengpanshijian":"距离封盘还有%s秒",
     "dixqi":"第%s期",
     "no":"",
+    "fengpanxinxi":"封盘信息",
+    "kaishifengpan":"开始封盘",
+
+
 
   };
 

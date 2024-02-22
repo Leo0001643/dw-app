@@ -1052,6 +1052,8 @@ class EN{
     "julifengpanshijian":"%s to go",
     "dixqi":"No.%s",
     "no":"No.",
+    "fengpanxinxi":"Sealing information",
+    "kaishifengpan":"Open closing",
 
   };
 
