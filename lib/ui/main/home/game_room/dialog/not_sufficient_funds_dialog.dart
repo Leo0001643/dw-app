@@ -268,7 +268,7 @@ class StateConfirmBettingDialog extends State<NotSufficientFundsDialog> with Sin
   buildTimer() {
     return GetBuilder<GameRoomLogic>(builder: (logic){
       String termData=GameRuleUtil.getSSB(logic.term.value,year:"");
-      return  Text(Intr().dixqi([termData]),style: TextStyle(fontSize: 14.sp,color: Colors.white,),);
+      return  Text(termData,style: TextStyle(fontSize: 14.sp,color: Colors.white,),);
     });
   }
 

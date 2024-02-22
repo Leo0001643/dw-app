@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
@@ -665,10 +666,10 @@ class GameRuleUtil {
     if (sum == -1) {
       ssb = "(? ?)";
     } else {
-      String da = "大";
-      String xiao = "小";
-      String shaung = "双";
-      String dan = "单";
+      String da = Intr().bet_da;
+      String xiao = Intr().bet_xiao;
+      String shaung = Intr().bet_shuang;
+      String dan = Intr().bet_dan;
 
       String qian = sum < 14 ? xiao : da;
       String hou = sum % 2 == 0 ? shaung : dan;
@@ -711,9 +712,8 @@ class GameRuleUtil {
     String ssb = "";
     if (qiShu.isNotEmpty == true && qiShu.length > 8) {
       qiShu = qiShu.substring(qiShu.length - 8, qiShu.length);
-      String di = "第";
-      String qi = "期";
-      ssb = " ${di}${year}$qiShu $qi";
+
+      ssb = Intr().dixqi(["${year.em()}$qiShu"]);
       // ssb.setSpan(
       //     new ForegroundColorSpan(Color.parseColor("#fe2427")), di.length(),
       //     di.length() + qiShu.length(),
@@ -775,10 +775,10 @@ class GameRuleUtil {
    *     1:CNY,2:USD,3:KRW,4:INR,5:USDT
    */
   static String getMoneySymbol(String type) {
-    String result = "￥";
+    String result = "¥";
     switch (type) {
       case "CNY":
-        result = "￥";
+        result = "¥";
         break;
       case "USD":
         result = "\$";
@@ -1269,4 +1269,11 @@ class GameRuleUtil {
 
     return ballName;
   }
+
+
+
+
+
+
+
 }

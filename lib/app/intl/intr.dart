@@ -619,6 +619,8 @@ class Intr extends Translations{
   String xqianbao_(List<String> args) => 'xqianbao'.trArgs(args);
   String xianlu_(List<String> args) => 'xianlu_'.trArgs(args);
   String get entry => 'entry'.tr;
+  String julifengpanshijian(List<String> args) => 'julifengpanshijian'.trArgs(args);
+  String get no => "no".tr;
 
 
   @override

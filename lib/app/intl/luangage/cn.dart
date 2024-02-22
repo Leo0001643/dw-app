@@ -422,15 +422,10 @@ class CN {
     "shiyongbangzhu": "使用帮助",
     "xuanzeyuyan":"选择语言",
 
-
-
     "changyongduanyu":"常用短语",
     "qitaduanyu":"其他短语",
     "biaoqing":"表情",
     "gif":"gif",
-    "dixqi":"%s",
-
-
 
     "yue_":"余额：",
     "home": "首页",
@@ -983,7 +978,9 @@ class CN {
     "yhk":"银行卡",
     "xqianbao":"%s钱包",
     "xianlu_":"线路%s",
-
+    "julifengpanshijian":"距离封盘还有%s秒",
+    "dixqi":"第%s期",
+    "no":"",
 
   };
 

@@ -234,31 +234,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
 
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text.rich(TextSpan(children: [
-              TextSpan(
-                text:  Intr().di,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: ColorX.color_333333,
-                ),
-              ),
-              TextSpan(
-                text: termData,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color:  ColorX.color_fc243b,
-                    fontWeight: FontWeight.w500
-                ),
-              ),
-              TextSpan(
-                text: Intr().qi,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: ColorX.color_333333,
-                ),
-              )
-            ])),
-
+            WidgetUtils().buildDixqi2(termData),
             SizedBox(width: 5.w,),
             buildDrawNum("${arr2[0]}", logic,
                 showWaittingImg: logic.currentStatus.value ==

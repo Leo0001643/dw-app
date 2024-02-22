@@ -88,17 +88,7 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(state.hall.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
-          Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            runAlignment: WrapAlignment.center,
-            alignment: WrapAlignment.center,
-            spacing: 3.w,
-            children: [
-              Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
-              Text(item.qiShu.em().toString(),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
-              Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
-            ],
-          ),
+          WidgetUtils().buildDixqi1(item.qiShu.em().toString()),
           SizedBox(height: 10.h,),
           Wrap(
             spacing: 5.w,

@@ -911,4 +911,87 @@ class WidgetUtils {
       // }
     });
   }
+
+
+
+  Widget buildDixqi1(String term){
+    if(AppData.localeIndex() == 1){
+      return Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        runAlignment: WrapAlignment.center,
+        alignment: WrapAlignment.center,
+        spacing: 3.w,
+        children: [
+          Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
+          Text(term,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
+          Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
+        ],
+      );
+    }else {
+      return Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        runAlignment: WrapAlignment.center,
+        alignment: WrapAlignment.center,
+        spacing: 3.w,
+        children: [
+          Text(Intr().no,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
+          Text(term,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
+        ],
+      );
+    }
+  }
+
+
+
+  Widget buildDixqi2(String term){
+    if(AppData.localeIndex() == 1){
+      return Text.rich(TextSpan(children: [
+        TextSpan(
+          text:  Intr().di,
+          style: TextStyle(
+            fontSize: 12.sp,
+            color: ColorX.color_333333,
+          ),
+        ),
+        TextSpan(
+          text: term,
+          style: TextStyle(
+              fontSize: 12.sp,
+              color:  ColorX.color_fc243b,
+              fontWeight: FontWeight.w500
+          ),
+        ),
+        TextSpan(
+          text: Intr().qi,
+          style: TextStyle(
+            fontSize: 12.sp,
+            color: ColorX.color_333333,
+          ),
+        )
+      ]));
+    }else {
+      return Text.rich(TextSpan(children: [
+        TextSpan(
+          text:  Intr().no,
+          style: TextStyle(
+            fontSize: 12.sp,
+            color: ColorX.color_333333,
+          ),
+        ),
+        TextSpan(
+          text: term,
+          style: TextStyle(
+              fontSize: 12.sp,
+              color:  ColorX.color_fc243b,
+              fontWeight: FontWeight.w500
+          ),
+        ),
+      ]));
+    }
+  }
+
+
+
+
+
 }

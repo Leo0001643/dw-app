@@ -96,7 +96,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(Intr().dixqi([termData]),style: TextStyle(fontSize: 14.sp,color:Colors.white),),
+                          Text(termData,style: TextStyle(fontSize: 14.sp,color:Colors.white),),
                           Wrap(
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [

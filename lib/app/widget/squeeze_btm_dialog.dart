@@ -75,7 +75,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                 top: 14.h, left: 0,right: 2.w,
                 child: Column(
                   children: [
-                    Text(Intr().dixqi([" 1231312 "]),style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),),
+                    Text(" 1231312 ",style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),),
                     SizedBox(height: 38.h,),
                     Center(
                       child:Container(

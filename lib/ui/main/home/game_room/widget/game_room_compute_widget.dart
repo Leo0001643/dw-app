@@ -34,9 +34,9 @@ class GameRoomComputeWidget extends StatelessWidget {
         builder: (logic) {
           int a;
       GameRoomState state = logic.state;
-      var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
+      // var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
       WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
-      String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
+      // String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
       return  Container(
         child: Column(
           mainAxisSize: MainAxisSize.min,

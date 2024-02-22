@@ -39,9 +39,8 @@ class StateCountDownItemWidget extends State<CountDownItemWidget> {
         widget.gameRoomItemEntity.data as CountDownLotteryEntity;
     print("======>  ${jsonEncode(   widget.gameRoomItemEntity.data )}");
     return Container(
-      height: 50,
-      margin: EdgeInsets.only(left: 50.w,right: 20.w,bottom: 8.w,top: 8.w),
-      decoration: BoxDecoration(
+      margin: EdgeInsets.only(left: 20.w,right: 20.w,bottom: 8.w,top: 8.w),
+      decoration: const BoxDecoration(
           color: Color(0xFFF7F8FB),
           borderRadius: BorderRadius.all(Radius.circular(8))),
       child: Column(
@@ -49,36 +48,30 @@ class StateCountDownItemWidget extends State<CountDownItemWidget> {
         children: [
           Text(
             "${wsBetResultEntity.title}",
-            style: TextStyle(fontSize: 14, fontWeight:FontWeight.w700,color: Color(wsBetResultEntity.titleColor??0xFF58698D)),
+            style: TextStyle(fontSize: 14.sp, fontWeight:FontWeight.w700,color: Color(wsBetResultEntity.titleColor??0xFF58698D)),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                children: [
-                  Text(
-                    "【",
-                    style: TextStyle(fontSize: 14, color: Color(0xFF596A8D)),
-                  ),
-                  Text(
-                    "${wsBetResultEntity?.term}",
-                    style: TextStyle(fontSize: 14, fontWeight:FontWeight.w700, color: Color(0xFFE62912)),
-                  ),
-                  const Text(
-                    "】",
-                    style: TextStyle(fontSize: 14,  fontWeight:FontWeight.w700,color: Color(0xFF596A8D)),
-                  ),
-                ],
+              Text(
+                "【",
+                style: TextStyle(fontSize: 14.sp, color: Color(0xFF596A8D)),
               ),
-              SizedBox(width: 8,),
-              Row(
-                children: [
-                  Text(
-                    wsBetResultEntity.subTitile??"距离封盘还有${wsBetResultEntity?.time}秒",
-                    style: TextStyle(fontSize: 14, color: Color(0xFF596A8D)),
-                  ),
-                ],
-              )
+              Text(
+                "${wsBetResultEntity.term}",
+                style: TextStyle(fontSize: 14.sp, fontWeight:FontWeight.w700, color: Color(0xFFE62912)),
+              ),
+              Text(
+                "】",
+                style: TextStyle(fontSize: 14.sp,  fontWeight:FontWeight.w700,color: Color(0xFF596A8D)),
+              ),
+              SizedBox(width: 8.w,),
+              Expanded(
+                child: Text(
+                  wsBetResultEntity.subTitile?? Intr().julifengpanshijian([wsBetResultEntity.time.toString()]),
+                  style: TextStyle(fontSize: 14.sp, color: Color(0xFF596A8D)),
+                ),
+              ),
             ],
           )
         ],

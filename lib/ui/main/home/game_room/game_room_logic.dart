@@ -354,16 +354,15 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     // 监听网络状态
     IsolateService? serv = AppInst.gameIsolate.mainService();
     if (serv != null && serv is WSMainService) {
-      if (serv != null && serv is WSMainService) {
-        serv.doWhenConnectCallBack(() {
-          DialogUtils().showBulletBtmDialog(context, this, (v) {
-            showToast("${v.length}");
-          });
-        }, onFail: () {
-          showToast("链接服务失败，稍后再试");
+      serv.doWhenConnectCallBack(() {
+        DialogUtils().showBulletBtmDialog(context, this, (v) {
+          showToast("${v.length}");
+          ///TODO（弹幕发送没做）
         });
-        return;
-      }
+      }, onFail: () {
+        showToast("链接服务失败，稍后再试");
+      });
+      return;
     }
   }
 
@@ -389,14 +388,14 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
   double sumData(){
     double total=0;
     for(OddsContent content  in selectBettingList) {
-      total+= (content?.money??0);
+      total+= (content.money??0);
     }
     return total;
   }
   double sumOddsData(){
     double total=0;
     for(OddsContent content  in selectBettingList) {
-      total+=( (content?.money??0)*(double.tryParse(content.contentMap["Key_Odds"]??"0")??0));
+      total+=( (content.money??0)*(double.tryParse(content.contentMap["Key_Odds"]??"0")??0));
     }
     return total;
   }

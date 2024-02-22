@@ -421,17 +421,10 @@ class VI{
     "fangjiechi": "防劫持",
     "shiyongbangzhu": "使用帮助",
     "xuanzeyuyan":"选择语言",
-
-
-
     "changyongduanyu":"常用短语",
     "qitaduanyu":"其他短语",
     "biaoqing":"表情",
     "gif":"gif",
-    "dixqi":"%s",
-
-
-
     "yue_":"Số dư：",
     "home": "Trang chủ",
     "mine": "Của tôi",
@@ -986,6 +979,9 @@ class VI{
     "yhk":"Thẻ ngân hàng",
     "xqianbao":"%s ví",
     "xianlu_":"Tuyến đường %s",
+    "julifengpanshijian":"%s giây trước khi đóng cửa",
+    "dixqi":"Số %s",
+    "no":"Số ",
 
   };
 }

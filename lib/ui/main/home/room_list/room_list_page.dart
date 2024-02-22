@@ -201,6 +201,7 @@ class _RoomListPageState extends State<RoomListPage> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: InkWell(
@@ -237,7 +238,6 @@ class _RoomListPageState extends State<RoomListPage> {
         color: Colors.white38,
         borderRadius: BorderRadius.circular(10.r),
       ),
-      height: 70.h,
       padding: EdgeInsets.all(10.r),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -247,7 +247,7 @@ class _RoomListPageState extends State<RoomListPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Text(name,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                child: Text(name,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
               ),
               Image.asset(ImageX.ic_into_right),
             ],

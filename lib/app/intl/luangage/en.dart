@@ -509,14 +509,6 @@ class EN{
     "qitaduanyu":"other phrases",
     "biaoqing":"expression",
     "gif":"gif",
-    "dixqi":"%s",
-
-
-
-
-
-
-
 
     "yue_":"balance：",
     "charge": "Recharge",
@@ -612,7 +604,7 @@ class EN{
     "wanfaguizhe_jieshao":"Let me introduce the gameplay rules to everyone, in order to play…",
     "youxishuyu_jieshao":"Improve game effectiveness by understanding commonly used terminology…",
     "xiazhujiqiao_jieshao":"Here are some betting techniques, such as…",
-    "haoyuan":"Number source",
+    "haoyuan":"Source",
     "zhudan":"Note",
     "mipai":"Mipai",
     "qushi":"trend",
@@ -1057,6 +1049,9 @@ class EN{
     "yhk":"bank card",
     "xqianbao":"%s Wallet",
     "xianlu_":"line %s",
+    "julifengpanshijian":"%s to go",
+    "dixqi":"No.%s",
+    "no":"No.",
 
   };
 

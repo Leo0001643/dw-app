@@ -128,8 +128,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                                 itemBuilder: (context, index) {
                                   GameRoomItemEntity gameRoomItemEntity =
                                   state.gameRoomItemEntityList[index];
-                                  return buildItemWidget(
-                                      index, logic, gameRoomItemEntity);
+                                  return buildItemWidget(index, logic, gameRoomItemEntity);
                                 },
                               ),
                               Positioned(left: 0, right: 0, child: buildContiner()),
@@ -262,6 +261,8 @@ class _GameRoomPageState extends State<GameRoomPage> {
       );
     });
   }
+
+
   Widget buildItemWidget(
       int index, GameRoomLogic logic, GameRoomItemEntity gameRoomItemEntity) {
     print("----------index ${index}  ");

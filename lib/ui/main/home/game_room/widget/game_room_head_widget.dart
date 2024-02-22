@@ -54,11 +54,11 @@ class GameRoomHeadWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  buildUserTab(
-                      0, Intr().haoyuan, ImageX.icon_radio_uncheck, textColor,context,logic),
-                  buildUserTab(1, Intr().zhudan, ImageX.icon_dan2, textColor,context,logic),
-                  buildUserTab(2, Intr().mipai, ImageX.icon_pai2, textColor,context,logic),
-                  buildUserTab(3, Intr().qushi, ImageX.icon_qs_hei, textColor,context,logic),
+                  Expanded(child: buildUserTab(
+                      0, Intr().haoyuan, ImageX.icon_radio_uncheck, textColor,context,logic)),
+                  Expanded(child: buildUserTab(1, Intr().zhudan, ImageX.icon_dan2, textColor,context,logic)),
+                  Expanded(child: buildUserTab(2, Intr().mipai, ImageX.icon_pai2, textColor,context,logic)),
+                  Expanded(child: buildUserTab(3, Intr().qushi, ImageX.icon_qs_hei, textColor,context,logic)),
                 ],
               ),
             ),

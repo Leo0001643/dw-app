@@ -79,17 +79,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(item.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
-                        Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          runAlignment: WrapAlignment.center,
-                          alignment: WrapAlignment.center,
-                          spacing: 3.w,
-                          children: [
-                            Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
-                            Text(item.qihao(),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),),),
-                            Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),),),
-                          ],
-                        ),
+                        WidgetUtils().buildDixqi1(item.qihao()),
                         SizedBox(height: 10.h,),
                         Wrap(
                           spacing: 5.w,

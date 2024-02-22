@@ -47,17 +47,16 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
     }
 
     return Container(
-      height: 50,
       margin: EdgeInsets.only(left: 50.w,right: 20.w,bottom: 8.w,top: 8.w),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: Color(0xFFF7F8FB),
           borderRadius: BorderRadius.all(Radius.circular(8))),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            "kaijiangjieguo".tr,
-            style: TextStyle(fontSize: 14, color: Color(0xFF4795FF)),
+            Intr().kaijiangjieguo,
+            style: TextStyle(fontSize: 14.sp, color: Color(0xFF4795FF)),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -66,28 +65,25 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
                 children: [
                   Text(
                     "【",
-                    style: TextStyle(fontSize: 14, color: Color(0xFF596A8D)),
+                    style: TextStyle(fontSize: 14.sp, color: Color(0xFF596A8D)),
                   ),
                   Text(
                     "${(wsBetResultEntity.data?.length ?? 0) > 0 ? wSLotteryEntityData?.term :"" }",
-                    style: TextStyle(fontSize: 14, color: Color(0xFFE62912)),
+                    style: TextStyle(fontSize: 14.sp, color: Color(0xFFE62912)),
                   ),
                   Text(
                     "】",
-                    style: TextStyle(fontSize: 14, color: Color(0xFF596A8D)),
+                    style: TextStyle(fontSize: 14.sp, color: Color(0xFF596A8D)),
                   ),
                 ],
               ),
-              SizedBox(width: 8,),
-              Row(
-                children: [
-                  Text(
-                    "开奖号码:${a}+${b}+${c}=${(a+b+c)}",
-                    style: TextStyle(fontSize: 14, color: Color(0xFF596A8D)),
-                  ),
-
-                ],
-              )
+              SizedBox(width: 8.w,),
+              Expanded(
+                child: Text(
+                  "${Intr().kaijianghaoma}:${a}+${b}+${c}=${(a+b+c)}",
+                  style: TextStyle(fontSize: 14.sp, color: Color(0xFF596A8D)),
+                ),
+              ),
             ],
           )
         ],

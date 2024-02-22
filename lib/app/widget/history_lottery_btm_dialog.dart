@@ -156,7 +156,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            Intr().dixqi(["${termData}"]),
+            termData,
             style: TextStyle(
                 fontSize: 16.sp,
                 color: Colors.white,
