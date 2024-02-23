@@ -83,6 +83,10 @@ dependencies:
   flutter_aliyun_captcha: ^1.0.5
   flutter_tencent_captcha: ^0.1.2
   gesture_password_widget: ^2.0.1
+  flutter_barrage: ^0.5.5
+
+
+
 dependency_overrides:
   meta: ^1.10.0 # 替换为你需要的meta库的版本号
 

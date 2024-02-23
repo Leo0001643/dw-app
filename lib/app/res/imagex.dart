@@ -264,6 +264,12 @@ class ImageX{
   static const countDown3 = 'assets/images/count3.png';
   static const countDown4 = 'assets/images/count4.png';
   static const countDown5 = 'assets/images/count5.png';
+  static const countDown1_en = 'assets/images/count1_en.png';
+  static const countDown2_en = 'assets/images/count2_en.png';
+  static const countDown3_en = 'assets/images/count3_en.png';
+  static const countDown4_en = 'assets/images/count4_en.png';
+  static const countDown5_en = 'assets/images/count5_en.png';
+
   static const money_icon = 'assets/images/money_icon.png';
   static const my_bg = 'assets/images/my_bg.png';
   static const my_card = 'assets/images/my_card.png';
@@ -758,6 +764,29 @@ class ImageX{
 
   static String bindOtherT(){
     return AppData.theme() ? bindOther_light : bindOther_dark;
+  }
+
+
+  static String countDown1Z(){
+    return AppData.localeIndex() == 0 ? countDown1 : countDown1_en;
+  }
+
+  static String countDown2Z(){
+    return AppData.localeIndex() == 0 ? countDown2 : countDown2_en;
+  }
+
+
+  static String countDown3Z(){
+    return AppData.localeIndex() == 0 ? countDown3 : countDown3_en;
+  }
+
+
+  static String countDown4Z(){
+    return AppData.localeIndex() == 0 ? countDown4 : countDown4_en;
+  }
+
+  static String countDown5Z(){
+    return AppData.localeIndex() == 0 ? countDown5 : countDown5_en;
   }
 
 }

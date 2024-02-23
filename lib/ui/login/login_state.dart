@@ -12,8 +12,8 @@ class LoginState {
   var pwdVisible = false.obs;
 
 
-  var accountValue = "dsa0001";
-  var pwdValue = "aeuio888";
+  // var accountValue = "dsa0001";
+  // var pwdValue = "aeuio888";
 
   // var accountValue = "sansan01";
   // var pwdValue = "sansan01";
@@ -21,8 +21,8 @@ class LoginState {
   // var accountValue = "24010202";
   // var pwdValue = "aeuio888";
 
-  // var accountValue = "dms001";
-  // var pwdValue = "12345678";
+  var accountValue = "dms001";
+  var pwdValue = "12345678";
 
   // var accountValue = "";
   // var pwdValue = "";

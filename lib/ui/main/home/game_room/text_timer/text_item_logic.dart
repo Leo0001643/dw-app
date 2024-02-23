@@ -189,7 +189,7 @@ class TextItemLogic extends GetxController {
             if (onlineT < allTime[key]['data'][s]['closeTime'] &&
                 onlineT > allTime[key]['data'][s]['openTime']) {
               currentStatus.value=LotteryStatus.countDownStatus;
-              print("显示倒计时");
+              // print("显示倒计时");
 
               int rrtime = allTime[key]['data'][s]['closeTime'];
               int showT = (rrtime - onlineT) ~/ 1000;

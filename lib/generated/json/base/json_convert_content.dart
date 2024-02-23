@@ -78,12 +78,12 @@ import 'package:leisure_games/ui/bean/var_code_entity.dart';
 import 'package:leisure_games/ui/bean/wallet_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
+import 'package:leisure_games/ui/bean/ws_msg_error_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_gif_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_pic_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
@@ -730,6 +730,10 @@ class JsonConvert {
       return data.map<WithdrawCheckEntity>((Map<String, dynamic> e) =>
           WithdrawCheckEntity.fromJson(e)).toList() as M;
     }
+    if (<WsMsgErrorEntity>[] is M) {
+      return data.map<WsMsgErrorEntity>((Map<String, dynamic> e) =>
+          WsMsgErrorEntity.fromJson(e)).toList() as M;
+    }
     if (<CountDownLotteryEntity>[] is M) {
       return data.map<CountDownLotteryEntity>((Map<String, dynamic> e) =>
           CountDownLotteryEntity.fromJson(e)).toList() as M;
@@ -761,10 +765,6 @@ class JsonConvert {
     if (<WSLotteryEntityData>[] is M) {
       return data.map<WSLotteryEntityData>((Map<String, dynamic> e) =>
           WSLotteryEntityData.fromJson(e)).toList() as M;
-    }
-    if (<WsMsgGetGifEntity>[] is M) {
-      return data.map<WsMsgGetGifEntity>((Map<String, dynamic> e) =>
-          WsMsgGetGifEntity.fromJson(e)).toList() as M;
     }
     if (<WsMsgGetPicEntity>[] is M) {
       return data.map<WsMsgGetPicEntity>((Map<String, dynamic> e) =>
@@ -924,6 +924,7 @@ class JsonConvertClassCollection {
         .fromJson,
     (WebConfigRegisterOption).toString(): WebConfigRegisterOption.fromJson,
     (WithdrawCheckEntity).toString(): WithdrawCheckEntity.fromJson,
+    (WsMsgErrorEntity).toString(): WsMsgErrorEntity.fromJson,
     (CountDownLotteryEntity).toString(): CountDownLotteryEntity.fromJson,
     (GameRoomItemEntity).toString(): GameRoomItemEntity.fromJson,
     (WsBetResultEntity).toString(): WsBetResultEntity.fromJson,
@@ -932,7 +933,6 @@ class JsonConvertClassCollection {
     (OddsContent).toString(): OddsContent.fromJson,
     (WSLotteryEntity).toString(): WSLotteryEntity.fromJson,
     (WSLotteryEntityData).toString(): WSLotteryEntityData.fromJson,
-    (WsMsgGetGifEntity).toString(): WsMsgGetGifEntity.fromJson,
     (WsMsgGetPicEntity).toString(): WsMsgGetPicEntity.fromJson,
   };
 

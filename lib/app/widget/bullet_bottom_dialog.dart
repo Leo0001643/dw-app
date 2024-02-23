@@ -8,6 +8,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
@@ -120,7 +121,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                 ),
               ),
               InkWell(
-                onTap: ()=> widget.valueCallBack.call(inputList.value),
+                onTap: ()=>widget.valueCallBack.call(inputList.value),
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 15.w),
                   child: Image.asset(ImageX.icon_send,color: ColorX.icon586(), width: 24.r,height: 24.r,),
@@ -128,14 +129,16 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
               ),
             ],
           ),
-          LCTabBar(
+          LCSegmentTabs(
             length: tabs.length,
-            controller: _tabController,
-            tabBarHeight: 40.h,
+            tabController: _tabController,
+            height: 40.h,
+            width: 1.sw,
+            border: Border.fromBorderSide(BorderSide(width: 0,color: Colors.transparent)),
             tabBarColor: ColorX.pageBg4(),
             indicatorSize: TabBarIndicatorSize.tab,
             labelPadding: EdgeInsets.zero,
-            indicatorPadding: EdgeInsets.only(top: 34.h,left: 35.w,right: 35.w,bottom: 3.h),
+            indicatorPadding: EdgeInsets.only(top: 34.h,left: 20.w,right: 20.w,bottom: 3.h),
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(3.r),
               color: ColorX.text0917(),

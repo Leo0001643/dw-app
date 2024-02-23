@@ -505,10 +505,10 @@ class EN{
     "xuanzeyuyan":"Choose language",
 
 
-    "changyongduanyu":"Useful Expressions",
-    "qitaduanyu":"other phrases",
-    "biaoqing":"expression",
-    "gif":"gif",
+    "changyongduanyu":"Useful",
+    "qitaduanyu":"Other",
+    "biaoqing":"Emoji",
+    "gif":"Gif",
 
     "yue_":"balance：",
     "charge": "Recharge",
@@ -1054,6 +1054,7 @@ class EN{
     "no":"No.",
     "fengpanxinxi":"Sealing information",
     "kaishifengpan":"Open closing",
+    "lianjiefuwushibai":"Link service failed, try again later",
 
   };
 

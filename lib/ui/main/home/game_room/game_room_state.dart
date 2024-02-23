@@ -1,3 +1,4 @@
+import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
@@ -24,8 +25,10 @@ class GameRoomState {
 
   ///用户余额
   var userBal = BalanceEntity().obs;
-
-
+  ///弹幕
+  var barrage = RxList<String>.empty(growable: true);
+  ///弹幕控制器
+  var barrageWallController = BarrageWallController();
 
 
 }

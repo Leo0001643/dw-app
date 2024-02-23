@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_barrage/flutter_barrage.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -12,14 +13,16 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/ws_msg_error_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_gif_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_pic_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
@@ -48,6 +51,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
   RxDouble inputAmt = (0.0).obs;
 
+
   @override
   void onReady() {
     loadBalance();
@@ -56,7 +60,6 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 
@@ -236,12 +239,15 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
         handleLottery(type, response);
         break;
       case "logout":
+        showToast(data["reason"]);
+        Get.until((ModalRoute.withName(Routes.main)));
+        Get.toNamed(Routes.login);
         break;
       case "msg_get_pic":
         handleMsgGetPic(response);
         break;
       case "msg_get_gif":
-        handleMsgGetGif(response);
+        handleMsgGetPic(response);
         break;
     }
   }
@@ -318,14 +324,44 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     });
   }
 
-  void handleMsgGetGif(GameResponse response) {
-    WsMsgGetGifEntity result =
-        WsMsgGetGifEntity.fromJson(jsonDecode(response.data));
-  }
-
+  ///弹幕消息处理
   void handleMsgGetPic(GameResponse response) {
     WsMsgGetPicEntity wsLotteryEntity =
         WsMsgGetPicEntity.fromJson(jsonDecode(response.data));
+    if(wsLotteryEntity.status == 10000){
+      state.barrageWallController.send([
+        Bullet(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.black26,
+              borderRadius: BorderRadius.circular(20.r),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 5.h,horizontal: 3.w),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                GFAvatar(
+                  backgroundImage: WidgetUtils().buildImageProvider(
+                      DataUtils.findAvatar(wsLotteryEntity.avatar)),
+                  shape: GFAvatarShape.circle,
+                  radius: 10.r,
+                ),
+                SizedBox(width: 10.w,),
+                Visibility(
+                  visible: unEmpty(wsLotteryEntity.msg),
+                  child: wsLotteryEntity.msg!.first.isUrl() ?
+                  WidgetUtils().buildImage(wsLotteryEntity.msg!.first.em(), 15.r, 15.r)
+                  : Text(wsLotteryEntity.msg!.first.em(),style: TextStyle(fontSize: 12.sp,color: Colors.white),),
+                )
+              ],
+            ),
+          ),
+        )
+      ]);
+    }else {
+      var error = WsMsgErrorEntity.fromJson(response.data);
+      showToast(error.showMessage.em());
+    }
   }
 
   void handleMessage(CountDownLotteryEntity countDownLotteryEntity) {
@@ -353,11 +389,14 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
    */
   void startBet(BuildContext context) {
     // AppInst.instance.startWs();
+    if(!AppData.isLogin()) return;
     // 监听网络状态
     IsolateService? serv = AppInst.gameIsolate.mainService();
     if (serv != null && serv is WSMainService) {
       serv.doWhenConnectCallBack(() {
+
         DialogUtils().showBulletBtmDialog(context, this, (v) {
+          Navigator.pop(context);
           if(unEmpty(v)){
             for (var element in (v as List<dynamic>)) {
               GameDataServiceCenter.instance.submitBullet(table_id: "${state.room.value.id.em()}",
@@ -369,9 +408,8 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
           }
         });
       }, onFail: () {
-        showToast("链接服务失败，稍后再试");
+        showToast(Intr().lianjiefuwushibai);
       });
-      return;
     }
   }
 
@@ -426,7 +464,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
       moneyType: "CNY",
       nowTerm: "${term}",
       betList: selectBettingList.value,);
-    showToast("投注成功");
+    showToast(Intr().caozuochenggong);
 
   }
 }

@@ -1,35 +1,23 @@
-import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
-import 'package:leisure_games/app/app_data.dart';
-import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/routes.dart';
-import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/ui/bean/game_kind_entity.dart';
+import 'package:leisure_games/main.dart';
+import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_left_item.dart';
-import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/count_down_item_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/game_room_compute_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/open_lottery_item.dart';
-import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
-import 'package:leisure_games/ui/main/home/text_timer/text_timer_page.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'game_room_logic.dart';
 import 'widget/game_room_head_widget.dart';
 import 'widget/game_room_hot_widget.dart';
@@ -56,6 +44,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   @override
   void dispose() {
+    state.barrageWallController.dispose();
     Get.delete<GameRoomLogic>();
     super.dispose();
   }
@@ -131,10 +120,17 @@ class _GameRoomPageState extends State<GameRoomPage> {
                                   return buildItemWidget(index, logic, gameRoomItemEntity);
                                 },
                               ),
-                              Positioned(left: 0, right: 0, child: buildContiner()),
+                              Positioned(left: 0, right: 0, top: 20.h, child: buildCountDown()),
                               buildFloatingBtn(() {
                                 logic.startBet(context);
                               }),
+                              BarrageWall(
+                                maxBulletHeight: 5,
+                                controller: state.barrageWallController,
+                                speedCorrectionInMilliseconds: 3000,
+                                child: Container(),
+                                height: 0.2.sh,
+                              ),
                             ],
                           );
                         },
@@ -276,41 +272,33 @@ class _GameRoomPageState extends State<GameRoomPage> {
     return SizedBox();
   }
 
-  buildContiner() {
+  buildCountDown() {
     return GetBuilder<TextItemLogic>(
         id: "fiveCountDownStatus",
         builder: (logic) {
           return Visibility(
               visible: logic.fiveCountDownTime<=5&&(logic.fiveCountDownTime>0),
-              child: Container(
-                  width: 0.7.sw,
-                  height: 0.2.sh,
-              child: Image(
-                image: AssetImage(buildImage(logic.fiveCountDownTime)),
-                width: 0.7.sw,
-                height: 0.2.sh,
-                fit: BoxFit.fill,
-              )));
+              child: WidgetUtils().buildImage(buildImage(logic.fiveCountDownTime), 100.w, 40.h));
         });
   }
 
   String buildImage(int second) {
-    String result = ImageX.countDown5;
+    String result = ImageX.countDown5Z();
     switch (second) {
       case 5:
-        result = ImageX.countDown5;
+        result = ImageX.countDown1Z();
         break;
       case 4:
-        result = ImageX.countDown4;
+        result = ImageX.countDown2Z();
         break;
       case 3:
-        result = ImageX.countDown3;
+        result = ImageX.countDown3Z();
         break;
       case 2:
-        result = ImageX.countDown2;
+        result = ImageX.countDown4Z();
         break;
       case 1:
-        result = ImageX.countDown1;
+        result = ImageX.countDown5Z();
         break;
     }
     return result;

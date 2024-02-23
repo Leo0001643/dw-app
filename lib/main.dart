@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
           darkTheme: AppTheme().darkTheme,
           builder: EasyLoading.init(
               builder: (context,widget)=> MediaQuery(///设置文字大小不随系统设置改变
-                  data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+                  data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
                   child: widget ?? Container()
               )
           ),

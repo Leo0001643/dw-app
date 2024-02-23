@@ -2,9 +2,11 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'package:crypto/crypto.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter/services.dart';
 import 'package:leisure_games/app/global.dart';
@@ -494,6 +496,58 @@ class DataUtils{
   }
 
 
+  static buildClientName(int length){
+    var order = DateTime.now().millisecondsSinceEpoch.toString();
+    if (length > 0) {
+      //返回唯一key
+      var chars = [
+        "_",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      ];
+      var res = "";
+      var random = Random();
+      for (var i = 0; i < length; i++) {
+        var id = (random.nextDouble() * 36).ceil();
+        res += chars[id];
+      }
+      order = order + res;
+    }
+  }
 
 }
 

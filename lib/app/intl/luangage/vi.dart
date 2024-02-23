@@ -421,9 +421,9 @@ class VI{
     "fangjiechi": "防劫持",
     "shiyongbangzhu": "使用帮助",
     "xuanzeyuyan":"选择语言",
-    "changyongduanyu":"常用短语",
-    "qitaduanyu":"其他短语",
-    "biaoqing":"表情",
+    "changyongduanyu":"Hữu dụng.",
+    "qitaduanyu":"Những thứ khác",
+    "biaoqing":"Cảm xúc",
     "gif":"gif",
     "yue_":"Số dư：",
     "home": "Trang chủ",
@@ -984,6 +984,7 @@ class VI{
     "no":"Số ",
     "fengpanxinxi":"Thông tin niêm phong",
     "kaishifengpan":"Bắt đầu phong ấn",
+    "lianjiefuwushibai":"Dịch vụ liên kết đã thất bại, hãy thử lại sau",
 
   };
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:isolate';
 
@@ -145,7 +146,7 @@ class WSMainService extends IsolateService {
       // notifierResponse = response;
       // notifyListeners();
     });
-    print("WSMainService 发送请求sync $request, $paramKey");
+    print("WSMainService 发送请求sync ${jsonEncode(request.toMap())}, $paramKey");
     List msgParams = [];
     msgParams.add("request");
     msgParams.add(request.toMap());

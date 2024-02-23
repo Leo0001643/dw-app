@@ -50,6 +50,7 @@ class GameRoomComputeWidget extends StatelessWidget {
       );
     });
   }
+
   BoxDecoration buildRoomBoxType() {
     var image = ImageX.ic_1room_last;
     switch(state.roomType.value){

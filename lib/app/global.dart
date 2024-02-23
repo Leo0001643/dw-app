@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get_utils/src/get_utils/get_utils.dart';
 import 'package:rxdart/rxdart.dart';
 ///普通事件
-EventBus eventBus=new EventBus();
+EventBus eventBus=EventBus();
 ///可用于黏性事件
 EventBus behaviorBus = EventBus.customController(BehaviorSubject());
 

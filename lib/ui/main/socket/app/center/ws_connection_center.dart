@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/res/request/login_request.dart';
@@ -323,20 +321,14 @@ class WsConnectionCenter {
         _syncConnectState(WebSocketConnectStatus.disconnected);
         mWsService.target?.processResponse(response);
       }
-    } else if (response.type ==
-        GameResponseType.heartBeatTop.number) {
+    } else if (response.type == GameResponseType.heartBeatTop.number) {
       // 主心跳处理
       mWsService.target?.processHeart(response);
     } else if (response.type =="ping") {
       // 子心跳包处理
       // mWsService.target?.processResponse(response);
       _syncConnectState(WebSocketConnectStatus.connected);
-    }else if(response.type == "msg_get_pic"){
-      loggerArray(["收到聊天消息PIC",event]);
-    }else if(response.type == "msg_get_gif"){
-      loggerArray(["收到聊天消息GIF",event]);
     }else {
-
       dzLog("======>成功2  ${response.type }");
       // 请求响应处理
       // String responseKey = response.responseKey();
