@@ -4,17 +4,12 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
-import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
-import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart' as B;
-import 'package:leisure_games/ui/bean/bet_record_group_entity.dart'  as L;
-
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
 import '../../../../bean/bet_record_group_entity.dart';

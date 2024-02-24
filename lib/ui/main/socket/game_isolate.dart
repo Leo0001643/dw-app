@@ -54,7 +54,7 @@ class GameIsolate extends ChangeNotifier {
     _isIsolateStarted = false;
   }
 
-  late Isolate _isolate;
+  Isolate? _isolate;
    SendPort? _gameSendPort;
 
   /// 使用静态变量记录sendPort，否则子线程里无法取到值
@@ -67,7 +67,10 @@ class GameIsolate extends ChangeNotifier {
       return;
     }
     _isIsolateStarted = true;
-
+    if(_isolate != null){
+      _isolate?.kill();
+      _isolate = null;
+    }
     ReceivePort receivePort = ReceivePort();
     SendPort sendPort = receivePort.sendPort;
     _mainSendPort = sendPort;
@@ -85,7 +88,7 @@ class GameIsolate extends ChangeNotifier {
     }
 
     /// 避免线程因未捕获的异常而自动terminate
-    _isolate.setErrorsFatal(false);
+    _isolate?.setErrorsFatal(false);
 
     StreamSubscription? streamSubscription;
     streamSubscription = receivePort.listen((message) async {
@@ -147,7 +150,8 @@ class GameIsolate extends ChangeNotifier {
           }
         } else if (message == "exit") {
           streamSubscription!.cancel();
-          _isolate.kill();
+          _isolate?.kill();
+          _isolate = null;
         }
       } else if (message is List) {
 

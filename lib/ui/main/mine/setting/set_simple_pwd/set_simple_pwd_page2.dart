@@ -6,7 +6,6 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:pinput/pinput.dart';
 
 import '../../../../../app/res/imagex.dart';
 import '../../../../../app/utils/dialog_utils.dart';

@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
-import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
-import 'package:leisure_games/ui/main/home/game_room/text_timer/text_timer_item.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_select_timer_page.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
-import 'package:leisure_games/ui/main/home/text_timer/text_timer_page.dart';
 
 class SelectRoomBottomDialog extends StatefulWidget {
   final Pc28LottoEntity pc28Lotto;

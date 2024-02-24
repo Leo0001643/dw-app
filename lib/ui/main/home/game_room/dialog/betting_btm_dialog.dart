@@ -13,7 +13,6 @@ import 'package:leisure_games/ui/main/home/game_room/dialog/betting_child_page.d
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_tema_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
-import 'package:leisure_games/ui/main/mine/mine_logic.dart';
 
 import '../../../../../app/utils/dialog_utils.dart';
 import '../utils/game_rule_util.dart';

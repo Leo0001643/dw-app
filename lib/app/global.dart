@@ -2,7 +2,6 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get_utils/src/get_utils/get_utils.dart';
 import 'package:rxdart/rxdart.dart';
 ///普通事件
 EventBus eventBus=EventBus();

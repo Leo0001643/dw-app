@@ -8,9 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
-import '../../../../bean/usdt_entity.dart';
 import 'withdraw_apply_logic.dart';
 
 ///

@@ -1,6 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 
 CountDownLotteryEntity $CountDownLotteryEntityFromJson(

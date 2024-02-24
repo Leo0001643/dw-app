@@ -7,7 +7,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 import 'package:flutter/rendering.dart';
-import 'package:leisure_games/app/logger.dart';
 
 class NestedInnerScrollChild extends StatefulWidget {
   final Widget child;

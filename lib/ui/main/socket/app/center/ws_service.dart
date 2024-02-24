@@ -1,11 +1,11 @@
+import 'dart:async';
 import 'dart:isolate';
+
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
 import 'package:leisure_games/ui/main/socket/requset/game_heartbeat_request.dart';
 import 'package:leisure_games/ui/main/socket/status/websocket_connect_status.dart';
-
-import 'dart:async';
 
 import 'ws_connection_center.dart';
 

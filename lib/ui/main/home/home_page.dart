@@ -11,13 +11,13 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/app/widget/draggable_widget.dart';
 import 'package:leisure_games/app/widget/nested_inner_scroll_child.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:leisure_games/ui/main/home/game_menu_view.dart';
 import 'package:leisure_games/ui/main/home/more_tab_view.dart';
 import 'package:marquee/marquee.dart';
+
 import 'home_logic.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,6 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/prize_list_entity.dart';
-import 'package:leisure_games/app/intl/intr.dart';
 
 
 PrizeListEntity $PrizeListEntityFromJson(Map<String, dynamic> json) {

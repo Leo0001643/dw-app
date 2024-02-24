@@ -1,7 +1,6 @@
 
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:leisure_games/ui/game_html/game_html_binding.dart';
-import 'package:leisure_games/ui/game_html/game_html_page.dart';
 import 'package:leisure_games/ui/html/html_binding.dart';
 import 'package:leisure_games/ui/html/html_page.dart';
 import 'package:leisure_games/ui/login/login_binding.dart';
@@ -107,7 +106,6 @@ import 'package:leisure_games/ui/main/mine/select_theme/select_theme_page.dart';
 import 'package:leisure_games/ui/main/mine/setting/set_login_pwd/set_login_pwd_binding.dart';
 import 'package:leisure_games/ui/main/mine/setting/set_login_pwd/set_login_pwd_page.dart';
 import 'package:leisure_games/ui/main/mine/setting/set_simple_pwd/set_simple_pwd_binding.dart';
-import 'package:leisure_games/ui/main/mine/setting/set_simple_pwd/set_simple_pwd_page.dart';
 import 'package:leisure_games/ui/main/mine/setting/set_withdraw_pwd/set_withdraw_pwd_binding.dart';
 import 'package:leisure_games/ui/main/mine/setting/set_withdraw_pwd/set_withdraw_pwd_page.dart';
 import 'package:leisure_games/ui/main/mine/setting/setting_binding.dart';
@@ -144,7 +142,6 @@ import 'package:leisure_games/ui/register/register_binding.dart';
 import 'package:leisure_games/ui/register/register_page.dart';
 
 import '../ui/game_html/game_html_page2.dart';
-import '../ui/main/home/text_timer/text_timer_page.dart';
 import '../ui/main/mine/setting/set_simple_pwd/set_simple_pwd_page2.dart';
 
 class Routes {

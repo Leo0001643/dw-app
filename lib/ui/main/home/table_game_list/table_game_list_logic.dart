@@ -4,13 +4,11 @@ import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
-import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/chess_event.dart';
 import 'package:leisure_games/ui/bean/ds_game_entity.dart';
 import 'package:leisure_games/ui/bean/ele_game_type_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
-import 'package:leisure_games/ui/bean/html_event.dart';
 
 import 'table_game_list_state.dart';
 

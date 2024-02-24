@@ -9,7 +9,6 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
-import '/app/intl/intr.dart';
 import 'main_logic.dart';
 import 'main_state.dart';
 

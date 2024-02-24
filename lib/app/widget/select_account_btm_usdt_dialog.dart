@@ -7,7 +7,6 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
-import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
 import '../../ui/bean/usdt_entity.dart';
 

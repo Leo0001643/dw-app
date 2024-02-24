@@ -4,12 +4,10 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 
 import '../../app/global.dart';
 import 'FloatExpendButton.dart';
-import 'float_menu_button.dart';
 import 'game_html_logic.dart';
 
 class GameHtmlPage2 extends StatefulWidget {

@@ -1,6 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 
 WSGameOddsServer $WSGameOddsServerFromJson(Map<String, dynamic> json) {

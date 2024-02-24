@@ -1,8 +1,9 @@
-import 'package:leisure_games/generated/json/base/json_field.dart';
-import 'package:leisure_games/generated/json/wallet_draw_detail_entity.g.dart';
 import 'dart:convert';
 
+import 'package:leisure_games/generated/json/base/json_field.dart';
+import 'package:leisure_games/generated/json/wallet_draw_detail_entity.g.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
+
 export 'package:leisure_games/generated/json/wallet_draw_detail_entity.g.dart';
 
 @JsonSerializable()

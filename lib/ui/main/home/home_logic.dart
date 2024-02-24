@@ -7,7 +7,6 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -22,9 +21,6 @@ import 'package:leisure_games/ui/bean/notice_entity.dart';
 import 'package:sprintf/sprintf.dart';
 
 import '../../../app/constants.dart';
-import '../../bean/game_kind_entity.dart';
-import '../../bean/pc28_lotto_entity.dart';
-import '../../bean/pc28_plan_entity.dart';
 import 'home_state.dart';
 
 class HomeLogic extends GetxController {

@@ -1,18 +1,11 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:leisure_games/app/global.dart';
-import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
-import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
-import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 
 class TextTimerItem extends StatefulWidget {
  

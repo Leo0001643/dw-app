@@ -20,8 +20,6 @@ import 'package:leisure_games/ui/main/main_logic.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-import 'package:http/http.dart' as http;
 
 class WidgetUtils {
   WidgetUtils._internal();

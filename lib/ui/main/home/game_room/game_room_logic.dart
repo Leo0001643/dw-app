@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +31,7 @@ import 'package:leisure_games/ui/main/socket/app/center/impl/game_notification_c
 import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
 import 'package:leisure_games/ui/main/socket/app/ws_main_service.dart';
 import 'package:leisure_games/ui/main/socket/game_data_service_center.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' as WS;
+
 import 'game_room_state.dart';
 
 class GameRoomLogic extends GetxController implements GameNotificationListener {
@@ -133,12 +133,12 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     TextItemLogic textItemLogic = Get.find<TextItemLogic>();
     // test();
     textItemLogic.countDownLotteryEntity.stream.listen((value) {
-      print("修改了值");
+      // print("修改了值");
       handleMessage(value);
     });
 
     textItemLogic.currentStatus.stream.listen((value) {
-      print("修改了值");
+      // print("修改了值");
       currentStatus.value = value;
       currentStatus.refresh();
       update(["gameRoomComputeWidget"]);

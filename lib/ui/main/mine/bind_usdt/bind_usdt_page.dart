@@ -11,8 +11,6 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
-import 'package:leisure_games/ui/bean/usdt_entity.dart';
-import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
 import '../../../../main.dart';
 import '../../ends_drawer_view.dart';

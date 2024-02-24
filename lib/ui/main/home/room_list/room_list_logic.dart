@@ -10,7 +10,6 @@ import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
 import 'package:leisure_games/ui/main/socket/app/isolate_initializer.dart';
-import 'package:leisure_games/ui/main/socket/game_isolate.dart';
 
 import 'room_list_state.dart';
 

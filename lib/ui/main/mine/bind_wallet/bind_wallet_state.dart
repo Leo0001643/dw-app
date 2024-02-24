@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
-import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/wallet_draw_detail_entity.dart';
 
 class BindWalletState {

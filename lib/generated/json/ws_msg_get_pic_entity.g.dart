@@ -1,6 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_pic_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 
 WsMsgGetPicEntity $WsMsgGetPicEntityFromJson(Map<String, dynamic> json) {

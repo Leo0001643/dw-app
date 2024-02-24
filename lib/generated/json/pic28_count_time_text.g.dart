@@ -1,6 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/pic28_count_time_text.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 
 TimeDataContent $TimeDataContentFromJson(Map<String, dynamic> json) {

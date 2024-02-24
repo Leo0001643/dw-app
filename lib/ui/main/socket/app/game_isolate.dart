@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:isolate';
 import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -17,10 +18,10 @@ class GameIsolate extends ChangeNotifier {
 
   // 关联服务
   // 主线程服务
-  IsolateService? mMainServ;
+  static IsolateService? mMainServ;
 
   // 子线程服务
-  IsolateService? mChildServ;
+  static IsolateService? mChildServ;
 
   // 用于监听模块
   GameRequest? notifierRequest;
@@ -32,10 +33,10 @@ class GameIsolate extends ChangeNotifier {
 
   Isolate? _isolate;
 
-  SendPort? _childSendPort;
+  static SendPort? _childSendPort;
 
   /// 使用静态变量记录sendPort，否则子线程里无法取到值
-  SendPort? _mainSendPort;
+  static SendPort? _mainSendPort;
 
   // 初始化线程
   GameIsolate() {
@@ -64,6 +65,10 @@ class GameIsolate extends ChangeNotifier {
   Future<void> startNetIsolate(IsolateServerType mainServerType,
       IsolateServerType childServerType) async {
     String debugName = 'isolate-${Random().nextInt(10)}';
+    if(_isolate != null){
+      _isolate?.kill();
+      _isolate = null;
+    }
     print("开启线程 $debugName-$hashCode ${_isolate == null}");
 
     ReceivePort receivePort = ReceivePort();
@@ -113,7 +118,7 @@ class GameIsolate extends ChangeNotifier {
   }
 
   // 子线程空间
-  void doWorkInChild(List params) {
+  static void doWorkInChild(List params) {
     debugPrint("doWorkInChild ${Isolate.current.debugName}");
     ReceivePort gameReceivePort = ReceivePort();
     _childSendPort = gameReceivePort.sendPort;
@@ -132,6 +137,7 @@ class GameIsolate extends ChangeNotifier {
     //
     StreamSubscription? streamSubscription;
     streamSubscription = gameReceivePort.listen((message) async {
+      loggerArray(["都收到了些啥消息",message]);
       if (message is String) {
         if (message == "exit") {
           dzLog("子线程退出！");
@@ -162,7 +168,7 @@ class GameIsolate extends ChangeNotifier {
   }
 
   // 分发日志
-  void dzLog(String message) {
+  static void dzLog(String message) {
     _mainSendPort?.send(["dispatchLoggerMessgae", message]);
   }
 

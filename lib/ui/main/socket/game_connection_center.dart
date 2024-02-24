@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:web_socket_channel/io.dart';
 
-import '../../bean/device_info.dart';
 import 'status/game_connection_status.dart';
 
 /// 长连接参数，用于构造连接地址

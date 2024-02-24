@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
+
 import 'prize_number_logic.dart';
 
 class PrizeNumberPage extends StatefulWidget {

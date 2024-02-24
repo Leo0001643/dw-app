@@ -11,9 +11,7 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 
-import '../../../../main.dart';
 import '../../ends_drawer_view.dart';
-import '../../main_logic.dart';
 import 'betting_record_logic.dart';
 
 ///投注记录
