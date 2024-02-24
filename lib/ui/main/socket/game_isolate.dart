@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/ui/main/socket/game_connection_service_center.dart';
@@ -75,9 +76,13 @@ class GameIsolate extends ChangeNotifier {
 
     String debugName = 'gameIsolate-${Random().nextInt(10)}';
 
-    _isolate = await Isolate.spawn(
-        doWorkInGameIsolate, [sendPort, rootIsolateToken],
-        debugName: debugName);
+    try{
+      _isolate = await Isolate.spawn(
+          doWorkInGameIsolate, [sendPort, rootIsolateToken],
+          debugName: debugName);
+    }catch(e){
+      loggerArray(["socket_game_isolate-isolate启动异常",e]);
+    }
 
     /// 避免线程因未捕获的异常而自动terminate
     _isolate.setErrorsFatal(false);

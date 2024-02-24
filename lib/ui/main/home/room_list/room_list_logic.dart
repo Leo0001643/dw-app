@@ -29,7 +29,6 @@ class RoomListLogic extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     AppInst.instance.stopWs();
     super.onClose();
   }

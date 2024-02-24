@@ -850,11 +850,10 @@ class GameRuleUtil {
       return "龙";
     } else if (GameType_tiger == (betType)) {
       return "虎";
-    } else if (betType != null) {
-      return getWhereBallName(betType);
     } else {
-      return "未知";
+      return getWhereBallName(betType);
     }
+
   }
 
   /**

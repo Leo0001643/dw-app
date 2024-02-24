@@ -1,7 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
-
 
 WsBetResultEntity $WsBetResultEntityFromJson(Map<String, dynamic> json) {
   final WsBetResultEntity wsBetResultEntity = WsBetResultEntity();
@@ -86,23 +84,23 @@ extension WsBetResultEntityExtension on WsBetResultEntity {
 
 BetContent $BetContentFromJson(Map<String, dynamic> json) {
   final BetContent betContent = BetContent();
-  final String? a = jsonConvert.convert<String>(json['a']);
+  final String? a = jsonConvert.convert<String>(json['A']);
   if (a != null) {
     betContent.a = a;
   }
-  final String? b = jsonConvert.convert<String>(json['b']);
+  final String? b = jsonConvert.convert<String>(json['B']);
   if (b != null) {
     betContent.b = b;
   }
-  final String? c = jsonConvert.convert<String>(json['c']);
+  final String? c = jsonConvert.convert<String>(json['C']);
   if (c != null) {
     betContent.c = c;
   }
-  final String? d = jsonConvert.convert<String>(json['d']);
+  final String? d = jsonConvert.convert<String>(json['D']);
   if (d != null) {
     betContent.d = d;
   }
-  final String? e = jsonConvert.convert<String>(json['e']);
+  final String? e = jsonConvert.convert<String>(json['E']);
   if (e != null) {
     betContent.e = e;
   }
@@ -111,11 +109,11 @@ BetContent $BetContentFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> $BetContentToJson(BetContent entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
-  data['a'] = entity.a;
-  data['b'] = entity.b;
-  data['c'] = entity.c;
-  data['d'] = entity.d;
-  data['e'] = entity.e;
+  data['A'] = entity.a;
+  data['B'] = entity.b;
+  data['C'] = entity.c;
+  data['D'] = entity.d;
+  data['E'] = entity.e;
   return data;
 }
 

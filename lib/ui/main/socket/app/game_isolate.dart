@@ -3,6 +3,7 @@ import 'dart:isolate';
 import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/ui/main/socket/app/center/ws_service.dart';
@@ -29,7 +30,7 @@ class GameIsolate extends ChangeNotifier {
 
   final Map<String, dynamic> _maps = <String, dynamic>{};
 
-  late Isolate _isolate;
+  Isolate? _isolate;
 
   SendPort? _childSendPort;
 
@@ -63,7 +64,8 @@ class GameIsolate extends ChangeNotifier {
   Future<void> startNetIsolate(IsolateServerType mainServerType,
       IsolateServerType childServerType) async {
     String debugName = 'isolate-${Random().nextInt(10)}';
-    print("开启线程 $debugName-$hashCode");
+    print("开启线程 $debugName-$hashCode ${_isolate == null}");
+
     ReceivePort receivePort = ReceivePort();
     SendPort sendPort = receivePort.sendPort;
     _mainSendPort = sendPort;
@@ -75,12 +77,16 @@ class GameIsolate extends ChangeNotifier {
       mMainServ = WSMainService();
     }
     //
-    _isolate = await Isolate.spawn(doWorkInChild,
-        [sendPort, rootIsolateToken, childServerType, ""],
-        debugName: debugName);
+    try{
+      _isolate = await Isolate.spawn(doWorkInChild,
+          [sendPort, rootIsolateToken, childServerType, ""],
+          debugName: debugName);
+    }catch(e){
+      loggerArray(["app_game_isolate-isolate启动异常",e]);
+    }
 
     /// 避免线程因未捕获的异常而自动terminate
-    _isolate.setErrorsFatal(false);
+    _isolate?.setErrorsFatal(false);
 
     // 主线程监听
     mMainstreamSub = receivePort.listen((message) async {
@@ -90,7 +96,7 @@ class GameIsolate extends ChangeNotifier {
       } else if (message is String && message == 'exit') {
         print("主线程$debugName退出");
         mMainstreamSub!.cancel();
-        _isolate.kill();
+        _isolate?.kill();
       } else if (message is List) {
         if (message[0] is String) {
           if (message[0] == "dispatchResponse") {

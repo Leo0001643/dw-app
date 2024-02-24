@@ -1,5 +1,6 @@
+import 'dart:convert';
 
-import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/ws_bet_result_entity.g.dart';
 
 @JsonSerializable()
@@ -36,10 +37,15 @@ class WsBetResultEntity {
 
 @JsonSerializable()
 class BetContent {
+  @JSONField(name: "A")
   String? a;
+  @JSONField(name: "B")
   String? b;
+  @JSONField(name: "C")
   String? c;
+  @JSONField(name: "D")
   String? d;
+  @JSONField(name: "E")
   String? e;
 
   BetContent({this.a, this.b, this.c, this.d, this.e});

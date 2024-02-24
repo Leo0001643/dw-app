@@ -286,19 +286,19 @@ class _GameRoomPageState extends State<GameRoomPage> {
     String result = ImageX.countDown5Z();
     switch (second) {
       case 5:
-        result = ImageX.countDown1Z();
+        result = ImageX.countDown5Z();
         break;
       case 4:
-        result = ImageX.countDown2Z();
+        result = ImageX.countDown4Z();
         break;
       case 3:
         result = ImageX.countDown3Z();
         break;
       case 2:
-        result = ImageX.countDown4Z();
+        result = ImageX.countDown2Z();
         break;
       case 1:
-        result = ImageX.countDown5Z();
+        result = ImageX.countDown1Z();
         break;
     }
     return result;

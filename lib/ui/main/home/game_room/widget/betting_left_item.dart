@@ -41,7 +41,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
       allMonny+=int.tryParse(betMoney)??0;
     }
 
-    print("=========>avatar  ${wsBetResultEntity?.avatar}");
+    print("=========>avatar  ${wsBetResultEntity.avatar} ${wsBetResultEntity.content}");
     return Container(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -52,12 +52,12 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             child: Row(
               children: [
                 GFAvatar(
-                  backgroundImage: AssetImage('assets/images/${wsBetResultEntity?.avatar??ImageX.icon_avatar}.png'),
+                  backgroundImage: AssetImage('assets/images/${wsBetResultEntity.avatar??ImageX.icon_avatar}.png'),
                   shape: GFAvatarShape.circle,
                   radius: 16.r,
                 ),
                 SizedBox(width: 5.w,),
-                Text(wsBetResultEntity?.nickname??"",style: TextStyle(fontSize: 14.sp,color: ColorX.text606(),),),
+                Text(wsBetResultEntity.nickname??"",style: TextStyle(fontSize: 14.sp,color: ColorX.text606(),),),
               ],
             ),
           ),
@@ -71,43 +71,30 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
               children: [
                 InkWell(
                   onTap: ()=> DialogUtils().showConfirmBetDialog(context,widget.logic),
-                  child: Obx(() {
-                    var color = ColorX.color_68_e2e;
-                    switch(widget.logic.state.roomType.value){
-                      case 2:
-                        color= ColorX.color_70_dee;
-                      case 3:
-                        color= ColorX.color_44_f0e;
-                      default:
-                        color= ColorX.color_68_e2e;
-                    }
-                    return Container(
-                      padding: EdgeInsets.symmetric(vertical: 4.w,horizontal: 15.w,),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                          Color(0xFFFF697A).withOpacity(0.9),
-                          Color(0xFFFC4559).withOpacity(0.9),
-                        ],
-
-
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 4.w,horizontal: 15.w,),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                        Color(0xFFFF697A).withOpacity(0.9),
+                        Color(0xFFFC4559).withOpacity(0.9),
+                      ],
+                      ),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(termData,style: TextStyle(fontSize: 14.sp,color:Colors.white),),
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: Colors.white),),
+                            Image.asset(ImageX.icon_right_black,color: Colors.white,),
+                          ],
                         ),
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(termData,style: TextStyle(fontSize: 14.sp,color:Colors.white),),
-                          Wrap(
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: Colors.white),),
-                              Image.asset(ImageX.icon_right_black,color: Colors.white,),
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
+                      ],
+                    ),
+                  ),
                 ),
 
 
@@ -121,8 +108,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                     itemBuilder: (context,index){
                       BetContent? item= wsBetResultEntity.content?[index];
                       return buildBettingInfoItem(wsBetResultEntity,item);
-                    }
-                    ),
+                    }),
 
                 Container(
                   padding: EdgeInsets.only(right: 10.w,top: 8.h),

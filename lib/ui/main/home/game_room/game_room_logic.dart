@@ -299,6 +299,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     // if (AppData.user()?.username == result.username) {
     // } else {}
     print("=====>3");
+    loggerArray(["投注信息打印",result.toJson()]);
     GameRoomItemEntity gameRoomItemEntity =
         GameRoomItemEntity(type: type, data: result);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
