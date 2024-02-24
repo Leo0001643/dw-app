@@ -24,7 +24,7 @@ class SelectRoomBottomDialog extends StatefulWidget {
 }
 
 class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog> {
-  var current = Pc28LottoRoomsTables().obs;
+  // var current = Pc28LottoRoomsTables().obs;
 
   @override
   Widget build(BuildContext context) {
@@ -42,25 +42,12 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 10.h),
                   child: Text(
-                    Intr().qiehuanfangjian,
+                    Intr().qingxuanzhe,
                     style: TextStyle(
                         fontSize: 16.sp,
                         color: ColorX.text0917(),
                         fontWeight: FontWeight.w600),
                   ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 15.w),
-                  child: WidgetUtils().buildElevatedButton(
-                      Intr().confirm, 50.w, 26.h,
-                      textSize: 12.sp, bg: ColorX.color_fc243b, onPressed: () {
-                    if (unEmpty(current.value.name)) {
-                      Navigator.of(context).pop(current.value);
-                    }
-                  }),
                 ),
               ),
             ],
@@ -119,13 +106,11 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog> {
                       ),
                     ),
                     Expanded(
-                      child: Obx(() {
-                        return InkWell(
-                          onTap: () => current.value = e,
-                          child: buildRoomItem(
-                              e.name.em(), current.value == e),
-                        );
-                      }),
+                      child: InkWell(
+                        onTap: () => Navigator.of(context).pop(e),
+                        child: buildRoomItem(
+                            e.name.em()),
+                      ),
                     ),
                   ],
                 ),
@@ -142,13 +127,13 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog> {
     );
   }
 
-  Widget buildRoomItem(String name, bool select) {
+  Widget buildRoomItem(String name) {
     return Stack(
       children: [
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-                color: select ? ColorX.color_fc243b : ColorX.color_e8e8e8,
+                color: ColorX.color_e8e8e8,
                 width: 1.w),
             borderRadius: BorderRadius.circular(8.r),
           ),
@@ -158,17 +143,9 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog> {
             name,
             style: TextStyle(
                 fontSize: 16.sp,
-                color: select ? ColorX.color_fc243b : ColorX.text0917()),
+                color: ColorX.text0917()),
           ),
-        ),
-        Visibility(
-          visible: select,
-          child: Positioned(
-            right: 0,
-            top: 0,
-            child: Image.asset(ImageX.icon_choose),
-          ),
-        ),
+        )
       ],
     );
   }

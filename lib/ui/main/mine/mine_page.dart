@@ -485,11 +485,16 @@ class StateMinePage extends State<MinePage> {
 
   Widget buildImageItem(String icon) {
     if (icon.contains(".svg")) {
-      return SvgPicture.asset(
-        icon,
-        width: 18.w,
-        height: 18.w,
-        fit: BoxFit.contain,
+      return Container(
+        width: 24.w,
+        height: 24.w,
+        alignment: Alignment.center,
+        child: SvgPicture.asset(
+          icon,
+          width: 18.w,
+          height: 18.w,
+          fit: BoxFit.contain,
+        ),
       );
     }else{
       return Image.asset(
