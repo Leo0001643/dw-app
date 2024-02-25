@@ -19,6 +19,7 @@ import 'package:leisure_games/app/socket/ws_message_get_entity.dart';
 import 'package:leisure_games/app/socket/ws_message_send_entity.dart';
 import 'package:leisure_games/app/socket/ws_msg_error_entity.dart';
 import 'package:leisure_games/app/socket/ws_to_bet_entity.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:sprintf/sprintf.dart';
@@ -44,6 +45,8 @@ class SocketUtils{
   SendPort? childSendPort;
   ///长连接状态
   bool isConnect = false;
+  ///游客用户名生成
+  String clientName = "#${DataUtils.buildClientName(5)}";
 
   void connect({Function? callback}) async {
     ReceivePort receivePort = ReceivePort();
@@ -122,10 +125,10 @@ class SocketUtils{
     }
   }
 
-  void toBet(String? moneyType, String? nowTerm, List<OddsContent>? betList,String gameType,String roomId,String tableId){
+  void toBet(String? moneyType, String? nowTerm, List<WsBetContent> betList,String gameType,String roomId,String tableId){
     loggerArray(["发送投注消息",isConnect,moneyType,nowTerm,betList,gameType,roomId,tableId]);
     if(isConnect){
-      var json = jsonEncode(WsToBetEntity.get(gameType: gameType,roomId: roomId,tableId: tableId));
+      var json = jsonEncode(WsToBetEntity.get(moneyType: moneyType,nowTerm: nowTerm,betList: betList,gameType: gameType,roomId: roomId,tableId: tableId));
       childSendPort?.send(buildMessage("bet",value: json));
     }
   }

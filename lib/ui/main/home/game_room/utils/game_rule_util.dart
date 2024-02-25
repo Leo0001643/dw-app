@@ -735,7 +735,6 @@ class GameRuleUtil {
       if (keys .isNotEmpty) {
         OddsContent row;
         keys.map((e){
-
           try {
             Map<String,dynamic> childMap=totalMap[e];
             childMap.keys.map((childKey){

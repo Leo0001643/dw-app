@@ -1,4 +1,6 @@
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/socket/socket_utils.dart';
+import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/ws_to_bet_entity.g.dart';
@@ -38,11 +40,11 @@ class WsToBetEntity {
 	}
 
 
-	factory WsToBetEntity.get({String? moneyType, String? nowTerm, List<OddsContent>? betList,String? gameType,String? roomId,String? tableId}){
+	factory WsToBetEntity.get({String? moneyType, String? nowTerm, List<WsBetContent>? betList,String? gameType,String? roomId,String? tableId}){
 		var entity = WsToBetEntity();
 		entity.siteId = "9000";
 		entity.oid = AppData.user()?.oid ?? "";
-		entity.clientName = AppData.user()?.username ?? "#${DataUtils.buildClientName(5)}";
+		entity.clientName = AppData.user()?.username ?? SocketUtils().clientName;
 		entity.type = "bet";
 		entity.gameType = gameType;
 		entity.roomId = roomId;
@@ -50,12 +52,13 @@ class WsToBetEntity {
 		entity.moneyType = moneyType;
 		entity.nowTerm = nowTerm;
 		var list = List<WsToBetContent>.empty(growable: true);
-		for (OddsContent content in betList ?? []) {
+		for (WsBetContent content in betList ?? []) {
 			var betCon = WsToBetContent();
-			betCon.type = content.type ?? "";
-			betCon.money = "${content.money}";
-			betCon.num = content.contentMap["Key_Num"] ?? "";
-			betCon.odds = content.contentMap["Key_Odds"] ?? "";
+			betCon.type = content.a;
+			betCon.money = content.c;
+			betCon.num = "";
+			betCon.odds = content.d;
+			betCon.odds1314 = content.e;
 			// betCon.odds1314 = content.contentMap[""] ?? "";
 			// map["msg"] = content.play ?? "";
 			list.add(betCon);

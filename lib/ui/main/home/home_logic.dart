@@ -7,8 +7,10 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
@@ -60,9 +62,7 @@ class HomeLogic extends GetxController {
   void clickMenu(BuildContext context, int index) {
     switch (index) {
       case 0:
-
         ///充值
-        // DialogUtils().showLanguageDialog(context);
         if (AppData.isLogin()) {
           eventBus.fire(ChangeMainPageEvent(2));
         } else {
@@ -100,18 +100,20 @@ class HomeLogic extends GetxController {
         }
         break;
       case 6:
-
         ///抢红包
-        if (AppData.isLogin()) {
-          var path = sprintf(Constants.hongbao,[AppData.user()?.oid,AppData.user()?.username,Intr().currentLocale().languageCode]);
-          print("抢红包>>地址"+path);
-          Get.toNamed(Routes.html,
-              arguments: HtmlEvent(
-                  data: path,
-                  isHtmlData: false,
-                  pageTitle: Intr().hongbaohuodong));
-        } else {
-          WidgetUtils().goLogin();
+        if(unEmpty(state.domainConfig?.frontDomain)){
+          if (AppData.isLogin()) {
+            var path = sprintf("${state.domainConfig!.frontDomain!.first}/m/#/Hongbao/%s/%s/%s",
+                [AppData.user()?.oid,AppData.user()?.username,Intr().currentLocale().languageCode]);
+            print("抢红包>>地址"+path);
+            Get.toNamed(Routes.html,
+                arguments: HtmlEvent(
+                    data: path,
+                    isHtmlData: false,
+                    pageTitle: Intr().hongbaohuodong));
+          } else {
+            WidgetUtils().goLogin();
+          }
         }
         break;
       case 7:

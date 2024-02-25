@@ -449,8 +449,8 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
       showToast(Intr().fengpanzhong);
       return;
     }
-    SocketUtils().toBet("CNY", "$term", selectBettingList.value, state.room.value.gameType.em(),
-        state.room.value.roomId.em().toString(), state.room.value.id.em().toString());
+    // SocketUtils().toBet("CNY", "$term", selectBettingList.value, state.room.value.gameType.em(),
+    //     state.room.value.roomId.em().toString(), state.room.value.id.em().toString());
     // GameDataServiceCenter.instance.wSBet(
     //     table_id: "${state.room.value.id ?? 0}",
     //     room_id: "${state.room.value.roomId ?? 0}",
@@ -459,6 +459,21 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     //   nowTerm: "${term}",
     //   betList: selectBettingList.value,);
     showToast(Intr().caozuochenggong);
-
   }
+
+  void sumbitBets2(String? moneyType, String? nowTerm, List<WsBetContent> betList,) {
+    if(LotteryStatus.sealingPlateStatus==currentStatus.value) {
+      showToast(Intr().fengpanzhong);
+      return;
+    }
+    SocketUtils().toBet(moneyType, nowTerm, betList, state.room.value.gameType.em(),
+        state.room.value.roomId.em().toString(), state.room.value.id.em().toString());
+
+    showToast(Intr().caozuochenggong);
+  }
+
+  // [log] [长连接发送投注消息, {key: bet, value: {"type":"bet","client_name":"dsa0001","room_id":"18","oid":"7c1d9e76949201ee2aabb117d019d534","table_id":"54","site_id":"9000","game_type":"fastbtb28","now_term":null,"moneyType":null,"content":[]}}]
+
+
+
 }

@@ -270,8 +270,12 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                           ),
                         ),
                         Expanded(
-                          child: WidgetUtils().buildTextField(73.w, 35.h, 13.sp,
-                              ColorX.text0917(), content.c.em(),backgroundColor: Colors.transparent),
+                          child: WidgetUtils().buildTextField(73.w, 35.h, 13.sp, ColorX.text0917(), "",
+                              inputType: TextInputType.number,
+                              defText: content.c.em(),backgroundColor: Colors.transparent,onChanged: (v){
+                            content.c = v;
+                            odds.refresh();
+                          }),
                         ),
                       ],
                     ),
@@ -336,57 +340,50 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
   }
 
   buildTimer() {
-    return GetBuilder<GameRoomLogic>(builder: (logic) {
-      String termData = GameRuleUtil.getSSB(logic.term.value, year: "");
-      return Text(
-        "dixqi".tr.trArgs([termData]),
-        style: TextStyle(
-          fontSize: 14.sp,
-          color: Colors.white,
-        ),
-      );
-    });
+    String termData = GameRuleUtil.getSSB(widget.betInfo!.term.em(), year: "");
+    return Text(
+      termData,
+      style: TextStyle(
+        fontSize: 14.sp,
+        color: Colors.white,
+      ),
+    );
   }
 
   buildTips() {
-    return GetBuilder<GameRoomLogic>(builder: (logic) {
-      // MineLogic mineLogic = Get.find<MineLogic>();
-
-      return Row(
-        children: [
-          Text.rich(TextSpan(children: [
-            TextSpan(
-              text: "若中奖, 奖金",
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: ColorX.text586(),
-              ),
-            ),
-            TextSpan(
-              text: rakebackFormat(sumOddsData()),
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: ColorX.color_fc243b,
-              ),
-            ),
-            TextSpan(
-              text: ", 盈利 ",
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: ColorX.text586(),
-              ),
-            ),
-            TextSpan(
-              text: "${index==0?"¥":"\$"}${rakebackFormat(sumOddsData()-sumData())}",
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: ColorX.color_fc243b,
-              ),
-            ),
-          ])),
-        ],
-      );
-    });
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Text.rich(TextSpan(children: [
+        TextSpan(
+          text: "若中奖, 奖金",
+          style: TextStyle(
+            fontSize: 12.sp,
+            color: ColorX.text586(),
+          ),
+        ),
+        TextSpan(
+          text: rakebackFormat(sumOddsData()),
+          style: TextStyle(
+            fontSize: 12.sp,
+            color: ColorX.color_fc243b,
+          ),
+        ),
+        TextSpan(
+          text: ", 盈利 ",
+          style: TextStyle(
+            fontSize: 12.sp,
+            color: ColorX.text586(),
+          ),
+        ),
+        TextSpan(
+          text: "${index==0?"¥":"\$"}${rakebackFormat(sumOddsData()-sumData())}",
+          style: TextStyle(
+            fontSize: 12.sp,
+            color: ColorX.color_fc243b,
+          ),
+        ),
+      ])),
+    );
   }
 
   buildMonney() {
@@ -433,47 +430,48 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
   buildTotalTips() {
     return Obx(() {
       return Container(
-        alignment: Alignment.centerRight,
         padding: EdgeInsets.symmetric(
           horizontal: 15.w,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             buildTips(),
             SizedBox(
               height: 8.h,
             ),
-            Text.rich(TextSpan(children: [
-              TextSpan(
-                text: "注单: ",
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: ColorX.text0917(),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text.rich(TextSpan(children: [
+                TextSpan(
+                  text: "注单: ",
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    color: ColorX.text0917(),
+                  ),
                 ),
-              ),
-              TextSpan(
-                text: "${odds.em()}",
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  color: ColorX.color_fc243b,
+                TextSpan(
+                  text: "${odds.em()}",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    color: ColorX.color_fc243b,
+                  ),
                 ),
-              ),
-              TextSpan(
-                text: ", 总金额 ",
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  color: ColorX.text0917(),
+                TextSpan(
+                  text: ", 总金额 ",
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    color: ColorX.text0917(),
+                  ),
                 ),
-              ),
-              TextSpan(
-                text: "${index==0?"¥":"\$"}${rakebackFormat(sumData())}",
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  color: ColorX.color_fc243b,
+                TextSpan(
+                  text: "${index==0?"¥":"\$"}${rakebackFormat(sumData())}",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    color: ColorX.color_fc243b,
+                  ),
                 ),
-              ),
-            ])),
+              ])),
+            ),
           ],
         ),
       );
@@ -496,7 +494,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           WidgetUtils().buildElevatedButton(Intr().confirm, 135.w, 40.h,
               bg: buildBtnColor(),
               textColor: Colors.white, onPressed: () {
-                widget.logic.sumbitBets(widget.logic.sumData());
+                widget.logic.sumbitBets2(index == 0? "CNY":"USDT",widget.betInfo?.term,odds);
                 Navigator.of(context).pop(true);
               })
         ],
@@ -508,7 +506,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
   double sumData(){
     double total=0;
     for(WsBetContent content in odds) {
-      total+= double.parse(content.c.em());
+      total+= double.tryParse(content.c.em()) ?? 0;
     }
     return total;
   }
@@ -516,7 +514,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
   double sumOddsData(){
     double total=0;
     for(WsBetContent content  in odds) {
-      total += double.parse(content.c.em()) * double.parse(content.d.em());
+      total += (double.tryParse(content.c.em()) ?? 0) * double.parse(content.d.em());
     }
     return total;
   }

@@ -1,5 +1,6 @@
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/ws_message_send_entity.g.dart';
@@ -37,7 +38,7 @@ class WsMessageSendEntity {
 		var entity = WsMessageSendEntity();
 		entity.siteId = "9000";
 		entity.oid = AppData.user()?.oid.em();
-		entity.clientName = AppData.user()?.username ?? "#${DataUtils.buildClientName(5)}";
+		entity.clientName = AppData.user()?.username ?? SocketUtils().clientName;
 		entity.type = type;
 		entity.gameType = gameType;
 		entity.roomId = roomId;

@@ -492,7 +492,7 @@ class DataUtils{
   }
 
 
-  static buildClientName(int length){
+  static String buildClientName(int length){
     var order = DateTime.now().millisecondsSinceEpoch.toString();
     if (length > 0) {
       //返回唯一key
@@ -543,6 +543,7 @@ class DataUtils{
       }
       order = order + res;
     }
+    return order;
   }
 
 }
