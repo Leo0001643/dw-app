@@ -1,5 +1,6 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 
 
 DepositLogEntity $DepositLogEntityFromJson(Map<String, dynamic> json) {

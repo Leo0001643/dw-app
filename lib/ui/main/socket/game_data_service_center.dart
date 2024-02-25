@@ -3,15 +3,15 @@ import 'dart:async';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
-import 'package:leisure_games/app/res/request/login_request.dart';
-import 'package:leisure_games/app/res/request/msg_gif_request.dart';
-import 'package:leisure_games/app/res/request/msg_pic_request.dart';
-import 'package:leisure_games/app/res/request/sumbit_bet_request.dart';
+import 'package:leisure_games/ui/main/socket/requset/login_request.dart';
+import 'package:leisure_games/ui/main/socket/requset/msg_gif_request.dart';
+import 'package:leisure_games/ui/main/socket/requset/msg_pic_request.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
 import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
 import 'package:leisure_games/ui/main/socket/app/ws_main_service.dart';
 import 'package:leisure_games/ui/main/socket/game_isolate.dart';
+import 'package:leisure_games/ui/main/socket/requset/sumbit_bet_request.dart';
 
 class GameResultData {
   dynamic entity;

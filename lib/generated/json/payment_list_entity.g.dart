@@ -1,5 +1,6 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
+import 'package:leisure_games/app/global.dart';
 
 
 PaymentListEntity $PaymentListEntityFromJson(Map<String, dynamic> json) {

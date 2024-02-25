@@ -1,7 +1,7 @@
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 
-import '../game_request.dart';
+import '../../../../app/res/game_request.dart';
 
 class SubmitBetRequest extends GameRequest {
   String? table_id;

@@ -1,5 +1,8 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
+import 'package:leisure_games/app/global.dart';
+
+import 'package:leisure_games/app/intl/intr.dart';
 
 
 WithdrawCheckEntity $WithdrawCheckEntityFromJson(Map<String, dynamic> json) {

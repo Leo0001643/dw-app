@@ -13,6 +13,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -110,7 +111,8 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
           room_id: "${room.roomId ?? 0}",
           game_type: "${state.room.value.gameType}");
     });
-    print("=========>room.id ${room.id}");
+    // print("=========>room.id ${room.id}");
+
     HttpService.getPC28Odds(room.id.em()).then((value) {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
       Map<String, dynamic> map = jsonDecode(value,);

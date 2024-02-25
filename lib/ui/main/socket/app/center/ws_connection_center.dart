@@ -5,7 +5,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/game_request.dart';
 import 'package:leisure_games/app/res/game_response.dart';
-import 'package:leisure_games/app/res/request/login_request.dart';
+import 'package:leisure_games/ui/main/socket/requset/login_request.dart';
 import 'package:leisure_games/ui/main/socket/game_connection_center.dart';
 import 'package:leisure_games/ui/main/socket/status/websocket_connect_status.dart';
 import 'package:web_socket_channel/io.dart';

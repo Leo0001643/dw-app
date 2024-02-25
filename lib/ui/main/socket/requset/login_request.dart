@@ -2,7 +2,7 @@
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 
-import '../game_request.dart';
+import '../../../../app/res/game_request.dart';
 
 class WsLoginRequest extends GameRequest {
   String? table_id;

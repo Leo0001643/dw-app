@@ -5,6 +5,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -18,7 +19,6 @@ class RoomListLogic extends GetxController {
 
   @override
   void onReady() {
-
     loadData(Get.arguments);
     var isolateInitializer=IsolateInitializer();
     isolateInitializer.init();
@@ -28,7 +28,6 @@ class RoomListLogic extends GetxController {
 
   @override
   void onClose() {
-    AppInst.instance.stopWs();
     super.onClose();
   }
 

@@ -1,5 +1,6 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/app/global.dart';
 
 
 Pc28LottoEntity $Pc28LottoEntityFromJson(Map<String, dynamic> json) {

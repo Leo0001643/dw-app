@@ -17,7 +17,7 @@ class GameRoomState {
 
   ///房型选择
   var pc28Lotto = Pc28LottoEntity().obs;
-
+  ///当前房型
   var room = Pc28LottoRoomsTables().obs;
 
   var expressions = List<ExpressionEntity>.empty(growable: true);

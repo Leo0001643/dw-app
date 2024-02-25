@@ -26,7 +26,7 @@ class Constants {
   static const pageSize = 20;
 
   // static const websocket = "ws://ws.by4aocqs.com:9999";
-  static const websocket = "wss://9000ywfjn2.uy4ayov.com:443";
+  static const websocket = "wss://9000ywfjn2.uy4ayov.com/?language=s%";
 
 
   static const PC28 = "PC28";
