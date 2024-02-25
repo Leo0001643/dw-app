@@ -1,5 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_lottery_entity.dart';
+import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 

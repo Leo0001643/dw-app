@@ -2,11 +2,25 @@
 import 'dart:convert';
 import 'dart:isolate';
 
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/socket/isolate_msg_entity.dart';
+import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/app/socket/ws_login_entity.dart';
+import 'package:leisure_games/app/socket/ws_logout_entity.dart';
+import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
+import 'package:leisure_games/app/socket/ws_message_get_entity.dart';
+import 'package:leisure_games/app/socket/ws_message_send_entity.dart';
+import 'package:leisure_games/app/socket/ws_msg_error_entity.dart';
+import 'package:leisure_games/app/socket/ws_to_bet_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:sprintf/sprintf.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/status.dart' as status;
@@ -42,12 +56,32 @@ class SocketUtils{
         switch(msg.key){
           case "connected":
             loggerArray(["长连接连接成功"]);
-            isConnect = false;
+            isConnect = true;
             callback?.call();
             break;
         }
-      }else {
+      } else if(message is SendPort){
         childSendPort = message;
+      } else if(message is WSLotteryEntity){
+        try{
+          Get.find<GameRoomLogic>().handleLottery(message);
+        }catch(e){ logger(e); }
+      } else if(message is WsBetEntity){
+        try{
+          Get.find<GameRoomLogic>().handleBetResult(message);
+        }catch(e){ logger(e); }
+      } else if(message is WsLogoutEntity){
+        if(!AppData.isLogin()){
+          showToast(message.reason.em());
+          Get.until((ModalRoute.withName(Routes.main)));
+          Get.toNamed(Routes.login);
+        }
+      } else if(message is WsMessageGetEntity){
+        try{
+          Get.find<GameRoomLogic>().handleMsgGetPic(message);
+        }catch(e){ logger(e); }
+      } else if(message is WsMsgErrorEntity){
+        showToast(message.showMessage.em());
       }
     });
   }
@@ -59,6 +93,43 @@ class SocketUtils{
       childSendPort?.send(buildMessage("login",value: json));
     }
   }
+  //
+  // void sendPicMessage(List<String> msg,String gameType,String roomId,String tableId){
+  //   loggerArray(["发送聊天消息PIC",isConnect,msg,gameType,roomId,tableId]);
+  //   if(isConnect){
+  //     var json = jsonEncode(WsMessageSendEntity.get(type: "msg_send_pic",msg: msg,gameType: gameType,roomId: roomId,tableId: tableId));
+  //     childSendPort?.send(buildMessage("msg_send_pic",value: json));
+  //   }
+  // }
+  //
+  // void sendGifMessage(List<String> msg,String gameType,String roomId,String tableId){
+  //   loggerArray(["发送聊天消息GIF",isConnect,msg,gameType,roomId,tableId]);
+  //   if(isConnect){
+  //     var json = jsonEncode(WsMessageSendEntity.get(type: "msg_send_gif",msg: msg,gameType: gameType,roomId: roomId,tableId: tableId));
+  //     childSendPort?.send(buildMessage("msg_send_gif",value: json));
+  //   }
+  // }
+
+  void sendMessage(String msg,String gameType,String roomId,String tableId){
+    loggerArray(["发送聊天消息",isConnect,msg,gameType,roomId,tableId]);
+    if(isConnect){
+      var json = jsonEncode(WsMessageSendEntity.get(type: "msg_send_pic",msg: [msg],gameType: gameType,roomId: roomId,tableId: tableId));
+      if(msg.isUrl()){
+        childSendPort?.send(buildMessage("msg_send_gif",value: json));
+      }else {
+        childSendPort?.send(buildMessage("msg_send_pic",value: json));
+      }
+    }
+  }
+
+  void toBet(String? moneyType, String? nowTerm, List<OddsContent>? betList,String gameType,String roomId,String tableId){
+    loggerArray(["发送投注消息",isConnect,moneyType,nowTerm,betList,gameType,roomId,tableId]);
+    if(isConnect){
+      var json = jsonEncode(WsToBetEntity.get(gameType: gameType,roomId: roomId,tableId: tableId));
+      childSendPort?.send(buildMessage("bet",value: json));
+    }
+  }
+
 
   void destroy(){
     childSendPort?.send(buildMessage("close"));
@@ -82,7 +153,36 @@ class SocketUtils{
     });
     channel.stream.listen((event) {
       loggerArray(["异步任务收到长连接消息",event]);
-      
+      if(event is String){
+        var json = jsonDecode(event);
+        switch(json["type"]){
+          case "lottery":
+            var result = WSLotteryEntity.fromJson(json);
+            sendPort.send(result);
+            break;
+          case "ping":
+            channel.sink.add({"type":"pong"});
+            break;
+          case "bet_result":
+            var result = WsBetEntity.fromJson(json);
+            sendPort.send(result);
+            break;
+          case "logout":
+            var result = WsLoginEntity.fromJson(json);
+            sendPort.send(result);
+            break;
+          case "msg_get_pic":
+          case "msg_get_gif":
+          var result = WsMessageGetEntity.fromJson(json);
+          if(result.status == 10000){
+              sendPort.send(result);
+            }else {
+              var error = WsMsgErrorEntity.fromJson(json);
+              sendPort.send(error);
+            }
+            break;
+        }
+      }
     });
 
     ReceivePort receivePort = ReceivePort();
@@ -94,6 +194,15 @@ class SocketUtils{
         case "login":
           channel.sink.add(msg.value);
           loggerArray(["长连接开始登录房间",msg.toJson()]);
+          break;
+        case "msg_send_pic":
+        case "msg_send_gif":
+          channel.sink.add(msg.value);
+          loggerArray(["长连接发送聊天消息",msg.toJson()]);
+          break;
+        case "bet":
+          channel.sink.add(msg.value);
+          loggerArray(["长连接发送投注消息",msg.toJson()]);
           break;
         case "close":
           channel.sink.close(status.goingAway);

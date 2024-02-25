@@ -202,6 +202,10 @@ Pc28LottoRoomsTables $Pc28LottoRoomsTablesFromJson(Map<String, dynamic> json) {
   if (roomId != null) {
     pc28LottoRoomsTables.roomId = roomId;
   }
+  final String? title = jsonConvert.convert<String>(json['title']);
+  if (title != null) {
+    pc28LottoRoomsTables.title = title;
+  }
   return pc28LottoRoomsTables;
 }
 
@@ -218,6 +222,7 @@ Map<String, dynamic> $Pc28LottoRoomsTablesToJson(Pc28LottoRoomsTables entity) {
   data['id'] = entity.id;
   data['state'] = entity.state;
   data['roomId'] = entity.roomId;
+  data['title'] = entity.title;
   return data;
 }
 
@@ -234,6 +239,7 @@ extension Pc28LottoRoomsTablesExtension on Pc28LottoRoomsTables {
     int? id,
     int? state,
     int? roomId,
+    String? title,
   }) {
     return Pc28LottoRoomsTables()
       ..gameType = gameType ?? this.gameType
@@ -246,6 +252,7 @@ extension Pc28LottoRoomsTablesExtension on Pc28LottoRoomsTables {
       ..updateTime = updateTime ?? this.updateTime
       ..id = id ?? this.id
       ..state = state ?? this.state
-      ..roomId = roomId ?? this.roomId;
+      ..roomId = roomId ?? this.roomId
+      ..title = title ?? this.title;
   }
 }

@@ -11,33 +11,16 @@ class WSLotteryEntity {
 
   WSLotteryEntity({this.data, this.time, this.type, this.status});
 
-  WSLotteryEntity.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
-      data = <WSLotteryEntityData>[];
-      json['data'].forEach((v) {
-        data!.add(new WSLotteryEntityData.fromJson(v));
-      });
-    }
-    time = json['time'];
-    type = json['type'];
-    status = json['status'];
-  }
+  factory WSLotteryEntity.fromJson(Map<String, dynamic> json) => $WSLotteryEntityFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
-    data['time'] = this.time;
-    data['type'] = this.type;
-    data['status'] = this.status;
-    return data;
-  }
+  Map<String, dynamic> toJson() => $WSLotteryEntityToJson(this);
+
+
 }
 
 @JsonSerializable()
 class WSLotteryEntityData {
-  String?   originalNum;
+  String? originalNum;
   String? gameType;
   String? billCount;
   String? closeTime;

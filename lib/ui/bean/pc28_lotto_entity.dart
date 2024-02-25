@@ -65,6 +65,7 @@ class Pc28LottoRoomsTables {
 	int? id;
 	int? state;
 	int? roomId;
+	String? title;
 
 	Pc28LottoRoomsTables();
 

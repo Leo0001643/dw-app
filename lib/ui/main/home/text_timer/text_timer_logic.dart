@@ -126,8 +126,8 @@ class TextTimerLogic {
               break;
             } else if (onlineT > allTime[key]['data'][s]['closeTime'] &&
                 onlineT < allTime[key]['data'][s + 1]['openTime']) {
-              roomcountdown[key + 'Time'] = "fengpanzhong".tr;
-              roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
+              roomcountdown['${key}Time'] = Intr().fengpanzhong;
+              roomcountdown['${key}Term'] = allTime[key]['data'][s]['term'];
               break;
             }
           }
@@ -141,9 +141,9 @@ class TextTimerLogic {
           int showT = (rrtime - onlineT) ~/ 1000;
           String showtime = secToTime(showT);
           roomcountdown[key + 'Time'] = showtime;
-          roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
+          roomcountdown['${key}Term'] = allTime[key]['data'][0]['term'];
         } else if (onlineT < allTime[key]['data'][0]['openTime']) {
-          roomcountdown[key + 'Time'] = "fengpanzhong".tr;
+          roomcountdown['${key}Time'] = Intr().fengpanzhong;
           roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
         }
       }

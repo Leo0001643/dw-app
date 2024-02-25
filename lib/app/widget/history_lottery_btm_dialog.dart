@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
@@ -177,8 +178,8 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
 
           String term1 = "";
           String term2 = "";
-          if ("fengpanzhong".tr == logic?.state.text_timer.value) {
-            result = "fengpanzhong".tr;
+          if (Intr().fengpanzhong == logic?.state.text_timer.value) {
+            result = Intr().fengpanzhong;
             type = 0;
           } else {
             type = 1;
@@ -198,7 +199,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
             ),
             padding: EdgeInsets.symmetric(horizontal: 5.w,vertical: 2.h),
             alignment: Alignment.center,
-            child: Text("fengpanzhong".tr,
+            child: Text(Intr().fengpanzhong,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   color: Colors.white,

@@ -207,11 +207,11 @@ class TextItemLogic extends GetxController {
                 onlineT < allTime[key]['data'][s + 1]['openTime']) {
               currentStatus.value=LotteryStatus.sealingPlateStatus;
               //现在时间  大于关闭时间，小于下一期开奖时间， 则显示封盘中
-              print("fengpanzhong".tr);
+              // print("fengpanzhong".tr);
               resetStatusWhenClosed();
-              roomcountdown[key + 'Time'] = "fengpanzhong".tr;
-              roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
-              showStartBet(roomcountdown[key + 'Time'],term);
+              roomcountdown['${key}Time'] = Intr().fengpanzhong;
+              roomcountdown['${key}Term'] = allTime[key]['data'][s]['term'];
+              showStartBet(roomcountdown['${key}Time'],term);
               lastStatus=LotteryStatus.sealingPlateStatus;
               break;
             }
@@ -285,7 +285,7 @@ class TextItemLogic extends GetxController {
 
   showStartBet(String currentStatus,String term) {
      if (lastStatusContent == "0:00:00" &&
-        currentStatus== "fengpanzhong".tr &&
+        currentStatus== Intr().fengpanzhong &&
         alreadyShowStop == false) {
       showCloseOver(term);
       alreadyShowStop = true;

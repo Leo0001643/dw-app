@@ -1,49 +1,49 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
+import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 
-WsBetResultEntity $WsBetResultEntityFromJson(Map<String, dynamic> json) {
-  final WsBetResultEntity wsBetResultEntity = WsBetResultEntity();
+WsBetEntity $WsBetEntityFromJson(Map<String, dynamic> json) {
+  final WsBetEntity wsBetEntity = WsBetEntity();
   final String? moneyType = jsonConvert.convert<String>(json['moneyType']);
   if (moneyType != null) {
-    wsBetResultEntity.moneyType = moneyType;
+    wsBetEntity.moneyType = moneyType;
   }
   final String? nickname = jsonConvert.convert<String>(json['nickname']);
   if (nickname != null) {
-    wsBetResultEntity.nickname = nickname;
+    wsBetEntity.nickname = nickname;
   }
   final String? term = jsonConvert.convert<String>(json['term']);
   if (term != null) {
-    wsBetResultEntity.term = term;
+    wsBetEntity.term = term;
   }
   final String? avatar = jsonConvert.convert<String>(json['avatar']);
   if (avatar != null) {
-    wsBetResultEntity.avatar = avatar;
+    wsBetEntity.avatar = avatar;
   }
-  final String? time = jsonConvert.convert<String>(json['time']);
+  final int? time = jsonConvert.convert<int>(json['time']);
   if (time != null) {
-    wsBetResultEntity.time = time;
+    wsBetEntity.time = time;
   }
   final String? type = jsonConvert.convert<String>(json['type']);
   if (type != null) {
-    wsBetResultEntity.type = type;
+    wsBetEntity.type = type;
   }
-  final List<BetContent>? content = (json['content'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<BetContent>(e) as BetContent).toList();
+  final List<WsBetContent>? content = (json['content'] as List<dynamic>?)?.map(
+          (e) => jsonConvert.convert<WsBetContent>(e) as WsBetContent).toList();
   if (content != null) {
-    wsBetResultEntity.content = content;
+    wsBetEntity.content = content;
   }
   final String? username = jsonConvert.convert<String>(json['username']);
   if (username != null) {
-    wsBetResultEntity.username = username;
+    wsBetEntity.username = username;
   }
-  final String? status = jsonConvert.convert<String>(json['status']);
+  final int? status = jsonConvert.convert<int>(json['status']);
   if (status != null) {
-    wsBetResultEntity.status = status;
+    wsBetEntity.status = status;
   }
-  return wsBetResultEntity;
+  return wsBetEntity;
 }
 
-Map<String, dynamic> $WsBetResultEntityToJson(WsBetResultEntity entity) {
+Map<String, dynamic> $WsBetEntityToJson(WsBetEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['moneyType'] = entity.moneyType;
   data['nickname'] = entity.nickname;
@@ -57,19 +57,19 @@ Map<String, dynamic> $WsBetResultEntityToJson(WsBetResultEntity entity) {
   return data;
 }
 
-extension WsBetResultEntityExtension on WsBetResultEntity {
-  WsBetResultEntity copyWith({
+extension WsBetEntityExtension on WsBetEntity {
+  WsBetEntity copyWith({
     String? moneyType,
     String? nickname,
     String? term,
     String? avatar,
-    String? time,
+    int? time,
     String? type,
-    List<BetContent>? content,
+    List<WsBetContent>? content,
     String? username,
-    String? status,
+    int? status,
   }) {
-    return WsBetResultEntity()
+    return WsBetEntity()
       ..moneyType = moneyType ?? this.moneyType
       ..nickname = nickname ?? this.nickname
       ..term = term ?? this.term
@@ -82,32 +82,32 @@ extension WsBetResultEntityExtension on WsBetResultEntity {
   }
 }
 
-BetContent $BetContentFromJson(Map<String, dynamic> json) {
-  final BetContent betContent = BetContent();
+WsBetContent $WsBetContentFromJson(Map<String, dynamic> json) {
+  final WsBetContent wsBetContent = WsBetContent();
   final String? a = jsonConvert.convert<String>(json['A']);
   if (a != null) {
-    betContent.a = a;
+    wsBetContent.a = a;
   }
   final String? b = jsonConvert.convert<String>(json['B']);
   if (b != null) {
-    betContent.b = b;
+    wsBetContent.b = b;
   }
   final String? c = jsonConvert.convert<String>(json['C']);
   if (c != null) {
-    betContent.c = c;
+    wsBetContent.c = c;
   }
   final String? d = jsonConvert.convert<String>(json['D']);
   if (d != null) {
-    betContent.d = d;
+    wsBetContent.d = d;
   }
   final String? e = jsonConvert.convert<String>(json['E']);
   if (e != null) {
-    betContent.e = e;
+    wsBetContent.e = e;
   }
-  return betContent;
+  return wsBetContent;
 }
 
-Map<String, dynamic> $BetContentToJson(BetContent entity) {
+Map<String, dynamic> $WsBetContentToJson(WsBetContent entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['A'] = entity.a;
   data['B'] = entity.b;
@@ -117,15 +117,15 @@ Map<String, dynamic> $BetContentToJson(BetContent entity) {
   return data;
 }
 
-extension BetContentExtension on BetContent {
-  BetContent copyWith({
+extension WsBetContentExtension on WsBetContent {
+  WsBetContent copyWith({
     String? a,
     String? b,
     String? c,
     String? d,
     String? e,
   }) {
-    return BetContent()
+    return WsBetContent()
       ..a = a ?? this.a
       ..b = b ?? this.b
       ..c = c ?? this.c

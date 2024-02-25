@@ -227,7 +227,6 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                         children: [
                                           Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight:FontWeight.w700,),),
                                           Text("${widget.logic.selectBettingList.length*(widget.logic.inputAmt.value??0)}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),),
-
                                         ],
                                       ),
                                     ),
@@ -251,7 +250,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
                             child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
                               if(type==0) {
-                                showToast("fengpanzhong".tr);
+                                showToast(Intr().fengpanzhong);
                                 return;
                               }
                               if (widget.logic.selectBettingList.isEmpty) {
@@ -263,7 +262,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               }
                               double totalMony=widget.logic.selectBettingList.length*(widget.logic.inputAmt.value??0);
                               ///确认投注
-                              DialogUtils().showConfirmBetDialog(context, widget.logic,total: totalMony,inputAmt:widget.logic.inputAmt.value);
+                              // DialogUtils().showConfirmBetDialog(context, widget.logic,total: totalMony,inputAmt:widget.logic.inputAmt.value);
                             }),
                           ),
                         ],
@@ -301,8 +300,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
           String term1="";
           String term2="";
-          if ("fengpanzhong".tr == logic?.state.text_timer.value) {
-            result = "fengpanzhong".tr;
+          if (Intr().fengpanzhong == logic.state.text_timer.value) {
+            result = Intr().fengpanzhong;
             type=0;
           } else {
             type=1;
@@ -325,7 +324,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(4.w)),
                 color: Color(0xFFFF7F8C)),
-            child:  Text("fengpanzhong".tr,
+            child:  Text(Intr().fengpanzhong,
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   color: Colors.white,

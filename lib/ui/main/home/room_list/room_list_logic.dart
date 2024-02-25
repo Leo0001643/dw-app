@@ -5,12 +5,9 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
-import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
-import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
-import 'package:leisure_games/ui/main/socket/app/isolate_initializer.dart';
 
 import 'room_list_state.dart';
 
@@ -20,8 +17,8 @@ class RoomListLogic extends GetxController {
   @override
   void onReady() {
     loadData(Get.arguments);
-    var isolateInitializer=IsolateInitializer();
-    isolateInitializer.init();
+    // var isolateInitializer=IsolateInitializer();
+    // isolateInitializer.init();
     // GameIsolate.instance.startGameIsolate();
     super.onReady();
   }
@@ -35,12 +32,17 @@ class RoomListLogic extends GetxController {
   void loadData(GameKindGameKindList? kind) {
     loggerArray(["收到页面参数",kind.toString()]);
     HttpService.getPc28LottoList().then((value) {
+      value.rooms?.forEach((e1) {
+        e1.tables?.forEach((e2) {
+          e2.title = e1.memo.em();
+        });
+      });
       state.pc28Lotto.value = value;
       state.pc28Lotto.refresh();
       ///可能没有传数据，默认使用第一条
       if(isEmpty(kind)){
-        state.title.value = value.rooms?.first.memo ?? "";
         state.room.value = value.rooms?.first ?? Pc28LottoRooms();
+        state.title.value = state.room.value.memo.em();
       }else {
         value.rooms?.forEach((element) {
           if(element.gameType == kind?.gameCode){

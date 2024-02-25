@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/access_route_dialog.dart';
 import 'package:leisure_games/app/widget/bullet_bottom_dialog.dart';
@@ -39,8 +40,10 @@ import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_btm_dialog.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/home_logic.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_logic.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_logic.dart';
 import 'package:leisure_games/ui/main/mine/mine_logic.dart';
@@ -612,9 +615,9 @@ class DialogUtils {
   }
 
   ///确认注单
-  void showConfirmBetDialog(BuildContext context, GameRoomLogic logic,{double total=0,double inputAmt=0}) {
-    MineLogic   mineLogic = Get.find<MineLogic>();
-    double selfMoney=mineLogic.state.cnyBal.value.money??0;
+  void showConfirmBetDialog(BuildContext context, GameRoomLogic logic,WsBetEntity betInfo,{double total=0,double inputAmt=0}) {
+    var homelogic = Get.find<HomeLogic>();
+    double selfMoney = homelogic.state.cnyBal.value.money??0;
     if(selfMoney<total) {
       showMessageDialog(context,"余额不足,投注失败。是否前往充值",title:"提示",onConfirm: (){
         eventBus.fire(ChangeMainPageEvent(2));
@@ -631,7 +634,7 @@ class DialogUtils {
             ),
             backgroundColor: ColorX.cardBg5(),
             contentPadding: EdgeInsets.zero,
-            content: ConfirmBettingDialog(logic,total,inputAmt),
+            content: ConfirmBettingDialog(logic,total,inputAmt,betInfo),
           );
         });
   }

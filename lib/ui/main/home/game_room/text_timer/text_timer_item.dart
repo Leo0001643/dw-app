@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
@@ -50,8 +51,8 @@ class TextTimerItemState extends State<TextTimerItem> {
         builder: (logic) {
           print("开始刷新logic");
           String result = "";
-          if ("fengpanzhong".tr == logic?.state.text_timer.value) {
-            result = "fengpanzhong".tr;
+          if (Intr().fengpanzhong == logic?.state.text_timer.value) {
+            result = Intr().fengpanzhong;
           } else {
             result =
                 logic?.subToTime(logic!.state.text_timer.value)??"";

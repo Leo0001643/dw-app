@@ -7,7 +7,7 @@ IsolateMsgEntity $IsolateMsgEntityFromJson(Map<String, dynamic> json) {
   if (key != null) {
     isolateMsgEntity.key = key;
   }
-  final dynamic value = json['value'];
+  final String? value = jsonConvert.convert<String>(json['value']);
   if (value != null) {
     isolateMsgEntity.value = value;
   }
@@ -24,7 +24,7 @@ Map<String, dynamic> $IsolateMsgEntityToJson(IsolateMsgEntity entity) {
 extension IsolateMsgEntityExtension on IsolateMsgEntity {
   IsolateMsgEntity copyWith({
     String? key,
-    dynamic value,
+    String? value,
   }) {
     return IsolateMsgEntity()
       ..key = key ?? this.key

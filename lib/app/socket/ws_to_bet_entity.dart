@@ -1,0 +1,89 @@
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
+import 'package:leisure_games/generated/json/base/json_field.dart';
+import 'package:leisure_games/generated/json/ws_to_bet_entity.g.dart';
+import 'dart:convert';
+
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+export 'package:leisure_games/generated/json/ws_to_bet_entity.g.dart';
+
+@JsonSerializable()
+class WsToBetEntity {
+	String? type;
+	@JSONField(name: "client_name")
+	String? clientName;
+	@JSONField(name: "room_id")
+	String? roomId;
+	String? oid;
+	@JSONField(name: "table_id")
+	String? tableId;
+	@JSONField(name: "site_id")
+	String? siteId;
+	@JSONField(name: "game_type")
+	String? gameType;
+	@JSONField(name: "now_term")
+	String? nowTerm;
+	String? moneyType;
+	List<WsToBetContent>? content;
+
+	WsToBetEntity();
+
+	factory WsToBetEntity.fromJson(Map<String, dynamic> json) => $WsToBetEntityFromJson(json);
+
+	Map<String, dynamic> toJson() => $WsToBetEntityToJson(this);
+
+	@override
+	String toString() {
+		return jsonEncode(this);
+	}
+
+
+	factory WsToBetEntity.get({String? moneyType, String? nowTerm, List<OddsContent>? betList,String? gameType,String? roomId,String? tableId}){
+		var entity = WsToBetEntity();
+		entity.siteId = "9000";
+		entity.oid = AppData.user()?.oid ?? "";
+		entity.clientName = AppData.user()?.username ?? "#${DataUtils.buildClientName(5)}";
+		entity.type = "bet";
+		entity.gameType = gameType;
+		entity.roomId = roomId;
+		entity.tableId = tableId;
+		entity.moneyType = moneyType;
+		entity.nowTerm = nowTerm;
+		var list = List<WsToBetContent>.empty(growable: true);
+		for (OddsContent content in betList ?? []) {
+			var betCon = WsToBetContent();
+			betCon.type = content.type ?? "";
+			betCon.money = "${content.money}";
+			betCon.num = content.contentMap["Key_Num"] ?? "";
+			betCon.odds = content.contentMap["Key_Odds"] ?? "";
+			// betCon.odds1314 = content.contentMap[""] ?? "";
+			// map["msg"] = content.play ?? "";
+			list.add(betCon);
+		}
+		entity.content = list;
+		return entity;
+	}
+
+
+}
+
+@JsonSerializable()
+class WsToBetContent {
+	String? money;
+	String? num;
+	String? odds;
+	@JSONField(name: "odds_1314")
+	String? odds1314;
+	String? type;
+
+	WsToBetContent();
+
+	factory WsToBetContent.fromJson(Map<String, dynamic> json) => $WsToBetContentFromJson(json);
+
+	Map<String, dynamic> toJson() => $WsToBetContentToJson(this);
+
+	@override
+	String toString() {
+		return jsonEncode(this);
+	}
+}

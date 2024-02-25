@@ -4,12 +4,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_bet_result_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
 import '../utils/game_rule_util.dart';
@@ -29,11 +30,11 @@ class BettingLeftItem extends StatefulWidget{
 class StateBettingLeftItem extends State<BettingLeftItem>{
   @override
   Widget build(BuildContext context) {
-    WsBetResultEntity? wsBetResultEntity=widget.gameRoomItemEntity.data as WsBetResultEntity;
-    String termData=GameRuleUtil.getSSB(wsBetResultEntity?.term??""); // 4
+    var wsBetResultEntity = widget.gameRoomItemEntity.data as WsBetEntity;
+    String termData=GameRuleUtil.getSSB(wsBetResultEntity.term.em()); // 4
     int allMonny=0;
-    for(BetContent c in wsBetResultEntity?.content??[]) {
-      String betMoney = c?.c??"0";
+    for(WsBetContent c in wsBetResultEntity.content??[]) {
+      String betMoney = c.c??"0";
       allMonny+=int.tryParse(betMoney)??0;
     }
 
@@ -66,7 +67,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             content: Column(
               children: [
                 InkWell(
-                  onTap: ()=> DialogUtils().showConfirmBetDialog(context,widget.logic),
+                  onTap: ()=> DialogUtils().showConfirmBetDialog(context,widget.logic,wsBetResultEntity),
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 4.w,horizontal: 15.w,),
                     decoration: BoxDecoration(
@@ -96,13 +97,13 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
 
                 ListView.separated(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: wsBetResultEntity.content?.length??0,
                     separatorBuilder: (context,index){
                       return Divider(height: 1.h,color: ColorX.color_f1f1f1,);
                     },
                     itemBuilder: (context,index){
-                      BetContent? item= wsBetResultEntity.content?[index];
+                      WsBetContent? item= wsBetResultEntity.content?[index];
                       return buildBettingInfoItem(wsBetResultEntity,item);
                     }),
 
@@ -114,7 +115,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                       Text(Intr().zhudan_,style: TextStyle(fontSize: 13.sp,color: ColorX.text605()),),
                       Text("${wsBetResultEntity.content?.length??0}",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
                       Text(Intr().zongji_,style: TextStyle(fontSize: 13.sp,color: ColorX.text605()),),
-                      Text("${GameRuleUtil.getMoneySymbol(wsBetResultEntity?.moneyType??"CNY")}${allMonny}",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
+                      Text("${GameRuleUtil.getMoneySymbol(wsBetResultEntity.moneyType??"CNY")}$allMonny",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
                     ],
                   ),
                 ),
@@ -128,22 +129,22 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
   }
 
 
-  Widget buildBettingInfoItem(WsBetResultEntity? wsBetResultEntity,BetContent? c) {
+  Widget buildBettingInfoItem(WsBetEntity wsBetResultEntity,WsBetContent? c) {
    String betType = c?.a??"";
    String betNum = c?.b??"";
    String betMoney = c?.c??"";
    String betOddsExpected = c?.d??"";
    String betOdds1314 = c?.e??"";
    print("=======>c${jsonEncode(c?.toJson())}");
-    String? qiShu=wsBetResultEntity?.term;
+    // String? qiShu=wsBetResultEntity.term;
     String betName = GameRuleUtil.getBetTypeName(betType);
-    String partMsg = "x"+ GameRuleUtil.getMoneySymbol(wsBetResultEntity?.moneyType??"CNY");
+    String partMsg = "x${GameRuleUtil.getMoneySymbol(wsBetResultEntity.moneyType??"CNY")}";
     String betOdds="";
-    print("=====>betMoney ${betMoney}  betOdds1314 ${betOdds1314}");
+    print("=====>betMoney $betMoney  betOdds1314 $betOdds1314");
     if (betOddsExpected==(betOdds1314)||betMoney.isEmpty==true|| betOdds1314=="null"||betOdds1314.isEmpty==true) {
-      betOdds ="${betOddsExpected} ${partMsg} ${betMoney}";
+      betOdds ="$betOddsExpected $partMsg $betMoney";
     } else {
-      betOdds ="${betOddsExpected}/${betOdds1314??""}${partMsg}${betMoney}";
+      betOdds ="$betOddsExpected/${betOdds1314??""}$partMsg$betMoney";
     }
     // length = bet.betOdds.length() - c.betMoney.length() - 2;
     // bet.betOdds.setSpan(colorRed, 0, length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
@@ -156,8 +157,8 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("${betName}",style: TextStyle(fontSize: 13.sp,color: ColorX.text333()),),
-              Text("${betOdds} ",style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+              Text(betName,style: TextStyle(fontSize: 13.sp,color: ColorX.text333()),),
+              Text(betOdds,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
             ],
           ),
         ),
