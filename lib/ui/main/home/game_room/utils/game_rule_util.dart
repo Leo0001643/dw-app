@@ -987,8 +987,6 @@ class GameRuleUtil {
         item.level=9;
         dataBettingList.add(item);
       } else if (GameRuleUtil.GameType_Min==(con.type)) {
-//
-
         OddsContent item= OddsContent.fromJson(con.toJson());
         item.level=10;
         dataBettingList.add(item);
@@ -1025,7 +1023,7 @@ class GameRuleUtil {
       } else {
         int  sum = int.tryParse(con.type??"1")??-1;
         OddsContent item= OddsContent.fromJson(con.toJson());
-        item.titleColor=GameRuleUtil.getBallColor(sum);
+        item.titleColor = GameRuleUtil.getBallColor(sum);
         switch (sum) {
           case GameRuleUtil.GameType_Cao_00:
             item.level=0;
@@ -1202,6 +1200,8 @@ class GameRuleUtil {
     //   initDataTeMa(mViews.get(i), data.get(i));
     // }
   }
+
+
    static void setSecondBallData(Map<int, OddsContent> arrayMap, OddsContent content) {
     if (content.type?.contains(GameRuleUtil.GameType_Big)==true) {
       arrayMap[0]= content;

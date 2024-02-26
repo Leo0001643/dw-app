@@ -42,7 +42,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: logic.recentlyWSLotteryEntityData.length,
                 itemBuilder: (context, index) {
-                  return buildLotteryItem(index, logic);
+                  return GameRecentlyBetWidget(logic.recentlyWSLotteryEntityData[index],true);
                 },
               ),
             )
@@ -80,15 +80,6 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
             fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.w600),
       ),
     );
-  }
-
-  Widget buildLotteryItem(int index, GameRoomLogic logic) {
-    print("------>index ${index}");
-    print(
-        "------>index2 ${jsonEncode(
-            logic.recentlyWSLotteryEntityData[index].toJson())}");
-    return GameRecentlyBetWidget(
-        logic.recentlyWSLotteryEntityData[index]);
   }
 
   Widget buildDrawNum(String num) {

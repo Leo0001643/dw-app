@@ -17,12 +17,11 @@ import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 class GameRecentlyBetWidget extends StatelessWidget {
   final logic = Get.find<GameRoomLogic>();
-  final state = Get
-      .find<GameRoomLogic>()
-      .state;
+  final state = Get.find<GameRoomLogic>().state;
+  final bool click;
   WSLotteryEntityData headWSLotteryEntityData;
 
-  GameRecentlyBetWidget(this.headWSLotteryEntityData, {super.key});
+  GameRecentlyBetWidget(this.headWSLotteryEntityData,this.click, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -215,13 +214,17 @@ class GameRecentlyBetWidget extends StatelessWidget {
   Widget buildCurrentTermType(GameRoomLogic logic, BuildContext context) {
     GameRoomState state = logic.state;
     String termData = GameRuleUtil.getSimpleSSB(
-        headWSLotteryEntityData?.term ?? "", year: ""); // 4
+        headWSLotteryEntityData.term ?? "", year: ""); // 4
     List<int> arr2 = GameRuleUtil.parseLottery(
-        headWSLotteryEntityData?.originalNum ?? ""); //3
+        headWSLotteryEntityData.originalNum ?? ""); //3
     // var color = state.roomType.value == 1 ? ColorX.text0917() : ColorX
     //     .color_ffe0ac;
     return InkWell(
-      onTap: () => DialogUtils().showHistoryLotteryBtmDialog(context, logic),
+      onTap: (){
+        if(click){
+          DialogUtils().showHistoryLotteryBtmDialog(context, logic);
+        }
+      },
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(

@@ -11,7 +11,6 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
-import 'package:leisure_games/app/res/game_response.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
@@ -266,7 +265,7 @@ class GameRoomLogic extends GetxController {
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
     update(["gameRoomLogicList"]);
 
-    Future.delayed(Duration(milliseconds: 100),(){
+    Future.delayed(const Duration(milliseconds: 100),(){
       if (scrollController.hasClients) {
         scrollController.jumpTo(scrollController.position.maxScrollExtent);
       }
@@ -294,9 +293,9 @@ class GameRoomLogic extends GetxController {
     print("=====>4");
   }
 
-  void handleSystemMessgeResult(String type, GameResponse response) {
+  void handleSystemMessgeResult(CountDownLotteryEntity entity) {
     GameRoomItemEntity gameRoomItemEntity =
-        GameRoomItemEntity(type: type, data: response.data);
+        GameRoomItemEntity(type: entity.type, data: entity);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
     update(["gameRoomLogicList"]);
     Future.delayed(Duration(milliseconds: 100),(){
@@ -344,12 +343,9 @@ class GameRoomLogic extends GetxController {
   void handleMessage(CountDownLotteryEntity countDownLotteryEntity) {
     CountDownLotteryEntity item =
         CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
-    GameResponse gameResponse = GameResponse();
-    gameResponse.type = countDownLotteryEntity.type;
-    gameResponse.data = item;
     term.value = item.term ?? "";
     update(["gameRoomComputeWidget"]);
-    handleSystemMessgeResult(gameResponse.type ?? "", gameResponse);
+    handleSystemMessgeResult(countDownLotteryEntity);
   }
 
 
@@ -408,7 +404,7 @@ class GameRoomLogic extends GetxController {
   //     update(["bettingList"]);
   // }
 
-  void sumbitBets(double allMoney) {
+/*  void sumbitBets(double allMoney) {
     if(LotteryStatus.sealingPlateStatus==currentStatus.value) {
       showToast(Intr().fengpanzhong);
       return;
@@ -423,9 +419,9 @@ class GameRoomLogic extends GetxController {
     //   nowTerm: "${term}",
     //   betList: selectBettingList.value,);
     showToast(Intr().caozuochenggong);
-  }
+  }*/
 
-  void sumbitBets2(String? moneyType, String? nowTerm, List<WsBetContent> betList,) {
+  void sumbitBets(String? moneyType, String? nowTerm, List<WsBetContent> betList,) {
     if(LotteryStatus.sealingPlateStatus==currentStatus.value) {
       showToast(Intr().fengpanzhong);
       return;

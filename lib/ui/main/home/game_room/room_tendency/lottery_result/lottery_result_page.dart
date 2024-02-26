@@ -47,26 +47,19 @@ class _LotteryResultPageState extends State<LotteryResultPage> with AutomaticKee
             return Container(
               height: 1.sh,
               width: 1.sw,
+              margin: EdgeInsets.only(top: 5.h),
               decoration: BoxDecoration(
                 // color: ColorX.cardBg5(),
                 color:Color(0xFFF7F8FB),
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
               ),
-              child:   Column(
-                children: [
-                  Container(
-                    height:0.69.sh ,
-                    child:  ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: logic.recentlyWSLotteryEntityData.length,
-                      itemBuilder: (context, index) {
-                        return buildLotteryItem(index, logic);
-                      },
-                    ),
-                  )
-
-                ],
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: logic.recentlyWSLotteryEntityData.length,
+                itemBuilder: (context, index) {
+                  return GameRecentlyBetWidget(logic.recentlyWSLotteryEntityData[index],false);
+                },
               ),
             );
           }
@@ -74,12 +67,6 @@ class _LotteryResultPageState extends State<LotteryResultPage> with AutomaticKee
     );
   }
 
-
-  Widget buildLotteryItem(int index, GameRoomLogic logic) {
-    print("------>index ${index}");
-    return GameRecentlyBetWidget(
-        logic.recentlyWSLotteryEntityData[index]);
-  }
 
   Widget buildDrawNum(String num) {
     return Container(

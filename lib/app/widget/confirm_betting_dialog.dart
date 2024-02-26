@@ -493,7 +493,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           WidgetUtils().buildElevatedButton(Intr().confirm, 135.w, 40.h,
               bg: buildBtnColor(),
               textColor: Colors.white, onPressed: () {
-                widget.logic.sumbitBets2(index == 0? "CNY":"USDT",widget.betInfo?.term,odds);
+                widget.logic.sumbitBets(index == 0? "CNY":"USDT",widget.betInfo?.term,odds);
                 Navigator.of(context).pop(true);
               })
         ],
