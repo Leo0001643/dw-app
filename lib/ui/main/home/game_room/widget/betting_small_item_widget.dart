@@ -130,16 +130,16 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
       ssb=getTag(GameRuleUtil.Key_Num);
     } else {
       setTag(GameRuleUtil.Key_Odds, con.play);
-      if (con.type?.contains(GameRuleUtil.GameType_Big)==true) {
+      if (con.type == GameRuleUtil.GameType_Big) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Big);
         ssb = betTypeName;
-      } else if (con.type?.contains(GameRuleUtil.GameType_Small)==true) {
+      } else if (con.type == GameRuleUtil.GameType_Small) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Small);
         ssb =betTypeName;
-      } else if (con.type?.contains(GameRuleUtil.GameType_Odd)==true) {
+      } else if (con.type == GameRuleUtil.GameType_Odd) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Odd);
         ssb = betTypeName;
-      } else if (con.type?.contains(GameRuleUtil.GameType_Even)==true) {
+      } else if (con.type == GameRuleUtil.GameType_Even) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Even);
         ssb = betTypeName;
       } else {

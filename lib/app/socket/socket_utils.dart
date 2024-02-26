@@ -26,6 +26,10 @@ import 'package:sprintf/sprintf.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/status.dart' as status;
 
+/// Author: Soushin
+/// Date: 2024/2/26 16:53
+/// Description: websocket长连接处理
+///
 class SocketUtils{
 
   SocketUtils._internal();

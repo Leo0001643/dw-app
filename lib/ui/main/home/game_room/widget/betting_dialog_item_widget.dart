@@ -28,7 +28,7 @@ class StateBettingDialogItemWidget extends State<BettingDialogItemWidget>{
   Widget build(BuildContext context) {
     String ssb=saveColorType(widget.content);
     // String play=getTag(key)
-    print("=====>${jsonEncode(widget.content.toJson())}");
+    print("==big0dd===>$ssb, ${jsonEncode(widget.content.toJson())}");
 
     return InkWell(
       onTap: (){
@@ -77,7 +77,7 @@ class StateBettingDialogItemWidget extends State<BettingDialogItemWidget>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("${ssb}",style: TextStyle(
+            Text(ssb,style: TextStyle(
                 fontSize:13.sp,
                 color: Color(0xFF091722),
                 fontWeight: FontWeight.w700
@@ -115,16 +115,16 @@ class StateBettingDialogItemWidget extends State<BettingDialogItemWidget>{
       ssb=getTag(GameRuleUtil.Key_Num);
     } else {
       setTag(GameRuleUtil.Key_Odds, con.play);
-      if (con.type?.contains(GameRuleUtil.GameType_Big)==true) {
+      if (con.type == GameRuleUtil.GameType_Big) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Big);
         ssb = betTypeName;
-      } else if (con.type?.contains(GameRuleUtil.GameType_Small)==true) {
+      } else if (con.type == GameRuleUtil.GameType_Small) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Small);
         ssb =betTypeName;
-      } else if (con.type?.contains(GameRuleUtil.GameType_Odd)==true) {
+      } else if (con.type == GameRuleUtil.GameType_Odd) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Odd);
         ssb = betTypeName;
-      } else if (con.type?.contains(GameRuleUtil.GameType_Even)==true) {
+      } else if (con.type == GameRuleUtil.GameType_Even) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Even);
         ssb = betTypeName;
       } else {
