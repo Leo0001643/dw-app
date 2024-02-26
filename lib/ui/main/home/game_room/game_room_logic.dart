@@ -79,23 +79,8 @@ class GameRoomLogic extends GetxController {
   }
 
   Future<void> loadData(Pc28LottoRoomsTables room) async {
-    // AppInst.instance.startWs();
-    // 监听网络状态
-    // IsolateService? serv = AppInst.gameIsolate.mainService();
-    // if (serv != null && serv is WSMainService) {
-    //   serv.addResponseListener(this);
-    // } else {
-    //   print("大厅系统监听消息失败！");
-    // }
-    SocketUtils().connect(callback: (){
-      ///开始登录房间
-      SocketUtils().loginRoom(room.gameType.em(), room.roomId.em().toString(), room.id.em().toString());
-    });
-
-    // GameDataServiceCenter.instance.startConnection(onConnected: () async {});
-    loggerArray(["房型数据", state.room.toJson()]);
-    state.roomType.value = room.level ?? 1;
-    changeRoomType(room);
+    ///处理房间房型显示 长连接连接问题
+    changeRoomType(room,true);
 
     HttpService.getPc28LottoList().then((value) {
       value.rooms?.forEach((e1) {
@@ -181,12 +166,20 @@ class GameRoomLogic extends GetxController {
   //   }
   // }
 
-  void changeRoomType(Pc28LottoRoomsTables room) {
+  void changeRoomType(Pc28LottoRoomsTables room,bool login) {
     loggerArray(["切换彩种",room.toJson()]);
     state.title.value = room.title.em();
     state.room.value = room;
     state.roomType.value = room.level ?? 1;
     state.room.refresh();
+    if(login){
+      SocketUtils().connect(callback: (){
+        ///开始登录房间
+        SocketUtils().loginRoom(room.gameType.em(), room.roomId.em().toString(), room.id.em().toString());
+      });
+    }else {///切换房间
+      SocketUtils().changeRoom(room.gameType.em(), room.roomId.em().toString(), room.id.em().toString());
+    }
   }
 
   void loadBalance() {

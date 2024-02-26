@@ -60,7 +60,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
             .then(
           (value) {
             if (unEmpty(value?.name)) {
-              logic.changeRoomType(value!);
+              logic.changeRoomType(value!,false);
             }
           },
         );

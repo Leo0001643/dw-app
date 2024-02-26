@@ -88,7 +88,8 @@ class SocketUtils{
       }
     });
   }
-  
+
+  ///登录房间
   void loginRoom(String gameType,String roomId,String tableId){
     loggerArray(["开始登录房间",isConnect,gameType,roomId,tableId]);
     if(isConnect){
@@ -96,22 +97,17 @@ class SocketUtils{
       childSendPort?.send(buildMessage("login",value: json));
     }
   }
-  //
-  // void sendPicMessage(List<String> msg,String gameType,String roomId,String tableId){
-  //   loggerArray(["发送聊天消息PIC",isConnect,msg,gameType,roomId,tableId]);
-  //   if(isConnect){
-  //     var json = jsonEncode(WsMessageSendEntity.get(type: "msg_send_pic",msg: msg,gameType: gameType,roomId: roomId,tableId: tableId));
-  //     childSendPort?.send(buildMessage("msg_send_pic",value: json));
-  //   }
-  // }
-  //
-  // void sendGifMessage(List<String> msg,String gameType,String roomId,String tableId){
-  //   loggerArray(["发送聊天消息GIF",isConnect,msg,gameType,roomId,tableId]);
-  //   if(isConnect){
-  //     var json = jsonEncode(WsMessageSendEntity.get(type: "msg_send_gif",msg: msg,gameType: gameType,roomId: roomId,tableId: tableId));
-  //     childSendPort?.send(buildMessage("msg_send_gif",value: json));
-  //   }
-  // }
+
+  ///切换房间-重新登录
+  void changeRoom(String gameType,String roomId,String tableId){
+    loggerArray(["切换房间-重新登录房间",isConnect,gameType,roomId,tableId]);
+    SocketUtils().destroy();
+    Future.delayed(const Duration(milliseconds: 200),(){
+      SocketUtils().connect(callback: (){
+        SocketUtils().loginRoom(gameType, roomId, tableId);
+      });
+    });
+  }
 
   void sendMessage(String msg,String gameType,String roomId,String tableId){
     loggerArray(["发送聊天消息",isConnect,msg,gameType,roomId,tableId]);
@@ -142,6 +138,7 @@ class SocketUtils{
       mainSendPort = null;
       // ///立即停止异步任务
       isolate?.kill(priority: Isolate.immediate);
+      isolate = null;
     });
   }
 
