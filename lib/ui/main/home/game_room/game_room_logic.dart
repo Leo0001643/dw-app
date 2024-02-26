@@ -20,39 +20,30 @@ import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
-import 'package:leisure_games/app/socket/ws_msg_error_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_pic_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
-import 'package:leisure_games/ui/main/socket/app/app_inst.dart';
-import 'package:leisure_games/ui/main/socket/app/center/impl/game_notification_center.dart';
-import 'package:leisure_games/ui/main/socket/app/service/isolate_service.dart';
-import 'package:leisure_games/ui/main/socket/app/ws_main_service.dart';
-import 'package:leisure_games/ui/main/socket/game_data_service_center.dart';
-
 import 'game_room_state.dart';
 
-class GameRoomLogic extends GetxController implements GameNotificationListener {
+class GameRoomLogic extends GetxController {
   final GameRoomState state = GameRoomState();
   ScrollController scrollController = ScrollController();
   RxString term = "".obs;
   WSLotteryEntityData? headWSLotteryEntityData;
   RxList<OddsContent> odds=<OddsContent>[].obs;
 
-  RxList<OddsContent> dataBettingList=<OddsContent>[].obs;
+  // RxList<OddsContent> dataBettingList=<OddsContent>[].obs;
 
-  RxList<OddsContent> selectBettingList=<OddsContent>[].obs;
+  // RxList<OddsContent> selectBettingList=<OddsContent>[].obs;
 
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
 
-  RxList<WSLotteryEntityData>   recentlyWSLotteryEntityData=<WSLotteryEntityData>[].obs;
+  RxList<WSLotteryEntityData> recentlyWSLotteryEntityData=<WSLotteryEntityData>[].obs;
 
-  RxDouble inputAmt = (0.0).obs;
-
+  // RxDouble inputAmt = (0.0).obs;
 
   @override
   void onReady() {
@@ -62,8 +53,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
 
   @override
   void onClose() {
-    logger("调用关闭方法了吗");
-    timer?.cancel();
+    // timer?.cancel();
     SocketUtils().destroy();
     super.onClose();
   }
@@ -106,11 +96,16 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     // GameDataServiceCenter.instance.startConnection(onConnected: () async {});
     loggerArray(["房型数据", state.room.toJson()]);
     state.roomType.value = room.level ?? 1;
+    changeRoomType(room);
 
     HttpService.getPc28LottoList().then((value) {
+      value.rooms?.forEach((e1) {
+        e1.tables?.forEach((e2) {
+          e2.title = e1.memo.em();
+        });
+      });
       state.pc28Lotto.value = value;
       state.pc28Lotto.refresh();
-      changeRoomType(room);
     });
 
     // Future.delayed(Duration(seconds: 2), () {
@@ -125,9 +120,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
       Map<String, dynamic> map = jsonDecode(value,);
       odds.value=GameRuleUtil.getOddsbean(map).content??[];
-
     });
-
 
     ///表情
     HttpService.getExpression().then((value) {
@@ -138,7 +131,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     HttpService.getPhrase().then((value) {
       state.phrases.assignAll(value);
     });
-    initTimer();
+    // initTimer();
 
     TextItemLogic textItemLogic = Get.find<TextItemLogic>();
     // test();
@@ -160,10 +153,8 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     String mBallName="";
     switch(index) {
       case 0:
-        mBallName="tema";
-        var  dataBettingList=<OddsContent>[];
-        dataBettingList= GameRuleUtil.requestTema(odds.value,type:type);
-        return dataBettingList;
+        mBallName = "tema";
+        return GameRuleUtil.requestTema(odds,type:type);
       case 1:
         mBallName="first";
         break;
@@ -174,24 +165,25 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
         mBallName="three";
         break;
     }
-
-    var  dataBettingList=    GameRuleUtil.dealData(odds.value,mBallName:mBallName);
+    var dataBettingList = GameRuleUtil.dealData(odds,mBallName:mBallName);
     return dataBettingList;
   }
+
   /**
    * 判断是不是登录了，如果登录成功，则重新登录ws
    */
-  void isLoginToLogin() {
-    if (!AppData.isLogin()) {}
-  }
+  // void isLoginToLogin() {
+  //   if (!AppData.isLogin()) {}
+  // }
 
-  void connectWebSocket({Function? onConnected}) async {
-    if (AppData.isLogin()) {
-      // GameDataServiceCenter.instance.startConnection(onConnected: onConnected);
-    }
-  }
+  // void connectWebSocket({Function? onConnected}) async {
+  //   if (AppData.isLogin()) {
+  //     // GameDataServiceCenter.instance.startConnection(onConnected: onConnected);
+  //   }
+  // }
 
   void changeRoomType(Pc28LottoRoomsTables room) {
+    loggerArray(["切换彩种",room.toJson()]);
     state.title.value = room.title.em();
     state.room.value = room;
     state.roomType.value = room.level ?? 1;
@@ -213,64 +205,47 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     });
   }
 
-  void test() {
-    Timer timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      GameResponse gameResponse = GameResponse();
-      gameResponse.data = json;
-      gameResponse.type = "closeOver";
 
-      CountDownLotteryEntity item = CountDownLotteryEntity();
-      // item.title="封盘信息";
-      // item.titleColor=0xFFFC243B;
-      // item.subTitile="开始封盘";
-      // item.term="20251232131";
-      // gameResponse.data=item;
+  // @override
+  // void notificationCallBack(GameResponse response) {
+  //   print("------>response   ${response.data}");
+  //   Map<String, dynamic> data = jsonDecode(response.data);
+  //   String type = data["type"] ?? "";
+  //   print("------>response  222");
+  //   switch (type) {
+  //     case "bet_result":
+  //       // handleBetResult(type, response);
+  //       break;
+  //     case "lottery":
+  //       // handleLottery(type, response);
+  //       break;
+  //     case "logout":
+  //       if(!AppData.isLogin()){
+  //         showToast(data["reason"]);
+  //         Get.until((ModalRoute.withName(Routes.main)));
+  //         Get.toNamed(Routes.login);
+  //       }
+  //       break;
+  //     case "msg_get_pic":
+  //       // handleMsgGetPic(response);
+  //       break;
+  //     case "msg_get_gif":
+  //       // handleMsgGetPic(response);
+  //       break;
+  //   }
+  // }
 
-      gameResponse.data = item;
-      // handleSystemMessgeResult("closeOver",gameResponse);
-    });
-  }
+  // @override
+  // bool supportHandleResponse(GameResponse response) {
+  //   return true;
+  // }
 
-  @override
-  void notificationCallBack(GameResponse response) {
-    print("------>response   ${response.data}");
-    Map<String, dynamic> data = jsonDecode(response.data);
-    String type = data["type"] ?? "";
-    print("------>response  222");
-    switch (type) {
-      case "bet_result":
-        // handleBetResult(type, response);
-        break;
-      case "lottery":
-        // handleLottery(type, response);
-        break;
-      case "logout":
-        if(!AppData.isLogin()){
-          showToast(data["reason"]);
-          Get.until((ModalRoute.withName(Routes.main)));
-          Get.toNamed(Routes.login);
-        }
-        break;
-      case "msg_get_pic":
-        // handleMsgGetPic(response);
-        break;
-      case "msg_get_gif":
-        // handleMsgGetPic(response);
-        break;
-    }
-  }
-
-  @override
-  bool supportHandleResponse(GameResponse response) {
-    return true;
-  }
-
-  Timer? timer;
+  // Timer? timer;
   int refershTime = 0;
 
-  void initTimer() {
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {});
-  }
+  // void initTimer() {
+  //   timer = Timer.periodic(Duration(seconds: 1), (timer) {});
+  // }
 
   @override
   void dispose() {
@@ -377,18 +352,7 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     handleSystemMessgeResult(gameResponse.type ?? "", gameResponse);
   }
 
-  /**
-   *  if (!LoginServiceProvider.isLogin()) {
 
-      LoginServiceProvider.login(this, Observer {
-      if (it != null && it) {
-      ws.wsLoginMsg()
-      btn_bet_show.performClick()
-      }
-      })
-      return
-      }
-   */
   void startBet(BuildContext context) {
     // AppInst.instance.startWs();
     if(!AppData.isLogin()) return;
@@ -402,47 +366,47 @@ class GameRoomLogic extends GetxController implements GameNotificationListener {
     });
   }
 
-  void updateBettingDialogItemWidget(OddsContent content) {
-    content.check=!(content.check??false);
-    print("=======> inputAmt.value   ${inputAmt.value}");
-    if( content.check==true) {
-      content.money=inputAmt.value;
-      selectBettingList.add(content);
-    }else{
-      selectBettingList.remove(content);
-      content.money=0;
-    }
-    update(["bettingList"]);
-  }
+  // void updateBettingDialogItemWidget(OddsContent content) {
+  //   content.check=!(content.check??false);
+  //   // print("=======> inputAmt.value   ${inputAmt.value}");
+  //   if(content.check==true) {
+  //     content.money=inputAmt.value;
+  //     selectBettingList.add(content);
+  //   }else{
+  //     selectBettingList.remove(content);
+  //     content.money=0;
+  //   }
+  //   update(["bettingList"]);
+  // }
 
 
-  void setItemMoney(double money) {
-    for(OddsContent content  in selectBettingList) {
-      content.money=money;
-    }
-  }
+  // void setItemMoney(double money) {
+  //   for(OddsContent content  in selectBettingList) {
+  //     content.money=money;
+  //   }
+  // }
 
-  double sumData(){
-    double total=0;
-    for(OddsContent content  in selectBettingList) {
-      total+= (content.money??0);
-    }
-    return total;
-  }
+  // double sumData(){
+  //   double total=0;
+  //   for(OddsContent content  in selectBettingList) {
+  //     total+= (content.money??0);
+  //   }
+  //   return total;
+  // }
 
-  double sumOddsData(){
-    double total=0;
-    for(OddsContent content  in selectBettingList) {
-      total+=( (content.money??0)*(double.tryParse(content.contentMap["Key_Odds"]??"0")??0));
-    }
-    return total;
-  }
+  // double sumOddsData(){
+  //   double total=0;
+  //   for(OddsContent content  in selectBettingList) {
+  //     total+=( (content.money??0)*(double.tryParse(content.contentMap["Key_Odds"]??"0")??0));
+  //   }
+  //   return total;
+  // }
 
-  void removeSelect(OddsContent content) {
-      selectBettingList.remove(content);
-      selectBettingList.refresh();
-      update(["bettingList"]);
-  }
+  // void removeSelect(OddsContent content) {
+  //     selectBettingList.remove(content);
+  //     selectBettingList.refresh();
+  //     update(["bettingList"]);
+  // }
 
   void sumbitBets(double allMoney) {
     if(LotteryStatus.sealingPlateStatus==currentStatus.value) {

@@ -191,8 +191,8 @@ class TextItemLogic extends GetxController {
               int rrtime = allTime[key]['data'][s]['closeTime'];
               int showT = (rrtime - onlineT) ~/ 1000;
               String showtime = secToTime(showT);
-              roomcountdown[key + 'Time'] = showtime;
-              roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
+              roomcountdown['${key}Time'] = showtime;
+              roomcountdown['${key}Term'] = allTime[key]['data'][s]['term'];
 
               showKeyCountTime(showT,term);
 

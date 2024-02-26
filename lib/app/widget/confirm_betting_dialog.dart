@@ -19,7 +19,7 @@ import 'package:leisure_games/ui/main/home/home_logic.dart';
 class ConfirmBettingDialog extends StatefulWidget {
   double total = 0;
   double inputAmt = 0;
-  WsBetEntity? betInfo;
+  WsBetEntity betInfo;
   final GameRoomLogic logic;
 
   ConfirmBettingDialog(this.logic, this.total, this.inputAmt,this.betInfo, {super.key});
@@ -32,13 +32,14 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     with SingleTickerProviderStateMixin {
   var payWays = ["CNY", "USDT"];
   late TabController _tabController;
+  ///钱包类型切换
   int index=0;
 
   var odds = RxList<WsBetContent>.empty(growable: true);
 
   @override
   void initState() {
-    odds.assignAll(widget.betInfo?.content ?? []);
+    odds.assignAll(widget.betInfo.content ?? []);
     odds.refresh();
     _tabController = TabController(length: payWays.length, vsync: this);
     _tabController.addListener(() {
@@ -397,18 +398,16 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
               color: ColorX.text0917(),
               fontWeight: FontWeight.w500),
         ),
-        Obx(() {
-          return Text(
-            AppData.wallet()
-                ? "¥${homeLogic.state.cnyBal.value.money?.em()}"
-                : "₮${homeLogic.state.usdtBal.value.money.em()}",
-            style: TextStyle(
-              fontSize: 18.sp,
-              color: ColorX.text0917(),
-              fontWeight: FontWeight.w600,
-            ),
-          );
-        }),
+        Text(
+          index == 0
+              ? "¥${homeLogic.state.cnyBal.value.money.em()}"
+              : "₮${homeLogic.state.usdtBal.value.money.em()}",
+          style: TextStyle(
+            fontSize: 18.sp,
+            color: ColorX.text0917(),
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ],
     );
   }

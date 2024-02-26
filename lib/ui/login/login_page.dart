@@ -50,6 +50,7 @@ class _LoginPageState extends State<LoginPage> {
         leading: Container(),
         actions: [
           Container(
+            margin: EdgeInsets.only(right: 10.w),
             child: InkWell(
               onTap: () => Get.back(),
               child: Image.asset(
@@ -57,7 +58,6 @@ class _LoginPageState extends State<LoginPage> {
                 color: ColorX.icon586(),
               ),
             ),
-            margin: EdgeInsets.only(right: 10.w),
           )
         ],
       ),

@@ -1120,14 +1120,14 @@ class GameRuleUtil {
       }
     }
     if(type==0) {
-      dataBettingList.sort((a, b) => (a?.level??0).compareTo((b?.level??0)));
+      dataBettingList.sort((a, b) => (a.level??0).compareTo((b.level??0)));
       print("=======>长度 ${dataBettingList.length}");
       return dataBettingList;
     }else if(type==1) {
-      middleBettingList.sort((a, b) => (a?.level??0).compareTo((b?.level??0)));
+      middleBettingList.sort((a, b) => (a.level??0).compareTo((b.level??0)));
       return middleBettingList;
     }else if(type==2) {
-      smallDataBettingList.sort((a, b) => (b?.level??0).compareTo((a?.level??0)));
+      smallDataBettingList.sort((a, b) => (b.level??0).compareTo((a.level??0)));
       return smallDataBettingList;
     }
     return dataBettingList;
@@ -1143,7 +1143,7 @@ class GameRuleUtil {
 
     if ("firstBall".contains(mBallName)) {
       for (int i = 0; i < odds.length; i++) {
-        OddsContent content = odds[i];
+        OddsContent content = OddsContent.fromJson(odds[i].toJson());
         if (content.type?.contains(GameRuleUtil.GameType_First)==true) {
           data1.add(content);
         } else if (content.type?.contains(GameRuleUtil.GameType_First_String)==true) {
@@ -1155,7 +1155,7 @@ class GameRuleUtil {
 
     } else if ("secondBall".contains(mBallName)) {
       for (int i = 0; i < odds.length; i++) {
-        OddsContent content = odds[i];
+        OddsContent content = OddsContent.fromJson(odds[i].toJson());
         if (content.type?.contains(GameRuleUtil.GameType_Second_String)==true || content.type?.contains(GameRuleUtil.GameType_equal)==true) {
           if (content.type?.contains(GameRuleUtil.GameType_Second)==true) {
             data1.add(content);
@@ -1171,7 +1171,7 @@ class GameRuleUtil {
 
     } else if ("threeBall".contains(mBallName)) {
       for (int i = 0; i < odds.length; i++) {
-        OddsContent content = odds[i];
+        OddsContent content = OddsContent.fromJson(odds[i].toJson());
         if (content.type?.contains(GameRuleUtil.GameType_Three_String)==true || content.type?.contains(GameRuleUtil.GameType_tiger)==true) {
           if (content.type?.contains(GameRuleUtil.GameType_Three)==true) {
             data1.add(content);

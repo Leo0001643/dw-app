@@ -143,8 +143,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
   }
 
   buildHeadTime(GameRoomLogic logic) {
-    String termData =
-    GameRuleUtil.getSSB(logic.term.value, year: "");
+    String termData = GameRuleUtil.getSSB(logic.term.value, year: "");
     return  Container(
       margin: EdgeInsets.only(left: 14.w,right: 14.w,top: 10.w),
       decoration: buildRoomBoxType(logic),

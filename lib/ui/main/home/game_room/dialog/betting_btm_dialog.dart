@@ -5,16 +5,18 @@ import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/socket/ws_bet_entity.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_child_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_tema_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
-
-import '../../../../../app/utils/dialog_utils.dart';
 import '../utils/game_rule_util.dart';
 
 class BettingBtmDialog extends StatefulWidget {
@@ -27,10 +29,10 @@ class BettingBtmDialog extends StatefulWidget {
 }
 
 class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerProviderStateMixin{
-  static final riKey1 = const Key('__RIKEY1__');
-  static final riKey2 = const Key('__RIKEY2__');
-  static final riKey3 = const Key('__RIKEY3__');
-  static final riKey4 = const Key('__RIKEY4__');
+  static const riKey1 = Key('__RIKEY1__');
+  static const riKey2 = Key('__RIKEY2__');
+  static const riKey3 = Key('__RIKEY3__');
+  static const riKey4 = Key('__RIKEY4__');
 
   late TabController _tabController;
   int type=0;
@@ -40,13 +42,27 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
     ImageX.chip5000,ImageX.chip10000,];
 
   var chipIndex = (-1).obs;
+  ///选择的筹码
+  var selectChip = RxList<double>.empty(growable: true);
+  ///选择的类型
+  RxList<OddsContent> selectBetting=<OddsContent>[].obs;
 
+  RxDouble inputAmt = (0.0).obs;
 
+  var pageIndex = 0.obs;
+  var contents = RxList<Widget>.empty(growable: true);
 
   @override
   void initState() {
     _tabController = TabController(length: tabs.length, vsync: this);
-    initData();
+    _tabController.addListener(() {
+      pageIndex.value = _tabController.index;
+    });
+    contents.assignAll([BettingTemaPage(0,key: riKey1,selectBetting,inputAmt),
+      BettingChildPage(1,key: riKey2,selectBetting,inputAmt),
+      BettingChildPage(2,key: riKey3,selectBetting,inputAmt),
+      BettingChildPage(3,key: riKey4,selectBetting,inputAmt),]);
+
     super.initState();
   }
 
@@ -141,15 +157,12 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
             ),
           ),
           Expanded(
-            child:TabBarView(
-              controller: _tabController,
-              children: [
-                BettingTemaPage(0,"first",key: riKey1,),
-                BettingChildPage(1,"second",key: riKey2),
-                BettingChildPage(2,"three",key: riKey3),
-                BettingChildPage(3,"three",key: riKey4),
-              ],
-            ),
+            child: Obx(() {
+              return IndexedStack(
+                index: pageIndex.value,
+                children: contents,
+              );
+            }),
           ),
           Container(
               padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -175,98 +188,112 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                   ),
                   Positioned(
                     top: 0,left: 0,right: 0,
-                    child: Container(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 70.h,
-                                  alignment: Alignment.bottomLeft,
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 70.h,
+                                alignment: Alignment.bottomLeft,
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Obx(() {
+                                    return Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: chips.map((e) {
+                                        var index = chips.indexOf(e);
+                                        var btm = chipIndex.value == index ? 20.h:0.0;
+                                        var top = chipIndex.value == index ? 0.0:20.h;
+                                        return buildChipItem(e,index,top,btm);
+                                      }).toList(),
+                                    );
+                                  }),
+                                ),
+                              ),
+                              SizedBox(height: 15.h,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: ColorX.color_091722,width: 1.r),
+                                        borderRadius: BorderRadius.circular(10.r)
+                                    ),
+                                    margin: EdgeInsets.only(left: 10.w),
                                     child: Obx(() {
-                                      return Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: chips.map((e) {
-                                          var index = chips.indexOf(e);
-                                          var btm = chipIndex.value == index ? 20.h:0.0;
-                                          var top = chipIndex.value == index ? 0.0:20.h;
-                                          return buildChipItem(e,index,top,btm);
-                                        }).toList(),
-                                      );
+                                      return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, Intr().qingshurujine,
+                                          backgroundColor: ColorX.cardBg(),hintColor: ColorX.text586(),
+                                          defText: "${inputAmt.value}",inputType: TextInputType.number,onChanged: (v){
+                                            inputAmt.value =double.tryParse(  v)??0;
+                                          });
                                     }),
                                   ),
-                                ),
-                                SizedBox(height: 15.h,),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          border: Border.all(color: ColorX.color_091722,width: 1.r),
-                                          borderRadius: BorderRadius.circular(10.r)
-                                      ),
-                                      margin: EdgeInsets.only(left: 10.w),
-                                      child: Obx(() {
-                                        return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, Intr().qingshurujine,
-                                            backgroundColor: ColorX.cardBg(),hintColor: ColorX.text586(),
-                                            defText: "${widget.logic.inputAmt.value}",inputType: TextInputType.number,onChanged: (v){
-                                              widget.logic.inputAmt.value =double.tryParse(  v)??0;
-                                            });
-                                      }),
+                                  SizedBox(width: 10.w,),
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight:FontWeight.w700,),),
+                                        Obx(() {
+                                          return Text("${selectBetting.length * inputAmt.value}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),);
+                                        })
+                                      ],
                                     ),
-                                    SizedBox(width: 10.w,),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight:FontWeight.w700,),),
-                                          Text("${widget.logic.selectBettingList.length*(widget.logic.inputAmt.value??0)}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(width: 10.w,),
-                                    InkWell(
-                                      onTap: (){
-                                        widget.logic.inputAmt.value = 0;
-                                        chipIndex.value = -1;
-                                      },
-                                      child: Image.asset(ImageX.icon_clear,width: 48.w,height: 40.h,),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  ),
+                                  SizedBox(width: 10.w,),
+                                  InkWell(
+                                    onTap: (){
+                                      inputAmt.value = 0;
+                                      chipIndex.value = -1;
+                                      selectChip.clear();
+                                      selectBetting.clear();
+                                      selectBetting.refresh();
+                                    },
+                                    child: Image.asset(ImageX.icon_clear,width: 48.w,height: 40.h,),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                          Container(
-                            padding: EdgeInsets.only(top: 30.h),
-                            alignment: Alignment.center,
-                            width: 90.w,
-
-                            child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
-                              if(type==0) {
-                                showToast(Intr().fengpanzhong);
-                                return;
-                              }
-                              if (widget.logic.selectBettingList.isEmpty) {
-                                showToast("请选择投注项目");
-                                return;
-                              } else if (widget.logic.inputAmt.value==0) {
-                                showToast("下注金额为空");
-                                return;
-                              }
-                              double totalMony=widget.logic.selectBettingList.length*(widget.logic.inputAmt.value??0);
-                              ///确认投注
-                              // DialogUtils().showConfirmBetDialog(context, widget.logic,total: totalMony,inputAmt:widget.logic.inputAmt.value);
-                            }),
-                          ),
-                        ],
-                      ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(top: 30.h),
+                          alignment: Alignment.center,
+                          width: 90.w,
+                          child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
+                            if(type==0) {
+                              showToast(Intr().fengpanzhong);
+                              return;
+                            }
+                            if (selectBetting.isEmpty) {
+                              showToast("请选择投注项目");
+                              return;
+                            } else if (inputAmt.value==0) {
+                              showToast("下注金额为空");
+                              return;
+                            }
+                            double totalMony = selectBetting.length * inputAmt.value;
+                            var betInfo = WsBetEntity();
+                            betInfo.term = widget.logic.term.value;
+                            var odds = List<WsBetContent>.empty(growable: true);
+                            selectBetting.forEach((element) {
+                              var bc = WsBetContent();
+                              bc.a = element.type;
+                              bc.c = inputAmt.value.toString();
+                              bc.d = element.play;
+                              odds.add(bc);
+                            });
+                            betInfo.content = odds;
+                            loggerArray(["打印投注信息",betInfo.toJson()]);
+                            ///确认投注
+                            DialogUtils().showConfirmBetDialog(context, widget.logic,betInfo,total: totalMony,inputAmt:inputAmt.value);
+                          }),
+                        ),
+                      ],
                     ),
                   )
                 ],
@@ -306,7 +333,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
           } else {
             type=1;
             result =
-                logic?.subToTime(logic!.state.text_timer.value)??"";
+                logic.subToTime(logic.state.text_timer.value)??"";
             try{
               term1=result.split(":")[0];
               term2=result.split(":")[1];
@@ -328,7 +355,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
-                  fontSize: 12,
+                  fontSize: 12.sp,
                 )),
           ):
           Row(
@@ -346,14 +373,14 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Color(0xFFFC243B),
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ))),
               SizedBox(width:4.w,),
               Text(":",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   )),
               SizedBox(width:4.w,),
               Container(
@@ -369,14 +396,14 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Color(0xFFFC243B),
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ))),
               SizedBox(width:4.w,),
               Text("后结束",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   )),
             ],
           );
@@ -414,8 +441,12 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
     return InkWell(
       onTap: () {
         chipIndex.value = index;
-        widget.logic.inputAmt.value=switchChipMonney(index);
-        widget.logic.setItemMoney(widget.logic.inputAmt.value);
+        selectChip.add(switchChipMonney(index));
+        inputAmt.value = 0;
+        selectChip.forEach((element) {
+          inputAmt.value += element;
+        });
+        setItemMoney(inputAmt.value);
         setState(() {
         });
       },
@@ -426,7 +457,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
     );
   }
 
-  void initData() {}
+  // void initData() {}
 
   double switchChipMonney(int index) {
     double result=0;
@@ -462,6 +493,16 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
     return result;
   }
+
+
+  void setItemMoney(double money) {
+    for(OddsContent content  in selectBetting) {
+      content.money=money;
+    }
+  }
+
+
+
 }
 
 
