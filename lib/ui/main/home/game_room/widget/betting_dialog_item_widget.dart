@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
@@ -12,8 +12,9 @@ class BettingDialogItemWidget extends StatefulWidget {
   OddsContent content;
   RxList<OddsContent> selectBetting;
   RxDouble inputAmt;
+  String betName;
 
-  BettingDialogItemWidget(this.index,this.content,this.selectBetting,this.inputAmt,{super.key});
+  BettingDialogItemWidget(this.index,this.content,this.selectBetting,this.inputAmt,this.betName,{super.key});
 
 
   @override
@@ -32,7 +33,7 @@ class StateBettingDialogItemWidget extends State<BettingDialogItemWidget>{
 
     return InkWell(
       onTap: (){
-        widget.content.contentMap=keyMap;
+        // widget.content.contentMap=keyMap;
         updateBettingDialogItemWidget(widget.content);
       },
       child: Container(

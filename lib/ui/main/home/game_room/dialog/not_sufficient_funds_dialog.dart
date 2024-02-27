@@ -10,7 +10,7 @@
 // import 'package:leisure_games/app/res/colorx.dart';
 // import 'package:leisure_games/app/utils/widget_utils.dart';
 // import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
-// import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+// import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 // import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 // import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 // import 'package:leisure_games/ui/main/mine/mine_logic.dart';

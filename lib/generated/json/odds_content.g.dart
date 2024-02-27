@@ -1,32 +1,7 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-
-WSGameOddsServer $WSGameOddsServerFromJson(Map<String, dynamic> json) {
-  final WSGameOddsServer wSGameOddsServer = WSGameOddsServer();
-  final List<OddsContent>? content = (json['content'] as List<dynamic>?)?.map(
-          (e) => jsonConvert.convert<OddsContent>(e) as OddsContent).toList();
-  if (content != null) {
-    wSGameOddsServer.content = content;
-  }
-  return wSGameOddsServer;
-}
-
-Map<String, dynamic> $WSGameOddsServerToJson(WSGameOddsServer entity) {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['content'] = entity.content?.map((v) => v.toJson()).toList();
-  return data;
-}
-
-extension WSGameOddsServerExtension on WSGameOddsServer {
-  WSGameOddsServer copyWith({
-    List<OddsContent>? content,
-  }) {
-    return WSGameOddsServer()
-      ..content = content ?? this.content;
-  }
-}
 
 OddsContent $OddsContentFromJson(Map<String, dynamic> json) {
   final OddsContent oddsContent = OddsContent();
@@ -82,6 +57,10 @@ OddsContent $OddsContentFromJson(Map<String, dynamic> json) {
   if (money != null) {
     oddsContent.money = money;
   }
+  final String? play2 = jsonConvert.convert<String>(json['play2']);
+  if (play2 != null) {
+    oddsContent.play2 = play2;
+  }
   final int? color = jsonConvert.convert<int>(json['color']);
   if (color != null) {
     oddsContent.color = color;
@@ -89,12 +68,6 @@ OddsContent $OddsContentFromJson(Map<String, dynamic> json) {
   final int? titleColor = jsonConvert.convert<int>(json['titleColor']);
   if (titleColor != null) {
     oddsContent.titleColor = titleColor;
-  }
-  final Map<String, String>? contentMap =
-  (json['contentMap'] as Map<String, dynamic>).map(
-          (k, e) => MapEntry(k, jsonConvert.convert<String>(e) as String));
-  if (contentMap != null) {
-    oddsContent.contentMap = contentMap;
   }
   return oddsContent;
 }
@@ -114,9 +87,9 @@ Map<String, dynamic> $OddsContentToJson(OddsContent entity) {
   data['updateTime'] = entity.updateTime;
   data['check'] = entity.check;
   data['money'] = entity.money;
+  data['play2'] = entity.play2;
   data['color'] = entity.color;
   data['titleColor'] = entity.titleColor;
-  data['contentMap'] = entity.contentMap;
   return data;
 }
 
@@ -135,9 +108,9 @@ extension OddsContentExtension on OddsContent {
     String? updateTime,
     bool? check,
     double? money,
+    String? play2,
     int? color,
     int? titleColor,
-    Map<String, String>? contentMap,
   }) {
     return OddsContent()
       ..level = level ?? this.level
@@ -153,8 +126,8 @@ extension OddsContentExtension on OddsContent {
       ..updateTime = updateTime ?? this.updateTime
       ..check = check ?? this.check
       ..money = money ?? this.money
+      ..play2 = play2 ?? this.play2
       ..color = color ?? this.color
-      ..titleColor = titleColor ?? this.titleColor
-      ..contentMap = contentMap ?? this.contentMap;
+      ..titleColor = titleColor ?? this.titleColor;
   }
 }

@@ -207,7 +207,10 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     print("======>212${jsonEncode(content.toJson())}");
     // String betName = GameRuleUtil.getBetTypeName(content.type ?? "");
     // String partMsg = "x"+ GameRuleUtil.getMoneySymbol(content?.moneyType??"CNY");
-    // String betOdds="";
+    var betOdds= content.d.em();
+    if(unEmpty(content.e)){
+      betOdds = "$betOdds/${content.e.em()}";
+    }
 
     return Container(
       height: 42.h,
@@ -220,7 +223,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           Expanded(
             flex: 25,
             child: Text(
-              GameRuleUtil.getBetTypeName(content.a.em()),
+              content.b.em(),
               style: TextStyle(
                 fontSize: 14.sp,
                 color: ColorX.text0917(),
@@ -229,9 +232,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           ),
           Expanded(
             flex: 35,
-            child: Text(
-              content.d.em(),
-              style: TextStyle(
+            child: Text(betOdds, style: TextStyle(
                 fontSize: 14.sp,
                 color: ColorX.color_fc243b,
               ),
@@ -493,7 +494,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           WidgetUtils().buildElevatedButton(Intr().confirm, 135.w, 40.h,
               bg: buildBtnColor(),
               textColor: Colors.white, onPressed: () {
-                widget.logic.sumbitBets(index == 0? "CNY":"USDT",widget.betInfo?.term,odds);
+                widget.logic.sumbitBets(index == 0? "CNY":"USDT",widget.betInfo.term,odds);
                 Navigator.of(context).pop(true);
               })
         ],

@@ -89,7 +89,7 @@ import 'package:leisure_games/ui/bean/web_config_entity.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/ws_msg_get_pic_entity.dart';
 
 JsonConvert jsonConvert = JsonConvert();
@@ -792,10 +792,6 @@ class JsonConvert {
       return data.map<GameRoomItemEntity>((Map<String, dynamic> e) =>
           GameRoomItemEntity.fromJson(e)).toList() as M;
     }
-    if (<WSGameOddsServer>[] is M) {
-      return data.map<WSGameOddsServer>((Map<String, dynamic> e) =>
-          WSGameOddsServer.fromJson(e)).toList() as M;
-    }
     if (<OddsContent>[] is M) {
       return data.map<OddsContent>((Map<String, dynamic> e) =>
           OddsContent.fromJson(e)).toList() as M;
@@ -972,7 +968,6 @@ class JsonConvertClassCollection {
     (WithdrawCheckEntity).toString(): WithdrawCheckEntity.fromJson,
     (CountDownLotteryEntity).toString(): CountDownLotteryEntity.fromJson,
     (GameRoomItemEntity).toString(): GameRoomItemEntity.fromJson,
-    (WSGameOddsServer).toString(): WSGameOddsServer.fromJson,
     (OddsContent).toString(): OddsContent.fromJson,
     (WsMsgGetPicEntity).toString(): WsMsgGetPicEntity.fromJson,
   };

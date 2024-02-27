@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
+import 'package:pinput/pinput.dart';
 
 class BettingSmallItemWidget extends StatefulWidget {
   int index=0;
@@ -13,8 +15,8 @@ class BettingSmallItemWidget extends StatefulWidget {
   RxDouble inputAmt;
   OddsContent content;
   bool? useNoColor=false;
-
-  BettingSmallItemWidget(this.index,this.content,this.selectBetting,this.inputAmt,{super.key,this.useNoColor});
+  String betName;
+  BettingSmallItemWidget(this.index,this.content,this.selectBetting,this.inputAmt,this.betName,{super.key,this.useNoColor});
 
   @override
   State<StatefulWidget> createState() => StateBettingSmallItemWidget();
@@ -27,14 +29,13 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
 
   @override
   Widget build(BuildContext context) {
-    String result="${widget.index}";
-    if(widget.index<10) {
-      result="0${widget.index}";
+    String result="${widget.content.level}";
+    if(widget.content.level.em() < 10) {
+      result="0${widget.content.level.em()}";
     }
     print("=====>${jsonEncode(widget.content.toJson())}");
     return InkWell(
       onTap: (){
-        widget.content.contentMap=keyMap;
         updateBettingDialogItemWidget(widget.content);
       },
       child: Container(
@@ -108,47 +109,47 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
     );
   }
 
-  saveColorType(OddsContent con) {
-    if (con.type?.contains(GameRuleUtil.GameType_Second)==true) {
-      setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Second);
-      setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Second_Cao_Bet);
-      setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_Second}_", "")??"");
-    } else if (con.type?.contains(GameRuleUtil.GameType_First)==true) {
-      setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_First);
-      setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Frist_Cao_Bet);
-      setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_First}_", ""));
-    } else if (con.type?.contains(GameRuleUtil.GameType_Three)==true) {
-      setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Three);
-      setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Thire_Cao_Bet);
-      setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_Three}_", ""));
-    } else {
-      setTag(GameRuleUtil.Key_Type, con.type);
-      setTag(GameRuleUtil.Key_Name, con.name);
-    }
-    String ssb="";
-    if (keyMap[GameRuleUtil.Key_Num]!=null) {
-      ssb=getTag(GameRuleUtil.Key_Num);
-    } else {
-      setTag(GameRuleUtil.Key_Odds, con.play);
-      if (con.type == GameRuleUtil.GameType_Big) {
-        String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Big);
-        ssb = betTypeName;
-      } else if (con.type == GameRuleUtil.GameType_Small) {
-        String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Small);
-        ssb =betTypeName;
-      } else if (con.type == GameRuleUtil.GameType_Odd) {
-        String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Odd);
-        ssb = betTypeName;
-      } else if (con.type == GameRuleUtil.GameType_Even) {
-        String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Even);
-        ssb = betTypeName;
-      } else {
-        ssb =con.name??"";
-      }
-    }
-    setTag(GameRuleUtil.Key_Odds, con.play);
-    return ssb;
-  }
+  // saveColorType(OddsContent con) {
+  //   if (con.type?.contains(GameRuleUtil.GameType_Second)==true) {
+  //     setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Second);
+  //     setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Second_Cao_Bet);
+  //     setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_Second}_", "")??"");
+  //   } else if (con.type?.contains(GameRuleUtil.GameType_First)==true) {
+  //     setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_First);
+  //     setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Frist_Cao_Bet);
+  //     setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_First}_", ""));
+  //   } else if (con.type?.contains(GameRuleUtil.GameType_Three)==true) {
+  //     setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Three);
+  //     setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Thire_Cao_Bet);
+  //     setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_Three}_", ""));
+  //   } else {
+  //     setTag(GameRuleUtil.Key_Type, con.type);
+  //     setTag(GameRuleUtil.Key_Name, con.name);
+  //   }
+  //   String ssb="";
+  //   if (keyMap[GameRuleUtil.Key_Num]!=null) {
+  //     ssb=getTag(GameRuleUtil.Key_Num);
+  //   } else {
+  //     setTag(GameRuleUtil.Key_Odds, con.play);
+  //     if (con.type == GameRuleUtil.GameType_Big) {
+  //       String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Big);
+  //       ssb = betTypeName;
+  //     } else if (con.type == GameRuleUtil.GameType_Small) {
+  //       String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Small);
+  //       ssb =betTypeName;
+  //     } else if (con.type == GameRuleUtil.GameType_Odd) {
+  //       String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Odd);
+  //       ssb = betTypeName;
+  //     } else if (con.type == GameRuleUtil.GameType_Even) {
+  //       String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Even);
+  //       ssb = betTypeName;
+  //     } else {
+  //       ssb =con.name??"";
+  //     }
+  //   }
+  //   setTag(GameRuleUtil.Key_Odds, con.play);
+  //   return ssb;
+  // }
 
   setTag(String key,String? value) {
     keyMap[key]=value??"";
@@ -161,6 +162,11 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
     content.check=!(content.check??false);
     // print("=======> inputAmt.value   ${inputAmt.value}");
     if(content.check==true) {
+      if(int.tryParse(content.type.em()) != null){
+        content.name = "${widget.betName}-${content.level}";
+      }else if(content.type?.contains("cao") == true){
+        content.name = "${widget.betName}-${content.level}";
+      }
       content.money = widget.inputAmt.value;
       widget.selectBetting.add(content);
     }else{

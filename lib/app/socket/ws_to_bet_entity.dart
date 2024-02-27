@@ -1,4 +1,5 @@
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
@@ -6,7 +7,7 @@ import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/ws_to_bet_entity.g.dart';
 import 'dart:convert';
 
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 export 'package:leisure_games/generated/json/ws_to_bet_entity.g.dart';
 
 @JsonSerializable()
@@ -58,7 +59,7 @@ class WsToBetEntity {
 			betCon.money = content.c;
 			betCon.num = "";
 			betCon.odds = content.d;
-			betCon.odds1314 = content.e;
+			betCon.odds1314 = content.e.em();
 			// betCon.odds1314 = content.contentMap[""] ?? "";
 			// map["msg"] = content.play ?? "";
 			list.add(betCon);

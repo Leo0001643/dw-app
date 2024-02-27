@@ -20,7 +20,7 @@ import 'package:leisure_games/app/socket/ws_message_send_entity.dart';
 import 'package:leisure_games/app/socket/ws_msg_error_entity.dart';
 import 'package:leisure_games/app/socket/ws_to_bet_entity.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:sprintf/sprintf.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -169,7 +169,12 @@ class SocketUtils{
             break;
           case "bet_result":
             var result = WsBetEntity.fromJson(json);
-            sendPort.send(result);
+            if(result.status == 10000){
+              sendPort.send(result);
+            }else {
+              var error = WsMsgErrorEntity.fromJson(json);
+              sendPort.send(error);
+            }
             break;
           case "logout":
             var result = WsLoginEntity.fromJson(json);

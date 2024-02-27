@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_dialog_item_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_middle_item_widget.dart';
@@ -14,8 +14,9 @@ class BettingTemaPage extends StatefulWidget {
   int index;
   RxList<OddsContent> selectBetting;
   RxDouble inputAmt;
+  String betName;
 
-  BettingTemaPage(this.index,this.selectBetting,this.inputAmt, {super.key});
+  BettingTemaPage(this.index,this.selectBetting,this.inputAmt,this.betName, {super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -49,7 +50,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
   Widget build(BuildContext context) {
     return Container(
       width: 1.sw,
-      padding: EdgeInsets.only(left: 15.w,right: 15.w,top:8.w),
+      margin: EdgeInsets.only(left: 15.w,right: 15.w,top:8.h,bottom: 8.h),
       child: CustomScrollView(slivers: [
         SliverToBoxAdapter(
           child: GridView.builder(
@@ -64,7 +65,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
               itemCount: dataBettingList.length,
               itemBuilder: (BuildContext context, int index) {
                 print("===== index ${index}   ${dataBettingList[index].hashCode} ");
-                return BettingDialogItemWidget(index,dataBettingList[index],widget.selectBetting,widget.inputAmt);
+                return BettingDialogItemWidget(index,dataBettingList[index],widget.selectBetting,widget.inputAmt,widget.betName);
               }),
         ),
         SliverToBoxAdapter(
@@ -81,7 +82,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
                 ),
                 itemCount:dataBettingList1.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return BettingMiddleItemWidget(index,dataBettingList1[index],widget.selectBetting,widget.inputAmt);
+                  return BettingMiddleItemWidget(index,dataBettingList1[index],widget.selectBetting,widget.inputAmt,widget.betName);
                 }),
           ),
         ),
@@ -99,12 +100,11 @@ class BettingChildPageState extends State<BettingTemaPage>  {
                 ),
                 itemCount:dataBettingList2.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return BettingSmallItemWidget(index,dataBettingList2[index],widget.selectBetting,widget.inputAmt);
+                  return BettingSmallItemWidget(index,dataBettingList2[index],widget.selectBetting,widget.inputAmt,widget.betName);
                 }),
           ),
-        )
-      ]
-      ),
+        ),
+      ]),
     );
   }
 

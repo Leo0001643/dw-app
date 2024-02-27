@@ -25,14 +25,15 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
     WSLotteryEntity? wsBetResultEntity =
         widget.gameRoomItemEntity.data as WSLotteryEntity;
     WSLotteryEntityData? wSLotteryEntityData=wsBetResultEntity.data?[0];
-    int a=-1;
-    int b=-1;
-    int c=-1;
-    if((wSLotteryEntityData?.originalNum?.length??0)==3){
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    if((wSLotteryEntityData?.originalNum?.length??0)>=3){
        a=int.tryParse(wSLotteryEntityData?.originalNum?[0]??"0")??0;
        b=int.tryParse(wSLotteryEntityData?.originalNum?[1]??"0")??0;
        c=int.tryParse(wSLotteryEntityData?.originalNum?[2]??"0")??0;
     }
+
 
     return Container(
       margin: EdgeInsets.only(left: 50.w,right: 20.w,bottom: 8.w,top: 8.w),
@@ -68,7 +69,7 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
               SizedBox(width: 8.w,),
               Expanded(
                 child: Text(
-                  "${Intr().kaijianghaoma}:${a}+${b}+${c}=${(a+b+c)}",
+                  "${Intr().kaijianghaoma}:$a+$b+$c=${(a+b+c)}",
                   style: TextStyle(fontSize: 14.sp, color: Color(0xFF596A8D)),
                 ),
               ),

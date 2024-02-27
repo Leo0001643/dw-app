@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -235,7 +236,13 @@ class _GameRoomPageState extends State<GameRoomPage> {
       var textColor =
           state.roomType.value == 3 ? ColorX.color_ffe0ac : Colors.white;
       return InkWell(
-        onTap: () => DialogUtils().showBettingBtmDialog(context, logic),
+        onTap: (){
+          if(!AppData.isLogin()){
+            showToast(Intr().qingxiandenglu);
+            return;
+          }
+          DialogUtils().showBettingBtmDialog(context, logic);
+      },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),

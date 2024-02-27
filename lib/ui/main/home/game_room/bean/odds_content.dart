@@ -1,19 +1,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:leisure_games/generated/json/ws_game_odds_server.g.dart';
-
-@JsonSerializable()
-class WSGameOddsServer {
-  List<OddsContent>? content;
-
-  WSGameOddsServer({this.content});
-
-
-  factory WSGameOddsServer.fromJson(Map<String, dynamic> json) => $WSGameOddsServerFromJson(json);
-
-  Map<String, dynamic> toJson() => $WSGameOddsServerToJson(this);
-
-}
+import 'package:leisure_games/generated/json/odds_content.g.dart';
 
 @JsonSerializable()
 class OddsContent {
@@ -29,10 +16,11 @@ class OddsContent {
   String? type;
   String? updateTime;
   bool? check=false;
-  double? money ;
+  double? money;
+  String? play2;
   int? color=0xFF091722;
   int? titleColor=0xFF091722;
-  Map<String,String> contentMap={};
+  // Map<String,String>? contentMap;
   OddsContent(
       {this.createTime,
         this.enabled,
@@ -41,6 +29,7 @@ class OddsContent {
         this.name,
         this.parentId,
         this.play,
+        this.play2,
         this.tableId,
         this.type,
         this.check,

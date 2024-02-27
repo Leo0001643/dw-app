@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart' ;
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 
 
 
@@ -22,161 +23,161 @@ class GameRuleUtil {
   /**
    * "大"
    */
-  static String GameType_Big = "big";
+  static const String GameType_Big = "big";
 
   /**
    * "14大"
    */
-  static String GameType_Big_14 = "14_big";
+  static const String GameType_Big_14 = "14_big";
 
   /**
    * "小"
    */
-  static String GameType_Small = "small";
+  static const String GameType_Small = "small";
 
   /**
    * "13小"
    */
-  static String GameType_Small_13 = "13_small";
+  static const String GameType_Small_13 = "13_small";
 
   /**
    * "单"
    */
-  static String GameType_Odd = "odd";
+  static const String GameType_Odd = "odd";
 
   /**
    * "13单"
    */
-  static String GameType_Odd_13 = "13_odd";
+  static const String GameType_Odd_13 = "13_odd";
 
   /**
    * "双"
    */
-  static String GameType_Even = "even";
+  static const String GameType_Even = "even";
 
   /**
    * "14双"
    */
-  static String GameType_Even_14 = "14_even";
+  static const String GameType_Even_14 = "14_even";
 
   /**
    * "大单"
    */
-  static String GameType_BigOdd = "big_odd";
+  static const String GameType_BigOdd = "big_odd";
 
   /**
    * "小单"
    */
-  static String GameType_SmallOdd = "small_odd";
+  static const String GameType_SmallOdd = "small_odd";
 
   /**
    * "13小单"
    */
-  static String GameType_SmallOdd_13 = "13_small_odd";
+  static const String GameType_SmallOdd_13 = "13_small_odd";
 
   /**
    * "大双"
    */
-  static String GameType_BigEven = "big_even";
+  static const String GameType_BigEven = "big_even";
 
   /**
    * "14大双"
    */
-  static String GameType_BigEven_14 = "14_big_even";
+  static const String GameType_BigEven_14 = "14_big_even";
 
   /**
    * "小双"
    */
-  static String GameType_SmallEven = "small_even";
+  static const String GameType_SmallEven = "small_even";
 
   /**
    * "极大"
    */
-  static String GameType_Max = "max";
+  static const String GameType_Max = "max";
 
   /**
    * "极小"
    */
-  static String GameType_Min = "min";
+  static const String GameType_Min = "min";
 
   /**
    * "红波"
    */
-  static String GameType_Red = "red";
+  static const String GameType_Red = "red";
 
   /**
    * "蓝波"
    */
-  static String GameType_Blue = "blue";
+  static const String GameType_Blue = "blue";
 
   /**
    * "绿波"
    */
-  static String GameType_Green = "green";
+  static const String GameType_Green = "green";
 
   /**
    * "对子"
    */
-  static String GameType_Pair = "pair";
+  static const String GameType_Pair = "pair";
 
   /**
    * "顺子"
    */
-  static String GameType_Straight = "straight";
+  static const String GameType_Straight = "straight";
 
   /**
    * "豹子"
    */
-  static String GameType_Leopard = "leopard";
+  static const String GameType_Leopard = "leopard";
 
   /**
    * "特码"
    */
-  static String GameType_Cao = "cao";
+  static const String GameType_Cao = "cao";
 
   /**
    * 第一球
    */
-  static String GameType_First = "first_cao";
-  static String GameType_First_String = "first";
+  static const String GameType_First = "first_cao";
+  static const String GameType_First_String = "first";
 
   /**
    * 第二球
    */
-  static String GameType_Second = "second_cao";
-  static String GameType_Second_String = "second";
+  static const String GameType_Second = "second_cao";
+  static const String GameType_Second_String = "second";
 
   /**
    * 第三球
    */
-  static String GameType_Three = "third_cao";
-  static String GameType_Three_String = "third";
+  static const String GameType_Three = "third_cao";
+  static const String GameType_Three_String = "third";
 
   /**
    * 和
    */
-  static String GameType_equal = "equal";
+  static const String GameType_equal = "equal";
 
   /**
    * 龙
    */
-  static String GameType_dragon = "dragon";
+  static const String GameType_dragon = "dragon";
 
   /**
    * 虎
    */
-  static String GameType_tiger = "tiger";
+  static const String GameType_tiger = "tiger";
 
   /**
    * 草：下注时的参数msg拼接使用
    */
-  static String GameType_Cao_Bet = "草";
-  static String GameType_Frist_Cao_Bet = "第一球草";
-  static String GameType_Second_Cao_Bet = "第二球草";
-  static String GameType_Thire_Cao_Bet = "第三球草";
-  static String GameType_Frist_Bet = "第一球";
-  static String GameType_Second_Bet = "第二球";
-  static String GameType_Thire_Bet = "第三球";
+  static const String GameType_Cao_Bet = "草";
+  static const String GameType_Frist_Cao_Bet = "第一球草";
+  static const String GameType_Second_Cao_Bet = "第二球草";
+  static const String GameType_Thire_Cao_Bet = "第三球草";
+  static const String GameType_Frist_Bet = "第一球";
+  static const String GameType_Second_Bet = "第二球";
+  static const String GameType_Thire_Bet = "第三球";
 
   static const int GameType_Cao_00 = 0;
   static const int GameType_Cao_01 = 1;
@@ -728,37 +729,74 @@ class GameRuleUtil {
     }
     return ssb;
   }
-   static WSGameOddsServer getOddsbean( Map<String,dynamic> totalMap) {
-    WSGameOddsServer result =  WSGameOddsServer();
-      result.content = [];
-      Iterable<String> keys = totalMap.keys;
-      if (keys .isNotEmpty) {
-        OddsContent row;
-        keys.map((e){
-          try {
-            Map<String,dynamic> childMap=totalMap[e];
-            childMap.keys.map((childKey){
-              OddsContent row= OddsContent();
-              Map<String,dynamic> subMap=childMap[childKey];
-              row.id ="${subMap["id"]}";
-              row.parentId ="${subMap["parentId"]}";
-              row.jsonKey =childKey;
-              row.enabled ="${subMap["enabled"]}";
-              row.createTime ="${subMap["createTime"]}";
-              row.updateTime ="${subMap["updateTime"]}";
-              row.name ="${subMap["name"]}";
-              row.play ="${subMap["play"]}";
-              row.type ="${subMap["type"]}";
-              result.content?.add(row);
-            }).toList();
-          } catch ( e) {
-            print("解析失败 e  ${e.toString()}");
-          }
 
-        }).toList();
+   static Future<List<OddsContent>> getOddsbean(Map<String,dynamic> totalMap) async {
+    // WSGameOddsServer result =  WSGameOddsServer();
+      var content = List<OddsContent>.empty(growable: true);
+      totalMap.forEach((key, value) {
+        value.forEach((type, entity) {
+          var row = OddsContent.fromJson(entity);
+          row.jsonKey =type;
+          content.add(row);
+        });
+      });
+      loggerArray(["整理投注数据111",totalMap.length,content.length]);
 
-      }
-    return result;
+      ///处理双倍率
+      content.removeWhere((e1) {
+        switch(e1.type){
+          case GameType_Big_14:
+            content.forEach((element) {
+              if(element.type == GameType_Big){
+                element.play2 = e1.play;
+              }
+            });
+            return true;
+          case GameType_Small_13:
+            content.forEach((element) {
+              if(element.type == GameType_Small){
+                element.play2 = e1.play;
+              }
+            });
+            return true;
+          case GameType_Odd_13:
+            content.forEach((element) {
+              if(element.type == GameType_Odd){
+                element.play2 = e1.play;
+              }
+            });
+            return true;
+          case GameType_Even_14:
+            content.forEach((element) {
+              if(element.type == GameType_Even){
+                element.play2 = e1.play;
+              }
+            });
+            return true;
+          case GameType_SmallOdd_13:
+            content.forEach((element) {
+              if(element.type == GameType_SmallOdd){
+                element.play2 = e1.play;
+              }
+            });
+            return true;
+          case GameType_BigEven_14:
+            content.forEach((element) {
+              if(element.type == GameType_BigEven){
+                element.play2 = e1.play;
+              }
+            });
+            return true;
+          default:
+            // loggerArray(["整理投注数据121342",e1.type]);
+            // if((int.tryParse(e1.type.em()) ?? 0) <= 27){
+            //   return false;
+            // }
+            return false;
+        }
+      });
+      loggerArray(["整理投注数据",totalMap.length,content.length]);
+    return Future.value(content);
   }
 
 
@@ -1021,7 +1059,7 @@ class GameRuleUtil {
         item.level=16;
         middleBettingList.add(item);
       } else {
-        int  sum = int.tryParse(con.type??"1")??-1;
+        int sum = int.tryParse(con.type??"1")??-1;
         OddsContent item= OddsContent.fromJson(con.toJson());
         item.titleColor = GameRuleUtil.getBallColor(sum);
         switch (sum) {
@@ -1108,24 +1146,26 @@ class GameRuleUtil {
             break;
           case GameRuleUtil.GameType_Cao_27:
             item.level=27;
-
             break;
           default:
-          // SysoManager.println("未知类型未知草");
+            item.level = -1;
+            // SysoManager.println("未知类型未知草");
             break;
         }
-        smallDataBettingList.add(item);
+        if(item.level.em() >= 0){
+          smallDataBettingList.add(item);
+        }
       }
     }
     if(type==0) {
-      dataBettingList.sort((a, b) => (a.level??0).compareTo((b.level??0)));
+      dataBettingList.sort((a, b) => (a.level.em()).compareTo((b.level.em())));
       print("=======>长度 ${dataBettingList.length}");
       return dataBettingList;
     }else if(type==1) {
-      middleBettingList.sort((a, b) => (a.level??0).compareTo((b.level??0)));
+      middleBettingList.sort((a, b) => (a.level.em()).compareTo((b.level.em())));
       return middleBettingList;
     }else if(type==2) {
-      smallDataBettingList.sort((a, b) => (b.level??0).compareTo((a.level??0)));
+      smallDataBettingList.sort((a, b) => (a.level.em()).compareTo((b.level.em())));
       return smallDataBettingList;
     }
     return dataBettingList;

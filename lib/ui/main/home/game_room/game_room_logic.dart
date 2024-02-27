@@ -21,7 +21,7 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
@@ -102,8 +102,10 @@ class GameRoomLogic extends GetxController {
 
     HttpService.getPC28Odds(room.id.em()).then((value) {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
-      Map<String, dynamic> map = jsonDecode(value,);
-      odds.value=GameRuleUtil.getOddsbean(map).content??[];
+      Map<String, dynamic> map = jsonDecode(value);
+      GameRuleUtil.getOddsbean(map).then((list) {
+        odds.value= list;
+      });
     });
 
     ///表情
@@ -421,12 +423,12 @@ class GameRoomLogic extends GetxController {
     }
     SocketUtils().toBet(moneyType, nowTerm, betList, state.room.value.gameType.em(),
         state.room.value.roomId.em().toString(), state.room.value.id.em().toString());
+    // showToast(Intr().caozuochenggong);
 
-    showToast(Intr().caozuochenggong);
   }
 
-  // [log] [长连接发送投注消息, {key: bet, value: {"type":"bet","client_name":"dsa0001","room_id":"18","oid":"7c1d9e76949201ee2aabb117d019d534","table_id":"54","site_id":"9000","game_type":"fastbtb28","now_term":null,"moneyType":null,"content":[]}}]
 
+      // {key: bet, value: {"type":"bet","client_name":"dsa0001","room_id":"18","oid":"41992217e761ab8c8ad8a003e58bfb16","table_id":"54","site_id":"9000","game_type":"fastbtb28","now_term":"202402270636","moneyType":"CNY","content":[{"money":"1.0","num":"","odds":"8.777","odds_1314":null,"type":"second_cao_3"},{"money":"1.0","num":"","odds":"8.666","odds_1314":null,"type":"first_cao_2"},{"money":"1.0","num":"","odds":"1.884","odds_1314":"1.555","type":"even"}]}}
 
-
+//[log] [长连接发送投注消息, {key: bet, value: {"type":"bet","client_name":"dsa0001","room_id":"18","oid":"41992217e761ab8c8ad8a003e58bfb16","table_id":"54","site_id":"9000","game_type":"fastbtb28","now_term":"202402270643","moneyType":"CNY","content":[{"money":"20","num":"","odds":"1.881","odds_1314":"1.888","type":"big"},{"money":"20","num":"","odds":"1.882","odds_1314":"1.777","type":"small"},{"money":"20","num":"","odds":"1.883","odds_1314":"1.666","type":"odd"},{"money":"20","num":"","odds":"1.884","odds_1314":"1.555","type":"even"}]}}]
 }

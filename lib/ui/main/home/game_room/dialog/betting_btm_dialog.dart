@@ -12,7 +12,7 @@ import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_child_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_tema_page.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
@@ -58,10 +58,10 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
     _tabController.addListener(() {
       pageIndex.value = _tabController.index;
     });
-    contents.assignAll([BettingTemaPage(0,key: riKey1,selectBetting,inputAmt),
-      BettingChildPage(1,key: riKey2,selectBetting,inputAmt),
-      BettingChildPage(2,key: riKey3,selectBetting,inputAmt),
-      BettingChildPage(3,key: riKey4,selectBetting,inputAmt),]);
+    contents.assignAll([BettingTemaPage(0,key: riKey1,selectBetting,inputAmt,Intr().tema),
+      BettingChildPage(1,key: riKey2,selectBetting,inputAmt,Intr().diyiqiu),
+      BettingChildPage(2,key: riKey3,selectBetting,inputAmt,Intr().dierqiu),
+      BettingChildPage(3,key: riKey4,selectBetting,inputAmt,Intr().disanqiu),]);
 
     super.initState();
   }
@@ -283,12 +283,15 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                             selectBetting.forEach((element) {
                               var bc = WsBetContent();
                               bc.a = element.type;
-                              bc.c = inputAmt.value.toString();
+                              bc.b = element.name;
+                              bc.c = inputAmt.value.toInt().toString();
                               bc.d = element.play;
+                              bc.e = element.play2;
                               odds.add(bc);
                             });
                             betInfo.content = odds;
                             loggerArray(["打印投注信息",betInfo.toJson()]);
+                            Navigator.pop(context);
                             ///确认投注
                             DialogUtils().showConfirmBetDialog(context, widget.logic,betInfo,total: totalMony,inputAmt:inputAmt.value);
                           }),

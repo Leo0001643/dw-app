@@ -40,7 +40,7 @@ import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/dialog/betting_btm_dialog.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/ws_game_odds_server.dart';
+import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_dialog_item_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_small_item_widget.dart';
@@ -12,8 +12,9 @@ class BettingChildPage extends StatefulWidget {
   int index;
   RxList<OddsContent> selectBetting;
   RxDouble inputAmt;
+  String betName;
 
-  BettingChildPage(this.index,this.selectBetting,this.inputAmt, {super.key});
+  BettingChildPage(this.index,this.selectBetting,this.inputAmt,this.betName, {super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -60,7 +61,9 @@ class BettingChildPageState extends State<BettingChildPage> {
               itemCount: dataBettingList1.length,
               itemBuilder: (BuildContext context, int index) {
                 print("===== index ${index}   ${dataBettingList1[index].hashCode} ");
-                return BettingSmallItemWidget(index,dataBettingList1[index],widget.selectBetting,widget.inputAmt,useNoColor:true);
+                var content = dataBettingList1[index];
+                content.level = index;
+                return BettingSmallItemWidget(index,content,widget.selectBetting,widget.inputAmt,widget.betName,useNoColor:true);
               }),
         ),
         SliverToBoxAdapter(
@@ -77,7 +80,7 @@ class BettingChildPageState extends State<BettingChildPage> {
                 itemCount: dataBettingList2.length,
                 itemBuilder: (BuildContext context, int index) {
                   print("===== index ${index}   ${dataBettingList2[index].hashCode} ");
-                  return BettingDialogItemWidget(index,dataBettingList2[index],widget.selectBetting,widget.inputAmt);
+                  return BettingDialogItemWidget(index,dataBettingList2[index],widget.selectBetting,widget.inputAmt,widget.betName,);
                 }),
           ),
         )
