@@ -1,10 +1,11 @@
+import 'dart:convert';
+
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/socket/socket_utils.dart';
-import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/ws_message_send_entity.g.dart';
-import 'dart:convert';
+
 export 'package:leisure_games/generated/json/ws_message_send_entity.g.dart';
 
 @JsonSerializable()

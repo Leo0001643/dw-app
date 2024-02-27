@@ -5,9 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
-import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
-import 'package:pinput/pinput.dart';
 
 class BettingSmallItemWidget extends StatefulWidget {
   int index=0;

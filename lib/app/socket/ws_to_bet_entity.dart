@@ -1,13 +1,12 @@
+import 'dart:convert';
+
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
-import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/ws_to_bet_entity.g.dart';
-import 'dart:convert';
 
-import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 export 'package:leisure_games/generated/json/ws_to_bet_entity.g.dart';
 
 @JsonSerializable()
@@ -55,9 +54,19 @@ class WsToBetEntity {
 		var list = List<WsToBetContent>.empty(growable: true);
 		for (WsBetContent content in betList ?? []) {
 			var betCon = WsToBetContent();
-			betCon.type = content.a;
+			///type单点类型固定位cao字
+			if(content.a?.contains("cao") == true || int.tryParse(content.a.em()) != null){
+				betCon.type = "cao";
+			} else {
+				betCon.type = content.a;
+			}
+			///num为投注cao类型时的单点数字，只有当投注单点类型时有值，投注其他类型时传空字符串即可
+			if(int.tryParse(content.a.em()) != null){
+				betCon.num = content.a.em();
+			} else {
+				betCon.num = "";
+			}
 			betCon.money = content.c;
-			betCon.num = "";
 			betCon.odds = content.d;
 			betCon.odds1314 = content.e.em();
 			// betCon.odds1314 = content.contentMap[""] ?? "";

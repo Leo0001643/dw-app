@@ -1,6 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
-import 'package:leisure_games/app/global.dart';
 
 
 DewInfoEntity $DewInfoEntityFromJson(Map<String, dynamic> json) {

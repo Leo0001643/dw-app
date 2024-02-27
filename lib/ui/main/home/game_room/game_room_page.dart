@@ -32,7 +32,7 @@ class GameRoomPage extends StatefulWidget {
 class _GameRoomPageState extends State<GameRoomPage> {
   final logic = Get.find<GameRoomLogic>();
   final state = Get.find<GameRoomLogic>().state;
-  TextItemLogic? timeLogic;
+  // TextItemLogic? timeLogic;
 
   @override
   void initState() {

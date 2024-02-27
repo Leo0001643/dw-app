@@ -1,10 +1,6 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
-import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
-
-import 'package:leisure_games/app/global.dart';
-
 import 'package:leisure_games/ui/bean/usdt_entity.dart';
+import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
 
 UserDrawDetailEntity $UserDrawDetailEntityFromJson(Map<String, dynamic> json) {

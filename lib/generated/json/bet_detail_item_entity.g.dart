@@ -1,6 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 
 BetDetailItemEntity $BetDetailItemEntityFromJson(Map<String, dynamic> json) {

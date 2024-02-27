@@ -1,5 +1,5 @@
-import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/app/socket/ws_msg_error_entity.dart';
+import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 
 WsMsgErrorEntity $WsMsgErrorEntityFromJson(Map<String, dynamic> json) {
   final WsMsgErrorEntity wsMsgErrorEntity = WsMsgErrorEntity();

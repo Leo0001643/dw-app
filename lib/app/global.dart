@@ -28,6 +28,8 @@ bool isEmpty(Object? obj) => ObjectUtil.isEmpty(obj);
 /// 数据判空 接受任意类型数据
 bool unEmpty(Object? obj) => ObjectUtil.isNotEmpty(obj);
 
+///是否int型
+bool isInt(Object? obj) => unEmpty(obj) && int.tryParse(obj.toString()) != null;
 
 extension StringExtension on String? {
   ///防止字段为空报错

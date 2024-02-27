@@ -984,6 +984,7 @@ class CN {
     "fengpanxinxi":"封盘信息",
     "kaishifengpan":"开始封盘",
     "lianjiefuwushibai":"链接服务失败，稍后再试",
+    "kaijiangzhong":"开奖中",
 
 
 

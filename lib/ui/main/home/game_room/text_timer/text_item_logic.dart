@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
-import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
@@ -47,11 +46,9 @@ class TextItemLogic extends GetxController {
   StreamSubscription? loginStream;
   var count = 100;
   String? type;
-  String? status = "fengpanzhong".tr;
+  String? status = Intr().fengpanzhong;
   String? lastStatusContent;
   int lastShowTime = -1;
-
-
 
   bool alreadyShowStop = false;
   Timer? countdownTimer;
@@ -66,29 +63,31 @@ class TextItemLogic extends GetxController {
   }
 
   TextItemLogic({this.type});
-  RxString term="".obs;
+  // RxString term="".obs;
 
-  void loadData(GameKindGameKindList gameKind) {
-    //测试用
-    HttpService.getPc28LottoList().then((value) {
-      print("==========>getPc28LottoList  ${jsonEncode(value.toJson())}");
-      print("==========>item.gameCode  ${gameKind.gameCode}");
-      for (Pc28LottoRooms item in value.rooms!) {
-        // 判断 gameCode 和 gameType 是否相等
-        if (gameKind.gameCode == item.gameType) {
-          // 执行倒计时逻辑
-          loadTimerData(item);
-        }
-      }
-    });
-  }
-  String gameCode="";
+  // void loadData(GameKindGameKindList gameKind) {
+  //   //测试用
+  //   HttpService.getPc28LottoList().then((value) {
+  //     print("==========>getPc28LottoList  ${jsonEncode(value.toJson())}");
+  //     print("==========>item.gameCode  ${gameKind.gameCode}");
+  //     for (Pc28LottoRooms item in value.rooms!) {
+  //       // 判断 gameCode 和 gameType 是否相等
+  //       if (gameKind.gameCode == item.gameType) {
+  //         // 执行倒计时逻辑
+  //         loadTimerData(item);
+  //       }
+  //     }
+  //   });
+  // }
+
+
+  // String gameCode="";
   void loadDataGameCode(String gameCode) {
     //测试用
     HttpService.getPc28LottoList().then((value) {
       print("==========>getPc28LottoList2  ${jsonEncode(value.toJson())}");
       print("==========>item.gameCode2  ${gameCode}");
-      this.gameCode=gameCode;
+      // this.gameCode=gameCode;
       for (Pc28LottoRooms item in value.rooms!) {
         // 判断 gameCode 和 gameType 是否相等
         if (gameCode == item.gameType) {
@@ -102,10 +101,7 @@ class TextItemLogic extends GetxController {
   void loadTimerData(Pc28LottoRooms pc28lottoRoom) {
     //请求倒计时
     HttpService.getPC28Plan(5).then((value) {
-
-
       print("==========>getPC28Plan  ${jsonEncode(value.toJson())}");
-
       _calculateCountdown(pc28lottoRoom, value);
     });
   }
@@ -138,24 +134,23 @@ class TextItemLogic extends GetxController {
     Map<String, dynamic> roominf = pc28lottoRoom.toJson();
     String key = pc28lottoRoom.gameType.toString();
     if (pc28lottoRoom.stateMsg != "0") {
-      if (pc28lottoRoom.stateMsg == 1) {
-        roomcountdown[key + 'Time'] = Intr().weihuzhong;
-      } else if (pc28lottoRoom.stateMsg == 3) {
-        roomcountdown[key + 'Time'] = Intr().yiguanpan;
-      } else if (pc28lottoRoom.stateMsg == 4) {
-        roomcountdown[key + 'Time'] = Intr().yixiushi;
+      if (pc28lottoRoom.stateMsg == "1") {
+        roomcountdown['${key}Time'] = Intr().weihuzhong;
+      } else if (pc28lottoRoom.stateMsg == "3") {
+        roomcountdown['${key}Time'] = Intr().yiguanpan;
+      } else if (pc28lottoRoom.stateMsg == "4") {
+        roomcountdown['${key}Time'] = Intr().yixiushi;
       }
-      roomcountdown[key + 'Term'] = '--';
-      roomcountdown[key + 'Notice'] = allTime[key]['msg'] ?? '';
+      roomcountdown['${key}Term'] = '--';
+      roomcountdown['${key}Notice'] = allTime[key]['msg'] ?? '';
 
       lastStatus=LotteryStatus.initStatus;
     } else if (allTime[key]['code'] == 100020) {
       currentStatus.value=LotteryStatus.wattingLotteryStatus;
       print("++++++++++++++++等待开盘");
-      roomcountdown[key + 'Time'] = Intr().dengdaikaipan;
-      roomcountdown[key + 'Term'] = '--';
-      roomcountdown[key + 'Notice'] = allTime[key]['msg'];
-
+      roomcountdown['${key}Time'] = Intr().dengdaikaipan;
+      roomcountdown['${key}Term'] = '--';
+      roomcountdown['${key}Notice'] = allTime[key]['msg'];
 
       lastStatus=LotteryStatus.wattingLotteryStatus;
     } else {
@@ -178,9 +173,9 @@ class TextItemLogic extends GetxController {
                 (int.parse(allTime[key]['data'][s + 1]['openTime'].toString()) -
                         onlineT) ~/
                     1000;
-            roomcountdown[key + 'OpenResult'] = openT;
+            roomcountdown['${key}OpenResult'] = openT;
             if (openT == 0) {
-              roomcountdown[key + 'OpenResult'] = '开奖中';
+              roomcountdown['${key}OpenResult'] = Intr().kaijiangzhong;
             }
             //现在时间  小于关闭时间，大于开始时间， 则显示倒计时
             if (onlineT < allTime[key]['data'][s]['closeTime'] &&
@@ -221,8 +216,7 @@ class TextItemLogic extends GetxController {
         currentStatus.value=LotteryStatus.countDownStatus;
         //倒计时长度为1 的情况
         print("==========倒计时长度为1");
-        int onlineT = DateTime.now().millisecondsSinceEpoch +
-            int.parse(diffTime.toString());
+        int onlineT = DateTime.now().millisecondsSinceEpoch + int.parse(diffTime.toString());
         if (onlineT < allTime[key]['data'][0]['closeTime'] &&
             onlineT > allTime[key]['data'][0]['openTime']) {
           print("为1  倒计时");
@@ -235,16 +229,16 @@ class TextItemLogic extends GetxController {
             showOverTime(-1);
           }
           String showtime = secToTime(showT);
-          roomcountdown[key + 'Time'] = showtime;
-          roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
+          roomcountdown['${key}Time'] = showtime;
+          roomcountdown['${key}Term'] = allTime[key]['data'][0]['term'];
           lastStatus=LotteryStatus.countDownStatus;
         } else if (onlineT < allTime[key]['data'][0]['openTime']) {
           resetStatusWhenClosed();
 
           //现在时间 opentime直接显示封盘中
           print("为1  封盘中");
-          roomcountdown[key + 'Time'] = "fengpanzhong".tr;
-          roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
+          roomcountdown['${key}Time'] = Intr().fengpanzhong;
+          roomcountdown['${key}Term'] = allTime[key]['data'][0]['term'];
           lastStatus=LotteryStatus.sealingPlateStatus;
         }
       }
@@ -291,10 +285,7 @@ class TextItemLogic extends GetxController {
       alreadyShowStop = true;
       showStopBetting = true;
       update((["showStopBetting"]));
-      Future.delayed(
-          Duration(
-            seconds: 2,
-          ), () {
+      Future.delayed(const Duration(seconds: 2,), () {
         showStopBetting = false;
         update((["showStopBetting"]));
       });

@@ -1,14 +1,5 @@
-import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/app/socket/ws_to_bet_entity.dart';
-import 'package:leisure_games/app/app_data.dart';
-
-import 'package:leisure_games/app/socket/socket_utils.dart';
-
-import 'package:leisure_games/app/socket/ws_bet_entity.dart';
-
-import 'package:leisure_games/app/utils/data_utils.dart';
-
-import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
+import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 
 
 WsToBetEntity $WsToBetEntityFromJson(Map<String, dynamic> json) {

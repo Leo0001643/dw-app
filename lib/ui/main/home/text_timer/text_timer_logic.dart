@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:get/get.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
@@ -82,22 +81,22 @@ class TextTimerLogic {
       diffTime, Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28planEntity) {
     Map<String, dynamic> allTime = pc28planEntity.all!.toJson();
     Map<String, dynamic> roomcountdown = {};
-    Map<String, dynamic> roominf = pc28lottoRoom.toJson();
+    // Map<String, dynamic> roominf = pc28lottoRoom.toJson();
     String key = pc28lottoRoom.gameType.toString();
     if (pc28lottoRoom.stateMsg != "0") {
-      if (pc28lottoRoom.stateMsg == 1) {
-        roomcountdown[key + 'Time'] = Intr().weihuzhong;
-      } else if (pc28lottoRoom.stateMsg == 3) {
-        roomcountdown[key + 'Time'] = Intr().yiguanpan;
-      } else if (pc28lottoRoom.stateMsg == 4) {
-        roomcountdown[key + 'Time'] = Intr().yixiushi;
+      if (pc28lottoRoom.stateMsg == "1") {
+        roomcountdown['${key}Time'] = Intr().weihuzhong;
+      } else if (pc28lottoRoom.stateMsg == "3") {
+        roomcountdown['${key}Time'] = Intr().yiguanpan;
+      } else if (pc28lottoRoom.stateMsg == "4") {
+        roomcountdown['${key}Time'] = Intr().yixiushi;
       }
-      roomcountdown[key + 'Term'] = '--';
-      roomcountdown[key + 'Notice'] = allTime[key]['msg'] ?? '';
+      roomcountdown['${key}Term'] = '--';
+      roomcountdown['${key}Notice'] = allTime[key]['msg'] ?? '';
     } else if (allTime[key]['code'] == 100020) {
-      roomcountdown[key + 'Time'] = Intr().dengdaikaipan;
-      roomcountdown[key + 'Term'] = '--';
-      roomcountdown[key + 'Notice'] = allTime[key]['msg'];
+      roomcountdown['${key}Time'] = Intr().dengdaikaipan;
+      roomcountdown['${key}Term'] = '--';
+      roomcountdown['${key}Notice'] = allTime[key]['msg'];
     } else {
      if(allTime[key]['data']==null) {
        state.text_timer.value = Intr().dengdaikaipan;
@@ -107,13 +106,10 @@ class TextTimerLogic {
           int onlineT = DateTime.now().millisecondsSinceEpoch +
               int.parse(diffTime.toString());
           if (onlineT <= allTime[key]['data'][s + 1]['openTime']) {
-            int openT =
-                (int.parse(allTime[key]['data'][s + 1]['openTime'].toString()) -
-                        onlineT) ~/
-                    1000;
-            roomcountdown[key + 'OpenResult'] = openT;
+            int openT = (int.parse(allTime[key]['data'][s + 1]['openTime'].toString()) - onlineT) ~/ 1000;
+            roomcountdown['${key}OpenResult'] = openT;
             if (openT == 0) {
-              roomcountdown[key + 'OpenResult'] = '开奖中';
+              roomcountdown['${key}OpenResult'] = Intr().kaijiangzhong;
             }
 
             if (onlineT < allTime[key]['data'][s]['closeTime'] &&
@@ -121,8 +117,8 @@ class TextTimerLogic {
               int rrtime = allTime[key]['data'][s]['closeTime'];
               int showT = (rrtime - onlineT) ~/ 1000;
               String showtime = secToTime(showT);
-              roomcountdown[key + 'Time'] = showtime;
-              roomcountdown[key + 'Term'] = allTime[key]['data'][s]['term'];
+              roomcountdown['${key}Time'] = showtime;
+              roomcountdown['${key}Term'] = allTime[key]['data'][s]['term'];
               break;
             } else if (onlineT > allTime[key]['data'][s]['closeTime'] &&
                 onlineT < allTime[key]['data'][s + 1]['openTime']) {
@@ -140,11 +136,11 @@ class TextTimerLogic {
           int rrtime = allTime[key]['data'][0]['closeTime'];
           int showT = (rrtime - onlineT) ~/ 1000;
           String showtime = secToTime(showT);
-          roomcountdown[key + 'Time'] = showtime;
+          roomcountdown['${key}Time'] = showtime;
           roomcountdown['${key}Term'] = allTime[key]['data'][0]['term'];
         } else if (onlineT < allTime[key]['data'][0]['openTime']) {
           roomcountdown['${key}Time'] = Intr().fengpanzhong;
-          roomcountdown[key + 'Term'] = allTime[key]['data'][0]['term'];
+          roomcountdown['${key}Term'] = allTime[key]['data'][0]['term'];
         }
       }
     }

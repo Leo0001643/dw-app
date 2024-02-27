@@ -312,9 +312,7 @@ class StateGameMenuView extends State<GameMenuView> {
               borderRadius: BorderRadius.circular(100.r),
             ),
             margin: EdgeInsets.symmetric(vertical: 2.r, horizontal: 1.r),
-            child: TextTimerPage(
-
-                TextTimerLogic(type: element.gameCode), element, timerGroup)),
+            child: TextTimerPage(TextTimerLogic(type: element.gameCode), element, timerGroup)),
       ),
     );
   }

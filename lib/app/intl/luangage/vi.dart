@@ -985,6 +985,7 @@ class VI{
     "fengpanxinxi":"Thông tin niêm phong",
     "kaishifengpan":"Bắt đầu phong ấn",
     "lianjiefuwushibai":"Dịch vụ liên kết đã thất bại, hãy thử lại sau",
+    "kaijiangzhong":"Trong xổ số",
 
   };
 }

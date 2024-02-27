@@ -7,8 +7,8 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
-import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
@@ -21,7 +21,7 @@ class GameRoomHotWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GameRoomLogic>(
-        id: "gameRoomTimer",
+        id: "gameRoomComputeWidget",
         builder: (logic) {
       GameRoomState state = logic.state;
       WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
@@ -41,7 +41,7 @@ class GameRoomHotWidget extends StatelessWidget {
            Row(
              children: [
                Image(
-                 image: AssetImage(ImageX.icon_room_fire),
+                 image: const AssetImage(ImageX.icon_room_fire),
                  width: 20.w,
                  height: 22.w,
                ),
@@ -49,20 +49,18 @@ class GameRoomHotWidget extends StatelessWidget {
                  width: 4.w,
                ),
                Text(
-                 "${termData}",
+                 termData,
                  style: TextStyle(
-                     fontSize: 12,
+                     fontSize: 12.sp,
                      color: Color(0xFF091722),
                      fontWeight: FontWeight.w700),
                )
              ],
-
            ),
-
            Row(
              children: [ buildSealingPlateStatus(),buildStartBettingStatus(),],
            ),
-            TextTimerItem( state.room.value.gameType??"",state.pc28Lotto)
+            TextTimerItem(state.room.value.gameType.em(),state.pc28Lotto)
           ],
         ),
       );

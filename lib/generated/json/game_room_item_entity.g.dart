@@ -1,6 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 
 GameRoomItemEntity $GameRoomItemEntityFromJson(Map<String, dynamic> json) {

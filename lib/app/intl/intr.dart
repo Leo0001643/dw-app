@@ -624,7 +624,7 @@ class Intr extends Translations{
   String get fengpanxinxi => "fengpanxinxi".tr;
   String get kaishifengpan => "kaishifengpan".tr;
   String get lianjiefuwushibai => "kaishifengpan".tr;
-
+  String get kaijiangzhong => "kaijiangzhong".tr;
 
 
 

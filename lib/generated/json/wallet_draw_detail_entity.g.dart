@@ -1,6 +1,6 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
-import 'package:leisure_games/ui/bean/wallet_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
+import 'package:leisure_games/ui/bean/wallet_draw_detail_entity.dart';
 
 
 WalletDrawDetailEntity $WalletDrawDetailEntityFromJson(

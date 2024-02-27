@@ -20,11 +20,10 @@ import 'package:leisure_games/app/socket/ws_message_send_entity.dart';
 import 'package:leisure_games/app/socket/ws_msg_error_entity.dart';
 import 'package:leisure_games/app/socket/ws_to_bet_entity.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:sprintf/sprintf.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:web_socket_channel/status.dart' as status;
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 /// Author: Soushin
 /// Date: 2024/2/26 16:53

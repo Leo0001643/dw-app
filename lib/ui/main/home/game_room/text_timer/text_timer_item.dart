@@ -25,6 +25,7 @@ class TextTimerItemState extends State<TextTimerItem> {
   late final Rx<Pc28LottoEntity> timerGroup;
   TextItemLogic? logic=Get.find<TextItemLogic>();
   String timer="";
+
   @override
   void initState() {
     super.initState();
@@ -51,13 +52,11 @@ class TextTimerItemState extends State<TextTimerItem> {
         builder: (logic) {
           print("开始刷新logic");
           String result = "";
-          if (Intr().fengpanzhong == logic?.state.text_timer.value) {
+          if (Intr().fengpanzhong == logic.state.text_timer.value) {
             result = Intr().fengpanzhong;
           } else {
-            result =
-                logic?.subToTime(logic!.state.text_timer.value)??"";
+            result = logic.subToTime(logic.state.text_timer.value)??"";
           }
-
           return Container(
               height: 20,
               padding: EdgeInsets.symmetric(
@@ -71,27 +70,27 @@ class TextTimerItemState extends State<TextTimerItem> {
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                   )));
         });
   }
 
-  buildText() {
-    return Row(
-      children: [
-        buildTime("02"),
-        Text(
-          " : ",
-          style: TextStyle(fontSize: 12, color: Color(0xFFFC243B)),
-        ),
-        buildTime("59"),
-        Text(
-          " 后结束 ",
-          style: TextStyle(fontSize: 12, color: Color(0xFFFC243B)),
-        ),
-      ],
-    );
-  }
+  // buildText() {
+  //   return Row(
+  //     children: [
+  //       buildTime("02"),
+  //       Text(
+  //         " : ",
+  //         style: TextStyle(fontSize: 12, color: Color(0xFFFC243B)),
+  //       ),
+  //       buildTime("59"),
+  //       Text(
+  //         " 后结束 ",
+  //         style: TextStyle(fontSize: 12, color: Color(0xFFFC243B)),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Widget buildTime(String time) {
     return Container(

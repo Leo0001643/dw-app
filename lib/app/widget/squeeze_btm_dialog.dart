@@ -1,12 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/text_timer/text_timer_item.dart';
 import 'package:scratcher/scratcher.dart';
 
 class SqueezeBtmDialog extends StatefulWidget{
@@ -25,10 +28,8 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
   double opacity = 1;
 
 
-
   @override
   Widget build(BuildContext context) {
-
     var icon = AnimatedOpacity(
       opacity: opacity,
       duration: const Duration(milliseconds: 750),
@@ -49,9 +50,8 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
         ),
       ),
     );
-
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(image: AssetImage(ImageX.mipaibg),fit: BoxFit.fill),
       ),
       height: 0.77.sh,
@@ -75,7 +75,9 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                 top: 14.h, left: 0,right: 2.w,
                 child: Column(
                   children: [
-                    Text(" 1231312 ",style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),),
+                    Obx(() {
+                      return Text(widget.logic.term.value,style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),);
+                    }),
                     SizedBox(height: 38.h,),
                     Center(
                       child:Container(
@@ -104,14 +106,32 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                       child: Row(
                         children:[
                           Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(Intr().dixqitouzhu(["06161240","00:43"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
-                                SizedBox(height: 3.h,),
-                                Text(Intr().dixqikaijiang(["06161240","9s"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
-                              ],
-                            ),
+                            child: GetBuilder<TextItemLogic>(
+                              id: "textTimerItem",
+                              builder: (logic){
+                                String result = "";
+                                if (Intr().fengpanzhong == logic.state.text_timer.value) {
+                                  result = Intr().fengpanzhong;
+                                } else {
+                                  result = logic.subToTime(logic.state.text_timer.value)??"";
+                                }
+                                var term = widget.logic.term.value;
+                                var nextTerm = term;
+                                if(isInt(term) && term.length > 8){
+                                  nextTerm = "${int.parse(term) + 1}";
+                                  nextTerm = nextTerm.substring(4,nextTerm.length);
+                                  term = term.substring(4,term.length);
+                                }
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(Intr().dixqitouzhu([term,result]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                    SizedBox(height: 3.h,),
+                                    Text(Intr().dixqikaijiang([nextTerm,"9s"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                  ],
+                                );
+                              },
+                            )
                           ),
                           WidgetUtils().buildElevatedButton(Intr().shuaxin, 59.w, 40.h,bg: ColorX.color_50_c13,textColor: ColorX.color_ffe0ac, onPressed: (){
 

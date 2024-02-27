@@ -1055,6 +1055,7 @@ class EN{
     "fengpanxinxi":"Sealing information",
     "kaishifengpan":"Open closing",
     "lianjiefuwushibai":"Link service failed, try again later",
+    "kaijiangzhong":"Drawing",
 
   };
 
