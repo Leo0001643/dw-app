@@ -1,4 +1,7 @@
 
+import 'dart:math';
+
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -27,6 +30,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
   bool isScratched = false;
   double opacity = 1;
 
+  var termNo = "".obs;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +80,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                 child: Column(
                   children: [
                     Obx(() {
-                      return Text(widget.logic.term.value,style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),);
+                      return Text(termNo.value,style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),);
                     }),
                     SizedBox(height: 38.h,),
                     Center(
@@ -110,24 +114,32 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                               id: "textTimerItem",
                               builder: (logic){
                                 String result = "";
+                                ///处理咪牌开奖逻辑
+                                var lotCount = 0;
                                 if (Intr().fengpanzhong == logic.state.text_timer.value) {
                                   result = Intr().fengpanzhong;
+                                  lotCount = 10 - logic.fengpanCount;
                                 } else {
                                   result = logic.subToTime(logic.state.text_timer.value)??"";
+                                  var timeParts = result.split(":");
+                                  if(timeParts.length == 2){
+                                    lotCount = 10 + int.tryParse(timeParts.last).em();
+                                  }
                                 }
                                 var term = widget.logic.term.value;
-                                var nextTerm = term;
+                                // var nextTerm = term;
                                 if(isInt(term) && term.length > 8){
-                                  nextTerm = "${int.parse(term) + 1}";
-                                  nextTerm = nextTerm.substring(4,nextTerm.length);
+                                  // nextTerm = "${int.parse(term) + 1}";
+                                  // nextTerm = nextTerm.substring(4,nextTerm.length);
                                   term = term.substring(4,term.length);
                                 }
+                                termNo.value = term;
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(Intr().dixqitouzhu([term,result]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
                                     SizedBox(height: 3.h,),
-                                    Text(Intr().dixqikaijiang([nextTerm,"9s"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                    Text(Intr().dixqikaijiang([term,"${lotCount}s"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
                                   ],
                                 );
                               },

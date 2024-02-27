@@ -245,8 +245,16 @@ class TextItemLogic extends GetxController {
     }
     state.text_timer.value = roomcountdown['${key}Time'] ?? '';
     lastStatusContent = roomcountdown['${key}Time'] ?? '';
+    ///处理咪牌开奖逻辑
+    if(state.text_timer.value == Intr().fengpanzhong){
+      fengpanCount++;
+    }else {
+      fengpanCount = -1;
+    }
     update(["textTimerItem"]);
   }
+
+  var fengpanCount = 0;
 
   String secToTime(int sec) {
     int hours = sec ~/ 3600;

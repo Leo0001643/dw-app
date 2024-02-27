@@ -76,7 +76,6 @@ class TextTimerLogic {
     });
   }
 
-
   void timeCountOnly(
       diffTime, Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28planEntity) {
     Map<String, dynamic> allTime = pc28planEntity.all!.toJson();

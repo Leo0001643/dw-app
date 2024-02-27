@@ -28,6 +28,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 /// Author: Soushin
 /// Date: 2024/2/26 16:53
 /// Description: websocket长连接处理
+/// 932707629@qq.com
 ///
 class SocketUtils{
 
