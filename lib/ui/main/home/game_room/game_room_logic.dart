@@ -48,6 +48,19 @@ class GameRoomLogic extends GetxController {
   @override
   void onReady() {
     loadBalance();
+    TextItemLogic textItemLogic = Get.find<TextItemLogic>();
+    // test();
+    textItemLogic.countDownLotteryEntity.stream.listen((value) {
+      // print("修改了值");
+      handleMessage(value);
+    });
+
+    textItemLogic.currentStatus.stream.listen((value) {
+      // print("修改了值");
+      currentStatus.value = value;
+      currentStatus.refresh();
+      update(["gameRoomComputeWidget"]);
+    });
     super.onReady();
   }
 
@@ -79,9 +92,9 @@ class GameRoomLogic extends GetxController {
     }
   }
 
-  Future<void> loadData(Pc28LottoRoomsTables room) async {
+  Future<void> loadData(Pc28LottoRoomsTables room,bool login) async {
     ///处理房间房型显示 长连接连接问题
-    changeRoomType(room,true);
+    changeRoomType(room,login);
 
     HttpService.getPc28LottoList().then((value) {
       value.rooms?.forEach((e1) {
@@ -110,22 +123,6 @@ class GameRoomLogic extends GetxController {
     HttpService.getPhrase().then((value) {
       state.phrases.assignAll(value);
     });
-    // initTimer();
-
-    TextItemLogic textItemLogic = Get.find<TextItemLogic>();
-    // test();
-    textItemLogic.countDownLotteryEntity.stream.listen((value) {
-      // print("修改了值");
-      handleMessage(value);
-    });
-
-    textItemLogic.currentStatus.stream.listen((value) {
-      // print("修改了值");
-      currentStatus.value = value;
-      currentStatus.refresh();
-      update(["gameRoomComputeWidget"]);
-    });
-    // test();
   }
 
   List<OddsContent>  getDataBettingList(int index,{int? type=0}){

@@ -39,7 +39,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     state.room.value = Get.arguments;
     TextItemLogic textItemLogic=Get.find<TextItemLogic>();
     textItemLogic.setType( state.room.value.gameType);
-    logic.loadData(state.room.value);
+    logic.loadData(state.room.value,true);
     super.initState();
   }
 
@@ -61,7 +61,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
             .then(
           (value) {
             if (unEmpty(value?.name)) {
-              logic.changeRoomType(value!,false);
+              logic.loadData(value!,false);
             }
           },
         );
