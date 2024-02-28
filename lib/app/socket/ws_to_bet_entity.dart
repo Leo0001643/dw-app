@@ -55,15 +55,12 @@ class WsToBetEntity {
 		for (WsBetContent content in betList ?? []) {
 			var betCon = WsToBetContent();
 			///type单点类型固定位cao字
-			if(content.a?.contains("cao") == true || int.tryParse(content.a.em()) != null){
-				betCon.type = "cao";
-			} else {
-				betCon.type = content.a;
-			}
 			///num为投注cao类型时的单点数字，只有当投注单点类型时有值，投注其他类型时传空字符串即可
 			if(int.tryParse(content.a.em()) != null){
+				betCon.type = "cao";
 				betCon.num = content.a.em();
 			} else {
+				betCon.type = content.a;
 				betCon.num = "";
 			}
 			betCon.money = content.c;
