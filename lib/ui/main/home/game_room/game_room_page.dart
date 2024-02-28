@@ -129,8 +129,8 @@ class _GameRoomPageState extends State<GameRoomPage> {
                                 maxBulletHeight: 5,
                                 controller: state.barrageWallController,
                                 speedCorrectionInMilliseconds: 3000,
-                                child: Container(),
                                 height: 0.2.sh,
+                                child: Container(),
                               ),
                             ],
                           );

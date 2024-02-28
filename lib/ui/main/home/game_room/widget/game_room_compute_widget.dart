@@ -26,21 +26,19 @@ class GameRoomComputeWidget extends StatelessWidget {
     return GetBuilder<GameRoomLogic>(
         id: "gameRoomComputeWidget",
         builder: (logic) {
-          int a;
-      GameRoomState state = logic.state;
+          // int a;
+      // GameRoomState state = logic.state;
       // var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
-      WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
+      // WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
       // String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
-      return  Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(height: 10.h,),
-            Divider(height: 1.h,color: ColorX.color_f1f1f1,),
-            SizedBox(height: 10.h,),
-            buildCurrentTermType(logic,context),
-          ],
-        ),
+      return  Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: 10.h,),
+          Divider(height: 1.h,color: ColorX.color_f1f1f1,),
+          SizedBox(height: 10.h,),
+          buildCurrentTermType(logic,context),
+        ],
       );
     });
   }
