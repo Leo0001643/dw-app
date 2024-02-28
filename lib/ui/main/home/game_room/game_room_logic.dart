@@ -163,6 +163,10 @@ class GameRoomLogic extends GetxController {
     }else {///切换房间
       SocketUtils().changeRoom(room.gameType.em(), room.roomId.em().toString(), room.id.em().toString());
     }
+    ///切换房间需要清楚历史数据
+    state.gameRoomItemEntityList.clear();
+    update(["gameRoomLogicList"]);
+
   }
 
   void loadBalance() {
