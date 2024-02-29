@@ -24,11 +24,10 @@ class GameRoomHotWidget extends StatelessWidget {
         id: "gameRoomComputeWidget",
         builder: (logic) {
       GameRoomState state = logic.state;
-      WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
+      // WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
       // String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??"",year:""); // 4
       String termData=GameRuleUtil.getSSB(logic.term.value,year:"");
-      var textColor =
-          state.roomType.value == 1 ? ColorX.text0917() : Colors.white;
+      // var textColor = state.roomType.value == 1 ? ColorX.text0917() : Colors.white;
       return Container(
         height: 34.w,
         padding: EdgeInsets.symmetric(
@@ -58,7 +57,7 @@ class GameRoomHotWidget extends StatelessWidget {
              ],
            ),
            Row(
-             children: [ buildSealingPlateStatus(),buildStartBettingStatus(),],
+             children: [buildSealingPlateStatus(),buildStartBettingStatus(),],
            ),
             TextTimerItem(state.room.value.gameType.em(),state.pc28Lotto)
           ],

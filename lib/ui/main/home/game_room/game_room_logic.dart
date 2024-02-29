@@ -192,7 +192,7 @@ class GameRoomLogic extends GetxController {
     recentlyWSLotteryEntityData.value=lottery.data??[];
     if (lottery.data?.isNotEmpty == true) {
       headWSLotteryEntityData = lottery.data?[0];
-      term.value = headWSLotteryEntityData?.term ?? "";
+      term.value = headWSLotteryEntityData?.term ?? '';
       update(["gameRoomComputeWidget"]);
     }
     GameRoomItemEntity gameRoomItemEntity = GameRoomItemEntity(type: lottery.type, data: lottery);

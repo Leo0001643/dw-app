@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -14,13 +16,17 @@ import '../../../bean/pc28_plan_entity.dart';
  * 参考count_down_text.dart
  */
 class TextTimerLogic {
-  final TextTimerState state = TextTimerState();
-  StreamSubscription? loginStream;
-  var count = 100;
+  // StreamSubscription? loginStream;
+  // var count = 100;
   String? type;
   Timer? countdownTimer;
+  var text_timer = "".obs; //倒计时显示
 
   TextTimerLogic({required this.type});
+
+  void stop(){
+    countdownTimer?.cancel();
+  }
 
   void loadData(GameKindGameKindList gameKind) {
     //测试用
@@ -30,10 +36,13 @@ class TextTimerLogic {
         if (gameKind.gameCode == item.gameType) {
           // 执行倒计时逻辑
           loadTimerData(item);
+          break;
         }
       }
     });
   }
+
+
   void loadDataGameCode(String gameCode) {
     //测试用
     HttpService.getPc28LottoList().then((value) {
@@ -42,6 +51,7 @@ class TextTimerLogic {
         if (gameCode == item.gameType) {
           // 执行倒计时逻辑
           loadTimerData(item,gameCode:gameCode);
+          break;
         }
       }
     });
@@ -65,9 +75,9 @@ class TextTimerLogic {
     countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
       timeCountOnly(diffTime, pc28lottoRoom, pc28Plan);
       // 如果倒计时结束，取消计时器
-      if (count <= 0) {
-        countdownTimer?.cancel();
-      }
+      // if (count <= 0) {
+      //   countdownTimer?.cancel();
+      // }
     });
   }
 
@@ -76,7 +86,7 @@ class TextTimerLogic {
     Map<String, dynamic> roomcountdown = {};
 
     // Map<String, dynamic> roominf = pc28lottoRoom.toJson();
-    String key = pc28lottoRoom.gameType.toString();
+    String key = pc28lottoRoom.gameType.em();
     if (pc28lottoRoom.stateMsg != "0") {
       if (pc28lottoRoom.stateMsg == "1") {
         roomcountdown['${key}Time'] = Intr().weihuzhong;
@@ -92,11 +102,11 @@ class TextTimerLogic {
       roomcountdown['${key}Term'] = '--';
       roomcountdown['${key}Notice'] = allTime[key]['msg'];
     } else {
-     // if(allTime[key]['data']==null) {
-     //   state.text_timer.value = Intr().dengdaikaipan;
-     // }
       var data = allTime[key]['data'] ?? [];
-      if (data.length > 1) {
+      ///如果已截止显示等待开奖
+      if(isEmpty(data)) {
+        roomcountdown['${key}Time'] = Intr().dengdaikaipan;
+      }else if (data.length > 1) {
         for (int s = 0; s < data.length - 1; s++) {
           int onlineT = DateTime.now().millisecondsSinceEpoch + diffTime;
           if (onlineT <= data[s + 1]['openTime']) {
@@ -136,10 +146,9 @@ class TextTimerLogic {
       }
     }
 
-    loggerArray(['整理出来的TImer结果',roomcountdown]);
+    loggerArray(['整理出来的TImer结果',roomcountdown,key]);
 
-    state.text_timer.value = roomcountdown['${key}Time'] ?? "";
-
+    text_timer.value = roomcountdown['${key}Time'] ?? "";
   }
 
   String secToTime(int sec) {
@@ -157,4 +166,9 @@ class TextTimerLogic {
     print("result ${result}");
     return result;
   }
+
+
+
+
+
 }

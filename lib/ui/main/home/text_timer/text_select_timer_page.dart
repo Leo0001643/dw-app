@@ -36,6 +36,7 @@ class _TextTimerPageState extends State<TextSelectTimerPage> {
 
   @override
   void dispose() {
+    widget.logic.stop();
     _timer.cancel(); // 销毁时取消定时任务
     super.dispose();
   }
@@ -44,18 +45,17 @@ class _TextTimerPageState extends State<TextSelectTimerPage> {
   Widget build(BuildContext context) {
     // 在这里构建你的 UI，使用 roomInf 数据
     return Obx(() {
-      print("========> text_timer ${widget.gameCode}  ${widget.logic.state.text_timer.value}");
-
-      if (!widget.logic.state.text_timer.value.contains(Intr().fengpanzhong)) {
-        if (widget.logic.state.text_timer.value.startsWith (Intr().dengdaikaipan)) {
-          return Text(widget.logic.state.text_timer.value,
+      print("========> text_timer ${widget.gameCode}  ${widget.logic.text_timer.value}");
+      if (!widget.logic.text_timer.value.contains(Intr().fengpanzhong)) {
+        if (widget.logic.text_timer.value.startsWith (Intr().dengdaikaipan)) {
+          return Text(widget.logic.text_timer.value,
               style: TextStyle(color: Colors.greenAccent,fontSize: 11.sp),textAlign: TextAlign.center,);
         }
-        return Text(widget.logic.state.text_timer.value,
+        return Text(widget.logic.text_timer.value,
             style: TextStyle(fontWeight: FontWeight.w700,color: ColorX.color_333333,fontSize: 11.sp));
       } else {
         return Text(
-          widget.logic.state.text_timer.value,
+          widget.logic.text_timer.value,
           style: TextStyle(color: Colors.red,fontWeight: FontWeight.w700,fontSize: 11.sp),
           textAlign: TextAlign.center,
         );
