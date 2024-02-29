@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:common_utils/common_utils.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/socket/socket_utils.dart';
@@ -56,7 +57,7 @@ class WsToBetEntity {
 			var betCon = WsToBetContent();
 			///type单点类型固定位cao字
 			///num为投注cao类型时的单点数字，只有当投注单点类型时有值，投注其他类型时传空字符串即可
-			if(int.tryParse(content.a.em()) != null){
+			if(RegexUtil.matches(r'\d', content.a.em())){
 				betCon.type = "cao";
 				betCon.num = content.a.em();
 			} else {
