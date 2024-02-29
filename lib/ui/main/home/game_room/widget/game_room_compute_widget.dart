@@ -24,7 +24,7 @@ class GameRoomComputeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return GetBuilder<GameRoomLogic>(
-        id: "gameRoomComputeWidget",
+        id: GameRoomLogic.gameRoomCompute,
         builder: (logic) {
           // int a;
       // GameRoomState state = logic.state;

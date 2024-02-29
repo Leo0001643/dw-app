@@ -19,7 +19,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return GetBuilder<GameRoomLogic>(
-        id: "gameRoomComputeWidget",
+        id: GameRoomLogic.gameRoomCompute,
         builder: (logic) {
       return Container(
         height: 0.77.sh,

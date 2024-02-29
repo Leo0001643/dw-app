@@ -146,7 +146,7 @@ class TextTimerLogic {
       }
     }
 
-    loggerArray(['整理出来的TImer结果',roomcountdown,key]);
+    // loggerArray(['整理出来的TImer结果',roomcountdown,key]);
 
     text_timer.value = roomcountdown['${key}Time'] ?? "";
   }

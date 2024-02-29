@@ -104,10 +104,10 @@ class _GameRoomPageState extends State<GameRoomPage> {
                         fit: BoxFit.fill)),
                 child: Column(
                   children: [
-                    const GameRoomHotWidget(),
+                    GameRoomHotWidget(),
                     Expanded(
                       child: GetBuilder<GameRoomLogic>(
-                        id: "gameRoomLogicList",
+                        id: GameRoomLogic.gameRoomList,
                         builder: (logic){
                           return Stack(
                             children: [

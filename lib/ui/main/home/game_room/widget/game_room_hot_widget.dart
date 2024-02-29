@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
-import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
@@ -21,48 +21,45 @@ class GameRoomHotWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GameRoomLogic>(
-        id: "gameRoomComputeWidget",
+        id: GameRoomLogic.gameRoomCompute,
         builder: (logic) {
-      GameRoomState state = logic.state;
-      // WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
-      // String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??"",year:""); // 4
-      String termData=GameRuleUtil.getSSB(logic.term.value,year:"");
-      // var textColor = state.roomType.value == 1 ? ColorX.text0917() : Colors.white;
-      return Container(
-        height: 34.w,
-        padding: EdgeInsets.symmetric(
-          horizontal: 10.w,
-        ),
-        alignment: Alignment.center,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-           Row(
-             children: [
-               Image(
-                 image: const AssetImage(ImageX.icon_room_fire),
-                 width: 20.w,
-                 height: 22.w,
-               ),
-               SizedBox(
-                 width: 4.w,
-               ),
-               Text(
-                 termData,
-                 style: TextStyle(
-                     fontSize: 12.sp,
-                     color: Color(0xFF091722),
-                     fontWeight: FontWeight.w700),
-               )
-             ],
-           ),
-           Row(
-             children: [buildSealingPlateStatus(),buildStartBettingStatus(),],
-           ),
-            TextTimerItem(state.room.value.gameType.em(),state.pc28Lotto)
-          ],
-        ),
-      );
+          GameRoomState state = logic.state;
+          String termData=GameRuleUtil.getSSB(logic.term.value,year:"");
+          return Container(
+            height: 34.w,
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
+            ),
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Image(
+                      image: const AssetImage(ImageX.icon_room_fire),
+                      width: 20.w,
+                      height: 22.w,
+                    ),
+                    SizedBox(
+                      width: 4.w,
+                    ),
+                    Text(
+                      termData,
+                      style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Color(0xFF091722),
+                          fontWeight: FontWeight.w700),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [buildSealingPlateStatus(),buildStartBettingStatus(),],
+                ),
+                TextTimerItem(state.room.value.gameType.em(),state.pc28Lotto)
+              ],
+            ),
+          );
     });
   }
 

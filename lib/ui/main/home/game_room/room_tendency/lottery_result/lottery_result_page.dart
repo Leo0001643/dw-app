@@ -42,7 +42,7 @@ class _LotteryResultPageState extends State<LotteryResultPage> with AutomaticKee
     return Container(
       color: ColorX.pageBg2(),
       child:GetBuilder<GameRoomLogic>(
-          id: "gameRoomComputeWidget",
+          id: GameRoomLogic.gameRoomCompute,
           builder: (logic) {
             return Container(
               height: 1.sh,

@@ -707,17 +707,11 @@ class GameRuleUtil {
    * 获取第几期样式
    */
   static String getSSB(String qiShu,{String? year="2024"}) {
-    String ssb = "";
+    String ssb = qiShu;
     if (qiShu.isNotEmpty == true && qiShu.length > 8) {
-      qiShu = qiShu.substring(qiShu.length - 8, qiShu.length);
-
-      ssb = Intr().dixqi(["${year.em()}$qiShu"]);
-      // ssb.setSpan(
-      //     new ForegroundColorSpan(Color.parseColor("#fe2427")), di.length(),
-      //     di.length() + qiShu.length(),
-      //     Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+      ssb = qiShu.substring(qiShu.length - 8, qiShu.length);
     }
-    return ssb;
+    return Intr().dixqi(["${year.em()}$ssb"]);
   }
 
   static String getSimpleSSB(String qiShu,{String? year="2024"}) {

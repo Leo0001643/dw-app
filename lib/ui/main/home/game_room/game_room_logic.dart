@@ -35,6 +35,11 @@ class GameRoomLogic extends GetxController {
   WSLotteryEntityData? headWSLotteryEntityData;
   RxList<OddsContent> odds=<OddsContent>[].obs;
 
+  static String  gameRoomCompute = "gameRoomComputeWidget";
+  static String  gameRoomList = "gameRoomLogicList";
+
+
+
   // RxList<OddsContent> dataBettingList=<OddsContent>[].obs;
 
   // RxList<OddsContent> selectBettingList=<OddsContent>[].obs;
@@ -59,7 +64,7 @@ class GameRoomLogic extends GetxController {
       // print("修改了值");
       currentStatus.value = value;
       currentStatus.refresh();
-      update(["gameRoomComputeWidget"]);
+      update([gameRoomCompute]);
     });
     super.onReady();
   }
@@ -162,7 +167,7 @@ class GameRoomLogic extends GetxController {
     }
     ///切换房间需要清楚历史数据
     state.gameRoomItemEntityList.clear();
-    update(["gameRoomLogicList"]);
+    update([gameRoomList]);
 
   }
 
@@ -189,15 +194,15 @@ class GameRoomLogic extends GetxController {
   void handleLottery(WSLotteryEntity lottery) {
     // WSLotteryEntity wsLotteryEntity =
     //     WSLotteryEntity.fromJson(jsonDecode(response.data));
-    recentlyWSLotteryEntityData.value=lottery.data??[];
+    recentlyWSLotteryEntityData.value = lottery.data ?? [];
     if (lottery.data?.isNotEmpty == true) {
-      headWSLotteryEntityData = lottery.data?[0];
-      term.value = headWSLotteryEntityData?.term ?? '';
-      update(["gameRoomComputeWidget"]);
+      headWSLotteryEntityData = lottery.data!.first;
+      term.value = headWSLotteryEntityData!.term.em();
+      update([gameRoomCompute]);
     }
     GameRoomItemEntity gameRoomItemEntity = GameRoomItemEntity(type: lottery.type, data: lottery);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
-    update(["gameRoomLogicList"]);
+    update([gameRoomList]);
 
     Future.delayed(const Duration(milliseconds: 100),(){
       if (scrollController.hasClients) {
@@ -213,7 +218,7 @@ class GameRoomLogic extends GetxController {
     GameRoomItemEntity gameRoomItemEntity =
         GameRoomItemEntity(type: entity.type, data: entity);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
-    update(["gameRoomLogicList"]);
+    update([gameRoomList]);
 
     Future.delayed(Duration(milliseconds: 100),(){
       if (scrollController.hasClients) {
@@ -227,7 +232,7 @@ class GameRoomLogic extends GetxController {
     GameRoomItemEntity gameRoomItemEntity =
         GameRoomItemEntity(type: entity.type, data: entity);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
-    update(["gameRoomLogicList"]);
+    update([gameRoomList]);
     Future.delayed(Duration(milliseconds: 100),(){
       if (scrollController.hasClients) {
         scrollController.jumpTo(scrollController.position.maxScrollExtent);
@@ -271,8 +276,8 @@ class GameRoomLogic extends GetxController {
   void handleMessage(CountDownLotteryEntity countDownLotteryEntity) {
     CountDownLotteryEntity item =
         CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
-    term.value = item.term ?? "";
-    update(["gameRoomComputeWidget"]);
+    term.value = item.term.em();
+    update([gameRoomCompute]);
     handleSystemMessgeResult(countDownLotteryEntity);
   }
 
