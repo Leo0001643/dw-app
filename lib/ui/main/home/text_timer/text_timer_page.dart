@@ -47,7 +47,7 @@ class _TextTimerPageState extends State<TextTimerPage> {
     // 在这里构建你的 UI，使用 roomInf 数据
     return Obx(() {
       if (!widget.logic.state.text_timer.value.contains(Intr().fengpanzhong)) {
-        if (widget.logic.state.text_timer.value.startsWith (Intr().dengdaikaipan)) {
+        if (widget.logic.state.text_timer.value.startsWith(Intr().dengdaikaipan)) {
           return Text(widget.logic.state.text_timer.value,
               style: TextStyle(color: Colors.greenAccent));
         }

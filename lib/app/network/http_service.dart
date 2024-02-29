@@ -442,8 +442,8 @@ class HttpService{
     return buildFuture<List<BetShakeEntity>>(()=> _client.betShake(params),loading: false);
   }
 
-  static Future<Pc28PlanEntity> getPC28Plan(int termCount){
-    return buildFuture<Pc28PlanEntity>(()=> _client.getPC28Plan(termCount),loading: false);
+  static Future<String> getPC28Plan(int termCount){
+    return buildFuture<String>(()=> _client.getPC28Plan(termCount),loading: false);
   }
 
   static Future<String> switchLanguage(Map<String,dynamic> params,){

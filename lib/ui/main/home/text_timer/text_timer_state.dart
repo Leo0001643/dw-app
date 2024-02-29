@@ -6,5 +6,5 @@ class TextTimerState {
     ///Initialize variables
   }
 
-  var text_timer = Intr().dengdaikaipan.obs; //倒计时显示
+  var text_timer = "".obs; //倒计时显示
 }

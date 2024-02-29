@@ -137,7 +137,7 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<List<RoomCopyWritingEntity>>> getRoomCopyWriting();
 
   @GET('/ds-api-web/getPC28Plan')
-  Future<BaseResponseEntity<Pc28PlanEntity>> getPC28Plan(@Query('termCount') int termCount,);
+  Future<BaseResponseEntity<String>> getPC28Plan(@Query('termCount') int termCount,);
 
   @GET('/ds-api-web/getExpression')
   Future<BaseResponseEntity<List<ExpressionEntity>>> getExpression();

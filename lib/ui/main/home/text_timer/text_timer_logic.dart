@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
@@ -49,26 +51,19 @@ class TextTimerLogic {
   void loadTimerData(Pc28LottoRooms pc28lottoRoom,{String? gameCode}) {
     //请求倒计时
     HttpService.getPC28Plan(5).then((value) {
-      _calculateCountdown(pc28lottoRoom, value,gameCode:gameCode);
+      _calculateCountdown(pc28lottoRoom, jsonDecode(value),gameCode:gameCode);
     });
   }
 
   void _calculateCountdown(
-      Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28PlanEntity,{String? gameCode}) {
+      Pc28LottoRooms pc28lottoRoom, Map<String,dynamic> pc28Plan,{String? gameCode}) {
     countdownTimer?.cancel();
     // 服务器的误差时间
-    var diffTime =
-        pc28PlanEntity.timestamp! - DateTime.now().millisecondsSinceEpoch;
+    var diffTime = pc28Plan['timestamp'] - DateTime.now().millisecondsSinceEpoch;
+    ///会有一秒的延迟 所以先调一次
+    timeCountOnly(diffTime, pc28lottoRoom, pc28Plan);
     countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
-      // if(gameCode=="keno28"){
-      //   print("======>");
-      // }
-      // try{
-        timeCountOnly(diffTime, pc28lottoRoom, pc28PlanEntity);
-      // }catch(e) {
-      //   print("loadTimerData  倒计时  报错  ${e.toString()}");
-      // }
-
+      timeCountOnly(diffTime, pc28lottoRoom, pc28Plan);
       // 如果倒计时结束，取消计时器
       if (count <= 0) {
         countdownTimer?.cancel();
@@ -76,10 +71,10 @@ class TextTimerLogic {
     });
   }
 
-  void timeCountOnly(
-      diffTime, Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28planEntity) {
-    Map<String, dynamic> allTime = pc28planEntity.all!.toJson();
+  void timeCountOnly(int diffTime, Pc28LottoRooms pc28lottoRoom, Map<String,dynamic> pc28Plan) {
+    Map<String, dynamic> allTime = pc28Plan['all'];
     Map<String, dynamic> roomcountdown = {};
+
     // Map<String, dynamic> roominf = pc28lottoRoom.toJson();
     String key = pc28lottoRoom.gameType.toString();
     if (pc28lottoRoom.stateMsg != "0") {
@@ -97,52 +92,52 @@ class TextTimerLogic {
       roomcountdown['${key}Term'] = '--';
       roomcountdown['${key}Notice'] = allTime[key]['msg'];
     } else {
-     if(allTime[key]['data']==null) {
-       state.text_timer.value = Intr().dengdaikaipan;
-     }
-      if ((allTime[key]['data']??"").length > 1) {
-        for (int s = 0; s < allTime[key]['data'].length - 1; s++) {
-          int onlineT = DateTime.now().millisecondsSinceEpoch +
-              int.parse(diffTime.toString());
-          if (onlineT <= allTime[key]['data'][s + 1]['openTime']) {
-            int openT = (int.parse(allTime[key]['data'][s + 1]['openTime'].toString()) - onlineT) ~/ 1000;
+     // if(allTime[key]['data']==null) {
+     //   state.text_timer.value = Intr().dengdaikaipan;
+     // }
+      var data = allTime[key]['data'] ?? [];
+      if (data.length > 1) {
+        for (int s = 0; s < data.length - 1; s++) {
+          int onlineT = DateTime.now().millisecondsSinceEpoch + diffTime;
+          if (onlineT <= data[s + 1]['openTime']) {
+            int openT = (data[s + 1]['openTime'] - onlineT) ~/ 1000;
             roomcountdown['${key}OpenResult'] = openT;
             if (openT == 0) {
               roomcountdown['${key}OpenResult'] = Intr().kaijiangzhong;
             }
-
-            if (onlineT < allTime[key]['data'][s]['closeTime'] &&
-                onlineT > allTime[key]['data'][s]['openTime']) {
-              int rrtime = allTime[key]['data'][s]['closeTime'];
+            if (onlineT < data[s]['closeTime'] && onlineT > data[s]['openTime']) {
+              int rrtime = data[s]['closeTime'];
               int showT = (rrtime - onlineT) ~/ 1000;
               String showtime = secToTime(showT);
               roomcountdown['${key}Time'] = showtime;
-              roomcountdown['${key}Term'] = allTime[key]['data'][s]['term'];
+              roomcountdown['${key}Term'] = data[s]['term'];
               break;
-            } else if (onlineT > allTime[key]['data'][s]['closeTime'] &&
-                onlineT < allTime[key]['data'][s + 1]['openTime']) {
+            } else if (onlineT > data[s]['closeTime'] && onlineT < data[s + 1]['openTime']) {
               roomcountdown['${key}Time'] = Intr().fengpanzhong;
-              roomcountdown['${key}Term'] = allTime[key]['data'][s]['term'];
+              roomcountdown['${key}Term'] = data[s]['term'];
               break;
             }
           }
         }
-      } else if ((allTime[key]['data']??"").length == 1) {
-        int onlineT = DateTime.now().millisecondsSinceEpoch +
-            int.parse(diffTime.toString());
-        if (onlineT < allTime[key]['data'][0]['closeTime'] &&
-            onlineT > allTime[key]['data'][0]['openTime']) {
-          int rrtime = allTime[key]['data'][0]['closeTime'];
+      } else if (data.length == 1) {
+        int onlineT = DateTime.now().millisecondsSinceEpoch + diffTime;
+        var data = allTime[key]['data'] ?? [];
+
+        if (onlineT <data[0]['closeTime'] && onlineT > data[0]['openTime']) {
+          int rrtime = data[0]['closeTime'];
           int showT = (rrtime - onlineT) ~/ 1000;
           String showtime = secToTime(showT);
           roomcountdown['${key}Time'] = showtime;
-          roomcountdown['${key}Term'] = allTime[key]['data'][0]['term'];
-        } else if (onlineT < allTime[key]['data'][0]['openTime']) {
+          roomcountdown['${key}Term'] = data[0]['term'];
+        } else if (onlineT < data[0]['openTime']) {
           roomcountdown['${key}Time'] = Intr().fengpanzhong;
-          roomcountdown['${key}Term'] = allTime[key]['data'][0]['term'];
+          roomcountdown['${key}Term'] = data[0]['term'];
         }
       }
     }
+
+    loggerArray(['整理出来的TImer结果',roomcountdown]);
+
     state.text_timer.value = roomcountdown['${key}Time'] ?? "";
 
   }

@@ -245,10 +245,10 @@ class HomeLogic extends GetxController {
       state.pc28Lotto.refresh();
     });
     //请求倒计时
-    HttpService.getPC28Plan(5).then((value) {
-      state.timerEntity.value = value;
-      state.timerEntity.refresh();
-    });
+    // HttpService.getPC28Plan(5).then((value) {
+    //   state.timerEntity.value = value;
+    //   state.timerEntity.refresh();
+    // });
 
     HttpService.getActStatus().then((value) {
       var hongbao = value.list?["hongbao"];

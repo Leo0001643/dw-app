@@ -13,7 +13,7 @@ class _RetrofitClient implements RetrofitClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://9000vlmdm4.kj99883.com';
+    baseUrl ??= 'http://soptj9qq.com:8860';
   }
 
   final Dio _dio;
@@ -644,13 +644,13 @@ class _RetrofitClient implements RetrofitClient {
   }
 
   @override
-  Future<BaseResponseEntity<Pc28PlanEntity>> getPC28Plan(int termCount) async {
+  Future<BaseResponseEntity<String>> getPC28Plan(int termCount) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'termCount': termCount};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponseEntity<Pc28PlanEntity>>(Options(
+        _setStreamType<BaseResponseEntity<String>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -666,9 +666,9 @@ class _RetrofitClient implements RetrofitClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = BaseResponseEntity<Pc28PlanEntity>.fromJson(
+    final value = BaseResponseEntity<String>.fromJson(
       _result.data!,
-      (json) => Pc28PlanEntity.fromJson(json as Map<String, dynamic>),
+      (json) => json as String,
     );
     return value;
   }

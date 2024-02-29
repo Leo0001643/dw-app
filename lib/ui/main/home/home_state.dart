@@ -31,7 +31,7 @@ class HomeState {
   // var bannerList = RxList<Pic30Entity>.empty(growable: true);
   var timerList = RxList<TimeDataContent>.empty(growable: true);
 
-  var timerEntity = Pc28PlanEntity().obs;
+  // var timerEntity = Pc28PlanEntity().obs;
 
   ///房型选择
   var pc28Lotto = Pc28LottoEntity().obs;

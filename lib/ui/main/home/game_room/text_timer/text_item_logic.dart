@@ -101,21 +101,21 @@ class TextItemLogic extends GetxController {
   void loadTimerData(Pc28LottoRooms pc28lottoRoom) {
     //请求倒计时
     HttpService.getPC28Plan(5).then((value) {
-      print("==========>getPC28Plan  ${jsonEncode(value.toJson())}");
-      _calculateCountdown(pc28lottoRoom, value);
+      print("==========>getPC28Plan  ${jsonEncode(value)}");
+      _calculateCountdown(pc28lottoRoom, jsonDecode(value));
     });
   }
 
   void _calculateCountdown(
-      Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28PlanEntity) {
+      Pc28LottoRooms pc28lottoRoom, Map<String,dynamic> pc28Plan) {
     countdownTimer?.cancel();
     print("==========>pc28lottoRoom  ${jsonEncode(pc28lottoRoom.toJson())}");
     // 服务器的误差时间
-    var diffTime =
-        pc28PlanEntity.timestamp! - DateTime.now().millisecondsSinceEpoch;
+    var diffTime = pc28Plan['timestamp'] - DateTime.now().millisecondsSinceEpoch;
+
     countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
       try {
-        timeCountOnly(diffTime, pc28lottoRoom, pc28PlanEntity);
+        timeCountOnly(diffTime, pc28lottoRoom, pc28Plan);
       } catch (e) {
         print("loadTimerData22  倒计时  报错  ${e.toString()}");
       }
@@ -128,8 +128,8 @@ class TextItemLogic extends GetxController {
   }
 
   void timeCountOnly(
-      diffTime, Pc28LottoRooms pc28lottoRoom, Pc28PlanEntity pc28planEntity) {
-    Map<String, dynamic> allTime = pc28planEntity.all!.toJson();
+      diffTime, Pc28LottoRooms pc28lottoRoom,Map<String,dynamic> pc28Plan) {
+    Map<String, dynamic> allTime = pc28Plan['all'];
     Map<String, dynamic> roomcountdown = {};
     Map<String, dynamic> roominf = pc28lottoRoom.toJson();
     String key = pc28lottoRoom.gameType.toString();
