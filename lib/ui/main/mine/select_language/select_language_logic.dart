@@ -33,14 +33,18 @@ class SelectLanguageLogic extends GetxController {
     logger("当前语言环境${Get.locale.toString()}");
     if(unEmpty(item.locale) && item.locale != Get.locale){
       AppData.setLocaleIndex(index);
-      var user = AppData.user()!;
-      HttpService.switchLanguage({"oid": user.oid, "username": user.username,}).then((value) {
-        Get.updateLocale(item.locale!);
-        ///通知各页面刷新语言数据
-        eventBus.fire(LanguageEvent());
-        eventBus.fire(ChangeMainPageEvent(0));//转到首页显示
+      ///通知各页面刷新语言数据
+      eventBus.fire(LanguageEvent());
+      eventBus.fire(ChangeMainPageEvent(0));//转到首页显示
+      Get.updateLocale(item.locale!);
+      if(AppData.isLogin()){
+        var user = AppData.user()!;
+        HttpService.switchLanguage({"oid": user.oid, "username": user.username,}).then((value) {
+          Get.until((ModalRoute.withName(Routes.main)));
+        });
+      }else {
         Get.until((ModalRoute.withName(Routes.main)));
-      });
+      }
     }
   }
 
