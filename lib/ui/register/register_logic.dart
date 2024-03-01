@@ -49,6 +49,10 @@ class RegisterLogic extends GetxController {
       showToast(Intr().bashiershuzihuozimu);
       return;
     }
+    if(state.pwdValue.length < 8 || state.pwdValue.length > 12){
+      showToast(Intr().agent_password_tip);
+      return;
+    }
     if (isEmpty(state.realname)) {
       showToast(Intr().zhenshixingmingbunengkong);
       return;

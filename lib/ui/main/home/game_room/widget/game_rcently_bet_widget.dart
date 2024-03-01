@@ -212,7 +212,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
   }
 
   Widget buildCurrentTermType(GameRoomLogic logic, BuildContext context) {
-    GameRoomState state = logic.state;
+    // GameRoomState state = logic.state;
     String termData = GameRuleUtil.getSimpleSSB(
         headWSLotteryEntityData.term ?? "", year: ""); // 4
     List<int> arr2 = GameRuleUtil.parseLottery(

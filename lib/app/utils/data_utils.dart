@@ -305,7 +305,7 @@ class DataUtils{
   ///寻找头像
   static String findAvatar(String? avatar){
     if(isEmpty(avatar)){
-      return ImageX.q1;
+      return ImageX.ic_defalut_ava;
     }else {
       return "assets/images/$avatar.png";
     }

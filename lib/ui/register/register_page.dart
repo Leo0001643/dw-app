@@ -48,7 +48,29 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: WidgetUtils().buildAppBar("hyzc".tr, bgColor: ColorX.appBarBg()),
+      appBar: WidgetUtils().buildAppBarBtn("hyzc".tr,
+        InkWell(
+          onTap: (){
+            //腾讯验证滑动测试
+            Get.until((ModalRoute.withName(Routes.main)));
+            Get.toNamed(Routes.login);
+          },
+          child: Row(
+            children: [
+              Text(
+                Intr().login,
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: ColorX.textBlack(),
+                    decoration: TextDecoration.underline),
+              ),
+              Image.asset(ImageX.icon_right_black),
+              SizedBox(width: 10.w,),
+            ],
+          ),
+        )
+      ),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(
@@ -323,58 +345,20 @@ class _RegisterPageState extends State<RegisterPage> {
               ])),
             ),
             SizedBox(
-              height: 20.h,
+              height: 40.h,
             ),
-            SizedBox(
-              height: 20.h,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      //腾讯验证滑动测试
-                      Get.until((ModalRoute.withName(Routes.main)));
-                      Get.toNamed(Routes.login);
-                    },
-                    child: Row(
-                      children: [
-                        Text(
-                          Intr().yyzh,
-                          style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              color: ColorX.textBlack()),
-                        ),
-                        Text(
-                          Intr().login,
-                          style: TextStyle(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
-                              color: ColorX.textBlack(),
-                              decoration: TextDecoration.underline),
-                        ),
-                        Image.asset(ImageX.icon_right_black),
-                      ],
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      eventBus.fire(ChangeMainPageEvent(3));
-                      Get.until((ModalRoute.withName(Routes.main)));
-                    },
-                    child: Text(
-                      Intr().lxkf,
-                      style: TextStyle(
-                          fontSize: 14.sp,
-                          color: ColorX.textBlack(),
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ],
-              ),
+            Center(
+              child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
+                  bg: ColorX.color_fd273e,
+                  textColor: Colors.white,
+                  textSize: 16.sp, onPressed: () {
+                    if (state.varcode.value.status == 1 &&
+                        state.varcode.value.type == 3) {
+                      _handleClickVerify();
+                    } else {
+                      logic.clickRegister();
+                    }
+                  }),
             ),
           ],
         ),
@@ -387,12 +371,7 @@ class _RegisterPageState extends State<RegisterPage> {
       return Container(
         width: double.infinity,
         height: 48,
-        margin: EdgeInsets.only(
-          top: 10,
-          bottom: 10,
-          left: 16,
-          right: 16,
-        ),
+        margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 16.w),
         child: AliyunCaptchaButton(
           type: AliyunCaptchaType.slide,
           // 重要：请设置正确的类型
@@ -492,20 +471,8 @@ class _RegisterPageState extends State<RegisterPage> {
       } else if (state.varcode.value.status == 1 &&
           state.varcode.value.type == 2) {
         return _getAliCode();
-      } else {
-        return Center(
-          child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
-              bg: ColorX.color_fd273e,
-              textColor: Colors.white,
-              textSize: 16.sp, onPressed: () {
-            if (state.varcode.value.status == 1 &&
-                state.varcode.value.type == 3) {
-              _handleClickVerify();
-            } else {
-              logic.clickRegister();
-            }
-          }),
-        );
+      }else {
+        return Container();
       }
     });
   }

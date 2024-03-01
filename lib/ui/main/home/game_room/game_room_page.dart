@@ -123,7 +123,11 @@ class _GameRoomPageState extends State<GameRoomPage> {
                               ),
                               Positioned(left: 0, right: 0, top: 20.h, child: buildCountDown()),
                               buildFloatingBtn(() {
-                                logic.startBet(context);
+                                if (AppData.isLogin()) {
+                                  logic.startBet(context);
+                                } else {
+                                  WidgetUtils().goLogin();
+                                }
                               }),
                               BarrageWall(
                                 maxBulletHeight: 5,
@@ -237,11 +241,11 @@ class _GameRoomPageState extends State<GameRoomPage> {
           state.roomType.value == 3 ? ColorX.color_ffe0ac : Colors.white;
       return InkWell(
         onTap: (){
-          if(!AppData.isLogin()){
-            showToast(Intr().qingxiandenglu);
-            return;
+          if (AppData.isLogin()) {
+            DialogUtils().showBettingBtmDialog(context, logic);
+          } else {
+            WidgetUtils().goLogin();
           }
-          DialogUtils().showBettingBtmDialog(context, logic);
       },
         child: Container(
           decoration: BoxDecoration(

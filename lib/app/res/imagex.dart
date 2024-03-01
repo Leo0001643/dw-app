@@ -524,6 +524,7 @@ class ImageX{
   static const ic_qipai = 'assets/images/ic_qipai.png';
   static const icon_shoushi_bg =  'assets/images/icon_shoushi_bg.png';
 
+  static const ic_defalut_ava = 'assets/images/ic_defalut_ava.png';
 
 
 
