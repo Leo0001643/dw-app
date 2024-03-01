@@ -37,14 +37,8 @@ class SelectLanguageLogic extends GetxController {
       eventBus.fire(LanguageEvent());
       eventBus.fire(ChangeMainPageEvent(0));//转到首页显示
       Get.updateLocale(item.locale!);
-      if(AppData.isLogin()){
-        var user = AppData.user()!;
-        HttpService.switchLanguage({"oid": user.oid, "username": user.username,}).then((value) {
-          Get.until((ModalRoute.withName(Routes.main)));
-        });
-      }else {
-        Get.until((ModalRoute.withName(Routes.main)));
-      }
+      Get.until((ModalRoute.withName(Routes.main)));
+
     }
   }
 
