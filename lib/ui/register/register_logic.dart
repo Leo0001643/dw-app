@@ -57,6 +57,10 @@ class RegisterLogic extends GetxController {
       showToast(Intr().zhenshixingmingbunengkong);
       return;
     }
+    if(state.mobile.length < 9 || state.mobile.length > 15) {
+      showToast(Intr().agent_phone_tip);
+      return;
+    }
     if (isEmpty(state.vcode) && state.varcode.value.status == 1&& state.varcode.value.type == 1) {
       showToast(Intr().yanzhengmabunengkong);
       return;
@@ -70,6 +74,7 @@ class RegisterLogic extends GetxController {
       "varCode": state.vcode,
       "varCodeId": state.varcode.value.varCodeId,
       "agree": 1,
+      "mobile":state.mobile,
     };
     //阿里的滑动验证
     if (data != null &&

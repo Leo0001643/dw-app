@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_aliyun_captcha/flutter_aliyun_captcha.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tencent_captcha/tencent_captcha.dart';
 import 'package:flutter_tencent_captcha/tencent_captcha_config.dart';
@@ -11,7 +12,6 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 
 import 'register_logic.dart';
@@ -65,7 +65,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: ColorX.textBlack(),
                     decoration: TextDecoration.underline),
               ),
-              Image.asset(ImageX.icon_right_black),
+              Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
               SizedBox(width: 10.w,),
             ],
           ),
@@ -76,25 +76,6 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Row(
-                children: [
-                  Text(
-                    "* ",
-                    style:
-                        TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),
-                  ),
-                  Text(
-                    Intr().yhm,
-                    style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
             Center(
               child: Container(
                 width: 335.w,
@@ -102,36 +83,28 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: ColorX.cardBg3(),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: WidgetUtils().buildTextField(
-                    325.w, 46.h, 14.sp, ColorX.text949(), Intr().qsryhm,
-                    hintColor: ColorX.text586(),
-                    backgroundColor: Colors.transparent,
-                    onChanged: (v) => state.accountValue = v),
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                    WidgetUtils().buildTextField(
+                        290.w, 46.h, 14.sp, ColorX.text949(), Intr().qsryhm,
+                        hintColor: ColorX.text586(),
+                        backgroundColor: Colors.transparent,
+                        onChanged: (v) => state.accountValue = v),
+                  ],
+                ),
               ),
+            ),
+            SizedBox(height: 10.h,),
+            Padding(
+              padding: EdgeInsets.only(left: 35.w),
+              child: Text(Intr().sidao12shuzihuozimu, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
             ),
             SizedBox(
               height: 20.h,
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Row(
-                children: [
-                  Text(
-                    "* ",
-                    style:
-                        TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),
-                  ),
-                  Text(
-                    Intr().mm,
-                    style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
             Center(
               child: Container(
                 width: 335.w,
@@ -139,19 +112,23 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: ColorX.cardBg3(),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Obx(() {
-                      return WidgetUtils().buildTextField(
-                          285.w, 46.h, 14.sp, ColorX.text949(), Intr().wszhzm,
-                          backgroundColor: Colors.transparent,
-                          onChanged: (v) => state.pwdValue = v,
-                          defText: state.pwdValue,
-                          hintColor: ColorX.text586(),
-                          obscureText: !state.pwdVisible.value,
-                          inputType: TextInputType.visiblePassword);
-                    }),
+                    Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                    Expanded(
+                      child: Obx(() {
+                        return WidgetUtils().buildTextField(
+                            260.w, 46.h, 14.sp, ColorX.text949(), Intr().mm,
+                            backgroundColor: Colors.transparent,
+                            onChanged: (v) => state.pwdValue = v,
+                            defText: state.pwdValue,
+                            hintColor: ColorX.text586(),
+                            obscureText: !state.pwdVisible.value,
+                            inputType: TextInputType.visiblePassword);
+                      }),
+                    ),
                     InkWell(
                       onTap: () =>
                           state.pwdVisible.value = !state.pwdVisible.value,
@@ -159,12 +136,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         return state.pwdVisible.value
                             ? Image.asset(
                                 ImageX.icon_show,
-                                color: ColorX.icon586(),
+                                color: ColorX.iconBlack(),
                                 width: 30.w,
                               )
                             : Image.asset(
                                 ImageX.icon_hide,
-                                color: ColorX.icon586(),
+                                color: ColorX.iconBlack(),
                                 width: 30.w,
                               );
                       }),
@@ -173,28 +150,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20.h,
-            ),
+            SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Row(
-                children: [
-                  Text(
-                    "* ",
-                    style:
-                        TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),
-                  ),
-                  Text(
-                    Intr().querenmima,
-                    style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
-                  ),
-                ],
-              ),
+              child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
+            SizedBox(height: 20.h,),
             Center(
               child: Container(
                 width: 335.w,
@@ -202,19 +163,23 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: ColorX.cardBg3(),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Obx(() {
-                      return WidgetUtils().buildTextField(
-                          285.w, 46.h, 14.sp, ColorX.text949(), Intr().wszhzm,
-                          backgroundColor: Colors.transparent,
-                          onChanged: (v) => state.confirmPwdValue = v,
-                          defText: state.confirmPwdValue,
-                          hintColor: ColorX.text586(),
-                          obscureText: !state.confirmPwdVisible.value,
-                          inputType: TextInputType.visiblePassword);
-                    }),
+                    Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                    Expanded(
+                      child: Obx(() {
+                        return WidgetUtils().buildTextField(
+                            260.w, 46.h, 14.sp, ColorX.text949(), Intr().querenmima,
+                            backgroundColor: Colors.transparent,
+                            onChanged: (v) => state.confirmPwdValue = v,
+                            defText: state.confirmPwdValue,
+                            hintColor: ColorX.text586(),
+                            obscureText: !state.confirmPwdVisible.value,
+                            inputType: TextInputType.visiblePassword);
+                      }),
+                    ),
                     InkWell(
                       onTap: () => state.confirmPwdVisible.value =
                           !state.confirmPwdVisible.value,
@@ -222,12 +187,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         return state.confirmPwdVisible.value
                             ? Image.asset(
                                 ImageX.icon_show,
-                                color: ColorX.icon586(),
+                                color: ColorX.iconBlack(),
                                 width: 30.w,
                               )
                             : Image.asset(
                                 ImageX.icon_hide,
-                                color: ColorX.icon586(),
+                                color: ColorX.iconBlack(),
                                 width: 30.w,
                               );
                       }),
@@ -236,28 +201,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20.h,
-            ),
+            SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Row(
-                children: [
-                  Text(
-                    "* ",
-                    style:
-                        TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),
-                  ),
-                  Text(
-                    Intr().zsxm,
-                    style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
-                  ),
-                ],
-              ),
+              child: Text(Intr().querenmima, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
             ),
-            SizedBox(
-              height: 10.h,
-            ),
+            SizedBox( height: 20.h,),
             Center(
               child: Container(
                 width: 335.w,
@@ -265,19 +214,67 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: ColorX.cardBg3(),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: WidgetUtils().buildTextField(
-                    325.w, 46.h, 14.sp, ColorX.text949(), Intr().ytxyhkhmyz,
-                    hintColor: ColorX.text586(),
-                    backgroundColor: Colors.transparent,
-                    onChanged: (v) => state.realname = v,
-                    focusNode: state.nameFocus),
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
+                child: Row(
+                  children: [
+                    Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                    WidgetUtils().buildTextField(
+                        290.w, 46.h, 14.sp, ColorX.text949(), Intr().ytxyhkhmyz,
+                        hintColor: ColorX.text586(),
+                        backgroundColor: Colors.transparent,
+                        onChanged: (v) => state.realname = v,
+                        focusNode: state.nameFocus),
+                  ],
+                ),
               ),
             ),
-            SizedBox(
-              height: 20.h,
+            SizedBox(height: 10.h,),
+            Padding(
+              padding: EdgeInsets.only(left: 35.w),
+              child: Text(Intr().zsxm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
             ),
+            SizedBox(height: 20.h,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Row(
+                children: [
+                  Text("+86",style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
+                  SizedBox(width: 10.w,),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: ColorX.cardBg3(),
+                        borderRadius: BorderRadius.circular(10.r),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: Row(
+                        children: [
+                          Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                          WidgetUtils().buildTextField(270.w, 46.h, 14.sp, ColorX.textBlack(), Intr().shoujihaoma,hintColor: ColorX.text586(),
+                              backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 20.h,),
             _getImageCode(),
+            SizedBox(height: 40.h,),
+            Center(
+              child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
+                  bg: ColorX.color_fd273e,
+                  textColor: Colors.white,
+                  textSize: 16.sp, onPressed: () {
+                    if (state.varcode.value.status == 1 &&
+                        state.varcode.value.type == 3) {
+                      _handleClickVerify();
+                    } else {
+                      logic.clickRegister();
+                    }
+                  }),
+            ),
             SizedBox(
               height: 20.h,
             ),
@@ -300,8 +297,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 TextSpan(
                     text: Intr().wywdbty,
-                    style:
-                        TextStyle(fontSize: 13.sp, color: ColorX.text0917())),
+                    style: TextStyle(fontSize: 13.sp, color: ColorX.text0917()),
+                ),
                 WidgetSpan(
                   child: InkWell(
                     onTap: () {
@@ -323,7 +320,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 TextSpan(
                     text: Intr().and,
                     style:
-                        TextStyle(fontSize: 13.sp, color: ColorX.text0917())),
+                    TextStyle(fontSize: 13.sp, color: ColorX.text0917())),
                 WidgetSpan(
                   child: InkWell(
                     onTap: () {
@@ -343,22 +340,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ])),
-            ),
-            SizedBox(
-              height: 40.h,
-            ),
-            Center(
-              child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
-                  bg: ColorX.color_fd273e,
-                  textColor: Colors.white,
-                  textSize: 16.sp, onPressed: () {
-                    if (state.varcode.value.status == 1 &&
-                        state.varcode.value.type == 3) {
-                      _handleClickVerify();
-                    } else {
-                      logic.clickRegister();
-                    }
-                  }),
             ),
           ],
         ),
@@ -418,55 +399,32 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget _getImageCode() {
     return Obx(() {
       if (state.varcode.value.status == 1 && state.varcode.value.type == 1) {
-        return Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Row(
-                children: [
-                  Text(
-                    "* ",
-                    style:
-                        TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),
-                  ),
-                  Text(
-                    Intr().yzm,
-                    style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
-                  ),
-                ],
-              ),
+        return Center(
+          child: Container(
+            width: 335.w,
+            decoration: BoxDecoration(
+              color: ColorX.cardBg3(),
+              borderRadius: BorderRadius.circular(10.r),
             ),
-            SizedBox(
-              height: 10.h,
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                WidgetUtils().buildTextField(
+                    225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
+                    hintColor: ColorX.text586(),
+                    backgroundColor: Colors.transparent,
+                    inputType: TextInputType.number,
+                    onChanged: (v) => state.vcode = v),
+                Obx(() {
+                  return WidgetUtils()
+                      .buildVarCode(state.varcode.value.varCode.em(), () {
+                    logic.getVarcode();
+                  });
+                }),
+              ],
             ),
-            Center(
-              child: Container(
-                width: 335.w,
-                decoration: BoxDecoration(
-                  color: ColorX.cardBg3(),
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    WidgetUtils().buildTextField(
-                        225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
-                        hintColor: ColorX.text586(),
-                        backgroundColor: Colors.transparent,
-                        inputType: TextInputType.number,
-                        onChanged: (v) => state.vcode = v),
-                    Obx(() {
-                      return WidgetUtils()
-                          .buildVarCode(state.varcode.value.varCode.em(), () {
-                        logic.getVarcode();
-                      });
-                    }),
-                  ],
-                ),
-              ),
-            ),
-          ],
+          ),
         );
       } else if (state.varcode.value.status == 1 &&
           state.varcode.value.type == 2) {

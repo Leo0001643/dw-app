@@ -10,7 +10,6 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 
 import 'login_logic.dart';
 
@@ -62,16 +61,6 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 20.h,
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(
-                Intr().yhm,
-                style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
             Center(
               child: Container(
                 width: 335.w,
@@ -81,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: WidgetUtils().buildTextField(
-                    325.w, 46.h, 14.sp, ColorX.text949(), Intr().qsryhm,
+                    325.w, 46.h, 14.sp, ColorX.text949(), Intr().yhm,
                     hintColor: ColorX.text586(),
                     defText: state.accountValue,
                     backgroundColor: Colors.transparent,
@@ -89,17 +78,17 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(
-              height: 20.h,
+              height: 10.h,
             ),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
               child: Text(
-                Intr().mm,
+                Intr().sidao12shuzihuozimu,
                 style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
               ),
             ),
             SizedBox(
-              height: 10.h,
+              height: 20.h,
             ),
             Center(
               child: Container(
@@ -113,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Obx(() {
                       return WidgetUtils().buildTextField(
-                          285.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrmm,
+                          285.w, 46.h, 14.sp, ColorX.text949(), Intr().mm,
                           backgroundColor: Colors.transparent,
                           onChanged: (v) => logic.editChange(false, v),
                           defText: state.pwdValue,
@@ -143,6 +132,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 10.h,),
+            Padding(
+              padding: EdgeInsets.only(left: 35.w),
+              child: Text(
+                Intr().wszhzm,
+                style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
+              ),
+            ),
+            SizedBox(height: 10.h,),
             _getCode(),
             SizedBox(height: 10.h,),
             Align(
@@ -161,9 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20.h,
-            ),
+            SizedBox(height: 20.h,),
             Center(
               child: WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
                   bg: state.btnEnable.value
@@ -187,9 +182,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  /**
-   * 根据类型判断验证码
-   */
+  /// 根据类型判断验证码
   Widget _getCode() {
     return Obx(() {
       print(
@@ -198,14 +191,6 @@ class _LoginPageState extends State<LoginPage> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(
-                Intr().yzm,
-                style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
-              ),
-            ),
-            SizedBox(height: 10.h,),
             Center(
               child: Container(
                 width: 335.w,
@@ -220,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         WidgetUtils().buildTextField(
-                            225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
+                            225.w, 46.h, 14.sp, ColorX.text949(), Intr().yzm,
                             hintColor: ColorX.text586(),
                             backgroundColor: Colors.transparent,
                             inputType: TextInputType.number,
@@ -233,6 +218,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
+              ),
+            ),
+            SizedBox(height: 10.h,),
+            Padding(
+              padding: EdgeInsets.only(left: 35.w),
+              child: Text(
+                Intr().qsrzcyzm,
+                style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
               ),
             ),
           ],

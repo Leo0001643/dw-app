@@ -25,5 +25,8 @@ class RegisterState {
 
   var varcode = VarCodeEntity().obs;
 
+  var mobile = "";
+
+
 
 }
