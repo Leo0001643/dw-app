@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -53,8 +54,14 @@ class GameRoomHeadWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(child: buildUserTab(
-                      0, Intr().haoyuan, ImageX.icon_radio_uncheck, textColor,context,logic)),
+                  Obx(() {
+                    ///号源只有比特币28有
+                    return Visibility(
+                      visible: logic.state.room.value.gameType == Constants.fastbtb28Code,
+                      child: Expanded(child: buildUserTab(
+                          0, Intr().haoyuan, ImageX.icon_radio_uncheck, textColor,context,logic)),
+                    );
+                  }),
                   Expanded(child: buildUserTab(1, Intr().zhudan, ImageX.icon_dan2, textColor,context,logic)),
                   Expanded(child: buildUserTab(2, Intr().mipai, ImageX.icon_pai2, textColor,context,logic)),
                   Expanded(child: buildUserTab(3, Intr().qushi, ImageX.icon_qs_hei, textColor,context,logic)),

@@ -65,10 +65,14 @@ class MyApp extends StatelessWidget {
               builder: (context,widget)=> MediaQuery(///设置文字大小不随系统设置改变
                   data: MediaQuery.of(context).copyWith(textScaler: TextScaler.noScaling),
                   child: widget ?? Container()
-              )
+              ),
           ),
         ),
     );
   }
+
+
+
+
 }
 
