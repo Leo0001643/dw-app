@@ -75,7 +75,6 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
-    String termData=GameRuleUtil.getSSB(widget.logic.term.value,year:"");
 
     return Container(
       height: 0.77.sh,
@@ -124,7 +123,10 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(termData,style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+                        Obx(() {
+                          String termData=GameRuleUtil.getSSB(widget.logic.term.value,year:"");
+                          return Text(termData,style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),);
+                        }),
                         Wrap(
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [

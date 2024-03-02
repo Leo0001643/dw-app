@@ -33,7 +33,9 @@ class BettingChildPageState extends State<BettingTemaPage>  {
 
   @override
   void initState() {
-    initItem().then((value) => setState(() {}));
+    Future.delayed(Duration(milliseconds: 300),(){
+      initItem().then((value) => setState(() {}));
+    });
     widget.selectBetting.listen((p0) {
       if(widget.selectBetting.isEmpty){
         dataBettingList.forEach((element) { element.check = false; });
