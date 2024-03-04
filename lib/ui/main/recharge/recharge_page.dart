@@ -83,8 +83,9 @@ class _RechargePageState extends State<RechargePage> {
                 child: Container(
                   margin: EdgeInsets.only(top: 0.23.sh),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
+                      Container(
                         padding: EdgeInsets.only(left: 27.w, right: 27.w, top: 10.h),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,12 +107,20 @@ class _RechargePageState extends State<RechargePage> {
                           ],
                         ),
                       ),
+                      SizedBox(height: 15.h,),
                       Obx(() {
-                        return buildCategoryItem(state.usdtBank.value, -1);
+                        return Center(
+                          child: Wrap(
+                            runSpacing: 15.h,
+                            spacing: 20.w,
+                            children: [
+                              buildCategoryItem(state.usdtBank.value, -1),
+                              Container(width: 0.4.sw,),
+                            ],
+                          ),
+                        );
                       }),
-                      SizedBox(
-                        height: 10.h,
-                      ),
+                      SizedBox(height: 15.h,),
                       Padding(
                         padding:
                         EdgeInsets.symmetric(horizontal: 27.w, vertical: 7.h),
@@ -137,18 +146,19 @@ class _RechargePageState extends State<RechargePage> {
                           );
                         }),
                       ),
+                      SizedBox(height: 15.h,),
                       Obx(() {
                         var banks = state.paymentList.value.banks;
-                        return Column(
-                          children: banks
-                              ?.map((e) => buildCategoryItem(e, banks.indexOf(e)))
-                              .toList() ??
-                              [],
+                        return Center(
+                          child: Wrap(
+                            runSpacing: 15.h,
+                            spacing: 20.w,
+                            children: banks
+                                ?.map((e) => buildCategoryItem(e, banks.indexOf(e)))
+                                .toList() ?? [],
+                          ),
                         );
                       }),
-                      SizedBox(
-                        height: 30.h,
-                      ),
                     ],
                   ),
                 ),
@@ -161,12 +171,15 @@ class _RechargePageState extends State<RechargePage> {
   }
 
   Widget buildCategoryItem(PaymentListBanks item, int i) {
+
     return Container(
-      margin: EdgeInsets.only(left: 20.w, right: 20.w, top: 10.h),
+      // margin: EdgeInsets.only(left: 20.w, right: 20.w, top: 10.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        color: ColorX.cardBg(),
+        color: ColorX.cardBg12(),
+        border: Border.all(color: ColorX.cardBg11(),width: 1.r,),
       ),
+      width: 0.4.sw,
       child: InkWell(
         onTap: () {
           jumpPage(item);
@@ -175,25 +188,20 @@ class _RechargePageState extends State<RechargePage> {
           padding: EdgeInsets.all(15.r),
           child: Row(
             children: [
-              WidgetUtils().buildImage(
-                item.icon.em(),
-                18.r,
-                18.r,
-              ),
-              SizedBox(
-                width: 8.w,
-              ),
+              SizedBox(width: 15.w,),
+              WidgetUtils().buildImage(item.icon.em(), 18.r, 18.r,),
+              SizedBox(width: 8.w,),
               Text(
                 item.bankName.em(),
                 style: TextStyle(fontSize: 14.sp, color: ColorX.textBlack(),fontWeight: FontWeight.w600),
               ),
-              Expanded(child: Container()),
-              Image.asset(
-                ImageX.ic_into_right,
-                color: ColorX.icon586(),
-                width: 15.r,
-                height: 15.r,
-              ),
+              // Expanded(child: Container()),
+              // Image.asset(
+              //   ImageX.ic_into_right,
+              //   color: ColorX.icon586(),
+              //   width: 15.r,
+              //   height: 15.r,
+              // ),
             ],
           ),
         ),

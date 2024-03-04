@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
@@ -674,15 +675,15 @@ class WidgetUtils {
     }
   }
 
-  Image buildImage(String image, double width, double height,
+  Widget buildImage(String image, double width, double height,
       {String defImage = ImageX.icon_avatar, BoxFit? fit}) {
     if (isEmpty(image) || (!image.isUrl() && !image.contains("assets"))) {
-      return Image.asset(
-        defImage,
-        width: width,
-        height: height,
-        fit: fit,
-      );
+        return Image.asset(
+          defImage,
+          width: width,
+          height: height,
+          fit: fit,
+        );
     }
     try {
       return image.isUrl()
@@ -708,12 +709,17 @@ class WidgetUtils {
           }
         },
       )
-          : Image.asset(
+          : (image.endsWith('svg') ? SvgPicture.asset(
+        image,
+        width: width,
+        height: height,
+        fit: fit ?? BoxFit.contain,
+      ):Image.asset(
         image,
         width: width,
         height: height,
         fit: fit,
-      );
+      ));
     } catch (e) {
       loggerArray(["异常了", image, e]);
       return Image.asset(

@@ -147,11 +147,21 @@ class ColorX{
   static Color cardBg8(){
     return AppData.theme() ? Colors.white60 : Color.fromRGBO(30, 31, 31, 0.5);
   }
+
   static Color cardBg9(){
     return !AppData.theme() ? ColorX.color_fc243b : ColorX.color_fc243b;
   }
+
   static Color cardBg10(){
     return AppData.theme() ? ColorX.color_e8e8e8 : ColorX.color_333333;
+  }
+
+  static Color cardBg11(){
+    return AppData.theme() ? ColorX.color_949eb9 : Colors.transparent;
+  }
+
+  static Color cardBg12(){
+    return AppData.theme() ? Colors.transparent : ColorX.color_333333;
   }
 
   static Color text0917(){
@@ -209,6 +219,8 @@ class ColorX{
   static Color text0d1(){
     return AppData.theme() ? ColorX.color_0d192d : Colors.white70;
   }
+
+
 
   static List<Color> cardColors(){
     return AppData.theme() ? [Colors.white,const Color(0xfff3f4f9)] : [Color.fromRGBO(30, 31, 31, 1),Color.fromRGBO(30, 31, 31, 1)];

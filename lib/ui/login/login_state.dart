@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 
 import '../bean/var_code_entity.dart';
@@ -6,6 +7,8 @@ import '../bean/var_code_entity.dart';
 class LoginState {
   LoginState() {
     ///Initialize variables
+    accountValue = AppData.loginUser();
+    pwdValue = AppData.loginPwd();
     btnEnable.value = (unEmpty(accountValue) && unEmpty(pwdValue));
   }
 

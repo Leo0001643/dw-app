@@ -98,7 +98,7 @@ class RechargeLogic extends GetxController {
               // usdtIndex = value.banks!.indexOf(element);
               // break;
             default:
-              element.icon = ImageX.usdt;
+              element.icon = ImageX.icOtherT();
               break;
           }
         });

@@ -127,10 +127,7 @@ class AppData {
   }
 
   static String loginPwd() {
-    return prefs?.getString(
-          "login_pwd",
-        ) ??
-        "";
+    return prefs?.getString("login_pwd",) ?? "";
   }
 
   static void setLoginUser(String user) {
@@ -138,10 +135,7 @@ class AppData {
   }
 
   static String loginUser() {
-    return prefs?.getString(
-          "login_user",
-        ) ??
-        "";
+    return prefs?.getString("login_user",) ?? "";
   }
 
   static void setUser(LoginUserEntity user) {
@@ -162,4 +156,7 @@ class AppData {
   static void clear() {
     prefs?.remove("user");
   }
+
+
+
 }

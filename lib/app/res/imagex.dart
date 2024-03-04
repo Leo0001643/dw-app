@@ -526,7 +526,8 @@ class ImageX{
 
   static const ic_defalut_ava = 'assets/images/ic_defalut_ava.png';
 
-
+  static const ic_other_dark = 'assets/images/ic_other_dark.svg';
+  static const ic_other_light = 'assets/images/ic_other_light.svg';
 
 
 
@@ -765,6 +766,10 @@ class ImageX{
 
   static String bindOtherT(){
     return AppData.theme() ? bindOther_light : bindOther_dark;
+  }
+
+  static String icOtherT(){
+    return AppData.theme() ? ic_other_light : ic_other_dark;
   }
 
 
