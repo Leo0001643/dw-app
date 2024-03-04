@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/var_code_entity.dart';
 
@@ -31,6 +32,7 @@ class ProxyRegisterState {
 
   ///手机区号数据
   Map<String,List<String>>? phoneData;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

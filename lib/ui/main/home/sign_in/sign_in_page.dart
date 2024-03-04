@@ -9,6 +9,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/check_in_info_entity.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -40,78 +41,81 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(image: AssetImage(ImageX.sign_bg),fit: BoxFit.fill,),
-      ),
-      child: Column(
-        children: [
-          WidgetUtils().buildAppBar(Intr().qiandaoyouli,msg: true,bgColor: Colors.transparent),
-          Container(
-            height: 0.125.sh,
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: 25.w,),
-            child: Obx(() {
-              return Text.rich(TextSpan(
-                children: [
-                  TextSpan(text: Intr().jifen,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none,),),
-                  WidgetSpan(child: SizedBox(width: 5.w,)),
-                  TextSpan(text:state.checkInfo.value.point.em(),style: TextStyle(fontSize: 32.sp,color: ColorX.color_091722,fontWeight: FontWeight.w700),),
-                ],
-              ));
-            }),
-          ),
-          Container(
-            height: 0.08.sh,
-            // color: Colors.black12,
-            padding: EdgeInsets.symmetric(horizontal: 30.w,),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Obx(() {
-                  return Text(Intr().benyueyiqian([state.checkInfo.value.signInNum.em()]),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none),);
-                }),
-
-                Obx(() {
-                  var date = DateUtil.formatDateMs(state.checkInfo.value.timestamp.em() * 1000,isUtc: true,format: Intr().nianyueri);
-                  return Text(date,style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none),);
-                }),
-              ],
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage(ImageX.sign_bg),fit: BoxFit.fill,),
+        ),
+        child: Column(
+          children: [
+            WidgetUtils().buildAppBar(Intr().qiandaoyouli,msg: true,bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey),
+            Container(
+              height: 0.125.sh,
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.symmetric(horizontal: 25.w,),
+              child: Obx(() {
+                return Text.rich(TextSpan(
+                  children: [
+                    TextSpan(text: Intr().jifen,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none,),),
+                    WidgetSpan(child: SizedBox(width: 5.w,)),
+                    TextSpan(text:state.checkInfo.value.point.em(),style: TextStyle(fontSize: 32.sp,color: ColorX.color_091722,fontWeight: FontWeight.w700),),
+                  ],
+                ));
+              }),
             ),
-          ),
-          GFCard(
-            padding: EdgeInsets.zero,
-            margin: EdgeInsets.symmetric(horizontal: 15.w,),
-            color: Colors.transparent,
-            elevation: 0,
-            content: Column(
-              children: [
-                Obx(() {
-                  return buildCalendar(state.checkInfo.value);
-                }),
-                SizedBox(height: 15.h,),
-                Obx(() {
-                  var date = DateUtil.getDateTimeByMs(state.checkInfo.value.timestamp.em() * 1000,isUtc: true,);
-                  if(state.checkInfo.value.log?.contains("${date.day}") == true){
-                    return WidgetUtils().buildElevatedButton(Intr().yiqiandao, 320.w, 48.h, bg: ColorX.color_ffe0ac,onPressed: (){});
-                  } else {
-                    return WidgetUtils().buildElevatedButton(Intr().lijiqiandao, 320.w, 48.h, bg: ColorX.color_fc9824,onPressed: (){
-                      logic.checkInPoint(context);
-                    });
-                  }
-                }),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Container(
+            Container(
+              height: 0.08.sh,
               // color: Colors.black12,
-              alignment: Alignment.center,
-              child: Text(Intr().biaozhunshijian,style: TextStyle(fontSize: 14.sp,color: Colors.white,),textAlign: TextAlign.center,),
+              padding: EdgeInsets.symmetric(horizontal: 30.w,),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Obx(() {
+                    return Text(Intr().benyueyiqian([state.checkInfo.value.signInNum.em()]),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none),);
+                  }),
+
+                  Obx(() {
+                    var date = DateUtil.formatDateMs(state.checkInfo.value.timestamp.em() * 1000,isUtc: true,format: Intr().nianyueri);
+                    return Text(date,style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none),);
+                  }),
+                ],
+              ),
             ),
-          ),
-        ],
+            GFCard(
+              padding: EdgeInsets.zero,
+              margin: EdgeInsets.symmetric(horizontal: 15.w,),
+              color: Colors.transparent,
+              elevation: 0,
+              content: Column(
+                children: [
+                  Obx(() {
+                    return buildCalendar(state.checkInfo.value);
+                  }),
+                  SizedBox(height: 15.h,),
+                  Obx(() {
+                    var date = DateUtil.getDateTimeByMs(state.checkInfo.value.timestamp.em() * 1000,isUtc: true,);
+                    if(state.checkInfo.value.log?.contains("${date.day}") == true){
+                      return WidgetUtils().buildElevatedButton(Intr().yiqiandao, 320.w, 48.h, bg: ColorX.color_ffe0ac,onPressed: (){});
+                    } else {
+                      return WidgetUtils().buildElevatedButton(Intr().lijiqiandao, 320.w, 48.h, bg: ColorX.color_fc9824,onPressed: (){
+                        logic.checkInPoint(context);
+                      });
+                    }
+                  }),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Container(
+                // color: Colors.black12,
+                alignment: Alignment.center,
+                child: Text(Intr().biaozhunshijian,style: TextStyle(fontSize: 14.sp,color: Colors.white,),textAlign: TextAlign.center,),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

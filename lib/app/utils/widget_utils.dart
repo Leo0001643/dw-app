@@ -117,10 +117,7 @@ class WidgetUtils {
     );
   }
 
-  Widget buildHomeAppBar(context, {
-    bool msg = false,
-    bool drawer = false,
-  }) {
+  Widget buildHomeAppBar(context, {bool msg = false, bool drawer = false,}) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 10.r),
       child: Row(
@@ -186,7 +183,8 @@ class WidgetUtils {
         bool back = true,
         Color? bgColor,
         bool drawer = false,
-        Function? drawEnd}) {
+        GlobalKey<ScaffoldState>? scaffoldKey,
+      }) {
     return AppBar(
       title: Text(
         title.em(),
@@ -227,13 +225,7 @@ class WidgetUtils {
             Visibility(
               visible: drawer,
               child: InkWell(
-                onTap: () {
-                  if (drawEnd != null) {
-                    drawEnd();
-                  } else {
-                    Get.find<MainLogic>().openDrawer();
-                  }
-                },
+                onTap: () => scaffoldKey?.currentState?.openEndDrawer(),
                 child: Padding(
                   padding: EdgeInsets.all(10.r),
                   child: Image.asset(
@@ -277,8 +269,9 @@ class WidgetUtils {
       {bool msg = false,
         bool back = true,
         Color? bgColor,
-        bool drawer = false,
-        Function? drawEnd}) {
+        bool drawer = true,
+        GlobalKey<ScaffoldState>? scaffoldKey,
+      }) {
     return AppBar(
       title: Obx(() {
         return Text(
@@ -317,13 +310,7 @@ class WidgetUtils {
         Visibility(
           visible: drawer,
           child: InkWell(
-            onTap: () {
-              if (drawEnd != null) {
-                drawEnd();
-              } else {
-                Get.find<MainLogic>().openDrawer();
-              }
-            },
+            onTap: () => scaffoldKey?.currentState?.openEndDrawer(),
             child: Padding(
               padding: EdgeInsets.all(10.r),
               child: Image.asset(
@@ -345,7 +332,7 @@ class WidgetUtils {
     bool back = true,
     Color? bgColor,
     bool drawer = true,
-    Function? drawEnd,
+    GlobalKey<ScaffoldState>? scaffoldKey,
     GestureTapCallback? onTap,
   }) {
     return AppBar(
@@ -403,13 +390,7 @@ class WidgetUtils {
         Visibility(
           visible: drawer,
           child: InkWell(
-            onTap: () {
-              if (drawEnd != null) {
-                drawEnd();
-              } else {
-                Get.find<MainLogic>().openDrawer();
-              }
-            },
+            onTap: () => scaffoldKey?.currentState?.openEndDrawer(),
             child: Padding(
               padding: EdgeInsets.all(10.r),
               child: Image.asset(
@@ -431,7 +412,8 @@ class WidgetUtils {
         Color? bgColor,
         GestureTapCallback? onTap,
         GestureTapCallback? onCollect,
-        Function? drawEnd}) {
+        GlobalKey<ScaffoldState>? scaffoldKey,
+      }) {
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -507,13 +489,7 @@ class WidgetUtils {
             Visibility(
               visible: drawer,
               child: InkWell(
-                onTap: () {
-                  if (drawEnd != null) {
-                    drawEnd();
-                  } else {
-                    Get.find<MainLogic>().openDrawer();
-                  }
-                },
+                onTap: ()=> scaffoldKey?.currentState?.openEndDrawer(),
                 child: Padding(
                   padding: EdgeInsets.all(10.r),
                   child: Image.asset(

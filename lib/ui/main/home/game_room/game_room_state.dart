@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
@@ -29,6 +30,7 @@ class GameRoomState {
   var barrage = RxList<String>.empty(growable: true);
   ///弹幕控制器
   var barrageWallController = BarrageWallController();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

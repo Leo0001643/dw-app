@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
@@ -24,6 +25,7 @@ class PointsRecordState {
   var refreshListener = RefreshChangeNotifier();
 
   var list = RxList<PointRecordRecord>.empty(growable: true);
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

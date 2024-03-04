@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
@@ -26,6 +27,7 @@ class PromotionProfitState {
   var userLink = "".obs;
 
   var qrLinkData = Uint8List(0).obs;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

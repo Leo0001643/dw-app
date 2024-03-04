@@ -5,6 +5,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
 
 import 'profit_rebate_logic.dart';
@@ -32,8 +33,10 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().yinlifanshui,msg: true,bgColor: ColorX.appBarBg()),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().yinlifanshui,msg: true,
+          bgColor: ColorX.appBarBg(),scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(

@@ -36,49 +36,6 @@ class _RechargePageState extends State<RechargePage> {
         builder: (ctl) {
           return Stack(
             children: [
-              Container(
-                width: 1.sw,
-                height: 0.28.sh,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(ImageX.mybgT()),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    WidgetUtils().buildAppBar(Intr().chongzhizhongxin,
-                        msg: true, drawer: true, back: false,bgColor: Colors.transparent),
-                    SizedBox(height: 10.h,),
-                    Obx(() {
-                      return GFAvatar(
-                        backgroundImage: WidgetUtils().buildImageProvider(
-                            DataUtils.findAvatar(
-                                state.user.value.avatar.em())),
-                        radius: 28.r,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                color: Colors.white,
-                                width: 2.r),
-                          ),
-                        ),
-                      );
-                    }),
-                    SizedBox(height: 7.h,),
-                    Obx(() {
-                      return Text(
-                        Intr().chongzhizhanghu_(
-                            [state.user.value.username.em()]),
-                        style: TextStyle(
-                            fontSize: 12.sp, color: ColorX.text0917(),fontWeight: FontWeight.w700),
-                      );
-                    }),
-                  ],
-                ),
-              ),
               SingleChildScrollView(
                 child: Container(
                   margin: EdgeInsets.only(top: 0.23.sh),
@@ -161,6 +118,49 @@ class _RechargePageState extends State<RechargePage> {
                       }),
                     ],
                   ),
+                ),
+              ),
+              Container(
+                width: 1.sw,
+                height: 0.28.sh,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(ImageX.mybgT()),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    WidgetUtils().buildAppBar(Intr().chongzhizhongxin,
+                        msg: true, drawer: true, back: false,bgColor: Colors.transparent),
+                    SizedBox(height: 10.h,),
+                    Obx(() {
+                      return GFAvatar(
+                        backgroundImage: WidgetUtils().buildImageProvider(
+                            DataUtils.findAvatar(
+                                state.user.value.avatar.em())),
+                        radius: 28.r,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                color: Colors.white,
+                                width: 2.r),
+                          ),
+                        ),
+                      );
+                    }),
+                    SizedBox(height: 7.h,),
+                    Obx(() {
+                      return Text(
+                        Intr().chongzhizhanghu_(
+                            [state.user.value.username.em()]),
+                        style: TextStyle(
+                            fontSize: 12.sp, color: ColorX.text0917(),fontWeight: FontWeight.w700),
+                      );
+                    }),
+                  ],
                 ),
               ),
             ],

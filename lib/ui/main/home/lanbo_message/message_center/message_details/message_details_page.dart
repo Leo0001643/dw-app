@@ -6,6 +6,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'message_details_logic.dart';
 
@@ -29,8 +30,10 @@ class _MessageDetailsPageState extends State<MessageDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().gonggaoxiangqing,bgColor: ColorX.appBarBg()),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().gonggaoxiangqing,
+          bgColor: ColorX.appBarBg(),scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Container(
         margin: EdgeInsets.only(left: 15.w,right: 15.w,top: 15.h),

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
@@ -31,4 +32,9 @@ class RechargeDigitalState {
   var walletAddress = "";
   ///汇款金额
   var remitAmount = "";
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+
 }

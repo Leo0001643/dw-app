@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
@@ -29,6 +30,7 @@ class AddBankState {
 
   ///区号
   var areaNo = "+86".obs;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

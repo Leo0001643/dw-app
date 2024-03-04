@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/ds_game_entity.dart';
 import 'package:leisure_games/ui/bean/ele_game_type_entity.dart';
@@ -29,6 +31,7 @@ class TableGameListState {
   ///正在显示的
   var list = RxList<DsGameGamesZm>.empty(growable: true);
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 

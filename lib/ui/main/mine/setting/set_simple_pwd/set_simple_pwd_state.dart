@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 
@@ -14,6 +15,7 @@ class SetSimplePwdState {
 
   var gesturetext = '绘制解锁图案'.obs;
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

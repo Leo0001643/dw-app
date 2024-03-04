@@ -6,6 +6,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/history_lotto_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -44,8 +45,9 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildRxAppBar(state.title,msg: true,),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildRxAppBar(state.title,msg: true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg2(),
       body: Column(
         children: [
@@ -68,10 +70,10 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
           ),
           Container(
             alignment: Alignment.center,
+            margin: EdgeInsets.symmetric(vertical: 10.h),
             child: WidgetUtils().buildElevatedButton(Intr().goucai, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
               logic.clickGoucai();
             }),
-            margin: EdgeInsets.symmetric(vertical: 10.h),
           ),
         ],
       ),

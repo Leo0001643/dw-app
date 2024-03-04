@@ -9,7 +9,7 @@ class BettingRecordState {
   BettingRecordState() {
     ///Initialize variables
   }
-  final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   var currentWallet = BillWalletEntity(Intr().wallet_cny, ImageX.icon_jj_grey,ImageX.icon_jj_red).obs;
 

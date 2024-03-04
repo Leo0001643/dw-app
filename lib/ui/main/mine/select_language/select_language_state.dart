@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -21,6 +22,7 @@ class SelectLanguageState {
 
   late var countryList = country.obs;
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

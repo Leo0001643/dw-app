@@ -7,6 +7,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'preferential_detail_logic.dart';
 
@@ -36,8 +37,9 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().xiangqing),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().xiangqing,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.cardBg(),
       body: SingleChildScrollView(
         child: Column(

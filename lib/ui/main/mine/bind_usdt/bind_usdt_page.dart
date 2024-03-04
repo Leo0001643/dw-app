@@ -9,6 +9,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 
@@ -36,12 +37,9 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().bangdingusdt,msg: true,drawer:true,drawEnd:(){
-        scaffoldMineKey.currentState?.openEndDrawer();
-      }),
-      endDrawer: EndsDrawerView(),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().bangdingusdt,msg: true,drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(

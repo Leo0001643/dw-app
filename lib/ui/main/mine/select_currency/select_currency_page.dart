@@ -7,6 +7,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 
 import 'select_currency_logic.dart';
@@ -34,8 +35,9 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().zxndbz,msg: true),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().zxndbz,msg: true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Column(

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/deposit_log_entity.dart';
@@ -33,6 +34,7 @@ class RechargeRecordState {
 
   ///选择的状态
   var selectStatus = PaymentListBanks(bankName: Intr().quanbuzhuangtai,id: 0).obs;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

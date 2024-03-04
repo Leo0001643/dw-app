@@ -7,6 +7,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 
 import '../../../../app/routes.dart';
@@ -40,7 +41,8 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       backgroundColor: ColorX.cardBg5(),
       body: Column(
         children: [
@@ -54,8 +56,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                   ),
                 ),
                 height: 213.h,
-                child: WidgetUtils().buildRxAppBar(state.title,
-                    msg: true, bgColor: Colors.transparent),
+                child: WidgetUtils().buildRxAppBar(state.title, msg: true, bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey),
               ),
               Container(
                 margin: EdgeInsets.only(top: 193.h),

@@ -7,6 +7,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 
@@ -35,88 +36,84 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().hongbaohejiangjin,msg: true,drawer:true,drawEnd:(){
-        scaffoldMineKey.currentState?.openEndDrawer();
-      }),
-      endDrawer: EndsDrawerView(),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().hongbaohejiangjin,msg: true,
+          drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Obx(() {
-                return Row(
-                  children: state.wallets.map((e){
-                    return GestureDetector(
-                      onTap: (){
-                        state.currentWallet.value = e;
-                        state.currentWallet.refresh();
-                        logic.changeTab();
-                      },
-                      child: buildWalletTab(e, state.currentWallet.value == e ),
-                    );
-                  }).toList(),
-                );
-              }),
-            ),
-            SizedBox(height: 10.h,),
-            Container(
-              color: ColorX.cardBg3(),
-              padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 25,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(Intr().youxiaoqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Obx(() {
+              return Row(
+                children: state.wallets.map((e){
+                  return GestureDetector(
+                    onTap: (){
+                      state.currentWallet.value = e;
+                      state.currentWallet.refresh();
+                      logic.changeTab();
+                    },
+                    child: buildWalletTab(e, state.currentWallet.value == e ),
+                  );
+                }).toList(),
+              );
+            }),
+          ),
+          SizedBox(height: 10.h,),
+          Container(
+            color: ColorX.cardBg3(),
+            padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 25,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(Intr().youxiaoqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
+                    fontWeight: FontWeight.w500,),),
+                  ),
+                ),
+                Expanded(
+                  flex: 25,
+                  child: Center(
+                    child: Text(Intr().jine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                       fontWeight: FontWeight.w500,),),
-                    ),
                   ),
-                  Expanded(
-                    flex: 25,
-                    child: Center(
-                      child: Text(Intr().jine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
-                        fontWeight: FontWeight.w500,),),
-                    ),
+                ),
+                Expanded(
+                  flex: 25,
+                  child: Center(
+                    child: Text(Intr().xuyaodamaliang,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
+                      fontWeight: FontWeight.w500,),),
                   ),
-                  Expanded(
-                    flex: 25,
-                    child: Center(
-                      child: Text(Intr().xuyaodamaliang,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
-                        fontWeight: FontWeight.w500,),),
-                    ),
+                ),
+                Expanded(
+                  flex: 25,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(Intr().jiaoyileibie,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
+                      fontWeight: FontWeight.w500,),),
                   ),
-                  Expanded(
-                    flex: 25,
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(Intr().jiaoyileibie,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
-                        fontWeight: FontWeight.w500,),),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Expanded(
-              child: Obx(() {
-                return ListView.separated(
-                  itemBuilder: (context,index){
-                    return buildBonusItem(state.record[index]);
-                  },
-                  separatorBuilder: (context,index){
-                    return Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,);
-                  },
-                  itemCount: state.record.length,
-                );
-              }),
-            ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: Obx(() {
+              return ListView.separated(
+                itemBuilder: (context,index){
+                  return buildBonusItem(state.record[index]);
+                },
+                separatorBuilder: (context,index){
+                  return Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,);
+                },
+                itemCount: state.record.length,
+              );
+            }),
+          ),
+        ],
       ),
     );
   }

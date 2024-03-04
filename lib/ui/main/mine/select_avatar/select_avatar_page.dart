@@ -6,6 +6,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
@@ -44,13 +45,11 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: state.scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().genghuantouxiang,msg: true,drawer:true,drawEnd:(){
-        state.scaffoldMineKey.currentState?.openEndDrawer();
-      }),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().genghuantouxiang,msg: true,
+          drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg2(),
-      endDrawer: EndsDrawerView(),
       body: Column(
         children: [
           Container(

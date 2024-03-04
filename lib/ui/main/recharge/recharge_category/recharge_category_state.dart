@@ -27,6 +27,7 @@ class RechargeCategoryState {
   ///支付方式
   var paymentList = PaymentListEntity().obs;
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 

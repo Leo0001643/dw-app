@@ -7,6 +7,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/ds_game_entity.dart';
 
@@ -52,8 +53,10 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: ColorX.appBarBg(),onTap: (){
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildRoomBar(state.title,msg: true,drawer: true,
+          scaffoldKey:state.scaffoldKey,bgColor: ColorX.appBarBg(),onTap: (){
         // DialogUtils().showGameBrandBtmDialog(context);
         if(unEmpty(state.kindList)){
           DialogUtils().showGameBrandBtmDialog(context,state.kindList!).then((value) {

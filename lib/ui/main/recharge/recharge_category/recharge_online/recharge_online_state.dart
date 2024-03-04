@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/jump_payment_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';

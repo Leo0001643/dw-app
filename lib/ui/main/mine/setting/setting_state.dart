@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 
@@ -16,6 +17,8 @@ class SettingState {
 
   //提示音
   var tsyToggle = AppData.promptTone().obs;
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

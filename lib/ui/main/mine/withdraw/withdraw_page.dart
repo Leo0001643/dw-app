@@ -11,6 +11,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'withdraw_logic.dart';
 
@@ -57,7 +58,8 @@ class _WithdrawPageState extends State<WithdrawPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+        scaffoldKey: state.scaffoldKey,
       backgroundColor: ColorX.pageBg2(),
       body: Stack(
         children: [
@@ -69,7 +71,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
           ),
           Column(
             children: [
-              WidgetUtils().buildAppBar(Intr().tixianzhongxin,bgColor: Colors.transparent),
+              WidgetUtils().buildAppBar(Intr().tixianzhongxin,bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey),
               Container(
                 height: 140.h,
                 alignment: Alignment.center,

@@ -5,6 +5,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import '../../../../../main.dart';
 import '../../../ends_drawer_view.dart';
@@ -25,12 +26,10 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().shezhitixianmima,msg: true,drawer:true,drawEnd:(){
-        scaffoldMineKey.currentState?.openEndDrawer();
-      }),
-      endDrawer: EndsDrawerView(),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().shezhitixianmima,msg: true,
+          drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

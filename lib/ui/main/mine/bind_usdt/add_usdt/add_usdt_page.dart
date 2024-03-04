@@ -7,6 +7,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'add_usdt_logic.dart';
 
@@ -29,8 +30,10 @@ class _AddUsdtPageState extends State<AddUsdtPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().bangdingusdt,msg: true,bgColor: ColorX.appBarBg()),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().bangdingusdt,msg: true,
+          bgColor: ColorX.appBarBg(),scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(

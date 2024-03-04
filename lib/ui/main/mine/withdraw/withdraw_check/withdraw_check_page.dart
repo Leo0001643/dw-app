@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'withdraw_check_logic.dart';
 
@@ -34,7 +35,8 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Stack(
@@ -48,7 +50,7 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                WidgetUtils().buildAppBar(Intr().congcnyqianbaotichu,bgColor: Colors.transparent,msg: true),
+                WidgetUtils().buildAppBar(Intr().congcnyqianbaotichu,bgColor: Colors.transparent,msg: true,scaffoldKey: state.scaffoldKey),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
                   child: Column(

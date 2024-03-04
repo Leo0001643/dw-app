@@ -10,11 +10,14 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
+import 'package:leisure_games/ui/main/ends_drawer_view.dart';
+import 'package:leisure_games/ui/main/main_logic.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'recharge_digital_logic.dart';
@@ -63,7 +66,8 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       backgroundColor: ColorX.pageBg2(),
       body: Stack(
         children: [
@@ -75,7 +79,8 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
           ),
           Column(
             children: [
-              WidgetUtils().buildRoomBar(state.title,bgColor: Colors.transparent,msg: true,onTap: (){
+              WidgetUtils().buildRoomBar(state.title,bgColor: Colors.transparent,msg: true,drawer: true,
+                  scaffoldKey: state.scaffoldKey,onTap: (){
                 if(unEmpty(state.paymentList.value)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
                     if(unEmpty(value)){ jumpPage(value!); }

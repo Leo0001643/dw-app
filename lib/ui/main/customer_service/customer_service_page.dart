@@ -6,6 +6,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 
 import 'customer_service_logic.dart';
@@ -22,8 +23,10 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().kfzx,msg: true,drawer: true,back: false),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().kfzx,msg: true,
+          drawer: true,back: false,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(

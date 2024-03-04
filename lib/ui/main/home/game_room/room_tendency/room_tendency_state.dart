@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/room_tendency/data_analysis/data_analysis_page.dart';
@@ -16,6 +17,7 @@ class RoomTendencyState {
     pages.assignAll([const LotteryResultPage(),const DataAnalysisPage(),const DoubleQueuePage(),const DsDewPage(),
       const DxDewPage(),const NumberTrendPage()]);
   }
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   var pages = <Widget>[];
 

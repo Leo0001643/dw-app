@@ -6,6 +6,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'select_language_logic.dart';
 
@@ -31,8 +32,9 @@ class StateSelectLanguagePage extends State<SelectLanguagePage>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().xzndyy,msg: true),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().xzndyy,msg: true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Column(

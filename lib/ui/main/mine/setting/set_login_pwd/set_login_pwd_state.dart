@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SetLoginPwdState {
@@ -14,6 +15,7 @@ class SetLoginPwdState {
 
   var pwdNew1Visible = false.obs;
   var pwdNew1Value = "";
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

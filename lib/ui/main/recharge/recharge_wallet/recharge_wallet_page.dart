@@ -10,6 +10,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/jump_payment_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
@@ -33,7 +34,8 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       backgroundColor: ColorX.pageBg2(),
       body: Stack(
         children: [
@@ -45,7 +47,7 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
           ),
           Column(
             children: [
-              WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: Colors.transparent,onTap: (){
+              WidgetUtils().buildRoomBar(state.title,msg: true,drawer: true,scaffoldKey: state.scaffoldKey,bgColor: Colors.transparent,onTap: (){
                 if(unEmpty(state.paymentList)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
                     if(unEmpty(value)){jumpPage(value!);}

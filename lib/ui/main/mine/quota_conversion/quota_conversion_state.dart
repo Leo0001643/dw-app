@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
@@ -18,6 +19,7 @@ class QuotaConversionState {
 
   ///主账户余额
   var mainBal = BalanceEntity().obs;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

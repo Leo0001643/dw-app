@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/user_detail_entity.dart';
 
@@ -11,6 +12,7 @@ class UserInfoState {
 
   ///编辑的用户信息
   var userEdit = UserDetailEntity().obs;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

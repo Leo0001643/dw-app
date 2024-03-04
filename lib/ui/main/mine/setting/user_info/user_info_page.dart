@@ -5,6 +5,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'user_info_logic.dart';
 
@@ -21,8 +22,9 @@ class _UserInfoPageState extends State<UserInfoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().wanshanziliao,msg: true),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().wanshanziliao,msg: true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(
@@ -30,8 +32,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
           children: [
             SizedBox(height: 20.h,),
             Padding(
-              child: Text(Intr().yhm,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               padding: EdgeInsets.symmetric(horizontal: 35.w),
+              child: Text(Intr().yhm,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(

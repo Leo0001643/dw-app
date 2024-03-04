@@ -9,7 +9,6 @@ class SelectAvatarState {
   SelectAvatarState() {
     ///Initialize variables
   }
-  final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
   var selectIndex = (-1).obs;
 
   var tabIndex = 0.obs;
@@ -36,6 +35,7 @@ class SelectAvatarState {
   ///当前头像
   var currentAvatar = AppData.user()!.avatar.em().obs;
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 

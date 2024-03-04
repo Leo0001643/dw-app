@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -18,6 +19,7 @@ class BonusPacketState {
     BillWalletEntity(Intr().jiangjin, ImageX.icon_jj_grey,ImageX.icon_jj_red),
   ];
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   ///记录
   var record = RxList<PrizeListPrizes>.empty(growable: true);

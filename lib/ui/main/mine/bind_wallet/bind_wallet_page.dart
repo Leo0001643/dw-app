@@ -9,6 +9,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/main.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
@@ -36,14 +37,11 @@ class _BindWalletPageState extends State<BindWalletPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildAppBar(Intr().bangdingqitaqianbao,
-          msg: true, drawer: true, drawEnd: () {
-            scaffoldMineKey.currentState?.openEndDrawer();
-          }),
+          msg: true, drawer: true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
-      endDrawer: EndsDrawerView(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

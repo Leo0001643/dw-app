@@ -7,6 +7,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'recharge_result_logic.dart';
 ///
@@ -30,7 +31,8 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+        scaffoldKey: state.scaffoldKey,
       backgroundColor: ColorX.pageBg2(),
       body: Stack(
         children: [
@@ -42,7 +44,8 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
           ),
           Column(
             children: [
-              WidgetUtils().buildAppBar(Intr().chongzhi,msg: true,bgColor: Colors.transparent),
+              WidgetUtils().buildAppBar(Intr().chongzhi,msg: true,
+                  bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey),
               Container(
                 height: 115.h,
                 child: Column(

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
@@ -30,6 +31,7 @@ class MemberRebateState {
   ///回水统计
   var list = RxList<BackWaterEntity>.empty(growable: true);
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

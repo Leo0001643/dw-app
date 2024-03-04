@@ -6,6 +6,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/main/home/game_room/room_tendency/data_analysis/data_analysis_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/room_tendency/double_queue/double_queue_logic.dart';
@@ -56,8 +57,9 @@ class _RoomTendencyPageState extends State<RoomTendencyPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar("趋势", bgColor: Colors.white),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().qushi, bgColor: Colors.white,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Column(
         children: [

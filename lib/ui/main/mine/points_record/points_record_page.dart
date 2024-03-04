@@ -6,6 +6,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/main.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/point_record_entity.dart';
@@ -44,12 +45,9 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().jifenjilu,msg: true,drawer:true,drawEnd:(){
-        scaffoldMineKey.currentState?.openEndDrawer();
-      }),
-      endDrawer: EndsDrawerView(),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().jifenjilu,msg: true,drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(

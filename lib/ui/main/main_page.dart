@@ -7,6 +7,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
 import 'main_logic.dart';
@@ -41,14 +42,13 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: state.scaffoldKey,
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: state.pageController,
         children: state.pages,
       ),
-      endDrawer: const EndsDrawerView(),
       bottomNavigationBar: GetBuilder<GetMaterialController>(
         builder: (ct){
           return ConvexAppBar.builder(

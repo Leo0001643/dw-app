@@ -6,6 +6,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import '../../../../../app/res/imagex.dart';
 import '../../../../../app/utils/dialog_utils.dart';
@@ -51,9 +52,10 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildAppBar(Intr().shezhijianyimima,
-          msg: true, bgColor: ColorX.appBarBg()),
+          msg: true, bgColor: ColorX.appBarBg(),scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,

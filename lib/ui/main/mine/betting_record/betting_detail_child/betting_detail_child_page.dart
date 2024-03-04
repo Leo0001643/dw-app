@@ -8,6 +8,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart'  as T;
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
@@ -41,14 +42,9 @@ class _BettingDetailChildPageState extends State<BettingDetailChildPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: state.scaffoldMineKey,
-      appBar: WidgetUtils().buildRxAppBar(logic.state.title,msg: true,bgColor: ColorX.appBarBg()
-          ,drawer:true,drawEnd:(){
-        state.scaffoldMineKey.currentState?.openEndDrawer();
-      }),
-
-      endDrawer: EndsDrawerView(),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildRxAppBar(logic.state.title,msg: true,bgColor: ColorX.appBarBg(),drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(

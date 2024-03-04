@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
@@ -19,5 +20,6 @@ class HistoryLotteryState {
 
   late RefreshController refreshController;
   var refreshListener = RefreshChangeNotifier();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 }

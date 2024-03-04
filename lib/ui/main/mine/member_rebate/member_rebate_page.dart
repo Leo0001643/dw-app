@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/empty_data_widget.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_params.dart';
@@ -39,12 +40,10 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().huiyuanfanshui,msg: true,drawer:true,drawEnd:(){
-        scaffoldMineKey.currentState?.openEndDrawer();
-      }),
-      endDrawer: EndsDrawerView(),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().huiyuanfanshui,msg: true,
+          drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Container(

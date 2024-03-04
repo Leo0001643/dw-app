@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
@@ -46,12 +47,10 @@ class _BillFlowPageState extends State<BillFlowPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().zijinmingxi,msg: true,drawer:true,drawEnd:(){
-        scaffoldMineKey.currentState?.openEndDrawer();
-      }),
-      endDrawer: EndsDrawerView(),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().zijinmingxi,msg: true,
+          drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg2(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

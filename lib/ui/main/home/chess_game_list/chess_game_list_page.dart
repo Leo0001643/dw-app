@@ -7,6 +7,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/chess_info_entity.dart';
 
 import 'chess_game_list_logic.dart';
@@ -35,8 +36,10 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: ColorX.appBarBg(),onTap: (){
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: ColorX.appBarBg(),
+          scaffoldKey: state.scaffoldKey,onTap: (){
         if(unEmpty(state.kindList)){
           DialogUtils().showGameBrandBtmDialog(context,state.kindList!).then((value) {
             if(unEmpty(value)){

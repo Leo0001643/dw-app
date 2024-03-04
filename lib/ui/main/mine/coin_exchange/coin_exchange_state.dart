@@ -7,7 +7,7 @@ class CoinExchangeState {
     ///Initialize variables
   }
 
-  final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   ///余额
   var usdtBal = BalanceEntity().obs;

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 
@@ -8,6 +9,7 @@ class LotteryTrendState {
 
   var trendList = RxList<HistoryHall>.empty(growable: true);
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 

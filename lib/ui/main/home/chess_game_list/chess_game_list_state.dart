@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/chess_info_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
@@ -21,6 +23,8 @@ class ChessGameListState {
   var allList = List<ChessInfoEntity>.empty(growable: true);
   ///正在显示的
   var list = RxList<ChessInfoEntity>.empty(growable: true);
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

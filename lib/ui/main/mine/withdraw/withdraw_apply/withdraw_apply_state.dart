@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
@@ -40,6 +41,7 @@ class WithdrawApplyState {
   ///手续费
   var serviceAmount = "0".obs;
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 

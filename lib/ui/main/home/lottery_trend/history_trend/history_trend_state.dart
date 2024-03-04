@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
@@ -23,5 +24,6 @@ class HistoryTrendState {
 
   ///数据源
   var info = DewInfoEntity();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 }

@@ -7,6 +7,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/empty_data_widget.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
@@ -49,12 +50,9 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
-      appBar: WidgetUtils().buildAppBar(Intr().tuiguangzhuanqian,msg: true,drawer:true,drawEnd:(){
-        scaffoldMineKey.currentState?.openEndDrawer();
-      }),
-      endDrawer: EndsDrawerView(),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().tuiguangzhuanqian,msg: true,drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Container(

@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'withdraw_apply_logic.dart';
 
@@ -32,7 +33,8 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
           child: Stack(
@@ -45,7 +47,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
               ),
               Column(
                 children: [
-                  WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true),
+                  WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true,scaffoldKey: state.scaffoldKey),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 15.w),
                     child: Column(

@@ -27,7 +27,7 @@ class MainState {
   TabController? tabController;
   late List<Widget> pages;
 
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   ///服务配置
   WebConfigEntity? webConfig;

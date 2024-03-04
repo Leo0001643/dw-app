@@ -8,7 +8,8 @@ class BettingDetailChildState {
   BettingDetailChildState() {
     ///Initialize variables
   }
-  final GlobalKey<ScaffoldState> scaffoldMineKey = GlobalKey<ScaffoldState>();
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   var betDetailItemEntity=BetDetailItemEntity().obs;
   var betRecordGroupRecord=BetRecordGroupRecord().obs;

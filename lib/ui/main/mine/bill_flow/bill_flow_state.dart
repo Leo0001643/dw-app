@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -42,6 +43,7 @@ class BillFlowState {
   var page = 1;
   late RefreshController refreshController;
   var refreshListener = RefreshChangeNotifier();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
   var list = RxList<FlowDataList>.empty(growable: true);

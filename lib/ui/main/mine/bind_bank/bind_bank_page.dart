@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
@@ -35,14 +36,11 @@ class _BindBankPageState extends State<BindBankPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildAppBar(Intr().bangdingyinhangka,
-          msg: true, drawer: true, drawEnd: () {
-        scaffoldMineKey.currentState?.openEndDrawer();
-      }),
+          msg: true, drawer: true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
-      endDrawer: EndsDrawerView(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

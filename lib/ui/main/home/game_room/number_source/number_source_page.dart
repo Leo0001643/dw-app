@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
 import 'number_source_logic.dart';
@@ -39,39 +40,38 @@ class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerPr
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: WidgetUtils().buildAppBar(Intr().guanfanghaoyuan,bgColor: ColorX.appBarBg()),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildAppBar(Intr().guanfanghaoyuan,bgColor: ColorX.appBarBg(),scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
-      body: Container(
-        child: Column(
-          children: [
-            Center(
-              child: LCTabBar(
-                length: state.tabs.length,
-                controller: _tabController,
-                tabBarHeight: 35.h,
-                tabBarColor: ColorX.appBarBg(),
-                indicatorSize: TabBarIndicatorSize.label,
-                indicatorPadding: EdgeInsets.only(top: 32.h,left: 10.w,right: 10.w,),
-                indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3.r),
-                  color: ColorX.text0917(),
-                ),
-                labelColor: ColorX.text0917(),
-                unselectedLabelColor: ColorX.text586(),
-                width: 300.w,
-                tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),)).toList(),
+      body: Column(
+        children: [
+          Center(
+            child: LCTabBar(
+              length: state.tabs.length,
+              controller: _tabController,
+              tabBarHeight: 35.h,
+              tabBarColor: ColorX.appBarBg(),
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorPadding: EdgeInsets.only(top: 32.h,left: 10.w,right: 10.w,),
+              indicator: BoxDecoration(
+                borderRadius: BorderRadius.circular(3.r),
+                color: ColorX.text0917(),
               ),
+              labelColor: ColorX.text0917(),
+              unselectedLabelColor: ColorX.text586(),
+              width: 300.w,
+              tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),)).toList(),
             ),
-            Expanded(
-              child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: state.pageController,
-                children: state.pages,
-              ),
+          ),
+          Expanded(
+            child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: state.pageController,
+              children: state.pages,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

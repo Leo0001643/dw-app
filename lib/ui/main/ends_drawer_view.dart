@@ -18,7 +18,10 @@ import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 class EndsDrawerView extends StatefulWidget {
-  const EndsDrawerView({super.key});
+
+  GlobalKey<ScaffoldState>? scaffoldKey;
+
+  EndsDrawerView({super.key,this.scaffoldKey});
 
   @override
   State<StatefulWidget> createState() => StateEndsDrawerView();
@@ -85,11 +88,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                           TextStyle(fontSize: 14.sp, color: ColorX.text0917()),
                     ),
                     Expanded(child: Container()),
-                    Text(
-                      language(),
-                      style:
-                          TextStyle(fontSize: 14.sp, color: ColorX.text949()),
-                    ),
+                    Text(language(), style: TextStyle(fontSize: 14.sp, color: ColorX.text949()),),
                     Image.asset(
                       ImageX.ic_into_right,
                       color: ColorX.icon586(),

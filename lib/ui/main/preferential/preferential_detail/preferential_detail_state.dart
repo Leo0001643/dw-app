@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
@@ -12,5 +13,6 @@ class PreferentialDetailState {
 
   ///webview高度
   var contentHeight = 1.sh.obs;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 }

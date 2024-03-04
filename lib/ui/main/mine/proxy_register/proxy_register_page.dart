@@ -10,6 +10,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import 'proxy_register_logic.dart';
 
@@ -32,9 +33,10 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildAppBar(Intr().dailizhuce,
-          msg: true, bgColor: ColorX.appBarBg()),
+          msg: true, bgColor: ColorX.appBarBg(),scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(

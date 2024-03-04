@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:luckywheel/luckywheel.dart';
 
 import 'points_lottery_logic.dart';
@@ -43,14 +44,15 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(image: AssetImage(ImageX.color_pillar),fit: BoxFit.fill,),
         ),
         child: Column(
           children: [
-            WidgetUtils().buildAppBar(Intr().jifenyaojiang,bgColor: Colors.transparent,),
+            WidgetUtils().buildAppBar(Intr().jifenyaojiang,bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey),
             Center(
               child: Image.asset(ImageX.luckyTitleP()),
             ),

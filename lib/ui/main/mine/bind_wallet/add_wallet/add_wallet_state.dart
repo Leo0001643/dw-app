@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 
@@ -21,6 +22,7 @@ class AddWalletState {
   ///验证出款密码
   var bankPwd = "".obs;
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 

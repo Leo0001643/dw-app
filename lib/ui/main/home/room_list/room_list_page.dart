@@ -10,6 +10,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
 import '../../../../main.dart';
 import '../../ends_drawer_view.dart';
@@ -34,18 +35,16 @@ class _RoomListPageState extends State<RoomListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: WidgetUtils().buildRoomBar(state.title,msg: true,onTap: (){
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+        appBar: WidgetUtils().buildRoomBar(state.title,msg: true,drawer: true,
+            scaffoldKey: state.scaffoldKey,onTap: (){
           DialogUtils().showSelectRoomBtmDialog(context,state.pc28Lotto.value).then((value) {
             if(unEmpty(value?.name)){
-              print("跳转传入2 ${jsonEncode(value?.toJson())}");
               Get.toNamed(Routes.game_room,arguments: value);
             }
           });
-        },drawEnd: () {
-          scaffoldMineKey.currentState?.openEndDrawer();
         }),
-        endDrawer: EndsDrawerView(),
         body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(

@@ -11,6 +11,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/main.dart';
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
@@ -53,12 +54,11 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldMineKey,
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildGameBar(state.title, buildRoomType(),
           collect: false, msg: true, onTap: () {
-        DialogUtils()
-            .showSelectRoomBtmDialog(context, state.pc28Lotto.value)
+        DialogUtils().showSelectRoomBtmDialog(context, state.pc28Lotto.value)
             .then(
           (value) {
             if (unEmpty(value?.name)) {
@@ -66,10 +66,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
             }
           },
         );
-      }, drawEnd: () {
-        scaffoldMineKey.currentState?.openEndDrawer();
       }),
-      endDrawer: EndsDrawerView(),
       backgroundColor: ColorX.pageBg2(),
       body: Container(
         child: Column(

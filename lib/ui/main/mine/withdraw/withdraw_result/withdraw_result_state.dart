@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 
@@ -11,5 +12,6 @@ class WithdrawResultState {
 
   ///余额
   var balance = "".obs;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 }

@@ -9,6 +9,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
 import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
@@ -44,14 +45,9 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: state.scaffoldMineKey,
-      appBar: WidgetUtils().buildRxAppBar(logic.state.title,msg: true,bgColor: ColorX.appBarBg()
-          ,drawer:true,drawEnd:(){
-        state.scaffoldMineKey.currentState?.openEndDrawer();
-      }),
-
-      endDrawer: EndsDrawerView(),
+    return DrawerScaffold(
+      scaffoldKey: state.scaffoldKey,
+      appBar: WidgetUtils().buildRxAppBar(logic.state.title,msg: true,bgColor: ColorX.appBarBg(),drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Container(
         child: Column(
@@ -64,33 +60,33 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Text(Intr().youxipingtai,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     flex: 40,
+                    child: Text(Intr().youxipingtai,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                   ),
                   Expanded(
-                    child: Text(Intr().bishu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     flex: 30,
+                    child: Text(Intr().bishu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                   ),
                   Expanded(
+                    flex: 30,
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(Intr().touzhue,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
-                    flex: 30,
                   ),
                   Expanded(
+                    flex: 30,
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
-                    flex: 30,
                   ),
                   Expanded(
+                    flex: 30,
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(Intr().youxiaotouzhu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
-                    flex: 30,
                   ),
                 ],
               ),
