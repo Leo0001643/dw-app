@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -15,8 +17,31 @@ import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_timer_item.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
-class GameRoomHotWidget extends StatelessWidget {
+class GameRoomHotWidget extends StatefulWidget {
  const GameRoomHotWidget({super.key});
+
+  @override
+  State<StatefulWidget> createState() => StateGameRoomHotWidget();
+
+}
+
+
+class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
+
+  Timer? _timer;
+
+  @override
+  void initState() {
+    loggerArray(["房型更换这里刷新了吗",_timer]);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel(); // 销毁时取消定时任务
+    _timer = null;
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +81,25 @@ class GameRoomHotWidget extends StatelessWidget {
                 Row(
                   children: [buildSealingPlateStatus(),buildStartBettingStatus(),],
                 ),
-                TextTimerItem(state.room.value.gameType.em(),state.pc28Lotto)
+                Obx(() {
+                  // 设置定时任务，每120秒执行一次
+                  _timer?.cancel();
+                  _timer = null;
+                  TextItemLogic? logic=Get.find<TextItemLogic>();
+                  logic.loadDataGameCode(state.room.value.gameType.em());
+                  _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
+                    logic.loadDataGameCode(state.room.value.gameType.em());
+                  });
+                  loggerArray(["倒计时刷新了没",_timer]);
+                  return TextTimerItem(state.room.value.gameType.em(),state.pc28Lotto);
+                }),
               ],
             ),
           );
-    });
+        });
   }
+
+
 
   Widget buildAvatarType(GameRoomLogic logic) {
     GameRoomState state = logic.state;
@@ -90,7 +128,7 @@ class GameRoomHotWidget extends StatelessWidget {
   Widget buildYueHeader(GameRoomLogic logic) {
     GameRoomState state = logic.state;
     var textColor =
-        state.roomType.value == 1 ? ColorX.text0917() : Colors.white;
+    state.roomType.value == 1 ? ColorX.text0917() : Colors.white;
     if (AppData.isLogin()) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,32 +207,26 @@ class GameRoomHotWidget extends StatelessWidget {
           return Visibility(
               visible: logic.showStopBetting,
               child: SizedBox(
-                  height: 34,
-                  child: Image(
-                    image: AssetImage(buildImage()),
+                  height: 34.h,
+                  child: const Image(
+                    image: AssetImage(ImageX.close),
                   )));
         });
 
 
   }
- buildStartBettingStatus() {
-   return GetBuilder<TextItemLogic>(
-       id: "showStartBetting",
-       builder: (logic) {
-         return Visibility(
-             visible: logic.showStartBetting,
-             child: SizedBox(
-                 height: 34,
-                 child: Image(
-                   image: AssetImage(ImageX.start),
-                 )));
-       });
-
-
- }
-
-  String buildImage() {
-
-    return ImageX.close;
+  buildStartBettingStatus() {
+    return GetBuilder<TextItemLogic>(
+        id: "showStartBetting",
+        builder: (logic) {
+          return Visibility(
+              visible: logic.showStartBetting,
+              child: SizedBox(
+                  height: 34.h,
+                  child: const Image(image: AssetImage(ImageX.start),)));
+        });
   }
+
+
+
 }

@@ -8,6 +8,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/main.dart';
@@ -126,6 +127,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                                 if (AppData.isLogin()) {
                                   logic.startBet(context);
                                 } else {
+                                  Get.until((ModalRoute.withName(Routes.main)));
                                   WidgetUtils().goLogin();
                                 }
                               }),
@@ -244,6 +246,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
           if (AppData.isLogin()) {
             DialogUtils().showBettingBtmDialog(context, logic);
           } else {
+            Get.until((ModalRoute.withName(Routes.main)));
             WidgetUtils().goLogin();
           }
       },
