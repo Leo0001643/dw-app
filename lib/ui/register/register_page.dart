@@ -261,23 +261,7 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             SizedBox(height: 20.h,),
             _getImageCode(),
-            SizedBox(height: 40.h,),
-            Center(
-              child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
-                  bg: ColorX.color_fd273e,
-                  textColor: Colors.white,
-                  textSize: 16.sp, onPressed: () {
-                    if (state.varcode.value.status == 1 &&
-                        state.varcode.value.type == 3) {
-                      _handleClickVerify();
-                    } else {
-                      logic.clickRegister();
-                    }
-                  }),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
+            SizedBox(height: 10.h,),
             Center(
               child: Text.rich(TextSpan(children: [
                 WidgetSpan(
@@ -296,8 +280,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 TextSpan(
-                    text: Intr().wywdbty,
-                    style: TextStyle(fontSize: 13.sp, color: ColorX.text0917()),
+                  text: Intr().wywdbty,
+                  style: TextStyle(fontSize: 13.sp, color: ColorX.text0917()),
                 ),
                 WidgetSpan(
                   child: InkWell(
@@ -340,6 +324,20 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ])),
+            ),
+            SizedBox(height: 10.h,),
+            Center(
+              child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
+                  bg: ColorX.color_fd273e,
+                  textColor: Colors.white,
+                  textSize: 16.sp, onPressed: () {
+                    if (state.varcode.value.status == 1 &&
+                        state.varcode.value.type == 3) {
+                      _handleClickVerify();
+                    } else {
+                      logic.clickRegister();
+                    }
+                  }),
             ),
           ],
         ),
