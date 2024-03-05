@@ -207,40 +207,41 @@ class GameRoomComputeWidget extends StatelessWidget {
   }
 
   Widget buildCurrentTermType(GameRoomLogic logic,BuildContext context) {
-    GameRoomState state = logic.state;
-    WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
-    String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??"",year:""); // 4
-    List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
-    var color = state.roomType.value == 1 ? ColorX.text0917():ColorX.color_ffe0ac;
+    return Obx(() {
+      GameRoomState state = logic.state;
+      WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
+      String termData=GameRuleUtil.getSSB(logic.term.value,year:""); // 4
+      List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
+      var color = state.roomType.value == 1 ? ColorX.text0917():ColorX.color_ffe0ac;
 
-
-    // var color = state.roomType.value == 1 ? ColorX.color_10_fc2:ColorX.color_c7956f;
-    var textColor = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
-    return InkWell(
-      onTap: ()=> DialogUtils().showHistoryLotteryBtmDialog(context,logic),
-      child:SingleChildScrollView(
-        scrollDirection:Axis.horizontal,
-        child:  Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
-            SizedBox(width: 5.w,),
-            buildDrawNum("${arr2[0]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
-            buildDrawMark("+",color),
-            buildDrawNum("${arr2[1]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
-            buildDrawMark("+",color),
-            buildDrawNum("${arr2[2]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
-            buildDrawMark("=",color),
-            buildDrawResult("${arr2[3]}",logic,color: GameRuleUtil.getBallNewColor(arr2[3]),showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
-            // SizedBox(width: 5.w,),
-            Visibility(
-              visible: logic.currentStatus.value!=LotteryStatus.sealingPlateStatus,
+      // var color = state.roomType.value == 1 ? ColorX.color_10_fc2:ColorX.color_c7956f;
+      // var textColor = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
+      return InkWell(
+        onTap: ()=> DialogUtils().showHistoryLotteryBtmDialog(context,logic),
+        child:SingleChildScrollView(
+          scrollDirection:Axis.horizontal,
+          child:  Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
+              SizedBox(width: 5.w,),
+              buildDrawNum("${arr2[0]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
+              buildDrawMark("+",color),
+              buildDrawNum("${arr2[1]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
+              buildDrawMark("+",color),
+              buildDrawNum("${arr2[2]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
+              buildDrawMark("=",color),
+              buildDrawResult("${arr2[3]}",logic,color: GameRuleUtil.getBallNewColor(arr2[3]),showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
+              // SizedBox(width: 5.w,),
+              Visibility(
+                visible: logic.currentStatus.value!=LotteryStatus.sealingPlateStatus,
                 child: GameRuleUtil.getDXDS(arr2[3]),),
-            Image.asset(ImageX.icon_down_black,color: color,),
-          ],
+              Image.asset(ImageX.icon_down_black,color: color,),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Widget buildDrawResult(String result ,GameRoomLogic logic,{Color? color,Color? textColor  ,showWaittingImg=false}) {

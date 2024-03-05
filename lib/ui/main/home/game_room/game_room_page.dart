@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -102,42 +105,40 @@ class _GameRoomPageState extends State<GameRoomPage> {
                         fit: BoxFit.fill)),
                 child: Column(
                   children: [
-                    GameRoomHotWidget(),
+                    const GameRoomHotWidget(),
                     Expanded(
-                      child: GetBuilder<GameRoomLogic>(
-                        id: GameRoomLogic.gameRoomList,
-                        builder: (logic){
-                          return Stack(
-                            children: [
-                              ListView.builder(
-                                shrinkWrap: true,
+                      child: Stack(
+                        children: [
+                          GetBuilder<GameRoomLogic>(
+                            id: GameRoomLogic.gameRoomList,
+                            builder: (logic){
+                              return ListView.builder(
                                 controller: logic.scrollController,
                                 itemCount: state.gameRoomItemEntityList.length,
                                 itemBuilder: (context, index) {
-                                  GameRoomItemEntity gameRoomItemEntity =
-                                  state.gameRoomItemEntityList[index];
+                                  GameRoomItemEntity gameRoomItemEntity = state.gameRoomItemEntityList[index];
                                   return buildItemWidget(index, logic, gameRoomItemEntity);
                                 },
-                              ),
-                              Positioned(left: 0, right: 0, top: 20.h, child: buildCountDown()),
-                              buildFloatingBtn(() {
-                                if (AppData.isLogin()) {
-                                  logic.startBet(context);
-                                } else {
-                                  Get.until((ModalRoute.withName(Routes.main)));
-                                  WidgetUtils().goLogin();
-                                }
-                              }),
-                              BarrageWall(
-                                maxBulletHeight: 5,
-                                controller: state.barrageWallController,
-                                speedCorrectionInMilliseconds: 3000,
-                                height: 0.2.sh,
-                                child: Container(),
-                              ),
-                            ],
-                          );
-                        },
+                              );
+                            },
+                          ),
+                          Positioned(left: 0, right: 0, top: 20.h, child: buildCountDown()),
+                          buildFloatingBtn(() {
+                            if (AppData.isLogin()) {
+                              logic.startBet(context);
+                            } else {
+                              Get.until((ModalRoute.withName(Routes.main)));
+                              WidgetUtils().goLogin();
+                            }
+                          }),
+                          BarrageWall(
+                            maxBulletHeight: 5,
+                            controller: state.barrageWallController,
+                            speedCorrectionInMilliseconds: 3000,
+                            height: 0.2.sh,
+                            child: Container(),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -272,15 +273,14 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   Widget buildItemWidget(
       int index, GameRoomLogic logic, GameRoomItemEntity gameRoomItemEntity) {
-    print("----------index ${index}  ");
     if (gameRoomItemEntity.type == "bet_result") {
       return BettingLeftItem(index, logic, gameRoomItemEntity);
     } else if (gameRoomItemEntity.type == "lottery") {
       return OpenLotteryItem(index, logic, gameRoomItemEntity);
     }else if (gameRoomItemEntity.type == "countTime"||gameRoomItemEntity.type == "closeOver"||gameRoomItemEntity.type == "openOver") {
-      return CountDownItemWidget(index, logic, gameRoomItemEntity);
+      return CountDownItemWidget(logic, gameRoomItemEntity);
     }
-    return SizedBox();
+    return Container();
   }
 
   buildCountDown() {

@@ -40,8 +40,7 @@ typedef TimerListener = Function(int showTime, LotteryStatus status);
  * 参考count_down_text.dart
  */
 class TextItemLogic extends GetxController {
-  Rx<CountDownLotteryEntity> countDownLotteryEntity =
-      CountDownLotteryEntity().obs;
+  Rx<CountDownLotteryEntity> countDownLotteryEntity = CountDownLotteryEntity().obs;
   final TextTimerState state = TextTimerState();
   StreamSubscription? loginStream;
   var count = 100;
@@ -131,7 +130,7 @@ class TextItemLogic extends GetxController {
       diffTime, Pc28LottoRooms pc28lottoRoom,Map<String,dynamic> pc28Plan) {
     Map<String, dynamic> allTime = pc28Plan['all'];
     Map<String, dynamic> roomcountdown = {};
-    Map<String, dynamic> roominf = pc28lottoRoom.toJson();
+    // Map<String, dynamic> roominf = pc28lottoRoom.toJson();
     String key = pc28lottoRoom.gameType.toString();
     if (pc28lottoRoom.stateMsg != "0") {
       if (pc28lottoRoom.stateMsg == "1") {
@@ -143,7 +142,6 @@ class TextItemLogic extends GetxController {
       }
       roomcountdown['${key}Term'] = '--';
       roomcountdown['${key}Notice'] = allTime[key]['msg'] ?? '';
-
       lastStatus=LotteryStatus.initStatus;
     } else if (allTime[key]['code'] == 100020) {
       currentStatus.value=LotteryStatus.wattingLotteryStatus;
@@ -170,9 +168,7 @@ class TextItemLogic extends GetxController {
           //开始时间
           if (onlineT <= allTime[key]['data'][s + 1]['openTime']) {
             int openT =
-                (int.parse(allTime[key]['data'][s + 1]['openTime'].toString()) -
-                        onlineT) ~/
-                    1000;
+                (int.parse(allTime[key]['data'][s + 1]['openTime'].toString()) - onlineT) ~/ 1000;
             roomcountdown['${key}OpenResult'] = openT;
             if (openT == 0) {
               roomcountdown['${key}OpenResult'] = Intr().kaijiangzhong;
@@ -236,7 +232,7 @@ class TextItemLogic extends GetxController {
           resetStatusWhenClosed();
 
           //现在时间 opentime直接显示封盘中
-          print("为1  封盘中");
+          // print("为1  封盘中");
           roomcountdown['${key}Time'] = Intr().fengpanzhong;
           roomcountdown['${key}Term'] = allTime[key]['data'][0]['term'];
           lastStatus=LotteryStatus.sealingPlateStatus;
@@ -268,7 +264,7 @@ class TextItemLogic extends GetxController {
       return sec;
     }
     String result = sec.substring(2, sec.length);
-    print("result ${result}");
+    // print("result ${result}");
     return result;
   }
 

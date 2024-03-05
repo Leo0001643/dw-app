@@ -160,7 +160,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
     return GetBuilder<TextItemLogic>(
         id: "textTimerItem",
         builder: (logic) {
-          print("开始刷新logic");
+          // print("开始刷新logic");
           String result = "";
 
           String term1 = "";

@@ -38,7 +38,8 @@ class GameRoomLogic extends GetxController {
   static String  gameRoomCompute = "gameRoomComputeWidget";
   static String  gameRoomList = "gameRoomLogicList";
 
-
+  StreamSubscription? textTimerListener;
+  StreamSubscription? textStatusListener;
 
   // RxList<OddsContent> dataBettingList=<OddsContent>[].obs;
 
@@ -55,12 +56,12 @@ class GameRoomLogic extends GetxController {
     loadBalance();
     TextItemLogic textItemLogic = Get.find<TextItemLogic>();
     // test();
-    textItemLogic.countDownLotteryEntity.stream.listen((value) {
+    textTimerListener = textItemLogic.countDownLotteryEntity.stream.listen((value) {
       // print("修改了值");
       handleMessage(value);
     });
 
-    textItemLogic.currentStatus.stream.listen((value) {
+    textStatusListener = textItemLogic.currentStatus.stream.listen((value) {
       // print("修改了值");
       currentStatus.value = value;
       currentStatus.refresh();
@@ -72,6 +73,10 @@ class GameRoomLogic extends GetxController {
   @override
   void onClose() {
     // timer?.cancel();
+    textTimerListener?.cancel();
+    textTimerListener = null;
+    textStatusListener?.cancel();
+    textStatusListener = null;
     SocketUtils().destroy();
     super.onClose();
   }
@@ -229,9 +234,9 @@ class GameRoomLogic extends GetxController {
   }
 
   void handleSystemMessgeResult(CountDownLotteryEntity entity) {
-    GameRoomItemEntity gameRoomItemEntity =
-        GameRoomItemEntity(type: entity.type, data: entity);
+    GameRoomItemEntity gameRoomItemEntity = GameRoomItemEntity(type: entity.type, data: entity);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
+    loggerArray(["收到了系统消息",entity.toJson()]);
     update([gameRoomList]);
     Future.delayed(Duration(milliseconds: 100),(){
       if (scrollController.hasClients) {
@@ -278,7 +283,7 @@ class GameRoomLogic extends GetxController {
         CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
     term.value = item.term.em();
     update([gameRoomCompute]);
-    handleSystemMessgeResult(countDownLotteryEntity);
+    handleSystemMessgeResult(item);
   }
 
 

@@ -40,7 +40,7 @@ class TextTimerItemState extends State<TextTimerItem> {
     return GetBuilder<TextItemLogic>(
         id: "textTimerItem",
         builder: (logic) {
-          print("开始刷新logic");
+          // print("开始刷新logic");
           String result = "";
           if (Intr().fengpanzhong == logic.state.text_timer.value) {
             result = Intr().fengpanzhong;
