@@ -575,7 +575,8 @@ class WidgetUtils {
           : TextField(
         autofocus: autofocus,
         enabled: enabled,
-        cursorHeight: textSize,
+        // cursorHeight: textSize,
+        cursorColor: ColorX.textBlack(),
         maxLines: maxLines,
         focusNode: focusNode,
         controller: TextEditingController.fromValue(TextEditingValue(

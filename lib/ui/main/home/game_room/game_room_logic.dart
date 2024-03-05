@@ -220,8 +220,7 @@ class GameRoomLogic extends GetxController {
   void handleBetResult(WsBetEntity entity) {
     print("=====>3");
     loggerArray(["投注信息打印",entity.toJson()]);
-    GameRoomItemEntity gameRoomItemEntity =
-        GameRoomItemEntity(type: entity.type, data: entity);
+    GameRoomItemEntity gameRoomItemEntity = GameRoomItemEntity(type: entity.type, data: entity);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
     update([gameRoomList]);
 
