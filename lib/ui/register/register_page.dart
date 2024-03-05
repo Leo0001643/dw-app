@@ -412,7 +412,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
                     hintColor: ColorX.text586(),
                     backgroundColor: Colors.transparent,
-                    inputType: TextInputType.number,
+                    inputType: TextInputType.text,
                     onChanged: (v) => state.vcode = v),
                 Obx(() {
                   return WidgetUtils()

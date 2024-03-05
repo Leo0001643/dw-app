@@ -208,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
                             225.w, 46.h, 14.sp, ColorX.text949(), Intr().yzm,
                             hintColor: ColorX.text586(),
                             backgroundColor: Colors.transparent,
-                            inputType: TextInputType.number,
+                            inputType: TextInputType.text,
                             onChanged: (v) => state.vcode = v),
                         WidgetUtils().buildVarCode(state.varcode.value.varCode.em(),
                                 () {
