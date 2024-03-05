@@ -236,7 +236,7 @@ class GameRoomLogic extends GetxController {
   void handleSystemMessgeResult(CountDownLotteryEntity entity) {
     GameRoomItemEntity gameRoomItemEntity = GameRoomItemEntity(type: entity.type, data: entity);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
-    loggerArray(["收到了系统消息",entity.toJson()]);
+    // loggerArray(["收到了系统消息",entity.toJson()]);
     update([gameRoomList]);
     Future.delayed(Duration(milliseconds: 100),(){
       if (scrollController.hasClients) {
@@ -279,8 +279,8 @@ class GameRoomLogic extends GetxController {
   }
 
   void handleMessage(CountDownLotteryEntity countDownLotteryEntity) {
-    CountDownLotteryEntity item =
-        CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
+    ///这里因为是监听的countDownLotteryEntity值的变化，所以不能直接加，需要深度拷贝，否则会造成页面数据显示混乱
+    CountDownLotteryEntity item = CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
     term.value = item.term.em();
     update([gameRoomCompute]);
     handleSystemMessgeResult(item);
