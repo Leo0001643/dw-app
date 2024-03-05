@@ -12,8 +12,6 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'room_list_logic.dart';
 
 class RoomListPage extends StatefulWidget {

@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -67,7 +68,13 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             content: Column(
               children: [
                 InkWell(
-                  onTap: ()=> DialogUtils().showConfirmBetDialog(context,widget.logic,wsBetResultEntity),
+                  onTap: (){
+                    if(AppData.isLogin()){
+                      DialogUtils().showConfirmBetDialog(context,widget.logic,wsBetResultEntity);
+                    } else {
+                      showToast(Intr().qingxiandenglu);
+                    }
+                  },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 4.w,horizontal: 15.w,),
                     decoration: BoxDecoration(
