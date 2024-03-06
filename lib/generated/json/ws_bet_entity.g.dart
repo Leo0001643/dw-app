@@ -1,5 +1,5 @@
-import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
+import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 
 WsBetEntity $WsBetEntityFromJson(Map<String, dynamic> json) {
   final WsBetEntity wsBetEntity = WsBetEntity();

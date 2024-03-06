@@ -1,5 +1,5 @@
-import 'package:leisure_games/app/socket/isolate_msg_entity.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
+import 'package:leisure_games/app/socket/isolate_msg_entity.dart';
 
 IsolateMsgEntity $IsolateMsgEntityFromJson(Map<String, dynamic> json) {
   final IsolateMsgEntity isolateMsgEntity = IsolateMsgEntity();

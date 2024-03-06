@@ -1,6 +1,6 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
-import 'package:leisure_games/ui/bean/jump_payment_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
+import 'package:leisure_games/ui/bean/jump_payment_entity.dart';
 
 
 PaymentChannelEntity $PaymentChannelEntityFromJson(Map<String, dynamic> json) {

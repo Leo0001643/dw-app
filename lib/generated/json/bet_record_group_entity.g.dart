@@ -70,7 +70,7 @@ BetRecordGroupRecord $BetRecordGroupRecordFromJson(Map<String, dynamic> json) {
   if (validamount != null) {
     betRecordGroupRecord.validamount = validamount;
   }
-  final double? winlose = jsonConvert.convert<double>(json['winlose']);
+  final num? winlose = jsonConvert.convert<num>(json['winlose']);
   if (winlose != null) {
     betRecordGroupRecord.winlose = winlose;
   }
@@ -109,7 +109,7 @@ extension BetRecordGroupRecordExtension on BetRecordGroupRecord {
   BetRecordGroupRecord copyWith({
     String? betamount,
     String? validamount,
-    double? winlose,
+    num? winlose,
     String? betCount,
     String? time,
     String? title,

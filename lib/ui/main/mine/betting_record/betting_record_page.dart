@@ -1,18 +1,19 @@
 import 'dart:convert';
 
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 
-import '../../ends_drawer_view.dart';
 import 'betting_record_logic.dart';
 
 ///投注记录
@@ -69,19 +70,19 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: Text(Intr().touzhuriqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                   flex: 40,
+                  child: Text(Intr().touzhuriqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                 ),
                 Expanded(
-                  child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                   flex: 30,
+                  child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                 ),
                 Expanded(
+                  flex: 30,
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(Intr().youxiaotouzhu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                   ),
-                  flex: 30,
                 ),
               ],
             ),
@@ -106,7 +107,6 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
                   } else {
                     return Container();
                   }
-
                 },
                 separatorBuilder: (context,index){
                   return Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,);
@@ -149,24 +149,27 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             flex: 40,
           ),
           Expanded(
+            flex: 30,
             child: Text("${(group.winloseTotal.em() >= 0) ? "+" : ""}${group.winloseTotal.em()}",
               style: TextStyle(fontSize: 14.sp,color: (group.winloseTotal.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,fontWeight: FontWeight.w600),),
-            flex: 30,
           ),
           Expanded(
+            flex: 30,
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(group.validAmountTotal.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
             ),
-            flex: 30,
           ),
         ],
       ),
     );
   }
 
+  ///0 显示黑色 正数 显示绿色  负数 显示红色
+
   Widget buildBettingItem(BetRecordGroupRecord item) {
-    // var result = index%2 == 1;
+    var winloseColor = item.winlose.em() == 0 ? ColorX.color_5b6d7b : ((item.winlose.em() > 0) ? ColorX.color_23a81d : ColorX.color_fc243b);
+
     return InkWell(
       onTap:(){
         if(num.parse(item.validamount??"0")>0){
@@ -190,7 +193,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             Expanded(
               flex: 30,
               child: Text("${(item.winlose.em() >= 0) ? "+" : ""}${item.winlose.em()}",
-                style: TextStyle(fontSize: 14.sp,color: (item.winlose.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
+                style: TextStyle(fontSize: 14.sp,color: winloseColor),),
             ),
             Expanded(
               flex: 30,
@@ -199,14 +202,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
                 child: Text(item.validamount.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
               ),
             ),
-            Visibility(
-                visible: (num.parse(item.validamount??"0")>0),
-                child:
-            Icon(
-              Icons.arrow_right,
-              color: Colors.grey,
-              size: 20,
-            ))
+            num.parse(item.validamount??"0")>0 ? WidgetUtils().buildImage(ImageX.ic_into_right, 12.r, 12.r) : SizedBox(width: 12.r,),
           ],
         ),
       ),

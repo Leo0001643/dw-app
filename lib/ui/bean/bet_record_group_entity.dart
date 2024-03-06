@@ -29,7 +29,7 @@ class BetRecordGroupEntity {
 class BetRecordGroupRecord {
 	String? betamount;
 	String? validamount;
-	double? winlose;
+	num? winlose;
 	String? betCount;
 	String? time;
 	String? title;

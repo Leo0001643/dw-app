@@ -1,5 +1,5 @@
-import 'package:leisure_games/app/socket/ws_message_get_entity.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
+import 'package:leisure_games/app/socket/ws_message_get_entity.dart';
 
 WsMessageGetEntity $WsMessageGetEntityFromJson(Map<String, dynamic> json) {
   final WsMessageGetEntity wsMessageGetEntity = WsMessageGetEntity();
