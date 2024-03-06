@@ -491,8 +491,8 @@ class StateMinePage extends State<MinePage> {
         alignment: Alignment.center,
         child: SvgPicture.asset(
           icon,
-          width: 18.w,
-          height: 18.w,
+          width: 24.w,
+          // height: 18.w,
           fit: BoxFit.contain,
         ),
       );
