@@ -985,7 +985,7 @@ class EN{
     "zhifutiaozhuan":"Payment jump%s",
     "quedingtijiaodingdan":"Are you sure you want to submit the order？",
     "caozuochenggong":"Operation successful",
-    "zhuzhanghao":"primary account number",
+    "zhuzhanghao":"Main balance",
     "qingxuanzhezhuanru":"Please select the transfer account",
     "qingxuanzhezhuanchu":"Please select the account to transfer out",
     "qingxuanzhetikuanzhanghu":"Please select a withdrawal account",

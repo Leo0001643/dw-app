@@ -478,7 +478,7 @@ class DialogUtils {
   }
 
   Future<dynamic> showSelectOptionBtmGirdDialog(
-      BuildContext context, String title, List data) {
+      BuildContext context, String title, List data,int defIndex) {
     return showModalBottomSheet<dynamic>(
         context: context,
         isScrollControlled: true,
@@ -491,7 +491,7 @@ class DialogUtils {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: SelectOptionBtmGirdDialog(title, data),
+            child: SelectOptionBtmGirdDialog(title, data,defIndex),
           );
         });
   }

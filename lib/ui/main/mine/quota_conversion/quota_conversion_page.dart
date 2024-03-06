@@ -7,14 +7,13 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'quota_conversion_logic.dart';
 
 class QuotaConversionPage extends StatefulWidget {
@@ -137,12 +136,15 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               InkWell(
-                                onTap:()=> DialogUtils().showSelectOptionBtmGirdDialog(context, Intr().qingxuanzhezhuanchu, state.platforms).then((value) {
-                                  if(unEmpty(value)){
-                                    state.leftAccount.value = value;
-                                    state.leftAccount.refresh();
-                                  }
-                                }),
+                                onTap:(){
+                                  var index = state.platforms.indexOf(state.leftAccount.value);
+                                  DialogUtils().showSelectOptionBtmGirdDialog(context, Intr().qingxuanzhezhuanchu, state.platforms,index).then((value) {
+                                    if(unEmpty(value)){
+                                      state.leftAccount.value = value;
+                                      state.leftAccount.refresh();
+                                    }
+                                  });
+                                },
                                 child: Row(
                                   children: [
                                     Expanded(
@@ -153,7 +155,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                                 ),
                               ),
                               SizedBox(height: 5.h,),
-                              Text("${Intr().yue_}$symbol${state.leftAccount.value.money.em()}",
+                              Text("${Intr().yue_}$symbol${DataUtils.formatMoney(state.leftAccount.value.money)}",
                                 style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                             ],
                           );
@@ -175,12 +177,15 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               InkWell(
-                                onTap:()=> DialogUtils().showSelectOptionBtmGirdDialog(context, Intr().qingxuanzhezhuanru, state.platforms).then((value) {
-                                  if(unEmpty(value)){
-                                    state.rightAccount.value = value;
-                                    state.rightAccount.refresh();
-                                  }
-                                }),
+                                onTap:(){
+                                  var index = state.platforms.indexOf(state.rightAccount.value);
+                                  DialogUtils().showSelectOptionBtmGirdDialog(context, Intr().qingxuanzhezhuanru, state.platforms,index).then((value) {
+                                    if(unEmpty(value)){
+                                      state.rightAccount.value = value;
+                                      state.rightAccount.refresh();
+                                    }
+                                  });
+                                },
                                 child: Row(
                                   children: [
                                     Expanded(
@@ -191,7 +196,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                                 ),
                               ),
                               SizedBox(height: 5.h,),
-                              Text("${Intr().yue_}$symbol${state.rightAccount.value.money.em()}",
+                              Text("${Intr().yue_}$symbol${DataUtils.formatMoney(state.rightAccount.value.money)}",
                                 style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                             ],
                           );
@@ -308,7 +313,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("$symbol${item.money.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+              Text("$symbol${DataUtils.formatMoney(item.money)}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
               InkWell(
                 onTap: ()=> logic.transfer(item),
                 child: Text(Intr().huishou,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862(),decoration: TextDecoration.underline),),

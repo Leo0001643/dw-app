@@ -8,7 +8,7 @@ BetRecordGroupEntity $BetRecordGroupEntityFromJson(Map<String, dynamic> json) {
   if (betAmountTotal != null) {
     betRecordGroupEntity.betAmountTotal = betAmountTotal;
   }
-  final String? validAmountTotal = jsonConvert.convert<String>(
+  final double? validAmountTotal = jsonConvert.convert<double>(
       json['validAmountTotal']);
   if (validAmountTotal != null) {
     betRecordGroupEntity.validAmountTotal = validAmountTotal;
@@ -46,7 +46,7 @@ Map<String, dynamic> $BetRecordGroupEntityToJson(BetRecordGroupEntity entity) {
 extension BetRecordGroupEntityExtension on BetRecordGroupEntity {
   BetRecordGroupEntity copyWith({
     double? betAmountTotal,
-    String? validAmountTotal,
+    double? validAmountTotal,
     double? winloseTotal,
     int? betCountTotal,
     List<BetRecordGroupRecord>? record,
@@ -66,7 +66,7 @@ BetRecordGroupRecord $BetRecordGroupRecordFromJson(Map<String, dynamic> json) {
   if (betamount != null) {
     betRecordGroupRecord.betamount = betamount;
   }
-  final String? validamount = jsonConvert.convert<String>(json['validamount']);
+  final double? validamount = jsonConvert.convert<double>(json['validamount']);
   if (validamount != null) {
     betRecordGroupRecord.validamount = validamount;
   }
@@ -108,7 +108,7 @@ Map<String, dynamic> $BetRecordGroupRecordToJson(BetRecordGroupRecord entity) {
 extension BetRecordGroupRecordExtension on BetRecordGroupRecord {
   BetRecordGroupRecord copyWith({
     String? betamount,
-    String? validamount,
+    double? validamount,
     num? winlose,
     String? betCount,
     String? time,

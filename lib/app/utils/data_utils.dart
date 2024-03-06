@@ -491,6 +491,9 @@ class DataUtils{
     return const Uuid().v4();
   }
 
+  static String formatMoney(num? money){
+    return money == 0 ? '0': "${money.em()}";
+  }
 
   static String buildClientName(int length){
     var order = DateTime.now().millisecondsSinceEpoch.toString();

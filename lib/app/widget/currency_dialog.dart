@@ -25,7 +25,7 @@ class StateCurrencyDialog extends State<CurrencyDialog>{
 
   List<BalanceEntity> country = [
     BalanceEntity(language: Intr().wallet_cny, icon: ImageX.icon_jj_grey),
-    BalanceEntity(language: Intr().wallet_usdt, icon: ImageX.icon_dollar_grey),
+    BalanceEntity(language: Intr().wallet_usdt, icon: ImageX.usdt),
   ];
   var dropdownValue = BalanceEntity().obs;
 

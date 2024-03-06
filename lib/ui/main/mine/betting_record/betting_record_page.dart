@@ -9,6 +9,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
@@ -145,19 +146,19 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
       child: Row(
         children: [
           Expanded(
-            child: Text(Intr().zongji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
             flex: 40,
+            child: Text(Intr().zongji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
           ),
           Expanded(
             flex: 30,
-            child: Text("${(group.winloseTotal.em() >= 0) ? "+" : ""}${group.winloseTotal.em()}",
+            child: Text("${(group.winloseTotal.em() >= 0) ? "+" : ""}${DataUtils.formatMoney(group.winloseTotal)}",
               style: TextStyle(fontSize: 14.sp,color: (group.winloseTotal.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,fontWeight: FontWeight.w600),),
           ),
           Expanded(
             flex: 30,
             child: Align(
               alignment: Alignment.centerRight,
-              child: Text(group.validAmountTotal.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
+              child: Text(DataUtils.formatMoney(group.validAmountTotal),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
             ),
           ),
         ],
@@ -172,7 +173,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
 
     return InkWell(
       onTap:(){
-        if(num.parse(item.validamount??"0")>0){
+        if(item.validamount.em() > 0){
           if(state.currentWallet.value == state.wallets.first){
             item.cur = "1";
           } else {
@@ -192,17 +193,17 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             ),
             Expanded(
               flex: 30,
-              child: Text("${(item.winlose.em() >= 0) ? "+" : ""}${item.winlose.em()}",
+              child: Text("${(item.winlose.em() >= 0) ? "+" : ""}${DataUtils.formatMoney(item.winlose)}",
                 style: TextStyle(fontSize: 14.sp,color: winloseColor),),
             ),
             Expanded(
               flex: 30,
               child: Align(
                 alignment: Alignment.centerRight,
-                child: Text(item.validamount.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+                child: Text(DataUtils.formatMoney(item.validamount),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
               ),
             ),
-            num.parse(item.validamount??"0")>0 ? WidgetUtils().buildImage(ImageX.ic_into_right, 12.r, 12.r) : SizedBox(width: 12.r,),
+            item.validamount.em() >0 ? WidgetUtils().buildImage(ImageX.ic_into_right, 12.r, 12.r) : SizedBox(width: 12.r,),
           ],
         ),
       ),

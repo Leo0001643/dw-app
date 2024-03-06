@@ -908,7 +908,7 @@ class VI{
     "zhifutiaozhuan":"Thanh toán Nhảy%s",
     "quedingtijiaodingdan":"Bạn có chắc chắn muốn đặt hàng?？",
     "caozuochenggong":"Hoạt động thành công",
-    "zhuzhanghao":"Tài khoản chính",
+    "zhuzhanghao":"Số dư chính",
     "qingxuanzhezhuanru":"Vui lòng chọn Chuyển khoản",
     "qingxuanzhezhuanchu":"Vui lòng chọn Chuyển tài khoản",
     "qingxuanzhetikuanzhanghu":"Vui lòng chọn tài khoản rút tiền",

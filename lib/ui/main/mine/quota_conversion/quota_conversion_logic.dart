@@ -76,11 +76,13 @@ class QuotaConversionLogic extends GetxController {
       if(add){
         state.platforms.insert(0, PlatformEntity(money: value.money,liveName: "main",currency: AppData.wallet()? "CNY":"USDT"));
       }
-      state.leftAccount.value = state.platforms.first;
+      if(state.platforms.isNotEmpty){
+        state.leftAccount.value = state.platforms.first;
+      }
       if(AppData.wallet()){
         state.mainBal.value = BalanceEntity(icon:ImageX.icon_jj_grey, language: Intr().wallet_cny, money: value.money);
       }else {
-        state.mainBal.value = BalanceEntity(icon:ImageX.icon_dollar_grey, language: Intr().wallet_usdt, money: value.money);
+        state.mainBal.value = BalanceEntity(icon:ImageX.usdt, language: Intr().wallet_usdt, money: value.money);
       }
       state.mainBal.refresh();
     });

@@ -9,8 +9,9 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 class SelectOptionBtmGirdDialog extends StatefulWidget {
   String title;
   List data;
+  int defIndex;
 
-  SelectOptionBtmGirdDialog(this.title, this.data, {super.key});
+  SelectOptionBtmGirdDialog(this.title, this.data,this.defIndex, {super.key});
 
   @override
   State<StatefulWidget> createState() => StateSelectOptionBtmDialog();
@@ -24,52 +25,12 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmGirdDialog> {
   @override
   void initState() {
     data.addAll(widget.data);
+    currentIndex.value = widget.defIndex;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var childs = List<Widget>.empty(growable: true);
-    childs.add(buildHeader());
-    childs.add(SizedBox(
-      height: 10.h,
-    ));
-    childs.add(GridView.builder(
-      shrinkWrap: true,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 39.0,
-        mainAxisSpacing: 18.0,
-        childAspectRatio: 70 / 30,
-      ),
-      itemCount: data.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Obx(() {
-          return InkWell(
-            onTap: () {
-              currentIndex.value = data.indexOf(data.elementAt(index));
-            },
-            child: buildOptionItem2(data.elementAt(index),
-                currentIndex.value == data.indexOf(data.elementAt(index))),
-          );
-        });
-      },
-    ));
-    childs.add(SizedBox(
-      height: 30.h,
-    ));
-    childs.add(Align(
-      alignment: Alignment.centerRight,
-      child: Padding(
-        padding: EdgeInsets.only(right: 15.w, left: 15.w),
-        child: WidgetUtils().buildElevatedButton(
-            Intr().confirm, double.infinity, 50.h,
-            textSize: 12.sp, bg: ColorX.color_fc243b, onPressed: () {
-          Navigator.of(context).pop(data[currentIndex.value]);
-        }),
-      ),
-    ));
-
     return Container(
       margin: EdgeInsets.all(15),
       decoration: BoxDecoration(
@@ -78,7 +39,44 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmGirdDialog> {
             topLeft: Radius.circular(20.r), topRight: Radius.circular(20.r)),
       ),
       child: Column(
-        children: childs,
+        children: [
+          buildHeader(),
+          SizedBox(height: 10.h,),
+          GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 39.0,
+              mainAxisSpacing: 18.0,
+              childAspectRatio: 70 / 30,
+            ),
+            itemCount: data.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Obx(() {
+                return InkWell(
+                  onTap: () {
+                    // currentIndex.value = data.indexOf(data.elementAt(index));
+                    Navigator.pop(context,data.elementAt(index));
+                  },
+                  child: buildOptionItem2(data.elementAt(index),
+                      currentIndex.value == data.indexOf(data.elementAt(index))),
+                );
+              });
+            },
+          ),
+          SizedBox(height: 30.h,),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: EdgeInsets.only(right: 15.w, left: 15.w),
+              child: WidgetUtils().buildElevatedButton(
+                  Intr().cancel, double.infinity, 50.h,
+                  textSize: 12.sp, bg: ColorX.color_fc243b, onPressed: () {
+                Navigator.of(context).pop(null);
+              }),
+            ),
+          ),
+        ],
       ),
     );
   }

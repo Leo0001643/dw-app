@@ -166,11 +166,13 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 20.h),
-            alignment: Alignment.bottomCenter,
-            child: WidgetUtils().buildElevatedButton(Intr().duihuan, 335.w, 50.h,
-                bg: ColorX.color_fc243b, onPressed: ()=> logic.exchange()),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(top: 20.h),
+              alignment: Alignment.topCenter,
+              child: WidgetUtils().buildElevatedButton(Intr().duihuan, 335.w, 50.h,
+                  bg: ColorX.color_fc243b, onPressed: ()=> logic.exchange()),
+            ),
           ),
         ],
       ),

@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart'  as T;
@@ -70,16 +71,16 @@ class _BettingDetailChildPageState extends State<BettingDetailChildPage> {
     );
   }
 
-  Widget buildBettingItem(T.Record? item) {
+  Widget buildBettingItem(T.Record item) {
     // var result = index%2 == 1;
-    var date = DateUtil.formatDateMs((num.parse(item?.betTime??"0").toInt()).em() ,isUtc: true,format: Intr().nianyueri);
+    var date = DateUtil.formatDateMs((num.parse(item.betTime??"0").toInt()).em() ,isUtc: true,format: Intr().nianyueri);
 
     return InkWell(
       onTap:(){
        
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal:12,vertical: 8),
+        margin: EdgeInsets.symmetric(horizontal:12.w,vertical: 8.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: Color(0xFFF7F8FB)
@@ -91,44 +92,43 @@ class _BettingDetailChildPageState extends State<BettingDetailChildPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                  Text("${date}",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                Text("${((item?.winlose.em()??0) >= 0) ? "+" : ""}${item?.winlose.em()}",
-                  style: TextStyle(fontSize: 14.sp,color: ((item?.winlose.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
+                  Text(date,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                Text("${((item.winlose.em()??0) >= 0) ? "+" : ""}${DataUtils.formatMoney(item.winlose)}",
+                  style: TextStyle(fontSize: 14.sp,color: ((item.winlose.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
               ],
             ),
-            SizedBox(height: 12,),
+            SizedBox(height: 12.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text("第${item?.qishu}期",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                Text(Intr().dixqi([item.qishu ?? '']),style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
               ],
             ),
-            SizedBox(height: 12,),
+            SizedBox(height: 12.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                Wrap(
-                 children: [ Text("${item?.gameName.em()}",style: TextStyle(color: Colors.red,fontSize: 12),),
-                   Text("${item?.txt1.em()}",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                   Text("@",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                   Text("${item?.odds.em()} ${item?.odds2.em()}",style: TextStyle(color: Colors.red,fontSize: 12),),
+                 children: [ Text(item.gameName.em(),style: TextStyle(color: Colors.red,fontSize: 12.sp),),
+                   Text(item.txt1.em(),style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                   Text("@",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                   Text("${item.odds.em()} ${item.odds2.em()}",style: TextStyle(color: Colors.red,fontSize: 12.sp),),
                  ],
                )
               ],
             ),
-            SizedBox(height: 12,),
+            SizedBox(height: 12.h,),
             Row(
               children: [
-                Spacer(),
                 Wrap(
-                  children: [ Text("有效投注: ",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                    Text("${item?.validamount}",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                  children: [ Text(Intr().youxiaotouzhu,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                    Text("${item.validamount}",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
                   ],
                 ),
                 Wrap(
                   children: [
-                    Text("投注额: ",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                    Text("${item?.betamount}",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                    Text(Intr().touzhue,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                    Text("${item.betamount}",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
                   ],
                 )
               ],

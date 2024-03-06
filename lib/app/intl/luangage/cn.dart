@@ -911,7 +911,7 @@ class CN {
     "zhifutiaozhuan":"支付跳转%s",
     "quedingtijiaodingdan":"确定要提交订单吗？",
     "caozuochenggong":"操作成功",
-    "zhuzhanghao":"主账号",
+    "zhuzhanghao":"主余额",
     "qingxuanzhezhuanru":"请选择转入账户",
     "qingxuanzhezhuanchu":"请选择转出账户",
     "qingxuanzhetikuanzhanghu":"请选择提款账户",

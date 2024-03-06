@@ -94,6 +94,8 @@ class CoinExchangeLogic extends GetxController {
 
 
     HttpService.internalTransfer(params).then((value) {
+      state.fromAmount.value = "";
+      state.toAmount.value = "";
       ///兑换成功余额变化
       eventBus.fire(LoginRefreshEvent(show_notice: false));
       showToast(Intr().caozuochenggong);

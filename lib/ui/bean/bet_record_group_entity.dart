@@ -8,7 +8,7 @@ export 'package:leisure_games/generated/json/bet_record_group_entity.g.dart';
 @JsonSerializable()
 class BetRecordGroupEntity {
 	double? betAmountTotal;
-	String? validAmountTotal;
+	double? validAmountTotal;
 	double? winloseTotal;
 	int? betCountTotal;
 	List<BetRecordGroupRecord>? record;
@@ -28,7 +28,7 @@ class BetRecordGroupEntity {
 @JsonSerializable()
 class BetRecordGroupRecord {
 	String? betamount;
-	String? validamount;
+	double? validamount;
 	num? winlose;
 	String? betCount;
 	String? time;
