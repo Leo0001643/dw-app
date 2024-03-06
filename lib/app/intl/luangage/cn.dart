@@ -839,7 +839,7 @@ class CN {
     "hongbao":"红包",
     "jine":"金额",
     "youxiaoqi":"有效期",
-    "xuyaodamaliang":"需要打码量",
+    "xuyaodamaliang":"需打码量",
     "yitiqu":"已提取",
     "weijihuo":"未激活",
     "yijihuo":"已激活",

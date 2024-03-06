@@ -6,9 +6,11 @@ import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/empty_data_widget.dart';
+import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
@@ -123,42 +125,58 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                       if(state.qrLinkData.value.isEmpty){ return Container(); }
                       return Padding(
                         padding: EdgeInsets.all(10.r),
-                        child: Image.memory(state.qrLinkData.value),
+                        child: Image.memory(state.qrLinkData.value,width: 150.w,fit: BoxFit.fill,),
                       );
                     }),
-                    SizedBox(width: 36.w,),
-                    Column(
-                      children: [
-                        WidgetUtils().buildElevatedButton(Intr().baocuntupian, 132.w, 40.h,
-                            bg: ColorX.cardBg2(),textColor:ColorX.text0917(),onPressed: ()=> logic.saveQrLink()),
-                        SizedBox(height: 15.h,),
-                        WidgetUtils().buildElevatedButton(Intr().fuzhilianjie, 132.w, 40.h,
-                            bg: ColorX.cardBg2(),textColor:ColorX.text0917(),
-                          onPressed: ()=>WidgetUtils().clickCopy(state.userLink.value),),
-                      ],
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: ()=> logic.saveQrLink(),
+                            child: Container(
+                              width: 132.w,
+                              height: 40.h,
+                              alignment: Alignment.center,
+                              child: Text(Intr().baocuntupian,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
+                            ),
+                          ),
+                          SizedBox(height: 15.h,),
+                          InkWell(
+                            onTap: ()=>WidgetUtils().clickCopy(state.userLink.value),
+                            child: Container(
+                              width: 132.w,
+                              height: 40.h,
+                              alignment: Alignment.center,
+                              child: Text(Intr().fuzhilianjie,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
               Container(
                 // color: ColorX.cardBg(),
-                margin: EdgeInsets.only(top: 10),
+                margin: EdgeInsets.only(top: 10.h),
                 width: 1.sw,
-                child: LCTabBar(
-
+                child: LCSegmentTabs(
                   length: state.tabs.length,
-                  controller: _tabController,
-                  tabBarHeight: 45,
+                  tabController: _tabController,
+                  height: 45.h,
+                  border: Border.all(color: Colors.transparent),
                   tabBarColor: Colors.transparent,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicatorPadding: EdgeInsets.only(top: 42,left:90,right: 90,bottom: 1.h),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  indicatorPadding: EdgeInsets.only(top: 38.h,left: 60.w,right: 60.w,bottom: 3.h),
                   indicator: BoxDecoration(
                     borderRadius: BorderRadius.circular(3.r),
-                    color: ColorX.text0917(),
+                    color: ColorX.text5862(),
                   ),
                   labelPadding: EdgeInsets.zero,
-                  labelColor: ColorX.text0917(),
-                  unselectedLabelColor: ColorX.text586(),
+                  labelColor: ColorX.text5862(),
+                  unselectedLabelColor: ColorX.text5d6(),
                   // width: 0.55.sw,
                   tabs: state.tabs.map((e) => Container(
                     height: 45,
@@ -184,7 +202,12 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
 
 
   Widget buildPromotionList(List list) {
-    if(isEmpty(list)){ return EmptyDataWidget(iconWidth: 170.r, iconHeight: 170.r); }
+    if(isEmpty(list)){
+      return Container(
+        alignment: Alignment.center,
+        child: WidgetUtils().buildImage(ImageX.icon_empty, 170.r, 170.r),
+      );
+    }
     var childs = List<Widget>.empty(growable: true);
     childs.add(Row(
       children: [

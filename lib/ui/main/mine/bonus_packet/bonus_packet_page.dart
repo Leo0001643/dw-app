@@ -10,9 +10,6 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:leisure_games/ui/bean/prize_list_entity.dart';
-
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'bonus_packet_logic.dart';
 
 ///红包和奖金
@@ -70,21 +67,15 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
                 Expanded(
                   flex: 25,
                   child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(Intr().youxiaoqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
-                    fontWeight: FontWeight.w500,),),
-                  ),
-                ),
-                Expanded(
-                  flex: 25,
-                  child: Center(
+                    alignment: Alignment.center,
                     child: Text(Intr().jine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                       fontWeight: FontWeight.w500,),),
                   ),
                 ),
                 Expanded(
                   flex: 25,
-                  child: Center(
+                  child: Align(
+                    alignment: Alignment.center,
                     child: Text(Intr().xuyaodamaliang,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                       fontWeight: FontWeight.w500,),),
                   ),
@@ -92,8 +83,16 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
                 Expanded(
                   flex: 25,
                   child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(Intr().jiaoyileibie,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
+                    alignment: Alignment.center,
+                    child: Text(Intr().youxiaoqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
+                    fontWeight: FontWeight.w500,),),
+                  ),
+                ),
+                Expanded(
+                  flex: 25,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(Intr().status,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),
                       fontWeight: FontWeight.w500,),),
                   ),
                 ),
@@ -149,37 +148,30 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
           Expanded(
             flex: 25,
             child: Align(
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.center,
+              child: Text("${item.bonusMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+            ),
+          ),
+          Expanded(
+            flex: 25,
+            child: Align(
+              alignment: Alignment.center,
+              child: Text("${item.bonusMoneyCode.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+            ),
+          ),
+          Expanded(
+            flex: 25,
+            child: Align(
+              alignment: Alignment.center,
               child: Text(DateUtil.formatDateMs(item.endTime.em() * 1000,format: DateFormats.y_mo_d),
                 style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
-            child: Center(
-              child: Text("${item.bonusMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
-            ),
-          ),
-          Expanded(
-            flex: 25,
-            child: Center(
-              child: Text("${item.bonusMoneyCode.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
-            ),
-          ),
-          Expanded(
-            flex: 25,
-            child: InkWell(
-              onTap: () {
-                // if(!result){ showToast(Intr().tiquchenggong); }
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(item.statusString(),style: TextStyle(fontSize: 14.sp, color: true ? ColorX.text5862() : ColorX.text0d1(),
-                      decoration: true ? TextDecoration.underline : null),),
-                  Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
-                ],
-              ),
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(item.statusString(),style: TextStyle(fontSize: 14.sp, color: ColorX.text0d1(),),),
             ),
           ),
         ],
