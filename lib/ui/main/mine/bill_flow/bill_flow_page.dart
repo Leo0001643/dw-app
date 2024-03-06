@@ -14,8 +14,6 @@ import 'package:leisure_games/ui/bean/flow_data_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'bill_flow_logic.dart';
 ///资金明细
 class BillFlowPage extends StatefulWidget {
@@ -161,7 +159,7 @@ class _BillFlowPageState extends State<BillFlowPage> {
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 8.h),
       child: Row(
         children: [
-          Image.asset(select ? item.activeIcon:item.normalIcon),
+          WidgetUtils().buildImage(select ? item.activeIcon:item.normalIcon, 15.r, 15.r),
           SizedBox(width: 3.w,),
           Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
         ],

@@ -805,7 +805,7 @@ class CN {
     "riqi_meidong":"日期 (美东)",
     "jiaoyileibie":"交易类别",
     "jiaoyiedu":"交易额度",
-    "xianyouedu":"现有额度",
+    "xianyouedu":"现有积分",
     "xiazhujifenjiangli":"下注积分奖励",
     "fuyinglifanshui":"负盈利返水",
     "youxileixing":"游戏类型",

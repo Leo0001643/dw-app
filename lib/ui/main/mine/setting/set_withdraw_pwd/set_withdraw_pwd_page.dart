@@ -7,8 +7,6 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
-import '../../../../../main.dart';
-import '../../../ends_drawer_view.dart';
 import 'set_withdraw_pwd_logic.dart';
 
 
@@ -40,7 +38,7 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
             child: Row(
               children: [
                 Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                Text(Intr().yuanmima,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
+                Text(Intr().yuanmima,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight: FontWeight.w700),),
               ],
             ),
           ),
@@ -74,7 +72,7 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
             child: Row(
               children: [
                 Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                Text(Intr().xinmima,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
+                Text(Intr().xinmima,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight: FontWeight.w700),),
               ],
             ),
           ),
@@ -108,7 +106,7 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
             child: Row(
               children: [
                 Text("* ",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                Text(Intr().zaiciqueren,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
+                Text(Intr().zaiciqueren,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight: FontWeight.w700),),
               ],
             ),
           ),
@@ -138,8 +136,8 @@ class _SetWithdrawPwdPageState extends State<SetWithdrawPwdPage> {
           ),
           Expanded(
             child: Container(
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.only(bottom: 20.h),
+              alignment: Alignment.topCenter,
+              margin: EdgeInsets.only(top: 20.h),
               child: WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,
                   bg: ColorX.color_fc243b,onPressed: ()=> logic.changePassword()),
             ),

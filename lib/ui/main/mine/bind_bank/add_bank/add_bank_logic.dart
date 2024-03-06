@@ -65,7 +65,7 @@ class AddBankLogic extends GetxController {
       showToast(Intr().shuruyinhangkakaihudizhi);
       return;
     }
-    if(isEmpty(state.bankPwd.value)){
+    if(isEmpty(state.bankPwd.value) || state.bankPwd.value.length > 12 || state.bankPwd.value.length < 4){
       showToast(Intr().qingshuruchukuanmima);
       return;
     }

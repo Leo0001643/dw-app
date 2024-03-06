@@ -17,7 +17,7 @@ class BillFlowState {
 
   late List<BillWalletEntity> wallets = [
     currentWallet.value,
-    BillWalletEntity(Intr().wallet_usdt, ImageX.icon_dollar_grey,ImageX.icon_dollar_red),
+    BillWalletEntity(Intr().wallet_usdt, ImageX.usdt,ImageX.active_usdt),
   ];
 
   var filterTime = [
@@ -27,7 +27,7 @@ class BillFlowState {
   ];
 
   var filterStatus = [
-    PaymentListBanks(bankName: Intr().quanbu,id: 0),
+    PaymentListBanks(bankName: Intr().quanbujilu,id: 0),
     PaymentListBanks(bankName: Intr().cunqukuan,id: 1),
     PaymentListBanks(bankName: Intr().zhuanzhang,id: 2),
   ];
@@ -36,7 +36,7 @@ class BillFlowState {
   var selectTime = PaymentListBanks(bankName: Intr().jintian,id: 0).obs;
 
   ///选择的状态
-  var selectStatus = PaymentListBanks(bankName: Intr().quanbu,id: 0).obs;
+  var selectStatus = PaymentListBanks(bankName: Intr().quanbujilu,id: 0).obs;
   ///选择的tab下标
   var selectIndex = 0;
   ///页数

@@ -802,7 +802,7 @@ class VI{
     "riqi_meidong":"日期 (美东)",
     "jiaoyileibie":"Danh mục giao dịch",
     "jiaoyiedu":"Hạn mức giao dịch",
-    "xianyouedu":"Hạn mức hiện có",
+    "xianyouedu":"Điểm hiện tại",
     "xiazhujifenjiangli":"Điểm thưởng đặt cược",
     "fuyinglifanshui":"Lợi nhuận tiêu cực trở lại nước",
     "youxileixing":"Thể loại trò chơi",

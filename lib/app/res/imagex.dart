@@ -155,6 +155,8 @@ class ImageX{
   static const icon_usdt_grey = 'assets/images/icon_usdt_grey.png';
   static const icon_ustd2 = 'assets/images/icon_ustd2.png';
   static const usdt = 'assets/images/usdt.png';
+  static const active_usdt = 'assets/images/active_usdt.svg';
+
   static const jingdong = 'assets/images/jingdong.png';
   static const bindOther_dark = 'assets/images/bindOther_dark.svg';
   static const bindOther_light = 'assets/images/bindOther_light.svg';

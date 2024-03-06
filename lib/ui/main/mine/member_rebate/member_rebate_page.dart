@@ -14,8 +14,6 @@ import 'package:leisure_games/ui/bean/back_water_entity.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_params.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'member_rebate_logic.dart';
 ///会员返水
 class MemberRebatePage extends StatefulWidget {
@@ -229,7 +227,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                 ),
               ),
               Center(
-                child: EmptyDataWidget(iconWidth: 100.w, iconHeight: 100.h,text: "",),
+                child: EmptyDataWidget(iconWidth: 100.w, iconHeight: 100.h),
               ),
             ],
           ),
@@ -269,13 +267,13 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
           Expanded(
             flex: 25,
             child: Center(
-              child: Text(item.validBetMoney.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text("¥${item.validBetMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text(item.lossMoney.em(),style: TextStyle(fontSize: 14.sp,
+              child: Text("¥${item.lossMoney.em()}",style: TextStyle(fontSize: 14.sp,
                 color: ColorX.color_fe2427,fontWeight: FontWeight.w600),),
             ),
           ),
@@ -284,7 +282,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+                Text("¥${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
                 Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
               ],
             ),
@@ -322,7 +320,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
           Expanded(
             flex: 25,
             child: Center(
-              child: Text(item.validBetMoney.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text("¥${item.validBetMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
@@ -330,7 +328,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+                Text("¥${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
                 Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
               ],
             ),

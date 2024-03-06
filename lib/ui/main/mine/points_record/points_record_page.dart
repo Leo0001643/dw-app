@@ -7,12 +7,10 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
-import 'package:leisure_games/main.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/point_record_entity.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../../ends_drawer_view.dart';
 import 'points_record_logic.dart';
 //积分记录
 class PointsRecordPage extends StatefulWidget {

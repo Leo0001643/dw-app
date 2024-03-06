@@ -178,7 +178,7 @@ class _AddBankPageState extends State<AddBankPage> {
                       Text(Intr().yanzhengchukuanmima,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                     ],
                   ),
-                  WidgetUtils().buildTextField(300.w, 35.h, 14.sp, ColorX.text586(), Intr().liudao12weishuzihuozimu,
+                  WidgetUtils().buildTextField(300.w, 35.h, 14.sp, ColorX.text586(), Intr().sidao12shuzihuozimu,
                       defText: state.bankPwd.value,onChanged: (v)=> state.bankPwd.value = v),
                 ],
               ),

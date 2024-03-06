@@ -184,7 +184,7 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
 
 
   Widget buildPromotionList(List list) {
-    if(isEmpty(list)){ return EmptyDataWidget(iconWidth: 170.r, iconHeight: 170.r,text: "",); }
+    if(isEmpty(list)){ return EmptyDataWidget(iconWidth: 170.r, iconHeight: 170.r); }
     var childs = List<Widget>.empty(growable: true);
     childs.add(Row(
       children: [

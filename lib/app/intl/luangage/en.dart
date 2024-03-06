@@ -880,7 +880,7 @@ class EN{
     "riqi_meidong":"Date (US East)",
     "jiaoyileibie":"Transaction category",
     "jiaoyiedu":"Transaction limit",
-    "xianyouedu":"Existing credit limit",
+    "xianyouedu":"Existing integrals",
     "xiazhujifenjiangli":"Rewards for betting points",
     "fuyinglifanshui":"Negative profit return",
     "youxileixing":"Game Type",
