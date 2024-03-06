@@ -5,16 +5,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 
 class TextTimerItem extends StatefulWidget {
- 
   final String gameCode;
   final Rx<Pc28LottoEntity> timerGroup;
 
-  TextTimerItem( this.gameCode, this.timerGroup,{super.key });
+  const TextTimerItem(this.gameCode, this.timerGroup,{super.key });
 
   @override
   TextTimerItemState createState() => TextTimerItemState();
@@ -47,6 +47,9 @@ class TextTimerItemState extends State<TextTimerItem> {
           } else {
             result = logic.subToTime(logic.state.text_timer.value)??"";
           }
+          var roomType = Get.find<GameRoomLogic>().state.roomType.value;
+          var bgColor = roomType == 1 ? ColorX.color_fc243b : (roomType == 2 ? ColorX.color_529aff:ColorX.color_c7956f);
+
           return Container(
               height: 20,
               padding: EdgeInsets.symmetric(
@@ -54,8 +57,7 @@ class TextTimerItemState extends State<TextTimerItem> {
               ),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(6.w)),
-                  color: Color(0xFFFC243B)),
+                  borderRadius: BorderRadius.all(Radius.circular(6.w)), color: bgColor),
               child: Text(result,
                   style: TextStyle(
                     fontWeight: FontWeight.w500,

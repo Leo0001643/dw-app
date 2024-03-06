@@ -210,12 +210,9 @@ class GameRoomComputeWidget extends StatelessWidget {
     return Obx(() {
       GameRoomState state = logic.state;
       WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
-      String termData=GameRuleUtil.getSSB(logic.term.value,year:""); // 4
       List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
       var color = state.roomType.value == 1 ? ColorX.text0917():ColorX.color_ffe0ac;
 
-      // var color = state.roomType.value == 1 ? ColorX.color_10_fc2:ColorX.color_c7956f;
-      // var textColor = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
       return InkWell(
         onTap: ()=> DialogUtils().showHistoryLotteryBtmDialog(context,logic),
         child:SingleChildScrollView(
@@ -223,7 +220,8 @@ class GameRoomComputeWidget extends StatelessWidget {
           child:  Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
+              WidgetUtils().buildDixqi3(logic.term.value,state.roomType.value),
+              // Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
               SizedBox(width: 5.w,),
               buildDrawNum("${arr2[0]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
               buildDrawMark("+",color),
@@ -264,14 +262,17 @@ class GameRoomComputeWidget extends StatelessWidget {
       child: Text(mark,style: TextStyle(fontSize: 18.sp,color: color,fontWeight: FontWeight.w500),),
     );
   }
+
   Widget buildDrawNum(String num,GameRoomLogic logic,{showWaittingImg=false}) {
     GameRoomState state = logic.state;
-    var color = state.roomType.value == 1 ? ColorX.color_f7f8fb:ColorX.color_c7956f;
-    return (num=="-1"||showWaittingImg==true)?Image(image: AssetImage(ImageX.icon_room_mask),width: 24,height: 24,):Container(
+    var color = state.roomType.value == 1 ? ColorX.color_f7f8fb:ColorX.color_ffe0ac;
+    return (num=="-1"||showWaittingImg==true)?const Image(image: AssetImage(ImageX.icon_room_mask),width: 24,height: 24,):Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(color: color,borderRadius: BorderRadius.circular(15.r),),
       child: Text(num, style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
     );
   }
+
+
 }

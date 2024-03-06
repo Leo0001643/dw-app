@@ -41,7 +41,7 @@ class CoinExchangeLogic extends GetxController {
     });
 
     HttpService.getBalance({ "cur":5, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
-      value.icon = ImageX.icon_dollar_grey;
+      value.icon = ImageX.usdt;
       value.language = Intr().wallet_usdt;
       state.usdtBal.value = value;
       state.usdtBal.refresh();

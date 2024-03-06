@@ -59,6 +59,9 @@ class ImageX{
   static const icon_room_mask2 = 'assets/images/icon_room_mask2.png';
   static const icon_room_mask = 'assets/images/icon_room_mask.png';
   static const icon_room_bg = 'assets/images/icon_room_bg.png';
+  static const icon_room_bg2 = 'assets/images/ic_room_bg2.png';
+  static const icon_room_bg3 = 'assets/images/ic_room_bg3.png';
+
   static const icon_result = 'assets/images/icon_result.png';
   static const icon_right_arrow = 'assets/images/icon_right_arrow.png';
   static const icon_right_black = 'assets/images/icon_right_black.png';
@@ -794,6 +797,19 @@ class ImageX{
   static String countDown5Z(){
     return AppData.localeIndex() == 0 ? countDown5 : countDown5_en;
   }
+
+  static String roomBg(int roomType){
+    switch(roomType){
+      case 2:
+        return icon_room_bg2;
+      case 3:
+        return icon_room_bg3;
+      default:
+        return icon_room_bg;
+    }
+  }
+
+
 
 }
     

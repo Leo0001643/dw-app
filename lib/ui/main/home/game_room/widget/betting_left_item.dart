@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
@@ -75,33 +76,29 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                       showToast(Intr().qingxiandenglu);
                     }
                   },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 4.w,horizontal: 15.w,),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                        Color(0xFFFF697A).withOpacity(0.9),
-                        Color(0xFFFC4559).withOpacity(0.9),
-                      ],
+                  child: Obx(() {
+                    return Container(
+                      padding: EdgeInsets.symmetric(vertical: 4.w,horizontal: 15.w,),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: ColorX.betColors(widget.logic.state.roomType.value),),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
                       ),
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r),topRight: Radius.circular(10.r),),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(termData,style: TextStyle(fontSize: 14.sp,color:Colors.white),),
-                        Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: Colors.white),),
-                            Image.asset(ImageX.icon_right_black,color: Colors.white,),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(termData,style: TextStyle(fontSize: 14.sp,color:Colors.white),),
+                          Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: Colors.white),),
+                              Image.asset(ImageX.icon_right_black,color: Colors.white,),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
                 ),
-
-
                 ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),

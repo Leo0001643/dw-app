@@ -972,7 +972,34 @@ class WidgetUtils {
   }
 
 
-
+  Widget buildDixqi3(String term,int roomType){
+    var textColor = roomType == 1 ? ColorX.color_333333 : ColorX.color_ffe0ac;
+    var termData = term.length > 8 ? term.substring(term.length-8,term.length) : term;
+    if(AppData.localeIndex() == 0){
+      return Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        runAlignment: WrapAlignment.center,
+        alignment: WrapAlignment.center,
+        spacing: 3.w,
+        children: [
+          Text(Intr().di,style: TextStyle(fontSize: 13.sp,color: textColor,),),
+          Text(termData,style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b,),),
+          Text(Intr().qi,style: TextStyle(fontSize: 13.sp,color: textColor,),),
+        ],
+      );
+    }else {
+      return Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        runAlignment: WrapAlignment.center,
+        alignment: WrapAlignment.center,
+        spacing: 3.w,
+        children: [
+          Text(Intr().no,style: TextStyle(fontSize: 13.sp,color: textColor,),),
+          Text(termData,style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b,),),
+        ],
+      );
+    }
+  }
 
 
 }

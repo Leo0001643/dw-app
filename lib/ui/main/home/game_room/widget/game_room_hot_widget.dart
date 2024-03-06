@@ -18,6 +18,7 @@ import 'package:leisure_games/ui/main/home/game_room/text_timer/text_timer_item.
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 class GameRoomHotWidget extends StatefulWidget {
+
  const GameRoomHotWidget({super.key});
 
   @override

@@ -227,6 +227,10 @@ class ColorX{
   }
 
 
+  static List<Color> betColors(int roomType){
+    return roomType == 1 ? [color_ff5163, color_ff5164] : (roomType == 2 ? [Color(0xff6E7D92),Color(0xff4A5268)] : [Color(0xff937D6E),Color(0xff68564A)]);
+  }
+
 
 }
 

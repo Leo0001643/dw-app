@@ -71,87 +71,91 @@ class _GameRoomPageState extends State<GameRoomPage> {
         );
       }),
       backgroundColor: ColorX.pageBg2(),
-      body: Container(
-        child: Column(
-          children: [
-            Obx(() {
-              return Container(
-                decoration: buildBoxDecorationType(),
-                margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 10.h),
-                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
-                child: Column(
-                  children: [
-                    // Container(
-                    //     alignment: Alignment.center,
-                    //     decoration: BoxDecoration(
-                    //       color: Colors.black54,
-                    //       borderRadius: BorderRadius.circular(100.r),
-                    //     ),
-                    //     margin: EdgeInsets.symmetric(vertical: 2.r, horizontal: 1.r),
-                    //     child: TextTimerPage(
-                    //         TextTimerLogic(type: game.gameCode), game, logic.state.pc28Lotto)),
-                    GameRoomHeadWidget(),
-                    GameRoomComputeWidget(),
-                  ],
-                ),
-              );
-            }),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(right: 10.w, left: 10.w, top: 12.w),
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(ImageX.icon_room_bg),
-                        fit: BoxFit.fill)),
-                child: Column(
-                  children: [
-                    const GameRoomHotWidget(),
-                    Expanded(
-                      child: Stack(
-                        children: [
-                          GetBuilder<GameRoomLogic>(
-                            id: GameRoomLogic.gameRoomList,
-                            builder: (logic){
-                              return ListView.builder(
-                                controller: logic.scrollController,
-                                itemCount: state.gameRoomItemEntityList.length,
-                                itemBuilder: (context, index) {
-                                  GameRoomItemEntity gameRoomItemEntity = state.gameRoomItemEntityList[index];
-                                  return buildItemWidget(index, logic, gameRoomItemEntity);
-                                },
-                              );
-                            },
-                          ),
-                          Positioned(left: 0, right: 0, top: 20.h, child: buildCountDown()),
-                          buildFloatingBtn(() {
-                            if (AppData.isLogin()) {
-                              logic.startBet(context);
-                            } else {
-                              Get.until((ModalRoute.withName(Routes.main)));
-                              WidgetUtils().goLogin();
-                            }
-                          }),
-                          BarrageWall(
-                            maxBulletHeight: 5,
-                            controller: state.barrageWallController,
-                            speedCorrectionInMilliseconds: 3000,
-                            height: 0.2.sh,
-                            child: Container(),
-                          ),
-                        ],
+      body: Column(
+        children: [
+          Obx(() {
+            return Container(
+              decoration: buildBoxDecorationType(),
+              margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 10.h),
+              padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
+              child: Column(
+                children: [
+                  // Container(
+                  //     alignment: Alignment.center,
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.black54,
+                  //       borderRadius: BorderRadius.circular(100.r),
+                  //     ),
+                  //     margin: EdgeInsets.symmetric(vertical: 2.r, horizontal: 1.r),
+                  //     child: TextTimerPage(
+                  //         TextTimerLogic(type: game.gameCode), game, logic.state.pc28Lotto)),
+                  GameRoomHeadWidget(),
+                  GameRoomComputeWidget(),
+                ],
+              ),
+            );
+          }),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(right: 10.w, left: 10.w, top: 12.w),
+              // decoration: BoxDecoration(
+              //     image: DecorationImage(
+              //         image: AssetImage(ImageX.roomBg(state.roomType.value)), fit: BoxFit.fill)),
+              child: Stack(
+                children: [
+                  Obx(() {
+                    return WidgetUtils().buildImage(ImageX.roomBg(state.roomType.value), 1.sw, 1.sh,fit: BoxFit.fill);
+                  }),
+                  Column(
+                    children: [
+                      const GameRoomHotWidget(),
+                      Expanded(
+                        child: Stack(
+                          children: [
+                            GetBuilder<GameRoomLogic>(
+                              id: GameRoomLogic.gameRoomList,
+                              builder: (logic){
+                                return ListView.builder(
+                                  controller: logic.scrollController,
+                                  itemCount: state.gameRoomItemEntityList.length,
+                                  itemBuilder: (context, index) {
+                                    GameRoomItemEntity gameRoomItemEntity = state.gameRoomItemEntityList[index];
+                                    return buildItemWidget(index, logic, gameRoomItemEntity);
+                                  },
+                                );
+                              },
+                            ),
+                            Positioned(left: 0, right: 0, top: 20.h, child: buildCountDown()),
+                            buildFloatingBtn(() {
+                              if (AppData.isLogin()) {
+                                logic.startBet(context);
+                              } else {
+                                Get.until((ModalRoute.withName(Routes.main)));
+                                WidgetUtils().goLogin();
+                              }
+                            }),
+                            BarrageWall(
+                              maxBulletHeight: 5,
+                              controller: state.barrageWallController,
+                              speedCorrectionInMilliseconds: 3000,
+                              height: 0.2.sh,
+                              child: Container(),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
+                ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h),
-              alignment: Alignment.center,
-              child: buildBottomBtn(),
-            ),
-          ],
-        ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 10.h),
+            alignment: Alignment.center,
+            child: buildBottomBtn(),
+          ),
+        ],
       ),
     );
   }

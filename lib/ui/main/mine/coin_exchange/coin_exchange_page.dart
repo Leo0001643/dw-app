@@ -8,8 +8,6 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
-
-import '../../ends_drawer_view.dart';
 import 'coin_exchange_logic.dart';
 
 ///
