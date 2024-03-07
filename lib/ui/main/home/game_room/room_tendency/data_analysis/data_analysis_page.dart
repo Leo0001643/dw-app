@@ -69,7 +69,7 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
               indicatorPadding: EdgeInsets.only(top:35.w,left: 40.w,right: 40.w),
               labelColor: ColorX.text0917(),
               unselectedLabelColor: ColorX.text586(),
-              tabs: state.tabs.map((e) => Expanded(child: Container(child: Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),))).toList(),
+              tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),)).toList(),
             ),
             Divider(height: 1.h,color: ColorX.color_10_949,),
             Container(

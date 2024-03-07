@@ -6,15 +6,10 @@ import 'data_analysis_state.dart';
 
 class DataAnalysisLogic extends GetxController {
   final DataAnalysisState state = DataAnalysisState();
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-    loadData();
-  }
+
   @override
   void onReady() {
-    // loadData();
+    loadData();
     super.onReady();
   }
 
