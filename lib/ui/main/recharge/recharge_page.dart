@@ -12,6 +12,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
+import 'package:leisure_games/ui/main/main_logic.dart';
 
 import 'recharge_logic.dart';
 
@@ -133,7 +134,7 @@ class _RechargePageState extends State<RechargePage> {
                   // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     WidgetUtils().buildAppBar(Intr().chongzhizhongxin,
-                        msg: true, drawer: true, back: false,bgColor: Colors.transparent),
+                        msg: true, drawer: true, back: false,scaffoldKey: Get.find<MainLogic>().state.scaffoldKey,bgColor: Colors.transparent),
                     SizedBox(height: 10.h,),
                     Obx(() {
                       return GFAvatar(
@@ -191,9 +192,11 @@ class _RechargePageState extends State<RechargePage> {
               SizedBox(width: 15.w,),
               WidgetUtils().buildImage(item.icon.em(), 18.r, 18.r,),
               SizedBox(width: 8.w,),
-              Text(
-                item.bankName.em(),
-                style: TextStyle(fontSize: 14.sp, color: ColorX.textBlack(),fontWeight: FontWeight.w600),
+              Expanded(
+                child: Text(
+                  item.bankName.em(),
+                  style: TextStyle(fontSize: 14.sp, color: ColorX.textBlack(),fontWeight: FontWeight.w600),
+                ),
               ),
               // Expanded(child: Container()),
               // Image.asset(

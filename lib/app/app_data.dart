@@ -88,6 +88,38 @@ class AppData {
     return prefs?.getBool("prompt_tone") ?? true;
   }
 
+  static void setFengpanAnim(bool open) {
+    prefs?.setBool("fengpan_anim", open);
+  }
+
+  static bool fengpanAnim() {
+    return prefs?.getBool("fengpan_anim") ?? true;
+  }
+
+  static void setKaijiangAnim(bool open) {
+    prefs?.setBool("kaijiang_anim", open);
+  }
+
+  static bool kaijiangAnim() {
+    return prefs?.getBool("kaijiang_anim") ?? true;
+  }
+
+  static void setDaojishiAnim(bool open) {
+    prefs?.setBool("daojishi_anim", open);
+  }
+
+  static bool daojishiAnim() {
+    return prefs?.getBool("daojishi_anim") ?? true;
+  }
+
+  static void setZhongjiangAnim(bool open) {
+    prefs?.setBool("zhongjiang_anim", open);
+  }
+
+  static bool zhongjiangAnim() {
+    return prefs?.getBool("zhongjiang_anim") ?? true;
+  }
+
   static void setDeviceInfo(DeviceInfo info) {
     prefs?.setString("device_info", jsonEncode(info.toJson()));
   }

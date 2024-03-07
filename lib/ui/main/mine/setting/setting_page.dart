@@ -7,6 +7,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
@@ -151,13 +152,13 @@ class _SettingPageState extends State<SettingPage> {
                               return Colors.white; // 你可以根据需要修改颜色
                             }),
                             onChanged: (value) {
-                              Get.toNamed(Routes.set_simple_pwd)
-                                  ?.then((gestureValue) {
-                                AppData.setJymm(value);
-                                //全局设置手势密码
-                                AppData.setGestureValue(gestureValue);
-                                state.jymmToggle.value = !value;
-                                print("geture>>" + gestureValue);
+                              Get.toNamed(Routes.set_simple_pwd)?.then((gestureValue) {
+                                if(unEmpty(gestureValue)){
+                                  AppData.setJymm(value);
+                                  //全局设置手势密码
+                                  AppData.setGestureValue(gestureValue);
+                                  state.jymmToggle.value = !value;
+                                }
                               });
                             },
                             value: !state.jymmToggle.value,
@@ -183,21 +184,12 @@ class _SettingPageState extends State<SettingPage> {
                     EdgeInsets.symmetric(vertical: 15.h, horizontal: 12.w),
                 child: Row(
                   children: [
-                    Text(
-                      Intr().dyy,
-                      style:
-                          TextStyle(fontSize: 12.sp, color: ColorX.text0d1()),
+                    Text(Intr().dyy,
+                      style: TextStyle(fontSize: 12.sp, color: ColorX.text0d1()),
                     ),
                     Expanded(child: Container()),
-                    Text(
-                      language(),
-                      style:
-                          TextStyle(fontSize: 12.sp, color: ColorX.text949()),
-                    ),
-                    Image.asset(
-                      ImageX.icon_right_grey,
-                      color: ColorX.text586(),
-                    )
+                    Text(language(), style: TextStyle(fontSize: 12.sp, color: ColorX.text949()),),
+                    Image.asset(ImageX.icon_right_grey, color: ColorX.text586(),)
                   ],
                 ),
               ),
@@ -234,9 +226,9 @@ class _SettingPageState extends State<SettingPage> {
                             }),
                             onChanged: (value) {
                               AppData.setBgMusic(value);
-                              state.bjyyToggle.value = !value;
+                              state.bjyyToggle.value = value;
                             },
-                            value: !state.bjyyToggle.value,
+                            value: state.bjyyToggle.value,
                             inactiveTrackColor: ColorX.text949(),
                             activeTrackColor: ColorX.color_69c25c,
                             activeColor: Colors.white,
@@ -272,10 +264,10 @@ class _SettingPageState extends State<SettingPage> {
                               return Colors.white; // 你可以根据需要修改颜色
                             }),
                             onChanged: (value) {
-                              AppData.setPromptTone(value == true);
-                              state.tsyToggle.value = !value;
+                              AppData.setPromptTone(value);
+                              state.tsyToggle.value = value;
                             },
-                            value: !state.tsyToggle.value,
+                            value: state.tsyToggle.value,
                             inactiveTrackColor: ColorX.text949(),
                             activeTrackColor: ColorX.color_69c25c,
                             activeColor: Colors.white,

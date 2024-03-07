@@ -472,10 +472,13 @@ class StateMinePage extends State<MinePage> {
             SizedBox(
               height: 3.h,
             ),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 11.sp, color: ColorX.text5862()),
+            Expanded(
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 11.sp, color: ColorX.text5862(),overflow: TextOverflow.ellipsis,),
+                maxLines: 3,
+              ),
             ),
           ],
         ),

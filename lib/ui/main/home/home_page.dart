@@ -204,12 +204,16 @@ class StateHomePage extends State<HomePage>
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Wrap(
-                                direction: Axis.horizontal,
-                                children: state.labelBtm
-                                    .map((e) => buildComInfo(
-                                        e, state.labelBtm.last == e))
-                                    .toList(),
+                              LayoutBuilder(
+                                builder: (context,cst){
+                                  var labelBtm = [
+                                    Intr().guanyuwomen, Intr().yonghuzhongxin, Intr().lianxiwomen,
+                                    Intr().eduzhuanhuan, Intr().jishuzhichi, Intr().fangjiechijiaocheng];
+                                  return Wrap(
+                                    direction: Axis.horizontal,
+                                    children: labelBtm.map((e) => buildComInfo(e, labelBtm.last == e)).toList(),
+                                  );
+                                },
                               ),
                               SizedBox(
                                 height: 5.h,

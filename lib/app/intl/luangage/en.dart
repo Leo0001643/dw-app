@@ -1062,6 +1062,7 @@ class EN{
     "zaiqiandao":"Number of re-sign-in:",
     "kehuode":", can obtain:",
     "gentou":"follow",
+    "zhongjiangjieguodongxiao":"The winning result is dynamic",
 
   };
 

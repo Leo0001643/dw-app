@@ -408,19 +408,19 @@ class VI{
 
 
 
-    "gaunyuwomen": "关于我们",
-    "guanwangjieshao": "官网介绍",
-    "xiazhaiyingyong": "下载应用",
-    "pingtaifuwu": "平台服务",
-    "yonghuzhongxin": "用户中心",
-    "huiyuan": "会员",
-    "chongzhijilu": "充值记录",
-    "qiandaochoujiang": "签到抽奖",
-    "jishuzhichi": "技术支持",
-    "fangjiechijiaocheng": "防劫持教程",
-    "fangjiechi": "防劫持",
-    "shiyongbangzhu": "使用帮助",
-    "xuanzeyuyan":"选择语言",
+    "gaunyuwomen": "Về chúng ta",
+    "guanwangjieshao": "Trang web chính thức",
+    "xiazhaiyingyong": "Tải về ứng dụng",
+    "pingtaifuwu": "Dịch vụ nền tảng",
+    "yonghuzhongxin": "Trung tâm người dùng",
+    "huiyuan": "Thành viên",
+    "chongzhijilu": "Nạp tiền hồ sơ",
+    "qiandaochoujiang": "Rút thăm",
+    "jishuzhichi": "Hỗ trợ kỹ thuật",
+    "fangjiechijiaocheng": "Hướng dẫn chống xâm nhập",
+    "fangjiechi": "Chống cướp",
+    "shiyongbangzhu": "Sử dụng sự giúp đỡ",
+    "xuanzeyuyan":"Chọn ngôn ngữ",
     "changyongduanyu":"Hữu dụng.",
     "qitaduanyu":"Những thứ khác",
     "biaoqing":"Cảm xúc",
@@ -992,6 +992,7 @@ class VI{
     "zaiqiandao":"Số lần đăng ký:",
     "kehuode":", bạn có thể nhận được:",
     "gentou":"Đi theo",
+    "zhongjiangjieguodongxiao":"Chiến thắng có hiệu quả",
 
   };
 }

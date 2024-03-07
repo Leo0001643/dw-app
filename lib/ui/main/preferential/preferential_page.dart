@@ -7,8 +7,10 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/empty_data_widget.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
+import 'package:leisure_games/ui/main/main_logic.dart';
 
 import 'preferential_logic.dart';
 
@@ -57,7 +59,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WidgetUtils().buildAppBar(Intr().youhuizhongxin,
-          msg: true,drawer: true,back: false,bgColor: ColorX.appBarBg()),
+          msg: true,drawer: true,back: false,scaffoldKey: Get.find<MainLogic>().state.scaffoldKey,bgColor: ColorX.appBarBg()),
       backgroundColor: ColorX.pageBg(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,6 +70,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
               length: state.tabs.length,
               controller: _tabController,
               tabBarHeight: 45.h,
+              tabAlignment: TabAlignment.fill,
               tabBarColor: ColorX.textWhite(),
               indicatorSize: TabBarIndicatorSize.label,
               indicatorPadding: EdgeInsets.only(top: 38.h,left: 20.w,right: 20.w,bottom: 3.r),
@@ -78,13 +81,17 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
               labelPadding: EdgeInsets.zero,
               labelColor: ColorX.textBlack(),
               unselectedLabelColor: ColorX.textBlack(),
-              width: 0.583.sw,
+              width: 0.65.sw,
               tabs: state.tabs.map((e) => buildTabBarItem(e, 0)).toList(),
             ),
           ),
           Expanded(
             child: Container(
+              color: Colors.black12,
               child: Obx(() {
+                if(isEmpty(state.list)){
+                  return EmptyDataWidget(width: 1.sw, height: 50.h);
+                }
                 return ListView.builder(
                   itemCount: state.list.length,
                   itemBuilder: (context,index){
@@ -93,7 +100,6 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
                   },
                 );
               }),
-              color: Colors.black12,
             ),
           ),
         ],
@@ -132,6 +138,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
           color: ColorX.cardBg(),
           borderRadius: BorderRadius.circular(10.r),
         ),
+        margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 15.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -165,7 +172,6 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
             ),
           ],
         ),
-        margin: EdgeInsets.only(left: 20.w,right: 20.w,top: 15.h),
       ),
     );
   }

@@ -659,10 +659,6 @@ class JsonConvert {
       return data.map<PromotionDetailEntity>((Map<String, dynamic> e) =>
           PromotionDetailEntity.fromJson(e)).toList() as M;
     }
-    if (<PromotionTypeEntity>[] is M) {
-      return data.map<PromotionTypeEntity>((Map<String, dynamic> e) =>
-          PromotionTypeEntity.fromJson(e)).toList() as M;
-    }
     if (<PromotionTypeKey>[] is M) {
       return data.map<PromotionTypeKey>((Map<String, dynamic> e) =>
           PromotionTypeKey.fromJson(e)).toList() as M;
@@ -933,7 +929,6 @@ class JsonConvertClassCollection {
     (PrizeListEntity).toString(): PrizeListEntity.fromJson,
     (PrizeListPrizes).toString(): PrizeListPrizes.fromJson,
     (PromotionDetailEntity).toString(): PromotionDetailEntity.fromJson,
-    (PromotionTypeEntity).toString(): PromotionTypeEntity.fromJson,
     (PromotionTypeKey).toString(): PromotionTypeKey.fromJson,
     (ProtectEntity).toString(): ProtectEntity.fromJson,
     (ProtectProtectKkwdsLive).toString(): ProtectProtectKkwdsLive.fromJson,

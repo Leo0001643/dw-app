@@ -991,6 +991,7 @@ class CN {
     "zaiqiandao":"再签到次数：",
     "kehuode":"，可获得",
     "gentou":"跟投",
+    "zhongjiangjieguodongxiao":"中奖结果动效",
 
 
 

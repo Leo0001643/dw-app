@@ -13,9 +13,10 @@ class SettingState {
   //简易密码
   var jymmToggle = AppData.bgJymm().obs;
 
+  ///背景音乐
   var bjyyToggle = AppData.bgMusic().obs;
 
-  //提示音
+  ///提示音
   var tsyToggle = AppData.promptTone().obs;
 
   var scaffoldKey = GlobalKey<ScaffoldState>();

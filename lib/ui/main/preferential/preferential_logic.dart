@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/language_event.dart';
@@ -31,7 +34,9 @@ class PreferentialLogic extends GetxController {
 
   void loadData() {
     HttpService.getPromotionTpe().then((value) {
-      state.promotions = value;
+      loggerArray(["让我看看这里返回了什么呢",value]);
+      var data = jsonDecode(value);
+      state.promotions = PromotionTypeEntity.fromJson(data);
       clickTab(0);
     });
   }

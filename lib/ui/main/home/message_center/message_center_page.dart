@@ -55,6 +55,7 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
               controller: _tabController,
               tabBarHeight: 45.h,
               tabBarColor: Colors.transparent,
+              tabAlignment: TabAlignment.fill,
               indicatorSize: TabBarIndicatorSize.label,
               indicatorPadding: EdgeInsets.only(top: 38.h,left: 20.w,right: 20.w,bottom: 3.r),
               indicator: BoxDecoration(
@@ -64,7 +65,7 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
               labelPadding: EdgeInsets.zero,
               labelColor: ColorX.text0917(),
               unselectedLabelColor: ColorX.text586(),
-              width: 0.33.sw,
+              width: 0.6.sw,
               tabs: state.tabs.map((e) => buildTabBarItem(e, 0)).toList(),
             ),
           ),
@@ -82,25 +83,27 @@ class _MessageCenterPageState extends State<MessageCenterPage> with SingleTicker
 
   Widget buildTabBarItem(String tab, int num) {
     var read = num > 99 ? "99+" : "$num";
-    return Stack(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: Text(tab,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-        ),
-        Visibility(
-          visible: num > 0,
-          child: Positioned(
-            top: 0,right: 0,
-            child: GFBadge(
-              text: read,textStyle: TextStyle(color: Colors.white,fontSize: 8.sp),
-              size: 20.r,
-              borderShape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(6.r),
-                  topLeft: Radius.circular(6.r),bottomRight: Radius.circular(6.r))),
+    return Container(
+      child: Stack(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15.w),
+            child: Text(tab,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
+          ),
+          Visibility(
+            visible: num > 0,
+            child: Positioned(
+              top: 0,right: 0,
+              child: GFBadge(
+                text: read,textStyle: TextStyle(color: Colors.white,fontSize: 8.sp),
+                size: 20.r,
+                borderShape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(6.r),
+                    topLeft: Radius.circular(6.r),bottomRight: Radius.circular(6.r))),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

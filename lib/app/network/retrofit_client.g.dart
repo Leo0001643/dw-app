@@ -133,7 +133,7 @@ class _RetrofitClient implements RetrofitClient {
   }
 
   @override
-  Future<BaseResponseEntity<PromotionTypeEntity>> getPromotionTpe(
+  Future<BaseResponseEntity<String>> getPromotionTpe(
     String classify,
     int imageType,
   ) async {
@@ -145,7 +145,7 @@ class _RetrofitClient implements RetrofitClient {
       'imageType': imageType,
     };
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponseEntity<PromotionTypeEntity>>(Options(
+        _setStreamType<BaseResponseEntity<String>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -161,9 +161,9 @@ class _RetrofitClient implements RetrofitClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = BaseResponseEntity<PromotionTypeEntity>.fromJson(
+    final value = BaseResponseEntity<String>.fromJson(
       _result.data!,
-      (json) => PromotionTypeEntity.fromJson(json as Map<String, dynamic>),
+      (json) => json as String,
     );
     return value;
   }

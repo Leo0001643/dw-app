@@ -87,7 +87,7 @@ abstract class RetrofitClient{
       @Field('imageType') int imageType,);
 
   @POST('/ds-api-web/getPic30')
-  Future<BaseResponseEntity<PromotionTypeEntity>> getPromotionTpe(@Field('classify') String classify,
+  Future<BaseResponseEntity<String>> getPromotionTpe(@Field('classify') String classify,
       @Field('imageType') int imageType,);
 
   @POST('/ds-api-web/getPic30')

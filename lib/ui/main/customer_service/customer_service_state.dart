@@ -10,7 +10,6 @@ class CustomerServiceState {
   ///服务列表
   var services = RxList<CustomerServiceEntity>.empty(growable: true);
 
-  var scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 }

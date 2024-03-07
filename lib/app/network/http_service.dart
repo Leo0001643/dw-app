@@ -131,8 +131,8 @@ class HttpService{
     return buildFuture<Pic30BackEntity>(()=> _client.getActPic("actpic",Constants.imageType));
   }
 
-  static Future<PromotionTypeEntity> getPromotionTpe(){
-    return buildFuture<PromotionTypeEntity>(()=> _client.getPromotionTpe("promotiontype",Constants.imageType));
+  static Future<String> getPromotionTpe(){
+    return buildFuture<String>(()=> _client.getPromotionTpe("promotiontype",Constants.imageType));
   }
 
   static Future<PromotionDetailEntity> getPromotionDetail(String tag){

@@ -1,50 +1,6 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 
-PromotionTypeEntity $PromotionTypeEntityFromJson(Map<String, dynamic> json) {
-  final PromotionTypeEntity promotionTypeEntity = PromotionTypeEntity();
-  final List<PromotionTypeKey>? chongzhi = (json['充值'] as List<dynamic>?)
-      ?.map(
-          (e) => jsonConvert.convert<PromotionTypeKey>(e) as PromotionTypeKey)
-      .toList();
-  if (chongzhi != null) {
-    promotionTypeEntity.chongzhi = chongzhi;
-  }
-  final List<PromotionTypeKey>? qita = (json['其他'] as List<dynamic>?)
-      ?.map(
-          (e) => jsonConvert.convert<PromotionTypeKey>(e) as PromotionTypeKey)
-      .toList();
-  if (qita != null) {
-    promotionTypeEntity.qita = qita;
-  }
-  final String? url = jsonConvert.convert<String>(json['url']);
-  if (url != null) {
-    promotionTypeEntity.url = url;
-  }
-  return promotionTypeEntity;
-}
-
-Map<String, dynamic> $PromotionTypeEntityToJson(PromotionTypeEntity entity) {
-  final Map<String, dynamic> data = <String, dynamic>{};
-  data['充值'] = entity.chongzhi?.map((v) => v.toJson()).toList();
-  data['其他'] = entity.qita?.map((v) => v.toJson()).toList();
-  data['url'] = entity.url;
-  return data;
-}
-
-extension PromotionTypeEntityExtension on PromotionTypeEntity {
-  PromotionTypeEntity copyWith({
-    List<PromotionTypeKey>? chongzhi,
-    List<PromotionTypeKey>? qita,
-    String? url,
-  }) {
-    return PromotionTypeEntity()
-      ..chongzhi = chongzhi ?? this.chongzhi
-      ..qita = qita ?? this.qita
-      ..url = url ?? this.url;
-  }
-}
-
 PromotionTypeKey $PromotionTypeKeyFromJson(Map<String, dynamic> json) {
   final PromotionTypeKey promotionTypeKey = PromotionTypeKey();
   final String? picurl = jsonConvert.convert<String>(json['picurl']);

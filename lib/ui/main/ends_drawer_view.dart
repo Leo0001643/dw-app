@@ -137,7 +137,8 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                             return Colors.white; // 你可以根据需要修改颜色
                           }),
                           onChanged: (value) {
-                            musicToggle.value = value == true;
+                            AppData.setBgMusic(value);
+                            musicToggle.value = value;
                           },
                           value: musicToggle.value,
                           inactiveTrackColor: ColorX.text949(),
@@ -180,6 +181,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                               return Colors.white; // 你可以根据需要修改颜色
                             }),
                             onChanged: (value) {
+                              AppData.setPromptTone(value);
                               notifyToggle.value = value == true;
                             },
                             value: notifyToggle.value,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -68,7 +69,8 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                               return Colors.white; // 你可以根据需要修改颜色
                             }),
                             onChanged: (value) {
-                              state.entertainedAnim.value = value == true;
+                              AppData.setFengpanAnim(value);
+                              state.entertainedAnim.value = value;
                             },
                             value: state.entertainedAnim.value,
                             inactiveTrackColor: ColorX.text949(),
@@ -103,6 +105,7 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                               return Colors.white; // 你可以根据需要修改颜色
                             }),
                             onChanged: (value) {
+                              AppData.setKaijiangAnim(value);
                               state.lotteryAnim.value = value == true;
                             },
                             value: state.lotteryAnim.value,
@@ -138,9 +141,46 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
                               return Colors.white; // 你可以根据需要修改颜色
                             }),
                             onChanged: (value) {
-                              state.countdownAnim.value = value == true;
+                              AppData.setDaojishiAnim(value);
+                              state.countdownAnim.value = value;
                             },
                             value: state.countdownAnim.value,
+                            inactiveTrackColor: ColorX.text949(),
+                            activeTrackColor: ColorX.color_69c25c,
+                            activeColor: Colors.white,
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 5.h,),
+                  Divider(color: ColorX.color_10_949,height: 1.h,),
+                  SizedBox(height: 5.h,),
+                  Container(
+                    child: Row(
+                      children: [
+                        Text(Intr().zhongjiangjieguodongxiao,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+                        SizedBox(width: 10.w,),
+                        Text(Intr().cksl,style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),
+                            decoration: TextDecoration.underline),),
+                        Expanded(child: Container()),
+                        Obx(() {
+                          return Switch(
+                            thumbColor:
+                            MaterialStateColor.resolveWith((states) {
+                              // 根据状态返回相应的颜色
+                              if (states.contains(MaterialState.selected)) {
+                                // Switch 处于激活状态时的颜色
+                                return Colors.white;
+                              }
+                              // Switch 处于非激活状态时的颜色
+                              return Colors.white; // 你可以根据需要修改颜色
+                            }),
+                            onChanged: (value) {
+                              AppData.setZhongjiangAnim(value);
+                              state.winningAnim.value = value;
+                            },
+                            value: state.winningAnim.value,
                             inactiveTrackColor: ColorX.text949(),
                             activeTrackColor: ColorX.color_69c25c,
                             activeColor: Colors.white,
