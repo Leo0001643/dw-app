@@ -84,7 +84,7 @@ class WidgetUtils {
         style: TextStyle(
             fontSize: textSize.sp,
             color: textColor,
-            fontWeight: FontWeight.w600),
+            fontWeight: FontWeight.w700),
       ),
     );
   }

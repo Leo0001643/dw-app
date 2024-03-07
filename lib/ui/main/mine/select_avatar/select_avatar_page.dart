@@ -7,8 +7,8 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
+import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
-import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
 import 'select_avatar_logic.dart';
 
@@ -81,14 +81,15 @@ class _SelectAvatarPageState extends State<SelectAvatarPage> with SingleTickerPr
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 0.w,vertical: 10.h),
-                    child: LCTabBar(
+                    child: LCSegmentTabs(
                       length: state.tabs.length,
-                      controller: _tabController,
-                      tabBarHeight: 35.h,
+                      tabController: _tabController,
+                      height: 35.h,
+                      border: Border.all(color: Colors.transparent),
                       tabBarColor: Colors.transparent,
-                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicatorSize: TabBarIndicatorSize.label,
                       labelPadding: EdgeInsets.zero,
-                      indicatorPadding: EdgeInsets.only(top: 30.h,left: 20.w,right: 20.w,bottom: 2.r),
+                      indicatorPadding: EdgeInsets.only(top: 28.h,left: 8.w,right: 8.w,bottom: 2.h),
                       indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(3.r),
                         color: ColorX.text0917(),

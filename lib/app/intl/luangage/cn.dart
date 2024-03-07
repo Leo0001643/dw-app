@@ -985,8 +985,11 @@ class CN {
     "kaishifengpan":"开始封盘",
     "lianjiefuwushibai":"链接服务失败，稍后再试",
     "kaijiangzhong":"开奖中",
-
-
+    "qiandaochenggong":"签到成功",
+    "benyueleijiqiandao":"本月累计签到次数：",
+    "jiajifen":"，+",
+    "zaiqiandao":"再签到次数：",
+    "kehuode":"，可获得",
 
   };
 

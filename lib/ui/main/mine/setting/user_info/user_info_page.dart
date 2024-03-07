@@ -45,8 +45,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              child: Text(Intr().nicheng,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               padding: EdgeInsets.symmetric(horizontal: 35.w),
+              child: Text(Intr().nicheng,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -58,8 +58,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              child: Text(Intr().shoujihaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               padding: EdgeInsets.symmetric(horizontal: 35.w),
+              child: Text(Intr().shoujihaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -71,8 +71,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              child: Text(Intr().qqhaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               padding: EdgeInsets.symmetric(horizontal: 35.w),
+              child: Text(Intr().qqhaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -84,8 +84,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              child: Text(Intr().weixin,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               padding: EdgeInsets.symmetric(horizontal: 35.w),
+              child: Text(Intr().weixin,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -97,8 +97,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
             ),
             SizedBox(height: 20.h,),
             Padding(
-              child: Text(Intr().dianziyouxiang,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               padding: EdgeInsets.symmetric(horizontal: 35.w),
+              child: Text(Intr().dianziyouxiang,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
             ),
             SizedBox(height: 5.h,),
             Center(
@@ -115,6 +115,19 @@ class _UserInfoPageState extends State<UserInfoPage> {
                   bg: ColorX.color_fc243b,onPressed: ()=> logic.saveUser()),
             ),
             SizedBox(height: 20.h,),
+
+            Container(
+              padding: EdgeInsets.only(left: 20.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(Intr().wenxintishi_,style: TextStyle(fontSize: 18.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),),
+                  Text(Intr().mod_user_tip1,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
+                  Text(Intr().mod_user_tip2,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
+
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/ui/bean/check_point_entity.dart';
 
 import 'sign_in_state.dart';
 

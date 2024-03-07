@@ -65,12 +65,27 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
               height: 5.h,
             ),
             Center(
-              child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp,
-                  ColorX.text0917(), Intr().sidao12shuzihuozimu,
-                  defText: state.username.value,
-                  onChanged: (v) => state.username.value = v,
-                  backgroundColor: ColorX.cardBg3(),
-                  hintColor: ColorX.text586()),
+              child: Container(
+                width: 335.w,
+                decoration: BoxDecoration(
+                  color: ColorX.cardBg3(),
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Row(
+                  children: [
+                    Text("d",style: TextStyle(fontSize: 14.sp,color: ColorX.color_ff5164),),
+                    Expanded(
+                      child: WidgetUtils().buildTextField(335.w, 45.h, 14.sp,
+                          ColorX.text0917(), Intr().sidao12shuzihuozimu,
+                          defText: state.username.value,
+                          onChanged: (v) => state.username.value = v,
+                          backgroundColor: Colors.transparent,
+                          hintColor: ColorX.text586()),
+                    ),
+                  ],
+                ),
+              ),
             ),
             SizedBox(
               height: 20.h,

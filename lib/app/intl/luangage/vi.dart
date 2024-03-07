@@ -986,6 +986,11 @@ class VI{
     "kaishifengpan":"Bắt đầu phong ấn",
     "lianjiefuwushibai":"Dịch vụ liên kết đã thất bại, hãy thử lại sau",
     "kaijiangzhong":"Trong xổ số",
+    "qiandaochenggong":"Đăng nhập thành công",
+    "benyueleijiqiandao":"Số lượt đăng ký trong tháng này: ",
+    "jiajifen":", +",
+    "zaiqiandao":"Số lần đăng ký:",
+    "kehuode":", bạn có thể nhận được:",
 
   };
 }

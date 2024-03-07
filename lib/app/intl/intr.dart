@@ -629,6 +629,13 @@ class Intr extends Translations{
   String get agent_phone_tip => "agent_phone_tip".tr;
   String get no_more => "no_more".tr;
   String get status => "status".tr;
+  String get mod_user_tip1 => "mod_user_tip1".tr;
+  String get mod_user_tip2 => "mod_user_tip2".tr;
+  String get qiandaochenggong => "qiandaochenggong".tr;
+  String get benyueleijiqiandao => "benyueleijiqiandao".tr;
+  String get jiajifen => "jiajifen".tr;
+  String get zaiqiandao => "zaiqiandao".tr;
+  String get kehuode => "kehuode".tr;
 
 
 

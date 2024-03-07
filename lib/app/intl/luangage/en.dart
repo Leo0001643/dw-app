@@ -1056,6 +1056,11 @@ class EN{
     "kaishifengpan":"Open closing",
     "lianjiefuwushibai":"Link service failed, try again later",
     "kaijiangzhong":"Drawing",
+    "qiandaochenggong":"Sign in successfully",
+    "benyueleijiqiandao":"The total number of check-ins in this month: ",
+    "jiajifen":", +",
+    "zaiqiandao":"Number of re-sign-in:",
+    "kehuode":", can obtain:",
 
   };
 
