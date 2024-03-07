@@ -54,9 +54,11 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
         children: [
           SizedBox(height: 10.h,),
           LCTabBar(
-            length: 4,
+            length: state.tabs.length,
             controller: _tabController,
             tabBarHeight: 40.h,
+            width: 1.sw,
+            tabAlignment:TabAlignment.fill,
             tabBarColor: ColorX.cardBg(),
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorPadding: EdgeInsets.only(top: 34.h,left: 40.w,right: 40.w,bottom: 3.h),

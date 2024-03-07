@@ -11,7 +11,9 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 
@@ -40,6 +42,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
       allMonny+=int.tryParse(betMoney)??0;
     }
 
+
     print("=========>avatar  ${wsBetResultEntity.avatar} ${wsBetResultEntity.content}");
     return Container(
       child: Column(
@@ -51,12 +54,12 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             child: Row(
               children: [
                 GFAvatar(
-                  backgroundImage: AssetImage('assets/images/${wsBetResultEntity.avatar??ImageX.icon_avatar}.png'),
+                  backgroundImage: AssetImage(DataUtils.findAvatar(wsBetResultEntity.avatar)),
                   shape: GFAvatarShape.circle,
                   radius: 16.r,
                 ),
                 SizedBox(width: 5.w,),
-                Text(wsBetResultEntity.nickname??"",style: TextStyle(fontSize: 14.sp,color: ColorX.text606(),),),
+                Text(wsBetResultEntity.nickname.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text606(),),),
               ],
             ),
           ),
@@ -90,7 +93,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                           Wrap(
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
-                              Text(Intr().touzhu,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: Colors.white),),
+                              Text(Intr().gentou,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: Colors.white),),
                               Image.asset(ImageX.icon_right_black,color: Colors.white,),
                             ],
                           ),

@@ -214,7 +214,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   children: [
-                    Image.asset(ImageX.icon_dollar_grey,width: 24.r,),
+                    Image.asset(ImageX.usdt,width: 24.r,),
                     Obx(() {
                       return WidgetUtils().buildTextField(230.w, 42.h, 14.sp,
                           ColorX.text586(), Intr().qingshurujine,backgroundColor: Colors.transparent,

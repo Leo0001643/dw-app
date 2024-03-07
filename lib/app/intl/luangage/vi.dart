@@ -991,6 +991,7 @@ class VI{
     "jiajifen":", +",
     "zaiqiandao":"Số lần đăng ký:",
     "kehuode":", bạn có thể nhận được:",
+    "gentou":"Đi theo",
 
   };
 }

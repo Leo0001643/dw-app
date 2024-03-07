@@ -15,7 +15,7 @@ class BettingRecordState {
 
   late List<BillWalletEntity> wallets = [
     currentWallet.value,
-    BillWalletEntity(Intr().wallet_usdt, ImageX.icon_dollar_grey,ImageX.icon_dollar_red),
+    BillWalletEntity(Intr().wallet_usdt, ImageX.usdt,ImageX.active_usdt),
   ];
 
   ///投注记录

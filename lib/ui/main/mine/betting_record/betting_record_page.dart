@@ -132,7 +132,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 8.h),
       child: Row(
         children: [
-          Image.asset(select ? item.activeIcon:item.normalIcon),
+          WidgetUtils().buildImage(select ? item.activeIcon:item.normalIcon, 15.r, 15.r),
           SizedBox(width: 3.w,),
           Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
         ],

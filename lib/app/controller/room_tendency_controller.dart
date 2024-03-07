@@ -1,6 +1,7 @@
 
 
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
@@ -27,15 +28,15 @@ class RoomTendencyController extends GetxController{
   String getTitle(int tabIndex){
     switch(tabIndex){
       case 0:
-        return "room_tema".tr;
+        return Intr().tema;
       case 1:
-        return"room_diyiqiu".tr;
+        return Intr().diyiqiu;
       case 2:
-        return "room_dierqiu".tr;
+        return Intr().dierqiu;
       case 3:
-        return "room_disanqiu".tr;
+        return Intr().disanqiu;
     }
-    return "room_tema".tr;
+    return Intr().tema;
   }
 
   List<List<int>>? getNumberCount(var tabIndex){

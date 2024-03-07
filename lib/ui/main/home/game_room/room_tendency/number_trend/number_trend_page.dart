@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/main/home/game_room/room_tendency/number_trend/number_trend_state.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -46,19 +47,22 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
       child: Column(
         children: [
           SizedBox(height: 10.h,),
-          LCTabBar(
+          LCSegmentTabs(
             length: state.tabs.length,
-            controller: _tabController,
-            tabBarHeight: 40.h,
+            tabController: _tabController,
+            height: 40.h,
+            width: 1.sw,
             tabBarColor: ColorX.cardBg(),
+            border: Border.all(color: Colors.transparent),
+            borderRadius:  BorderRadius.only(topRight: Radius.circular(10.r),topLeft: Radius.circular(10.r)),
             indicatorSize: TabBarIndicatorSize.tab,
-            indicatorPadding: EdgeInsets.only(top: 34.h,left: 40.w,right: 40.w,bottom: 3.h),
+            indicatorPadding: EdgeInsets.only(top: 32.h,left: 40.w,right: 40.w,bottom: 2.h),
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(3.r),
               color: ColorX.text0917(),
             ),
             labelPadding: EdgeInsets.zero,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft: Radius.circular(10.r)),),
+            // shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft: Radius.circular(10.r)),),
             labelColor: ColorX.text0917(),
             unselectedLabelColor: ColorX.text586(),
             // width: 300.w,
@@ -85,8 +89,9 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                     labelFormat: Intr().hao_value,
                     labelAlignment: LabelAlignment.center,
                     labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
-                    minimum: 1,//设置最小值
+                    minimum: 0,//设置最小值
                     interval: 1,//设置步长
+                    maximum: 27,//设置最大值
                     anchorRangeToVisiblePoints: false,
                     majorTickLines: MajorTickLines(size: 0),
                     minorTickLines: MinorTickLines(size: 0),

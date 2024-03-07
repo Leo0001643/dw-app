@@ -617,9 +617,9 @@ class EN{
     "confirm":"confirm",
     "cancel":"cancel",
     "tema":"Special code",
-    "diyiqiu":"First Ball",
-    "dierqiu":"Second ball",
-    "disanqiu":"Third ball",
+    "diyiqiu":"1st",
+    "dierqiu":"2nd",
+    "disanqiu":"3rd",
     "qingshurujine":"Please enter the amount",
     "end":"end",
     "xiazhuxiangqing":"Betting details",
@@ -1061,6 +1061,7 @@ class EN{
     "jiajifen":", +",
     "zaiqiandao":"Number of re-sign-in:",
     "kehuode":", can obtain:",
+    "gentou":"follow",
 
   };
 

@@ -36,7 +36,7 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
 
 
     return Container(
-      margin: EdgeInsets.only(left: 50.w,right: 20.w,bottom: 8.w,top: 8.w),
+      margin: EdgeInsets.only(left: 20.w,right: 20.w,bottom: 8.w,top: 8.w),
       decoration: const BoxDecoration(
           color: Color(0xFFF7F8FB),
           borderRadius: BorderRadius.all(Radius.circular(8))),

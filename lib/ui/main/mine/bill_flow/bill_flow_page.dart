@@ -170,7 +170,7 @@ class _BillFlowPageState extends State<BillFlowPage> {
   Widget buildBillItem(FlowDataList item) {
     var symbol = item.transType == "IN" ? "+":"-";
     var color = item.transType == "IN" ? ColorX.color_23a81d:ColorX.color_fc243b;
-    var icon = state.selectIndex == 0 ? ImageX.icon_jj_grey:ImageX.icon_dollar_grey;
+    var icon = state.selectIndex == 0 ? ImageX.icon_jj_grey:ImageX.usdt;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       margin: EdgeInsets.only(top: 10.h),

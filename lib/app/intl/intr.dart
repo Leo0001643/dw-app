@@ -636,6 +636,7 @@ class Intr extends Translations{
   String get jiajifen => "jiajifen".tr;
   String get zaiqiandao => "zaiqiandao".tr;
   String get kehuode => "kehuode".tr;
+  String get gentou => "gentou".tr;
 
 
 

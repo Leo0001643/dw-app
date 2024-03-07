@@ -55,10 +55,12 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
         children: [
           SizedBox(height: 10.h,),
           LCTabBar(
-            length: 4,
+            length: state.tabs.length,
             controller: _tabController,
             tabBarHeight: 40.h,
             tabBarColor: ColorX.cardBg(),
+            width: 1.sw,
+            tabAlignment:TabAlignment.fill,
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorPadding: EdgeInsets.only(top: 34.h,left: 40.w,right: 40.w,bottom: 3.h),
             indicator: BoxDecoration(
@@ -68,7 +70,6 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft: Radius.circular(10.r)),),
             labelColor: ColorX.text0917(),
             unselectedLabelColor: ColorX.text586(),
-            // width: 300.w,
             tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),).toList(),
           ),
           GetBuilder<RoomTendencyController>(
