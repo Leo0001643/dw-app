@@ -155,6 +155,7 @@ class ImageX{
   static const icon_jymm = 'assets/images/icon_jymm.png';
   static const icon_language = 'assets/images/icon_language.png';
   static const icon_pc = 'assets/images/icon_pc.png';
+  static const pc_dark = 'assets/images/pc_dark.svg';
   static const icon_pkg_grey = 'assets/images/icon_pkg_grey.png';
   static const icon_pkg_red = 'assets/images/icon_pkg_red.png';
   static const icon_qmf = 'assets/images/icon_qmf.png';
@@ -805,7 +806,6 @@ class ImageX{
     return AppData.theme() ? ic_sign : ic_sign_dark;
   }
 
-
   static String bindOtherT(){
     return AppData.theme() ? bindOther_light : bindOther_dark;
   }
@@ -833,6 +833,47 @@ class ImageX{
   static String iconEdzhT(){
     return AppData.theme() ? icon_edzh : edzh_dark;
   }
+
+  static String iconZjmxT(){
+    return AppData.theme() ? icon_zjmx : zjmx_dark;
+  }
+
+  static String iconJymmT(){
+    return AppData.theme() ? icon_jymm : jymm_dark;
+  }
+
+  static String iconBddtT(){
+    return AppData.theme() ? icon_bddt : bdusdt_dark;
+  }
+
+  static String iconJfjlT(){
+    return AppData.theme() ? icon_jfjl : jfjl_dark;
+  }
+
+  static String iconFanT(){
+    return AppData.theme() ? icon_fan : hyfs_dark;
+  }
+
+  static String iconHbjjT(){
+    return AppData.theme() ? icon_hbjj : hbhjj_dark;
+  }
+
+  static String iconDaiT(){
+    return AppData.theme() ? icon_dai : dlzc_dark;
+  }
+
+  static String iconSettingT(){
+    return AppData.theme() ? icon_setting : tysz_dark;
+  }
+
+  static String iconBzzxT(){
+    return AppData.theme() ? icon_bzzx : help_dark;
+  }
+
+  static String iconGywmT(){
+    return AppData.theme() ? icon_gywm : gywm_dark;
+  }
+
 
   static String iconBbT(){
     return AppData.theme() ? icon_bb : bbdh_dark;
@@ -866,6 +907,9 @@ class ImageX{
     return AppData.theme() ? my : my_dark;
   }
 
+  static String pcT(){
+    return AppData.theme() ? icon_pc : pc_dark;
+  }
 
 
 

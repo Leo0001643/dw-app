@@ -1,0 +1,5 @@
+<svg id="icon_tab_首页_未选中" data-name="icon/tab/首页_未选中" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="矩形" width="24" height="24" fill="none"/>
+  <path id="形状结合" d="M20.5-2.56,21-13.687l-8.376-6.931A1,1,0,0,0,12-20.837a1,1,0,0,0-.624.219L3.188-14.078,3-3.06Z" transform="translate(0 23.397)" fill="none" stroke="#9A9A9A" stroke-width="2" fill-rule="evenodd"/>
+  <rect id="矩形-2" data-name="矩形" width="6" height="2.5" rx="1.25" transform="translate(13.25 11.25) rotate(90)" fill="#9A9A9A"/>
+</svg>

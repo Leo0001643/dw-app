@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/绑定银行卡</title>
+    <g id="icon/绑定银行卡" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" x="0" y="0" width="24" height="24"></rect>
+        <polygon id="直线-4" fill="#FFFFFF" fill-rule="nonzero" points="22.87195 8 22.87195 10 1 10 1 8"></polygon>
+        <path d="M21,4 C22.1045695,4 23,4.8954305 23,6 L23,18 C23,19.1045695 22.1045695,20 21,20 L3,20 C1.8954305,20 1,19.1045695 1,18 L1,6 C1,4.8954305 1.8954305,4 3,4 L21,4 Z M21,6 L3,6 L3,18 L21,18 L21,6 Z" id="矩形" fill="#FFFFFF" fill-rule="nonzero"></path>
+        <path d="M7.5,11.5 C8.05228475,11.5 8.5,11.9477153 8.5,12.5 C8.5,13.0522847 8.05228475,13.5 7.5,13.5 L5.5,13.5 C4.94771525,13.5 4.5,13.0522847 4.5,12.5 C4.5,11.9477153 4.94771525,11.5 5.5,11.5 L7.5,11.5 Z" id="直线" fill="#FC243B" fill-rule="nonzero"></path>
+    </g>
+</svg>

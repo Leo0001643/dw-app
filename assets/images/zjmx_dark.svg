@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/me/detail</title>
+    <g id="icon/me/detail" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" stroke="#FFFFFF" stroke-width="2" x="2" y="3" width="20" height="18" rx="5"></rect>
+        <rect id="形状结合" fill="#FC243B" x="6" y="7" width="3" height="2" rx="1"></rect>
+        <rect id="形状结合备份-4" fill="#FC243B" x="11" y="7" width="7" height="2" rx="1"></rect>
+        <rect id="形状结合备份-2" fill="#FC243B" transform="translate(7.500000, 12.000000) scale(-1, -1) translate(-7.500000, -12.000000) " x="6" y="11" width="3" height="2" rx="1"></rect>
+        <rect id="形状结合备份-5" fill="#FC243B" transform="translate(14.500000, 12.000000) scale(-1, -1) translate(-14.500000, -12.000000) " x="11" y="11" width="7" height="2" rx="1"></rect>
+        <rect id="形状结合备份-3" fill="#FC243B" transform="translate(7.500000, 16.000000) scale(-1, -1) translate(-7.500000, -16.000000) " x="6" y="15" width="3" height="2" rx="1"></rect>
+        <rect id="形状结合备份-6" fill="#FC243B" transform="translate(14.500000, 16.000000) scale(-1, -1) translate(-14.500000, -16.000000) " x="11" y="15" width="7" height="2" rx="1"></rect>
+    </g>
+</svg>

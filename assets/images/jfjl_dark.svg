@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/me/Integral_detail</title>
+    <g id="icon/me/Integral_detail" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" x="0" y="0" width="24" height="24"></rect>
+        <polygon id="星形" fill="#FC243B" points="11 14 8.64885899 15.236068 9.09788697 12.618034 7.19577393 10.763932 9.8244295 10.381966 11 8 12.1755705 10.381966 14.8042261 10.763932 12.902113 12.618034 13.351141 15.236068"></polygon>
+        <path d="M11,1 C17.0751322,1 22,5.92486775 22,12 C22,12.5522847 21.5522847,13 21,13 C20.4477153,13 20,12.5522847 20,12 C20,7.02943725 15.9705627,3 11,3 C6.02943725,3 2,7.02943725 2,12 C2,16.9705627 6.02943725,21 11,21 C11.5522847,21 12,21.4477153 12,22 C12,22.5522847 11.5522847,23 11,23 C4.92486775,23 0,18.0751322 0,12 C0,5.92486775 4.92486775,1 11,1 Z" id="路径" fill="#FFFFFF" fill-rule="nonzero"></path>
+        <rect id="矩形" fill="#FFFFFF" x="15" y="19" width="8" height="2" rx="1"></rect>
+        <rect id="矩形备份" fill="#FFFFFF" x="15" y="15" width="8" height="2" rx="1"></rect>
+    </g>
+</svg>
