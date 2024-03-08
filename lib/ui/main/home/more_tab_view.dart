@@ -6,6 +6,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/home_game_menu_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 import 'package:popover/popover.dart';
@@ -15,12 +16,12 @@ class MoreTabView extends StatelessWidget {
   final HomeLogic logic;
   MoreTabView(this.logic, {super.key});
 
-  var homeMenu = [HomeGameMenuEntity(name: Intr().grzx,group: ImageX.icon_mine_svg,),
-    HomeGameMenuEntity(name: Intr().zoushi,group: ImageX.icon_zoushi,),
-    HomeGameMenuEntity(name: Intr().eduzhuanhuan,group: ImageX.icon_edzh,),
-    HomeGameMenuEntity(name: Intr().bibiduihuan,group: ImageX.icon_bb,),
-    HomeGameMenuEntity(name: Intr().touzhujilu,group: ImageX.icon_tzjl,),
-    HomeGameMenuEntity(name: Intr().tuiguangzhuanqian,group: ImageX.icon_tuiguang,),];
+  var homeMenu = [HomeGameMenuEntity(name: Intr().grzx,group: ImageX.iconMineT(),),
+    HomeGameMenuEntity(name: Intr().zoushi,group: ImageX.iconZoushiT(),),
+    HomeGameMenuEntity(name: Intr().eduzhuanhuan,group: ImageX.iconEdzhT(),),
+    HomeGameMenuEntity(name: Intr().bibiduihuan,group: ImageX.iconBbT(),),
+    HomeGameMenuEntity(name: Intr().touzhujilu,group: ImageX.iconTzjlT(),),
+    HomeGameMenuEntity(name: Intr().tuiguangzhuanqian,group: ImageX.iconTuiguangT(),),];
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +37,7 @@ class MoreTabView extends StatelessWidget {
             itemBuilder: (context,index){
               var e=homeMenu[index];
               return buildMenuItem(context,e,homeMenu.indexOf(e));
-            }, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-          ),
+            }, gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,),
           ),
           onPop: (){},
           direction: PopoverDirection.left,
@@ -80,30 +79,13 @@ class MoreTabView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buildImageItem(e.group.em(),),
+            WidgetUtils().buildImage(e.group.em(), 24.r, 24.r,fit: BoxFit.contain),
             SizedBox(height: 4.h,),
             Text(e.name.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),textAlign: TextAlign.center,),
           ],
         ),
       ),
     );
-  }
-  Widget buildImageItem(String icon) {
-    if (icon.contains("mine.svg")||icon.contains("zoushi.svg")) {
-      return SvgPicture.asset(
-        icon,
-        width: 24.w,
-        height: 24.w,
-        fit: BoxFit.contain,
-      );
-    }else{
-      return Image.asset(
-        icon,
-        width: 24.w,
-        height: 24.w,
-        fit: BoxFit.contain,
-      );
-    }
   }
 
 }

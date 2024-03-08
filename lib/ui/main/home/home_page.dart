@@ -396,8 +396,8 @@ class StateHomePage extends State<HomePage>
                             ? "¥${state.cnyBal.value.money.em()}"
                             : "₮${state.usdtBal.value.money.em()}",
                         ctl.wallet
-                            ? ImageX.icon_rmb_grey
-                            : ImageX.icon_ustd2_grey);
+                            ? ImageX.iconRmbGreyT()
+                            : ImageX.iconUstd2GreyT());
                   }),
                 ),
                 Obx(() {
@@ -406,8 +406,8 @@ class StateHomePage extends State<HomePage>
                           ? "₮${state.usdtBal.value.money.em()}"
                           : "¥${state.cnyBal.value.money.em()}",
                       ctl.wallet
-                          ? ImageX.icon_ustd2_grey
-                          : ImageX.icon_rmb_grey);
+                          ? ImageX.iconUstd2GreyT()
+                          : ImageX.iconRmbGreyT());
                 }),
               ],
             );
@@ -442,9 +442,7 @@ class StateHomePage extends State<HomePage>
   Widget buildWalletDefault(String value, String icon) {
     return Row(
       children: [
-        Image.asset(
-          icon,
-        ), //color: ColorX.icon586(),
+        WidgetUtils().buildImage(icon, 15.r, 15.r,),
         SizedBox(
           width: 3.w,
         ),
@@ -464,9 +462,7 @@ class StateHomePage extends State<HomePage>
   Widget buildWalletOther(String value, String icon) {
     return Row(
       children: [
-        Image.asset(
-          icon,
-        ),
+        WidgetUtils().buildImage(icon, 15.r, 15.r,),
         SizedBox(
           width: 3.w,
         ),

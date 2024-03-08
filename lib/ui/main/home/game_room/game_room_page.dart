@@ -60,7 +60,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     return DrawerScaffold(
       scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildGameBar(state.title, buildRoomType(),
-          collect: false, msg: true, onTap: () {
+          collect: false, msg: true,scaffoldKey: state.scaffoldKey,onTap: () {
         DialogUtils().showSelectRoomBtmDialog(context, state.pc28Lotto.value)
             .then(
           (value) {

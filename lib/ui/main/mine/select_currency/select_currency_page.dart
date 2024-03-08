@@ -80,7 +80,7 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
                           onTap: ()=> logic.changeWallet(item),
                           title: Row(
                             children: [
-                              Image.asset(item.icon.em(),width: 24.r,),
+                              WidgetUtils().buildImage(item.icon.em(),24.r, 24.r),
                               SizedBox(width: 5.w,),
                               Text("${item.language}${item.money}",
                                 style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),

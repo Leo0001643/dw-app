@@ -10,6 +10,8 @@ class ImageX{
   static const icon_back = 'assets/images/icon_back.png';
   static const icon_barrage = 'assets/images/icon_barrage.png';
   static const icon_charge_coin = 'assets/images/icon_charge_coin.png';
+  static const recharge_dark = 'assets/images/recharge_dark.svg';
+
   static const icon_charge_coin1 = 'assets/images/icon_charge_coin1.png';
   static const icon_charge = 'assets/images/icon_charge.png';
   static const icon_choose = 'assets/images/icon_choose.png';
@@ -18,6 +20,8 @@ class ImageX{
   static const icon_close = 'assets/images/icon_close.png';
   static const icon_custome_1 = 'assets/images/icon_custome_1.png';
   static const icon_customer = 'assets/images/icon_customer.png';
+  static const service_dark = 'assets/images/service_dark.svg';
+
   static const icon_dan = 'assets/images/icon_dan.png';
   static const icon_dan2 = 'assets/images/icon_dan2.png';
   static const icon_data = 'assets/images/icon_data.png';
@@ -32,6 +36,10 @@ class ImageX{
   static const icon_hide = 'assets/images/icon_hide.png';
   static const icon_home = 'assets/images/icon_home.png';
   static const icon_home1 = 'assets/images/icon_home1.png';
+
+  static const home_dark = 'assets/images/home_dark.svg';
+
+
   static const icon_hot = 'assets/images/icon_hot.png';
   static const icon_indonesia = 'assets/images/icon_indonesia.png';
   static const icon_ins = 'assets/images/icon_ins.png';
@@ -40,6 +48,9 @@ class ImageX{
   static const icon_lisi_kj = 'assets/images/icon_lisi_kj.png';
   static const icon_mg = 'assets/images/icon_mg.png';
   static const icon_mine = 'assets/images/icon_mine.png';
+  static const my = 'assets/images/my.svg';
+  static const my_dark = 'assets/images/my_dark.svg';
+
   static const icon_mine1 = 'assets/images/icon_mine1.png';
   static const icon_more = 'assets/images/icon_more.png';
   static const icon_msg_list = 'assets/images/icon_msg_list.png';
@@ -89,6 +100,8 @@ class ImageX{
   static const icon_withdraw = 'assets/images/icon_withdraw.png';
   static const icon_yes = 'assets/images/icon_yes.png';
   static const icon_youhui = 'assets/images/icon_youhui.png';
+  static const promo_dark = 'assets/images/promo_dark.svg';
+
   static const icon_youhui1 = 'assets/images/icon_youhui1.png';
   static const icon_youku = 'assets/images/icon_youku.png';
   static const icon_zh = 'assets/images/icon_zh.png';
@@ -112,6 +125,14 @@ class ImageX{
   static const icon_copy = 'assets/images/icon_copy.png';
   static const icon_dai = 'assets/images/icon_agency.svg';
   static const icon_mine_svg = 'assets/images/icon_mine.svg';
+  static const grzx_dark_svg = 'assets/images/grzx_dark.svg';
+  static const zoushi_dark = 'assets/images/zoushi_dark.svg';
+
+  static const bbdh_dark = 'assets/images/bbdh_dark.svg';
+  static const edzh_dark = 'assets/images/edzh_dark.svg';
+  static const tzjl_dark = 'assets/images/tzjl_dark.svg';
+  static const tgzq_dark = 'assets/images/tgzq_dark.svg';
+
   static const icon_zoushi = 'assets/images/icon_zoushi.svg';
   static const icon_dollar_grey = 'assets/images/icon_dollar_grey.png';
   static const icon_dollar_red = 'assets/images/icon_dollar_red.png';
@@ -162,6 +183,11 @@ class ImageX{
   static const bindOther_light = 'assets/images/bindOther_light.svg';
 
   static const icon_ustd2_grey = 'assets/images/icon_ustd2_grey.png';
+  static const circle_usdt_dark = 'assets/images/circle_usdt_dark.svg';
+
+  static const circle_cny_dark = 'assets/images/circle_cny_dark.svg';
+
+
   static const icon_ustd2_red = 'assets/images/icon_ustd2_red.png';
   static const icon_tjyhicon_ustd_greyk = 'assets/images/icon_ustd_grey.png';
   static const icon_vhd_grey = 'assets/images/icon_vhd_grey.png';
@@ -534,6 +560,17 @@ class ImageX{
   static const ic_other_dark = 'assets/images/ic_other_dark.svg';
   static const ic_other_light = 'assets/images/ic_other_light.svg';
 
+  static const zjmx_dark = 'assets/images/zjmx_dark.svg';
+  static const jymm_dark = 'assets/images/jymm_dark.svg';
+  static const bdyhk_dark = 'assets/images/bdyhk_dark.svg';
+  static const bdusdt_dark = 'assets/images/bdusdt_dark.svg';
+  static const jfjl_dark = 'assets/images/jfjl_dark.svg';
+  static const hyfs_dark = 'assets/images/hyfs_dark.svg';
+  static const hbhjj_dark = 'assets/images/hbhjj_dark.svg';
+  static const dlzc_dark = 'assets/images/dlzc_dark.svg';
+  static const tysz_dark = 'assets/images/tysz_dark.svg';
+  static const help_dark = 'assets/images/help_dark.svg';
+  static const gywm_dark = 'assets/images/gywm_dark.svg';
 
 
 
@@ -776,6 +813,65 @@ class ImageX{
   static String icOtherT(){
     return AppData.theme() ? ic_other_light : ic_other_dark;
   }
+
+  static String iconUstd2GreyT(){
+    return AppData.theme() ? icon_ustd2_grey : circle_usdt_dark;
+  }
+
+  static String iconRmbGreyT(){
+    return AppData.theme() ? icon_rmb_grey : circle_cny_dark;
+  }
+
+  static String iconMineT(){
+    return AppData.theme() ? icon_mine_svg : grzx_dark_svg;
+  }
+
+  static String iconZoushiT(){
+    return AppData.theme() ? icon_zoushi : zoushi_dark;
+  }
+
+  static String iconEdzhT(){
+    return AppData.theme() ? icon_edzh : edzh_dark;
+  }
+
+  static String iconBbT(){
+    return AppData.theme() ? icon_bb : bbdh_dark;
+  }
+
+  static String iconTzjlT(){
+    return AppData.theme() ? icon_tzjl : tzjl_dark;
+  }
+
+  static String iconTuiguangT(){
+    return AppData.theme() ? icon_tuiguang : tgzq_dark;
+  }
+
+  static String iconHomeT(){
+    return AppData.theme() ? icon_home1 : home_dark;
+  }
+
+  static String iconYouhuiT(){
+    return AppData.theme() ? icon_youhui1 : promo_dark;
+  }
+
+  static String iconChargeCoinT(){
+    return AppData.theme() ? icon_charge_coin1 : recharge_dark;
+  }
+
+  static String iconCustomerT(){
+    return AppData.theme() ? icon_custome_1 : service_dark;
+  }
+
+  static String myT(){
+    return AppData.theme() ? my : my_dark;
+  }
+
+
+
+
+
+
+
 
 
   static String countDown1Z(){

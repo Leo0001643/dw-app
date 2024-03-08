@@ -587,7 +587,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                     onTap: () => Get.toNamed(Routes.quota_conversion),
                     child: Column(
                       children: [
-                        Image.asset(ImageX.icon_edzh),
+                        WidgetUtils().buildImage(ImageX.iconEdzhT(), 24.r, 24.r),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -625,7 +625,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                     onTap: () => Get.toNamed(Routes.betting_record),
                     child: Column(
                       children: [
-                        Image.asset(ImageX.icon_tzjl),
+                        WidgetUtils().buildImage(ImageX.iconTzjlT(), 24.r, 24.r),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -680,7 +680,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
   Widget buildWalletDefault(HomeLogic logic, WalletController ctl) {
     return Row(
       children: [
-        Image.asset(ctl.wallet ? ImageX.icon_rmb_grey : ImageX.icon_ustd2_grey),
+        WidgetUtils().buildImage(ctl.wallet ? ImageX.iconRmbGreyT() : ImageX.iconUstd2GreyT(), 15.r, 15.r),
         SizedBox(
           width: 3.w,
         ),

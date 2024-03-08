@@ -87,15 +87,15 @@ class ItemBuilder extends DelegateBuilder{
   Widget build(BuildContext context, int index, bool active) {
     switch(index){
       case 0:
-        return buildNormalLabel("home_home".tr,ImageX.icon_home1,ImageX.icon_home,24.r,active);
+        return buildNormalLabel("home_home".tr,ImageX.iconHomeT(),ImageX.icon_home,24.r,active);
       case 1:
-        return buildNormalLabel("home_discount".tr,ImageX.icon_youhui1,ImageX.icon_youhui,24.r,active);
+        return buildNormalLabel("home_discount".tr,ImageX.iconYouhuiT(),ImageX.icon_youhui,24.r,active);
       case 2:
-        return buildNormalLabel("home_recharge".tr,ImageX.icon_charge_coin1,ImageX.icon_charge_coin,48.r,active,index:2);
+        return buildNormalLabel("home_recharge".tr,ImageX.iconChargeCoinT(),ImageX.icon_charge_coin,48.r,active,index:2);
       case 3:
-        return buildNormalLabel("home_kefu".tr,ImageX.icon_custome_1,ImageX.icon_customer,24.r,active);
+        return buildNormalLabel("home_kefu".tr,ImageX.iconCustomerT(),ImageX.icon_customer,24.r,active);
       case 4:
-        return buildNormalLabel("home_mine".tr,ImageX.icon_mine1,ImageX.icon_mine,24.r,active);
+        return buildNormalLabel("home_mine".tr,ImageX.myT(),ImageX.icon_mine,24.r,active);
       default :
         return Container();
     }
@@ -111,10 +111,10 @@ class ItemBuilder extends DelegateBuilder{
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Image.asset(active ? activeicon: icon,width: iconsize,height: iconsize,),
+        WidgetUtils().buildImage(active ? activeicon: icon,iconsize,iconsize,),
         Visibility(
           visible: index==2,
-            child: SizedBox(height: 5,)),
+            child: SizedBox(height: 5.h,)),
         Text(
           label,
           style: TextStyle(

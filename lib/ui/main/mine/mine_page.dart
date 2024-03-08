@@ -177,9 +177,7 @@ class StateMinePage extends State<MinePage> {
                                       Get.toNamed(Routes.select_currency),
                                   child: Row(
                                     children: [
-                                      Image.asset(ctl.wallet
-                                          ? ImageX.icon_rmb_grey
-                                          : ImageX.icon_ustd2_grey),
+                                      WidgetUtils().buildImage(ctl.wallet ? ImageX.iconRmbGreyT() : ImageX.iconUstd2GreyT(), 15.r, 15.r),
                                       SizedBox(
                                         width: 2.w,
                                       ),
@@ -312,9 +310,9 @@ class StateMinePage extends State<MinePage> {
                         Row(
                           children: [
                             buildCategoryItem(
-                                Intr().bibiduihuan, ImageX.icon_bb, 0),
+                                Intr().bibiduihuan, ImageX.iconBbT(), 0),
                             buildCategoryItem(
-                                Intr().eduzhuanhuan, ImageX.icon_edzh, 1),
+                                Intr().eduzhuanhuan, ImageX.iconEdzhT(), 1),
                             buildCategoryItem(
                                 Intr().zijinmingxi, ImageX.icon_zjmx, 2),
                             buildCategoryItem(
@@ -359,7 +357,7 @@ class StateMinePage extends State<MinePage> {
                         Row(
                           children: [
                             buildCategoryItem(
-                                Intr().touzhujilu, ImageX.icon_tzjl, 6),
+                                Intr().touzhujilu, ImageX.iconTzjlT(), 6),
                             buildCategoryItem(
                                 Intr().jifenjilu, ImageX.icon_jfjl, 7),
                             buildCategoryItem(
@@ -396,7 +394,7 @@ class StateMinePage extends State<MinePage> {
                         Row(
                           children: [
                             buildCategoryItem(Intr().tuiguangzhuanqian,
-                                ImageX.icon_tuiguang, 10),
+                                ImageX.iconTuiguangT(), 10),
                             buildCategoryItem(
                                 Intr().dailizhuce, ImageX.icon_dai, 11),
                             Container(
@@ -468,7 +466,7 @@ class StateMinePage extends State<MinePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            buildImageItem(icon),
+            WidgetUtils().buildImage(icon, 24.r, 24.r,fit: BoxFit.contain),
             SizedBox(
               height: 3.h,
             ),
@@ -486,26 +484,7 @@ class StateMinePage extends State<MinePage> {
     );
   }
 
-  Widget buildImageItem(String icon) {
-    if (icon.contains(".svg")) {
-      return Container(
-        width: 24.w,
-        height: 24.w,
-        alignment: Alignment.center,
-        child: SvgPicture.asset(
-          icon,
-          width: 24.w,
-          // height: 18.w,
-          fit: BoxFit.contain,
-        ),
-      );
-    }else{
-      return Image.asset(
-        icon,
-        width: 24.w,
-        height: 24.w,
-        fit: BoxFit.contain,
-      );
-    }
-  }
+
+
+
 }
