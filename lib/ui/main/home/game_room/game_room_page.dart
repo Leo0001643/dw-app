@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -229,20 +230,13 @@ class _GameRoomPageState extends State<GameRoomPage> {
           colors = [Color(0xffff5163), Color(0xfffd273e)];
           break;
         case 2:
-          colors = [
-            Color(0xff5f6e88),
-            Color(0xff363f57),
-          ];
+          colors = [Color(0xff5f6e88), Color(0xff363f57),];
           break;
         case 3:
-          colors = [
-            Color(0xff88705f),
-            Color(0xff574436),
-          ];
+          colors = [Color(0xff88705f), Color(0xff574436),];
           break;
       }
-      var textColor =
-          state.roomType.value == 3 ? ColorX.color_ffe0ac : Colors.white;
+      var textColor = state.roomType.value == 3 ? ColorX.color_ffe0ac : Colors.white;
       return InkWell(
         onTap: (){
           if (AppData.isLogin()) {

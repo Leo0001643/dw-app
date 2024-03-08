@@ -572,6 +572,7 @@ class ImageX{
   static const tysz_dark = 'assets/images/tysz_dark.svg';
   static const help_dark = 'assets/images/help_dark.svg';
   static const gywm_dark = 'assets/images/gywm_dark.svg';
+  static const back_white = 'assets/images/back_white.svg';
 
 
 
@@ -911,6 +912,9 @@ class ImageX{
     return AppData.theme() ? icon_pc : pc_dark;
   }
 
+  static String iconPageBackT(){
+    return AppData.theme() ? icon_page_back : back_white;
+  }
 
 
 

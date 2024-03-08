@@ -606,7 +606,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                     onTap: () => Get.toNamed(Routes.betting_details),
                     child: Column(
                       children: [
-                        Image.asset(ImageX.icon_pc),
+                        Image.asset(ImageX.pcT()),
                         SizedBox(
                           height: 5.h,
                         ),
@@ -644,10 +644,8 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                     onTap: () => Get.toNamed(Routes.set_simple_pwd),
                     child: Column(
                       children: [
-                        Image.asset(ImageX.icon_jymm),
-                        SizedBox(
-                          height: 5.h,
-                        ),
+                        WidgetUtils().buildImage(ImageX.iconJymmT(), 24.r, 24.r),
+                        SizedBox(height: 5.h,),
                         Text(
                           Intr().jymm,
                           textAlign: TextAlign.center,

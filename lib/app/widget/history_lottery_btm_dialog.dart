@@ -39,7 +39,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: logic.recentlyWSLotteryEntityData.length,
                 itemBuilder: (context, index) {
-                  return GameRecentlyBetWidget(logic.recentlyWSLotteryEntityData[index],true);
+                  return GameRecentlyBetWidget(logic.recentlyWSLotteryEntityData[index]);
                 },
               ),
             ),

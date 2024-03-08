@@ -201,9 +201,7 @@ class WidgetUtils {
         visible: back,
         child: InkWell(
           onTap: () => Get.back(),
-          child: Image.asset(
-            ImageX.icon_page_back,
-          ),
+          child: WidgetUtils().buildImage(ImageX.iconPageBackT(), 24.r, 24.r),
         ),
       ),
       actions: [
@@ -259,7 +257,7 @@ class WidgetUtils {
       toolbarHeight: 44.h,
       leading: InkWell(
         onTap: () => Get.back(),
-        child: Image.asset(ImageX.icon_page_back),
+        child: WidgetUtils().buildImage(ImageX.iconPageBackT(), 24.r, 24.r),
       ),
       actions: [right],
     );
@@ -290,7 +288,7 @@ class WidgetUtils {
         visible: back,
         child: InkWell(
           onTap: () => Get.back(),
-          child: Image.asset(ImageX.icon_page_back),
+          child: WidgetUtils().buildImage(ImageX.iconPageBackT(), 24.r, 24.r),
         ),
       ),
       actions: [
@@ -370,7 +368,7 @@ class WidgetUtils {
         visible: back,
         child: InkWell(
           onTap: () => Get.back(),
-          child: Image.asset(ImageX.icon_page_back),
+          child: WidgetUtils().buildImage(ImageX.iconPageBackT(), 24.r, 24.r),
         ),
       ),
       actions: [
@@ -454,7 +452,7 @@ class WidgetUtils {
         visible: back,
         child: InkWell(
           onTap: () => Get.back(),
-          child: Image.asset(ImageX.icon_page_back),
+          child: WidgetUtils().buildImage(ImageX.iconPageBackT(), 24.r, 24.r),
         ),
       ),
       actions: [
@@ -525,9 +523,7 @@ class WidgetUtils {
         visible: back,
         child: InkWell(
           onTap: () => Get.back(),
-          child: Image.asset(
-            ImageX.icon_page_back,
-          ),
+          child: WidgetUtils().buildImage(ImageX.iconPageBackT(), 24.r, 24.r),
         ),
       ),
     );

@@ -18,10 +18,9 @@ import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 class GameRecentlyBetWidget extends StatelessWidget {
   final logic = Get.find<GameRoomLogic>();
   final state = Get.find<GameRoomLogic>().state;
-  final bool click;
   WSLotteryEntityData headWSLotteryEntityData;
 
-  GameRecentlyBetWidget(this.headWSLotteryEntityData,this.click, {super.key});
+  GameRecentlyBetWidget(this.headWSLotteryEntityData, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -219,44 +218,37 @@ class GameRecentlyBetWidget extends StatelessWidget {
         headWSLotteryEntityData.originalNum ?? ""); //3
     // var color = state.roomType.value == 1 ? ColorX.text0917() : ColorX
     //     .color_ffe0ac;
-    return InkWell(
-      onTap: (){
-        if(click){
-          DialogUtils().showHistoryLotteryBtmDialog(context, logic);
-        }
-      },
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
 
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            WidgetUtils().buildDixqi2(termData),
-            SizedBox(width: 5.w,),
-            buildDrawNum("${arr2[0]}", logic,
-                showWaittingImg: logic.currentStatus.value ==
-                    LotteryStatus.sealingPlateStatus),
-            buildDrawMark("+", ColorX.text0917()),
-            buildDrawNum("${arr2[1]}", logic,
-                showWaittingImg: logic.currentStatus.value ==
-                    LotteryStatus.sealingPlateStatus),
-            buildDrawMark("+", ColorX.text0917()),
-            buildDrawNum("${arr2[2]}", logic,
-                showWaittingImg: logic.currentStatus.value ==
-                    LotteryStatus.sealingPlateStatus),
-            buildDrawMark("=", ColorX.text0917()),
-            buildDrawResult("${arr2[3]}", logic,
-                color: GameRuleUtil.getBallNewColor(arr2[3]),
-                showWaittingImg: logic.currentStatus.value ==
-                    LotteryStatus.sealingPlateStatus),
-            // SizedBox(width: 5.w,),
-            Visibility(
-                visible: logic.currentStatus.value !=
-                    LotteryStatus.sealingPlateStatus,
-                child: GameRuleUtil.getDXDS(arr2[3]),
-            ),
-          ],
-        ),
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          WidgetUtils().buildDixqi2(termData),
+          SizedBox(width: 5.w,),
+          buildDrawNum("${arr2[0]}", logic,
+              showWaittingImg: logic.currentStatus.value ==
+                  LotteryStatus.sealingPlateStatus),
+          buildDrawMark("+", ColorX.text0917()),
+          buildDrawNum("${arr2[1]}", logic,
+              showWaittingImg: logic.currentStatus.value ==
+                  LotteryStatus.sealingPlateStatus),
+          buildDrawMark("+", ColorX.text0917()),
+          buildDrawNum("${arr2[2]}", logic,
+              showWaittingImg: logic.currentStatus.value ==
+                  LotteryStatus.sealingPlateStatus),
+          buildDrawMark("=", ColorX.text0917()),
+          buildDrawResult("${arr2[3]}", logic,
+              color: GameRuleUtil.getBallNewColor(arr2[3]),
+              showWaittingImg: logic.currentStatus.value ==
+                  LotteryStatus.sealingPlateStatus),
+          // SizedBox(width: 5.w,),
+          Visibility(
+            visible: logic.currentStatus.value !=
+                LotteryStatus.sealingPlateStatus,
+            child: GameRuleUtil.getDXDS(arr2[3]),
+          ),
+        ],
       ),
     );
   }

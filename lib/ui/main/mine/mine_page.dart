@@ -57,11 +57,7 @@ class StateMinePage extends State<MinePage> {
                               children: [
                                 Obx(() {
                                   return GFAvatar(
-                                    backgroundImage: WidgetUtils()
-                                        .buildImageProvider(
-                                            DataUtils.findAvatar(state
-                                                .user.value.avatar
-                                                .em())),
+                                    backgroundImage: WidgetUtils().buildImageProvider(DataUtils.findAvatar(state.user.value.avatar.em())),
                                     shape: GFAvatarShape.circle,
                                     radius: 25.r,
                                     child: Container(
@@ -314,17 +310,16 @@ class StateMinePage extends State<MinePage> {
                             buildCategoryItem(
                                 Intr().eduzhuanhuan, ImageX.iconEdzhT(), 1),
                             buildCategoryItem(
-                                Intr().zijinmingxi, ImageX.icon_zjmx, 2),
+                                Intr().zijinmingxi, ImageX.iconZjmxT(), 2),
                             buildCategoryItem(
-                                Intr().tixianmima, ImageX.icon_jymm, 3),
+                                Intr().tixianmima, ImageX.iconJymmT(), 3),
                           ],
                         ),
                         Row(
                           children: [
-                            buildCategoryItem(Intr().bangdingyinhangka,
-                                ImageX.icon_bdyhk, 4),
+                            buildCategoryItem(Intr().bangdingyinhangka, ImageX.iconBddtT(), 4),
                             buildCategoryItem(
-                                Intr().bangdingusdt, ImageX.icon_bddt, 5),
+                                Intr().bangdingusdt, ImageX.iconBddtT(), 5),
                             buildCategoryItem(
                                 Intr().bangdingqitaqianbao, ImageX.bindOtherT(), 21),
                           ],
@@ -348,22 +343,18 @@ class StateMinePage extends State<MinePage> {
                       children: [
                         Text(
                           Intr().wodetouzhu,
-                          style: TextStyle(
-                              fontSize: 15.sp, color: ColorX.text0917()),
+                          style: TextStyle(fontSize: 15.sp, color: ColorX.text0917()),
                         ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
+                        SizedBox(height: 10.h,),
                         Row(
                           children: [
                             buildCategoryItem(
                                 Intr().touzhujilu, ImageX.iconTzjlT(), 6),
                             buildCategoryItem(
-                                Intr().jifenjilu, ImageX.icon_jfjl, 7),
+                                Intr().jifenjilu, ImageX.iconJfjlT(), 7),
                             buildCategoryItem(
-                                Intr().huiyuanfanshui, ImageX.icon_fan, 8),
-                            buildCategoryItem(Intr().hongbaohejiangjin,
-                                ImageX.icon_hbjj, 9),
+                                Intr().huiyuanfanshui, ImageX.iconFanT(), 8),
+                            buildCategoryItem(Intr().hongbaohejiangjin, ImageX.iconHbjjT(), 9),
                           ],
                         ),
                       ],
@@ -396,7 +387,7 @@ class StateMinePage extends State<MinePage> {
                             buildCategoryItem(Intr().tuiguangzhuanqian,
                                 ImageX.iconTuiguangT(), 10),
                             buildCategoryItem(
-                                Intr().dailizhuce, ImageX.icon_dai, 11),
+                                Intr().dailizhuce, ImageX.iconDaiT(), 11),
                             Container(
                               width: 80.w,
                             ),
@@ -432,12 +423,11 @@ class StateMinePage extends State<MinePage> {
                         ),
                         Row(
                           children: [
-                            buildCategoryItem(Intr().tongyongshezhi,
-                                ImageX.icon_setting, 12),
+                            buildCategoryItem(Intr().tongyongshezhi, ImageX.iconSettingT(), 12),
                             buildCategoryItem(
-                                Intr().bangzhuzhongxin, ImageX.icon_bzzx, 13),
+                                Intr().bangzhuzhongxin, ImageX.iconBzzxT(), 13),
                             buildCategoryItem(
-                                Intr().gaunyuwomen, ImageX.icon_gywm, 14),
+                                Intr().gaunyuwomen, ImageX.iconGywmT(), 14),
                             Container(
                               width: 80.w,
                             ),

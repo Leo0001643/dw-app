@@ -58,7 +58,7 @@ class _LotteryResultPageState extends State<LotteryResultPage> with AutomaticKee
                 shrinkWrap: true,
                 itemCount: logic.recentlyWSLotteryEntityData.length,
                 itemBuilder: (context, index) {
-                  return GameRecentlyBetWidget(logic.recentlyWSLotteryEntityData[index],false);
+                  return GameRecentlyBetWidget(logic.recentlyWSLotteryEntityData[index]);
                 },
               ),
             );
