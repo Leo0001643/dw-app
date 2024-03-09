@@ -16,6 +16,7 @@ import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
 import 'package:leisure_games/app/socket/ws_message_get_entity.dart';
+import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -67,12 +68,16 @@ class GameRoomLogic extends GetxController {
       currentStatus.refresh();
       update([gameRoomCompute]);
     });
+    ///播放房间背景音乐
+    if(AppData.bgMusic()){ AudioUtils().playRoom(); }
     super.onReady();
   }
 
   @override
   void onClose() {
     // timer?.cancel();
+    AudioUtils().stop();
+    AudioUtils().stopBg();
     textTimerListener?.cancel();
     textTimerListener = null;
     textStatusListener?.cancel();
@@ -205,6 +210,8 @@ class GameRoomLogic extends GetxController {
       term.value = headWSLotteryEntityData!.term.em();
       update([gameRoomCompute]);
     }
+    ///提示音
+    if(AppData.promptTone()){ AudioUtils().playOpenResult(); }
     GameRoomItemEntity gameRoomItemEntity = GameRoomItemEntity(type: lottery.type, data: lottery);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
     update([gameRoomList]);

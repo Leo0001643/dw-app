@@ -54,7 +54,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
           SizedBox(height: 15.h,),
           Center(child: Image.asset(ImageX.titlegjP()),),
           GetBuilder<TextItemLogic>(
-            id: "textTimerItem",
+            id: TextItemLogic.id_textTimerItem,
             builder: (logic){
               var term = widget.logic.term.value;
               var nextTerm = term;

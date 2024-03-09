@@ -38,7 +38,7 @@ class TextTimerItemState extends State<TextTimerItem> {
   Widget build(BuildContext context) {
     // 在这里构建你的 UI，使用 roomInf 数据
     return GetBuilder<TextItemLogic>(
-        id: "textTimerItem",
+        id: TextItemLogic.id_textTimerItem,
         builder: (logic) {
           // print("开始刷新logic");
           String result = "";

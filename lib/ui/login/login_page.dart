@@ -318,7 +318,6 @@ class _LoginPageState extends State<LoginPage> {
       config: config,
       onLoaded: (dynamic data) {},
       onSuccess: (dynamic data) {
-        print("onSuccess>>data>>" + data.toString());
         logic.clickLogin(data: data);
       },
       onFail: (dynamic data) {},

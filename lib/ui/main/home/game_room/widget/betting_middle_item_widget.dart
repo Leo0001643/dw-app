@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
@@ -33,6 +35,8 @@ class StateBettingMiddleItemWidget extends State<BettingMiddleItemWidget>{
     return InkWell(
       onTap: (){
         // widget.content.contentMap=keyMap;
+        ///提示音
+        if(AppData.promptTone()){ AudioUtils().playBetSelect(); }
         updateBettingDialogItemWidget(widget.content);
       },
       child: Container(

@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
+import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
@@ -326,7 +328,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
   Widget getTimer() {
     // 在这里构建你的 UI，使用 roomInf 数据
     return GetBuilder<TextItemLogic>(
-        id: "textTimerItem",
+        id: TextItemLogic.id_textTimerItem,
         builder: (logic) {
           // print("开始刷新logic");
           String result = "";
@@ -432,23 +434,27 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
   }
 
 
-  Widget buildDrawTime(String time) {
-    return Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: ColorX.color_10_fff,
-        border: Border.all(color: Colors.white,width: 1.r),
-        borderRadius: BorderRadius.circular(5.r),
-      ),
-      child: Text(time,style: TextStyle(fontSize: 16.sp,color: Colors.white,fontWeight: FontWeight.w600),),
-    );
-  }
+  // Widget buildDrawTime(String time) {
+  //   return Container(
+  //     alignment: Alignment.center,
+  //     decoration: BoxDecoration(
+  //       color: ColorX.color_10_fff,
+  //       border: Border.all(color: Colors.white,width: 1.r),
+  //       borderRadius: BorderRadius.circular(5.r),
+  //     ),
+  //     child: Text(time,style: TextStyle(fontSize: 16.sp,color: Colors.white,fontWeight: FontWeight.w600),),
+  //   );
+  // }
+
+
   Widget buildChipItem(String icon, int index, double top, double btm) {
     return InkWell(
       onTap: () {
         chipIndex.value = index;
         selectChip.add(switchChipMonney(index));
         inputAmt.value = 0;
+        ///提示音
+        if(AppData.promptTone()){ AudioUtils().playBetSelect(); }
         selectChip.forEach((element) {
           inputAmt.value += element;
         });

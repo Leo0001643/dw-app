@@ -203,7 +203,7 @@ class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
 
   buildSealingPlateStatus() {
     return GetBuilder<TextItemLogic>(
-        id: "showStopBetting",
+        id: TextItemLogic.id_showStopBetting,
         builder: (logic) {
           return Visibility(
               visible: logic.showStopBetting,
@@ -218,13 +218,13 @@ class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
   }
   buildStartBettingStatus() {
     return GetBuilder<TextItemLogic>(
-        id: "showStartBetting",
+        id: TextItemLogic.id_showStartBetting,
         builder: (logic) {
           return Visibility(
               visible: logic.showStartBetting,
               child: SizedBox(
                   height: 34.h,
-                  child: const Image(image: AssetImage(ImageX.start),)));
+                  child: Image(image: AssetImage(ImageX.startP()),)));
         });
   }
 

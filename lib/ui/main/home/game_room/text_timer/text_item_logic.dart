@@ -2,8 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
@@ -57,6 +60,16 @@ class TextItemLogic extends GetxController {
   bool firstShowStartBettingInPeriod = true;
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
   LotteryStatus lastStatus =LotteryStatus.initStatus;
+
+
+  static String id_showStartBetting = "showStartBetting";
+  static String id_showStopBetting = "showStopBetting";
+  static String id_textTimerItem = "textTimerItem";
+  static String id_fiveCountDownStatus = "fiveCountDownStatus";
+
+
+
+
   setType(String? type) {
     this.type = type;
   }
@@ -79,6 +92,12 @@ class TextItemLogic extends GetxController {
   //   });
   // }
 
+  @override
+  void onClose() {
+    countdownTimer?.cancel();
+    countdownTimer = null;
+    super.onClose();
+  }
 
   // String gameCode="";
   void loadDataGameCode(String gameCode) {
@@ -247,7 +266,7 @@ class TextItemLogic extends GetxController {
     }else {
       fengpanCount = -1;
     }
-    update(["textTimerItem"]);
+    update([id_textTimerItem]);
   }
 
   var fengpanCount = 0;
@@ -270,16 +289,23 @@ class TextItemLogic extends GetxController {
 
   //倒计时5s
   showOverTime(int second) {
+    // logger("倒计时调用次数${second}");
+    ///这里有second调用次数小于等于0的可能
+    if(second > 0){
+      ///提示音
+      if(AppData.promptTone()){ AudioUtils().playCountDown(); }
+    }
     fiveCountDownTime = second;
-    update(["fiveCountDownStatus"]);
+    update([id_fiveCountDownStatus]);
   }
 
-  syschronizeStatus() {
-    if (currentStatus.value != LotteryStatus.fiveCountDownStatus) {
-      fiveCountDownTime = -1;
-    }
-    update(["fiveCountDownStatus"]);
-  }
+  //
+  // syschronizeStatus() {
+  //   if (currentStatus.value != LotteryStatus.fiveCountDownStatus) {
+  //     fiveCountDownTime = -1;
+  //   }
+  //   update([id_fiveCountDownStatus]);
+  // }
 
   showStartBet(String currentStatus,String term) {
      if (lastStatusContent == "0:00:00" &&
@@ -288,10 +314,10 @@ class TextItemLogic extends GetxController {
       showCloseOver(term);
       alreadyShowStop = true;
       showStopBetting = true;
-      update((["showStopBetting"]));
+      update(([id_showStopBetting]));
       Future.delayed(const Duration(seconds: 2,), () {
         showStopBetting = false;
-        update((["showStopBetting"]));
+        update(([id_showStopBetting]));
       });
     }
   }
@@ -345,13 +371,12 @@ class TextItemLogic extends GetxController {
     if (firstShowStartBettingInPeriod && showT > 45) {
       firstShowStartBettingInPeriod = false;
       showStartBetting = true;
-      update((["showStartBetting"]));
-      Future.delayed(
-          Duration(
-            seconds: 2,
-          ), () {
+      update(([id_showStartBetting]));
+      ///提示音
+      if(AppData.promptTone()){ AudioUtils().playNewKj(); }
+      Future.delayed(Duration(seconds: 2,), () {
         showStartBetting = false;
-        update((["showStartBetting"]));
+        update(([id_showStartBetting]));
       });
     }
   }

@@ -84,8 +84,7 @@ dependencies:
   flutter_tencent_captcha: ^0.1.2
   gesture_password_widget: ^2.0.1
   flutter_barrage: ^0.5.5
-  audioplayers: ^5.2.1
-
+  just_audio: ^0.9.36
 
 dependency_overrides:
   meta: ^1.10.0 # 替换为你需要的meta库的版本号

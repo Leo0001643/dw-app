@@ -283,7 +283,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   buildCountDown() {
     return GetBuilder<TextItemLogic>(
-        id: "fiveCountDownStatus",
+        id: TextItemLogic.id_fiveCountDownStatus,
         builder: (logic) {
           return Visibility(
               visible: logic.fiveCountDownTime<=5&&(logic.fiveCountDownTime>0),
