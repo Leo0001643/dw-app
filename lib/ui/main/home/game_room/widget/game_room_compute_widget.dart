@@ -22,7 +22,6 @@ class GameRoomComputeWidget extends StatelessWidget {
    GameRoomComputeWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return GetBuilder<GameRoomLogic>(
         id: GameRoomLogic.gameRoomCompute,
         builder: (logic) {
@@ -220,7 +219,7 @@ class GameRoomComputeWidget extends StatelessWidget {
           child:  Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              WidgetUtils().buildDixqi3(logic.term.value,state.roomType.value),
+              WidgetUtils().buildDixqi3(headWSLotteryEntityData?.term ?? "",state.roomType.value),
               // Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
               SizedBox(width: 5.w,),
               buildDrawNum("${arr2[0]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),

@@ -10,6 +10,7 @@ import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_plan_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 
 enum LotteryStatus {
@@ -258,6 +259,8 @@ class TextItemLogic extends GetxController {
         }
       }
     }
+    ///期号处理成功 显示期号
+    Get.find<GameRoomLogic>().term.value = roomcountdown['${key}Term'].toString();
     state.text_timer.value = roomcountdown['${key}Time'] ?? '';
     lastStatusContent = roomcountdown['${key}Time'] ?? '';
     ///处理咪牌开奖逻辑
@@ -266,6 +269,7 @@ class TextItemLogic extends GetxController {
     }else {
       fengpanCount = -1;
     }
+    loggerArray(["期号倒计时结果",roomcountdown]);
     update([id_textTimerItem]);
   }
 

@@ -207,7 +207,7 @@ class GameRoomLogic extends GetxController {
     recentlyWSLotteryEntityData.value = lottery.data ?? [];
     if (lottery.data?.isNotEmpty == true) {
       headWSLotteryEntityData = lottery.data!.first;
-      term.value = headWSLotteryEntityData!.term.em();
+      // term.value = headWSLotteryEntityData!.term.em();
       update([gameRoomCompute]);
     }
     ///提示音
@@ -287,7 +287,7 @@ class GameRoomLogic extends GetxController {
   void handleMessage(CountDownLotteryEntity countDownLotteryEntity) {
     ///这里因为是监听的countDownLotteryEntity值的变化，所以不能直接加，需要深度拷贝，否则会造成页面数据显示混乱
     CountDownLotteryEntity item = CountDownLotteryEntity.fromJson(countDownLotteryEntity.toJson());
-    term.value = item.term.em();
+    // term.value = item.term.em();
     update([gameRoomCompute]);
     handleSystemMessgeResult(item);
   }
