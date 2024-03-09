@@ -269,7 +269,7 @@ class TextItemLogic extends GetxController {
     }else {
       fengpanCount = -1;
     }
-    loggerArray(["期号倒计时结果",roomcountdown]);
+    // loggerArray(["期号倒计时结果",roomcountdown]);
     update([id_textTimerItem]);
   }
 

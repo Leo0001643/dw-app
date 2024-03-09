@@ -8,6 +8,8 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 
 import 'prize_number_logic.dart';
 
@@ -21,6 +23,7 @@ class PrizeNumberPage extends StatefulWidget {
 class _PrizeNumberPageState extends State<PrizeNumberPage> with AutomaticKeepAliveClientMixin{
   final logic = Get.find<PrizeNumberLogic>();
   final state = Get.find<PrizeNumberLogic>().state;
+  String result = "";
 
   @override
   void dispose() {
@@ -38,23 +41,49 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> with AutomaticKeepAli
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Obx(() {
-                  if(isEmpty(state.data)){ return Container(); }
-                  var item = state.data.first;
-                  return Text(Intr().juelidixqi(["${item.term.em() + 1}"]),
+                  var term = Get.find<GameRoomLogic>().term.value;
+                  if(isEmpty(term)){ return Container(); }
+                  // var item = state.data.first;
+                  return Text(Intr().juelidixqi([term]),
                     style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),fontWeight: FontWeight.w600,),);
                 }),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(Intr().daojishi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),fontWeight: FontWeight.w600,),),
-                    SizedBox(width: 5.w,),
-                    buildDrawTime("00"),
-                    Text(" : ",style: TextStyle(fontSize: 18.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
-                    buildDrawTime("02"),
-                    Text(" : ",style: TextStyle(fontSize: 18.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
-                    buildDrawTime("53"),
-                  ],
-                ),
+                GetBuilder<TextItemLogic>(
+                  id: TextItemLogic.id_textTimerItem,
+                  builder: (lgc){
+                    Color color = ColorX.color_58698d;
+                    if (Intr().fengpanzhong == lgc.state.text_timer.value) {
+                      result = Intr().fengpanzhong;
+                      color = ColorX.color_fc243b;
+                    } else {
+                      ///如果最后一次的封盘中，需要请求下一期结果
+                      if(result == Intr().fengpanzhong){
+                        Future.delayed(Duration(seconds: 5),(){ logic.loadData(); });
+                      }
+                      result = lgc.subToTime(lgc.state.text_timer.value);
+                      ///倒计时10秒的时候 文字变红色
+                      if(result.length == 5 && int.parse(result.substring(3,4)) == 0){
+                        color = ColorX.color_fc243b;
+                      }
+                    }
+                    return Row(
+                      children: [
+                        Visibility(
+                          visible: result != Intr().fengpanzhong,
+                          child: Text(Intr().daojishi,style: TextStyle(fontWeight: FontWeight.w500, color: color, fontSize: 14.sp,)),
+                        ),
+                        SizedBox(width: 5.w,),
+                        Container(
+                          height: 25.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 4.w,),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(6.w)), color: ColorX.color_F7F8FB),
+                          child: Text(result, style: TextStyle(fontWeight: FontWeight.w500, color: color, fontSize: 14.sp,)),
+                        ),
+                      ],
+                    );
+                  },
+                )
               ],
             ),
           ),
@@ -69,7 +98,7 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> with AutomaticKeepAli
                 childs.add(buildDrawNum(element,ColorX.color_70b6ff));
                 childs.add(SizedBox(width: 5.w,));
               });
-              childs.add(buildDrawNum(item.luckyNum.em(),DataUtils.getBallBgColor(int.parse(item.luckyNum.em()))));
+              childs.add(buildDrawResult(item.luckyNum.em(),DataUtils.getBallBgColor(int.parse(item.luckyNum.em()))));
               return Row(children: childs,);
             }),
           ),
@@ -118,24 +147,39 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> with AutomaticKeepAli
   }
 
 
-  Widget buildDrawTime(String time) {
-    return Container(
-      width:26.r,height: 26.r,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: ColorX.cardBg(),
-        border: Border.all(color: Colors.white,width: 1.r),
-        borderRadius: BorderRadius.circular(5.r),
-      ),
-      child: Text(time,style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
-    );
-  }
+  // Widget buildDrawTime(String time) {
+  //   return Container(
+  //     width:26.r,height: 26.r,
+  //     alignment: Alignment.center,
+  //     decoration: BoxDecoration(
+  //       color: ColorX.cardBg(),
+  //       border: Border.all(color: Colors.white,width: 1.r),
+  //       borderRadius: BorderRadius.circular(5.r),
+  //     ),
+  //     child: Text(time,style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w600),),
+  //   );
+  // }
 
   Widget buildDrawNum(String num,Color bg) {
     return Container(
       width: 24.r,height: 24.r,
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: bg,borderRadius: BorderRadius.circular(15.r),),
+      decoration: BoxDecoration(
+        border: Border.all(color: bg,width: 2.w),
+        borderRadius: BorderRadius.circular(15.r),
+      ),
+      child: Text(num, style: TextStyle(fontSize: 14.sp,color: bg,fontWeight: FontWeight.w600),),
+    );
+  }
+
+  Widget buildDrawResult(String num,Color bg) {
+    return Container(
+      width: 24.r,height: 24.r,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(15.r),
+      ),
       child: Text(num, style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),),
     );
   }
@@ -154,7 +198,7 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> with AutomaticKeepAli
             Expanded(
               flex: 30,
               child: Text("${item.term.em()}",
-                style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             ),
             Expanded(
               flex: 25,
@@ -163,9 +207,9 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> with AutomaticKeepAli
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(item.originalNumStr(),
-                    style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(), fontWeight: FontWeight.w600,),),
+                    style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(), fontWeight: FontWeight.w600,),),
                   SizedBox(width: 5.w,),
-                  buildDrawNum(item.luckyNum.em(), DataUtils.getBallBgColor(int.parse(item.luckyNum.em()))),
+                  buildDrawResult(item.luckyNum.em(), DataUtils.getBallBgColor(int.parse(item.luckyNum.em()))),
                 ],
               ),
             ),
@@ -175,7 +219,7 @@ class _PrizeNumberPageState extends State<PrizeNumberPage> with AutomaticKeepAli
                 children: [
                   Expanded(
                     child: Text(item.btcHash.em(),
-                      style: TextStyle(fontSize: 14.sp,color: ColorX.color_5583e7,fontWeight: FontWeight.w600,),
+                      style: TextStyle(fontSize: 13.sp,color: ColorX.color_5583e7,fontWeight: FontWeight.w600,),
                       maxLines: 2,overflow: TextOverflow.ellipsis,),
                   ),
                   Image.asset(ImageX.ic_into_right),

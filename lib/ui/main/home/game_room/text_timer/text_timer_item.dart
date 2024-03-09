@@ -51,7 +51,7 @@ class TextTimerItemState extends State<TextTimerItem> {
           var bgColor = roomType == 1 ? ColorX.color_fc243b : (roomType == 2 ? ColorX.color_529aff:ColorX.color_c7956f);
 
           return Container(
-              height: 20,
+              height: 20.h,
               padding: EdgeInsets.symmetric(
                 horizontal: 4.w,
               ),

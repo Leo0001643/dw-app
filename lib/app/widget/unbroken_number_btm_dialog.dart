@@ -74,7 +74,7 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
                 alignment: Alignment.centerRight,
                 child: Padding(
                     padding: EdgeInsets.only(right: 15.w),
-                  child: WidgetUtils().buildElevatedButton(Intr().confirm, 50.w, 26.h,textSize: 12.sp,
+                  child: WidgetUtils().buildElevatedButton(Intr().jiaoyan, 50.w, 26.h,textSize: 12.sp,
                       bg:ColorX.color_fc243b,onPressed: (){}),
                 ),
               ),
