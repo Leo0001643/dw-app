@@ -993,6 +993,8 @@ class VI{
     "kehuode":", bạn có thể nhận được:",
     "gentou":"Đi theo",
     "zhongjiangjieguodongxiao":"Chiến thắng có hiệu quả",
+    "qingxuanzhetouzhuxm":"Hãy chọn các mục cá cược",
+    "xiazhujinewk":"Số tiền đặt cược là trống rỗng",
 
   };
 }

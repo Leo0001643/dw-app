@@ -51,27 +51,30 @@ class BettingChildPageState extends State<BettingTemaPage>  {
   Widget build(BuildContext context) {
     return Container(
       width: 1.sw,
-      margin: EdgeInsets.only(left: 15.w,right: 15.w,top:8.h,bottom: 8.h),
+      // margin: EdgeInsets.only(left: 15.w,right: 15.w),
       child: CustomScrollView(slivers: [
         SliverToBoxAdapter(
-          child: GridView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 5,
-                crossAxisSpacing: 6.0,
-                mainAxisSpacing: 6,
-                childAspectRatio: 64 / 64,
-              ),
-              itemCount: dataBettingList.length,
-              itemBuilder: (BuildContext context, int index) {
-                print("===== index ${index}   ${dataBettingList[index].hashCode} ");
-                return BettingDialogItemWidget(index,dataBettingList[index],widget.selectBetting,widget.inputAmt,widget.betName);
-              }),
+          child: Container(
+            margin: EdgeInsets.only(top: 6.h,left: 15.w,right: 15.w),
+            child: GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 5,
+                  crossAxisSpacing: 6.0,
+                  mainAxisSpacing: 6,
+                  childAspectRatio: 64 / 64,
+                ),
+                itemCount: dataBettingList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  // print("===== index ${index}   ${dataBettingList[index].hashCode} ");
+                  return BettingDialogItemWidget(index,dataBettingList[index],widget.selectBetting,widget.inputAmt,widget.betName);
+                }),
+          ),
         ),
         SliverToBoxAdapter(
           child: Container(
-            margin: EdgeInsets.only(top: 6.w),
+            margin: EdgeInsets.only(top: 6.w,left: 15.w,right: 15.w),
             child: GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -89,7 +92,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
         ),
         SliverToBoxAdapter(
           child: Container(
-            margin: EdgeInsets.only(top: 6.w),
+            margin: EdgeInsets.only(top: 6.h,bottom: 3.h,left: 15.w,right: 15.w),
             child: GridView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),

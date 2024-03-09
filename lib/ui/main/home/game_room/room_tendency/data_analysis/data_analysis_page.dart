@@ -225,8 +225,8 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
   List<DataCell> buildFormCell(int index,List<String> item) {
     var cells = List<DataCell>.empty(growable: true);
     for(var i=0;i<item.length;i++){
-      var color = i > 1 ? (item[i] == Intr().bet_dan || item[i] == Intr().bet_da || item[i] == Intr().jida
-          ? ColorX.color_529aff:ColorX.color_e75555):( i == 0? ColorX.text0917(): ColorX.text586());
+      var color = (i > 1 && i < 8) ? (item[i] == Intr().bet_dan || item[i] == Intr().bet_da || item[i] == Intr().jida
+          ? ColorX.color_e75555:ColorX.color_529aff): ColorX.text0917();
       if(isEmpty(item[i])){
         cells.add(DataCell(Container(
           height: 30.h,

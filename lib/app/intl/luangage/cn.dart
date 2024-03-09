@@ -992,6 +992,8 @@ class CN {
     "kehuode":"，可获得",
     "gentou":"跟投",
     "zhongjiangjieguodongxiao":"中奖结果动效",
+    "qingxuanzhetouzhuxm":"请选择投注项目",
+    "xiazhujinewk":"下注金额为空",
 
 
 

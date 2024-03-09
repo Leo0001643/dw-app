@@ -82,8 +82,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       height: 0.77.sh,
       width: 1.sw,
       decoration: BoxDecoration(
-        // color: ColorX.pageBg4(),
-        color: Color(0xFFF7F8FB),
+        color: ColorX.pageBg3(),
         borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
       ),
       child: Column(
@@ -120,21 +119,20 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                     decoration: BoxDecoration(
                       image: DecorationImage(image: AssetImage(buildRoomHeadType()),fit: BoxFit.fill),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 12.h),
+                    height: 45.h,
+                    alignment: Alignment.center,
+                    // padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 12.h),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        SizedBox(width: 15.w,),
                         Obx(() {
                           String termData=GameRuleUtil.getSSB(widget.logic.term.value,year:"");
                           return Text(termData,style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),);
                         }),
-                        Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            getTimer()
-                          ],
-                        ),
+                        Expanded(child: Container()),
+                        getTimer(),
+                        SizedBox(width: 15.w,),
                       ],
                     ),
                   ),
@@ -177,12 +175,11 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                     alignment: Alignment.bottomCenter,
                     child: Column(
                       children: [
-                        SizedBox(height: 10.h,),
+                        SizedBox(height: 20.h,),
                         GFCard(
-                          height: 138.h,
+                          height: 110.h,
                           margin: EdgeInsets.zero,
                           padding: EdgeInsets.zero,
-                          color: ColorX.cardBg4(),
                           elevation: 3.r,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(topRight: Radius.circular(20.r),topLeft: Radius.circular(20.r),),
@@ -275,10 +272,11 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               return;
                             }
                             if (selectBetting.isEmpty) {
-                              showToast("请选择投注项目");
+                              showToast(Intr().qingxuanzhetouzhuxm);
                               return;
-                            } else if (inputAmt.value==0) {
-                              showToast("下注金额为空");
+                            }
+                            if (inputAmt.value==0) {
+                              showToast(Intr().xiazhujinewk);
                               return;
                             }
                             double totalMony = selectBetting.length * inputAmt.value;
@@ -329,94 +327,29 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
     // 在这里构建你的 UI，使用 roomInf 数据
     return GetBuilder<TextItemLogic>(
         id: TextItemLogic.id_textTimerItem,
-        builder: (logic) {
+        builder: (lgc) {
           // print("开始刷新logic");
           String result = "";
-
-          String term1="";
-          String term2="";
-          if (Intr().fengpanzhong == logic.state.text_timer.value) {
+          if (Intr().fengpanzhong == lgc.state.text_timer.value) {
             result = Intr().fengpanzhong;
-            type=0;
           } else {
-            type=1;
-            result =
-                logic.subToTime(logic.state.text_timer.value)??"";
-            try{
-              term1=result.split(":")[0];
-              term2=result.split(":")[1];
-            }catch(e){
-              print("==========>${e.toString()}");
-            }
+            result = lgc.subToTime(lgc.state.text_timer.value);
           }
-          return type==0?Container(
-            width: 50.w,
-            height: 20.w,
+          return Container(
+            height: 28.h,
             padding: EdgeInsets.symmetric(
               horizontal: 4.w,
             ),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(4.w)),
-                color: Color(0xFFFF7F8C)),
-            child:  Text(Intr().fengpanzhong,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                  fontSize: 12.sp,
-                )),
-          ):
-          Row(
-            children: [
-              Container(
-                  height: 24.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal:6.w,
-                  ),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(6.w)),
-                      color: Colors.white),
-                  child: Text(term1,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFFFC243B),
-                        fontSize: 16.sp,
-                      ))),
-              SizedBox(width:4.w,),
-              Text(":",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 16.sp,
-                  )),
-              SizedBox(width:4.w,),
-              Container(
-                  height: 24.w,
-                  padding: EdgeInsets.symmetric(
-                    horizontal:6.w,
-                  ),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(6.w)),
-                      color: Colors.white),
-                  child: Text(term2,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFFFC243B),
-                        fontSize: 16.sp,
-                      ))),
-              SizedBox(width:4.w,),
-              Text("后结束",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 16.sp,
-                  )),
-            ],
+                borderRadius: BorderRadius.all(Radius.circular(4.w)), color: Colors.white12),
+            child: Text(result, style: TextStyle(fontWeight: FontWeight.w900, color: Colors.white, fontSize: 14.sp,
+            )),
           );
         });
   }
+
+
   Color buildTextColor(){
     var color = ColorX.color_fc243b;
     switch(widget.logic.state.roomType.value){

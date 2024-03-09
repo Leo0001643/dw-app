@@ -1063,6 +1063,8 @@ class EN{
     "kehuode":", can obtain:",
     "gentou":"follow",
     "zhongjiangjieguodongxiao":"The winning result is dynamic",
+    "qingxuanzhetouzhuxm":"Please select a bet",
+    "xiazhujinewk":"The bet is short",
 
   };
 
