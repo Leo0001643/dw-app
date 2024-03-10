@@ -25,6 +25,7 @@ import 'widget/game_room_hot_widget.dart';
 
 class GameRoomPage extends StatefulWidget {
   const GameRoomPage({super.key});
+
   @override
   State<GameRoomPage> createState() => _GameRoomPageState();
 }
@@ -32,14 +33,15 @@ class GameRoomPage extends StatefulWidget {
 class _GameRoomPageState extends State<GameRoomPage> {
   final logic = Get.find<GameRoomLogic>();
   final state = Get.find<GameRoomLogic>().state;
+
   // TextItemLogic? timeLogic;
 
   @override
   void initState() {
     state.room.value = Get.arguments;
-    TextItemLogic textItemLogic=Get.find<TextItemLogic>();
-    textItemLogic.setType( state.room.value.gameType);
-    logic.loadData(state.room.value,true);
+    TextItemLogic textItemLogic = Get.find<TextItemLogic>();
+    textItemLogic.setType(state.room.value.gameType);
+    logic.loadData(state.room.value, true);
     super.initState();
   }
 
@@ -55,12 +57,13 @@ class _GameRoomPageState extends State<GameRoomPage> {
     return DrawerScaffold(
       scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildGameBar(state.title, buildRoomType(),
-          collect: false, msg: true,scaffoldKey: state.scaffoldKey,onTap: () {
-        DialogUtils().showSelectRoomBtmDialog(context, state.pc28Lotto.value)
+          collect: false, msg: true, scaffoldKey: state.scaffoldKey, onTap: () {
+        DialogUtils()
+            .showSelectRoomBtmDialog(context, state.pc28Lotto.value)
             .then(
           (value) {
             if (unEmpty(value?.name)) {
-              logic.loadData(value!,false);
+              logic.loadData(value!, false);
             }
           },
         );
@@ -99,7 +102,9 @@ class _GameRoomPageState extends State<GameRoomPage> {
               child: Stack(
                 children: [
                   Obx(() {
-                    return WidgetUtils().buildImage(ImageX.roomBg(state.roomType.value), 1.sw, 1.sh,fit: BoxFit.fill);
+                    return WidgetUtils().buildImage(
+                        ImageX.roomBg(state.roomType.value), 1.sw, 1.sh,
+                        fit: BoxFit.fill);
                   }),
                   Column(
                     children: [
@@ -109,18 +114,25 @@ class _GameRoomPageState extends State<GameRoomPage> {
                           children: [
                             GetBuilder<GameRoomLogic>(
                               id: GameRoomLogic.gameRoomList,
-                              builder: (logic){
+                              builder: (logic) {
                                 return ListView.builder(
                                   controller: logic.scrollController,
-                                  itemCount: state.gameRoomItemEntityList.length,
+                                  itemCount:
+                                      state.gameRoomItemEntityList.length,
                                   itemBuilder: (context, index) {
-                                    GameRoomItemEntity gameRoomItemEntity = state.gameRoomItemEntityList[index];
-                                    return buildItemWidget(index, logic, gameRoomItemEntity);
+                                    GameRoomItemEntity gameRoomItemEntity =
+                                        state.gameRoomItemEntityList[index];
+                                    return buildItemWidget(
+                                        index, logic, gameRoomItemEntity);
                                   },
                                 );
                               },
                             ),
-                            Positioned(left: 0, right: 0, top: 20.h, child: buildCountDown()),
+                            Positioned(
+                                left: 0,
+                                right: 0,
+                                top: 20.h,
+                                child: buildCountDown()),
                             buildFloatingBtn(() {
                               if (AppData.isLogin()) {
                                 logic.startBet(context);
@@ -224,22 +236,35 @@ class _GameRoomPageState extends State<GameRoomPage> {
           colors = [Color(0xffff5163), Color(0xfffd273e)];
           break;
         case 2:
-          colors = [Color(0xff5f6e88), Color(0xff363f57),];
+          colors = [
+            Color(0xff5f6e88),
+            Color(0xff363f57),
+          ];
           break;
         case 3:
-          colors = [Color(0xff88705f), Color(0xff574436),];
+          colors = [
+            Color(0xff88705f),
+            Color(0xff574436),
+          ];
           break;
       }
-      var textColor = state.roomType.value == 3 ? ColorX.color_ffe0ac : Colors.white;
+      var textColor =
+          state.roomType.value == 3 ? ColorX.color_ffe0ac : Colors.white;
       return InkWell(
-        onTap: (){
+        onTap: () {
           if (AppData.isLogin()) {
+            TextItemLogic textItemLogic = Get.find<TextItemLogic>();
+            if (Intr().fengpanzhong == textItemLogic.state.text_timer.value) {
+              showToast(Intr().fengpanzhong);
+              return;
+            }
+
             DialogUtils().showBettingBtmDialog(context, logic);
           } else {
             Get.until((ModalRoute.withName(Routes.main)));
             WidgetUtils().goLogin();
           }
-      },
+        },
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.r),
@@ -262,14 +287,15 @@ class _GameRoomPageState extends State<GameRoomPage> {
     });
   }
 
-
   Widget buildItemWidget(
       int index, GameRoomLogic logic, GameRoomItemEntity gameRoomItemEntity) {
     if (gameRoomItemEntity.type == "bet_result") {
       return BettingLeftItem(index, logic, gameRoomItemEntity);
     } else if (gameRoomItemEntity.type == "lottery") {
       return OpenLotteryItem(index, logic, gameRoomItemEntity);
-    }else if (gameRoomItemEntity.type == "countTime"||gameRoomItemEntity.type == "closeOver"||gameRoomItemEntity.type == "openOver") {
+    } else if (gameRoomItemEntity.type == "countTime" ||
+        gameRoomItemEntity.type == "closeOver" ||
+        gameRoomItemEntity.type == "openOver") {
       return CountDownItemWidget(logic, gameRoomItemEntity);
     }
     return Container();
@@ -280,8 +306,10 @@ class _GameRoomPageState extends State<GameRoomPage> {
         id: TextItemLogic.id_fiveCountDownStatus,
         builder: (logic) {
           return Visibility(
-              visible: logic.fiveCountDownTime<=5&&(logic.fiveCountDownTime>0),
-              child: WidgetUtils().buildImage(buildImage(logic.fiveCountDownTime), 100.w, 40.h));
+              visible:
+                  logic.fiveCountDownTime <= 5 && (logic.fiveCountDownTime > 0),
+              child: WidgetUtils().buildImage(
+                  buildImage(logic.fiveCountDownTime), 100.w, 40.h));
         });
   }
 

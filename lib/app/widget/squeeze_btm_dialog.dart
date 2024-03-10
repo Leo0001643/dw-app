@@ -57,12 +57,16 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
             id: TextItemLogic.id_textTimerItem,
             builder: (logic){
               var term = widget.logic.term.value;
+              if(isInt(term) ){
+                term="${(int.tryParse(term)??0)-1}";
+              }
               var nextTerm = term;
               if(isInt(term) && term.length > 8){
                 nextTerm = "${int.parse(term) + 1}";
                 nextTerm = nextTerm.substring(4,nextTerm.length);
                 term = term.substring(4,term.length);
               }
+
               return Stack(
                 children: [
                   Center(child: Image.asset(ImageX.guajiabg,width: 362.w,height: 347.h,fit: BoxFit.fill,),),
