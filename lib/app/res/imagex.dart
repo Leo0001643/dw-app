@@ -913,7 +913,7 @@ class ImageX{
   }
 
   static String iconPageBackT(){
-    return AppData.theme() ? icon_page_back : back_white;
+    return AppData.theme() ? icon_page_back : icon_back;
   }
 
 

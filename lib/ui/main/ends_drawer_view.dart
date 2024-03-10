@@ -606,7 +606,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                     onTap: () => Get.toNamed(Routes.betting_details),
                     child: Column(
                       children: [
-                        Image.asset(ImageX.pcT()),
+                        WidgetUtils().buildImage(ImageX.pcT(), 24.r, 24.r),
                         SizedBox(
                           height: 5.h,
                         ),

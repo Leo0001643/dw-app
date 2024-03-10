@@ -203,7 +203,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().querenmima, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
+              child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
             ),
             SizedBox( height: 20.h,),
             Center(
@@ -218,7 +218,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                     WidgetUtils().buildTextField(
-                        290.w, 46.h, 14.sp, ColorX.text949(), Intr().ytxyhkhmyz,
+                        290.w, 46.h, 14.sp, ColorX.text949(), Intr().zsxm,
                         hintColor: ColorX.text586(),
                         backgroundColor: Colors.transparent,
                         onChanged: (v) => state.realname = v,
@@ -230,7 +230,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().zsxm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
+              child: Text(Intr().ytxyhkhmyz, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
             ),
             SizedBox(height: 20.h,),
             Padding(

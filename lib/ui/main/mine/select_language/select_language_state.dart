@@ -12,9 +12,9 @@ class SelectLanguageState {
 
 
   List<LanguageMenuEntity> country = [
-    LanguageMenuEntity(language: Intr().zhongwenjianti, icon: ImageX.icon_zh,locale: Intr().locales[0]),
-    LanguageMenuEntity(language: Intr().yingyu, icon: ImageX.icon_us,locale: Intr().locales[1]),
-    LanguageMenuEntity(language: Intr().yuenanyu, icon: ImageX.icon_vi,locale: Intr().locales[2]),
+    LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: Intr().locales[0]),
+    LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: Intr().locales[1]),
+    LanguageMenuEntity(language: "Tiếng Việt", icon: ImageX.icon_vi,locale: Intr().locales[2]),
   ];
 
   late var dropdownValue = country[AppData.localeIndex()].obs;
