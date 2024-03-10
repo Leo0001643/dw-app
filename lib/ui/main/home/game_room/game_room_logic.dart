@@ -70,6 +70,7 @@ class GameRoomLogic extends GetxController {
     });
     ///播放房间背景音乐
     if(AppData.bgMusic()){ AudioUtils().playRoom(); }
+    initListener();
     super.onReady();
   }
 
@@ -314,6 +315,20 @@ class GameRoomLogic extends GetxController {
     SocketUtils().toBet(moneyType, nowTerm, betList, state.room.value.gameType.em(),
         state.room.value.roomId.em().toString(), state.room.value.id.em().toString());
     // showToast(Intr().caozuochenggong);
+
+  }
+
+  void initListener() {
+
+    TextItemLogic textItemLogic = Get.find<TextItemLogic>();
+    textItemLogic.showStopBetting.stream.listen((event) {
+      print("=========>数据  ${event}  11   term  ${textItemLogic.countDownLotteryEntity.value.term??""}");
+      textItemLogic.countDownLotteryEntity.value;
+      term.value=textItemLogic.countDownLotteryEntity.value.term??"";
+      headWSLotteryEntityData?.term=term.value;
+
+      update([GameRoomLogic.gameRoomCompute]);
+    });
 
   }
 

@@ -19,32 +19,40 @@ class GameRoomComputeWidget extends StatelessWidget {
   final logic = Get.find<GameRoomLogic>();
   final state = Get.find<GameRoomLogic>().state;
 
-   GameRoomComputeWidget({super.key});
+  GameRoomComputeWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GameRoomLogic>(
         id: GameRoomLogic.gameRoomCompute,
         builder: (logic) {
           // int a;
-      // GameRoomState state = logic.state;
-      // var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
-      // WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
-      // String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
-      return  Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(height: 10.h,),
-          Divider(height: 1.h,color: ColorX.color_f1f1f1,),
-          SizedBox(height: 10.h,),
-          buildCurrentTermType(logic,context),
-        ],
-      );
-    });
+          // GameRoomState state = logic.state;
+          // var textColor = state.roomType.value == 1 ? ColorX.text0917():Colors.white;
+          // WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
+          // String termData=GameRuleUtil.getSSB(headWSLotteryEntityData?.term??""); // 4
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 10.h,
+              ),
+              Divider(
+                height: 1.h,
+                color: ColorX.color_f1f1f1,
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              buildCurrentTermType(logic, context),
+            ],
+          );
+        });
   }
 
   BoxDecoration buildRoomBoxType() {
     var image = ImageX.ic_1room_last;
-    switch(state.roomType.value){
+    switch (state.roomType.value) {
       case 1:
         image = ImageX.ic_1room_last;
         break;
@@ -56,39 +64,64 @@ class GameRoomComputeWidget extends StatelessWidget {
         break;
     }
     return BoxDecoration(
-      image: DecorationImage(image: AssetImage(image),fit: BoxFit.fill,),
+      image: DecorationImage(
+        image: AssetImage(image),
+        fit: BoxFit.fill,
+      ),
     );
   }
 
-  Widget buildNotifyItem(String text,Color color) {
+  Widget buildNotifyItem(String text, Color color) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       child: Row(
         children: [
-          Image.asset(ImageX.icon_ntf,color: color,),
-          SizedBox(width: 5.w,),
+          Image.asset(
+            ImageX.icon_ntf,
+            color: color,
+          ),
+          SizedBox(
+            width: 5.w,
+          ),
           Expanded(
-            child: Text(text,style: TextStyle(fontSize: 12.sp,color: color),),
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 12.sp, color: color),
+            ),
           ),
         ],
       ),
     );
   }
+
   Widget buildDrawTime(String time) {
-    return time=="-1"?Image(image: AssetImage(ImageX.icon_room_mask),width: 24,height: 24,):
-    Container(
-      width:26.r,height: 26.r,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: ColorX.color_10_fff,
-        border: Border.all(color: Colors.white,width: 1.r),
-        borderRadius: BorderRadius.circular(5.r),
-      ),
-      child: Text(time,style: TextStyle(fontSize: 16.sp,color: Colors.white,fontWeight: FontWeight.w600),),
-    );
+    return time == "-1"
+        ? Image(
+            image: AssetImage(ImageX.icon_room_mask),
+            width: 24,
+            height: 24,
+          )
+        : Container(
+            width: 26.r,
+            height: 26.r,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: ColorX.color_10_fff,
+              border: Border.all(color: Colors.white, width: 1.r),
+              borderRadius: BorderRadius.circular(5.r),
+            ),
+            child: Text(
+              time,
+              style: TextStyle(
+                  fontSize: 16.sp,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600),
+            ),
+          );
   }
-  Widget buildUserTab(
-      int i, String tab, String icon, Color color, BuildContext context,GameRoomLogic logic) {
+
+  Widget buildUserTab(int i, String tab, String icon, Color color,
+      BuildContext context, GameRoomLogic logic) {
     return InkWell(
       onTap: () => logic.onTabClick(context, i),
       child: Column(
@@ -205,73 +238,137 @@ class GameRoomComputeWidget extends StatelessWidget {
     });
   }
 
-  Widget buildCurrentTermType(GameRoomLogic logic,BuildContext context) {
-    return Obx(() {
-      GameRoomState state = logic.state;
-      WSLotteryEntityData? headWSLotteryEntityData=logic.headWSLotteryEntityData;
-      List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
-      var color = state.roomType.value == 1 ? ColorX.text0917():ColorX.color_ffe0ac;
+  Widget buildCurrentTermType(GameRoomLogic logic, BuildContext context) {
+    return GetBuilder<GameRoomLogic>(
+        id: GameRoomLogic.gameRoomCompute,
+        builder: (controller) {
 
-      return InkWell(
-        onTap: ()=> DialogUtils().showHistoryLotteryBtmDialog(context,logic),
-        child:SingleChildScrollView(
-          scrollDirection:Axis.horizontal,
-          child:  Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              WidgetUtils().buildDixqi3(headWSLotteryEntityData?.term ?? "",state.roomType.value),
-              // Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
-              SizedBox(width: 5.w,),
-              buildDrawNum("${arr2[0]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
-              buildDrawMark("+",color),
-              buildDrawNum("${arr2[1]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
-              buildDrawMark("+",color),
-              buildDrawNum("${arr2[2]}",logic,showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
-              buildDrawMark("=",color),
-              buildDrawResult("${arr2[3]}",logic,color: GameRuleUtil.getBallNewColor(arr2[3]),showWaittingImg: logic.currentStatus.value==LotteryStatus.sealingPlateStatus),
-              // SizedBox(width: 5.w,),
-              Visibility(
-                visible: logic.currentStatus.value!=LotteryStatus.sealingPlateStatus,
-                child: GameRuleUtil.getDXDS(arr2[3]),),
-              Image.asset(ImageX.icon_down_black,color: color,),
-            ],
-          ),
-        ),
-      );
-    });
+
+
+          GameRoomState state = logic.state;
+          WSLotteryEntityData? headWSLotteryEntityData =
+              logic.headWSLotteryEntityData;
+          List<int> arr2 = GameRuleUtil.parseLottery(
+              headWSLotteryEntityData?.originalNum ?? ""); //3
+          var color = state.roomType.value == 1
+              ? ColorX.text0917()
+              : ColorX.color_ffe0ac;
+          print("=========>更新期数 ${headWSLotteryEntityData?.term}");
+          return InkWell(
+            onTap: () =>
+                DialogUtils().showHistoryLotteryBtmDialog(context, logic),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  WidgetUtils().buildDixqi3(headWSLotteryEntityData?.term ?? "",
+                      state.roomType.value),
+                  // Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
+                  SizedBox(
+                    width: 5.w,
+                  ),
+                  buildDrawNum("${arr2[0]}", logic,
+                      showWaittingImg: logic.currentStatus.value ==
+                          LotteryStatus.sealingPlateStatus),
+                  buildDrawMark("+", color),
+                  buildDrawNum("${arr2[1]}", logic,
+                      showWaittingImg: logic.currentStatus.value ==
+                          LotteryStatus.sealingPlateStatus),
+                  buildDrawMark("+", color),
+                  buildDrawNum("${arr2[2]}", logic,
+                      showWaittingImg: logic.currentStatus.value ==
+                          LotteryStatus.sealingPlateStatus),
+                  buildDrawMark("=", color),
+                  buildDrawResult("${arr2[3]}", logic,
+                      color: GameRuleUtil.getBallNewColor(arr2[3]),
+                      showWaittingImg: logic.currentStatus.value ==
+                          LotteryStatus.sealingPlateStatus),
+                  // SizedBox(width: 5.w,),
+                  Visibility(
+                    visible: logic.currentStatus.value !=
+                        LotteryStatus.sealingPlateStatus,
+                    child: GameRuleUtil.getDXDS(arr2[3]),
+                  ),
+                  Image.asset(
+                    ImageX.icon_down_black,
+                    color: color,
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 
-  Widget buildDrawResult(String result ,GameRoomLogic logic,{Color? color,Color? textColor  ,showWaittingImg=false}) {
-  GameRoomState state = logic.state;
-  var color1 = state.roomType.value == 1 ? ColorX.color_10_fc2:ColorX.color_c7956f;
-  var textColor1 = state.roomType.value == 1 ? ColorX.color_fc243b:ColorX.color_091722;
-    return (result=="-1"||showWaittingImg==true)?Image(image: AssetImage(ImageX.icon_room_mask2),width: 46,height: 18,):Container(
-      width: 24.r,height: 24.r,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        border: Border.all( color: color??color1,width: 2)
-        ,borderRadius: BorderRadius.circular(15.r),),
-      child: Text(result, style: TextStyle(fontSize: 14.sp,color: textColor??textColor1,fontWeight: FontWeight.w600),),
-    );
+  Widget buildDrawResult(String result, GameRoomLogic logic,
+      {Color? color, Color? textColor, showWaittingImg = false}) {
+    GameRoomState state = logic.state;
+    var color1 =
+        state.roomType.value == 1 ? ColorX.color_10_fc2 : ColorX.color_c7956f;
+    var textColor1 =
+        state.roomType.value == 1 ? ColorX.color_fc243b : ColorX.color_091722;
+    return (result == "-1" || showWaittingImg == true)
+        ? Image(
+            image: AssetImage(ImageX.icon_room_mask2),
+            width: 46,
+            height: 18,
+          )
+        : Container(
+            width: 24.r,
+            height: 24.r,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              border: Border.all(color: color ?? color1, width: 2),
+              borderRadius: BorderRadius.circular(15.r),
+            ),
+            child: Text(
+              result,
+              style: TextStyle(
+                  fontSize: 14.sp,
+                  color: textColor ?? textColor1,
+                  fontWeight: FontWeight.w600),
+            ),
+          );
   }
 
-  Widget buildDrawMark(String mark,Color color) {
+  Widget buildDrawMark(String mark, Color color) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 5.w),
-      child: Text(mark,style: TextStyle(fontSize: 18.sp,color: color,fontWeight: FontWeight.w500),),
+      child: Text(
+        mark,
+        style: TextStyle(
+            fontSize: 18.sp, color: color, fontWeight: FontWeight.w500),
+      ),
     );
   }
 
-  Widget buildDrawNum(String num,GameRoomLogic logic,{showWaittingImg=false}) {
+  Widget buildDrawNum(String num, GameRoomLogic logic,
+      {showWaittingImg = false}) {
     GameRoomState state = logic.state;
-    var color = state.roomType.value == 1 ? ColorX.color_f7f8fb:ColorX.color_ffe0ac;
-    return (num=="-1"||showWaittingImg==true)?const Image(image: AssetImage(ImageX.icon_room_mask),width: 24,height: 24,):Container(
-      width: 24.r,height: 24.r,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(color: color,borderRadius: BorderRadius.circular(15.r),),
-      child: Text(num, style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
-    );
+    var color =
+        state.roomType.value == 1 ? ColorX.color_f7f8fb : ColorX.color_ffe0ac;
+    return (num == "-1" || showWaittingImg == true)
+        ? const Image(
+            image: AssetImage(ImageX.icon_room_mask),
+            width: 24,
+            height: 24,
+          )
+        : Container(
+            width: 24.r,
+            height: 24.r,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(15.r),
+            ),
+            child: Text(
+              num,
+              style: TextStyle(
+                  fontSize: 14.sp,
+                  color: ColorX.color_091722,
+                  fontWeight: FontWeight.w600),
+            ),
+          );
   }
-
-
 }

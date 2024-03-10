@@ -56,7 +56,7 @@ class TextItemLogic extends GetxController {
   bool alreadyShowStop = false;
   Timer? countdownTimer;
   int fiveCountDownTime = -1;
-  bool showStopBetting = false;
+  RxBool showStopBetting = false.obs;
   bool showStartBetting = false;
   bool firstShowStartBettingInPeriod = true;
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
@@ -317,10 +317,10 @@ class TextItemLogic extends GetxController {
         alreadyShowStop == false) {
       showCloseOver(term);
       alreadyShowStop = true;
-      showStopBetting = true;
+      showStopBetting.value = true;
       update(([id_showStopBetting]));
       Future.delayed(const Duration(seconds: 2,), () {
-        showStopBetting = false;
+        showStopBetting.value = false;
         update(([id_showStopBetting]));
       });
     }

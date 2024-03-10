@@ -126,57 +126,6 @@ class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
     }
   }
 
-  Widget buildYueHeader(GameRoomLogic logic) {
-    GameRoomState state = logic.state;
-    var textColor =
-    state.roomType.value == 1 ? ColorX.text0917() : Colors.white;
-    if (AppData.isLogin()) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            AppData.user()!.username?.em() ?? "",
-            style: TextStyle(fontSize: 12.sp, color: textColor),
-          ),
-          SizedBox(
-            height: 3.h,
-          ),
-          buildBalanceType(logic),
-        ],
-      );
-    } else {
-      return InkWell(
-        onTap: () {
-          Get.until((ModalRoute.withName(Routes.main)));
-          WidgetUtils().goLogin();
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  Intr().login,
-                  style: TextStyle(fontSize: 12.sp, color: textColor),
-                ),
-                Image.asset(
-                  ImageX.icon_right_grey,
-                  color: ColorX.icon586(),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 3.h,
-            ),
-            Text(
-              Intr().denglugengjingcai,
-              style: TextStyle(fontSize: 12.sp, color: textColor),
-            ),
-          ],
-        ),
-      );
-    }
-  }
 
   Widget buildBalanceType(GameRoomLogic logic) {
     GameRoomState state = logic.state;
@@ -206,7 +155,7 @@ class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
         id: TextItemLogic.id_showStopBetting,
         builder: (logic) {
           return Visibility(
-              visible: logic.showStopBetting,
+              visible: logic.showStopBetting.value,
               child: SizedBox(
                   height: 34.h,
                   child: const Image(
