@@ -15,6 +15,7 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
+import 'package:leisure_games/ui/bean/music_switch_event.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 class EndsDrawerView extends StatefulWidget {
@@ -138,6 +139,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                           }),
                           onChanged: (value) {
                             AppData.setBgMusic(value);
+                            eventBus.fire(MusicSwitchEvent(value));
                             musicToggle.value = value;
                           },
                           value: musicToggle.value,

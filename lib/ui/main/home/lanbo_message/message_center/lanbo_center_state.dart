@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/main/home/message_center/message/message_page.dart';

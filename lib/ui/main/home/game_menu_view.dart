@@ -17,7 +17,6 @@ import 'package:leisure_games/app/widget/nested_inner_scroll_child.dart';
 import 'package:leisure_games/ui/bean/chess_event.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
-import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
 
 import '../../bean/pc28_lotto_entity.dart';

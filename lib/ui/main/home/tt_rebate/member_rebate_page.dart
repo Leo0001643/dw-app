@@ -14,8 +14,6 @@ import 'package:leisure_games/ui/bean/back_water_entity.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_params.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'member_rebate_logic.dart';
 ///会员返水
 class MemberRebatePage extends StatefulWidget {

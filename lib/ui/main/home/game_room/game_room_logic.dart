@@ -20,6 +20,7 @@ import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/music_switch_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
@@ -40,7 +41,9 @@ class GameRoomLogic extends GetxController {
   static String  gameRoomList = "gameRoomLogicList";
 
   StreamSubscription? textTimerListener;
+  StreamSubscription? stopBettingListener;
   StreamSubscription? textStatusListener;
+  StreamSubscription? musicSwitch;
 
   // RxList<OddsContent> dataBettingList=<OddsContent>[].obs;
 
@@ -62,6 +65,15 @@ class GameRoomLogic extends GetxController {
       handleMessage(value);
     });
 
+    stopBettingListener = textItemLogic.showStopBetting.stream.listen((event) {
+      print("=========>数据  ${event}  11   term  ${textItemLogic.countDownLotteryEntity.value.term??""}");
+      textItemLogic.countDownLotteryEntity.value;
+      term.value=textItemLogic.countDownLotteryEntity.value.term??"";
+      headWSLotteryEntityData?.term=term.value;
+
+      update([GameRoomLogic.gameRoomCompute]);
+    });
+
     textStatusListener = textItemLogic.currentStatus.stream.listen((value) {
       // print("修改了值");
       currentStatus.value = value;
@@ -70,7 +82,13 @@ class GameRoomLogic extends GetxController {
     });
     ///播放房间背景音乐
     if(AppData.bgMusic()){ AudioUtils().playRoom(); }
-    initListener();
+    musicSwitch = eventBus.on<MusicSwitchEvent>().listen((event) {
+      if(event.open){
+        AudioUtils().playRoom();
+      }else {
+        AudioUtils().stopBg();
+      }
+    });
     super.onReady();
   }
 
@@ -79,8 +97,11 @@ class GameRoomLogic extends GetxController {
     // timer?.cancel();
     AudioUtils().stop();
     AudioUtils().stopBg();
+    musicSwitch?.cancel();
     textTimerListener?.cancel();
     textTimerListener = null;
+    stopBettingListener?.cancel();
+    stopBettingListener = null;
     textStatusListener?.cancel();
     textStatusListener = null;
     SocketUtils().destroy();
@@ -318,22 +339,4 @@ class GameRoomLogic extends GetxController {
 
   }
 
-  void initListener() {
-
-    TextItemLogic textItemLogic = Get.find<TextItemLogic>();
-    textItemLogic.showStopBetting.stream.listen((event) {
-      print("=========>数据  ${event}  11   term  ${textItemLogic.countDownLotteryEntity.value.term??""}");
-      textItemLogic.countDownLotteryEntity.value;
-      term.value=textItemLogic.countDownLotteryEntity.value.term??"";
-      headWSLotteryEntityData?.term=term.value;
-
-      update([GameRoomLogic.gameRoomCompute]);
-    });
-
-  }
-
-
-      // {key: bet, value: {"type":"bet","client_name":"dsa0001","room_id":"18","oid":"41992217e761ab8c8ad8a003e58bfb16","table_id":"54","site_id":"9000","game_type":"fastbtb28","now_term":"202402270636","moneyType":"CNY","content":[{"money":"1.0","num":"","odds":"8.777","odds_1314":null,"type":"second_cao_3"},{"money":"1.0","num":"","odds":"8.666","odds_1314":null,"type":"first_cao_2"},{"money":"1.0","num":"","odds":"1.884","odds_1314":"1.555","type":"even"}]}}
-
-//[log] [长连接发送投注消息, {key: bet, value: {"type":"bet","client_name":"dsa0001","room_id":"18","oid":"41992217e761ab8c8ad8a003e58bfb16","table_id":"54","site_id":"9000","game_type":"fastbtb28","now_term":"202402270643","moneyType":"CNY","content":[{"money":"20","num":"","odds":"1.881","odds_1314":"1.888","type":"big"},{"money":"20","num":"","odds":"1.882","odds_1314":"1.777","type":"small"},{"money":"20","num":"","odds":"1.883","odds_1314":"1.666","type":"odd"},{"money":"20","num":"","odds":"1.884","odds_1314":"1.555","type":"even"}]}}]
 }

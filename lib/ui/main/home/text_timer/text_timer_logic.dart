@@ -3,14 +3,11 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
-import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 
 import '../../../../app/intl/intr.dart';
 import '../../../bean/game_kind_entity.dart';
-import '../../../bean/pc28_plan_entity.dart';
 
 /**
  * 参考count_down_text.dart

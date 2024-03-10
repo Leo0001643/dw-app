@@ -10,8 +10,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
-import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart'  as T;
-import 'package:leisure_games/ui/main/ends_drawer_view.dart';
+import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart' as T;
 
 import 'betting_detail_child_logic.dart';
 
@@ -83,7 +82,7 @@ class _BettingDetailChildPageState extends State<BettingDetailChildPage> {
         margin: EdgeInsets.symmetric(horizontal:12.w,vertical: 8.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: Color(0xFFF7F8FB)
+          color: ColorX.cardBg3(),
         ),
         padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
         child: Column(

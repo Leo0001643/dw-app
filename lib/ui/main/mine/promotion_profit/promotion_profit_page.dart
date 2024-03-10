@@ -9,14 +9,9 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
-import 'package:leisure_games/app/widget/empty_data_widget.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
-import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
-
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'promotion_profit_logic.dart';
 
 ///
@@ -188,6 +183,7 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
               Container(
                 decoration: BoxDecoration(color: ColorX.cardBg(),borderRadius: BorderRadius.circular(12.r),),
                 padding: EdgeInsets.all(15.r),
+                height: 0.3.sh,
                 alignment: Alignment.center,
                 child: Obx(() {
                   return buildPromotionList(state.showList);
@@ -208,38 +204,48 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
         child: WidgetUtils().buildImage(ImageX.icon_empty, 170.r, 170.r),
       );
     }
-    var childs = List<Widget>.empty(growable: true);
-    childs.add(Row(
-      children: [
-        Expanded(
-          flex: 30,
-          child: Text(Intr().riqi,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-        ),
-        Expanded(
-          flex: 23,
-          child: Text(Intr().xianxiayonghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-        ),
-        Expanded(
-          flex: 23,
-          child: Text(Intr().xiaxiancunkuan,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-        ),
-        Expanded(
-          flex: 23,
-          child: Text(Intr().zhuanquhongli,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-        ),
-      ],
-    ));
-    childs.add(SizedBox(height: 10.h,),);
+    if(list.first is SpreadUserEntity){///会员列表
+      return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,childAspectRatio: 4),
+          itemCount: list.em(),
+          itemBuilder: (content,index){
+            var item = list[index];
+            return Container(
+              alignment: Alignment.center,
+              child: Text(item.username.em(),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600)),
+            );
+          });
+    } else {///推广红利部分
+      var childs = List<Widget>.empty(growable: true);
+      childs.add(Row(
+        children: [
+          Expanded(
+            flex: 30,
+            child: Text(Intr().riqi,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+          ),
+          Expanded(
+            flex: 23,
+            child: Text(Intr().xianxiayonghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+          ),
+          Expanded(
+            flex: 23,
+            child: Text(Intr().xiaxiancunkuan,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+          ),
+          Expanded(
+            flex: 23,
+            child: Text(Intr().zhuanquhongli,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+          ),
+        ],
+      ));
+      childs.add(SizedBox(height: 10.h,),);
 
-    list.forEach((element) {
-      if(element is SpreadPromosDataList){
-        childs.add(buildPromotionItem(element));
-      }else if(element is SpreadUserEntity){
-        childs.add(buildUserItem(element));
-      }
-    });
-
-    return Column(children: childs,);
+      list.forEach((element) {
+        if(element is SpreadPromosDataList){
+          childs.add(buildPromotionItem(element));
+        }
+      });
+      return Column(children: childs,);
+    }
   }
 
 
@@ -276,37 +282,37 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
     );
   }
 
-  Widget buildUserItem(SpreadUserEntity item) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Divider(height: 1.h,color: ColorX.color_10_949,),
-        Container(
-          height: 40.h,
-          child: Row(
-            children: [
-              Expanded(
-                flex: 30,
-                child: Text(DateUtil.formatDateMs(item.addtime.em() * 1000),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
-              ),
-              Expanded(
-                flex: 23,
-                child: Text(item.username.em(),
-                  style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),overflow: TextOverflow.ellipsis,),
-              ),
-              Expanded(
-                flex: 23,
-                child: Text("",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
-              ),
-              Expanded(
-                flex: 23,
-                child: Text(item.avatar.em(),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+  // Widget buildUserItem(SpreadUserEntity item) {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Divider(height: 1.h,color: ColorX.color_10_949,),
+  //       Container(
+  //         height: 40.h,
+  //         child: Row(
+  //           children: [
+  //             Expanded(
+  //               flex: 30,
+  //               child: Text(DateUtil.formatDateMs(item.addtime.em() * 1000),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
+  //             ),
+  //             Expanded(
+  //               flex: 23,
+  //               child: Text(item.username.em(),
+  //                 style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),overflow: TextOverflow.ellipsis,),
+  //             ),
+  //             Expanded(
+  //               flex: 23,
+  //               child: Text("",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
+  //             ),
+  //             Expanded(
+  //               flex: 23,
+  //               child: Text(item.avatar.em(),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
 }

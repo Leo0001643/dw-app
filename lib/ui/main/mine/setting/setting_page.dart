@@ -13,6 +13,7 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
+import 'package:leisure_games/ui/bean/music_switch_event.dart';
 
 import '../../../../main.dart';
 import '../../ends_drawer_view.dart';
@@ -226,6 +227,7 @@ class _SettingPageState extends State<SettingPage> {
                             }),
                             onChanged: (value) {
                               AppData.setBgMusic(value);
+                              eventBus.fire(MusicSwitchEvent(value));
                               state.bjyyToggle.value = value;
                             },
                             value: state.bjyyToggle.value,

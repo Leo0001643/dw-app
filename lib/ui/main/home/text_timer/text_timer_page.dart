@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 
 import '../../../../app/intl/intr.dart';

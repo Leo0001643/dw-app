@@ -39,7 +39,7 @@ class _RechargePageState extends State<RechargePage> {
             children: [
               SingleChildScrollView(
                 child: Container(
-                  margin: EdgeInsets.only(top: 0.23.sh),
+                  margin: EdgeInsets.only(top: 0.28.sh),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

@@ -317,7 +317,7 @@ class StateMinePage extends State<MinePage> {
                         ),
                         Row(
                           children: [
-                            buildCategoryItem(Intr().bangdingyinhangka, ImageX.iconBddtT(), 4),
+                            buildCategoryItem(Intr().bangdingyinhangka, ImageX.iconBdYhk(), 4),
                             buildCategoryItem(
                                 Intr().bangdingusdt, ImageX.iconBddtT(), 5),
                             buildCategoryItem(
@@ -447,18 +447,20 @@ class StateMinePage extends State<MinePage> {
   }
 
   Widget buildCategoryItem(String title, String icon, int index) {
+    ///绑定其他钱包的图标大了一点，需要特殊处理
+    var size = index == 21 ? 20.r:24.r;
     return InkWell(
       onTap: () => logic.clickItem(index),
-      child: Container(
+      child: SizedBox(
         width: 80.w,
         height: 60.w,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            WidgetUtils().buildImage(icon, 24.r, 24.r,fit: BoxFit.contain),
+            WidgetUtils().buildImage(icon, size, size,fit: BoxFit.contain),
             SizedBox(
-              height: 3.h,
+              height: 3.h + (24.r - size),
             ),
             Expanded(
               child: Text(

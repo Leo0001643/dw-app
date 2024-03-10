@@ -443,9 +443,7 @@ class StateHomePage extends State<HomePage>
     return Row(
       children: [
         WidgetUtils().buildImage(icon, 15.r, 15.r,),
-        SizedBox(
-          width: 3.w,
-        ),
+        SizedBox(width: 3.w,),
         Text(
           value,
           style: TextStyle(
@@ -463,14 +461,12 @@ class StateHomePage extends State<HomePage>
     return Row(
       children: [
         WidgetUtils().buildImage(icon, 15.r, 15.r,),
-        SizedBox(
-          width: 3.w,
-        ),
+        SizedBox(width: 3.w,),
         Text(
           value,
           style: TextStyle(
-            fontSize: 14.sp,
-            color: ColorX.color_58698d,
+            fontSize: 12.sp,
+            color: ColorX.text586(),
           ),
           maxLines: 1,
         ),
