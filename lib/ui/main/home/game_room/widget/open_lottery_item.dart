@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
@@ -37,15 +38,15 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
 
     return Container(
       margin: EdgeInsets.only(left: 20.w,right: 20.w,bottom: 8.w,top: 8.w),
-      decoration: const BoxDecoration(
-          color: Color(0xFFF7F8FB),
-          borderRadius: BorderRadius.all(Radius.circular(8))),
+      decoration: BoxDecoration(
+          color: ColorX.cardBg3(),
+          borderRadius: BorderRadius.all(Radius.circular(8.r))),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             Intr().kaijiangjieguo,
-            style: TextStyle(fontSize: 14.sp, color: Color(0xFF4795FF)),
+            style: TextStyle(fontSize: 14.sp, color: ColorX.color_529aff),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -54,7 +55,7 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
                 children: [
                   Text(
                     "【",
-                    style: TextStyle(fontSize: 14.sp, color: Color(0xFF596A8D)),
+                    style: TextStyle(fontSize: 14.sp, color: ColorX.text586()),
                   ),
                   Text(
                     "${(wsBetResultEntity.data?.length ?? 0) > 0 ? wSLotteryEntityData?.term :"" }",
@@ -62,7 +63,7 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
                   ),
                   Text(
                     "】",
-                    style: TextStyle(fontSize: 14.sp, color: Color(0xFF596A8D)),
+                    style: TextStyle(fontSize: 14.sp, color: ColorX.text586()),
                   ),
                 ],
               ),
@@ -70,7 +71,7 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
               Expanded(
                 child: Text(
                   "${Intr().kaijianghaoma}:$a+$b+$c=${(a+b+c)}",
-                  style: TextStyle(fontSize: 14.sp, color: Color(0xFF596A8D)),
+                  style: TextStyle(fontSize: 14.sp, color: ColorX.text586()),
                 ),
               ),
             ],

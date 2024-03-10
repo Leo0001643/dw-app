@@ -74,7 +74,7 @@ class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
                       termData,
                       style: TextStyle(
                           fontSize: 12.sp,
-                          color: Color(0xFF091722),
+                          color: ColorX.text0917(),
                           fontWeight: FontWeight.w700),
                     )
                   ],

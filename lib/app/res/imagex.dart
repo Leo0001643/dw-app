@@ -73,6 +73,10 @@ class ImageX{
   static const icon_room_bg2 = 'assets/images/ic_room_bg2.png';
   static const icon_room_bg3 = 'assets/images/ic_room_bg3.png';
 
+  static const roombg1 = 'assets/images/roombg1.png';
+  static const roombg2 = 'assets/images/roombg2.png';
+  static const roombg3 = 'assets/images/roombg3.png';
+
   static const icon_result = 'assets/images/icon_result.png';
   static const icon_right_arrow = 'assets/images/icon_right_arrow.png';
   static const icon_right_black = 'assets/images/icon_right_black.png';
@@ -847,9 +851,16 @@ class ImageX{
     return AppData.theme() ? icon_bddt : bdusdt_dark;
   }
 
+  static String iconBdYhk(){
+    return AppData.theme() ? icon_bdyhk : bdyhk_dark;
+  }
+
+
   static String iconJfjlT(){
     return AppData.theme() ? icon_jfjl : jfjl_dark;
   }
+
+
 
   static String iconFanT(){
     return AppData.theme() ? icon_fan : hyfs_dark;
@@ -916,7 +927,17 @@ class ImageX{
     return AppData.theme() ? icon_page_back : icon_back;
   }
 
+  static String roomBg1T(){
+    return AppData.theme() ? icon_room_bg : roombg1;
+  }
 
+  static String roomBg2T(){
+    return AppData.theme() ? icon_room_bg2 : roombg2;
+  }
+
+  static String roomBg3T(){
+    return AppData.theme() ? icon_room_bg3 : roombg3;
+  }
 
 
 
@@ -947,11 +968,11 @@ class ImageX{
   static String roomBg(int roomType){
     switch(roomType){
       case 2:
-        return icon_room_bg2;
+        return roomBg2T();
       case 3:
-        return icon_room_bg3;
+        return roomBg3T();
       default:
-        return icon_room_bg;
+        return roomBg1T();
     }
   }
 

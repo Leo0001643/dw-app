@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
@@ -339,7 +340,7 @@ class TextItemLogic extends GetxController {
       countDownLotteryEntity.value.status = LotteryStatus.countDownStatus.name;
       countDownLotteryEntity.value.time = showT;
       countDownLotteryEntity.value.term = term;
-      countDownLotteryEntity.value.titleColor =0xFF58698D;
+      countDownLotteryEntity.value.titleColor = ColorX.text586().value;
       countDownLotteryEntity.value.title = "xitongxiaoxi".tr;
       countDownLotteryEntity.value.subTitile = "${"julifengpan".tr}${showT}${"miao".tr}";
       countDownLotteryEntity.refresh();
@@ -350,7 +351,7 @@ class TextItemLogic extends GetxController {
     if ((lastStatus != currentStatus.value)) {
       countDownLotteryEntity.value.type = "openOver";
       countDownLotteryEntity.value.title = "kaishixiazhu".tr;
-      countDownLotteryEntity.value.titleColor=0xFF51AC57;
+      countDownLotteryEntity.value.titleColor= ColorX.color_00ac47.value;
       countDownLotteryEntity.value.term = term;
       countDownLotteryEntity.value.subTitile = "kaishixiazhu".tr;
       countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
@@ -360,7 +361,7 @@ class TextItemLogic extends GetxController {
   showCloseOver(String term) {
       countDownLotteryEntity.value.type = "closeOver";
       countDownLotteryEntity.value.title = Intr().fengpanxinxi;
-      countDownLotteryEntity.value.titleColor=0xFFFC243B;
+      countDownLotteryEntity.value.titleColor= ColorX.color_fe2427.value;
       countDownLotteryEntity.value.term = term;
       countDownLotteryEntity.value.subTitile = Intr().kaishifengpan;
       countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
