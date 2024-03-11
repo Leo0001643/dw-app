@@ -49,6 +49,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
   void dispose() {
     state.barrageWallController.dispose();
     Get.delete<GameRoomLogic>();
+    Get.delete<TextItemLogic>();
     super.dispose();
   }
 
@@ -120,8 +121,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                                   itemBuilder: (context, index) {
                                     GameRoomItemEntity gameRoomItemEntity =
                                         state.gameRoomItemEntityList[index];
-                                    return buildItemWidget(
-                                        index, logic, gameRoomItemEntity);
+                                    return buildItemWidget(index, logic, gameRoomItemEntity);
                                   },
                                 );
                               },
@@ -310,8 +310,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     } else if (gameRoomItemEntity.type == "lottery") {
       return OpenLotteryItem(index, logic, gameRoomItemEntity);
     } else if (gameRoomItemEntity.type == "countTime" ||
-        gameRoomItemEntity.type == "closeOver" ||
-        gameRoomItemEntity.type == "openOver") {
+        gameRoomItemEntity.type == "closeOver" || gameRoomItemEntity.type == "openOver") {
       return CountDownItemWidget(logic, gameRoomItemEntity);
     }
     return Container();
