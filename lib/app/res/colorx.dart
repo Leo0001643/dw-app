@@ -144,6 +144,7 @@ class ColorX{
     return AppData.theme() ? ColorX.color_dce0e7 : Colors.black;
   }
 
+
   static Color cardBg8(){
     return AppData.theme() ? Colors.white60 : Color.fromRGBO(30, 31, 31, 0.5);
   }
@@ -222,7 +223,9 @@ class ColorX{
     return AppData.theme() ? ColorX.color_0d192d : Colors.white70;
   }
 
-
+  static Color textdce(){
+    return AppData.theme() ? ColorX.color_dce0e7 : Colors.white;
+  }
 
   static List<Color> cardColors(){
     return AppData.theme() ? [Colors.white,const Color(0xfff3f4f9)] : [Color.fromRGBO(30, 31, 31, 1),Color.fromRGBO(30, 31, 31, 1)];

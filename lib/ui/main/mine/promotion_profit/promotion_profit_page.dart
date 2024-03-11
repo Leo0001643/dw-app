@@ -118,7 +118,8 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                   children: [
                     Obx(() {
                       if(state.qrLinkData.value.isEmpty){ return Container(); }
-                      return Padding(
+                      return Container(
+                        color: Colors.white,
                         padding: EdgeInsets.all(10.r),
                         child: Image.memory(state.qrLinkData.value,width: 150.w,fit: BoxFit.fill,),
                       );
@@ -133,6 +134,10 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                             child: Container(
                               width: 132.w,
                               height: 40.h,
+                              decoration: BoxDecoration(
+                                color: ColorX.cardBg(),
+                                borderRadius: BorderRadius.circular(10.r),
+                              ),
                               alignment: Alignment.center,
                               child: Text(Intr().baocuntupian,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
                             ),
@@ -143,6 +148,10 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                             child: Container(
                               width: 132.w,
                               height: 40.h,
+                              decoration: BoxDecoration(
+                                color: ColorX.cardBg(),
+                                borderRadius: BorderRadius.circular(10.r),
+                              ),
                               alignment: Alignment.center,
                               child: Text(Intr().fuzhilianjie,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
                             ),

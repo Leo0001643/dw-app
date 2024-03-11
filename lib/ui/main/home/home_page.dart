@@ -422,11 +422,11 @@ class StateHomePage extends State<HomePage>
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        WidgetUtils().buildNoElevatedButton(Intr().login, 78.w, 32.h,
+        WidgetUtils().buildOutlineButton(Intr().login, 78.w, 32.h,
+            ColorX.textdce(),
             textSize: 13.sp,
-            textColor: ColorX.color_091722,
-            showBorder: true,
-            bg: Colors.white, onPressed: () {
+            textColor: ColorX.text0917(),
+            onPressed: () {
           WidgetUtils().goLogin();
         }),
         // SizedBox(width: 10.w,),
