@@ -289,7 +289,7 @@ class DialogUtils {
 
   ///选择房间
   Future<Pc28LottoRoomsTables?> showSelectRoomBtmDialog(
-      BuildContext context, Pc28LottoEntity pc28Lotto) {
+      BuildContext context, Pc28LottoEntity pc28Lotto,{Pc28LottoRoomsTables? defRoom}) {
     return showModalBottomSheet(
         context: context,
         isScrollControlled: true,
@@ -302,7 +302,7 @@ class DialogUtils {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: SelectRoomBottomDialog(pc28Lotto),
+            child: SelectRoomBottomDialog(pc28Lotto,defRoom: defRoom,),
           );
         });
   }

@@ -3,14 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_select_timer_page.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_logic.dart';
 
 class SelectRoomBottomDialog extends StatefulWidget {
   final Pc28LottoEntity pc28Lotto;
-
-  const SelectRoomBottomDialog(this.pc28Lotto, {super.key});
+  final Pc28LottoRoomsTables? defRoom;
+  const SelectRoomBottomDialog(this.pc28Lotto, {this.defRoom,super.key});
 
   @override
   State<StatefulWidget> createState() => StateSelectRoomBottomDialog();
@@ -49,10 +51,7 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog> {
             height: 10.h,
           ),
           Column(
-            children: widget.pc28Lotto.rooms
-                    ?.map((e) => buildCategoryItem(e,))
-                    .toList() ??
-                [],
+            children: widget.pc28Lotto.rooms?.map((e) => buildCategoryItem(e,)).toList() ?? [],
           ),
           // buildCategoryItem("比特币1分28","00:00:29",0,1,2),
           // buildCategoryItem("台湾宾果28","00:00:29",3,4,5),
@@ -101,16 +100,13 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog> {
                     Expanded(
                       child: InkWell(
                         onTap: () => Navigator.of(context).pop(e),
-                        child: buildRoomItem(
-                            e.name.em()),
+                        child: buildRoomItem(e),
                       ),
                     ),
                   ],
                 ),
               ),
-            )
-                .toList() ??
-                [],
+            ).toList() ?? [],
           ),
         ),
         SizedBox(
@@ -120,25 +116,36 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog> {
     );
   }
 
-  Widget buildRoomItem(String name) {
+  Widget buildRoomItem(Pc28LottoRoomsTables room) {
+
+    var select = widget.defRoom?.name == room.name && widget.defRoom?.gameType == room.gameType;
+
     return Stack(
       children: [
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-                color: ColorX.color_e8e8e8,
+                color: select ? ColorX.color_fc243b:ColorX.color_e8e8e8,
                 width: 1.w),
             borderRadius: BorderRadius.circular(8.r),
           ),
           padding: EdgeInsets.symmetric(vertical: 9.h),
           alignment: Alignment.center,
           child: Text(
-            name,
+            room.name.em(),
             style: TextStyle(
                 fontSize: 16.sp,
                 color: ColorX.text0917()),
           ),
-        )
+        ),
+        Positioned(
+          top: 0,
+          right: 0,
+          child: Visibility(
+            visible: select,
+            child: WidgetUtils().buildImage(ImageX.icon_choose, 20.r, 20.r),
+          ),
+        ),
       ],
     );
   }

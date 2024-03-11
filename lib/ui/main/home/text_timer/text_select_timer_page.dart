@@ -52,7 +52,7 @@ class _TextTimerPageState extends State<TextSelectTimerPage> {
               style: TextStyle(color: Colors.greenAccent,fontSize: 11.sp),textAlign: TextAlign.center,);
         }
         return Text(widget.logic.text_timer.value,
-            style: TextStyle(fontWeight: FontWeight.w700,color: ColorX.color_333333,fontSize: 11.sp));
+            style: TextStyle(fontWeight: FontWeight.w700,color: ColorX.text333(),fontSize: 11.sp));
       } else {
         return Text(
           widget.logic.text_timer.value,

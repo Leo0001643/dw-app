@@ -58,9 +58,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
       scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildGameBar(state.title, buildRoomType(),
           collect: false, msg: true, scaffoldKey: state.scaffoldKey, onTap: () {
-        DialogUtils()
-            .showSelectRoomBtmDialog(context, state.pc28Lotto.value)
-            .then(
+        DialogUtils().showSelectRoomBtmDialog(context, state.pc28Lotto.value,defRoom: state.room.value).then(
           (value) {
             if (unEmpty(value?.name)) {
               logic.loadData(value!, false);

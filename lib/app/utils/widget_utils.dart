@@ -434,7 +434,7 @@ class WidgetUtils {
                 SizedBox(
                   width: 5.w,
                 ),
-                Image.asset(ImageX.icon_down_black),
+                Image.asset(ImageX.icon_down_black,color: ColorX.iconBlack(),),
               ],
             ),
             SizedBox(
