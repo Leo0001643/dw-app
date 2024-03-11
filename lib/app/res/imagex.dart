@@ -69,6 +69,8 @@ class ImageX{
   static const icon_radio_uncheck = 'assets/images/icon_radio_uncheck.png';
   static const icon_room_mask2 = 'assets/images/icon_room_mask2.png';
   static const icon_room_mask = 'assets/images/icon_room_mask.png';
+  static const dxmask_dark = 'assets/images/dxmask_dark.png';
+  static const nomask_dark = 'assets/images/nomask_dark.png';
   static const icon_room_bg = 'assets/images/icon_room_bg.png';
   static const icon_room_bg2 = 'assets/images/ic_room_bg2.png';
   static const icon_room_bg3 = 'assets/images/ic_room_bg3.png';
@@ -939,7 +941,13 @@ class ImageX{
     return AppData.theme() ? icon_room_bg3 : roombg3;
   }
 
+  static String iconRoomMaskT(){
+    return AppData.theme() ? icon_room_mask : nomask_dark;
+  }
 
+  static String iconRoomMask2T(){
+    return AppData.theme() ? icon_room_mask2 : dxmask_dark;
+  }
 
 
 

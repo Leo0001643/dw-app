@@ -49,6 +49,8 @@ class ColorX{
   static const color_80_091 = Color.fromRGBO(9,23,34,0.80);
   static const color_333333 = Color(0xff333333);
   static const color_60543f = Color(0xff60543f);
+  static const color_88705f = Color(0xff88705f);
+
   static const color_574436 = Color(0xff574436);
   static const color_ffe0ac = Color(0xffffe0ac);
   static const color_70b6ff = Color(0xff70b6ff);
@@ -163,6 +165,10 @@ class ColorX{
 
   static Color cardBg12(){
     return AppData.theme() ? Colors.transparent : ColorX.color_333333;
+  }
+
+  static Color cardBg13(){
+    return AppData.theme() ? Colors.white : ColorX.color_333333;
   }
 
   static Color text0917(){

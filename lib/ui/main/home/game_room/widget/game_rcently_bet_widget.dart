@@ -33,7 +33,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.w),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6.w),
-                color: Colors.white
+                color: ColorX.cardBg(),
             ),
             alignment: Alignment.center,
             child: buildCurrentTermType(logic, context),
@@ -253,22 +253,26 @@ class GameRecentlyBetWidget extends StatelessWidget {
   }
 
   Widget buildDrawResult(String result, GameRoomLogic logic,
-      {Color? color, Color? textColor, showWaittingImg = false}) {
+      {Color? color, showWaittingImg = false}) {
     GameRoomState state = logic.state;
     var color1 = state.roomType.value == 1 ? ColorX.color_10_fc2 : ColorX
         .color_c7956f;
-    var textColor1 = state.roomType.value == 1 ? ColorX.color_333333 : ColorX
-        .color_091722;
     return Container(
-      width: 24.r,
-      height: 24.r,
-      alignment: Alignment.center,
       decoration: BoxDecoration(
-        border: Border.all(color: color ?? color1, width: 2)
-        , borderRadius: BorderRadius.circular(15.r),),
-      child: Text(result, style: TextStyle(fontSize: 14.sp,
-          color: textColor ?? textColor1,
-          fontWeight: FontWeight.w600),),
+        color: ColorX.cardBg3(),
+        borderRadius: BorderRadius.circular(15.r),
+      ),
+      child: Container(
+        width: 24.r,
+        height: 24.r,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          border: Border.all(color: color ?? color1, width: 2)
+          , borderRadius: BorderRadius.circular(15.r),),
+        child: Text(result, style: TextStyle(fontSize: 14.sp,
+            color: ColorX.text0917(),
+            fontWeight: FontWeight.w600),),
+      ),
     );
   }
 
@@ -290,9 +294,9 @@ class GameRecentlyBetWidget extends StatelessWidget {
       height: 24.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: ColorX.color_f7f8fb, borderRadius: BorderRadius.circular(15.r),),
+        color: ColorX.cardBg3(), borderRadius: BorderRadius.circular(15.r),),
       child: Text(num, style: TextStyle(fontSize: 14.sp,
-          color: ColorX.color_091722,
+          color: ColorX.text0917(),
           fontWeight: FontWeight.w600),),
     );
   }

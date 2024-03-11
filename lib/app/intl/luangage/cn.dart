@@ -994,7 +994,7 @@ class CN {
     "zhongjiangjieguodongxiao":"中奖结果动效",
     "qingxuanzhetouzhuxm":"请选择投注项目",
     "xiazhujinewk":"下注金额为空",
-
+    "danmu":"弹幕",
 
 
 

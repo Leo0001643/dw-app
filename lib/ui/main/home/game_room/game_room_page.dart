@@ -133,14 +133,6 @@ class _GameRoomPageState extends State<GameRoomPage> {
                                 right: 0,
                                 top: 20.h,
                                 child: buildCountDown()),
-                            buildFloatingBtn(() {
-                              if (AppData.isLogin()) {
-                                logic.startBet(context);
-                              } else {
-                                Get.until((ModalRoute.withName(Routes.main)));
-                                WidgetUtils().goLogin();
-                              }
-                            }),
                             BarrageWall(
                               maxBulletHeight: 5,
                               controller: state.barrageWallController,
@@ -153,6 +145,14 @@ class _GameRoomPageState extends State<GameRoomPage> {
                       ),
                     ],
                   ),
+                  buildFloatingBtn(() {
+                    if (AppData.isLogin()) {
+                      logic.startBet(context);
+                    } else {
+                      Get.until((ModalRoute.withName(Routes.main)));
+                      WidgetUtils().goLogin();
+                    }
+                  }),
                 ],
               ),
             ),
@@ -173,11 +173,29 @@ class _GameRoomPageState extends State<GameRoomPage> {
       bottom: 30.h,
       child: InkWell(
         onTap: onPressed,
-        child: Image.asset(
-          ImageX.icon_barrage,
-          width: 60.w,
-          height: 35.h,
-          fit: BoxFit.fill,
+        child: Container(
+          width: 65.w,
+          height: 30.h,
+          decoration: BoxDecoration(
+            color: ColorX.cardBg13(),
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(15.r),
+            bottomLeft: Radius.circular(15.r),),
+            boxShadow: [
+              AppData.theme() ? BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 2.r,
+                blurRadius: 3.r,
+                offset: Offset(0, 1), // 阴影位置偏移量
+              ):BoxShadow(),
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.edit_note,size: 20.r,color: ColorX.text0917(),),
+              Text(Intr().danmu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+            ],
+          ),
         ),
       ),
     );
@@ -230,21 +248,21 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   Widget buildBottomBtn() {
     return Obx(() {
-      var colors = [Color(0xffff5163), Color(0xfffd273e)];
+      var colors = [ColorX.color_ff5163, ColorX.color_fd273e];
       switch (state.roomType.value) {
         case 1:
-          colors = [Color(0xffff5163), Color(0xfffd273e)];
+          colors = [ColorX.color_ff5163, ColorX.color_fd273e];
           break;
         case 2:
           colors = [
-            Color(0xff5f6e88),
-            Color(0xff363f57),
+            ColorX.color_70b6ff,
+            ColorX.color_5583e7,
           ];
           break;
         case 3:
           colors = [
-            Color(0xff88705f),
-            Color(0xff574436),
+            ColorX.color_88705f,
+            ColorX.color_574436,
           ];
           break;
       }

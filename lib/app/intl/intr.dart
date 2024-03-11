@@ -640,6 +640,7 @@ class Intr extends Translations{
   String get zhongjiangjieguodongxiao => "zhongjiangjieguodongxiao".tr;
   String get qingxuanzhetouzhuxm => "qingxuanzhetouzhuxm".tr;
   String get xiazhujinewk => "xiazhujinewk".tr;
+  String get danmu => "danmu".tr;
 
 
 

@@ -94,31 +94,27 @@ class GameRoomComputeWidget extends StatelessWidget {
     );
   }
 
-  Widget buildDrawTime(String time) {
-    return time == "-1"
-        ? Image(
-            image: AssetImage(ImageX.icon_room_mask),
-            width: 24,
-            height: 24,
-          )
-        : Container(
-            width: 26.r,
-            height: 26.r,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: ColorX.color_10_fff,
-              border: Border.all(color: Colors.white, width: 1.r),
-              borderRadius: BorderRadius.circular(5.r),
-            ),
-            child: Text(
-              time,
-              style: TextStyle(
-                  fontSize: 16.sp,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600),
-            ),
-          );
-  }
+  // Widget buildDrawTime(String time) {
+  //   return time == "-1"
+  //       ? WidgetUtils().buildImage(ImageX.iconRoomMaskT(), 24.r, 24.r,fit: BoxFit.fill)
+  //       : Container(
+  //           width: 26.r,
+  //           height: 26.r,
+  //           alignment: Alignment.center,
+  //           decoration: BoxDecoration(
+  //             color: ColorX.color_10_fff,
+  //             border: Border.all(color: Colors.white, width: 1.r),
+  //             borderRadius: BorderRadius.circular(5.r),
+  //           ),
+  //           child: Text(
+  //             time,
+  //             style: TextStyle(
+  //                 fontSize: 16.sp,
+  //                 color: Colors.white,
+  //                 fontWeight: FontWeight.w600),
+  //           ),
+  //         );
+  // }
 
   Widget buildUserTab(int i, String tab, String icon, Color color,
       BuildContext context, GameRoomLogic logic) {
@@ -243,8 +239,6 @@ class GameRoomComputeWidget extends StatelessWidget {
         id: GameRoomLogic.gameRoomCompute,
         builder: (controller) {
 
-
-
           GameRoomState state = logic.state;
           WSLotteryEntityData? headWSLotteryEntityData =
               logic.headWSLotteryEntityData;
@@ -288,7 +282,7 @@ class GameRoomComputeWidget extends StatelessWidget {
                   Visibility(
                     visible: logic.currentStatus.value !=
                         LotteryStatus.sealingPlateStatus,
-                    child: GameRuleUtil.getDXDS(arr2[3]),
+                    child: GameRuleUtil.getDXDSByType(arr2[3],state.roomType.value),
                   ),
                   Image.asset(
                     ImageX.icon_down_black,
@@ -302,34 +296,35 @@ class GameRoomComputeWidget extends StatelessWidget {
   }
 
   Widget buildDrawResult(String result, GameRoomLogic logic,
-      {Color? color, Color? textColor, showWaittingImg = false}) {
+      {Color? color, showWaittingImg = false}) {
     GameRoomState state = logic.state;
-    var color1 =
-        state.roomType.value == 1 ? ColorX.color_10_fc2 : ColorX.color_c7956f;
-    var textColor1 =
-        state.roomType.value == 1 ? ColorX.color_fc243b : ColorX.color_091722;
+    var color1 = state.roomType.value == 1 ? ColorX.color_10_fc2 : ColorX.color_c7956f;
+    var textColor1 = state.roomType.value == 1 ? ColorX.text0917() : ColorX.color_091722;
+    var color3 = state.roomType.value == 1 ? ColorX.cardBg3() : ColorX.color_ffe0ac;
     return (result == "-1" || showWaittingImg == true)
-        ? Image(
-            image: AssetImage(ImageX.icon_room_mask2),
-            width: 46,
-            height: 18,
-          )
+        ? WidgetUtils().buildImage(ImageX.iconRoomMask2T(), 46.r, 18.r,fit: BoxFit.fill)
         : Container(
-            width: 24.r,
-            height: 24.r,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              border: Border.all(color: color ?? color1, width: 2),
-              borderRadius: BorderRadius.circular(15.r),
-            ),
-            child: Text(
-              result,
-              style: TextStyle(
-                  fontSize: 14.sp,
-                  color: textColor ?? textColor1,
-                  fontWeight: FontWeight.w600),
-            ),
-          );
+      decoration: BoxDecoration(
+        color: color3,
+        borderRadius: BorderRadius.circular(15.r),
+      ),
+      child: Container(
+        width: 24.r,
+        height: 24.r,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          border: Border.all(color: color ?? color1, width: 2.w),
+          borderRadius: BorderRadius.circular(15.r),
+        ),
+        child: Text(
+          result,
+          style: TextStyle(
+              fontSize: 14.sp,
+              color: textColor1,
+              fontWeight: FontWeight.w600),
+        ),
+      ),
+    );
   }
 
   Widget buildDrawMark(String mark, Color color) {
@@ -347,13 +342,11 @@ class GameRoomComputeWidget extends StatelessWidget {
       {showWaittingImg = false}) {
     GameRoomState state = logic.state;
     var color =
-        state.roomType.value == 1 ? ColorX.color_f7f8fb : ColorX.color_ffe0ac;
+        state.roomType.value == 1 ? ColorX.cardBg3() : ColorX.color_ffe0ac;
+    var textColor1 = state.roomType.value == 1 ? ColorX.text0917() : ColorX.color_091722;
+
     return (num == "-1" || showWaittingImg == true)
-        ? const Image(
-            image: AssetImage(ImageX.icon_room_mask),
-            width: 24,
-            height: 24,
-          )
+        ? WidgetUtils().buildImage(ImageX.iconRoomMaskT(), 24.r, 24.r,fit: BoxFit.fill)
         : Container(
             width: 24.r,
             height: 24.r,
@@ -366,7 +359,7 @@ class GameRoomComputeWidget extends StatelessWidget {
               num,
               style: TextStyle(
                   fontSize: 14.sp,
-                  color: ColorX.color_091722,
+                  color: textColor1,
                   fontWeight: FontWeight.w600),
             ),
           );

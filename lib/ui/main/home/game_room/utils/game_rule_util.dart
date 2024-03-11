@@ -623,9 +623,7 @@ class GameRuleUtil {
     }
   }
 
-  /**
-   * sum为-1时，显示问号
-   */
+  /// sum为-1时，显示问号
   static Widget getDXDS(int sum) {
     if (sum == -1) {
       return Text("(? ?)",style: TextStyle(fontSize: 14.sp,color: ColorX.color_333333,fontWeight: FontWeight.w600),);
@@ -642,11 +640,43 @@ class GameRuleUtil {
 
       return Text.rich(TextSpan(
         children: [
-          TextSpan(text: "(",style: TextStyle(fontSize: 14.sp,color: ColorX.color_333333,fontWeight: FontWeight.w600),),
+          TextSpan(text: "(",style: TextStyle(fontSize: 14.sp,color: ColorX.text333(),fontWeight: FontWeight.w600),),
           TextSpan(text: qian,style: TextStyle(fontSize: 14.sp,color: qianColor,fontWeight: FontWeight.w600),),
           TextSpan(text: hou,style: TextStyle(fontSize: 14.sp,color: houColor,fontWeight: FontWeight.w600),),
-          TextSpan(text: ")",style: TextStyle(fontSize: 14.sp,color: ColorX.color_333333,fontWeight: FontWeight.w600),),
+          TextSpan(text: ")",style: TextStyle(fontSize: 14.sp,color: ColorX.text333(),fontWeight: FontWeight.w600),),
         ]
+      ));
+      // ssb.setSpan(new ForegroundColorSpan((sum < 14) ? HiRes.INSTANCE.getColor(R.color.number_blue) : Color.RED), 1, qian.length() + 1,
+      // Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+      // ssb.setSpan(new ForegroundColorSpan((sum % 2 == 0) ? HiRes.INSTANCE.getColor(R.color.number_blue) : Color.RED), ("(" + qian + " ").length(), ("(" + qian + " " + hou).length(),
+      // Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+      // }
+    }
+  }
+
+  /// sum为-1时，显示问号
+  static Widget getDXDSByType(int sum,int roomtype) {
+    if (sum == -1) {
+      return Text("(? ?)",style: TextStyle(fontSize: 14.sp,color: ColorX.color_333333,fontWeight: FontWeight.w600),);
+    } else {
+      String da = Intr().bet_da;
+      String xiao = Intr().bet_xiao;
+      String shaung = Intr().bet_shuang;
+      String dan = Intr().bet_dan;
+
+      String qian = sum < 14 ? xiao : da;
+      var qianColor = sum < 14 ? ColorX.color_5583e7:ColorX.color_fc243b;
+      String hou = sum % 2 == 0 ? shaung : dan;
+      var houColor = sum % 2 == 0 ? ColorX.color_5583e7:ColorX.color_fc243b;
+      var color3 = roomtype == 1 ? ColorX.text5862() : ColorX.color_ffe0ac;
+
+      return Text.rich(TextSpan(
+          children: [
+            TextSpan(text: "(",style: TextStyle(fontSize: 14.sp,color: color3,fontWeight: FontWeight.w600),),
+            TextSpan(text: qian,style: TextStyle(fontSize: 14.sp,color: qianColor,fontWeight: FontWeight.w600),),
+            TextSpan(text: hou,style: TextStyle(fontSize: 14.sp,color: houColor,fontWeight: FontWeight.w600),),
+            TextSpan(text: ")",style: TextStyle(fontSize: 14.sp,color: color3,fontWeight: FontWeight.w600),),
+          ]
       ));
       // ssb.setSpan(new ForegroundColorSpan((sum < 14) ? HiRes.INSTANCE.getColor(R.color.number_blue) : Color.RED), 1, qian.length() + 1,
       // Spannable.SPAN_EXCLUSIVE_INCLUSIVE);

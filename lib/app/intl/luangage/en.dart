@@ -1065,6 +1065,7 @@ class EN{
     "zhongjiangjieguodongxiao":"The winning result is dynamic",
     "qingxuanzhetouzhuxm":"Please select a bet",
     "xiazhujinewk":"The bet is short",
+    "danmu":"barrage",
 
   };
 

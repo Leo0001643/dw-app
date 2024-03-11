@@ -927,7 +927,7 @@ class WidgetUtils {
           text:  Intr().di,
           style: TextStyle(
             fontSize: 12.sp,
-            color: ColorX.color_333333,
+            color: ColorX.text333(),
           ),
         ),
         TextSpan(
@@ -942,7 +942,7 @@ class WidgetUtils {
           text: Intr().qi,
           style: TextStyle(
             fontSize: 12.sp,
-            color: ColorX.color_333333,
+            color: ColorX.text333(),
           ),
         )
       ]));
@@ -969,7 +969,7 @@ class WidgetUtils {
 
 
   Widget buildDixqi3(String term,int roomType){
-    var textColor = roomType == 1 ? ColorX.color_333333 : ColorX.color_ffe0ac;
+    var textColor = roomType == 1 ? ColorX.text333() : ColorX.color_ffe0ac;
     var termData = term.length > 8 ? term.substring(term.length-8,term.length) : term;
     if(AppData.localeIndex() == 0){
       return Wrap(

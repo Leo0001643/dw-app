@@ -25,8 +25,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
         height: 0.77.sh,
         width: 1.sw,
         decoration: BoxDecoration(
-          // color: ColorX.cardBg5(),
-            color:Color(0xFFF7F8FB),
+          color: ColorX.cardBg5(),
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),

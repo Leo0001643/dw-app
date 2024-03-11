@@ -106,7 +106,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: wsBetResultEntity.content?.length??0,
                     separatorBuilder: (context,index){
-                      return Divider(height: 1.h,color: ColorX.color_f1f1f1,);
+                      return Divider(color: ColorX.color_10_949,height: 1.h,indent: 10.w,endIndent: 10.w,);
                     },
                     itemBuilder: (context,index){
                       WsBetContent? item= wsBetResultEntity.content?[index];
@@ -168,7 +168,6 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             ],
           ),
         ),
-        Divider(color: ColorX.color_10_949,height: 1.h,indent: 10.w,endIndent: 10.w,),
       ],
     );
   }
