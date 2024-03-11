@@ -4,7 +4,9 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
@@ -79,16 +81,24 @@ class HttpService{
 
   static void doInit(){
     var dio = Dio();
+
+
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler){
         options.headers["Content-Type"] = "application/x-www-form-urlencoded";
         options.headers["Accept-Language"] = Intr().currentLocale().languageCode;
-
         //设备信息【PC:PC网页端,MP:移动端,APP:原生APP】
         //网站ID
         //机器型号
         //系统版本号【APP强制使用】
-        var commonParams = {"machineModel":Constants.model(),"siteId":"9000","siteType":"1","terminal":"APP","version":Constants.version()};
+        var commonParams = {"machineModel":Constants.model(),
+          "siteId":"9000",
+          "siteType":"1",
+          "terminal":"APP",
+          "version":Constants.version()};
+        if(unEmpty(AppData.deviceInfo().deviceId)){
+          commonParams["deviceId"] = AppData.deviceInfo().deviceId.em();
+        }
         options.queryParameters.addAll(commonParams);
         loggerArray(["发起请求","${options.baseUrl}${options.path}","${options.method}\n","${options.headers}\n",options.data ?? options.queryParameters]);
         handler.next(options);

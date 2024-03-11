@@ -1,5 +1,9 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
+import 'package:leisure_games/app/app_data.dart';
+
+import 'package:leisure_games/app/global.dart';
+
 
 PromotionTypeKey $PromotionTypeKeyFromJson(Map<String, dynamic> json) {
   final PromotionTypeKey promotionTypeKey = PromotionTypeKey();

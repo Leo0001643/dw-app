@@ -68,6 +68,7 @@ dependencies:
   json_annotation: ^4.8.1
   device_info_plus: ^9.1.0
   package_info_plus: ^4.2.0
+  android_id: ^0.3.6
   popover: ^0.2.8+2
   custom_pop_up_menu: ^1.2.4
   crypto: ^3.0.3

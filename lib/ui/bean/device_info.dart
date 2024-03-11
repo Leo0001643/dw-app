@@ -12,8 +12,9 @@ class DeviceInfo{
   String? systemVersion;
   String? model;
   String? version;
+  String? deviceId;
 
-  DeviceInfo({this.name, this.systemName, this.systemVersion, this.model, this.version});
+  DeviceInfo({this.name, this.systemName, this.systemVersion, this.model, this.version,this.deviceId});
 
   factory DeviceInfo.fromJson(Map<String, dynamic> json) => $DeviceInfoFromJson(json);
 

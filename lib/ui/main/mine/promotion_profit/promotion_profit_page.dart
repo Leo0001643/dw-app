@@ -209,7 +209,7 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,childAspectRatio: 4),
           itemCount: list.em(),
           itemBuilder: (content,index){
-            var item = list[index];
+            var item = list[index] as SpreadUserEntity;
             return Container(
               alignment: Alignment.center,
               child: Text(item.username.em(),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600)),

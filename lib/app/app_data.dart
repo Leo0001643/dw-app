@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:developer';
 
+import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -17,18 +19,21 @@ class AppData {
   static SharedPreferences? prefs;
 
   static Future<bool> initData() async {
-    await SharedPreferences.getInstance().then((value) =>
-        {prefs = value, logger("初始化完成${DateTime.now().toString()}")});
+    prefs = await SharedPreferences.getInstance();
+    logger("初始化完成${DateTime.now().toString()}");
     final deviceInfoPlugin = DeviceInfoPlugin();
     final packageInfo = await PackageInfo.fromPlatform();
+
     if (GetPlatform.isAndroid) {
       var deviceInfo = await deviceInfoPlugin.androidInfo;
+      var deviceId = await const AndroidId().getId();
       setDeviceInfo(DeviceInfo(
           name: deviceInfo.model,
           systemName: deviceInfo.brand,
           systemVersion: deviceInfo.version.release,
           model: deviceInfo.product,
-          version: packageInfo.version));
+          version: packageInfo.version,
+          deviceId: deviceId));
     } else if (GetPlatform.isIOS) {
       var deviceInfo = await deviceInfoPlugin.iosInfo;
       setDeviceInfo(DeviceInfo(
@@ -36,7 +41,8 @@ class AppData {
           systemName: deviceInfo.systemName,
           systemVersion: deviceInfo.systemVersion,
           model: deviceInfo.model,
-          version: packageInfo.version));
+          version: packageInfo.version,
+          deviceId: deviceInfo.identifierForVendor));
     }
 
     return Future.value(true);
@@ -127,7 +133,7 @@ class AppData {
   static DeviceInfo deviceInfo() {
     var json = prefs?.getString("device_info") ?? "";
     if(json.isEmpty) {
-      return DeviceInfo(name:"name",model: "sansung");
+      return DeviceInfo(name:"name",model: "samsung");
     }
 
     return DeviceInfo.fromJson(jsonDecode(json));

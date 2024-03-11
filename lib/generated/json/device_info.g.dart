@@ -24,6 +24,10 @@ DeviceInfo $DeviceInfoFromJson(Map<String, dynamic> json) {
   if (version != null) {
     deviceInfo.version = version;
   }
+  final String? deviceId = jsonConvert.convert<String>(json['deviceId']);
+  if (deviceId != null) {
+    deviceInfo.deviceId = deviceId;
+  }
   return deviceInfo;
 }
 
@@ -34,6 +38,7 @@ Map<String, dynamic> $DeviceInfoToJson(DeviceInfo entity) {
   data['systemVersion'] = entity.systemVersion;
   data['model'] = entity.model;
   data['version'] = entity.version;
+  data['deviceId'] = entity.deviceId;
   return data;
 }
 
@@ -44,12 +49,14 @@ extension DeviceInfoExtension on DeviceInfo {
     String? systemVersion,
     String? model,
     String? version,
+    String? deviceId,
   }) {
     return DeviceInfo()
       ..name = name ?? this.name
       ..systemName = systemName ?? this.systemName
       ..systemVersion = systemVersion ?? this.systemVersion
       ..model = model ?? this.model
-      ..version = version ?? this.version;
+      ..version = version ?? this.version
+      ..deviceId = deviceId ?? this.deviceId;
   }
 }
