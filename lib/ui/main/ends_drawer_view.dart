@@ -502,11 +502,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                   },
                   child: Row(
                     children: [
-                      Text(
-                        Intr().grzx,
-                        style:
-                            TextStyle(fontSize: 14.sp, color: ColorX.text586()),
-                      ),
+                      Text(Intr().grzx, style: TextStyle(fontSize: 14.sp, color: ColorX.text5862()),),
                       Image.asset(
                         ImageX.ic_into_right,
                         color: ColorX.icon586(),
@@ -694,7 +690,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
         Expanded(child: Container()),
         Text(
           "${ctl.wallet ? "USDT" : "CNY"}:",
-          style: TextStyle(fontSize: 12.sp, color: ColorX.text586()),
+          style: TextStyle(fontSize: 12.sp, color: ColorX.text5862()),
         ),
         Obx(() {
           return Text(
@@ -703,7 +699,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                 : "¥${logic.state.cnyBal.value.money.em()}",
             style: TextStyle(
                 fontSize: 12.sp,
-                color: ColorX.text586(),
+                color: ColorX.text5862(),
                 fontWeight: FontWeight.w600),
           );
         }),
@@ -712,6 +708,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
         ),
         Image.asset(
           ImageX.icon_right_left,
+          color: ColorX.iconBlack(),
           width: 10.w,
         ),
       ],

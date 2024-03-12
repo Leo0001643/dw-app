@@ -65,31 +65,31 @@ class RechargeLogic extends GetxController {
         // var usdtIndex = 0;
         if(unEmpty(value.digitalWallet)){
           state.usdtBank.value = value.digitalWallet!.first;
-          state.usdtBank.value.icon = ImageX.usdt;
+          state.usdtBank.value.icon = ImageX.usdtT();
           state.usdtBank.refresh();
         }
         value.banks?.forEach((element) {
           switch(element.bankCode){
             case Constants.code_caifutong:
-              element.icon = ImageX.icon_cft;
+              element.icon = ImageX.iconCftT();
               break;
             case Constants.code_qmf:
-              element.icon = ImageX.icon_qmf;
+              element.icon = ImageX.qmfT();
               break;
             case Constants.code_wangyin:
-              element.icon = ImageX.icon_yhkzz;
+              element.icon = ImageX.iconYhkzzT();
               break;
             case Constants.code_weixin:
-              element.icon = ImageX.icon_wxpay;
+              element.icon = ImageX.iconWxpayT();
               break;
             case Constants.code_ysfzf:
-              element.icon = ImageX.icon_unipay;
+              element.icon = ImageX.iconUnipayT();
               break;
             case Constants.code_zhifubao:
-              element.icon = ImageX.icon_alipay;
+              element.icon = ImageX.iconAlipayT();
               break;
             case Constants.code_jingdong:
-              element.icon = ImageX.jingdong;
+              element.icon = ImageX.jingdongT();
               break;
             // case Constants.code_usdt:
             //   element.icon = ImageX.icon_cft;

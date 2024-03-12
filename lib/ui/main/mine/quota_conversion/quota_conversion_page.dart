@@ -164,7 +164,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                     ),
                     SizedBox(
                       width: 60.w,
-                      child: Image.asset(ImageX.icon_right_left),
+                      child: Image.asset(ImageX.icon_right_left,color: ColorX.iconBlack(),),
                     ),
                     Expanded(
                       child: Container(
@@ -214,7 +214,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   children: [
-                    Image.asset(ImageX.usdt,width: 24.r,),
+                    WidgetUtils().buildImage(ImageX.usdtT(),24.r,24.r,),
                     Obx(() {
                       return WidgetUtils().buildTextField(230.w, 42.h, 14.sp,
                           ColorX.text586(), Intr().qingshurujine,backgroundColor: Colors.transparent,

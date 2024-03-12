@@ -75,13 +75,13 @@ class _WithdrawChannelPageState extends State<WithdrawChannelPage> {
 
   Widget buildCategoryItem(Object item) {
     var bankName = "";
-    var icon = ImageX.usdt;
+    var icon = ImageX.usdtT();
     if(item is UserDrawDetailBanks){
       bankName = Intr().yhk;
-      icon = ImageX.icon_yhkzz;
+      icon = ImageX.iconYhkzzT();
     }else if(item is UsdtEntity){
       bankName = Intr().xqianbao_([item.type.em()]);
-      icon = ImageX.usdt;
+      icon = ImageX.usdtT();
     }
     return Container(
       margin: EdgeInsets.only(left: 20.w, right: 20.w, top: 10.h),

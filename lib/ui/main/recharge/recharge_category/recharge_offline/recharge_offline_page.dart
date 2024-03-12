@@ -103,7 +103,12 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                    Row(
+                      children: [
+                        Text("*",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
+                        Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                      ],
+                    ),
                     SizedBox(height: 10.h,),
                     Container(
                       decoration: BoxDecoration(color: ColorX.appBarBg2(),borderRadius: BorderRadius.circular(5.r)),
@@ -127,7 +132,12 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(height: 10.h,),
-                            Text(Intr().yinhangmingcheng,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                            Row(
+                              children: [
+                                Text("*",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
+                                Text(Intr().yinhangmingcheng,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                              ],
+                            ),
                             SizedBox(height: 10.h,),
                             InkWell(
                               child: Obx(() {
@@ -146,12 +156,22 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
                       );
                     }),
                     SizedBox(height: 10.h,),
-                    Text(Intr().huikuanxingming,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                    Row(
+                      children: [
+                        Text("*",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
+                        Text(Intr().huikuanxingming,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                      ],
+                    ),
                     SizedBox(height: 10.h,),
                     WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshuruhuikuanren,defText: state.remitName,
                         backgroundColor: ColorX.appBarBg2(),hintColor: ColorX.text586(),onChanged: (v)=> state.remitName=v),
                     SizedBox(height: 10.h,),
-                    Text(Intr().huikuanjine,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                    Row(
+                      children: [
+                        Text("*",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
+                        Text(Intr().huikuanjine,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                      ],
+                    ),
                     SizedBox(height: 10.h,),
                     WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshuruhuikuanjine,defText: state.remitAmount,
                         backgroundColor: ColorX.appBarBg2(), inputType: TextInputType.number,hintColor: ColorX.text586(),onChanged: (v)=> state.remitAmount=v),
@@ -182,7 +202,7 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
           SizedBox(height: 20.h,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Text(Intr().zhifushuoming_rmb,
+            child: Text(Intr().zhifushuoming_wallet,
               style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),height: 1.8),),
           ),
           SizedBox(height: 50.h,),

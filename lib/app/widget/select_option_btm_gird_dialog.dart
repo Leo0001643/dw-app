@@ -32,9 +32,9 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmGirdDialog> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(15),
+      margin: EdgeInsets.all(15.r),
       decoration: BoxDecoration(
-        color: ColorX.cardBg5(),
+        // color: ColorX.cardBg5(),
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20.r), topRight: Radius.circular(20.r)),
       ),
@@ -139,16 +139,16 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmGirdDialog> {
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.1),
         border: Border.all(
-          color: select ? ColorX.cardBg9() : ColorX.cardBg10(),
+          color: select ? ColorX.color_fc243b : ColorX.text0917(),
         ),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Text(
         option.toString(),
         style: TextStyle(
-          fontSize: 16.0,
+          fontSize: 16.sp,
           fontWeight: FontWeight.bold,
-          color: select ? ColorX.cardBg9() : Colors.black,
+          color: select ? ColorX.color_fc243b : ColorX.text0917(),
         ),
       ),
     );

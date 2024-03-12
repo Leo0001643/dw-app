@@ -486,7 +486,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(

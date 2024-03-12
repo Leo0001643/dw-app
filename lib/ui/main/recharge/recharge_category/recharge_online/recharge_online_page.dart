@@ -191,7 +191,7 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
           SizedBox(height: 20.h,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Text(Intr().zhifushuoming_rmb,
+            child: Text(Intr().zhifushuoming_wallet,
             style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),height: 1.8),),
           ),
           SizedBox(height: 50.h,),

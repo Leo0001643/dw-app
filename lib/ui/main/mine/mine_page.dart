@@ -211,6 +211,7 @@ class StateMinePage extends State<MinePage> {
                                       ),
                                       Image.asset(
                                         ImageX.icon_right_left,
+                                        color: ColorX.iconBlack(),
                                         width: 10.w,
                                       ),
                                     ],

@@ -82,7 +82,7 @@ class QuotaConversionLogic extends GetxController {
       if(AppData.wallet()){
         state.mainBal.value = BalanceEntity(icon:ImageX.icon_jj_grey, language: Intr().wallet_cny, money: value.money);
       }else {
-        state.mainBal.value = BalanceEntity(icon:ImageX.usdt, language: Intr().wallet_usdt, money: value.money);
+        state.mainBal.value = BalanceEntity(icon:ImageX.usdtT(), language: Intr().wallet_usdt, money: value.money);
       }
       state.mainBal.refresh();
     });

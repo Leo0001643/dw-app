@@ -16,8 +16,6 @@ import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
-import 'package:leisure_games/ui/main/ends_drawer_view.dart';
-import 'package:leisure_games/ui/main/main_logic.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'recharge_digital_logic.dart';
@@ -205,7 +203,23 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                                  Obx(() {
+                                    return Visibility(
+                                      visible: state.selectOnline.value,
+                                      child: Row(
+                                        children: [
+                                          Text("*",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
+                                          Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                                        ],
+                                      ),
+                                    );
+                                  }),
+                                  Obx(() {
+                                    return Visibility(
+                                      visible: !state.selectOnline.value,
+                                      child: Text(Intr().shoukuanzhanghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
+                                    );
+                                  }),
                                   SizedBox(height: 10.h,),
                                   Container(
                                     decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(5.r)),
@@ -319,7 +333,12 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                                    Row(
+                                      children: [
+                                        Text("*",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
+                                        Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                                      ],
+                                    ),
                                     SizedBox(height: 10.h,),
                                     Container(
                                       decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(5.r)),
@@ -342,7 +361,12 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                     WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().shuruzhuanzhangqianbao,defText: state.walletAddress,
                                         backgroundColor: ColorX.cardBg2(),hintColor: ColorX.text586(),onChanged: (v)=> state.walletAddress = v),
                                     SizedBox(height: 10.h,),
-                                    Text(Intr().huikuanjine,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                                    Row(
+                                      children: [
+                                        Text("*",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
+                                        Text(Intr().huikuanjine,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                                      ],
+                                    ),
                                     SizedBox(height: 10.h,),
                                     WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshuruhuikuanjine,defText: state.remitAmount,
                                         backgroundColor: ColorX.cardBg2(), inputType: TextInputType.number,hintColor: ColorX.text586()
@@ -389,19 +413,31 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                         ],
                       ),
                       SizedBox(height: 20.h,),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: Text.rich(TextSpan(
-                            children: [
-                              TextSpan(text: Intr().zhifushuoming_,
-                                style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),height: 1.8),),
-                              TextSpan(text: Intr().zhifushuoming_1,
-                                style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b,height: 1.8),),
-                              TextSpan(text: Intr().zhifushuoming_2,
-                                style: TextStyle(fontSize: 13.sp,color: ColorX.text586(),height: 1.8),),
-                            ]
-                        )),
-                      ),
+                      Obx(() {
+                        return Visibility(
+                          visible: state.selectOnline.value,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(Intr().zhifushuoming_,
+                                  style: TextStyle(fontSize: 16.sp,color: ColorX.text5862(),height: 1.8),),
+                                Text.rich(TextSpan(
+                                    children: [
+                                      TextSpan(text: Intr().zhifushuoming_1,
+                                        style: TextStyle(fontSize: 13.sp,color: ColorX.text5862(),height: 1.8),),
+                                      TextSpan(text: "USDT-TRC20",
+                                        style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b,height: 1.8),),
+                                      TextSpan(text: Intr().zhifushuoming_2,
+                                        style: TextStyle(fontSize: 13.sp,color: ColorX.text5862(),height: 1.8),),
+                                    ]
+                                )),
+                              ],
+                            ),
+                          ),
+                        );
+                      }),
                       SizedBox(height: 50.h,),
                     ],
                   ),
