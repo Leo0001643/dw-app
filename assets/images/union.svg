@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/银行卡转帐</title>
+    <g id="icon/银行卡转帐" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="矩形" x="0" y="0" width="24" height="24"></rect>
+        <path d="M23,10 L23,18 C23,19.1045695 22.1045695,20 21,20 L3,20 C1.8954305,20 1,19.1045695 1,18 L1,10 L23,10 Z M7.5,12.5 L5.5,12.5 C4.94771525,12.5 4.5,12.9477153 4.5,13.5 C4.5,14.0522847 4.94771525,14.5 5.5,14.5 L7.5,14.5 C8.05228475,14.5 8.5,14.0522847 8.5,13.5 C8.5,12.9477153 8.05228475,12.5 7.5,12.5 Z M21,4 C22.1045695,4 23,4.8954305 23,6 L23,8 L1,8 L1,6 C1,4.8954305 1.8954305,4 3,4 L21,4 Z" id="形状结合" fill="#8D8D8D"></path>
+    </g>
+</svg>

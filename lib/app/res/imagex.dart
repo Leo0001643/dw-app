@@ -184,6 +184,18 @@ class ImageX{
   static const icon_ustd2 = 'assets/images/icon_ustd2.png';
   static const usdt = 'assets/images/usdt.png';
   static const active_usdt = 'assets/images/active_usdt.svg';
+  static const usdt_dark = 'assets/images/usdt_dark.svg';
+
+  static const caifutong = 'assets/images/caifutong.svg';
+  static const jingdong_dark = 'assets/images/jingdong.svg';
+  static const qmf = 'assets/images/qmf.svg';
+  static const qqzhuanzhang = 'assets/images/qqzhuanzhang.svg';
+  static const union = 'assets/images/union.svg';
+  static const wangyin = 'assets/images/wangyin.svg';
+  static const weixin = 'assets/images/weixin.svg';
+  static const ysfzf = 'assets/images/ysfzf.svg';
+  static const zhifubao = 'assets/images/zhifubao.svg';
+
 
   static const jingdong = 'assets/images/jingdong.png';
   static const bindOther_dark = 'assets/images/bindOther_dark.svg';
@@ -948,6 +960,39 @@ class ImageX{
   static String iconRoomMask2T(){
     return AppData.theme() ? icon_room_mask2 : dxmask_dark;
   }
+
+  static String usdtT(){
+    return AppData.theme() ? usdt : usdt_dark;
+  }
+
+  static String iconCftT(){
+    return AppData.theme() ? icon_cft : caifutong;
+  }
+
+  static String qmfT(){
+    return AppData.theme() ? icon_qmf : qmf;
+  }
+
+  static String iconYhkzzT(){
+    return AppData.theme() ? icon_yhkzz : wangyin;
+  }
+
+  static String iconWxpayT(){
+    return AppData.theme() ? icon_wxpay : weixin;
+  }
+
+  static String iconUnipayT(){
+    return AppData.theme() ? icon_unipay : union;
+  }
+
+  static String iconAlipayT(){
+    return AppData.theme() ? icon_alipay : zhifubao;
+  }
+
+  static String jingdongT(){
+    return AppData.theme() ? jingdong : jingdong_dark;
+  }
+
 
 
 
