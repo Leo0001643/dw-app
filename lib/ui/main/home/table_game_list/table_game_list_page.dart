@@ -59,7 +59,7 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
           scaffoldKey:state.scaffoldKey,bgColor: ColorX.appBarBg(),onTap: (){
         // DialogUtils().showGameBrandBtmDialog(context);
         if(unEmpty(state.kindList)){
-          DialogUtils().showGameBrandBtmDialog(context,state.kindList!).then((value) {
+          DialogUtils().showGameBrandBtmDialog(context,state.kindList!,defKind: state.current).then((value) {
             if(unEmpty(value)){
               state.current = value;
               state.title.value = value!.gameName.em();

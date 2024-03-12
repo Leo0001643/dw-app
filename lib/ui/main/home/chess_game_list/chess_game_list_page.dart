@@ -41,7 +41,7 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
       appBar: WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: ColorX.appBarBg(),
           scaffoldKey: state.scaffoldKey,onTap: (){
         if(unEmpty(state.kindList)){
-          DialogUtils().showGameBrandBtmDialog(context,state.kindList!).then((value) {
+          DialogUtils().showGameBrandBtmDialog(context,state.kindList!,defKind: state.current).then((value) {
             if(unEmpty(value)){
               state.current = value;
               state.title.value = value!.gameName.em();

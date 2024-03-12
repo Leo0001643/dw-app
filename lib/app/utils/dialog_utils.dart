@@ -309,7 +309,7 @@ class DialogUtils {
 
   ///游戏品牌
   Future<GameKindGameKindList?> showGameBrandBtmDialog(
-      BuildContext context, List<GameKindGameKindList> list) {
+      BuildContext context, List<GameKindGameKindList> list,{GameKindGameKindList? defKind}) {
     return showModalBottomSheet<GameKindGameKindList>(
         context: context,
         isScrollControlled: true,
@@ -317,12 +317,12 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(20.r), topLeft: Radius.circular(20.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: GameBrandBottomDialog(list),
+            child: GameBrandBottomDialog(list,defKind: defKind,),
           );
         });
   }
