@@ -1,3 +1,4 @@
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -64,7 +65,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
+          Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
             child: LCTabBar(
               length: state.tabs.length,
@@ -73,16 +74,16 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
               tabAlignment: TabAlignment.fill,
               tabBarColor: ColorX.textWhite(),
               indicatorSize: TabBarIndicatorSize.label,
-              indicatorPadding: EdgeInsets.only(top: 38.h,left: 20.w,right: 20.w,bottom: 3.r),
+              indicatorPadding: EdgeInsets.only(top: 38.h,bottom: 3.r),
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(3.r),
                 color: ColorX.textBlack(),
               ),
               labelPadding: EdgeInsets.zero,
               labelColor: ColorX.textBlack(),
-              unselectedLabelColor: ColorX.textBlack(),
+              unselectedLabelColor: ColorX.text586(),
               width: 0.65.sw,
-              tabs: state.tabs.map((e) => buildTabBarItem(e, 0)).toList(),
+              tabs: state.tabs.map((e) => buildTabBarItem(e)).toList(),
             ),
           ),
           Expanded(
@@ -106,27 +107,10 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
       ),
     );
   }
-  Widget buildTabBarItem(String tab, int num) {
-    var read = num > 99 ? "99+" : "$num";
-    return Stack(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: Text(tab,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-        ),
-        Visibility(
-          visible: num > 0,
-          child: Positioned(
-            top: 0,right: 0,
-            child: GFBadge(
-              text: read,textStyle: TextStyle(color: ColorX.textBlack(),fontSize: 8.sp),
-              size: 20.r,
-              borderShape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topRight: Radius.circular(6.r),
-                  topLeft: Radius.circular(6.r),bottomRight: Radius.circular(6.r))),
-            ),
-          ),
-        ),
-      ],
+  Widget buildTabBarItem(String tab) {
+    return Container(
+      // padding: EdgeInsets.symmetric(horizontal: 15.w),
+      child: Text(tab,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
     );
   }
 
@@ -149,23 +133,24 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
             ),
             Row(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 10.h,),
-                    Padding(
-                      padding: EdgeInsets.only(left: 15.w),
-                      child: Text(item.title.em(),style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-                    ),
-                    SizedBox(height: 5.h,),
-                    Padding(
-                      padding: EdgeInsets.only(left: 15.w),
-                      child: Text(item.titleSec.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
-                    ),
-                    SizedBox(height: 10.h,),
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 10.h,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 15.w),
+                        child: Text(item.title.em(),style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                      ),
+                      SizedBox(height: 5.h,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 15.w),
+                        child: Text(item.endTime == 0 ? Intr().changqihuodong : DateUtil.formatDateMs(item.endTime.em()),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
+                      ),
+                      SizedBox(height: 10.h,),
+                    ],
+                  ),
                 ),
-                Expanded(child: Container()),
                 Image.asset(ImageX.icon_right_black),
                 SizedBox(width: 15.w,),
               ],

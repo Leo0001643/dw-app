@@ -641,7 +641,7 @@ class Intr extends Translations{
   String get qingxuanzhetouzhuxm => "qingxuanzhetouzhuxm".tr;
   String get xiazhujinewk => "xiazhujinewk".tr;
   String get danmu => "danmu".tr;
-
+  String get changqihuodong => "changqihuodong".tr;
 
 
 

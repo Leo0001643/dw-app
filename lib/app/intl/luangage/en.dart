@@ -1066,6 +1066,7 @@ class EN{
     "qingxuanzhetouzhuxm":"Please select a bet",
     "xiazhujinewk":"The bet is short",
     "danmu":"barrage",
+    "changqihuodong":"Long-term activity",
 
   };
 

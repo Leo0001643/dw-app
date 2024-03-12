@@ -995,6 +995,7 @@ class CN {
     "qingxuanzhetouzhuxm":"请选择投注项目",
     "xiazhujinewk":"下注金额为空",
     "danmu":"弹幕",
+    "changqihuodong":"长期活动",
 
 
 

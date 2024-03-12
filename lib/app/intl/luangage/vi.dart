@@ -996,6 +996,7 @@ class VI{
     "qingxuanzhetouzhuxm":"Hãy chọn các mục cá cược",
     "xiazhujinewk":"Số tiền đặt cược là trống rỗng",
     "danmu":"Tại đền tạm chơi",
+    "changqihuodong":"Hoạt động lâu dài",
 
   };
 }

@@ -53,12 +53,12 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
             Padding(
               padding: EdgeInsets.only(left: 15.w),
               child: Text(state.detail.title.em(),
-                style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
             ),
             SizedBox(height: 5.h,),
             Padding(
               padding: EdgeInsets.only(left: 15.w),
-              child: Text(state.detail.titleSec.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
+              child: Text(state.detail.titleSec.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698D,),),
             ),
             Obx(() {
               return SizedBox(
