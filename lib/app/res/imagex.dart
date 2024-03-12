@@ -38,7 +38,7 @@ class ImageX{
   static const icon_home1 = 'assets/images/icon_home1.png';
 
   static const home_dark = 'assets/images/home_dark.svg';
-
+  static const back_down_dark = 'assets/images/back_down_dark.svg';
 
   static const icon_hot = 'assets/images/icon_hot.png';
   static const icon_indonesia = 'assets/images/icon_indonesia.png';
@@ -991,6 +991,10 @@ class ImageX{
 
   static String jingdongT(){
     return AppData.theme() ? jingdong : jingdong_dark;
+  }
+
+  static String iconDownArrow(){
+    return AppData.theme() ? icon_down_arrow : back_down_dark;
   }
 
 

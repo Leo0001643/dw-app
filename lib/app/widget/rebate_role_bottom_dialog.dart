@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 
 ///返水说明
@@ -47,10 +48,7 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
                 onTap: ()=> Navigator.of(context).pop(),
                 child: Padding(
                   padding: EdgeInsets.only(left: 15.w),
-                  child: SizedBox(
-                    height: 35.h,width: 35.w,
-                    child: Image.asset(ImageX.icon_down_arrow,color: ColorX.icon586(),),
-                  ),
+                  child: WidgetUtils().buildImage(ImageX.iconDownArrow(), 24.r, 24.r),
                 ),
               ),
             ],

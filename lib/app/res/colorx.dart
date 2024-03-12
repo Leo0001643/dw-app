@@ -171,6 +171,21 @@ class ColorX{
     return AppData.theme() ? Colors.white : ColorX.color_333333;
   }
 
+  static Color cardBg14(){
+    return AppData.theme() ? Colors.white60 : ColorX.color_333333;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   static Color text0917(){
     return AppData.theme() ? ColorX.color_091722 : Colors.white;
   }

@@ -150,10 +150,14 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
     String partMsg = "x${GameRuleUtil.getMoneySymbol(wsBetResultEntity.moneyType??"CNY")}";
     String betOdds="";
     print("=====>betMoney $betMoney  betOdds1314 $betOdds1314");
-    if (betOddsExpected==(betOdds1314)||betMoney.isEmpty==true|| betOdds1314=="null"||betOdds1314.isEmpty==true) {
+
+
+   var normal = betOddsExpected==betOdds1314 || isEmpty(betMoney) || isEmpty(betOdds1314);
+
+    if (betOddsExpected==(betOdds1314)||betMoney.isEmpty==true|| isEmpty(betOdds1314)) {
       betOdds ="$betOddsExpected $partMsg $betMoney";
     } else {
-      betOdds ="$betOddsExpected/${betOdds1314??""}$partMsg$betMoney";
+      betOdds ="$betOddsExpected/$betOdds1314$partMsg$betMoney";
     }
     // length = bet.betOdds.length() - c.betMoney.length() - 2;
     // bet.betOdds.setSpan(colorRed, 0, length, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
@@ -167,7 +171,16 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(betName,style: TextStyle(fontSize: 13.sp,color: ColorX.text333()),),
-              Text(betOdds,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+              // Text(betOdds,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+              Text.rich(TextSpan(
+                children: [
+                  TextSpan(text:betOddsExpected,style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b),),
+                  TextSpan(text: normal ? "":"/",style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                  TextSpan(text: normal ? "":betOdds1314,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                  TextSpan(text: partMsg,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                  TextSpan(text: betMoney,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                ]
+              )),
             ],
           ),
         ),

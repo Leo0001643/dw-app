@@ -713,9 +713,7 @@ class GameRuleUtil {
     return "";
   }
 
-  /**
-   * 根据三个球拼接的字符串，计算出各自数字及总和
-   */
+  /// 根据三个球拼接的字符串，计算出各自数字及总和
   static List<int> parseLottery(String threeNum) {
     List<int> arr = [0, 0, 0, 0];
     if (threeNum.isNotEmpty == true && threeNum.length == 3) {
@@ -824,10 +822,8 @@ class GameRuleUtil {
 
 
 
-  /**
-   *  返回当前使用钱包的   钱币符号
-   *     1:CNY,2:USD,3:KRW,4:INR,5:USDT
-   */
+  ///  返回当前使用钱包的   钱币符号
+  ///     1:CNY,2:USD,3:KRW,4:INR,5:USDT
   static String getMoneySymbol(String type) {
     String result = "¥";
     switch (type) {
@@ -854,9 +850,7 @@ class GameRuleUtil {
     return result;
   }
 
-  /**
-   * 根据betType返回投注类型的中文名称,当以cao开头时，betNum对应特码数字
-   */
+  /// 根据betType返回投注类型的中文名称,当以cao开头时，betNum对应特码数字
   static String getBetTypeName(String betType) {
     if (GameType_Big == (betType)) {
       return "特码-大";
@@ -984,9 +978,7 @@ class GameRuleUtil {
     return odds;
   }
 
-  /**
-   * 根据betType返回是不是1314
-   */
+  /// 根据betType返回是不是1314
   static bool isType1314(String betType) {
     if (GameType_Big == (betType) ||
         GameType_Small == (betType) ||
@@ -999,11 +991,9 @@ class GameRuleUtil {
     return false;
   }
 
-  /**
-   * type=0
-   * type=1
-   * type=2
-   */
+  /// type=0
+  /// type=1
+  /// type=2
   static  List<OddsContent>  requestTema(List<OddsContent> odds,{int? type=0}) {
     List<OddsContent>  dataBettingList=<OddsContent>[];
     List<OddsContent>  middleBettingList=<OddsContent>[];

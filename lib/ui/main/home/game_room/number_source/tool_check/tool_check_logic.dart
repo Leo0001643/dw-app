@@ -1,30 +1,41 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/ui/bean/source_check_event.dart';
 
 import 'tool_check_state.dart';
 
 class ToolCheckLogic extends GetxController {
   final ToolCheckState state = ToolCheckState();
+  StreamSubscription? checkSub;
 
   @override
   void onReady() {
-    // TODO: implement onReady
+    checkSub = behaviorBus.on<SourceCheckEvent>().listen((event) {
+      state.inputHash.value = event.source;
+      //清空上次计算结果
+      state.sha256.value = "";
+      state.before16.value = "";
+      state.convert10.value = "";
+      state.equation2_64.value = "";
+      state.lottery_num.value = "";
+    });
     super.onReady();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
+    checkSub?.cancel();
     super.onClose();
   }
 
   void onValid(){
-    if(unEmpty(state.inputHash)){
+    if(unEmpty(state.inputHash.value)){
 
-      List<int> bytes = utf8.encode(state.inputHash); // 将字符串编码为字节序列
+      List<int> bytes = utf8.encode(state.inputHash.value); // 将字符串编码为字节序列
       Digest sha256Result = sha256.convert(bytes); // 计算 SHA-256 散列值
       state.sha256.value = sha256Result.toString(); // 将散列值转换为字符串
 

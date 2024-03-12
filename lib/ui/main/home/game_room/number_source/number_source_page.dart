@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
@@ -20,20 +21,19 @@ class NumberSourcePage extends StatefulWidget {
 class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerProviderStateMixin {
   final logic = Get.find<NumberSourceLogic>();
   final state = Get.find<NumberSourceLogic>().state;
-  late TabController _tabController;
 
   @override
   void initState() {
-    _tabController = TabController(length: state.tabs.length, vsync: this);
-    _tabController.addListener(() {
-      state.pageController.jumpToPage(_tabController.index);
+    state.tabController = TabController(length: state.tabs.length, vsync: this);
+    state.tabController.addListener(() {
+      state.pageController.jumpToPage(state.tabController.index);
     });
     super.initState();
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
+    state.tabController.dispose();
     Get.delete<NumberSourceLogic>();
     super.dispose();
   }
@@ -42,18 +42,19 @@ class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerPr
   Widget build(BuildContext context) {
     return DrawerScaffold(
       scaffoldKey: state.scaffoldKey,
-      appBar: WidgetUtils().buildAppBar(Intr().guanfanghaoyuan,bgColor: ColorX.appBarBg(),scaffoldKey: state.scaffoldKey),
+      appBar: WidgetUtils().buildAppBar(Intr().guanfanghaoyuan,backIcon: ImageX.iconDownArrow(),bgColor: ColorX.appBarBg(),scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Column(
         children: [
           Center(
             child: LCTabBar(
               length: state.tabs.length,
-              controller: _tabController,
+              controller: state.tabController,
               tabBarHeight: 35.h,
               tabBarColor: ColorX.appBarBg(),
+              tabAlignment: TabAlignment.fill,
               indicatorSize: TabBarIndicatorSize.label,
-              indicatorPadding: EdgeInsets.only(top: 32.h,left: 10.w,right: 10.w,),
+              indicatorPadding: EdgeInsets.only(top: 32.h,left: 20.w,right: 20.w,),
               indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(3.r),
                 color: ColorX.text0917(),

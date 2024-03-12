@@ -639,7 +639,7 @@ class EN{
     "daojishi":"countdown",
     "qihao":"issue",
     "kaijianghaoma":"Lottery number",
-    "haoyuanjinqi":"Number source (recent 50 issues)",
+    "haoyuanjinqi":"Source (Recent",
     "wanzhenghaoyuanzhanshi":"Complete source display",
     "zhuaqushijian":"Grab time：%s",
     "shuominghaoyuan":"Explanation: Clicking on a single number source can copy it",

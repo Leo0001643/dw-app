@@ -8,6 +8,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_logic.dart';
 
@@ -84,10 +85,7 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
                 onTap: ()=> Navigator.of(context).pop(),
                 child: Padding(
                   padding: EdgeInsets.only(left: 15.w),
-                  child: SizedBox(
-                    height: 35.h,width: 35.w,
-                    child: Image.asset(ImageX.icon_down_arrow,color: ColorX.iconBlack(),),
-                  ),
+                  child: WidgetUtils().buildImage(ImageX.iconDownArrow(), 24.r, 24.r),
                 ),
               ),
             ],

@@ -12,6 +12,8 @@ class NumberSourceState {
     pages = [PrizeNumberPage(),NumberDescriptionPage(),ToolCheckPage(),];
   }
 
+  late TabController tabController;
+
   late PageController pageController;
   late List<Widget> pages;
   var scaffoldKey = GlobalKey<ScaffoldState>();

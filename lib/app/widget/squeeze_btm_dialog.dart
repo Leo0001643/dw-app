@@ -48,7 +48,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
             padding: EdgeInsets.only(left: 20.w,top: 15.h),
             child: InkWell(
               onTap: ()=> Navigator.of(context).pop(),
-              child: Image.asset(ImageX.icon_down_arrow,color: Colors.white,),
+              child: WidgetUtils().buildImage(ImageX.iconDownArrow(), 24.r, 24.r),
             ),
           ),
           SizedBox(height: 15.h,),

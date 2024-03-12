@@ -66,7 +66,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
+            padding: EdgeInsets.symmetric(horizontal: 0,vertical: 10.h),
             child: LCTabBar(
               length: state.tabs.length,
               controller: _tabController,
@@ -82,7 +82,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
               labelPadding: EdgeInsets.zero,
               labelColor: ColorX.textBlack(),
               unselectedLabelColor: ColorX.text586(),
-              width: 0.65.sw,
+              width: 0.5.sw,
               tabs: state.tabs.map((e) => buildTabBarItem(e)).toList(),
             ),
           ),

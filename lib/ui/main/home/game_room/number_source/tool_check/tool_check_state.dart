@@ -5,7 +5,7 @@ class ToolCheckState {
     ///Initialize variables
   }
 
-  var inputHash = "";
+  var inputHash = "".obs;
 
   var sha256 = "".obs;
 

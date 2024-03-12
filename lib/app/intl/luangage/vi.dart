@@ -560,7 +560,7 @@ class VI{
     "daojishi":"Đếm ngược",
     "qihao":"Số kỳ",
     "kaijianghaoma":"Số mở thưởng",
-    "haoyuanjinqi":"Nguồn số (gần 50 kỳ)",
+    "haoyuanjinqi":"Nguồn số (gần",
     "wanzhenghaoyuanzhanshi":"Hiển thị nguồn đầy đủ",
     "zhuaqushijian":"Thời gian lấy:% S",
     "shuominghaoyuan":"Mô tả: Nhấn vào nguồn có thể sao chép",

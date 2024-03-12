@@ -137,12 +137,8 @@ class WidgetUtils {
                   padding: EdgeInsets.all(10.r),
                   child: Row(
                     children: [
-                      Text(
-                          "xianlu5".tr, style: TextStyle(color: ColorX.iconBlack())),
-                      Image.asset(
-                        ImageX.icon_down_arrow,
-                        color: ColorX.icon586(),
-                      ),
+                      Text("xianlu5".tr, style: TextStyle(color: ColorX.iconBlack())),
+                      WidgetUtils().buildImage(ImageX.iconDownArrow(), 24.r, 24.r),
                     ],
                   )),
             ),
@@ -183,8 +179,12 @@ class WidgetUtils {
         bool back = true,
         Color? bgColor,
         bool drawer = false,
+        String? backIcon,
         GlobalKey<ScaffoldState>? scaffoldKey,
       }) {
+    if(isEmpty(backIcon)){
+      backIcon = ImageX.iconPageBackT();
+    }
     return AppBar(
       title: Text(
         title.em(),
@@ -201,7 +201,7 @@ class WidgetUtils {
         visible: back,
         child: InkWell(
           onTap: () => Get.back(),
-          child: WidgetUtils().buildImage(ImageX.iconPageBackT(), 24.r, 24.r),
+          child: WidgetUtils().buildImage(backIcon.em(), 24.r, 24.r,fit: BoxFit.scaleDown),
         ),
       ),
       actions: [

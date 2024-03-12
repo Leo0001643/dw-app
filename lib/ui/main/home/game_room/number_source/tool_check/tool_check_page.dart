@@ -44,9 +44,10 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
               ],
             ),
             SizedBox(height: 10.h,),
-            WidgetUtils().buildTextField(333.w, 124.h, 14.sp, ColorX.text0917(), Intr().qingzaiciyanzhenghaxizhi,
-            maxLines: 10,
-            backgroundColor: ColorX.cardBg3(),defText: state.inputHash,onChanged: (v)=>state.inputHash = v,),
+            Obx(() {
+              return WidgetUtils().buildTextField(333.w, 124.h, 14.sp, ColorX.text0917(), Intr().qingzaiciyanzhenghaxizhi, maxLines: 10,
+                backgroundColor: ColorX.cardBg3(),defText: state.inputHash.value,onChanged: (v)=>state.inputHash.value = v,);
+            }),
             SizedBox(height: 25.h,),
             Text(Intr().jiaoyanjieguo,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             Obx(() {

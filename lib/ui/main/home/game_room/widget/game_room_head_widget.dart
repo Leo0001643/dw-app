@@ -42,14 +42,9 @@ class GameRoomHeadWidget extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              width: 3.w,
-            ),
+            SizedBox(width: 3.w,),
             buildYueHeader(logic),
-
-            SizedBox(
-              width: 50.w,
-            ),
+            SizedBox(width: 5.w,),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

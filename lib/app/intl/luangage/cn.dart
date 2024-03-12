@@ -563,7 +563,7 @@ class CN {
     "daojishi":"倒计时",
     "qihao":"期号",
     "kaijianghaoma":"开奖号码",
-    "haoyuanjinqi":"号源(近50期)",
+    "haoyuanjinqi":"号源(最近",
     "wanzhenghaoyuanzhanshi":"完整号源展示",
     "zhuaqushijian":"抓取时间：%s",
     "shuominghaoyuan":"说明:点击单条号源可以复制哦",

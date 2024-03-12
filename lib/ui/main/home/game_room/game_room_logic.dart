@@ -22,6 +22,7 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/music_switch_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/source_check_event.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
@@ -111,6 +112,8 @@ class GameRoomLogic extends GetxController {
   void onTabClick(BuildContext context, int index) {
     switch (index) {
       case 0:
+        ///这里是个有趣的现象，号源里用了粘性事件，所以重复打开会收到上次发送的事件，但是确意外跟web端达成了一致
+        // behaviorBus.fire(SourceCheckEvent(""));
         Get.toNamed(Routes.number_source);
         break;
       case 1:

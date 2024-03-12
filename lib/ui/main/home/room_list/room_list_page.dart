@@ -230,7 +230,7 @@ class _RoomListPageState extends State<RoomListPage> {
   Widget buildRoleItem(String name, String role, int i) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white38,
+        color: ColorX.cardBg14(),
         borderRadius: BorderRadius.circular(10.r),
       ),
       padding: EdgeInsets.all(10.r),

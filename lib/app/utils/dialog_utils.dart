@@ -539,7 +539,7 @@ class DialogUtils {
   ///完整号源
   Future<dynamic> showUnbrokenNumberBtmDialog(
       BuildContext context, BtcSourceEntity item) {
-    return showModalBottomSheet(
+    return showModalBottomSheet<String>(
         context: context,
         isScrollControlled: true,
         shape: RoundedRectangleBorder(

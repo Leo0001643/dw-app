@@ -57,43 +57,53 @@ class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
               horizontal: 10.w,
             ),
             alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Stack(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image(
-                      image: const AssetImage(ImageX.icon_room_fire),
-                      width: 20.w,
-                      height: 22.w,
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Image(
+                            image: const AssetImage(ImageX.icon_room_fire),
+                            width: 20.w,
+                            height: 22.h,
+                          ),
+                          SizedBox(
+                            width: 4.w,
+                            height: 30.h,
+                          ),
+                          Text(
+                            termData,
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                color: ColorX.text0917(),
+                                fontWeight: FontWeight.w700),
+                          )
+                        ],
+                      ),
                     ),
-                    SizedBox(
-                      width: 4.w,
-                    ),
-                    Text(
-                      termData,
-                      style: TextStyle(
-                          fontSize: 12.sp,
-                          color: ColorX.text0917(),
-                          fontWeight: FontWeight.w700),
-                    )
+                    Obx(() {
+                      // 设置定时任务，每120秒执行一次
+                      _timer?.cancel();
+                      _timer = null;
+                      TextItemLogic? logic=Get.find<TextItemLogic>();
+                      logic.loadDataGameCode(state.room.value.gameType.em());
+                      _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
+                        logic.loadDataGameCode(state.room.value.gameType.em());
+                      });
+                      loggerArray(["倒计时刷新了没",_timer]);
+                      return TextTimerItem(state.room.value.gameType.em(),state.pc28Lotto);
+                    }),
                   ],
                 ),
-                Row(
-                  children: [buildSealingPlateStatus(),buildStartBettingStatus(),],
+                Center(
+                  child: buildSealingPlateStatus(),
                 ),
-                Obx(() {
-                  // 设置定时任务，每120秒执行一次
-                  _timer?.cancel();
-                  _timer = null;
-                  TextItemLogic? logic=Get.find<TextItemLogic>();
-                  logic.loadDataGameCode(state.room.value.gameType.em());
-                  _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
-                    logic.loadDataGameCode(state.room.value.gameType.em());
-                  });
-                  loggerArray(["倒计时刷新了没",_timer]);
-                  return TextTimerItem(state.room.value.gameType.em(),state.pc28Lotto);
-                }),
+                Center(
+                  child: buildStartBettingStatus(),
+                ),
               ],
             ),
           );
