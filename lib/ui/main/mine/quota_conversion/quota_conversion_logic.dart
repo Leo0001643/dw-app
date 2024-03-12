@@ -33,7 +33,7 @@ class QuotaConversionLogic extends GetxController {
 
     HttpService.getPlatformList({"oid":user?.oid,"username":user?.username,"cur":cur}).then((value1) {
       ///平台开通状态 币种类型【1:CNY,2:USD,3:KRW,4:INR,5:USDT,6:VND】
-      ///需要对活到的结果做一个冒泡排序
+      ///需要对获得的结果做一个冒泡排序
       var n = value1.length;
       for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {

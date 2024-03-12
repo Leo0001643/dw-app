@@ -132,7 +132,7 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
                   isScrollable: true,
                   labelPadding: EdgeInsets.only(top: 10),
                   labelColor: ColorX.text0917(),
-                  unselectedLabelColor: Colors.black54,
+                  unselectedLabelColor: ColorX.text586(),
                   // width: 0.55.sw,
                   tabs: state.typeList.map((e) =>Container(
                     margin: EdgeInsets.only(bottom: 14,left: 6,right: 6),
@@ -198,7 +198,7 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
                     children: [
                       Image.asset(ImageX.icon_hot),
                       SizedBox(width: 3.w,),
-                      Text("${item.gamestatus}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+                      Text("${item.orderby}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
                     ],
                   ),
                   InkWell(

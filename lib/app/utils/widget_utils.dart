@@ -633,7 +633,7 @@ class WidgetUtils {
   }
 
   ImageProvider buildImageProvider(String image,
-      {String defImage = ImageX.icon_avatar}) {
+      {String defImage = ImageX.defultImg}) {
     if (isEmpty(image) || (!image.isUrl() && !image.contains("assets"))) {
       return AssetImage(defImage);
     }
@@ -649,7 +649,7 @@ class WidgetUtils {
   }
 
   Widget buildImage(String image, double width, double height,
-      {String defImage = ImageX.icon_avatar, BoxFit? fit}) {
+      {String defImage = ImageX.defultImg, BoxFit? fit}) {
     if (isEmpty(image) || (!image.isUrl() && !image.contains("assets"))) {
         return Image.asset(
           defImage,

@@ -86,7 +86,6 @@ class TableGameListLogic extends GetxController {
       state.allList.games?.forEach((key, value) {
         state.list.addAll(value ?? []);
       });
-      state.list.refresh();
     } else if(gametype == Intr().wodeshoucang){
       state.list.clear();
       state.allList.games?.forEach((key, value) {
@@ -96,11 +95,21 @@ class TableGameListLogic extends GetxController {
           }
         });
       });
-      state.list.refresh();
     }else {
       state.list.assignAll(state.allList.games![gametype] ?? []);
-      state.list.refresh();
     }
+    var n = state.list.length;
+    for (int i = 0; i < n - 1; i++) {
+      for (int j = 0; j < n - i - 1; j++) {
+        if (state.list[j].orderby.em() < state.list[j + 1].orderby.em()) {
+          // 交换 arr[j] 和 arr[j+1]
+          var temp = state.list[j];
+          state.list[j] = state.list[j + 1];
+          state.list[j + 1] = temp;
+        }
+      }
+    }
+    state.list.refresh();
 
   }
 
