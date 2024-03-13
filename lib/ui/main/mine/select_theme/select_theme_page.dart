@@ -55,7 +55,7 @@ class StateSelectThemePage extends State<StatefulWidget>{
                     child: Row(
                       children: [
                         Obx(() {
-                          return state.selectTheme.value ? Image.asset(ImageX.icon_select) : Image.asset(ImageX.icon_unselect);
+                          return WidgetUtils().buildImage(state.selectTheme.value ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r,fit: BoxFit.scaleDown);
                         }),
                         SizedBox(width: 9.w,),
                         Text(Intr().qzb, style: TextStyle(fontSize: 16.sp, color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
@@ -67,7 +67,7 @@ class StateSelectThemePage extends State<StatefulWidget>{
                     child: Row(
                       children: [
                         Obx(() {
-                          return state.selectTheme.value ? Image.asset(ImageX.icon_unselect) : Image.asset(ImageX.icon_select);
+                          return WidgetUtils().buildImage(state.selectTheme.value ? ImageX.iconUnselect() : ImageX.icon_select, 24.r, 24.r,fit: BoxFit.scaleDown);
                         }),
                         SizedBox(width: 9.w,),
                         Text(Intr().kxh, style: TextStyle(fontSize: 16.sp, color: ColorX.text0917(),fontWeight: FontWeight.w600,),),

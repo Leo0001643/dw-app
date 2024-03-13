@@ -67,8 +67,7 @@ class StateSelectLanguagePage extends State<SelectLanguagePage>{
                                 style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3()),),
                             ],
                           ),
-                          trailing: state.dropdownValue.value == item
-                              ? Image.asset(ImageX.icon_select) : Image.asset(ImageX.icon_unselect),
+                          trailing: WidgetUtils().buildImage(state.dropdownValue.value == item ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r,fit: BoxFit.scaleDown),
                         );
                       });
                     });

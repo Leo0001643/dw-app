@@ -90,7 +90,7 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
           SizedBox(height: 15.h,),
           Row(
             children: [
-              Image.asset(select ? ImageX.icon_select : ImageX.icon_unselect),
+              WidgetUtils().buildImage(select ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r,fit: BoxFit.scaleDown),
               SizedBox(width: 5.w,),
               Text(option.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
             ],

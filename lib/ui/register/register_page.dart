@@ -267,9 +267,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   // child: InkWell(
                   //   onTap: ()=> state.agreeCheck.value = !state.agreeCheck.value,
                   child: Obx(() {
-                    return Image.asset(state.agreeCheck.value
-                        ? ImageX.icon_select
-                        : ImageX.icon_unselect);
+                    return WidgetUtils().buildImage(state.agreeCheck.value ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r,fit: BoxFit.scaleDown);
                   }),
                   // ),
                 ),

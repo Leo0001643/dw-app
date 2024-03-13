@@ -110,7 +110,7 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmGirdDialog> {
           ),
           Row(
             children: [
-              Image.asset(select ? ImageX.icon_select : ImageX.icon_unselect),
+              WidgetUtils().buildImage(select ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r,fit: BoxFit.scaleDown),
               SizedBox(
                 width: 5.w,
               ),

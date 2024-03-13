@@ -21,6 +21,8 @@ class ImageX{
   static const icon_custome_1 = 'assets/images/icon_custome_1.png';
   static const icon_customer = 'assets/images/icon_customer.png';
   static const service_dark = 'assets/images/service_dark.svg';
+  static const uncheck_dark = 'assets/images/uncheck.svg';
+
 
   static const icon_dan = 'assets/images/icon_dan.png';
   static const icon_dan2 = 'assets/images/icon_dan2.png';
@@ -999,6 +1001,9 @@ class ImageX{
     return AppData.theme() ? icon_down_arrow : back_down_dark;
   }
 
+  static String iconUnselect(){
+    return AppData.theme() ? icon_unselect : uncheck_dark;
+  }
 
 
 

@@ -61,7 +61,7 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
             // SizedBox(height: 10.h,),
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: ColorX.cardBg5(),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               margin: EdgeInsets.symmetric(horizontal: 10.w),
@@ -86,8 +86,7 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
                                 style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                             ],
                           ),
-                          trailing: state.dropdownValue.value == item
-                              ? Image.asset(ImageX.icon_select) : Image.asset(ImageX.icon_unselect),
+                          trailing: WidgetUtils().buildImage(state.dropdownValue.value == item ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r,fit: BoxFit.scaleDown),
                         );
                       });
                     });
@@ -96,7 +95,7 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
             SizedBox(height: 10.h,),
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: ColorX.cardBg5(),
                 borderRadius: BorderRadius.circular(10.r),
               ),
               padding: EdgeInsets.symmetric(vertical: 18.h,horizontal: 13.w),
@@ -105,7 +104,7 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
                 children: [
                   InkWell(
                     onTap: ()=> Get.toNamed(Routes.coin_exchange),
-                    child: Text(Intr().bbdh,style: TextStyle(fontSize: 14.sp,color: ColorX.color_091722),),
+                    child: Text(Intr().bbdh,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                   ),
                   Expanded(child: Container()),
                   InkWell(
@@ -116,8 +115,8 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
                     },
                     child: Row(
                       children: [
-                        Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,color: ColorX.color_949eb9),),
-                        Image.asset(ImageX.ic_into_right),
+                        Text(Intr().lxkf,style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
+                        Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
                       ],
                     ),
                   ),
