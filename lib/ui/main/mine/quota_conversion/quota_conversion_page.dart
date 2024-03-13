@@ -251,7 +251,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(width: 30.w,),
-                        Text(Intr().gezhanghumingxi,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                        Text(Intr().gezhanghumingxi,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                         InkWell(
                           onTap: ()=> logic.loadData(),
                           child: Container(
