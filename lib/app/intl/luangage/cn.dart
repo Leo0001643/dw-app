@@ -999,6 +999,7 @@ class CN {
     "jiehzhiriqizhi":"截止日期至",
     "dao":"至",
     "zanwuxiazhujilu":"暂无下注记录",
+    "xuanzheleixing":"选择类型",
 
 
 

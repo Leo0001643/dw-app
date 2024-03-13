@@ -87,7 +87,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
                   ],
                 ),
               ),
-              buildCategoryItem(Intr().congcnyqianbaotichu, ImageX.icon_jj_grey, 1),
+              buildCategoryItem(Intr().congcnyqianbaotichu, ImageX.iconJjGrey(), 1),
               buildCategoryItem(Intr().congusdtqianbaotichu, ImageX.usdtT(), 5),
             ],
           ),

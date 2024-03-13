@@ -1070,6 +1070,7 @@ class EN{
     "jiehzhiriqizhi":"The deadline is ",
     "dao":" to ",
     "zanwuxiazhujilu":"No bets recorded",
+    "xuanzheleixing":"Select the type",
 
   };
 

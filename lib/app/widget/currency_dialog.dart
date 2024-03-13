@@ -24,7 +24,7 @@ class CurrencyDialog extends StatefulWidget {
 class StateCurrencyDialog extends State<CurrencyDialog>{
 
   List<BalanceEntity> country = [
-    BalanceEntity(language: Intr().wallet_cny, icon: ImageX.icon_jj_grey),
+    BalanceEntity(language: Intr().wallet_cny, icon: ImageX.iconJjGrey()),
     BalanceEntity(language: Intr().wallet_usdt, icon: ImageX.usdtT()),
   ];
   var dropdownValue = BalanceEntity().obs;
@@ -122,7 +122,7 @@ class StateCurrencyDialog extends State<CurrencyDialog>{
         value: e,
         child: Row(
           children: [
-            WidgetUtils().buildImage(e.icon.em(),24.r,24.r),
+            WidgetUtils().buildImage(e.icon.em(),24.r,24.r,fit: BoxFit.scaleDown),
             SizedBox(width: 12.w,),
             Text(e.language.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3()),),
           ],

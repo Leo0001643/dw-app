@@ -78,7 +78,7 @@ class _BillFlowPageState extends State<BillFlowPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().xuanzheriqi,state.filterTime).then((value) {
+                  onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().xuanzheriqi,state.filterTime,defValue: state.selectTime.value).then((value) {
                     if(unEmpty(value) && value is PaymentListBanks){
                       state.selectTime.value = value;
                       state.selectTime.refresh();
@@ -96,7 +96,7 @@ class _BillFlowPageState extends State<BillFlowPage> {
                   ),
                 ),
                 InkWell(
-                  onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,Intr().shaixuan, state.filterStatus).then((value) {
+                  onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,Intr().xuanzheleixing, state.filterStatus,defValue: state.selectStatus.value).then((value) {
                     if(unEmpty(value) && value is PaymentListBanks){
                       state.selectStatus.value = value;
                       state.selectStatus.refresh();
@@ -170,7 +170,7 @@ class _BillFlowPageState extends State<BillFlowPage> {
   Widget buildBillItem(FlowDataList item) {
     var symbol = item.transType == "IN" ? "+":"-";
     var color = item.transType == "IN" ? ColorX.color_23a81d:ColorX.color_fc243b;
-    var icon = state.selectIndex == 0 ? ImageX.icon_jj_grey:ImageX.usdtT();
+    var icon = state.selectIndex == 0 ? ImageX.iconJjGrey():ImageX.usdtT();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w),
       margin: EdgeInsets.only(top: 10.h),
@@ -178,7 +178,7 @@ class _BillFlowPageState extends State<BillFlowPage> {
         children: [
           Row(
             children: [
-              Image.asset(icon),
+              WidgetUtils().buildImage(icon, 15.r, 15.r,fit: BoxFit.scaleDown),
               SizedBox(width: 3.w,),
               Expanded(
                 child: Text(item.mtype.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),

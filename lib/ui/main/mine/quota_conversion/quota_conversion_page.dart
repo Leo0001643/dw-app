@@ -75,11 +75,11 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                             return Row(
                               children: [
                                 SizedBox(width: 10.w,),
-                                WidgetUtils().buildImage(state.mainBal.value.icon.em(),24.r, 24.r,),
+                                WidgetUtils().buildImage(state.mainBal.value.icon.em(),24.r, 24.r,fit: BoxFit.scaleDown),
                                 SizedBox(width: 6.w,),
                                 Text(state.mainBal.value.language.em(), style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3(),),),
-                                Expanded(child: Container()),
                                 Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
+                                Expanded(child: Container()),
                               ],
                             );
                           }),
@@ -87,7 +87,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                       ),
                     ),
                     Container(
-                      color: ColorX.color_f7f8fb,
+                      color: ColorX.cardBg2(),
                       width: 1.w,
                       height: 15.h,
                     ),
@@ -150,7 +150,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                                     Expanded(
                                       child: Text(state.leftAccount.value.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                                     ),
-                                    WidgetUtils().buildImage(ImageX.icon_down_grey, 15.r, 15.r,),
+                                    Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
                                   ],
                                 ),
                               ),
@@ -191,7 +191,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                                     Expanded(
                                       child: Text(state.rightAccount.value.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                                     ),
-                                    WidgetUtils().buildImage(ImageX.icon_down_grey, 15.r, 15.r,),
+                                    Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
                                   ],
                                 ),
                               ),
@@ -214,7 +214,9 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   children: [
-                    WidgetUtils().buildImage(ImageX.usdtT(),24.r,24.r,),
+                    Obx(() {
+                      return WidgetUtils().buildImage(state.mainBal.value.icon.em(),24.r,24.r,);
+                    }),
                     Obx(() {
                       return WidgetUtils().buildTextField(230.w, 42.h, 14.sp,
                           ColorX.text586(), Intr().qingshurujine,backgroundColor: Colors.transparent,

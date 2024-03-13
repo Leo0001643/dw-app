@@ -11,7 +11,7 @@ class BettingRecordState {
   }
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
-  var currentWallet = BillWalletEntity(Intr().wallet_cny, ImageX.icon_jj_grey,ImageX.icon_jj_red).obs;
+  var currentWallet = BillWalletEntity(Intr().wallet_cny, ImageX.iconJjGrey(),ImageX.icon_jj_red).obs;
 
   late List<BillWalletEntity> wallets = [
     currentWallet.value,

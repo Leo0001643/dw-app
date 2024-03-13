@@ -1000,6 +1000,7 @@ class VI{
     "jiehzhiriqizhi":"Hạn chót là tháng ",
     "dao":" tháng ",
     "zanwuxiazhujilu":"Không có ghi chép cá cược",
+    "xuanzheleixing":"Chọn loại",
 
   };
 }

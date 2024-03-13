@@ -92,7 +92,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                       Obx(() {
                                         return Visibility(
                                           visible: unEmpty(state.pageType.value) && isEmpty(state.walletChannel),
-                                          child: WidgetUtils().buildImage(ImageX.icon_down_grey, 15.r, 15.r,),
+                                          child: Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
                                         );
                                       }),
                                     ],

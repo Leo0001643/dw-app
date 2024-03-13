@@ -34,7 +34,7 @@ class CoinExchangeLogic extends GetxController {
     var user = AppData.user();
 
     HttpService.getBalance({ "cur":1, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
-      value.icon = ImageX.icon_jj_grey;
+      value.icon = ImageX.iconJjGrey();
       value.language = Intr().wallet_cny;
       state.cnyBal.value = value;
       state.cnyBal.refresh();

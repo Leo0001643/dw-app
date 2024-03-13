@@ -459,7 +459,7 @@ class DialogUtils {
 
   ///单选底部弹窗
   Future<dynamic> showSelectOptionBtmDialog(
-      BuildContext context, String title, List data) {
+      BuildContext context, String title, List data,{dynamic defValue}) {
     return showModalBottomSheet<dynamic>(
         context: context,
         isScrollControlled: true,
@@ -472,7 +472,7 @@ class DialogUtils {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: SelectOptionBtmDialog(title, data),
+            child: SelectOptionBtmDialog(title, data,defValue: defValue,),
           );
         });
   }

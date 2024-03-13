@@ -197,6 +197,7 @@ class ImageX{
   static const weixin = 'assets/images/weixin.svg';
   static const ysfzf = 'assets/images/ysfzf.svg';
   static const zhifubao = 'assets/images/zhifubao.svg';
+  static const currency_cny = 'assets/images/currency_cny.svg';
 
 
   static const jingdong = 'assets/images/jingdong.png';
@@ -1004,6 +1005,16 @@ class ImageX{
   static String iconUnselect(){
     return AppData.theme() ? icon_unselect : uncheck_dark;
   }
+
+  static String iconJjGrey(){
+    return AppData.theme() ? icon_jj_grey : currency_cny;
+  }
+
+
+
+
+
+
 
 
 

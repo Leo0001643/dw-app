@@ -16,7 +16,7 @@ class BonusPacketState {
 
   late List<BillWalletEntity> wallets = [
     currentWallet.value,
-    BillWalletEntity(Intr().jiangjin, ImageX.icon_jj_grey,ImageX.icon_jj_red),
+    BillWalletEntity(Intr().jiangjin, ImageX.iconJjGrey(),ImageX.icon_jj_red),
   ];
 
   var scaffoldKey = GlobalKey<ScaffoldState>();

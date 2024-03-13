@@ -11,8 +11,9 @@ class SelectOptionBtmDialog extends StatefulWidget{
 
   String title;
   List data;
+  dynamic defValue;
 
-  SelectOptionBtmDialog(this.title, this.data, {super.key});
+  SelectOptionBtmDialog(this.title, this.data, {super.key,this.defValue});
 
   @override
   State<StatefulWidget> createState() => StateSelectOptionBtmDialog();
@@ -22,8 +23,6 @@ class SelectOptionBtmDialog extends StatefulWidget{
 class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
 
   var data = List.empty(growable: true);
-
-  var currentIndex = 0.obs;
 
   @override
   void initState() {
@@ -38,14 +37,10 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
     childs.add(SizedBox(height: 10.h,));
 
     childs.addAll(data.map((e) {
-      return Obx(() {
-        return InkWell(
-          onTap: (){
-            currentIndex.value = data.indexOf(e);
-          },
-          child: buildOptionItem(e,currentIndex.value == data.indexOf(e)),
-        );
-      });
+      return InkWell(
+        onTap: ()=> Navigator.pop(context,e),
+        child: buildOptionItem(e,"${widget.defValue}" == e.toString()),
+      );
     }).toList());
 
     return Container(
@@ -68,16 +63,16 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
             child: Text(widget.title,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
           ),
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Padding(
-            padding: EdgeInsets.only(right: 15.w),
-            child: WidgetUtils().buildElevatedButton(Intr().confirm, 50.w, 26.h,textSize: 12.sp,
-                bg:ColorX.color_fc243b,onPressed: (){
-                  Navigator.of(context).pop(data[currentIndex.value]);
-                }),
-          ),
-        ),
+        // Align(
+        //   alignment: Alignment.centerRight,
+        //   child: Padding(
+        //     padding: EdgeInsets.only(right: 15.w),
+        //     child: WidgetUtils().buildElevatedButton(Intr().confirm, 50.w, 26.h,textSize: 12.sp,
+        //         bg:ColorX.color_fc243b,onPressed: (){
+        //           Navigator.of(context).pop();
+        //         }),
+        //   ),
+        // ),
       ],
     );
   }
