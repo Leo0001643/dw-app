@@ -36,13 +36,19 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
       state.tabIndex = _tabController.index;
       Get.find<RoomTendencyController>().updateTabIndex();
     });
+    state.horizontalScrollController = ScrollController();
+    Future.delayed(const Duration(milliseconds: 100),(){
+      if (state.horizontalScrollController?.hasClients == true) {
+        state.horizontalScrollController!.jumpTo(state.horizontalScrollController!.position.maxScrollExtent);
+      }
+    });
     super.initState();
   }
 
   @override
   void dispose() {
     _tabController.dispose();
-    // Get.delete<DxDewLogic>();
+    state.horizontalScrollController?.dispose();
     super.dispose();
   }
 
@@ -120,6 +126,7 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
                   dataRowHeight: 25.h,
                   headingRowHeight: 25.h,
                   dividerThickness: 0,
+                  horizontalScrollController: state.horizontalScrollController,
                   border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
                   headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
                   dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),

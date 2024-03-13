@@ -59,7 +59,7 @@ class _RoomTendencyPageState extends State<RoomTendencyPage>
   Widget build(BuildContext context) {
     return DrawerScaffold(
       scaffoldKey: state.scaffoldKey,
-      appBar: WidgetUtils().buildAppBar(Intr().qushi, backIcon: ImageX.iconDownArrow(),bgColor: Colors.white,scaffoldKey: state.scaffoldKey),
+      appBar: WidgetUtils().buildAppBar(Intr().qushi, backIcon: ImageX.iconDownArrow(),bgColor: ColorX.appBarBg(),scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Column(
         children: [
@@ -68,7 +68,7 @@ class _RoomTendencyPageState extends State<RoomTendencyPage>
             tabBarHeight: 84.h,
             tabAlignment: TabAlignment.fill,
             controller: _tabController,
-            tabBarColor: Colors.white,
+            tabBarColor: ColorX.appBarBg(),
             isScrollable: false,
             labelPadding: EdgeInsets.zero,
             indicatorSize: TabBarIndicatorSize.tab,

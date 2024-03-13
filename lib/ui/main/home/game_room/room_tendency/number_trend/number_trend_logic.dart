@@ -9,21 +9,20 @@ class NumberTrendLogic extends GetxController {
 
   @override
   void onReady() {
-    loadData();
+    // loadData();
     super.onReady();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
-
-  void loadData() async {
-    var random = Random();
-    for(var i=1;i<51;i++){
-      state.data.add(SalesData("229021$i",random.nextInt(27)));
-    }
-    state.data.refresh();
-  }
+  //
+  // void loadData() async {
+  //   var random = Random();
+  //   for(var i=1;i<51;i++){
+  //     state.data.add(SalesData("229021$i",random.nextInt(27)));
+  //   }
+  //   state.data.refresh();
+  // }
 }

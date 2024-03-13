@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 
@@ -16,5 +17,9 @@ class DxDewState {
 
   ///默认tab在特码
   int tabIndex = 0;
+
+  ScrollController? horizontalScrollController;
+
+
 
 }

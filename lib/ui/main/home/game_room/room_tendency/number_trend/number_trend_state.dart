@@ -7,7 +7,7 @@ class NumberTrendState {
   }
 
 
-  RxList<SalesData> data = RxList.empty(growable: true);
+  // RxList<NumberData> data = RxList.empty(growable: true);
 
   var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
 
@@ -22,12 +22,6 @@ class NumberData {
 
   final String term;
   final int value;
-}
-class SalesData {
-  SalesData(this.year, this.sales);
-
-  final String year;
-  final int sales;
 }
 
 

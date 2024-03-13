@@ -74,7 +74,7 @@ class _DoubleQueuePageState extends State<DoubleQueuePage> with AutomaticKeepAli
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(type,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
-          Text("$num${Intr().qi}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
+          Text("$num ${Intr().qi}",style: TextStyle(fontSize: 14.sp,color: int.parse(num) >= 5 ? ColorX.color_fc243b:ColorX.text0917(),),),
         ],
       ),
     );

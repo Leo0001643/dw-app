@@ -117,7 +117,7 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
                     headingRowHeight: 30.h,
                     dividerThickness: 0,
                     border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
-                    headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
+                    headingRowColor: MaterialStateProperty.all(ColorX.color_10_949),
                     dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
                     minWidth: clm1.length * 40.w + 1000.w,
                     columns: buildTotalTitle(clm1),
@@ -168,14 +168,16 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
     for(var i=0;i<list.length;i++){
       columns.add(DataColumn2(
         numeric: true,
-        label: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(list[i],
-              textAlign: TextAlign.center,
-              style: TextStyle(color: i > 0 ? ColorX.text586():ColorX.text0917(),fontSize: 12.sp),
-            ),
-          ],
+        label: Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(list[i],
+                textAlign: TextAlign.center,
+                style: TextStyle(color: i > 0 ? ColorX.text586():ColorX.text0917(),fontSize: 12.sp),
+              ),
+            ],
+          ),
         ),
         fixedWidth: i == 0 ? 80.w : 40.w,
       ));

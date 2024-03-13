@@ -49,8 +49,6 @@ class _LotteryResultPageState extends State<LotteryResultPage> with AutomaticKee
               width: 1.sw,
               margin: EdgeInsets.only(top: 5.h),
               decoration: BoxDecoration(
-                // color: ColorX.cardBg5(),
-                color:Color(0xFFF7F8FB),
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
               ),

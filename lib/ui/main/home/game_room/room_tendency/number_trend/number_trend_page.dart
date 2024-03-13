@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/controller/room_tendency_controller.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
@@ -27,6 +28,10 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
   @override
   void initState() {
     _tabController = TabController(length: state.tabs.length, vsync: this);
+    _tabController.addListener(() {
+      state.tabIndex = _tabController.index;
+      Get.find<RoomTendencyController>().updateTabIndex();
+    });
     super.initState();
   }
 
@@ -68,46 +73,49 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
             tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),)).toList(),
           ),
           Expanded(
-            child: Obx(() {
-              return SfCartesianChart(
-                  primaryXAxis: CategoryAxis(
-                    labelRotation: 90,
-                    labelAlignment: LabelAlignment.center,
-                    minimum: 0,//设置最小值
-                    interval: 1,//设置步长
-                    visibleMaximum: state.data.length.toDouble()/4,//设置可见数量 数量50的时候 50/4合适
-                    axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
-                    labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
-                    majorTickLines: MajorTickLines(size: 0),
-                    minorTickLines: MinorTickLines(size: 0),
-                    majorGridLines: MajorGridLines(width: 1.w,color: ColorX.color_10_949),
-                    minorGridLines: MinorGridLines(width: 1.w,color: ColorX.color_10_949),
-                  ),
-                  primaryYAxis: NumericAxis(
-                    axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
-                    labelFormat: Intr().hao_value,
-                    labelAlignment: LabelAlignment.center,
-                    labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
-                    minimum: 0,//设置最小值
-                    interval: 1,//设置步长
-                    maximum: 27,//设置最大值
-                    anchorRangeToVisiblePoints: false,
-                    majorTickLines: MajorTickLines(size: 0),
-                    minorTickLines: MinorTickLines(size: 0),
-                  ),
-                  backgroundColor: ColorX.cardBg(),
-                  // Chart title
-                  // title: ChartTitle(text: 'Half yearly sales analysis'),
-                  // Enable legend
-                  // legend: Legend(isVisible: false),
-                  // Enable tooltip
-                  zoomPanBehavior: zoomPanBehavior,
-                  tooltipBehavior: TooltipBehavior(enable: false),
-                  series: <ChartSeries<SalesData, String>>[
-                    AreaSeries<SalesData, String>(
-                        dataSource: state.data.value,
-                        xValueMapper: (SalesData sales, _) => sales.year,
-                        yValueMapper: (SalesData sales, _) => sales.sales,
+            child: GetBuilder<RoomTendencyController>(
+              id: RoomTendencyController.room_tendency_id,
+              builder: (ctl){
+                var data = ctl.getNumberTrend(state.tabIndex);
+                return SfCartesianChart(
+                    primaryXAxis: CategoryAxis(
+                      labelRotation: 90,
+                      labelAlignment: LabelAlignment.center,
+                      minimum: 0,//设置最小值
+                      interval: 1,//设置步长
+                      visibleMaximum: data.length.toDouble()/4,//设置可见数量 数量50的时候 50/4合适
+                      axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
+                      labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
+                      majorTickLines: MajorTickLines(size: 0),
+                      minorTickLines: MinorTickLines(size: 0),
+                      majorGridLines: MajorGridLines(width: 1.w,color: ColorX.color_10_949),
+                      minorGridLines: MinorGridLines(width: 1.w,color: ColorX.color_10_949),
+                    ),
+                    primaryYAxis: NumericAxis(
+                      axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
+                      labelFormat: Intr().hao_value,
+                      labelAlignment: LabelAlignment.center,
+                      labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
+                      minimum: 0,//设置最小值
+                      interval: 1,//设置步长
+                      maximum: 27,//设置最大值
+                      anchorRangeToVisiblePoints: false,
+                      majorTickLines: MajorTickLines(size: 0),
+                      minorTickLines: MinorTickLines(size: 0),
+                    ),
+                    backgroundColor: ColorX.cardBg(),
+                    // Chart title
+                    // title: ChartTitle(text: 'Half yearly sales analysis'),
+                    // Enable legend
+                    // legend: Legend(isVisible: false),
+                    // Enable tooltip
+                    zoomPanBehavior: zoomPanBehavior,
+                    tooltipBehavior: TooltipBehavior(enable: false),
+                    series: <ChartSeries<NumberData, String>>[
+                      AreaSeries<NumberData, String>(
+                        dataSource: data,
+                        xValueMapper: (NumberData sales, _) => sales.term,
+                        yValueMapper: (NumberData sales, _) => sales.value,
                         color: ColorX.color_40_558,
                         name: 'AreaSeries',
                         // Enable data label
@@ -116,11 +124,13 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                             margin: EdgeInsets.all(3.r),
                             labelAlignment: ChartDataLabelAlignment.middle,
                             builder: (data,point,series,pointIndex,seriesIndex){
-                              return Text((data as SalesData).sales.toString(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
+                              return Text((data as NumberData).value.toString(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
                             }
-                        ))
-                  ]);
-            }),
+                        ),
+                      ),
+                    ]);
+              },
+            ),
           )
         ],
       ),

@@ -5,6 +5,8 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/ds_dew/ds_dew_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/room_tendency/dx_dew/dx_dew_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/room_tendency/number_trend/number_trend_state.dart';
 
 ///房间走势数据控制器
@@ -14,15 +16,38 @@ class RoomTendencyController extends GetxController{
 
   DewInfoEntity? data;
 
-
   void updateTabIndex(){
     // tabIndex = index;
     update([room_tendency_id]);
+    Future.delayed(const Duration(milliseconds: 100),(){
+      var scl = Get.find<DsDewLogic>().state.horizontalScrollController;
+      if (scl?.hasClients == true) {
+        scl?.jumpTo(scl.position.maxScrollExtent);
+      }
+    });
+    Future.delayed(const Duration(milliseconds: 100),(){
+      var scl = Get.find<DxDewLogic>().state.horizontalScrollController;
+      if (scl?.hasClients == true) {
+        scl?.jumpTo(scl.position.maxScrollExtent);
+      }
+    });
   }
 
   void updateTendency(DewInfoEntity info){
     data = info;
     update([room_tendency_id]);
+    Future.delayed(const Duration(milliseconds: 100),(){
+      var scl = Get.find<DsDewLogic>().state.horizontalScrollController;
+      if (scl?.hasClients == true) {
+        scl?.jumpTo(scl.position.maxScrollExtent);
+      }
+    });
+    Future.delayed(const Duration(milliseconds: 100),(){
+      var scl = Get.find<DxDewLogic>().state.horizontalScrollController;
+      if (scl?.hasClients == true) {
+        scl?.jumpTo(scl.position.maxScrollExtent);
+      }
+    });
   }
 
   String getTitle(int tabIndex){
@@ -78,8 +103,8 @@ class RoomTendencyController extends GetxController{
       ///值
       var result = int.parse(element[2].split(",")[index]);
       ///期号
-      if(element[0].length > 8){
-        list.add(NumberData(element[0].substring(element[0].length-8),result));
+      if(element[0].length > 6){
+        list.add(NumberData(element[0].substring(element[0].length-6),result));
       }else {
         list.add(NumberData(element[0],result));
       }
