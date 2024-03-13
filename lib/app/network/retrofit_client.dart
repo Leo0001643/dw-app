@@ -100,7 +100,7 @@ abstract class RetrofitClient{
 
 
   @GET('/ds-api-web/getGameKind')
-  Future<BaseResponseEntity<List<GameKindEntity>>> getGameKind();
+  Future<BaseResponseEntity<List<GameKindEntity>>> getGameKind(@Query('cur') int cur);
 
 
   @POST('/ds-api-web/getActStatus')

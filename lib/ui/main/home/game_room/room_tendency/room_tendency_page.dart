@@ -59,7 +59,7 @@ class _RoomTendencyPageState extends State<RoomTendencyPage>
   Widget build(BuildContext context) {
     return DrawerScaffold(
       scaffoldKey: state.scaffoldKey,
-      appBar: WidgetUtils().buildAppBar(Intr().qushi, bgColor: Colors.white,scaffoldKey: state.scaffoldKey),
+      appBar: WidgetUtils().buildAppBar(Intr().qushi, backIcon: ImageX.iconDownArrow(),bgColor: Colors.white,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg(),
       body: Column(
         children: [

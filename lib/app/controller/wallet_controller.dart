@@ -11,6 +11,7 @@ class WalletController extends GetxController {
   ///更新全局钱包变化
   void changeWallet(){
     update([wallet_id]);
+    refresh();
   }
 
 

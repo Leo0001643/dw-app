@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:common_utils/common_utils.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -64,6 +66,20 @@ class PreferentialLogic extends GetxController {
       Get.toNamed(Routes.preferential_detail,arguments: value);
     });
   }
+
+  String formatPreTime(PromotionTypeKey item){
+    if(item.startTime == item.endTime && item.startTime == 0 || (item.startTime.em() > 0 && item.endTime.em() <= 0) ){
+      return Intr().changqihuodong;
+    }else if(item.startTime.em() < item.endTime.em()){
+      if(item.startTime.em() == 0){
+        return "${Intr().jiehzhiriqizhi}${DateUtil.formatDateMs(item.endTime.em() * 1000,format: DateFormats.full)}";
+      } else {
+        return "${DateUtil.formatDateMs(item.startTime.em()* 1000,format: DateFormats.full)}${Intr().dao}${DateUtil.formatDateMs(item.endTime.em()* 1000,format: DateFormats.full)}";
+      }
+    }
+    return "";
+  }
+
 
 
 

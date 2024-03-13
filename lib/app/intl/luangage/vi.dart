@@ -997,6 +997,8 @@ class VI{
     "xiazhujinewk":"Số tiền đặt cược là trống rỗng",
     "danmu":"Tại đền tạm chơi",
     "changqihuodong":"Hoạt động lâu dài",
+    "jiehzhiriqizhi":"Hạn chót là tháng ",
+    "dao":" tháng ",
 
   };
 }

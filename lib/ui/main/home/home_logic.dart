@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
+import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
@@ -39,6 +40,10 @@ class HomeLogic extends GetxController {
     Get.find<AvatarController>().addListener(() {
       state.user.value = AppData.user() ?? LoginUserEntity();
       state.user.refresh();
+    });
+    Get.find<WalletController>().addListener(() {
+      ///钱包切换的时候游戏种类会有变化，所以需要刷新列表
+      loadData();
     });
     ///语言国际化更新
     languageStream = eventBus.on<LanguageEvent>().listen((event) {
@@ -225,7 +230,8 @@ class HomeLogic extends GetxController {
   }
 
   void loadData() {
-    HttpService.getGameKind().then((value) {
+
+    HttpService.getGameKind(AppData.wallet() ? 1: 5).then((value) {
       state.menuGroup.assignAll(value);
       state.menuGroup.refresh();
     });

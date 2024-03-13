@@ -48,7 +48,7 @@ class PromotionTypeEntity {
 class PromotionTypeKey {
 	String? picurl;
 	@JSONField(name: "start_time")
-	String? startTime;
+	int? startTime;
 	@JSONField(name: "title_sec")
 	String? titleSec;
 	@JSONField(name: "end_time")

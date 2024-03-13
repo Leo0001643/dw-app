@@ -11,7 +11,7 @@ PromotionTypeKey $PromotionTypeKeyFromJson(Map<String, dynamic> json) {
   if (picurl != null) {
     promotionTypeKey.picurl = picurl;
   }
-  final String? startTime = jsonConvert.convert<String>(json['start_time']);
+  final int? startTime = jsonConvert.convert<int>(json['start_time']);
   if (startTime != null) {
     promotionTypeKey.startTime = startTime;
   }
@@ -63,7 +63,7 @@ Map<String, dynamic> $PromotionTypeKeyToJson(PromotionTypeKey entity) {
 extension PromotionTypeKeyExtension on PromotionTypeKey {
   PromotionTypeKey copyWith({
     String? picurl,
-    String? startTime,
+    int? startTime,
     String? titleSec,
     int? endTime,
     String? langType,

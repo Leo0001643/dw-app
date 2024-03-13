@@ -145,7 +145,7 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
                       SizedBox(height: 5.h,),
                       Padding(
                         padding: EdgeInsets.only(left: 15.w),
-                        child: Text(item.endTime == 0 ? Intr().changqihuodong : DateUtil.formatDateMs(item.endTime.em()),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
+                        child: Text(logic.formatPreTime(item),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),),),
                       ),
                       SizedBox(height: 10.h,),
                     ],

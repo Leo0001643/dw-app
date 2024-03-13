@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
@@ -93,10 +94,12 @@ class QuotaConversionLogic extends GetxController {
   void transfer(PlatformEntity item){
     var user = AppData.user();
     var cur = AppData.wallet() ? 1: 5;
-    var params = <String,dynamic>{ "cur":cur,"oid":user?.oid,"username":user?.username,"money": item.money,
-      "tout":state.leftAccount.value.liveName,"tin":item.liveName,};
+    var params = <String,dynamic>{ "cur":cur,"oid":user?.oid,"username":user?.username,"money": item.money.em(),
+      "tout":item.liveName,"tin":state.leftAccount.value.liveName,};
+    loggerArray(["转出参数打印",params]);
     HttpService.transfer(params).then((value) {
       showToast(Intr().caozuochenggong);
+      state.inputAmount.value = "";
       ///成功刷新页面数据
       loadData();
       loadBalance(false);

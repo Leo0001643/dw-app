@@ -996,6 +996,8 @@ class CN {
     "xiazhujinewk":"下注金额为空",
     "danmu":"弹幕",
     "changqihuodong":"长期活动",
+    "jiehzhiriqizhi":"截止日期至",
+    "dao":"至",
 
 
 

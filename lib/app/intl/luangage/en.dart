@@ -1067,6 +1067,8 @@ class EN{
     "xiazhujinewk":"The bet is short",
     "danmu":"barrage",
     "changqihuodong":"Long-term activity",
+    "jiehzhiriqizhi":"The deadline is ",
+    "dao":" to ",
 
   };
 

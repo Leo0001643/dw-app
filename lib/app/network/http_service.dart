@@ -120,8 +120,8 @@ class HttpService{
   }
 
 
-  static Future<List<GameKindEntity>> getGameKind(){
-    return buildFuture<List<GameKindEntity>>(()=> _client.getGameKind());
+  static Future<List<GameKindEntity>> getGameKind(int cur){
+    return buildFuture<List<GameKindEntity>>(()=> _client.getGameKind(cur));
   }
 
   ///公告类型【公告类型，1普通公告(主站)-11普通公告(副站)，2跳弹公告(主站)-21跳弹公告(副站)】
