@@ -242,7 +242,7 @@ class WidgetUtils {
     );
   }
 
-  AppBar buildAppBarBtn(String? title, Widget right) {
+  AppBar buildAppBarBtn(String? title, Widget right,{bool back = true,}) {
     return AppBar(
       title: Text(
         title.em(),
@@ -255,9 +255,12 @@ class WidgetUtils {
       backgroundColor: ColorX.appBarBg(),
       elevation: 0,
       toolbarHeight: 44.h,
-      leading: InkWell(
-        onTap: () => Get.back(),
-        child: WidgetUtils().buildImage(ImageX.iconPageBackT(), 24.r, 24.r),
+      leading: Visibility(
+        visible: back,
+        child: InkWell(
+          onTap: () => Get.back(),
+          child: WidgetUtils().buildImage(ImageX.iconPageBackT(), 24.r, 24.r),
+        ),
       ),
       actions: [right],
     );

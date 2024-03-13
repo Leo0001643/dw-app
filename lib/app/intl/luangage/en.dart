@@ -1069,6 +1069,7 @@ class EN{
     "changqihuodong":"Long-term activity",
     "jiehzhiriqizhi":"The deadline is ",
     "dao":" to ",
+    "zanwuxiazhujilu":"No bets recorded",
 
   };
 

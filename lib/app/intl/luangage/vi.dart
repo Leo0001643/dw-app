@@ -999,6 +999,7 @@ class VI{
     "changqihuodong":"Hoạt động lâu dài",
     "jiehzhiriqizhi":"Hạn chót là tháng ",
     "dao":" tháng ",
+    "zanwuxiazhujilu":"Không có ghi chép cá cược",
 
   };
 }

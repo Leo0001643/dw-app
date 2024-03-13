@@ -998,6 +998,7 @@ class CN {
     "changqihuodong":"长期活动",
     "jiehzhiriqizhi":"截止日期至",
     "dao":"至",
+    "zanwuxiazhujilu":"暂无下注记录",
 
 
 

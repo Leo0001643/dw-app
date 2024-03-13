@@ -53,150 +53,128 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
       Padding(
         padding: EdgeInsets.only(right: 10.w),
         child: InkWell(
-          onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().quanbujilu,state.types).then((value) {
-            if(unEmpty(value)){
-              state.type.value = value;
-              state.type.refresh();
-              state.refreshController.requestRefresh();
-            }
-          }),
-          child: Row(
+          onTap: () => Get.back(),
+          child: Image.asset(ImageX.icon_close,width: 25.r,height: 25.r,color: ColorX.icon586(),),
+        ),
+      ),back: false),
+      backgroundColor: ColorX.pageBg(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Obx(() {
-                return Text(state.type.value.memo.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
-              }),
-              Image.asset(ImageX.icon_down_black,color: ColorX.iconBlack(),),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Obx(() {
+                  return Row(
+                    children: state.wallets.map((e){
+                      return GestureDetector(
+                        onTap: (){
+                          state.currentWallet.value = e;
+                          state.currentWallet.refresh();
+                        },
+                        child: buildWalletTab(e, state.currentWallet.value == e ),
+                      );
+                    }).toList(),
+                  );
+                }),
+              ),
+              InkWell(
+                onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().quanbujilu,state.types).then((value) {
+                  if(unEmpty(value)){
+                    state.type.value = value;
+                    state.type.refresh();
+                    state.refreshController.requestRefresh();
+                  }
+                }),
+                child: Row(
+                  children: [
+                    Obx(() {
+                      return Text(state.type.value.memo.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
+                    }),
+                    Image.asset(ImageX.icon_down_black,color: ColorX.iconBlack(),),
+                    SizedBox(width: 5.w,),
+                  ],
+                ),
+              )
             ],
           ),
-        ),
-      ),),
-      backgroundColor: ColorX.pageBg(),
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Obx(() {
-                return Row(
-                  children: state.wallets.map((e){
-                    return GestureDetector(
-                      onTap: (){
-                        state.currentWallet.value = e;
-                        state.currentWallet.refresh();
-                      },
-                      child: buildWalletTab(e, state.currentWallet.value == e ),
-                    );
-                  }).toList(),
-                );
-              }),
+          Container(
+            color: ColorX.pageBg2(),
+            margin: EdgeInsets.only(top: 10.h),
+            height: 40.h,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 25,
+                  child: Center(
+                    child: Text(Intr().danhao,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w700),),
+                  ),
+                ),
+                Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
+                Expanded(
+                  flex: 25,
+                  child: Center(
+                    child: Text(Intr().neirong,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w700),),
+                  ),
+                ),
+                Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
+                Expanded(
+                  flex: 25,
+                  child: Center(
+                    child: Text(Intr().xiazhujine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w700),),
+                  )
+                ),
+                Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
+                Expanded(
+                  flex: 25,
+                  child: Center(
+                    child: Text(Intr().keyingjine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w700),),
+                  ),
+                ),
+              ],
             ),
-            Container(
-              color: ColorX.pageBg2(),
-              margin: EdgeInsets.only(top: 10.h),
-              height: 40.h,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 25,
-                    child: Center(
-                      child: Text(Intr().danhao,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
-                    ),
-                  ),
-                  Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
-                  Expanded(
-                    flex: 25,
-                    child: Center(
-                      child: Text(Intr().neirong,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
-                    ),
-                  ),
-                  Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
-                  Expanded(
-                    flex: 25,
-                    child: Center(
-                      child: Text(Intr().xiazhujine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
-                    )
-                  ),
-                  Container(height: 40.h,width: 1.w,color: ColorX.color_10_949,),
-                  Expanded(
-                    flex: 25,
-                    child: Center(
-                      child: Text(Intr().keyingjine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Obx(() {
-                return SmartRefresher(
-                  controller: state.refreshController,
-                  enablePullDown: true,
-                  enablePullUp: true,
-                  onRefresh: ()=> logic.loadData(true),
-                  onLoading: ()=> logic.loadData(false),
-                  child: ListView.separated(
-                    itemCount: state.list.em(),
-                    itemBuilder: (context,index){
-                      var item = state.list[index];
+          ),
+          Expanded(
+            child: Obx(() {
+              return SmartRefresher(
+                controller: state.refreshController,
+                enablePullDown: true,
+                enablePullUp: true,
+                footer: CustomFooter(builder: (context,mode)=> Container(),height: 0,),
+                onRefresh: ()=> logic.loadData(true),
+                onLoading: ()=> logic.loadData(false),
+                child: isEmpty(state.list) ?
+                ListView(
+                  children: [
+                    buildBetEmpty(),
+                    buildLastTotal(),
+                  ],
+                ):
+                ListView.separated(
+                  itemCount: state.list.em(),
+                  itemBuilder: (context,index){
+                    var item = state.list[index];
+                    if(state.list.em() - 1 == index) {
+                      return Column(
+                        children: [
+                          buildBetItem(item),
+                          buildLastTotal(),
+                        ],
+                      );
+                    } else {
                       return buildBetItem(item);
-                    },
-                    separatorBuilder: (context,index){
-                      return Divider(height: 1.r,color: ColorX.color_10_949,);
-                    },
-                  ),
-                );
-              }),
-            ),
-            Container(
-              color: ColorX.cardBg(),
-              margin: EdgeInsets.only(top: 10.h),
-              height: 40.h,
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 25,
-                    child: Center(
-                      child: Text(Intr().xiaoji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 25,
-                    child: Center(
-                      child: Obx(() {
-                        return Text(Intr().xbi(["${state.list.em()}"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),);
-                      }),
-                    ),
-                  ),
-                  Expanded(
-                      flex: 25,
-                      child: Center(
-                        child: Obx(() {
-                          var betTotal = 0.0;
-                          state.list.forEach((element) {
-                            betTotal += element.betMoney.em();
-                          });
-                          return Text("¥$betTotal",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
-                        }),
-                      )
-                  ),
-                  Expanded(
-                    flex: 25,
-                    child: Center(
-                      child: Obx(() {
-                        var winTotal = 0.0;
-                        state.list.forEach((element) {
-                          winTotal += element.winMoneyExpected.em();
-                        });
-                        return Text("¥$winTotal",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
-                      }),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+                    }
+                  },
+                  separatorBuilder: (context,index){
+                    return Divider(height: 1.r,color: ColorX.color_10_949,);
+                  },
+                ),
+              );
+            }),
+          ),
+        ],
       ),
     );
   }
@@ -272,6 +250,105 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
             flex: 25,
             child: Center(
               child: Text("${item.winMoneyExpected.em()}/${item.winMoney1314.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildBetEmpty() {
+    return Container(
+      color: ColorX.cardBg(),
+      // height: 94.h,
+      child: Row(
+        children: [
+          Expanded(
+            flex: 25,
+            child: Container(
+              padding: EdgeInsets.all(10.r),
+              child: Text("----",
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: ColorX.text5862(),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                maxLines: 2,
+              ),
+            ),
+          ),
+          Container(height: 50.h,width: 1.r,color: ColorX.color_10_949,),
+          Expanded(
+            flex: 25,
+            child: Container(
+              padding: EdgeInsets.all(5.r),
+              child: Text(Intr().zanwuxiazhujilu,
+                style: TextStyle(color: ColorX.text5862(),fontSize: 12.sp,),),
+            ),
+          ),
+          Container(height: 50.h,width: 1.r,color: ColorX.color_10_949,),
+          Expanded(
+              flex: 25,
+              child: Center(
+                child: Text("--.--",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862(),),),
+              )
+          ),
+          Container(height: 50.h,width: 1.r,color: ColorX.color_10_949,),
+          Expanded(
+            flex: 25,
+            child: Center(
+              child: Text("--.--",style: TextStyle(fontSize: 14.sp,color: ColorX.text5862(),),),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+  Widget buildLastTotal() {
+    return Container(
+      color: ColorX.cardBg(),
+      margin: EdgeInsets.only(top: 10.h),
+      height: 40.h,
+      child: Row(
+        children: [
+          Expanded(
+            flex: 25,
+            child: Center(
+              child: Text(Intr().xiaoji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
+            ),
+          ),
+          Expanded(
+            flex: 25,
+            child: Center(
+              child: Obx(() {
+                return Text(Intr().xbi(["${state.list.em()}"]),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),);
+              }),
+            ),
+          ),
+          Expanded(
+              flex: 25,
+              child: Center(
+                child: Obx(() {
+                  var betTotal = 0.0;
+                  state.list.forEach((element) {
+                    betTotal += element.betMoney.em();
+                  });
+                  return Text("¥$betTotal",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
+                }),
+              )
+          ),
+          Expanded(
+            flex: 25,
+            child: Center(
+              child: Obx(() {
+                var winTotal = 0.0;
+                state.list.forEach((element) {
+                  winTotal += element.winMoneyExpected.em();
+                });
+                return Text("¥$winTotal",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
+              }),
             ),
           ),
         ],
