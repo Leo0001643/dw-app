@@ -3,12 +3,14 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
+import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
@@ -48,7 +50,7 @@ class TextItemLogic extends GetxController {
   final TextTimerState state = TextTimerState();
   StreamSubscription? loginStream;
   var count = 100;
-  String? type;
+  // String? type;
   String? status = Intr().fengpanzhong;
   String? lastStatusContent;
   int lastShowTime = -1;
@@ -68,14 +70,14 @@ class TextItemLogic extends GetxController {
   static String id_textTimerItem = "textTimerItem";
   static String id_fiveCountDownStatus = "fiveCountDownStatus";
 
-
+  RoomCopyWritingEntity? roomWriting;
 
 
   setType(String? type) {
-    this.type = type;
+    // this.type = type;
   }
 
-  TextItemLogic({this.type});
+  TextItemLogic();
   // RxString term="".obs;
 
   // void loadData(GameKindGameKindList gameKind) {
@@ -102,11 +104,12 @@ class TextItemLogic extends GetxController {
 
 
   // String gameCode="";
-  void loadDataGameCode(String gameCode) {
+  void loadDataGameCode(String gameCode,RoomCopyWritingEntity? roomWriting) {
+    this.roomWriting = roomWriting;
+    loggerArray(["==========>loadDataGameCode  $roomWriting",gameCode]);
     //测试用
     HttpService.getPc28LottoList().then((value) {
-      print("==========>getPc28LottoList2  ${jsonEncode(value.toJson())}");
-      print("==========>item.gameCode2  ${gameCode}");
+      loggerArray(["==========>getPc28LottoList2  ${jsonEncode(value.toJson())}",gameCode]);
       // this.gameCode=gameCode;
       for (Pc28LottoRooms item in value.rooms!) {
         // 判断 gameCode 和 gameType 是否相等
@@ -312,9 +315,7 @@ class TextItemLogic extends GetxController {
   // }
 
   showStartBet(String currentStatus,String term) {
-     if (lastStatusContent == "0:00:00" &&
-        currentStatus== Intr().fengpanzhong &&
-        alreadyShowStop == false) {
+     if (lastStatusContent == "0:00:00" && currentStatus== Intr().fengpanzhong && alreadyShowStop == false) {
       showCloseOver(term);
       alreadyShowStop = true;
       showStopBetting.value = true;
@@ -335,27 +336,44 @@ class TextItemLogic extends GetxController {
   }
 
   showKeyCountTime(int showT,String term) {
-    if ((showT == 30 || showT == 15 || showT == 10) &&
-        (lastShowTime != showT)) {
+    if ((showT == 30 || showT == 10) &&
+        (lastShowTime != showT)) {// showT == 15 ||
       countDownLotteryEntity.value.type = "countTime";
       countDownLotteryEntity.value.status = LotteryStatus.countDownStatus.name;
       countDownLotteryEntity.value.time = showT;
       countDownLotteryEntity.value.term = term;
       countDownLotteryEntity.value.titleColor = ColorX.text586().value;
       countDownLotteryEntity.value.title = "xitongxiaoxi".tr;
-      countDownLotteryEntity.value.subTitile = "${"julifengpan".tr}${showT}${"miao".tr}";
+      if(showT == 30){
+        countDownLotteryEntity.value.subTitile = roomWriting?.content?.countDown30.em();//"${"julifengpan".tr}${showT}${"miao".tr}";
+      }else {
+        countDownLotteryEntity.value.subTitile = roomWriting?.content?.countDown10.em();//"${"julifengpan".tr}${showT}${"miao".tr}";
+      }
       countDownLotteryEntity.refresh();
     }
+  }
+
+  void showWelcome() {
+    loggerArray(['进入房间了开始讲话',roomWriting]);
+    // if (lastStatus != currentStatus.value) {
+    countDownLotteryEntity.value.type = "openOver";
+    countDownLotteryEntity.value.title = "";//"kaishixiazhu".tr;
+    countDownLotteryEntity.value.titleColor= ColorX.color_00ac47.value;
+    countDownLotteryEntity.value.term = "";
+    countDownLotteryEntity.value.subTitile = roomWriting?.content?.inertRoom.em();//"kaishixiazhu".tr;
+    countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
+    countDownLotteryEntity.refresh();
+    // }
   }
 
   showOpen(int showT,String term) {
     loggerArray(['这里显示开始下注了m ',showT,term,lastStatus != currentStatus.value]);
     // if (lastStatus != currentStatus.value) {
       countDownLotteryEntity.value.type = "openOver";
-      countDownLotteryEntity.value.title = "kaishixiazhu".tr;
+      countDownLotteryEntity.value.title = roomWriting?.content?.beginBet.em();//"kaishixiazhu".tr;
       countDownLotteryEntity.value.titleColor= ColorX.color_00ac47.value;
       countDownLotteryEntity.value.term = term;
-      countDownLotteryEntity.value.subTitile = "kaishixiazhu".tr;
+      countDownLotteryEntity.value.subTitile = roomWriting?.content?.beginBet.em();//"kaishixiazhu".tr;
       countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
       countDownLotteryEntity.refresh();
     // }
@@ -366,7 +384,7 @@ class TextItemLogic extends GetxController {
       countDownLotteryEntity.value.title = Intr().fengpanxinxi;
       countDownLotteryEntity.value.titleColor= ColorX.color_fe2427.value;
       countDownLotteryEntity.value.term = term;
-      countDownLotteryEntity.value.subTitile = Intr().kaishifengpan;
+      countDownLotteryEntity.value.subTitile = roomWriting?.content?.openPlate.em();//Intr().kaishifengpan;
       countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
       countDownLotteryEntity.refresh();
   }
@@ -386,4 +404,7 @@ class TextItemLogic extends GetxController {
       });
     }
   }
+
+
+
 }

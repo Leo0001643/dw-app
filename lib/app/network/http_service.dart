@@ -63,6 +63,7 @@ import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
+import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/shake_info_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
@@ -458,6 +459,10 @@ class HttpService{
 
   static Future<String> switchLanguage(Map<String,dynamic> params,){
     return buildFuture<String>(()=> _client.switchLanguage(params));
+  }
+
+  static Future<dynamic> getRoomCopyWriting(){
+    return buildFuture<dynamic>(()=> _client.getRoomCopyWriting());
   }
 
 

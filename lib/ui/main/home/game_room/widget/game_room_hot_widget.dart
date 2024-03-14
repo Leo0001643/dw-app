@@ -29,18 +29,14 @@ class GameRoomHotWidget extends StatefulWidget {
 
 class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
 
-  Timer? _timer;
 
   @override
   void initState() {
-    loggerArray(["房型更换这里刷新了吗",_timer]);
     super.initState();
   }
 
   @override
   void dispose() {
-    _timer?.cancel(); // 销毁时取消定时任务
-    _timer = null;
     super.dispose();
   }
 
@@ -85,16 +81,8 @@ class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
                       ),
                     ),
                     Obx(() {
-                      // 设置定时任务，每120秒执行一次
-                      _timer?.cancel();
-                      _timer = null;
-                      TextItemLogic? logic=Get.find<TextItemLogic>();
-                      logic.loadDataGameCode(state.room.value.gameType.em());
-                      _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
-                        logic.loadDataGameCode(state.room.value.gameType.em());
-                      });
-                      loggerArray(["倒计时刷新了没",_timer]);
-                      return TextTimerItem(state.room.value.gameType.em(),state.pc28Lotto);
+                      var room = state.room.value;
+                      return TextTimerItem(room.gameType.em(),state.pc28Lotto);
                     }),
                   ],
                 ),

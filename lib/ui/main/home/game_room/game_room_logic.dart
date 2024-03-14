@@ -45,6 +45,7 @@ class GameRoomLogic extends GetxController {
   StreamSubscription? stopBettingListener;
   StreamSubscription? textStatusListener;
   StreamSubscription? musicSwitch;
+  Timer? _timer;
 
   // RxList<OddsContent> dataBettingList=<OddsContent>[].obs;
 
@@ -95,7 +96,7 @@ class GameRoomLogic extends GetxController {
 
   @override
   void onClose() {
-    // timer?.cancel();
+    _timer?.cancel();
     AudioUtils().stop();
     AudioUtils().stopBg();
     musicSwitch?.cancel();
@@ -136,6 +137,8 @@ class GameRoomLogic extends GetxController {
     ///处理房间房型显示 长连接连接问题
     changeRoomType(room,login);
 
+    startRoomCountDown(room);
+
     HttpService.getPc28LottoList().then((value) {
       value.rooms?.forEach((e1) {
         e1.tables?.forEach((e2) {
@@ -163,6 +166,7 @@ class GameRoomLogic extends GetxController {
     HttpService.getPhrase().then((value) {
       state.phrases.assignAll(value);
     });
+
   }
 
   List<OddsContent>  getDataBettingList(int index,{int? type=0}){
@@ -200,10 +204,23 @@ class GameRoomLogic extends GetxController {
     }else {///切换房间
       SocketUtils().changeRoom(room.gameType.em(), room.roomId.em().toString(), room.id.em().toString());
     }
-    ///切换房间需要清楚历史数据
+    ///切换房间需要清除历史数据
     state.gameRoomItemEntityList.clear();
     update([gameRoomList]);
 
+  }
+
+  void startRoomCountDown(Pc28LottoRoomsTables room) {
+    // 设置定时任务，每120秒执行一次
+    _timer?.cancel();
+    _timer = null;
+    TextItemLogic? logic=Get.find<TextItemLogic>();
+    var tag = "${room.gameType.em()}_${room.level.em()}_room_message";
+    var roomWriting = isEmpty(state.roomWriting) ? null :  state.roomWriting.firstWhere((element) => element.tag == tag);
+    logic.loadDataGameCode(room.gameType.em(),roomWriting);
+    _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
+      logic.loadDataGameCode(room.gameType.em(),roomWriting);
+    });
   }
 
   void loadBalance() {
@@ -341,5 +358,7 @@ class GameRoomLogic extends GetxController {
     // showToast(Intr().caozuochenggong);
 
   }
+
+
 
 }

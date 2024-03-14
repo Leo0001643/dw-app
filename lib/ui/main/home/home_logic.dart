@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,7 @@ import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -19,6 +21,7 @@ import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:sprintf/sprintf.dart';
 
 import 'home_state.dart';
@@ -250,6 +253,12 @@ class HomeLogic extends GetxController {
       state.pc28Lotto.value = value;
       state.pc28Lotto.refresh();
     });
+
+    ///提示信息
+    HttpService.getRoomCopyWriting().then((value) {
+      AppData.saveRoomWritingEntity(JsonUtil.encodeObj(value).em());
+    });
+
     //请求倒计时
     // HttpService.getPC28Plan(5).then((value) {
     //   state.timerEntity.value = value;

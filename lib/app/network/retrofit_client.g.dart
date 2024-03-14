@@ -608,14 +608,13 @@ class _RetrofitClient implements RetrofitClient {
   }
 
   @override
-  Future<BaseResponseEntity<List<RoomCopyWritingEntity>>>
-      getRoomCopyWriting() async {
+  Future<BaseResponseEntity<dynamic>> getRoomCopyWriting() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponseEntity<List<RoomCopyWritingEntity>>>(Options(
+        _setStreamType<BaseResponseEntity<dynamic>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -631,14 +630,9 @@ class _RetrofitClient implements RetrofitClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = BaseResponseEntity<List<RoomCopyWritingEntity>>.fromJson(
+    final value = BaseResponseEntity<dynamic>.fromJson(
       _result.data!,
-      (json) => json is List<dynamic>
-          ? json
-              .map<RoomCopyWritingEntity>((i) =>
-                  RoomCopyWritingEntity.fromJson(i as Map<String, dynamic>))
-              .toList()
-          : List.empty(),
+      (json) => json as dynamic,
     );
     return value;
   }

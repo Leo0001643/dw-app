@@ -2,11 +2,14 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:android_id/android_id.dart';
+import 'package:common_utils/common_utils.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
+import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -190,6 +193,20 @@ class AppData {
   }
 
   static bool isLogin() => unEmpty(user()?.oid);
+
+  static List<RoomCopyWritingEntity>? roomWritingEntity(){
+    var json = prefs?.getString("room_writing_entity") ?? "";
+    if (isEmpty(json)) {
+      return null;
+    } else {
+      return JsonUtil.getObjectList(json, (v) => RoomCopyWritingEntity.fromJson(v as Map<String,dynamic>));
+    }
+  }
+
+  static void saveRoomWritingEntity(String roomWriting){
+    prefs?.setString("room_writing_entity", roomWriting);
+  }
+
 
   static void clear() {
     prefs?.remove("user");

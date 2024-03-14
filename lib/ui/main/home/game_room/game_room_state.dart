@@ -5,6 +5,7 @@ import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/phrase_entity.dart';
+import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 
 class GameRoomState {
@@ -31,6 +32,10 @@ class GameRoomState {
   ///弹幕控制器
   var barrageWallController = BarrageWallController();
   var scaffoldKey = GlobalKey<ScaffoldState>();
+
+  ///房间提示信息
+  var roomWriting = List<RoomCopyWritingEntity>.empty(growable: true);
+
 
 
 }

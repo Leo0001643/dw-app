@@ -1,4 +1,5 @@
 
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -19,6 +21,7 @@ import 'package:leisure_games/ui/main/home/game_room/widget/count_down_item_widg
 import 'package:leisure_games/ui/main/home/game_room/widget/game_room_compute_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/open_lottery_item.dart';
 
+import '../../../bean/room_copy_writing_entity.dart';
 import 'game_room_logic.dart';
 import 'widget/game_room_head_widget.dart';
 import 'widget/game_room_hot_widget.dart';
@@ -39,9 +42,10 @@ class _GameRoomPageState extends State<GameRoomPage> {
   @override
   void initState() {
     state.room.value = Get.arguments;
-    TextItemLogic textItemLogic = Get.find<TextItemLogic>();
-    textItemLogic.setType(state.room.value.gameType);
+    // TextItemLogic textItemLogic = Get.find<TextItemLogic>();
     logic.loadData(state.room.value, true);
+    ///加载房间提示信息
+    state.roomWriting.assignAll(AppData.roomWritingEntity() ?? []);
     super.initState();
   }
 

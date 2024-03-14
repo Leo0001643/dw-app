@@ -134,7 +134,7 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<DewInfoEntity>> getDewInfo(@Queries() Map<String,dynamic> params,);
 
   @GET('/ds-api-web/getRoomCopyWriting')
-  Future<BaseResponseEntity<List<RoomCopyWritingEntity>>> getRoomCopyWriting();
+  Future<BaseResponseEntity<dynamic>> getRoomCopyWriting();
 
   @GET('/ds-api-web/getPC28Plan')
   Future<BaseResponseEntity<String>> getPC28Plan(@Query('termCount') int termCount,);
