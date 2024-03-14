@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/controller/room_tendency_controller.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -31,10 +32,13 @@ class _RoomTendencyPageState extends State<RoomTendencyPage>
   final state = Get.find<RoomTendencyLogic>().state;
   late TabController _tabController;
 
+  var currentTab = 0.obs;
+
   @override
   void initState() {
     _tabController = TabController(length: state.pages.length, vsync: this);
     _tabController.addListener(() {
+      currentTab.value = _tabController.index;
       // state.pageIndex.value = _tabController.index;
       state.pageController.jumpToPage(_tabController.index);
     });
@@ -84,12 +88,12 @@ class _RoomTendencyPageState extends State<RoomTendencyPage>
             labelColor: ColorX.text0917(),
             unselectedLabelColor: ColorX.text586(),
             tabs: [
-              buildTabItem(Intr().kaijiangjieguo, ImageX.icon_result),
-              buildTabItem(Intr().shujufenxi, ImageX.icon_data),
-              buildTabItem(Intr().shuangmianchanglong, ImageX.icon_order),
-              buildTabItem(Intr().danshuangluzhu, ImageX.icon_sd),
-              buildTabItem(Intr().daxiaoluzhu, ImageX.icon_size),
-              buildTabItem(Intr().haomazhoushi, ImageX.icon_zs),
+              buildTabItem(0,Intr().kaijiangjieguo, ImageX.icon_result),
+              buildTabItem(1,Intr().shujufenxi, ImageX.icon_data),
+              buildTabItem(2,Intr().shuangmianchanglong, ImageX.icon_order),
+              buildTabItem(3,Intr().danshuangluzhu, ImageX.icon_sd),
+              buildTabItem(4,Intr().daxiaoluzhu, ImageX.icon_size),
+              buildTabItem(5,Intr().haomazhoushi, ImageX.icon_zs),
             ],
           ),
           Expanded(
@@ -104,14 +108,18 @@ class _RoomTendencyPageState extends State<RoomTendencyPage>
     );
   }
 
-  Widget buildTabItem(String tab, String icon) {
+  Widget buildTabItem(int index,String tab, String icon) {
     return Tab(
-      icon: Container(
-        decoration: BoxDecoration(
-            color: ColorX.cardBg5(), borderRadius: BorderRadius.circular(10.r)),
-        padding: EdgeInsets.all(8.r),
-        child: Image.asset(icon),
-      ),
+      icon: Obx(() {
+        return Container(
+          decoration: BoxDecoration(
+            color: currentTab.value == index ? Colors.white:ColorX.cardBg5(),
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          padding: EdgeInsets.all(8.r),
+          child: Image.asset(icon),
+        );
+      }),
       iconMargin: EdgeInsets.only(bottom: 3.h),
       text: tab,
     );
