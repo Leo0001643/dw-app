@@ -10,10 +10,8 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
-import 'package:leisure_games/main.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
-import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
 import 'bind_wallet_logic.dart';
 
@@ -87,7 +85,7 @@ class _BindWalletPageState extends State<BindWalletPage> {
                     margin: EdgeInsets.symmetric(horizontal: 27.w),
                     child: GFBorder(
                       dashedLine: [5, 7],
-                      color: ColorX.text586(),
+                      color: ColorX.text5862(),
                       type: GFBorderType.rRect,
                       radius: Radius.circular(10.r),
                       child: Column(
@@ -117,7 +115,7 @@ class _BindWalletPageState extends State<BindWalletPage> {
                           Text(
                             Intr().zuiduoketianjiaqianbao_(["${state.maxCount}"]),
                             style: TextStyle(
-                                fontSize: 13.sp, color: ColorX.text586()),
+                                fontSize: 13.sp, color: ColorX.text5862()),
                           ),
                         ],
                       ),
@@ -136,7 +134,7 @@ class _BindWalletPageState extends State<BindWalletPage> {
                   TextSpan(
                     text: Intr().qitaqianbaowenxintis,
                     style: TextStyle(
-                        fontSize: 14.sp, color: ColorX.text586(), height: 1.8),
+                        fontSize: 14.sp, color: ColorX.text5862(), height: 1.8),
                   ),
                   WidgetSpan(
                     alignment: PlaceholderAlignment.baseline,
@@ -154,10 +152,9 @@ class _BindWalletPageState extends State<BindWalletPage> {
                             fontWeight: FontWeight.w600,
                             fontSize: 14.sp,
                             color: ColorX.text0917(),
-                            height: 1.8,
                             decoration: TextDecoration.underline,
                             decorationThickness: 3.0,
-                            decorationColor: Colors.black, // 设置下划线颜色
+                            decorationColor: ColorX.textBlack(), // 设置下划线颜色
                           ),
                         ),
                       ),

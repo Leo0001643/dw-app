@@ -545,14 +545,18 @@ class WidgetUtils {
         bool enabled = true,
         bool suffixIcon = false,
         int maxLines = 1,
+        EdgeInsetsGeometry? padding,
         List<TextInputFormatter>? inputFormatters,
         FocusNode? focusNode}) {
+
+    padding ??= EdgeInsets.symmetric(horizontal: 10.r);
+
     return Container(
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.all(Radius.circular(8.r)),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 10.r),
+      padding: padding,
       width: width,
       height: height,
       child: suffixIcon

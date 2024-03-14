@@ -40,7 +40,7 @@ class _AddUsdtPageState extends State<AddUsdtPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,14 +53,15 @@ class _AddUsdtPageState extends State<AddUsdtPage> {
                   ),
                   SizedBox(height: 5.h,),
                   Obx(() {
-                    return Text(state.channel.value.typeName(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
+                    return Text(state.channel.value.typeName(),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
                   }),
+                  SizedBox(height: 5.h,),
                 ],
               ),
             ),
             Divider(height: 1.h,color: ColorX.color_f1f1f1,indent: 25.w,endIndent: 25.w,),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,20 +88,22 @@ class _AddUsdtPageState extends State<AddUsdtPage> {
                               ],
                             ),
                           ),
-                          WidgetUtils().buildTextField(260.w, 35.h, 14.sp, ColorX.text586(), Intr().shuruzhenshiyouxiao,
+                          WidgetUtils().buildTextField(260.w, 40.h, 14.sp, ColorX.text5862(), Intr().shuruzhenshiyouxiao,backgroundColor: ColorX.cardBg15(),
+                              hintColor: ColorX.text5862(),padding: EdgeInsets.zero,
                               defText: state.bankMobile.value,inputType: TextInputType.phone,onChanged: (v)=> state.bankMobile.value = v)
                         ],
                       );
                     } else {
-                      return Text(state.channel.value.mobile.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
+                      return Text(state.channel.value.mobile.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
                     }
                   }),
+                  SizedBox(height: 5.h,),
                 ],
               ),
             ),
             Divider(height: 1.h,color: ColorX.color_f1f1f1,indent: 25.w,endIndent: 25.w,),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,14 +114,15 @@ class _AddUsdtPageState extends State<AddUsdtPage> {
                       Text(Intr().qianbaodizhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                     ],
                   ),
-                  WidgetUtils().buildTextField(300.w, 35.h, 14.sp, ColorX.text586(), Intr().qingshuruqianbaodizhi,
+                  WidgetUtils().buildTextField(300.w, 40.h, 14.sp, ColorX.text586(), Intr().qingshuruqianbaodizhi,backgroundColor: ColorX.cardBg15(),
+                      hintColor: ColorX.text5862(),padding: EdgeInsets.zero,
                       defText: state.openAddress.value,onChanged: (v)=> state.openAddress.value = v),
                 ],
               ),
             ),
             Divider(height: 1.h,color: ColorX.color_f1f1f1,indent: 25.w,endIndent: 25.w,),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,12 +133,13 @@ class _AddUsdtPageState extends State<AddUsdtPage> {
                       Text(Intr().yanzhengzijinmima,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                     ],
                   ),
-                  WidgetUtils().buildTextField(300.w, 35.h, 14.sp, ColorX.text586(), Intr().qingshuruqukuanmima,
+                  WidgetUtils().buildTextField(300.w, 40.h, 14.sp, ColorX.text5862(), Intr().qingshuruqukuanmima,backgroundColor: ColorX.cardBg15(),
+                      hintColor: ColorX.text5862(),padding: EdgeInsets.zero,
                       defText: state.bankPwd.value,onChanged: (v)=> state.bankPwd.value = v),
+                  Divider(height: 1.h,color: ColorX.color_f1f1f1,),
                 ],
               ),
             ),
-            Divider(height: 1.h,color: ColorX.color_f1f1f1,),
             SizedBox(height: 20.h,),
             Center(
               child: WidgetUtils().buildElevatedButton(Intr().queren, 341.w, 50.h,bg: ColorX.color_fc243b,

@@ -78,7 +78,8 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
                 SizedBox(width: 5.w,),
                 InkWell(
                   onTap: ()=> WidgetUtils().clickCopy(Constants.html_btc),
-                  child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),decoration: TextDecoration.underline,),),
+                  child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),
+                    decoration: TextDecoration.underline,decorationColor: ColorX.textBlack(),),),
                 ),
               ],
             ),
@@ -91,7 +92,8 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
                 SizedBox(width: 5.w,),
                 InkWell(
                   onTap: ()=> WidgetUtils().clickCopy(Constants.html_blockchain),
-                  child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),decoration: TextDecoration.underline,),),
+                  child: Text(Intr().dianjifuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),
+                    decoration: TextDecoration.underline,decorationColor: ColorX.textBlack(),),),
                 ),
               ],
             ),

@@ -297,7 +297,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -336,7 +336,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -356,7 +356,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -376,7 +376,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -396,7 +396,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -415,7 +415,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -435,7 +435,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SelectAreaBtmDialog(data);
         });
@@ -451,7 +451,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SelectUsdtBtmDialog(data);
         });
@@ -467,7 +467,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -506,7 +506,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -525,7 +525,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -546,7 +546,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -566,7 +566,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -586,7 +586,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(18.r), topLeft: Radius.circular(18.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -606,7 +606,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return BettingBtmDialog(logic);
         });
@@ -647,7 +647,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.pageBg(),
+        backgroundColor: ColorX.cardBg5(),
         builder: (context) {
           return BulletBottomDialog(logic, valueCallBack);
         });

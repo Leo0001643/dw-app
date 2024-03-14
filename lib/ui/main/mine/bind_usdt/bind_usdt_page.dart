@@ -13,8 +13,6 @@ import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'bind_usdt_logic.dart';
 
 class BindUsdtPage extends StatefulWidget {
@@ -84,7 +82,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
                     margin: EdgeInsets.symmetric(horizontal: 27.w),
                     child: GFBorder(
                       dashedLine: const [5,7],
-                      color: ColorX.text586(),
+                      color: ColorX.text5862(),
                       type: GFBorderType.rRect,
                       radius: Radius.circular(10.r),
                       child: Column(
@@ -97,7 +95,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
                           SizedBox(height: 5.h,),
                           Text(Intr().tianjiashuziqianbao,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
                           SizedBox(height: 3.h,),
-                          Text(Intr().zuiduoketianjia_(["${state.maxCount}"]),style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                          Text(Intr().zuiduoketianjia_(["${state.maxCount}"]),style: TextStyle(fontSize: 13.sp,color: ColorX.text5862()),),
                         ],
                       ),
                     ),
@@ -113,7 +111,7 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
                   children: [
                     TextSpan(
                       text: Intr().wenxintixing_usdt,
-                      style: TextStyle(fontSize: 14.sp, color: ColorX.text586(), height: 1.8),
+                      style: TextStyle(fontSize: 14.sp, color: ColorX.text5862(), height: 1.8),
                     ),
                     WidgetSpan(
                       alignment: PlaceholderAlignment.baseline,
@@ -130,10 +128,9 @@ class _BindUsdtPageState extends State<BindUsdtPage> {
                             fontWeight: FontWeight.w600,
                             fontSize: 14.sp,
                             color: ColorX.text0917(),
-                            height: 1.8,
                             decoration: TextDecoration.underline,
                             decorationThickness: 3.0,
-                            decorationColor: Colors.black, // 设置下划线颜色
+                            decorationColor: ColorX.textBlack(), // 设置下划线颜色
                           ),
                         ),)
                       ),

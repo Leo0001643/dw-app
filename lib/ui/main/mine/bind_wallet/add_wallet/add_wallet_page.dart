@@ -56,7 +56,7 @@ class _AddWalletPageState extends State<AddWalletPage> {
                   ),
                   SizedBox(height: 5.h,),
                   Obx(() {
-                    return Text(state.channel.value.typeName(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
+                    return Text(state.channel.value.typeName(),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
                   }),
                 ],
               ),
@@ -90,12 +90,13 @@ class _AddWalletPageState extends State<AddWalletPage> {
                               ],
                             ),
                           ),
-                          WidgetUtils().buildTextField(260.w, 35.h, 14.sp, ColorX.text586(), Intr().shuruzhenshiyouxiao,
+                          WidgetUtils().buildTextField(260.w, 35.h, 14.sp, ColorX.text5862(), Intr().shuruzhenshiyouxiao,
+                              hintColor: ColorX.text5862(),padding: EdgeInsets.zero,
                               defText: state.bankMobile.value,inputType: TextInputType.phone,onChanged: (v)=> state.bankMobile.value = v)
                         ],
                       );
                     } else {
-                      return Text(state.channel.value.mobile.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
+                      return Text(state.channel.value.mobile.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
                     }
                   }),
                 ],
@@ -114,7 +115,9 @@ class _AddWalletPageState extends State<AddWalletPage> {
                       Text(Intr().qianbaodizhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                     ],
                   ),
-                  WidgetUtils().buildTextField(300.w, 35.h, 14.sp, ColorX.text586(), Intr().qingshuruqianbaodizhi,
+                  SizedBox(height: 5.h,),
+                  WidgetUtils().buildTextField(300.w, 40.h, 14.sp, ColorX.text5862(), Intr().qingshuruqianbaodizhi,backgroundColor: ColorX.cardBg15(),
+                      hintColor: ColorX.text5862(),padding: EdgeInsets.zero,
                       defText: state.openAddress.value,onChanged: (v)=> state.openAddress.value = v),
                 ],
               ),
@@ -132,12 +135,14 @@ class _AddWalletPageState extends State<AddWalletPage> {
                       Text(Intr().yanzhengzijinmima,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                     ],
                   ),
-                  WidgetUtils().buildTextField(300.w, 35.h, 14.sp, ColorX.text586(), Intr().qingshuruqukuanmima,
+                  SizedBox(height: 5.h,),
+                  WidgetUtils().buildTextField(300.w, 40.h, 14.sp, ColorX.text5862(), Intr().qingshuruqukuanmima,backgroundColor: ColorX.cardBg15(),
+                      hintColor: ColorX.text5862(),padding: EdgeInsets.zero,
                       defText: state.bankPwd.value,onChanged: (v)=> state.bankPwd.value = v),
+                  Divider(height: 1.h,color: ColorX.color_f1f1f1,),
                 ],
               ),
             ),
-            Divider(height: 1.h,color: ColorX.color_f1f1f1,),
             SizedBox(height: 20.h,),
             Center(
               child: WidgetUtils().buildElevatedButton(Intr().queren, 341.w, 50.h,bg: ColorX.color_fc243b,

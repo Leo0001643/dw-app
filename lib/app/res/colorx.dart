@@ -175,6 +175,9 @@ class ColorX{
     return AppData.theme() ? Colors.white60 : ColorX.color_333333;
   }
 
+  static Color cardBg15(){
+    return AppData.theme() ? Colors.white : Colors.transparent;
+  }
 
 
 

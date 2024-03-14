@@ -12,8 +12,6 @@ import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'bind_bank_logic.dart';
 
 ///绑定银行卡
@@ -82,7 +80,7 @@ class _BindBankPageState extends State<BindBankPage> {
                     margin: EdgeInsets.symmetric(horizontal: 27.w),
                     child: GFBorder(
                       dashedLine: [5, 7],
-                      color: ColorX.text586(),
+                      color: ColorX.text5862(),
                       type: GFBorderType.rRect,
                       radius: Radius.circular(10.r),
                       child: Column(
@@ -112,7 +110,7 @@ class _BindBankPageState extends State<BindBankPage> {
                           Text(
                             Intr().zuiduoketianjia_(["${state.maxCount}"]),
                             style: TextStyle(
-                                fontSize: 13.sp, color: ColorX.text586()),
+                                fontSize: 13.sp, color: ColorX.text5862()),
                           ),
                         ],
                       ),
@@ -131,7 +129,7 @@ class _BindBankPageState extends State<BindBankPage> {
                   TextSpan(
                     text: Intr().wenxintixing_yinhangka,
                     style: TextStyle(
-                        fontSize: 14.sp, color: ColorX.text586(), height: 1.8),
+                        fontSize: 14.sp, color: ColorX.text5862(), height: 1.8),
                   ),
                   WidgetSpan(
                     alignment: PlaceholderAlignment.baseline,
@@ -149,10 +147,9 @@ class _BindBankPageState extends State<BindBankPage> {
                             fontWeight: FontWeight.w600,
                             fontSize: 14.sp,
                             color: ColorX.text0917(),
-                            height: 1.8,
                             decoration: TextDecoration.underline,
                             decorationThickness: 3.0,
-                            decorationColor: Colors.black, // 设置下划线颜色
+                            decorationColor: ColorX.textBlack(), // 设置下划线颜色
                           ),
                         ),
                       ),

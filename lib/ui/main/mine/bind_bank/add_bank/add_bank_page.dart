@@ -41,7 +41,7 @@ class _AddBankPageState extends State<AddBankPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,14 +54,15 @@ class _AddBankPageState extends State<AddBankPage> {
                   ),
                   SizedBox(height: 5.h,),
                   Obx(() {
-                    return Text(state.detail.value.realname.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
+                    return Text(state.detail.value.realname.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
                   }),
+                  SizedBox(height: 5.h,),
                 ],
               ),
             ),
             Divider(height: 1.h,color: ColorX.color_f1f1f1,indent: 25.w,endIndent: 25.w,),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,20 +89,21 @@ class _AddBankPageState extends State<AddBankPage> {
                               ],
                             ),
                           ),
-                          WidgetUtils().buildTextField(260.w, 35.h, 14.sp, ColorX.text586(), Intr().shuruzhenshiyouxiao,
+                          WidgetUtils().buildTextField(260.w, 35.h, 14.sp, ColorX.text5862(), Intr().shuruzhenshiyouxiao,
                               defText: state.bankMobile.value,inputType: TextInputType.phone,onChanged: (v)=> state.bankMobile.value = v)
                         ],
                       );
                     } else {
-                      return Text(state.detail.value.mobile.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
+                      return Text(state.detail.value.mobile.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
                     }
                   }),
+                  SizedBox(height: 5.h,),
                 ],
               ),
             ),
             Divider(height: 1.h,color: ColorX.color_f1f1f1,indent: 25.w,endIndent: 25.w,),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: InkWell(
                 onTap: ()=> DialogUtils().showSelectBankBtmDialog(context, state.banks).then((value) {
                   if(unEmpty(value)){
@@ -122,15 +124,16 @@ class _AddBankPageState extends State<AddBankPage> {
                     SizedBox(height: 5.h,),
                     Obx(() {
                       var name = state.selectBank.value.bankName ?? Intr().qingxuanzhe;
-                      return Text(name, style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
+                      return Text(name, style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),);
                     }),
+                    SizedBox(height: 5.h,),
                   ],
                 ),
               ),
             ),
             Divider(height: 1.h,color: ColorX.color_f1f1f1,indent: 25.w,endIndent: 25.w,),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,14 +145,15 @@ class _AddBankPageState extends State<AddBankPage> {
                     ],
                   ),
                   SizedBox(height: 5.h,),
-                  WidgetUtils().buildTextField(300.w, 35.h, 14.sp, ColorX.text586(), Intr().shuruyinhangzhanghao,
+                  WidgetUtils().buildTextField(300.w, 40.h, 14.sp, ColorX.text5862(), Intr().shuruyinhangzhanghao,backgroundColor: ColorX.cardBg15(),
+                      hintColor: ColorX.text5862(),padding: EdgeInsets.zero,
                   defText: state.bankAccount.value,onChanged: (v)=> state.bankAccount.value = v),
                 ],
               ),
             ),
             Divider(height: 1.h,color: ColorX.color_f1f1f1,indent: 25.w,endIndent: 25.w,),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,14 +164,15 @@ class _AddBankPageState extends State<AddBankPage> {
                       Text(Intr().kaihudizhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                     ],
                   ),
-                  WidgetUtils().buildTextField(300.w, 35.h, 14.sp, ColorX.text586(), Intr().shuruyinhangkakaihudizhi,
+                  WidgetUtils().buildTextField(300.w, 40.h, 14.sp, ColorX.text5862(), Intr().shuruyinhangkakaihudizhi,backgroundColor: ColorX.cardBg15(),
+                      hintColor: ColorX.text5862(),padding: EdgeInsets.zero,
                       defText: state.openAddress.value,onChanged: (v)=> state.openAddress.value = v),
                 ],
               ),
             ),
             Divider(height: 1.h,color: ColorX.color_f1f1f1,indent: 25.w,endIndent: 25.w,),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
+              margin: EdgeInsets.only(top: 10.h,left: 25.w,right: 25.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,12 +183,14 @@ class _AddBankPageState extends State<AddBankPage> {
                       Text(Intr().yanzhengchukuanmima,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                     ],
                   ),
-                  WidgetUtils().buildTextField(300.w, 35.h, 14.sp, ColorX.text586(), Intr().sidao12shuzihuozimu,
+                  SizedBox(height: 5.h,),
+                  WidgetUtils().buildTextField(300.w, 40.h, 14.sp, ColorX.text5862(), Intr().sidao12shuzihuozimu,backgroundColor: ColorX.cardBg15(),
+                      hintColor: ColorX.text5862(),padding: EdgeInsets.zero,
                       defText: state.bankPwd.value,onChanged: (v)=> state.bankPwd.value = v),
+                  Divider(height: 1.h,color: ColorX.color_f1f1f1,),
                 ],
               ),
             ),
-            Divider(height: 1.h,color: ColorX.color_f1f1f1,),
             SizedBox(height: 20.h,),
             Center(
               child: WidgetUtils().buildElevatedButton(Intr().queren, 341.w, 50.h,bg: ColorX.color_fc243b,
@@ -193,12 +200,12 @@ class _AddBankPageState extends State<AddBankPage> {
 
             Container(
               margin: EdgeInsets.symmetric(horizontal: 15.w),
-              child: Text(Intr().wenxintishi_,style: TextStyle(fontSize: 20.sp,color: ColorX.text586()),),
+              child: Text(Intr().wenxintishi_,style: TextStyle(fontSize: 20.sp,color: ColorX.text5862()),),
             ),
             SizedBox(height: 10.h,),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 15.w),
-              child: Text(Intr().yigezhanghaosanzhangyinhangka,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
+              child: Text(Intr().yigezhanghaosanzhangyinhangka,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
             ),
           ],
         ),
