@@ -81,7 +81,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                 }),
               ),
               InkWell(
-                onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().quanbujilu,state.types).then((value) {
+                onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context, Intr().quanbujilu,state.types,defValue: state.type.value).then((value) {
                   if(unEmpty(value)){
                     state.type.value = value;
                     state.type.refresh();
