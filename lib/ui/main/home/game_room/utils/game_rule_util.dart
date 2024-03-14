@@ -214,6 +214,7 @@ class GameRuleUtil {
   static var ballColorRed = Color(0xffe6250a);
   static var ballColorBlue = Color(0xff2585fd);
   static var ballColorGreen = Color(0xff4ca953);
+
   static var colorMap={
     0:Color(0xFF06A100),
     1:Color(0xFFFC243B),

@@ -12,7 +12,7 @@ class BettingTemaPage extends StatefulWidget {
   // String ballName;
   int index;
   RxList<OddsContent> selectBetting;
-  RxDouble inputAmt;
+  RxString inputAmt;
   String betName;
 
   BettingTemaPage(this.index,this.selectBetting,this.inputAmt,this.betName, {super.key});

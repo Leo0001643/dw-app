@@ -11,7 +11,7 @@ class BettingChildPage extends StatefulWidget {
   // String ballName;
   int index;
   RxList<OddsContent> selectBetting;
-  RxDouble inputAmt;
+  RxString inputAmt;
   String betName;
 
   BettingChildPage(this.index,this.selectBetting,this.inputAmt,this.betName, {super.key});

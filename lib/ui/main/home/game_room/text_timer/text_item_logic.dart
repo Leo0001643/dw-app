@@ -355,7 +355,7 @@ class TextItemLogic extends GetxController {
 
   void showWelcome() {
     loggerArray(['进入房间了开始讲话',roomWriting]);
-    // if (lastStatus != currentStatus.value) {
+    if (unEmpty(roomWriting)) {
     countDownLotteryEntity.value.type = "openOver";
     countDownLotteryEntity.value.title = "";//"kaishixiazhu".tr;
     countDownLotteryEntity.value.titleColor= ColorX.color_00ac47.value;
@@ -363,7 +363,7 @@ class TextItemLogic extends GetxController {
     countDownLotteryEntity.value.subTitile = roomWriting?.content?.inertRoom.em();//"kaishixiazhu".tr;
     countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
     countDownLotteryEntity.refresh();
-    // }
+    }
   }
 
   showOpen(int showT,String term) {

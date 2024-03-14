@@ -11,6 +11,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
@@ -50,7 +51,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
   ///选择的类型
   RxList<OddsContent> selectBetting=<OddsContent>[].obs;
 
-  RxDouble inputAmt = (0.0).obs;
+  var inputAmt = "".obs;
 
   var pageIndex = 0.obs;
   var contents = RxList<Widget>.empty(growable: true);
@@ -79,7 +80,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
   Widget build(BuildContext context) {
 
     return Container(
-      height: 0.77.sh,
+      height: 0.83.sh,
       width: 1.sw,
       decoration: BoxDecoration(
         color: ColorX.pageBg3(),
@@ -88,23 +89,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Stack(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: 20.w,top: 15.h),
-                child: InkWell(
-                  onTap: ()=> Navigator.of(context).pop(),
-                  child: WidgetUtils().buildImage(ImageX.iconDownArrow(), 24.r, 24.r),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.h),
-                  child: Text(Intr().touzhu,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),),),
-                ),
-              ),
-            ],
-          ),
+          SizedBox(height: 10.h,),
           Center(
             child: Container(
               decoration: BoxDecoration(
@@ -226,10 +211,10 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                     ),
                                     margin: EdgeInsets.only(left: 10.w),
                                     child: Obx(() {
-                                      return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, Intr().qingshurujine,
+                                      return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, Intr().xiazhujine,
                                           backgroundColor: ColorX.cardBg(),hintColor: ColorX.text586(),
-                                          defText: "${inputAmt.value}",inputType: TextInputType.number,onChanged: (v){
-                                            inputAmt.value =double.tryParse(  v)??0;
+                                          defText: inputAmt.value,inputType: TextInputType.number,onChanged: (v){
+                                            inputAmt.value = v;
                                           });
                                     }),
                                   ),
@@ -241,7 +226,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                       children: [
                                         Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight:FontWeight.w700,),),
                                         Obx(() {
-                                          return Text("${selectBetting.length * inputAmt.value}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),);
+                                          return Text("${selectBetting.length * DataUtils.formatDouble(inputAmt.value)}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),);
                                         })
                                       ],
                                     ),
@@ -249,7 +234,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                   SizedBox(width: 10.w,),
                                   InkWell(
                                     onTap: (){
-                                      inputAmt.value = 0;
+                                      inputAmt.value = "";
                                       chipIndex.value = -1;
                                       selectChip.clear();
                                       selectBetting.clear();
@@ -279,7 +264,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               showToast(Intr().xiazhujinewk);
                               return;
                             }
-                            double totalMony = selectBetting.length * inputAmt.value;
+                            var totalMony = selectBetting.length * DataUtils.formatDouble(inputAmt.value);
                             var betInfo = WsBetEntity();
                             betInfo.term = widget.logic.term.value;
                             var odds = List<WsBetContent>.empty(growable: true);
@@ -287,7 +272,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               var bc = WsBetContent();
                               bc.a = element.type;
                               bc.b = element.name;
-                              bc.c = inputAmt.value.toInt().toString();
+                              bc.c = inputAmt.value;
                               bc.d = element.play;
                               bc.e = element.play2;
                               odds.add(bc);
@@ -296,7 +281,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                             loggerArray(["打印投注信息",betInfo.toJson()]);
                             Navigator.pop(context);
                             ///确认投注
-                            DialogUtils().showConfirmBetDialog(context, widget.logic,betInfo,total: totalMony,inputAmt:inputAmt.value);
+                            DialogUtils().showConfirmBetDialog(context, widget.logic,betInfo,total: totalMony,inputAmt:DataUtils.formatDouble(inputAmt.value));
                           }),
                         ),
                       ],
@@ -385,12 +370,13 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       onTap: () {
         chipIndex.value = index;
         selectChip.add(switchChipMonney(index));
-        inputAmt.value = 0;
+        var amt = 0.0;
         ///提示音
         if(AppData.promptTone()){ AudioUtils().playBetSelect(); }
         selectChip.forEach((element) {
-          inputAmt.value += element;
+          amt += element;
         });
+        inputAmt.value = DataUtils.formatMoney(amt);
         setItemMoney(inputAmt.value);
         setState(() {
         });
@@ -440,9 +426,9 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
   }
 
 
-  void setItemMoney(double money) {
+  void setItemMoney(String money) {
     for(OddsContent content  in selectBetting) {
-      content.money=money;
+      content.money = DataUtils.formatDouble(money);
     }
   }
 

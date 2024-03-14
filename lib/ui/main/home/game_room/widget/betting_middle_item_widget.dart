@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
@@ -12,7 +13,7 @@ class BettingMiddleItemWidget extends StatefulWidget {
   int index=0;
   OddsContent  content;
   RxList<OddsContent> selectBetting;
-  RxDouble inputAmt;
+  RxString inputAmt;
   String betName;
 
 
@@ -150,7 +151,7 @@ class StateBettingMiddleItemWidget extends State<BettingMiddleItemWidget>{
     content.check=!(content.check??false);
     // print("=======> inputAmt.value   ${inputAmt.value}");
     if(content.check==true) {
-      content.money = widget.inputAmt.value;
+      content.money = DataUtils.formatDouble(widget.inputAmt.value);
       widget.selectBetting.add(content);
     }else{
       widget.selectBetting.remove(content);

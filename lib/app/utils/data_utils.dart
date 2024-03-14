@@ -495,6 +495,14 @@ class DataUtils{
     return money == 0 ? '0': "${money.em()}";
   }
 
+  static num formatNum(String? money){
+    return isEmpty(money) ? 0:num.tryParse(money.em())!;
+  }
+
+  static double formatDouble(String? money){
+    return formatNum(money).toDouble();
+  }
+
   static String buildClientName(int length){
     var order = DateTime.now().millisecondsSinceEpoch.toString();
     if (length > 0) {

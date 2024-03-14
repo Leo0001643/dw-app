@@ -24,7 +24,13 @@ class CountDownItemWidget extends StatelessWidget {
       decoration: BoxDecoration(
           color: ColorX.cardBg3(),
           borderRadius: BorderRadius.all(Radius.circular(8.r))),
-      child: Column(
+      child: isEmpty(wsBetResultEntity.term) ?
+      Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(vertical: 5.h),
+        child: Text(wsBetResultEntity.subTitile.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
+      ) :
+      Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
