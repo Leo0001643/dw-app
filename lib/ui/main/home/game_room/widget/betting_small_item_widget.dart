@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
@@ -93,11 +94,11 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
                     width: 1,
                     color:Color(0xFFE7EBF4)
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(28)),
+                borderRadius: BorderRadius.all(Radius.circular(28.r)),
               ),
               child: Text(result,style: TextStyle(
                   fontSize:13,
-                  color:widget.useNoColor == true ? Color(0xFF091722) : GameRuleUtil.colorMap[widget.index%6]??Color(0xFF06A100),
+                  color: getTagColor(widget.index),
                   fontWeight: FontWeight.w700
               ),),
             ),
@@ -111,6 +112,34 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
       ),
     );
   }
+
+  Color getTagColor(int index) {
+    switch(index){
+      case 3:
+      case 4:
+      case 9:
+      case 10:
+      case 14:
+      case 15:
+      case 20:
+      case 25:
+      case 26:
+        return ColorX.color_5583e7;
+      case 0:
+      case 5:
+      case 6:
+      case 11:
+      case 16:
+      case 17:
+      case 21:
+      case 22:
+      case 27:
+        return ColorX.color_23a81d;
+      default:
+        return ColorX.color_fc243b;
+    }
+  }
+
 
   // saveColorType(OddsContent con) {
   //   if (con.type?.contains(GameRuleUtil.GameType_Second)==true) {
