@@ -597,8 +597,6 @@ class ImageX{
 
   static const defultImg =  'assets/images/defultImg.png';
 
-
-
   
   static String startP(){
     switch(AppData.localeIndex()){
@@ -1009,7 +1007,6 @@ class ImageX{
   static String iconJjGrey(){
     return AppData.theme() ? icon_jj_grey : currency_cny;
   }
-
 
 
 

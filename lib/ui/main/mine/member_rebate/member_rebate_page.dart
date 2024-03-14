@@ -85,7 +85,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                           DialogUtils().showRebateRoleBtmDialog(context,state.backWaterDesc!);
                         }
                       },
-                      child: Image.asset(ImageX.icon_bzzx),
+                      child: WidgetUtils().buildImage(ImageX.iconBzzxT(), 24.r, 24.r),
                     ),
                   ],
                 ),
@@ -160,7 +160,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                           DialogUtils().showRebateRoleBtmDialog(context,state.backWaterDesc!);
                         }
                       },
-                      child: Image.asset(ImageX.icon_bzzx),
+                      child: WidgetUtils().buildImage(ImageX.iconBzzxT(), 24.r, 24.r),
                     ),
                   ],
                 ),
