@@ -83,7 +83,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       height: 0.83.sh,
       width: 1.sw,
       decoration: BoxDecoration(
-        color: ColorX.pageBg3(),
+        // color: ColorX.pageBg3(),
         borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
       ),
       child: Column(
@@ -206,12 +206,12 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        border: Border.all(color: ColorX.color_091722,width: 1.r),
+                                        border: Border.all(color: ColorX.text0917(),width: 1.r),
                                         borderRadius: BorderRadius.circular(10.r)
                                     ),
                                     margin: EdgeInsets.only(left: 10.w),
                                     child: Obx(() {
-                                      return WidgetUtils().buildTextField(101.w, 40.h, 15.sp, ColorX.color_949eb9, Intr().xiazhujine,
+                                      return WidgetUtils().buildTextField(101.w, 35.h, 12.sp, ColorX.color_949eb9, Intr().xiazhujine,
                                           backgroundColor: ColorX.cardBg(),hintColor: ColorX.text586(),
                                           defText: inputAmt.value,inputType: TextInputType.number,onChanged: (v){
                                             inputAmt.value = v;
@@ -240,7 +240,12 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                       selectBetting.clear();
                                       selectBetting.refresh();
                                     },
-                                    child: Image.asset(ImageX.icon_clear,width: 48.w,height: 40.h,),
+                                    child: Container(
+                                      width: 48.w,
+                                      height: 40.h,
+                                      decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r)),
+                                      child:  WidgetUtils().buildImage(ImageX.emptyicon,20.w,28.h,fit: BoxFit.scaleDown,),
+                                    ),
                                   ),
                                 ],
                               ),

@@ -595,6 +595,9 @@ class ImageX{
   static const gywm_dark = 'assets/images/gywm_dark.svg';
   static const back_white = 'assets/images/back_white.svg';
 
+  static const emptyicon = 'assets/images/emptyicon.svg';
+
+
   static const defultImg =  'assets/images/defultImg.png';
 
   

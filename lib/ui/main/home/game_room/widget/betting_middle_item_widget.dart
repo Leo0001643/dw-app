@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
@@ -53,14 +54,14 @@ class StateBettingMiddleItemWidget extends State<BettingMiddleItemWidget>{
               spreadRadius: 0
           )],
           border: Border.all(
-              width: 0.5,
-              color:Colors.white
+              width: 1.w,
+              color:ColorX.cardBg15()
           ),
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          gradient: const LinearGradient(
+          borderRadius: BorderRadius.all(Radius.circular(8.r)),
+          gradient: LinearGradient(
               begin : Alignment.topCenter,
               end : Alignment.bottomCenter,
-              colors: [Color(0xFFFFEED4), Color(0xFFFFF5D0)]),
+              colors: ColorX.cardSelColors()),
         ):
         BoxDecoration(
           boxShadow:[ BoxShadow(
@@ -70,26 +71,26 @@ class StateBettingMiddleItemWidget extends State<BettingMiddleItemWidget>{
               spreadRadius: 0
           )],
           border: Border.all(
-              width: 0.5,
-              color:Colors.white
+              width: 1.w,
+              color:ColorX.cardBg15(),
           ),
           borderRadius: BorderRadius.all(Radius.circular(8)),
-          gradient: const LinearGradient(
+          gradient: LinearGradient(
               begin : Alignment.topCenter,
               end : Alignment.bottomCenter,
-              colors: [Colors.white, Color(0xFFF3F4F9)]),
+              colors: ColorX.cardColors()),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(ssb,style: TextStyle(
                 fontSize:13.sp,
-                color: Color(widget.content.color??0xFF091722),
+                color: Color(widget.content.color ?? ColorX.text0917().value),
                 fontWeight: FontWeight.w700
             ),),
             Text("${widget.content.play}",style: TextStyle(
                 fontSize:13.sp,
-                color: Color(0xFFD73547),
+                color: widget.content.check==true? ColorX.textff516() : ColorX.textd53(),
                 fontWeight: FontWeight.w500
             ),),
           ],

@@ -56,13 +56,13 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
           )],
           border: Border.all(
               width: 0.5,
-              color:Colors.white
+              color:ColorX.cardBg15(),
           ),
           borderRadius: BorderRadius.all(Radius.circular(8.r)),
-          gradient: const LinearGradient(
+          gradient: LinearGradient(
               begin : Alignment.topCenter,
               end : Alignment.bottomCenter,
-              colors: [Color(0xFFFFEED4), Color(0xFFFFF5D0)]),
+              colors: ColorX.cardSelColors()),
         ):
         BoxDecoration(
           boxShadow:[ BoxShadow(
@@ -71,15 +71,13 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
               blurRadius: 2,
               spreadRadius: 0
           )],
-          border: Border.all(
-              width: 0.5,
-              color:Colors.white
-          ),
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          gradient: const LinearGradient(
+          border: Border.all(width: 1.w, color:ColorX.cardBg15(),),
+          borderRadius: BorderRadius.all(Radius.circular(8.r)),
+          gradient: LinearGradient(
               begin : Alignment.topCenter,
               end : Alignment.bottomCenter,
-              colors: [Colors.white, Color(0xFFF3F4F9)]),
+              colors: ColorX.cardColors(),
+          ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,22 +87,22 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
               height: 28.w,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: ColorX.cardBg(),
                 border: Border.all(
-                    width: 1,
-                    color:Color(0xFFE7EBF4)
+                    width: 1.w,
+                    color:ColorX.cardBg16()
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(28.r)),
               ),
               child: Text(result,style: TextStyle(
-                  fontSize:13,
+                  fontSize:13.sp,
                   color: getTagColor(widget.index),
-                  fontWeight: FontWeight.w700
+                  fontWeight: FontWeight.w700,
               ),),
             ),
             Text("${widget.content.play}",style: TextStyle(
                 fontSize:13.sp,
-                color: const Color(0xFFD73547),
+                color: widget.content.check==true? ColorX.textff516() : ColorX.textd53(),
                 fontWeight: FontWeight.w500
             ),),
           ],

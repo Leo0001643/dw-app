@@ -179,6 +179,9 @@ class ColorX{
     return AppData.theme() ? Colors.white : Colors.transparent;
   }
 
+  static Color cardBg16(){
+    return AppData.theme() ? ColorX.color_e7ebf4 : Colors.white;
+  }
 
 
 
@@ -235,6 +238,10 @@ class ColorX{
     return AppData.theme() ? ColorX.color_d53849 : ColorX.color_ff5163;
   }
 
+  static Color textff516(){
+    return AppData.theme() ? ColorX.color_ff5163 : Colors.white;
+  }
+
   static Color text949(){
     return AppData.theme() ? ColorX.color_949eb9 : Colors.white60;
   }
@@ -255,6 +262,9 @@ class ColorX{
     return AppData.theme() ? [Colors.white,const Color(0xfff3f4f9)] : [Color.fromRGBO(30, 31, 31, 1),Color.fromRGBO(30, 31, 31, 1)];
   }
 
+  static List<Color> cardSelColors(){
+    return AppData.theme() ? [Color(0xFFFFEED4), Color(0xFFFFF5D0)] : [ColorX.color_e75555,ColorX.color_e75555];
+  }
 
   static List<Color> betColors(int roomType){
     return roomType == 1 ? [color_ff5163, color_ff5164] : (roomType == 2 ? [Color(0xff6E7D92),Color(0xff4A5268)] : [Color(0xff937D6E),Color(0xff68564A)]);

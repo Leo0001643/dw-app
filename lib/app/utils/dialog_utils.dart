@@ -606,7 +606,7 @@ class DialogUtils {
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        backgroundColor: ColorX.cardBg5(),
+        backgroundColor: ColorX.pageBg(),
         builder: (context) {
           return BettingBtmDialog(logic);
         });
