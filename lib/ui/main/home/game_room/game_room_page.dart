@@ -41,11 +41,10 @@ class _GameRoomPageState extends State<GameRoomPage> {
 
   @override
   void initState() {
-    state.room.value = Get.arguments;
-    // TextItemLogic textItemLogic = Get.find<TextItemLogic>();
-    logic.loadData(state.room.value, true);
     ///加载房间提示信息
     state.roomWriting.assignAll(AppData.roomWritingEntity() ?? []);
+    state.room.value = Get.arguments;
+    logic.loadData(state.room.value, true);
     super.initState();
   }
 

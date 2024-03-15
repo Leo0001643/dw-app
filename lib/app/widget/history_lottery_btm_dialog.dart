@@ -17,23 +17,21 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return GetBuilder<GameRoomLogic>(
         id: GameRoomLogic.gameRoomCompute,
         builder: (logic) {
       return Container(
-        height: 0.77.sh,
+        height: 0.83.sh,
         width: 1.sw,
         decoration: BoxDecoration(
           color: ColorX.cardBg5(),
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
-        child:   Column(
+        child: Column(
           children: [
             buildHeadTime(logic),
-            Container(
-              height: 0.69.sh,
+            Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: logic.recentlyWSLotteryEntityData.length,

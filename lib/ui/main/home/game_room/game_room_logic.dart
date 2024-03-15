@@ -22,7 +22,6 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/music_switch_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
-import 'package:leisure_games/ui/bean/source_check_event.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
@@ -54,6 +53,8 @@ class GameRoomLogic extends GetxController {
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
 
   RxList<WSLotteryEntityData> recentlyWSLotteryEntityData=<WSLotteryEntityData>[].obs;
+  ///更新开奖结果了
+  var updateLottery = false;
 
   // RxDouble inputAmt = (0.0).obs;
 
@@ -217,6 +218,7 @@ class GameRoomLogic extends GetxController {
     TextItemLogic? logic=Get.find<TextItemLogic>();
     var tag = "${room.gameType.em()}_${room.level.em()}_room_message";
     var roomWriting = isEmpty(state.roomWriting) ? null :  state.roomWriting.firstWhere((element) => element.tag == tag);
+    loggerArray(["加载房间文案的数据l ",roomWriting]);
     logic.loadDataGameCode(room.gameType.em(),roomWriting);
     _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
       logic.loadDataGameCode(room.gameType.em(),roomWriting);
@@ -244,13 +246,14 @@ class GameRoomLogic extends GetxController {
     super.dispose();
   }
 
+  ///开奖
   void handleLottery(WSLotteryEntity lottery) {
     // WSLotteryEntity wsLotteryEntity =
     //     WSLotteryEntity.fromJson(jsonDecode(response.data));
     recentlyWSLotteryEntityData.value = lottery.data ?? [];
     if (lottery.data?.isNotEmpty == true) {
       headWSLotteryEntityData = lottery.data!.first;
-      // term.value = headWSLotteryEntityData!.term.em();
+      updateLottery = true;///更新开奖结果了
       update([gameRoomCompute]);
     }
     ///提示音
@@ -267,6 +270,7 @@ class GameRoomLogic extends GetxController {
 
   }
 
+  ///投注结果
   void handleBetResult(WsBetEntity entity) {
     print("=====>3");
     loggerArray(["投注信息打印",entity.toJson()]);
@@ -282,6 +286,7 @@ class GameRoomLogic extends GetxController {
     print("=====>4");
   }
 
+  ///系统消息
   void handleSystemMessgeResult(CountDownLotteryEntity entity) {
     GameRoomItemEntity gameRoomItemEntity = GameRoomItemEntity(type: entity.type, data: entity);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);

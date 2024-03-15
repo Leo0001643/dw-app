@@ -46,7 +46,7 @@ class CountDownItemWidget extends StatelessWidget {
               ),
               Text(
                 wsBetResultEntity.term.em(),
-                style: TextStyle(fontSize: 14.sp, fontWeight:FontWeight.w700, color: Color(0xFFE62912)),
+                style: TextStyle(fontSize: 14.sp, fontWeight:FontWeight.w700, color: ColorX.color_fd273e),
               ),
               Text(
                 "】",
@@ -55,7 +55,7 @@ class CountDownItemWidget extends StatelessWidget {
               SizedBox(width: 8.w,),
               Expanded(
                 child: Text(
-                  wsBetResultEntity.subTitile?? Intr().julifengpanshijian([wsBetResultEntity.time.toString()]),
+                  wsBetResultEntity.subTitile.em(),//?? Intr().julifengpanshijian([wsBetResultEntity.time.toString()])
                   style: TextStyle(fontSize: 14.sp, color: ColorX.text586()),
                 ),
               ),

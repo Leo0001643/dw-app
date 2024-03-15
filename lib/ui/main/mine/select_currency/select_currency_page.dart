@@ -71,7 +71,7 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
                     itemCount: state.coinList.length,
                     physics: const NeverScrollableScrollPhysics(),
                     separatorBuilder: (context,index){
-                      return Divider(height: 1.h,color: ColorX.color_f1f1f1,);
+                      return Divider(height: 1.h,color: ColorX.linef1f(),);
                     },
                     itemBuilder: (context,index){
                       var item = state.coinList[index];

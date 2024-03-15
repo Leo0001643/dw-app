@@ -209,7 +209,7 @@ class TextItemLogic extends GetxController {
 
               showKeyCountTime(showT,term);
 
-              showStartBettingTime(showT);
+              showStartBettingTime(showT,term);
               if (showT <= 5) {
                 showOverTime(showT);
               }
@@ -218,6 +218,7 @@ class TextItemLogic extends GetxController {
               break;
             } else if (onlineT > data[s]['closeTime'] && onlineT < data[s + 1]['openTime']) {
               currentStatus.value=LotteryStatus.sealingPlateStatus;
+              Get.find<GameRoomLogic>().updateLottery = false;
               //现在时间  大于关闭时间，小于下一期开奖时间， 则显示封盘中
               // print("fengpanzhong".tr);
               resetStatusWhenClosed();
@@ -272,7 +273,7 @@ class TextItemLogic extends GetxController {
     }else {
       fengpanCount = -1;
     }
-    loggerArray(["期号倒计时结果",roomcountdown]);
+    loggerArray(["期号倒计时结果",lastStatus,roomcountdown,]);
     update([id_textTimerItem]);
   }
 
@@ -336,7 +337,7 @@ class TextItemLogic extends GetxController {
   }
 
   showKeyCountTime(int showT,String term) {
-    if ((showT == 30 || showT == 10) &&
+    if ((showT == 60 || showT == 30 || showT == 10) &&
         (lastShowTime != showT)) {// showT == 15 ||
       countDownLotteryEntity.value.type = "countTime";
       countDownLotteryEntity.value.status = LotteryStatus.countDownStatus.name;
@@ -344,7 +345,9 @@ class TextItemLogic extends GetxController {
       countDownLotteryEntity.value.term = term;
       countDownLotteryEntity.value.titleColor = ColorX.text586().value;
       countDownLotteryEntity.value.title = "xitongxiaoxi".tr;
-      if(showT == 30){
+      if(showT == 60){
+        countDownLotteryEntity.value.subTitile = roomWriting?.content?.countDown60.em();//"${"julifengpan".tr}${showT}${"miao".tr}";
+      }else if(showT == 30){
         countDownLotteryEntity.value.subTitile = roomWriting?.content?.countDown30.em();//"${"julifengpan".tr}${showT}${"miao".tr}";
       }else {
         countDownLotteryEntity.value.subTitile = roomWriting?.content?.countDown10.em();//"${"julifengpan".tr}${showT}${"miao".tr}";
@@ -367,16 +370,16 @@ class TextItemLogic extends GetxController {
   }
 
   showOpen(int showT,String term) {
-    loggerArray(['这里显示开始下注了m ',showT,term,lastStatus != currentStatus.value]);
-    // if (lastStatus != currentStatus.value) {
+    loggerArray(['这里显示开始下注了m ',showT,term,currentStatus.value,roomWriting?.content?.beginBet.em()]);
+    if (unEmpty(roomWriting)) {
       countDownLotteryEntity.value.type = "openOver";
-      countDownLotteryEntity.value.title = roomWriting?.content?.beginBet.em();//"kaishixiazhu".tr;
+      countDownLotteryEntity.value.title = Intr().kaishixiazhu;//"kaishixiazhu".tr;
       countDownLotteryEntity.value.titleColor= ColorX.color_00ac47.value;
       countDownLotteryEntity.value.term = term;
       countDownLotteryEntity.value.subTitile = roomWriting?.content?.beginBet.em();//"kaishixiazhu".tr;
       countDownLotteryEntity.value.status = LotteryStatus.sealingPlateStatus.name;
       countDownLotteryEntity.refresh();
-    // }
+    }
   }
 
   showCloseOver(String term) {
@@ -389,13 +392,15 @@ class TextItemLogic extends GetxController {
       countDownLotteryEntity.refresh();
   }
 
-  showStartBettingTime(int showT) {
+  showStartBettingTime(int showT,String term) {
     // print(
     //     "=====>firstShowStartBettingInPeriod  ${firstShowStartBettingInPeriod}  showT  ${showT}");
     if (firstShowStartBettingInPeriod && showT > 45) {
       firstShowStartBettingInPeriod = false;
       showStartBetting = true;
       update(([id_showStartBetting]));
+      ///显示开始下注消息
+      showOpen(showT, term);
       ///提示音
       if(AppData.promptTone()){ AudioUtils().playNewKj(); }
       Future.delayed(Duration(seconds: 2,), () {

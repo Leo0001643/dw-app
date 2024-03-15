@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -238,16 +239,15 @@ class GameRoomComputeWidget extends StatelessWidget {
     return GetBuilder<GameRoomLogic>(
         id: GameRoomLogic.gameRoomCompute,
         builder: (controller) {
-
           GameRoomState state = logic.state;
           WSLotteryEntityData? headWSLotteryEntityData =
               logic.headWSLotteryEntityData;
           List<int> arr2 = GameRuleUtil.parseLottery(
               headWSLotteryEntityData?.originalNum ?? ""); //3
-          var color = state.roomType.value == 1
-              ? ColorX.text0917()
-              : ColorX.color_ffe0ac;
-          print("=========>更新期数 ${headWSLotteryEntityData?.term}");
+          var color = state.roomType.value == 1 ? ColorX.text0917() : ColorX.color_ffe0ac;
+
+          loggerArray(["=========>更新期数",headWSLotteryEntityData?.term,logic.currentStatus.value]);
+
           return InkWell(
             onTap: () =>
                 DialogUtils().showHistoryLotteryBtmDialog(context, logic),
@@ -259,35 +259,20 @@ class GameRoomComputeWidget extends StatelessWidget {
                   WidgetUtils().buildDixqi3(headWSLotteryEntityData?.term ?? "",
                       state.roomType.value),
                   // Text(termData,style: TextStyle(fontSize: 12.sp,color: color,fontWeight: FontWeight.w500),),
-                  SizedBox(
-                    width: 5.w,
-                  ),
-                  buildDrawNum("${arr2[0]}", logic,
-                      showWaittingImg: logic.currentStatus.value ==
-                          LotteryStatus.sealingPlateStatus),
+                  SizedBox(width: 5.w,),
+                  buildDrawNum("${arr2[0]}", logic, showWaittingImg: !logic.updateLottery),
                   buildDrawMark("+", color),
-                  buildDrawNum("${arr2[1]}", logic,
-                      showWaittingImg: logic.currentStatus.value ==
-                          LotteryStatus.sealingPlateStatus),
+                  buildDrawNum("${arr2[1]}", logic, showWaittingImg: !logic.updateLottery),
                   buildDrawMark("+", color),
-                  buildDrawNum("${arr2[2]}", logic,
-                      showWaittingImg: logic.currentStatus.value ==
-                          LotteryStatus.sealingPlateStatus),
+                  buildDrawNum("${arr2[2]}", logic, showWaittingImg: !logic.updateLottery),
                   buildDrawMark("=", color),
-                  buildDrawResult("${arr2[3]}", logic,
-                      color: GameRuleUtil.getBallNewColor(arr2[3]),
-                      showWaittingImg: logic.currentStatus.value ==
-                          LotteryStatus.sealingPlateStatus),
+                  buildDrawResult("${arr2[3]}", logic, color: GameRuleUtil.getBallNewColor(arr2[3]), showWaittingImg: !logic.updateLottery),
                   // SizedBox(width: 5.w,),
                   Visibility(
-                    visible: logic.currentStatus.value !=
-                        LotteryStatus.sealingPlateStatus,
+                    visible: logic.updateLottery,
                     child: GameRuleUtil.getDXDSByType(arr2[3],state.roomType.value),
                   ),
-                  Image.asset(
-                    ImageX.icon_down_black,
-                    color: color,
-                  ),
+                  Image.asset(ImageX.icon_down_black, color: color,),
                 ],
               ),
             ),
@@ -355,12 +340,9 @@ class GameRoomComputeWidget extends StatelessWidget {
               color: color,
               borderRadius: BorderRadius.circular(15.r),
             ),
-            child: Text(
-              num,
+            child: Text(num,
               style: TextStyle(
-                  fontSize: 14.sp,
-                  color: textColor1,
-                  fontWeight: FontWeight.w600),
+                  fontSize: 14.sp, color: textColor1, fontWeight: FontWeight.w600),
             ),
           );
   }

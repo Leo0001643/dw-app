@@ -225,26 +225,16 @@ class GameRecentlyBetWidget extends StatelessWidget {
         children: [
           WidgetUtils().buildDixqi2(termData),
           SizedBox(width: 5.w,),
-          buildDrawNum("${arr2[0]}", logic,
-              showWaittingImg: logic.currentStatus.value ==
-                  LotteryStatus.sealingPlateStatus),
+          buildDrawNum("${arr2[0]}", logic, showWaittingImg: !logic.updateLottery),
           buildDrawMark("+", ColorX.text0917()),
-          buildDrawNum("${arr2[1]}", logic,
-              showWaittingImg: logic.currentStatus.value ==
-                  LotteryStatus.sealingPlateStatus),
+          buildDrawNum("${arr2[1]}", logic, showWaittingImg: !logic.updateLottery),
           buildDrawMark("+", ColorX.text0917()),
-          buildDrawNum("${arr2[2]}", logic,
-              showWaittingImg: logic.currentStatus.value ==
-                  LotteryStatus.sealingPlateStatus),
+          buildDrawNum("${arr2[2]}", logic, showWaittingImg: !logic.updateLottery),
           buildDrawMark("=", ColorX.text0917()),
-          buildDrawResult("${arr2[3]}", logic,
-              color: GameRuleUtil.getBallNewColor(arr2[3]),
-              showWaittingImg: logic.currentStatus.value ==
-                  LotteryStatus.sealingPlateStatus),
+          buildDrawResult("${arr2[3]}", logic, color: GameRuleUtil.getBallNewColor(arr2[3]), showWaittingImg: !logic.updateLottery),
           // SizedBox(width: 5.w,),
           Visibility(
-            visible: logic.currentStatus.value !=
-                LotteryStatus.sealingPlateStatus,
+            visible: logic.updateLottery,
             child: GameRuleUtil.getDXDS(arr2[3]),
           ),
         ],
