@@ -114,6 +114,10 @@ class ColorX{
     return AppData.theme() ? ColorX.color_58698d : Colors.white;
   }
 
+  static Color icone8e(){
+    return AppData.theme() ? ColorX.color_e8e8e8 : ColorX.color_ff9e52;
+  }
+
   static Color iconBlack(){
     return AppData.theme() ? Colors.black : Colors.white;
   }

@@ -48,7 +48,11 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
               return WidgetUtils().buildTextField(333.w, 124.h, 14.sp, ColorX.text0917(), Intr().qingzaiciyanzhenghaxizhi, maxLines: 10,
                 backgroundColor: ColorX.cardBg3(),defText: state.inputHash.value,onChanged: (v)=>state.inputHash.value = v,);
             }),
-            SizedBox(height: 25.h,),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 20.h),
+              alignment: Alignment.center,
+              child: Image.asset(ImageX.yellowJt,width: 20.w,height: 28.h,color: ColorX.icone8e(),),
+            ),
             Text(Intr().jiaoyanjieguo,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             Obx(() {
               return buildCheckItem(Intr().sha256zhuanhuahzi,state.sha256.value);
@@ -65,7 +69,9 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
             Obx(() {
               return buildCheckItem(Intr().zuizhongkaijianghaoma,state.lottery_num.value);
             }),
-            SizedBox(height: 25.h,),
+            SizedBox(height: 15.h,),
+            Divider(color: ColorX.cardBg16(),),
+            SizedBox(height: 10.h,),
             Text(Intr().shuoming,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
             Text(Intr().shuoming_jieshao,
               style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),height: 1.8),),
@@ -135,9 +141,14 @@ class _ToolCheckPageState extends State<ToolCheckPage> {
             Text(Intr().jiaoyanshuoming4,
               style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),height: 1.8),),
             SizedBox(height: 10.h,),
-            Container(
-              width: 335.w,
-              child: Image.asset(ImageX.iconCheckMa4P()),
+            Row(
+              children: [
+                SizedBox(width: 15.w,),
+                Container(
+                  color: Colors.white,
+                  child: Image.asset(ImageX.iconCheckMa4P()),
+                ),
+              ],
             ),
             SizedBox(height: 20.h,),
           ],
