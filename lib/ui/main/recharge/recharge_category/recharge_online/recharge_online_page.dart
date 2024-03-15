@@ -119,7 +119,12 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                    Row(
+                      children: [
+                        Text("*",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
+                        Text(Intr().chongzhizhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                      ],
+                    ),
                     SizedBox(height: 10.h,),
                     Container(
                       decoration: BoxDecoration(color: ColorX.appBarBg2(),borderRadius: BorderRadius.circular(5.r)),

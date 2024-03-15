@@ -176,7 +176,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                 children: [
                   TextSpan(text:betOddsExpected,style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b),),
                   TextSpan(text: normal ? "":"/",style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
-                  TextSpan(text: normal ? "":betOdds1314,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                  TextSpan(text: normal ? "":betOdds1314,style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b),),
                   TextSpan(text: partMsg,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                   TextSpan(text: betMoney,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
                 ]
