@@ -341,7 +341,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
   }
 
   buildTimer() {
-    String termData = GameRuleUtil.getSSB(widget.betInfo!.term.em(), year: "");
+    String termData = GameRuleUtil.getSSB(widget.betInfo.term.em(), year: "");
     return Text(
       termData,
       style: TextStyle(

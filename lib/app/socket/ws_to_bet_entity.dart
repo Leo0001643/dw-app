@@ -62,7 +62,8 @@ class WsToBetEntity {
 				betCon.num = content.a.em();
 			} else {
 				betCon.type = content.a;
-				betCon.num = "";
+				///跟投的时候.b是单点数字
+				betCon.num = content.b.em();
 			}
 			betCon.money = content.c;
 			betCon.odds = content.d;
