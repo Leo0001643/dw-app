@@ -39,7 +39,6 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
   static const riKey4 = Key('__RIKEY4__');
 
   late TabController _tabController;
-  int type=0;
   var tabs = [Intr().tema,Intr().diyiqiu,Intr().dierqiu,Intr().disanqiu,];
 
   var chips = [ImageX.chip1,ImageX.chip5,ImageX.chip10,ImageX.chip50,ImageX.chip100,ImageX.chip500,ImageX.chip1000,
@@ -257,7 +256,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                           alignment: Alignment.center,
                           width: 90.w,
                           child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
-                            if(type==0) {
+                            TextItemLogic textItemLogic = Get.find<TextItemLogic>();
+                            if (Intr().fengpanzhong == textItemLogic.state.text_timer.value) {
                               showToast(Intr().fengpanzhong);
                               return;
                             }
@@ -265,7 +265,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               showToast(Intr().qingxuanzhetouzhuxm);
                               return;
                             }
-                            if (inputAmt.value==0) {
+                            if (DataUtils.formatDouble(inputAmt.value) == 0.0) {
                               showToast(Intr().xiazhujinewk);
                               return;
                             }
