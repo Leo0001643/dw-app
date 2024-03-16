@@ -19,9 +19,10 @@ class ConfirmBettingDialog extends StatefulWidget {
   double total = 0;
   double inputAmt = 0;
   WsBetEntity betInfo;
+  final bool optional;///区分自选或跟投
   final GameRoomLogic logic;
 
-  ConfirmBettingDialog(this.logic, this.total, this.inputAmt,this.betInfo, {super.key});
+  ConfirmBettingDialog(this.logic, this.total, this.inputAmt,this.betInfo,this.optional, {super.key});
 
   @override
   State<StatefulWidget> createState() => StateConfirmBettingDialog();
@@ -210,6 +211,10 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     if(unEmpty(content.e)){
       betOdds = "$betOdds/${content.e.em()}";
     }
+    String betName = GameRuleUtil.getBetTypeName(content.a.em());
+    if(unEmpty(content.b)){
+      betName = "$betName-${content.b.em()}";
+    }
 
     return Container(
       height: 42.h,
@@ -221,13 +226,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
         children: [
           Expanded(
             flex: 25,
-            child: Text(
-              content.b.em(),
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: ColorX.text0917(),
-              ),
-            ),
+            child: Text(betName, style: TextStyle(fontSize: 14.sp, color: ColorX.text0917(),),),
           ),
           Expanded(
             flex: 35,
@@ -493,7 +492,9 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           WidgetUtils().buildElevatedButton(Intr().confirm, 135.w, 40.h,
               bg: buildBtnColor(),
               textColor: Colors.white, onPressed: () {
-                widget.logic.sumbitBets(index == 0? "CNY":"USDT",widget.betInfo.term,odds);
+            ///这里区分一下，如果是自选 需要实时取房间里的期号，如果不是要取投注信息里面的，防止投注时间过长导致的封盘过期
+            var term = widget.optional ? Get.find<GameRoomLogic>().term.value : widget.betInfo.term;
+                widget.logic.sumbitBets(index == 0? "CNY":"USDT",term,odds);
                 Navigator.of(context).pop(true);
               })
         ],

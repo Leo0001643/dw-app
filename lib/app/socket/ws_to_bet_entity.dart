@@ -57,13 +57,25 @@ class WsToBetEntity {
 			var betCon = WsToBetContent();
 			///type单点类型固定位cao字
 			///num为投注cao类型时的单点数字，只有当投注单点类型时有值，投注其他类型时传空字符串即可
-			if(RegexUtil.matches(r'\d', content.a.em())){
+			if(int.tryParse(content.a.em()) != null){
 				betCon.type = "cao";
-				betCon.num = content.a.em();
+				///如果有引文字母和下划线全都不要
+				betCon.num = content.a;
+			}else if(RegexUtil.matches(r'\d', content.a.em())){
+				///如果是包含数字的情况
+				betCon.type = content.a.em().replaceAll(RegExp(r'\d'), "");
+				if(unEmpty(betCon.type) && betCon.type!.endsWith('_')){
+					betCon.type = betCon.type!.substring(0,betCon.type!.length -1);
+				}
+				betCon.num = content.a.em().replaceAll("_", "").replaceAll(RegExp(r'[a-zA-Z]'), "");
 			} else {
 				betCon.type = content.a;
-				///跟投的时候.b是单点数字
-				betCon.num = content.b.em();
+				if(RegexUtil.matches(r'\d', content.b.em())){
+					///跟投的时候.b是单点数字
+					betCon.num = content.b.em();
+				}else {
+					betCon.num = "";
+				}
 			}
 			betCon.money = content.c;
 			betCon.odds = content.d;

@@ -613,7 +613,7 @@ class DialogUtils {
   }
 
   ///确认注单
-  void showConfirmBetDialog(BuildContext context, GameRoomLogic logic,WsBetEntity betInfo,{double total=0,double inputAmt=0}) {
+  void showConfirmBetDialog(BuildContext context, GameRoomLogic logic,WsBetEntity betInfo,bool optional,{double total=0,double inputAmt=0}) {
     var homelogic = Get.find<HomeLogic>();
     double selfMoney = homelogic.state.cnyBal.value.money??0;
     if(selfMoney<total) {
@@ -632,7 +632,7 @@ class DialogUtils {
             ),
             backgroundColor: ColorX.cardBg5(),
             contentPadding: EdgeInsets.zero,
-            content: ConfirmBettingDialog(logic,total,inputAmt,betInfo),
+            content: ConfirmBettingDialog(logic,total,inputAmt,betInfo,optional),
           );
         });
   }

@@ -286,7 +286,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                             loggerArray(["打印投注信息",betInfo.toJson()]);
                             Navigator.pop(context);
                             ///确认投注
-                            DialogUtils().showConfirmBetDialog(context, widget.logic,betInfo,total: totalMony,inputAmt:DataUtils.formatDouble(inputAmt.value));
+                            DialogUtils().showConfirmBetDialog(context, widget.logic,betInfo,total: totalMony,
+                                inputAmt:DataUtils.formatDouble(inputAmt.value), true);
                           }),
                         ),
                       ],
