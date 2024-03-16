@@ -53,7 +53,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
-              child: Text("fangwenluxian".tr,style: TextStyle(fontSize: 16.sp,color: ColorX.color_3e3737),),
+              child: Text("fangwenluxian".tr,style: TextStyle(fontSize: 16.sp,color: ColorX.text3e3()),),
             ),
             SizedBox(height: 20.h,),
             ...routes.map((e) => buildRouteState(e)).toList(),
@@ -74,7 +74,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
                           color: ColorX.color_60c549,
                         ),
                         SizedBox(height: 7.h,),
-                        Text("kuai".tr,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                        Text("kuai".tr,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
                       ],
                     ),
                   ),
@@ -86,7 +86,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
                           color: ColorX.color_ff9e52,
                         ),
                         SizedBox(height: 7.h,),
-                        Text("yiban".tr,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                        Text("yiban".tr,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
                       ],
                     ),
                   ),
@@ -98,7 +98,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
                           color: ColorX.color_d53849,
                         ),
                         SizedBox(height: 7.h,),
-                        Text("henman".tr,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                        Text("henman".tr,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
                       ],
                     ),
                   ),
@@ -110,7 +110,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
                           color: ColorX.color_b5b5b5,
                         ),
                         SizedBox(height: 7.h,),
-                        Text("bukeyong".tr,style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698d),),
+                        Text("bukeyong".tr,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862()),),
                       ],
                     ),
                   ),
@@ -119,8 +119,8 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
             ),
             SizedBox(height: 16.h,),
             Center(
-              child: WidgetUtils().buildElevatedButton("fanhui".tr, 131.w, 40.h, bg: ColorX.color_f7f8fb,
-                  textColor: ColorX.color_091722,onPressed: ()=> Navigator.pop(context)),
+              child: WidgetUtils().buildOutlineButton("fanhui".tr, 131.w, 40.h,ColorX.cardBg18(), bg: ColorX.cardBg17(),
+                  textColor: ColorX.text0917(),onPressed: ()=> Navigator.pop(context)),
             ),
           ],
         );
@@ -147,12 +147,12 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
         margin: EdgeInsets.only(left: 15.w,right: 15.w,bottom: 12.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(color: ColorX.color_10_949,width: 1.r),
+          border: Border.all(color: ColorX.line10949(),width: 1.r),
         ),
         child: Row(
           children: [
             SizedBox(width: 20.w,),
-            Text(route.title,style: TextStyle(fontSize: 16.sp,color: ColorX.color_333333),),
+            Text(route.title,style: TextStyle(fontSize: 16.sp,color: ColorX.text333()),),
             SizedBox(width: 10.w,),
             Expanded(
               child: Visibility(
@@ -165,8 +165,8 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
               height: 45.h,
               width: 40.w,
               alignment: Alignment.center,
-              decoration: BoxDecoration(color: ColorX.color_68_e2e,borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),bottomRight: Radius.circular(10.r))),
-              child: Text(Intr().entry,style: TextStyle(fontSize: 14.sp,color: ColorX.color_333333),),
+              decoration: BoxDecoration(color: ColorX.cardBg17(),borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),bottomRight: Radius.circular(10.r))),
+              child: Text(Intr().entry,style: TextStyle(fontSize: 14.sp,color: ColorX.text333()),),
             ),
           ],
         ),

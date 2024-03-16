@@ -187,8 +187,13 @@ class ColorX{
     return AppData.theme() ? ColorX.color_e7ebf4 : Colors.white;
   }
 
+  static Color cardBg17(){
+    return AppData.theme() ? ColorX.color_68_e2e : Colors.black;
+  }
 
-
+  static Color cardBg18(){
+    return AppData.theme() ? Colors.transparent : Colors.white;
+  }
 
 
 
@@ -264,6 +269,10 @@ class ColorX{
 
   static Color linef1f(){
     return AppData.theme() ? ColorX.color_f1f1f1 : Colors.black;
+  }
+
+  static Color line10949(){
+    return AppData.theme() ? ColorX.color_10_949 : Colors.white;
   }
 
   static List<Color> cardColors(){

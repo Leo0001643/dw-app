@@ -109,7 +109,6 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
                   Expanded(child: Container()),
                   InkWell(
                     onTap: (){
-
                       Get.until((ModalRoute.withName(Routes.main)));
                       eventBus.fire(ChangeMainPageEvent(3));
                     },

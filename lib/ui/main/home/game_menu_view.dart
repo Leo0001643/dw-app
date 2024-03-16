@@ -174,7 +174,7 @@ class StateGameMenuView extends State<GameMenuView> {
             child: Container(
               margin: EdgeInsets.only(left: 6, right: 22),
               height: 1,
-              child: Divider(
+              child: const Divider(
                 height: 0.5,
                 color: Colors.black12,
               ),
