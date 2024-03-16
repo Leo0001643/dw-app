@@ -57,7 +57,11 @@ class QuotaConversionLogic extends GetxController {
                 e1.money = value3.money;
                 state.platforms[value1.indexOf(e1) + 1] = e1;
                 state.platforms.refresh();
+                ///刷新右侧第三方钱包金额
                 if(isEmpty(state.rightAccount.value.liveName)){
+                  state.rightAccount.value = value1.first;
+                  state.rightAccount.refresh();
+                }else if(e1.liveId == state.rightAccount.value.liveId){
                   state.rightAccount.value = e1;
                   state.rightAccount.refresh();
                 }
