@@ -39,7 +39,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
       decoration: const BoxDecoration(
         image: DecorationImage(image: AssetImage(ImageX.mipaibg),fit: BoxFit.fill),
       ),
-      height: 0.77.sh,
+      height: 0.83.sh,
       width: 1.sw,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
