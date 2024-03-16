@@ -131,6 +131,7 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
         children: [
           WidgetUtils().buildImage(select ? item.activeIcon:item.normalIcon, 24.r, 24.r,fit: BoxFit.scaleDown),
           SizedBox(width: 3.w,),
+
           Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
         ],
       ),
