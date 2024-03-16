@@ -8,6 +8,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/ui/bean/change_balance_event.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
@@ -17,6 +18,7 @@ import 'mine_state.dart';
 class MineLogic extends GetxController {
   final MineState state = MineState();
   StreamSubscription? loginStream;
+  StreamSubscription? balanceStream;
 
   @override
   void onReady() {
@@ -24,6 +26,9 @@ class MineLogic extends GetxController {
     ///余额发生变化，刷新余额数据
     loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
       loadData();
+    });
+    balanceStream = eventBus.on<ChangeBalanceEvent>().listen((event) {
+      loadBalance();
     });
     Get.find<AvatarController>().addListener(() {
       state.user.value = AppData.user() ?? LoginUserEntity();
@@ -35,6 +40,7 @@ class MineLogic extends GetxController {
   @override
   void onClose() {
     loginStream?.cancel();
+    balanceStream?.cancel();
     super.onClose();
   }
 
@@ -109,16 +115,6 @@ class MineLogic extends GetxController {
       state.user.value = user!;
       state.user.refresh();
 
-      HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
-        state.cnyBal.value = value;
-        state.cnyBal.refresh();
-      });
-
-      HttpService.getBalance({ "cur":5, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
-        state.usdtBal.value = value;
-        state.usdtBal.refresh();
-      });
-
       HttpService.queryBonus({ "oid":user.oid,"username":user.username }).then((value) {
         state.bonus.value = value;
         state.bonus.refresh();
@@ -128,10 +124,28 @@ class MineLogic extends GetxController {
         state.memberPoint.value = value;
         state.memberPoint.refresh();
       });
+      loadBalance();
     } else {
       state.user.value = LoginUserEntity();
       state.user.refresh();
     }
+  }
+
+  void loadBalance(){
+    if(!AppData.isLogin()) return;
+
+    var user = AppData.user()!;
+
+    HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+      state.cnyBal.value = value;
+      state.cnyBal.refresh();
+    });
+
+    HttpService.getBalance({ "cur":5, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+      state.usdtBal.value = value;
+      state.usdtBal.refresh();
+    });
+
   }
 
 

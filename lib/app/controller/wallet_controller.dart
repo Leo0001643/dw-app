@@ -6,6 +6,7 @@ class WalletController extends GetxController {
 
   bool get wallet => AppData.wallet();
   static String wallet_id = "changeWallet";
+  static String balance_id = "changeBalance";
 
 
   ///更新全局钱包变化

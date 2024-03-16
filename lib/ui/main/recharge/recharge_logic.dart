@@ -8,6 +8,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/ui/bean/change_balance_event.dart';
 import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
@@ -18,6 +19,7 @@ class RechargeLogic extends GetxController {
   final RechargeState state = RechargeState();
   StreamSubscription? loginStream;
   StreamSubscription? languageStream;
+  StreamSubscription? balanceStream;
 
   @override
   void onReady() {
@@ -34,6 +36,9 @@ class RechargeLogic extends GetxController {
     languageStream = eventBus.on<LanguageEvent>().listen((event) {
       loadData();
     });
+    balanceStream = eventBus.on<ChangeBalanceEvent>().listen((event) {
+      loadBalance();
+    });
     super.onReady();
   }
 
@@ -41,6 +46,7 @@ class RechargeLogic extends GetxController {
   void onClose() {
     languageStream?.cancel();
     loginStream?.cancel();
+    balanceStream?.cancel();
     super.onClose();
   }
 
@@ -51,15 +57,7 @@ class RechargeLogic extends GetxController {
       state.user.value = user!;
       state.user.refresh();
 
-      HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
-        state.cnyBal.value = value;
-        state.cnyBal.refresh();
-      });
-
-      HttpService.getBalance({ "cur":5, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
-        state.usdtBal.value = value;
-        state.usdtBal.refresh();
-      });
+      loadBalance();
 
       HttpService.getPaymentList(user.oid.em(), user.username.em()).then((value) {
         // var usdtIndex = 0;
@@ -111,6 +109,23 @@ class RechargeLogic extends GetxController {
       state.user.refresh();
     }
 
+  }
+
+
+  void loadBalance(){
+    if(!AppData.isLogin()) return;
+
+    var user = AppData.user()!;
+
+    HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+      state.cnyBal.value = value;
+      state.cnyBal.refresh();
+    });
+
+    HttpService.getBalance({ "cur":5, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+      state.usdtBal.value = value;
+      state.usdtBal.refresh();
+    });
   }
 
 }
