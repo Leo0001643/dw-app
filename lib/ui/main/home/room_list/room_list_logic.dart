@@ -59,7 +59,7 @@ class RoomListLogic extends GetxController {
     logger(room?.toString());
     //fastbtb28HighRate
     HttpService.getNewsRate("${room?.gameType.em()}$type").then((value) {
-      Get.toNamed(Routes.html,arguments: HtmlEvent(isHtmlData: true,data: value.content.em(),pageTitle: value.name.em()));
+      Get.toNamed(Routes.loss_percent,arguments: value);
     });
   }
 

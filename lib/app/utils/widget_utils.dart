@@ -532,6 +532,44 @@ class WidgetUtils {
     );
   }
 
+  AppBar buildLossHtmlBar(RxString title,RxString subTitle, {bool back = true, Color? bgColor}) {
+    return AppBar(
+      title: Obx(() {
+        return Column(
+          children: [
+            SizedBox(height: 5.h,),
+            Text(
+              title.value,
+              style: TextStyle(
+                  fontSize: 16.sp,
+                  color: ColorX.text0917(),
+                  fontWeight: FontWeight.w600),
+            ),
+            SizedBox(height: 5.h,),
+            Text(
+              subTitle.value,
+              style: TextStyle(
+                  fontSize: 12.sp,
+                  color: ColorX.color_58698d,
+                  fontWeight: FontWeight.w600),
+            ),
+          ],
+        );
+      }),
+      centerTitle: true,
+      backgroundColor: bgColor ?? ColorX.appBarBg2(),
+      elevation: 0,
+      toolbarHeight: 55.h,
+      leading: Visibility(
+        visible: back,
+        child: InkWell(
+          onTap: () => Get.back(),
+          child: WidgetUtils().buildImage(ImageX.iconDownArrow(), 24.r, 24.r,fit: BoxFit.scaleDown),
+        ),
+      ),
+    );
+  }
+
   ///构建文本框
   Widget buildTextField(double? width, double? height, double textSize,
       Color textColor, String? hint,

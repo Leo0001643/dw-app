@@ -44,6 +44,8 @@ import 'package:leisure_games/ui/main/home/message_center/message_details/messag
 import 'package:leisure_games/ui/main/home/message_center/notice/notice_binding.dart';
 import 'package:leisure_games/ui/main/home/points_lottery/points_lottery_binding.dart';
 import 'package:leisure_games/ui/main/home/points_lottery/points_lottery_page.dart';
+import 'package:leisure_games/ui/main/home/room_list/loss_percent/loss_percent_binding.dart';
+import 'package:leisure_games/ui/main/home/room_list/loss_percent/loss_percent_page.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_binding.dart';
 import 'package:leisure_games/ui/main/home/room_list/room_list_page.dart';
 import 'package:leisure_games/ui/main/home/sign_in/sign_in_binding.dart';
@@ -213,6 +215,7 @@ class Routes {
   static const String add_bank = "/mine/add_bank";
   static const String add_usdt = "/mine/add_usdt";
   static const String simple_login = "/login/simple_login";
+  static const String loss_percent = "/room_list/loss_percent";
 
 
 
@@ -291,6 +294,8 @@ class Routes {
     GetPage(name: add_usdt,binding: AddUsdtBinding(), page: () => AddUsdtPage()),
     GetPage(name: simple_login,binding: SimpleLoginBinding(), page: () => SimpleLoginPage()),
     GetPage(name: betting_detail_child,binding: BettingDetailChildBinding(), page: () => BettingDetailChildPage()),
+    GetPage(name: loss_percent,binding: LossPercentBinding(), page: () => LossPercentPage()),
+
   ];
   
   
