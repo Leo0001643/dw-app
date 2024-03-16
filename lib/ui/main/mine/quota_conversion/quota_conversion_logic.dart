@@ -29,7 +29,7 @@ class QuotaConversionLogic extends GetxController {
     var user = AppData.user();
     var cur = AppData.wallet() ? 1: 5;
     state.platforms.clear();
-    state.rightAccount.value = PlatformEntity();
+    // state.rightAccount.value = PlatformEntity();
     loadBalance(true);
 
     HttpService.getPlatformList({"oid":user?.oid,"username":user?.username,"cur":cur}).then((value1) {
@@ -99,7 +99,7 @@ class QuotaConversionLogic extends GetxController {
     loggerArray(["转出参数打印",params]);
     HttpService.transfer(params).then((value) {
       showToast(Intr().caozuochenggong);
-      state.inputAmount.value = "";
+      state.inputAmount.value = "";//确认划转清空金额
       ///成功刷新页面数据
       loadData();
       loadBalance(false);
@@ -114,6 +114,7 @@ class QuotaConversionLogic extends GetxController {
       "tout":state.leftAccount.value.liveName,"tin":state.rightAccount.value.liveName,};
     HttpService.transfer(params).then((value) {
       showToast(Intr().caozuochenggong);
+      state.inputAmount.value = "";//确认划转清空金额
       ///成功刷新页面数据
       loadData();
       loadBalance(false);
