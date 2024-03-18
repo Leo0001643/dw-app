@@ -23,9 +23,10 @@ class MessageLogic extends GetxController {
   }
 
   void loadData() {
-    var user = AppData.user();
+    var user = AppData.user()!;
     if(isEmpty(user)){ return; }
-    HttpService.getMessage(user!.oid.em(), user.username.em()).then((value) {
+    var params = {"oid":user.oid,"username":user.username};
+    HttpService.getMessage(params).then((value) {
       state.messageList.assignAll(value);
       state.messageList.refresh();
     });

@@ -1025,14 +1025,10 @@ class _RetrofitClient implements RetrofitClient {
 
   @override
   Future<BaseResponseEntity<List<MessageItemEntity>>> getMessage(
-    String oid,
-    String username,
-  ) async {
+      Map<String, dynamic> params) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'oid': oid,
-      r'username': username,
-    };
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(params);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(

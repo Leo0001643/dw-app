@@ -53,6 +53,7 @@ class HomeState {
 
   ///域名配置
   DomainConfigEntity? domainConfig;
-
+  ///未读消息数量
+  var unreadCount = 0.obs;
 
 }

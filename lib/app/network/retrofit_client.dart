@@ -174,7 +174,7 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<LoginUserEntity>> userRegister(@Body() Map<String,dynamic> params,);
 
   @GET('/ds-api-web/getMessage')
-  Future<BaseResponseEntity<List<MessageItemEntity>>> getMessage(@Query('oid') String oid,@Query('username') String username,);
+  Future<BaseResponseEntity<List<MessageItemEntity>>> getMessage(@Queries() Map<String,dynamic> params,);
 
   @GET('/ds-api-web/getOnlineDigiccyChannel')
   Future<BaseResponseEntity<DigiccyChannelEntity>> getOnlineDigiccyChannel(@Query('oid') String oid,@Query('username') String username,);

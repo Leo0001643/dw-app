@@ -240,8 +240,8 @@ class HttpService{
     return buildFuture<LoginUserEntity>(()=> _client.userRegister(params,),loading: false);
   }
 
-  static Future<List<MessageItemEntity>> getMessage(String oid,String username,){
-    return buildFuture<List<MessageItemEntity>>(()=> _client.getMessage(oid,username),loading: false);
+  static Future<List<MessageItemEntity>> getMessage(Map<String,dynamic> params,){
+    return buildFuture<List<MessageItemEntity>>(()=> _client.getMessage(params),loading: false);
   }
 
   static Future<DigiccyChannelEntity> getOnlineDigiccyChannel(String oid,String username,){

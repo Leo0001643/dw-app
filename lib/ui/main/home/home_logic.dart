@@ -334,6 +334,17 @@ class HomeLogic extends GetxController {
       HttpService.getDomainConfig({"oid": user.oid, "username": user.username}).then((value) {
         state.domainConfig = value;
       });
+      ///未读消息数量
+      var params = {"oid":user.oid,"username":user.username};
+      HttpService.getMessage(params).then((value) {
+        var count = 0;
+        value.forEach((element) {
+          if(element.mstatus == 0){
+            count++;
+          }
+        });
+        state.unreadCount.value = count;
+      });
 
     } else {
       state.user.value = LoginUserEntity();

@@ -118,7 +118,7 @@ class WidgetUtils {
     );
   }
 
-  Widget buildHomeAppBar(context, {bool msg = false, bool drawer = false,}) {
+  Widget buildHomeAppBar(context,RxInt unRead, {bool msg = false, bool drawer = false,}) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 10.r),
       child: Row(
@@ -157,17 +157,20 @@ class WidgetUtils {
                       color: ColorX.icon586(),
                     ),
                   ),
-                  Visibility(
-                    child: Positioned(
-                      top: 7.r, right: 2.r,
-                      child: GFBadge(
-                        size: 20.r,
-                        color: Colors.transparent,
-                        textColor: ColorX.color_fc243b,
-                        text: "99",
+                  Obx(() {
+                    return Visibility(
+                      visible: unRead.value > 0,
+                      child: Positioned(
+                        top: 7.r, right: 2.r,
+                        child: GFBadge(
+                          size: 20.r,
+                          color: Colors.transparent,
+                          textColor: ColorX.color_fc243b,
+                          text: "${unRead.value}",
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  }),
                 ],
               ),
             ),
