@@ -241,7 +241,7 @@ class HttpService{
   }
 
   static Future<List<MessageItemEntity>> getMessage(String oid,String username,){
-    return buildFuture<List<MessageItemEntity>>(()=> _client.getMessage(oid,username));
+    return buildFuture<List<MessageItemEntity>>(()=> _client.getMessage(oid,username),loading: false);
   }
 
   static Future<DigiccyChannelEntity> getOnlineDigiccyChannel(String oid,String username,){
@@ -457,14 +457,18 @@ class HttpService{
     return buildFuture<String>(()=> _client.getPC28Plan(termCount),loading: false);
   }
 
-  static Future<String> switchLanguage(Map<String,dynamic> params,){
-    return buildFuture<String>(()=> _client.switchLanguage(params));
-  }
+  ///这个接口不需要调
+  // static Future<String> switchLanguage(Map<String,dynamic> params,){
+  //   return buildFuture<String>(()=> _client.switchLanguage(params));
+  // }
 
   static Future<dynamic> getRoomCopyWriting(){
     return buildFuture<dynamic>(()=> _client.getRoomCopyWriting());
   }
 
+  static Future<String> updateMessageStatus(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.updateMessageStatus(params));
+  }
 
 
 

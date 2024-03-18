@@ -47,9 +47,7 @@ class _MessagePageState extends State<MessagePage> with SingleTickerProviderStat
           itemBuilder: (context,index){
             return InkWell(
               child: buildMessageItem(state.messageList[index]),
-              onTap: (){
-                Get.toNamed(Routes.message_details,arguments: state.messageList[index]);
-              },
+              onTap: ()=> logic.updateMessageStatus(state.messageList[index]),
             );
           },
         );
@@ -70,11 +68,14 @@ class _MessagePageState extends State<MessagePage> with SingleTickerProviderStat
           Stack(
             children: [
               Image.asset(ImageX.icon_msg_list,width: 46.w,height: 46.h,),
-              Positioned(
-                top: 3.r, right: 5.r,
-                child: GFBadge(
-                  size: 10.r,
-                  shape: GFBadgeShape.circle,
+              Visibility(
+                visible: item.mstatus == 0,
+                child: Positioned(
+                  top: 3.r, right: 5.r,
+                  child: GFBadge(
+                    size: 10.r,
+                    shape: GFBadgeShape.circle,
+                  ),
                 ),
               ),
             ],

@@ -341,6 +341,8 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<String>> switchLanguage(@Body() Map<String,dynamic> params,);
 
 
+  @POST('/ds-api-web/updateMessageStatus')
+  Future<BaseResponseEntity<String>> updateMessageStatus(@Body() Map<String,dynamic> params,);
 
 
 

@@ -10,7 +10,7 @@ class MessageItemEntity {
 	int? id;
 	String? message;
 	String? language;
-	int? mstatus;
+	int? mstatus;///消息状态【状态，0未读，1已读】
 	String? username;
 	int? addTime;
 

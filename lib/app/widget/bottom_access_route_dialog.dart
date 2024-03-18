@@ -52,7 +52,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                     "dialog_see_more".tr,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -70,8 +70,8 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                   child: Row(
                     children: [
                       Container(
-                        height: 6.0, // 设置高度为6像素
-                        width: 6.0, // 设置宽度为6像素
+                        height: 6.h, // 设置高度为6像素
+                        width: 6.w, // 设置宽度为6像素
                         decoration: const BoxDecoration(
                           color: ColorX.color_60c549,
                           shape: BoxShape.circle, // 设置形状为圆形
@@ -92,8 +92,8 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                   child: Row(
                     children: [
                       Container(
-                        height: 6.0, // 设置高度为6像素
-                        width: 6.0, // 设置宽度为6像素
+                        height: 6.h, // 设置高度为6像素
+                        width: 6.w, // 设置宽度为6像素
                         decoration: const BoxDecoration(
                           color: ColorX.color_ff9e52,
                           shape: BoxShape.circle, // 设置形状为圆形
@@ -114,8 +114,8 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                   child: Row(
                     children: [
                       Container(
-                        height: 6.0, // 设置高度为6像素
-                        width: 6.0, // 设置宽度为6像素
+                        height: 6.h, // 设置高度为6像素
+                        width: 6.w, // 设置宽度为6像素
                         decoration: const BoxDecoration(
                           color: ColorX.color_d53849,
                           shape: BoxShape.circle, // 设置形状为圆形
@@ -136,8 +136,8 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                   child: Row(
                     children: [
                       Container(
-                        height: 6.0, // 设置高度为6像素
-                        width: 6.0, // 设置宽度为6像素
+                        height: 6.h, // 设置高度为6像素
+                        width: 6.w, // 设置宽度为6像素
                         decoration: const BoxDecoration(
                           color: ColorX.color_b5b5b5,
                           shape: BoxShape.circle, // 设置形状为圆形
@@ -189,7 +189,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(15),
+            margin: EdgeInsets.all(15.r),
             child: MyRoteGridView(),
           ),
         ],

@@ -132,13 +132,13 @@ class WidgetUtils {
           Visibility(
             visible: msg,
             child: InkWell(
-              onTap: () => goJumpRouteCenter(context),
+              onTap: () => DialogUtils().showAccessRouteDialog2(context),
               child: Padding(
                   padding: EdgeInsets.all(10.r),
                   child: Row(
                     children: [
                       Text("xianlu5".tr, style: TextStyle(color: ColorX.iconBlack())),
-                      WidgetUtils().buildImage(ImageX.iconDownArrow(), 24.r, 24.r),
+                      WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
                     ],
                   )),
             ),
@@ -664,10 +664,6 @@ class WidgetUtils {
     }
   }
 
-  //跳转路线
-  void goJumpRouteCenter(BuildContext context) {
-    DialogUtils().showAccessRouteDialog2(context);
-  }
 
   void goLogin() {
     if (unEmpty(AppData.simplePwd())) {
