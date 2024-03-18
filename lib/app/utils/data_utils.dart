@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
@@ -10,8 +11,16 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/res/jsonx.dart';
 import 'package:uuid/uuid.dart';
+import 'package:intl/intl.dart';
+
 
 class DataUtils{
+
+
+  static String format12Hour(int ms){
+    return DateFormat('yyyy-MM-dd hh:mm:ss').format(DateUtil.getDateTimeByMs(ms));
+  }
+
 
   /// get WeekDay.
   /// dateTime

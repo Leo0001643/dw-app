@@ -7,6 +7,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 
 import 'message_logic.dart';
@@ -86,7 +87,7 @@ class _MessagePageState extends State<MessagePage> with SingleTickerProviderStat
                 Row(
                   children: [
                     Expanded(child: Text(item.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),),
-                    Text(DateUtil.formatDateMs(item.addTime.em() * 1000),style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                    Text(DataUtils.format12Hour(item.addTime.em() * 1000),style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                   ],
                 ),
                 SizedBox(height: 3.h,),
