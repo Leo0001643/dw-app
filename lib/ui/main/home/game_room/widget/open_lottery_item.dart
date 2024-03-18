@@ -23,9 +23,8 @@ class OpenLotteryItem extends StatefulWidget {
 class StateOpenLotteryItem extends State<OpenLotteryItem> {
   @override
   Widget build(BuildContext context) {
-    WSLotteryEntity? wsBetResultEntity =
-        widget.gameRoomItemEntity.data as WSLotteryEntity;
-    WSLotteryEntityData? wSLotteryEntityData=wsBetResultEntity.data?[0];
+    WSLotteryEntity wsBetResultEntity = widget.gameRoomItemEntity.data as WSLotteryEntity;
+    WSLotteryEntityData? wSLotteryEntityData=wsBetResultEntity.data?.first;
     int a = 0;
     int b = 0;
     int c = 0;
@@ -58,8 +57,8 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
                     style: TextStyle(fontSize: 14.sp, color: ColorX.text586()),
                   ),
                   Text(
-                    "${(wsBetResultEntity.data?.length ?? 0) > 0 ? wSLotteryEntityData?.term :"" }",
-                    style: TextStyle(fontSize: 14.sp, color: Color(0xFFE62912)),
+                    Intr().dixqi([wSLotteryEntityData?.term ?? '']),
+                    style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b),
                   ),
                   Text(
                     "】",

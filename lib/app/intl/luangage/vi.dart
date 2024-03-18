@@ -1002,6 +1002,7 @@ class VI{
     "zanwuxiazhujilu":"Không có ghi chép cá cược",
     "xuanzheleixing":"Chọn loại",
     "touzhuchenggong":"Đặt cược thành công",
+    "kaihuxieyi":"Hợp đồng tài khoản",
 
   };
 }

@@ -1001,6 +1001,7 @@ class CN {
     "zanwuxiazhujilu":"暂无下注记录",
     "xuanzheleixing":"选择类型",
     "touzhuchenggong":"投注成功",
+    "kaihuxieyi":"《开户协议》",
 
 
   };

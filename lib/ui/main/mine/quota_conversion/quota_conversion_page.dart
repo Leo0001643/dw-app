@@ -100,7 +100,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                           children: [
                             Obx(() {
                               var symbol = AppData.wallet() ? "¥":"₮";
-                              return Text("${Intr().yue_}$symbol${state.leftAccount.value.money.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
+                              return Text("${Intr().yue_}$symbol${state.mainBal.value.money.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
                             }),
                             InkWell(
                               onTap: ()=> logic.loadBalance(false),
@@ -164,7 +164,16 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                     ),
                     SizedBox(
                       width: 60.w,
-                      child: Image.asset(ImageX.icon_right_left,color: ColorX.iconBlack(),),
+                      child: InkWell(
+                        onTap: (){
+                          var value = state.leftAccount.value;
+                          state.leftAccount.value = state.rightAccount.value;
+                          state.leftAccount.refresh();
+                          state.rightAccount.value = value;
+                          state.rightAccount.refresh();
+                        },
+                        child: Image.asset(ImageX.icon_right_left,color: ColorX.iconBlack(),),
+                      ),
                     ),
                     Expanded(
                       child: Container(

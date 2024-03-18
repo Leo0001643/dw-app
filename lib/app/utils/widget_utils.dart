@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -147,12 +148,27 @@ class WidgetUtils {
             visible: msg,
             child: InkWell(
               onTap: () => goMessageCenter(),
-              child: Padding(
-                padding: EdgeInsets.all(10.r),
-                child: Image.asset(
-                  ImageX.icon_user_msg,
-                  color: ColorX.icon586(),
-                ),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(10.r),
+                    child: Image.asset(
+                      ImageX.icon_user_msg,
+                      color: ColorX.icon586(),
+                    ),
+                  ),
+                  Visibility(
+                    child: Positioned(
+                      top: 7.r, right: 2.r,
+                      child: GFBadge(
+                        size: 20.r,
+                        color: Colors.transparent,
+                        textColor: ColorX.color_fc243b,
+                        text: "99",
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

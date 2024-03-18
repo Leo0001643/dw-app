@@ -45,7 +45,7 @@ class CountDownItemWidget extends StatelessWidget {
                 style: TextStyle(fontSize: 14.sp, color: ColorX.text586()),
               ),
               Text(
-                wsBetResultEntity.term.em(),
+                Intr().dixqi([wsBetResultEntity.term.em()]),
                 style: TextStyle(fontSize: 14.sp, fontWeight:FontWeight.w700, color: ColorX.color_fd273e),
               ),
               Text(

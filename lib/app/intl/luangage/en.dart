@@ -1072,6 +1072,7 @@ class EN{
     "zanwuxiazhujilu":"No bets recorded",
     "xuanzheleixing":"Select the type",
     "touzhuchenggong":"Successful bet",
+    "kaihuxieyi":"Account opening agreement",
 
   };
 

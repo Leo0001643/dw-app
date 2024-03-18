@@ -287,39 +287,17 @@ class _RegisterPageState extends State<RegisterPage> {
                           arguments: HtmlEvent(
                               data: Constants.contact,
                               isHtmlData: false,
-                              pageTitle: Intr().yhtk));
+                              pageTitle: Intr().kaihuxieyi));
                     },
                     child: Text(
-                      Intr().yhtk,
+                      Intr().kaihuxieyi,
                       style: TextStyle(
                           fontSize: 13.sp,
                           color: ColorX.text0917(),
                           fontWeight: FontWeight.w600),
                     ),
                   ),
-                ),
-                TextSpan(
-                    text: Intr().and,
-                    style:
-                    TextStyle(fontSize: 13.sp, color: ColorX.text0917())),
-                WidgetSpan(
-                  child: InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.html,
-                          arguments: HtmlEvent(
-                              data: Constants.contact,
-                              isHtmlData: false,
-                              pageTitle: Intr().ysxy));
-                    },
-                    child: Text(
-                      Intr().ysxy,
-                      style: TextStyle(
-                          fontSize: 13.sp,
-                          color: ColorX.text0917(),
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ),
+                )
               ])),
             ),
             SizedBox(height: 10.h,),
