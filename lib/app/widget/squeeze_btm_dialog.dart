@@ -10,6 +10,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
@@ -31,7 +32,6 @@ class SqueezeBtmDialog extends StatefulWidget{
 class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
   bool isScratched = false;
   double opacity = 1;
-  final scratchKey = GlobalKey<ScratcherState>();
 
   @override
   Widget build(BuildContext context) {
@@ -74,14 +74,19 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                     top: 14.h, left: 0,right: 2.w,
                     child: Column(
                       children: [
-                        Text(Intr().dixqi([term]),style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),),
+                        InkWell(
+                          onTap: (){
+                            logic.scratchKey.currentState?.reset(duration: const Duration(milliseconds: 200));
+                          },
+                          child: Text(Intr().dixqi([term]),style: TextStyle(fontSize: 18.sp,color: ColorX.color_fdf7e0,fontWeight: FontWeight.w600,),),
+                        ),
                         SizedBox(height: 38.h,),
                         Center(
                           child: LayoutBuilder(
                             builder: (context,cts){
                               var headWSLotteryEntityData = Get.find<GameRoomLogic>().headWSLotteryEntityData;
                               List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
-                              loggerArray(["咪牌开奖结果更新",arr2]);
+                              loggerArray(["咪牌开奖结果更新",arr2,logic.guaguaMask]);
                               var icon = AnimatedOpacity(
                                 opacity: opacity,
                                 duration: const Duration(milliseconds: 750),
@@ -102,20 +107,22 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                                   ),
                                 ),
                               );
-                              return Container(
+                              return SizedBox(
                                 width: 287.w,
                                 height: 137.h,
                                 child: Scratcher(
-                                  key: scratchKey,
+                                  key: logic.scratchKey,
                                   accuracy: ScratchAccuracy.low,
                                   color: Colors.transparent,
-                                  image: Image.asset(ImageX.guaguaMask1P(),fit: BoxFit.fill,),
-                                  brushSize: 20.r,
+                                  image: Image.asset(logic.guaguaMask,fit: BoxFit.fill,),
+                                  brushSize: 25.r,
                                   threshold: 50,
                                   onThreshold: () {
                                     setState(() {
                                       opacity = 1;
                                       isScratched = true;
+                                      ///刮开了 显示全部的开奖结果
+                                      logic.scratchKey.currentState?.reveal(duration: const Duration(milliseconds: 200));
                                     });
                                   },
                                   child: Container(child: icon,),
@@ -133,36 +140,23 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                                 child: LayoutBuilder(
                                   builder: (context,cts){
                                     try{
-                                      String result = "";
-                                      ///处理咪牌开奖逻辑
-                                      var lotCount = 0;
-                                      if (Intr().fengpanzhong == logic.state.text_timer.value) {
-                                        result = Intr().fengpanzhong;
-                                        lotCount = 9 - logic.fengpanCount;
-                                      } else {
-                                        result = logic.subToTime(logic.state.text_timer.value)??"";
-                                        var timeParts = result.split(":");
-                                        if(timeParts.length == 2){
-                                          lotCount = 9 + int.tryParse(timeParts.last).em();
-                                        }
-                                      }
                                       return Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(Intr().dixqitouzhu([nextTerm,result]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                          Text(Intr().dixqitouzhu([nextTerm,logic.mipaiTime]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
                                           SizedBox(height: 3.h,),
-                                          Text(Intr().dixqikaijiang([nextTerm,"${lotCount}s"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                          Text(Intr().dixqikaijiang([nextTerm,"${logic.lotCount}s"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
                                         ],
                                       );
                                     }catch(e){
-                                      logger(e);
+                                      logger(["这里报错会是什么情况",e]);
                                       return Container();
                                     }
                                   },
                                 ),
                               ),
                               WidgetUtils().buildElevatedButton(Intr().shuaxin, 59.w, 40.h,bg: ColorX.color_50_c13,textColor: ColorX.color_ffe0ac, onPressed: (){
-                                scratchKey.currentState?.reset(duration: const Duration(milliseconds: 200));
+                                logic.scratchKey?.currentState?.reset(duration: const Duration(milliseconds: 200));
                               }),
                             ],
                           ),
@@ -197,18 +191,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
   }
 
   Widget buildDrawResult(String result) {
-    var color = ColorX.color_fc243b;
-    switch(widget.logic.state.roomType.value){
-      case 1:
-        color = ColorX.color_fc243b;
-        break;
-      case 2:
-        color = ColorX.color_70b6ff;
-        break;
-      case 3:
-        color = ColorX.color_ffe0ac;
-        break;
-    }
+    var color = DataUtils.getResultDrawble(int.tryParse(result) ?? 0);
     return Container(
       width: 43.r,height: 43.r,
       alignment: Alignment.center,

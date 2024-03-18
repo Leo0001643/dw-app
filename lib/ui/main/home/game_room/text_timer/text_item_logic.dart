@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
@@ -8,12 +9,14 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
+import 'package:scratcher/scratcher.dart';
 
 enum LotteryStatus {
   //开始下注
@@ -63,6 +66,10 @@ class TextItemLogic extends GetxController {
   bool firstShowStartBettingInPeriod = true;
   Rx<LotteryStatus> currentStatus = LotteryStatus.initStatus.obs;
   LotteryStatus lastStatus =LotteryStatus.initStatus;
+  ///咪牌刮刮卡封面图
+  var guaguaMask = ImageX.guaguaMask1P();
+  ///刮刮卡状态控制器
+  var scratchKey = GlobalKey<ScratcherState>();
 
 
   static String id_showStartBetting = "showStartBetting";
@@ -150,6 +157,9 @@ class TextItemLogic extends GetxController {
     });
   }
 
+  ///咪牌距离下一期投注倒计时
+  var mipaiTime = "";
+  var lotCount = 0;
   void timeCountOnly(
       diffTime, Pc28LottoRooms pc28lottoRoom,Map<String,dynamic> pc28Plan) {
     Map<String, dynamic> allTime = pc28Plan['all'];
@@ -267,12 +277,35 @@ class TextItemLogic extends GetxController {
     //   showOpen(showT, data[0]['term']);
     // }
     lastStatusContent = roomcountdown['${key}Time'] ?? '';
-    ///处理咪牌开奖逻辑
+    ///处理咪牌开奖逻辑 开始
     if(state.text_timer.value == Intr().fengpanzhong){
       fengpanCount++;
     }else {
       fengpanCount = -1;
     }
+    if (Intr().fengpanzhong == state.text_timer.value) {
+      mipaiTime = Intr().fengpanzhong;
+      lotCount = 9 - fengpanCount;
+    } else {
+      mipaiTime = subToTime(state.text_timer.value)??"";
+      var timeParts = mipaiTime.split(":");
+      if(timeParts.length == 2){
+        lotCount = 10 + int.tryParse(timeParts.last).em();
+      }
+    }
+    ///显示开奖中封面图
+    if(lotCount == 0 && guaguaMask != ImageX.lotteringP()){
+      guaguaMask = ImageX.lotteringP();
+      ///重绘状态控制器
+      scratchKey = GlobalKey<ScratcherState>();
+    }
+    ///如果有了封盘结果显示已有结果封面图
+    if(Get.find<GameRoomLogic>().updateLottery && guaguaMask != ImageX.guaguaMask1P()){
+      guaguaMask = ImageX.guaguaMask1P();
+      ///重绘状态控制器
+      scratchKey = GlobalKey<ScratcherState>();
+    }
+    ///处理咪牌开奖逻辑 结束
     loggerArray(["期号倒计时结果",lastStatus,roomcountdown,]);
     update([id_textTimerItem]);
   }
