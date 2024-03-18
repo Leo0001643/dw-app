@@ -1071,6 +1071,7 @@ class EN{
     "dao":" to ",
     "zanwuxiazhujilu":"No bets recorded",
     "xuanzheleixing":"Select the type",
+    "touzhuchenggong":"Successful bet",
 
   };
 
