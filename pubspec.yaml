@@ -86,6 +86,7 @@ dependencies:
   gesture_password_widget: ^2.0.1
   flutter_barrage: ^0.5.5
   just_audio: ^0.9.36
+  flutter_oss_aliyun: ^6.4.1
 
 dependency_overrides:
   meta: ^1.10.0 # 替换为你需要的meta库的版本号

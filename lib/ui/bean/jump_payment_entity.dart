@@ -13,7 +13,7 @@ class JumpPaymentEntity {
 	dynamic fixedMoney;
 	String? moneyQuick;
 	String? mark;
-	dynamic marksColor;
+	int? marksColor;
 	double? rate;
 	List<JumpPaymentBanks>? banks;
 

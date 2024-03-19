@@ -27,7 +27,7 @@ JumpPaymentEntity $JumpPaymentEntityFromJson(Map<String, dynamic> json) {
   if (mark != null) {
     jumpPaymentEntity.mark = mark;
   }
-  final dynamic marksColor = json['marksColor'];
+  final int? marksColor = jsonConvert.convert<int>(json['marksColor']);
   if (marksColor != null) {
     jumpPaymentEntity.marksColor = marksColor;
   }
@@ -67,7 +67,7 @@ extension JumpPaymentEntityExtension on JumpPaymentEntity {
     dynamic fixedMoney,
     String? moneyQuick,
     String? mark,
-    dynamic marksColor,
+    int? marksColor,
     double? rate,
     List<JumpPaymentBanks>? banks,
   }) {
