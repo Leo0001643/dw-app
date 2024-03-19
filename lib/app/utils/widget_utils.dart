@@ -685,7 +685,7 @@ class WidgetUtils {
 
 
   void goLogin() {
-    if (unEmpty(AppData.simplePwd())) {
+    if (unEmpty(AppData.getGestureValue())) {
       Get.toNamed(Routes.simple_login);
     } else {
       Get.toNamed(Routes.login);

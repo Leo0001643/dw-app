@@ -171,7 +171,6 @@ class _LoginPageState extends State<LoginPage> {
                       _handleClickVerify();
                     } else {
                       String?varCodeId= state.varcode.value.varCodeId;
-
                       logic.clickLogin(varCode:state.vcode,varCodeId:varCodeId);
                     }
                   }),
@@ -241,23 +240,20 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _getAliCode() {
     if (state.varcode.value.status == 1 && state.varcode.value.type == 2) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: double.infinity,
-            height: 48,
-            margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 16.w),
-            child: AliyunCaptchaButton(
-              type: AliyunCaptchaType.slide,
-              // 重要：请设置正确的类型
-              option: AliyunCaptchaOption(
-                appKey: 'FFFF0N00000000009A34',
-                scene: 'cn-hangzhou',
-                language: 'cn',
-                // 更多参数请参见：https://help.aliyun.com/document_detail/193141.html
-              ),
-              customStyle: '''
+      return Container(
+        width: double.infinity,
+        height: 48,
+        margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 16.w),
+        child: AliyunCaptchaButton(
+          type: AliyunCaptchaType.slide,
+          // 重要：请设置正确的类型
+          option: AliyunCaptchaOption(
+            appKey: 'FFFF0N00000000009A34',
+            scene: 'cn-hangzhou',
+            language: 'cn',
+            // 更多参数请参见：https://help.aliyun.com/document_detail/193141.html
+          ),
+          customStyle: '''
       .nc_scale {
         background: #eeeeee !important;
         /* 默认背景色 */
@@ -278,30 +274,13 @@ class _LoginPageState extends State<LoginPage> {
         color: #ef9f06 !important;
       }
     ''',
-              onSuccess: (dynamic data) {
-                // {"sig": "...", "token": "..."}
-                logic.clickLogin(data: data);
-              },
-              onFailure: (String failCode) {},
-              onError: (String errorCode) {},
-            ),
-          ),
-          Center(
-            child: WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
-                bg: state.btnEnable.value
-                    ? ColorX.color_fd273e
-                    : ColorX.color_ff5163,
-                textColor: Colors.white,
-                textSize: 16.sp, onPressed: () {
-              if (state.varcode.value.status == 1 &&
-                  state.varcode.value.type == 3) {
-                _handleClickVerify();
-              } else {
-                logic.clickLogin();
-              }
-            }),
-          ),
-        ],
+          onSuccess: (dynamic data) {
+            // {"sig": "...", "token": "..."}
+            logic.clickLogin(data: data);
+          },
+          onFailure: (String failCode) {},
+          onError: (String errorCode) {},
+        ),
       );
     } else {
       return Container();

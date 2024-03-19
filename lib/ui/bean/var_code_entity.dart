@@ -7,8 +7,8 @@ export 'package:leisure_games/generated/json/var_code_entity.g.dart';
 
 @JsonSerializable()
 class VarCodeEntity {
-	int? status;
-	int? type;
+	int? status;///验证码状态【1:开启,2:关闭】
+	int? type;///验证码类型【0:无验证码,1:图形验证码,2:滑块验证码】
 	String? varCode;
 	String? varCodeId;
 

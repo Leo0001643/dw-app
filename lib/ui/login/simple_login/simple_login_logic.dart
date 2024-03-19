@@ -15,36 +15,22 @@ class SimpleLoginLogic extends GetxController {
 
   @override
   void onReady() {
-    // TODO: implement onReady
     super.onReady();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 
 
-  void login(String value,TextEditingController pwdController){
+  void login(String value){
     loggerArray(["是否验证过啦",value]);
-    if(value.length == 4){
-      if(value == AppData.simplePwd()){
-        var params = <String,dynamic>{
-          "username": AppData.loginUser(),
-          "password": AppData.loginPwd(),
-          "scene": "nc_login_h5",
-          "token": -1,
-        };
-        HttpService.login(params).then((value) {
-          eventBus.fire(LoginRefreshEvent());
-          AppData.setUser(value);
-          Get.until((ModalRoute.withName(Routes.main)));
-        });
-      } else {
-        pwdController.text = "";
-        showToast(Intr().mimacuowu);
-      }
+    if(value == AppData.getGestureValue()){
+      Get.offAndToNamed(Routes.simple_login_var);
+    } else {
+      // pwdController.text = "";
+      showToast(Intr().mimacuowu);
     }
   }
 

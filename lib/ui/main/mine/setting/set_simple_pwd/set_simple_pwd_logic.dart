@@ -27,7 +27,7 @@ class SetSimplePwdLogic extends GetxController {
     }
 
     if(state.newPwd == state.confirmPwd){
-      AppData.setSimplePwd(state.newPwd);
+      AppData.setGestureValue(state.newPwd);
 
       showToast(Intr().caozuochenggong);
       Get.back(result: true);

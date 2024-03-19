@@ -71,19 +71,19 @@ class AppData {
     prefs?.setBool("bg_music", open);
   }
 
-  static void setJymm(bool open) {
-    prefs?.setBool("bg_jymm", open);
-  }
   static void setGestureValue(String gestureValue) {
     prefs?.setString("gestureValue", gestureValue);
   }
-  static String getGestureValue(String gestureValue) {
+  static String getGestureValue() {
     return prefs?.getString("gestureValue") ?? "";
   }
 
-  static bool bgJymm() {
-    return prefs?.getBool("bg_jymm") ?? true;
-  }
+  // static void setJymm(bool open) {
+  //   prefs?.setBool("bg_jymm", open);
+  // }
+  // static bool bgJymm() {
+  //   return prefs?.getBool("bg_jymm") ?? true;
+  // }
 
   static bool bgMusic() {
     return prefs?.getBool("bg_music") ?? true;
@@ -151,17 +151,17 @@ class AppData {
     return prefs?.getBool("wallet_mode") ?? true;
   }
 
-  ///简易密码
-  static void setSimplePwd(String pwd) {
-    prefs?.setString("simple_pwd", pwd);
-  }
-
-  static String simplePwd() {
-    return prefs?.getString(
-          "simple_pwd",
-        ) ??
-        "";
-  }
+  // ///简易密码
+  // static void setSimplePwd(String pwd) {
+  //   prefs?.setString("simple_pwd", pwd);
+  // }
+  //
+  // static String simplePwd() {
+  //   return prefs?.getString(
+  //         "simple_pwd",
+  //       ) ??
+  //       "";
+  // }
 
   static void setLoginPwd(String pwd) {
     prefs?.setString("login_pwd", pwd);

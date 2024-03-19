@@ -153,16 +153,21 @@ class _SettingPageState extends State<SettingPage> {
                               return Colors.white; // 你可以根据需要修改颜色
                             }),
                             onChanged: (value) {
-                              Get.toNamed(Routes.set_simple_pwd)?.then((gestureValue) {
-                                if(unEmpty(gestureValue)){
-                                  AppData.setJymm(value);
-                                  //全局设置手势密码
-                                  AppData.setGestureValue(gestureValue);
-                                  state.jymmToggle.value = !value;
-                                }
-                              });
+                              if(value){
+                                Get.toNamed(Routes.set_simple_pwd)?.then((gestureValue) {
+                                  if(unEmpty(gestureValue)){
+                                    // AppData.setJymm(value);
+                                    //全局设置手势密码
+                                    AppData.setGestureValue(gestureValue);
+                                    state.jymmToggle.value = value;
+                                  }
+                                });
+                              }else {
+                                state.jymmToggle.value = value;
+                                AppData.setGestureValue("");
+                              }
                             },
-                            value: !state.jymmToggle.value,
+                            value: state.jymmToggle.value,
                             inactiveTrackColor: ColorX.text949(),
                             activeTrackColor: ColorX.color_69c25c,
                             activeColor: Colors.white,

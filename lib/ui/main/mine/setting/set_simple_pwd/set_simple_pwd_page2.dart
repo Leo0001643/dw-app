@@ -22,7 +22,7 @@ class SetSimplePwdPage2 extends StatefulWidget {
 class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
   final logic = Get.find<SetSimplePwdLogic>();
   final state = Get.find<SetSimplePwdLogic>().state;
-  late TextEditingController _pwdController;
+  // late TextEditingController _pwdController;
   late FocusNode _pinFocusNode;
   List<int> _points = [];
 
@@ -31,14 +31,14 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
 
   @override
   void initState() {
-    _pwdController = TextEditingController();
+    // _pwdController = TextEditingController();
     _pinFocusNode = FocusNode();
     super.initState();
   }
 
   @override
   void dispose() {
-    _pwdController.dispose();
+    // _pwdController.dispose();
     _pinFocusNode.dispose();
     Get.delete<SetSimplePwdLogic>();
     super.dispose();
@@ -77,7 +77,7 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
             return Text(
               state.gesturetext.value,
               style: TextStyle(
-                fontSize: 16.0,
+                fontSize: 16.sp,
                 color: isRed ? Colors.red : ColorX.appTextBg(),
               ),
             );
@@ -138,7 +138,7 @@ class _SetSimplePwdPageState extends State<SetSimplePwdPage2> {
               child: Text(
                 Intr().chonxinshezhi,
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 16.sp,
                   color: ColorX.icon586(),
                 ),
               ),
@@ -163,16 +163,16 @@ class ErrorCircleLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 66.0,
-      height: 66.0,
+      width: 66.r,
+      height: 66.r,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.red.withOpacity(0.05), // 5% 不透明度
       ),
       child: Center(
         child: Container(
-          width: 24.0,
-          height: 24.0,
+          width: 24.r,
+          height: 24.r,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.red, // 100% 不透明度
@@ -187,16 +187,16 @@ class SelectedCircleLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 66.0,
-      height: 66.0,
+      width: 66.r,
+      height: 66.r,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Color(0xFFFF8216).withOpacity(0.05), // 5% 不透明度
       ),
       child: Center(
         child: Container(
-          width: 24.0,
-          height: 24.0,
+          width: 24.r,
+          height: 24.r,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Color(0xFFFF8216), // 100% 不透明度
@@ -211,8 +211,8 @@ class NormalCircleLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 66.0,
-      height: 66.0,
+      width: 66.r,
+      height: 66.r,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Color(0xffF5F5F5), // 5% 不透明度
