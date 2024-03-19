@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
@@ -7,6 +8,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'promotion_profit_state.dart';
@@ -37,11 +39,13 @@ class PromotionProfitLogic extends GetxController {
     state.userLink.value = "${Constants.host}/#/register?sp=${AppData.user()?.id ?? 0}";
 
     var painter = QrPainter(data: state.userLink.value, version: QrVersions.auto, gapless: true,
-      errorCorrectionLevel: QrErrorCorrectLevel.L,);
-    painter.toImageData(116.r).then((value) {
-      state.qrLinkData.value = value!.buffer.asUint8List();
+      errorCorrectionLevel: QrErrorCorrectLevel.L);
+    painter.toImageData(125.r).then((value) {
+      var uint8list = value!.buffer.asUint8List();
+      DataUtils.addWhiteBackgroundToImage(uint8list, 150.r, 150.r).then((value){
+        state.qrLinkData.value = value;
+      });
     });
-
 
     var params = {"oid":user?.oid,"username":user?.username,"pageSize":Constants.pageSize,"page":1};
 

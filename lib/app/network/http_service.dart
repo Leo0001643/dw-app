@@ -88,6 +88,9 @@ class HttpService{
       onRequest: (options, handler){
         options.headers["Content-Type"] = "application/x-www-form-urlencoded";
         options.headers["Accept-Language"] = Intr().currentLocale().languageCode;
+        if(unEmpty(AppData.deviceInfo().deviceId)){
+          options.headers["deviceId"] = AppData.deviceInfo().deviceId.em();
+        }
         //设备信息【PC:PC网页端,MP:移动端,APP:原生APP】
         //网站ID
         //机器型号
@@ -97,9 +100,6 @@ class HttpService{
           "siteType":"1",
           "terminal":"APP",
           "version":Constants.version()};
-        if(unEmpty(AppData.deviceInfo().deviceId)){
-          commonParams["deviceId"] = AppData.deviceInfo().deviceId.em();
-        }
         options.queryParameters.addAll(commonParams);
         loggerArray(["发起请求","${options.baseUrl}${options.path}","${options.method}\n","${options.headers}\n",options.data ?? options.queryParameters]);
         handler.next(options);

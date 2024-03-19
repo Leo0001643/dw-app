@@ -118,11 +118,7 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                   children: [
                     Obx(() {
                       if(state.qrLinkData.value.isEmpty){ return Container(); }
-                      return Container(
-                        color: Colors.white,
-                        padding: EdgeInsets.all(10.r),
-                        child: Image.memory(state.qrLinkData.value,width: 150.w,fit: BoxFit.fill,),
-                      );
+                      return Image.memory(state.qrLinkData.value,fit: BoxFit.fill,);
                     }),
                     Expanded(
                       child: Column(

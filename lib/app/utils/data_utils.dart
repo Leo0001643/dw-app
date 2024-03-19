@@ -2,7 +2,9 @@
 
 import 'dart:convert';
 import 'dart:math';
-
+import 'dart:ui' as ui;
+import 'dart:typed_data';
+import 'package:flutter/material.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -565,6 +567,40 @@ class DataUtils{
     }
     return order;
   }
+
+
+  static Future<Uint8List> addWhiteBackgroundToImage(Uint8List imageBytes, double width, double height) async {
+    // 解码Uint8List到Image
+    final codec = await ui.instantiateImageCodec(imageBytes);
+    final frame = await codec.getNextFrame();
+    var originalImage = frame.image;
+    // 创建一个新的白色画布
+    // final whiteBackgroundImage = ui.Image(width.toInt(), height.toInt());
+    final recorder = ui.PictureRecorder();
+    final canvas = Canvas(recorder);
+
+    // 绘制白色背景
+    canvas.drawColor(Colors.white, BlendMode.srcOver);
+
+    // 计算图片在新画布上的绘制位置，保持其居中或按需定位
+    final paint = Paint();
+    final centerOffsetX = (width - originalImage.width).toDouble() / 2;
+    final centerOffsetY = (height - originalImage.height).toDouble() / 2;
+
+    // 将原图绘制到白色背景上
+    canvas.drawImage(originalImage, Offset(centerOffsetX, centerOffsetY), paint);
+
+    // 结束记录并获取Picture
+    final picture = recorder.endRecording();
+    final newImage = await picture.toImage(width.toInt(), height.toInt());
+
+    // 将新的带有白色背景的图片转换回Uint8List
+    final byteData = await newImage.toByteData(format: ui.ImageByteFormat.png);
+    return byteData!.buffer.asUint8List();
+  }
+
+
+
 
 }
 
