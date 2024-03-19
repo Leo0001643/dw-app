@@ -257,6 +257,33 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
+            ),//
+            SizedBox(height: 10.h,),
+            Padding(
+              padding: EdgeInsets.only(left: 35.w),
+              child: Text(Intr().shuruzhenshiyouxiao, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
+            ),
+            SizedBox(height: 20.h,),
+            Center(
+              child: Container(
+                width: 335.w,
+                decoration: BoxDecoration(
+                  color: ColorX.cardBg3(),
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: WidgetUtils().buildTextField(
+                    335.w, 46.h, 14.sp, ColorX.text949(), Intr().jieshaoren,
+                    hintColor: ColorX.text586(),
+                    backgroundColor: Colors.transparent,
+                    onChanged: (v) => state.tgcode = v,
+                    padding: EdgeInsets.symmetric(horizontal: 5.w)),
+              ),
+            ),
+            SizedBox(height: 10.h,),
+            Padding(
+              padding: EdgeInsets.only(left: 35.w),
+              child: Text(Intr().shurujieshaoren, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
             ),
             SizedBox(height: 20.h,),
             _getImageCode(),
@@ -383,6 +410,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                 WidgetUtils().buildTextField(
                     225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
                     hintColor: ColorX.text586(),

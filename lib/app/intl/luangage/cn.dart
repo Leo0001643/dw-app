@@ -1002,6 +1002,8 @@ class CN {
     "xuanzheleixing":"选择类型",
     "touzhuchenggong":"投注成功",
     "kaihuxieyi":"《开户协议》",
+    "jieshaoren":"介绍人",
+    "shurujieshaoren":"输入介绍人",
 
 
   };

@@ -1073,6 +1073,8 @@ class EN{
     "xuanzheleixing":"Select the type",
     "touzhuchenggong":"Successful bet",
     "kaihuxieyi":"Account opening agreement",
+    "jieshaoren":"Introducer",
+    "shurujieshaoren":"Enter introducer",
 
   };
 

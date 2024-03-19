@@ -606,7 +606,7 @@ class WidgetUtils {
         List<TextInputFormatter>? inputFormatters,
         FocusNode? focusNode}) {
 
-    padding ??= EdgeInsets.symmetric(horizontal: 10.r);
+    padding ??= EdgeInsets.symmetric(horizontal: 10.w);
 
     return Container(
       decoration: BoxDecoration(

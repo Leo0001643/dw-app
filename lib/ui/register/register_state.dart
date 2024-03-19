@@ -27,6 +27,8 @@ class RegisterState {
 
   var mobile = "";
 
+  ///推广码
+  var tgcode = "";
 
 
 }

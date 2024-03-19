@@ -1003,6 +1003,8 @@ class VI{
     "xuanzheleixing":"Chọn loại",
     "touzhuchenggong":"Đặt cược thành công",
     "kaihuxieyi":"Hợp đồng tài khoản",
+    "jieshaoren":"Tài liệu tham khảo",
+    "shurujieshaoren":"Đầu vào tài liệu tham khảo",
 
   };
 }
