@@ -83,8 +83,9 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                       if(isEmpty(state.paymentList)){
                         return Container();
                       }
-                      return Text(Intr().wenxintishi_3(['3',state.paymentList[state.selectIndex.value].mark.em()]),
-                        style: TextStyle(fontSize: 12.sp,color: ColorX.color_5583e7),);
+                      var payment = state.paymentList[state.selectIndex.value];
+                      return Text(Intr().wenxintishi_3(['3',payment.mark.em()]),
+                        style: TextStyle(fontSize: 12.sp,color: payment.marksColor == 2 ? ColorX.color_e6250a:ColorX.color_5583e7),);
                     }),
                   ],
                 ),
