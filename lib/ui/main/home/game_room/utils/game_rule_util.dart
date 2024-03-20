@@ -643,6 +643,7 @@ class GameRuleUtil {
         children: [
           TextSpan(text: "(",style: TextStyle(fontSize: 14.sp,color: ColorX.text333(),fontWeight: FontWeight.w600),),
           TextSpan(text: qian,style: TextStyle(fontSize: 14.sp,color: qianColor,fontWeight: FontWeight.w600),),
+          WidgetSpan(child: SizedBox(width: 5.w,)),
           TextSpan(text: hou,style: TextStyle(fontSize: 14.sp,color: houColor,fontWeight: FontWeight.w600),),
           TextSpan(text: ")",style: TextStyle(fontSize: 14.sp,color: ColorX.text333(),fontWeight: FontWeight.w600),),
         ]

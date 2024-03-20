@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -44,6 +45,7 @@ class _LotteryResultPageState extends State<LotteryResultPage> with AutomaticKee
       child:GetBuilder<GameRoomLogic>(
           id: GameRoomLogic.gameRoomCompute,
           builder: (logic) {
+            // loggerArray(["期数更新变化了",jsonEncode(logic.recentlyWSLotteryEntityData)]);
             return Container(
               height: 1.sh,
               width: 1.sw,

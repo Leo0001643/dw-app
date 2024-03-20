@@ -29,6 +29,7 @@ import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 import 'game_room_state.dart';
+import 'room_tendency/room_tendency_logic.dart';
 
 class GameRoomLogic extends GetxController {
   final GameRoomState state = GameRoomState();
@@ -250,8 +251,12 @@ class GameRoomLogic extends GetxController {
   void handleLottery(WSLotteryEntity lottery) {
     // WSLotteryEntity wsLotteryEntity =
     //     WSLotteryEntity.fromJson(jsonDecode(response.data));
-    recentlyWSLotteryEntityData.value = lottery.data ?? [];
-    if (lottery.data?.isNotEmpty == true) {
+    recentlyWSLotteryEntityData.assignAll(lottery.data ?? []);
+    ///开奖结果更新需要刷新趋势数据
+    if(Get.isRegistered<RoomTendencyLogic>()){
+      Get.find<RoomTendencyLogic>().loadData(state.room.value,loading: false);
+    }
+    if (recentlyWSLotteryEntityData.isNotEmpty) {
       headWSLotteryEntityData = lottery.data!.first;
       updateLottery = true;///更新开奖结果了
       update([gameRoomCompute]);

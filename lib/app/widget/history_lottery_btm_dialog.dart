@@ -14,7 +14,6 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
 
   HistoryLotteryBtmDialog({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GameRoomLogic>(

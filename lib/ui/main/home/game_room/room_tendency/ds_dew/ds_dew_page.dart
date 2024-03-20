@@ -110,13 +110,13 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
             },
           ),
           SizedBox(
-            height: 150.h,
+            height: 120.h,
             child: GetBuilder<RoomTendencyController>(
               id: RoomTendencyController.room_tendency_id,
               builder: (ctl){
                 if(isEmpty(ctl.data?.list)){ return Container(); }
                 var list = ctl.changeDsTab(state.tabIndex);
-                loggerArray(["内部数据",jsonEncode(list)]);
+                // loggerArray(["内部数据",jsonEncode(list)]);
                 var titleRow = list.first;
                 var childsRow = list.sublist(1,list.length);
                 return DataTable2(
@@ -124,14 +124,14 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
                   horizontalMargin: 0,
                   fixedLeftColumns: 0,
                   fixedTopRows: 0,
-                  dataRowHeight: 25.h,
-                  headingRowHeight: 25.h,
+                  dataRowHeight: 20.r,
+                  headingRowHeight: 20.r,
                   dividerThickness: 0,
                   horizontalScrollController: state.horizontalScrollController,
                   border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
                   headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
                   dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
-                  minWidth: titleRow.length * 30.w,
+                  minWidth: titleRow.length * 20.r,
                   columns: buildBigTitle(titleRow),
                   rows: List<DataRow>.generate(childsRow.length,
                           (index)=> DataRow(cells: buildBigCell(index,childsRow[index]))),
@@ -197,7 +197,7 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
         columns.add(DataColumn2(
           numeric: true,
           label: buildBigItem(element == "1" ? ColorX.color_fc243b:ColorX.color_5583e7),
-          fixedWidth: 30.w,
+          fixedWidth: 20.r,
         ));
       }
     });

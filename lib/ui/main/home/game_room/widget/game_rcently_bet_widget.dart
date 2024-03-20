@@ -11,7 +11,6 @@ import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
-import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 class GameRecentlyBetWidget extends StatelessWidget {
@@ -23,11 +22,9 @@ class GameRecentlyBetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return GetBuilder<GameRoomLogic>(
         id: GameRoomLogic.gameRoomCompute,
         builder: (logic) {
-          int a;
           return Container(
             height: 50.w,
             margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 4.w),
@@ -211,32 +208,26 @@ class GameRecentlyBetWidget extends StatelessWidget {
 
   Widget buildCurrentTermType(GameRoomLogic logic, BuildContext context) {
     // GameRoomState state = logic.state;
-    String termData = GameRuleUtil.getSimpleSSB(
-        headWSLotteryEntityData.term ?? "", year: ""); // 4
-    List<int> arr2 = GameRuleUtil.parseLottery(
-        headWSLotteryEntityData.originalNum ?? ""); //3
+    String termData = GameRuleUtil.getSimpleSSB(headWSLotteryEntityData.term.em(), year: ""); // 4
+    List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData.originalNum.em()); //3
     // var color = state.roomType.value == 1 ? ColorX.text0917() : ColorX
     //     .color_ffe0ac;
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           WidgetUtils().buildDixqi2(termData),
           SizedBox(width: 5.w,),
-          buildDrawNum("${arr2[0]}", logic, showWaittingImg: !logic.updateLottery),
+          buildDrawNum("${arr2[0]}", logic, showWaittingImg: false),
           buildDrawMark("+", ColorX.text0917()),
-          buildDrawNum("${arr2[1]}", logic, showWaittingImg: !logic.updateLottery),
+          buildDrawNum("${arr2[1]}", logic, showWaittingImg: false),
           buildDrawMark("+", ColorX.text0917()),
-          buildDrawNum("${arr2[2]}", logic, showWaittingImg: !logic.updateLottery),
+          buildDrawNum("${arr2[2]}", logic, showWaittingImg: false),
           buildDrawMark("=", ColorX.text0917()),
-          buildDrawResult("${arr2[3]}", logic, color: GameRuleUtil.getBallNewColor(arr2[3]), showWaittingImg: !logic.updateLottery),
+          buildDrawResult("${arr2[3]}", logic, color: GameRuleUtil.getBallNewColor(arr2[3]), showWaittingImg: false),
           // SizedBox(width: 5.w,),
-          Visibility(
-            visible: logic.updateLottery,
-            child: GameRuleUtil.getDXDS(arr2[3]),
-          ),
+          GameRuleUtil.getDXDS(arr2[3]),
         ],
       ),
     );
