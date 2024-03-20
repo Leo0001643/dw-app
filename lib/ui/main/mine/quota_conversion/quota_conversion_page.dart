@@ -68,7 +68,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                             ///切换的时候需要把右边数据情况
                             state.rightAccount.value = PlatformEntity();
                             logic.loadData();
-                            logic.loadBalance(false);
+                            logic.loadBalance();
                           }
                         }),
                         child: SizedBox(
@@ -105,7 +105,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                               return Text("${Intr().yue_}$symbol${state.mainBal.value.money.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),);
                             }),
                             InkWell(
-                              onTap: ()=> logic.loadBalance(false),
+                              onTap: ()=> logic.loadBalance(),
                               child: Container(
                                 width: 20.w,
                                 alignment: Alignment.center,
@@ -182,36 +182,38 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                         decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r)),
                         margin: EdgeInsets.only(right: 15.w,top: 5.h,bottom: 5.h),
                         padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 8.w),
-                        child: Obx(() {
-                          var symbol = AppData.wallet() ? "¥":"₮";
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              InkWell(
-                                onTap:(){
-                                  var index = state.platforms.indexOf(state.rightAccount.value);
-                                  DialogUtils().showSelectOptionBtmGirdDialog(context, Intr().qingxuanzhezhuanru, state.platforms,index).then((value) {
-                                    if(unEmpty(value)){
-                                      state.rightAccount.value = value;
-                                      state.rightAccount.refresh();
-                                    }
-                                  });
-                                },
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(state.rightAccount.value.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                                    ),
-                                    Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
-                                  ],
-                                ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            InkWell(
+                              onTap:(){
+                                var index = state.platforms.indexOf(state.rightAccount.value);
+                                DialogUtils().showSelectOptionBtmGirdDialog(context, Intr().qingxuanzhezhuanru, state.platforms,index).then((value) {
+                                  if(unEmpty(value)){
+                                    state.rightAccount.value = value;
+                                    state.rightAccount.refresh();
+                                  }
+                                });
+                              },
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Obx(() {
+                                      return Text(state.rightAccount.value.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),);
+                                    }),
+                                  ),
+                                  Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
+                                ],
                               ),
-                              SizedBox(height: 5.h,),
-                              Text("${Intr().yue_}$symbol${DataUtils.formatMoney(state.rightAccount.value.money)}",
-                                style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                            ],
-                          );
-                        }),
+                            ),
+                            SizedBox(height: 5.h,),
+                            Obx(() {
+                              var symbol = AppData.wallet() ? "¥":"₮";
+                              return Text("${Intr().yue_}$symbol${DataUtils.formatMoney(state.rightAccount.value.money)}",
+                                style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),);
+                            }),
+                          ],
+                        ),
                       ),
                     ),
                   ],

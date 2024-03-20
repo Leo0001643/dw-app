@@ -17,7 +17,8 @@ class QuotaConversionLogic extends GetxController {
 
   @override
   void onReady() {
-    loadData();
+    loadData(first: true);
+    loadBalance();
     super.onReady();
   }
 
@@ -27,12 +28,18 @@ class QuotaConversionLogic extends GetxController {
     super.onClose();
   }
 
-  void loadData() {
+  void loadData({bool? first}) {
     var user = AppData.user();
     var cur = AppData.wallet() ? 1: 5;
-    state.platforms.clear();
-    loadBalance(true);
-
+    ///如果是初始化数据
+    if(first == true){
+      state.platforms.clear();
+      state.leftAccount.value = PlatformEntity(money: 0,liveName: "main",currency: AppData.wallet()? "CNY":"USDT",liveId: -1);
+      state.platforms.add(state.leftAccount.value);
+    }else {
+      ///移除主账户之外的其他账户
+      state.platforms.removeWhere((element) => element.liveId != -1);
+    }
     HttpService.getPlatformList({"oid":user?.oid,"username":user?.username,"cur":cur}).then((value1) {
       ///平台开通状态 币种类型【1:CNY,2:USD,3:KRW,4:INR,5:USDT,6:VND】
       ///需要对获得的结果做一个冒泡排序
@@ -56,7 +63,8 @@ class QuotaConversionLogic extends GetxController {
             if(e1.liveId == e2.id && e2.status == 1){
               HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":e1.liveName},loading: false).then((value3) {
                 e1.money = value3.money;
-                state.platforms[value1.indexOf(e1) + 1] = e1;
+                ///更新账户余额
+                state.platforms[state.platforms.indexOf(e1)] = e1;
                 state.platforms.refresh();
                 ///刷新右侧第三方钱包金额
                 if(isEmpty(state.rightAccount.value.liveName)){
@@ -66,6 +74,11 @@ class QuotaConversionLogic extends GetxController {
                   state.rightAccount.value = e1;
                   state.rightAccount.refresh();
                 }
+                ///刷新左侧第三方钱包金额
+                if(e1.liveId == state.leftAccount.value.liveId){
+                  state.leftAccount.value = e1;
+                  state.leftAccount.refresh();
+                }
               });
             }
           }
@@ -74,16 +87,27 @@ class QuotaConversionLogic extends GetxController {
     });
   }
 
-  void loadBalance(bool add){
+  void loadBalance(){
     var user = AppData.user();
     var cur = AppData.wallet() ? 1: 5;
     ///平台【main,ag,bbin..等等】
     HttpService.getBalance({ "cur":cur, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
-      if(add){
-        state.platforms.insert(0, PlatformEntity(money: value.money,liveName: "main",currency: AppData.wallet()? "CNY":"USDT"));
+      ///更新主账户余额
+      state.platforms.forEach((element) {
+        ///如果是主账户需要更新
+        if(element.liveId == -1){
+         element.money = value.money;
+        }
+      });
+      ///左侧如果是主账户也需要更新
+      if(state.leftAccount.value.liveId == -1){
+        state.leftAccount.value.money = value.money;
+        state.leftAccount.refresh();
       }
-      if(state.platforms.isNotEmpty){
-        state.leftAccount.value = state.platforms.first;
+      ///右侧是主账户也需要更新
+      if(state.rightAccount.value.liveId == -1){
+        state.rightAccount.value.money = value.money;
+        state.rightAccount.refresh();
       }
       if(AppData.wallet()){
         state.mainBal.value = BalanceEntity(icon:ImageX.iconJjGrey(), language: Intr().wallet_cny, money: value.money);
@@ -107,7 +131,7 @@ class QuotaConversionLogic extends GetxController {
       state.inputAmount.value = "";//确认划转清空金额
       ///成功刷新页面数据
       loadData();
-      loadBalance(false);
+      loadBalance();
       ///刷新钱包余额
       eventBus.fire(ChangeBalanceEvent());
     });
@@ -124,7 +148,7 @@ class QuotaConversionLogic extends GetxController {
       state.inputAmount.value = "";//确认划转清空金额
       ///成功刷新页面数据
       loadData();
-      loadBalance(false);
+      loadBalance();
       ///刷新钱包余额
       eventBus.fire(ChangeBalanceEvent());
     });
@@ -140,7 +164,7 @@ class QuotaConversionLogic extends GetxController {
       showToast(Intr().caozuochenggong);
       ///成功刷新页面数据
       loadData();
-      loadBalance(false);
+      loadBalance();
       ///刷新钱包余额
       eventBus.fire(ChangeBalanceEvent());
     });
