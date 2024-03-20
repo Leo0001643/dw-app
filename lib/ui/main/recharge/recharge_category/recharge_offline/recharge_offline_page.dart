@@ -54,7 +54,7 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
           Row(
             children: [
               SizedBox(width: 18.w,),
-              Container(width: 1.w,height: 234.h,color: Colors.black54,),
+              Container(width: 1.w,height: 251.h,color: Colors.black54,),
               SizedBox(width: 13.w,),
               Expanded(
                 child: Column(
@@ -70,6 +70,12 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
                     }),
                     SizedBox(height: 10.h,),
                     Text(Intr().wenxintishi_zhifuyoushijian,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                    SizedBox(height: 10.h,),
+                    Obx(() {
+                      var item = state.agreeList[state.selectIndex.value];
+                      var color = item.marksColor == 2 ? ColorX.color_e6250a:ColorX.color_5583e7;
+                      return Text("2.${item.payMarks.em()}",style: TextStyle(fontSize: 12.sp,color: color),);
+                    }),
                   ],
                 ),
               ),
@@ -301,7 +307,7 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
               ],
             ),
             SizedBox(height: 8.h,),
-            Text(Intr().beizhu,style: TextStyle(fontSize: 12.sp,color: Colors.white70),),
+            Text(Intr().bank_branch,style: TextStyle(fontSize: 12.sp,color: Colors.white70),),
             Text(item.bankBranch.em(),style:TextStyle(fontSize: 12.sp,color: Colors.white),),
           ],
         ),

@@ -78,6 +78,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
                       length: state.tabs.length,
                       controller: state.tabController,
                       tabBarHeight: 35.h,
+                      tabAlignment: TabAlignment.fill,
                       tabBarColor: Colors.transparent,
                       indicatorSize: TabBarIndicatorSize.label,
                       indicatorPadding: EdgeInsets.only(top: 31.h,left: 30.w,right: 30.w,bottom: 1.h),
@@ -88,7 +89,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
                       labelColor: ColorX.text0917(),
                       unselectedLabelColor: ColorX.text586(),
                       width: 335.w,
-                      tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
+                      tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),).toList(),
                     ),
                   ),
                 );

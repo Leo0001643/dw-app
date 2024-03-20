@@ -651,6 +651,7 @@ class Intr extends Translations{
   String get kaihuxieyi => "kaihuxieyi".tr;
   String get jieshaoren => "jieshaoren".tr;
   String get shurujieshaoren => "shurujieshaoren".tr;
+  String get bank_branch => "bank_branch".tr;
 
 
 

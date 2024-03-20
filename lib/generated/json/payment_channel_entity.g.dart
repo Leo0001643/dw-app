@@ -115,7 +115,7 @@ PaymentChannelBankSet $PaymentChannelBankSetFromJson(
   if (payMarks != null) {
     paymentChannelBankSet.payMarks = payMarks;
   }
-  final dynamic marksColor = json['marksColor'];
+  final int? marksColor = jsonConvert.convert<int>(json['marksColor']);
   if (marksColor != null) {
     paymentChannelBankSet.marksColor = marksColor;
   }
@@ -165,7 +165,7 @@ extension PaymentChannelBankSetExtension on PaymentChannelBankSet {
     String? qrcodeLogo,
     dynamic payTip,
     String? payMarks,
-    dynamic marksColor,
+    int? marksColor,
   }) {
     return PaymentChannelBankSet()
       ..id = id ?? this.id

@@ -42,7 +42,7 @@ class PaymentChannelBankSet {
 	String? qrcodeLogo;
 	dynamic payTip;
 	String? payMarks;
-	dynamic marksColor;
+	int? marksColor;
 
 	PaymentChannelBankSet();
 
