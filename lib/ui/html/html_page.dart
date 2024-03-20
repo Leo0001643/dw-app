@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'html_logic.dart';
 
@@ -48,7 +52,22 @@ class _HtmlPageState extends State<HtmlPage> {
                   enableViewportScale: true,
                   ignoresViewportScaleLimits: true,
                 ),
+                crossPlatform: InAppWebViewOptions(
+                  useShouldOverrideUrlLoading: true,///添加这个选项才能调用shouldOverrideUrlLoading
+                )
               ),
+              shouldOverrideUrlLoading: (controller,action) async {
+                var url = action.request.url.toString();
+                loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers,]);
+                ///拉起支付宝支付
+                if(url.startsWith("alipays://")){
+                  if(await canLaunchUrlString(url)){
+                    launchUrlString(url);
+                  }
+                  return Future.value(NavigationActionPolicy.CANCEL);
+                }
+                return Future.value(NavigationActionPolicy.ALLOW);
+              },
               onProgressChanged: (controller,pg){
                 state.progress.value = pg.toDouble();
                 state.progressVisible.value = pg != 100;
