@@ -74,12 +74,11 @@ class HomeLogic extends GetxController {
     switch (index) {
       case 0:
         ///充值
-        // if (AppData.isLogin()) {
-        //   eventBus.fire(ChangeMainPageEvent(2));
-        // } else {
-        //   WidgetUtils().goLogin();
-        // }
-        Get.toNamed(Routes.html,arguments: HtmlEvent(data:  "http://dsf.i1qeugw1.com/paytransfers?OrderID=no0834597e8c821016&debug=true",isHtmlData: false,pageTitle: ""));
+        if (AppData.isLogin()) {
+          eventBus.fire(ChangeMainPageEvent(2));
+        } else {
+          WidgetUtils().goLogin();
+        }
 
         break;
       case 1:
