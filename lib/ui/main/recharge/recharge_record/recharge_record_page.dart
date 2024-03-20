@@ -6,6 +6,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
@@ -82,9 +83,21 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
 
 
   Widget buildFilterItem(int index,String tab,List list) {
+    var defValue;
+    switch(index){
+      case 0:
+        defValue = state.selectStatus.value;
+        break;
+      case 1:
+        defValue = state.selectWay.value;
+        break;
+      case 2:
+        defValue = state.selectTime.value;
+        break;
+    }
     return Expanded(
       child: InkWell(
-        onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,Intr().qingxuanzhe,list).then((value) {
+        onTap: ()=> DialogUtils().showSelectOptionBtmDialog(context,Intr().qingxuanzhe,list,defValue: defValue).then((value) {
           if(unEmpty(value) && value is PaymentListBanks){
             switch(index){
               case 0:
@@ -127,7 +140,7 @@ class _RechargeRecordPageState extends State<RechargeRecordPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(item.bankName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                Text(DateUtil.formatDateMs(item.addTime.em() * 1000),
+                Text(DataUtils.format12Hour(item.addTime.em() * 1000),
                   style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
               ],
             ),

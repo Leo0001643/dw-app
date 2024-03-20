@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -32,24 +33,37 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmDialog>{
 
   @override
   Widget build(BuildContext context) {
-    var childs = List<Widget>.empty(growable: true);
-    childs.add(buildHeader());
-    childs.add(SizedBox(height: 10.h,));
-
-    childs.addAll(data.map((e) {
-      return InkWell(
-        onTap: ()=> Navigator.pop(context,e),
-        child: buildOptionItem(e,"${widget.defValue}" == e.toString()),
-      );
-    }).toList());
-
+    var vHeight = 55.h * widget.data.em() + 45.h;
+    vHeight = vHeight > 500.h ? 500.h : vHeight;
     return Container(
       decoration: BoxDecoration(
         color: ColorX.cardBg5(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
+      constraints: BoxConstraints(
+        maxHeight: vHeight,
+      ),
       child: Column(
-        children: childs,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          buildHeader(),
+          SizedBox(height: 10.h,),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ...data.map((e) {
+                    return InkWell(
+                      onTap: ()=> Navigator.pop(context,e),
+                      child: buildOptionItem(e,"${widget.defValue}" == e.toString()),
+                    );
+                  })
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

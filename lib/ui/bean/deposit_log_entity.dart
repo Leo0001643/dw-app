@@ -26,13 +26,14 @@ class DepositLogEntity {
 		return jsonEncode(this);
 	}
 
+	///状态[1:成功,2:处理中,3:已取消]
 	String statusText(){
 		switch(status){
-			case 0:
-				return Intr().chenggong;
 			case 1:
-				return Intr().chulizhong;
+				return Intr().chenggong;
 			case 2:
+				return Intr().chulizhong;
+			case 3:
 				return Intr().yiquxiao;
 			default:
 				return "";
