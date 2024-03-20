@@ -65,6 +65,8 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                       child: InkWell(
                         onTap: ()=> DialogUtils().showCurrencyDialog(context).then((value) {
                           if(value == true){
+                            ///切换的时候需要把右边数据情况
+                            state.rightAccount.value = PlatformEntity();
                             logic.loadData();
                             logic.loadBalance(false);
                           }

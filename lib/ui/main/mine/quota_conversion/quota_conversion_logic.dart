@@ -31,7 +31,6 @@ class QuotaConversionLogic extends GetxController {
     var user = AppData.user();
     var cur = AppData.wallet() ? 1: 5;
     state.platforms.clear();
-    // state.rightAccount.value = PlatformEntity();
     loadBalance(true);
 
     HttpService.getPlatformList({"oid":user?.oid,"username":user?.username,"cur":cur}).then((value1) {
@@ -96,7 +95,7 @@ class QuotaConversionLogic extends GetxController {
 
   }
   
-  
+  ///回收
   void transfer(PlatformEntity item){
     var user = AppData.user();
     var cur = AppData.wallet() ? 1: 5;
