@@ -61,6 +61,7 @@ class RechargeOfflineLogic extends GetxController {
       "outBankId":outBankId,"outBankName":outBankName,"outCardUser":state.remitName,};
 
     HttpService.companyDeposit(params).then((value) {
+      value.remitName = state.remitName;///回传姓名显示
       Get.offAndToNamed(Routes.recharge_result,arguments: value);
     });
   }

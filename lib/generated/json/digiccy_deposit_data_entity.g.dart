@@ -24,6 +24,10 @@ DigiccyDepositDataEntity $DigiccyDepositDataEntityFromJson(
   if (status != null) {
     digiccyDepositDataEntity.status = status;
   }
+  final String? remitName = jsonConvert.convert<String>(json['remitName']);
+  if (remitName != null) {
+    digiccyDepositDataEntity.remitName = remitName;
+  }
   return digiccyDepositDataEntity;
 }
 
@@ -35,6 +39,7 @@ Map<String, dynamic> $DigiccyDepositDataEntityToJson(
   data['money'] = entity.money;
   data['orderId'] = entity.orderId;
   data['status'] = entity.status;
+  data['remitName'] = entity.remitName;
   return data;
 }
 
@@ -45,12 +50,14 @@ extension DigiccyDepositDataEntityExtension on DigiccyDepositDataEntity {
     int? money,
     String? orderId,
     String? status,
+    String? remitName,
   }) {
     return DigiccyDepositDataEntity()
       ..date = date ?? this.date
       ..info = info ?? this.info
       ..money = money ?? this.money
       ..orderId = orderId ?? this.orderId
-      ..status = status ?? this.status;
+      ..status = status ?? this.status
+      ..remitName = remitName ?? this.remitName;
   }
 }

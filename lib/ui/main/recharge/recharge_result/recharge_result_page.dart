@@ -60,6 +60,7 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
                 ),
               ),
               Obx(() {
+                var result = state.result.value;
                 return Container(
                   decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10.r)),
                   margin: EdgeInsets.symmetric(horizontal: 20.w),
@@ -69,13 +70,13 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
                     children: [
                       Text(Intr().chongzhixiangqing,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                       SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().chongzhixingming,AppData.user()!.username.em()),
+                      buildInfoItem(Intr().chongzhixingming,result.remitName.em()),
                       SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().dingdanbianhao,state.result.value.orderId.em()),
+                      buildInfoItem(Intr().dingdanbianhao,result.orderId.em()),
                       SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().tijiaoshijian,state.result.value.date.em()),
+                      buildInfoItem(Intr().tijiaoshijian,result.date.em()),
                       SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().chongzhijine,"¥${state.result.value.money.em()}"),
+                      buildInfoItem(Intr().chongzhijine,"¥${result.money.em()}"),
                     ],
                   ),
                 );

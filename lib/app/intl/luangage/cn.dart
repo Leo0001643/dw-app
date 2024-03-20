@@ -904,7 +904,7 @@ class CN {
     "shuruzhuanzhangqianbao":"请输入您转账时使用的钱包地址",
     "yiwanchengtijiaorukuan":"已完成转账，提交入款申请",
     "qianbaodizhi":"钱包地址",
-    "shifoujinxingzhuanzhang":"您是否像收款账号进行了转账",
+    "shifoujinxingzhuanzhang":"您是否向收款账号进行了转账？",
     "tishi":"提示",
     "yinhangmingcheng":"银行名称",
     "xuanzhezhifuyinhang":"选择支付银行",
