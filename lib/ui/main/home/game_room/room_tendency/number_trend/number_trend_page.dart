@@ -86,8 +86,8 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                       visibleMaximum: data.length.toDouble()/4,//设置可见数量 数量50的时候 50/4合适
                       axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
                       labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
-                      majorTickLines: MajorTickLines(size: 0),
-                      minorTickLines: MinorTickLines(size: 0),
+                      majorTickLines: const MajorTickLines(size: 0),
+                      minorTickLines: const MinorTickLines(size: 0),
                       majorGridLines: MajorGridLines(width: 1.w,color: ColorX.color_10_949),
                       minorGridLines: MinorGridLines(width: 1.w,color: ColorX.color_10_949),
                     ),
@@ -100,8 +100,8 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                       interval: 1,//设置步长
                       maximum: 27,//设置最大值
                       anchorRangeToVisiblePoints: false,
-                      majorTickLines: MajorTickLines(size: 0),
-                      minorTickLines: MinorTickLines(size: 0),
+                      majorTickLines: const MajorTickLines(size: 0),
+                      minorTickLines: const MinorTickLines(size: 0),
                     ),
                     backgroundColor: ColorX.cardBg(),
                     // Chart title

@@ -175,20 +175,17 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
                                 SizedBox(height: 10.h,),
                                 SizedBox(
                                   width: 300.w,
-                                  child: Wrap(
-                                    alignment:WrapAlignment.spaceBetween,
-                                    runSpacing: 10.h,spacing: 10.w,
-                                    children: [
-                                      buildBtnAmount(100),
-                                      buildBtnAmount(200),
-                                      buildBtnAmount(500),
-                                      buildBtnAmount(1000),
-                                      buildBtnAmount(2000),
-                                      buildBtnAmount(5000),
-                                      buildBtnAmount(10000),
-                                      buildBtnAmount(20000),
-                                    ],
-                                  ),
+                                  child: Obx(() {
+                                    if(state.channelList.isEmpty) return Container();
+                                    var list = state.channelList[state.selectIndex.value].moneyQuick?.split("|") ?? [];
+                                    return Wrap(
+                                      alignment:WrapAlignment.spaceBetween,
+                                      runSpacing: 10.h,spacing: 10.w,
+                                      children: [
+                                        ...list.map((e) => buildBtnAmount(int.tryParse(e) ?? 0)),
+                                      ],
+                                    );
+                                  }),
                                 ),
                               ],
                             ),
@@ -291,6 +288,7 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
         case Constants.code_ysfzf:
         case Constants.code_qmf:
         case Constants.code_caifutong:
+        case Constants.code_jingdong:
           Get.offAndToNamed(Routes.recharge_category, arguments: value);
           break;
         default:

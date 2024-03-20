@@ -72,6 +72,7 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
                     Text(Intr().wenxintishi_zhifuyoushijian,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                     SizedBox(height: 10.h,),
                     Obx(() {
+                      if(state.agreeList.isEmpty) return Container();
                       var item = state.agreeList[state.selectIndex.value];
                       var color = item.marksColor == 2 ? ColorX.color_e6250a:ColorX.color_5583e7;
                       return Text("2.${item.payMarks.em()}",style: TextStyle(fontSize: 12.sp,color: color),);

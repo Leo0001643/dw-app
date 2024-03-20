@@ -224,6 +224,7 @@ class _RechargePageState extends State<RechargePage> {
       case Constants.code_ysfzf:
       case Constants.code_qmf:
       case Constants.code_caifutong:
+      case Constants.code_jingdong:
         Get.toNamed(Routes.recharge_category, arguments: item);
         break;
       default:

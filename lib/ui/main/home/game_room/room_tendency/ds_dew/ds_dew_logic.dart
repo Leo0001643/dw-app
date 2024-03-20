@@ -7,7 +7,6 @@ class DsDewLogic extends GetxController {
 
   @override
   void onReady() {
-    loadData();
     super.onReady();
   }
 
@@ -17,17 +16,6 @@ class DsDewLogic extends GetxController {
     super.onClose();
   }
 
-  void loadData() async {
-    for(var i=0;i<50;i++){
-      state.bigRoads.value.add('$i');
-    }
-
-    for(var i=0;i<50;i++){
-      state.beadRoads.value.add('$i');
-    }
-    state.bigRoads.refresh();
-    state.beadRoads.refresh();
-  }
 
 
 

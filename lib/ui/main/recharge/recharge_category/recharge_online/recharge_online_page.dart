@@ -151,20 +151,17 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                     SizedBox(height: 10.h,),
                     SizedBox(
                       width: 300.w,
-                      child: Wrap(
-                        alignment:WrapAlignment.spaceBetween,
-                        runSpacing: 10.h,spacing: 10.w,
-                        children: [
-                          buildBtnAmount(100),
-                          buildBtnAmount(200),
-                          buildBtnAmount(300),
-                          buildBtnAmount(500),
-                          buildBtnAmount(1000),
-                          buildBtnAmount(2000),
-                          buildBtnAmount(5000),
-                          buildBtnAmount(8000),
-                        ],
-                      ),
+                      child: Obx(() {
+                        if(state.paymentList.isEmpty) return Container();
+                        var list = state.paymentList[state.selectIndex.value].moneyQuick?.split("|") ?? [];
+                        return Wrap(
+                          alignment:WrapAlignment.spaceBetween,
+                          runSpacing: 10.h,spacing: 10.w,
+                          children: [
+                            ...list.map((e) => buildBtnAmount(int.tryParse(e) ?? 0)),
+                          ],
+                        );
+                      }),
                     ),
                   ],
                 ),

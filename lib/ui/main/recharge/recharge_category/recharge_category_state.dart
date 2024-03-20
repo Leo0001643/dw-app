@@ -20,8 +20,11 @@ class RechargeCategoryState {
 
   late List<Widget> pages;
 
-  //是否支持在线
+  ///是否支持在线
   var supportOnline = false.obs;
+  ///是否支持离线
+  var supportOffline = false.obs;
+
   var paymentInfo = PaymentListBanks();
 
   ///支付方式

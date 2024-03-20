@@ -30,7 +30,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
   @override
   void initState() {
     //判断是否支持在线 不支持默认页面显示离线
-    state.pageController = PageController(initialPage: state.supportOnline.value ? 0:1);
+    state.pageController = PageController(initialPage: 0);
     state.tabController = TabController(length: state.tabs.length, vsync: this);
     state.tabController.addListener(() {
       state.pageController.jumpToPage(state.tabController.index);
@@ -71,7 +71,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
               }),
               Obx(() {
                 return Visibility(
-                  visible: state.supportOnline.value,
+                  visible: state.supportOnline.value && state.supportOffline.value,
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
                     child: LCTabBar(
@@ -123,6 +123,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
         case Constants.code_ysfzf:
         case Constants.code_qmf:
         case Constants.code_caifutong:
+        case Constants.code_jingdong:
         logic.loadData(value);
         break;
         default:
