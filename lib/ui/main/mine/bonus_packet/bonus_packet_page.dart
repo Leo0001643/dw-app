@@ -8,6 +8,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
@@ -167,7 +168,7 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
             flex: 25,
             child: Align(
               alignment: Alignment.center,
-              child: Text(DateUtil.formatDateMs(item.endTime.em() * 1000,format: DateFormats.y_mo_d),
+              child: Text(DataUtils.format12Hour(item.endTime.em() * 1000,format: DateFormats.y_mo_d,isUtc: true),
                 style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),

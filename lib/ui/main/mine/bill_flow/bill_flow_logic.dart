@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 
 import 'bill_flow_state.dart';
@@ -36,20 +37,20 @@ class BillFlowLogic extends GetxController {
       case 0:
         var endTime = DateTime.now();
         var beginTime = DateTime(endTime.year,endTime.month,endTime.day,0,0,0,0);
-        params["beginTime"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch);
-        params["endTime"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch);
+        params["beginTime"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch);
+        params["endTime"] = DataUtils.format12Hour(endTime.millisecondsSinceEpoch);
         break;
       case 1:
         var endTime = DateTime.now();
         var beginTime = endTime.subtract(const Duration(days: 7));
-        params["beginTime"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch);
-        params["endTime"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch);
+        params["beginTime"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch);
+        params["endTime"] = DataUtils.format12Hour(endTime.millisecondsSinceEpoch);
         break;
       case 2:
         var endTime = DateTime.now();
         var beginTime = endTime.subtract(const Duration(days: 15));
-        params["beginTime"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch);
-        params["endTime"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch);
+        params["beginTime"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch);
+        params["endTime"] = DataUtils.format12Hour(endTime.millisecondsSinceEpoch);
         break;
     }
 

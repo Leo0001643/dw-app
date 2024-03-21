@@ -65,11 +65,11 @@ class _RechargePageState extends State<RechargePage> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 15.h,),
+                      SizedBox(height: 10.h,),
                       Obx(() {
                         return Center(
                           child: Wrap(
-                            runSpacing: 15.h,
+                            runSpacing: 10.h,
                             spacing: 20.w,
                             children: [
                               buildCategoryItem(state.usdtBank.value, -1),
@@ -78,10 +78,9 @@ class _RechargePageState extends State<RechargePage> {
                           ),
                         );
                       }),
-                      SizedBox(height: 15.h,),
+                      SizedBox(height: 10.h,),
                       Padding(
-                        padding:
-                        EdgeInsets.symmetric(horizontal: 27.w, vertical: 7.h),
+                        padding: EdgeInsets.symmetric(horizontal: 27.w),
                         child: Obx(() {
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,12 +103,12 @@ class _RechargePageState extends State<RechargePage> {
                           );
                         }),
                       ),
-                      SizedBox(height: 15.h,),
+                      SizedBox(height: 10.h,),
                       Obx(() {
                         var banks = state.paymentList.value.banks;
                         return Center(
                           child: Wrap(
-                            runSpacing: 15.h,
+                            runSpacing: 10.h,
                             spacing: 20.w,
                             children: banks
                                 ?.map((e) => buildCategoryItem(e, banks.indexOf(e)))

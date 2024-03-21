@@ -18,9 +18,9 @@ import 'package:intl/intl.dart';
 
 class DataUtils{
 
-
-  static String format12Hour(int ms){
-    return DateFormat('yyyy-MM-dd hh:mm:ss').format(DateUtil.getDateTimeByMs(ms));
+  ///统一采用12小时制
+  static String format12Hour(int ms,{String format = 'yyyy-MM-dd hh:mm:ss',bool isUtc = false}){
+    return DateFormat(format).format(DateUtil.getDateTimeByMs(ms,isUtc: isUtc));
   }
 
 

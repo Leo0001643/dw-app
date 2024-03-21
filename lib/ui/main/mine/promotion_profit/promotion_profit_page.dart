@@ -7,6 +7,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
@@ -265,7 +266,7 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
             children: [
               Expanded(
                 flex: 30,
-                child: Text(DateUtil.formatDateMs(item.addTime.em() * 1000),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
+                child: Text(DataUtils.format12Hour(item.addTime.em() * 1000),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
               ),
               Expanded(
                 flex: 23,

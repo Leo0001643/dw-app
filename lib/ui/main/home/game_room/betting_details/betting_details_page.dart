@@ -6,6 +6,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -232,7 +233,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                   style: TextStyle(color: ColorX.text0917(),fontSize: 12.sp,),),
                   Text("${item.betMsg.em()}${item.betOddsExpected.em()}/${item.betOdds1314.em()}",
                     style: TextStyle(color: ColorX.color_fc243b,fontSize: 12.sp,),),
-                  Text(DateUtil.formatDateMs(item.createTime.em(),format: "MM-dd HH:mm:ss"),
+                  Text(DataUtils.format12Hour(item.createTime.em(),format: "MM-dd HH:mm:ss"),
                     style: TextStyle(color: ColorX.color_6655e7,fontSize: 12.sp,),),
                 ],
               ),

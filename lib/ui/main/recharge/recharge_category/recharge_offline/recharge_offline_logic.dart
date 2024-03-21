@@ -5,6 +5,7 @@ import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
@@ -57,7 +58,7 @@ class RechargeOfflineLogic extends GetxController {
 
     var params = <String,dynamic>{"oid":AppData.user()?.oid.em(),"username":AppData.user()?.username.em(),
       "inBankSetId":agree.id,"money":state.remitAmount,
-      "userAddTime":DateUtil.formatDateMs(DateTime.now().millisecondsSinceEpoch),
+      "userAddTime":DataUtils.format12Hour(DateTime.now().millisecondsSinceEpoch),
       "outBankId":outBankId,"outBankName":outBankName,"outCardUser":state.remitName,};
 
     HttpService.companyDeposit(params).then((value) {

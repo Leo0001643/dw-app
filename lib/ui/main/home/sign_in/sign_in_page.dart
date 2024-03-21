@@ -77,7 +77,7 @@ class _SignInPageState extends State<SignInPage> {
                   }),
 
                   Obx(() {
-                    var date = DateUtil.formatDateMs(state.checkInfo.value.timestamp.em() * 1000,isUtc: true,format: Intr().nianyueri);
+                    var date = DataUtils.format12Hour(state.checkInfo.value.timestamp.em() * 1000,format: Intr().nianyueri,isUtc:true);
                     return Text(date,style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none),);
                   }),
                 ],

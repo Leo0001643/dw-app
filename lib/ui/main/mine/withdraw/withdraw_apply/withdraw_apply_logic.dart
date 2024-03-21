@@ -5,6 +5,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_entity.dart';
 import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
@@ -78,7 +79,7 @@ class WithdrawApplyLogic extends GetxController {
     }
     HttpService.takeSubmit(params).then((value) {
       Get.toNamed(Routes.withdraw_result,arguments: DigiccyDepositDataEntity(money: int.parse(state.withdrawAmount.value),
-      date: DateUtil.formatDateMs(DateTime.now().millisecondsSinceEpoch),info:state.dropdownValue.value.info(),
+      date: DataUtils.format12Hour(DateTime.now().millisecondsSinceEpoch),info:state.dropdownValue.value.info(),
         orderId: state.actualAmount.value,status: state.pageType.value));
     });
 

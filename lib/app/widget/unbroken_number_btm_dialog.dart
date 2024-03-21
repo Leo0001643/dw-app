@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/btc_source_entity.dart';
 
@@ -87,7 +88,7 @@ class StateUnbrokenNumberBtnDialog extends State<UnbrokenNumberBtnDialog>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(Intr().qihao_(["${widget.item.term.em()}"]),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),height: 1.5)),
-                Text(Intr().zhuaqushijian([DateUtil.formatDateMs(widget.item.openTime.em())]),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),height: 1.5)),
+                Text(Intr().zhuaqushijian([DataUtils.format12Hour(widget.item.openTime.em())]),style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),height: 1.5)),
               ],
             ),
           ),

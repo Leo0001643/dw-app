@@ -2,6 +2,7 @@ import 'package:common_utils/common_utils.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 
 import 'member_rebate_state.dart';
 
@@ -103,8 +104,8 @@ class MemberRebateLogic extends GetxController {
         beginTime = endTime.subtract(const Duration(days: 30));
         break;
     }
-    dates.add(DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d));
-    dates.add(DateUtil.formatDateMs(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d));
+    dates.add(DataUtils.format12Hour(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d));
+    dates.add(DataUtils.format12Hour(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d));
 
     return dates;
   }

@@ -4,6 +4,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/digiccy_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 
@@ -77,7 +78,7 @@ class RechargeDigitalLogic extends GetxController {
   void digiccyDeposit() {
     ///线下才可调用此方法
     var params = <String,dynamic>{"oid":AppData.user()?.oid.em(),"username":AppData.user()?.username.em(),
-      "inBankSetId":(state.currentAccount.value as PaymentChannelBankSet).id,"money":state.remitAmount,"userAddTime":DateUtil.formatDateMs(DateTime.now().millisecondsSinceEpoch),
+      "inBankSetId":(state.currentAccount.value as PaymentChannelBankSet).id,"money":state.remitAmount,"userAddTime":DataUtils.format12Hour(DateTime.now().millisecondsSinceEpoch),
     "remark":state.walletAddress};
     HttpService.digiccyDeposit(params).then((value) {
       // value.remitName = AppData.user()?.username.em();

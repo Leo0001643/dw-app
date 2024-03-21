@@ -2,6 +2,7 @@ import 'package:common_utils/common_utils.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
 
 import 'betting_detail_state.dart';
@@ -25,8 +26,8 @@ class BettingDetailLogic extends GetxController {
     "cur":state.betRecordGroupRecord.value.cur,};
     var endTime = DateTime.now();
     var beginTime = endTime.subtract(const Duration(days: 7));
-    params["beginDate"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    params["endDate"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
+    params["beginDate"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
+    params["endDate"] = DataUtils.format12Hour(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
 
     HttpService.getRecordGroupType(params).then((value) {
       state.record.value = value;

@@ -72,7 +72,7 @@ class _BettingDetailChildPageState extends State<BettingDetailChildPage> {
 
   Widget buildBettingItem(T.Record item) {
     // var result = index%2 == 1;
-    var date = DateUtil.formatDateMs((num.parse(item.betTime??"0").toInt()).em() ,isUtc: true,format: Intr().nianyueri);
+    var date = DataUtils.format12Hour(num.parse(item.betTime??"0").toInt(),format: Intr().nianyueri,isUtc:true).em();
 
     return InkWell(
       onTap:(){

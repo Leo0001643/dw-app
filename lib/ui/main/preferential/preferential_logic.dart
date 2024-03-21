@@ -9,6 +9,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 
@@ -72,9 +73,9 @@ class PreferentialLogic extends GetxController {
       return Intr().changqihuodong;
     }else if(item.startTime.em() < item.endTime.em()){
       if(item.startTime.em() == 0){
-        return "${Intr().jiehzhiriqizhi}${DateUtil.formatDateMs(item.endTime.em() * 1000,format: DateFormats.full)}";
+        return "${Intr().jiehzhiriqizhi}${DataUtils.format12Hour(item.endTime.em() * 1000,format: DateFormats.full)}";
       } else {
-        return "${DateUtil.formatDateMs(item.startTime.em()* 1000,format: DateFormats.full)}${Intr().dao}${DateUtil.formatDateMs(item.endTime.em()* 1000,format: DateFormats.full)}";
+        return "${DataUtils.format12Hour(item.startTime.em()* 1000,format: DateFormats.full)}${Intr().dao}${DataUtils.format12Hour(item.endTime.em()* 1000,format: DateFormats.full)}";
       }
     }
     return "";

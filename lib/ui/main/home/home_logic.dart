@@ -12,6 +12,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
@@ -301,7 +302,7 @@ class HomeLogic extends GetxController {
           state.act.value.logo?.status = Intr().jinxingzhong; //进行中
         } else {
           state.act.value.logo?.status =
-              DateUtil.formatDateMs(countTime * 1000, format: "HH:mm:ss"); //进行中
+              DataUtils.format12Hour(countTime * 1000, format: "HH:mm:ss"); //进行中
         }
         state.act.refresh();
         state.hongbaoVisible.value = true;
