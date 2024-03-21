@@ -18,6 +18,7 @@ import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
@@ -294,6 +295,10 @@ class JsonConvert {
     if (<BankEntity>[] is M) {
       return data.map<BankEntity>((Map<String, dynamic> e) =>
           BankEntity.fromJson(e)).toList() as M;
+    }
+    if (<BaseApiOssEntity>[] is M) {
+      return data.map<BaseApiOssEntity>((Map<String, dynamic> e) =>
+          BaseApiOssEntity.fromJson(e)).toList() as M;
     }
     if (<BetDetailItemChildEntity>[] is M) {
       return data.map<BetDetailItemChildEntity>((Map<String, dynamic> e) =>
@@ -835,6 +840,7 @@ class JsonConvertClassCollection {
     (BackWaterEntity).toString(): BackWaterEntity.fromJson,
     (BalanceEntity).toString(): BalanceEntity.fromJson,
     (BankEntity).toString(): BankEntity.fromJson,
+    (BaseApiOssEntity).toString(): BaseApiOssEntity.fromJson,
     (BetDetailItemChildEntity).toString(): BetDetailItemChildEntity.fromJson,
     (Record).toString(): Record.fromJson,
     (Total).toString(): Total.fromJson,

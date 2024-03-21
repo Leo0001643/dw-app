@@ -1,7 +1,10 @@
 
+import 'dart:convert';
+
 import 'package:flutter_oss_aliyun/flutter_oss_aliyun.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 
 /// Author: Soushin-932707629@qq.com
 /// Date: 2024/3/19 14:59
@@ -33,7 +36,7 @@ class OssUtils{
             accessKey: akeyid,
             accessSecret: asrt,
             expire: '2100-01-01T14:00:00Z',
-            secureToken: 'token',
+            secureToken: '',
           );
         });
   }
@@ -44,10 +47,19 @@ class OssUtils{
     },onError: (e){
       logger("报错咯${e}");
     });
-    // client?.getObject(fileKey)
   }
+  
+  void downloadFile(){
+    client?.getObject(file).then((value) {
+      loggerArray(['获取对象数据',value.statusCode,value.statusMessage,value.headers,value.data]);
+      if(value.statusCode == 200){
+        loggerArray(["有了有了",BaseApiOssEntity.fromJson(value.data)]);
+      }
+    });
+  }
+  
 
-
+  
 
 
 
