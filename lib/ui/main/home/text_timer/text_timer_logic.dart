@@ -3,15 +3,13 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 
-import '../../../../app/intl/intr.dart';
-import '../../../bean/game_kind_entity.dart';
 
-/**
- * 参考count_down_text.dart
- */
+/// 参考count_down_text.dart
 class TextTimerLogic {
   // StreamSubscription? loginStream;
   // var count = 100;

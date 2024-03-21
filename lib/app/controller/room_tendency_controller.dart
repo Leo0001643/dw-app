@@ -155,17 +155,17 @@ class RoomTendencyController extends GetxController{
   }
 
   //index 对应的是特码第一球 第二球 第三球3012
-  List<List<String>> changeZpTab(int tabIndex){
+  List<List<String>> changeDsZpTab(int tabIndex){
     var index = tabIndex == 0 ? 3:(tabIndex - 1);
 
     List<String> list = List.empty(growable: true);
     data?.list?.forEach((element) {
       list.add(element[1]);
     });
-    loggerArray(["获取的数据结合",list]);
+    // loggerArray(["获取的数据结合",list]);
     // var tqdxArr = List<String>.empty(growable: true);
     var tqdsArr = List<String>.empty(growable: true);
-    // 对应的是大小露珠排列 特码3第一球0第二球1第三球2  对应的是单双露珠排列 特码7第一球4第二球5第三球6
+    //对应的是单双露珠排列 特码7第一球4第二球5第三球6
     list.forEach((element) {
       // tqdxArr.add(element.split(",")[index]);
       tqdsArr.add(element.split(",")[index + 4]);
@@ -182,10 +182,10 @@ class RoomTendencyController extends GetxController{
     data?.list?.forEach((element) {
       list.add(element[1]);
     });
-    loggerArray(["获取的数据结合",list]);
+    // loggerArray(["获取的数据结合",list]);
     // var tqdxArr = List<String>.empty(growable: true);
     var tqdsArr = List<String>.empty(growable: true);
-    // 对应的是大小露珠排列 特码3第一球0第二球1第三球2  对应的是单双露珠排列 特码7第一球4第二球5第三球6
+    // 对应的是大小露珠排列 特码3第一球0第二球1第三球2
     list.forEach((element) {
       // tqdxArr.add(element.split(",")[index]);
       tqdsArr.add(element.split(",")[index]);

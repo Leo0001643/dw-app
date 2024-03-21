@@ -14,6 +14,7 @@ import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/app/utils/oss_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/change_balance_event.dart';
@@ -69,6 +70,12 @@ class HomeLogic extends GetxController {
     balanceStream?.cancel();
 
     super.onClose();
+  }
+
+  @override
+  void onInit() {
+    OssUtils().initData();
+    super.onInit();
   }
 
   void clickMenu(BuildContext context, int index) {

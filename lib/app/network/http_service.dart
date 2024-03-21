@@ -80,11 +80,16 @@ class HttpService{
 
   static late RetrofitClient _client;
 
+  static Dio? dio;
+
+  static Dio getDio(){
+    dio ??= Dio();
+    return dio!;
+  }
+
+
   static void doInit(){
-    var dio = Dio();
-
-
-    dio.interceptors.add(InterceptorsWrapper(
+    getDio().interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler){
         options.headers["Content-Type"] = "application/x-www-form-urlencoded";
         options.headers["Accept-Language"] = Intr().currentLocale().languageCode;
@@ -117,7 +122,7 @@ class HttpService{
         handler.next(e);
       }
     ));
-    _client = RetrofitClient(dio,baseUrl: Constants.base_url);
+    _client = RetrofitClient(getDio(),baseUrl: Constants.base_url);
   }
 
 

@@ -18,7 +18,8 @@ class BettingSmallItemWidget extends StatefulWidget {
   OddsContent content;
   bool? useNoColor=false;
   String betName;
-  BettingSmallItemWidget(this.index,this.content,this.selectBetting,this.inputAmt,this.betName,{super.key,this.useNoColor});
+  bool? tema;
+  BettingSmallItemWidget(this.index,this.content,this.selectBetting,this.inputAmt,this.betName,this.tema,{super.key,this.useNoColor});
 
   @override
   State<StatefulWidget> createState() => StateBettingSmallItemWidget();
@@ -96,7 +97,7 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
               ),
               child: Text(result,style: TextStyle(
                   fontSize:13.sp,
-                  color: getTagColor(widget.index),
+                  color: widget.tema == true ? getTagColor(widget.index):ColorX.text0917(),
                   fontWeight: FontWeight.w700,
               ),),
             ),

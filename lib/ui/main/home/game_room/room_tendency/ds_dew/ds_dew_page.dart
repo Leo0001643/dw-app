@@ -157,7 +157,7 @@ class _DsDewPageState extends State<DsDewPage> with SingleTickerProviderStateMix
               id: RoomTendencyController.room_tendency_id,
               builder: (ctl){
                 if(isEmpty(ctl.data?.list)){ return Container(); }
-                var list = ctl.changeZpTab(state.tabIndex);
+                var list = ctl.changeDsZpTab(state.tabIndex);
                 loggerArray(["内部数据",jsonEncode(list)]);
                 var titleRow = list.first;
                 var childsRow = list.sublist(1,list.length);

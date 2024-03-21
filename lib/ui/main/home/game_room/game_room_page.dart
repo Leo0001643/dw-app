@@ -273,8 +273,8 @@ class _GameRoomPageState extends State<GameRoomPage> {
         onTap: () {
           if (AppData.isLogin()) {
             TextItemLogic textItemLogic = Get.find<TextItemLogic>();
-            if (Intr().fengpanzhong == textItemLogic.state.text_timer.value) {
-              showToast(Intr().fengpanzhong);
+            if (unEmpty(textItemLogic.canBet())) {
+              showToast(textItemLogic.canBet());
               return;
             }
 

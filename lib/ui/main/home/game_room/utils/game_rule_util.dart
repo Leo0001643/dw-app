@@ -58,6 +58,7 @@ class GameRuleUtil {
    */
   static const String GameType_Even = "even";
 
+
   /**
    * "14双"
    */

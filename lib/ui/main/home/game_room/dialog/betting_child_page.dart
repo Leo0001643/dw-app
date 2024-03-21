@@ -65,7 +65,7 @@ class BettingChildPageState extends State<BettingChildPage> {
                 print("===== index ${index}   ${dataBettingList1[index].hashCode} ");
                 var content = dataBettingList1[index];
                 content.level = index;
-                return BettingSmallItemWidget(index,content,widget.selectBetting,widget.inputAmt,widget.betName,useNoColor:true);
+                return BettingSmallItemWidget(index,content,widget.selectBetting,widget.inputAmt,widget.betName,false,useNoColor:true);
               }),
         ),
         SliverToBoxAdapter(
@@ -85,9 +85,8 @@ class BettingChildPageState extends State<BettingChildPage> {
                   return BettingDialogItemWidget(index,dataBettingList2[index],widget.selectBetting,widget.inputAmt,widget.betName,);
                 }),
           ),
-        )
-      ]
-      ),
+        ),
+      ]),
     );
   }
 

@@ -58,7 +58,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
             margin: EdgeInsets.only(top: 6.h,left: 15.w,right: 15.w),
             child: GridView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 5,
                   crossAxisSpacing: 6.0,
@@ -74,15 +74,15 @@ class BettingChildPageState extends State<BettingTemaPage>  {
         ),
         SliverToBoxAdapter(
           child: Container(
-            margin: EdgeInsets.only(top: 6.w,left: 15.w,right: 15.w),
+            margin: EdgeInsets.only(top: 6.h,left: 15.w,right: 15.w),
             child: GridView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 6,
                   crossAxisSpacing: 6.0,
-                  mainAxisSpacing: 6,
-                  childAspectRatio: 52 / 59,
+                  mainAxisSpacing: 0,
+                  childAspectRatio: 52 / 65,
                 ),
                 itemCount:dataBettingList1.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -95,7 +95,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
             margin: EdgeInsets.only(top: 6.h,bottom: 3.h,left: 15.w,right: 15.w),
             child: GridView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 6,
                   crossAxisSpacing: 6.0,
@@ -104,7 +104,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
                 ),
                 itemCount:dataBettingList2.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return BettingSmallItemWidget(index,dataBettingList2[index],widget.selectBetting,widget.inputAmt,widget.betName);
+                  return BettingSmallItemWidget(index,dataBettingList2[index],widget.selectBetting,widget.inputAmt,widget.betName,true);
                 }),
           ),
         ),

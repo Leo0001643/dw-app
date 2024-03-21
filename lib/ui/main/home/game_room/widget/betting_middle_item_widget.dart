@@ -43,8 +43,8 @@ class StateBettingMiddleItemWidget extends State<BettingMiddleItemWidget>{
       },
       child: Container(
         width: 64.w,
-        height: 63.2.w,
-        padding: EdgeInsets.only(top: 9.w,bottom:7.w ),
+        height: 64.h,
+        // padding: EdgeInsets.only(top: 9.w,bottom:7.w ),
         decoration:
         widget.content.check==true? BoxDecoration(
           boxShadow:[ BoxShadow(
@@ -81,7 +81,7 @@ class StateBettingMiddleItemWidget extends State<BettingMiddleItemWidget>{
               colors: ColorX.cardColors()),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(ssb,style: TextStyle(
                 fontSize:13.sp,

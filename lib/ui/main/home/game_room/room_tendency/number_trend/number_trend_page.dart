@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/controller/room_tendency_controller.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/room_tendency/number_trend/number_trend_state.dart';
@@ -77,6 +78,7 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
               id: RoomTendencyController.room_tendency_id,
               builder: (ctl){
                 var data = ctl.getNumberTrend(state.tabIndex);
+                var maximum = state.tabIndex == 0 ? 27.0:9.0;
                 return SfCartesianChart(
                     primaryXAxis: CategoryAxis(
                       labelRotation: 90,
@@ -95,20 +97,16 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                       axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
                       labelFormat: Intr().hao_value,
                       labelAlignment: LabelAlignment.center,
+                      rangePadding: ChartRangePadding.none,
                       labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
                       minimum: 0,//设置最小值
                       interval: 1,//设置步长
-                      maximum: 27,//设置最大值
+                      maximum: maximum,//设置最大值
                       anchorRangeToVisiblePoints: false,
                       majorTickLines: const MajorTickLines(size: 0),
                       minorTickLines: const MinorTickLines(size: 0),
                     ),
                     backgroundColor: ColorX.cardBg(),
-                    // Chart title
-                    // title: ChartTitle(text: 'Half yearly sales analysis'),
-                    // Enable legend
-                    // legend: Legend(isVisible: false),
-                    // Enable tooltip
                     zoomPanBehavior: zoomPanBehavior,
                     tooltipBehavior: TooltipBehavior(enable: false),
                     series: <ChartSeries<NumberData, String>>[
@@ -131,7 +129,15 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                     ]);
               },
             ),
-          )
+          ),
+          GetBuilder<RoomTendencyController>(
+              id: RoomTendencyController.room_tendency_id,
+              builder: (ctl){
+                var height = state.tabIndex == 0 ? 0.0 : 300.h;
+                return Container(
+                  height: height,
+                );
+              }),
         ],
       ),
     );

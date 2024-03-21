@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
@@ -121,16 +122,16 @@ class StateBettingDialogItemWidget extends State<BettingDialogItemWidget>{
       ssb=getTag(GameRuleUtil.Key_Num);
     } else {
       setTag(GameRuleUtil.Key_Odds, con.play);
-      if (con.type == GameRuleUtil.GameType_Big) {
+      if (con.type?.endsWith(GameRuleUtil.GameType_Big) == true) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Big);
         ssb = betTypeName;
-      } else if (con.type == GameRuleUtil.GameType_Small) {
+      } else if (con.type?.endsWith(GameRuleUtil.GameType_Small) == true) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Small);
         ssb =betTypeName;
-      } else if (con.type == GameRuleUtil.GameType_Odd) {
+      } else if (con.type?.endsWith(GameRuleUtil.GameType_Odd) == true) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Odd);
         ssb = betTypeName;
-      } else if (con.type == GameRuleUtil.GameType_Even) {
+      } else if (con.type?.endsWith(GameRuleUtil.GameType_Even) == true) {
         String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Even);
         ssb = betTypeName;
       } else {

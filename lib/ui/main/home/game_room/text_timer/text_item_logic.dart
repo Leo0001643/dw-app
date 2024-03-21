@@ -443,6 +443,16 @@ class TextItemLogic extends GetxController {
     }
   }
 
+  ///等待开奖和封盘中都不可投注
+  String canBet(){
+    if(currentStatus.value == LotteryStatus.sealingPlateStatus){
+      return Intr().fengpanzhong;
+    }else if(currentStatus.value == LotteryStatus.wattingLotteryStatus){
+      return Intr().wanshanziliao;
+    }else {
+      return "";
+    }
+  }
 
 
 }

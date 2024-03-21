@@ -110,7 +110,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                       children: [
                         SizedBox(width: 15.w,),
                         Obx(() {
-                          String termData=GameRuleUtil.getSSB(widget.logic.term.value,year:"");
+                          String termData=GameRuleUtil.getSSB(widget.logic.term.value.em(aft: '--'),year:"");
                           return Text(termData,style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),);
                         }),
                         Expanded(child: Container()),
@@ -256,8 +256,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                           width: 90.w,
                           child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
                             TextItemLogic textItemLogic = Get.find<TextItemLogic>();
-                            if (Intr().fengpanzhong == textItemLogic.state.text_timer.value) {
-                              showToast(Intr().fengpanzhong);
+                            if (unEmpty(textItemLogic.canBet())) {
+                              showToast(textItemLogic.canBet());
                               return;
                             }
                             if (selectBetting.isEmpty) {
@@ -320,8 +320,10 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
         builder: (lgc) {
           // print("开始刷新logic");
           String result = "";
-          if (Intr().fengpanzhong == lgc.state.text_timer.value) {
+          if (lgc.currentStatus.value == LotteryStatus.sealingPlateStatus) {
             result = Intr().fengpanzhong;
+          }else if (lgc.currentStatus.value == LotteryStatus.wattingLotteryStatus) {
+            result = Intr().dengdaikaipan;
           } else {
             result = lgc.subToTime(lgc.state.text_timer.value);
           }
