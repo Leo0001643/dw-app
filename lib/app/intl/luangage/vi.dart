@@ -1005,6 +1005,7 @@ class VI{
     "kaihuxieyi":"Hợp đồng tài khoản",
     "jieshaoren":"Tài liệu tham khảo",
     "shurujieshaoren":"Đầu vào tài liệu tham khảo",
+    "yuebuzhuqingxianchongzhi":"Số dư không đủ, cá cược không đủ. Đi đến nạp tiền",
 
   };
 }

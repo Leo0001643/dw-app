@@ -151,12 +151,12 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
             ),
           ),
           SizedBox(
-            height: 110.h,
+            height: 130.h,
             child: GetBuilder<RoomTendencyController>(
               id: RoomTendencyController.room_tendency_id,
               builder: (ctl){
                 if(isEmpty(ctl.data?.list)){ return Container(); }
-                var list = ctl.changeZpTab(state.tabIndex);
+                var list = ctl.changeDxZpTab(state.tabIndex);
                 loggerArray(["内部数据",jsonEncode(list)]);
                 var titleRow = list.first;
                 var childsRow = list.sublist(1,list.length);
@@ -165,13 +165,13 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
                   horizontalMargin: 0,
                   fixedLeftColumns: 0,
                   fixedTopRows: 0,
-                  dataRowHeight: 18.h,
-                  headingRowHeight: 18.h,
+                  dataRowHeight: 22.r,
+                  headingRowHeight: 22.r,
                   dividerThickness: 0,
                   border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
                   headingRowColor: MaterialStateProperty.all(ColorX.cardBg()),
                   dataRowColor: MaterialStateProperty.all(ColorX.cardBg()),
-                  minWidth: titleRow.length * 20.w,
+                  minWidth: titleRow.length * 25.w,
                   columns: buildBeadTitle(titleRow),
                   rows: List<DataRow>.generate(childsRow.length,
                           (index)=> DataRow(cells: buildBeadCell(index,childsRow[index]))),
@@ -226,14 +226,14 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
         columns.add(DataColumn2(
           numeric: true,
           label: Container(),
-          fixedWidth: 18.w,
+          fixedWidth: 22.r,
         ));
       } else {
         columns.add(DataColumn2(
           numeric: true,
-          label: buildDrawText(element == "1"? Intr().bet_xiao:Intr().bet_da,
-              element == "1" ? ColorX.color_5583e7:ColorX.color_fc243b,14.r,8.sp),
-          fixedWidth: 18.w,
+          label: buildDrawText(element == "1"? Intr().bet_da:Intr().bet_xiao,
+              element == "1" ? ColorX.color_fc243b:ColorX.color_5583e7,18.r,10.sp),
+          fixedWidth: 22.r,
         ));
       }
     });
@@ -249,8 +249,8 @@ class _DxDewPageState extends State<DxDewPage> with SingleTickerProviderStateMix
         cells.add(DataCell(Container(),));
       } else {
         cells.add(DataCell(
-          buildDrawText(element == "1"? Intr().bet_xiao:Intr().bet_da,
-              element == "1" ? ColorX.color_5583e7:ColorX.color_fc243b,14.r,8.sp),
+          buildDrawText(element == "1"? Intr().bet_da:Intr().bet_xiao,
+              element == "1" ? ColorX.color_fc243b:ColorX.color_5583e7,18.r,10.sp),
         ));
       }
     });

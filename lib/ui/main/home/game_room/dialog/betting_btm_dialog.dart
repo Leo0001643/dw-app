@@ -77,9 +77,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
-      height: 0.83.sh,
+      height: 0.81.sh,
       width: 1.sw,
       decoration: BoxDecoration(
         // color: ColorX.pageBg3(),

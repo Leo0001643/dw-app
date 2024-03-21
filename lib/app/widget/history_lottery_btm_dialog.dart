@@ -20,7 +20,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
         id: GameRoomLogic.gameRoomCompute,
         builder: (logic) {
       return Container(
-        height: 0.83.sh,
+        height: 0.81.sh,
         width: 1.sw,
         decoration: BoxDecoration(
           color: ColorX.cardBg5(),
@@ -161,13 +161,12 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
 
           String term1 = "";
           String term2 = "";
-          if (Intr().fengpanzhong == logic?.state.text_timer.value) {
+          if (Intr().fengpanzhong == logic.state.text_timer.value) {
             result = Intr().fengpanzhong;
             type = 0;
           } else {
             type = 1;
-            result =
-                logic?.subToTime(logic!.state.text_timer.value) ?? "";
+            result = logic.subToTime(logic.state.text_timer.value) ?? "";
             try {
               term1 = result.split(":")[0];
               term2 = result.split(":")[1];

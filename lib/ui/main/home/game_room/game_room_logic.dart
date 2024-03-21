@@ -257,7 +257,8 @@ class GameRoomLogic extends GetxController {
       Get.find<RoomTendencyLogic>().loadData(state.room.value,loading: false);
     }
     if (recentlyWSLotteryEntityData.isNotEmpty) {
-      headWSLotteryEntityData = lottery.data!.first;
+      ///这里取值需要深度拷贝，后面倒计时需要改这里的值
+      headWSLotteryEntityData = WSLotteryEntityData.fromJson(lottery.data!.first.toJson());
       updateLottery = true;///更新开奖结果了
       update([gameRoomCompute]);
     }

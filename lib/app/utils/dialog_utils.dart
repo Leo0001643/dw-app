@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/access_route_dialog.dart';
@@ -166,7 +168,7 @@ class DialogUtils {
                           width: 10.w,
                         ),
                         WidgetUtils().buildElevatedButton(
-                            "sure2".tr, 116.w, 40.h,
+                            Intr().confirm, 116.w, 40.h,
                             bg: ColorX.color_fc243b,
                             textColor: Colors.white, onPressed: () {
                           Navigator.of(context).pop(true);
@@ -215,7 +217,7 @@ class DialogUtils {
             actionsPadding:
                 EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
             actions: [
-              WidgetUtils().buildElevatedButton("com_cancel".tr, 116.w, 40.h,
+              WidgetUtils().buildElevatedButton(Intr().com_cancel, 116.w, 40.h,
                   bg: ColorX.cardBg3(),
                   textColor: ColorX.text586(), onPressed: () {
                 Navigator.of(context).pop(false);
@@ -223,7 +225,7 @@ class DialogUtils {
               SizedBox(
                 width: 10.w,
               ),
-              WidgetUtils().buildElevatedButton("sure2".tr, 116.w, 40.h,
+              WidgetUtils().buildElevatedButton(Intr().confirm, 116.w, 40.h,
                   bg: ColorX.color_fc243b,
                   textColor: Colors.white, onPressed: () {
                 Navigator.of(context).pop(true);
@@ -251,9 +253,9 @@ class DialogUtils {
       VoidCallback? onConfirm,
       VoidCallback? onCancel,
       bool? divider = false}) {
-    title = title ??"com_tip".tr;
-    btnConfirm = btnConfirm ?? "sure2".tr;
-    btnCancel = btnCancel ?? "com_cancel".tr;
+    title = title ?? Intr().com_tip;
+    btnConfirm = btnConfirm ?? Intr().confirm;
+    btnCancel = btnCancel ?? Intr().com_cancel;
 
     return showDialog<bool>(
         context: context,
@@ -617,9 +619,10 @@ class DialogUtils {
     var homelogic = Get.find<HomeLogic>();
     double selfMoney = homelogic.state.cnyBal.value.money??0;
     if(selfMoney<total) {
-      showMessageDialog(context,"余额不足,投注失败。是否前往充值",title:"提示",onConfirm: (){
-        eventBus.fire(ChangeMainPageEvent(2));
+      showMessageDialog(context,Intr().yuebuzhuqingxianchongzhi,title:Intr().com_tip,onConfirm: (){
         Navigator.pop(context);
+        eventBus.fire(ChangeMainPageEvent(2));
+        Get.until((ModalRoute.withName(Routes.main)));
       });
       return;
     }

@@ -1075,6 +1075,7 @@ class EN{
     "kaihuxieyi":"Account opening agreement",
     "jieshaoren":"Introducer",
     "shurujieshaoren":"Enter introducer",
+    "yuebuzhuqingxianchongzhi":"The balance is insufficient and the bet fails. Whether to go to top up",
 
   };
 

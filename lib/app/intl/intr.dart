@@ -658,6 +658,9 @@ class Intr extends Translations{
   String get hongbao_tiqu2 => "hongbao_tiqu2".tr;
   String get hongbao_yitiqu => "hongbao_yitiqu".tr;
   String get hongbao_yishixiao => "hongbao_yishixiao".tr;
+  String get com_tip => "com_tip".tr;
+  String get com_cancel => "com_cancel".tr;
+  String get yuebuzhuqingxianchongzhi => "yuebuzhuqingxianchongzhi".tr;
 
 
 

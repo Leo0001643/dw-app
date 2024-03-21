@@ -47,6 +47,7 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 14.h,),
+      width: 0.8.sw,
       child: Obx(() {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -151,13 +152,14 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
         ),
         child: Row(
           children: [
-            SizedBox(width: 20.w,),
-            Text(route.title,style: TextStyle(fontSize: 16.sp,color: ColorX.text333()),),
             SizedBox(width: 10.w,),
+            Text(route.title,style: TextStyle(fontSize: 16.sp,color: ColorX.text333()),),
             Expanded(
-              child: Visibility(
-                visible: route.delayTime > 0,
-                child: Text("${route.delayTime}mm",style: TextStyle(fontSize: 16.sp,color: color),),
+              child: Center(
+                child: Visibility(
+                  visible: route.delayTime > 0,
+                  child: Text("${route.delayTime}ms",style: TextStyle(fontSize: 16.sp,color: color),),
+                ),
               ),
             ),
             // Image.asset(ImageX.icon_right_black),

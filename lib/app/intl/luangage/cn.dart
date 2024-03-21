@@ -1004,6 +1004,7 @@ class CN {
     "kaihuxieyi":"《开户协议》",
     "jieshaoren":"介绍人",
     "shurujieshaoren":"输入介绍人",
+    "yuebuzhuqingxianchongzhi":"余额不足,投注失败。是否前往充值",
 
 
   };

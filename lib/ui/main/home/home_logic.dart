@@ -80,7 +80,6 @@ class HomeLogic extends GetxController {
         } else {
           WidgetUtils().goLogin();
         }
-
         break;
       case 1:
         ///提现

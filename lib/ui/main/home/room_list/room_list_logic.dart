@@ -1,10 +1,13 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -66,7 +69,7 @@ class RoomListLogic extends GetxController {
 
   void clickRoom(Pc28LottoRoomsTables? room){
     if(unEmpty(room?.name)){
-      print("跳转传入${jsonEncode(room?.toJson())}");
+      // print("跳转传入${jsonEncode(room?.toJson())}");
       Get.toNamed(Routes.game_room,arguments: room);
     }
   }
