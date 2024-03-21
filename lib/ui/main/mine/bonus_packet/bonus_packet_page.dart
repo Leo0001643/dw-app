@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,6 +43,7 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: 10.h,),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Obx(() {
@@ -172,7 +175,12 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
             flex: 25,
             child: Align(
               alignment: Alignment.center,
-              child: Text(item.statusString(),style: TextStyle(fontSize: 14.sp, color: ColorX.text0d1(),),),
+              child: item.status == 2 ?
+                  InkWell(
+                    onTap: ()=> logic.prizeOut(item),
+                    child: Text(Intr().hongbao_tiqu2,style: TextStyle(fontSize: 14.sp, color: ColorX.text0d1(),decoration: TextDecoration.underline),),
+                  )
+              : Text(item.statusString(),style: TextStyle(fontSize: 14.sp, color: ColorX.text0d1(),),),
             ),
           ),
         ],

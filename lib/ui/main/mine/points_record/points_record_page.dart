@@ -51,6 +51,7 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 10.h,),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Obx(() {

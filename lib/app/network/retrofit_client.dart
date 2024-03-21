@@ -344,6 +344,8 @@ abstract class RetrofitClient{
   @POST('/ds-api-web/updateMessageStatus')
   Future<BaseResponseEntity<String>> updateMessageStatus(@Body() Map<String,dynamic> params,);
 
+  @POST('/ds-api-web/getPrizesOut')
+  Future<BaseResponseEntity<String>> getPrizesOut(@Body() Map<String,dynamic> params,);
 
 
 

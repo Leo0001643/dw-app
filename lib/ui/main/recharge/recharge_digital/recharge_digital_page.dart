@@ -189,7 +189,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                           Obx(() {
                             return Visibility(
                               visible: !state.selectOnline.value,
-                              child: Container(width: 1.w,height: 220.h,color: Colors.black12,),
+                              child: Container(width: 1.w,height: 120.h,color: Colors.black12,),
                             );
                           }),
                           SizedBox(width: 13.w,),
@@ -214,39 +214,64 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                       ),
                                     );
                                   }),
+                                  // Obx(() {
+                                  //   return Visibility(
+                                  //     visible: !state.selectOnline.value,
+                                  //     child: Text(Intr().shoukuanzhanghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
+                                  //   );
+                                  // }),
                                   Obx(() {
                                     return Visibility(
-                                      visible: !state.selectOnline.value,
-                                      child: Text(Intr().shoukuanzhanghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917()),),
+                                      visible: state.selectOnline.value,
+                                      child: SizedBox(height: 10.h,),
                                     );
                                   }),
-                                  SizedBox(height: 10.h,),
-                                  Container(
-                                    decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(5.r)),
-                                    width: 300.w,height: 45.h,
-                                    padding: EdgeInsets.symmetric(horizontal: 15.w),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(AppData.user()!.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
-                                        InkWell(
-                                          onTap: ()=> WidgetUtils().clickCopy(AppData.user()!.username.em()),
-                                          child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
+                                  Obx(() {
+                                    return Visibility(
+                                      visible: state.selectOnline.value,
+                                      child: Container(
+                                        decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(5.r)),
+                                        width: 300.w,height: 45.h,
+                                        padding: EdgeInsets.symmetric(horizontal: 15.w),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(AppData.user()!.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+                                            InkWell(
+                                              onTap: ()=> WidgetUtils().clickCopy(AppData.user()!.username.em()),
+                                              child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
+                                            ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(height: 10.h,),
+                                      ),
+                                    );
+                                  }),
+                                  Obx(() {
+                                    return Visibility(
+                                      visible: state.selectOnline.value,
+                                      child: SizedBox(height: 10.h,),
+                                    );
+                                  }),
                                   Row(
                                     children: [
                                       Obx(() {
-                                        return QrImageView(
-                                          data: logic.getAddress(),
-                                          size: 112.r,
-                                          backgroundColor: Colors.white,
+                                        return Visibility(
+                                          visible: state.selectOnline.value,
+                                          child: Obx(() {
+                                            return QrImageView(
+                                              data: logic.getAddress(),
+                                              size: 112.r,
+                                              backgroundColor: Colors.white,
+                                            );
+                                          }),
                                         );
                                       }),
-                                      SizedBox(width: 17.w,),
+                                      Obx(() {
+                                        return Visibility(
+                                          visible: state.selectOnline.value,
+                                          child: SizedBox(width: 17.w,),
+                                        );
+                                      }),
                                       Expanded(
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -260,15 +285,26 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                               ),
                                               padding: EdgeInsets.all(5.r),
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.end,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
                                                   Obx(() {
                                                     return Text(logic.getAddress(),
                                                       style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),);
                                                   }),
-                                                  InkWell(
-                                                    onTap: ()=> WidgetUtils().clickCopy(logic.getAddress(),),
-                                                    child: Image.asset(ImageX.icon_copy,color: ColorX.text5862(),),
+                                                  Container(
+                                                    constraints: BoxConstraints(
+                                                      maxWidth: 0.5.sw,
+                                                    ),
+                                                    child: InkWell(
+                                                      onTap: ()=> WidgetUtils().clickCopy(logic.getAddress(),),
+                                                      child: Row(
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children: [
+                                                          Image.asset(ImageX.icon_copy,color: ColorX.text5862(),),
+                                                          Text(Intr().fuzhilianjie, style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+                                                        ],
+                                                      ),
+                                                    ),
                                                   ),
                                                 ],
                                               ),

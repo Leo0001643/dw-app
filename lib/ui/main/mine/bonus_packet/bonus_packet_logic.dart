@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 
 import 'bonus_packet_state.dart';
 
@@ -15,7 +16,6 @@ class BonusPacketLogic extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 
@@ -29,7 +29,6 @@ class BonusPacketLogic extends GetxController {
   }
 
   void changeTab(){
-
     state.wallets.forEach((element) {
       if(state.currentWallet.value == element){
         var index = state.wallets.indexOf(element);
@@ -41,8 +40,17 @@ class BonusPacketLogic extends GetxController {
         state.record.refresh();
       }
     });
-
   }
+
+  void prizeOut(PrizeListPrizes item){
+    var user = AppData.user();
+    HttpService.getPrizesOut({"oid":user?.oid,"username":user?.username,"id":item.id}).then((value) {
+      ///操作成功需要刷新数据
+      loadData();
+    });
+  }
+
+
 
 
 

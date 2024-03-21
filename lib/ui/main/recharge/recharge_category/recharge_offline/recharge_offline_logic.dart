@@ -62,6 +62,7 @@ class RechargeOfflineLogic extends GetxController {
 
     HttpService.companyDeposit(params).then((value) {
       value.remitName = state.remitName;///回传姓名显示
+      value.symbol = "¥";
       Get.offAndToNamed(Routes.recharge_result,arguments: value);
     });
   }

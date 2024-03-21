@@ -28,6 +28,10 @@ DigiccyDepositDataEntity $DigiccyDepositDataEntityFromJson(
   if (remitName != null) {
     digiccyDepositDataEntity.remitName = remitName;
   }
+  final String? symbol = jsonConvert.convert<String>(json['symbol']);
+  if (symbol != null) {
+    digiccyDepositDataEntity.symbol = symbol;
+  }
   return digiccyDepositDataEntity;
 }
 
@@ -40,6 +44,7 @@ Map<String, dynamic> $DigiccyDepositDataEntityToJson(
   data['orderId'] = entity.orderId;
   data['status'] = entity.status;
   data['remitName'] = entity.remitName;
+  data['symbol'] = entity.symbol;
   return data;
 }
 
@@ -51,6 +56,7 @@ extension DigiccyDepositDataEntityExtension on DigiccyDepositDataEntity {
     String? orderId,
     String? status,
     String? remitName,
+    String? symbol,
   }) {
     return DigiccyDepositDataEntity()
       ..date = date ?? this.date
@@ -58,6 +64,7 @@ extension DigiccyDepositDataEntityExtension on DigiccyDepositDataEntity {
       ..money = money ?? this.money
       ..orderId = orderId ?? this.orderId
       ..status = status ?? this.status
-      ..remitName = remitName ?? this.remitName;
+      ..remitName = remitName ?? this.remitName
+      ..symbol = symbol ?? this.symbol;
   }
 }

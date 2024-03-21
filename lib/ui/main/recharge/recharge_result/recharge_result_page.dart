@@ -51,7 +51,7 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(ImageX.icon_select,width: 24.r,height: 24.r,),
+                    Image.asset(ImageX.icon_select,width: 25.r,height: 25.r,fit: BoxFit.fill,),
                     SizedBox(height: 5.r,),
                     Text(Intr().tijiaochenggong,style: TextStyle(fontSize: 20.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                     SizedBox(height: 5.r,),
@@ -68,15 +68,21 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(Intr().chongzhixiangqing,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+                      Text(Intr().bill_detail,style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
                       SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().chongzhixingming,result.remitName.em()),
-                      SizedBox(height: 15.h,),
+                      Visibility(
+                        visible: unEmpty(result.remitName),
+                        child: buildInfoItem(Intr().chongzhixingming,result.remitName.em()),
+                      ),
+                      Visibility(
+                        visible: unEmpty(result.remitName),
+                        child: SizedBox(height: 15.h,),
+                      ),
                       buildInfoItem(Intr().dingdanbianhao,result.orderId.em()),
                       SizedBox(height: 15.h,),
                       buildInfoItem(Intr().tijiaoshijian,result.date.em()),
                       SizedBox(height: 15.h,),
-                      buildInfoItem(Intr().chongzhijine,"¥${result.money.em()}"),
+                      buildInfoItem(Intr().chongzhijine,"${result.symbol.em()}${result.money.em()}"),
                     ],
                   ),
                 );

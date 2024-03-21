@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
@@ -50,13 +51,13 @@ class PrizeListPrizes {
 	String statusString(){
 		switch(status){
 			case 1:
-				return "未激活";
+				return Intr().hongbao_weijihuo;
 			case 2:
-				return "已激活";
+				return Intr().hongbao_tiqu;
 			case 3:
 				return Intr().yitiqu;
 			case 4:
-				return "已失效";
+				return Intr().hongbao_yishixiao;
 			default:
 				return "";
 		}

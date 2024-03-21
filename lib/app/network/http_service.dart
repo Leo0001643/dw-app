@@ -470,6 +470,9 @@ class HttpService{
     return buildFuture<String>(()=> _client.updateMessageStatus(params));
   }
 
+  static Future<String> getPrizesOut(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.getPrizesOut(params));
+  }
 
 
 

@@ -652,7 +652,12 @@ class Intr extends Translations{
   String get jieshaoren => "jieshaoren".tr;
   String get shurujieshaoren => "shurujieshaoren".tr;
   String get bank_branch => "bank_branch".tr;
-
+  String get bill_detail => "bill_detail".tr;
+  String get hongbao_weijihuo => "hongbao_weijihuo".tr;
+  String get hongbao_tiqu => "hongbao_tiqu".tr;
+  String get hongbao_tiqu2 => "hongbao_tiqu2".tr;
+  String get hongbao_yitiqu => "hongbao_yitiqu".tr;
+  String get hongbao_yishixiao => "hongbao_yishixiao".tr;
 
 
 

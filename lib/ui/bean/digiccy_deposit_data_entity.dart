@@ -13,6 +13,7 @@ class DigiccyDepositDataEntity {
 	String? orderId;
 	String? status;
 	String? remitName;
+	String? symbol;
 
 	DigiccyDepositDataEntity({this.date,this.info,this.money,this.orderId,this.status});
 

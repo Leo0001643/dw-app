@@ -80,6 +80,8 @@ class RechargeDigitalLogic extends GetxController {
       "inBankSetId":(state.currentAccount.value as PaymentChannelBankSet).id,"money":state.remitAmount,"userAddTime":DateUtil.formatDateMs(DateTime.now().millisecondsSinceEpoch),
     "remark":state.walletAddress};
     HttpService.digiccyDeposit(params).then((value) {
+      // value.remitName = AppData.user()?.username.em();
+      value.symbol = "₮";
       Get.offAndToNamed(Routes.recharge_result,arguments: value);
     });
   }
