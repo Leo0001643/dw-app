@@ -45,8 +45,8 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
       },
       child: Container(
         width: 52.w,
-        height: 59.w,
-        padding: EdgeInsets.only(top: 9.w,bottom:7.w ),
+        height: 59.h,
+        // padding: EdgeInsets.only(top: 9.w,bottom:7.w ),
         decoration:
         widget.content.check==true? BoxDecoration(
           boxShadow:[ BoxShadow(
@@ -81,11 +81,11 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 28.w,
-              height: 28.w,
+              width: 28.r,
+              height: 28.r,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: ColorX.cardBg(),
@@ -93,7 +93,7 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
                     width: 1.w,
                     color:ColorX.cardBg16()
                 ),
-                borderRadius: BorderRadius.all(Radius.circular(28.r)),
+                borderRadius: BorderRadius.all(Radius.circular(14.r)),
               ),
               child: Text(result,style: TextStyle(
                   fontSize:13.sp,
@@ -102,7 +102,7 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
               ),),
             ),
             Text("${widget.content.play}",style: TextStyle(
-                fontSize:13.sp,
+                fontSize:12.sp,
                 color: widget.content.check==true? ColorX.textff516() : ColorX.textd53(),
                 fontWeight: FontWeight.w500
             ),),

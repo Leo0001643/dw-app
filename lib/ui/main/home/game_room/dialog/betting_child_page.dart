@@ -50,43 +50,49 @@ class BettingChildPageState extends State<BettingChildPage> {
     return Container(
       width: 1.sw,
       padding: EdgeInsets.only(left: 15.w,right: 15.w,top:8.w),
-      child: CustomScrollView(slivers: [
-        SliverToBoxAdapter(
-          child: GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 6,
-                crossAxisSpacing: 6.0,
-                mainAxisSpacing: 6,
-                childAspectRatio: 52 / 65,
-              ),
-              itemCount: dataBettingList1.length,
-              itemBuilder: (BuildContext context, int index) {
-                print("===== index ${index}   ${dataBettingList1[index].hashCode} ");
-                var content = dataBettingList1[index];
-                content.level = index;
-                return BettingSmallItemWidget(index,content,widget.selectBetting,widget.inputAmt,widget.betName,false,useNoColor:true);
-              }),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: (dataBettingList1.length / 6 + 1) * 52.h,
+              child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 6,
+                    crossAxisSpacing: 6.0,
+                    mainAxisSpacing: 6,
+                    childAspectRatio: 52 / 65,
+                  ),
+                  itemCount: dataBettingList1.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    print("===== index ${index}   ${dataBettingList1[index].hashCode} ");
+                    var content = dataBettingList1[index];
+                    content.level = index;
+                    return BettingSmallItemWidget(index,content,widget.selectBetting,widget.inputAmt,widget.betName,false,useNoColor:true);
+                  }),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 6.h),
+              height: 64.h,
+              child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 5,
+                    crossAxisSpacing: 6.0,
+                    mainAxisSpacing: 6,
+                    childAspectRatio: 64 / 64,
+                  ),
+                  itemCount: dataBettingList2.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    print("===== index ${index}   ${dataBettingList2[index].hashCode} ");
+                    return BettingDialogItemWidget(index,dataBettingList2[index],widget.selectBetting,widget.inputAmt,widget.betName,);
+                  }),
+            ),
+          ],
         ),
-        SliverToBoxAdapter(
-          child: Container(
-            margin: EdgeInsets.only(top: 6.w),
-            child: GridView.builder(
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5,
-                  crossAxisSpacing: 6.0,
-                  mainAxisSpacing: 6,
-                  childAspectRatio: 64 / 64,
-                ),
-                itemCount: dataBettingList2.length,
-                itemBuilder: (BuildContext context, int index) {
-                  print("===== index ${index}   ${dataBettingList2[index].hashCode} ");
-                  return BettingDialogItemWidget(index,dataBettingList2[index],widget.selectBetting,widget.inputAmt,widget.betName,);
-                }),
-          ),
-        ),
-      ]),
+      ),
     );
   }
 

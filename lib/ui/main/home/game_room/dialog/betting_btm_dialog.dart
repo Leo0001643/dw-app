@@ -150,9 +150,9 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
               );
             }),
           ),
-          Container(
-              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: Stack(
+          Column(
+            children: [
+              Stack(
                 children: [
                   Container(
                     alignment: Alignment.bottomCenter,
@@ -294,6 +294,11 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                   )
                 ],
               ),
+              Container(
+                color: ColorX.pageBg(),
+                height: MediaQuery.paddingOf(context).bottom,
+              )
+            ],
           ),
         ],
       ),
