@@ -11,5 +11,6 @@ class WithdrawCheckState {
    var withdrawCheck = WithdrawCheckEntity().obs;
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
+  var type = '1';///1 cny  5 usdt
 
 }

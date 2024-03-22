@@ -9,7 +9,6 @@ class WithdrawCheckLogic extends GetxController {
 
   @override
   void onReady() {
-    loadData(Get.arguments);
     super.onReady();
   }
 
@@ -19,7 +18,8 @@ class WithdrawCheckLogic extends GetxController {
     super.onClose();
   }
 
-  void loadData(Object index) {
+  void loadData(String index) {
+    state.type = index;
     var user = AppData.user();
     // 币种【1:CNY,2:USD,3:KRW,4:INR,5:USDT,6:VND】
     var cur = index != '5' ? 1:5;

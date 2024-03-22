@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -27,6 +29,12 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
   final state = Get.find<WithdrawCheckLogic>().state;
 
   @override
+  void initState() {
+    logic.loadData(Get.arguments);
+    super.initState();
+  }
+
+  @override
   void dispose() {
     Get.delete<WithdrawCheckLogic>();
     super.dispose();
@@ -50,7 +58,8 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                WidgetUtils().buildAppBar(Intr().congcnyqianbaotichu,bgColor: Colors.transparent,msg: true,scaffoldKey: state.scaffoldKey),
+                WidgetUtils().buildAppBar(state.type == '1' ? Intr().congcnyqianbaotichu:Intr().congusdtqianbaotichu,
+                    bgColor: Colors.transparent,msg: true,scaffoldKey: state.scaffoldKey),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
                   child: Column(

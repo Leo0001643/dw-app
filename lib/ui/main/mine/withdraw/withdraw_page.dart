@@ -35,7 +35,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
     if(i == 1 && isEmpty(state.userDraw.value.banks)){
       msg = Intr().ninhaimeibangdingyhkzhanghu;
       route = Routes.bind_bank;
-    }else if(i == 5 && isEmpty(state.userDraw.value.dcBanks)){
+    }else if(i == 5 && state.userDraw.value.dcBanks.where((element) => unEmpty(element.account)).toList().isEmpty){
       msg = Intr().ninhaimeibangdingusdtzhanghu;
       route = Routes.bind_usdt;
     }
