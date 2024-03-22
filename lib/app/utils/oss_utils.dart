@@ -22,8 +22,8 @@ class OssUtils{
 
   factory OssUtils() => getInstance();
 
-  var akeyid = "***";
-  var asrt = "***";
+  var accessKey = "***";
+  var accessSecret = "***";
   var bucketName = "dw-app-lines";
   var file = "line_gjz.json";
   Client? client;
