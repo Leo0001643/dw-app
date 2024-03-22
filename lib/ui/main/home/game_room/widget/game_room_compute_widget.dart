@@ -248,6 +248,8 @@ class GameRoomComputeWidget extends StatelessWidget {
 
           loggerArray(["=========>更新期数",headWSLotteryEntityData?.term,logic.currentStatus.value]);
 
+          var result = arr2[3] > 9 ? '${arr2[3]}' : '0${arr2[3]}';
+
           return InkWell(
             onTap: () =>
                 DialogUtils().showHistoryLotteryBtmDialog(context, logic),
@@ -266,7 +268,7 @@ class GameRoomComputeWidget extends StatelessWidget {
                   buildDrawMark("+", color),
                   buildDrawNum("${arr2[2]}", logic, showWaittingImg: !logic.updateLottery),
                   buildDrawMark("=", color),
-                  buildDrawResult("${arr2[3]}", logic, color: GameRuleUtil.getBallNewColor(arr2[3]), showWaittingImg: !logic.updateLottery),
+                  buildDrawResult(result, logic, color: GameRuleUtil.getBallNewColor(arr2[3]), showWaittingImg: !logic.updateLottery),
                   // SizedBox(width: 5.w,),
                   Visibility(
                     visible: logic.updateLottery,

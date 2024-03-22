@@ -30,8 +30,7 @@ class StateHomePage extends State<HomePage>
   final logic = Get.find<HomeLogic>();
   final state = Get.find<HomeLogic>().state;
 
-  final NestedInnerScrollCoordinator _coordinator =
-      NestedInnerScrollCoordinator(ScrollController());
+  final NestedInnerScrollCoordinator _coordinator = NestedInnerScrollCoordinator(ScrollController());
 
   @override
   Widget build(BuildContext context) {

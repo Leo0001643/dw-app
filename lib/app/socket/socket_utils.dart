@@ -150,7 +150,7 @@ class SocketUtils{
   ///异步任务工作区
   static void isolateMain(SendPort sendPort) {
     // sendPort.send('Message from child Isolate');
-    var url = sprintf(Constants.websocket,[Intr().currentLocale().languageCode]);
+    var url = sprintf(AppData.baseWsUrl(),[Intr().currentLocale().languageCode]);
     WebSocketChannel channel = WebSocketChannel.connect(Uri.parse(url));
     channel.ready.then((value) {
       sendPort.send(buildMessage("connected"));

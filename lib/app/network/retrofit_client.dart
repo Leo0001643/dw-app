@@ -69,10 +69,11 @@ import 'package:retrofit/retrofit.dart';
 
 part 'retrofit_client.g.dart';
 
-@RestApi(baseUrl: Constants.base_url,parser: Parser.JsonSerializable)
+@RestApi(parser: Parser.JsonSerializable)
 abstract class RetrofitClient{
 
   factory RetrofitClient(Dio dio, {String? baseUrl}) = _RetrofitClient;
+
 
   ///公告类型【公告类型，1普通公告(主站)-11普通公告(副站)，2跳弹公告(主站)-21跳弹公告(副站)】
   @GET('/ds-api-web/getNotice')

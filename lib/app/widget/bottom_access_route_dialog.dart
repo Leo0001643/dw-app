@@ -190,7 +190,9 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
           ),
           Container(
             margin: EdgeInsets.all(15.r),
-            child: MyRoteGridView(),
+            child: MyRoteGridView((value){
+              ///这里需要去更换baseurl和 wsbaseurl
+            }),
           ),
         ],
       ),

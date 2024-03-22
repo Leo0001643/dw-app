@@ -39,7 +39,7 @@ class HtmlLogic extends GetxController {
       if(state.htmlEvent?.isHtmlData == true){
         controller.loadData(data: state.htmlEvent!.data.em());
       }else {
-        controller.loadUrl(urlRequest: URLRequest(url: Uri.tryParse(state.htmlEvent!.data.em())));
+        controller.loadUrl(urlRequest: URLRequest(url: WebUri(state.htmlEvent!.data.em())));
       }
     }else if(unEmpty(state.gameEvent)){
       var params = "platformURL=${state.gameEvent!.platformURL.em()}&lid=${state.gameEvent!.lid}&r=${state.gameEvent!.params!.r.em()}&param=${state.gameEvent!.params!.param.em()}"
@@ -49,7 +49,7 @@ class HtmlLogic extends GetxController {
 
       loggerArray(["组装好的数据",params]);
       //jsonEncode(params).codeUnits
-      controller.loadUrl(urlRequest: URLRequest(url: Uri.tryParse(state.gameEvent!.url!.first),
+      controller.loadUrl(urlRequest: URLRequest(url: WebUri(state.gameEvent!.url!.first),
           method: "POST",headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         body: Uint8List.fromList(utf8.encode(params)),));
     }

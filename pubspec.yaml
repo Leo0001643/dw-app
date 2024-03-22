@@ -40,19 +40,19 @@ dependencies:
   pull_to_refresh: ^2.0.0
   fluttertoast: ^8.2.2
   flutter_easyloading: ^3.0.5
-  get: ^4.6.5
-  dio: ^5.3.3
-  shared_preferences: ^2.2.1
+  get: ^4.6.6
+  dio: ^5.4.1
+  shared_preferences: ^2.2.2
   path_provider: ^2.1.1
   common_utils: ^2.1.0
   #  webview_flutter: ^2.8.0
   getwidget: ^4.0.0
-  flutter_inappwebview: ^5.8.0
+  flutter_inappwebview: ^6.0.0
   flutter_screenutil: ^5.9.0
   convex_bottom_bar: ^3.2.0
   marquee: ^2.2.3
   qr_flutter: ^4.1.0
-  pinput: ^3.0.1
+#  pinput: ^3.0.1
   numeric_keyboard: ^1.1.0
   synchronized: ^3.1.0
   # The following adds the Cupertino Icons font to your application.
@@ -64,7 +64,7 @@ dependencies:
   scratcher: ^2.4.0
   luckywheel: ^1.0.0
   sprintf: ^7.0.0
-  retrofit: ^4.0.3
+  retrofit: ^4.1.0
   json_annotation: ^4.8.1
   device_info_plus: ^9.1.0
   package_info_plus: ^4.2.0

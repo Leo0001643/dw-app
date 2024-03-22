@@ -76,6 +76,7 @@ import 'package:leisure_games/ui/bean/wallet_draw_detail_entity.dart';
 import 'package:leisure_games/ui/bean/web_config_entity.dart';
 import 'package:leisure_games/ui/bean/withdraw_check_entity.dart';
 
+
 class HttpService{
 
   static late RetrofitClient _client;
@@ -122,7 +123,13 @@ class HttpService{
         handler.next(e);
       }
     ));
-    _client = RetrofitClient(getDio(),baseUrl: Constants.base_url);
+    ///配置默认的路径
+    getDio().options.baseUrl = AppData.baseUrl();
+    _client = RetrofitClient(getDio());
+  }
+
+  static changeBaseUrl(String baseUrl){
+    getDio().options.baseUrl = baseUrl;
   }
 
 

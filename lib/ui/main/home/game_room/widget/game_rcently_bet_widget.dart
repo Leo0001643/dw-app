@@ -210,8 +210,9 @@ class GameRecentlyBetWidget extends StatelessWidget {
     // GameRoomState state = logic.state;
     String termData = GameRuleUtil.getSimpleSSB(headWSLotteryEntityData.term.em(), year: ""); // 4
     List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData.originalNum.em()); //3
-    // var color = state.roomType.value == 1 ? ColorX.text0917() : ColorX
-    //     .color_ffe0ac;
+
+    var result = arr2[3] > 9 ? '${arr2[3]}' : '0${arr2[3]}';
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -225,7 +226,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
           buildDrawMark("+", ColorX.text0917()),
           buildDrawNum("${arr2[2]}", logic, showWaittingImg: false),
           buildDrawMark("=", ColorX.text0917()),
-          buildDrawResult("${arr2[3]}", logic, color: GameRuleUtil.getBallNewColor(arr2[3]), showWaittingImg: false),
+          buildDrawResult(result, logic, color: GameRuleUtil.getBallNewColor(arr2[3]), showWaittingImg: false),
           // SizedBox(width: 5.w,),
           GameRuleUtil.getDXDS(arr2[3]),
         ],

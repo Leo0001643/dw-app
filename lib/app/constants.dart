@@ -14,7 +14,6 @@ class Constants {
   static const host = "http://soptj9qq.com";
   // static const host = "https://9000vlmdm4.kj99883.com";
 
-  static const base_url = "$host:8860";
   // static const base_url = "$host";
   static const contact = "$host/m/#/detail/Contact";
   static const hongbao = "http://soptj9qq.com/m/#/Hongbao/%s/%s/%s";
@@ -25,7 +24,7 @@ class Constants {
   static const pageSize = 20;
 
   // static const websocket = "ws://ws.by4aocqs.com:9999";
-  static const websocket = "wss://9000ywfjn2.uy4ayov.com/?language=s%";
+  static const host_ws = "wss://9000ywfjn2.uy4ayov.com/";
 
 
   static const PC28 = "PC28";

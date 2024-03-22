@@ -9,7 +9,6 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/main/mine/setting/set_simple_pwd/set_simple_pwd_page2.dart';
-import 'package:pinput/pinput.dart';
 
 import 'simple_login_logic.dart';
 

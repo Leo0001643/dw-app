@@ -87,6 +87,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                               var headWSLotteryEntityData = Get.find<GameRoomLogic>().headWSLotteryEntityData;
                               List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
                               loggerArray(["咪牌开奖结果更新",arr2,logic.guaguaMask]);
+                              var result = arr2[3] > 9 ? '${arr2[3]}' : '0${arr2[3]}';
                               var icon = AnimatedOpacity(
                                 opacity: opacity,
                                 duration: const Duration(milliseconds: 750),
@@ -102,7 +103,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                                       buildDrawMark("+"),
                                       buildDrawNum("${arr2[2]}",),
                                       buildDrawMark("="),
-                                      buildDrawResult("${arr2[3]}",),
+                                      buildDrawResult(result),
                                     ],
                                   ),
                                 ),
@@ -156,7 +157,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                                 ),
                               ),
                               WidgetUtils().buildElevatedButton(Intr().shuaxin, 59.w, 40.h,bg: ColorX.color_50_c13,textColor: ColorX.color_ffe0ac, onPressed: (){
-                                logic.scratchKey?.currentState?.reset(duration: const Duration(milliseconds: 200));
+                                logic.scratchKey.currentState?.reset(duration: const Duration(milliseconds: 200));
                               }),
                             ],
                           ),

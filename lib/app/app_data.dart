@@ -5,6 +5,7 @@ import 'package:android_id/android_id.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
@@ -206,6 +207,36 @@ class AppData {
   static void saveRoomWritingEntity(String roomWriting){
     prefs?.setString("room_writing_entity", roomWriting);
   }
+
+
+  static String base_url = "";
+
+  static void setBaseUrl(String baseUrl) {
+    base_url = baseUrl;
+    prefs?.setString("base_url", baseUrl);
+  }
+
+  ///从缓存获取base_url
+  static String baseUrl(){
+    if(unEmpty(base_url)) return base_url;
+    base_url = prefs?.getString("base_url") ?? "${Constants.host}:8860";
+    return base_url;
+  }
+
+  static String base_wsurl = "";
+
+  static void setBaseWsUrl(String baseWsUrl) {
+    base_wsurl = baseWsUrl;
+    prefs?.setString("base_wsurl", baseWsUrl);
+  }
+
+  ///从缓存获取base_wsurl
+  static String baseWsUrl(){
+    if(unEmpty(base_wsurl)) return base_wsurl;
+    base_wsurl = prefs?.getString("base_wsurl") ?? "${Constants.host_ws}?language=s%";
+    return base_wsurl;
+  }
+
 
 
   static void clear() {
