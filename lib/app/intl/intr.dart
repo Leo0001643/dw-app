@@ -661,7 +661,9 @@ class Intr extends Translations{
   String get com_tip => "com_tip".tr;
   String get com_cancel => "com_cancel".tr;
   String get yuebuzhuqingxianchongzhi => "yuebuzhuqingxianchongzhi".tr;
-
+  String get bet_long => "bet_long".tr;
+  String get bet_hu => "bet_hu".tr;
+  String get bet_he => "bet_he".tr;
 
 
 

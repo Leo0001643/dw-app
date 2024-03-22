@@ -202,14 +202,14 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 16.sp,
                     )),
-                SizedBox(width: 4.w,),
+                // SizedBox(width: 4.w,),
                 Text(":",
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
                       fontSize: 16.sp,
                     )),
-                SizedBox(width: 4.w,),
+                // SizedBox(width: 4.w,),
                 Text(term2,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,

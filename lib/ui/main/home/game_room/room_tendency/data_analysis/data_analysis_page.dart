@@ -136,7 +136,7 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
                 builder: (ctl){
                   if(isEmpty(ctl.data?.list)){ return Container(); }
                   var list = ctl.data!.list!;
-                  var titles = logic.buildFormTitle(ctl.data!);
+                  var titles = logic.buildFormTitle(state.tabIndex);
                   var minWidth = titles.length * 50.w + 100.w;
                   var items = logic.buildFormData(ctl.data!,list,state.tabIndex);
                   return DataTable2(
@@ -153,7 +153,7 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
                       border: TableBorder.all(color: ColorX.color_10_949,width: 1.r),
                       columns: buildFormTitle(titles),
                       rows: List<DataRow>.generate(items.length,
-                              (index) => DataRow(cells: buildFormCell(index,items[index]),)).reversed.toList()
+                              (index) => DataRow(cells: buildFormCell(index,state.tabIndex,items[index]),)).reversed.toList()
                   );
                 },
               ),
@@ -224,10 +224,10 @@ class _DataAnalysisPageState extends State<DataAnalysisPage> with SingleTickerPr
     return columns;
   }
 
-  List<DataCell> buildFormCell(int index,List<String> item) {
+  List<DataCell> buildFormCell(int index,int tabIndex,List<String> item) {
     var cells = List<DataCell>.empty(growable: true);
     for(var i=0;i<item.length;i++){
-      var color = (i > 1 && i < 8) ? (item[i] == Intr().bet_dan || item[i] == Intr().bet_da || item[i] == Intr().jida
+      var color = (i > 1 && i < (tabIndex == 0 ? 8:6)) ? (item[i] == Intr().bet_dan || item[i] == Intr().bet_da || item[i] == Intr().jida
           ? ColorX.color_e75555:ColorX.color_529aff): ColorX.text0917();
       if(isEmpty(item[i])){
         cells.add(DataCell(Container(
