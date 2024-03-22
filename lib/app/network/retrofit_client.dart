@@ -348,6 +348,8 @@ abstract class RetrofitClient{
   @POST('/ds-api-web/getPrizesOut')
   Future<BaseResponseEntity<String>> getPrizesOut(@Body() Map<String,dynamic> params,);
 
+  @POST('/ds-api-web/openPlatformPermit')
+  Future<BaseResponseEntity<String>> openPlatformPermit(@Body() Map<String,dynamic> params,);
 
 
 

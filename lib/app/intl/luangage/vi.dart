@@ -1009,6 +1009,7 @@ class VI{
     "jieshaoren":"Tài liệu tham khảo",
     "shurujieshaoren":"Đầu vào tài liệu tham khảo",
     "yuebuzhuqingxianchongzhi":"Số dư không đủ, cá cược không đủ. Đi đến nạp tiền",
+    "qingkaitongzhanghu":"请开通任一帐户",
 
   };
 }

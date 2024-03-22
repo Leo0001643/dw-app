@@ -1,5 +1,7 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
+import 'package:leisure_games/app/global.dart';
+
 
 BaseApiOssEntity $BaseApiOssEntityFromJson(Map<String, dynamic> json) {
   final BaseApiOssEntity baseApiOssEntity = BaseApiOssEntity();

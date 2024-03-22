@@ -664,7 +664,8 @@ class Intr extends Translations{
   String get bet_long => "bet_long".tr;
   String get bet_hu => "bet_hu".tr;
   String get bet_he => "bet_he".tr;
-
+  String get open_plat => "open_plat".tr;
+  String get qingkaitongzhanghu => "qingkaitongzhanghu".tr;
 
 
 

@@ -7,7 +7,7 @@ export 'package:leisure_games/generated/json/is_permit_entity.g.dart';
 
 @JsonSerializable()
 class IsPermitEntity {
-	int? status;
+	int? status;///平台状态【1:开启，2:关闭】
 	int? id;
 	String? name;
 

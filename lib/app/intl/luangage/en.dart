@@ -1079,6 +1079,7 @@ class EN{
     "jieshaoren":"Introducer",
     "shurujieshaoren":"Enter introducer",
     "yuebuzhuqingxianchongzhi":"The balance is insufficient and the bet fails. Whether to go to top up",
+    "qingkaitongzhanghu":"请开通任一帐户",
 
   };
 

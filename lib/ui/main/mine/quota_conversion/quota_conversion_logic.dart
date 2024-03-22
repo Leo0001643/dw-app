@@ -24,7 +24,6 @@ class QuotaConversionLogic extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 
@@ -34,7 +33,7 @@ class QuotaConversionLogic extends GetxController {
     ///如果是初始化数据
     if(first == true){
       state.platforms.clear();
-      state.leftAccount.value = PlatformEntity(money: 0,liveName: "main",currency: AppData.wallet()? "CNY":"USDT",liveId: -1);
+      state.leftAccount.value = PlatformEntity(money: 0,liveName: "main",currency: AppData.wallet()? "CNY":"USDT",liveId: -1,status: 1);
       state.platforms.add(state.leftAccount.value);
     }else {
       ///移除主账户之外的其他账户
@@ -59,27 +58,29 @@ class QuotaConversionLogic extends GetxController {
       HttpService.getPlatformIsPermit({"oid":user?.oid,"username":user?.username,"cur":cur}).then((value2) async {
         for (var e1 in value1) {
           for (var e2 in value2) {
-            ///平台状态【1:开启，2:关闭】
-            if(e1.liveId == e2.id && e2.status == 1){
-              HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":e1.liveName},loading: false).then((value3) {
-                e1.money = value3.money;
-                ///更新账户余额
-                state.platforms[state.platforms.indexOf(e1)] = e1;
-                state.platforms.refresh();
-                ///刷新右侧第三方钱包金额
-                if(isEmpty(state.rightAccount.value.liveName)){
-                  state.rightAccount.value = value1.first;
-                  state.rightAccount.refresh();
-                }else if(e1.liveId == state.rightAccount.value.liveId){
-                  state.rightAccount.value = e1;
-                  state.rightAccount.refresh();
-                }
-                ///刷新左侧第三方钱包金额
-                if(e1.liveId == state.leftAccount.value.liveId){
-                  state.leftAccount.value = e1;
-                  state.leftAccount.refresh();
-                }
-              });
+            if(e1.liveId == e2.id){
+              e1.status = e2.status;
+              if(e1.status == 1){///平台状态【1:开启，2:关闭】
+                HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":e1.liveName},loading: false).then((value3) {
+                  e1.money = value3.money;
+                  ///更新账户余额
+                  state.platforms[state.platforms.indexOf(e1)] = e1;
+                  state.platforms.refresh();
+                  ///刷新右侧第三方钱包金额
+                  if(isEmpty(state.rightAccount.value.liveName)){
+                    state.rightAccount.value = value1.first;
+                    state.rightAccount.refresh();
+                  }else if(e1.liveId == state.rightAccount.value.liveId){
+                    state.rightAccount.value = e1;
+                    state.rightAccount.refresh();
+                  }
+                  ///刷新左侧第三方钱包金额
+                  if(e1.liveId == state.leftAccount.value.liveId){
+                    state.leftAccount.value = e1;
+                    state.leftAccount.refresh();
+                  }
+                });
+              }
             }
           }
         }
@@ -116,7 +117,6 @@ class QuotaConversionLogic extends GetxController {
       }
       state.mainBal.refresh();
     });
-
   }
   
   ///回收
@@ -167,6 +167,21 @@ class QuotaConversionLogic extends GetxController {
       loadBalance();
       ///刷新钱包余额
       eventBus.fire(ChangeBalanceEvent());
+    });
+  }
+
+  ///开通新账户
+  void openPlatformPermit(PlatformEntity item){
+    var user = AppData.user();
+    var cur = AppData.wallet() ? 1: 5;
+    var params = <String,dynamic>{ "cur":cur,"oid":user?.oid,"username":user?.username,"platform":item.liveName,};
+    HttpService.openPlatformPermit(params).then((value) {
+      HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":item.liveName},loading: false).then((value3) {
+        item.money = value3.money;
+        item.status = 1;///修改为已开通状态
+        state.platforms[state.platforms.indexOf(item)] = item;
+        state.platforms.refresh();
+      });
     });
   }
 

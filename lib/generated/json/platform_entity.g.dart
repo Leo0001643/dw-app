@@ -27,6 +27,10 @@ PlatformEntity $PlatformEntityFromJson(Map<String, dynamic> json) {
   if (sequence != null) {
     platformEntity.sequence = sequence;
   }
+  final int? status = jsonConvert.convert<int>(json['status']);
+  if (status != null) {
+    platformEntity.status = status;
+  }
   return platformEntity;
 }
 
@@ -37,6 +41,7 @@ Map<String, dynamic> $PlatformEntityToJson(PlatformEntity entity) {
   data['currency'] = entity.currency;
   data['money'] = entity.money;
   data['sequence'] = entity.sequence;
+  data['status'] = entity.status;
   return data;
 }
 
@@ -47,12 +52,14 @@ extension PlatformEntityExtension on PlatformEntity {
     String? currency,
     double? money,
     int? sequence,
+    int? status,
   }) {
     return PlatformEntity()
       ..liveId = liveId ?? this.liveId
       ..liveName = liveName ?? this.liveName
       ..currency = currency ?? this.currency
       ..money = money ?? this.money
-      ..sequence = sequence ?? this.sequence;
+      ..sequence = sequence ?? this.sequence
+      ..status = status ?? this.status;
   }
 }

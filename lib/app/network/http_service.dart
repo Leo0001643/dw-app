@@ -125,6 +125,10 @@ class HttpService{
     ));
     ///配置默认的路径
     getDio().options.baseUrl = AppData.baseUrl();
+    getDio().options.connectTimeout = const Duration(milliseconds: 60*1000);
+    getDio().options.receiveTimeout = const Duration(milliseconds: 60*1000);
+    getDio().options.sendTimeout = const Duration(milliseconds: 60*1000);
+
     _client = RetrofitClient(getDio());
   }
 
@@ -484,6 +488,10 @@ class HttpService{
 
   static Future<String> getPrizesOut(Map<String,dynamic> params,){
     return buildFuture<String>(()=> _client.getPrizesOut(params));
+  }
+
+  static Future<String> openPlatformPermit(Map<String,dynamic> params,){
+    return buildFuture<String>(()=> _client.openPlatformPermit(params));
   }
 
 

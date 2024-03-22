@@ -12,8 +12,9 @@ class PlatformEntity {
 	String? currency;
 	double? money;
 	int? sequence;
+	int? status;///平台状态【1:开启，2:关闭】
 
-	PlatformEntity({this.liveId,this.liveName,this.currency,this.money});
+	PlatformEntity({this.liveId,this.liveName,this.currency,this.money,this.status});
 
 	factory PlatformEntity.fromJson(Map<String, dynamic> json) => $PlatformEntityFromJson(json);
 
