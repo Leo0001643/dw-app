@@ -8,6 +8,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/change_balance_event.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
@@ -19,6 +20,7 @@ class MineLogic extends GetxController {
   final MineState state = MineState();
   StreamSubscription? loginStream;
   StreamSubscription? balanceStream;
+  StreamSubscription? apiSub;
 
   @override
   void onReady() {
@@ -34,6 +36,9 @@ class MineLogic extends GetxController {
       state.user.value = AppData.user() ?? LoginUserEntity();
       state.user.refresh();
     });
+    apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
+      loadData();
+    });
     super.onReady();
   }
 
@@ -41,6 +46,7 @@ class MineLogic extends GetxController {
   void onClose() {
     loginStream?.cancel();
     balanceStream?.cancel();
+    apiSub?.cancel();
     super.onClose();
   }
 

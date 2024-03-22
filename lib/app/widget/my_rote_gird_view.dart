@@ -62,7 +62,6 @@ class _MyGridViewState extends State<MyRoteGridView> {
           return GestureDetector(
             onTap: () {
               selectedTileIndex.value = index;
-              widget.callback(item);
             },
             child: Obx(() {
               return Container(

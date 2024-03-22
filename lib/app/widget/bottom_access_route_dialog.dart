@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/route_test.dart';
 
 import 'my_rote_gird_view.dart';
@@ -15,6 +18,9 @@ class BottomAccessRouteDialog extends StatefulWidget {
 }
 
 class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
+
+  BaseWsApiEntity? entity;
+
   @override
   void initState() {
     super.initState();
@@ -39,21 +45,32 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
               ),
               Align(
                 alignment: Alignment.centerRight,
-                child: Container(
-                  margin: EdgeInsets.only(right: 10.w),
-                  alignment: Alignment.center,
-                  width: 50.w,
-                  height: 26.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: ColorX.color_fc243b,
-                  ),
-                  child: Text(
-                    "dialog_see_more".tr,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.bold,
+                child: InkWell(
+                  onTap: (){
+                    ///这里需要去更换baseurl和 wsbaseurl
+                    if(unEmpty(entity)){
+                      AppData.setBaseUrl(entity!.baseApi.em());
+                      AppData.setBaseWsUrl(entity!.webSocket.em());
+                      eventBus.fire(entity);///通知各页面刷新数据
+                    }
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(right: 10.w),
+                    alignment: Alignment.center,
+                    width: 50.w,
+                    height: 26.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: ColorX.color_fc243b,
+                    ),
+                    child: Text(
+                      "dialog_see_more".tr,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -191,7 +208,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
           Container(
             margin: EdgeInsets.all(15.r),
             child: MyRoteGridView((value){
-              ///这里需要去更换baseurl和 wsbaseurl
+              entity = value;
             }),
           ),
         ],

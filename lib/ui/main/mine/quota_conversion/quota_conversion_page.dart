@@ -140,11 +140,11 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                               InkWell(
                                 onTap:(){
                                   var list = state.platforms.where((element) => element.status == 1).toList();
-                                  if(list.em() == 1){
+                                  if(list.em() <= 1){///主账户可能也没有
                                     showToast(Intr().qingkaitongzhanghu);
                                     return;
                                   }
-                                  var index = list.indexOf(state.rightAccount.value);
+                                  var index = list.indexOf(state.leftAccount.value);
                                   DialogUtils().showSelectOptionBtmGirdDialog(context, Intr().qingxuanzhezhuanchu, list,index).then((value) {
                                     if(unEmpty(value)){
                                       state.leftAccount.value = value;
@@ -194,7 +194,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                               onTap:(){
                                 ///账户没有被开通，提示开通账户
                                 var list = state.platforms.where((element) => element.status == 1).toList();
-                                if(list.em() == 1){
+                                if(list.em() <= 1){///主账户可能也没有
                                   showToast(Intr().qingkaitongzhanghu);
                                   return;
                                 }

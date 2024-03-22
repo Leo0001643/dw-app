@@ -8,6 +8,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/change_balance_event.dart';
 import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
@@ -20,6 +21,7 @@ class RechargeLogic extends GetxController {
   StreamSubscription? loginStream;
   StreamSubscription? languageStream;
   StreamSubscription? balanceStream;
+  StreamSubscription? apiSub;
 
   @override
   void onReady() {
@@ -39,6 +41,9 @@ class RechargeLogic extends GetxController {
     balanceStream = eventBus.on<ChangeBalanceEvent>().listen((event) {
       loadBalance();
     });
+    apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
+      loadData();
+    });
     super.onReady();
   }
 
@@ -47,6 +52,7 @@ class RechargeLogic extends GetxController {
     languageStream?.cancel();
     loginStream?.cancel();
     balanceStream?.cancel();
+    apiSub?.cancel();
     super.onClose();
   }
 

@@ -54,15 +54,15 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
                 children: [
                   Text(
                     "【",
-                    style: TextStyle(fontSize: 14.sp, color: ColorX.text586()),
+                    style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700, color: ColorX.text586()),
                   ),
                   Text(
                     Intr().dixqi([wSLotteryEntityData?.term ?? '']),
-                    style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b),
+                    style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700, color: ColorX.color_fc243b),
                   ),
                   Text(
                     "】",
-                    style: TextStyle(fontSize: 14.sp, color: ColorX.text586()),
+                    style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700, color: ColorX.text586()),
                   ),
                 ],
               ),

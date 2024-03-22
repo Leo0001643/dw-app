@@ -42,15 +42,15 @@ class CountDownItemWidget extends StatelessWidget {
             children: [
               Text(
                 "【",
-                style: TextStyle(fontSize: 14.sp, color: ColorX.text586()),
+                style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: ColorX.text586()),
               ),
               Text(
                 Intr().dixqi([wsBetResultEntity.term.em()]),
-                style: TextStyle(fontSize: 14.sp, fontWeight:FontWeight.w700, color: ColorX.color_fd273e),
+                style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700, color: ColorX.color_fd273e),
               ),
               Text(
                 "】",
-                style: TextStyle(fontSize: 14.sp,  fontWeight:FontWeight.w700,color: ColorX.text586()),
+                style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: ColorX.text586()),
               ),
               SizedBox(width: 8.w,),
               Expanded(

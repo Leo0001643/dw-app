@@ -10,6 +10,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 
@@ -18,6 +19,7 @@ import 'preferential_state.dart';
 class PreferentialLogic extends GetxController {
   final PreferentialState state = PreferentialState();
   StreamSubscription? languageStream;
+  StreamSubscription? apiSub;
 
   @override
   void onReady() {
@@ -26,12 +28,17 @@ class PreferentialLogic extends GetxController {
     languageStream = eventBus.on<LanguageEvent>().listen((event) {
       loadData();
     });
+    apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
+      loadData();
+    });
     super.onReady();
   }
 
   @override
   void onClose() {
     languageStream?.cancel();
+    apiSub?.cancel();
+
     super.onClose();
   }
 

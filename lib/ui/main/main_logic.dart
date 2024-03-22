@@ -8,6 +8,7 @@ import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -18,6 +19,7 @@ class MainLogic extends GetxController {
 
   final state = MainState();
   StreamSubscription? changePageSub;
+  StreamSubscription? apiSub;
 
   @override
   void onReady() {
@@ -26,6 +28,9 @@ class MainLogic extends GetxController {
       state.pageController.jumpToPage(event.pageIndex);
       state.tabController?.animateTo(event.pageIndex);
     });
+    apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
+      loadData();
+    });
     loadData();
     super.onReady();
   }
@@ -33,6 +38,7 @@ class MainLogic extends GetxController {
   @override
   void onClose() {
     changePageSub?.cancel();
+    apiSub?.cancel();
     state.pageController.dispose();
     super.onClose();
   }

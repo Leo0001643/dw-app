@@ -219,7 +219,10 @@ class AppData {
   ///从缓存获取base_url
   static String baseUrl(){
     if(unEmpty(base_url)) return base_url;
-    base_url = prefs?.getString("base_url") ?? "${Constants.host}:8860";
+    base_url = prefs?.getString("base_url") ?? "";
+    if(isEmpty(base_url)){
+      base_url = "${Constants.host}:8860";
+    }
     return base_url;
   }
 
@@ -233,7 +236,10 @@ class AppData {
   ///从缓存获取base_wsurl
   static String baseWsUrl(){
     if(unEmpty(base_wsurl)) return base_wsurl;
-    base_wsurl = prefs?.getString("base_wsurl") ?? "${Constants.host_ws}?language=s%";
+    base_wsurl = prefs?.getString("base_wsurl") ?? "";
+    if(isEmpty(base_wsurl)){
+      base_wsurl = "${Constants.host_ws}?language=s%";
+    }
     return base_wsurl;
   }
 

@@ -298,7 +298,7 @@ abstract class RetrofitClient{
   @POST('/ds-api-web/updateUserDetail')
   Future<BaseResponseEntity<String>> updateUserDetail(@Body() Map<String,dynamic> params,);
 
-  @POST('ds-api-web/changePassword')
+  @POST('/ds-api-web/changePassword')
   Future<BaseResponseEntity<String>> changePassword(@Body() Map<String,dynamic> params,);
 
   @GET('/ds-api-web/getBtcSource')

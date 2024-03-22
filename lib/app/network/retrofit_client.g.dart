@@ -2357,7 +2357,7 @@ class _RetrofitClient implements RetrofitClient {
     )
             .compose(
               _dio.options,
-              'ds-api-web/changePassword',
+              '/ds-api-web/changePassword',
               queryParameters: queryParameters,
               data: _data,
             )
