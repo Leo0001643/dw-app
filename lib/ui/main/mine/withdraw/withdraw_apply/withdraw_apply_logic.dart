@@ -24,7 +24,6 @@ class WithdrawApplyLogic extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 
@@ -38,7 +37,8 @@ class WithdrawApplyLogic extends GetxController {
 
     if(data.checkType is UsdtEntity){
       var item = (data.checkType as UsdtEntity);
-      state.dropdownValue.value = UserDrawDetailBanks(bankName: item.type.em(),bankAccount: item.account.em());
+      state.selectValue = UserDrawDetailBanks(bankName: item.type.em(),bankAccount: item.account.em());
+      state.dropdownValue.value = state.selectValue.toString();
       state.dropdownValue.refresh();
     }
 
@@ -51,11 +51,10 @@ class WithdrawApplyLogic extends GetxController {
       state.userDraw.value = value;
       state.userDraw.refresh();
     });
-
   }
 
   void withdraw() {
-    if(isEmpty(state.dropdownValue.value.bankAccount)){
+    if(isEmpty(state.selectValue)){
       showToast(Intr().qingxuanzhetixianzhanghu);
       return;
     }
@@ -79,7 +78,7 @@ class WithdrawApplyLogic extends GetxController {
     }
     HttpService.takeSubmit(params).then((value) {
       Get.toNamed(Routes.withdraw_result,arguments: DigiccyDepositDataEntity(money: int.parse(state.withdrawAmount.value),
-      date: DataUtils.format12Hour(DateTime.now().millisecondsSinceEpoch),info:state.dropdownValue.value.info(),
+      date: DataUtils.format12Hour(DateTime.now().millisecondsSinceEpoch),info:state.dropdownValue.value,
         orderId: state.actualAmount.value,status: state.pageType.value));
     });
 

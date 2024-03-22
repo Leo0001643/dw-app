@@ -499,9 +499,9 @@ class DialogUtils {
   }
 
   ///选择账户弹窗
-  Future<UserDrawDetailBanks?> showSelectAccountBtmDialog(
-      BuildContext context, List<UserDrawDetailBanks> data) {
-    return showModalBottomSheet<UserDrawDetailBanks>(
+  Future<dynamic> showSelectAccountBtmDialog(
+      BuildContext context, List data) {
+    return showModalBottomSheet<dynamic>(
         context: context,
         isScrollControlled: true,
         shape: RoundedRectangleBorder(

@@ -52,13 +52,15 @@ class UserDrawDetailBanks {
 
 	Map<String, dynamic> toJson() => $UserDrawDetailBanksToJson(this);
 
-
-	String info(){
+	@override
+  String toString() {
 		if(isEmpty(bankAccount)|| bankAccount!.em().length < 14 ){
 			return "$bankName${isEmpty(bankAccount) ? "" : "（${bankAccount.em()}）"}";
 		} else {
 			return "$bankName（***${bankAccount!.substring(14)}）";
 		}
-	}
+  }
+
+
 }
 

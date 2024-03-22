@@ -21,7 +21,8 @@ class WithdrawApplyState {
   WithdrawCheckEntity? check;
 
   ///下拉数据值
-  var dropdownValue = UserDrawDetailBanks(bankName: Intr().qingxuanzhetixianzhanghu).obs;
+  var dropdownValue = Intr().qingxuanzhetixianzhanghu.obs;
+  var selectValue;///选择的实体
 
   ///密码属性
   var pwdVisible = false.obs;

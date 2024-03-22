@@ -58,7 +58,7 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                WidgetUtils().buildAppBar(state.type == '1' ? Intr().congcnyqianbaotichu:Intr().congusdtqianbaotichu,
+                WidgetUtils().buildAppBar(state.type != '5' ? Intr().congcnyqianbaotichu : Intr().congusdtqianbaotichu,
                     bgColor: Colors.transparent,msg: true,scaffoldKey: state.scaffoldKey),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 15.w),

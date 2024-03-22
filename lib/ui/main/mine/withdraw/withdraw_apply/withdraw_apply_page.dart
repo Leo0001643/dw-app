@@ -74,9 +74,20 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                   if(state.pageType.value == '1' && unEmpty(state.userDraw.value.banks) && isEmpty(state.walletChannel)){
                                     DialogUtils().showSelectAccountBtmDialog(context, state.userDraw.value.banks).then((value) {
                                       if(unEmpty(value)){
-                                        state.dropdownValue.value = value!;
+                                        state.selectValue = value!;
+                                        state.dropdownValue.value = state.selectValue.toString();
                                       }
                                     });
+                                  } else if(state.pageType.value == '5'){
+                                    var list = state.userDraw.value.dcBanks.where((element) => unEmpty(element.account)).toList();
+                                    DialogUtils().showSelectAccountBtmDialog(context, list).then((value) {
+                                      if(unEmpty(value)){
+                                        state.selectValue = value!;
+                                        state.dropdownValue.value = state.selectValue.toString();
+                                      }
+                                    });
+                                  }else {
+                                    ///其他钱包
                                   }
                                 },
                                 child: Container(
@@ -86,7 +97,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                     children: [
                                       Expanded(
                                         child: Obx(() {
-                                          return Text(state.dropdownValue.value.info(),style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
+                                          return Text(state.dropdownValue.value,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
                                         }),
                                       ),
                                       Obx(() {

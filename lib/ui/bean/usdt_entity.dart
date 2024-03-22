@@ -1,5 +1,6 @@
 
 import 'package:json_annotation/json_annotation.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/generated/json/usdt_entity.g.dart';
 
 /// account : "T456432748798545679999"
@@ -34,6 +35,13 @@ class UsdtEntity {
 
   Map<String, dynamic> toJson() => $UsdtEntityToJson(this);
 
-
+  @override
+  String toString() {
+    if(isEmpty(account)|| account!.em().length < 14 ){
+      return "$type${isEmpty(account) ? "" : "（${account.em()}）"}";
+    } else {
+      return "$type（***${account!.substring(14)}）";
+    }
+  }
 
 }

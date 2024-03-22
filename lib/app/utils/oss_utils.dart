@@ -33,8 +33,8 @@ class OssUtils{
         ossEndpoint: "oss-cn-shanghai.aliyuncs.com",
         bucketName: bucketName, authGetter: (){
           return Auth(
-            accessKey: akeyid,
-            accessSecret: asrt,
+            accessKey: accessKey,
+            accessSecret: accessSecret,
             expire: '2100-01-01T14:00:00Z',
             secureToken: '',
           );
@@ -49,13 +49,13 @@ class OssUtils{
     });
   }
   
-  void downloadFile(){
-    client?.getObject(file).then((value) {
-      loggerArray(['获取对象数据',value.statusCode,value.statusMessage,value.headers,value.data]);
-      if(value.statusCode == 200){
-        loggerArray(["有了有了",BaseApiOssEntity.fromJson(value.data)]);
-      }
-    });
+  Future<BaseApiOssEntity?> downloadFile() async {
+    var result = await client?.getObject(file);
+    loggerArray(['获取对象数据',result?.statusCode,result?.statusMessage,result?.headers,result?.data]);
+    if(result?.statusCode == 200){
+      return BaseApiOssEntity.fromJson(result?.data);
+    }
+    return null;
   }
   
 

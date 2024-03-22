@@ -11,7 +11,7 @@ import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 
 class SelectAccountBtmDialog extends StatefulWidget{
 
-  final List<UserDrawDetailBanks> data;
+  final List data;
 
   const SelectAccountBtmDialog(this.data, {super.key});
 
@@ -22,8 +22,7 @@ class SelectAccountBtmDialog extends StatefulWidget{
 
 class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
 
-  var data = List<UserDrawDetailBanks>.empty(growable: true);
-
+  var data = List.empty(growable: true);
 
   @override
   void initState() {
@@ -34,16 +33,6 @@ class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
 
   @override
   Widget build(BuildContext context) {
-    var childs = List<Widget>.empty(growable: true);
-    childs.add(Center(
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10.h),
-        child: Text(Intr().qingxuanzhetikuanzhanghu,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-      ),
-    ),);
-    childs.add(SizedBox(height: 10.h,));
-
-    childs.addAll(data.map((e) { return buildOptionItem(e); }).toList());
 
     return Container(
       decoration: BoxDecoration(
@@ -62,19 +51,30 @@ class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
               ),
             ),
           ),
-          Column(children: childs,),
+          Column(
+            children: [
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  child: Text(Intr().qingxuanzhetikuanzhanghu,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                ),
+              ),
+              SizedBox(height: 10.h,),
+              ...data.map((e) { return buildOptionItem(e); }).toList()
+            ],
+          ),
         ],
       )
     );
   }
 
-  Widget buildOptionItem(UserDrawDetailBanks option) {
+  Widget buildOptionItem(option) {
     return InkWell(
       onTap: (){
-        if(unEmpty(option.bankAccount)){
+        if(option.toString() == Intr().dianjitianjiazhanghu){
+          Get.offAndToNamed(option is UserDrawDetailBanks ? Routes.bind_bank : Routes.bind_usdt);
+        } else {///绑定银行卡
           Navigator.pop(context,option);
-        }else {///绑定银行卡
-          Get.offAndToNamed(Routes.bind_bank);
         }
       },
       child: Container(
@@ -83,7 +83,7 @@ class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
           children: [
             SizedBox(height: 15.h,),
             Center(
-              child: Text(option.info(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+              child: Text(option.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
             ),
             SizedBox(height: 15.h,),
             Divider(color: ColorX.color_10_949,height: 1.h,),
