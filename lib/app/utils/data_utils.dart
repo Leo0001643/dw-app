@@ -23,6 +23,10 @@ class DataUtils{
     return DateFormat(format).format(DateUtil.getDateTimeByMs(ms,isUtc: isUtc));
   }
 
+  ///统一采用24小时制
+  static String format24Hour(int ms,{String format = 'yyyy-MM-dd HH:mm:ss',bool isUtc = false}){
+    return DateUtil.formatDateMs(ms,format: format,isUtc: isUtc);
+  }
 
   /// get WeekDay.
   /// dateTime

@@ -45,8 +45,8 @@ class PointRecordRecord {
 	}
 
 	String dateStr(){
-		if((date?.length ?? 0) > 8){
-			return date!.substring(0,11);
+		if((date?.length ?? 0) > 10){
+			return date!.substring(0,10);
 		}else {
 			return date.em();
 		}

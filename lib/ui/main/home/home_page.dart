@@ -337,7 +337,7 @@ class StateHomePage extends State<HomePage>
           children: [
             Text(
               user.username.em(),
-              style: TextStyle(fontSize: 14.sp, color: ColorX.text0917()),
+              style: TextStyle(fontSize: 13.sp, color: ColorX.text0917()),
             ),
             SizedBox(
               width: 5.w,
@@ -371,8 +371,8 @@ class StateHomePage extends State<HomePage>
               onTap: () => Get.toNamed(Routes.select_currency),
               child: SvgPicture.asset(
                 ImageX.ic_qiehuan,
-                width: 12.w,
-                height: 12.w,
+                width: 12.r,
+                height: 12.r,
                 color: ColorX.iconBlack(),
                 fit: BoxFit.contain,
               ),
@@ -446,7 +446,7 @@ class StateHomePage extends State<HomePage>
         Text(
           value,
           style: TextStyle(
-            fontSize: 14.sp,
+            fontSize: 12.sp,
             color: ColorX.text0917(),
             overflow: TextOverflow.ellipsis,
           ),

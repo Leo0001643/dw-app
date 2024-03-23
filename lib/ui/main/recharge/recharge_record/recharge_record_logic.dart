@@ -45,23 +45,25 @@ class RechargeRecordLogic extends GetxController {
         params["status"] = state.selectStatus.value.id;
         break;
     }
+    ///这里看web不是美东时间
+    var now = DateTime.now();
     ///筛选时间
     switch(state.selectTime.value.id){
       case 0:
+        var beginTime = DateTime(now.year,now.month,now.day,0,0,0);
         var endTime = DateTime.now();
-        var beginTime = DateTime(endTime.year,endTime.month,endTime.day,0,0,0,0);
         params["beginTime"] = beginTime.millisecondsSinceEpoch~/1000;
         params["endTime"] = endTime.millisecondsSinceEpoch~/1000;
         break;
       case 1:
+        var beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 7));
         var endTime = DateTime.now();
-        var beginTime = endTime.subtract(const Duration(days: 7));
         params["beginTime"] = beginTime.millisecondsSinceEpoch~/1000;
         params["endTime"] = endTime.millisecondsSinceEpoch~/1000;
         break;
       case 2:
+        var beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 30));
         var endTime = DateTime.now();
-        var beginTime = endTime.subtract(const Duration(days: 30));
         params["beginTime"] = beginTime.millisecondsSinceEpoch~/1000;
         params["endTime"] = endTime.millisecondsSinceEpoch~/1000;
         break;

@@ -61,7 +61,7 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
                       onTap: (){
                         state.selectTime.value = e;
                         state.selectTime.refresh();
-                        state.refreshController.requestRefresh();
+                        logic.loadData(true);
                       },
                       child: buildTimeTab(e, state.selectTime.value == e ),
                     );
@@ -168,27 +168,27 @@ class _PointsRecordPageState extends State<PointsRecordPage> {
             flex: 25,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(item.dateStr(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text(item.dateStr(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
             ),
           ),
 
           Expanded(
             flex: 25,
             child: Center(
-              child: Text(item.remark.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text(item.remark.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text(item.transPoint.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text(item.transPoint.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Align(
               alignment: Alignment.centerRight,
-              child: Text(item.afterPoint.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
+              child: Text(item.afterPoint.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1()),),
             ),
           ),
         ],

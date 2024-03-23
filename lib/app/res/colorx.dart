@@ -276,6 +276,10 @@ class ColorX{
     return AppData.theme() ? ColorX.color_10_949 : Colors.white;
   }
 
+  static Color linef1f2(){
+    return AppData.theme() ? ColorX.color_f1f1f1 : Colors.white38;
+  }
+
   static List<Color> cardColors(){
     return AppData.theme() ? [Colors.white,const Color(0xfff3f4f9)] : [Color.fromRGBO(30, 31, 31, 1),Color.fromRGBO(30, 31, 31, 1)];
   }

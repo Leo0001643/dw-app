@@ -61,7 +61,7 @@ class _AddWalletPageState extends State<AddWalletPage> {
                 ],
               ),
             ),
-            Divider(height: 1.h,color: Colors.white38,indent: 25.w,endIndent: 25.w,),
+            Divider(height: 1.h,color: ColorX.linef1f2(),indent: 25.w,endIndent: 25.w,),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
               child: Column(
@@ -102,7 +102,7 @@ class _AddWalletPageState extends State<AddWalletPage> {
                 ],
               ),
             ),
-            Divider(height: 1.h,color: Colors.white38,indent: 25.w,endIndent: 25.w,),
+            Divider(height: 1.h,color: ColorX.linef1f2(),indent: 25.w,endIndent: 25.w,),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
               child: Column(
@@ -122,7 +122,7 @@ class _AddWalletPageState extends State<AddWalletPage> {
                 ],
               ),
             ),
-            Divider(height: 1.h,color: Colors.white38,indent: 25.w,endIndent: 25.w,),
+            Divider(height: 1.h,color: ColorX.linef1f2(), indent: 25.w,endIndent: 25.w,),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 25.w),
               child: Column(
@@ -142,7 +142,7 @@ class _AddWalletPageState extends State<AddWalletPage> {
                 ],
               ),
             ),
-            Divider(height: 1.h,color: Colors.white38,),
+            Divider(height: 1.h,color: ColorX.linef1f2(),),
             SizedBox(height: 20.h,),
             Center(
               child: WidgetUtils().buildElevatedButton(Intr().queren, 341.w, 50.h,bg: ColorX.color_fc243b,

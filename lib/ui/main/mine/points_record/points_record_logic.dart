@@ -29,25 +29,27 @@ class PointsRecordLogic extends GetxController {
     var params = <String,dynamic>{"oid":user?.oid,"username":user?.username};
     params["page"] = state.page;
     params["pageSize"] = Constants.pageSize;
+    ///北京时间转美东时间
+    var now = DateTime.now().toUtc().subtract(Duration(hours: 12));
     ///筛选时间
     switch(state.selectTime.value.id){
       case 0:
-        var endTime = DateTime.now();
-        var beginTime = DateTime(endTime.year,endTime.month,endTime.day,0,0,0,0);
-        params["beginTime"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch);
-        params["endTime"] = DataUtils.format12Hour(endTime.millisecondsSinceEpoch);
+        var beginTime = DateTime(now.year,now.month,now.day,0,0,0);
+        var endTime = DateTime(now.year,now.month,now.day,23,59,59);
+        params["beginTime"] = DataUtils.format24Hour(beginTime.millisecondsSinceEpoch);
+        params["endTime"] = DataUtils.format24Hour(endTime.millisecondsSinceEpoch);
         break;
       case 1:
-        var endTime = DateTime.now();
-        var beginTime = endTime.subtract(const Duration(days: 7));
-        params["beginTime"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch);
-        params["endTime"] = DataUtils.format12Hour(endTime.millisecondsSinceEpoch);
+        var beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 7));
+        var endTime = DateTime(now.year,now.month,now.day,23,59,59);
+        params["beginTime"] = DataUtils.format24Hour(beginTime.millisecondsSinceEpoch);
+        params["endTime"] = DataUtils.format24Hour(endTime.millisecondsSinceEpoch);
         break;
       case 2:
-        var endTime = DateTime.now();
-        var beginTime = endTime.subtract(const Duration(days: 15));
-        params["beginTime"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch);
-        params["endTime"] = DataUtils.format12Hour(endTime.millisecondsSinceEpoch);
+        var beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 15));
+        var endTime = DateTime(now.year,now.month,now.day,23,59,59);
+        params["beginTime"] = DataUtils.format24Hour(beginTime.millisecondsSinceEpoch);
+        params["endTime"] = DataUtils.format24Hour(endTime.millisecondsSinceEpoch);
         break;
     }
     HttpService.queryPointLog(params).then((value) {

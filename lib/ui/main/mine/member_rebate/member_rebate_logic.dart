@@ -42,33 +42,6 @@ class MemberRebateLogic extends GetxController {
 
     var user = AppData.user();
     var params = <String,dynamic>{"oid":user?.oid,"username":user?.username};
-    // ///筛选时间
-    // switch(state.selectTime.value.id){
-    //   case 0:
-    //     var endTime = DateTime.now();
-    //     var beginTime = DateTime(endTime.year,endTime.month,endTime.day,0,0,0,0);
-    //     params["beginDate"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    //     params["endDate"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    //     break;
-    //   case 1:
-    //     var endTime = DateTime.now();
-    //     var beginTime = endTime.subtract(const Duration(days: 7));
-    //     params["beginDate"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    //     params["endDate"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    //     break;
-    //   case 2:
-    //     var endTime = DateTime.now();
-    //     var beginTime = endTime.subtract(const Duration(days: 15));
-    //     params["beginDate"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    //     params["endDate"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    //     break;
-    //   case 3:
-    //     var endTime = DateTime.now();
-    //     var beginTime = endTime.subtract(const Duration(days: 30));
-    //     params["beginDate"] = DateUtil.formatDateMs(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    //     params["endDate"] = DateUtil.formatDateMs(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    //     break;
-    // }
     var dateRange = getRangeDate();
     params["beginDate"] = dateRange.first;
     params["endDate"] = dateRange.last;
@@ -85,27 +58,29 @@ class MemberRebateLogic extends GetxController {
     List<String> dates = List.empty(growable: true);
     late DateTime endTime;
     late DateTime beginTime;
+    var now = DateTime.now().toUtc().subtract(Duration(hours: 12));
+
     ///筛选时间
     switch(state.selectTime.value.id){
       case 0:
-        endTime = DateTime.now();
-        beginTime = DateTime(endTime.year,endTime.month,endTime.day,0,0,0,0);
+        beginTime = DateTime(now.year,now.month,now.day,0,0,0);
+        endTime = DateTime(now.year,now.month,now.day,23,59,59);
         break;
       case 1:
-        endTime = DateTime.now();
-        beginTime = endTime.subtract(const Duration(days: 7));
+        beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 7));
+        endTime = DateTime(now.year,now.month,now.day,23,59,59);
         break;
       case 2:
-        endTime = DateTime.now();
-        beginTime = endTime.subtract(const Duration(days: 15));
+        beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 15));
+        endTime = DateTime(now.year,now.month,now.day,23,59,59);
         break;
       case 3:
-        endTime = DateTime.now();
-        beginTime = endTime.subtract(const Duration(days: 30));
+        beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 30));
+        endTime = DateTime(now.year,now.month,now.day,23,59,59);
         break;
     }
-    dates.add(DataUtils.format12Hour(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d));
-    dates.add(DataUtils.format12Hour(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d));
+    dates.add(DataUtils.format24Hour(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d));
+    dates.add(DataUtils.format24Hour(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d));
 
     return dates;
   }
