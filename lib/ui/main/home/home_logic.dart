@@ -127,6 +127,10 @@ class HomeLogic extends GetxController {
         break;
       case 6:
         ///抢红包
+        if(state.hongbaoVisible.isFalse){
+          showToast(Intr().huodongweikaiqi);
+          return;
+        }
         if(unEmpty(state.domainConfig?.frontDomain)){
           if (AppData.isLogin()) {
             var path = sprintf("${state.domainConfig!.frontDomain!.first}/m/#/Hongbao/%s/%s/%s",

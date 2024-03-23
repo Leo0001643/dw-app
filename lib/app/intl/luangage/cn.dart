@@ -1009,6 +1009,7 @@ class CN {
     "shurujieshaoren":"输入介绍人",
     "yuebuzhuqingxianchongzhi":"余额不足,投注失败。是否前往充值",
     "qingkaitongzhanghu":"请开通任一帐户",
+    "huodongweikaiqi":"活动未开启",
 
 
   };
