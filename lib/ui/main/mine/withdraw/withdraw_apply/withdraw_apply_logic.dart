@@ -91,12 +91,12 @@ class WithdrawApplyLogic extends GetxController {
       /// 时效稽核手续费
       var timeFee = double.parse(state.withdrawAmount.value) * (state.check?.timeFeePercent ?? 0.0) / 100;
       var rate = timeFee + (state.check?.allNeedFee ??  0.0);
-      state.serviceAmount.value = rate.toString();
-      state.actualAmount.value = "${double.parse(state.withdrawAmount.value) - rate}";
+      state.serviceAmount.value = DataUtils.formatMoney(rate);
+      state.actualAmount.value = DataUtils.formatMoney(double.parse(state.withdrawAmount.value) - rate);
     } else {
       var rate = state.check?.allNeedFee ??  0.0;
-      state.serviceAmount.value = rate.toString();
-      state.actualAmount.value = "${double.parse(state.withdrawAmount.value) - rate}";
+      state.serviceAmount.value = DataUtils.formatMoney(rate);
+      state.actualAmount.value = DataUtils.formatMoney(double.parse(state.withdrawAmount.value) - rate);
     }
   }
 

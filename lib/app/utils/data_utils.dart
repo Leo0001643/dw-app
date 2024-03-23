@@ -503,7 +503,7 @@ class DataUtils{
   }
 
   static String formatMoney(num? money){
-    return money == 0 ? '0': "${money.em()}";
+    return money == 0 ? '0': money.em().toStringAsFixed(2);
   }
 
   static num formatNum(String? money){
