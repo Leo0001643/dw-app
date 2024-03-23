@@ -109,7 +109,7 @@ class RegisterLogic extends GetxController {
     }
     ///介绍人
     if(unEmpty(state.tgcode)){
-      params["sp"] = state.tgcode;
+      params["intr"] = state.tgcode;
     }
     HttpService.userRegister(params).then((value) {
       eventBus.fire(LoginRefreshEvent());

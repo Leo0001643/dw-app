@@ -4,9 +4,8 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-
-import '../../app/global.dart';
 import 'FloatExpendButton.dart';
 import 'game_html_logic.dart';
 
@@ -27,10 +26,13 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
   ];
-  Offset position = Offset(130, 20);
+  Offset position = Offset(0.1.sw, 0.5.sh);
 
   @override
   void dispose() {
+    if(isLandscape){
+      SystemChrome.setPreferredOrientations(orientations2);
+    }
     Get.delete<GameHtmlLogic>();
     super.dispose();
   }
@@ -78,64 +80,47 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                     },
                   ),
                   Positioned(
-                    bottom: position.dy,
-                    right: position.dx,
+                    top: position.dy,
+                    left: position.dx,
                     child: Draggable(
-                      feedback: FloatExpendButton(
-                        //菜单图标组
-                        [
-                          buildSvgImageItem(ImageX.icHtmXZT()),
-                          buildSvgImageItem(ImageX.icHtmlBackT())
-                        ],
-                        //点击事件回调
-                        callback: (int index) {
-                          if (index == 0) {
-                            setState(() {
-                              isLandscape = !isLandscape;
-                              showToast(isLandscape ? '横屏' : '竖屏');
-                            });
-                            //旋转屏幕
-                            SystemChrome.setPreferredOrientations(
-                                isLandscape ? orientations : orientations2);
-                          } else if (index == 1) {
-                            Get.back();
-                            //关闭
-                          }
-                        },
-                        fabHeight: 42,
-                        tabspace: 20,
-                        type: ButtonType.Top,
-                      ),
-                      child: FloatExpendButton(
-                        //菜单图标组
-                        [
-                          buildSvgImageItem(ImageX.icHtmXZT()),
-                          buildSvgImageItem(ImageX.icHtmlBackT())
-                        ],
-                        //点击事件回调
-                        callback: (int index) {
-                          if (index == 0) {
-                            setState(() {
-                              isLandscape = !isLandscape;
-                              showToast(isLandscape ? '横屏' : '竖屏');
-                            });
-                            //旋转屏幕
-                            SystemChrome.setPreferredOrientations(
-                                isLandscape ? orientations : orientations2);
-                          } else if (index == 1) {
-                            Get.back();
-                            //关闭
-                          }
-                        },
-                        fabHeight: 42,
-                        tabspace: 20,
-                        type: ButtonType.Top,
-                      ),
-                      onDragEnd: (details) {
+                      feedback: Container(),
+                      onDragUpdate: (details){
                         setState(() {
-                          position=details.offset;
+                          position=details.localPosition;
                         });
                       },
+                      onDraggableCanceled: (velocity,offset){
+                        setState(() {
+                          position = offset;
+                        });
+                      },
+                      child:FloatExpendButton(
+                        //菜单图标组
+                        [
+                          buildSvgImageItem(ImageX.icHtmXZT()),
+                          buildSvgImageItem(ImageX.icHtmlBackT())
+                        ],
+                        //点击事件回调
+                        callback: (int index) {
+                          if (index == 0) {
+                            isLandscape = !isLandscape;
+                            //旋转屏幕
+                            SystemChrome.setPreferredOrientations(
+                                isLandscape ? orientations : orientations2);
+                            ///切换横竖屏需要切换悬浮球的位置
+                            setState(() {
+                              position = isLandscape ? Offset(0.1.sw, 0.1.sh):Offset(0.1.sw, 0.5.sh);
+                            });
+                            loggerArray(["现在是什么状态",isLandscape]);
+                          } else if (index == 1) {
+                            Get.back();
+                            //关闭
+                          }
+                        },
+                        fabHeight: 42,
+                        tabspace: 20,
+                        type: ButtonType.Top,
+                      )
                     ),
                   )
                 ],

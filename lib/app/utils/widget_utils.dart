@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -692,16 +693,14 @@ class WidgetUtils {
     }
   }
 
-  ImageProvider buildImageProvider(String image,
-      {String defImage = ImageX.defultImg}) {
+  ImageProvider buildImageProvider(String image, {String defImage = ImageX.defultImg}) {
+    // loggerArray(["加载的图片地址",image]);
     if (isEmpty(image) || (!image.isUrl() && !image.contains("assets"))) {
       return AssetImage(defImage);
     }
     try {
       return image.isUrl()
-          ? NetworkImage(
-        image,
-      )
+          ? NetworkImage(image,)
           : AssetImage(image) as ImageProvider;
     } catch (e) {
       return AssetImage(defImage);
@@ -709,58 +708,25 @@ class WidgetUtils {
   }
 
   Widget buildImage(String image, double width, double height,
-      {String defImage = ImageX.defultImg, BoxFit? fit}) {
+      {String defImage = ImageX.defultImg, BoxFit? fit,bool placeholder=false}) {
     if (isEmpty(image) || (!image.isUrl() && !image.contains("assets"))) {
-        return Image.asset(
-          defImage,
-          width: width,
-          height: height,
-          fit: fit,
-        );
+        return Image.asset(defImage, width: width, height: height, fit: fit,);
     }
     try {
       return image.isUrl()
-          ? Image.network(
-        image,
-        width: width,
-        height: height,
-        fit: fit,
-        errorBuilder: (context, error, stack) {
-          loggerArray(["异常了", image, error, stack]);
-          if (unEmpty(defImage)) {
-            return Image.asset(
-              defImage,
-              width: width,
-              height: height,
-              fit: fit,
-            );
-          } else {
-            return SizedBox(
-              width: width,
-              height: height,
-            );
-          }
+          ? CachedNetworkImage(imageUrl: image,fit: fit,width: width,height: height,
+          errorWidget: (context,url,error){
+            return Image.asset(defImage,width: width, height: height, fit: fit,);
+          },
+        placeholder: (context,url){
+          return placeholder ? Image.asset(defImage,width: width, height: height, fit: fit,) : SizedBox(width: width,height: height,);
         },
       )
-          : (image.endsWith('svg') ? SvgPicture.asset(
-        image,
-        width: width,
-        height: height,
-        fit: fit ?? BoxFit.contain,
-      ):Image.asset(
-        image,
-        width: width,
-        height: height,
-        fit: fit,
-      ));
+          : (image.endsWith('svg') ? SvgPicture.asset(image, width: width, height: height, fit: fit ?? BoxFit.contain,)
+          :Image.asset(image,width: width, height: height, fit: fit,));
     } catch (e) {
       loggerArray(["异常了", image, e]);
-      return Image.asset(
-        defImage,
-        width: width,
-        height: height,
-        fit: fit,
-      );
+      return Image.asset(defImage, width: width, height: height, fit: fit,);
     }
   }
 
@@ -878,8 +844,7 @@ class WidgetUtils {
   }
 
   ///打开游戏页面
-  void loginJump(String title,
-      Map<String, dynamic> params,) {
+  void loginJump(String title, Map<String, dynamic> params,) {
     HttpService.loginBusinessAgent(params).then((value) {
       // if(GetPlatform.isIOS){
       //   if(value is Map){
@@ -903,12 +868,7 @@ class WidgetUtils {
       //     launchUrl(Uri.dataFromString(url,parameters: params),mode: LaunchMode.externalApplication);*/
       //     Get.toNamed(Routes.game_html,arguments: HtmlEvent(data: value,isHtmlData:true,pageTitle: title));
 
-      DialogUtils()
-          .showLoadGameDialog(
-        Get.context!,
-        title,
-      )
-          .then((inapp) {
+      DialogUtils().showLoadGameDialog(Get.context!, title,).then((inapp) {
         if (unEmpty(inapp)) {
           if (value is Map) {
             if (inapp!) {

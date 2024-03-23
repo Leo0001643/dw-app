@@ -172,7 +172,7 @@ class StateGameMenuView extends State<GameMenuView> {
         Visibility(
             visible: element != widget.logic.state.menuGroup[0],
             child: Container(
-              margin: EdgeInsets.only(left: 6, right: 22),
+              margin: EdgeInsets.only(left: 6.w, right: 22.w),
               height: 1,
               child: const Divider(
                 height: 0.5,
@@ -254,12 +254,7 @@ class StateGameMenuView extends State<GameMenuView> {
           borderRadius: BorderRadius.all(Radius.circular(10.r)),
           child: Stack(
             children: [
-              WidgetUtils().buildImage(
-                element.image(),
-                68.r,
-                68.r,
-                fit: BoxFit.cover,
-              ),
+              WidgetUtils().buildImage(element.image(), 68.r, 68.r, fit: BoxFit.cover),
               // Positioned(
               //   right: 0,
               //   top: 0,
@@ -521,7 +516,8 @@ class StateGameMenuView extends State<GameMenuView> {
       "platform": element.liveName,
       "oid": user?.oid,
       "username": user?.username,
-      "platformURL": Constants.host
+      "platformURL": Constants.host,
+      "pageSite":element.gameKind.em(),
     };
     if (unEmpty(url)) {
       params["line"] = url;

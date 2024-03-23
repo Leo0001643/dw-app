@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
@@ -177,13 +178,16 @@ class TextItemLogic extends GetxController {
       roomcountdown['${key}Term'] = '--';
       roomcountdown['${key}Notice'] = allTime[key]['msg'] ?? '';
       lastStatus=LotteryStatus.initStatus;
-    } else if (allTime[key]['code'] == 100020) {
+    } else if (allTime[key]['code'].toString() == "100020") {
+      ///只有第一次需要显示，其他时候不需要
+      if(currentStatus.value != LotteryStatus.wattingLotteryStatus){
+        showToast(allTime[key]['msg'],toastLength: Toast.LENGTH_LONG);
+      }
       currentStatus.value=LotteryStatus.wattingLotteryStatus;
       print("++++++++++++++++等待开盘");
       roomcountdown['${key}Time'] = Intr().dengdaikaipan;
       roomcountdown['${key}Term'] = '--';
       roomcountdown['${key}Notice'] = allTime[key]['msg'];
-
       lastStatus=LotteryStatus.wattingLotteryStatus;
     } else {
       resetStatusWhenStart();
@@ -271,7 +275,7 @@ class TextItemLogic extends GetxController {
       }
     }
     ///期号处理成功 显示期号
-    Get.find<GameRoomLogic>().term.value = roomcountdown['${key}Term'].toString();
+    Get.find<GameRoomLogic>().term.value = isEmpty(roomcountdown['${key}Term']) ? "":roomcountdown['${key}Term'];
     state.text_timer.value = roomcountdown['${key}Time'] ?? '';
     // if(showT == 50){
     //   showOpen(showT, data[0]['term']);

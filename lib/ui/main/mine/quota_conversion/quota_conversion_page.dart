@@ -320,7 +320,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
       decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r)),
       width: 155.w,
       height: 70.h,
-      padding: EdgeInsets.all(10.r),
+      padding: EdgeInsets.all(8.r),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -343,10 +343,10 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
               ),
             ],
           ),
-          Visibility(
-            visible: item.status == 1,
-            child: SizedBox(height: 10.h,),
-          ),
+          // Visibility(
+          //   visible: item.status == 1,
+          //   child: SizedBox(height: 5.h,),
+          // ),
           Visibility(
             visible: item.status == 1,
             child: Row(

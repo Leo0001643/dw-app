@@ -9,8 +9,8 @@ EventBus eventBus=EventBus();
 EventBus behaviorBus = EventBus.customController(BehaviorSubject());
 
 ///显示Toast消息
-void showToast(String message){
-  Fluttertoast.showToast(msg: message,gravity: ToastGravity.CENTER);
+void showToast(String message,{Toast? toastLength,}){
+  Fluttertoast.showToast(msg: message,gravity: ToastGravity.CENTER,toastLength: toastLength);
 }
 
 ///是否debug环境

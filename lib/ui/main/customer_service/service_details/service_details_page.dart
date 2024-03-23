@@ -30,7 +30,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
     state.detail = Get.arguments;
     state.title.value = state.detail.name.em();
     super.initState();
-    print("====== isChat 》${state.detail.isChat}");
+    // print("====== isChat 》${state.detail.toJson()}");
   }
 
   @override
@@ -118,6 +118,34 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
   }
 
   Widget buildCategaryItem(CustomerServiceCusterServers server, int i) {
+
+
+    var image = "${server.url.em()}${server.image.em()}".trim();
+    if(image.isEmpty){
+      switch(state.detail.type){
+        case "twitter":
+          image = ImageX.icon_twitter;
+          break;
+        case "yuyin":
+          image = ImageX.icon_voice;
+          break;
+        case "skype":
+          image = ImageX.icon_skype;
+          break;
+        case "weixin":
+          image = ImageX.icon_wechat;
+          break;
+        case "facebook":
+          image = ImageX.icon_facebook;
+          break;
+        case "telegram":
+          image = ImageX.icon_telegram;
+          break;
+        case "zaixian":
+          image = ImageX.icon_online;
+          break;
+      }
+    }
     return Column(
       children: [
         SizedBox(
@@ -134,11 +162,9 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
           height: 72.h,
           child: Row(
             children: [
-              GFAvatar(
-                backgroundImage: WidgetUtils()
-                    .buildImageProvider("${server.url}${server.image}"),
-                shape: GFAvatarShape.circle,
-                radius: 18.r,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(18.r),
+                child: WidgetUtils().buildImage(image, 36.r, 36.r,fit: BoxFit.fill,placeholder: true),
               ),
               SizedBox(
                 width: 8.w,
@@ -168,14 +194,14 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
               ),
               InkWell(
                 onTap: () {
-                  if(state?.detail.isChat == true){
+                  if(state.detail.isChat == true){
                     Get.toNamed(Routes.html,arguments: HtmlEvent(data: "http://soptj9qq.com/m/www.baidu.com",isHtmlData: false,pageTitle: ""));
                   }else{
                     WidgetUtils().clickCopy(server.number.em());
                   }
                 },
                 child: Text(
-                  (state?.detail.isChat == true)
+                  (state.detail.isChat == true)
                       ? Intr().nowChat
                       : Intr().dianjifuzhi,
                   style: TextStyle(

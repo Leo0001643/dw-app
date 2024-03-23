@@ -92,7 +92,7 @@ class TextTimerLogic {
       }
       roomcountdown['${key}Term'] = '--';
       roomcountdown['${key}Notice'] = allTime[key]['msg'] ?? '';
-    } else if (allTime[key]['code'] == 100020) {
+    } else if (allTime[key]['code'].toString() == "100020") {
       roomcountdown['${key}Time'] = Intr().dengdaikaipan;
       roomcountdown['${key}Term'] = '--';
       roomcountdown['${key}Notice'] = allTime[key]['msg'];
