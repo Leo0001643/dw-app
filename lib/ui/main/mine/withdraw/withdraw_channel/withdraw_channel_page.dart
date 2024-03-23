@@ -52,7 +52,7 @@ class _WithdrawChannelPageState extends State<WithdrawChannelPage> {
                       list.add(state.userDraw.value.banks.first);
                     }
                     state.userDraw.value.dcBanks.forEach((element) {
-                      if(element.type?.startsWith('USDT') == false){
+                      if(element.type?.startsWith('USDT') == false && element.status == 0){
                         list.add(element);
                       }
                     });
