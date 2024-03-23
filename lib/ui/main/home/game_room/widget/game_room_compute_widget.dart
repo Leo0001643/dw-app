@@ -296,8 +296,8 @@ class GameRoomComputeWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.r),
       ),
       child: Container(
-        width: 24.r,
-        height: 24.r,
+        width: 28.r,
+        height: 28.r,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           border: Border.all(color: color ?? color1, width: 2.w),
@@ -306,7 +306,7 @@ class GameRoomComputeWidget extends StatelessWidget {
         child: Text(
           result,
           style: TextStyle(
-              fontSize: 14.sp,
+              fontSize: 13.sp,
               color: textColor1,
               fontWeight: FontWeight.w600),
         ),

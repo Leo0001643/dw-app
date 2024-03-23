@@ -34,7 +34,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
   @override
   Widget build(BuildContext context) {
     var wsBetResultEntity = widget.gameRoomItemEntity.data as WsBetEntity;
-    String termData=GameRuleUtil.getSSB(wsBetResultEntity.term.em()); // 4
+    String termData=GameRuleUtil.getSSB(wsBetResultEntity.term.em(aft: '--')); // 4
     int allMonny=0;
     for(WsBetContent c in wsBetResultEntity.content??[]) {
       String betMoney = c.c??"0";

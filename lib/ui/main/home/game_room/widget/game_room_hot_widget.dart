@@ -46,7 +46,7 @@ class StateGameRoomHotWidget extends State<GameRoomHotWidget>{
         id: GameRoomLogic.gameRoomCompute,
         builder: (logic) {
           GameRoomState state = logic.state;
-          String termData=GameRuleUtil.getSSB(logic.term.value,year:"");
+          String termData=GameRuleUtil.getSSB(logic.term.value.em(aft: '--'),year:"");
           return Container(
             height: 34.w,
             padding: EdgeInsets.symmetric(

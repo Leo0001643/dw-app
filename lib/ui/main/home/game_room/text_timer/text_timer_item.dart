@@ -39,8 +39,10 @@ class TextTimerItemState extends State<TextTimerItem> {
         builder: (logic) {
           // print("开始刷新logic");
           String result = "";
-          if (Intr().fengpanzhong == logic.state.text_timer.value) {
+          if (logic.currentStatus.value == LotteryStatus.sealingPlateStatus) {
             result = Intr().fengpanzhong;
+          }else if(logic.currentStatus.value == LotteryStatus.wattingLotteryStatus){
+            result = Intr().dengdaikaipan;
           } else {
             result = logic.subToTime(logic.state.text_timer.value)??"";
           }
