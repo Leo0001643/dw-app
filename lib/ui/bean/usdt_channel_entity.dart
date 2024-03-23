@@ -12,7 +12,7 @@ class UsdtChannelEntity {
 	String? mobile;
 	String? account;
 	String? type;
-	int? status;
+	int? status;///1 启用 2 禁用
 
 	UsdtChannelEntity();
 

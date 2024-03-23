@@ -7,6 +7,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
@@ -48,7 +49,8 @@ class AppData {
           version: packageInfo.version,
           deviceId: deviceInfo.identifierForVendor));
     }
-
+    ///初始化网络库
+    HttpService.doInit();
     return Future.value(true);
   }
 

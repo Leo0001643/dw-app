@@ -52,12 +52,17 @@ class StateSelectUsdtBtmDialog extends State<SelectUsdtBtmDialog>{
   }
 
   Widget buildUsdtItem(UsdtChannelEntity e) {
-    var color = isEmpty(e.account) ? ColorX.text0917() :ColorX.text586();
+    var color = isEmpty(e.account) && e.status == 1 ? ColorX.text0917() :ColorX.text5d6();
+    var text = e.status == 1 ? e.typeName() : "${e.typeName()}(${Intr().tingyong_termi})";
     return InkWell(
-      onTap: ()=> Navigator.pop(context,e),
+      onTap: (){
+        if(isEmpty(e.account) && e.status == 1){
+          Navigator.pop(context,e);
+        }
+      },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 15.w),
-        child: Text(e.typeName(),style: TextStyle(fontSize: 14.sp,color: color),),
+        child: Text(text,style: TextStyle(fontSize: 14.sp,color: color),),
       ),
     );
   }

@@ -26,7 +26,6 @@ void main() {
   TencentCaptcha.init("189921981");
   Logger.init(tag: 'leisure_games',isDebug: isDebug);
   WidgetsFlutterBinding.ensureInitialized();
-
   AppData.initData().then((value) => runApp(MyApp()));///初始化本地数据
 }
 
@@ -39,8 +38,6 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,//强制竖屏
       DeviceOrientation.portraitDown
     ]);
-
-    HttpService.doInit();
     return ScreenUtilInit(
       //填入设计稿中设备的屏幕尺寸,单位dp
         designSize: const Size(375, 778),

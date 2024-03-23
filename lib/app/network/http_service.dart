@@ -90,6 +90,9 @@ class HttpService{
 
 
   static void doInit(){
+    ///防止重复初始化
+    if(unEmpty(getDio().options.baseUrl)) return;
+
     getDio().interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler){
         options.headers["Content-Type"] = "application/x-www-form-urlencoded";
@@ -125,9 +128,9 @@ class HttpService{
     ));
     ///配置默认的路径
     getDio().options.baseUrl = AppData.baseUrl();
-    getDio().options.connectTimeout = const Duration(milliseconds: 60*1000);
-    getDio().options.receiveTimeout = const Duration(milliseconds: 60*1000);
-    getDio().options.sendTimeout = const Duration(milliseconds: 60*1000);
+    getDio().options.connectTimeout = const Duration(seconds: 60);
+    getDio().options.receiveTimeout = const Duration(seconds: 60);
+    getDio().options.sendTimeout = const Duration(seconds: 60);
 
     _client = RetrofitClient(getDio());
   }
