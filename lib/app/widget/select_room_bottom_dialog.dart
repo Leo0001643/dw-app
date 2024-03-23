@@ -125,8 +125,8 @@ class StateSelectRoomBottomDialog extends State<SelectRoomBottomDialog> {
         Container(
           decoration: BoxDecoration(
             border: Border.all(
-                color: select ? ColorX.color_fc243b:ColorX.color_e8e8e8,
-                width: 1.w),
+                color: select ? ColorX.color_fc243b:ColorX.color_e8e8e8, width: 1.w),
+            color: ColorX.cardBg3(),
             borderRadius: BorderRadius.circular(8.r),
           ),
           padding: EdgeInsets.symmetric(vertical: 9.h),
