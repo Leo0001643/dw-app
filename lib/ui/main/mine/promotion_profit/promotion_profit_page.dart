@@ -222,35 +222,30 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
             );
           });
     } else {///推广红利部分
-      var childs = List<Widget>.empty(growable: true);
-      childs.add(Row(
-        children: [
-          Expanded(
-            flex: 30,
-            child: Text(Intr().riqi,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-          ),
-          Expanded(
-            flex: 23,
-            child: Text(Intr().xianxiayonghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-          ),
-          Expanded(
-            flex: 23,
-            child: Text(Intr().xiaxiancunkuan,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-          ),
-          Expanded(
-            flex: 23,
-            child: Text(Intr().zhuanquhongli,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
-          ),
-        ],
-      ));
-      childs.add(SizedBox(height: 10.h,),);
-
-      list.forEach((element) {
-        if(element is SpreadPromosDataList){
-          childs.add(buildPromotionItem(element));
-        }
-      });
-      return Column(children: childs,);
+      return Column(children: [
+        Row(
+          children: [
+            Expanded(
+              flex: 30,
+              child: Text(Intr().riqi,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+            ),
+            Expanded(
+              flex: 23,
+              child: Text(Intr().xianxiayonghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+            ),
+            Expanded(
+              flex: 23,
+              child: Text(Intr().xiaxiancunkuan,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+            ),
+            Expanded(
+              flex: 23,
+              child: Text(Intr().zhuanquhongli,style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+            ),
+          ],
+        ),
+        SizedBox(height: 10.h,),
+        ...list.map((e) => buildPromotionItem(e)).toList(),
+      ]);
     }
   }
 
@@ -266,7 +261,8 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
             children: [
               Expanded(
                 flex: 30,
-                child: Text(DataUtils.format12Hour(item.addTime.em() * 1000),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
+                child: Text(DataUtils.format12Hour(item.addTime.em() * 1000),
+                  style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),),
               ),
               Expanded(
                 flex: 23,
@@ -279,7 +275,7 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
               ),
               Expanded(
                 flex: 23,
-                child: Text(item.spreadPromos.em(),style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
+                child: Text("${item.currency == "CNY" ? "¥":"₮"}${item.spreadPromos.em()}",style: TextStyle(fontSize: 13.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),overflow: TextOverflow.ellipsis,),
               ),
             ],
           ),

@@ -4,8 +4,6 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
-import 'package:leisure_games/app/utils/data_utils.dart';
-import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
 
 import 'betting_detail_state.dart';

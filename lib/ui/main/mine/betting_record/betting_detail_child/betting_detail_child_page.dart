@@ -69,67 +69,61 @@ class _BettingDetailChildPageState extends State<BettingDetailChildPage> {
 
   Widget buildBettingItem(T.Record item) {
     // var result = index%2 == 1;
-    var date = DataUtils.format12Hour(num.parse(item.betTime??"0").toInt(),format: Intr().nianyueri,isUtc:true).em();
-
-    return InkWell(
-      onTap:(){
-       
-      },
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal:12.w,vertical: 8.h),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: ColorX.cardBg3(),
-        ),
-        padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                  Text(date,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
-                Text("${(item.winlose.em() >= 0) ? "+" : ""}${DataUtils.formatMoney(item.winlose)}",
-                  style: TextStyle(fontSize: 14.sp,color: (item.winlose.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
-              ],
-            ),
-            SizedBox(height: 5.h,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(Intr().dixqi([item.qishu ?? '']),style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
-              ],
-            ),
-            SizedBox(height: 5.h,),
-            Text.rich(TextSpan(
+    var date = DataUtils.format24Hour(item.betTime.em(),format: DateFormats.full,isUtc:true).em();
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal:12.w,vertical: 8.h),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: ColorX.cardBg3(),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(date,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+              Text("${(item.winlose.em() >= 0) ? "+" : ""}${DataUtils.formatMoney(item.winlose)}",
+                style: TextStyle(fontSize: 14.sp,color: (item.winlose.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
+            ],
+          ),
+          SizedBox(height: 5.h,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(Intr().dixqi([item.qishu ?? '']),style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+            ],
+          ),
+          SizedBox(height: 5.h,),
+          Text.rich(TextSpan(
               children: [
                 TextSpan(text: item.gameName.em(),style: TextStyle(color: Colors.red,fontSize: 12.sp),),
                 TextSpan(text: item.txt1.em(),style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
                 // TextSpan(text: "@",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
                 // TextSpan(text: "${item.odds.em()} ${item.odds2.em()}",style: TextStyle(color: Colors.red,fontSize: 12.sp),),
               ]
-            )),
-            SizedBox(height: 8.h,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Wrap(
-                  children: [ Text(Intr().youxiaotouzhu,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
-                    Text("${item.validamount}",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
-                  ],
-                ),
-                SizedBox(width: 10.w,),
-                Wrap(
-                  children: [
-                    Text(Intr().touzhue,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
-                    Text("${item.betamount}",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
-                  ],
-                )
-              ],
-            ),
-          ],
-        ),
+          )),
+          SizedBox(height: 8.h,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Wrap(
+                children: [ Text(Intr().youxiaotouzhu,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                  Text("${item.validamount}",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                ],
+              ),
+              SizedBox(width: 10.w,),
+              Wrap(
+                children: [
+                  Text(Intr().touzhue,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                  Text("${item.betamount}",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                ],
+              )
+            ],
+          ),
+        ],
       ),
     );
   }

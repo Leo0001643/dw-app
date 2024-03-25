@@ -668,6 +668,7 @@ class Intr extends Translations{
   String get qingkaitongzhanghu => "qingkaitongzhanghu".tr;
   String get tingyong_termi => "tingyong_termi".tr;
   String get huodongweikaiqi => "huodongweikaiqi".tr;
+  String get tz_time => "tz_time".tr;
 
 
 

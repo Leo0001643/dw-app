@@ -12,9 +12,8 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
-import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
-import '../../../../bean/bet_record_group_entity.dart';
+import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'betting_detail_logic.dart';
 
 //投注详情
@@ -105,15 +104,14 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
                   itemBuilder: (context,index){
                     if(unEmpty(state.record.value.record)){
                       // var item = state.record.value.record![index];
-                      if((index + 1) < state.record.value.record.em()){
-                        var item = state.record.value.record![index + 1];
+                      var item = state.record.value.record![index];
+                      if(state.record.value.record!.last != item){
                         if(item is BetDetailListRecord){
                           return buildBettingItem(item);
                         } else {
                           return buildBettingItemChild(item);
                         }
                       } else {
-                        var item = state.record.value.record![index];
                         return Column(
                           children: [
                             item is BetDetailListRecord ? buildBettingItem(item) : buildBettingItemChild(item),
@@ -198,9 +196,6 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
       onTap:(){
         if (item.record?.isNotEmpty==true){
           logic.setCurrentBet(item);
-        }else{
-          Get.toNamed(Routes.betting_detail_child,
-              arguments: {"data":jsonEncode(item.toJson()),"origin":jsonEncode(state.originetRecordGroupRecord.value.toJson())});
         }
       },
       child: Container(
@@ -258,12 +253,14 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
     // var result = index%2 == 1;
     return InkWell(
       onTap:(){
-        // if (item.record?.isNotEmpty==true){
-        //   logic.setCurrentBet(item);
-        // }else{
+        if(item.gameKind == 56 || item.gameKind == 57 || item.gameKind == 58 || item.gameKind == 59 || item.gameKind == 80002
+            || item.gameKind == 80006 || item.gameKind == 80009){
           Get.toNamed(Routes.betting_detail_child,
               arguments: {"data":jsonEncode(item.toJson()),"origin":jsonEncode(state.originetRecordGroupRecord.value.toJson())});
-        // }
+        } else {
+          Get.toNamed(Routes.betting_detail_other,
+              arguments: {"data":jsonEncode(item.toJson()),"origin":jsonEncode(state.originetRecordGroupRecord.value.toJson())});
+        }
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),

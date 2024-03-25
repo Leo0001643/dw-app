@@ -63,7 +63,7 @@ Record $RecordFromJson(Map<String, dynamic> json) {
   if (winlose != null) {
     record.winlose = winlose;
   }
-  final String? betTime = jsonConvert.convert<String>(json['betTime']);
+  final int? betTime = jsonConvert.convert<int>(json['betTime']);
   if (betTime != null) {
     record.betTime = betTime;
   }
@@ -125,7 +125,7 @@ extension RecordExtension on Record {
     String? betamount,
     String? validamount,
     double? winlose,
-    String? betTime,
+    int? betTime,
     String? gameType,
     String? gameName,
     String? billNo,

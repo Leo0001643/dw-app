@@ -60,6 +60,8 @@ import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting_detail_page.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail_child/betting_detail_child_binding.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail_child/betting_detail_child_page.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_detail_other/betting_detail_other_binding.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_detail_other/betting_detail_other_page.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_record_binding.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_record_page.dart';
 import 'package:leisure_games/ui/main/mine/bill_flow/bill_flow_binding.dart';
@@ -198,6 +200,8 @@ class Routes {
   static const String betting_record = "/mine/betting_record";
   static const String betting_detail = "/mine/betting_record/betting_detail";
   static const String betting_detail_child = "/mine/betting_record/betting_detail_child";
+  static const String betting_detail_other = "/mine/betting_record/betting_detail_other";
+
   static const String points_record = "/mine/points_record";
   static const String member_rebate = "/mine/member_rebate";
   static const String profit_rebate = "/mine/profit_rebate";
@@ -297,6 +301,7 @@ class Routes {
     GetPage(name: add_usdt,binding: AddUsdtBinding(), page: () => AddUsdtPage()),
     GetPage(name: simple_login,binding: SimpleLoginBinding(), page: () => SimpleLoginPage()),
     GetPage(name: betting_detail_child,binding: BettingDetailChildBinding(), page: () => BettingDetailChildPage()),
+    GetPage(name: betting_detail_other,binding: BettingDetailOtherBinding(), page: () => BettingDetailOtherPage()),
     GetPage(name: loss_percent,binding: LossPercentBinding(), page: () => LossPercentPage()),
     GetPage(name: simple_login_var,binding: SimpleLoginVarBinding(), page: () => SimpleLoginVarPage()),
 

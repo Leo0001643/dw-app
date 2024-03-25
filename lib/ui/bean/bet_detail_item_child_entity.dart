@@ -34,7 +34,7 @@ class Record {
   String? betamount;
   String? validamount;
   double? winlose;
-  String? betTime;
+  int? betTime;
   String? gameType;
   String? gameName;
   String? billNo;

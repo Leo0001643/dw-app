@@ -32,6 +32,7 @@ class SpreadPromosDataList {
 	String? spreadPromos;
 	String? topUsername;
 	String? username;
+	String? currency;
 
 	SpreadPromosDataList();
 

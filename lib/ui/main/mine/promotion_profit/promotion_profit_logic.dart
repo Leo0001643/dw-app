@@ -51,6 +51,7 @@ class PromotionProfitLogic extends GetxController {
 
     HttpService.getSpreadPromos(params).then((value) {
       state.spreadPromos.assignAll(value.list ?? []);
+      clickTab(0);///默认显示推广红利的数据
     });
 
 

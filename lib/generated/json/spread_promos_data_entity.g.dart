@@ -76,6 +76,10 @@ SpreadPromosDataList $SpreadPromosDataListFromJson(Map<String, dynamic> json) {
   if (username != null) {
     spreadPromosDataList.username = username;
   }
+  final String? currency = jsonConvert.convert<String>(json['currency']);
+  if (currency != null) {
+    spreadPromosDataList.currency = currency;
+  }
   return spreadPromosDataList;
 }
 
@@ -88,6 +92,7 @@ Map<String, dynamic> $SpreadPromosDataListToJson(SpreadPromosDataList entity) {
   data['spreadPromos'] = entity.spreadPromos;
   data['topUsername'] = entity.topUsername;
   data['username'] = entity.username;
+  data['currency'] = entity.currency;
   return data;
 }
 
@@ -100,6 +105,7 @@ extension SpreadPromosDataListExtension on SpreadPromosDataList {
     String? spreadPromos,
     String? topUsername,
     String? username,
+    String? currency,
   }) {
     return SpreadPromosDataList()
       ..addTime = addTime ?? this.addTime
@@ -108,6 +114,7 @@ extension SpreadPromosDataListExtension on SpreadPromosDataList {
       ..siteId = siteId ?? this.siteId
       ..spreadPromos = spreadPromos ?? this.spreadPromos
       ..topUsername = topUsername ?? this.topUsername
-      ..username = username ?? this.username;
+      ..username = username ?? this.username
+      ..currency = currency ?? this.currency;
   }
 }

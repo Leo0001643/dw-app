@@ -20,7 +20,6 @@ import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart';
-import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
@@ -312,10 +311,6 @@ class JsonConvert {
     if (<Total>[] is M) {
       return data.map<Total>((Map<String, dynamic> e) => Total.fromJson(e))
           .toList() as M;
-    }
-    if (<BetDetailItemEntity>[] is M) {
-      return data.map<BetDetailItemEntity>((Map<String, dynamic> e) =>
-          BetDetailItemEntity.fromJson(e)).toList() as M;
     }
     if (<BetDetailListEntity>[] is M) {
       return data.map<BetDetailListEntity>((Map<String, dynamic> e) =>
@@ -857,7 +852,6 @@ class JsonConvertClassCollection {
     (BetDetailItemChildEntity).toString(): BetDetailItemChildEntity.fromJson,
     (Record).toString(): Record.fromJson,
     (Total).toString(): Total.fromJson,
-    (BetDetailItemEntity).toString(): BetDetailItemEntity.fromJson,
     (BetDetailListEntity).toString(): BetDetailListEntity.fromJson,
     (BetDetailListRecord).toString(): BetDetailListRecord.fromJson,
     (BetDetailListRecordRecord).toString(): BetDetailListRecordRecord.fromJson,

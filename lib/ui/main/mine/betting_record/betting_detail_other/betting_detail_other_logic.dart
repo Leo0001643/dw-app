@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:common_utils/common_utils.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -8,15 +7,21 @@ import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 
-import 'betting_detail_child_state.dart';
+import 'betting_detail_other_state.dart';
 
-class BettingDetailChildLogic extends GetxController {
-  final BettingDetailChildState state = BettingDetailChildState();
+class BettingDetailOtherLogic extends GetxController {
+  final BettingDetailOtherState state = BettingDetailOtherState();
 
   @override
   void onReady() {
     loadData();
     super.onReady();
+  }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
   }
 
   void loadData() {
@@ -29,8 +34,8 @@ class BettingDetailChildLogic extends GetxController {
     var params = <String,dynamic>{"oid":user?.oid,"username":user?.username,
       "beginTime":"00:00:00","endTime":"23:59:59","beginDate":state.betRecordGroupRecord.value.time
       ,"endDate":state.betRecordGroupRecord.value.time,
-    "cur":state.betRecordGroupRecord.value.cur,
-    "gameKind":"${state.betDetailItemEntity.value.gameKind}",
+      "cur":state.betRecordGroupRecord.value.cur,
+      "gameKind":"${state.betDetailItemEntity.value.gameKind}",
       "gameType":"${state.betDetailItemEntity.value.gameType}",
       "pageLimit":500,
       "page":1,
@@ -47,11 +52,6 @@ class BettingDetailChildLogic extends GetxController {
   }
 
 
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
 
 }
