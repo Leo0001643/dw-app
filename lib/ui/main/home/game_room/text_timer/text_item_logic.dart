@@ -147,8 +147,8 @@ class TextItemLogic extends GetxController {
     countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
       try {
         timeCountOnly(diffTime, pc28lottoRoom, pc28Plan);
-      } catch (e) {
-        print("loadTimerData22  倒计时  报错  ${e.toString()}");
+      } catch (e,stack) {
+        loggerArray(["loadTimerData22倒计时报错",e,stack]);
       }
 
       // 如果倒计时结束，取消计时器
@@ -275,7 +275,7 @@ class TextItemLogic extends GetxController {
       }
     }
     ///期号处理成功 显示期号
-    Get.find<GameRoomLogic>().term.value = isEmpty(roomcountdown['${key}Term']) ? "":roomcountdown['${key}Term'];
+    Get.find<GameRoomLogic>().term.value = isEmpty(roomcountdown['${key}Term']) ? "":roomcountdown['${key}Term'].toString();
     state.text_timer.value = roomcountdown['${key}Time'] ?? '';
     // if(showT == 50){
     //   showOpen(showT, data[0]['term']);

@@ -875,7 +875,7 @@ class WidgetUtils {
               Get.toNamed(Routes.game_html,
                   arguments: HtmlEvent(
                       data: value["gameUrl"],
-                      isHtmlData: false,
+                      isHtmlData: !value["gameUrl"].toString().isUrl(),
                       pageTitle: title));
             } else {
               launchUrl(Uri.parse(value["gameUrl"]),

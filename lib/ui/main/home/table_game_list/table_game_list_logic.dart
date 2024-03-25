@@ -139,7 +139,7 @@ class TableGameListLogic extends GetxController {
 
     //"gameType":gameType,
     var params = <String,dynamic>{ "cur":cur, "tags":element.tag,
-      "platform":element.platformName,"gameCode":element.gameidstr,
+      "platform":element.platformName,"gameType":element.gameidstr,"pageSite":"game",
       "oid":user?.oid,"username":user?.username,"platformURL": Constants.host};
 
     WidgetUtils().loginJump(element.gamename.em(),params);
