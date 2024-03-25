@@ -21,6 +21,7 @@ import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
+import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
@@ -315,6 +316,18 @@ class JsonConvert {
     if (<BetDetailItemEntity>[] is M) {
       return data.map<BetDetailItemEntity>((Map<String, dynamic> e) =>
           BetDetailItemEntity.fromJson(e)).toList() as M;
+    }
+    if (<BetDetailListEntity>[] is M) {
+      return data.map<BetDetailListEntity>((Map<String, dynamic> e) =>
+          BetDetailListEntity.fromJson(e)).toList() as M;
+    }
+    if (<BetDetailListRecord>[] is M) {
+      return data.map<BetDetailListRecord>((Map<String, dynamic> e) =>
+          BetDetailListRecord.fromJson(e)).toList() as M;
+    }
+    if (<BetDetailListRecordRecord>[] is M) {
+      return data.map<BetDetailListRecordRecord>((Map<String, dynamic> e) =>
+          BetDetailListRecordRecord.fromJson(e)).toList() as M;
     }
     if (<BetRecordGroupEntity>[] is M) {
       return data.map<BetRecordGroupEntity>((Map<String, dynamic> e) =>
@@ -845,6 +858,9 @@ class JsonConvertClassCollection {
     (Record).toString(): Record.fromJson,
     (Total).toString(): Total.fromJson,
     (BetDetailItemEntity).toString(): BetDetailItemEntity.fromJson,
+    (BetDetailListEntity).toString(): BetDetailListEntity.fromJson,
+    (BetDetailListRecord).toString(): BetDetailListRecord.fromJson,
+    (BetDetailListRecordRecord).toString(): BetDetailListRecordRecord.fromJson,
     (BetRecordGroupEntity).toString(): BetRecordGroupEntity.fromJson,
     (BetRecordGroupRecord).toString(): BetRecordGroupRecord.fromJson,
     (BetShakeEntity).toString(): BetShakeEntity.fromJson,

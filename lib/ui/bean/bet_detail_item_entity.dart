@@ -7,7 +7,7 @@ import 'package:leisure_games/generated/json/bet_detail_item_entity.g.dart';
 @JsonSerializable()
 class BetDetailItemEntity {
   num? betamount;
-  num? validamount;
+  num? validAmount;
   num? winlose;
   num? betCount;
   num? gameKind;
@@ -16,9 +16,10 @@ class BetDetailItemEntity {
   num? gameType;
   String? currency;
   List<BetDetailItemEntity>? record;
+
   BetDetailItemEntity({
     this.betamount,
-    this.validamount,
+    this.validAmount,
     this.winlose,
     this.betCount,
     this.currency,

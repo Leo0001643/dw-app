@@ -27,9 +27,6 @@ class _BettingDetailChildPageState extends State<BettingDetailChildPage> {
   final state = Get.find<BettingDetailChildLogic>().state;
   @override
   void initState() {
-
-    setState(() {
-    });
     super.initState();
   }
 
@@ -87,43 +84,42 @@ class _BettingDetailChildPageState extends State<BettingDetailChildPage> {
         padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                   Text(date,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
-                Text("${((item.winlose.em()??0) >= 0) ? "+" : ""}${DataUtils.formatMoney(item.winlose)}",
-                  style: TextStyle(fontSize: 14.sp,color: ((item.winlose.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
+                Text("${(item.winlose.em() >= 0) ? "+" : ""}${DataUtils.formatMoney(item.winlose)}",
+                  style: TextStyle(fontSize: 14.sp,color: (item.winlose.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
               ],
             ),
-            SizedBox(height: 12.h,),
+            SizedBox(height: 5.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(Intr().dixqi([item.qishu ?? '']),style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
               ],
             ),
-            SizedBox(height: 12.h,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            SizedBox(height: 5.h,),
+            Text.rich(TextSpan(
               children: [
-               Wrap(
-                 children: [ Text(item.gameName.em(),style: TextStyle(color: Colors.red,fontSize: 12.sp),),
-                   Text(item.txt1.em(),style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
-                   Text("@",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
-                   Text("${item.odds.em()} ${item.odds2.em()}",style: TextStyle(color: Colors.red,fontSize: 12.sp),),
-                 ],
-               )
-              ],
-            ),
-            SizedBox(height: 12.h,),
+                TextSpan(text: item.gameName.em(),style: TextStyle(color: Colors.red,fontSize: 12.sp),),
+                TextSpan(text: item.txt1.em(),style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                // TextSpan(text: "@",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
+                // TextSpan(text: "${item.odds.em()} ${item.odds2.em()}",style: TextStyle(color: Colors.red,fontSize: 12.sp),),
+              ]
+            )),
+            SizedBox(height: 8.h,),
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Wrap(
                   children: [ Text(Intr().youxiaotouzhu,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
                     Text("${item.validamount}",style: TextStyle(color: Colors.grey,fontSize: 12.sp),),
                   ],
                 ),
+                SizedBox(width: 10.w,),
                 Wrap(
                   children: [
                     Text(Intr().touzhue,style: TextStyle(color: Colors.grey,fontSize: 12.sp),),

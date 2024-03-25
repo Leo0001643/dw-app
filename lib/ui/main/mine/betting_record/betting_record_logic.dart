@@ -17,7 +17,6 @@ class BettingRecordLogic extends GetxController {
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 
@@ -31,8 +30,8 @@ class BettingRecordLogic extends GetxController {
     } else {
       params["cur"] = 5;
     }
+    var beginTime =  DateTime.now().subtract(const Duration(days: 6));
     var endTime = DateTime.now();
-    var beginTime = endTime.subtract(const Duration(days: 7));
     params["beginDate"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
     params["endDate"] = DataUtils.format12Hour(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
 

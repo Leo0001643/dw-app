@@ -1836,7 +1836,7 @@ class _RetrofitClient implements RetrofitClient {
   }
 
   @override
-  Future<BaseResponseEntity<BetDetailItemEntity>> getRecordGroupType(
+  Future<BaseResponseEntity<BetDetailListEntity>> getRecordGroupType(
       Map<String, dynamic> params) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -1844,7 +1844,7 @@ class _RetrofitClient implements RetrofitClient {
     final _data = <String, dynamic>{};
     _data.addAll(params);
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponseEntity<BetDetailItemEntity>>(Options(
+        _setStreamType<BaseResponseEntity<BetDetailListEntity>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -1860,9 +1860,9 @@ class _RetrofitClient implements RetrofitClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = BaseResponseEntity<BetDetailItemEntity>.fromJson(
+    final value = BaseResponseEntity<BetDetailListEntity>.fromJson(
       _result.data!,
-      (json) => BetDetailItemEntity.fromJson(json as Map<String, dynamic>),
+      (json) => BetDetailListEntity.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

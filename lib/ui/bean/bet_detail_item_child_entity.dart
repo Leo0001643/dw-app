@@ -33,7 +33,7 @@ class Record {
   String? tableId;
   String? betamount;
   String? validamount;
-  int? winlose;
+  double? winlose;
   String? betTime;
   String? gameType;
   String? gameName;
@@ -60,7 +60,7 @@ class Record {
 
 @JsonSerializable()
 class Total {
-  int? betAmountTotal;
+  double? betAmountTotal;
   double? validAmountTotal;
   double? winloseTotal;
   int? betCountTotal;

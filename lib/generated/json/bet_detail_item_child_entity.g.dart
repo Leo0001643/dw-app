@@ -59,7 +59,7 @@ Record $RecordFromJson(Map<String, dynamic> json) {
   if (validamount != null) {
     record.validamount = validamount;
   }
-  final int? winlose = jsonConvert.convert<int>(json['winlose']);
+  final double? winlose = jsonConvert.convert<double>(json['winlose']);
   if (winlose != null) {
     record.winlose = winlose;
   }
@@ -124,7 +124,7 @@ extension RecordExtension on Record {
     String? tableId,
     String? betamount,
     String? validamount,
-    int? winlose,
+    double? winlose,
     String? betTime,
     String? gameType,
     String? gameName,
@@ -154,7 +154,8 @@ extension RecordExtension on Record {
 
 Total $TotalFromJson(Map<String, dynamic> json) {
   final Total total = Total();
-  final int? betAmountTotal = jsonConvert.convert<int>(json['betAmountTotal']);
+  final double? betAmountTotal = jsonConvert.convert<double>(
+      json['betAmountTotal']);
   if (betAmountTotal != null) {
     total.betAmountTotal = betAmountTotal;
   }
@@ -191,7 +192,7 @@ Map<String, dynamic> $TotalToJson(Total entity) {
 
 extension TotalExtension on Total {
   Total copyWith({
-    int? betAmountTotal,
+    double? betAmountTotal,
     double? validAmountTotal,
     double? winloseTotal,
     int? betCountTotal,

@@ -19,6 +19,7 @@ import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
+import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
@@ -356,8 +357,8 @@ class HttpService{
     return buildFuture<BetRecordGroupEntity>(()=> _client.getRecordGroupDay(params,));
   }
 
-  static Future<BetDetailItemEntity> getRecordGroupType(Map<String,dynamic> params,){
-    return buildFuture<BetDetailItemEntity>(()=> _client.getRecordGroupType(params,));
+  static Future<BetDetailListEntity> getRecordGroupType(Map<String,dynamic> params,){
+    return buildFuture<BetDetailListEntity>(()=> _client.getRecordGroupType(params,));
   }
 
   static Future<BetDetailItemChildEntity> getRecordDetailNew(Map<String,dynamic> params,){

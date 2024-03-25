@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
+import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 
 class BettingDetailChildState {
@@ -11,9 +13,9 @@ class BettingDetailChildState {
 
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
-  var betDetailItemEntity=BetDetailItemEntity().obs;
+  var betDetailItemEntity=BetDetailListRecordRecord().obs;
   var betRecordGroupRecord=BetRecordGroupRecord().obs;
-  var title = "投注详情".obs;
+  var title = Intr().xiangqing.obs;
 
   var record =BetDetailItemChildEntity().obs;
 

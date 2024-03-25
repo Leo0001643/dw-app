@@ -9,9 +9,9 @@ BetDetailItemEntity $BetDetailItemEntityFromJson(Map<String, dynamic> json) {
   if (betamount != null) {
     betDetailItemEntity.betamount = betamount;
   }
-  final num? validamount = jsonConvert.convert<num>(json['validamount']);
-  if (validamount != null) {
-    betDetailItemEntity.validamount = validamount;
+  final num? validAmount = jsonConvert.convert<num>(json['validAmount']);
+  if (validAmount != null) {
+    betDetailItemEntity.validAmount = validAmount;
   }
   final num? winlose = jsonConvert.convert<num>(json['winlose']);
   if (winlose != null) {
@@ -56,7 +56,7 @@ BetDetailItemEntity $BetDetailItemEntityFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> $BetDetailItemEntityToJson(BetDetailItemEntity entity) {
   final Map<String, dynamic> data = <String, dynamic>{};
   data['betamount'] = entity.betamount;
-  data['validamount'] = entity.validamount;
+  data['validAmount'] = entity.validAmount;
   data['winlose'] = entity.winlose;
   data['betCount'] = entity.betCount;
   data['gameKind'] = entity.gameKind;
@@ -71,7 +71,7 @@ Map<String, dynamic> $BetDetailItemEntityToJson(BetDetailItemEntity entity) {
 extension BetDetailItemEntityExtension on BetDetailItemEntity {
   BetDetailItemEntity copyWith({
     num? betamount,
-    num? validamount,
+    num? validAmount,
     num? winlose,
     num? betCount,
     num? gameKind,
@@ -83,7 +83,7 @@ extension BetDetailItemEntityExtension on BetDetailItemEntity {
   }) {
     return BetDetailItemEntity()
       ..betamount = betamount ?? this.betamount
-      ..validamount = validamount ?? this.validamount
+      ..validAmount = validAmount ?? this.validAmount
       ..winlose = winlose ?? this.winlose
       ..betCount = betCount ?? this.betCount
       ..gameKind = gameKind ?? this.gameKind

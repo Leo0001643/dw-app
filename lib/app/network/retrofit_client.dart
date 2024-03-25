@@ -9,6 +9,7 @@ import 'package:leisure_games/ui/bean/bank_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_entity.dart';
+import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
 import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
@@ -250,7 +251,7 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<BetRecordGroupEntity>> getRecordGroupDay(@Body() Map<String,dynamic> params,);
 
   @POST('/ds-api-web/getRecordGroupType')
-  Future<BaseResponseEntity<BetDetailItemEntity>> getRecordGroupType(@Body() Map<String,dynamic> params,);
+  Future<BaseResponseEntity<BetDetailListEntity>> getRecordGroupType(@Body() Map<String,dynamic> params,);
 
   @POST('/ds-api-web/getRecordDetailNew')
   Future<BaseResponseEntity<BetDetailItemChildEntity>> getRecordDetailNew(@Body() Map<String,dynamic> params,);
