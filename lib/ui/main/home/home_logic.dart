@@ -88,13 +88,11 @@ class HomeLogic extends GetxController {
     switch (index) {
       case 0:
         ///充值
-        // if (AppData.isLogin()) {
-        //   eventBus.fire(ChangeMainPageEvent(2));
-        // } else {
-        //   WidgetUtils().goLogin();
-        // }
-      AppData.setBaseUrl("");
-      AppData.setBaseWsUrl("");
+        if (AppData.isLogin()) {
+          eventBus.fire(ChangeMainPageEvent(2));
+        } else {
+          WidgetUtils().goLogin();
+        }
         break;
       case 1:
         ///提现

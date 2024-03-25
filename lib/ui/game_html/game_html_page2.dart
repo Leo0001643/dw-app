@@ -40,11 +40,12 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(automaticallyImplyLeading: false,toolbarHeight: 0,),
       body: SafeArea(
         child: Column(
           children: [
             Obx(
-              () => Visibility(
+                  () => Visibility(
                 visible: state.progressVisible.value,
                 child: LinearProgressIndicator(
                   value: state.progress.value / 100, //取值为0-1
@@ -83,44 +84,44 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                     top: position.dy,
                     left: position.dx,
                     child: Draggable(
-                      feedback: Container(),
-                      onDragUpdate: (details){
-                        setState(() {
-                          position=details.localPosition;
-                        });
-                      },
-                      onDraggableCanceled: (velocity,offset){
-                        setState(() {
-                          position = offset;
-                        });
-                      },
-                      child:FloatExpendButton(
-                        //菜单图标组
-                        [
-                          buildSvgImageItem(ImageX.icHtmXZT()),
-                          buildSvgImageItem(ImageX.icHtmlBackT())
-                        ],
-                        //点击事件回调
-                        callback: (int index) {
-                          if (index == 0) {
-                            isLandscape = !isLandscape;
-                            //旋转屏幕
-                            SystemChrome.setPreferredOrientations(
-                                isLandscape ? orientations : orientations2);
-                            ///切换横竖屏需要切换悬浮球的位置
-                            setState(() {
-                              position = isLandscape ? Offset(0.1.sw, 0.1.sh):Offset(0.1.sw, 0.5.sh);
-                            });
-                            loggerArray(["现在是什么状态",isLandscape]);
-                          } else if (index == 1) {
-                            Get.back();
-                            //关闭
-                          }
+                        feedback: Container(),
+                        onDragUpdate: (details){
+                          setState(() {
+                            position=details.localPosition;
+                          });
                         },
-                        fabHeight: 42,
-                        tabspace: 20,
-                        type: ButtonType.Top,
-                      )
+                        onDraggableCanceled: (velocity,offset){
+                          setState(() {
+                            position = offset;
+                          });
+                        },
+                        child:FloatExpendButton(
+                          //菜单图标组
+                          [
+                            buildSvgImageItem(ImageX.icHtmXZT()),
+                            buildSvgImageItem(ImageX.icHtmlBackT())
+                          ],
+                          //点击事件回调
+                          callback: (int index) {
+                            if (index == 0) {
+                              isLandscape = !isLandscape;
+                              //旋转屏幕
+                              SystemChrome.setPreferredOrientations(
+                                  isLandscape ? orientations : orientations2);
+                              ///切换横竖屏需要切换悬浮球的位置
+                              setState(() {
+                                position = isLandscape ? Offset(0.1.sw, 0.1.sh):Offset(0.1.sw, 0.5.sh);
+                              });
+                              loggerArray(["现在是什么状态",isLandscape]);
+                            } else if (index == 1) {
+                              Get.back();
+                              //关闭
+                            }
+                          },
+                          fabHeight: 42,
+                          tabspace: 20,
+                          type: ButtonType.Top,
+                        )
                     ),
                   )
                 ],

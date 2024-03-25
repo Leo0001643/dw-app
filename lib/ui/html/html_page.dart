@@ -60,12 +60,12 @@ class _HtmlPageState extends State<HtmlPage> {
                 var url = action.request.url.toString();
                 loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers,]);
                 ///拉起支付宝支付
-                // if(url.startsWith("alipays://")){
-                //   if(await canLaunchUrlString(url)){
-                //     launchUrlString(url);
-                //   }
-                //   return Future.value(NavigationActionPolicy.CANCEL);
-                // }
+                if(url.startsWith("alipays://")){
+                  if(await canLaunchUrlString(url)){
+                    launchUrlString(url);
+                  }
+                  return Future.value(NavigationActionPolicy.CANCEL);
+                }
                 return Future.value(NavigationActionPolicy.ALLOW);
               },
               onProgressChanged: (controller,pg){

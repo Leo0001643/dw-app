@@ -124,7 +124,7 @@ class _ChessGameListPageState extends State<ChessGameListPage> {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
-              child: WidgetUtils().buildImage("${chess.imageHost.em()}${chess.gamepic.em()}",0.2.sw,0.15.sw,fit: BoxFit.fill,),
+              child: WidgetUtils().buildImage("${chess.imageHost.em()}${chess.gamepic.em()}",0.2.sw,0.15.sw,fit: BoxFit.cover,),
             ),
             SizedBox(height: 7.h,),
             Text(chess.gamename.em(),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -164,7 +163,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(18.r),
-                child: WidgetUtils().buildImage(image, 36.r, 36.r,fit: BoxFit.fill,placeholder: true),
+                child: WidgetUtils().buildImage(image, 36.r, 36.r,fit: BoxFit.cover,placeholder: true),
               ),
               SizedBox(
                 width: 8.w,
