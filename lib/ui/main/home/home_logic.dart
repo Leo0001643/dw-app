@@ -41,6 +41,7 @@ class HomeLogic extends GetxController {
   void onReady() {
     loadData();
     loadUserData();
+    queryRoutes();///查询线路信息
     ///余额发生变化，刷新余额数据
     loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
       loadUserData(jumpNotice: event.show_notice);
@@ -64,6 +65,8 @@ class HomeLogic extends GetxController {
     apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
       loadData();
       loadUserData();
+      ///线路切换 修改当前线路名称
+      queryRoutes();
     });
     super.onReady();
   }
@@ -133,7 +136,7 @@ class HomeLogic extends GetxController {
           if (AppData.isLogin()) {
             var path = sprintf("${state.domainConfig!.frontDomain!.first}/m/#/Hongbao/%s/%s/%s",
                 [AppData.user()?.oid,AppData.user()?.username,Intr().currentLocale().languageCode]);
-            print("抢红包>>地址"+path);
+            // print("抢红包>>地址"+path);
             Get.toNamed(Routes.html,
                 arguments: HtmlEvent(
                     data: path,
@@ -397,4 +400,27 @@ class HomeLogic extends GetxController {
       });
     }
   }
+
+  ///请求云存储里的路线
+  void queryRoutes() async {
+    var value = AppData.ossApi();
+    if(isEmpty(value) || value!.updateTime.em() < (DateTime.now().millisecondsSinceEpoch - 86400000)){
+      value = await OssUtils().downloadFile();
+      ///用于判断是否需要更新缓存使用
+      value!.updateTime = DateTime.now().millisecondsSinceEpoch;
+      AppData.setOssApi(value);
+    }
+
+    var list = value.toApiList();
+    for(var i=0;i<list.em();i++){
+      loggerArray(["线路对比结果",list[i].baseApi,AppData.baseUrl()]);
+      if(list[i].baseApi == AppData.baseUrl()){
+        state.routeName.value = Intr().xianlu_(["${i + 1}"]);
+        return;
+      }
+    }
+
+  }
+
+
 }

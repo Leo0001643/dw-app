@@ -54,4 +54,8 @@ class HomeState {
   ///未读消息数量
   var unreadCount = 0.obs;
 
+  ///当前使用的线路名称
+  var routeName = "".obs;
+
+
 }

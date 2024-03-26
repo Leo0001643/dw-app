@@ -224,7 +224,7 @@ class AppData {
     if(unEmpty(base_url)) return base_url;
     base_url = prefs?.getString("base_url") ?? "";
     if(isEmpty(base_url)){
-      base_url = "${Constants.host}:8860";
+      base_url = Constants.host;
     }
     return base_url;
   }

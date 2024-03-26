@@ -140,13 +140,14 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                               Expanded(
                                 child: LayoutBuilder(
                                   builder: (context,cts){
+                                    var lotteryTime = logic.lotCount >= 0 ?"${logic.lotCount}s" : "";
                                     try{
                                       return Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(Intr().dixqitouzhu([nextTerm,logic.mipaiTime]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
                                           SizedBox(height: 3.h,),
-                                          Text(Intr().dixqikaijiang([nextTerm,"${logic.lotCount}s"]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                          Text(Intr().dixqikaijiang([nextTerm,lotteryTime]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
                                         ],
                                       );
                                     }catch(e){

@@ -131,6 +131,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                     controller: _tabController,
                     tabBarHeight: 40.h,
                     tabBarColor: Colors.transparent,
+                    tabAlignment: TabAlignment.fill,
                     isScrollable: false,
                     width: 288.w,
                     labelPadding: EdgeInsets.zero,

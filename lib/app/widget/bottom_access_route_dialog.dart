@@ -53,7 +53,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                       AppData.setBaseWsUrl(entity!.webSocket.em());
                       eventBus.fire(entity);///通知各页面刷新数据
                     }
-                    Navigator.pop(context);
+                    Navigator.pop(context,entity?.baseApi);
                   },
                   child: Container(
                     margin: EdgeInsets.only(right: 10.w),
@@ -216,47 +216,47 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
     );
   }
 
-  Widget buildRouteState(RouteTest route) {
-    var color = ColorX.color_fc243b;
-    if (route.delayTime < 200) {
-      color = ColorX.color_60c549;
-    } else if (route.delayTime < 600) {
-      color = ColorX.color_ff9e52;
-    } else if (route.delayTime < 900) {
-      color = ColorX.color_d53849;
-    } else {
-      color = ColorX.color_b5b5b5;
-    }
-    return InkWell(
-      onTap: () {
-        Navigator.pop(context, route.url);
-      },
-      child: Container(
-        height: 45.h,
-        margin: EdgeInsets.only(left: 15.w, right: 15.w, bottom: 12.h),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(color: ColorX.color_10_949, width: 1.r),
-        ),
-        child: Row(
-          children: [
-            SizedBox(
-              width: 20.w,
-            ),
-            Text(
-              "${route.delayTime}mm",
-              style: TextStyle(fontSize: 16.sp, color: color),
-            ),
-            Expanded(child: Container()),
-            Image.asset(ImageX.icon_right_black),
-            SizedBox(
-              width: 10.w,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget buildRouteState(RouteTest route) {
+  //   var color = ColorX.color_fc243b;
+  //   if (route.delayTime < 200) {
+  //     color = ColorX.color_60c549;
+  //   } else if (route.delayTime < 600) {
+  //     color = ColorX.color_ff9e52;
+  //   } else if (route.delayTime < 900) {
+  //     color = ColorX.color_d53849;
+  //   } else {
+  //     color = ColorX.color_b5b5b5;
+  //   }
+  //   return InkWell(
+  //     onTap: () {
+  //       Navigator.pop(context, route.url);
+  //     },
+  //     child: Container(
+  //       height: 45.h,
+  //       margin: EdgeInsets.only(left: 15.w, right: 15.w, bottom: 12.h),
+  //       decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(10.r),
+  //         border: Border.all(color: ColorX.color_10_949, width: 1.r),
+  //       ),
+  //       child: Row(
+  //         children: [
+  //           SizedBox(
+  //             width: 20.w,
+  //           ),
+  //           Text(
+  //             "${route.delayTime}mm",
+  //             style: TextStyle(fontSize: 16.sp, color: color),
+  //           ),
+  //           Expanded(child: Container()),
+  //           Image.asset(ImageX.icon_right_black),
+  //           SizedBox(
+  //             width: 10.w,
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
 /*  Future<RouteTest> testApiDelay(String baseUrl, String apiurl) async {
     apiurl = apiurl.startsWith("http") ? apiurl : "http://${apiurl}";

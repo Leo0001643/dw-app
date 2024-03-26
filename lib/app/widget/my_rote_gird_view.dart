@@ -124,7 +124,7 @@ class _MyGridViewState extends State<MyRoteGridView> {
       value!.updateTime = DateTime.now().millisecondsSinceEpoch;
       AppData.setOssApi(value);
     }
-    list.assignAll(value.toApiList() ?? []);
+    list.assignAll(value.toApiList());
     list.refresh();///显示路线
     for(var i=0;i< list.em();i++){
       list[i].delayTime = await testApiDelay(list[i].baseApi.em());

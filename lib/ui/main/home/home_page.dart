@@ -53,7 +53,7 @@ class StateHomePage extends State<HomePage>
                     flexibleSpace: Container(
                       padding: EdgeInsets.only(top: ScreenUtil().statusBarHeight),
                       alignment: Alignment.center,
-                      child: WidgetUtils().buildHomeAppBar(context,state.unreadCount, msg: true, drawer: true),
+                      child: WidgetUtils().buildHomeAppBar(context,state.unreadCount,state.routeName, msg: true, drawer: true),
                     )),
                 SliverToBoxAdapter(
                   child: Container(

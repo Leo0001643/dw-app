@@ -4,6 +4,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'FloatExpendButton.dart';
@@ -89,6 +90,10 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                     shouldOverrideUrlLoading: (controller,action) async {
                       var url = action.request.url.toString();
                       loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers,]);
+                      if(url == Constants.web_gjz || url.contains('about:blank')){
+                        Get.back();
+                        Future.value(NavigationActionPolicy.CANCEL);
+                      }
                       return Future.value(NavigationActionPolicy.ALLOW);
                     },
                     onProgressChanged: (controller, pg) {

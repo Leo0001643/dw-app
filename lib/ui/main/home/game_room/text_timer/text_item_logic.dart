@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
@@ -46,9 +47,7 @@ enum LotteryStatus {
 
 typedef TimerListener = Function(int showTime, LotteryStatus status);
 
-/**
- * 参考count_down_text.dart
- */
+/// 参考count_down_text.dart
 class TextItemLogic extends GetxController {
   Rx<CountDownLotteryEntity> countDownLotteryEntity = CountDownLotteryEntity().obs;
   final TextTimerState state = TextTimerState();
@@ -181,7 +180,8 @@ class TextItemLogic extends GetxController {
     } else if (allTime[key]['code'].toString() == "100020") {
       ///只有第一次需要显示，其他时候不需要
       if(currentStatus.value != LotteryStatus.wattingLotteryStatus){
-        showToast(allTime[key]['msg'],toastLength: Toast.LENGTH_LONG);
+        // showToast(allTime[key]['msg'],toastLength: Toast.LENGTH_LONG);
+        EasyLoading.showToast(allTime[key]['msg'],duration: Duration(seconds: 5));
       }
       currentStatus.value=LotteryStatus.wattingLotteryStatus;
       print("++++++++++++++++等待开盘");
@@ -290,7 +290,9 @@ class TextItemLogic extends GetxController {
     if(LotteryStatus.sealingPlateStatus == currentStatus.value){
       mipaiTime = Intr().fengpanzhong;
       lotCount = 9 - fengpanCount;
-    } else if(LotteryStatus.wattingLotteryStatus != currentStatus.value){
+    } else if(LotteryStatus.wattingLotteryStatus == currentStatus.value){
+      mipaiTime = Intr().dengdaikaipan;
+    }else {
       mipaiTime = subToTime(state.text_timer.value)??"";
       var timeParts = mipaiTime.split(":");
       if(timeParts.length == 2){

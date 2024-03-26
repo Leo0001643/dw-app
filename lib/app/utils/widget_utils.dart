@@ -119,7 +119,7 @@ class WidgetUtils {
     );
   }
 
-  Widget buildHomeAppBar(context,RxInt unRead, {bool msg = false, bool drawer = false,}) {
+  Widget buildHomeAppBar(context,RxInt unRead,RxString routeName, {bool msg = false, bool drawer = false,}) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 10.r),
       child: Row(
@@ -139,7 +139,9 @@ class WidgetUtils {
                   padding: EdgeInsets.all(10.r),
                   child: Row(
                     children: [
-                      Text("xianlu5".tr, style: TextStyle(color: ColorX.iconBlack())),
+                      Obx(() {
+                        return Text(routeName.value, style: TextStyle(color: ColorX.iconBlack()));
+                      }),
                       WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
                     ],
                   )),

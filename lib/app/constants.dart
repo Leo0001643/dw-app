@@ -4,8 +4,8 @@ import 'package:leisure_games/app/global.dart';
 
 class Constants {
 
-  static const host = "http://soptj9qq.com";
-  // static const host = "https://9000vlmdm4.kj99883.com";
+  // static const host = "http://soptj9qq.com:8860";
+  static const host = "https://9000vlmdm4.kj99883.com/";
 
   // static const base_url = "$host";
   static const contact = "$host/m/#/detail/Contact";
@@ -19,6 +19,7 @@ class Constants {
   // static const websocket = "ws://ws.by4aocqs.com:9999";
   static const host_ws = "wss://9000ywfjn2.uy4ayov.com/";
 
+  static const web_gjz = "http://soptj9qq.com/m/";
 
   static const PC28 = "PC28";
 
