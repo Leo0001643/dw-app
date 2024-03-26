@@ -90,7 +90,7 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                     shouldOverrideUrlLoading: (controller,action) async {
                       var url = action.request.url.toString();
                       loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers,]);
-                      if(url == Constants.web_gjz || url.contains('about:blank')){
+                      if(url.contains(Constants.web_gjz)){
                         Get.back();
                         Future.value(NavigationActionPolicy.CANCEL);
                       }

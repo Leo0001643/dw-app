@@ -431,13 +431,15 @@ class StateGameMenuView extends State<GameMenuView> {
             showToast(hint);
             return;
           }
+          loggerArray(["这里的参数打印",element.toJson()]);
           if (element.liveName == "jingdian_lotto") {
             ///经典彩
             if (webConfig?.domainMJingdiancai?.list.em() == 1) {
               var urlPath = webConfig?.domainMJingdiancai?.urlPath.em();
               var url = webConfig?.domainMJingdiancai?.list!.first;
               if (unEmpty(url)) {
-                openGamePage(element, url: "$url$urlPath");
+                var params = <String, dynamic>{"line":"$url$urlPath","lid":element.gameCode.em()};
+                openGamePage(element,params);
               }
             } else if (unEmpty(webConfig?.domainMJingdiancai?.list)) {
               var list = webConfig?.domainMJingdiancai?.list;
@@ -447,7 +449,8 @@ class StateGameMenuView extends State<GameMenuView> {
                   .showAccessRouteDialog(context, list!, path!)
                   .then((value) {
                 if (unEmpty(value)) {
-                  openGamePage(element, url: "$value$urlPath");
+                  var params = <String, dynamic>{"line":"$value$urlPath","lid":element.gameCode.em()};
+                  openGamePage(element,params);
                 }
               });
             } else {
@@ -460,7 +463,8 @@ class StateGameMenuView extends State<GameMenuView> {
               // var urlPath = webConfig?.domainMGuanfangcai?.urlPath.em();
               var url = webConfig?.domainMGuanfangcai?.list!.first;
               if (unEmpty(url)) {
-                openGamePage(element, url: url);
+                var params = <String, dynamic>{"line":url,"lid":element.gameCode.em()};
+                openGamePage(element, params);
               }
             } else if (unEmpty(webConfig?.domainMGuanfangcai?.list)) {
               var list = webConfig?.domainMGuanfangcai?.list;
@@ -472,7 +476,8 @@ class StateGameMenuView extends State<GameMenuView> {
                   .showAccessRouteDialog(context, list!, path!)
                   .then((value) {
                 if (unEmpty(value)) {
-                  openGamePage(element, url: value);
+                  var params = <String, dynamic>{"line":value,"lid":element.gameCode.em()};
+                  openGamePage(element, params);
                 }
               });
             } else {
@@ -480,17 +485,17 @@ class StateGameMenuView extends State<GameMenuView> {
             }
           } else if (element.gameKind == "live") {
             ///真人
-            openGamePage(element);
+            openGamePage(element,<String, dynamic>{"gameCode":element.gameCode.em()});
           } else if (element.gameKind == "chess") {
             ///棋牌
             Get.toNamed(Routes.chess_game_list,
                 arguments: ChessEvent(parent, element));
           } else if (element.gameKind == "sport") {
             ///体育
-            openGamePage(element, lid: false);
+            openGamePage(element,{});
           } else if (element.gameKind == "game_fishing") {
             ///捕鱼
-            openGamePage(element, lid: false);
+            openGamePage(element,<String, dynamic>{"gameCode":element.gameCode.em()});
           } else if (element.gameKind == "game") {
             Get.toNamed(Routes.table_game_list,
                 arguments: ChessEvent(parent, element));
@@ -503,33 +508,41 @@ class StateGameMenuView extends State<GameMenuView> {
   }
 
   ///打开游戏页面
-  void openGamePage(GameKindGameKindList element,
-      {String? url, bool lid = true}) {
+  void openGamePage(GameKindGameKindList element,Map<String,dynamic> params) {
+
     var cur = AppData.wallet() ? 1 : 5;
 
     var user = AppData.user();
-
-    //"gameType":gameType,
-    var params = <String, dynamic>{
+    var other = <String, dynamic>{
       "cur": cur,
       "tags": element.tags,
       "platform": element.liveName,
       "oid": user?.oid,
       "username": user?.username,
-      "platformURL": Constants.host,
-      "pageSite":element.gameKind.em(),
+      "platformURL": Constants.web_gjz,
     };
-    if (unEmpty(url)) {
-      params["line"] = url;
-    }
-    if (unEmpty(element.gameCode)) {
-      if (lid) {
-        params["lid"] = element.gameCode;
-      } else {
-        params["gameType"] = element.gameCode;
-        params["gameCode"] = element.gameCode;
-      }
-    }
+    params.addAll(other);
+    //"gameType":gameType,
+    // var params = <String, dynamic>{
+    //   "cur": cur,
+    //   "tags": element.tags,
+    //   "platform": element.liveName,
+    //   "oid": user?.oid,
+    //   "username": user?.username,
+    //   "platformURL": Constants.web_gjz,
+    //   "pageSite":element.gameKind.em(),
+    // };
+    // if (unEmpty(url)) {
+    //   params[] = url;
+    // }
+    // if (unEmpty(element.gameCode)) {
+    //   if (lid) {
+    //     params["lid"] = element.gameCode;
+    //   } else {
+    //     params["gameType"] = element.gameCode;
+    //     params["gameCode"] = element.gameCode;
+    //   }
+    // }
     WidgetUtils().loginJump(element.gameName.em(), params);
   }
 }
