@@ -29,6 +29,7 @@ class CN {
     "sure": "确定",
     "nick": "昵称:",
     "phone": "手机号码:",
+
     "qq_number": "QQ号码:",
     "wx_number": "微信号码:",
     "e_mail": "电子邮箱:",
