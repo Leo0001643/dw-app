@@ -38,7 +38,7 @@ dependencies:
   rxdart: ^0.27.7
   event_bus: ^2.0.0
   pull_to_refresh: ^2.0.0
-  fluttertoast: ^8.2.2
+  fluttertoast: ^8.2.4
   flutter_easyloading: ^3.0.5
   get: ^4.6.6
   dio: ^5.4.1

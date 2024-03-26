@@ -160,7 +160,7 @@ class TextItemLogic extends GetxController {
 
   ///咪牌距离下一期投注倒计时
   var mipaiTime = "";
-  var lotCount = 0;
+  var lotCount = -1;
   void timeCountOnly(
       diffTime, Pc28LottoRooms pc28lottoRoom,Map<String,dynamic> pc28Plan) {
     Map<String, dynamic> allTime = pc28Plan['all'];
@@ -282,15 +282,15 @@ class TextItemLogic extends GetxController {
     // }
     lastStatusContent = roomcountdown['${key}Time'] ?? '';
     ///处理咪牌开奖逻辑 开始
-    if(state.text_timer.value == Intr().fengpanzhong){
+    if(LotteryStatus.sealingPlateStatus == currentStatus.value){
       fengpanCount++;
-    }else {
+    }else if(LotteryStatus.wattingLotteryStatus != currentStatus.value){
       fengpanCount = -1;
     }
-    if (Intr().fengpanzhong == state.text_timer.value) {
+    if(LotteryStatus.sealingPlateStatus == currentStatus.value){
       mipaiTime = Intr().fengpanzhong;
       lotCount = 9 - fengpanCount;
-    } else {
+    } else if(LotteryStatus.wattingLotteryStatus != currentStatus.value){
       mipaiTime = subToTime(state.text_timer.value)??"";
       var timeParts = mipaiTime.split(":");
       if(timeParts.length == 2){
