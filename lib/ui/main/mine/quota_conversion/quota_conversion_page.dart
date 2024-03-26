@@ -77,9 +77,9 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                             return Row(
                               children: [
                                 SizedBox(width: 10.w,),
-                                WidgetUtils().buildImage(state.mainBal.value.icon.em(),24.r, 24.r,fit: BoxFit.scaleDown),
+                                WidgetUtils().buildImage(state.mainBal.value.currency.em(),24.r, 24.r,fit: BoxFit.scaleDown),
                                 SizedBox(width: 6.w,),
-                                Text(state.mainBal.value.language.em(), style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3(),),),
+                                Text(state.mainBal.value.liveName.em(), style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3(),),),
                                 Image.asset(ImageX.icon_down_grey,color: ColorX.icon586(),),
                                 Expanded(child: Container()),
                               ],
@@ -241,7 +241,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
                 child: Row(
                   children: [
                     Obx(() {
-                      return WidgetUtils().buildImage(state.mainBal.value.icon.em(),24.r,24.r,);
+                      return WidgetUtils().buildImage(state.mainBal.value.currency.em(),24.r,24.r,);
                     }),
                     Obx(() {
                       return WidgetUtils().buildTextField(230.w, 42.h, 14.sp,

@@ -18,7 +18,7 @@ class QuotaConversionState {
   var inputAmount = "".obs;
 
   ///主账户余额
-  var mainBal = BalanceEntity().obs;
+  var mainBal = PlatformEntity().obs;
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
 

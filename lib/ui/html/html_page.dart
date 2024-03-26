@@ -39,28 +39,39 @@ class _HtmlPageState extends State<HtmlPage> {
           Expanded(
             child: InAppWebView(
               onWebViewCreated: (controller)=> logic.loadPage(controller),
-              initialOptions: InAppWebViewGroupOptions(
-                android: AndroidInAppWebViewOptions(
-                  loadWithOverviewMode: false,
-                  overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
-                  displayZoomControls: false,
-                  builtInZoomControls: false,
-                  useWideViewPort: false,
-                ),
-                ios: IOSInAppWebViewOptions(
-                  disallowOverScroll: true,
-                  enableViewportScale: true,
-                  ignoresViewportScaleLimits: true,
-                ),
-                crossPlatform: InAppWebViewOptions(
-                  useShouldOverrideUrlLoading: true,///添加这个选项才能调用shouldOverrideUrlLoading
-                )
+              // initialOptions: InAppWebViewGroupOptions(
+              //   android: AndroidInAppWebViewOptions(
+              //     loadWithOverviewMode: false,
+              //     overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
+              //     displayZoomControls: false,
+              //     builtInZoomControls: false,
+              //     useWideViewPort: false,
+              //   ),
+              //   ios: IOSInAppWebViewOptions(
+              //     disallowOverScroll: true,
+              //     enableViewportScale: true,
+              //     ignoresViewportScaleLimits: true,
+              //   ),
+              //   crossPlatform: InAppWebViewOptions(
+              //     useShouldOverrideUrlLoading: true,///添加这个选项才能调用shouldOverrideUrlLoading
+              //   )
+              // ),
+              initialSettings: InAppWebViewSettings(
+                loadWithOverviewMode: false,
+                overScrollMode: OverScrollMode.NEVER,
+                displayZoomControls: false,
+                builtInZoomControls: false,
+                useWideViewPort: false,
+                disallowOverScroll: true,
+                enableViewportScale: true,
+                ignoresViewportScaleLimits: true,
+                useShouldOverrideUrlLoading: true,
               ),
               shouldOverrideUrlLoading: (controller,action) async {
                 var url = action.request.url.toString();
                 loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers,]);
                 ///拉起支付宝支付
-                if(url.startsWith("alipays://")){
+                if(url.startsWith("alipays://") || url.startsWith("weixin://")){
                   if(await canLaunchUrlString(url)){
                     launchUrlString(url);
                   }

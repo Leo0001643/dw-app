@@ -61,20 +61,36 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                   InAppWebView(
                     onWebViewCreated: (controller) =>
                         logic.loadPage(controller),
-                    initialOptions: InAppWebViewGroupOptions(
-                      android: AndroidInAppWebViewOptions(
-                        loadWithOverviewMode: false,
-                        overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
-                        displayZoomControls: false,
-                        builtInZoomControls: false,
-                        useWideViewPort: false,
-                      ),
-                      ios: IOSInAppWebViewOptions(
-                        disallowOverScroll: true,
-                        enableViewportScale: true,
-                        ignoresViewportScaleLimits: true,
-                      ),
+                    // initialOptions: InAppWebViewGroupOptions(
+                    //   android: AndroidInAppWebViewOptions(
+                    //     loadWithOverviewMode: false,
+                    //     overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
+                    //     displayZoomControls: false,
+                    //     builtInZoomControls: false,
+                    //     useWideViewPort: false,
+                    //   ),
+                    //   ios: IOSInAppWebViewOptions(
+                    //     disallowOverScroll: true,
+                    //     enableViewportScale: true,
+                    //     ignoresViewportScaleLimits: true,
+                    //   ),
+                    // ),
+                    initialSettings: InAppWebViewSettings(
+                      loadWithOverviewMode: false,
+                      overScrollMode: OverScrollMode.NEVER,
+                      displayZoomControls: false,
+                      builtInZoomControls: false,
+                      useWideViewPort: false,
+                      disallowOverScroll: true,
+                      enableViewportScale: true,
+                      ignoresViewportScaleLimits: true,
+                      useShouldOverrideUrlLoading: true,
                     ),
+                    shouldOverrideUrlLoading: (controller,action) async {
+                      var url = action.request.url.toString();
+                      loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers,]);
+                      return Future.value(NavigationActionPolicy.ALLOW);
+                    },
                     onProgressChanged: (controller, pg) {
                       state.progress.value = pg.toDouble();
                       state.progressVisible.value = pg != 100;

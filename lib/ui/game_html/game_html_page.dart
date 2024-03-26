@@ -6,6 +6,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 
 import 'game_html_logic.dart';
 
+@Deprecated("废弃,请使用GameHtmlPage2")
 class GameHtmlPage extends StatefulWidget {
   @override
   State<GameHtmlPage> createState() => _GameHtmlPageState();
@@ -42,19 +43,29 @@ class _GameHtmlPageState extends State<GameHtmlPage> {
                 children: [
                   InAppWebView(
                     onWebViewCreated: (controller)=> logic.loadPage(controller),
-                    initialOptions: InAppWebViewGroupOptions(
-                      android: AndroidInAppWebViewOptions(
-                        loadWithOverviewMode: false,
-                        overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
-                        displayZoomControls: false,
-                        builtInZoomControls: false,
-                        useWideViewPort: false,
-                      ),
-                      ios: IOSInAppWebViewOptions(
-                        disallowOverScroll: true,
-                        enableViewportScale: true,
-                        ignoresViewportScaleLimits: true,
-                      ),
+                    // initialOptions: InAppWebViewGroupOptions(
+                    //   android: AndroidInAppWebViewOptions(
+                    //     loadWithOverviewMode: false,
+                    //     overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
+                    //     displayZoomControls: false,
+                    //     builtInZoomControls: false,
+                    //     useWideViewPort: false,
+                    //   ),
+                    //   ios: IOSInAppWebViewOptions(
+                    //     disallowOverScroll: true,
+                    //     enableViewportScale: true,
+                    //     ignoresViewportScaleLimits: true,
+                    //   ),
+                    // ),
+                    initialSettings: InAppWebViewSettings(
+                      loadWithOverviewMode: false,
+                      overScrollMode: OverScrollMode.NEVER,
+                      displayZoomControls: false,
+                      builtInZoomControls: false,
+                      useWideViewPort: false,
+                      disallowOverScroll: true,
+                      enableViewportScale: true,
+                      ignoresViewportScaleLimits: true,
                     ),
                     onProgressChanged: (controller,pg){
                       state.progress.value = pg.toDouble();

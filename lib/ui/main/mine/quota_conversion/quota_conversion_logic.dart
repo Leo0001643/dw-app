@@ -111,9 +111,9 @@ class QuotaConversionLogic extends GetxController {
         state.rightAccount.refresh();
       }
       if(AppData.wallet()){
-        state.mainBal.value = BalanceEntity(icon:ImageX.iconJjGrey(), language: Intr().wallet_cny, money: value.money);
+        state.mainBal.value = PlatformEntity(liveId: -1,currency:ImageX.iconJjGrey(), liveName: Intr().wallet_cny, money: value.money);
       }else {
-        state.mainBal.value = BalanceEntity(icon:ImageX.usdtT(), language: Intr().wallet_usdt, money: value.money);
+        state.mainBal.value = PlatformEntity(liveId: -1,currency:ImageX.usdtT(), liveName: Intr().wallet_usdt, money: value.money);
       }
       state.mainBal.refresh();
     });
@@ -130,8 +130,7 @@ class QuotaConversionLogic extends GetxController {
       showToast(Intr().caozuochenggong);
       state.inputAmount.value = "";//确认划转清空金额
       ///成功刷新页面数据
-      loadData();
-      loadBalance();
+      refreshBalance(item,state.leftAccount.value);
       ///刷新钱包余额
       eventBus.fire(ChangeBalanceEvent());
     });
@@ -147,8 +146,7 @@ class QuotaConversionLogic extends GetxController {
       showToast(Intr().caozuochenggong);
       state.inputAmount.value = "";//确认划转清空金额
       ///成功刷新页面数据
-      loadData();
-      loadBalance();
+      refreshBalance(state.leftAccount.value,state.rightAccount.value);
       ///刷新钱包余额
       eventBus.fire(ChangeBalanceEvent());
     });
@@ -183,6 +181,48 @@ class QuotaConversionLogic extends GetxController {
         state.platforms.refresh();
       });
     });
+  }
+
+  ///刷新转出转入余额
+  void refreshBalance(PlatformEntity outAcc, PlatformEntity inAcc) async {
+    var user = AppData.user();
+    var cur = AppData.wallet() ? 1: 5;
+    var outBal = await HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":outAcc.liveName},loading: false);
+    outAcc.money = outBal.money;
+    state.platforms[state.platforms.indexOf(outAcc)] = outAcc;
+    state.platforms.refresh();
+
+    var inBal = await HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":inAcc.liveName},loading: false);
+    inAcc.money = inBal.money;
+    state.platforms[state.platforms.indexOf(inAcc)] = inAcc;
+    state.platforms.refresh();
+
+    ///如果需要更新的账户在左右两侧
+    if(state.leftAccount.value == outAcc){
+      state.leftAccount.value = outAcc;
+      state.leftAccount.refresh();
+    }else if(state.rightAccount.value == outAcc){
+      state.rightAccount.value = outAcc;
+      state.rightAccount.refresh();
+    }
+
+    if(state.leftAccount.value == inAcc){
+      state.leftAccount.value = inAcc;
+      state.leftAccount.refresh();
+    }else if(state.rightAccount.value == inAcc){
+      state.rightAccount.value = inAcc;
+      state.rightAccount.refresh();
+    }
+
+    ///更新主账户余额
+    if(state.mainBal.value.liveId == outAcc.liveId){
+      state.mainBal.value.money = outAcc.money;
+      state.mainBal.refresh();
+    } else if(state.mainBal.value.liveId == inAcc.liveId){
+      state.mainBal.value.money = inAcc.money;
+      state.mainBal.refresh();
+    }
+
   }
 
 
