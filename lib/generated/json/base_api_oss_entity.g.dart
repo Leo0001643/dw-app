@@ -20,6 +20,10 @@ BaseApiOssEntity $BaseApiOssEntityFromJson(Map<String, dynamic> json) {
   if (dns != null) {
     baseApiOssEntity.dns = dns;
   }
+  final int? updateTime = jsonConvert.convert<int>(json['updateTime']);
+  if (updateTime != null) {
+    baseApiOssEntity.updateTime = updateTime;
+  }
   return baseApiOssEntity;
 }
 
@@ -28,6 +32,7 @@ Map<String, dynamic> $BaseApiOssEntityToJson(BaseApiOssEntity entity) {
   data['baseAPIs'] = entity.baseAPIs;
   data['webSockets'] = entity.webSockets;
   data['dns'] = entity.dns;
+  data['updateTime'] = entity.updateTime;
   return data;
 }
 
@@ -36,10 +41,12 @@ extension BaseApiOssEntityExtension on BaseApiOssEntity {
     List<String>? baseAPIs,
     List<String>? webSockets,
     List<String>? dns,
+    int? updateTime,
   }) {
     return BaseApiOssEntity()
       ..baseAPIs = baseAPIs ?? this.baseAPIs
       ..webSockets = webSockets ?? this.webSockets
-      ..dns = dns ?? this.dns;
+      ..dns = dns ?? this.dns
+      ..updateTime = updateTime ?? this.updateTime;
   }
 }

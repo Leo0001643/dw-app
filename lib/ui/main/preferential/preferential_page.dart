@@ -19,7 +19,6 @@ import 'preferential_logic.dart';
 class PreferentialPage extends StatefulWidget {
   const PreferentialPage({super.key});
 
-
   @override
   State<StatefulWidget> createState() => StatePreferentialPage();
 

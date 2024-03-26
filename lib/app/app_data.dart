@@ -9,6 +9,7 @@ import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
@@ -245,7 +246,18 @@ class AppData {
     return base_wsurl;
   }
 
+  static void setOssApi(BaseApiOssEntity entity){
+    prefs?.setString("oss_api", jsonEncode(entity.toJson()));
+  }
 
+  static BaseApiOssEntity? ossApi() {
+    var json = prefs?.getString("oss_api") ?? "";
+    if (isEmpty(json)) {
+      return null;
+    } else {
+      return BaseApiOssEntity.fromJson(jsonDecode(json));
+    }
+  }
 
   static void clear() {
     prefs?.remove("user");

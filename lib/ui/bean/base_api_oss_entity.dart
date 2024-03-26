@@ -9,6 +9,7 @@ class BaseApiOssEntity {
 	List<String>? baseAPIs;
 	List<String>? webSockets;
 	List<String>? dns;
+	int? updateTime;
 
 	//{"baseAPIs":["https://9000vlmdm4.kj99883.com/","https://9000vlmdm4.kj99883.com/"],"webSockets":["wss://9000ywfjn2.uy4ayov.com/","wss://9000ywfjn2.uy4ayov.com/"],"dns":["119.9.75.6"]}
 

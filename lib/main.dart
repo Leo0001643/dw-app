@@ -7,7 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tencent_captcha/tencent_captcha.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:leisure_games/app/app_theme.dart';
-import 'package:leisure_games/app/network/http_service.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'app/app_data.dart';

@@ -1,8 +1,10 @@
 
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -47,7 +49,7 @@ class _MyGridViewState extends State<MyRoteGridView> {
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {
           var item = list[index];
-          var color = ColorX.color_fc243b;
+          var color = ColorX.color_60c549;
           if(item.delayTime.em() != 0){
             if(item.delayTime.em() < 200){
               color = ColorX.color_60c549;
@@ -94,6 +96,8 @@ class _MyGridViewState extends State<MyRoteGridView> {
                         ),
                       ),
                     ),
+                    item.delayTime.em() == 0 ?
+                    const CupertinoActivityIndicator(color: ColorX.color_2c2c2c,) :
                     Text(
                       '${item.delayTime.em()}ms',
                       style: TextStyle(
@@ -112,15 +116,20 @@ class _MyGridViewState extends State<MyRoteGridView> {
   }
 
   ///请求云存储里的路线
-  void queryRoutes() {
-    OssUtils().downloadFile().then((value) async {
-      list.assignAll(value?.toApiList() ?? []);
-      list.refresh();///显示路线
-      for(var i=0;i< list.em();i++){
-        list[i].delayTime = await testApiDelay(list[i].baseApi.em());
-      }
-      list.refresh();
-    });
+  void queryRoutes() async {
+    var value = AppData.ossApi();
+    if(isEmpty(value) || value!.updateTime.em() < (DateTime.now().millisecondsSinceEpoch - 86400000)){
+      value = await OssUtils().downloadFile();
+      ///用于判断是否需要更新缓存使用
+      value!.updateTime = DateTime.now().millisecondsSinceEpoch;
+      AppData.setOssApi(value);
+    }
+    list.assignAll(value.toApiList() ?? []);
+    list.refresh();///显示路线
+    for(var i=0;i< list.em();i++){
+      list[i].delayTime = await testApiDelay(list[i].baseApi.em());
+    }
+    list.refresh();
   }
 
   Future<int> testApiDelay(String apiurl) async {
