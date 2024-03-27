@@ -97,8 +97,7 @@ class _BettingDetailOtherPageState extends State<BettingDetailOtherPage> {
   }
 
   Widget buildBettingItem(T.Record item) {
-    // var result = index%2 == 1;
-    var date = DataUtils.format24Hour(item.betTime.em(),format: DateFormats.full,isUtc:true).em();
+    var date = DateUtil.formatDate(DateUtil.getDateTimeByMs(item.betTime.em(),isUtc: true).subtract(const Duration(hours: 4)), format: DateFormats.full);
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),

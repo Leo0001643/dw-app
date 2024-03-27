@@ -82,7 +82,7 @@ android {
     android.applicationVariants.all { variant ->
         variant.outputs.all {
             // 自定义文件名{示例：AppName-Flavor-debug-v1.0.0_201807301409}
-            outputFileName = "leisure${variant.flavorName}_${variant.buildType.name}_${variant.versionName}_${buildTime()}.apk"
+            outputFileName = "dw${variant.flavorName}_${variant.buildType.name}_${variant.versionName}_${buildTime()}.apk"
         }
     }
 

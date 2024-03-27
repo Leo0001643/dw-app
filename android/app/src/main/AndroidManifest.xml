@@ -16,7 +16,7 @@
 
 
     <application
-        android:label="leisure_games"
+        android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
         android:name="${applicationName}"
