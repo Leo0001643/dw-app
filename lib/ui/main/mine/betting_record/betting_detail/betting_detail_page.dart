@@ -254,7 +254,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
     return InkWell(
       onTap:(){
         if(item.gameKind == 56 || item.gameKind == 57 || item.gameKind == 58 || item.gameKind == 59 || item.gameKind == 80002
-            || item.gameKind == 80006 || item.gameKind == 80009){
+            || item.gameKind == 80005 || item.gameKind == 80006  || item.gameKind == 80009){
           Get.toNamed(Routes.betting_detail_child,
               arguments: {"data":jsonEncode(item.toJson()),"origin":jsonEncode(state.originetRecordGroupRecord.value.toJson())});
         } else {

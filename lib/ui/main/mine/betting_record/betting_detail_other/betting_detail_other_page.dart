@@ -123,7 +123,7 @@ class _BettingDetailOtherPageState extends State<BettingDetailOtherPage> {
             flex: 30,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(item.validamount.em(),
+              child: Text(item.validamount.em(aft: '0.0'),
                 style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
             ),
           ),
