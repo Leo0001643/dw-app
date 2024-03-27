@@ -87,7 +87,9 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                     color: Colors.white,
                   ),
                 ),
-                buildTimer(),
+                Obx(() {
+                  return buildTerm(Get.find<GameRoomLogic>().term.value);
+                }),
               ],
             ),
           ),
@@ -339,8 +341,8 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     return color;
   }
 
-  Widget buildTimer() {
-    String termData = GameRuleUtil.getSSB(widget.betInfo.term.em(aft: '--'), year: "");
+  Widget buildTerm(String? term) {
+    String termData = GameRuleUtil.getSSB(term.em(aft: '--'), year: "");
     return Text(
       termData,
       style: TextStyle(
@@ -493,7 +495,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
               bg: buildBtnColor(),
               textColor: Colors.white, onPressed: () {
             ///这里区分一下，如果是自选 需要实时取房间里的期号，如果不是要取投注信息里面的，防止投注时间过长导致的封盘过期
-            var term = widget.optional ? Get.find<GameRoomLogic>().term.value : widget.betInfo.term;
+                var term = Get.find<GameRoomLogic>().term.value;//widget.optional ?  : widget.betInfo.term;
                 widget.logic.sumbitBets(index == 0? "CNY":"USDT",term,odds);
                 Navigator.of(context).pop(true);
               })
