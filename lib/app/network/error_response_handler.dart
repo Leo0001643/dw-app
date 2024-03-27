@@ -65,6 +65,9 @@ class ErrorResponseHandler {
         case 900004://整站维护中
           showToast(toast);
           break;
+        case 900027://您存取款操作已被停用，请联系客服
+          showToast(toast);
+          break;
         case 900072://请求参数不合法
           showToast(toast);
           break;

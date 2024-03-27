@@ -20,8 +20,8 @@ class BettingDetailChildLogic extends GetxController {
   }
 
   void loadData() {
-    state.betRecordGroupRecord.value=BetRecordGroupRecord.fromJson(jsonDecode(Get.arguments["origin"]??""));
-    state.betDetailItemEntity.value=BetDetailListRecordRecord.fromJson(jsonDecode(Get.arguments["data"]??""));
+    state.betRecordGroupRecord.value=BetRecordGroupRecord.fromJson(Get.arguments["origin"]??"");
+    state.betDetailItemEntity.value=BetDetailListRecordRecord.fromJson(Get.arguments["data"]??"");
     state.title.value= state.betDetailItemEntity.value.gameName??"";
     state.title.refresh();
     loggerArray(["打印下这个页面数据b",state.betRecordGroupRecord.value.toJson(),state.betDetailItemEntity.value.toJson()]);

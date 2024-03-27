@@ -180,7 +180,7 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             item.cur = "5";
           }
           item.title=item.time;
-          Get.toNamed(Routes.betting_detail,arguments: {"data":jsonEncode(item.toJson())});
+          Get.toNamed(Routes.betting_detail,arguments: item);
         }
       },
       child: Container(

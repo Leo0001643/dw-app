@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:core';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,25 +10,22 @@ import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
-import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
-import 'betting_detail_logic.dart';
 
-//投注详情
-class BettingDetailPage extends StatefulWidget {
-  const BettingDetailPage({Key? key}) : super(key: key);
+import 'betting_detail2_logic.dart';
 
+class BettingDetail2Page extends StatefulWidget {
   @override
-  State<BettingDetailPage> createState() => _BettingDetailPageState();
+  State<BettingDetail2Page> createState() => _BettingDetail2PageState();
 }
 
-class _BettingDetailPageState extends State<BettingDetailPage> {
-  final logic = Get.find<BettingDetailLogic>();
-  final state = Get.find<BettingDetailLogic>().state;
+class _BettingDetail2PageState extends State<BettingDetail2Page> {
+  final logic = Get.find<BettingDetail2Logic>();
+  final state = Get.find<BettingDetail2Logic>().state;
 
 
   @override
   void dispose() {
-    Get.delete<BettingDetailLogic>();
+    Get.delete<BettingDetail2Logic>();
     super.dispose();
   }
 
@@ -99,11 +93,11 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
                       // var item = state.record.value.record![index];
                       var item = state.record.value.record![index];
                       if(state.record.value.record!.last != item){
-                        return buildBettingItem(item);
+                        return buildBettingItemChild(item);
                       } else {
                         return Column(
                           children: [
-                            buildBettingItem(item),
+                            buildBettingItemChild(item),
                             Divider(height: 1.h,color: ColorX.color_10_949,indent: 10.w,endIndent: 10.w,),
                             buildTotalFooter(state.record.value)
                           ],
@@ -127,7 +121,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
     );
   }
 
-  Widget buildTotalFooter(BetDetailListEntity total) {
+  Widget buildTotalFooter(BetDetailListRecord total) {
     return Container(
       color: Colors.black12,
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
@@ -152,7 +146,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
             flex: 30,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text(DataUtils.formatMoney(total.betamount),
+              child: Text(DataUtils.formatMoney(total.betAmount),
                 style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
             ),
           ),
@@ -168,7 +162,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
             flex: 30,
             child: Align(
               alignment: Alignment.centerRight,
-              child: Text(DataUtils.formatMoney(total.validamount),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text(DataUtils.formatMoney(total.validAmount),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           SizedBox(width: 12.r,)
@@ -178,12 +172,17 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
   }
 
 
-  Widget buildBettingItem(BetDetailListRecord item) {
+  Widget buildBettingItemChild(BetDetailListRecordRecord item) {
     // var result = index%2 == 1;
     return InkWell(
       onTap:(){
-        if (item.record?.isNotEmpty==true){
-          logic.setCurrentBet(item);
+        if(item.gameKind == 56 || item.gameKind == 57 || item.gameKind == 58 || item.gameKind == 59 || item.gameKind == 80002
+            || item.gameKind == 80005 || item.gameKind == 80006  || item.gameKind == 80009){
+          Get.toNamed(Routes.betting_detail_child,
+              arguments: {"data":item.toJson(),"origin":state.originetRecordGroupRecord.value.toJson()});
+        } else {
+          Get.toNamed(Routes.betting_detail_other,
+              arguments: {"data":item.toJson(),"origin":state.originetRecordGroupRecord.value.toJson()});
         }
       },
       child: Container(
@@ -209,7 +208,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               flex: 30,
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Text("${item.betAmount??0}",
+                child: Text("${item.betamount??0}",
                   style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
               ),
             ),
@@ -226,79 +225,16 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               flex: 30,
               child: Align(
                 alignment: Alignment.centerRight,
-                child: Text(DataUtils.formatMoney(item.validAmount),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+                child: Text(DataUtils.formatMoney(item.validamount),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
               ),
             ),
-            item.validAmount.em() > 0 ? WidgetUtils().buildImage(ImageX.ic_into_right, 12.r, 12.r) : SizedBox(width: 12.r,),
+            item.validamount.em() > 0 ? WidgetUtils().buildImage(ImageX.ic_into_right, 12.r, 12.r) : SizedBox(width: 12.r,),
           ],
         ),
       ),
     );
   }
 
-
-  // Widget buildBettingItemChild(BetDetailListRecordRecord item) {
-  //   // var result = index%2 == 1;
-  //   return InkWell(
-  //     onTap:(){
-  //       if(item.gameKind == 56 || item.gameKind == 57 || item.gameKind == 58 || item.gameKind == 59 || item.gameKind == 80002
-  //           || item.gameKind == 80005 || item.gameKind == 80006  || item.gameKind == 80009){
-  //         Get.toNamed(Routes.betting_detail_child,
-  //             arguments: {"data":item.toJson(),"origin":state.originetRecordGroupRecord.value.toJson()});
-  //       } else {
-  //         Get.toNamed(Routes.betting_detail_other,
-  //             arguments: {"data":item.toJson(),"origin":state.originetRecordGroupRecord.value.toJson()});
-  //       }
-  //     },
-  //     child: Container(
-  //       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
-  //       child: Row(
-  //         children: [
-  //           Expanded(
-  //             flex: 40,
-  //             child: Align(
-  //               alignment: Alignment.centerLeft,
-  //               child: Text(item.gameKindName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
-  //             ),
-  //           ),
-  //           Expanded(
-  //             flex: 30,
-  //             child: Align(
-  //               alignment: Alignment.centerLeft,
-  //               child: Text("${item.betCount}",
-  //                 style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
-  //             ),
-  //           ),
-  //           Expanded(
-  //             flex: 30,
-  //             child: Align(
-  //               alignment: Alignment.centerLeft,
-  //               child: Text("${item.betamount??0}",
-  //                 style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
-  //             ),
-  //           ),
-  //
-  //           Expanded(
-  //             flex: 30,
-  //             child: Align(
-  //               alignment: Alignment.centerLeft,
-  //               child: Text("${((item.winlose.em()) >= 0) ? "+" : ""}${DataUtils.formatMoney(item.winlose)}",
-  //                 style: TextStyle(fontSize: 14.sp,color: ((item.winlose.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
-  //             ),
-  //           ),
-  //           Expanded(
-  //             flex: 30,
-  //             child: Align(
-  //               alignment: Alignment.centerRight,
-  //               child: Text(DataUtils.formatMoney(item.validamount),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
-  //             ),
-  //           ),
-  //           item.validamount.em() > 0 ? WidgetUtils().buildImage(ImageX.ic_into_right, 12.r, 12.r) : SizedBox(width: 12.r,),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
 
 
 }

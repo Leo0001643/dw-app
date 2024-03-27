@@ -10,7 +10,7 @@ class BetDetailListEntity {
 	double? winlose;
 	int? betCount;
 	String? currency;
-	List? record;
+	List<BetDetailListRecord>? record;
 
 	BetDetailListEntity({this.betamount,this.validamount,this.winlose,this.betCount,this.currency,this.record});
 

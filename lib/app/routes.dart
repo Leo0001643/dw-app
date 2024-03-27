@@ -58,6 +58,8 @@ import 'package:leisure_games/ui/main/main_binding.dart';
 import 'package:leisure_games/ui/main/main_page.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting_detail_binding.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail/betting_detail_page.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_detail2/betting_detail2_binding.dart';
+import 'package:leisure_games/ui/main/mine/betting_record/betting_detail2/betting_detail2_page.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail_child/betting_detail_child_binding.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail_child/betting_detail_child_page.dart';
 import 'package:leisure_games/ui/main/mine/betting_record/betting_detail_other/betting_detail_other_binding.dart';
@@ -199,6 +201,8 @@ class Routes {
   static const String bill_flow = "/mine/bill_flow";
   static const String betting_record = "/mine/betting_record";
   static const String betting_detail = "/mine/betting_record/betting_detail";
+  static const String betting_detail2 = "/mine/betting_record/betting_detail2";
+
   static const String betting_detail_child = "/mine/betting_record/betting_detail_child";
   static const String betting_detail_other = "/mine/betting_record/betting_detail_other";
 
@@ -276,6 +280,7 @@ class Routes {
     GetPage(name: bill_flow,binding: BillFlowBinding(), page: () => BillFlowPage()),
     GetPage(name: betting_record,binding: BettingRecordBinding(), page: () => BettingRecordPage()),
     GetPage(name: betting_detail,binding: BettingDetailBinding(), page: () => BettingDetailPage()),
+    GetPage(name: betting_detail2,binding: BettingDetail2Binding(), page: () => BettingDetail2Page()),
     GetPage(name: points_record,binding: PointsRecordBinding(), page: () => PointsRecordPage()),
     GetPage(name: member_rebate,binding: MemberRebateBinding(), page: () => MemberRebatePage()),
     GetPage(name: profit_rebate,binding: ProfitRebateBinding(), page: () => ProfitRebatePage()),

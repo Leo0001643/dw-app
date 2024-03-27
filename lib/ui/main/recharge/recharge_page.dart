@@ -45,28 +45,30 @@ class _RechargePageState extends State<RechargePage> {
                     children: [
                       Container(
                         padding: EdgeInsets.only(left: 27.w, right: 27.w, top: 10.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              ctl.wallet
-                                  ? Intr().wallet_usdt
-                                  : Intr().dangqianmoren([Intr().wallet_usdt]),
-                              style: TextStyle(
-                                  fontSize: 14.sp, fontWeight:FontWeight.w600,color: ColorX.text5862()),
-                            ),
-                            Obx(() {
-                              return Text(
+                        child: Obx(() {
+                          if(isEmpty(state.paymentList.value.digitalWallet)){ return Container(); }
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                ctl.wallet
+                                    ? Intr().wallet_usdt
+                                    : Intr().dangqianmoren([Intr().wallet_usdt]),
+                                style: TextStyle(
+                                    fontSize: 14.sp, fontWeight:FontWeight.w600,color: ColorX.text5862()),
+                              ),
+                              Text(
                                 "${Intr().yue_}₮${state.usdtBal.value.money.em()}",
                                 style: TextStyle(
                                     fontSize: 14.sp, fontWeight:FontWeight.w600, color: ColorX.text5862()),
-                              );
-                            }),
-                          ],
-                        ),
+                              ),
+                            ],
+                          );
+                        }),
                       ),
                       SizedBox(height: 10.h,),
                       Obx(() {
+                        if(isEmpty(state.usdtBank.value.icon)) return Container();
                         return Center(
                           child: Wrap(
                             runSpacing: 10.h,
@@ -82,6 +84,7 @@ class _RechargePageState extends State<RechargePage> {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 27.w),
                         child: Obx(() {
+                          if(isEmpty(state.paymentList.value.banks)){ return Container(); }
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

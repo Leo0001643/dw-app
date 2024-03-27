@@ -23,8 +23,11 @@ BetDetailListEntity $BetDetailListEntityFromJson(Map<String, dynamic> json) {
   if (currency != null) {
     betDetailListEntity.currency = currency;
   }
-  final List? record = (json['record'] as List<dynamic>?)?.map(
-          (e) => e).toList();
+  final List<BetDetailListRecord>? record = (json['record'] as List<dynamic>?)
+      ?.map(
+          (e) =>
+      jsonConvert.convert<BetDetailListRecord>(e) as BetDetailListRecord)
+      .toList();
   if (record != null) {
     betDetailListEntity.record = record;
   }
@@ -38,7 +41,7 @@ Map<String, dynamic> $BetDetailListEntityToJson(BetDetailListEntity entity) {
   data['winlose'] = entity.winlose;
   data['betCount'] = entity.betCount;
   data['currency'] = entity.currency;
-  data['record'] = entity.record;
+  data['record'] = entity.record?.map((v) => v.toJson()).toList();
   return data;
 }
 
@@ -49,7 +52,7 @@ extension BetDetailListEntityExtension on BetDetailListEntity {
     double? winlose,
     int? betCount,
     String? currency,
-    List? record,
+    List<BetDetailListRecord>? record,
   }) {
     return BetDetailListEntity()
       ..betamount = betamount ?? this.betamount
