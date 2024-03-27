@@ -1011,6 +1011,11 @@ class VI{
     "yuebuzhuqingxianchongzhi":"Số dư không đủ, cá cược không đủ. Đi đến nạp tiền",
     "qingkaitongzhanghu":"请开通任一帐户",
     "huodongweikaiqi":"活动未开启",
-
+    "qingquerenzhudan":"请确认注单",
+    "xuanzhonghaoma":"选中号码",
+    "peilv":"赔率",
+    "ruozhongjiang":"若中奖, 奖金",
+    "yinli":", 盈利",
+    "zongjine":", 总金额",
   };
 }

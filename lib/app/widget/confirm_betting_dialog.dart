@@ -81,7 +81,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "请确认注单",
+                  Intr().qingquerenzhudan,
                   style: TextStyle(
                     fontSize: 14.sp,
                     color: Colors.white,
@@ -146,7 +146,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                 Expanded(
                   flex: 25,
                   child: Text(
-                    "选中号码",
+                    Intr().xuanzhonghaoma,
                     style: TextStyle(
                       fontSize: 14.sp,
                       color: ColorX.text0917(),
@@ -156,7 +156,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                 Expanded(
                   flex: 35,
                   child: Text(
-                    "赔率",
+                    Intr().peilv,
                     style: TextStyle(
                       fontSize: 14.sp,
                       color: ColorX.text0917(),
@@ -166,7 +166,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                 Expanded(
                   flex: 40,
                   child: Text(
-                    "金额",
+                    Intr().jine,
                     style: TextStyle(
                       fontSize: 14.sp,
                       color: ColorX.text0917(),
@@ -263,7 +263,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                       children: [
                         SizedBox(width: 10.w,),
                         Text(
-                          index==0?"¥":"\$",
+                          index==0?"¥":"₮",
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: ColorX.text586(),
@@ -339,7 +339,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     return color;
   }
 
-  buildTimer() {
+  Widget buildTimer() {
     String termData = GameRuleUtil.getSSB(widget.betInfo.term.em(aft: '--'), year: "");
     return Text(
       termData,
@@ -355,7 +355,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
       alignment: Alignment.centerLeft,
       child: Text.rich(TextSpan(children: [
         TextSpan(
-          text: "若中奖, 奖金",
+          text: Intr().ruozhongjiang,
           style: TextStyle(
             fontSize: 12.sp,
             color: ColorX.text586(),
@@ -369,14 +369,14 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           ),
         ),
         TextSpan(
-          text: ", 盈利 ",
+          text: Intr().yinli,
           style: TextStyle(
             fontSize: 12.sp,
             color: ColorX.text586(),
           ),
         ),
         TextSpan(
-          text: "${index==0?"¥":"\$"}${rakebackFormat(sumOddsData()-sumData())}",
+          text: " ${index==0?"¥":"₮"}${rakebackFormat(sumOddsData()-sumData())}",
           style: TextStyle(
             fontSize: 12.sp,
             color: ColorX.color_fc243b,
@@ -386,7 +386,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     );
   }
 
-  buildMonney() {
+  Widget buildMonney() {
     var homeLogic = Get.find<HomeLogic>();
     return Row(
       children: [
@@ -411,7 +411,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     );
   }
 
-  buildListItem() {
+  Widget buildListItem() {
     return Expanded(
       child: Obx(() {
         return ListView.builder(
@@ -425,7 +425,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     );
   }
 
-  buildTotalTips() {
+  Widget buildTotalTips() {
     return Obx(() {
       return Container(
         padding: EdgeInsets.symmetric(
@@ -441,7 +441,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
               alignment: Alignment.centerRight,
               child: Text.rich(TextSpan(children: [
                 TextSpan(
-                  text: "注单: ",
+                  text: Intr().zhudan_,
                   style: TextStyle(
                     fontSize: 12.sp,
                     color: ColorX.text0917(),
@@ -455,14 +455,14 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                   ),
                 ),
                 TextSpan(
-                  text: ", 总金额 ",
+                  text: Intr().zongjine,
                   style: TextStyle(
                     fontSize: 12.sp,
                     color: ColorX.text0917(),
                   ),
                 ),
                 TextSpan(
-                  text: "${index==0?"¥":"\$"}${rakebackFormat(sumData())}",
+                  text: " ${index==0?"¥":"₮"}${rakebackFormat(sumData())}",
                   style: TextStyle(
                     fontSize: 18.sp,
                     color: ColorX.color_fc243b,

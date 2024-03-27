@@ -737,7 +737,7 @@ class GameRuleUtil {
 
   /// 获取第几期样式
   static String getSSB(String qiShu,{String? year="2024"}) {
-    logger(["这是调了个啥呀",qiShu,year]);
+    // logger(["这是调了个啥呀",qiShu,year]);
     if(isEmpty(qiShu)) return qiShu;
     String ssb = qiShu;
     if (qiShu.isNotEmpty == true && qiShu.length > 8) {
