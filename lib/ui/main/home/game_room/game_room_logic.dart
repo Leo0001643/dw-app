@@ -229,10 +229,9 @@ class GameRoomLogic extends GetxController {
 
   void loadBalance() {
     if(!AppData.isLogin()) return;
-
     var user = AppData.user();
     HttpService.getBalance({
-      "cur": 1,
+      "cur": AppData.wallet() ? 1:5,
       "platform": "main",
       "oid": user?.oid,
       "username": user?.username
