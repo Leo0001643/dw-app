@@ -111,7 +111,9 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                               return SizedBox(
                                 width: 287.w,
                                 height: 137.h,
-                                child: Scratcher(
+                                ///开奖中状态下直接显示图片即可，需要刮奖的时候再去显示呱呱
+                                child: logic.guaguaMask == ImageX.lotteringP() ? WidgetUtils().buildImage(logic.guaguaMask, 287.w, 137.h,fit: BoxFit.fill)
+                                : Scratcher(
                                   key: logic.scratchKey,
                                   accuracy: ScratchAccuracy.low,
                                   color: Colors.transparent,

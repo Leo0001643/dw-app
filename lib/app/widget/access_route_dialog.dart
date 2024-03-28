@@ -1,8 +1,10 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -156,10 +158,9 @@ class StateAccessRouteDialog extends State<AccessRouteDialog>{
             Text(route.title,style: TextStyle(fontSize: 16.sp,color: ColorX.text333()),),
             Expanded(
               child: Center(
-                child: Visibility(
-                  visible: route.delayTime > 0,
-                  child: Text("${route.delayTime}ms",style: TextStyle(fontSize: 16.sp,color: color),),
-                ),
+                child: route.delayTime.em() == 0 ?
+                const CupertinoActivityIndicator(color: ColorX.color_2c2c2c,) :
+                Text("${route.delayTime}ms",style: TextStyle(fontSize: 16.sp,color: color),),
               ),
             ),
             // Image.asset(ImageX.icon_right_black),

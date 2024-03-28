@@ -114,7 +114,7 @@ class HttpService{
         handler.next(options);
       },
       onResponse: (response, handler){
-        loggerArray(["返回响应",response.requestOptions.path,response.statusCode,"${response.statusMessage}\n",jsonEncode(response.data)]);
+        loggerArray(["返回响应",response.requestOptions.path,response.statusCode, "${jsonEncode(response.requestOptions.data)}\n",jsonEncode(response.data)]);
         if(response.statusCode == 200){
           handler.next(response);
         }else {
@@ -230,8 +230,8 @@ class HttpService{
     return buildFuture<LoginUserEntity>(()=> _client.login(params));
   }
 
-  static Future<BalanceEntity> getBalance(Map<String,dynamic> params,{bool loading = true}){
-    return buildFuture<BalanceEntity>(()=> _client.getBalance(params),loading: loading);
+  static Future<BalanceEntity> getBalance(Map<String,dynamic> params,{bool loading = true,bool errorHandler = true}){
+    return buildFuture<BalanceEntity>(()=> _client.getBalance(params),loading: loading,errorHandler: errorHandler);
   }
 
   static Future<BonusTotalEntity> queryBonus(Map<String,dynamic> params,){

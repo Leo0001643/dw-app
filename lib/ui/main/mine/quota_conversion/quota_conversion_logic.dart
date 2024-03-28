@@ -61,7 +61,11 @@ class QuotaConversionLogic extends GetxController {
             if(e1.liveId == e2.id){
               e1.status = e2.status;
               if(e1.status == 1){///平台状态【1:开启，2:关闭】
-                HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":e1.liveName},loading: false).then((value3) {
+                ///这里如果报错因为平台在维护中：{"code":900026,"message":{"zh":"查询余额异常，请稍后重试"},"data":null}
+                ///不需要把错误信息提示出来
+                HttpService.getBalance({ "oid":user?.oid,"username":user?.username,"cur":cur,"platform":e1.liveName}
+                    ,loading: false,errorHandler: false).then((value3) {
+                  loggerArray(["余额查询成功",e1.liveName]);
                   e1.money = value3.money;
                   ///更新账户余额
                   state.platforms[state.platforms.indexOf(e1)] = e1;

@@ -21,7 +21,19 @@ class SelectBankBottomDialog extends StatefulWidget{
 
 class StateSelectBankBottomDialog extends State<SelectBankBottomDialog>{
 
+  var scroller = FixedExtentScrollController();
   var current = 0;
+
+  @override
+  void initState() {
+    ///如果内容很多，可以滑动到中间区域，这样弹窗上部就不会预留出很大的空白
+    Future.delayed(const Duration(milliseconds: 100),(){
+      if(widget.list.em() > 10 && scroller.hasClients){
+        scroller.jumpTo((widget.list.em()/2) * 40.h);
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,20 +51,19 @@ class StateSelectBankBottomDialog extends State<SelectBankBottomDialog>{
               onSelectedItemChanged: (int index) {
                 current = index;
               },
+              scrollController: scroller,
               diameterRatio: 1.8,
               squeeze: 1.1,
               children: widget.list.map((e) => buildPaywayItem(e)).toList(),
             ),
           ),
           Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: EdgeInsets.only(right: 15.w),
-              child: WidgetUtils().buildElevatedButton(Intr().tijiao, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-                Navigator.of(context).pop(widget.list[current]);
-              }),
-            ),
+            alignment: Alignment.center,
+            child: WidgetUtils().buildElevatedButton(Intr().tijiao, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+              Navigator.of(context).pop(widget.list[current]);
+            }),
           ),
+          SizedBox(height: 20.h,),
         ],
       ),
     );
