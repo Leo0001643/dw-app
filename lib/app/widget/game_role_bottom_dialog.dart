@@ -57,6 +57,7 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
         color: ColorX.pageBg(),
         borderRadius: BorderRadius.only(topLeft: Radius.circular(20.r),topRight: Radius.circular(20.r)),
       ),
+      height: 0.7.sh,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -90,47 +91,36 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
               ),
             ],
           ),
-          SizedBox(
-            height: 0.6.sh,
-            child: Column(
-              children: [
-                Obx(() => Visibility(
-                    visible: progressVisible.value,
-                    child: LinearProgressIndicator(
-                      value: progress.value/100,//取值为0-1
-                      minHeight: 3,
-                      valueColor: AlwaysStoppedAnimation(Colors.amberAccent),
-                      backgroundColor: Colors.white,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InAppWebView(
-                    initialOptions: InAppWebViewGroupOptions(
-                      android: AndroidInAppWebViewOptions(
-                        loadWithOverviewMode: false,
-                        overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
-                        displayZoomControls: false,
-                        builtInZoomControls: false,
-                        useWideViewPort: false,
-                      ),
-                      ios: IOSInAppWebViewOptions(
-                        disallowOverScroll: true,
-                        enableViewportScale: true,
-                        ignoresViewportScaleLimits: true,
-                      ),
-                    ),
-                    onWebViewCreated: (ct){
-                      controller = ct;
-                      loadData(widget.tabIndex);
-                    },
-                    onProgressChanged: (controller,pg){
-                      progress.value = pg.toDouble();
-                      progressVisible.value = pg != 100;
-                    },
-                  ),
-                ),
-              ],
+          Obx(() => Visibility(
+            visible: progressVisible.value,
+            child: LinearProgressIndicator(
+              value: progress.value/100,//取值为0-1
+              minHeight: 3,
+              valueColor: const AlwaysStoppedAnimation(Colors.amberAccent),
+              backgroundColor: Colors.white,
+            ),
+          ),
+          ),
+          Expanded(
+            child: InAppWebView(
+              initialSettings: InAppWebViewSettings(
+                loadWithOverviewMode: false,
+                overScrollMode: OverScrollMode.ALWAYS,
+                displayZoomControls: false,
+                builtInZoomControls: false,
+                useWideViewPort: false,
+                disallowOverScroll: true,
+                enableViewportScale: true,
+                ignoresViewportScaleLimits: true,
+              ),
+              onWebViewCreated: (ct){
+                controller = ct;
+                loadData(widget.tabIndex);
+              },
+              onProgressChanged: (controller,pg){
+                progress.value = pg.toDouble();
+                progressVisible.value = pg != 100;
+              },
             ),
           ),
         ],

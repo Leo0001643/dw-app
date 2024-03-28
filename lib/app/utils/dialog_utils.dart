@@ -394,17 +394,14 @@ class DialogUtils {
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,
+        enableDrag: false,///开启拖动会影响子布局的滚动
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
         backgroundColor: ColorX.cardBg5(),
         builder: (context) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: GameRoleBottomDialog(tabIndex, logic),
-          );
+          return GameRoleBottomDialog(tabIndex, logic);
         });
   }
 
