@@ -45,6 +45,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
               ),
             ),
             buildBottomBtn(context,logic),
+            SizedBox(height: 20.h,),
           ],
         ),
       );

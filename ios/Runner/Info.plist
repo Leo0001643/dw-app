@@ -40,6 +40,8 @@
 	<true/>
 	<key>NSDocumentsFolderUsageDescription</key>
 	<string>需要使用文档权限，用以存储相关文件</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>需要使用相册权限，用以保存图片到相册</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

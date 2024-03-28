@@ -9,6 +9,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
+import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 
 import 'room_list_logic.dart';
 
@@ -48,170 +49,119 @@ class _RoomListPageState extends State<RoomListPage> {
               )
           ),
           child: Obx(() {
+            if(isEmpty(state.room.value.tables)) return Container();
             return Column(
               children: [
-                Visibility(
-                  visible: state.room.value.tables.em() >= 1,
-                  child: SizedBox(height: 20.h,),
-                ),
-                Visibility(
-                  visible: state.room.value.tables.em() >= 1,
-                  child: InkWell(
-                    onTap: ()=> logic.clickRoom(state.room.value.tables?[0]),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.r),
-                        image: const DecorationImage(image: AssetImage(ImageX.room1),fit: BoxFit.fill),
-                      ),
-                      margin: EdgeInsets.symmetric(horizontal: 20.w),
-                      padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
-                      height: 0.181.sh,
-                      width: 335.w,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Obx(() {
-                            if(state.room.value.tables.em() < 1){ return Container(); }
-                            var room = state.room.value.tables?[0];
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_c20015,fontWeight: FontWeight.w600),),
-                                Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015),),
-                              ],
-                            );
-                          }),
-                          InkWell(
-                            onTap: ()=> logic.clickRate(state.room.value.tables?[0],"LowRate"),
-                            child: Wrap(
-                              direction: Axis.horizontal,
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              children: [
-                                Column(
-                                  children: [
-                                    Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015,),),
-                                    Container(height: 1.h,width: 50.w,color: ColorX.color_c20015,),
-                                  ],
-                                ),
-                                // Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015,decoration: TextDecoration.underline),),
-                                Image.asset(ImageX.icon_right_black,color: ColorX.color_c20015,),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Visibility(
-                  visible: state.room.value.tables.em() >= 2,
-                  child: SizedBox(height: 20.h,),
-                ),
-                Visibility(
-                  visible: state.room.value.tables.em() >= 2,
-                  child: InkWell(
-                    onTap: ()=> logic.clickRoom(state.room.value.tables?[1]),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(image: AssetImage(ImageX.room2),fit: BoxFit.fill),
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                      margin: EdgeInsets.symmetric(horizontal: 20.w),
-                      padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
-                      height: 0.181.sh,
-                      width: 335.w,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Obx(() {
-                            if(state.room.value.tables.em() < 2){ return Container(); }
-                            var room = state.room.value.tables?[1];
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_344e7b,fontWeight: FontWeight.w600),),
-                                Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
-                              ],
-                            );
-                          }),
-                          InkWell(
-                            onTap: ()=> logic.clickRate(state.room.value.tables?[1],"MinRate"),
-                            child: Wrap(
-                              direction: Axis.horizontal,
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              children: [
-                                Column(
-                                  children: [
-                                    Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b,),),
-                                    Container(height: 1.h,width: 50.w,color: ColorX.color_344e7b,),
-                                  ],
-                                ),
-                                // Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b,decoration: TextDecoration.underline),),
-                                Image.asset(ImageX.icon_right_black,color: ColorX.color_344e7b,),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Visibility(
-                  visible: state.room.value.tables.em() == 3,
-                  child: SizedBox(height: 20.h,),
-                ),
-                Visibility(
-                  visible: state.room.value.tables.em() == 3,
-                  child: InkWell(
-                    onTap: ()=> logic.clickRoom(state.room.value.tables?[2]),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(image: AssetImage(ImageX.room3),fit: BoxFit.fill),
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                      margin: EdgeInsets.symmetric(horizontal: 20.w),
-                      padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
-                      height: 0.181.sh,
-                      width: 335.w,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Obx(() {
-                            if(state.room.value.tables.em() < 3){ return Container(); }
-                            var room = state.room.value.tables?[2];
-                            if(isEmpty(room)){ return Container(); }
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_4e3100,fontWeight: FontWeight.w600),),
-                                Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
-                              ],
-                            );
-                          }),
-                          InkWell(
-                            onTap: ()=> logic.clickRate(state.room.value.tables?[2],"HighRate"),
-                            child: Wrap(
-                              direction: Axis.horizontal,
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              children: [
-                                Column(
-                                  children: [
-                                    Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100,),),
-                                    Container(height: 1.h,width: 50.w,color: ColorX.color_4e3100,),
-                                  ],
-                                ),
-                                Image.asset(ImageX.icon_right_black,color: ColorX.color_4e3100,),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                ...state.room.value.tables!.map((e) => buildRoomItem(e)).toList(),
+
+                // Visibility(
+                //   visible: state.room.value.tables.em() >= 2,
+                //   child: SizedBox(height: 20.h,),
+                // ),
+                // Visibility(
+                //   visible: state.room.value.tables.em() >= 2,
+                //   child: InkWell(
+                //     onTap: ()=> logic.clickRoom(state.room.value.tables?[1]),
+                //     child: Container(
+                //       decoration: BoxDecoration(
+                //         image: const DecorationImage(image: AssetImage(ImageX.room2),fit: BoxFit.fill),
+                //         borderRadius: BorderRadius.circular(10.r),
+                //       ),
+                //       margin: EdgeInsets.symmetric(horizontal: 20.w),
+                //       padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
+                //       height: 0.181.sh,
+                //       width: 335.w,
+                //       child: Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //         children: [
+                //           Obx(() {
+                //             if(state.room.value.tables.em() < 2){ return Container(); }
+                //             var room = state.room.value.tables?[1];
+                //             return Column(
+                //               crossAxisAlignment: CrossAxisAlignment.start,
+                //               children: [
+                //                 Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_344e7b,fontWeight: FontWeight.w600),),
+                //                 Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b),),
+                //               ],
+                //             );
+                //           }),
+                //           InkWell(
+                //             onTap: ()=> logic.clickRate(state.room.value.tables?[1],"MinRate"),
+                //             child: Wrap(
+                //               direction: Axis.horizontal,
+                //               crossAxisAlignment: WrapCrossAlignment.center,
+                //               children: [
+                //                 Column(
+                //                   children: [
+                //                     Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b,),),
+                //                     Container(height: 1.h,width: 50.w,color: ColorX.color_344e7b,),
+                //                   ],
+                //                 ),
+                //                 // Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_344e7b,decoration: TextDecoration.underline),),
+                //                 Image.asset(ImageX.icon_right_black,color: ColorX.color_344e7b,),
+                //               ],
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // Visibility(
+                //   visible: state.room.value.tables.em() == 3,
+                //   child: SizedBox(height: 20.h,),
+                // ),
+                // Visibility(
+                //   visible: state.room.value.tables.em() == 3,
+                //   child: InkWell(
+                //     onTap: ()=> logic.clickRoom(state.room.value.tables?[2]),
+                //     child: Container(
+                //       decoration: BoxDecoration(
+                //         image: const DecorationImage(image: AssetImage(ImageX.room3),fit: BoxFit.fill),
+                //         borderRadius: BorderRadius.circular(10.r),
+                //       ),
+                //       margin: EdgeInsets.symmetric(horizontal: 20.w),
+                //       padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
+                //       height: 0.181.sh,
+                //       width: 335.w,
+                //       child: Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //         children: [
+                //           Obx(() {
+                //             if(state.room.value.tables.em() < 3){ return Container(); }
+                //             var room = state.room.value.tables?[2];
+                //             if(isEmpty(room)){ return Container(); }
+                //             return Column(
+                //               crossAxisAlignment: CrossAxisAlignment.start,
+                //               children: [
+                //                 Text(room!.name.em(),style: TextStyle(fontSize: 20.sp,color: ColorX.color_4e3100,fontWeight: FontWeight.w600),),
+                //                 Text(Intr().dangqianzaixian([room.memo1.em(),room.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100),),
+                //               ],
+                //             );
+                //           }),
+                //           InkWell(
+                //             onTap: ()=> logic.clickRate(state.room.value.tables?[2],"HighRate"),
+                //             child: Wrap(
+                //               direction: Axis.horizontal,
+                //               crossAxisAlignment: WrapCrossAlignment.center,
+                //               children: [
+                //                 Column(
+                //                   children: [
+                //                     Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_4e3100,),),
+                //                     Container(height: 1.h,width: 50.w,color: ColorX.color_4e3100,),
+                //                   ],
+                //                 ),
+                //                 Image.asset(ImageX.icon_right_black,color: ColorX.color_4e3100,),
+                //               ],
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: 20.h,),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -274,4 +224,61 @@ class _RoomListPageState extends State<RoomListPage> {
       ),
     );
   }
+
+  Widget buildRoomItem(Pc28LottoRoomsTables e) {
+    var bg = e.level == 1 ? ImageX.room1 : (e.level == 2 ? ImageX.room2:ImageX.room3);
+    var color = e.level == 1 ? ColorX.color_c20015 : (e.level == 2 ? ColorX.color_344e7b:ColorX.color_4e3100);
+    return Column(
+      children: [
+        SizedBox(height: 20.h,),
+        InkWell(
+          onTap: ()=> logic.clickRoom(e),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.r),
+              image: DecorationImage(image: AssetImage(bg),fit: BoxFit.fill),
+            ),
+            margin: EdgeInsets.symmetric(horizontal: 20.w),
+            padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 20.w),
+            height: 0.181.sh,
+            width: 335.w,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(e.name.em(),style: TextStyle(fontSize: 20.sp,color: color,fontWeight: FontWeight.w600),),
+                    Text(Intr().dangqianzaixian([e.memo1.em(),e.memo2.em()]),style: TextStyle(fontSize: 12.sp,color: color),),
+                  ],
+                ),
+                InkWell(
+                  onTap: ()=> logic.clickRate(e, e.level == 1 ? "LowRate" : (e.level == 2 ? "MinRate":"HighRate")),
+                  child: Wrap(
+                    direction: Axis.horizontal,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: color,),),
+                          Container(height: 1.h,width: 50.w,color: color,),
+                        ],
+                      ),
+                      // Text(Intr().peilvshuoming,style: TextStyle(fontSize: 12.sp,color: ColorX.color_c20015,decoration: TextDecoration.underline),),
+                      Image.asset(ImageX.icon_right_black,color: color,),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+
+
+
 }
