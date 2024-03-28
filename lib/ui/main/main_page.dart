@@ -76,9 +76,6 @@ class _MainPageState extends State<MainPage>  with SingleTickerProviderStateMixi
     }
   }
 
-
-
-
 }
 
 class ItemBuilder extends DelegateBuilder{

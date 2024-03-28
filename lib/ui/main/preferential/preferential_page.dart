@@ -106,11 +106,11 @@ class StatePreferentialPage extends State<PreferentialPage> with SingleTickerPro
       ),
     );
   }
+
+
+
   Widget buildTabBarItem(String tab) {
-    return Container(
-      // padding: EdgeInsets.symmetric(horizontal: 15.w),
-      child: Text(tab,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),
-    );
+    return Text(tab,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),);
   }
 
   Widget buildPromotionItem(PromotionTypeKey item) {

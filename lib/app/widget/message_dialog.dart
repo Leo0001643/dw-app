@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 
@@ -56,6 +57,7 @@ class MessageDialog{
                       btnConfirm.em(), 116.w, 40.h,
                       bg: ColorX.color_fc243b,
                       textColor: Colors.white, onPressed: (){
+                        logger("没底啊意思东方闪电山东");
                         if(onConfirm == null){
                           Navigator.of(context).pop(true);
                         }else {
