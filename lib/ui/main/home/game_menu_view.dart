@@ -445,8 +445,7 @@ class StateGameMenuView extends State<GameMenuView> {
               var list = webConfig?.domainMJingdiancai?.list;
               var path = webConfig?.domainMJingdiancai?.checkPath;
               var urlPath = webConfig?.domainMJingdiancai?.urlPath.em();
-              DialogUtils()
-                  .showAccessRouteDialog(context, list!, path!)
+              DialogUtils().showAccessRouteDialog(context, list!, path!)
                   .then((value) {
                 if (unEmpty(value)) {
                   var params = <String, dynamic>{"line":"$value$urlPath","lid":element.gameCode.em()};
@@ -472,8 +471,7 @@ class StateGameMenuView extends State<GameMenuView> {
 
               ///官方彩不需要拼接urlpath
               // var urlPath = webConfig?.domainMGuanfangcai?.urlPath.em();
-              DialogUtils()
-                  .showAccessRouteDialog(context, list!, path!)
+              DialogUtils().showAccessRouteDialog(context, list!, path!)
                   .then((value) {
                 if (unEmpty(value)) {
                   var params = <String, dynamic>{"line":value,"lid":element.gameCode.em()};
