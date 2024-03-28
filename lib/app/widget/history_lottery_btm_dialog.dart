@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
@@ -40,6 +44,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
                 },
               ),
             ),
+            buildBottomBtn(context,logic),
           ],
         ),
       );
@@ -248,6 +253,67 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
       borderRadius: BorderRadius.only(topLeft: Radius.circular(15.r),topRight: Radius.circular(15.r))
     );
   }
+
+
+  Widget buildBottomBtn(BuildContext context,GameRoomLogic logic) {
+    return Obx(() {
+      var colors = [ColorX.color_ff5163, ColorX.color_fd273e];
+      switch (logic.state.roomType.value) {
+        case 1:
+          colors = [ColorX.color_ff5163, ColorX.color_fd273e];
+          break;
+        case 2:
+          colors = [
+            ColorX.color_70b6ff,
+            ColorX.color_5583e7,
+          ];
+          break;
+        case 3:
+          colors = [
+            ColorX.color_88705f,
+            ColorX.color_574436,
+          ];
+          break;
+      }
+      var textColor = logic.state.roomType.value == 3 ? ColorX.color_ffe0ac : Colors.white;
+      return InkWell(
+        onTap: () {
+          if (AppData.isLogin()) {
+            TextItemLogic textItemLogic = Get.find<TextItemLogic>();
+            if (unEmpty(textItemLogic.canBet())) {
+              showToast(textItemLogic.canBet());
+              return;
+            }
+            Navigator.pop(context);
+            DialogUtils().showBettingBtmDialog(Get.context!, logic);
+          } else {
+            Get.until((ModalRoute.withName(Routes.main)));
+            WidgetUtils().goLogin();
+          }
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.r),
+            gradient: LinearGradient(
+              colors: colors,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          width: 335.w,
+          height: 50.h,
+          alignment: Alignment.center,
+          child: Text(
+            Intr().touzhu,
+            style: TextStyle(
+                fontSize: 16.sp, color: textColor, fontWeight: FontWeight.w600),
+          ),
+        ),
+      );
+    });
+  }
+
+
 
 
 }

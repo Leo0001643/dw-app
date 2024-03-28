@@ -30,7 +30,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20.h,),
+            SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().yhm,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
@@ -43,7 +43,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 defText: state.userDetail.value.username.em(),);
               }),
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().nicheng,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
@@ -56,7 +56,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 defText: state.userDetail.value.alias.em(),onChanged: (v)=> state.userEdit.value.alias = v);
               }),
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().shoujihaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
@@ -69,7 +69,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 suffixIcon: true,defText: state.userDetail.value.mobile.em());
               }),
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().qqhaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
@@ -82,7 +82,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                 defText: state.userDetail.value.qq.em(),onChanged: (v)=> state.userEdit.value.qq = v);
               }),
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().weixin,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
@@ -95,7 +95,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                     defText: state.userDetail.value.wechat.em(),onChanged: (v)=> state.userEdit.value.wechat = v);
               }),
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
               child: Text(Intr().dianziyouxiang,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
@@ -109,13 +109,12 @@ class _UserInfoPageState extends State<UserInfoPage> {
                     defText: state.userDetail.value.email.em(),onChanged: (v)=> state.userEdit.value.email = v);
               }),
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 10.h,),
             Center(
               child: WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,
                   bg: ColorX.color_fc243b,onPressed: ()=> logic.saveUser()),
             ),
             SizedBox(height: 20.h,),
-
             Container(
               padding: EdgeInsets.only(left: 20.w),
               child: Column(
@@ -124,10 +123,10 @@ class _UserInfoPageState extends State<UserInfoPage> {
                   Text(Intr().wenxintishi_,style: TextStyle(fontSize: 18.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),),
                   Text(Intr().mod_user_tip1,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
                   Text(Intr().mod_user_tip2,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
-
                 ],
               ),
             ),
+            SizedBox(height: 20.h,),
           ],
         ),
       ),

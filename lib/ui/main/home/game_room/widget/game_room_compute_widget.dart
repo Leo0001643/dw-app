@@ -251,8 +251,7 @@ class GameRoomComputeWidget extends StatelessWidget {
           var result = arr2[3] > 9 ? '${arr2[3]}' : '0${arr2[3]}';
 
           return InkWell(
-            onTap: () =>
-                DialogUtils().showHistoryLotteryBtmDialog(context, logic),
+            onTap: () => DialogUtils().showHistoryLotteryBtmDialog(context, logic),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(

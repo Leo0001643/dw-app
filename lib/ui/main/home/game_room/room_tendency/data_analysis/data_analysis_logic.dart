@@ -103,15 +103,15 @@ class DataAnalysisLogic extends GetxController {
 
         if(tabIndex == 0){
           ///极小
-          if(result < 5){
+          if(result <= 5){
             item.add(Intr().jixiao);
           }else {
             item.add("");
           }
           ///极大
-          if(result > 22){
+          if(result >= 22){
             item.add(Intr().jida);
-          }else {
+          } else {
             item.add("");
           }
         }else {

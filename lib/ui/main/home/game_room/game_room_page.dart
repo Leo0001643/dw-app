@@ -267,8 +267,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
           ];
           break;
       }
-      var textColor =
-          state.roomType.value == 3 ? ColorX.color_ffe0ac : Colors.white;
+      var textColor = state.roomType.value == 3 ? ColorX.color_ffe0ac : Colors.white;
       return InkWell(
         onTap: () {
           if (AppData.isLogin()) {
