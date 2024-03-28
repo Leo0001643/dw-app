@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 
@@ -63,7 +65,13 @@ class ErrorResponseHandler {
           showToast(toast);
           break;
         case 900004://整站维护中
-          showToast(toast);
+          DialogUtils().showMessageDialog(Get.context!,Intr().zunjingdekehu,title: Intr().xitonggonggao,
+              btnCancel: Intr().cancel,btnConfirm: Intr().lxkf, onConfirm: (){
+            eventBus.fire(ChangeMainPageEvent(3)); //转到客服显示
+            Get.until((ModalRoute.withName(Routes.main)));
+          },onCancel: (){
+            Navigator.pop(Get.context!);
+          });
           break;
         case 900027://您存取款操作已被停用，请联系客服
           showToast(toast);

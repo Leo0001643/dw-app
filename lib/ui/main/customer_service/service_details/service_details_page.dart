@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -194,7 +195,10 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
               InkWell(
                 onTap: () {
                   if(state.detail.isChat == true){
-                    Get.toNamed(Routes.html,arguments: HtmlEvent(data: "http://soptj9qq.com/m/www.baidu.com",isHtmlData: false,pageTitle: ""));
+                    logger(server.toJson());
+                    if(server.url.isUrl()){
+                      Get.toNamed(Routes.html,arguments: HtmlEvent(data: server.url,isHtmlData: false,pageTitle: ""));
+                    }
                   }else{
                     WidgetUtils().clickCopy(server.number.em());
                   }

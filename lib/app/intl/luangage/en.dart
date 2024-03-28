@@ -1087,6 +1087,8 @@ class EN{
     "ruozhongjiang":"若中奖, 奖金",
     "yinli":", 盈利",
     "zongjine":", 总金额",
+    "zunjingdekehu":", 尊敬的客户：\n系统正在维护中，给您造成的不便，还请谅解",
+    "xitonggonggao":", 系统公告",
 
   };
 

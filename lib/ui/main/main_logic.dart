@@ -82,6 +82,7 @@ class MainLogic extends GetxController {
 
     HttpService.protect().then((value) {
       state.protect = value;
+
     });
 
   }
