@@ -312,6 +312,9 @@ abstract class RetrofitClient{
   @POST('/ds-api-web/loginBusinessAgent')
   Future<BaseResponseEntity<dynamic>> loginBusinessAgent(@Body() Map<String,dynamic> params,);
 
+  @POST('/ds-api-web/loginLottery')
+  Future<BaseResponseEntity<dynamic>> loginLottery(@Body() Map<String,dynamic> params,);
+
   @GET('/ds-api-web/getChessList')
   Future<BaseResponseEntity<List<ChessInfoEntity>>> getChessList(@Queries() Map<String,dynamic> params,);
 

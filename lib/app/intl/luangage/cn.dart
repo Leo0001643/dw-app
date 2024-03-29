@@ -1019,6 +1019,7 @@ class CN {
     "zongjine":", 总金额",
     "zunjingdekehu":"尊敬的客户：\n系统正在维护中，给您造成的不便，还请谅解",
     "xitonggonggao":"系统公告",
+    "yibangding":"已绑定",
 
 
 

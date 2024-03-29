@@ -34,9 +34,7 @@ class StateSelectUsdtBtmDialog extends State<SelectUsdtBtmDialog>{
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Column(
-              children: widget.data.map((e) => buildUsdtItem(e)).toList(),
-            ),
+            ...widget.data.map((e) => buildUsdtItem(e)).toList(),
             Container(height: 5.h,width: 1.sw,color: ColorX.color_10_949,),
             InkWell(
               onTap: ()=> Navigator.pop(context,null),
@@ -54,6 +52,9 @@ class StateSelectUsdtBtmDialog extends State<SelectUsdtBtmDialog>{
   Widget buildUsdtItem(UsdtChannelEntity e) {
     var color = isEmpty(e.account) && e.status == 1 ? ColorX.text0917() :ColorX.text5d6();
     var text = e.status == 1 ? e.typeName() : "${e.typeName()}(${Intr().tingyong_termi})";
+    if(unEmpty(e.account)){
+      text = "${e.typeName()}(${Intr().yibangding})";
+    }
     return InkWell(
       onTap: (){
         if(isEmpty(e.account) && e.status == 1){
@@ -62,6 +63,8 @@ class StateSelectUsdtBtmDialog extends State<SelectUsdtBtmDialog>{
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 15.w),
+        width: 1.sw,
+        alignment: Alignment.center,
         child: Text(text,style: TextStyle(fontSize: 14.sp,color: color),),
       ),
     );

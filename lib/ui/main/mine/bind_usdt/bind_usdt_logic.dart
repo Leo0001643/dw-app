@@ -35,9 +35,8 @@ class BindUsdtLogic extends GetxController {
         if(element.type?.startsWith('USDT') == true){
           if(unEmpty(element.account)){
             state.list.add(element);
-          }else {///未绑定的
-            state.dclist.add(element);
           }
+          state.dclist.add(element);
         }
       });
       state.list.refresh();

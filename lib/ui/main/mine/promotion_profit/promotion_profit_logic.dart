@@ -36,7 +36,7 @@ class PromotionProfitLogic extends GetxController {
 
     state.userCode.value = "${user?.id ?? 0}";
 
-    state.userLink.value = "${Constants.host}/#/register?sp=${AppData.user()?.id ?? 0}";
+    state.userLink.value = "${Constants.web_gjz}/#/register?sp=${AppData.user()?.id ?? 0}";
 
     var painter = QrPainter(data: state.userLink.value, version: QrVersions.auto, gapless: true,
       errorCorrectionLevel: QrErrorCorrectLevel.L);
