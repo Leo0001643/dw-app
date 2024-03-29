@@ -64,7 +64,16 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(left: 12.w),
-                                child: Text(Intr().tixianzhanghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(Intr().tixianzhanghu,style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),),
+                                    Obx(() {
+                                      return Text("${Intr().yue_}${state.pageType.value == '1' ? "¥":"₮"}${state.balance.value.money.em()}",
+                                        style: TextStyle(fontSize: 13.sp,color: ColorX.text586()),);
+                                    }),
+                                  ],
+                                ),
                               ),
                               SizedBox(height: 7.h,),
                               InkWell(
