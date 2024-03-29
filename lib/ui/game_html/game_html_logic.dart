@@ -3,7 +3,9 @@ import 'dart:typed_data';
 
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/bean/login_game_agent_entity.dart';
@@ -40,7 +42,7 @@ class GameHtmlLogic extends GetxController {
       if(state.htmlEvent?.isHtmlData == true){
         controller.loadData(data: state.htmlEvent!.data.em());
       }else {
-        controller.loadUrl(urlRequest: URLRequest(url: WebUri(state.htmlEvent!.data.em())));
+        controller.loadUrl(urlRequest: URLRequest(url: WebUri(state.htmlEvent!.data.em()),));
       }
     }else if(unEmpty(state.gameEvent)){
       var params = "platformURL=${state.gameEvent!.platformURL.em()}&lid=${state.gameEvent!.lid}&r=${state.gameEvent!.params!.r.em()}&param=${state.gameEvent!.params!.param.em()}"

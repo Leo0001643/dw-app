@@ -33,9 +33,10 @@ class RechargeDigitalLogic extends GetxController {
         AppData.user()!.username.em()).then((value) {
           state.walletList.assignAll(value.wallet ?? []);
           state.walletList.refresh();
-          state.currentAccount.value = value.wallet?.first ?? Object();
-          state.currentAccount.refresh();
-          // changeWallet(0);
+          if(unEmpty(value.wallet)){
+            state.currentAccount.value = value.wallet!.first;
+            state.currentAccount.refresh();
+          }
     });
     ///线下协议
     HttpService.getPaymentChannel(AppData.user()!.oid.em(),

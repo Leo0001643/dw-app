@@ -104,11 +104,13 @@ class HttpService{
         //网站ID
         //机器型号
         //系统版本号【APP强制使用】
-        var commonParams = {"machineModel":Constants.model(),
+        var commonParams = {
+          "machineModel":Constants.model(),
           "siteId":"9000",
           "siteType":"1",
           "terminal":"APP",
-          "version":Constants.version()};
+          "version":Constants.version(),
+        };
         options.queryParameters.addAll(commonParams);
         loggerArray(["发起请求","${options.baseUrl}${options.path}","${options.method}\n","${options.headers}\n",options.data ?? options.queryParameters]);
         handler.next(options);

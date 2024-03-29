@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
@@ -17,8 +18,10 @@ import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/nested_inner_scroll_child.dart';
 import 'package:leisure_games/ui/bean/chess_event.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
+import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../bean/pc28_lotto_entity.dart';
 import 'text_timer/text_timer_page.dart';
@@ -521,47 +524,56 @@ class StateGameMenuView extends State<GameMenuView> {
       "platformURL": Constants.web_gjz,
     };
     params.addAll(other);
-    //"gameType":gameType,
-    // var params = <String, dynamic>{
-    //   "cur": cur,
-    //   "tags": element.tags,
-    //   "platform": element.liveName,
-    //   "oid": user?.oid,
-    //   "username": user?.username,
-    //   "platformURL": Constants.web_gjz,
-    //   "pageSite":element.gameKind.em(),
-    // };
-    // if (unEmpty(url)) {
-    //   params[] = url;
-    // }
-    // if (unEmpty(element.gameCode)) {
-    //   if (lid) {
-    //     params["lid"] = element.gameCode;
-    //   } else {
-    //     params["gameType"] = element.gameCode;
-    //     params["gameCode"] = element.gameCode;
-    //   }
-    // }
+
     WidgetUtils().loginJump(element.gameName.em(), params);
   }
 
   ///彩票模块专用接口
   void openLotteryPage(GameKindGameKindList element, Map<String, dynamic> params) {
-    var cur = AppData.wallet() ? 1 : 5;
 
-    var user = AppData.user();
-    var other = <String, dynamic>{
-      "cur": cur,
-      "tags": element.tags,
-      "platform": element.liveName,
-      "oid": user?.oid,
-      "username": user?.username,
-      "platformURL": Constants.web_gjz,
-    };
-    params.addAll(other);
-    HttpService.loginLottery(params).then((value) {
+    DialogUtils().showLoadGameDialog(Get.context!, element.gameName.em(),).then((inapp) {
+      if (unEmpty(inapp)) {
+        var cur = AppData.wallet() ? 1 : 5;
 
+        var user = AppData.user();
+        var other = <String, dynamic>{
+          "cur": cur.toString(),
+          "tags": element.tags,
+          "platform": element.liveName,
+          "oid": user?.oid,
+          "username": user?.username,
+          "platformURL": Constants.web_gjz,
+          "machineModel":Constants.model(),
+          "siteId":"9000",
+          "siteType":"1",
+          "terminal":"APP",
+          "version":Constants.version(),
+        };
+        params.addAll(other);
+
+        var scheme = "";
+        var path = "";
+        if(AppData.baseUrl().startsWith("https:")){
+          scheme = "https";
+          path = "${AppData.baseUrl().replaceAll("https:","")}ds-api-web/loginLottery";
+        } else {
+          scheme = "http";
+          path = "${AppData.baseUrl().replaceAll("http:","")}ds-api-web/loginLottery";
+        }
+        var uri = Uri(
+          scheme: scheme,
+          path: path,
+          queryParameters: params,
+        );
+        if(inapp!){
+          Get.toNamed(Routes.game_html,
+              arguments: HtmlEvent(data: uri.toString(), isHtmlData: false, pageTitle: element.gameName.em()));
+        }else {
+          launchUrl(uri, mode: LaunchMode.externalApplication);
+        }
+      }
     });
+
   }
 
 
