@@ -74,7 +74,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
                     }),
               ),
               Container(
-                margin: EdgeInsets.only(top: 6.h,left: 15.w,right: 15.w),
+                margin: EdgeInsets.only(top: 3.h,left: 15.w,right: 15.w),
                 height: 70.h,
                 child: GridView.builder(
                     shrinkWrap: true,
@@ -91,7 +91,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
                     }),
               ),
               Container(
-                margin: EdgeInsets.only(top: 6.h,bottom: 3.h,left: 15.w,right: 15.w),
+                margin: EdgeInsets.only(top: 3.h,bottom: 3.h,left: 15.w,right: 15.w),
                 height: (dataBettingList2.length / 6 + 1) * 62.h,
                 child: GridView.builder(
                     shrinkWrap: true,

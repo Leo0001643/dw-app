@@ -436,6 +436,10 @@ class HttpService{
     return buildFuture<dynamic>(()=> _client.loginBusinessAgent(params));
   }
 
+  static Future<dynamic> loginLottery(Map<String,dynamic> params,){
+    return buildFuture<dynamic>(()=> _client.loginLottery(params));
+  }
+
   static Future<ProtectEntity> protect(){
     return buildFuture<ProtectEntity>(()=> _client.protect());
   }

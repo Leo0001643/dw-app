@@ -42,8 +42,11 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: false,toolbarHeight: 0,
-        systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: ColorX.pageBg()),),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        toolbarHeight: 0,
+        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark),
+      ),
       body: Column(
         children: [
           Obx(

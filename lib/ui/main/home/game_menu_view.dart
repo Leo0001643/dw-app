@@ -8,6 +8,7 @@ import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -439,7 +440,7 @@ class StateGameMenuView extends State<GameMenuView> {
               var url = webConfig?.domainMJingdiancai?.list!.first;
               if (unEmpty(url)) {
                 var params = <String, dynamic>{"line":"$url$urlPath","lid":element.gameCode.em()};
-                openGamePage(element,params);
+                openLotteryPage(element,params);
               }
             } else if (unEmpty(webConfig?.domainMJingdiancai?.list)) {
               var list = webConfig?.domainMJingdiancai?.list;
@@ -449,7 +450,7 @@ class StateGameMenuView extends State<GameMenuView> {
                   .then((value) {
                 if (unEmpty(value)) {
                   var params = <String, dynamic>{"line":"$value$urlPath","lid":element.gameCode.em()};
-                  openGamePage(element,params);
+                  openLotteryPage(element,params);
                 }
               });
             } else {
@@ -543,4 +544,27 @@ class StateGameMenuView extends State<GameMenuView> {
     // }
     WidgetUtils().loginJump(element.gameName.em(), params);
   }
+
+  ///彩票模块专用接口
+  void openLotteryPage(GameKindGameKindList element, Map<String, dynamic> params) {
+    var cur = AppData.wallet() ? 1 : 5;
+
+    var user = AppData.user();
+    var other = <String, dynamic>{
+      "cur": cur,
+      "tags": element.tags,
+      "platform": element.liveName,
+      "oid": user?.oid,
+      "username": user?.username,
+      "platformURL": Constants.web_gjz,
+    };
+    params.addAll(other);
+    HttpService.loginLottery(params).then((value) {
+
+    });
+  }
+
+
+
+
 }

@@ -52,7 +52,8 @@ class _WithdrawChannelPageState extends State<WithdrawChannelPage> {
                       list.add(state.userDraw.value.banks.first);
                     }
                     state.userDraw.value.dcBanks.forEach((element) {
-                      if(element.type?.startsWith('USDT') == false && element.status == 0){
+                      ///筛选出第三方钱包
+                      if(element.type?.startsWith('USDT') == false && element.status == 1){
                         list.add(element);
                       }
                     });
