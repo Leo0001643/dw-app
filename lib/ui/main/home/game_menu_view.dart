@@ -467,7 +467,7 @@ class StateGameMenuView extends State<GameMenuView> {
               var url = webConfig?.domainMGuanfangcai?.list!.first;
               if (unEmpty(url)) {
                 var params = <String, dynamic>{"line":url,"lid":element.gameCode.em()};
-                openGamePage(element, params);
+                openLotteryPage(element, params);
               }
             } else if (unEmpty(webConfig?.domainMGuanfangcai?.list)) {
               var list = webConfig?.domainMGuanfangcai?.list;
@@ -479,7 +479,7 @@ class StateGameMenuView extends State<GameMenuView> {
                   .then((value) {
                 if (unEmpty(value)) {
                   var params = <String, dynamic>{"line":value,"lid":element.gameCode.em()};
-                  openGamePage(element, params);
+                  openLotteryPage(element, params);
                 }
               });
             } else {

@@ -31,6 +31,12 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
   Offset position = Offset(0.1.sw, 0.5.sh);
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+
+  @override
   void dispose() {
     if(isLandscape){
       SystemChrome.setPreferredOrientations(orientations2);
@@ -45,7 +51,8 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: 0,
-        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark),
+        backgroundColor: Colors.white,
+        // systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark),
       ),
       body: Column(
         children: [
