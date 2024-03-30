@@ -37,7 +37,7 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
   Widget build(BuildContext context) {
     return DrawerScaffold(
       scaffoldKey: state.scaffoldKey,
-      appBar: WidgetUtils().buildAppBar(Intr().zxndbz,msg: true,scaffoldKey: state.scaffoldKey),
+      appBar: WidgetUtils().buildAppBar(Intr().xuanzhenindemorenqianbao,msg: true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg2(),
       body: SingleChildScrollView(
         child: Column(
@@ -122,6 +122,22 @@ class StateSelectCurrencyPage extends State<SelectCurrencyPage>{
                 ],
               ),
             ),
+            SizedBox(height: 10.h,),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 15.w),
+              alignment: Alignment.centerLeft,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(Intr().reminder,style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w700,color: ColorX.text5862()),),
+                  Text(Intr().morenqianbaotishi1,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                  Text(Intr().morenqianbaotishi2,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+
+                ],
+              ),
+            ),
+
           ],
         ),
       ),

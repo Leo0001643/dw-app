@@ -1090,6 +1090,10 @@ class EN{
     "zunjingdekehu":", 尊敬的客户：\n系统正在维护中，给您造成的不便，还请谅解",
     "xitonggonggao":", 系统公告",
     "yibangding":"已绑定",
+    "xuanzhenindemorenqianbao":"Select your default wallet",
+    "morenqianbaotishi1":"1.Select your default wallet, and the corresponding currency will be used for settlement when entering the game.",
+    "morenqianbaotishi2":"2.The exchange operation between the balances of the two wallets can be performed on the [Exchange] page.",
+
 
   };
 

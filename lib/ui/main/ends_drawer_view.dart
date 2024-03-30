@@ -76,17 +76,13 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                 margin: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   children: [
-                    Image.asset(
-                      ImageX.icon_language,
-                      color: ColorX.icon586(),
-                    ),
+                    WidgetUtils().buildImage(ImageX.languageT(), 18.r, 18.r),
                     SizedBox(
                       width: 5.w,
                     ),
                     Text(
                       Intr().dyy,
-                      style:
-                          TextStyle(fontSize: 14.sp, color: ColorX.text0917()),
+                      style: TextStyle(fontSize: 14.sp, color: ColorX.text0917()),
                     ),
                     Expanded(child: Container()),
                     Text(language(), style: TextStyle(fontSize: 14.sp, color: ColorX.text949()),),

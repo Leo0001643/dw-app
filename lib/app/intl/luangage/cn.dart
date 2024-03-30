@@ -1020,6 +1020,9 @@ class CN {
     "zunjingdekehu":"尊敬的客户：\n系统正在维护中，给您造成的不便，还请谅解",
     "xitonggonggao":"系统公告",
     "yibangding":"已绑定",
+    "xuanzhenindemorenqianbao":"选择您的默认钱包",
+    "morenqianbaotishi1":"1.选择您的默认钱包，进入游戏将使用对应的钱包进行结算。",
+    "morenqianbaotishi2":"2.可在[币币兑换]页面进行双钱包余额之间的兑换操作。",
 
 
 
