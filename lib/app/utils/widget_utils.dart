@@ -611,6 +611,7 @@ class WidgetUtils {
         int maxLines = 1,
         EdgeInsetsGeometry? padding,
         List<TextInputFormatter>? inputFormatters,
+        InputBorder? focusedBorder,
         FocusNode? focusNode}) {
 
     padding ??= EdgeInsets.symmetric(horizontal: 10.w);
@@ -663,7 +664,7 @@ class WidgetUtils {
           border: InputBorder.none,
           enabled: enabled,
           errorBorder: InputBorder.none,
-          focusedBorder: InputBorder.none,
+          focusedBorder: focusedBorder,
           focusedErrorBorder: InputBorder.none,
           enabledBorder: InputBorder.none,
           disabledBorder: InputBorder.none,
@@ -825,8 +826,9 @@ class WidgetUtils {
       onTap: onTap,
       child: Image.memory(
         base64Decode(base64String),
-        width: 73.w,
-        height: 30.h,
+        width: 130.w,
+        height: 46.h,
+        fit: BoxFit.fill,
       ),
     );
   }

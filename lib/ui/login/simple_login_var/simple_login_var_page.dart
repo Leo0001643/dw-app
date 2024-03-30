@@ -148,31 +148,40 @@ class _SimpleLoginVarPageState extends State<SimpleLoginVarPage> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: Container(
-              width: 335.w,
-              decoration: BoxDecoration(
-                color: ColorX.cardBg3(),
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      WidgetUtils().buildTextField(
-                          225.w, 46.h, 14.sp, ColorX.text949(), Intr().yzm,
-                          hintColor: ColorX.text586(),
-                          backgroundColor: Colors.transparent,
-                          inputType: TextInputType.text,
-                          onChanged: (v) => state.vcode = v),
-                      WidgetUtils().buildVarCode(varcode.varCode.em(),
-                              () => logic.getVarcode())
-                    ],
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20.w),
+            alignment: Alignment.center,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: ColorX.cardBg3(),
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                        Expanded(
+                          child: WidgetUtils().buildTextField(
+                            0, 46.h, 14.sp, ColorX.text949(), Intr().yzm,
+                            hintColor: ColorX.text586(),
+                            backgroundColor: Colors.transparent,
+                            inputType: TextInputType.text,
+                            onChanged: (v) => state.vcode = v,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
+                ),
+                SizedBox(width: 15.w,),
+                Obx(() {
+                  return WidgetUtils().buildVarCode(state.varcode.value.varCode.em(), ()=> logic.getVarcode());
+                }),
+              ],
             ),
           ),
           SizedBox(height: 10.h,),

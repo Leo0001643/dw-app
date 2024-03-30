@@ -5,6 +5,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 
 import 'register_state.dart';
@@ -15,6 +16,9 @@ class RegisterLogic extends GetxController {
   @override
   void onReady() {
     getVarcode();
+    DataUtils.readPhoneData().then((value) {
+      state.phoneData = value;
+    });
     super.onReady();
   }
 
@@ -74,7 +78,7 @@ class RegisterLogic extends GetxController {
       "varCode": state.vcode,
       "varCodeId": state.varcode.value.varCodeId,
       "agree": 1,
-      "mobile":state.mobile,
+      "mobile":"${state.areaNo.value}${state.mobile}",
     };
     //阿里的滑动验证
     if (data != null &&

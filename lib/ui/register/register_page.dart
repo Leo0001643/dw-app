@@ -10,7 +10,9 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/app/widget/focus_container.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 
 import 'register_logic.dart';
@@ -68,30 +70,55 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(width: 10.w,),
             ],
           ),
-        )
+        ),
       ),
       backgroundColor: ColorX.pageBg(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Container(
-                width: 335.w,
-                decoration: BoxDecoration(
-                  color: ColorX.cardBg3(),
-                  borderRadius: BorderRadius.circular(10.r),
+            SizedBox(height: 10.h,),
+            Row(
+              children: [
+                Expanded(child: Container()),
+                InkWell(
+                  onTap: ()=> Get.toNamed(Routes.select_language),
+                  child: Row(
+                    children: [
+                      WidgetUtils().buildImage(ImageX.languageT(), 18.r, 18.r),
+                      SizedBox(width: 2.w,),
+                      Text(
+                        Intr().zhongwenjianti,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          color: ColorX.textBlack(),),
+                      ),
+                      Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
+                      SizedBox(width: 10.w,),
+                    ],
+                  ),
                 ),
+              ],
+            ),
+            SizedBox(height: 10.h,),
+            Center(
+              child: FocusContainer(
+                width: 335.w,
                 padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                     WidgetUtils().buildTextField(
-                        290.w, 46.h, 14.sp, ColorX.text949(), Intr().qsryhm,
-                        hintColor: ColorX.text586(),
-                        backgroundColor: Colors.transparent,
-                        onChanged: (v) => state.accountValue = v),
+                      290.w, 46.h, 14.sp, ColorX.text949(), Intr().qsryhm,
+                      hintColor: ColorX.text586(),
+                      backgroundColor: Colors.transparent,
+                      onChanged: (v) => state.accountValue = v,
+                      // focusedBorder: OutlineInputBorder(
+                      //   borderSide: BorderSide(color: ColorX.line10949(), width: 1.w),
+                      // ),
+                    ),
                   ],
                 ),
               ),
@@ -105,12 +132,8 @@ class _RegisterPageState extends State<RegisterPage> {
               height: 20.h,
             ),
             Center(
-              child: Container(
+              child: FocusContainer(
                 width: 335.w,
-                decoration: BoxDecoration(
-                  color: ColorX.cardBg3(),
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
                 padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -156,12 +179,8 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             SizedBox(height: 20.h,),
             Center(
-              child: Container(
+              child: FocusContainer(
                 width: 335.w,
-                decoration: BoxDecoration(
-                  color: ColorX.cardBg3(),
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
                 padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -207,12 +226,8 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             SizedBox( height: 20.h,),
             Center(
-              child: Container(
+              child: FocusContainer(
                 width: 335.w,
-                decoration: BoxDecoration(
-                  color: ColorX.cardBg3(),
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
                 padding: EdgeInsets.symmetric(horizontal: 15.w),
                 child: Row(
                   children: [
@@ -235,27 +250,31 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 20.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Row(
-                children: [
-                  Text("+86",style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),),
-                  SizedBox(width: 10.w,),
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: ColorX.cardBg3(),
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: FocusContainer(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Row(
+                  children: [
+                    SizedBox(width: 10.w,),
+                    InkWell(
+                      onTap: () => DialogUtils().showSelectAreaBtmDialog(context, state.phoneData ?? {}).then((value) {
+                        if(unEmpty(value)){ state.areaNo.value = value!; }
+                      }),
                       child: Row(
                         children: [
                           Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                          WidgetUtils().buildTextField(270.w, 46.h, 14.sp, ColorX.textBlack(), Intr().shoujihaoma,hintColor: ColorX.text586(),
-                              backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
+                          Obx(() {
+                            return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),);
+                          }),
+                          WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
                         ],
                       ),
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: WidgetUtils().buildTextField(0, 46.h, 14.sp, ColorX.textBlack(), Intr().shoujihaoma,hintColor: ColorX.text586(),
+                          backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
+                    )
+                  ],
+                ),
               ),
             ),//
             SizedBox(height: 10.h,),
@@ -265,12 +284,8 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             SizedBox(height: 20.h,),
             Center(
-              child: Container(
+              child: FocusContainer(
                 width: 335.w,
-                decoration: BoxDecoration(
-                  color: ColorX.cardBg3(),
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: WidgetUtils().buildTextField(
                     335.w, 46.h, 14.sp, ColorX.text949(), Intr().jieshaoren,
@@ -341,6 +356,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     }
                   }),
             ),
+            SizedBox(height: 10.h,),
           ],
         ),
       ),
@@ -399,32 +415,36 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget _getImageCode() {
     return Obx(() {
       if (state.varcode.value.status == 1 && state.varcode.value.type == 1) {
-        return Center(
-          child: Container(
-            width: 335.w,
-            decoration: BoxDecoration(
-              color: ColorX.cardBg3(),
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                WidgetUtils().buildTextField(
-                    225.w, 46.h, 14.sp, ColorX.text949(), Intr().qsrzcyzm,
-                    hintColor: ColorX.text586(),
-                    backgroundColor: Colors.transparent,
-                    inputType: TextInputType.text,
-                    onChanged: (v) => state.vcode = v),
-                Obx(() {
-                  return WidgetUtils()
-                      .buildVarCode(state.varcode.value.varCode.em(), () {
-                    logic.getVarcode();
-                  });
-                }),
-              ],
-            ),
+        return Container(
+          margin: EdgeInsets.symmetric(horizontal: 20.w),
+          alignment: Alignment.center,
+          child: Row(
+            children: [
+              Expanded(
+                child: FocusContainer(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                      Expanded(
+                        child: WidgetUtils().buildTextField(
+                          0, 46.h, 14.sp, ColorX.text949(), Intr().yzm,
+                          hintColor: ColorX.text586(),
+                          backgroundColor: Colors.transparent,
+                          inputType: TextInputType.text,
+                          onChanged: (v) => state.vcode = v,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(width: 15.w,),
+              Obx(() {
+                return WidgetUtils().buildVarCode(state.varcode.value.varCode.em(), ()=> logic.getVarcode());
+              }),
+            ],
           ),
         );
       } else if (state.varcode.value.status == 1 &&

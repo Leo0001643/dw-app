@@ -30,5 +30,8 @@ class RegisterState {
   ///推广码
   var tgcode = "";
 
+  var areaNo = "+86".obs;
+  ///手机区号数据
+  Map<String,List<String>>? phoneData;
 
 }
