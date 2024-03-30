@@ -56,8 +56,7 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
       ),
       body: Column(
         children: [
-          Obx(
-                () => Visibility(
+          Obx(() => Visibility(
               visible: state.progressVisible.value,
               child: LinearProgressIndicator(
                 value: state.progress.value / 100, //取值为0-1

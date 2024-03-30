@@ -1093,6 +1093,7 @@ class EN{
     "xuanzhenindemorenqianbao":"Select your default wallet",
     "morenqianbaotishi1":"1.Select your default wallet, and the corresponding currency will be used for settlement when entering the game.",
     "morenqianbaotishi2":"2.The exchange operation between the balances of the two wallets can be performed on the [Exchange] page.",
+    "zuida":"最大",
 
 
   };

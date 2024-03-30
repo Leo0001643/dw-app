@@ -565,12 +565,15 @@ class StateGameMenuView extends State<GameMenuView> {
           path: path,
           queryParameters: params,
         );
-        if(inapp!){
-          Get.toNamed(Routes.game_html,
-              arguments: HtmlEvent(data: uri.toString(), isHtmlData: false, pageTitle: element.gameName.em()));
-        }else {
-          launchUrl(uri, mode: LaunchMode.externalApplication);
-        }
+        ///先用获取余额接口检查下登录状态，防止登录失效
+        HttpService.getBalance({"cur":1, "platform":"main","oid":user!.oid,"username":user.username}).then((value) {
+          if(inapp!){
+            Get.toNamed(Routes.game_html,
+                arguments: HtmlEvent(data: uri.toString(), isHtmlData: false, pageTitle: element.gameName.em()));
+          }else {
+            launchUrl(uri, mode: LaunchMode.externalApplication);
+          }
+        });
       }
     });
 

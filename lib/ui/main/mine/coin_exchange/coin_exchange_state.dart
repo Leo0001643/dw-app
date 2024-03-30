@@ -18,7 +18,7 @@ class CoinExchangeState {
 
   ///兑换金额
   var fromAmount = "".obs;
-  var tout = 1.obs;
+  // var tout = 1.obs;
   var toAmount = "".obs;
 
   var usdtRate = 0.0.obs;

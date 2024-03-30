@@ -853,7 +853,7 @@ class CN {
     "duihuan":"兑换",
     "huilv_":"汇率: %s",
     "cong_from":"从",
-    "zhi_to":"至",
+    "zhi_to":"到",
     "zhuanru":"转入",
     "huazhuanjine":"划转金额",
     "querenhuazhuan":"确认划转",
@@ -1023,6 +1023,7 @@ class CN {
     "xuanzhenindemorenqianbao":"选择您的默认钱包",
     "morenqianbaotishi1":"1.选择您的默认钱包，进入游戏将使用对应的钱包进行结算。",
     "morenqianbaotishi2":"2.可在[币币兑换]页面进行双钱包余额之间的兑换操作。",
+    "zuida":"最大",
 
 
 

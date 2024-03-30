@@ -682,6 +682,7 @@ class Intr extends Translations{
   String get morenqianbaotishi1 => "morenqianbaotishi1".tr;
   String get morenqianbaotishi2 => "morenqianbaotishi2".tr;
   String get reminder => "reminder".tr;
+  String get zuida => "zuida".tr;
 
 
 
