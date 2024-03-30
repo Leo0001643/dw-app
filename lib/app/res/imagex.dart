@@ -596,9 +596,11 @@ class ImageX{
   static const back_white = 'assets/images/back_white.svg';
 
   static const emptyicon = 'assets/images/emptyicon.svg';
-
-
   static const defultImg =  'assets/images/defultImg.png';
+  static const xiangxia =  'assets/images/xiangxia.svg';
+  static const xiangxia_dark =  'assets/images/xiangxia_dark.svg';
+  static const language =  'assets/images/language.svg';
+  static const language_dark =  'assets/images/language_dark.svg';
 
   
   static String startP(){
@@ -1011,7 +1013,13 @@ class ImageX{
     return AppData.theme() ? icon_jj_grey : currency_cny;
   }
 
+  static String xiangxiaT(){
+    return AppData.theme() ? xiangxia : xiangxia_dark;
+  }
 
+  static String languageT(){
+    return AppData.theme() ? language : language_dark;
+  }
 
 
 
