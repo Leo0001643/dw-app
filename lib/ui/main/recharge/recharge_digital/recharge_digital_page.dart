@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
@@ -78,7 +79,8 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
           Column(
             children: [
               WidgetUtils().buildRoomBar(state.title,bgColor: Colors.transparent,msg: true,drawer: true,
-                  scaffoldKey: state.scaffoldKey,onTap: (){
+                  scaffoldKey: state.scaffoldKey,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+                  onTap: (){
                 if(unEmpty(state.paymentList.value)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
                     if(unEmpty(value)){ jumpPage(value!); }

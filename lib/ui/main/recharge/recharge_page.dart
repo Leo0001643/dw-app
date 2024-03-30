@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -136,7 +137,10 @@ class _RechargePageState extends State<RechargePage> {
                   // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     WidgetUtils().buildAppBar(Intr().chongzhizhongxin,
-                        msg: true, drawer: true, back: false,scaffoldKey: Get.find<MainLogic>().state.scaffoldKey,bgColor: Colors.transparent),
+                        msg: true, drawer: true, back: false,
+                        scaffoldKey: Get.find<MainLogic>().state.scaffoldKey,
+                        bgColor: Colors.transparent,
+                    systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light)),
                     SizedBox(height: 10.h,),
                     Obx(() {
                       return GFAvatar(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
@@ -56,7 +57,9 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                   ),
                 ),
                 height: 213.h,
-                child: WidgetUtils().buildRxAppBar(state.title, msg: true, bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey),
+                child: WidgetUtils().buildRxAppBar(state.title, msg: true, bgColor: Colors.transparent,
+                    systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+                    scaffoldKey: state.scaffoldKey),
               ),
               Container(
                 margin: EdgeInsets.only(top: 193.h),

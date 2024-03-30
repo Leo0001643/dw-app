@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
@@ -62,7 +63,8 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
           Column(
             children: [
               WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: Colors.transparent,
-                  scaffoldKey: state.scaffoldKey, onTap: (){
+                  scaffoldKey: state.scaffoldKey, systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+                  onTap: (){
                 if(unEmpty(state.paymentList.value)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
                     if(unEmpty(value)){ jumpPage(value!); }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
@@ -45,7 +46,8 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
           Column(
             children: [
               WidgetUtils().buildAppBar(Intr().chongzhi,msg: true,
-                  bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey),
+                  bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey,
+                systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),),
               Container(
                 height: 115.h,
                 child: Column(

@@ -109,7 +109,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
         padding: EdgeInsets.all(15.r),
         child: Row(
           children: [
-            Image.asset(icon,width: 18.r,),
+            WidgetUtils().buildImage(icon, 18.r, 18.r),
             SizedBox(width: 5.w,),
             Text(title,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),),
             Expanded(child: Container()),

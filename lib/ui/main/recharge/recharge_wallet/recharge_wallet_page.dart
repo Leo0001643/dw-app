@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
@@ -47,7 +48,9 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
           ),
           Column(
             children: [
-              WidgetUtils().buildRoomBar(state.title,msg: true,drawer: true,scaffoldKey: state.scaffoldKey,bgColor: Colors.transparent,onTap: (){
+              WidgetUtils().buildRoomBar(state.title,msg: true,drawer: true,scaffoldKey: state.scaffoldKey,bgColor: Colors.transparent,
+                  systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+                  onTap: (){
                 if(unEmpty(state.paymentList)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
                     if(unEmpty(value)){jumpPage(value!);}

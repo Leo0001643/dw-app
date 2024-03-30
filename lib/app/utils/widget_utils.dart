@@ -201,6 +201,7 @@ class WidgetUtils {
         bool drawer = false,
         String? backIcon,
         GlobalKey<ScaffoldState>? scaffoldKey,
+        SystemUiOverlayStyle? systemOverlayStyle
       }) {
     if(isEmpty(backIcon)){
       backIcon = ImageX.iconPageBackT();
@@ -217,6 +218,7 @@ class WidgetUtils {
       backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
       toolbarHeight: 44.h,
+      systemOverlayStyle: systemOverlayStyle,
       leading: Visibility(
         visible: back,
         child: InkWell(
@@ -292,6 +294,7 @@ class WidgetUtils {
         Color? bgColor,
         bool drawer = true,
         GlobalKey<ScaffoldState>? scaffoldKey,
+        SystemUiOverlayStyle? systemOverlayStyle,
       }) {
     return AppBar(
       title: Obx(() {
@@ -304,6 +307,7 @@ class WidgetUtils {
         );
       }),
       centerTitle: true,
+      systemOverlayStyle: systemOverlayStyle,
       backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
       toolbarHeight: 44.h,
@@ -355,6 +359,7 @@ class WidgetUtils {
     bool drawer = true,
     GlobalKey<ScaffoldState>? scaffoldKey,
     GestureTapCallback? onTap,
+    SystemUiOverlayStyle? systemOverlayStyle,
   }) {
     return AppBar(
       title: InkWell(
@@ -384,6 +389,7 @@ class WidgetUtils {
         ),
       ),
       centerTitle: true,
+      systemOverlayStyle: systemOverlayStyle,
       backgroundColor: bgColor ?? ColorX.appBarBg2(),
       elevation: 0,
       toolbarHeight: 44.h,
