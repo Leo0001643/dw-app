@@ -133,7 +133,7 @@ class DialogUtils {
             ),
             backgroundColor: ColorX.cardBg5(),
             titlePadding: EdgeInsets.zero,
-            contentPadding: EdgeInsets.zero,
+            contentPadding: EdgeInsets.symmetric(horizontal: 15.w),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -374,17 +374,14 @@ class DialogUtils {
     return showModalBottomSheet<BankEntity>(
         context: context,
         isScrollControlled: true,
+        enableDrag: false,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),
         ),
         backgroundColor: ColorX.cardBg5(),
         builder: (context) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: SelectBankBottomDialog(list),
-          );
+          return SelectBankBottomDialog(list);
         });
   }
 

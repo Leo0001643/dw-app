@@ -13,6 +13,7 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
+import 'package:leisure_games/ui/bean/language_event.dart';
 
 class CurrencyDialog extends StatefulWidget {
 
@@ -61,34 +62,10 @@ class StateCurrencyDialog extends State<CurrencyDialog>{
           SizedBox(height: 10.h,),
           Text(Intr().morenqianbao,style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3()),),
           SizedBox(height: 8.h,),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 5.h),
-            child: Obx(() {
-              return DropdownButtonHideUnderline(
-                child: GFDropdown(
-                  elevation: 0,
-                  borderRadius: BorderRadius.circular(10.r),
-                  iconEnabledColor: ColorX.text0917(),
-                  border: BorderSide(color: Colors.black12, width: 1.w),
-                  dropdownButtonColor: ColorX.pageBg(),
-                  dropdownColor: ColorX.pageBg(),
-                  isExpanded: true,
-                  itemHeight: 45.h,
-                  value: dropdownValue.value,
-                  onChanged: (newValue) {
-                    dropdownValue.value = newValue!;
-                    dropdownValue.refresh();
-                  },
-                  items: buildLanguageItem(),
-                ),
-              );
-            }),
-          ),
+          ...country.map((e) => buildLanguageItem(e)).toList(),
           SizedBox(height: 12.h,),
           Text(Intr().shedingqianbao,
             style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
-          SizedBox(height: 20.h,),
-          Divider(height: 1.h,color: ColorX.color_f1f1f1,),
           SizedBox(height: 12.h,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,19 +93,33 @@ class StateCurrencyDialog extends State<CurrencyDialog>{
   }
 
 
-  List<DropdownMenuItem<BalanceEntity>> buildLanguageItem() {
-    return country.map((e) {
-      return DropdownMenuItem<BalanceEntity>(
-        value: e,
-        child: Row(
-          children: [
-            WidgetUtils().buildImage(e.icon.em(),24.r,24.r,fit: BoxFit.scaleDown),
-            SizedBox(width: 12.w,),
-            Text(e.language.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3()),),
-          ],
+  Widget buildLanguageItem(BalanceEntity e) {
+    return Column(
+      children: [
+        InkWell(
+          onTap: (){
+            dropdownValue.value = e;
+            dropdownValue.refresh();
+          },
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 5.w,vertical: 10.h),
+            child: Row(
+              children: [
+                WidgetUtils().buildImage(e.icon.em(),24.r,24.r,fit: BoxFit.scaleDown),
+                SizedBox(width: 12.w,),
+                Expanded(
+                  child: Text(e.language.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text3e3()),),
+                ),
+                Obx(() {
+                  return WidgetUtils().buildImage(e.language == dropdownValue.value.language ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r);
+                }),
+              ],
+            ),
+          ),
         ),
-      );
-    }).toList();
+        Divider(height: 1.h,color: ColorX.color_f1f1f1,),
+      ],
+    );
   }
 
 

@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -21,17 +23,11 @@ class SelectBankBottomDialog extends StatefulWidget{
 
 class StateSelectBankBottomDialog extends State<SelectBankBottomDialog>{
 
-  var scroller = FixedExtentScrollController();
-  var current = 0;
+  var banks = RxList<BankEntity>.empty(growable: true);
 
   @override
   void initState() {
-    ///如果内容很多，可以滑动到中间区域，这样弹窗上部就不会预留出很大的空白
-    Future.delayed(const Duration(milliseconds: 100),(){
-      if(widget.list.em() > 10 && scroller.hasClients){
-        scroller.jumpTo((widget.list.em()/2) * 40.h);
-      }
-    });
+    banks.assignAll(widget.list);
     super.initState();
   }
 
@@ -45,23 +41,30 @@ class StateSelectBankBottomDialog extends State<SelectBankBottomDialog>{
       height: 0.6.sh,
       child: Column(
         children: [
+          SizedBox(height: 10.h,),
+          WidgetUtils().buildTextField(340.w, 40.h, 14.sp, ColorX.text0917(), Intr().shuruyinhangmingcheng,
+            backgroundColor : ColorX.cardBg3(),onChanged: (v)=> queryBanks(v),),
           Expanded(
-            child: CupertinoPicker(
-              itemExtent: 40.h, // 设置单个选项高度
-              onSelectedItemChanged: (int index) {
-                current = index;
-              },
-              scrollController: scroller,
-              diameterRatio: 1.8,
-              squeeze: 1.1,
-              children: widget.list.map((e) => buildPaywayItem(e)).toList(),
+            child: SingleChildScrollView(
+              child: Obx(() {
+                return Column(
+                  children: [
+                    ...banks.map((e) => buildPaywayItem(e)).toList(),
+                  ],
+                );
+              }),
             ),
           ),
+          Divider(height: 1.h,color: ColorX.color_f1f1f1,),
           Align(
             alignment: Alignment.center,
-            child: WidgetUtils().buildElevatedButton(Intr().tijiao, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
-              Navigator.of(context).pop(widget.list[current]);
-            }),
+            child:InkWell(
+              onTap: ()=> Navigator.pop(context,null),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 15.h,horizontal: 15.w),
+                child: Text(Intr().cancel,style: TextStyle(color: ColorX.text0917(),fontSize: 14.sp),),
+              ),
+            ),
           ),
           SizedBox(height: 20.h,),
         ],
@@ -70,11 +73,29 @@ class StateSelectBankBottomDialog extends State<SelectBankBottomDialog>{
   }
 
   Widget buildPaywayItem(BankEntity item) {
-    return Container(
-      height: 40.h,
-      alignment: Alignment.center,
-      child: Text(item.bankName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+    return InkWell(
+      onTap: ()=> Navigator.of(context).pop(item),
+      child: Container(
+        height: 40.h,
+        alignment: Alignment.center,
+        child: Text(item.bankName.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+      ),
     );
+  }
+
+  var lastTime = DateTime.now().millisecondsSinceEpoch;
+
+  void queryBanks(String keyword) {
+    var time = DateTime.now().millisecondsSinceEpoch;
+    if(time - lastTime > 1000){
+      banks.clear();
+      widget.list.forEach((element) {
+        if(element.bankName?.contains(keyword) == true){
+          banks.add(element);
+        }
+      });
+      banks.refresh();
+    }
   }
 
 }

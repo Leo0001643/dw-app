@@ -196,7 +196,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                               ),
                               SizedBox(height: 10.h,),
                               Container(
-                                decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r),),
+                                decoration: BoxDecoration(color: ColorX.cardBg19(),borderRadius: BorderRadius.circular(10.r),),
                                 padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 13.h),
                                 width: 1.sw,
                                 child: Obx(() {
@@ -209,7 +209,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                               ),
                               SizedBox(height: 10.h,),
                               Container(
-                                decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r),),
+                                decoration: BoxDecoration(color: ColorX.cardBg19(),borderRadius: BorderRadius.circular(10.r),),
                                 padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 13.h),
                                 width: 1.sw,
                                 child: Obx(() {

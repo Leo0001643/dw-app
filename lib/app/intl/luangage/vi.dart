@@ -1024,6 +1024,7 @@ class VI{
     "morenqianbaotishi1":"1.Chọn ví mặc định của bạn và loại tiền tương ứng sẽ được sử dụng để thanh toán khi vào trò chơi.",
     "morenqianbaotishi2":"2.Hoạt động trao đổi giữa số dư của hai ví có thể được thực hiện trên trang [chuyển khoản].",
     "zuida":"最大",
+    "shuruyinhangmingcheng":"请输入银行名称",
 
 
   };

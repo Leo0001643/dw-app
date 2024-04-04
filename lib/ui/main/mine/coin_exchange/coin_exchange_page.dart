@@ -151,7 +151,10 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
                   }),
                 ),
                 InkWell(
-                  // onTap: ()=> logic.exchangeCoin((balance.money.em().toInt()).toString()),
+                onTap: () {
+                  var balance = state.c2u.value ? state.cnyBal.value : state.usdtBal.value;
+                  logic.exchangeCoin((balance.money.em().toInt()).toString());
+                },
                   child: Text(Intr().zuida,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
                 ),
               ],
