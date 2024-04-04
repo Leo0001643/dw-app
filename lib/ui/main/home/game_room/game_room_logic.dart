@@ -220,6 +220,7 @@ class GameRoomLogic extends GetxController {
     var tag = "${room.gameType.em()}_${room.level.em()}_room_message";
     var roomWriting = isEmpty(state.roomWriting) ? null :  state.roomWriting.firstWhere((element) => element.tag == tag);
     loggerArray(["加载房间文案的数据l ",roomWriting]);
+    logic.showOverTime(-1);///去掉倒计时
     logic.loadDataGameCode(room.gameType.em(),roomWriting);
     _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
       logic.loadDataGameCode(room.gameType.em(),roomWriting);

@@ -75,12 +75,7 @@ class AppData {
     prefs?.setBool("bg_music", open);
   }
 
-  static void setGestureValue(String gestureValue) {
-    prefs?.setString("gestureValue", gestureValue);
-  }
-  static String getGestureValue() {
-    return prefs?.getString("gestureValue") ?? "";
-  }
+
 
   // static void setJymm(bool open) {
   //   prefs?.setBool("bg_jymm", open);
@@ -155,33 +150,73 @@ class AppData {
     return prefs?.getBool("wallet_mode") ?? true;
   }
 
-  // ///简易密码
-  // static void setSimplePwd(String pwd) {
-  //   prefs?.setString("simple_pwd", pwd);
-  // }
-  //
-  // static String simplePwd() {
-  //   return prefs?.getString(
-  //         "simple_pwd",
-  //       ) ??
-  //       "";
-  // }
-
-  static void setLoginPwd(String pwd) {
-    prefs?.setString("login_pwd", pwd);
+  static void setLoginPwd(String user,String pwd) {
+    prefs?.setString("login_pwd_$user", pwd);
   }
 
-  static String loginPwd() {
-    return prefs?.getString("login_pwd",) ?? "";
+  static String loginPwd(String user) {
+    return prefs?.getString("login_pwd_$user",) ?? "";
   }
 
   static void setLoginUser(String user) {
-    prefs?.setString("login_user", user);
+    ///保证最近一次登录的用户始终都在队列的最后面
+    if(unEmpty(loginUser(user))){
+      prefs?.remove("login_user_$user");
+    }
+    prefs?.setString("login_user_$user", user);
   }
 
-  static String loginUser() {
-    return prefs?.getString("login_user",) ?? "";
+  static String loginUser(String user) {
+    return prefs?.getString("login_user_$user",) ?? "";
   }
+  
+  static String lastLoginUser(){
+    var users = List.empty(growable: true);
+    prefs?.getKeys().forEach((element) {
+      if(element.startsWith("login_user")){
+        users.add(prefs?.getString(element) ?? "");
+      }
+    });
+    return users.lastOrNull ?? '';
+  }
+
+  static String lastLoginPwd(){
+    var pwds = List.empty(growable: true);
+    prefs?.getKeys().forEach((element) {
+      if(element.startsWith("login_pwd")){
+        pwds.add(prefs?.getString(element) ?? "");
+      }
+    });
+    return pwds.lastOrNull ?? '';
+  }
+
+  ///为当前登录用户设置手势密码
+  static void setGestureValue(String gestureValue) {
+    prefs?.setString("gestureValue_${AppData.lastLoginUser()}", gestureValue);
+  }
+
+  ///获取当前登录用户的手势密码
+  static String getGestureValue({String? user}) {
+    user = user ?? AppData.lastLoginUser();
+    return prefs?.getString("gestureValue_$user") ?? "";
+  }
+
+  ///通过手势密码获取对应的用户
+  static String getUserByGesture(String gestureValue){
+    var users = List.empty(growable: true);
+    prefs?.getKeys().forEach((element) {
+      ///找到所有手势密码的key
+      if(element.startsWith("gestureValue")){
+        //对比其中是否有匹配的手势密码
+        if(gestureValue == prefs?.getString(element)){
+          ///如果有匹配的手势密码则返回用户
+          users.add(element.replaceFirst("gestureValue_", ""));
+        }
+      }
+    });
+    return users.lastOrNull ?? '';
+  }
+
 
   static void setUser(LoginUserEntity user) {
     prefs?.setString("user", jsonEncode(user.toJson()));

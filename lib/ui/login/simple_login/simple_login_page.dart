@@ -140,6 +140,7 @@ class _SimpleLoginPageState extends State<SimpleLoginPage> {
                 InkWell(
                   onTap:()=> DialogUtils().showMessageDialog(context, Intr().chongzhijymmtishi,
                   onCancel: ()=> Navigator.pop(context),onConfirm: (){
+                    ///清空当前登录用户的手势密码
                     AppData.setGestureValue("");
                     Navigator.pop(context);
                     Get.offAndToNamed(Routes.login);

@@ -211,7 +211,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
     String termData = GameRuleUtil.getSimpleSSB(headWSLotteryEntityData.term.em(), year: ""); // 4
     List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData.originalNum.em()); //3
 
-    var result = arr2[3] > 9 ? '${arr2[3]}' : '0${arr2[3]}';
+    var result = arr2[3] > 9 ? '${arr2[3]}' : (arr2[3] > 0 ? '0${arr2[3]}' : '${arr2[3]}');
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,

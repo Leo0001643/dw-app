@@ -11,4 +11,5 @@ class SimpleLoginState {
   var varcode = VarCodeEntity().obs;
 
 
+
 }

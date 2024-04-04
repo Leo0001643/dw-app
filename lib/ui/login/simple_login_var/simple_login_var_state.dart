@@ -9,5 +9,7 @@ class SimpleLoginVarState {
   var varcode = VarCodeEntity().obs;
   var vcode = "";
 
+  String? user;
+
 
 }

@@ -86,8 +86,8 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                             builder: (context,cts){
                               var headWSLotteryEntityData = Get.find<GameRoomLogic>().headWSLotteryEntityData;
                               List<int> arr2 = GameRuleUtil.parseLottery(headWSLotteryEntityData?.originalNum??""); //3
-                              loggerArray(["咪牌开奖结果更新",arr2,logic.guaguaMask]);
-                              var result = arr2[3] > 9 ? '${arr2[3]}' : '0${arr2[3]}';
+                              // loggerArray(["咪牌开奖结果更新",arr2,logic.guaguaMask]);
+                              var result = arr2[3] > 9 ? '${arr2[3]}' : (arr2[3] > 0 ? '0${arr2[3]}' : '${arr2[3]}');
                               var icon = AnimatedOpacity(
                                 opacity: opacity,
                                 duration: const Duration(milliseconds: 750),
@@ -142,20 +142,15 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                               Expanded(
                                 child: LayoutBuilder(
                                   builder: (context,cts){
-                                    var lotteryTime = logic.lotCount >= 0 ?"${logic.lotCount}s" : "";
-                                    try{
-                                      return Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Text(Intr().dixqitouzhu([nextTerm,logic.mipaiTime]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
-                                          SizedBox(height: 3.h,),
-                                          Text(Intr().dixqikaijiang([nextTerm,lotteryTime]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
-                                        ],
-                                      );
-                                    }catch(e){
-                                      logger(["这里报错会是什么情况",e]);
-                                      return Container();
-                                    }
+                                    var lotteryTime = (int.tryParse(logic.mipaiOpenTime)??0) > 0 ? logic.mipaiOpenTime : Intr().kaijiangzhong;
+                                    return Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(Intr().dixqitouzhu([nextTerm,logic.mipaiBetTime]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                        SizedBox(height: 3.h,),
+                                        Text(Intr().dixqikaijiang([nextTerm,lotteryTime]),style: TextStyle(fontSize: 14.sp,color: ColorX.color_fdf7e0),),
+                                      ],
+                                    );
                                   },
                                 ),
                               ),

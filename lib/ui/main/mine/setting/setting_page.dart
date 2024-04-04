@@ -334,11 +334,11 @@ class _SettingPageState extends State<SettingPage> {
                                 fontSize: 12.sp, color: ColorX.text0d1()),
                           ),
                           Expanded(child: Container()),
-                          Text(
-                            Intr().quankai,
-                            style: TextStyle(
-                                fontSize: 12.sp, color: ColorX.text949()),
-                          ),
+                          // Text(
+                          //   Intr().quankai,
+                          //   style: TextStyle(
+                          //       fontSize: 12.sp, color: ColorX.text949()),
+                          // ),
                           Image.asset(ImageX.icon_right_grey,
                               color: ColorX.text586())
                         ],

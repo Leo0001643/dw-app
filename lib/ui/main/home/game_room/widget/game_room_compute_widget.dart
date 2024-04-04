@@ -246,9 +246,9 @@ class GameRoomComputeWidget extends StatelessWidget {
               headWSLotteryEntityData?.originalNum ?? ""); //3
           var color = state.roomType.value == 1 ? ColorX.text0917() : ColorX.color_ffe0ac;
 
-          loggerArray(["=========>更新期数",headWSLotteryEntityData?.term,logic.currentStatus.value]);
+          loggerArray(["=========>更新期数",headWSLotteryEntityData?.toJson()]);
 
-          var result = arr2[3] > 9 ? '${arr2[3]}' : '0${arr2[3]}';
+          var result = arr2[3] > 9 ? '${arr2[3]}' : (arr2[3] > 0 ? '0${arr2[3]}' : '${arr2[3]}');
 
           return InkWell(
             onTap: () => DialogUtils().showHistoryLotteryBtmDialog(context, logic),
@@ -287,7 +287,7 @@ class GameRoomComputeWidget extends StatelessWidget {
     var color1 = state.roomType.value == 1 ? ColorX.color_10_fc2 : ColorX.color_c7956f;
     var textColor1 = state.roomType.value == 1 ? ColorX.text0917() : ColorX.color_091722;
     var color3 = state.roomType.value == 1 ? ColorX.cardBg3() : ColorX.color_ffe0ac;
-    return (result == "-1" || showWaittingImg == true)
+    return showWaittingImg == true
         ? WidgetUtils().buildImage(ImageX.iconRoomMask2T(), 46.r, 18.r,fit: BoxFit.fill)
         : Container(
       decoration: BoxDecoration(
@@ -303,7 +303,7 @@ class GameRoomComputeWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(15.r),
         ),
         child: Text(
-          result,
+          result == "-1" ? "?":result,
           style: TextStyle(
               fontSize: 13.sp,
               color: textColor1,
@@ -331,7 +331,7 @@ class GameRoomComputeWidget extends StatelessWidget {
         state.roomType.value == 1 ? ColorX.cardBg3() : ColorX.color_ffe0ac;
     var textColor1 = state.roomType.value == 1 ? ColorX.text0917() : ColorX.color_091722;
 
-    return (num == "-1" || showWaittingImg == true)
+    return showWaittingImg == true
         ? WidgetUtils().buildImage(ImageX.iconRoomMaskT(), 24.r, 24.r,fit: BoxFit.fill)
         : Container(
             width: 24.r,
@@ -341,7 +341,7 @@ class GameRoomComputeWidget extends StatelessWidget {
               color: color,
               borderRadius: BorderRadius.circular(15.r),
             ),
-            child: Text(num,
+            child: Text(num == "-1" ? "?":num,
               style: TextStyle(
                   fontSize: 14.sp, color: textColor1, fontWeight: FontWeight.w600),
             ),

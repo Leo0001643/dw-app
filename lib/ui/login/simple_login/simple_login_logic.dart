@@ -26,8 +26,9 @@ class SimpleLoginLogic extends GetxController {
 
   void login(String value){
     loggerArray(["是否验证过啦",value]);
-    if(value == AppData.getGestureValue()){
-      Get.offAndToNamed(Routes.simple_login_var);
+    var user = AppData.getUserByGesture(value);
+    if(unEmpty(user)){
+      Get.offAndToNamed(Routes.simple_login_var,arguments: user);
     } else {
       // pwdController.text = "";
       showToast(Intr().mimacuowu);

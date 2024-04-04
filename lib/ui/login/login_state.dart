@@ -7,8 +7,8 @@ import '../bean/var_code_entity.dart';
 class LoginState {
   LoginState() {
     ///Initialize variables
-    accountValue = AppData.loginUser();
-    pwdValue = AppData.loginPwd();
+    accountValue = AppData.lastLoginUser();
+    pwdValue = AppData.lastLoginPwd();
     btnEnable.value = (unEmpty(accountValue) && unEmpty(pwdValue));
   }
 

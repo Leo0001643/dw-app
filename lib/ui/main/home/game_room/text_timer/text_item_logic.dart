@@ -17,6 +17,7 @@ import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 import 'package:scratcher/scratcher.dart';
 
@@ -113,6 +114,8 @@ class TextItemLogic extends GetxController {
   // String gameCode="";
   void loadDataGameCode(String gameCode,RoomCopyWritingEntity? roomWriting) {
     this.roomWriting = roomWriting;
+    countdownTimer?.cancel();
+    countdownTimer = null;
     loggerArray(["==========>loadDataGameCode  $roomWriting",gameCode]);
     //测试用
     HttpService.getPc28LottoList().then((value) {
@@ -158,8 +161,8 @@ class TextItemLogic extends GetxController {
   }
 
   ///咪牌距离下一期投注倒计时
-  var mipaiTime = "";
-  var lotCount = -1;
+  var mipaiBetTime = "";
+  var mipaiOpenTime = "";
   void timeCountOnly(
       diffTime, Pc28LottoRooms pc28lottoRoom,Map<String,dynamic> pc28Plan) {
     Map<String, dynamic> allTime = pc28Plan['all'];
@@ -224,7 +227,7 @@ class TextItemLogic extends GetxController {
               showKeyCountTime(showT,term);
 
               showStartBettingTime(showT,term);
-              if (showT <= 5) {
+              if (showT <= 5 && showT >= 0) {
                 showOverTime(showT);
               }
               lastShowTime = showT;
@@ -257,7 +260,7 @@ class TextItemLogic extends GetxController {
           String showtime = secToTime(showT);
           roomcountdown['${key}Time'] = showtime;
           roomcountdown['${key}Term'] = data[0]['term'];
-          if (showT <= 5) {
+          if (showT <= 5 && showT >= 0) {
             showOverTime(showT);
           } else {
             showOverTime(-1);
@@ -280,27 +283,34 @@ class TextItemLogic extends GetxController {
     // if(showT == 50){
     //   showOpen(showT, data[0]['term']);
     // }
+    // loggerArray(["期号倒计时结果",lastStatus,roomcountdown,]);
+
     lastStatusContent = roomcountdown['${key}Time'] ?? '';
     ///处理咪牌开奖逻辑 开始
-    if(LotteryStatus.sealingPlateStatus == currentStatus.value){
-      fengpanCount++;
-    }else if(LotteryStatus.wattingLotteryStatus != currentStatus.value){
-      fengpanCount = -1;
-    }
-    if(LotteryStatus.sealingPlateStatus == currentStatus.value){
-      mipaiTime = Intr().fengpanzhong;
-      lotCount = 9 - fengpanCount;
-    } else if(LotteryStatus.wattingLotteryStatus == currentStatus.value){
-      mipaiTime = Intr().dengdaikaipan;
-    }else {
-      mipaiTime = subToTime(state.text_timer.value)??"";
-      var timeParts = mipaiTime.split(":");
-      if(timeParts.length == 2){
-        lotCount = 10 + int.tryParse(timeParts.last).em();
-      }
-    }
-    ///显示开奖中封面图
-    if(lotCount == 0 && guaguaMask != ImageX.lotteringP()){
+    //如果是封盘中
+    mipaiBetTime = currentStatus.value == LotteryStatus.sealingPlateStatus ? roomcountdown['${key}Time'] : subToTime(roomcountdown['${key}Time']);
+    //如果是开奖中
+    mipaiOpenTime = roomcountdown['${key}OpenResult'].toString();
+
+    // if(LotteryStatus.sealingPlateStatus == currentStatus.value){
+    //   fengpanCount++;
+    // }else if(LotteryStatus.wattingLotteryStatus != currentStatus.value){
+    //   fengpanCount = -1;
+    // }
+    // if(LotteryStatus.sealingPlateStatus == currentStatus.value){
+    //   mipaiTime = Intr().fengpanzhong;
+    //   lotCount = 9 - fengpanCount;
+    // } else if(LotteryStatus.wattingLotteryStatus == currentStatus.value){
+    //   mipaiTime = Intr().dengdaikaipan;
+    // }else {
+    //   mipaiTime = subToTime(state.text_timer.value)??"";
+    //   var timeParts = mipaiTime.split(":");
+    //   if(timeParts.length == 2){
+    //     lotCount = 10 + int.tryParse(timeParts.last).em();
+    //   }
+    // }
+    // ///显示开奖中封面图
+    if((int.tryParse(mipaiOpenTime)??0) <= 0 && guaguaMask != ImageX.lotteringP()){
       guaguaMask = ImageX.lotteringP();
       ///重绘状态控制器
       scratchKey = GlobalKey<ScratcherState>();
@@ -312,11 +322,10 @@ class TextItemLogic extends GetxController {
       scratchKey = GlobalKey<ScratcherState>();
     }
     ///处理咪牌开奖逻辑 结束
-    loggerArray(["期号倒计时结果",lastStatus,roomcountdown,]);
     update([id_textTimerItem]);
   }
 
-  var fengpanCount = 0;
+  // var fengpanCount = 0;
 
   String secToTime(int sec) {
     int hours = sec ~/ 3600;

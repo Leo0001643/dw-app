@@ -60,23 +60,23 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
                     ),
                   ),
                   Expanded(
-                    flex: 30,
+                    flex: 20,
                     child: Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Text(Intr().bishu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
                   ),
                   Expanded(
                     flex: 30,
                     child: Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Text(Intr().touzhue,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
                   ),
                   Expanded(
                     flex: 30,
                     child: Align(
-                      alignment: Alignment.centerLeft,
+                      alignment: Alignment.center,
                       child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                     ),
                   ),
@@ -198,9 +198,9 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
               ),
             ),
             Expanded(
-              flex: 30,
+              flex: 20,
               child: Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 child: Text("${item.betCount}",
                   style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
               ),
@@ -208,7 +208,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
             Expanded(
               flex: 30,
               child: Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 child: Text("${item.betAmount??0}",
                   style: TextStyle(fontSize: 14.sp, color: ColorX.color_fc243b,),),
               ),
@@ -217,7 +217,7 @@ class _BettingDetailPageState extends State<BettingDetailPage> {
             Expanded(
               flex: 30,
               child: Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 child: Text("${((item.winlose.em()) >= 0) ? "+" : ""}${DataUtils.formatMoney(item.winlose)}",
                   style: TextStyle(fontSize: 14.sp,color: ((item.winlose.em()??0) >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,),),
               ),

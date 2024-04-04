@@ -13,6 +13,7 @@ class SimpleLoginVarLogic extends GetxController {
 
   @override
   void onReady() {
+    state.user = Get.arguments;
     getVarcode();
     super.onReady();
   }
@@ -36,9 +37,11 @@ class SimpleLoginVarLogic extends GetxController {
 
 
   void clickLogin({dynamic data}){
+    if(isEmpty(state.user)) return;
+    var pwd = AppData.loginPwd(state.user.em());
     var params = <String,dynamic>{
-      "username": AppData.loginUser(),
-      "password": AppData.loginPwd(),
+      "username": state.user.em(),
+      "password": pwd,
       "scene": "nc_login_h5",
       "token": -1,
     };
@@ -77,8 +80,8 @@ class SimpleLoginVarLogic extends GetxController {
     HttpService.login(params).then((value) {
       eventBus.fire(LoginRefreshEvent());
       AppData.setUser(value);
-      // AppData.setLoginUser(state.accountValue);
-      // AppData.setLoginPwd(state.pwdValue);
+      AppData.setLoginUser(state.user.em());
+      AppData.setLoginPwd(state.user.em(),pwd);
       Get.until((ModalRoute.withName(Routes.main)));
     },onError: (error){
       getVarcode();///出错需要刷新验证码

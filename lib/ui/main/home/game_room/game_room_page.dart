@@ -322,8 +322,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
         id: TextItemLogic.id_fiveCountDownStatus,
         builder: (logic) {
           return Visibility(
-              visible:
-                  logic.fiveCountDownTime <= 5 && (logic.fiveCountDownTime > 0),
+              visible: logic.fiveCountDownTime <= 5 && logic.fiveCountDownTime > 0,
               child: WidgetUtils().buildImage(
                   buildImage(logic.fiveCountDownTime), 100.w, 40.h));
         });

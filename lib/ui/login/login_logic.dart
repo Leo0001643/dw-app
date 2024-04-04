@@ -93,7 +93,7 @@ class LoginLogic extends GetxController {
       eventBus.fire(LoginRefreshEvent());
       AppData.setUser(value);
       AppData.setLoginUser(state.accountValue);
-      AppData.setLoginPwd(state.pwdValue);
+      AppData.setLoginPwd(state.accountValue,state.pwdValue);
 
       Get.until((ModalRoute.withName(Routes.main)));
     },onError: (error){
