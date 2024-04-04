@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tencent_captcha/tencent_captcha.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:leisure_games/app/app_theme.dart';
+import 'package:lifecycle/lifecycle.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'app/app_data.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
           enableLog: true,
           initialRoute: Routes.main,
           getPages: Routes.getPages,
-          navigatorObservers: [RouteObservers()],
+          navigatorObservers: [defaultLifecycleObserver,RouteObservers()],
           locale: Intr().currentLocale(),
           fallbackLocale: Intr().fallbackLocale(), ///添加一个默认语言选项，以备上面指定的语言翻译 不存在
           supportedLocales: Intr().locales,

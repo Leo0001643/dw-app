@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: 335.w,
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: WidgetUtils().buildTextField(
-                    325.w, 46.h, 14.sp, ColorX.text949(), Intr().yhm,
+                    325.w, 46.h, 14.sp, ColorX.textBlack(), Intr().yhm,
                     hintColor: ColorX.text586(),
                     defText: state.accountValue,
                     backgroundColor: Colors.transparent,
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.only(left: 35.w),
               child: Text(
                 Intr().sidao12shuzihuozimu,
-                style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
+                style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                     Expanded(
                       child: Obx(() {
                         return WidgetUtils().buildTextField(
-                            0, 46.h, 14.sp, ColorX.text949(), Intr().mm,
+                            0, 46.h, 14.sp, ColorX.textBlack(), Intr().mm,
                             backgroundColor: Colors.transparent,
                             onChanged: (v) => logic.editChange(false, v),
                             defText: state.pwdValue,
@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.only(left: 35.w),
               child: Text(
                 Intr().wszhzm,
-                style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
+                style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(height: 10.h,),
@@ -199,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                           Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                           Expanded(
                             child: WidgetUtils().buildTextField(
-                              0, 46.h, 14.sp, ColorX.text949(), Intr().yzm,
+                              0, 46.h, 14.sp, ColorX.textBlack(), Intr().yzm,
                               hintColor: ColorX.text586(),
                               backgroundColor: Colors.transparent,
                               inputType: TextInputType.text,
@@ -222,7 +222,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: EdgeInsets.only(left: 35.w),
               child: Text(
                 Intr().qsrzcyzm,
-                style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),
+                style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.bold),
               ),
             ),
           ],

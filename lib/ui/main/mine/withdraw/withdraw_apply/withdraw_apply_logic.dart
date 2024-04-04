@@ -59,7 +59,7 @@ class WithdrawApplyLogic extends GetxController {
       return;
     }
     if(isEmpty(state.withdrawAmount.value)){
-      showToast(Intr().qingxuanzhetixianzhanghu);
+      showToast(Intr().qingshurutixianjine);
       return;
     }
     if(isEmpty(state.pwdValue)){
@@ -87,16 +87,17 @@ class WithdrawApplyLogic extends GetxController {
   ///计算提现手续费
   void conculateRate(String v) {
     state.withdrawAmount.value = v;
+    var amount = double.tryParse(state.withdrawAmount.value) ?? 0;
     if(state.check?.timeFeeStatus == 2 || (state.check?.timeFeePercent ?? 0) > 0){
       /// 时效稽核手续费
-      var timeFee = double.parse(state.withdrawAmount.value) * (state.check?.timeFeePercent ?? 0.0) / 100;
+      var timeFee = amount * (state.check?.timeFeePercent ?? 0.0) / 100;
       var rate = timeFee + (state.check?.allNeedFee ??  0.0);
       state.serviceAmount.value = DataUtils.formatMoney(rate);
-      state.actualAmount.value = DataUtils.formatMoney(double.parse(state.withdrawAmount.value) - rate);
+      state.actualAmount.value = DataUtils.formatMoney(amount - rate);
     } else {
       var rate = state.check?.allNeedFee ??  0.0;
       state.serviceAmount.value = DataUtils.formatMoney(rate);
-      state.actualAmount.value = DataUtils.formatMoney(double.parse(state.withdrawAmount.value) - rate);
+      state.actualAmount.value = DataUtils.formatMoney(amount - rate);
     }
   }
 

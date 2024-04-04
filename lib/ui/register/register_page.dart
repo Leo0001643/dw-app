@@ -111,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                     WidgetUtils().buildTextField(
-                      290.w, 46.h, 14.sp, ColorX.text949(), Intr().qsryhm,
+                      290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().qsryhm,
                       hintColor: ColorX.text586(),
                       backgroundColor: Colors.transparent,
                       onChanged: (v) => state.accountValue = v,
@@ -126,7 +126,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().sidao12shuzihuozimu, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
+              child: Text(Intr().sidao12shuzihuozimu, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
             ),
             SizedBox(
               height: 20.h,
@@ -142,7 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     Expanded(
                       child: Obx(() {
                         return WidgetUtils().buildTextField(
-                            260.w, 46.h, 14.sp, ColorX.text949(), Intr().mm,
+                            260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().mm,
                             backgroundColor: Colors.transparent,
                             onChanged: (v) => state.pwdValue = v,
                             defText: state.pwdValue,
@@ -175,7 +175,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
+              child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
             ),
             SizedBox(height: 20.h,),
             Center(
@@ -189,7 +189,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     Expanded(
                       child: Obx(() {
                         return WidgetUtils().buildTextField(
-                            260.w, 46.h, 14.sp, ColorX.text949(), Intr().querenmima,
+                            260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().querenmima,
                             backgroundColor: Colors.transparent,
                             onChanged: (v) => state.confirmPwdValue = v,
                             defText: state.confirmPwdValue,
@@ -222,7 +222,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
+              child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
             ),
             SizedBox( height: 20.h,),
             Center(
@@ -233,7 +233,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                     WidgetUtils().buildTextField(
-                        290.w, 46.h, 14.sp, ColorX.text949(), Intr().zsxm,
+                        290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().zsxm,
                         hintColor: ColorX.text586(),
                         backgroundColor: Colors.transparent,
                         onChanged: (v) => state.realname = v,
@@ -245,7 +245,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().ytxyhkhmyz, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
+              child: Text(Intr().ytxyhkhmyz, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
             ),
             SizedBox(height: 20.h,),
             Padding(
@@ -263,7 +263,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         children: [
                           Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                           Obx(() {
-                            return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack()),);
+                            return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),);
                           }),
                           WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
                         ],
@@ -280,7 +280,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().shuruzhenshiyouxiao, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
+              child: Text(Intr().shuruzhenshiyouxiao, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
             ),
             SizedBox(height: 20.h,),
             Center(
@@ -288,7 +288,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 width: 335.w,
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: WidgetUtils().buildTextField(
-                    335.w, 46.h, 14.sp, ColorX.text949(), Intr().jieshaoren,
+                    335.w, 46.h, 14.sp, ColorX.textBlack(), Intr().jieshaoren,
                     hintColor: ColorX.text586(),
                     backgroundColor: Colors.transparent,
                     onChanged: (v) => state.tgcode = v,
@@ -298,7 +298,7 @@ class _RegisterPageState extends State<RegisterPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().shurujieshaoren, style: TextStyle(fontSize: 13.sp, color: ColorX.text586()),),
+              child: Text(Intr().shurujieshaoren, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
             ),
             SizedBox(height: 20.h,),
             _getImageCode(),
@@ -429,7 +429,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                       Expanded(
                         child: WidgetUtils().buildTextField(
-                          0, 46.h, 14.sp, ColorX.text949(), Intr().yzm,
+                          0, 46.h, 14.sp, ColorX.textBlack(), Intr().yzm,
                           hintColor: ColorX.text586(),
                           backgroundColor: Colors.transparent,
                           inputType: TextInputType.text,

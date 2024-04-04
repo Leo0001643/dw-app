@@ -25,7 +25,6 @@ class RechargeLogic extends GetxController {
 
   @override
   void onReady() {
-    loadData();
     ///余额发生变化，刷新余额数据
     loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
       loadData();
@@ -123,12 +122,12 @@ class RechargeLogic extends GetxController {
 
     var user = AppData.user()!;
 
-    HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+    HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username },loading: false).then((value) {
       state.cnyBal.value = value;
       state.cnyBal.refresh();
     });
 
-    HttpService.getBalance({ "cur":5, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+    HttpService.getBalance({ "cur":5, "platform":"main","oid":user.oid,"username":user.username },loading: false).then((value) {
       state.usdtBal.value = value;
       state.usdtBal.refresh();
     });

@@ -47,7 +47,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
               ),
               Column(
                 children: [
-                  WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true,scaffoldKey: state.scaffoldKey),
+                  WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 15.w),
                     child: Column(
@@ -88,7 +88,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                       }
                                     });
                                   } else if(state.pageType.value == '5'){
-                                    var list = state.userDraw.value.dcBanks.where((element) => unEmpty(element.account)).toList();
+                                    var list = state.userDraw.value.dcBanks.where((element) => unEmpty(element.account) && element.type?.startsWith("USDT") == true).toList();
                                     DialogUtils().showSelectAccountBtmDialog(context, list).then((value) {
                                       if(unEmpty(value)){
                                         state.selectValue = value!;
@@ -106,7 +106,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                     children: [
                                       Expanded(
                                         child: Obx(() {
-                                          return Text(state.dropdownValue.value,style: TextStyle(fontSize: 14.sp,color: ColorX.text586()),);
+                                          return Text(state.dropdownValue.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.bold),);
                                         }),
                                       ),
                                       Obx(() {
@@ -140,16 +140,19 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                 decoration: BoxDecoration(color: ColorX.cardBg2(),borderRadius: BorderRadius.circular(10.r),),
                                 child: Row(
                                   children: [
-                                    Obx(() {
-                                      return WidgetUtils().buildTextField(275.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshurutixianjine,
-                                          defText: state.withdrawAmount.value,onChanged: (v)=> logic.conculateRate(v),
-                                          inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),],inputType: TextInputType.number,
-                                          backgroundColor: Colors.transparent,hintColor: ColorX.text586());
-                                    }),
+                                    Expanded(
+                                      child: Obx(() {
+                                        return WidgetUtils().buildTextField(0, 45.h, 14.sp, ColorX.textBlack(), Intr().qingshurutixianjine,
+                                            defText: state.withdrawAmount.value,onChanged: (v)=> logic.conculateRate(v),
+                                            inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),],inputType: TextInputType.number,
+                                            backgroundColor: Colors.transparent,hintColor: ColorX.text586());
+                                      }),
+                                    ),
                                     Obx(() {
                                       var symbol = state.pageType.value != '5' ? "CNY":"USDT";
                                       return Text(symbol,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),),);
                                     }),
+                                    SizedBox(width: 10.w,),
                                   ],
                                 ),
                               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -71,7 +72,8 @@ class _WithdrawPageState extends State<WithdrawPage> {
           ),
           Column(
             children: [
-              WidgetUtils().buildAppBar(Intr().tixianzhongxin,bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey),
+              WidgetUtils().buildAppBar(Intr().tixianzhongxin,bgColor: Colors.transparent,
+                  systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
               Container(
                 height: 140.h,
                 alignment: Alignment.center,

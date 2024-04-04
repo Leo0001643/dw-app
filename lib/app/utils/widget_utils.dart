@@ -658,7 +658,7 @@ class WidgetUtils {
         keyboardType: inputType,
         inputFormatters: inputFormatters,
         obscureText: obscureText,
-        style: TextStyle(fontSize: textSize, color: textColor),
+        style: TextStyle(fontSize: textSize, color: textColor,fontWeight: FontWeight.bold),
         decoration: InputDecoration(
           hintText: hint,
           border: InputBorder.none,

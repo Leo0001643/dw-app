@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
@@ -45,7 +46,7 @@ class _WithdrawResultPageState extends State<WithdrawResultPage> {
             ),
             Column(
               children: [
-                WidgetUtils().buildAppBar(Intr().tixian,bgColor: Colors.transparent,msg: true,scaffoldKey: state.scaffoldKey),
+                WidgetUtils().buildAppBar(Intr().tixian,bgColor: Colors.transparent,msg: true,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
                 Container(
                   height: 115.h,
                   child: Column(

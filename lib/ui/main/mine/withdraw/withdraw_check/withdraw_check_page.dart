@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -59,7 +60,7 @@ class _WithdrawCheckPageState extends State<WithdrawCheckPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 WidgetUtils().buildAppBar(state.type != '5' ? Intr().congcnyqianbaotichu : Intr().congusdtqianbaotichu,
-                    bgColor: Colors.transparent,msg: true,scaffoldKey: state.scaffoldKey),
+                    bgColor: Colors.transparent,msg: true,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
                   child: Column(
