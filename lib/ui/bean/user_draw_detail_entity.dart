@@ -54,10 +54,10 @@ class UserDrawDetailBanks {
 
 	@override
   String toString() {
-		if(isEmpty(bankAccount)|| bankAccount!.em().length < 14 ){
+		if(isEmpty(bankAccount)|| bankAccount!.em().length < 4 ){
 			return "$bankName${isEmpty(bankAccount) ? "" : "（${bankAccount.em()}）"}";
 		} else {
-			return "$bankName（***${bankAccount!.substring(14)}）";
+			return "$bankName（***${bankAccount!.substring(bankAccount!.length - 4)}）";
 		}
   }
 

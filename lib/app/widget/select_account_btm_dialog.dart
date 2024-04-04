@@ -12,8 +12,10 @@ import 'package:leisure_games/ui/bean/user_draw_detail_entity.dart';
 class SelectAccountBtmDialog extends StatefulWidget{
 
   final List data;
+  final bool isUsdt;
 
-  const SelectAccountBtmDialog(this.data, {super.key});
+
+  const SelectAccountBtmDialog(this.data,this.isUsdt, {super.key});
 
   @override
   State<StatefulWidget> createState() => StateSelectAccountBtmDialog();
@@ -27,7 +29,9 @@ class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
   @override
   void initState() {
     data.addAll(widget.data);
-    data.add(UserDrawDetailBanks(bankName: Intr().dianjitianjiazhanghu));
+    if(!(widget.isUsdt && data.length >= 3)){
+      data.add(UserDrawDetailBanks(bankName: Intr().dianjitianjiazhanghu,bankStatus: 0));
+    }
     super.initState();
   }
 
@@ -69,12 +73,18 @@ class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
   }
 
   Widget buildOptionItem(option) {
+    var status = option is UserDrawDetailBanks ? option.bankStatus : option.status;
+    var text = status == 0 ? option.toString() : "${option.toString()}(${Intr().tingyong_termi})";
+    // var color = status == 0 ? ColorX.text0917() :ColorX.text5d6();
+
     return InkWell(
       onTap: (){
-        if(option.toString() == Intr().dianjitianjiazhanghu){
-          Get.offAndToNamed(option is UserDrawDetailBanks ? Routes.bind_bank : Routes.bind_usdt);
-        } else {///绑定银行卡
-          Navigator.pop(context,option);
+        if(status == 0) {
+          if(option.toString() == Intr().dianjitianjiazhanghu){
+            Get.offAndToNamed(option is UserDrawDetailBanks ? Routes.bind_bank : Routes.bind_usdt);
+          } else {///绑定银行卡
+            Navigator.pop(context,option);
+          }
         }
       },
       child: Container(
@@ -83,7 +93,7 @@ class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
           children: [
             SizedBox(height: 15.h,),
             Center(
-              child: Text(option.toString(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
+              child: Text(text,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
             ),
             SizedBox(height: 15.h,),
             Divider(color: ColorX.color_10_949,height: 1.h,),

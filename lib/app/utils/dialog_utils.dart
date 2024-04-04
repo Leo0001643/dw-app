@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
@@ -494,7 +495,7 @@ class DialogUtils {
 
   ///选择账户弹窗
   Future<dynamic> showSelectAccountBtmDialog(
-      BuildContext context, List data) {
+      BuildContext context, List data,bool isUsdt) {
     return showModalBottomSheet<dynamic>(
         context: context,
         isScrollControlled: true,
@@ -507,7 +508,7 @@ class DialogUtils {
           return SingleChildScrollView(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: SelectAccountBtmDialog(data),
+            child: SelectAccountBtmDialog(data,isUsdt),
           );
         });
   }
@@ -597,7 +598,9 @@ class DialogUtils {
       BuildContext context, GameRoomLogic logic) {
     return showModalBottomSheet(
         context: context,
+        constraints: BoxConstraints(maxHeight: 1.sh),
         isScrollControlled: true,
+        enableDrag: false,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),

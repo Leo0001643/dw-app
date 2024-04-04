@@ -30,7 +30,8 @@ https://docs.google.com/spreadsheets/d/1wZa11cDB_2ldGqhj7n0fwRjgJkav3ccKnKKCGZ_J
 
 
 测试账号：
-24010202
+24010202、dstest0002、dstest0001、dsa0001
+
 aeuio888
 
 

@@ -37,10 +37,10 @@ class UsdtEntity {
 
   @override
   String toString() {
-    if(isEmpty(account)|| account!.em().length < 14 ){
+    if(isEmpty(account)|| account!.em().length < 4 ){
       return "$type${isEmpty(account) ? "" : "（${account.em()}）"}";
     } else {
-      return "$type（***${account!.substring(14)}）";
+      return "$type（***${account!.substring(account!.length - 4)}）";
     }
   }
 
