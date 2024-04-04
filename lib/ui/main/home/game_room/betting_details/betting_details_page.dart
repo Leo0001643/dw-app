@@ -31,7 +31,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
 
   @override
   void initState() {
-    state.refreshController= RefreshController(initialRefresh: true);
+    state.refreshController= RefreshController();
     state.refreshListener.addListener(() {
       var refresh= state.refreshListener.value;
       RefreshChangeNotifier.dataComplete(state.refreshController, refresh);
@@ -74,6 +74,13 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                         onTap: (){
                           state.currentWallet.value = e;
                           state.currentWallet.refresh();
+                          if(e.name == Intr().wallet_cny){
+                            state.list.assignAll(state.cnyList);
+                            state.list.refresh();
+                          }else {
+                            state.list.assignAll(state.usdtList);
+                            state.list.refresh();
+                          }
                         },
                         child: buildWalletTab(e, state.currentWallet.value == e ),
                       );
@@ -86,7 +93,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                   if(unEmpty(value)){
                     state.type.value = value;
                     state.type.refresh();
-                    state.refreshController.requestRefresh();
+                    logic.loadData(true);
                   }
                 }),
                 child: Row(
@@ -141,7 +148,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
             child: Obx(() {
               return SmartRefresher(
                 controller: state.refreshController,
-                enablePullDown: true,
+                enablePullDown: false,
                 enablePullUp: true,
                 footer: CustomFooter(builder: (context,mode)=> Container(),height: 0,),
                 onRefresh: ()=> logic.loadData(true),

@@ -22,7 +22,11 @@ class BettingDetailsState {
 
   var page = 1;
 
-  var bettingDetails = CurrentBetEntity().obs;
+  // var bettingDetails = CurrentBetEntity().obs;
+  var cnyList = List<CurrentBetContent>.empty(growable: true);
+  var usdtList = List<CurrentBetContent>.empty(growable: true);
+
+
   var list = RxList<CurrentBetContent>.empty(growable: true);
 
   late RefreshController refreshController;

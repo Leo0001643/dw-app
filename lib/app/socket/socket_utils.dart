@@ -113,13 +113,14 @@ class SocketUtils{
     });
   }
 
-  void sendMessage(String msg,String gameType,String roomId,String tableId){
+  void sendMessage(dynamic msg,String gameType,String roomId,String tableId){
     loggerArray(["发送聊天消息",isConnect,msg,gameType,roomId,tableId]);
     if(isConnect){
-      var json = jsonEncode(WsMessageSendEntity.get(type: "msg_send_pic",msg: [msg],gameType: gameType,roomId: roomId,tableId: tableId));
-      if(msg.isUrl()){
+      if(msg is String){///gif图
+        var json = jsonEncode(WsMessageSendEntity.get(type: "msg_send_gif",msg: [msg],gameType: gameType,roomId: roomId,tableId: tableId));
         childSendPort?.send(buildMessage("msg_send_gif",value: json));
       }else {
+        var json = jsonEncode(WsMessageSendEntity.get(type: "msg_send_pic",msg: msg,gameType: gameType,roomId: roomId,tableId: tableId));
         childSendPort?.send(buildMessage("msg_send_pic",value: json));
       }
     }

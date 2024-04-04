@@ -328,12 +328,13 @@ class GameRoomLogic extends GetxController {
                 radius: 10.r,
               ),
               SizedBox(width: 10.w,),
-              Visibility(
-                visible: unEmpty(entity.msg),
-                child: entity.msg!.first.isUrl() ?
-                WidgetUtils().buildImage(entity.msg!.first.em(), 15.r, 15.r)
-                    : Text(entity.msg!.first.em(),style: TextStyle(fontSize: 12.sp,color: Colors.white),),
-              )
+              Row(
+                children: entity.msg!.map((e) {
+                  return entity.msg!.first.isUrl() ?
+                  WidgetUtils().buildImage(entity.msg!.first.em(), 15.r, 15.r)
+                      : Text(entity.msg!.first.em(),style: TextStyle(fontSize: 12.sp,color: Colors.white),);
+                }).toList(),
+              ),
             ],
           ),
         ),
@@ -349,16 +350,14 @@ class GameRoomLogic extends GetxController {
     handleSystemMessgeResult(item);
   }
 
-
-  void startBet(BuildContext context) {
+  //发送弹幕
+  void sendBullet(BuildContext context) {
     // AppInst.instance.startWs();
     if(!AppData.isLogin()) return;
     DialogUtils().showBulletBtmDialog(context, this, (v) {
       Navigator.pop(context);
       if(unEmpty(v)){
-        for (var element in (v as List<dynamic>)) {
-          SocketUtils().sendMessage(element, state.room.value.gameType.em(), state.room.value.roomId.em().toString(), state.room.value.id.em().toString());
-        }
+        SocketUtils().sendMessage(v, state.room.value.gameType.em(), state.room.value.roomId.em().toString(), state.room.value.id.em().toString());
       }
     });
   }

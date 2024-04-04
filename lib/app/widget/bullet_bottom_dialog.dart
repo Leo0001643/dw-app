@@ -119,7 +119,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                 ),
               ),
               InkWell(
-                onTap: ()=>widget.valueCallBack.call(inputList.value),
+                onTap: ()=> sendMessage(),
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 15.w),
                   child: Image.asset(ImageX.icon_send,color: ColorX.icon586(), width: 24.r,height: 24.r,),
@@ -251,10 +251,9 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
 
   Widget buildCommonItem(String tab,int index,) {
     return InkWell(
-      onTap: () {
+      onTap: (){
         selectPhrases.value = index;
-        inputList.add(tab);
-        inputList.refresh();
+        addMessage(tab);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -273,10 +272,7 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
 
   Widget buildEmotionItem(String icon, int index){
     return InkWell(
-      onTap: (){
-        inputList.add(icon);
-        inputList.refresh();
-      },
+      onTap: ()=>addMessage(icon),
       child: WidgetUtils().buildImage(icon.trim(),0.085.sw,0.085.sw,fit: BoxFit.cover,),
     );
   }
@@ -284,9 +280,8 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
 
   Widget buildGifItem(String icon, int index){
     return InkWell(
-      onTap: (){
-        inputList.add(icon);
-        inputList.refresh();
+      onTap: (){///动图点击需要直接发送
+        widget.valueCallBack.call(icon);
       },
       child: WidgetUtils().buildImage(icon.trim(),0.24.sw,0.24.sw,fit: BoxFit.cover,defImage: ""),
     );
@@ -309,6 +304,47 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
 
   Widget buildInputEmotionItem(String icon, int index){
     return WidgetUtils().buildImage(icon.trim(),20.r,20.r,fit: BoxFit.cover,);
+  }
+
+  void addMessage(String tab) {
+    var phrasesList = List<String>.empty(growable: true);
+    var emotionList = List<String>.empty(growable: true);
+
+    inputList.forEach((element) {
+      if(element.toString().isUrl()){
+        emotionList.add(element);
+      }else {
+        phrasesList.add(element);
+      }
+    });
+    ///最大可以添加三条短语和16个表情
+    if(phrasesList.length < 3 && emotionList.length < 16){
+      inputList.add(tab);
+      inputList.refresh();
+      ///您输入的内容数量已经超过了最大限制
+    } else if(!tab.isUrl() && phrasesList.length >= 3){
+      showToast("一次只能发送3条语句哦");
+    }else {
+      showToast("您输入的内容数量已经超过了最大限制");
+    }
+  }
+
+  void sendMessage() {
+    var phrasesList = List<String>.empty(growable: true);
+    var emotionList = List<String>.empty(growable: true);
+
+    inputList.forEach((element) {
+      if(element.toString().isUrl()){
+        emotionList.add(element);
+      }else {
+        phrasesList.add(element);
+      }
+    });
+    if(phrasesList.isNotEmpty){
+      widget.valueCallBack.call(phrasesList);
+    }else if(emotionList.isNotEmpty){
+      widget.valueCallBack.call(emotionList);
+    }
   }
 
 }

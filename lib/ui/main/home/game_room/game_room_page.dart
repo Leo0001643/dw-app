@@ -149,7 +149,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                 ),
                 buildFloatingBtn(() {
                   if (AppData.isLogin()) {
-                    logic.startBet(context);
+                    logic.sendBullet(context);
                   } else {
                     Get.until((ModalRoute.withName(Routes.main)));
                     WidgetUtils().goLogin();
@@ -187,7 +187,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
                 spreadRadius: 2.r,
                 blurRadius: 3.r,
                 offset: Offset(0, 1), // 阴影位置偏移量
-              ):BoxShadow(),
+              ):const BoxShadow(),
             ],
           ),
           child: Row(
@@ -276,7 +276,6 @@ class _GameRoomPageState extends State<GameRoomPage> {
               showToast(textItemLogic.canBet());
               return;
             }
-
             DialogUtils().showBettingBtmDialog(context, logic);
           } else {
             Get.until((ModalRoute.withName(Routes.main)));

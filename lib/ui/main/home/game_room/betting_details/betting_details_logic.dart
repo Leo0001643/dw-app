@@ -15,12 +15,12 @@ class BettingDetailsLogic extends GetxController {
   @override
   void onReady() {
     loadTypes();
+    loadData(true);
     super.onReady();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 
@@ -36,10 +36,17 @@ class BettingDetailsLogic extends GetxController {
     }
 
     HttpService.getGameCurrentBet(params).then((value) {
-      state.bettingDetails.value = value;
-      state.bettingDetails.refresh();
+      state.cnyList.clear();
+      state.usdtList.clear();
+      value.content?.forEach((element) {
+        if(element.moneyType == 'CNY'){
+          state.cnyList.add(element);
+        }else {
+          state.usdtList.add(element);
+        }
+      });
       state.page ++;
-      RefreshChangeNotifier.loadData(refresh, state.refreshListener, state.list, value.content ?? []);
+      RefreshChangeNotifier.loadData(refresh, state.refreshListener, state.list, state.cnyList);
     }).catchError((e,stack){
       RefreshChangeNotifier.loadData(refresh, state.refreshListener, state.list, null);
     });

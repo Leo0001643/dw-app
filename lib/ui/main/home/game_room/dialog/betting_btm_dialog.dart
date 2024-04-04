@@ -54,253 +54,271 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
 
   var pageIndex = 0.obs;
   var contents = RxList<Widget>.empty(growable: true);
-
+  var focusNode = FocusNode();
+  var scrollController = ScrollController();
   @override
   void initState() {
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController.addListener(() {
       pageIndex.value = _tabController.index;
+      focusNode.unfocus();
+    });
+    selectBetting.listen((p0) {
+      focusNode.unfocus();
+    });
+    focusNode.addListener(() {
+      if(focusNode.hasFocus){///当输入法弹出的时候，滑动页面弹窗到底部
+        Future.delayed(Duration(milliseconds: 500),(){
+          // loggerArray(['开始滑动了吗',scrollController.position.maxScrollExtent]);
+          scrollController.jumpTo(scrollController.position.maxScrollExtent);
+        });
+      }
     });
     contents.assignAll([BettingTemaPage(0,key: riKey1,selectBetting,inputAmt,Intr().tema),
       BettingChildPage(1,key: riKey2,selectBetting,inputAmt,Intr().diyiqiu),
       BettingChildPage(2,key: riKey3,selectBetting,inputAmt,Intr().dierqiu),
       BettingChildPage(3,key: riKey4,selectBetting,inputAmt,Intr().disanqiu),]);
-
     super.initState();
   }
 
   @override
   void dispose() {
+    focusNode.dispose();
     _tabController.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 0.81.sh,
-      width: 1.sw,
-      decoration: BoxDecoration(
-        // color: ColorX.pageBg3(),
-        borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 10.h,),
-          Center(
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: ColorX.cardBg(),width: 1.w),
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              height: 95.h,
-              width: 345.w,
-              child: Column(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(image: AssetImage(buildRoomHeadType()),fit: BoxFit.fill),
+    return SingleChildScrollView(
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      controller: scrollController,
+      child: Container(
+        height: 0.81.sh,
+        width: 1.sw,
+        decoration: BoxDecoration(
+          // color: ColorX.pageBg3(),
+          borderRadius: BorderRadius.only(topRight: Radius.circular(15.r),topLeft: Radius.circular(15.r)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 10.h,),
+            Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: ColorX.cardBg(),width: 1.w),
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                height: 95.h,
+                width: 345.w,
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(image: AssetImage(buildRoomHeadType()),fit: BoxFit.fill),
+                      ),
+                      height: 45.h,
+                      alignment: Alignment.center,
+                      // padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 12.h),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(width: 15.w,),
+                          Obx(() {
+                            String termData=GameRuleUtil.getSSB(widget.logic.term.value.em(aft: '--'),year:"");
+                            return Text(termData,style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),);
+                          }),
+                          Expanded(child: Container()),
+                          getTimer(),
+                          SizedBox(width: 15.w,),
+                        ],
+                      ),
                     ),
-                    height: 45.h,
-                    alignment: Alignment.center,
-                    // padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 12.h),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(width: 15.w,),
-                        Obx(() {
-                          String termData=GameRuleUtil.getSSB(widget.logic.term.value.em(aft: '--'),year:"");
-                          return Text(termData,style: TextStyle(fontSize: 14.sp,color: Colors.white,fontWeight: FontWeight.w600),);
-                        }),
-                        Expanded(child: Container()),
-                        getTimer(),
-                        SizedBox(width: 15.w,),
-                      ],
+                    LCSegmentTabs(
+                      length: tabs.length,
+                      tabController: _tabController,
+                      height: 40.h,
+                      width: 340.w,
+                      border: Border.all(color: Colors.transparent),
+                      tabBarColor: Colors.transparent,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicatorPadding: EdgeInsets.only(top: 33.h,left: 10.w,right: 10.w,bottom: 3.r),
+                      indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(3.r),
+                        color: buildTextColor(),
+                      ),
+                      labelColor: buildTextColor(),
+                      unselectedLabelColor: ColorX.text0917(),
+                      tabs: tabs.map((e) =>
+                          Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
+                      ).toList(),
                     ),
-                  ),
-                  LCSegmentTabs(
-                    length: tabs.length,
-                    tabController: _tabController,
-                    height: 40.h,
-                    width: 340.w,
-                    border: Border.all(color: Colors.transparent),
-                    tabBarColor: Colors.transparent,
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    indicatorPadding: EdgeInsets.only(top: 33.h,left: 10.w,right: 10.w,bottom: 3.r),
-                    indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(3.r),
-                      color: buildTextColor(),
-                    ),
-                    labelColor: buildTextColor(),
-                    unselectedLabelColor: ColorX.text0917(),
-                    tabs: tabs.map((e) =>
-                        Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),
-                    ).toList(),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: Obx(() {
-              return IndexedStack(
-                index: pageIndex.value,
-                children: contents,
-              );
-            }),
-          ),
-          Column(
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    alignment: Alignment.bottomCenter,
-                    child: Column(
-                      children: [
-                        SizedBox(height: 20.h,),
-                        GFCard(
-                          height: 110.h,
-                          margin: EdgeInsets.zero,
-                          padding: EdgeInsets.zero,
-                          elevation: 3.r,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(topRight: Radius.circular(20.r),topLeft: Radius.circular(20.r),),
+            Expanded(
+              child: Obx(() {
+                return IndexedStack(
+                  index: pageIndex.value,
+                  children: contents,
+                );
+              }),
+            ),
+            Column(
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      alignment: Alignment.bottomCenter,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 20.h,),
+                          GFCard(
+                            height: 110.h,
+                            margin: EdgeInsets.zero,
+                            padding: EdgeInsets.zero,
+                            elevation: 3.r,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(topRight: Radius.circular(20.r),topLeft: Radius.circular(20.r),),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Positioned(
-                    top: 0,left: 0,right: 0,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 70.h,
-                                alignment: Alignment.bottomLeft,
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Obx(() {
-                                    return Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: chips.map((e) {
-                                        var index = chips.indexOf(e);
-                                        var btm = chipIndex.value == index ? 20.h:0.0;
-                                        var top = chipIndex.value == index ? 0.0:20.h;
-                                        return buildChipItem(e,index,top,btm);
-                                      }).toList(),
-                                    );
-                                  }),
-                                ),
-                              ),
-                              SizedBox(height: 15.h,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        border: Border.all(color: ColorX.text0917(),width: 1.r),
-                                        borderRadius: BorderRadius.circular(10.r)
-                                    ),
-                                    margin: EdgeInsets.only(left: 10.w),
+                    Positioned(
+                      top: 0,left: 0,right: 0,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 70.h,
+                                  alignment: Alignment.bottomLeft,
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
                                     child: Obx(() {
-                                      return WidgetUtils().buildTextField(101.w, 35.h, 12.sp, ColorX.color_949eb9, Intr().xiazhujine,
-                                          backgroundColor: ColorX.cardBg(),hintColor: ColorX.text586(),
-                                          defText: inputAmt.value,inputType: TextInputType.number,onChanged: (v){
-                                            inputAmt.value = v;
-                                          });
+                                      return Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: chips.map((e) {
+                                          var index = chips.indexOf(e);
+                                          var btm = chipIndex.value == index ? 20.h:0.0;
+                                          var top = chipIndex.value == index ? 0.0:20.h;
+                                          return buildChipItem(e,index,top,btm);
+                                        }).toList(),
+                                      );
                                     }),
                                   ),
-                                  SizedBox(width: 10.w,),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight:FontWeight.w700,),),
-                                        Obx(() {
-                                          return Text("${selectBetting.length * DataUtils.formatDouble(inputAmt.value)}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),);
-                                        })
-                                      ],
+                                ),
+                                SizedBox(height: 15.h,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          border: Border.all(color: ColorX.text0917(),width: 1.r),
+                                          borderRadius: BorderRadius.circular(10.r)
+                                      ),
+                                      margin: EdgeInsets.only(left: 10.w),
+                                      child: Obx(() {
+                                        return WidgetUtils().buildTextField(101.w, 35.h, 12.sp, ColorX.color_949eb9, Intr().xiazhujine,
+                                            backgroundColor: ColorX.cardBg(),hintColor: ColorX.text586(),focusNode: focusNode,
+                                            defText: inputAmt.value,inputType: TextInputType.number,onChanged: (v){
+                                              inputAmt.value = v;
+                                            });
+                                      }),
                                     ),
-                                  ),
-                                  SizedBox(width: 10.w,),
-                                  InkWell(
-                                    onTap: (){
-                                      inputAmt.value = "";
-                                      chipIndex.value = -1;
-                                      selectChip.clear();
-                                      selectBetting.clear();
-                                      selectBetting.refresh();
-                                    },
-                                    child: Container(
-                                      width: 48.w,
-                                      height: 40.h,
-                                      decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r)),
-                                      child:  WidgetUtils().buildImage(ImageX.emptyicon,20.w,28.h,fit: BoxFit.scaleDown,),
+                                    SizedBox(width: 10.w,),
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight:FontWeight.w700,),),
+                                          Obx(() {
+                                            return Text("${selectBetting.length * DataUtils.formatDouble(inputAmt.value)}",style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),);
+                                          })
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                    SizedBox(width: 10.w,),
+                                    InkWell(
+                                      onTap: (){
+                                        inputAmt.value = "";
+                                        chipIndex.value = -1;
+                                        selectChip.clear();
+                                        selectBetting.clear();
+                                        selectBetting.refresh();
+                                      },
+                                      child: Container(
+                                        width: 48.w,
+                                        height: 40.h,
+                                        decoration: BoxDecoration(color: ColorX.cardBg3(),borderRadius: BorderRadius.circular(10.r)),
+                                        child:  WidgetUtils().buildImage(ImageX.emptyicon,20.w,28.h,fit: BoxFit.scaleDown,),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 30.h),
-                          alignment: Alignment.center,
-                          width: 90.w,
-                          child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
-                            TextItemLogic textItemLogic = Get.find<TextItemLogic>();
-                            if (unEmpty(textItemLogic.canBet())) {
-                              showToast(textItemLogic.canBet());
-                              return;
-                            }
-                            if (selectBetting.isEmpty) {
-                              showToast(Intr().qingxuanzhetouzhuxm);
-                              return;
-                            }
-                            if (DataUtils.formatDouble(inputAmt.value) == 0.0) {
-                              showToast(Intr().xiazhujinewk);
-                              return;
-                            }
-                            var totalMony = selectBetting.length * DataUtils.formatDouble(inputAmt.value);
-                            var betInfo = WsBetEntity();
-                            betInfo.term = widget.logic.term.value;
-                            var odds = List<WsBetContent>.empty(growable: true);
-                            selectBetting.forEach((element) {
-                              var bc = WsBetContent();
-                              bc.a = element.type;
-                              bc.b = element.name;
-                              bc.c = inputAmt.value;
-                              bc.d = element.play;
-                              bc.e = element.play2;
-                              odds.add(bc);
-                            });
-                            betInfo.content = odds;
-                            loggerArray(["打印投注信息",betInfo.toJson()]);
-                            Navigator.pop(context);
-                            ///确认投注
-                            DialogUtils().showConfirmBetDialog(context, widget.logic,betInfo,total: totalMony,
-                                inputAmt:DataUtils.formatDouble(inputAmt.value), true);
-                          }),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-              Container(
-                color: ColorX.pageBg(),
-                height: MediaQuery.paddingOf(context).bottom,
-              )
-            ],
-          ),
-        ],
+                          Container(
+                            padding: EdgeInsets.only(top: 30.h),
+                            alignment: Alignment.center,
+                            width: 90.w,
+                            child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
+                              TextItemLogic textItemLogic = Get.find<TextItemLogic>();
+                              if (unEmpty(textItemLogic.canBet())) {
+                                showToast(textItemLogic.canBet());
+                                return;
+                              }
+                              if (selectBetting.isEmpty) {
+                                showToast(Intr().qingxuanzhetouzhuxm);
+                                return;
+                              }
+                              if (DataUtils.formatDouble(inputAmt.value) == 0.0) {
+                                showToast(Intr().xiazhujinewk);
+                                return;
+                              }
+                              var totalMony = selectBetting.length * DataUtils.formatDouble(inputAmt.value);
+                              var betInfo = WsBetEntity();
+                              betInfo.term = widget.logic.term.value;
+                              var odds = List<WsBetContent>.empty(growable: true);
+                              selectBetting.forEach((element) {
+                                var bc = WsBetContent();
+                                bc.a = element.type;
+                                bc.b = element.name;
+                                bc.c = inputAmt.value;
+                                bc.d = element.play;
+                                bc.e = element.play2;
+                                odds.add(bc);
+                              });
+                              betInfo.content = odds;
+                              loggerArray(["打印投注信息",betInfo.toJson()]);
+                              Navigator.pop(context);
+                              ///确认投注
+                              DialogUtils().showConfirmBetDialog(context, widget.logic,betInfo,total: totalMony,
+                                  inputAmt:DataUtils.formatDouble(inputAmt.value), true);
+                            }),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                Container(
+                  color: ColorX.pageBg(),
+                  height: MediaQuery.paddingOf(context).bottom,
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -385,6 +403,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
         var amt = 0.0;
         ///提示音
         if(AppData.promptTone()){ AudioUtils().playBetSelect(); }
+        focusNode.unfocus();
         selectChip.forEach((element) {
           amt += element;
         });
