@@ -6,6 +6,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -136,6 +137,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                               scrollDirection: Axis.horizontal,
                               child: Obx(() {
                                 var list = List<Widget>.empty(growable: true);
+                                // logger("这里处理了个啥${state.walletList.em()}");
                                 switch(_tabController.index){
                                   case 0:
                                     state.walletList.forEach((element) {

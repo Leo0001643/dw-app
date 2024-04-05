@@ -75,9 +75,10 @@ class WithdrawApplyLogic extends GetxController {
     } else if(state.selectValue is UsdtEntity){
       params["bankCode"] = state.selectValue.type;
       // params["cardNumber"] = "${state.dropdownValue.value.cardNumber}";
-    }else {
+    } else {
       params["bankCode"] = state.pageType.value;
     }
+
     HttpService.takeSubmit(params).then((value) {
       Get.toNamed(Routes.withdraw_result,arguments: DigiccyDepositDataEntity(money: int.parse(state.withdrawAmount.value),
       date: DataUtils.format12Hour(DateTime.now().millisecondsSinceEpoch),info:state.dropdownValue.value,

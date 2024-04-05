@@ -77,7 +77,7 @@ class _WithdrawResultPageState extends State<WithdrawResultPage> {
                         SizedBox(height: 15.h,),
                         buildInfoItem(Intr().tixianjine,"$symbol${state.result.value.money.em()}"),
                         SizedBox(height: 15.h,),
-                        buildInfoItem(Intr().daozhangjine,"$symbol${state.result.value.status.em()}"),
+                        buildInfoItem(Intr().daozhangjine,"$symbol${state.result.value.orderId.em()}"),
                         SizedBox(height: 15.h,),
                         buildInfoItem(Intr().zhanghuyue,"$symbol${state.balance.value}"),
                       ],
