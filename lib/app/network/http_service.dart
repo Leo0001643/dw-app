@@ -524,7 +524,7 @@ class HttpService{
         return Future.value(value.data ?? (needMsg ? value.message.toString():""));
       } else {
         if(errorHandler){ ErrorResponseHandler().onErrorHandle({"code": value.code,"message": value.message.toString()}); }
-        return Future.error(value.message.toString());
+        return Future.error({"code": value.code,"message": value.message.toString()});
       }
     }catch(error){
       loggerArray(["请求异常信息",error]);

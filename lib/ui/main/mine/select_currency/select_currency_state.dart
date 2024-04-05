@@ -24,8 +24,8 @@ class SelectCurrencyState {
   late var coinList = country.obs;
 
   List<BalanceEntity> country = [
-    BalanceEntity(language: "${Intr().wallet_cny}（CNY）¥", icon: ImageX.iconRmbGreyT()),
-    BalanceEntity(language: "${Intr().wallet_usdt}（USDT）₮", icon: ImageX.iconUstd2GreyT()),
+    BalanceEntity(language: "${Intr().wallet_cny}（CNY）¥", icon: ImageX.iconJjGrey()),
+    BalanceEntity(language: "${Intr().wallet_usdt}（USDT）₮", icon: ImageX.usdtT()),
     // LanguageMenuEntity(language: Intr().thb, icon: ImageX.icon_thb_grey),
     // LanguageMenuEntity(language: Intr().vnd, icon: ImageX.icon_vhd_grey),
   ];

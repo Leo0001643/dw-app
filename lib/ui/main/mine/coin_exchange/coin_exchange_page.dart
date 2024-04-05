@@ -38,6 +38,7 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
           drawer:true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg2(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 15.h,),
           Container(
@@ -82,7 +83,7 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
                           WidgetUtils().buildImage(ImageX.xiangxiaT(), 15.r, 15.r),
                           Expanded(
                             child: Container(
-                              decoration: BoxDecoration(color: ColorX.line10949()),
+                              decoration: BoxDecoration(color: ColorX.linef1f2()),
                               height: 1.h,
                             ),
                           ),
@@ -155,7 +156,7 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
                   var balance = state.c2u.value ? state.cnyBal.value : state.usdtBal.value;
                   logic.exchangeCoin((balance.money.em().toInt()).toString());
                 },
-                  child: Text(Intr().zuida,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
+                  child: Text(Intr().zuida,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.bold),),
                 ),
               ],
             ),

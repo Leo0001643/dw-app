@@ -173,7 +173,7 @@ class StateMinePage extends State<MinePage> {
                                       Get.toNamed(Routes.select_currency),
                                   child: Row(
                                     children: [
-                                      WidgetUtils().buildImage(ctl.wallet ? ImageX.iconRmbGreyT() : ImageX.iconUstd2GreyT(), 15.r, 15.r),
+                                      WidgetUtils().buildImage(ctl.wallet ? ImageX.iconJjGrey() : ImageX.usdtT(), 15.r, 15.r),
                                       SizedBox(
                                         width: 2.w,
                                       ),

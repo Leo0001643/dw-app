@@ -660,7 +660,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
   Widget buildWalletDefault(HomeLogic logic, WalletController ctl) {
     return Row(
       children: [
-        WidgetUtils().buildImage(ctl.wallet ? ImageX.iconRmbGreyT() : ImageX.iconUstd2GreyT(), 15.r, 15.r),
+        WidgetUtils().buildImage(ctl.wallet ? ImageX.iconJjGrey() : ImageX.usdtT(), 15.r, 15.r),
         SizedBox(
           width: 3.w,
         ),

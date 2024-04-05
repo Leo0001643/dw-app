@@ -850,7 +850,7 @@ class CN {
     "yishixiao":"已失效",
     "tiqu":"提取",
     "tiquchenggong":"提取成功",
-    "duihuan":"兑换",
+    "duihuan":"确认兑换",
     "huilv_":"汇率: %s",
     "cong_from":"从",
     "zhi_to":"到",
@@ -1025,6 +1025,8 @@ class CN {
     "morenqianbaotishi2":"2.可在[币币兑换]页面进行双钱包余额之间的兑换操作。",
     "zuida":"最大",
     "shuruyinhangmingcheng":"请输入银行名称",
+    "yicizhinengfasong3tiao":"一次只能发送3条语句哦",
+    "shuruneirongchaoguozuidaxianzhi":"您输入的内容数量已经超过了最大限制",
 
 
 

@@ -1025,6 +1025,8 @@ class VI{
     "morenqianbaotishi2":"2.Hoạt động trao đổi giữa số dư của hai ví có thể được thực hiện trên trang [chuyển khoản].",
     "zuida":"最大",
     "shuruyinhangmingcheng":"请输入银行名称",
+    "yicizhinengfasong3tiao":"一次只能发送3条语句哦",
+    "shuruneirongchaoguozuidaxianzhi":"您输入的内容数量已经超过了最大限制",
 
 
   };

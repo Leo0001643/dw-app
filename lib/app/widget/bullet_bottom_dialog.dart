@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -323,9 +324,9 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
       inputList.refresh();
       ///您输入的内容数量已经超过了最大限制
     } else if(!tab.isUrl() && phrasesList.length >= 3){
-      showToast("一次只能发送3条语句哦");
+      showToast(Intr().yicizhinengfasong3tiao);
     }else {
-      showToast("您输入的内容数量已经超过了最大限制");
+      showToast(Intr().shuruneirongchaoguozuidaxianzhi);
     }
   }
 

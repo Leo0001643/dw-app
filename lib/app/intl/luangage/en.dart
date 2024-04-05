@@ -1095,6 +1095,8 @@ class EN{
     "morenqianbaotishi2":"2.The exchange operation between the balances of the two wallets can be performed on the [Exchange] page.",
     "zuida":"最大",
     "shuruyinhangmingcheng":"请输入银行名称",
+    "yicizhinengfasong3tiao":"一次只能发送3条语句哦",
+    "shuruneirongchaoguozuidaxianzhi":"您输入的内容数量已经超过了最大限制",
 
 
   };

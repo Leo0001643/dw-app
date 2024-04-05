@@ -65,14 +65,8 @@ class ErrorResponseHandler {
         case 900000://系统异常
           showToast(toast);
           break;
-        case 900004://整站维护中
-          DialogUtils().showMessageDialog(Get.context!,Intr().zunjingdekehu,title: Intr().xitonggonggao,
-              btnCancel: Intr().cancel,btnConfirm: Intr().lxkf, onConfirm: (){
-            eventBus.fire(ChangeMainPageEvent(3)); //转到客服显示
-            Get.until((ModalRoute.withName(Routes.main)));
-          },onCancel: (){
-            Navigator.pop(Get.context!);
-          });
+        case 900004://整站维护中 也可能是某个站点维护
+          showToast(toast);
           break;
         case 900027://您存取款操作已被停用，请联系客服
           showToast(toast);

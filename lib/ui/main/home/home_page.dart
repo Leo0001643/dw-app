@@ -395,8 +395,8 @@ class StateHomePage extends State<HomePage>
                             ? "¥${state.cnyBal.value.money.em()}"
                             : "₮${state.usdtBal.value.money.em()}",
                         ctl.wallet
-                            ? ImageX.iconRmbGreyT()
-                            : ImageX.iconUstd2GreyT());
+                            ? ImageX.iconJjGrey()
+                            : ImageX.usdtT());
                   }),
                 ),
                 Obx(() {
@@ -405,8 +405,8 @@ class StateHomePage extends State<HomePage>
                           ? "₮${state.usdtBal.value.money.em()}"
                           : "¥${state.cnyBal.value.money.em()}",
                       ctl.wallet
-                          ? ImageX.iconUstd2GreyT()
-                          : ImageX.iconRmbGreyT());
+                          ? ImageX.iconJjGrey()
+                          : ImageX.usdtT());
                 }),
               ],
             );
