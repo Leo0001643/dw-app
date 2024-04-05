@@ -47,7 +47,8 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
               ),
               Column(
                 children: [
-                  WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
+                  WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true,
+                      systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 15.w),
                     child: Column(

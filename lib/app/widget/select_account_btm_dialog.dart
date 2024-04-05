@@ -74,12 +74,13 @@ class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
 
   Widget buildOptionItem(option) {
     var status = option is UserDrawDetailBanks ? option.bankStatus : option.status;
-    var text = status == 0 ? option.toString() : "${option.toString()}(${Intr().tingyong_termi})";
+    var bindAccount = unEmpty(option is UserDrawDetailBanks ? option.bankAccount : option.account);
+    var text = (status == 0 || bindAccount) ? option.toString() : "${option.toString()}(${Intr().tingyong_termi})";
     // var color = status == 0 ? ColorX.text0917() :ColorX.text5d6();
 
     return InkWell(
       onTap: (){
-        if(status == 0) {
+        if(status == 0 || bindAccount) {
           if(option.toString() == Intr().dianjitianjiazhanghu){
             Get.offAndToNamed(option is UserDrawDetailBanks ? Routes.bind_bank : Routes.bind_usdt);
           } else {///绑定银行卡

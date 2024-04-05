@@ -6,7 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
-import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'FloatExpendButton.dart';
 import 'game_html_logic.dart';
@@ -16,7 +15,7 @@ class GameHtmlPage2 extends StatefulWidget {
   State<GameHtmlPage2> createState() => _GameHtmlPageState();
 }
 
-class _GameHtmlPageState extends State<GameHtmlPage2> {
+class _GameHtmlPageState extends State<GameHtmlPage2>{
   final logic = Get.find<GameHtmlLogic>();
   final state = Get.find<GameHtmlLogic>().state;
   bool isLandscape = false;
@@ -32,6 +31,7 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
 
   @override
   void initState() {
+
     super.initState();
   }
 
@@ -54,9 +54,11 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
         backgroundColor: Colors.white,
         // systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark),
       ),
-      body: Column(
-        children: [
-          Obx(() => Visibility(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Obx(() => Visibility(
               visible: state.progressVisible.value,
               child: LinearProgressIndicator(
                 value: state.progress.value / 100, //取值为0-1
@@ -65,68 +67,56 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                 backgroundColor: Colors.white,
               ),
             ),
-          ),
-          Expanded(
-            child: Stack(
-              children: [
-                InAppWebView(
-                  onWebViewCreated: (controller) =>
-                      logic.loadPage(controller),
-                  // initialOptions: InAppWebViewGroupOptions(
-                  //   android: AndroidInAppWebViewOptions(
-                  //     loadWithOverviewMode: false,
-                  //     overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
-                  //     displayZoomControls: false,
-                  //     builtInZoomControls: false,
-                  //     useWideViewPort: false,
-                  //   ),
-                  //   ios: IOSInAppWebViewOptions(
-                  //     disallowOverScroll: true,
-                  //     enableViewportScale: true,
-                  //     ignoresViewportScaleLimits: true,
-                  //   ),
-                  // ),
-                  initialSettings: InAppWebViewSettings(
-                    loadWithOverviewMode: false,
-                    overScrollMode: OverScrollMode.NEVER,
-                    displayZoomControls: false,
-                    builtInZoomControls: false,
-                    useWideViewPort: false,
-                    disallowOverScroll: true,
-                    enableViewportScale: true,
-                    ignoresViewportScaleLimits: true,
-                    useShouldOverrideUrlLoading: true,
+            ),
+            Expanded(
+              child: Stack(
+                children: [
+                  InAppWebView(
+                    onWebViewCreated: (controller) =>
+                        logic.loadPage(controller),
+                    // initialOptions: InAppWebViewGroupOptions(
+                    //   android: AndroidInAppWebViewOptions(
+                    //     loadWithOverviewMode: false,
+                    //     overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
+                    //     displayZoomControls: false,
+                    //     builtInZoomControls: false,
+                    //     useWideViewPort: false,
+                    //   ),
+                    //   ios: IOSInAppWebViewOptions(
+                    //     disallowOverScroll: true,
+                    //     enableViewportScale: true,
+                    //     ignoresViewportScaleLimits: true,
+                    //   ),
+                    // ),
+                    initialSettings: InAppWebViewSettings(
+                      loadWithOverviewMode: false,
+                      overScrollMode: OverScrollMode.NEVER,
+                      displayZoomControls: false,
+                      builtInZoomControls: false,
+                      useWideViewPort: false,
+                      disallowOverScroll: true,
+                      enableViewportScale: true,
+                      ignoresViewportScaleLimits: true,
+                      useShouldOverrideUrlLoading: true,
+                    ),
+                    shouldOverrideUrlLoading: (controller,action) async {
+                      var url = action.request.url.toString();
+                      loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers]);
+                      if(url.contains(Constants.web_gjz)){
+                        Get.back();
+                        Future.value(NavigationActionPolicy.CANCEL);
+                      }
+                      return Future.value(NavigationActionPolicy.ALLOW);
+                    },
+                    onProgressChanged: (controller, pg) {
+                      state.progress.value = pg.toDouble();
+                      state.progressVisible.value = pg != 100;
+                    },
                   ),
-                  shouldOverrideUrlLoading: (controller,action) async {
-                    var url = action.request.url.toString();
-                    loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers]);
-                    if(url.contains(Constants.web_gjz)){
-                      Get.back();
-                      Future.value(NavigationActionPolicy.CANCEL);
-                    }
-                    return Future.value(NavigationActionPolicy.ALLOW);
-                  },
-                  onProgressChanged: (controller, pg) {
-                    state.progress.value = pg.toDouble();
-                    state.progressVisible.value = pg != 100;
-                  },
-                ),
-                Positioned(
-                  top: position.dy,
-                  left: position.dx,
-                  child: Draggable(
-                    feedback: Container(),
-                    onDragUpdate: (details){
-                      setState(() {
-                        position=details.localPosition;
-                      });
-                    },
-                    onDraggableCanceled: (velocity,offset){
-                      setState(() {
-                        position = offset;
-                      });
-                    },
-                    child:FloatExpendButton(
+                  Positioned(
+                    top: position.dy,
+                    left: position.dx,
+                    child: FloatExpendButton(
                       //菜单图标组
                       [
                         buildSvgImageItem(ImageX.icHtmXZT()),
@@ -153,12 +143,26 @@ class _GameHtmlPageState extends State<GameHtmlPage2> {
                       tabspace: 20,
                       type: ButtonType.Top,
                     ),
-                  ),
-                )
-              ],
+                    // child: Draggable(
+                    //   feedback: Container(),
+                    //   onDragUpdate: (details){
+                    //     setState(() {
+                    //       position=details.localPosition;
+                    //     });
+                    //   },
+                    //   onDraggableCanceled: (velocity,offset){
+                    //     setState(() {
+                    //       position = offset;
+                    //     });
+                    //   },
+                    //   child:
+                    // ),
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

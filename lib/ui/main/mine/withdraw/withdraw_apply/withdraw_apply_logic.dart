@@ -72,9 +72,11 @@ class WithdrawApplyLogic extends GetxController {
       "getPassword":state.pwdValue,"gold":state.actualAmount.value,"money":state.withdrawAmount.value};
     if(unEmpty(state.walletChannel)){
       params["bankCode"] = state.walletChannel!.type.em();
-    } else {
-      params["bankCode"] = state.pageType.value;
+    } else if(state.selectValue is UsdtEntity){
+      params["bankCode"] = state.selectValue.type;
       // params["cardNumber"] = "${state.dropdownValue.value.cardNumber}";
+    }else {
+      params["bankCode"] = state.pageType.value;
     }
     HttpService.takeSubmit(params).then((value) {
       Get.toNamed(Routes.withdraw_result,arguments: DigiccyDepositDataEntity(money: int.parse(state.withdrawAmount.value),
@@ -92,12 +94,16 @@ class WithdrawApplyLogic extends GetxController {
       /// 时效稽核手续费
       var timeFee = amount * (state.check?.timeFeePercent ?? 0.0) / 100;
       var rate = timeFee + (state.check?.allNeedFee ??  0.0);
+      var actual = (amount - rate) < 0 ? "0" : DataUtils.formatMoney(amount - rate);
+
       state.serviceAmount.value = DataUtils.formatMoney(rate);
-      state.actualAmount.value = DataUtils.formatMoney(amount - rate);
+      state.actualAmount.value = actual;
     } else {
       var rate = state.check?.allNeedFee ??  0.0;
+      var actual = (amount - rate) < 0 ? "0" : DataUtils.formatMoney(amount - rate);
+
       state.serviceAmount.value = DataUtils.formatMoney(rate);
-      state.actualAmount.value = DataUtils.formatMoney(amount - rate);
+      state.actualAmount.value = actual;
     }
   }
 

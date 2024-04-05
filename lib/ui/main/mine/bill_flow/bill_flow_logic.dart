@@ -31,7 +31,7 @@ class BillFlowLogic extends GetxController {
     params["cur"] = state.selectIndex == 0 ? 1:5;
     params["page"] = state.page;
     params["pageSize"] = Constants.pageSize;
-    var now = DateTime.now().toUtc().subtract(Duration(hours: 12));
+    var now = DateTime.now();
 
     ///筛选时间
     switch(state.selectTime.value.id){
@@ -42,13 +42,13 @@ class BillFlowLogic extends GetxController {
         params["endTime"] = DataUtils.format24Hour(endTime.millisecondsSinceEpoch);
         break;
       case 1:
-        var beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 7));
+        var beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 6));
         var endTime = DateTime(now.year,now.month,now.day,23,59,59);
         params["beginTime"] = DataUtils.format24Hour(beginTime.millisecondsSinceEpoch);
         params["endTime"] = DataUtils.format24Hour(endTime.millisecondsSinceEpoch);
         break;
       case 2:
-        var beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 15));
+        var beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 14));
         var endTime = DateTime(now.year,now.month,now.day,23,59,59);
         params["beginTime"] = DataUtils.format24Hour(beginTime.millisecondsSinceEpoch);
         params["endTime"] = DataUtils.format24Hour(endTime.millisecondsSinceEpoch);
