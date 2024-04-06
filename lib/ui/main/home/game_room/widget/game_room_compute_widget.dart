@@ -228,7 +228,7 @@ class GameRoomComputeWidget extends StatelessWidget {
     }
     return Obx(() {
       return Text(
-        "¥${state.userBal.value.money.em()}",
+        "¥${logic.getBalance().value.money.em()}",
         style: TextStyle(
             fontSize: 14.sp, color: color, fontWeight: FontWeight.w500),
       );

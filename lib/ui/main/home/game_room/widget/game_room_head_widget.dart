@@ -181,7 +181,7 @@ class GameRoomHeadWidget extends StatelessWidget {
     var symbol = AppData.wallet() ? "¥":"₮";
     return Obx(() {
       return Text(
-        "$symbol${state.userBal.value.money.em()}",
+        "$symbol${logic.getBalance().value.money.em()}",
         style: TextStyle(
             fontSize: 14.sp, color: color, fontWeight: FontWeight.w500),
       );

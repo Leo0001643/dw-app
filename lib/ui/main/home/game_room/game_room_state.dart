@@ -26,7 +26,7 @@ class GameRoomState {
   var phrases = List<PhraseEntity>.empty(growable: true);
 
   ///用户余额
-  var userBal = BalanceEntity().obs;
+  // var userBal = BalanceEntity().obs;
   ///弹幕
   var barrage = RxList<String>.empty(growable: true);
   ///弹幕控制器

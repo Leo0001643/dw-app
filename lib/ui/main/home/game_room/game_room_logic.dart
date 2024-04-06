@@ -20,6 +20,8 @@ import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/ui/bean/balance_entity.dart';
+import 'package:leisure_games/ui/bean/change_balance_event.dart';
 import 'package:leisure_games/ui/bean/music_switch_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
@@ -27,6 +29,7 @@ import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
+import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 import 'game_room_state.dart';
 import 'room_tendency/room_tendency_logic.dart';
@@ -61,7 +64,7 @@ class GameRoomLogic extends GetxController {
 
   @override
   void onReady() {
-    loadBalance();
+    // loadBalance();
     TextItemLogic textItemLogic = Get.find<TextItemLogic>();
     // test();
     textTimerListener = textItemLogic.countDownLotteryEntity.stream.listen((value) {
@@ -228,19 +231,23 @@ class GameRoomLogic extends GetxController {
     logic.showWelcome();
   }
 
-  void loadBalance() {
-    if(!AppData.isLogin()) return;
-    var user = AppData.user();
-    HttpService.getBalance({
-      "cur": AppData.wallet() ? 1:5,
-      "platform": "main",
-      "oid": user?.oid,
-      "username": user?.username
-    }).then((value) {
-      state.userBal.value = value;
-      state.userBal.refresh();
-    });
+  Rx<BalanceEntity> getBalance(){
+    return AppData.wallet() ? Get.find<HomeLogic>().state.cnyBal:Get.find<HomeLogic>().state.usdtBal;
   }
+
+  // void loadBalance() {
+  //   if(!AppData.isLogin()) return;
+  //   var user = AppData.user();
+  //   HttpService.getBalance({
+  //     "cur": AppData.wallet() ? 1:5,
+  //     "platform": "main",
+  //     "oid": user?.oid,
+  //     "username": user?.username
+  //   }).then((value) {
+  //     state.userBal.value = value;
+  //     state.userBal.refresh();
+  //   });
+  // }
 
   @override
   void dispose() {
@@ -283,6 +290,8 @@ class GameRoomLogic extends GetxController {
     if(entity.username == AppData.user()?.username){
       ///如果是自己投注成功 需要提示投注成功
       showToast(Intr().touzhuchenggong);
+      ///还需要刷新用户余额
+      eventBus.fire(ChangeBalanceEvent());
     }
     GameRoomItemEntity gameRoomItemEntity = GameRoomItemEntity(type: entity.type, data: entity);
     state.gameRoomItemEntityList.add(gameRoomItemEntity);
