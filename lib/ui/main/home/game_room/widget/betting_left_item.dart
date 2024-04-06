@@ -145,14 +145,14 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
     // String? qiShu=wsBetResultEntity.term;
     String betName = GameRuleUtil.getBetTypeName(betType);
     if(unEmpty(betNum)){
-      betName = "$betName-${betNum}";
+      betName = "$betName-$betNum";
     }
     String partMsg = "x${GameRuleUtil.getMoneySymbol(wsBetResultEntity.moneyType??"CNY")}";
     // String betOdds="";
     print("=====>betMoney $betMoney  betOdds1314 $betOdds1314");
 
 
-   var normal = betOddsExpected==betOdds1314 || isEmpty(betMoney) || isEmpty(betOdds1314);
+   var normal = betOddsExpected == betOdds1314 || isEmpty(betMoney) || isEmpty(betOdds1314);
 
     // if (betOddsExpected==(betOdds1314)||betMoney.isEmpty==true|| isEmpty(betOdds1314)) {
     //   betOdds ="$betOddsExpected $partMsg $betMoney";

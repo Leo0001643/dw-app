@@ -6,9 +6,12 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
+import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/format_util.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
@@ -34,11 +37,13 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
   late TabController _tabController;
   ///钱包类型切换
   int index=0;
+  double totalMoney = 0;
 
   var odds = RxList<WsBetContent>.empty(growable: true);
 
   @override
   void initState() {
+    totalMoney = widget.total;
     odds.assignAll(widget.betInfo.content ?? []);
     odds.refresh();
     _tabController = TabController(length: payWays.length, vsync: this);
@@ -378,7 +383,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           ),
         ),
         TextSpan(
-          text: " ${index==0?"¥":"₮"}${rakebackFormat(sumOddsData()-sumData())}",
+          text: " ${index==0?"¥":"₮"}${rakebackFormat(sumOddsData()-totalMoney)}",
           style: TextStyle(
             fontSize: 12.sp,
             color: ColorX.color_fc243b,
@@ -429,6 +434,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
 
   Widget buildTotalTips() {
     return Obx(() {
+      totalMoney = sumData();
       return Container(
         padding: EdgeInsets.symmetric(
           horizontal: 15.w,
@@ -464,7 +470,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                   ),
                 ),
                 TextSpan(
-                  text: " ${index==0?"¥":"₮"}${rakebackFormat(sumData())}",
+                  text: " ${index==0?"¥":"₮"}${rakebackFormat(totalMoney)}",
                   style: TextStyle(
                     fontSize: 18.sp,
                     color: ColorX.color_fc243b,
@@ -494,6 +500,19 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           WidgetUtils().buildElevatedButton(Intr().confirm, 135.w, 40.h,
               bg: buildBtnColor(),
               textColor: Colors.white, onPressed: () {
+
+                var homelogic = Get.find<HomeLogic>();
+
+                double selfMoney = (index == 0 ? homelogic.state.cnyBal.value.money:homelogic.state.usdtBal.value.money ) ?? 0;
+                if(selfMoney < totalMoney) {
+                  DialogUtils().showMessageDialog(context,Intr().yuebuzhuqingxianchongzhi,title:Intr().com_tip,onConfirm: (){
+                    Get.back();
+                    eventBus.fire(ChangeMainPageEvent(2));
+                    Get.until((ModalRoute.withName(Routes.main)));
+                  });
+                  return;
+                }
+
             ///这里区分一下，如果是自选 需要实时取房间里的期号，如果不是要取投注信息里面的，防止投注时间过长导致的封盘过期
                 var term = Get.find<GameRoomLogic>().term.value;//widget.optional ?  : widget.betInfo.term;
                 widget.logic.sumbitBets(index == 0? "CNY":"USDT",term,odds);

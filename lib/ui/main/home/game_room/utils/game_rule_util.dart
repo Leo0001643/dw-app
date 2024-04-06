@@ -1279,32 +1279,30 @@ class GameRuleUtil {
     String ballName = "";
 
     if (betType.contains(GameType_First_String)) {
-      ballName = "${ballName} 第一球+";
+      ballName = "$ballName-第一球";
     } else if (betType.contains(GameType_Second_String)) {
-      ballName = "${ballName} 第二球+";
+      ballName = "$ballName-第二球";
     } else if (betType.contains(GameType_Three_String)) {
-      ballName = "${ballName} 第三球+";
+      ballName = "$ballName-第三球";
     }
 
     if (betType.contains(GameType_Big)) {
-      ballName = "${ballName} 大+";
+      ballName = "$ballName-大";
     } else if (betType.contains(GameType_Small)) {
-      ballName = "${ballName} 小+";
+      ballName = "$ballName-小";
     } else if (betType.contains(GameType_Odd)) {
-      ballName = "${ballName} 单+";
+      ballName = "$ballName-单";
     } else if (betType.contains(GameType_Even)) {
-      ballName = "${ballName} 双+";
+      ballName = "$ballName-双";
     }
 
     return ballName.isEmpty ? "未知" : ballName;
   }
 
-  /**
-   * 只展示大小单双，根据type
-   *
-   * @param betType
-   * @return
-   */
+  /// 只展示大小单双，根据type
+  ///
+  /// @param betType
+  /// @return
   static String getBallNameMaxMin(String betType) {
     String ballName = "";
     if (betType.contains(GameType_Big)) {

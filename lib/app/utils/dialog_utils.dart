@@ -613,16 +613,6 @@ class DialogUtils {
 
   ///确认注单
   void showConfirmBetDialog(BuildContext context, GameRoomLogic logic,WsBetEntity betInfo,bool optional,{double total=0,double inputAmt=0}) {
-    var homelogic = Get.find<HomeLogic>();
-    double selfMoney = homelogic.state.cnyBal.value.money??0;
-    if(selfMoney<total) {
-      showMessageDialog(context,Intr().yuebuzhuqingxianchongzhi,title:Intr().com_tip,onConfirm: (){
-        Get.back();
-        eventBus.fire(ChangeMainPageEvent(2));
-        Get.until((ModalRoute.withName(Routes.main)));
-      });
-      return;
-    }
     showDialog(
         context: context,
         builder: (context) {

@@ -178,7 +178,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
       width: 43.r,height: 43.r,
       alignment: Alignment.center,
       decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(22.r),),
-      child: Text(num, style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
+      child: Text(num == "-1" ? "?":num, style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,fontWeight: FontWeight.w600),),
     );
   }
 
@@ -199,7 +199,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
         border: Border.all(color: color,width: 2.w),
         borderRadius: BorderRadius.circular(22.r),
       ),
-      child: Text(result, style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),),
+      child: Text(result == "-1" ? "?":result, style: TextStyle(fontSize: 14.sp,color: color,fontWeight: FontWeight.w600),),
     );
   }
 

@@ -80,15 +80,6 @@ class _GameRoomPageState extends State<GameRoomPage> {
               padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
               child: Column(
                 children: [
-                  // Container(
-                  //     alignment: Alignment.center,
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.black54,
-                  //       borderRadius: BorderRadius.circular(100.r),
-                  //     ),
-                  //     margin: EdgeInsets.symmetric(vertical: 2.r, horizontal: 1.r),
-                  //     child: TextTimerPage(
-                  //         TextTimerLogic(type: game.gameCode), game, logic.state.pc28Lotto)),
                   GameRoomHeadWidget(),
                   GameRoomComputeWidget(),
                 ],

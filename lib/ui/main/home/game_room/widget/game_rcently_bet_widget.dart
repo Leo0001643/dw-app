@@ -251,7 +251,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(color: color ?? color1, width: 2)
           , borderRadius: BorderRadius.circular(15.r),),
-        child: Text(result, style: TextStyle(fontSize: 14.sp,
+        child: Text(result == "-1" ? "?":result, style: TextStyle(fontSize: 14.sp,
             color: ColorX.text0917(),
             fontWeight: FontWeight.w600),),
       ),
@@ -277,7 +277,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: ColorX.cardBg3(), borderRadius: BorderRadius.circular(15.r),),
-      child: Text(num, style: TextStyle(fontSize: 14.sp,
+      child: Text(num == "-1" ? "?":num, style: TextStyle(fontSize: 14.sp,
           color: ColorX.text0917(),
           fontWeight: FontWeight.w600),),
     );

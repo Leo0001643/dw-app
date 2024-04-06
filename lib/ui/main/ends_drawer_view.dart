@@ -72,7 +72,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                   color: ColorX.cardBg5(),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 13.w),
+                padding: EdgeInsets.symmetric(vertical: 13.h, horizontal: 13.w),
                 margin: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
                   children: [
@@ -232,14 +232,14 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                     },
                   ),
                   SizedBox(
-                    height: 15.h,
+                    height: 5.h,
                   ),
                   Divider(
                     color: ColorX.color_10_949,
                     height: 1.h,
                   ),
                   SizedBox(
-                    height: 15.h,
+                    height: 5.h,
                   ),
                   InkWell(
                     onTap: () {
