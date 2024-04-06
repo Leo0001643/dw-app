@@ -1,6 +1,7 @@
 
 import 'package:common_utils/common_utils.dart';
 import 'package:event_bus/event_bus.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rxdart/rxdart.dart';
 ///普通事件
@@ -9,8 +10,9 @@ EventBus eventBus=EventBus();
 EventBus behaviorBus = EventBus.customController(BehaviorSubject());
 
 ///显示Toast消息
-void showToast(String message,{Toast? toastLength,}){
-  Fluttertoast.showToast(msg: message,gravity: ToastGravity.CENTER,toastLength: toastLength);
+void showToast(String message,{bool? toastLength,}){
+  EasyLoading.showToast(message,duration: toastLength == true ? const Duration(seconds: 3):const Duration(seconds: 1));
+  // Fluttertoast.showToast(msg: message,gravity: ToastGravity.CENTER,toastLength: toastLength);
 }
 
 ///是否debug环境

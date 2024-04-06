@@ -51,8 +51,9 @@ class _GameRoomPageState extends State<GameRoomPage> {
   @override
   void dispose() {
     state.barrageWallController.dispose();
-    Get.delete<GameRoomLogic>();
+    Get.find<TextItemLogic>().closeTimer();
     Get.delete<TextItemLogic>();
+    Get.delete<GameRoomLogic>();
     super.dispose();
   }
 

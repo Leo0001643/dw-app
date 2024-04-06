@@ -53,7 +53,7 @@ class TextItemLogic extends GetxController {
   Rx<CountDownLotteryEntity> countDownLotteryEntity = CountDownLotteryEntity().obs;
   final TextTimerState state = TextTimerState();
   StreamSubscription? loginStream;
-  var count = 100;
+  // var count = 100;
   // String? type;
   String? status = Intr().fengpanzhong;
   String? lastStatusContent;
@@ -105,9 +105,14 @@ class TextItemLogic extends GetxController {
 
   @override
   void onClose() {
+    closeTimer();
+    super.onClose();
+  }
+
+
+  void closeTimer(){
     countdownTimer?.cancel();
     countdownTimer = null;
-    super.onClose();
   }
 
 
@@ -141,7 +146,7 @@ class TextItemLogic extends GetxController {
 
   void _calculateCountdown(
       Pc28LottoRooms pc28lottoRoom, Map<String,dynamic> pc28Plan) {
-    countdownTimer?.cancel();
+    closeTimer();
     print("==========>pc28lottoRoom  ${jsonEncode(pc28lottoRoom.toJson())}");
     // 服务器的误差时间
     var diffTime = pc28Plan['timestamp'] - DateTime.now().millisecondsSinceEpoch;
@@ -154,15 +159,16 @@ class TextItemLogic extends GetxController {
       }
 
       // 如果倒计时结束，取消计时器
-      if (count <= 0) {
-        countdownTimer?.cancel();
-      }
+      // if (count <= 0) {
+      //   closeTimer();
+      // }
     });
   }
 
   ///咪牌距离下一期投注倒计时
   var mipaiBetTime = "";
   var mipaiOpenTime = "";
+  var waitOpenHint = Intr().dengdaikaipan;
   void timeCountOnly(
       diffTime, Pc28LottoRooms pc28lottoRoom,Map<String,dynamic> pc28Plan) {
     Map<String, dynamic> allTime = pc28Plan['all'];
@@ -183,8 +189,8 @@ class TextItemLogic extends GetxController {
     } else if (allTime[key]['code'].toString() == "100020") {
       ///只有第一次需要显示，其他时候不需要
       if(currentStatus.value != LotteryStatus.wattingLotteryStatus){
-        // showToast(allTime[key]['msg'],toastLength: Toast.LENGTH_LONG);
-        EasyLoading.showToast(allTime[key]['msg'],duration: Duration(seconds: 5));
+        waitOpenHint = allTime[key]['msg'];
+        showToast(waitOpenHint,toastLength: true);
       }
       currentStatus.value=LotteryStatus.wattingLotteryStatus;
       print("++++++++++++++++等待开盘");
@@ -289,6 +295,9 @@ class TextItemLogic extends GetxController {
     ///处理咪牌开奖逻辑 开始
     //如果是封盘中
     mipaiBetTime = currentStatus.value == LotteryStatus.sealingPlateStatus ? roomcountdown['${key}Time'] : subToTime(roomcountdown['${key}Time']);
+    if(LotteryStatus.wattingLotteryStatus == currentStatus.value){
+      mipaiBetTime = Intr().dengdaikaipan;
+    }
     //如果是开奖中
     mipaiOpenTime = roomcountdown['${key}OpenResult'].toString();
 
@@ -310,7 +319,7 @@ class TextItemLogic extends GetxController {
     //   }
     // }
     // ///显示开奖中封面图
-    if((int.tryParse(mipaiOpenTime)??0) <= 0 && guaguaMask != ImageX.lotteringP()){
+    if((int.tryParse(mipaiOpenTime)??0) <= 0 && guaguaMask != ImageX.lotteringP() && currentStatus.value != LotteryStatus.wattingLotteryStatus){
       guaguaMask = ImageX.lotteringP();
       ///重绘状态控制器
       scratchKey = GlobalKey<ScratcherState>();
@@ -463,7 +472,7 @@ class TextItemLogic extends GetxController {
     if(currentStatus.value == LotteryStatus.sealingPlateStatus){
       return Intr().fengpanzhong;
     }else if(currentStatus.value == LotteryStatus.wattingLotteryStatus){
-      return Intr().wanshanziliao;
+      return waitOpenHint;
     }else {
       return "";
     }
