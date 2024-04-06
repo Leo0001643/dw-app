@@ -181,13 +181,7 @@ class AppData {
   }
 
   static String lastLoginPwd(){
-    var pwds = List.empty(growable: true);
-    prefs?.getKeys().forEach((element) {
-      if(element.startsWith("login_pwd")){
-        pwds.add(prefs?.getString(element) ?? "");
-      }
-    });
-    return pwds.lastOrNull ?? '';
+    return loginPwd(lastLoginUser());
   }
 
   ///为当前登录用户设置手势密码

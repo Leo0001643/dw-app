@@ -623,7 +623,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                 ),
                 Expanded(
                   child: InkWell(
-                    onTap: () => Get.toNamed(Routes.set_simple_pwd),
+                    onTap: () => Get.toNamed(Routes.setting),
                     child: Column(
                       children: [
                         WidgetUtils().buildImage(ImageX.iconJymmT(), 24.r, 24.r),

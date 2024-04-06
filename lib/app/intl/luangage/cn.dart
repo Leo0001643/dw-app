@@ -1027,6 +1027,7 @@ class CN {
     "shuruyinhangmingcheng":"请输入银行名称",
     "yicizhinengfasong3tiao":"一次只能发送3条语句哦",
     "shuruneirongchaoguozuidaxianzhi":"您输入的内容数量已经超过了最大限制",
+    "guanbijianyimima":"关闭简易密码后，将清空您设置的简易密码请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
 
 
 

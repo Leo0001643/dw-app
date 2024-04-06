@@ -1,3 +1,4 @@
+import 'package:floating_draggable_widget/floating_draggable_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -7,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'FloatExpendButton.dart';
 import 'game_html_logic.dart';
 
 class GameHtmlPage2 extends StatefulWidget {
@@ -27,7 +27,8 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
   ];
-  Offset position = Offset(0.1.sw, 0.5.sh);
+  Rx<Offset> position = Offset(20, 50).obs;
+
 
   @override
   void initState() {
@@ -47,47 +48,33 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        toolbarHeight: 0,
-        backgroundColor: Colors.white,
-        // systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark),
-      ),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Obx(() => Visibility(
-              visible: state.progressVisible.value,
-              child: LinearProgressIndicator(
-                value: state.progress.value / 100, //取值为0-1
-                minHeight: 3,
-                valueColor: const AlwaysStoppedAnimation(Colors.amberAccent),
-                backgroundColor: Colors.white,
-              ),
-            ),
-            ),
-            Expanded(
-              child: Stack(
-                children: [
-                  InAppWebView(
+    return Obx(() {
+      return FloatingDraggableWidget(
+        mainScreenWidget: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            toolbarHeight: 0,
+            backgroundColor: Colors.white,
+            // systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark),
+          ),
+          backgroundColor: Colors.white,
+          body: SafeArea(
+            child: Column(
+              children: [
+                Obx(() => Visibility(
+                  visible: state.progressVisible.value,
+                  child: LinearProgressIndicator(
+                    value: state.progress.value / 100, //取值为0-1
+                    minHeight: 3,
+                    valueColor: const AlwaysStoppedAnimation(Colors.amberAccent),
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+                ),
+                Expanded(
+                  child: InAppWebView(
                     onWebViewCreated: (controller) =>
                         logic.loadPage(controller),
-                    // initialOptions: InAppWebViewGroupOptions(
-                    //   android: AndroidInAppWebViewOptions(
-                    //     loadWithOverviewMode: false,
-                    //     overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
-                    //     displayZoomControls: false,
-                    //     builtInZoomControls: false,
-                    //     useWideViewPort: false,
-                    //   ),
-                    //   ios: IOSInAppWebViewOptions(
-                    //     disallowOverScroll: true,
-                    //     enableViewportScale: true,
-                    //     ignoresViewportScaleLimits: true,
-                    //   ),
-                    // ),
                     initialSettings: InAppWebViewSettings(
                       loadWithOverviewMode: false,
                       overScrollMode: OverScrollMode.NEVER,
@@ -113,58 +100,48 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
                       state.progressVisible.value = pg != 100;
                     },
                   ),
-                  Positioned(
-                    top: position.dy,
-                    left: position.dx,
-                    child: FloatExpendButton(
-                      //菜单图标组
-                      [
-                        buildSvgImageItem(ImageX.icHtmXZT()),
-                        buildSvgImageItem(ImageX.icHtmlBackT())
-                      ],
-                      //点击事件回调
-                      callback: (int index) {
-                        if (index == 0) {
-                          isLandscape = !isLandscape;
-                          //旋转屏幕
-                          SystemChrome.setPreferredOrientations(
-                              isLandscape ? orientations : orientations2);
-                          ///切换横竖屏需要切换悬浮球的位置
-                          setState(() {
-                            position = isLandscape ? Offset(0.1.sw, 0.1.sh):Offset(0.1.sw, 0.5.sh);
-                          });
-                          loggerArray(["现在是什么状态",isLandscape]);
-                        } else if (index == 1) {
-                          Get.back();
-                          //关闭
-                        }
-                      },
-                      fabHeight: 42,
-                      tabspace: 20,
-                      type: ButtonType.Top,
-                    ),
-                    // child: Draggable(
-                    //   feedback: Container(),
-                    //   onDragUpdate: (details){
-                    //     setState(() {
-                    //       position=details.localPosition;
-                    //     });
-                    //   },
-                    //   onDraggableCanceled: (velocity,offset){
-                    //     setState(() {
-                    //       position = offset;
-                    //     });
-                    //   },
-                    //   child:
-                    // ),
-                  )
-                ],
-              ),
+                ),
+              ],
             ),
+          ),
+        ),
+        floatingWidget: Column(
+          children: [
+            FloatingActionButton(
+                heroTag: "orientations",
+                foregroundColor: Colors.transparent,
+                backgroundColor: Colors.transparent,
+                onPressed: (){
+                  isLandscape = !isLandscape;
+                  ///重新创建这个组件
+                  SystemChrome.setPreferredOrientations(isLandscape ? orientations : orientations2);
+                  //旋转屏幕
+                  ///切换横竖屏需要切换悬浮球的位置
+                  position.value = isLandscape ? const Offset(100, 30) : const Offset(20, 50);
+                  position.refresh();
+                  loggerArray(["现在是什么状态",isLandscape]);
+                },
+                child: buildSvgImageItem(ImageX.icHtmXZT())),
+            FloatingActionButton(
+                heroTag: "close",
+                foregroundColor: Colors.transparent,
+                backgroundColor: Colors.transparent,
+                onPressed: (){
+                  if(isLandscape){
+                    SystemChrome.setPreferredOrientations(orientations2);
+                    isLandscape = !isLandscape;
+                  }
+                  Future.delayed(const Duration(milliseconds: 200),()=> Get.back());
+                },
+                child: buildSvgImageItem(ImageX.icHtmlBackT())),
           ],
         ),
-      ),
-    );
+        dx: position.value.dx,
+        dy: position.value.dy,
+        floatingWidgetWidth: 50,
+        floatingWidgetHeight: 150,
+      );
+    });
   }
 
   Widget buildSvgImageItem(String icon) {

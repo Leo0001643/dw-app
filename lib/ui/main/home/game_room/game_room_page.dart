@@ -91,52 +91,54 @@ class _GameRoomPageState extends State<GameRoomPage> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(top: 10.h,left: 10.w,right: 10.w),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: WidgetUtils().buildImageProvider(ImageX.roomBg(state.roomType.value)),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        const GameRoomHotWidget(),
-                        Expanded(
-                          child: Stack(
-                            children: [
-                              GetBuilder<GameRoomLogic>(
-                                id: GameRoomLogic.gameRoomList,
-                                builder: (logic) {
-                                  return ListView.builder(
-                                    controller: logic.scrollController,
-                                    itemCount:
-                                    state.gameRoomItemEntityList.length,
-                                    itemBuilder: (context, index) {
-                                      GameRoomItemEntity gameRoomItemEntity =
-                                      state.gameRoomItemEntityList[index];
-                                      return buildItemWidget(index, logic, gameRoomItemEntity);
-                                    },
-                                  );
-                                },
-                              ),
-                              Positioned(
-                                  left: 0,
-                                  right: 0,
-                                  top: 20.h,
-                                  child: buildCountDown()),
-                              BarrageWall(
-                                maxBulletHeight: 5,
-                                controller: state.barrageWallController,
-                                speedCorrectionInMilliseconds: 3000,
-                                height: 0.2.sh,
-                                child: Container(),
-                              ),
-                            ],
-                          ),
+                  child: Obx(() {
+                    return Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: WidgetUtils().buildImageProvider(ImageX.roomBg(state.roomType.value)),
+                          fit: BoxFit.fill,
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
+                      child: Column(
+                        children: [
+                          const GameRoomHotWidget(),
+                          Expanded(
+                            child: Stack(
+                              children: [
+                                GetBuilder<GameRoomLogic>(
+                                  id: GameRoomLogic.gameRoomList,
+                                  builder: (logic) {
+                                    return ListView.builder(
+                                      controller: logic.scrollController,
+                                      itemCount:
+                                      state.gameRoomItemEntityList.length,
+                                      itemBuilder: (context, index) {
+                                        GameRoomItemEntity gameRoomItemEntity =
+                                        state.gameRoomItemEntityList[index];
+                                        return buildItemWidget(index, logic, gameRoomItemEntity);
+                                      },
+                                    );
+                                  },
+                                ),
+                                Positioned(
+                                    left: 0,
+                                    right: 0,
+                                    top: 20.h,
+                                    child: buildCountDown()),
+                                BarrageWall(
+                                  maxBulletHeight: 5,
+                                  controller: state.barrageWallController,
+                                  speedCorrectionInMilliseconds: 3000,
+                                  height: 0.2.sh,
+                                  child: Container(),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
                 ),
                 buildFloatingBtn(() {
                   if (AppData.isLogin()) {

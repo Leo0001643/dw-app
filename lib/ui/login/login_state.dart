@@ -8,7 +8,7 @@ class LoginState {
   LoginState() {
     ///Initialize variables
     accountValue = AppData.lastLoginUser();
-    pwdValue = AppData.lastLoginPwd();
+    pwdValue = AppData.loginPwd(accountValue);
     btnEnable.value = (unEmpty(accountValue) && unEmpty(pwdValue));
   }
 

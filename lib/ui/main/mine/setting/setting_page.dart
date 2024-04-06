@@ -159,9 +159,12 @@ class _SettingPageState extends State<SettingPage> {
                                     state.jymmToggle.value = value;
                                   }
                                 });
-                              }else {
-                                state.jymmToggle.value = value;
-                                AppData.setGestureValue("");
+                              } else {
+                                DialogUtils().showMessageDialog(context, Intr().guanbijianyimima,onConfirm: (){
+                                  Navigator.pop(context);
+                                  state.jymmToggle.value = value;
+                                  AppData.setGestureValue("");
+                                });
                               }
                             },
                             value: state.jymmToggle.value,
