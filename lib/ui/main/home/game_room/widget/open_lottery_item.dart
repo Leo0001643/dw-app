@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/socket/ws_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
@@ -29,11 +30,14 @@ class StateOpenLotteryItem extends State<OpenLotteryItem> {
     int b = 0;
     int c = 0;
     if((wSLotteryEntityData?.originalNum?.length??0)>=3){
-       a=int.tryParse(wSLotteryEntityData?.originalNum?[0]??"0")??0;
-       b=int.tryParse(wSLotteryEntityData?.originalNum?[1]??"0")??0;
-       c=int.tryParse(wSLotteryEntityData?.originalNum?[2]??"0")??0;
+       a=int.tryParse(wSLotteryEntityData?.originalNum?[0]??"0") ?? 0;
+       b=int.tryParse(wSLotteryEntityData?.originalNum?[1]??"0") ?? 0;
+       c=int.tryParse(wSLotteryEntityData?.originalNum?[2]??"0") ?? 0;
+    } else {
+      loggerArray(["出现000啦",wSLotteryEntityData?.originalNum]);
+      ///开奖号码为空，那说明在开奖中进入房间了，所以不显示
+      return Container();
     }
-
 
     return Container(
       margin: EdgeInsets.only(left: 20.w,right: 20.w,bottom: 8.w,top: 8.w),

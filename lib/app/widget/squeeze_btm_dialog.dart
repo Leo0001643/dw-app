@@ -142,7 +142,7 @@ class StateSqueezeBtmDialog extends State<SqueezeBtmDialog>{
                               Expanded(
                                 child: LayoutBuilder(
                                   builder: (context,cts){
-                                    var lotteryTime = (int.tryParse(logic.mipaiOpenTime)??0) > 0 ? logic.mipaiOpenTime : Intr().kaijiangzhong;
+                                    var lotteryTime = (int.tryParse(logic.mipaiOpenTime)??0) > 0 ? "${logic.mipaiOpenTime}s" : Intr().kaijiangzhong;
                                     if(logic.currentStatus.value == LotteryStatus.wattingLotteryStatus){
                                       lotteryTime = "";
                                     }

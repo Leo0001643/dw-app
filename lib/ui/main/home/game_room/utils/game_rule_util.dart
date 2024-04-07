@@ -726,7 +726,6 @@ class GameRuleUtil {
       arr[2] = int.tryParse(threeNum[2]) ?? 0;
       arr[3] = arr[0] + arr[1] + arr[2];
     } else {
-      //SysoManager.println("得到的开奖结果异常，不应该出现这种情况");
       arr[0] = -1;
       arr[1] = -1;
       arr[2] = -1;

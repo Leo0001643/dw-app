@@ -35,14 +35,13 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
   Widget build(BuildContext context) {
     var wsBetResultEntity = widget.gameRoomItemEntity.data as WsBetEntity;
     String termData=GameRuleUtil.getSSB(wsBetResultEntity.term.em(aft: '--')); // 4
-    int allMonny=0;
+    var allMonny = 0.0;
     for(WsBetContent c in wsBetResultEntity.content??[]) {
       String betMoney = c.c??"0";
-      allMonny+=int.tryParse(betMoney)??0;
+      allMonny += DataUtils.formatNum(betMoney);
     }
 
-
-    print("=========>avatar  ${wsBetResultEntity.avatar} ${wsBetResultEntity.content}");
+    // print("=========>avatar  ${wsBetResultEntity.avatar} ${wsBetResultEntity.content}}");
     return Container(
       child: Column(
         mainAxisSize: MainAxisSize.min,

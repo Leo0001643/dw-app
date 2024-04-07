@@ -405,8 +405,8 @@ class StateHomePage extends State<HomePage>
                           ? "₮${state.usdtBal.value.money.em()}"
                           : "¥${state.cnyBal.value.money.em()}",
                       ctl.wallet
-                          ? ImageX.iconJjGrey()
-                          : ImageX.usdtT());
+                          ? ImageX.usdtT()
+                          : ImageX.iconJjGrey());
                 }),
               ],
             );
