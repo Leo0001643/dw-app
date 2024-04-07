@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
@@ -27,17 +29,22 @@ class BettingDialogItemWidget extends StatefulWidget {
 }
 
 class StateBettingDialogItemWidget extends State<BettingDialogItemWidget>{
-  Map<String,String> keyMap={};
+  // Map<String,String> keyMap={};
 
   @override
   Widget build(BuildContext context) {
-    String ssb=saveColorType(widget.content);
+    // String ssb=saveColorType(widget.content);
     // String play=getTag(key)
-    print("==big0dd===>$ssb, ${jsonEncode(widget.content.toJson())}");
+
+    var ssb = widget.content.name.em();
+    if(widget.betName != Intr().tema){
+      ssb = GameRuleUtil.getNumBallName(widget.content.type.em());
+    }
 
     return InkWell(
       onTap: (){
         // widget.content.contentMap=keyMap;
+        print("==big0dd=== ${jsonEncode(widget.content.toJson())}");
         ///提示音
         if(AppData.promptTone()){ AudioUtils().playBetSelect(); }
         updateBettingDialogItemWidget(widget.content);
@@ -100,55 +107,55 @@ class StateBettingDialogItemWidget extends State<BettingDialogItemWidget>{
     );
   }
 
-  saveColorType(OddsContent con){
-    if (con.type?.contains(GameRuleUtil.GameType_Second)==true) {
-      setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Second);
-      setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Second_Cao_Bet);
-      setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_Second}_", "")??"");
-    } else if (con.type?.contains(GameRuleUtil.GameType_First)==true) {
-      setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_First);
-      setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Frist_Cao_Bet);
-      setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_First}_", ""));
-    } else if (con.type?.contains(GameRuleUtil.GameType_Three)==true) {
-      setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Three);
-      setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Thire_Cao_Bet);
-      setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_Three}_", ""));
-    } else {
-      setTag(GameRuleUtil.Key_Type, con.type);
-      setTag(GameRuleUtil.Key_Name, con.name);
-    }
-    String ssb="";
-    if (keyMap[GameRuleUtil.Key_Num]!=null) {
-      ssb=getTag(GameRuleUtil.Key_Num);
-    } else {
-      setTag(GameRuleUtil.Key_Odds, con.play);
-      if (con.type?.endsWith(GameRuleUtil.GameType_Big) == true) {
-        String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Big);
-        ssb = betTypeName;
-      } else if (con.type?.endsWith(GameRuleUtil.GameType_Small) == true) {
-        String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Small);
-        ssb =betTypeName;
-      } else if (con.type?.endsWith(GameRuleUtil.GameType_Odd) == true) {
-        String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Odd);
-        ssb = betTypeName;
-      } else if (con.type?.endsWith(GameRuleUtil.GameType_Even) == true) {
-        String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Even);
-        ssb = betTypeName;
-      } else {
-        ssb =con.name??"";
-      }
-    }
-    setTag(GameRuleUtil.Key_Odds, con.play);
-    return ssb;
-  }
+  // saveColorType(OddsContent con){
+  //   if (con.type?.contains(GameRuleUtil.GameType_Second)==true) {
+  //     setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Second);
+  //     setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Second_Cao_Bet);
+  //     setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_Second}_", "")??"");
+  //   } else if (con.type?.contains(GameRuleUtil.GameType_First)==true) {
+  //     setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_First);
+  //     setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Frist_Cao_Bet);
+  //     setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_First}_", ""));
+  //   } else if (con.type?.contains(GameRuleUtil.GameType_Three)==true) {
+  //     setTag(GameRuleUtil.Key_Type, GameRuleUtil.GameType_Three);
+  //     setTag(GameRuleUtil.Key_Name, GameRuleUtil.GameType_Thire_Cao_Bet);
+  //     setTag(GameRuleUtil.Key_Num, con.type?.replaceAll("${GameRuleUtil.GameType_Three}_", ""));
+  //   } else {
+  //     setTag(GameRuleUtil.Key_Type, con.type);
+  //     setTag(GameRuleUtil.Key_Name, con.name);
+  //   }
+  //   String ssb="";
+  //   if (keyMap[GameRuleUtil.Key_Num]!=null) {
+  //     ssb=getTag(GameRuleUtil.Key_Num);
+  //   } else {
+  //     setTag(GameRuleUtil.Key_Odds, con.play);
+  //     if (con.type?.contains(GameRuleUtil.GameType_Big) == true) {
+  //       String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Big);
+  //       ssb = betTypeName;
+  //     } else if (con.type?.contains(GameRuleUtil.GameType_Small) == true) {
+  //       String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Small);
+  //       ssb =betTypeName;
+  //     } else if (con.type?.contains(GameRuleUtil.GameType_Odd) == true) {
+  //       String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Odd);
+  //       ssb = betTypeName;
+  //     } else if (con.type?.contains(GameRuleUtil.GameType_Even) == true) {
+  //       String betTypeName = GameRuleUtil.getBallNameMaxMin(GameRuleUtil.GameType_Even);
+  //       ssb = betTypeName;
+  //     } else {
+  //       ssb =con.name??"";
+  //     }
+  //   }
+  //   setTag(GameRuleUtil.Key_Odds, con.play);
+  //   return ssb;
+  // }
 
-  setTag(String key,String? value) {
-    keyMap[key]=value??"";
-  }
-
-  String getTag(String key) {
-    return keyMap[key]??"";
-  }
+  // setTag(String key,String? value) {
+  //   keyMap[key]=value??"";
+  // }
+  //
+  // String getTag(String key) {
+  //   return keyMap[key]??"";
+  // }
 
   void updateBettingDialogItemWidget(OddsContent content) {
     content.check=!(content.check??false);

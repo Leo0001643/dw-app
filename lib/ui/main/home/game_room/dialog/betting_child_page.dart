@@ -46,7 +46,7 @@ class BettingChildPageState extends State<BettingChildPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("--------->数据${dataBettingList1.length}");
+    // print("--------->数据${dataBettingList1.length}");
     return Container(
       width: 1.sw,
       padding: EdgeInsets.only(left: 15.w,right: 15.w,top:8.w),

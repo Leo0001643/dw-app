@@ -292,7 +292,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               selectBetting.forEach((element) {
                                 var bc = WsBetContent();
                                 bc.a = element.type;
-                                bc.b = element.name;
+                                bc.b = "";//element.name;
                                 bc.c = inputAmt.value;
                                 bc.d = element.play;
                                 bc.e = element.play2;

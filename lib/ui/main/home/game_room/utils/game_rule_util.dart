@@ -908,9 +908,7 @@ class GameRuleUtil {
 
   }
 
-  /**
-   * 根据betType返回投注类型的中文名称,当以cao开头时
-   */
+  /// 根据betType返回投注类型的中文名称,当以cao开头时
   //  String getBetTypeName
   //
   // (
@@ -1298,28 +1296,62 @@ class GameRuleUtil {
     return ballName;
   }
 
-  /// 只展示大小单双，根据type
+/*  /// 只展示大小单双，根据type
   ///
   /// @param betType
   /// @return
   static String getBallNameMaxMin(String betType) {
     String ballName = "";
-    if (betType.contains(GameType_Big)) {
+    if (betType == GameType_Big) {
       ballName += "大";
-    } else if (betType.contains(GameType_Small)) {
+    } else if (betType == GameType_Small) {
       ballName += "小";
-    } else if (betType.contains(GameType_Odd)) {
+    } else if (betType == GameType_Odd) {
       ballName += "单";
-    } else if (betType.contains(GameType_Even)) {
+    } else if (betType == GameType_Even) {
       ballName += "双";
+    } else if (betType == GameType_BigOdd) {
+      ballName += "大单";
+    } else if (betType == GameType_BigEven) {
+      ballName += "大双";
+    } else if (betType == GameType_SmallOdd) {
+      ballName += "小单";
+    } else if (betType == GameType_SmallEven) {
+      ballName += "小双";
     }
 
     return ballName;
+  }*/
+
+
+
+  static String getNumBallName(String betType) {
+    switch(betType){
+      case "first_big":
+      case "second_big":
+      case "third_big":
+        return Intr().bet_da;
+      case "first_small":
+      case "second_small":
+      case "third_small":
+        return Intr().bet_xiao;
+      case "first_odd":
+      case "second_odd":
+      case "third_odd":
+        return Intr().bet_dan;
+      case "first_even":
+      case "second_even":
+      case "third_even":
+        return Intr().bet_shuang;
+      case "tiger":
+        return Intr().bet_hu;
+      case "dragon":
+        return Intr().bet_long;
+      case "equal":
+        return Intr().bet_he;
+    }
+    return "";
   }
-
-
-
-
 
 
 

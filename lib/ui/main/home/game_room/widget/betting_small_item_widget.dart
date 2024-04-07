@@ -28,7 +28,7 @@ class BettingSmallItemWidget extends StatefulWidget {
 
 class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
 
-  Map<String,String> keyMap={};
+  // Map<String,String> keyMap={};
 
   @override
   Widget build(BuildContext context) {
@@ -182,12 +182,12 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
   //   return ssb;
   // }
 
-  setTag(String key,String? value) {
-    keyMap[key]=value??"";
-  }
-  String getTag(String key) {
-    return keyMap[key]??"";
-  }
+  // setTag(String key,String? value) {
+  //   keyMap[key]=value??"";
+  // }
+  // String getTag(String key) {
+  //   return keyMap[key]??"";
+  // }
 
   void updateBettingDialogItemWidget(OddsContent content) {
     content.check=!(content.check??false);
