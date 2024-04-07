@@ -119,8 +119,7 @@ class TextItemLogic extends GetxController {
   // String gameCode="";
   void loadDataGameCode(String gameCode,RoomCopyWritingEntity? roomWriting) {
     this.roomWriting = roomWriting;
-    countdownTimer?.cancel();
-    countdownTimer = null;
+    closeTimer();
     loggerArray(["==========>loadDataGameCode  $roomWriting",gameCode]);
     //测试用
     HttpService.getPc28LottoList().then((value) {
@@ -156,6 +155,7 @@ class TextItemLogic extends GetxController {
         timeCountOnly(diffTime, pc28lottoRoom, pc28Plan);
       } catch (e,stack) {
         loggerArray(["loadTimerData22倒计时报错",e,stack]);
+        closeTimer();
       }
 
       // 如果倒计时结束，取消计时器
@@ -294,7 +294,7 @@ class TextItemLogic extends GetxController {
     lastStatusContent = roomcountdown['${key}Time'] ?? '';
     ///处理咪牌开奖逻辑 开始
     //如果是封盘中
-    mipaiBetTime = currentStatus.value == LotteryStatus.sealingPlateStatus ? roomcountdown['${key}Time'] : subToTime(roomcountdown['${key}Time']);
+    mipaiBetTime = currentStatus.value == LotteryStatus.sealingPlateStatus ? lastStatusContent! : subToTime(lastStatusContent!);
     if(LotteryStatus.wattingLotteryStatus == currentStatus.value){
       mipaiBetTime = Intr().dengdaikaipan;
     }

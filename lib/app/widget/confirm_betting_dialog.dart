@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -36,7 +38,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
   var payWays = ["CNY", "USDT"];
   late TabController _tabController;
   ///钱包类型切换
-  int index=0;
+  int index = AppData.wallet() ? 0 : 1;
   double totalMoney = 0;
 
   var odds = RxList<WsBetContent>.empty(growable: true);
@@ -46,7 +48,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     totalMoney = widget.total;
     odds.assignAll(widget.betInfo.content ?? []);
     odds.refresh();
-    _tabController = TabController(length: payWays.length, vsync: this);
+    _tabController = TabController(initialIndex: index, length: payWays.length, vsync: this);
     _tabController.addListener(() {
       index=_tabController.index;
       setState(() {
@@ -64,7 +66,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 0.95.sw,
+      width: 0.90.sw,
       height: 0.55.sh,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -240,7 +242,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
             child: Text(betName, style: TextStyle(fontSize: 14.sp, color: ColorX.text0917(),),),
           ),
           Expanded(
-            flex: 35,
+            flex: 30,
             child: Text(betOdds, style: TextStyle(
                 fontSize: 14.sp,
                 color: ColorX.color_fc243b,
@@ -248,7 +250,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
             ),
           ),
           Expanded(
-            flex: 40,
+            flex: 45,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -281,8 +283,9 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
                           ),
                         ),
                         Expanded(
-                          child: WidgetUtils().buildTextField(73.w, 35.h, 13.sp, ColorX.text0917(), "",
+                          child: WidgetUtils().buildTextField(null, 35.h, 13.sp, ColorX.text0917(), "",
                               inputType: TextInputType.number,
+                              inputFormatters: [LengthLimitingTextInputFormatter(9),],
                               defText: content.c.em(),backgroundColor: Colors.transparent,onChanged: (v){
                             content.c = v;
                             odds.refresh();

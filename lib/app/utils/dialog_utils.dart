@@ -622,6 +622,7 @@ class DialogUtils {
             ),
             backgroundColor: ColorX.cardBg5(),
             contentPadding: EdgeInsets.zero,
+            insetPadding: EdgeInsets.zero,
             content: ConfirmBettingDialog(logic,total,inputAmt,betInfo,optional),
           );
         });

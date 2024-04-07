@@ -609,6 +609,7 @@ class WidgetUtils {
         bool enabled = true,
         bool suffixIcon = false,
         int maxLines = 1,
+        int? maxLength,
         EdgeInsetsGeometry? padding,
         List<TextInputFormatter>? inputFormatters,
         InputBorder? focusedBorder,
@@ -624,6 +625,7 @@ class WidgetUtils {
       padding: padding,
       width: width,
       height: height,
+      alignment: Alignment.center,
       child: suffixIcon
           ? Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -646,14 +648,13 @@ class WidgetUtils {
         // cursorHeight: textSize,
         cursorColor: ColorX.textBlack(),
         maxLines: maxLines,
+        maxLength: maxLength,
         focusNode: focusNode,
         controller: TextEditingController.fromValue(TextEditingValue(
             text: defText.em(),
             selection: TextSelection.fromPosition(TextPosition(
                 affinity: TextAffinity.downstream,
-                offset: defText
-                    .em()
-                    .length)))),
+                offset: defText.em().length)))),
         onChanged: onChanged,
         keyboardType: inputType,
         inputFormatters: inputFormatters,
@@ -663,6 +664,7 @@ class WidgetUtils {
           hintText: hint,
           border: InputBorder.none,
           enabled: enabled,
+          isCollapsed: true,
           errorBorder: InputBorder.none,
           focusedBorder: focusedBorder,
           focusedErrorBorder: InputBorder.none,
