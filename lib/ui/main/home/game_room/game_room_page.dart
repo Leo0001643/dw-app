@@ -267,7 +267,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
           if (AppData.isLogin()) {
             TextItemLogic textItemLogic = Get.find<TextItemLogic>();
             if (unEmpty(textItemLogic.canBet())) {
-              showToast(textItemLogic.canBet());
+              showToastFull(textItemLogic.canBet(),toastLength: true);
               return;
             }
             DialogUtils().showBettingBtmDialog(context, logic);

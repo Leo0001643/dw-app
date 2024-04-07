@@ -190,7 +190,7 @@ class TextItemLogic extends GetxController {
       ///只有第一次需要显示，其他时候不需要
       if(currentStatus.value != LotteryStatus.wattingLotteryStatus){
         waitOpenHint = allTime[key]['msg'];
-        showToast(waitOpenHint,toastLength: true);
+        showToastFull(waitOpenHint,toastLength: true);
       }
       currentStatus.value=LotteryStatus.wattingLotteryStatus;
       print("++++++++++++++++等待开盘");

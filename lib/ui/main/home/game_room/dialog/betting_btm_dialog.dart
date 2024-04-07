@@ -274,7 +274,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                             child: WidgetUtils().buildElevatedButton(Intr().touzhu, 62.w, 88.h, textSize:16.sp, bg: buildTextColor(), onPressed: (){
                               TextItemLogic textItemLogic = Get.find<TextItemLogic>();
                               if (unEmpty(textItemLogic.canBet())) {
-                                showToast(textItemLogic.canBet());
+                                showToastFull(textItemLogic.canBet(),toastLength: true);
                                 return;
                               }
                               if (selectBetting.isEmpty) {

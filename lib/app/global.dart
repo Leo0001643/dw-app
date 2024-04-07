@@ -11,8 +11,12 @@ EventBus behaviorBus = EventBus.customController(BehaviorSubject());
 
 ///显示Toast消息
 void showToast(String message,{bool? toastLength,}){
+  Fluttertoast.showToast(msg: message,gravity: ToastGravity.CENTER,toastLength: toastLength==true ? Toast.LENGTH_LONG:Toast.LENGTH_SHORT);
+}
+
+///显示Toast消息
+void showToastFull(String message,{bool? toastLength,}){
   EasyLoading.showToast(message,duration: toastLength == true ? const Duration(seconds: 3):const Duration(seconds: 1));
-  // Fluttertoast.showToast(msg: message,gravity: ToastGravity.CENTER,toastLength: toastLength);
 }
 
 ///是否debug环境

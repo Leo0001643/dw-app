@@ -77,7 +77,7 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                           if(e.name == Intr().wallet_cny){
                             state.list.assignAll(state.cnyList);
                             state.list.refresh();
-                          }else {
+                          } else {
                             state.list.assignAll(state.usdtList);
                             state.list.refresh();
                           }
@@ -208,6 +208,8 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
   }
 
   Widget buildBetItem(CurrentBetContent item) {
+    var symbol = state.currentWallet.value.name == Intr().wallet_cny ? "¥":"₮";
+
     return Container(
       color: ColorX.cardBg(),
       // height: 94.h,
@@ -250,8 +252,8 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
           Expanded(
               flex: 25,
               child: Center(
-                child: Text("¥${item.betMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,),),
-              )
+                child: Text("$symbol${DataUtils.formatMoney(item.betMoney)}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,),),
+              ),
           ),
           Container(height: 94.h,width: 1.r,color: ColorX.color_10_949,),
           Expanded(
@@ -343,7 +345,8 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                   state.list.forEach((element) {
                     betTotal += element.betMoney.em();
                   });
-                  return Text("¥$betTotal",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
+                  var symbol = state.currentWallet.value.name == Intr().wallet_cny ? "¥":"₮";
+                  return Text("$symbol${DataUtils.formatMoney(betTotal)}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
                 }),
               )
           ),
@@ -355,7 +358,8 @@ class _BettingDetailsPageState extends State<BettingDetailsPage> {
                 state.list.forEach((element) {
                   winTotal += element.winMoneyExpected.em();
                 });
-                return Text("¥$winTotal",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
+                var symbol = state.currentWallet.value.name == Intr().wallet_cny ? "¥":"₮";
+                return Text("$symbol${DataUtils.formatMoney(winTotal)}",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500),);
               }),
             ),
           ),

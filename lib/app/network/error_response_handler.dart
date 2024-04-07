@@ -48,6 +48,7 @@ class ErrorResponseHandler {
   void responseHandler(Map<dynamic, dynamic> error) {
     var toast= error["message"];
     var current = DateTime.now().millisecondsSinceEpoch;
+    // loggerArray(["走这里了吗",error]);
     ///错误信息过滤
     if(toast != lastToast || (current - lastTime) >= 5000){
       lastTime = current;

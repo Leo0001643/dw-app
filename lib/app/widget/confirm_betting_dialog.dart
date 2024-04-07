@@ -64,7 +64,7 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 0.90.sw,
+      width: 0.95.sw,
       height: 0.55.sh,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -220,7 +220,11 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     }
     String betName = GameRuleUtil.getBetTypeName(content.a.em());
     if(unEmpty(content.b)){
-      betName = "$betName-${content.b.em()}";
+      if(isEmpty(betName)){
+        betName = content.b.em();
+      }else {
+        betName = "$betName-${content.b.em()}";
+      }
     }
 
     return Container(

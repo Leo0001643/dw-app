@@ -282,7 +282,7 @@ class HistoryLotteryBtmDialog extends StatelessWidget {
           if (AppData.isLogin()) {
             TextItemLogic textItemLogic = Get.find<TextItemLogic>();
             if (unEmpty(textItemLogic.canBet())) {
-              showToast(textItemLogic.canBet());
+              showToastFull(textItemLogic.canBet(),toastLength: true);
               return;
             }
             Navigator.pop(context);

@@ -1296,7 +1296,7 @@ class GameRuleUtil {
       ballName = "$ballName-双";
     }
 
-    return ballName.isEmpty ? "未知" : ballName;
+    return ballName;
   }
 
   /// 只展示大小单双，根据type
