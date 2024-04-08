@@ -21,8 +21,8 @@ class Intr extends Translations{
   factory Intr() => getInstance();
 
 
-  //中文 英文 越南语
-  var locales = [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
+  //中文 英文 越南语 ,const Locale("vi","VI"),const Locale('en','US')
+  var locales = [const Locale('zh','ZH')];
 
   ///当前语言环境
   Locale currentLocale(){
@@ -31,7 +31,7 @@ class Intr extends Translations{
 
   ///当前语言环境
   Locale fallbackLocale(){
-    return locales[1];
+    return locales[0];
   }
 
   String get theme => 'theme'.tr;

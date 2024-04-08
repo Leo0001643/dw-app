@@ -292,6 +292,20 @@ class AppData {
     prefs?.remove("user");
   }
 
+  ///适配多渠道环境 如果换成其他渠道本地host就跟线路里的不是一回事了 所以得处理一下多渠道的环境问题
+  static void checkBaseUrl(BaseApiOssEntity value){
+    if(isEmpty(prefs?.getString("base_url"))){
+      if(unEmpty(value.baseAPIs)){
+        setBaseUrl(value.baseAPIs!.first);
+      }
+    }
+    if(isEmpty(prefs?.getString("base_wsurl"))){
+      if(unEmpty(value.webSockets)){
+        setBaseWsUrl(value.webSockets!.first);
+      }
+    }
+  }
+
 
 
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:common_utils/common_utils.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
@@ -43,7 +44,7 @@ class WsToBetEntity {
 
 	factory WsToBetEntity.get({String? moneyType, String? nowTerm, List<WsBetContent>? betList,String? gameType,String? roomId,String? tableId}){
 		var entity = WsToBetEntity();
-		entity.siteId = "9000";
+		entity.siteId = Constants.siteid;
 		entity.oid = AppData.user()?.oid ?? "";
 		entity.clientName = AppData.user()?.username ?? SocketUtils().clientName;
 		entity.type = "bet";

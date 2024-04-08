@@ -22,15 +22,15 @@ class OssUtils{
 
   factory OssUtils() => getInstance();
 
-  var accessKey = "***";
-  var accessSecret = "***";
+  var accessKey = "xxxx";
+  var accessSecret = "xxx";
   var bucketName = "dw-app-lines";
-  var file = "line_gjz.json";
+  var file = "line_boya.json";
   Client? client;
 
   void initData(){
     client = Client.init(
-        ossEndpoint: "oss-cn-shanghai.aliyuncs.com",
+        ossEndpoint: "oss-accelerate.aliyuncs.com",
         bucketName: bucketName, authGetter: (){
           return Auth(
             accessKey: accessKey,

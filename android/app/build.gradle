@@ -45,7 +45,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.soushin.leisure.leisure_games"
+        applicationId "com.soushin.leisure.boya"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 21
@@ -82,7 +82,7 @@ android {
     android.applicationVariants.all { variant ->
         variant.outputs.all {
             // 自定义文件名{示例：AppName-Flavor-debug-v1.0.0_201807301409}
-            outputFileName = "dw${variant.flavorName}_${variant.buildType.name}_${variant.versionName}_${buildTime()}.apk"
+            outputFileName = "boya${variant.flavorName}_${variant.buildType.name}_${variant.versionName}_${buildTime()}.apk"
         }
     }
 

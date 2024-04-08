@@ -11,6 +11,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -260,6 +261,9 @@ class HomeLogic extends GetxController {
 
   void loadData() {
 
+    ///更换站点logo
+    state.stationLogo.value = ImageX.icStationHomeZ();
+
     HttpService.getGameKind(AppData.wallet() ? 1: 5).then((value) {
       state.menuGroup.assignAll(value);
       state.menuGroup.refresh();
@@ -409,6 +413,8 @@ class HomeLogic extends GetxController {
       ///用于判断是否需要更新缓存使用
       value!.updateTime = DateTime.now().millisecondsSinceEpoch;
       AppData.setOssApi(value);
+      ///适配多渠道环境 如果换成其他渠道本地host就跟线路里的不是一回事了 所以得处理一下多渠道的环境问题
+      AppData.checkBaseUrl(value);
     }
 
     var list = value.toApiList();
@@ -419,7 +425,6 @@ class HomeLogic extends GetxController {
         return;
       }
     }
-
   }
 
 

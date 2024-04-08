@@ -23,6 +23,8 @@ class Constants {
 
   static const PC28 = "PC28";
 
+  static const siteid = "9003";
+
   ///PC28游戏类型
   static const fastbtb28Code = "fastbtb28";
   static const jndx28Code = "jndx28";

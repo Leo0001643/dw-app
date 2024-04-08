@@ -25,8 +25,8 @@ class StateLanguageDialog extends State<LanguageDialog>{
 
   late List<LanguageMenuEntity> country = [
     dropdownValue.value,
-    LanguageMenuEntity(language: Intr().yingyu, icon: ImageX.icon_us,locale: Intr().locales[1]),
-    LanguageMenuEntity(language: Intr().yuenanyu, icon: ImageX.icon_vi,locale: Intr().locales[2]),
+    // LanguageMenuEntity(language: Intr().yingyu, icon: ImageX.icon_us,locale: Intr().locales[1]),
+    // LanguageMenuEntity(language: Intr().yuenanyu, icon: ImageX.icon_vi,locale: Intr().locales[2]),
   ];
 
 

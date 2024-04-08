@@ -602,6 +602,11 @@ class ImageX{
   static const language =  'assets/images/language.svg';
   static const language_dark =  'assets/images/language_dark.svg';
 
+  static const ic_station_home =  'assets/images/ic_station_home.png';
+  static const ic_station_home_en =  'assets/images/ic_station_home_en.png';
+
+
+
   
   static String startP(){
     switch(AppData.localeIndex()){
@@ -1023,8 +1028,9 @@ class ImageX{
 
 
 
-
-
+  static String icStationHomeZ(){
+    return AppData.localeIndex() == 0 ? ic_station_home : ic_station_home_en;
+  }
 
   static String countDown1Z(){
     return AppData.localeIndex() == 0 ? countDown1 : countDown1_en;

@@ -117,7 +117,7 @@ class WidgetUtils {
     );
   }
 
-  Widget buildHomeAppBar(context,RxInt unRead,RxString routeName, {bool msg = false, bool drawer = false,}) {
+  Widget buildHomeAppBar(context,RxInt unRead,RxString routeName,RxString stationLogo, {bool msg = false, bool drawer = false,}) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 10.r),
       child: Row(
@@ -125,9 +125,9 @@ class WidgetUtils {
           SizedBox(
             width: 10.w,
           ),
-          Image.asset(
-            ImageX.icon_logo,
-          ),
+          Obx(() {
+            return Image.asset(stationLogo.value,);
+          }),
           Expanded(child: Container()),
           Visibility(
             visible: msg,

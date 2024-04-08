@@ -544,7 +544,7 @@ class StateGameMenuView extends State<GameMenuView> {
           "username": user?.username,
           "platformURL": Constants.web_gjz,
           "machineModel":Constants.model(),
-          "siteId":"9000",
+          "siteId":Constants.siteid,
           "siteType":"1",
           "terminal":"APP",
           "version":Constants.version(),
