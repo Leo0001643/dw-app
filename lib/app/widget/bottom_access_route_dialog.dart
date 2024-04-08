@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
@@ -52,6 +53,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                     if(unEmpty(entity)){
                       AppData.setBaseUrl(entity!.baseApi.em());
                       AppData.setBaseWsUrl(entity!.webSocket.em());
+                      HttpService.changeBaseUrl(AppData.baseUrl());
                       eventBus.fire(entity);///通知各页面刷新数据
                       showToast(Intr().caozuochenggong);
                     }

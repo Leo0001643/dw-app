@@ -11,6 +11,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -259,6 +260,9 @@ class HomeLogic extends GetxController {
   }
 
   void loadData() {
+
+    ///更换站点logo
+    state.stationLogo.value = ImageX.icStationHomeZ();
 
     HttpService.getGameKind(AppData.wallet() ? 1: 5).then((value) {
       state.menuGroup.assignAll(value);

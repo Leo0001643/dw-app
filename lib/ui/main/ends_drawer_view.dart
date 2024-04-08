@@ -215,13 +215,16 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                           Image.asset(ImageX.icon_wg, color: ColorX.icon586()),
                           SizedBox(width: 5.w,),
                           Text(Intr().wgys, style: TextStyle(fontSize: 14.sp, color: ColorX.text0917()),),
-                          Expanded(child: Container()),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(theme(), style: TextStyle(fontSize: 14.sp, color: ColorX.text949()),),
-                              Image.asset(ImageX.ic_into_right, color: ColorX.icon586()),
-                            ],
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Text(theme(), style: TextStyle(fontSize: 14.sp, color: ColorX.text949()),),
+                                ),
+                                Image.asset(ImageX.ic_into_right, color: ColorX.icon586()),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -299,13 +302,16 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                             style: TextStyle(
                                 fontSize: 14.sp, color: ColorX.text0917()),
                           ),
-                          Expanded(child: Container()),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(Intr().ycfx, style: TextStyle(fontSize: 14.sp, color: ColorX.text949()),),
-                              Image.asset(ImageX.ic_into_right, color: ColorX.icon586()),
-                            ],
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  child: Text(Intr().ycfx, style: TextStyle(fontSize: 14.sp, color: ColorX.text949()),),
+                                ),
+                                Image.asset(ImageX.ic_into_right, color: ColorX.icon586()),
+                              ],
+                            ),
                           ),
                         ],
                       ),
