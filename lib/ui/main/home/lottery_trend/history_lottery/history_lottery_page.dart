@@ -71,7 +71,7 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
           Container(
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(vertical: 10.h),
-            child: WidgetUtils().buildElevatedButton(Intr().goucai, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+            child: WidgetUtils().buildElevatedButton(Intr().qugoucai, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
               logic.clickGoucai();
             }),
           ),
@@ -89,7 +89,7 @@ class _HistoryLotteryPageState extends State<HistoryLotteryPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(state.hall.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
+          // Text(state.hall.name.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500,),),
           WidgetUtils().buildDixqi1(item.qiShu.em().toString()),
           SizedBox(height: 10.h,),
           Wrap(

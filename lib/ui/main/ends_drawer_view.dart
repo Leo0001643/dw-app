@@ -220,7 +220,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Expanded(
-                                  child: Text(theme(), style: TextStyle(fontSize: 14.sp, color: ColorX.text949()),),
+                                  child: Text(theme(), style: TextStyle(fontSize: 14.sp, color: ColorX.text949(),),textAlign: TextAlign.right,),
                                 ),
                                 Image.asset(ImageX.ic_into_right, color: ColorX.icon586()),
                               ],
@@ -307,7 +307,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Expanded(
-                                  child: Text(Intr().ycfx, style: TextStyle(fontSize: 14.sp, color: ColorX.text949()),),
+                                  child: Text(Intr().ycfx, style: TextStyle(fontSize: 14.sp, color: ColorX.text949()),textAlign: TextAlign.right,),
                                 ),
                                 Image.asset(ImageX.ic_into_right, color: ColorX.icon586()),
                               ],
