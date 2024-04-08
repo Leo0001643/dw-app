@@ -21,7 +21,7 @@ class PreferentialDetailPage extends StatefulWidget {
 class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
   final logic = Get.find<PreferentialDetailLogic>();
   final state = Get.find<PreferentialDetailLogic>().state;
-  double height = 1;
+
   @override
   void initState() {
     state.detail = Get.arguments;
@@ -84,17 +84,7 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
                       ignoresViewportScaleLimits: true,
                     ),
                   ),
-                  onWebViewCreated: (controller){
-
-                    // controller.addJavaScriptHandler(
-                    //     handlerName: "newHeight",
-                    //     callback: (List<dynamic> arguments) async {
-                    //       int? height = arguments.isNotEmpty ? arguments[0] : await controller.getContentHeight();
-                    //       if (mounted) setState(() => state.contentHeight.value = height!.toDouble());
-                    //     });
-
-
-                    logic.loadPage(controller);},
+                  onWebViewCreated: (controller)=> logic.loadPage(controller),
                   onLoadStop: (ctl,url){
                     ctl.getContentHeight().then((value){
                       loggerArray(["内容高度出来没",value]);

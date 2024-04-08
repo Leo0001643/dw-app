@@ -453,7 +453,7 @@ class CN {
     "dollar":"美元（US）",
     "thb":"泰铢（Thai Baht）",
     "vnd":"越南盾（VND）",
-    "hyld":"欢迎来到",
+    "hyld":"欢迎来到国际站",
     "qqzlxd":"全球最领先的娱乐平台",
     "register":"注册",
     "login":"登录",
