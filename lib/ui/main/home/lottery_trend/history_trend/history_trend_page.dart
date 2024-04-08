@@ -97,11 +97,11 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
               child: Column(
                 children: [
                   Container(
-                    height: 76.h,
+                    height: 71.r,
                     child: Text(Intr().qihao,style: TextStyle(fontSize: 14.sp,color: ColorX.text586(),),),
                     alignment: Alignment.center,
                   ),
-                  SizedBox(height: 1.h,child: Container(color: ColorX.color_10_949,),),
+                  SizedBox(height: 1.r,child: Container(color: ColorX.color_10_949,),),
                   Expanded(
                     child: Obx(() {
                       if(isEmpty(state.leftData)){ return Container(); }
@@ -110,7 +110,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                         itemCount: state.leftData.length,
                         itemBuilder: (context,index){
                           return Container(
-                            height: 35.h,
+                            height: 30.r,
                             alignment: Alignment.center,
                             color: index % 2 == 1 ? ColorX.color_10_949:Colors.white,
                             child: Text(state.leftData[index],style: TextStyle(fontSize: 12.sp,color: ColorX.color_3e3737,),),
@@ -129,7 +129,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                   LCTabBar(
                     length: state.tabs.length,
                     controller: _tabController,
-                    tabBarHeight: 40.h,
+                    tabBarHeight: 40.r,
                     tabBarColor: Colors.transparent,
                     tabAlignment: TabAlignment.fill,
                     isScrollable: false,
@@ -146,7 +146,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                     // width: 289.w,
                     tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600),),).toList(),
                   ),
-                  Divider(height: 1.h,color: ColorX.color_10_949,),
+                  Divider(height: 1.r,color: ColorX.color_10_949,),
                   Expanded(
                     child: Container(
                       child: SingleChildScrollView(
@@ -156,12 +156,12 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                           scrollDirection : Axis.horizontal,
                           child: Obx(() {
                             var widgets = List<Widget>.empty(growable: true);
-                            var screenWidth = (30.w + 1.w) * (isEmpty(state.data) ? 0 :state.data[0].length);
+                            var screenWidth = (30.r + 1.r) * (isEmpty(state.data) ? 0 :state.data[0].length);
                             for (var element in state.data) {
                               var index = state.data.indexOf(element);
                               widgets.add(buildNumberRow(element,index));
                               if(index == 0){
-                                widgets.add(Container(color: ColorX.color_10_949,alignment: Alignment.centerLeft,height: 1.h,width: screenWidth,));
+                                widgets.add(Container(color: ColorX.color_10_949,alignment: Alignment.centerLeft,height: 1.r,width: screenWidth,));
                               }
                             }
                             return Stack(
@@ -172,7 +172,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
                                 ),
                                 SizedBox(
                                   width: screenWidth,
-                                  height:(35.h) * state.data.length ,
+                                  height:(30.r) * state.data.length ,
                                   child: Obx(() {
                                     return Stack(
                                       children: buildLineChart(state.lottoData),
@@ -197,8 +197,8 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
 
   Widget buildNumberItem(String num, Color color) {
     return Container(
-      width: 30.w,
-      height: 35.h,
+      width: 30.r,
+      height: 30.r,
       color: color,
       alignment: Alignment.center,
       child: Text(num,style: TextStyle(fontSize: 12.sp,color: ColorX.color_949eb9,),),
@@ -213,7 +213,7 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
           mainAxisSize: MainAxisSize.min,
           children: [
             buildNumberItem(element[i],index == 0 || (index%2 == 1) ? Colors.white : ColorX.color_f7f8fb),
-            Container(height: 35.h,width:1.r,color: ColorX.color_10_949,),
+            Container(height: 30.r,width:1.r,color: ColorX.color_10_949,),
           ],
         );
       }),
@@ -224,19 +224,19 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
     return CustomPaint(
       painter: LinePainter(
         color: ColorX.color_fc243b,
-        start: Offset((30.w + 1.w) * start.width + 15.w, (35.h) * start.height + 17.5.h),
-        end: Offset((30.w + 1.w) * end.width + 15.w, (35.h) * end.height + 17.5.h),
+        start: Offset((30.r + 1.r) * start.width + 15.r, (30.r) * start.height + 17.5.r),
+        end: Offset((30.r + 1.r) * end.width + 15.r, (30.r) * end.height + 17.5.r),
       ),
     );
   }
 
   Widget buildDrawNum(Size size,String num,Color bg) {
     return Positioned(
-      top: (35.h) * size.height,
-      left:  (30.w + 1.w) * size.width,
+      top: (30.r) * size.height,
+      left:  (30.r + 1.r) * size.width,
       child: Container(
-        width: 30.w,
-        height: 35.h,
+        width: 30.r,
+        height: 30.r,
         alignment: Alignment.center,
         child: Container(
           width: 24.r,height: 24.r,
@@ -262,7 +262,6 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
     ///最上层点渲染
     value.forEach((k, v) {
       var color = _tabController.index == 0 ? DataUtils.getBallColor2(v): ColorX.color_58698d;
-
       list.add(buildDrawNum(Size(v.toDouble(), k.toDouble()), "$v", color));
     });
     return list;

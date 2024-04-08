@@ -7,6 +7,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/refresh_change_notifier.dart';
+import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 
 import 'history_lottery_state.dart';
 
@@ -36,10 +37,12 @@ class HistoryLotteryLogic extends GetxController {
     });
   }
 
-
   void clickGoucai(){
     if(AppData.isLogin()){
-      Get.toNamed(Routes.room_list,);
+      var item = state.hall;
+      var gameCode = state.PC28HashTable[item.lid.toString()] ?? state.PC28HashTable['46'];
+      logger(state.PC28HashTable[item.lid.em()]);
+      Get.toNamed(Routes.room_list,arguments: GameKindGameKindList(gameCode: gameCode));
     } else {
       showToast(Intr().qingxiandenglu);
     }

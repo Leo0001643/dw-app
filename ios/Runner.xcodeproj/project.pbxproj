@@ -484,7 +484,7 @@
 				DEVELOPMENT_TEAM = 85T97ATLCB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -667,7 +667,7 @@
 				DEVELOPMENT_TEAM = 85T97ATLCB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -692,7 +692,7 @@
 				DEVELOPMENT_TEAM = 85T97ATLCB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -2,12 +2,14 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
+import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 
 import 'lottery_trend_state.dart';
@@ -30,18 +32,24 @@ class LotteryTrendLogic extends GetxController {
   void loadData() {
     HttpService.historyHall().then((value) {
       Map<String,dynamic> map = jsonDecode(value);
+      var list = List<HistoryHall>.empty(growable: true);
       map.forEach((key, value) {
-        state.trendList.add(HistoryHall.fromJson(value));
+        // logger("这都是多少呢${key} == ${value["lid"]}");
+        list.add(HistoryHall.fromJson(value));
       });
-      loggerArray(["数据量达到多少了",state.trendList.em(),map.em()]);
+      var blackList = ["33","34","46"];
+      state.trendList.value = list.where((element) => !blackList.contains(element.lid.toString())).toList(growable: true);
+      state.trendList.sort((a, b) => int.tryParse(a.sort.em()).em() - int.tryParse(b.sort.em()).em());
       state.trendList.refresh();
     });
   }
 
 
-  void clickGoucai(){
+  void clickGoucai(HistoryHall item){
     if(AppData.isLogin()){
-      Get.toNamed(Routes.room_list);
+      var gameCode = state.PC28HashTable[item.lid.toString()] ?? state.PC28HashTable['46'];
+      logger(state.PC28HashTable[item.lid.em()]);
+      Get.toNamed(Routes.room_list,arguments: GameKindGameKindList(gameCode: gameCode));
     } else {
       showToast(Intr().qingxiandenglu);
     }

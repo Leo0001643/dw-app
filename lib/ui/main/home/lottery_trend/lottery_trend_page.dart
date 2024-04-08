@@ -44,7 +44,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
   Widget build(BuildContext context) {
     return DrawerScaffold(
       scaffoldKey: state.scaffoldKey,
-      appBar: WidgetUtils().buildAppBar(Intr().zoushi,msg: true,scaffoldKey: state.scaffoldKey),
+      appBar: WidgetUtils().buildAppBar(Intr().kaijiang_trend,msg: true,scaffoldKey: state.scaffoldKey),
       backgroundColor: ColorX.pageBg2(),
       body: Obx(() {
         return ListView.builder(
@@ -97,7 +97,7 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
             ),
             Divider(height: 1.h,color: ColorX.color_10_949,),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 15.h),
+              padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 0),
               child: Row(
                 children: [
                   InkWell(
@@ -125,14 +125,18 @@ class _LotteryTrendPageState extends State<LotteryTrendPage> {
                   ),
                   Expanded(child: Container(),),
                   InkWell(
-                    onTap: ()=> logic.clickGoucai(),
-                    child: Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Text(Intr().qugoucai,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
-                        SizedBox(width: 3.w,),
-                        Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
-                      ],
+                    onTap: ()=> logic.clickGoucai(item),
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 40.h,
+                      child: Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Text(Intr().qugoucai,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),),),
+                          SizedBox(width: 3.w,),
+                          Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
+                        ],
+                      ),
                     ),
                   ),
                 ],

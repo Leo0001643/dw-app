@@ -687,6 +687,7 @@ class Intr extends Translations{
   String get yicizhinengfasong3tiao => "yicizhinengfasong3tiao".tr;
   String get shuruneirongchaoguozuidaxianzhi => "shuruneirongchaoguozuidaxianzhi".tr;
   String get guanbijianyimima => "guanbijianyimima".tr;
+  String get kaijiang_trend => "kaijiang_trend".tr;
 
 
 
