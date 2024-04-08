@@ -31,7 +31,7 @@ class Intr extends Translations{
 
   ///当前语言环境
   Locale fallbackLocale(){
-    return locales[1];
+    return locales[0];
   }
 
   String get theme => 'theme'.tr;
