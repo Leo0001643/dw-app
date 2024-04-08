@@ -21,7 +21,7 @@ class PreferentialDetailPage extends StatefulWidget {
 class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
   final logic = Get.find<PreferentialDetailLogic>();
   final state = Get.find<PreferentialDetailLogic>().state;
-
+  double height = 1;
   @override
   void initState() {
     state.detail = Get.arguments;
@@ -37,6 +37,8 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return DrawerScaffold(
       scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildAppBar(Intr().xiangqing,scaffoldKey: state.scaffoldKey),
@@ -61,11 +63,15 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
               child: Text(state.detail.titleSec.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698D,),),
             ),
             Obx(() {
+              int initialScale=140*(ScreenUtil().screenWidth/411).toInt();
+
               return SizedBox(
                 height: state.contentHeight.value,
                 child: InAppWebView(
                   initialOptions: InAppWebViewGroupOptions(
+
                     android: AndroidInAppWebViewOptions(
+                      initialScale:initialScale,
                       loadWithOverviewMode: false,
                       overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
                       displayZoomControls: false,
@@ -78,7 +84,17 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
                       ignoresViewportScaleLimits: true,
                     ),
                   ),
-                  onWebViewCreated: (controller)=> logic.loadPage(controller),
+                  onWebViewCreated: (controller){
+
+                    // controller.addJavaScriptHandler(
+                    //     handlerName: "newHeight",
+                    //     callback: (List<dynamic> arguments) async {
+                    //       int? height = arguments.isNotEmpty ? arguments[0] : await controller.getContentHeight();
+                    //       if (mounted) setState(() => state.contentHeight.value = height!.toDouble());
+                    //     });
+
+
+                    logic.loadPage(controller);},
                   onLoadStop: (ctl,url){
                     ctl.getContentHeight().then((value){
                       loggerArray(["内容高度出来没",value]);
