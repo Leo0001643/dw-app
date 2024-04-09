@@ -283,8 +283,9 @@ class TextItemLogic extends GetxController {
         }
       }
     }
+    var roomLogic = Get.find<GameRoomLogic>();
     ///期号处理成功 显示期号
-    Get.find<GameRoomLogic>().term.value = isEmpty(roomcountdown['${key}Term']) ? "":roomcountdown['${key}Term'].toString();
+    roomLogic.term.value = isEmpty(roomcountdown['${key}Term']) ? "":roomcountdown['${key}Term'].toString();
     state.text_timer.value = roomcountdown['${key}Time'] ?? '';
     // if(showT == 50){
     //   showOpen(showT, data[0]['term']);
@@ -325,7 +326,7 @@ class TextItemLogic extends GetxController {
       scratchKey = GlobalKey<ScratcherState>();
     }
     ///如果有了封盘结果显示已有结果封面图
-    if(Get.find<GameRoomLogic>().updateLottery && guaguaMask != ImageX.guaguaMask1P()){
+    if(roomLogic.updateLottery && guaguaMask != ImageX.guaguaMask1P()){
       guaguaMask = ImageX.guaguaMask1P();
       ///重绘状态控制器
       scratchKey = GlobalKey<ScratcherState>();

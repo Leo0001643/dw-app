@@ -26,6 +26,8 @@ class WebConfigEntity {
 	WebConfigDomainMGuanfangcai? domainGuanfangcai;
 	@JSONField(name: "ag_domain")
 	WebConfigAgDomain? agDomain;
+	@JSONField(name: "front_domain")
+	WebConfigAgDomain? frontDomain;
 	@JSONField(name: "domain_m_guanfangcai")
 	WebConfigDomainMGuanfangcai? domainMGuanfangcai;
 	@JSONField(name: "domain_m_pc28")
@@ -47,25 +49,6 @@ class WebConfigEntity {
 	}
 }
 
-// @JsonSerializable()
-// class WebConfigDomainPc28 {
-// 	@JSONField(name: "check_path")
-// 	String? checkPath;
-// 	List<String>? list;
-// 	@JSONField(name: "url_path")
-// 	String? urlPath;
-//
-// 	WebConfigDomainPc28();
-//
-// 	factory WebConfigDomainPc28.fromJson(Map<String, dynamic> json) => $WebConfigDomainPc28FromJson(json);
-//
-// 	Map<String, dynamic> toJson() => $WebConfigDomainPc28ToJson(this);
-//
-// 	@override
-// 	String toString() {
-// 		return jsonEncode(this);
-// 	}
-// }
 
 @JsonSerializable()
 class WebConfigDcHelpDomain {
@@ -127,21 +110,6 @@ class WebConfigAppDownload {
 }
 
 
-// @JsonSerializable()
-// class WebConfigAppDownloadIos {
-// 	WebConfigAppDownloadIos1? 1;
-//
-// 	WebConfigAppDownloadIos();
-//
-// 	factory WebConfigAppDownloadIos.fromJson(Map<String, dynamic> json) => $WebConfigAppDownloadIosFromJson(json);
-//
-// 	Map<String, dynamic> toJson() => $WebConfigAppDownloadIosToJson(this);
-//
-// 	@override
-// 	String toString() {
-// 		return jsonEncode(this);
-// 	}
-// }
 
 @JsonSerializable()
 class WebConfigAppDownloadIos1 {
@@ -197,50 +165,6 @@ class WebConfigLottoLineUrl {
 	}
 }
 
-// @JsonSerializable()
-// class WebConfigDomainJingdiancai {
-// 	@JSONField(name: "check_path")
-// 	String? checkPath;
-// 	List<String>? list;
-// 	@JSONField(name: "url_path")
-// 	String? urlPath;
-//
-// 	WebConfigDomainJingdiancai();
-//
-// 	factory WebConfigDomainJingdiancai.fromJson(Map<String, dynamic> json) => $WebConfigDomainJingdiancaiFromJson(json);
-//
-// 	Map<String, dynamic> toJson() => $WebConfigDomainJingdiancaiToJson(this);
-//
-// 	@override
-// 	String toString() {
-// 		return jsonEncode(this);
-// 	}
-// }
-
-// @JsonSerializable()
-// class WebConfigDomainGuanfangcai {
-// 	@JSONField(name: "list_test_new")
-// 	List<String>? listTestNew;
-// 	@JSONField(name: "list_new")
-// 	List<String>? listNew;
-// 	@JSONField(name: "check_path")
-// 	String? checkPath;
-// 	@JSONField(name: "list_test")
-// 	List<String>? listTest;
-// 	List<String>? list;
-//
-// 	WebConfigDomainGuanfangcai();
-//
-// 	factory WebConfigDomainGuanfangcai.fromJson(Map<String, dynamic> json) => $WebConfigDomainGuanfangcaiFromJson(json);
-//
-// 	Map<String, dynamic> toJson() => $WebConfigDomainGuanfangcaiToJson(this);
-//
-// 	@override
-// 	String toString() {
-// 		return jsonEncode(this);
-// 	}
-// }
-
 @JsonSerializable()
 class WebConfigAgDomain {
 	String? name;
@@ -283,45 +207,6 @@ class WebConfigDomainMGuanfangcai {
 		return jsonEncode(this);
 	}
 }
-
-// @JsonSerializable()
-// class WebConfigDomainMPc28 {
-// 	@JSONField(name: "check_path")
-// 	String? checkPath;
-// 	List<String>? list;
-// 	@JSONField(name: "url_path")
-// 	String? urlPath;
-//
-// 	WebConfigDomainMPc28();
-//
-// 	factory WebConfigDomainMPc28.fromJson(Map<String, dynamic> json) => $WebConfigDomainMPc28FromJson(json);
-//
-// 	Map<String, dynamic> toJson() => $WebConfigDomainMPc28ToJson(this);
-//
-// 	@override
-// 	String toString() {
-// 		return jsonEncode(this);
-// 	}
-// }
-//
-// @JsonSerializable()
-// class WebConfigDomainMJingdiancai {
-// 	@JSONField(name: "check_path")
-// 	String? checkPath;
-// 	List<String>? list;
-//
-//
-// 	WebConfigDomainMJingdiancai();
-//
-// 	factory WebConfigDomainMJingdiancai.fromJson(Map<String, dynamic> json) => $WebConfigDomainMJingdiancaiFromJson(json);
-//
-// 	Map<String, dynamic> toJson() => $WebConfigDomainMJingdiancaiToJson(this);
-//
-// 	@override
-// 	String toString() {
-// 		return jsonEncode(this);
-// 	}
-// }
 
 @JsonSerializable()
 class WebConfigRegisterOption {

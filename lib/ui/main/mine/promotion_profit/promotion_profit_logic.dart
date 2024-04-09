@@ -9,6 +9,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
+import 'package:leisure_games/ui/main/main_logic.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'promotion_profit_state.dart';
@@ -36,7 +37,7 @@ class PromotionProfitLogic extends GetxController {
 
     state.userCode.value = "${user?.id ?? 0}";
 
-    state.userLink.value = "${Constants.web_gjz}/#/register?sp=${AppData.user()?.id ?? 0}";
+    state.userLink.value = "${Get.find<MainLogic>().state.stationHost}/#/register?sp=${AppData.user()?.id ?? 0}";
 
     var painter = QrPainter(data: state.userLink.value, version: QrVersions.auto, gapless: true,
       errorCorrectionLevel: QrErrorCorrectLevel.L);

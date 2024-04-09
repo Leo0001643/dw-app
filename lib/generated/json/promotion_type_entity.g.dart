@@ -4,6 +4,8 @@ import 'package:leisure_games/app/app_data.dart';
 
 import 'package:leisure_games/app/global.dart';
 
+import 'package:leisure_games/app/intl/intr.dart';
+
 
 PromotionTypeKey $PromotionTypeKeyFromJson(Map<String, dynamic> json) {
   final PromotionTypeKey promotionTypeKey = PromotionTypeKey();

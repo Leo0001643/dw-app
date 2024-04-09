@@ -81,6 +81,10 @@ class MainLogic extends GetxController {
 
     HttpService.getWebConfig().then((value) {
       state.webConfig = value;
+      ///获取主站域名
+      if(unEmpty(value.frontDomain?.list)){
+        state.stationHost = value.frontDomain?.list?.first ?? "";
+      }
     });
 
     HttpService.protect().then((value) {
@@ -96,7 +100,11 @@ class MainLogic extends GetxController {
             });
       }
     });
-
   }
+
+
+
+
+
 
 }
