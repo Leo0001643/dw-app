@@ -529,7 +529,7 @@ class DataUtils{
   }
 
   static String formatMoney(num? money){
-    return money == 0 ? '0': money.em().toStringAsFixed(2);
+    return money == 0 ? '0': numNoZero(money.em().toStringAsFixed(2));
   }
 
   static num formatNum(String? money){
@@ -538,6 +538,18 @@ class DataUtils{
 
   static double formatDouble(String? money){
     return formatNum(money).toDouble();
+  }
+
+  static String numNoZero(String? money){
+    var fm = money.em();
+    if(fm.endsWith(".0")){
+      fm = fm.substring(0,fm.length - 2);
+    }if(fm.endsWith(".00")){
+      fm = fm.substring(0,fm.length - 3);
+    }else if(fm.contains('.') && fm.endsWith('0')){
+      fm = fm.substring(0,fm.length - 1);
+    }
+    return fm;
   }
 
   static String buildClientName(int length){

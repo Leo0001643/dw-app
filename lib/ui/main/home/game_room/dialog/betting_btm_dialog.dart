@@ -63,6 +63,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       pageIndex.value = _tabController.index;
       focusNode.unfocus();
     });
+    selectBetting.clear();
     selectBetting.listen((p0) {
       focusNode.unfocus();
     });
@@ -289,17 +290,17 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               var totalMony = selectBetting.length * DataUtils.formatDouble(inputAmt.value);
                               var betInfo = WsBetEntity();
                               betInfo.term = widget.logic.term.value;
-                              var odds = List<WsBetContent>.empty(growable: true);
-                              selectBetting.forEach((element) {
-                                var bc = WsBetContent();
-                                bc.a = element.type;
-                                bc.b = "";//element.name;
-                                bc.c = inputAmt.value;
-                                bc.d = element.play;
-                                bc.e = element.play2;
-                                odds.add(bc);
-                              });
-                              betInfo.content = odds;
+                              // var odds = List<WsBetContent>.empty(growable: true);
+                              // selectBetting.forEach((element) {
+                              //   var bc = WsBetContent();
+                              //   bc.a = element.type;
+                              //   bc.b = "";//element.name;
+                              //   bc.c = inputAmt.value;
+                              //   bc.d = element.play;
+                              //   bc.e = element.play2;
+                              //   odds.add(bc);
+                              // });
+                              betInfo.content = GameRuleUtil.allChoosedChip(selectBetting);
                               loggerArray(["打印投注信息",betInfo.toJson()]);
                               Navigator.pop(context);
                               ///确认投注

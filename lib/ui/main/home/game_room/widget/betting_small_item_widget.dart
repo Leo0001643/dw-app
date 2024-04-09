@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
@@ -32,9 +33,11 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
 
   @override
   Widget build(BuildContext context) {
-    String result="${widget.content.level}";
-    if(widget.content.level.em() < 10) {
-      result="0${widget.content.level.em()}";
+    String result = "";
+    if(widget.betName == Intr().tema){
+      result = int.parse(widget.content.type.em()) < 10 ? "0${widget.content.type}" : widget.content.type.em();
+    } else {
+      result = "${widget.index}";
     }
     print("=====>${jsonEncode(widget.content.toJson())}");
     return InkWell(
@@ -192,15 +195,15 @@ class StateBettingSmallItemWidget extends State<BettingSmallItemWidget>{
   void updateBettingDialogItemWidget(OddsContent content) {
     content.check=!(content.check??false);
     // print("=======> inputAmt.value   ${inputAmt.value}");
-    if(content.check==true) {
-      if(int.tryParse(content.type.em()) != null){
-        content.name = "${widget.betName}-${content.level}";
-      }else if(content.type?.contains("cao") == true){
-        content.name = "${widget.betName}-${content.level}";
-      }
+    if(content.check == true) {
+      // if(int.tryParse(content.type.em()) != null){
+      //   content.name = "${widget.betName}-${content.level}";
+      // }else if(content.type?.contains("cao") == true){
+      //   content.name = "${widget.betName}-${content.level}";
+      // }
       content.money = DataUtils.formatDouble(widget.inputAmt.value);
       widget.selectBetting.add(content);
-    }else{
+    } else {
       widget.selectBetting.remove(content);
       content.money=0;
     }

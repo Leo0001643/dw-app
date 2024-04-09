@@ -42,6 +42,8 @@ class WsBetContent {
 	@JSONField(name: "E")
 	String? e;//特殊赔率
 
+	String? showName;//自定义的，跟后台无关系
+
 	WsBetContent();
 
 	factory WsBetContent.fromJson(Map<String, dynamic> json) => $WsBetContentFromJson(json);

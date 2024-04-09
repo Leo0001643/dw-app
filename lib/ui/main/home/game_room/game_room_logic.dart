@@ -39,7 +39,7 @@ class GameRoomLogic extends GetxController {
   ScrollController scrollController = ScrollController();
   RxString term = "".obs;
   WSLotteryEntityData? headWSLotteryEntityData;
-  RxList<OddsContent> odds=<OddsContent>[].obs;
+  // RxList<OddsContent> odds=<OddsContent>[].obs;
 
   static String  gameRoomCompute = "gameRoomComputeWidget";
   static String  gameRoomList = "gameRoomLogicList";
@@ -156,10 +156,7 @@ class GameRoomLogic extends GetxController {
 
     HttpService.getPC28Odds(room.id.em()).then((value) {
       // loggerArray(["输出格式化数据处理",jsonEncode(value),]);
-      Map<String, dynamic> map = jsonDecode(value);
-      GameRuleUtil.getOddsbean(map).then((list) {
-        odds.value= list;
-      });
+      GameRuleUtil.getOddsbean(jsonDecode(value));
     });
 
     ///表情
@@ -174,25 +171,25 @@ class GameRoomLogic extends GetxController {
 
   }
 
-  List<OddsContent>  getDataBettingList(int index,{int? type=0}){
-    String mBallName="";
-    switch(index) {
-      case 0:
-        mBallName = "tema";
-        return GameRuleUtil.requestTema(odds,type:type);
-      case 1:
-        mBallName="first";
-        break;
-      case 2:
-        mBallName="second";
-        break;
-      case 3:
-        mBallName="three";
-        break;
-    }
-    var dataBettingList = GameRuleUtil.dealData(odds,mBallName:mBallName);
-    return dataBettingList;
-  }
+  // List<OddsContent>  getDataBettingList(int index,{int? type=0}){
+  //   String mBallName="";
+  //   switch(index) {
+  //     case 0:
+  //       mBallName = "tema";
+  //       return GameRuleUtil.requestTema(odds,type:type);
+  //     case 1:
+  //       mBallName="first";
+  //       break;
+  //     case 2:
+  //       mBallName="second";
+  //       break;
+  //     case 3:
+  //       mBallName="three";
+  //       break;
+  //   }
+  //   var dataBettingList = GameRuleUtil.dealData(odds,mBallName:mBallName);
+  //   return dataBettingList;
+  // }
 
 
   void changeRoomType(Pc28LottoRoomsTables room,bool login) {

@@ -220,13 +220,18 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
     if(unEmpty(content.e)){
       betOdds = "$betOdds/${content.e.em()}";
     }
-    String betName = GameRuleUtil.getBetTypeName(content.a.em());
-    if(unEmpty(content.b)){
-      if(isEmpty(betName)){
-        betName = content.b.em();
-      }else {
-        betName = "$betName-${content.b.em()}";
+    var betName = "";
+    if(isEmpty(content.showName)){
+      betName = GameRuleUtil.getBetTypeName(content.a.em());
+      if(unEmpty(content.b)){
+        if(isEmpty(betName)){
+          betName = content.b.em();
+        }else {
+          betName = "$betName-${content.b.em()}";
+        }
       }
+    } else {
+      betName = content.showName.em();
     }
 
     return Container(
@@ -507,7 +512,6 @@ class StateConfirmBettingDialog extends State<ConfirmBettingDialog>
           WidgetUtils().buildElevatedButton(Intr().confirm, 135.w, 40.h,
               bg: buildBtnColor(),
               textColor: Colors.white, onPressed: () {
-
                 var homelogic = Get.find<HomeLogic>();
 
                 double selfMoney = (index == 0 ? homelogic.state.cnyBal.value.money:homelogic.state.usdtBal.value.money ) ?? 0;

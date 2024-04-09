@@ -120,7 +120,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                       Text(Intr().zhudan_,style: TextStyle(fontSize: 13.sp,color: ColorX.text605()),),
                       Text("${wsBetResultEntity.content?.length??0}",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
                       Text(Intr().zongji_,style: TextStyle(fontSize: 13.sp,color: ColorX.text605()),),
-                      Text("${GameRuleUtil.getMoneySymbol(wsBetResultEntity.moneyType??"CNY")}$allMonny",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
+                      Text("${GameRuleUtil.getMoneySymbol(wsBetResultEntity.moneyType??"CNY")}${DataUtils.formatMoney(allMonny)}",style: TextStyle(fontSize: 15.sp,color: ColorX.color_fc243b),),
                     ],
                   ),
                 ),
@@ -137,7 +137,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
   Widget buildBettingInfoItem(WsBetEntity wsBetResultEntity,WsBetContent? c) {
    String betType = c?.a??"";
    String betNum = c?.b??"";
-   String betMoney = c?.c??"";
+   String betMoney = DataUtils.numNoZero(c?.c);
    String betOddsExpected = c?.d??"";
    String betOdds1314 = c?.e??"";
    print("=======>c${jsonEncode(c?.toJson())}");
@@ -149,7 +149,6 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
     String partMsg = "x${GameRuleUtil.getMoneySymbol(wsBetResultEntity.moneyType??"CNY")}";
     // String betOdds="";
     print("=====>betMoney $betMoney  betOdds1314 $betOdds1314");
-
 
    var normal = betOddsExpected == betOdds1314 || isEmpty(betMoney) || isEmpty(betOdds1314);
 

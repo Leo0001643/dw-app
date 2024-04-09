@@ -8,6 +8,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/socket/ws_bet_entity.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 
@@ -764,33 +765,34 @@ class GameRuleUtil {
   static var teTwoBoll = List<OddsContent>.empty(growable: true); ////特码的第三排  红波 蓝波 绿波 顺子 豹子 对子
   static var teBollNum = List<OddsContent>.empty(growable: true); //特码数字
   static var oneBoll = List<OddsContent>.empty(growable: true); //第一球 数字 大小 单双 龙
+  static var oneBollNum = List<OddsContent>.empty(growable: true);
+  static var oneBollDx = List<OddsContent>.empty(growable: true);
   static var twoBoll = List<OddsContent>.empty(growable: true); //第二球 数字 大小 单双 和
+  static var twoBollNum = List<OddsContent>.empty(growable: true);
+  static var twoBollDx = List<OddsContent>.empty(growable: true);
   static var thirdBoll = List<OddsContent>.empty(growable: true); //第三球 数字 大小 单双 虎
+  static var thirdBollNum = List<OddsContent>.empty(growable: true);
+  static var thirdBollDx = List<OddsContent>.empty(growable: true);
+  static var teshuOdds1 = <String,dynamic>{};
+  static var teshuOdds2 = <String,dynamic>{};
 
-   static Future<List<OddsContent>> getOddsbean(Map<String,dynamic> totalMap) async {
+   static void getOddsbean(Map<String,dynamic> totalMap) async {
     // WSGameOddsServer result =  WSGameOddsServer();
-      var content = List<OddsContent>.empty(growable: true);
-      totalMap.forEach((key, value) {
-        value.forEach((type, entity) {
-          content.add(OddsContent.fromJson(entity));
-        });
-      });
+    //   var content = List<OddsContent>.empty(growable: true);
+    //   totalMap.forEach((key, value) {
+    //     value.forEach((type, entity) {
+    //       content.add(OddsContent.fromJson(entity));
+    //     });
+    //   });
       if(unEmpty(totalMap["3"])){
-        totalMap["3"].forEach((type, entity) {
-          var row = OddsContent.fromJson(entity);
-          teBollNum.add(row);
-        });
-        teBollNum.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
+        teBollNum.assignAll(teBollNumName(totalMap["3"]));
       }
+      teBollNum.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
+
       ///大小
       var large_sm = List<OddsContent>.empty(growable: true);
       if(unEmpty(totalMap["1"])){
-        totalMap["1"].forEach((type, entity) {
-          var row = OddsContent.fromJson(entity);
-          row.showName = "${Intr().tema}-${row.name}";
-          row.sendType = row.type;
-          large_sm.add(row);
-        });
+        large_sm.assignAll(teBollName(totalMap["1"]));
       }
       ///极大 极小
       var te_ji = List<OddsContent>.empty(growable: true);
@@ -818,42 +820,36 @@ class GameRuleUtil {
       teTwoBoll.assignAll(boBollData(boBoll,sbdBoll));
 
       //一球数字
-      var oneBollNum = List<OddsContent>.empty(growable: true);
       if(unEmpty(totalMap["12"])){
         oneBollNum.assignAll(oneBollNumName(totalMap["12"]));
       }
       oneBollNum.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
 
       //一球大小 单双
-      var oneBollDx = List<OddsContent>.empty(growable: true);
       if(unEmpty(totalMap["9"])){
         oneBollDx.assignAll(oneBollName(totalMap["9"]));
       }
       oneBollDx.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
 
       //二球数字
-      var twoBollNum = List<OddsContent>.empty(growable: true);
       if(unEmpty(totalMap["13"])){
         twoBollNum.assignAll(twoBollNumName(totalMap["13"]));
       }
       twoBollNum.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
 
       //二球大小 单双
-      var twoBollDx = List<OddsContent>.empty(growable: true);
       if(unEmpty(totalMap["10"])){
         twoBollDx.assignAll(twoBollName(totalMap["10"]));
       }
       twoBollDx.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
 
       //三球数字
-      var thirdBollNum = List<OddsContent>.empty(growable: true);
       if(unEmpty(totalMap["14"])){
         thirdBollNum.assignAll(thirdBollNumName(totalMap["14"]));
       }
       thirdBollNum.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
 
       //三球大小 单双
-      var thirdBollDx = List<OddsContent>.empty(growable: true);
       if(unEmpty(totalMap["11"])){
         thirdBollDx.assignAll(thirdBollName(totalMap["11"]));
       }
@@ -872,13 +868,20 @@ class GameRuleUtil {
           }
         });
       }
-
+      ///大小单双的第二个赔率
+      if(unEmpty(totalMap["5"])){
+        teshuOdds1 = totalMap["5"];
+      }
+      ///小单 大双的第二个赔率
+      if(unEmpty(totalMap["6"])){
+        teshuOdds2 = totalMap["6"];
+      }
       // oneBollDx.forEach((element) {
       //   logger("看看处理的对不对吧${element.showName}    ${element.sendType}");
       // });
-      loggerArray(["整理投注数据111",totalMap.length,content.length]);
+      loggerArray(["整理投注数据111",totalMap.length]);
 
-      ///处理双倍率
+/*      ///处理双倍率
       content.removeWhere((e1) {
         switch(e1.type){
           case GameType_Big_14:
@@ -932,10 +935,43 @@ class GameRuleUtil {
         }
       });
       loggerArray(["整理投注数据",totalMap.length,content.length]);
-    return Future.value(content);
+    return Future.value(content);*/
   }
 
-
+  ///整理所有选择的投注
+  static List<WsBetContent> allChoosedChip(List<OddsContent> selects){
+    var list = List<WsBetContent>.empty(growable: true);
+    selects.forEach((element) {
+      var odds_1314 = "";
+      if (element.type == "big") {
+        odds_1314 = teshuOdds1["14_big"]['play'];
+      }
+      if (element.type == "small") {
+        odds_1314 = teshuOdds1["13_small"]['play'];
+      }
+      if (element.type == "odd") {
+        odds_1314 = teshuOdds1["13_odd"]['play'];
+      }
+      if (element.type == "even") {
+        odds_1314 = teshuOdds1["14_even"]['play'];
+      }
+      if (element.type == "small_odd") {
+        odds_1314 = teshuOdds2["13_small_odd"]['play'];
+      }
+      if (element.type == "big_even") {
+        odds_1314 = teshuOdds2["14_big_even"]['play'];
+      }
+      var bc = WsBetContent();
+      bc.c = "${element.money.em()}";
+      bc.b = element.name?.replaceAll(RegExp(r'[^\d]'), "").em();
+      bc.d = element.play.em();
+      bc.e = odds_1314;
+      bc.a = element.sendType.em();
+      bc.showName = element.showName.em();
+      list.add(bc);
+    });
+    return list;
+  }
 
   ///  返回当前使用钱包的   钱币符号
   ///     1:CNY,2:USD,3:KRW,4:INR,5:USDT
@@ -1107,281 +1143,282 @@ class GameRuleUtil {
   /// type=0
   /// type=1
   /// type=2
-  static  List<OddsContent>  requestTema(List<OddsContent> odds,{int? type=0}) {
-    List<OddsContent>  dataBettingList=<OddsContent>[];
-    List<OddsContent>  middleBettingList=<OddsContent>[];
-    List<OddsContent>  smallDataBettingList=<OddsContent>[];
-    for(OddsContent con in odds) {
-      if (GameRuleUtil.GameType_Big==con.type) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=1;
-        dataBettingList.add(item);
-      }else if (GameRuleUtil.GameType_Odd==(con.type)){
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=2;
-        dataBettingList.add(item);
-      } else if (GameRuleUtil.GameType_BigOdd==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=3;
-        dataBettingList.add(item);
-      }else if (GameRuleUtil.GameType_SmallOdd==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=4;
-        dataBettingList.add(item);
-      } else if (GameRuleUtil.GameType_Max==con.type){
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=5;
-        dataBettingList.add(item);
-      } else if (GameRuleUtil.GameType_Small==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=6;
-
-        dataBettingList.add(item);
-      }else if (GameRuleUtil.GameType_Even==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-
-        item.level=7;
-        dataBettingList.add(item);
-      }else if (GameRuleUtil.GameType_BigEven==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=8;
-        dataBettingList.add(item);
-      }else if (GameRuleUtil.GameType_SmallEven==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=9;
-        dataBettingList.add(item);
-      } else if (GameRuleUtil.GameType_Min==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=10;
-        dataBettingList.add(item);
-      }else if (GameRuleUtil.GameType_Red==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=11;
-        item.color=0xFFFC243B;
-        middleBettingList.add(item);
-
-      }else if (GameRuleUtil.GameType_Blue==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=12;
-        item.color=0xFF5583E7;
-        middleBettingList.add(item);
-      }else if (GameRuleUtil.GameType_Green==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.color=0xFF06A100;
-        item.level=13;
-        middleBettingList.add(item);
-      }else if (GameRuleUtil.GameType_Straight==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=14;
-
-        middleBettingList.add(item);
-      } else if (GameRuleUtil.GameType_Leopard==(con.type)) {
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=15;
-        middleBettingList.add(item);
-      } else if (GameRuleUtil.GameType_Pair==(con.type)) {
+//   static  List<OddsContent>  requestTema(List<OddsContent> odds,{int? type=0}) {
+//     List<OddsContent>  dataBettingList=<OddsContent>[];
+//     List<OddsContent>  middleBettingList=<OddsContent>[];
+//     List<OddsContent>  smallDataBettingList=<OddsContent>[];
+//     for(OddsContent con in odds) {
+//       if (GameRuleUtil.GameType_Big==con.type) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=1;
+//         dataBettingList.add(item);
+//       }else if (GameRuleUtil.GameType_Odd==(con.type)){
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=2;
+//         dataBettingList.add(item);
+//       } else if (GameRuleUtil.GameType_BigOdd==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=3;
+//         dataBettingList.add(item);
+//       }else if (GameRuleUtil.GameType_SmallOdd==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=4;
+//         dataBettingList.add(item);
+//       } else if (GameRuleUtil.GameType_Max==con.type){
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=5;
+//         dataBettingList.add(item);
+//       } else if (GameRuleUtil.GameType_Small==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=6;
 //
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.level=16;
-        middleBettingList.add(item);
-      } else {
-        int sum = int.tryParse(con.type??"1")??-1;
-        OddsContent item= OddsContent.fromJson(con.toJson());
-        item.titleColor = GameRuleUtil.getBallColor(sum);
-        switch (sum) {
-          case GameRuleUtil.GameType_Cao_00:
-            item.level=0;
-            break;
-          case GameRuleUtil.GameType_Cao_01:
-            item.level=1;
-            break;
-          case GameRuleUtil.GameType_Cao_02:
-            item.level=2;
-            break;
-          case GameRuleUtil.GameType_Cao_03:
-            item.level=3;
-            break;
-          case GameRuleUtil.GameType_Cao_04:
-            item.level=4;
-            break;
-          case GameRuleUtil.GameType_Cao_05:
-            item.level=5;
-            break;
-          case GameRuleUtil.GameType_Cao_06:
-            item.level=6;
-            break;
-          case GameRuleUtil.GameType_Cao_07:
-            item.level=7;
-            break;
-          case GameRuleUtil.GameType_Cao_08:
-            item.level=8;
-            break;
-          case GameRuleUtil.GameType_Cao_09:
-            item.level=9;
-            break;
-          case GameRuleUtil.GameType_Cao_10:
-            item.level=10;
-            break;
-          case GameRuleUtil.GameType_Cao_11:
-            item.level=11;
-            break;
-          case GameRuleUtil.GameType_Cao_12:
-            item.level=12;
-            break;
-          case GameRuleUtil.GameType_Cao_13:
-            item.level=13;
-            break;
-          case GameRuleUtil.GameType_Cao_14:
-            item.level=14;
-            break;
-          case GameRuleUtil.GameType_Cao_15:
-            item.level=15;
-            break;
-          case GameRuleUtil.GameType_Cao_16:
-            item.level=16;
-            break;
-          case GameRuleUtil.GameType_Cao_17:
-            item.level=17;
-            break;
-          case GameRuleUtil.GameType_Cao_18:
-            item.level=18;
-            break;
-          case GameRuleUtil.GameType_Cao_19:
-            item.level=19;
-            break;
-          case GameRuleUtil.GameType_Cao_20:
-            item.level=20;
-            break;
-          case GameRuleUtil.GameType_Cao_21:
-            item.level=21;
-            break;
-          case GameRuleUtil.GameType_Cao_22:
-            item.level=22;
-            break;
-          case GameRuleUtil.GameType_Cao_23:
-            item.level=23;
-            break;
-          case GameRuleUtil.GameType_Cao_24:
-            item.level=24;
-            break;
-          case GameRuleUtil.GameType_Cao_25:
-            item.level=25;
-            break;
-          case GameRuleUtil.GameType_Cao_26:
-            item.level=26;
-            break;
-          case GameRuleUtil.GameType_Cao_27:
-            item.level=27;
-            break;
-          default:
-            item.level = -1;
-            // SysoManager.println("未知类型未知草");
-            break;
-        }
-        if(item.level.em() >= 0){
-          smallDataBettingList.add(item);
-        }
-      }
-    }
-    if(type==0) {
-      dataBettingList.sort((a, b) => (a.level.em()).compareTo((b.level.em())));
-      print("=======>长度 ${dataBettingList.length}");
-      return dataBettingList;
-    }else if(type==1) {
-      middleBettingList.sort((a, b) => (a.level.em()).compareTo((b.level.em())));
-      return middleBettingList;
-    }else if(type==2) {
-      smallDataBettingList.sort((a, b) => (a.level.em()).compareTo((b.level.em())));
-      return smallDataBettingList;
-    }
-    return dataBettingList;
-  }
-  static  List<OddsContent>  dealData(List<OddsContent> odds,{String mBallName="first"}) {
+//         dataBettingList.add(item);
+//       }else if (GameRuleUtil.GameType_Even==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//
+//         item.level=7;
+//         dataBettingList.add(item);
+//       }else if (GameRuleUtil.GameType_BigEven==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=8;
+//         dataBettingList.add(item);
+//       }else if (GameRuleUtil.GameType_SmallEven==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=9;
+//         dataBettingList.add(item);
+//       } else if (GameRuleUtil.GameType_Min==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=10;
+//         dataBettingList.add(item);
+//       }else if (GameRuleUtil.GameType_Red==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=11;
+//         item.color=0xFFFC243B;
+//         middleBettingList.add(item);
+//
+//       }else if (GameRuleUtil.GameType_Blue==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=12;
+//         item.color=0xFF5583E7;
+//         middleBettingList.add(item);
+//       }else if (GameRuleUtil.GameType_Green==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.color=0xFF06A100;
+//         item.level=13;
+//         middleBettingList.add(item);
+//       }else if (GameRuleUtil.GameType_Straight==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=14;
+//
+//         middleBettingList.add(item);
+//       } else if (GameRuleUtil.GameType_Leopard==(con.type)) {
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=15;
+//         middleBettingList.add(item);
+//       } else if (GameRuleUtil.GameType_Pair==(con.type)) {
+// //
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.level=16;
+//         middleBettingList.add(item);
+//       } else {
+//         int sum = int.tryParse(con.type??"1")??-1;
+//         OddsContent item= OddsContent.fromJson(con.toJson());
+//         item.titleColor = GameRuleUtil.getBallColor(sum);
+//         switch (sum) {
+//           case GameRuleUtil.GameType_Cao_00:
+//             item.level=0;
+//             break;
+//           case GameRuleUtil.GameType_Cao_01:
+//             item.level=1;
+//             break;
+//           case GameRuleUtil.GameType_Cao_02:
+//             item.level=2;
+//             break;
+//           case GameRuleUtil.GameType_Cao_03:
+//             item.level=3;
+//             break;
+//           case GameRuleUtil.GameType_Cao_04:
+//             item.level=4;
+//             break;
+//           case GameRuleUtil.GameType_Cao_05:
+//             item.level=5;
+//             break;
+//           case GameRuleUtil.GameType_Cao_06:
+//             item.level=6;
+//             break;
+//           case GameRuleUtil.GameType_Cao_07:
+//             item.level=7;
+//             break;
+//           case GameRuleUtil.GameType_Cao_08:
+//             item.level=8;
+//             break;
+//           case GameRuleUtil.GameType_Cao_09:
+//             item.level=9;
+//             break;
+//           case GameRuleUtil.GameType_Cao_10:
+//             item.level=10;
+//             break;
+//           case GameRuleUtil.GameType_Cao_11:
+//             item.level=11;
+//             break;
+//           case GameRuleUtil.GameType_Cao_12:
+//             item.level=12;
+//             break;
+//           case GameRuleUtil.GameType_Cao_13:
+//             item.level=13;
+//             break;
+//           case GameRuleUtil.GameType_Cao_14:
+//             item.level=14;
+//             break;
+//           case GameRuleUtil.GameType_Cao_15:
+//             item.level=15;
+//             break;
+//           case GameRuleUtil.GameType_Cao_16:
+//             item.level=16;
+//             break;
+//           case GameRuleUtil.GameType_Cao_17:
+//             item.level=17;
+//             break;
+//           case GameRuleUtil.GameType_Cao_18:
+//             item.level=18;
+//             break;
+//           case GameRuleUtil.GameType_Cao_19:
+//             item.level=19;
+//             break;
+//           case GameRuleUtil.GameType_Cao_20:
+//             item.level=20;
+//             break;
+//           case GameRuleUtil.GameType_Cao_21:
+//             item.level=21;
+//             break;
+//           case GameRuleUtil.GameType_Cao_22:
+//             item.level=22;
+//             break;
+//           case GameRuleUtil.GameType_Cao_23:
+//             item.level=23;
+//             break;
+//           case GameRuleUtil.GameType_Cao_24:
+//             item.level=24;
+//             break;
+//           case GameRuleUtil.GameType_Cao_25:
+//             item.level=25;
+//             break;
+//           case GameRuleUtil.GameType_Cao_26:
+//             item.level=26;
+//             break;
+//           case GameRuleUtil.GameType_Cao_27:
+//             item.level=27;
+//             break;
+//           default:
+//             item.level = -1;
+//             // SysoManager.println("未知类型未知草");
+//             break;
+//         }
+//         if(item.level.em() >= 0){
+//           smallDataBettingList.add(item);
+//         }
+//       }
+//     }
+//     if(type==0) {
+//       dataBettingList.sort((a, b) => (a.level.em()).compareTo((b.level.em())));
+//       print("=======>长度 ${dataBettingList.length}");
+//       return dataBettingList;
+//     }else if(type==1) {
+//       middleBettingList.sort((a, b) => (a.level.em()).compareTo((b.level.em())));
+//       return middleBettingList;
+//     }else if(type==2) {
+//       smallDataBettingList.sort((a, b) => (a.level.em()).compareTo((b.level.em())));
+//       return smallDataBettingList;
+//     }
+//     return dataBettingList;
+//   }
 
-    List<OddsContent> data = [];
-    List<OddsContent> data1 = [];
-    List<OddsContent> data2 = [];
-    List<OddsContent> data3 = [];
+  // static  List<OddsContent>  dealData(List<OddsContent> odds,{String mBallName="first"}) {
+  //
+  //   List<OddsContent> data = [];
+  //   List<OddsContent> data1 = [];
+  //   List<OddsContent> data2 = [];
+  //   List<OddsContent> data3 = [];
+  //
+  //   Map<int, OddsContent> arrayMap = {};
+  //
+  //   if ("firstBall".contains(mBallName)) {
+  //     for (int i = 0; i < odds.length; i++) {
+  //       OddsContent content = OddsContent.fromJson(odds[i].toJson());
+  //       if (content.type?.contains(GameRuleUtil.GameType_First)==true) {
+  //         data1.add(content);
+  //       } else if (content.type?.contains(GameRuleUtil.GameType_First_String)==true) {
+  //         setSecondBallData(arrayMap, content);
+  //       } else if (content.type?.contains(GameRuleUtil.GameType_dragon)==true) {
+  //         data3.add(content);
+  //       }
+  //     }
+  //
+  //   } else if ("secondBall".contains(mBallName)) {
+  //     for (int i = 0; i < odds.length; i++) {
+  //       OddsContent content = OddsContent.fromJson(odds[i].toJson());
+  //       if (content.type?.contains(GameRuleUtil.GameType_Second_String)==true || content.type?.contains(GameRuleUtil.GameType_equal)==true) {
+  //         if (content.type?.contains(GameRuleUtil.GameType_Second)==true) {
+  //           data1.add(content);
+  //         } else if (content.type?.contains(GameRuleUtil.GameType_Second_String)==true) {
+  //           setSecondBallData(arrayMap, content);
+  //
+  //         } else if (content.type?.contains(GameRuleUtil.GameType_equal)==true) {
+  //           data3.add(content);
+  //         }
+  //       }
+  //
+  //     }
+  //
+  //   } else if ("threeBall".contains(mBallName)) {
+  //     for (int i = 0; i < odds.length; i++) {
+  //       OddsContent content = OddsContent.fromJson(odds[i].toJson());
+  //       if (content.type?.contains(GameRuleUtil.GameType_Three_String)==true || content.type?.contains(GameRuleUtil.GameType_tiger)==true) {
+  //         if (content.type?.contains(GameRuleUtil.GameType_Three)==true) {
+  //           data1.add(content);
+  //         } else if (content.type?.contains(GameRuleUtil.GameType_Three_String)==true) {
+  //           setSecondBallData(arrayMap, content);
+  //         } else if (content.type?.contains(GameRuleUtil.GameType_tiger)==true) {
+  //           data3.add(content);
+  //         }
+  //       }
+  //     }
+  //   }
+  //   data1.sort((left,right)=>left.type?.compareTo(right.type??"")??1);
+  //
+  //   // Comparator<OddsContent> comparator =  Comparator<OddsContent>() {
+  //   //   public int compare(OddsContent s1, OddsContent s2) {
+  //   //     return s1.type.compareTo(s2.type);
+  //   //   }
+  //   // };
+  //   // Collections.sort(data1, comparator);
+  //   for (int i = 0; i < arrayMap.length; i++) {
+  //     data2.add(arrayMap[i]??OddsContent());
+  //   }
+  //   data.addAll(data1);
+  //   data.addAll(data2);
+  //   data.addAll(data3);
+  //   return data;
+  //   // for (int i = 0; i < mViews.size() && i < data.size(); i++) {
+  //   //   initDataTeMa(mViews.get(i), data.get(i));
+  //   // }
+  // }
 
-    Map<int, OddsContent> arrayMap = {};
 
-    if ("firstBall".contains(mBallName)) {
-      for (int i = 0; i < odds.length; i++) {
-        OddsContent content = OddsContent.fromJson(odds[i].toJson());
-        if (content.type?.contains(GameRuleUtil.GameType_First)==true) {
-          data1.add(content);
-        } else if (content.type?.contains(GameRuleUtil.GameType_First_String)==true) {
-          setSecondBallData(arrayMap, content);
-        } else if (content.type?.contains(GameRuleUtil.GameType_dragon)==true) {
-          data3.add(content);
-        }
-      }
-
-    } else if ("secondBall".contains(mBallName)) {
-      for (int i = 0; i < odds.length; i++) {
-        OddsContent content = OddsContent.fromJson(odds[i].toJson());
-        if (content.type?.contains(GameRuleUtil.GameType_Second_String)==true || content.type?.contains(GameRuleUtil.GameType_equal)==true) {
-          if (content.type?.contains(GameRuleUtil.GameType_Second)==true) {
-            data1.add(content);
-          } else if (content.type?.contains(GameRuleUtil.GameType_Second_String)==true) {
-            setSecondBallData(arrayMap, content);
-
-          } else if (content.type?.contains(GameRuleUtil.GameType_equal)==true) {
-            data3.add(content);
-          }
-        }
-
-      }
-
-    } else if ("threeBall".contains(mBallName)) {
-      for (int i = 0; i < odds.length; i++) {
-        OddsContent content = OddsContent.fromJson(odds[i].toJson());
-        if (content.type?.contains(GameRuleUtil.GameType_Three_String)==true || content.type?.contains(GameRuleUtil.GameType_tiger)==true) {
-          if (content.type?.contains(GameRuleUtil.GameType_Three)==true) {
-            data1.add(content);
-          } else if (content.type?.contains(GameRuleUtil.GameType_Three_String)==true) {
-            setSecondBallData(arrayMap, content);
-          } else if (content.type?.contains(GameRuleUtil.GameType_tiger)==true) {
-            data3.add(content);
-          }
-        }
-      }
-    }
-    data1.sort((left,right)=>left.type?.compareTo(right.type??"")??1);
-
-    // Comparator<OddsContent> comparator =  Comparator<OddsContent>() {
-    //   public int compare(OddsContent s1, OddsContent s2) {
-    //     return s1.type.compareTo(s2.type);
-    //   }
-    // };
-    // Collections.sort(data1, comparator);
-    for (int i = 0; i < arrayMap.length; i++) {
-      data2.add(arrayMap[i]??OddsContent());
-    }
-    data.addAll(data1);
-    data.addAll(data2);
-    data.addAll(data3);
-    return data;
-    // for (int i = 0; i < mViews.size() && i < data.size(); i++) {
-    //   initDataTeMa(mViews.get(i), data.get(i));
-    // }
-  }
-
-
-   static void setSecondBallData(Map<int, OddsContent> arrayMap, OddsContent content) {
-    if (content.type?.contains(GameRuleUtil.GameType_Big)==true) {
-      arrayMap[0]= content;
-    }
-    if (content.type?.contains(GameRuleUtil.GameType_Small)==true) {
-      arrayMap[1]= content;
-    }
-    if (content.type?.contains(GameRuleUtil.GameType_Odd)==true) {
-      arrayMap[2]= content;
-    }
-    if (content.type?.contains(GameRuleUtil.GameType_Even)==true) {
-      arrayMap[3]= content;
-    }
-  }
+  //  static void setSecondBallData(Map<int, OddsContent> arrayMap, OddsContent content) {
+  //   if (content.type?.contains(GameRuleUtil.GameType_Big)==true) {
+  //     arrayMap[0]= content;
+  //   }
+  //   if (content.type?.contains(GameRuleUtil.GameType_Small)==true) {
+  //     arrayMap[1]= content;
+  //   }
+  //   if (content.type?.contains(GameRuleUtil.GameType_Odd)==true) {
+  //     arrayMap[2]= content;
+  //   }
+  //   if (content.type?.contains(GameRuleUtil.GameType_Even)==true) {
+  //     arrayMap[3]= content;
+  //   }
+  // }
 
   static String getWhereBallName(String betType) {
     String ballName = "";
@@ -1521,6 +1558,18 @@ class GameRuleUtil {
   }
 
 
+  static List<OddsContent> teBollNumName(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = "${Intr().tema}-${row.name?.replaceAll(RegExp(r'[^\d]'), "")}";
+      row.sendType = "cao";
+      list.add(row);
+    });
+    return list;
+  }
+
+
   static List<OddsContent> oneBollName(totalMap) {
     var list = List<OddsContent>.empty(growable: true);
     totalMap.forEach((type, entity) {
@@ -1548,6 +1597,18 @@ class GameRuleUtil {
     totalMap.forEach((type, entity) {
       var row = OddsContent.fromJson(entity);
       row.showName = "${Intr().disanqiu}-${row.name?.substring(row.name!.length - 1)}";
+      row.sendType = row.type;
+      list.add(row);
+    });
+    return list;
+  }
+
+
+  static List<OddsContent> teBollName(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = "${Intr().tema}-${row.name.em()}";
       row.sendType = row.type;
       list.add(row);
     });
@@ -1601,6 +1662,8 @@ class GameRuleUtil {
     data.addAll(pair);
     return data;
   }
+
+
 
 
 

@@ -152,10 +152,10 @@ class StateBettingMiddleItemWidget extends State<BettingMiddleItemWidget>{
   void updateBettingDialogItemWidget(OddsContent content) {
     content.check=!(content.check??false);
     // print("=======> inputAmt.value   ${inputAmt.value}");
-    if(content.check==true) {
+    if(content.check == true) {
       content.money = DataUtils.formatDouble(widget.inputAmt.value);
       widget.selectBetting.add(content);
-    }else{
+    } else {
       widget.selectBetting.remove(content);
       content.money=0;
     }
