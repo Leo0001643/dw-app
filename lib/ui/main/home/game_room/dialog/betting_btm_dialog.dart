@@ -244,7 +244,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                         children: [
                                           Text(Intr().zongji,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),fontWeight:FontWeight.w700,),),
                                           Obx(() {
-                                            return Text("${selectBetting.length * DataUtils.formatDouble(inputAmt.value)}",
+                                            return Text(DataUtils.formatMoney(selectBetting.length * DataUtils.formatDouble(inputAmt.value)),
                                               style: TextStyle(fontSize: 14.sp,fontWeight:FontWeight.w700,color: buildTextColor(),),);
                                           })
                                         ],
@@ -289,7 +289,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                 showToast(Intr().xiazhujinewk);
                                 return;
                               }
-                              var totalMony = selectBetting.length * DataUtils.formatDouble(inputAmt.value);
+                              var totalMony = double.parse(DataUtils.formatMoney(selectBetting.length * DataUtils.formatDouble(inputAmt.value)));
                               var betInfo = WsBetEntity();
                               betInfo.term = widget.logic.term.value;
                               // var odds = List<WsBetContent>.empty(growable: true);
