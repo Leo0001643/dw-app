@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_dialog_item_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_middle_item_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_small_item_widget.dart';
@@ -33,9 +34,7 @@ class BettingChildPageState extends State<BettingTemaPage>  {
 
   @override
   void initState() {
-    Future.delayed(Duration(milliseconds: 300),(){
-      initItem().then((value) => setState(() {}));
-    });
+    initItem();
     widget.selectBetting.listen((p0) {
       if(widget.selectBetting.isEmpty){
         dataBettingList.forEach((element) { element.check = false; });
@@ -112,12 +111,19 @@ class BettingChildPageState extends State<BettingTemaPage>  {
     );
   }
 
-  Future<bool> initItem() async {
-    GameRoomLogic logic=Get.find<GameRoomLogic>();
-    dataBettingList=logic.getDataBettingList(widget.index);
-    dataBettingList1=logic.getDataBettingList(widget.index,type: 1);
-    dataBettingList2=logic.getDataBettingList(widget.index,type: 2);
-    return Future.value(true);
+  void initItem(){
+    // GameRoomLogic logic=Get.find<GameRoomLogic>();
+    // dataBettingList=logic.getDataBettingList(widget.index);
+    dataBettingList = GameRuleUtil.teOneBoll;
+    // dataBettingList1=logic.getDataBettingList(widget.index,type: 1);
+    dataBettingList1 = GameRuleUtil.teTwoBoll;
+    // dataBettingList2=logic.getDataBettingList(widget.index,type: 2);
+    dataBettingList2 = GameRuleUtil.teBollNum;
+
+    dataBettingList.forEach((element) { element.check = false; });
+    dataBettingList1.forEach((element) { element.check = false; });
+    dataBettingList2.forEach((element) { element.check = false; });
+
   }
 
 

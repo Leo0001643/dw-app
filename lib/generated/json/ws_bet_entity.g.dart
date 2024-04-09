@@ -104,6 +104,10 @@ WsBetContent $WsBetContentFromJson(Map<String, dynamic> json) {
   if (e != null) {
     wsBetContent.e = e;
   }
+  final String? showName = jsonConvert.convert<String>(json['showName']);
+  if (showName != null) {
+    wsBetContent.showName = showName;
+  }
   return wsBetContent;
 }
 
@@ -114,6 +118,7 @@ Map<String, dynamic> $WsBetContentToJson(WsBetContent entity) {
   data['C'] = entity.c;
   data['D'] = entity.d;
   data['E'] = entity.e;
+  data['showName'] = entity.showName;
   return data;
 }
 
@@ -124,12 +129,14 @@ extension WsBetContentExtension on WsBetContent {
     String? c,
     String? d,
     String? e,
+    String? showName,
   }) {
     return WsBetContent()
       ..a = a ?? this.a
       ..b = b ?? this.b
       ..c = c ?? this.c
       ..d = d ?? this.d
-      ..e = e ?? this.e;
+      ..e = e ?? this.e
+      ..showName = showName ?? this.showName;
   }
 }

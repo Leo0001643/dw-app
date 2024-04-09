@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -63,6 +64,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
       pageIndex.value = _tabController.index;
       focusNode.unfocus();
     });
+    selectBetting.clear();
     selectBetting.listen((p0) {
       focusNode.unfocus();
     });
@@ -228,7 +230,8 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                                       child: Obx(() {
                                         return WidgetUtils().buildTextField(101.w, 35.h, 12.sp, ColorX.color_949eb9, Intr().xiazhujine,
                                             backgroundColor: ColorX.cardBg(),hintColor: ColorX.text586(),focusNode: focusNode,
-                                            defText: inputAmt.value,inputType: TextInputType.number,onChanged: (v){
+                                            inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+(\.\d*)?$'))],
+                                            defText: inputAmt.value,inputType: TextInputType.numberWithOptions(decimal: true),onChanged: (v){
                                               inputAmt.value = v;
                                             });
                                       }),
@@ -289,17 +292,17 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               var totalMony = selectBetting.length * DataUtils.formatDouble(inputAmt.value);
                               var betInfo = WsBetEntity();
                               betInfo.term = widget.logic.term.value;
-                              var odds = List<WsBetContent>.empty(growable: true);
-                              selectBetting.forEach((element) {
-                                var bc = WsBetContent();
-                                bc.a = element.type;
-                                bc.b = "";//element.name;
-                                bc.c = inputAmt.value;
-                                bc.d = element.play;
-                                bc.e = element.play2;
-                                odds.add(bc);
-                              });
-                              betInfo.content = odds;
+                              // var odds = List<WsBetContent>.empty(growable: true);
+                              // selectBetting.forEach((element) {
+                              //   var bc = WsBetContent();
+                              //   bc.a = element.type;
+                              //   bc.b = "";//element.name;
+                              //   bc.c = inputAmt.value;
+                              //   bc.d = element.play;
+                              //   bc.e = element.play2;
+                              //   odds.add(bc);
+                              // });
+                              betInfo.content = GameRuleUtil.allChoosedChip(selectBetting);
                               loggerArray(["打印投注信息",betInfo.toJson()]);
                               Navigator.pop(context);
                               ///确认投注

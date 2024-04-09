@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
+import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_dialog_item_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/betting_small_item_widget.dart';
 
@@ -31,9 +33,7 @@ class BettingChildPageState extends State<BettingChildPage> {
 
   @override
   void initState() {
-    Future.delayed(Duration(milliseconds: 300),(){
-      initItem().then((value) => setState(() {}));
-    });
+    initItem();
     widget.selectBetting.listen((p0) {
       if(widget.selectBetting.isEmpty){
         dataBettingList1.forEach((element) { element.check = false; });
@@ -96,14 +96,27 @@ class BettingChildPageState extends State<BettingChildPage> {
     );
   }
 
-  Future<bool> initItem() async {
-    GameRoomLogic logic=Get.find<GameRoomLogic>();
-    List<OddsContent> total=logic.getDataBettingList(widget.index);
-    if(total.length > 5) {
-      dataBettingList1=total.sublist(0,total.length-5);
-      dataBettingList2=total.sublist(total.length-5,total.length);
+  void initItem() {
+    // GameRoomLogic logic=Get.find<GameRoomLogic>();
+    // List<OddsContent> total=logic.getDataBettingList(widget.index);
+    // if(total.length > 5) {
+    //   dataBettingList1=total.sublist(0,total.length-5);
+    //   dataBettingList2=total.sublist(total.length-5,total.length);
+    // }
+
+    if(widget.betName == Intr().diyiqiu){
+      dataBettingList1 = GameRuleUtil.oneBollNum;
+      dataBettingList2 = GameRuleUtil.oneBollDx;
+    }else if(widget.betName == Intr().dierqiu){
+      dataBettingList1 = GameRuleUtil.twoBollNum;
+      dataBettingList2 = GameRuleUtil.twoBollDx;
+    }else if(widget.betName == Intr().disanqiu){
+      dataBettingList1 = GameRuleUtil.thirdBollNum;
+      dataBettingList2 = GameRuleUtil.thirdBollDx;
     }
-    return Future.value(true);
+    dataBettingList1.forEach((element) { element.check = false; });
+    dataBettingList2.forEach((element) { element.check = false; });
+
   }
 
 
