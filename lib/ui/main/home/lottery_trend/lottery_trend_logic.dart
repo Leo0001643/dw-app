@@ -9,6 +9,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
+import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/history_hall_entity.dart';
 
@@ -47,7 +48,11 @@ class LotteryTrendLogic extends GetxController {
 
   void clickGoucai(HistoryHall item){
     if(AppData.isLogin()){
-      var gameCode = state.PC28HashTable[item.lid.toString()] ?? state.PC28HashTable['46'];
+      var gameCode = state.PC28HashTable[item.lid.toString()];
+      if(isEmpty(gameCode)){//跳转经典彩
+        WidgetUtils().jumpGameRoom(Get.context!, GameKindEntity(), GameKindGameKindList(gameCode: "",liveName: "jingdian_lotto"));
+        return;
+      }
       logger(state.PC28HashTable[item.lid.em()]);
       Get.toNamed(Routes.room_list,arguments: GameKindGameKindList(gameCode: gameCode));
     } else {

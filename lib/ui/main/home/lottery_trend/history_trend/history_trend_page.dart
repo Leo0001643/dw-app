@@ -262,7 +262,8 @@ class _HistoryTrendPageState extends State<HistoryTrendPage> with SingleTickerPr
     ///最上层点渲染
     value.forEach((k, v) {
       var color = _tabController.index == 0 ? DataUtils.getBallColor2(v): ColorX.color_58698d;
-      list.add(buildDrawNum(Size(v.toDouble(), k.toDouble()), "$v", color));
+      var num = v < 10 ? "0$v" : "$v";
+      list.add(buildDrawNum(Size(v.toDouble(), k.toDouble()), num, color));
     });
     return list;
   }

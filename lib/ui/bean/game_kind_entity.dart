@@ -51,7 +51,7 @@ class GameKindGameKindList {
 	String? advertImage;
 	List<dynamic>? gameKindList;
 
-	GameKindGameKindList({this.gameCode});
+	GameKindGameKindList({this.gameCode,this.liveName});
 
 	factory GameKindGameKindList.fromJson(Map<String, dynamic> json) => $GameKindGameKindListFromJson(json);
 

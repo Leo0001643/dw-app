@@ -8,7 +8,6 @@ class OddsContent {
   String? createTime;
   String? enabled;
   String? id;
-  String? jsonKey;
   String? name;
   String? parentId;
   String? play;
@@ -18,6 +17,8 @@ class OddsContent {
   bool? check=false;
   double? money;
   String? play2;
+  String? showName;
+  String? sendType;
   int? color=0xFF091722;
   int? titleColor=0xFF091722;
   // Map<String,String>? contentMap;
@@ -25,7 +26,6 @@ class OddsContent {
       {this.createTime,
         this.enabled,
         this.id,
-        this.jsonKey,
         this.name,
         this.parentId,
         this.play,
@@ -37,7 +37,10 @@ class OddsContent {
         this.level,
         this.color,
         this.titleColor,
-        this.updateTime});
+        this.updateTime,
+      this.showName,
+      this.sendType,
+      });
 
   factory OddsContent.fromJson(Map<String, dynamic> json) => $OddsContentFromJson(json);
 

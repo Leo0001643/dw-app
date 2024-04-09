@@ -2,42 +2,34 @@ import 'dart:convert';
 
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/promotion_type_entity.g.dart';
 
 export 'package:leisure_games/generated/json/promotion_type_entity.g.dart';
 
 class PromotionTypeEntity {
-	List<PromotionTypeKey>? chongzhi;
-	List<PromotionTypeKey>? qita;
+	Map<String,List<PromotionTypeKey>>? data;
 	String? url;
 
-	PromotionTypeEntity({this.chongzhi,this.qita,this.url});
+	PromotionTypeEntity();
 
 	factory PromotionTypeEntity.fromJson(Map<String, dynamic> json){
 		var p = PromotionTypeEntity();
 		p.url = json["url"];
-
-		var czJson = AppData.localeIndex() == 0 ? json["充值"] : json["充值"];
-
-		if(unEmpty(czJson)){
-			var cz = List<PromotionTypeKey>.empty(growable: true);
-			(czJson as List).forEach((element) {
-				cz.add(PromotionTypeKey.fromJson(element));
+		json.remove("url");
+		p.data = <String,List<PromotionTypeKey>>{};
+		var all = List<PromotionTypeKey>.empty(growable: true);
+		p.data![Intr().quanbu] = all;
+		json.forEach((key, value) {
+			var list = List<PromotionTypeKey>.empty(growable: true);
+			(value as List).forEach((element) {
+				list.add(PromotionTypeKey.fromJson(element));
 			});
-			p.chongzhi = cz;
-		}
-		var qtJson = AppData.localeIndex() == 0 ? json["其他"] : json["Others"];
-
-		if(unEmpty(qtJson)){
-			var qt = List<PromotionTypeKey>.empty(growable: true);
-			(qtJson as List).forEach((element) {
-				qt.add(PromotionTypeKey.fromJson(element));
-			});
-			p.qita = qt;
-		}
-
-		p.url = json["url"];
+			list.sort((a, b) => a.sortby.em().compareTo(b.sortby.em()));
+			p.data![key] = list;
+			all.addAll(list);
+		});
 		return p;
 	}
 

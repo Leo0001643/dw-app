@@ -21,10 +21,6 @@ OddsContent $OddsContentFromJson(Map<String, dynamic> json) {
   if (id != null) {
     oddsContent.id = id;
   }
-  final String? jsonKey = jsonConvert.convert<String>(json['jsonKey']);
-  if (jsonKey != null) {
-    oddsContent.jsonKey = jsonKey;
-  }
   final String? name = jsonConvert.convert<String>(json['name']);
   if (name != null) {
     oddsContent.name = name;
@@ -61,6 +57,14 @@ OddsContent $OddsContentFromJson(Map<String, dynamic> json) {
   if (play2 != null) {
     oddsContent.play2 = play2;
   }
+  final String? showName = jsonConvert.convert<String>(json['showName']);
+  if (showName != null) {
+    oddsContent.showName = showName;
+  }
+  final String? sendType = jsonConvert.convert<String>(json['sendType']);
+  if (sendType != null) {
+    oddsContent.sendType = sendType;
+  }
   final int? color = jsonConvert.convert<int>(json['color']);
   if (color != null) {
     oddsContent.color = color;
@@ -78,7 +82,6 @@ Map<String, dynamic> $OddsContentToJson(OddsContent entity) {
   data['createTime'] = entity.createTime;
   data['enabled'] = entity.enabled;
   data['id'] = entity.id;
-  data['jsonKey'] = entity.jsonKey;
   data['name'] = entity.name;
   data['parentId'] = entity.parentId;
   data['play'] = entity.play;
@@ -88,6 +91,8 @@ Map<String, dynamic> $OddsContentToJson(OddsContent entity) {
   data['check'] = entity.check;
   data['money'] = entity.money;
   data['play2'] = entity.play2;
+  data['showName'] = entity.showName;
+  data['sendType'] = entity.sendType;
   data['color'] = entity.color;
   data['titleColor'] = entity.titleColor;
   return data;
@@ -99,7 +104,6 @@ extension OddsContentExtension on OddsContent {
     String? createTime,
     String? enabled,
     String? id,
-    String? jsonKey,
     String? name,
     String? parentId,
     String? play,
@@ -109,6 +113,8 @@ extension OddsContentExtension on OddsContent {
     bool? check,
     double? money,
     String? play2,
+    String? showName,
+    String? sendType,
     int? color,
     int? titleColor,
   }) {
@@ -117,7 +123,6 @@ extension OddsContentExtension on OddsContent {
       ..createTime = createTime ?? this.createTime
       ..enabled = enabled ?? this.enabled
       ..id = id ?? this.id
-      ..jsonKey = jsonKey ?? this.jsonKey
       ..name = name ?? this.name
       ..parentId = parentId ?? this.parentId
       ..play = play ?? this.play
@@ -127,6 +132,8 @@ extension OddsContentExtension on OddsContent {
       ..check = check ?? this.check
       ..money = money ?? this.money
       ..play2 = play2 ?? this.play2
+      ..showName = showName ?? this.showName
+      ..sendType = sendType ?? this.sendType
       ..color = color ?? this.color
       ..titleColor = titleColor ?? this.titleColor;
   }

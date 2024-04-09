@@ -1,11 +1,14 @@
 import 'dart:core';
 
+import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 
 
@@ -755,16 +758,124 @@ class GameRuleUtil {
     return ssb;
   }
 
+
+
+  static var teOneBoll = List<OddsContent>.empty(growable: true); //特码的第一二排
+  static var teTwoBoll = List<OddsContent>.empty(growable: true); ////特码的第三排  红波 蓝波 绿波 顺子 豹子 对子
+  static var teBollNum = List<OddsContent>.empty(growable: true); //特码数字
+  static var oneBoll = List<OddsContent>.empty(growable: true); //第一球 数字 大小 单双 龙
+  static var twoBoll = List<OddsContent>.empty(growable: true); //第二球 数字 大小 单双 和
+  static var thirdBoll = List<OddsContent>.empty(growable: true); //第三球 数字 大小 单双 虎
+
    static Future<List<OddsContent>> getOddsbean(Map<String,dynamic> totalMap) async {
     // WSGameOddsServer result =  WSGameOddsServer();
       var content = List<OddsContent>.empty(growable: true);
       totalMap.forEach((key, value) {
         value.forEach((type, entity) {
-          var row = OddsContent.fromJson(entity);
-          row.jsonKey =type;
-          content.add(row);
+          content.add(OddsContent.fromJson(entity));
         });
       });
+      if(unEmpty(totalMap["3"])){
+        totalMap["3"].forEach((type, entity) {
+          var row = OddsContent.fromJson(entity);
+          teBollNum.add(row);
+        });
+        teBollNum.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
+      }
+      ///大小
+      var large_sm = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["1"])){
+        totalMap["1"].forEach((type, entity) {
+          var row = OddsContent.fromJson(entity);
+          row.showName = "${Intr().tema}-${row.name}";
+          row.sendType = row.type;
+          large_sm.add(row);
+        });
+      }
+      ///极大 极小
+      var te_ji = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["2"])){
+        te_ji.assignAll(originalName(totalMap["2"]));
+      }
+      ///大单 大双 小单小双
+      var te_oth = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["4"])){
+        te_oth.assignAll(originalName(totalMap["4"]));
+      }
+      teOneBoll.assignAll(teBollData(large_sm,te_ji,te_oth));//特码第一二排
+
+      //红波蓝波 绿波的数组
+      var boBoll = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["8"])){
+        boBoll.assignAll(originalName(totalMap["8"]));
+      }
+      //顺子 豹子 对子的数组
+      var sbdBoll = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["7"])){
+        sbdBoll.assignAll(originalName(totalMap["7"]));
+      }
+      //第三排
+      teTwoBoll.assignAll(boBollData(boBoll,sbdBoll));
+
+      //一球数字
+      var oneBollNum = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["12"])){
+        oneBollNum.assignAll(oneBollNumName(totalMap["12"]));
+      }
+      oneBollNum.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
+
+      //一球大小 单双
+      var oneBollDx = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["9"])){
+        oneBollDx.assignAll(oneBollName(totalMap["9"]));
+      }
+      oneBollDx.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
+
+      //二球数字
+      var twoBollNum = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["13"])){
+        twoBollNum.assignAll(twoBollNumName(totalMap["13"]));
+      }
+      twoBollNum.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
+
+      //二球大小 单双
+      var twoBollDx = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["10"])){
+        twoBollDx.assignAll(twoBollName(totalMap["10"]));
+      }
+      twoBollDx.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
+
+      //三球数字
+      var thirdBollNum = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["14"])){
+        thirdBollNum.assignAll(thirdBollNumName(totalMap["14"]));
+      }
+      thirdBollNum.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
+
+      //三球大小 单双
+      var thirdBollDx = List<OddsContent>.empty(growable: true);
+      if(unEmpty(totalMap["11"])){
+        thirdBollDx.assignAll(thirdBollName(totalMap["11"]));
+      }
+      thirdBollDx.sort((a, b) => (a.id.em()).compareTo(b.id.em()));
+      if(unEmpty(totalMap["15"])){
+        totalMap["15"].forEach((type, entity) {
+          var row = OddsContent.fromJson(entity);
+          row.showName = row.name;
+          row.sendType = row.type;
+          if(type == "dragon"){
+            oneBollDx.add(row);
+          }else if(type == "equal"){
+            twoBollDx.add(row);
+          }else if(type == "tiger"){
+            thirdBollDx.add(row);
+          }
+        });
+      }
+
+      // oneBollDx.forEach((element) {
+      //   logger("看看处理的对不对吧${element.showName}    ${element.sendType}");
+      // });
       loggerArray(["整理投注数据111",totalMap.length,content.length]);
 
       ///处理双倍率
@@ -1352,6 +1463,149 @@ class GameRuleUtil {
     }
     return "";
   }
+
+
+  static List<OddsContent> originalName(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = row.name;
+      row.sendType = row.type;
+      list.add(row);
+    });
+    return list;
+  }
+
+  static List<OddsContent> dr_eq_tig(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = row.name;
+      row.sendType = row.type;
+      list.add(row);
+    });
+    return list;
+  }
+
+  static List<OddsContent> oneBollNumName(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = "${Intr().diyiqiu}-${row.name?.replaceAll(RegExp(r'[^\d]'), "")}";
+      row.sendType = "first_cao";
+      list.add(row);
+    });
+    return list;
+  }
+
+  static List<OddsContent> twoBollNumName(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = "${Intr().dierqiu}-${row.name?.replaceAll(RegExp(r'[^\d]'), "")}";
+      row.sendType = "second_cao";
+      list.add(row);
+    });
+    return list;
+  }
+
+  static List<OddsContent> thirdBollNumName(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = "${Intr().disanqiu}-${row.name?.replaceAll(RegExp(r'[^\d]'), "")}";
+      row.sendType = "third_cao";
+      list.add(row);
+    });
+    return list;
+  }
+
+
+  static List<OddsContent> oneBollName(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = "${Intr().diyiqiu}-${row.name?.substring(row.name!.length - 1)}";
+      row.sendType = row.type;
+      list.add(row);
+    });
+    return list;
+  }
+
+  static List<OddsContent> twoBollName(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = "${Intr().dierqiu}-${row.name?.substring(row.name!.length - 1)}";
+      row.sendType = row.type;
+      list.add(row);
+    });
+    return list;
+  }
+
+  static List<OddsContent> thirdBollName(totalMap) {
+    var list = List<OddsContent>.empty(growable: true);
+    totalMap.forEach((type, entity) {
+      var row = OddsContent.fromJson(entity);
+      row.showName = "${Intr().disanqiu}-${row.name?.substring(row.name!.length - 1)}";
+      row.sendType = row.type;
+      list.add(row);
+    });
+    return list;
+  }
+
+
+  static List<OddsContent> teBollData(List<OddsContent> large_sm, List<OddsContent> te_ji, List<OddsContent> te_oth) {
+    var data = List<OddsContent>.empty(growable: true);
+    var big = large_sm.where((element) => element.type == "big");
+    var small = large_sm.where((element) => element.type == "small");
+    var odd = large_sm.where((element) => element.type == "odd");
+    var even = large_sm.where((element) => element.type == "even");
+
+    var max = te_ji.where((element) => element.type == "max");
+    var min = te_ji.where((element) => element.type == "min");
+
+    var big_even = te_oth.where((element) => element.type == "big_even");
+    var big_odd = te_oth.where((element) => element.type == "big_odd");
+    var small_even = te_oth.where((element) => element.type == "small_even");
+    var small_odd = te_oth.where((element) => element.type == "small_odd");
+
+    data.addAll(big);
+    data.addAll(odd);
+    data.addAll(big_odd);
+    data.addAll(small_odd);
+    data.addAll( max,);
+    data.addAll(small);
+    data.addAll(even);
+    data.addAll(big_even);
+    data.addAll(small_even);
+    data.addAll(min);
+    return data;
+  }
+
+  static List<OddsContent> boBollData(List<OddsContent> boBoll, List<OddsContent> sbdBoll) {
+    var data = List<OddsContent>.empty(growable: true);
+    //投注的 红波 绿波 蓝波 顺子 豹子 对子的排序
+    var red = boBoll.where((element) => element.type == "red");
+    var blue = boBoll.where((element) => element.type == "blue");
+    var green = boBoll.where((element) => element.type == "green");
+
+    var straight = sbdBoll.where((element) => element.type == "straight");
+    var leopard = sbdBoll.where((element) => element.type == "leopard");
+    var pair = sbdBoll.where((element) => element.type == "pair");
+    data.addAll(red);
+    data.addAll(blue);
+    data.addAll(green);
+    data.addAll(straight);
+    data.addAll(leopard);
+    data.addAll(pair);
+    return data;
+  }
+
+
+
+
+
 
 
 

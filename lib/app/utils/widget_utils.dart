@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -18,6 +19,8 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/ui/bean/chess_event.dart';
+import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -982,6 +985,175 @@ class WidgetUtils {
       );
     }
   }
+
+
+  ///游戏跳转
+  void jumpGameRoom(BuildContext context,GameKindEntity parent, GameKindGameKindList element) {
+    switch (element.gameKind) {
+      case Constants.PC28:
+        Get.toNamed(Routes.room_list, arguments: element);
+        break;
+      default:
+        var webConfig = Get.find<MainLogic>().state.webConfig;
+        if (AppData.isLogin()) {
+          var protect = Get.find<MainLogic>().state.protect;
+          var hint = "";
+          protect?.protect?.forEach((key, value) {
+            //维护状态【1:启用,2:维护】
+            if (element.gameKind == key && value?.status == "2") {
+              hint = value?.notice ?? '';
+            }
+          });
+          if (unEmpty(hint)) {
+            showToast(hint);
+            return;
+          }
+          loggerArray(["这里的参数打印",element.toJson()]);
+          if (element.liveName == "jingdian_lotto") {
+            ///经典彩
+            if (webConfig?.domainMJingdiancai?.list.em() == 1) {
+              var urlPath = webConfig?.domainMJingdiancai?.urlPath.em();
+              var url = webConfig?.domainMJingdiancai?.list!.first;
+              if (unEmpty(url)) {
+                var params = <String, dynamic>{"line":"$url$urlPath","lid":element.gameCode.em()};
+                openLotteryPage(element,params);
+              }
+            } else if (unEmpty(webConfig?.domainMJingdiancai?.list)) {
+              var list = webConfig?.domainMJingdiancai?.list;
+              var path = webConfig?.domainMJingdiancai?.checkPath;
+              var urlPath = webConfig?.domainMJingdiancai?.urlPath.em();
+              DialogUtils().showAccessRouteDialog(context, list!, path!)
+                  .then((value) {
+                if (unEmpty(value)) {
+                  var params = <String, dynamic>{"line":"$value$urlPath","lid":element.gameCode.em()};
+                  openLotteryPage(element,params);
+                }
+              });
+            } else {
+              loggerArray(["无可用线路"]);
+            }
+          } else if (element.liveName == "fenfen_lotto") {
+            ///官方彩
+            ///官方彩不需要拼接urlpath
+            if (webConfig?.domainMGuanfangcai?.list.em() == 1) {
+              // var urlPath = webConfig?.domainMGuanfangcai?.urlPath.em();
+              var url = webConfig?.domainMGuanfangcai?.list!.first;
+              if (unEmpty(url)) {
+                var params = <String, dynamic>{"line":url,"lid":element.gameCode.em()};
+                openLotteryPage(element, params);
+              }
+            } else if (unEmpty(webConfig?.domainMGuanfangcai?.list)) {
+              var list = webConfig?.domainMGuanfangcai?.list;
+              var path = webConfig?.domainMGuanfangcai?.checkPath;
+
+              ///官方彩不需要拼接urlpath
+              // var urlPath = webConfig?.domainMGuanfangcai?.urlPath.em();
+              DialogUtils().showAccessRouteDialog(context, list!, path!)
+                  .then((value) {
+                if (unEmpty(value)) {
+                  var params = <String, dynamic>{"line":value,"lid":element.gameCode.em()};
+                  openLotteryPage(element, params);
+                }
+              });
+            } else {
+              loggerArray(["无可用线路"]);
+            }
+          } else if (element.gameKind == "live") {
+            ///真人
+            openGamePage(element,<String, dynamic>{"gameCode":element.gameCode.em()});
+          } else if (element.gameKind == "chess") {
+            ///棋牌
+            Get.toNamed(Routes.chess_game_list,
+                arguments: ChessEvent(parent, element));
+          } else if (element.gameKind == "sport") {
+            ///体育
+            openGamePage(element,{});
+          } else if (element.gameKind == "game_fishing") {
+            ///捕鱼
+            openGamePage(element,<String, dynamic>{"gameCode":element.gameCode.em()});
+          } else if (element.gameKind == "game") {
+            Get.toNamed(Routes.table_game_list,
+                arguments: ChessEvent(parent, element));
+          }
+        } else {
+          showToast(Intr().qingxiandenglu);
+        }
+        break;
+    }
+  }
+
+  ///打开游戏页面
+  void openGamePage(GameKindGameKindList element,Map<String,dynamic> params) {
+
+    var cur = AppData.wallet() ? 1 : 5;
+
+    var user = AppData.user();
+    var other = <String, dynamic>{
+      "cur": cur,
+      "tags": element.tags,
+      "platform": element.liveName,
+      "oid": user?.oid,
+      "username": user?.username,
+      "platformURL": Constants.web_gjz,
+    };
+    params.addAll(other);
+
+    WidgetUtils().loginJump(element.gameName.em(), params);
+  }
+
+  ///彩票模块专用接口
+  void openLotteryPage(GameKindGameKindList element, Map<String, dynamic> params) {
+
+    DialogUtils().showLoadGameDialog(Get.context!, element.gameName.em(),).then((inapp) {
+      if (unEmpty(inapp)) {
+        var cur = AppData.wallet() ? 1 : 5;
+
+        var user = AppData.user();
+        var other = <String, dynamic>{
+          "cur": cur.toString(),
+          "tags": element.tags,
+          "platform": element.liveName,
+          "oid": user?.oid,
+          "username": user?.username,
+          "platformURL": Constants.web_gjz,
+          "machineModel":Constants.model(),
+          "siteId":Constants.siteid,
+          "siteType":"1",
+          "terminal":"APP",
+          "version":Constants.version(),
+        };
+        params.addAll(other);
+
+        var scheme = "";
+        var path = "";
+        if(AppData.baseUrl().startsWith("https:")){
+          scheme = "https";
+          path = "${AppData.baseUrl().replaceAll("https:","")}ds-api-web/loginLottery";
+        } else {
+          scheme = "http";
+          path = "${AppData.baseUrl().replaceAll("http:","")}ds-api-web/loginLottery";
+        }
+        var uri = Uri(
+          scheme: scheme,
+          path: path,
+          queryParameters: params,
+        );
+        ///先用获取余额接口检查下登录状态，防止登录失效
+        HttpService.getBalance({"cur":1, "platform":"main","oid":user!.oid,"username":user.username}).then((value) {
+          if(inapp!){
+            Get.toNamed(Routes.game_html,
+                arguments: HtmlEvent(data: uri.toString(), isHtmlData: false, pageTitle: element.gameName.em()));
+          }else {
+            launchUrl(uri, mode: LaunchMode.externalApplication);
+          }
+        });
+      }
+    });
+
+  }
+
+
+
 
 
 }

@@ -707,21 +707,7 @@ class Intr extends Translations{
     'en':EN.map,
     'vi':VI.map,
   };
-  Map<String,String> initEn(){
-    Map<String,String> map={};
 
-    return map;
-  }
 
-  Map<String,String> initCN(){
-    Map<String,String> map={};
-
-    return map;
-  }
-  Map<String,String> initVI(){
-    Map<String,String> map={};
-
-    return map;
-  }
 }
 

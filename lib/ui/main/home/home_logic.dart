@@ -410,19 +410,23 @@ class HomeLogic extends GetxController {
     var value = AppData.ossApi();
     if(isEmpty(value) || value!.updateTime.em() < (DateTime.now().millisecondsSinceEpoch - 86400000)){
       value = await OssUtils().downloadFile();
-      ///用于判断是否需要更新缓存使用
-      value!.updateTime = DateTime.now().millisecondsSinceEpoch;
-      AppData.setOssApi(value);
-      ///适配多渠道环境 如果换成其他渠道本地host就跟线路里的不是一回事了 所以得处理一下多渠道的环境问题
-      AppData.checkBaseUrl(value);
+      if(unEmpty(value)){
+        ///用于判断是否需要更新缓存使用
+        value?.updateTime = DateTime.now().millisecondsSinceEpoch;
+        AppData.setOssApi(value!);
+        ///适配多渠道环境 如果换成其他渠道本地host就跟线路里的不是一回事了 所以得处理一下多渠道的环境问题
+        AppData.checkBaseUrl(value);
+      }
     }
 
-    var list = value.toApiList();
-    for(var i=0;i<list.em();i++){
-      loggerArray(["线路对比结果",list[i].baseApi,AppData.baseUrl()]);
-      if(list[i].baseApi == AppData.baseUrl()){
-        state.routeName.value = Intr().xianlu_(["${i + 1}"]);
-        return;
+    if(unEmpty(value)){
+      var list = value!.toApiList();
+      for(var i=0;i<list.em();i++){
+        loggerArray(["线路对比结果",list[i].baseApi,AppData.baseUrl()]);
+        if(list[i].baseApi == AppData.baseUrl()){
+          state.routeName.value = Intr().xianlu_(["${i + 1}"]);
+          return;
+        }
       }
     }
   }
