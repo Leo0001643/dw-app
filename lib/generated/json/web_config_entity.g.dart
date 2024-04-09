@@ -58,6 +58,11 @@ WebConfigEntity $WebConfigEntityFromJson(Map<String, dynamic> json) {
   if (agDomain != null) {
     webConfigEntity.agDomain = agDomain;
   }
+  final WebConfigAgDomain? frontDomain = jsonConvert.convert<WebConfigAgDomain>(
+      json['front_domain']);
+  if (frontDomain != null) {
+    webConfigEntity.frontDomain = frontDomain;
+  }
   final WebConfigDomainMGuanfangcai? domainMGuanfangcai = jsonConvert.convert<
       WebConfigDomainMGuanfangcai>(json['domain_m_guanfangcai']);
   if (domainMGuanfangcai != null) {
@@ -98,6 +103,7 @@ Map<String, dynamic> $WebConfigEntityToJson(WebConfigEntity entity) {
   data['QRCode'] = entity.qRCode;
   data['domain_guanfangcai'] = entity.domainGuanfangcai?.toJson();
   data['ag_domain'] = entity.agDomain?.toJson();
+  data['front_domain'] = entity.frontDomain?.toJson();
   data['domain_m_guanfangcai'] = entity.domainMGuanfangcai?.toJson();
   data['domain_m_pc28'] = entity.domainMPc28?.toJson();
   data['domain_m_jingdiancai'] = entity.domainMJingdiancai?.toJson();
@@ -119,6 +125,7 @@ extension WebConfigEntityExtension on WebConfigEntity {
     String? qRCode,
     WebConfigDomainMGuanfangcai? domainGuanfangcai,
     WebConfigAgDomain? agDomain,
+    WebConfigAgDomain? frontDomain,
     WebConfigDomainMGuanfangcai? domainMGuanfangcai,
     WebConfigDomainMGuanfangcai? domainMPc28,
     WebConfigDomainMGuanfangcai? domainMJingdiancai,
@@ -136,6 +143,7 @@ extension WebConfigEntityExtension on WebConfigEntity {
       ..qRCode = qRCode ?? this.qRCode
       ..domainGuanfangcai = domainGuanfangcai ?? this.domainGuanfangcai
       ..agDomain = agDomain ?? this.agDomain
+      ..frontDomain = frontDomain ?? this.frontDomain
       ..domainMGuanfangcai = domainMGuanfangcai ?? this.domainMGuanfangcai
       ..domainMPc28 = domainMPc28 ?? this.domainMPc28
       ..domainMJingdiancai = domainMJingdiancai ?? this.domainMJingdiancai

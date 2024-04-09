@@ -11,6 +11,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
@@ -20,6 +21,7 @@ import 'package:leisure_games/ui/main/home/game_room/widget/betting_left_item.da
 import 'package:leisure_games/ui/main/home/game_room/widget/count_down_item_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/game_room_compute_widget.dart';
 import 'package:leisure_games/ui/main/home/game_room/widget/open_lottery_item.dart';
+import 'package:lifecycle/lifecycle.dart';
 
 import '../../../bean/room_copy_writing_entity.dart';
 import 'game_room_logic.dart';
@@ -33,7 +35,7 @@ class GameRoomPage extends StatefulWidget {
   State<GameRoomPage> createState() => _GameRoomPageState();
 }
 
-class _GameRoomPageState extends State<GameRoomPage> {
+class _GameRoomPageState extends State<GameRoomPage> with LifecycleAware, LifecycleMixin {
   final logic = Get.find<GameRoomLogic>();
   final state = Get.find<GameRoomLogic>().state;
 
@@ -55,6 +57,24 @@ class _GameRoomPageState extends State<GameRoomPage> {
     Get.delete<TextItemLogic>();
     Get.delete<GameRoomLogic>();
     super.dispose();
+  }
+
+  @override
+  void onLifecycleEvent(LifecycleEvent event) {
+    loggerArray(["生命周期变化了",event]);
+    switch (event) {
+      case LifecycleEvent.active:
+      ///播放音乐
+        AudioUtils().appForeground = true;
+        if(AppData.bgMusic()){ AudioUtils().playRoom(); }
+        break;
+      case LifecycleEvent.inactive:
+        AudioUtils().appForeground = false;
+        AudioUtils().stopBg();
+        break;
+      default:
+        break;
+    }
   }
 
   @override
@@ -343,4 +363,7 @@ class _GameRoomPageState extends State<GameRoomPage> {
     }
     return result;
   }
+
+
+
 }

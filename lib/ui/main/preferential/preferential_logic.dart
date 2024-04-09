@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:common_utils/common_utils.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
@@ -38,7 +39,7 @@ class PreferentialLogic extends GetxController {
   void onClose() {
     languageStream?.cancel();
     apiSub?.cancel();
-
+    state.tabController?.dispose();
     super.onClose();
   }
 
@@ -46,27 +47,29 @@ class PreferentialLogic extends GetxController {
     HttpService.getPromotionTpe().then((value) {
       loggerArray(["让我看看这里返回了什么呢",value]);
       var data = jsonDecode(value);
-      state.promotions = PromotionTypeEntity.fromJson(data);
+      state.promotions.value = PromotionTypeEntity.fromJson(data);
+      ///需要对tab进行排序
+      var containOther = false;
+      state.tabs.clear();
+      state.tabs.add(Intr().quanbu);
+      state.promotions.value.data?.forEach((key, value) {
+        if(key == Intr().qita){
+          containOther = true;
+        } else if(key != Intr().quanbu){
+          state.tabs.add(key);
+        }
+      });
+      if(containOther){
+        state.tabs.add(Intr().qita);
+      }
+      state.tabs.refresh();
       clickTab(0);
     });
   }
 
   void clickTab(int index) {
-    switch(index){
-      case 0:
-        state.list.assignAll(state.promotions.chongzhi ?? []);
-        state.list.addAll(state.promotions.qita ?? []);
-        state.list.refresh();
-        break;
-      case 1:
-        state.list.assignAll(state.promotions.chongzhi ?? []);
-        state.list.refresh();
-        break;
-      case 2:
-        state.list.assignAll(state.promotions.qita ?? []);
-        state.list.refresh();
-        break;
-    }
+    state.list.assignAll(state.promotions.value.data![state.tabs[index]] ?? []);
+    state.list.refresh();
   }
 
   void onClickType(PromotionTypeKey item) {

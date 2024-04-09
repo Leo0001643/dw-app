@@ -35,4 +35,7 @@ class MainState {
   ///站点维护
   ProtectEntity? protect;
 
+  var stationHost = "";
+
+
 }

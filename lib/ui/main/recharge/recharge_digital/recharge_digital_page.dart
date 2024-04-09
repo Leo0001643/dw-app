@@ -95,6 +95,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                   controller: _tabController,
                   tabBarHeight: 35.h,
                   tabBarColor: Colors.transparent,
+                  tabAlignment: TabAlignment.fill,
                   indicatorSize: TabBarIndicatorSize.label,
                   indicatorPadding: EdgeInsets.only(top: 31.h,left: 30.w,right: 30.w,bottom: 1.h),
                   indicator: BoxDecoration(

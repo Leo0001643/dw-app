@@ -87,8 +87,6 @@ class GameRoomLogic extends GetxController {
       currentStatus.refresh();
       update([gameRoomCompute]);
     });
-    ///播放房间背景音乐
-    if(AppData.bgMusic()){ AudioUtils().playRoom(); }
     musicSwitch = eventBus.on<MusicSwitchEvent>().listen((event) {
       if(event.open){
         AudioUtils().playRoom();

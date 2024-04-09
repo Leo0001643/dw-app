@@ -19,32 +19,42 @@ class AudioUtils{
 
   var bgPlayer = AudioPlayer();
   var selectPlayer = AudioPlayer();
-
   var player = AudioPlayer();
+
+  ///当前应用是否在前台显示
+  var appForeground = true;
 
 
   ///10秒动5种倒计时声音
   void playCountDown(){
-    player.setAsset(MusicX.di);
-    player.play();
+    if(appForeground){
+      player.setAsset(MusicX.di);
+      player.play();
+    }
   }
 
   ///新一期开始声音
   void playNewKj(){
-    player.setAsset(MusicX.newkj);
-    player.play();
+    if(appForeground){
+      player.setAsset(MusicX.newkj);
+      player.play();
+    }
   }
 
   ///开奖结果
   void playOpenResult(){
-    player.setAsset(MusicX.openResult);
-    player.play();
+    if(appForeground){
+      player.setAsset(MusicX.openResult);
+      player.play();
+    }
   }
 
   ///点击筹码的声音
   void playBetSelect(){
-    selectPlayer.setAsset(MusicX.bet_select);
-    selectPlayer.play();
+    if(appForeground){
+      selectPlayer.setAsset(MusicX.bet_select);
+      selectPlayer.play();
+    }
   }
 
   ///进入房间的声音
