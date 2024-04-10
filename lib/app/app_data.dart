@@ -154,9 +154,22 @@ class AppData {
     prefs?.setString("login_pwd_$user", pwd);
   }
 
+
   static String loginPwd(String user) {
     return prefs?.getString("login_pwd_$user",) ?? "";
   }
+
+  static void setValidUser(String user) {
+    ///保证最近一次登录的用户始终都在队列的最后面
+    if(unEmpty(loginUser(user))){
+      prefs?.remove("login_user1_$user");
+    }
+    prefs?.setBool("login_user1_$user", true);
+  }
+  static bool isValidUser(String user) {
+    return prefs?.getBool("login_user1_$user",) ??false;
+  }
+
 
   static void setLoginUser(String user) {
     ///保证最近一次登录的用户始终都在队列的最后面

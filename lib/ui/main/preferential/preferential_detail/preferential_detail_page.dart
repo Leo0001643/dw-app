@@ -61,14 +61,17 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
               child: Text(state.detail.titleSec.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698D,),),
             ),
             Obx(() {
+              int initialScale=140*(ScreenUtil().screenWidth/411).toInt();
               return SizedBox(
                 height: state.contentHeight.value,
                 child: InAppWebView(
                   initialOptions: InAppWebViewGroupOptions(
                     android: AndroidInAppWebViewOptions(
+                      initialScale:106,
                       loadWithOverviewMode: false,
-                      overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
-                      displayZoomControls: false,
+                      overScrollMode: AndroidOverScrollMode.OVER_SCROLL_ALWAYS,
+
+                      displayZoomControls: true,
                       builtInZoomControls: false,
                       useWideViewPort: false,
                     ),

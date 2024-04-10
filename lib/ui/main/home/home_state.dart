@@ -45,6 +45,8 @@ class HomeState {
 
   ///用户信息
   var user = LoginUserEntity().obs;
+  ///用户信息
+  var firstShowCurrey = false.obs;
 
   ///余额
   var usdtBal = BalanceEntity().obs;
