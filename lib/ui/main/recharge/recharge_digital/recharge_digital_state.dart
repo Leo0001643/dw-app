@@ -17,10 +17,13 @@ class RechargeDigitalState {
 
   // var selectAgree = 0.obs;
 
-  var agreeList = RxList<PaymentChannelBankSet>.empty(growable: true);
-  var walletList = RxList<DigiccyChannelWallet>.empty(growable: true);
+  var offLineList = RxList<PaymentChannelBankSet>.empty(growable: true);
+  var onLineList = RxList<DigiccyChannelWallet>.empty(growable: true);
 
-  var tabs = [Intr().xianshang,Intr().xianxia];
+  var currentList = RxList.empty(growable: true);
+
+
+  var tabs = [Intr().xianshang,Intr().xianxia].obs;
 
   var currentAccount = Object().obs;
 
@@ -35,6 +38,7 @@ class RechargeDigitalState {
 
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
+  late TabController tabController;
 
 
 }

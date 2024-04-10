@@ -33,23 +33,26 @@ class RechargeDigitalPage extends StatefulWidget {
 class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTickerProviderStateMixin {
   final logic = Get.find<RechargeDigitalLogic>();
   final state = Get.find<RechargeDigitalLogic>().state;
-  late TabController _tabController;
 
   @override
   void initState() {
-    _tabController = TabController(length: state.tabs.length, vsync: this);
-    _tabController.addListener(() {
-      state.selectOnline.value = _tabController.index == 0;
-      switch(_tabController.index){
+    state.tabController = TabController(length: state.tabs.length, vsync: this);
+    state.tabController.addListener(() {
+      state.selectOnline.value = state.tabController.index == 0;
+      switch(state.tabController.index){
         case 0:
-          if(unEmpty(state.walletList)){
-            state.currentAccount.value = state.walletList.first;
+          state.currentList.assignAll(state.onLineList);
+          state.currentList.refresh();
+          if(unEmpty(state.onLineList)){
+            state.currentAccount.value = state.onLineList.first;
             state.currentAccount.refresh();
           }
           break;
         case 1:
-          if(unEmpty(state.agreeList)){
-            state.currentAccount.value = state.agreeList.first;
+          state.currentList.assignAll(state.offLineList);
+          state.currentList.refresh();
+          if(unEmpty(state.offLineList)){
+            state.currentAccount.value = state.offLineList.first;
             state.currentAccount.refresh();
           }
           break;
@@ -88,26 +91,31 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                   });
                 }
               }),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-                child: LCTabBar(
-                  length: state.tabs.length,
-                  controller: _tabController,
-                  tabBarHeight: 35.h,
-                  tabBarColor: Colors.transparent,
-                  tabAlignment: TabAlignment.fill,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicatorPadding: EdgeInsets.only(top: 31.h,left: 30.w,right: 30.w,bottom: 1.h),
-                  indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(3.r),
-                    color: ColorX.text0917(),
+              Obx(() {
+                return Visibility(
+                  visible: unEmpty(state.onLineList) && unEmpty(state.offLineList),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
+                    child: LCTabBar(
+                      length: state.tabs.length,
+                      controller: state.tabController,
+                      tabBarHeight: 35.h,
+                      tabBarColor: Colors.transparent,
+                      tabAlignment: TabAlignment.fill,
+                      indicatorSize: TabBarIndicatorSize.label,
+                      indicatorPadding: EdgeInsets.only(top: 31.h,left: 30.w,right: 30.w,bottom: 1.h),
+                      indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(3.r),
+                        color: ColorX.text0917(),
+                      ),
+                      labelColor: ColorX.text0917(),
+                      unselectedLabelColor: ColorX.text586(),
+                      width: 335.w,
+                      tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
+                    ),
                   ),
-                  labelColor: ColorX.text0917(),
-                  unselectedLabelColor: ColorX.text586(),
-                  width: 335.w,
-                  tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),),).toList(),
-                ),
-              ),
+                );
+              }),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -137,35 +145,22 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Obx(() {
-                                var list = List<Widget>.empty(growable: true);
-                                // logger("这里处理了个啥${state.walletList.em()}");
-                                switch(_tabController.index){
-                                  case 0:
-                                    state.walletList.forEach((element) {
-                                      list.add(InkWell(
-                                        onTap: (){
-                                          state.currentAccount.value = element;
-                                          state.currentAccount.refresh();
-                                        },
-                                        child: buildAgreementItem(element, state.currentAccount.value == element),
-                                      ));
-                                      list.add(SizedBox(width: 10.r,));
-                                    });
-                                    break;
-                                  case 1:
-                                    state.agreeList.forEach((element) {
-                                      list.add(InkWell(
-                                        onTap: (){
-                                          state.currentAccount.value = element;
-                                          state.currentAccount.refresh();
-                                        },
-                                        child: buildAgreementItem(element, state.currentAccount.value == element),
-                                      ));
-                                      list.add(SizedBox(width: 10.r,));
-                                    });
-                                    break;
-                                }
-                                return Row(children: list,);
+                                return Row(
+                                  children: state.currentList.map((element) {
+                                    return Row(
+                                      children: [
+                                        InkWell(
+                                          onTap: (){
+                                            state.currentAccount.value = element;
+                                            state.currentAccount.refresh();
+                                          },
+                                          child: buildAgreementItem(element, state.currentAccount.value == element),
+                                        ),
+                                        SizedBox(width: 10.r,),
+                                      ],
+                                    );
+                                  }).toList(),
+                                );
                               }),
                             ),
                           ),
@@ -496,22 +491,23 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
     if(item is DigiccyChannelWallet){
       name = "${(item).protocol.em()} ${Intr().chongzhi}";
     }else if(item is PaymentChannelBankSet){
-      name = "${(item).bankName.em()} ${Intr().chongzhi}\n${item.bankBranch.em()}";
+      if(isEmpty(item.bankBranch)){
+        name = "${(item).bankName.em()} ${Intr().chongzhi}";
+      } else {
+        name = "${(item).bankName.em()} ${Intr().chongzhi}\n${item.bankBranch.em()}";
+      }
     }
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.r),
-            gradient: select ? const LinearGradient(colors: [ColorX.color_ff5164,ColorX.color_fd273e],begin: Alignment.topLeft,end:
-            Alignment.bottomRight) : const LinearGradient(colors: [Colors.white,Colors.white]),
-          ),
-          width: 150.w,
-          padding: EdgeInsets.symmetric(vertical: 10.h),
-          alignment: Alignment.center,
-          child: Text(name,style: TextStyle(fontSize: 16.sp,color: select?Colors.white:ColorX.color_091722,fontWeight: FontWeight.w600),),
-        ),
-      ],
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.r),
+        gradient: select ? const LinearGradient(colors: [ColorX.color_ff5164,ColorX.color_fd273e],begin: Alignment.topLeft,end:
+        Alignment.bottomRight) : const LinearGradient(colors: [Colors.white,Colors.white]),
+      ),
+      width: 150.w,
+      // height: 50.h,
+      alignment: Alignment.center,
+      padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
+      child: Text(name,style: TextStyle(fontSize: 16.sp,color: select?Colors.white:ColorX.color_091722,fontWeight: FontWeight.w600),),
     );
   }
 

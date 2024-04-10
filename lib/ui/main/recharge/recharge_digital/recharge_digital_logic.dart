@@ -2,6 +2,7 @@ import 'package:common_utils/common_utils.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
@@ -25,48 +26,34 @@ class RechargeDigitalLogic extends GetxController {
     super.onClose();
   }
 
-  void loadData() {
+  void loadData() async {
     state.paymentInfo = Get.arguments;
     state.title.value = state.paymentInfo.bankName.em();
-    ///线上协议
-    HttpService.getOnlineDigiccyChannel(AppData.user()!.oid.em(),
-        AppData.user()!.username.em()).then((value) {
-          state.walletList.assignAll(value.wallet ?? []);
-          state.walletList.refresh();
-          if(unEmpty(value.wallet)){
-            state.currentAccount.value = value.wallet!.first;
-            state.currentAccount.refresh();
-          }
-
-          ///线下协议
-          HttpService.getPaymentChannel(AppData.user()!.oid.em(),
-              AppData.user()!.username.em(),state.paymentInfo.bankCode.em()).then((value) {
-            state.agreeList.assignAll(value.bankSet ?? []);
-            state.agreeList.refresh();
-            // changeWallet(0);
-          });
-
+    try{
+      ///线上协议
+      var online = await HttpService.getOnlineDigiccyChannel(AppData.user()!.oid.em(), AppData.user()!.username.em());
+      state.onLineList.assignAll(online.wallet ?? []);
+      state.onLineList.refresh();
+    }catch(e){
+      logger(e);
+    }
+    ///线下协议
+    HttpService.getPaymentChannel(AppData.user()!.oid.em(),
+        AppData.user()!.username.em(),state.paymentInfo.bankCode.em()).then((value) {
+      state.offLineList.assignAll(value.bankSet ?? []);
+      state.offLineList.refresh();
+      setCurrentTab();
     });
 
+    // Intr().xianshang,Intr().xianxia
 
     HttpService.getPaymentList(AppData.user()!.oid.em(), AppData.user()!.username.em()).then((value) {
       state.paymentList.value = value;
       state.paymentList.refresh();
     });
   }
-  
-  // void changeWallet(int index){
-  //   if(state.agreeList.em() > index){
-  //     var item = state.agreeList[index];
-  //     state.walletList.forEach((element) {
-  //       // loggerArray(["数据对比",element.protocol,item.bankName]);
-  //       if(element.protocol == item.bankName){
-  //         state.currentAccount.value = element;
-  //         state.currentAccount.refresh();
-  //       }
-  //     });
-  //   }
-  // }
+
+
 
 
   String getAddress(){
@@ -89,6 +76,28 @@ class RechargeDigitalLogic extends GetxController {
       value.symbol = "₮";
       Get.offAndToNamed(Routes.recharge_result,arguments: value);
     });
+  }
+
+  void setCurrentTab() {
+    if(unEmpty(state.onLineList) && unEmpty(state.offLineList)){
+      state.currentList.assignAll(state.onLineList);
+      state.currentList.refresh();
+      state.tabController.animateTo(0);
+      state.currentAccount.value = state.onLineList.first;
+      state.currentAccount.refresh();
+    }else if(unEmpty(state.onLineList)){
+      state.currentList.assignAll(state.onLineList);
+      state.currentList.refresh();
+      state.tabController.animateTo(0);
+      state.currentAccount.value = state.onLineList.first;
+      state.currentAccount.refresh();
+    } else if(unEmpty(state.offLineList)){
+      state.currentList.assignAll(state.offLineList);
+      state.currentList.refresh();
+      state.tabController.animateTo(1);
+      state.currentAccount.value = state.offLineList.first;
+      state.currentAccount.refresh();
+    }
   }
 
 

@@ -421,10 +421,11 @@ class VI{
     "fangjiechi": "Chống cướp",
     "shiyongbangzhu": "Sử dụng sự giúp đỡ",
     "xuanzeyuyan":"Chọn ngôn ngữ",
-    "changyongduanyu":"Hữu dụng.",
-    "qitaduanyu":"Những thứ khác",
+    "duanyu":"短语",
+    "changyong":"常用",
+    "zayu":"杂语",
     "biaoqing":"Cảm xúc",
-    "gif":"gif",
+    "gif":"GIF",
     "yue_":"Số dư：",
     "home": "Trang chủ",
     "mine": "Của tôi",
@@ -1028,6 +1029,7 @@ class VI{
     "yicizhinengfasong3tiao":"一次只能发送3条语句哦",
     "shuruneirongchaoguozuidaxianzhi":"您输入的内容数量已经超过了最大限制",
     "guanbijianyimima":"关闭简易密码后，将清空您设置的简易密码请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
+    "wolaishuoliangju":"我来说两句...",
 
 
   };

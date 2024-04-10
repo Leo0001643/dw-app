@@ -505,8 +505,10 @@ class Intr extends Translations{
   String get chulizhong => 'chulizhong'.tr;
   String get yiquxiao => 'yiquxiao'.tr;
   String get quanbufangshi => 'quanbufangshi'.tr;
-  String get changyongduanyu => 'changyongduanyu'.tr;
-  String get qitaduanyu => 'qitaduanyu'.tr;
+  String get duanyu => 'duanyu'.tr;
+  String get changyong => 'changyong'.tr;
+  String get zayu => 'zayu'.tr;
+
   String get biaoqing => 'biaoqing'.tr;
   String get gif => 'gif'.tr;
   String get shifoutuichudenglu => 'shifoutuichudenglu'.tr;
@@ -688,10 +690,7 @@ class Intr extends Translations{
   String get shuruneirongchaoguozuidaxianzhi => "shuruneirongchaoguozuidaxianzhi".tr;
   String get guanbijianyimima => "guanbijianyimima".tr;
   String get kaijiang_trend => "kaijiang_trend".tr;
-
-
-
-
+  String get wolaishuoliangju => "wolaishuoliangju".tr;
 
 
 

@@ -422,11 +422,11 @@ class CN {
     "fangjiechi": "防劫持",
     "shiyongbangzhu": "使用帮助",
     "xuanzeyuyan":"选择语言",
-
-    "changyongduanyu":"常用短语",
-    "qitaduanyu":"其他短语",
+    "duanyu":"短语",
+    "changyong":"常用",
+    "zayu":"杂语",
     "biaoqing":"表情",
-    "gif":"gif",
+    "gif":"GIF",
 
     "yue_":"余额：",
     "home": "首页",
@@ -1028,6 +1028,7 @@ class CN {
     "yicizhinengfasong3tiao":"一次只能发送3条语句哦",
     "shuruneirongchaoguozuidaxianzhi":"您输入的内容数量已经超过了最大限制",
     "guanbijianyimima":"关闭简易密码后，将清空您设置的简易密码请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
+    "wolaishuoliangju":"我来说两句...",
 
 
 

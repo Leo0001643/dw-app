@@ -266,7 +266,7 @@ class HttpService{
   }
 
   static Future<DigiccyChannelEntity> getOnlineDigiccyChannel(String oid,String username,){
-    return buildFuture<DigiccyChannelEntity>(()=> _client.getOnlineDigiccyChannel(oid,username));
+    return buildFuture<DigiccyChannelEntity>(()=> _client.getOnlineDigiccyChannel(oid,username),errorHandler: false);
   }
 
   static Future<PaymentChannelEntity> getPaymentChannel(String oid,String username,String bankCode,){

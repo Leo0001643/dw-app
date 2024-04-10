@@ -5,6 +5,7 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
@@ -133,19 +134,17 @@ class HomeLogic extends GetxController {
           showToast(Intr().huodongweikaiqi);
           return;
         }
-        if(unEmpty(state.domainConfig?.frontDomain)){
-          if (AppData.isLogin()) {
-            var path = sprintf("${state.domainConfig!.frontDomain!.first}/m/#/Hongbao/%s/%s/%s",
-                [AppData.user()?.oid,AppData.user()?.username,Intr().currentLocale().languageCode]);
-            // print("抢红包>>地址"+path);
-            Get.toNamed(Routes.html,
-                arguments: HtmlEvent(
-                    data: path,
-                    isHtmlData: false,
-                    pageTitle: Intr().hongbaohuodong));
-          } else {
-            WidgetUtils().goLogin();
-          }
+        if (AppData.isLogin()) {
+          var path = sprintf("${Constants.frontDomain()}/m/#/Hongbao/%s/%s/%s",
+              [AppData.user()?.oid,AppData.user()?.username,Intr().currentLocale().languageCode]);
+          // print("抢红包>>地址"+path);
+          Get.toNamed(Routes.html,
+              arguments: HtmlEvent(
+                  data: path,
+                  isHtmlData: false,
+                  pageTitle: Intr().hongbaohuodong));
+        } else {
+          WidgetUtils().goLogin();
         }
         break;
       case 7:
