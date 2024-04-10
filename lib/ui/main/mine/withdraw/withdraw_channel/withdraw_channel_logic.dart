@@ -38,6 +38,13 @@ class WithdrawChannelLogic extends GetxController {
 
   void jumpPage(BuildContext context,Object item){
     if(item is UserDrawDetailBanks){
+      if(isEmpty(state.userDraw.value.banks)){
+        DialogUtils().showMessageDialog(context, Intr().ninhaimeibangdingyhkzhanghu,btnConfirm: Intr().qubangding, onConfirm: (){
+          Navigator.pop(context);
+          Get.toNamed(Routes.bind_bank);
+        });
+        return;
+      }
       Get.toNamed(Routes.withdraw_check,arguments: Get.arguments);
     }else if(item is UsdtEntity){
       if(isEmpty(item.account)){

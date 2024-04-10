@@ -26,7 +26,11 @@ class BulletBottomDialog extends StatefulWidget {
 class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTickerProviderStateMixin{
   late TabController _tabController;
 
-  var tabs = ["changyongduanyu".tr,"qitaduanyu".tr,"biaoqing".tr,"gif".tr];
+  var tabs = [Intr().duanyu,"biaoqing".tr,"gif".tr];
+
+  var bottomTabs = RxList<String>.empty(growable: true);
+  var bottomTabIndex = 0.obs;//默认tab
+
 
   var selectPhrases = (-1).obs;
 
@@ -39,28 +43,45 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
 
   @override
   void initState() {
-    loggerArray(["有弹幕数据",widget.logic.state.phrases]);
-    if(unEmpty(widget.logic.state.phrases)){
-      showList.assignAll(widget.logic.state.phrases[0].phrases ?? []);
+    var state = widget.logic.state;
+    loggerArray(["有弹幕数据",state.phrases]);
+    if(unEmpty(state.phrases)){
+      showList.assignAll(state.phrases[bottomTabIndex.value].phrases ?? []);
+      bottomTabs.assignAll(state.phrases.map((e) => e.type.em()).toList());
     }
     _tabController = TabController(length: tabs.length, vsync: this);
     _tabController.addListener(() {
       selectPhrases.value = -1;
       switch(_tabController.index){
         case 0:
-          showList.assignAll(widget.logic.state.phrases[0].phrases ?? []);
+          showList.assignAll(state.phrases[0].phrases ?? []);
+          showList.refresh();
+          bottomTabs.assignAll(state.phrases.map((e) => e.type.em()).toList());
+          bottomTabs.refresh();
+          break;
+        case 1:
+          showList.assignAll(state.expressions[1].images ?? []);
+          showList.refresh();
+          bottomTabs.assignAll(state.expressions.sublist(1).map((e) => e.type.em()).toList());
+          bottomTabs.refresh();
+          break;
+        case 2:
+          showList.assignAll(state.expressions[0].images ?? []);
+          showList.refresh();
+          bottomTabs.clear();
+          bottomTabs.refresh();
+          break;
+      }
+    });
+    bottomTabIndex.listen((p0) {
+      selectPhrases.value = -1;
+      switch(_tabController.index){
+        case 0:
+          showList.assignAll(state.phrases[p0].phrases ?? []);
           showList.refresh();
           break;
         case 1:
-          showList.assignAll(widget.logic.state.phrases[1].phrases ?? []);
-          showList.refresh();
-          break;
-        case 2:
-          showList.assignAll(widget.logic.state.expressions[1].images ?? []);
-          showList.refresh();
-          break;
-        case 3:
-          showList.assignAll(widget.logic.state.expressions[0].images ?? []);
+          showList.assignAll(state.expressions[p0+1].images ?? []);
           showList.refresh();
           break;
       }
@@ -101,7 +122,11 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                     child: Container(
                       height: 37.h,
                       padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      alignment: Alignment.centerLeft,
                       child: Obx(() {
+                        if(isEmpty(inputList)){
+                          return Text(Intr().wolaishuoliangju,style: TextStyle(fontSize: 12.sp,color: ColorX.text5862(),fontWeight: FontWeight.w700,),);
+                        }
                         return Wrap(
                           spacing: 3.w,
                           runAlignment: WrapAlignment.center,
@@ -154,8 +179,8 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                 children: [
                   SingleChildScrollView(
                     child: Obx(() {
-                      var padding = _tabController.index == 3 ? EdgeInsets.all(1.r) : EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w);
-                      var spacing = _tabController.index == 3 ? 0.0 : 10.r;
+                      var padding = _tabController.index == 2 ? EdgeInsets.all(1.r) : EdgeInsets.symmetric(vertical: 10.h,horizontal: 13.w);
+                      var spacing = _tabController.index == 2 ? 0.0 : 10.r;
                       var alignment = _tabController.index > 1 ? WrapAlignment.spaceAround: WrapAlignment.start;
                       return Container(
                         padding: padding,
@@ -168,9 +193,9 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: showList.map((e){
                             switch(_tabController.index){
-                              case 2:
+                              case 1:
                                 return buildEmotionItem(e, showList.indexOf(e),);
-                              case 3:
+                              case 2:
                                 return buildGifItem(e, showList.indexOf(e),);
                               default:
                                 return buildCommonItem(e,showList.indexOf(e),);
@@ -180,9 +205,46 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                       );
                     }),
                   ),
-                  Positioned(
-                    right: 10.w,bottom: 10.h,
-                    child: InkWell(
+                ],
+              ),
+            ),
+          ),
+          Obx(() {
+            return Visibility(
+              visible: unEmpty(bottomTabs),
+              child: Container(
+                color: ColorX.cardBg(),
+                height: 45.h,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: bottomTabs.map((element){
+                            return InkWell(
+                              onTap: (){
+                                bottomTabIndex.value = bottomTabs.indexOf(element);
+                              },
+                              child: Row(
+                                children: [
+                                  Obx(() {
+                                    return Container(
+                                      width: 50.w,
+                                      alignment: Alignment.center,
+                                      color: bottomTabIndex.value == bottomTabs.indexOf(element) ? ColorX.cardBg3():ColorX.cardBg(),
+                                      child: Text(element,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917(),),),
+                                    );
+                                  }),
+                                  Container(width: 1.w,height: 45.h,color: ColorX.linef1f(),),
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                    InkWell(
                       onTap: (){
                         if(unEmpty(inputList)){
                           inputList.value = inputList.sublist(0,inputList.length - 1);
@@ -198,11 +260,11 @@ class StateBulletBottomDialog extends State<BulletBottomDialog> with SingleTicke
                         child: Image.asset(ImageX.delete,color: ColorX.icon586(),width: 25.w,fit: BoxFit.fill,),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ),
+            );
+          })
         ],
       ),
     );

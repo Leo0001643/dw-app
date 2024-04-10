@@ -1,6 +1,8 @@
 
+import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 class Constants {
 
@@ -45,6 +47,14 @@ class Constants {
 
   static String version(){
     return AppData.deviceInfo().version.em();
+  }
+
+  static String frontDomain(){
+    var frontDomain = Get.find<HomeLogic>().state.domainConfig?.frontDomain;
+    if(unEmpty(frontDomain)){
+      return frontDomain!.first;
+    }
+    return "";
   }
 
 

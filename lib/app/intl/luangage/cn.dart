@@ -422,11 +422,11 @@ class CN {
     "fangjiechi": "防劫持",
     "shiyongbangzhu": "使用帮助",
     "xuanzeyuyan":"选择语言",
-
-    "changyongduanyu":"常用短语",
-    "qitaduanyu":"其他短语",
+    "duanyu":"短语",
+    "changyong":"常用",
+    "zayu":"杂语",
     "biaoqing":"表情",
-    "gif":"gif",
+    "gif":"GIF",
 
     "yue_":"余额：",
     "home": "首页",
@@ -453,7 +453,7 @@ class CN {
     "dollar":"美元（US）",
     "thb":"泰铢（Thai Baht）",
     "vnd":"越南盾（VND）",
-    "hyld":"欢迎来到博雅娱乐城",
+    "hyld":"欢迎来到国际站",
     "qqzlxd":"全球最领先的娱乐平台",
     "register":"注册",
     "login":"登录",
@@ -953,7 +953,7 @@ class CN {
     "jinrikai":"今日开",
     "wodeshoucang":"我的收藏",
     "lianxiwomen":"联系我们",
-    "2023guojizhan":"@2024博雅娱乐城",
+    "2023guojizhan":"@2023国际站",
     "yingyongneijiazai":"应用内轻加载",
     "liulanqidakai":"使用系统默认浏览器打开",
     "biaozhunshijian":"本站标准时间以美东时间为准\n美东时间=北京时间-12小时",
@@ -1028,6 +1028,7 @@ class CN {
     "yicizhinengfasong3tiao":"一次只能发送3条语句哦",
     "shuruneirongchaoguozuidaxianzhi":"您输入的内容数量已经超过了最大限制",
     "guanbijianyimima":"关闭简易密码后，将清空您设置的简易密码请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
+    "wolaishuoliangju":"我来说两句...",
 
 
 

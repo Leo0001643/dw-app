@@ -71,6 +71,7 @@ class GameRoomLogic extends GetxController {
       // print("修改了值");
       handleMessage(value);
     });
+    textItemLogic.showWelcome();
 
     stopBettingListener = textItemLogic.showStopBetting.stream.listen((event) {
       print("=========>数据  ${event}  11   term  ${textItemLogic.countDownLotteryEntity.value.term??""}");
@@ -223,7 +224,7 @@ class GameRoomLogic extends GetxController {
     _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
       logic.loadDataGameCode(room.gameType.em(),roomWriting);
     });
-    logic.showWelcome();
+
   }
 
   Rx<BalanceEntity> getBalance(){

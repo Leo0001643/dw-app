@@ -1094,7 +1094,7 @@ class WidgetUtils {
       "platform": element.liveName,
       "oid": user?.oid,
       "username": user?.username,
-      "platformURL": Constants.web_gjz,
+      "platformURL": Constants.frontDomain(),
     };
     params.addAll(other);
 
@@ -1115,7 +1115,7 @@ class WidgetUtils {
           "platform": element.liveName,
           "oid": user?.oid,
           "username": user?.username,
-          "platformURL": Constants.web_gjz,
+          "platformURL": Constants.frontDomain(),
           "machineModel":Constants.model(),
           "siteId":Constants.siteid,
           "siteType":"1",
