@@ -1,4 +1,6 @@
 import 'package:floating_draggable_widget/floating_draggable_widget.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -89,7 +91,7 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
                     shouldOverrideUrlLoading: (controller,action) async {
                       var url = action.request.url.toString();
                       loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers]);
-                      if(url.contains(Constants.frontDomain())){
+                      if(url.contains(Constants.web_gjz)){
                         Get.back();
                         Future.value(NavigationActionPolicy.CANCEL);
                       }
@@ -99,6 +101,33 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
                       state.progress.value = pg.toDouble();
                       state.progressVisible.value = pg != 100;
                     },
+                    gestureRecognizers:Set()
+                      ..add(
+                        Factory<VerticalDragGestureRecognizer>(
+                              () => VerticalDragGestureRecognizer(),
+                        ),
+                      )
+                      ..add(
+                        Factory<PanGestureRecognizer>(
+                              () => PanGestureRecognizer(),
+                        ),
+                      )
+                      ..add(
+                        Factory<ForcePressGestureRecognizer>(
+                              () => ForcePressGestureRecognizer(),
+                        ),
+                      )
+                      ..add(
+                        Factory<EagerGestureRecognizer>(
+                              () => EagerGestureRecognizer(),
+                        ),
+                      )
+                      ..add(
+                        Factory<LongPressGestureRecognizer>(
+                              () => LongPressGestureRecognizer(),
+                        ),
+                      ),
+                    onScrollChanged: (InAppWebViewController controller, int x, int y) {},
                   ),
                 ),
               ],
