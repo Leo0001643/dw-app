@@ -122,8 +122,12 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
 
   Widget buildCategaryItem(CustomerServiceCusterServers server, int i) {
 
+    var image = state.detail.image.em();
 
-    var image = "${server.url.em()}${server.image.em()}".trim();
+    if(isEmpty(image)){
+      image = "${server.url.em()}${server.image.em()}".trim();
+    }
+
     if(image.isEmpty){
       switch(state.detail.type){
         case "twitter":
@@ -149,6 +153,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
           break;
       }
     }
+
     return Column(
       children: [
         SizedBox(

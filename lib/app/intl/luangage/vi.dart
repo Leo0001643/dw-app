@@ -950,7 +950,7 @@ class VI{
     "jinrikai":"Hôm nay mở",
     "wodeshoucang":"Bộ sưu tập của tôi",
     "lianxiwomen":"Liên hệ",
-    "2023guojizhan":"@2023 Trạm quốc tế",
+    "2023guojizhan":"@2024 Trạm quốc tế",
     "yingyongneijiazai":"Tải nhẹ trong ứng dụng",
     "liulanqidakai":"Mở bằng trình duyệt mặc định của hệ thống",
     "biaozhunshijian":"Giờ chuẩn của trạm được tính theo Giờ Mỹ Đông=Giờ Bắc Kinh - 12 giờ",

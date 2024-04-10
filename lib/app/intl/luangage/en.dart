@@ -1023,7 +1023,7 @@ class EN{
     "jinrikai":"Open today",
     "wodeshoucang":"My Collection",
     "lianxiwomen":"Contact Us",
-    "2023guojizhan":"@2023 International Station",
+    "2023guojizhan":"@2024 International Station",
     "yingyongneijiazai":"Light loading within the application",
     "liulanqidakai":"Open using the default browser of the system",
     "biaozhunshijian":"The standard time on this website is based on US Eastern Time \ n US Eastern Time=Beijing Time -12 hours",

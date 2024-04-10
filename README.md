@@ -42,6 +42,10 @@ applance
 19931125tu
 
 
+博雅站点
+http://2020904.com/
+sansan888 aeuio888
+
 博雅web版
 http://2020904.com/m/#/home
 
