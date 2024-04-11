@@ -224,7 +224,7 @@ class GameRoomLogic extends GetxController {
     _timer = Timer.periodic(Duration(seconds: 50), (Timer timer) {
       logic.loadDataGameCode(room.gameType.em(),roomWriting);
     });
-
+    logic.showWelcome();
   }
 
   Rx<BalanceEntity> getBalance(){
