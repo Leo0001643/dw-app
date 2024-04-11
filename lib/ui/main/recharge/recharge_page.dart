@@ -152,7 +152,7 @@ class _RechargePageState extends State<RechargePage> with LifecycleAware, Lifecy
                         msg: true, drawer: true, back: false,
                         scaffoldKey: Get.find<MainLogic>().state.scaffoldKey,
                         bgColor: Colors.transparent,
-                    systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light)),
+                    systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark)),
                     SizedBox(height: 10.h,),
                     Obx(() {
                       return GFAvatar(

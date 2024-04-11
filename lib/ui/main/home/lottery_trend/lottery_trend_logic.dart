@@ -50,7 +50,7 @@ class LotteryTrendLogic extends GetxController {
     if(AppData.isLogin()){
       var gameCode = state.PC28HashTable[item.lid.toString()];
       if(isEmpty(gameCode)){//跳转经典彩
-        WidgetUtils().jumpGameRoom(Get.context!, GameKindEntity(), GameKindGameKindList(gameCode: "",liveName: "jingdian_lotto"));
+        WidgetUtils().jumpGameRoom(Get.context!, GameKindEntity(), GameKindGameKindList(gameCode: "",liveName: "jingdian_lotto",tags: "ds_lotto_jd"));
         return;
       }
       logger(state.PC28HashTable[item.lid.em()]);

@@ -681,7 +681,7 @@ class VI{
     "wenxintishi_1":"1、Hệ thống sẽ tự động mở một trang web, vui lòng nhấn vào dấu nhắc để tiếp tục.",
     "wenxintishi_2":"2、Phí xử lý %s%,Tỷ lệ tài khoản cao!",
     "wenxintishi_3":"%s、%s",
-    "tianrujine":"Điền số tiền (1-0) và nhấp OK",
+    "tianrujine":"Điền số tiền (%s-%s) và nhấp OK",
     "shoudongshuruhuoxuanzhe":"Nhập thủ công hoặc chọn số tiền bên dưới",
     "diyibu_xuanzhezhifuxieyi":"Bước 1: Chọn phương thức thanh toán",
     "dierbu_chakanshoukuanxinxi":"Bước 2: Kiểm tra thông tin nhận tiền và nạp tiền",
@@ -1030,6 +1030,7 @@ class VI{
     "shuruneirongchaoguozuidaxianzhi":"您输入的内容数量已经超过了最大限制",
     "guanbijianyimima":"关闭简易密码后，将清空您设置的简易密码请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
     "wolaishuoliangju":"我来说两句...",
+    "fanshuixiangqing":"返水详情",
 
 
   };

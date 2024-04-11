@@ -27,6 +27,30 @@ class RechargeCategoryLogic extends GetxController {
   void loadData(PaymentListBanks info) {
     state.paymentInfo = info;
     state.title.value = state.paymentInfo.bankName.em();
+
+    ///协议
+    HttpService.getPaymentChannel(AppData.user()!.oid.em(),
+        AppData.user()!.username.em(),info.bankCode.em()).then((value) {
+          state.supportOnline.value = unEmpty(value.jumpPayment);
+          state.supportOffline.value = unEmpty(value.bankSet);
+          if(unEmpty(value.jumpPayment) && unEmpty(value.bankSet)){///离在线都支持
+            state.pageController.jumpToPage(0);
+            state.tabController.index = 0;
+          } else if(unEmpty(value.jumpPayment)){///仅支持在线
+            state.pageController.jumpToPage(0);
+            state.tabController.index = 0;
+          }else  if(unEmpty(value.bankSet)){///仅支持离线
+            state.pageController.jumpToPage(1);
+            state.tabController.index = 1;
+          }
+          if(unEmpty(value.jumpPayment)){
+            Get.find<RechargeOnlineLogic>().loadData(info, value);
+          }
+          if(unEmpty(value.bankSet)){
+            Get.find<RechargeOfflineLogic>().loadData(info, value);
+          }
+    });
+/*
     ///只有银行转账和支付宝支持线下线上两种付款方式
     ///如果只支持在线支付
     state.supportOnline.value = state.paymentInfo.bankCode == Constants.code_wangyin ||
@@ -43,22 +67,13 @@ class RechargeCategoryLogic extends GetxController {
       state.pageController.jumpToPage(1);
       state.tabController.index = 1;
     }
+*/
 
     HttpService.getPaymentList(AppData.user()!.oid.em(), AppData.user()!.username.em()).then((value) {
       state.paymentList.value = value;
       state.paymentList.refresh();
     });
 
-    ///线下协议
-    HttpService.getPaymentChannel(AppData.user()!.oid.em(),
-        AppData.user()!.username.em(),info.bankCode.em()).then((value) {
-      if(state.supportOnline.isTrue){
-        Get.find<RechargeOnlineLogic>().loadData(info, value);
-      }
-      if(state.supportOffline.isTrue){
-        Get.find<RechargeOfflineLogic>().loadData(info, value);
-      }
-    });
   }
 
 

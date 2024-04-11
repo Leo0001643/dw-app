@@ -92,6 +92,8 @@ import 'package:leisure_games/ui/main/mine/member_rebate/member_rebate_binding.d
 import 'package:leisure_games/ui/main/mine/member_rebate/member_rebate_page.dart';
 import 'package:leisure_games/ui/main/mine/member_rebate/profit_rebate/profit_rebate_binding.dart';
 import 'package:leisure_games/ui/main/mine/member_rebate/profit_rebate/profit_rebate_page.dart';
+import 'package:leisure_games/ui/main/mine/member_rebate/rebate_detail/rebate_detail_binding.dart';
+import 'package:leisure_games/ui/main/mine/member_rebate/rebate_detail/rebate_detail_page.dart';
 import 'package:leisure_games/ui/main/mine/mine_binding.dart';
 import 'package:leisure_games/ui/main/mine/points_record/points_record_binding.dart';
 import 'package:leisure_games/ui/main/mine/points_record/points_record_page.dart';
@@ -227,6 +229,7 @@ class Routes {
   static const String simple_login = "/login/simple_login";
   static const String loss_percent = "/room_list/loss_percent";
   static const String simple_login_var = "/login/simple_login_var";
+  static const String rebate_detail = "/member_rebate/rebate_detail";
 
 
 
@@ -309,6 +312,7 @@ class Routes {
     GetPage(name: betting_detail_other,binding: BettingDetailOtherBinding(), page: () => BettingDetailOtherPage()),
     GetPage(name: loss_percent,binding: LossPercentBinding(), page: () => LossPercentPage()),
     GetPage(name: simple_login_var,binding: SimpleLoginVarBinding(), page: () => SimpleLoginVarPage()),
+    GetPage(name: rebate_detail,binding: RebateDetailBinding(), page: () => RebateDetailPage()),
 
   ];
   

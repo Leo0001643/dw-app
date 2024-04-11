@@ -9,6 +9,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
@@ -49,7 +50,7 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
           Column(
             children: [
               WidgetUtils().buildRoomBar(state.title,msg: true,drawer: true,scaffoldKey: state.scaffoldKey,bgColor: Colors.transparent,
-                  systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+                  systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),
                   onTap: (){
                 if(unEmpty(state.paymentList)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
@@ -131,7 +132,14 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
                             width: 8.r,height: 8.r,
                           ),
                           SizedBox(width: 13.w,),
-                          Text(Intr().tianrujine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                          Obx(() {
+                            if(isEmpty(state.channelList)){
+                              return Container();
+                            }
+                            var item =state.channelList[state.selectIndex.value];
+                            return Text(Intr().tianrujine([DataUtils.formatMoney(item.moneyDown),DataUtils.formatMoney(item.moneyUp)]),
+                              style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),);
+                          }),
                         ],
                       ),
                       SizedBox(height: 10.h,),

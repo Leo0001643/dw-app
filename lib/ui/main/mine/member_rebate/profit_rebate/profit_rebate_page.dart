@@ -3,10 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
+import 'package:leisure_games/ui/bean/rebate_detail_params.dart';
 
 import 'profit_rebate_logic.dart';
 
@@ -123,46 +126,49 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
 
   ///负盈利
   Widget buildProfitItem(DayReturnWaterDetailsRecord item) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 23,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(item.date.em(),
-                maxLines: 1,
-                style: TextStyle(
-                fontSize: 12.sp,color: ColorX.text0d1(),),),
+    return InkWell(
+      onTap: ()=> Get.toNamed(Routes.rebate_detail,arguments: RebateDetailParams(record: item,details: state.params.value.details)),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 23,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(item.date.em(),
+                  maxLines: 1,
+                  style: TextStyle(
+                    fontSize: 12.sp,color: ColorX.text0d1(),),),
+              ),
             ),
-          ),
-          Expanded(
-            flex: 18,
-            child: Center(
-              child: Text(item.validBetMoney.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1(),),),
+            Expanded(
+              flex: 18,
+              child: Center(
+                child: Text(item.validBetMoney.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1(),),),
+              ),
             ),
-          ),
-          Expanded(
-            flex: 18,
-            child: Center(
-              child: Text("${item.lossMoney.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
+            Expanded(
+              flex: 18,
+              child: Center(
+                child: Text("${item.lossMoney.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.color_fc243b,),),
+              ),
             ),
-          ),
-          Expanded(
-            flex: 18,
-            child: Center(
-              child: Text(item.lossMoneyBonus.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.color_23a81d,),),
+            Expanded(
+              flex: 18,
+              child: Center(
+                child: Text(item.lossMoneyBonus.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.color_23a81d,),),
+              ),
             ),
-          ),
-          Expanded(
-            flex: 23,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Text("${item.combinBetRatio.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1(),),),
+            Expanded(
+              flex: 23,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text("${item.combinBetRatio.em()}",style: TextStyle(fontSize: 12.sp,color: ColorX.text0d1(),),),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

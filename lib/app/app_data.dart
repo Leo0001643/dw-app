@@ -162,12 +162,14 @@ class AppData {
   static void setValidUser(String user) {
     ///保证最近一次登录的用户始终都在队列的最后面
     if(unEmpty(loginUser(user))){
-      prefs?.remove("login_user1_$user");
+      prefs?.remove("valid_user_$user");
     }
-    prefs?.setBool("login_user1_$user", true);
+    prefs?.setBool("valid_user_$user", true);
   }
+
+
   static bool isValidUser(String user) {
-    return prefs?.getBool("login_user1_$user",) ??false;
+    return prefs?.getBool("valid_user_$user",) ??false;
   }
 
 

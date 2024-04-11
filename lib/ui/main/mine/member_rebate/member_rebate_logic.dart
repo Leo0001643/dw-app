@@ -67,15 +67,15 @@ class MemberRebateLogic extends GetxController {
         endTime = DateTime(now.year,now.month,now.day,23,59,59);
         break;
       case 1:
-        beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 7));
+        beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 6));
         endTime = DateTime(now.year,now.month,now.day,23,59,59);
         break;
       case 2:
-        beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 15));
+        beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 14));
         endTime = DateTime(now.year,now.month,now.day,23,59,59);
         break;
       case 3:
-        beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 30));
+        beginTime = DateTime(now.year,now.month,now.day,0,0,0).subtract(const Duration(days: 29));
         endTime = DateTime(now.year,now.month,now.day,23,59,59);
         break;
     }

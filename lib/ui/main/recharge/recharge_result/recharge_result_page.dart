@@ -47,7 +47,7 @@ class _RechargeResultPageState extends State<RechargeResultPage> {
             children: [
               WidgetUtils().buildAppBar(Intr().chongzhi,msg: true,
                   bgColor: Colors.transparent,scaffoldKey: state.scaffoldKey,
-                systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),),
+                systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),),
               Container(
                 height: 115.h,
                 child: Column(

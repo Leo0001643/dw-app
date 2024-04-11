@@ -311,7 +311,7 @@ class Intr extends Translations{
   String get wenxintishi_1 => 'wenxintishi_1'.tr;
   String wenxintishi_2(List<String> args) => 'wenxintishi_2'.trArgs(args);
   String wenxintishi_3(List<String> args) => 'wenxintishi_3'.trArgs(args);
-  String get tianrujine => 'tianrujine'.tr;
+  String tianrujine(List<String> args) => 'tianrujine'.trArgs(args);
   String get shoudongshuruhuoxuanzhe => 'shoudongshuruhuoxuanzhe'.tr;
   String get diyibu_xuanzhezhifuxieyi => 'diyibu_xuanzhezhifuxieyi'.tr;
   String get dierbu_chakanshoukuanxinxi => 'dierbu_chakanshoukuanxinxi'.tr;
@@ -691,7 +691,7 @@ class Intr extends Translations{
   String get guanbijianyimima => "guanbijianyimima".tr;
   String get kaijiang_trend => "kaijiang_trend".tr;
   String get wolaishuoliangju => "wolaishuoliangju".tr;
-
+  String get fanshuixiangqing => "fanshuixiangqing".tr;
 
 
 

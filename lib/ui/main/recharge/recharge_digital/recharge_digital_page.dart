@@ -83,7 +83,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
           Column(
             children: [
               WidgetUtils().buildRoomBar(state.title,bgColor: Colors.transparent,msg: true,drawer: true,
-                  scaffoldKey: state.scaffoldKey,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+                  scaffoldKey: state.scaffoldKey,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),
                   onTap: (){
                 if(unEmpty(state.paymentList.value)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {
@@ -459,16 +459,24 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                               children: [
                                 Text(Intr().zhifushuoming_,
                                   style: TextStyle(fontSize: 16.sp,color: ColorX.text5862(),height: 1.8),),
-                                Text.rich(TextSpan(
-                                    children: [
-                                      TextSpan(text: Intr().zhifushuoming_1,
-                                        style: TextStyle(fontSize: 13.sp,color: ColorX.text5862(),height: 1.8),),
-                                      TextSpan(text: "USDT-TRC20",
-                                        style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b,height: 1.8),),
-                                      TextSpan(text: Intr().zhifushuoming_2,
-                                        style: TextStyle(fontSize: 13.sp,color: ColorX.text5862(),height: 1.8),),
-                                    ]
-                                )),
+                                Obx(() {
+                                  var name = "";
+                                  if(state.currentAccount.value is DigiccyChannelWallet){
+                                    name = (state.currentAccount.value as DigiccyChannelWallet).protocol.em();
+                                  }else if(state.currentAccount.value is PaymentChannelBankSet){
+                                    name = (state.currentAccount.value as PaymentChannelBankSet).bankName.em();
+                                  }
+                                  return Text.rich(TextSpan(
+                                      children: [
+                                        TextSpan(text: Intr().zhifushuoming_1,
+                                          style: TextStyle(fontSize: 13.sp,color: ColorX.text5862(),height: 1.8),),
+                                        TextSpan(text: "USDT-$name",
+                                          style: TextStyle(fontSize: 13.sp,color: ColorX.color_fc243b,height: 1.8),),
+                                        TextSpan(text: Intr().zhifushuoming_2,
+                                          style: TextStyle(fontSize: 13.sp,color: ColorX.text5862(),height: 1.8),),
+                                      ]
+                                  ));
+                                }),
                               ],
                             ),
                           ),

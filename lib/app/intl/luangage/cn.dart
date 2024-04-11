@@ -453,7 +453,7 @@ class CN {
     "dollar":"美元（US）",
     "thb":"泰铢（Thai Baht）",
     "vnd":"越南盾（VND）",
-    "hyld":"欢迎来到国际站",
+    "hyld":"欢迎来到博雅娱乐城！",
     "qqzlxd":"全球最领先的娱乐平台",
     "register":"注册",
     "login":"登录",
@@ -684,7 +684,7 @@ class CN {
     "wenxintishi_1":"1、系统将会自动打开一个网页，请按提示继续操作",
     "wenxintishi_2":"2、手续费 %s%,到账率高!",
     "wenxintishi_3":"%s、%s",
-    "tianrujine":"填入金额(1-0)并点击确定",
+    "tianrujine":"填入金额(%s-%s)并点击确定",
     "shoudongshuruhuoxuanzhe":"手动输入或下方选择金额",
     "diyibu_xuanzhezhifuxieyi":"第一步,选择支付协议",
     "dierbu_chakanshoukuanxinxi":"第二步,查看收款信息,进行转账充值",
@@ -953,7 +953,7 @@ class CN {
     "jinrikai":"今日开",
     "wodeshoucang":"我的收藏",
     "lianxiwomen":"联系我们",
-    "2023guojizhan":"@2023国际站",
+    "2023guojizhan":"@2024博雅娱乐城",
     "yingyongneijiazai":"应用内轻加载",
     "liulanqidakai":"使用系统默认浏览器打开",
     "biaozhunshijian":"本站标准时间以美东时间为准\n美东时间=北京时间-12小时",
@@ -1029,6 +1029,7 @@ class CN {
     "shuruneirongchaoguozuidaxianzhi":"您输入的内容数量已经超过了最大限制",
     "guanbijianyimima":"关闭简易密码后，将清空您设置的简易密码请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
     "wolaishuoliangju":"我来说两句...",
+    "fanshuixiangqing":"返水详情",
 
 
 

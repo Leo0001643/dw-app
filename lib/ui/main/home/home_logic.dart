@@ -51,7 +51,7 @@ class HomeLogic extends GetxController {
         });
       }
 
-      AppData.setValidUser(state.user?.value?.username ?? "");
+      AppData.setValidUser(state.user.value.username ?? "");
     }
 
     state.user.refresh();

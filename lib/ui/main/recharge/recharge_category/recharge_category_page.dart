@@ -63,7 +63,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
           Column(
             children: [
               WidgetUtils().buildRoomBar(state.title,msg: true,bgColor: Colors.transparent,
-                  scaffoldKey: state.scaffoldKey, systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+                  scaffoldKey: state.scaffoldKey, systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),
                   onTap: (){
                 if(unEmpty(state.paymentList.value)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {

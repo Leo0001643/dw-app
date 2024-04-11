@@ -204,8 +204,9 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                 onTap: () {
                   if(state.detail.isChat == true){
                     logger(server.toJson());
-                    if(server.url.isUrl()){
-                      Get.toNamed(Routes.html,arguments: HtmlEvent(data: server.url,isHtmlData: false,pageTitle: ""));
+                    var url = server.url?.trim().em();
+                    if(url.isUrl()){
+                      Get.toNamed(Routes.html,arguments: HtmlEvent(data: url,isHtmlData: false,pageTitle: ""));
                     }
                   }else{
                     WidgetUtils().clickCopy(server.number.em());
