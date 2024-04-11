@@ -7,6 +7,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/jump_payment_entity.dart';
 
@@ -104,7 +105,14 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                 width: 8.r,height: 8.r,
               ),
               SizedBox(width: 13.w,),
-              Text(Intr().tianrujine,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              Obx(() {
+                if(isEmpty(state.paymentList)){
+                  return Container();
+                }
+                var item =state.paymentList[state.selectIndex.value];
+                return Text(Intr().tianrujine([DataUtils.formatMoney(item.moneyDown),DataUtils.formatMoney(item.moneyUp)]),
+                  style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),);
+              }),
             ],
           ),
           SizedBox(height: 10.h,),

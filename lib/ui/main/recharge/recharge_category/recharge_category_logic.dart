@@ -32,6 +32,7 @@ class RechargeCategoryLogic extends GetxController {
     HttpService.getPaymentChannel(AppData.user()!.oid.em(),
         AppData.user()!.username.em(),info.bankCode.em()).then((value) {
           state.supportOnline.value = unEmpty(value.jumpPayment);
+          state.supportOffline.value = unEmpty(value.bankSet);
           if(unEmpty(value.jumpPayment) && unEmpty(value.bankSet)){///离在线都支持
             state.pageController.jumpToPage(0);
             state.tabController.index = 0;

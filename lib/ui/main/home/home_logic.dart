@@ -38,8 +38,8 @@ class HomeLogic extends GetxController {
 
   var count = 100; //测试倒计时
   void loadFirstName() {
-    if (state.user?.value?.username?.isNotEmpty == true) {
-      bool isExit = AppData.isValidUser(state.user?.value?.username ?? "");
+    if (state.user.value.username?.isNotEmpty == true) {
+      bool isExit = AppData.isValidUser(state.user.value.username ?? "");
       if (!isExit) {
         DialogUtils().showCurrencyDialog(Get.context!).then((value) {
           if (value == true) {
@@ -53,7 +53,6 @@ class HomeLogic extends GetxController {
 
       AppData.setValidUser(state.user.value.username ?? "");
     }
-
     state.user.refresh();
   }
 

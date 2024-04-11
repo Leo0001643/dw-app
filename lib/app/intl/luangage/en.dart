@@ -759,7 +759,7 @@ class EN{
     "wenxintishi_1":"1、The system will automatically open a webpage. Please follow the prompts to continue the operation",
     "wenxintishi_2":"2、Handling fee% s%, high arrival rate!",
     "wenxintishi_3":"%s、%s",
-    "tianrujine":"Fill in the amount (1-0) and click OK",
+    "tianrujine":"Fill in the amount (%s-%s) and click OK",
     "shoudongshuruhuoxuanzhe":"Manually enter or select the amount below",
     "diyibu_xuanzhezhifuxieyi":"The first step is to select a payment agreement",
     "dierbu_chakanshoukuanxinxi":"Step 2, check the payment information and proceed with the transfer and recharge",

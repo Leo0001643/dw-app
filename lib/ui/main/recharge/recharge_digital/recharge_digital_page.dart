@@ -83,7 +83,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
           Column(
             children: [
               WidgetUtils().buildRoomBar(state.title,bgColor: Colors.transparent,msg: true,drawer: true,
-                  scaffoldKey: state.scaffoldKey,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),
+                  scaffoldKey: state.scaffoldKey,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.dark),
                   onTap: (){
                 if(unEmpty(state.paymentList.value)){
                   DialogUtils().showSelectPaywayBtmDialog(context,state.paymentList.value).then((value) {

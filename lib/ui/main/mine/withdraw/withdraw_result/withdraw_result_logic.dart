@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/ui/bean/change_balance_event.dart';
 import 'package:leisure_games/ui/bean/digiccy_deposit_data_entity.dart';
 
 import 'withdraw_result_state.dart';
@@ -28,6 +29,10 @@ class WithdrawResultLogic extends GetxController {
 
     HttpService.getBalance({ "cur":5, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
       state.balance.value = "${value.money.em()}";
+
+      ///提现成功需要刷新用户余额
+      eventBus.fire(ChangeBalanceEvent());
+
     });
 
   }

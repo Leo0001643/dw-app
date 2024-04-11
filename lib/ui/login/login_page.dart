@@ -155,20 +155,22 @@ class _LoginPageState extends State<LoginPage> {
             ),
             SizedBox(height: 20.h,),
             Center(
-              child: WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
-                  bg: state.btnEnable.value
-                      ? ColorX.color_fd273e
-                      : ColorX.color_ff5163,
-                  textColor: Colors.white,
-                  textSize: 16.sp, onPressed: () {
-                    if (state.varcode.value.status == 1 &&
-                        state.varcode.value.type == 3) {
-                      _handleClickVerify();
-                    } else {
-                      String?varCodeId= state.varcode.value.varCodeId;
-                      logic.clickLogin(varCode:state.vcode,varCodeId:varCodeId);
-                    }
-                  }),
+              child: Obx(() {
+                return WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
+                    bg: state.btnEnable.value
+                        ? ColorX.color_fd273e
+                        : ColorX.color_ff5163,
+                    textColor: Colors.white,
+                    textSize: 16.sp, onPressed: () {
+                      if (state.varcode.value.status == 1 &&
+                          state.varcode.value.type == 3) {
+                        _handleClickVerify();
+                      } else {
+                        String?varCodeId= state.varcode.value.varCodeId;
+                        logic.clickLogin(varCode:state.vcode,varCodeId:varCodeId);
+                      }
+                    });
+              }),
             ),
           ],
         ),

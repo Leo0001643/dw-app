@@ -684,7 +684,7 @@ class CN {
     "wenxintishi_1":"1、系统将会自动打开一个网页，请按提示继续操作",
     "wenxintishi_2":"2、手续费 %s%,到账率高!",
     "wenxintishi_3":"%s、%s",
-    "tianrujine":"填入金额(1-0)并点击确定",
+    "tianrujine":"填入金额(%s-%s)并点击确定",
     "shoudongshuruhuoxuanzhe":"手动输入或下方选择金额",
     "diyibu_xuanzhezhifuxieyi":"第一步,选择支付协议",
     "dierbu_chakanshoukuanxinxi":"第二步,查看收款信息,进行转账充值",

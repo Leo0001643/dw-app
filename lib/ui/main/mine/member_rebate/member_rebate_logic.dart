@@ -29,12 +29,6 @@ class MemberRebateLogic extends GetxController {
       state.backWaterDesc = value;
     });
 
-    var user = AppData.user();
-    ///查询组合占比
-    HttpService.queryConstituteRatio({"oid":user?.oid,"username":user?.username}).then((value) {
-      state.constituteRatio.value = value;
-      state.constituteRatio.refresh();
-    });
   }
 
 
@@ -51,6 +45,13 @@ class MemberRebateLogic extends GetxController {
       state.list.assignAll(value);
       state.list.refresh();
     });
+
+    ///查询组合占比
+    HttpService.queryConstituteRatio({"oid":user?.oid,"username":user?.username}).then((value) {
+      state.constituteRatio.value = value;
+      state.constituteRatio.refresh();
+    });
+
   }
 
 
