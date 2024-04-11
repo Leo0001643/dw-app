@@ -63,6 +63,7 @@ import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
+import 'package:leisure_games/ui/bean/rebate_detail_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/shake_info_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
@@ -503,6 +504,9 @@ class HttpService{
     return buildFuture<String>(()=> _client.openPlatformPermit(params));
   }
 
+  static Future<List<RebateDetailEntity>> backWaterDetail(Map<String,dynamic> params,){
+    return buildFuture<List<RebateDetailEntity>>(()=> _client.backWaterDetail(params));
+  }
 
 
 

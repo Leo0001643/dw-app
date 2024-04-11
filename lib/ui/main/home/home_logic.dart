@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -39,23 +37,46 @@ class HomeLogic extends GetxController {
   StreamSubscription? apiSub;
 
   var count = 100; //测试倒计时
+  void loadFirstName() {
+    if (state.user?.value?.username?.isNotEmpty == true) {
+      bool isExit = AppData.isValidUser(state.user?.value?.username ?? "");
+      if (!isExit) {
+        DialogUtils().showCurrencyDialog(Get.context!).then((value) {
+          if (value == true) {
+            ///切换的时候需要把右边数据情况
+            // state.rightAccount.value = PlatformEntity();
+            loadData();
+            loadBalance();
+          }
+        });
+      }
+
+      AppData.setValidUser(state.user.value.username ?? "");
+    }
+
+    state.user.refresh();
+  }
+
   @override
   void onReady() {
     loadData();
     loadUserData();
-    queryRoutes();///查询线路信息
+    queryRoutes();
+
+    ///查询线路信息
     ///余额发生变化，刷新余额数据
     loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
       loadUserData(jumpNotice: event.show_notice);
     });
+
     Get.find<AvatarController>().addListener(() {
       state.user.value = AppData.user() ?? LoginUserEntity();
-      state.user.refresh();
     });
     Get.find<WalletController>().addListener(() {
       ///钱包切换的时候游戏种类会有变化，所以需要刷新列表
       loadData();
     });
+
     ///语言国际化更新
     languageStream = eventBus.on<LanguageEvent>().listen((event) {
       loadData();
@@ -67,9 +88,11 @@ class HomeLogic extends GetxController {
     apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
       loadData();
       loadUserData();
+
       ///线路切换 修改当前线路名称
       queryRoutes();
     });
+    delayLoadFirst();
     super.onReady();
   }
 
@@ -92,6 +115,7 @@ class HomeLogic extends GetxController {
   void clickMenu(BuildContext context, int index) {
     switch (index) {
       case 0:
+
         ///充值
         if (AppData.isLogin()) {
           eventBus.fire(ChangeMainPageEvent(2));
@@ -100,6 +124,7 @@ class HomeLogic extends GetxController {
         }
         break;
       case 1:
+
         ///提现
         // DialogUtils().showCurrencyDialog(context);
         if (AppData.isLogin()) {
@@ -129,14 +154,19 @@ class HomeLogic extends GetxController {
         }
         break;
       case 6:
+
         ///抢红包
-        if(state.hongbaoVisible.isFalse){
+        if (state.hongbaoVisible.isFalse) {
           showToast(Intr().huodongweikaiqi);
           return;
         }
         if (AppData.isLogin()) {
-          var path = sprintf("${Constants.frontDomain()}/m/#/Hongbao/%s/%s/%s",
-              [AppData.user()?.oid,AppData.user()?.username,Intr().currentLocale().languageCode]);
+          var path =
+              sprintf("${Constants.frontDomain()}/m/#/Hongbao/%s/%s/%s", [
+            AppData.user()?.oid,
+            AppData.user()?.username,
+            Intr().currentLocale().languageCode
+          ]);
           // print("抢红包>>地址"+path);
           Get.toNamed(Routes.html,
               arguments: HtmlEvent(
@@ -259,11 +289,10 @@ class HomeLogic extends GetxController {
   }
 
   void loadData() {
-
     ///更换站点logo
     state.stationLogo.value = ImageX.icStationHomeZ();
 
-    HttpService.getGameKind(AppData.wallet() ? 1: 5).then((value) {
+    HttpService.getGameKind(AppData.wallet() ? 1 : 5).then((value) {
       state.menuGroup.assignAll(value);
       state.menuGroup.refresh();
     });
@@ -323,8 +352,9 @@ class HomeLogic extends GetxController {
         if (countTime > 24 * 60 * 60) {
           state.act.value.logo?.status = Intr().jinxingzhong; //进行中
         } else {
-          state.act.value.logo?.status =
-              DataUtils.format12Hour(countTime * 1000, format: "HH:mm:ss"); //进行中
+          state.act.value.logo?.status = DataUtils.format12Hour(
+              countTime * 1000,
+              format: "HH:mm:ss"); //进行中
         }
         state.act.refresh();
         state.hongbaoVisible.value = true;
@@ -354,43 +384,52 @@ class HomeLogic extends GetxController {
       }
 
       ///域名配置
-      HttpService.getDomainConfig({"oid": user.oid, "username": user.username}).then((value) {
+      HttpService.getDomainConfig({"oid": user.oid, "username": user.username})
+          .then((value) {
         state.domainConfig = value;
       });
+
       ///未读消息数量
-      var params = {"oid":user.oid,"username":user.username};
+      var params = {"oid": user.oid, "username": user.username};
       HttpService.getMessage(params).then((value) {
         var count = 0;
         value.forEach((element) {
-          if(element.mstatus == 0){
+          if (element.mstatus == 0) {
             count++;
           }
         });
         state.unreadCount.value = count;
       });
-
     } else {
       state.user.value = LoginUserEntity();
       state.user.refresh();
     }
   }
 
-
-  void loadBalance(){
-    if(!AppData.isLogin()) return;
+  void loadBalance() {
+    if (!AppData.isLogin()) return;
 
     var user = AppData.user()!;
 
-    HttpService.getBalance({ "cur":1, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+    HttpService.getBalance({
+      "cur": 1,
+      "platform": "main",
+      "oid": user.oid,
+      "username": user.username
+    }).then((value) {
       state.cnyBal.value = value;
       state.cnyBal.refresh();
     });
 
-    HttpService.getBalance({ "cur":5, "platform":"main","oid":user.oid,"username":user.username }).then((value) {
+    HttpService.getBalance({
+      "cur": 5,
+      "platform": "main",
+      "oid": user.oid,
+      "username": user.username
+    }).then((value) {
       state.usdtBal.value = value;
       state.usdtBal.refresh();
     });
-
   }
 
   void showNotice(List<NoticeEntity> value, int i) {
@@ -407,22 +446,25 @@ class HomeLogic extends GetxController {
   ///请求云存储里的路线
   void queryRoutes() async {
     var value = AppData.ossApi();
-    if(isEmpty(value) || value!.updateTime.em() < (DateTime.now().millisecondsSinceEpoch - 86400000)){
+    if (isEmpty(value) ||
+        value!.updateTime.em() <
+            (DateTime.now().millisecondsSinceEpoch - 86400000)) {
       value = await OssUtils().downloadFile();
-      if(unEmpty(value)){
+      if (unEmpty(value)) {
         ///用于判断是否需要更新缓存使用
         value?.updateTime = DateTime.now().millisecondsSinceEpoch;
         AppData.setOssApi(value!);
+
         ///适配多渠道环境 如果换成其他渠道本地host就跟线路里的不是一回事了 所以得处理一下多渠道的环境问题
         AppData.checkBaseUrl(value);
       }
     }
 
-    if(unEmpty(value)){
+    if (unEmpty(value)) {
       var list = value!.toApiList();
-      for(var i=0;i<list.em();i++){
-        loggerArray(["线路对比结果",list[i].baseApi,AppData.baseUrl()]);
-        if(list[i].baseApi == AppData.baseUrl()){
+      for (var i = 0; i < list.em(); i++) {
+        loggerArray(["线路对比结果", list[i].baseApi, AppData.baseUrl()]);
+        if (list[i].baseApi == AppData.baseUrl()) {
           state.routeName.value = Intr().xianlu_(["${i + 1}"]);
           return;
         }
@@ -430,5 +472,13 @@ class HomeLogic extends GetxController {
     }
   }
 
-
+  void delayLoadFirst() {
+    bool isExit = AppData.isValidUser(state.user?.value?.username ?? "");
+    if (isExit == true) {
+      return;
+    }
+    Future.delayed(Duration(seconds: 3), () {
+      loadFirstName();
+    });
+  }
 }

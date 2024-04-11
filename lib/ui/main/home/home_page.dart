@@ -18,6 +18,7 @@ import 'package:leisure_games/ui/main/home/game_menu_view.dart';
 import 'package:leisure_games/ui/main/home/more_tab_view.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../../app/utils/dialog_utils.dart';
 import 'home_logic.dart';
 
 class HomePage extends StatefulWidget {
@@ -127,7 +128,15 @@ class StateHomePage extends State<HomePage>
                                     }
                                     return InkWell(
                                       onTap: () {
-                                        WidgetUtils().goMessageCenter();
+                                        DialogUtils().showCurrencyDialog(context).then((value) {
+                                          if(value == true){
+                                            ///切换的时候需要把右边数据情况
+                                            // state.rightAccount.value = PlatformEntity();
+                                            // logic.loadData();
+                                            // logic.loadBalance();
+                                          }
+                                        });
+                                        // WidgetUtils().goMessageCenter();
                                       },
                                       child: Marquee(
                                         text:

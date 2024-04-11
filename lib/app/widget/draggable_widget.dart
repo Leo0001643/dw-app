@@ -7,6 +7,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -17,41 +18,46 @@ import 'package:sprintf/sprintf.dart';
 
 class DraggableWidget extends StatefulWidget{
 
-  final HomeLogic logic;
+  final Widget child;
 
-  final Pic30BackEntity data;
-
-  DraggableWidget(this.logic,this.data, {super.key});
+  DraggableWidget(this.child,{super.key});
 
   @override
   State<StatefulWidget> createState() => _StateDraggableWidget();
 
 }
 
-class _StateDraggableWidget extends State<DraggableWidget>{
+class _StateDraggableWidget extends State<DraggableWidget> with WidgetsBindingObserver{
 
   late Rx<Offset> rxOffset;
 
-  // var status = Intr().weikaishi.obs;
+  var isDrag = false.obs;
 
   @override
   void initState() {
-    // 1：居左 2：居中 3：居右
-    switch(widget.data.logo?.position){
-      case "2":
-        rxOffset = Offset(0.5.sw, 0.75.sh).obs;
-        break;
-      case "3":
-        rxOffset = Offset(1.sw, 0.75.sh).obs;
-        break;
-      default:
-        rxOffset = Offset(0, 0.75.sh).obs;
-        break;
-    }
-
+    rxOffset = Offset(20, 100).obs;
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    final newOrientation = MediaQuery.of(context).orientation;
+    if(newOrientation == Orientation.portrait){
+      rxOffset.value = Offset(20, 100);
+      rxOffset.refresh();
+    }else{
+      rxOffset.value = Offset(50, 10);
+      rxOffset.refresh();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,52 +66,22 @@ class _StateDraggableWidget extends State<DraggableWidget>{
         top: rxOffset.value.dy,
         left: rxOffset.value.dx,
         child: Draggable(
-          feedback: Container(),
+          feedback: widget.child,
           onDragUpdate: (details){
             // logger(details.localPosition);
+            isDrag.value = true;
             rxOffset.value = details.localPosition;
             rxOffset.refresh();
           },
           onDraggableCanceled: (velocity,offset){
+            isDrag.value = false;
             rxOffset.value = Offset(offset.dx,offset.dy);
             rxOffset.refresh();
           },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              InkWell(
-                onTap: ()=> widget.logic.state.hongbaoManual.value = false,
-                child: Image.asset(ImageX.ic_delete_grey,color: ColorX.color_fe2427,),
-              ),
-              GestureDetector(
-                onTap: onJumpWeb,
-                child: Stack(
-                  children: [
-                    isEmpty(widget.data.url) ? Container() : Image.network("${widget.data.url.em()}${widget.data.logo?.picUrl.em()}",width: 80.r,),
-                    Positioned(
-                      right: 0,left: 0,bottom: 3.h,
-                      child: Text(widget.data.logo?.status ?? "",style: TextStyle(fontSize: 13.sp,color: ColorX.color_ffe0ac),textAlign: TextAlign.center,),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          child: isDrag.value ? Container() :widget.child,
         ),
       );
     });
-  }
-
-//http://180.150.128.168:20001/#/Hongbao/63030302451ba3b3a8d30c29bf8ec4e6/xiao/en
-  void onJumpWeb() {
-    // var link = "http://soptj9qq.com/m";//Get.find<MainLogic>().state.webConfig?.agDomain?.list?.first;
-
-    // var path = "/#/Hongbao${AppData.user()?.oid}/2/3";///${Intr().currentLocale().languageCode}
-
-    var path = sprintf(Constants.hongbao,[AppData.user()?.oid,AppData.user()?.username,Intr().currentLocale().languageCode]);
-
-    Get.toNamed(Routes.html,arguments: HtmlEvent(data: path,isHtmlData: false,pageTitle: Intr().hongbaohuodong));
-
   }
 
 

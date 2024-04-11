@@ -74,6 +74,7 @@ import 'package:leisure_games/ui/bean/prize_list_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_detail_entity.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/bean/protect_entity.dart';
+import 'package:leisure_games/ui/bean/rebate_detail_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/bean/shake_info_entity.dart';
 import 'package:leisure_games/ui/bean/site_wallet_config_entity.dart';
@@ -684,6 +685,10 @@ class JsonConvert {
       return data.map<ProtectProtectKkwdsLive>((Map<String, dynamic> e) =>
           ProtectProtectKkwdsLive.fromJson(e)).toList() as M;
     }
+    if (<RebateDetailEntity>[] is M) {
+      return data.map<RebateDetailEntity>((Map<String, dynamic> e) =>
+          RebateDetailEntity.fromJson(e)).toList() as M;
+    }
     if (<RoomCopyWritingEntity>[] is M) {
       return data.map<RoomCopyWritingEntity>((Map<String, dynamic> e) =>
           RoomCopyWritingEntity.fromJson(e)).toList() as M;
@@ -948,6 +953,7 @@ class JsonConvertClassCollection {
     (PromotionTypeKey).toString(): PromotionTypeKey.fromJson,
     (ProtectEntity).toString(): ProtectEntity.fromJson,
     (ProtectProtectKkwdsLive).toString(): ProtectProtectKkwdsLive.fromJson,
+    (RebateDetailEntity).toString(): RebateDetailEntity.fromJson,
     (RoomCopyWritingEntity).toString(): RoomCopyWritingEntity.fromJson,
     (RoomCopyWritingContent).toString(): RoomCopyWritingContent.fromJson,
     (ShakeInfoEntity).toString(): ShakeInfoEntity.fromJson,

@@ -37,8 +37,6 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return DrawerScaffold(
       scaffoldKey: state.scaffoldKey,
       appBar: WidgetUtils().buildAppBar(Intr().xiangqing,scaffoldKey: state.scaffoldKey),
@@ -64,17 +62,16 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
             ),
             Obx(() {
               int initialScale=140*(ScreenUtil().screenWidth/411).toInt();
-
               return SizedBox(
                 height: state.contentHeight.value,
                 child: InAppWebView(
                   initialOptions: InAppWebViewGroupOptions(
-
                     android: AndroidInAppWebViewOptions(
-                      initialScale:initialScale,
+                      initialScale:106,
                       loadWithOverviewMode: false,
-                      overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
-                      displayZoomControls: false,
+                      overScrollMode: AndroidOverScrollMode.OVER_SCROLL_ALWAYS,
+
+                      displayZoomControls: true,
                       builtInZoomControls: false,
                       useWideViewPort: false,
                     ),
