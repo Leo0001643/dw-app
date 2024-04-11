@@ -1,15 +1,13 @@
-import 'package:floating_draggable_widget/floating_draggable_widget.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/widget/draggable_widget.dart';
 import 'game_html_logic.dart';
 
 class GameHtmlPage2 extends StatefulWidget {
@@ -34,7 +32,6 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
 
   @override
   void initState() {
-
     super.initState();
   }
 
@@ -50,18 +47,18 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return FloatingDraggableWidget(
-        mainScreenWidget: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            toolbarHeight: 0,
-            backgroundColor: Colors.white,
-            // systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark),
-          ),
-          backgroundColor: Colors.white,
-          body: SafeArea(
-            child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        toolbarHeight: 0,
+        backgroundColor: Colors.white,
+        // systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.white,statusBarIconBrightness: Brightness.dark),
+      ),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Column(
               children: [
                 Obx(() => Visibility(
                   visible: state.progressVisible.value,
@@ -75,15 +72,14 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
                 ),
                 Expanded(
                   child: InAppWebView(
-                    onWebViewCreated: (controller) =>
-                        logic.loadPage(controller),
+                    onWebViewCreated: (controller) => logic.loadPage(controller),
                     initialSettings: InAppWebViewSettings(
                       loadWithOverviewMode: false,
-                      overScrollMode: OverScrollMode.NEVER,
+                      overScrollMode: OverScrollMode.IF_CONTENT_SCROLLS,
                       displayZoomControls: false,
                       builtInZoomControls: false,
                       useWideViewPort: false,
-                      disallowOverScroll: true,
+                      disallowOverScroll: false,
                       enableViewportScale: true,
                       ignoresViewportScaleLimits: true,
                       useShouldOverrideUrlLoading: true,
@@ -101,84 +97,51 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
                       state.progress.value = pg.toDouble();
                       state.progressVisible.value = pg != 100;
                     },
-                    gestureRecognizers:Set()
-                      ..add(
-                        Factory<VerticalDragGestureRecognizer>(
-                              () => VerticalDragGestureRecognizer(),
-                        ),
-                      )
-                      ..add(
-                        Factory<PanGestureRecognizer>(
-                              () => PanGestureRecognizer(),
-                        ),
-                      )
-                      ..add(
-                        Factory<ForcePressGestureRecognizer>(
-                              () => ForcePressGestureRecognizer(),
-                        ),
-                      )
-                      ..add(
-                        Factory<EagerGestureRecognizer>(
-                              () => EagerGestureRecognizer(),
-                        ),
-                      )
-                      ..add(
-                        Factory<LongPressGestureRecognizer>(
-                              () => LongPressGestureRecognizer(),
-                        ),
-                      ),
-                    onScrollChanged: (InAppWebViewController controller, int x, int y) {},
                   ),
                 ),
               ],
             ),
-          ),
-        ),
-        floatingWidget: Column(
-          children: [
-            FloatingActionButton(
-                heroTag: "orientations",
-                foregroundColor: Colors.transparent,
-                backgroundColor: Colors.transparent,
-                onPressed: (){
-                  isLandscape = !isLandscape;
-                  ///重新创建这个组件
-                  SystemChrome.setPreferredOrientations(isLandscape ? orientations : orientations2);
-                  //旋转屏幕
-                  ///切换横竖屏需要切换悬浮球的位置
-                  position.value = isLandscape ? const Offset(100, 30) : const Offset(20, 50);
-                  position.refresh();
-                  loggerArray(["现在是什么状态",isLandscape]);
-                },
-                child: buildSvgImageItem(ImageX.icHtmXZT())),
-            FloatingActionButton(
-                heroTag: "close",
-                foregroundColor: Colors.transparent,
-                backgroundColor: Colors.transparent,
-                onPressed: (){
-                  if(isLandscape){
-                    SystemChrome.setPreferredOrientations(orientations2);
-                    isLandscape = !isLandscape;
-                  }
-                  Future.delayed(const Duration(milliseconds: 200),()=> Get.back());
-                },
-                child: buildSvgImageItem(ImageX.icHtmlBackT())),
+            DraggableWidget(
+              Column(
+                children: [
+                  InkWell(
+                    onTap: (){
+                      isLandscape = !isLandscape;
+                      ///重新创建这个组件
+                      SystemChrome.setPreferredOrientations(isLandscape ? orientations : orientations2);
+                      //旋转屏幕
+                      ///切换横竖屏需要切换悬浮球的位置
+                      position.value = isLandscape ? const Offset(100, 30) : const Offset(20, 50);
+                      position.refresh();
+                      loggerArray(["现在是什么状态",isLandscape]);
+                    },
+                    child: buildSvgImageItem(ImageX.icHtmXZT()),
+                  ),
+                  InkWell(
+                    onTap: (){
+                      if(isLandscape){
+                        SystemChrome.setPreferredOrientations(orientations2);
+                        isLandscape = !isLandscape;
+                      }
+                      Future.delayed(const Duration(milliseconds: 200),()=> Get.back());
+                    },
+                    child: buildSvgImageItem(ImageX.icHtmlBackT()),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
-        dx: position.value.dx,
-        dy: position.value.dy,
-        floatingWidgetWidth: 50,
-        floatingWidgetHeight: 150,
-      );
-    });
+      ),
+    );
   }
 
   Widget buildSvgImageItem(String icon) {
     return SvgPicture.asset(
       icon,
-      width: 48.w,
-      height: 48.w,
-      fit: BoxFit.contain,
+      width: 48,
+      height: 48,
+      fit: BoxFit.fill,
     );
   }
 }
