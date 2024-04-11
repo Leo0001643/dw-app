@@ -72,7 +72,7 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                     GFListTile(
                       onTap: (){},
                       title: Obx(() {
-                        return Text(state.userCode.value,
+                        return Text("sp${state.userCode.value}",
                           style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w500),);
                       }),
                       padding: EdgeInsets.symmetric(vertical: 13.h,horizontal: 10.w),

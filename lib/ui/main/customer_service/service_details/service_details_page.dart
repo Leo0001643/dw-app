@@ -31,7 +31,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
     state.detail = Get.arguments;
     state.title.value = state.detail.name.em();
     super.initState();
-    print("====== isChat 》${state.detail.toJson()}");
+    // print("====== isChat 》${state.detail.toJson()}");
   }
 
   @override
