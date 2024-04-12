@@ -58,7 +58,7 @@ android {
         config {
             keyAlias 'apk'
             keyPassword '12345678'
-            storeFile file('../leisure.jks')
+            storeFile file('../boya.jks')
             storePassword '12345678'
         }
     }

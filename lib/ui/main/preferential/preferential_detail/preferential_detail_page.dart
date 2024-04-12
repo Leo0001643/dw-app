@@ -31,6 +31,7 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
 
   @override
   void dispose() {
+    InAppWebViewController.clearAllCache();
     Get.delete<PreferentialDetailLogic>();
     super.dispose();
   }

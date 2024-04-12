@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: WidgetUtils().buildTextField(
                     325.w, 46.h, 14.sp, ColorX.textBlack(), Intr().yhm,
-                    hintColor: ColorX.text586(),
+                    hintColor: ColorX.text949(),
                     defText: state.accountValue,
                     backgroundColor: Colors.transparent,
                     onChanged: (v) => logic.editChange(true, v)),
@@ -100,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                             backgroundColor: Colors.transparent,
                             onChanged: (v) => logic.editChange(false, v),
                             defText: state.pwdValue,
-                            hintColor: ColorX.text586(),
+                            hintColor: ColorX.text949(),
                             obscureText: !state.pwdVisible.value,
                             inputType: TextInputType.visiblePassword);
                       }),
@@ -202,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
                           Expanded(
                             child: WidgetUtils().buildTextField(
                               0, 46.h, 14.sp, ColorX.textBlack(), Intr().yzm,
-                              hintColor: ColorX.text586(),
+                              hintColor: ColorX.text949(),
                               backgroundColor: Colors.transparent,
                               inputType: TextInputType.text,
                               onChanged: (v) => state.vcode = v,

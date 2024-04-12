@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tencent_captcha/tencent_captcha.dart';
 import 'package:flutter_tencent_captcha/tencent_captcha_config.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -27,6 +29,7 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final logic = Get.find<RegisterLogic>();
   final state = Get.find<RegisterLogic>().state;
+  var _disableScrolling = false.obs;
 
   @override
   void initState() {
@@ -73,312 +76,325 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
       backgroundColor: ColorX.pageBg(),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 10.h,),
-            Row(
-              children: [
-                Expanded(child: Container()),
-                InkWell(
-                  onTap: ()=> Get.toNamed(Routes.select_language),
+      body: Obx(() {
+        return SingleChildScrollView(
+          physics: _disableScrolling.value ? NeverScrollableScrollPhysics():null,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 10.h,),
+              Row(
+                children: [
+                  Expanded(child: Container()),
+                  InkWell(
+                    onTap: ()=> Get.toNamed(Routes.select_language),
+                    child: Row(
+                      children: [
+                        WidgetUtils().buildImage(ImageX.languageT(), 18.r, 18.r),
+                        SizedBox(width: 2.w,),
+                        Text(
+                          Intr().zhongwenjianti,
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w600,
+                            color: ColorX.textBlack(),),
+                        ),
+                        Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
+                        SizedBox(width: 10.w,),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10.h,),
+              Center(
+                child: FocusContainer(
+                  width: 335.w,
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      WidgetUtils().buildImage(ImageX.languageT(), 18.r, 18.r),
-                      SizedBox(width: 2.w,),
-                      Text(
-                        Intr().zhongwenjianti,
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                          color: ColorX.textBlack(),),
+                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                      WidgetUtils().buildTextField(
+                        290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().qsryhm,
+                        hintColor: ColorX.text949(),
+                        backgroundColor: Colors.transparent,
+                        onChanged: (v) => state.accountValue = v,
+                        // focusedBorder: OutlineInputBorder(
+                        //   borderSide: BorderSide(color: ColorX.line10949(), width: 1.w),
+                        // ),
                       ),
-                      Image.asset(ImageX.icon_right_black,color: ColorX.iconBlack(),),
-                      SizedBox(width: 10.w,),
                     ],
                   ),
                 ),
-              ],
-            ),
-            SizedBox(height: 10.h,),
-            Center(
-              child: FocusContainer(
-                width: 335.w,
-                padding: EdgeInsets.symmetric(horizontal: 15.w),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                    WidgetUtils().buildTextField(
-                      290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().qsryhm,
-                      hintColor: ColorX.text586(),
+              ),
+              SizedBox(height: 10.h,),
+              Padding(
+                padding: EdgeInsets.only(left: 35.w),
+                child: Text(Intr().sidao12shuzihuozimu, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              Center(
+                child: FocusContainer(
+                  width: 335.w,
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                      Expanded(
+                        child: Obx(() {
+                          return WidgetUtils().buildTextField(
+                              260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().mm,
+                              backgroundColor: Colors.transparent,
+                              onChanged: (v) => state.pwdValue = v,
+                              defText: state.pwdValue,
+                              hintColor: ColorX.text949(),
+                              obscureText: !state.pwdVisible.value,
+                              inputType: TextInputType.visiblePassword);
+                        }),
+                      ),
+                      InkWell(
+                        onTap: () =>
+                        state.pwdVisible.value = !state.pwdVisible.value,
+                        child: Obx(() {
+                          return state.pwdVisible.value
+                              ? Image.asset(
+                            ImageX.icon_show,
+                            color: ColorX.iconBlack(),
+                            width: 30.w,
+                          )
+                              : Image.asset(
+                            ImageX.icon_hide,
+                            color: ColorX.iconBlack(),
+                            width: 30.w,
+                          );
+                        }),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.h,),
+              Padding(
+                padding: EdgeInsets.only(left: 35.w),
+                child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+              ),
+              SizedBox(height: 20.h,),
+              Center(
+                child: FocusContainer(
+                  width: 335.w,
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                      Expanded(
+                        child: Obx(() {
+                          return WidgetUtils().buildTextField(
+                              260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().querenmima,
+                              backgroundColor: Colors.transparent,
+                              onChanged: (v) => state.confirmPwdValue = v,
+                              defText: state.confirmPwdValue,
+                              hintColor: ColorX.text949(),
+                              obscureText: !state.confirmPwdVisible.value,
+                              inputType: TextInputType.visiblePassword);
+                        }),
+                      ),
+                      InkWell(
+                        onTap: () => state.confirmPwdVisible.value =
+                        !state.confirmPwdVisible.value,
+                        child: Obx(() {
+                          return state.confirmPwdVisible.value
+                              ? Image.asset(
+                            ImageX.icon_show,
+                            color: ColorX.iconBlack(),
+                            width: 30.w,
+                          )
+                              : Image.asset(
+                            ImageX.icon_hide,
+                            color: ColorX.iconBlack(),
+                            width: 30.w,
+                          );
+                        }),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.h,),
+              Padding(
+                padding: EdgeInsets.only(left: 35.w),
+                child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+              ),
+              SizedBox( height: 20.h,),
+              Center(
+                child: FocusContainer(
+                  width: 335.w,
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
+                  child: Row(
+                    children: [
+                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                      WidgetUtils().buildTextField(
+                          290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().zsxm,
+                          hintColor: ColorX.text949(),
+                          backgroundColor: Colors.transparent,
+                          onChanged: (v) => state.realname = v,
+                          focusNode: state.nameFocus),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.h,),
+              Padding(
+                padding: EdgeInsets.only(left: 35.w),
+                child: Text(Intr().ytxyhkhmyz, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+              ),
+              SizedBox(height: 20.h,),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: FocusContainer(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: Row(
+                    children: [
+                      SizedBox(width: 10.w,),
+                      InkWell(
+                        onTap: () => DialogUtils().showSelectAreaBtmDialog(context, state.phoneData ?? {}).then((value) {
+                          if(unEmpty(value)){ state.areaNo.value = value!; }
+                        }),
+                        child: Row(
+                          children: [
+                            Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                            Obx(() {
+                              return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),);
+                            }),
+                            WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: WidgetUtils().buildTextField(0, 46.h, 14.sp, ColorX.textBlack(), Intr().shoujihaoma,hintColor: ColorX.text949(),
+                            backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
+                      )
+                    ],
+                  ),
+                ),
+              ),//
+              SizedBox(height: 10.h,),
+              Padding(
+                padding: EdgeInsets.only(left: 35.w),
+                child: Text(Intr().shuruzhenshiyouxiao, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+              ),
+              SizedBox(height: 20.h,),
+              Center(
+                child: FocusContainer(
+                  width: 335.w,
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: WidgetUtils().buildTextField(
+                      335.w, 46.h, 14.sp, ColorX.textBlack(), Intr().jieshaoren,
+                      hintColor: ColorX.text949(),
                       backgroundColor: Colors.transparent,
-                      onChanged: (v) => state.accountValue = v,
-                      // focusedBorder: OutlineInputBorder(
-                      //   borderSide: BorderSide(color: ColorX.line10949(), width: 1.w),
-                      // ),
-                    ),
-                  ],
+                      onChanged: (v) => state.tgcode = v,
+                      padding: EdgeInsets.symmetric(horizontal: 5.w)),
                 ),
               ),
-            ),
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().sidao12shuzihuozimu, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            Center(
-              child: FocusContainer(
-                width: 335.w,
-                padding: EdgeInsets.symmetric(horizontal: 15.w),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                    Expanded(
-                      child: Obx(() {
-                        return WidgetUtils().buildTextField(
-                            260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().mm,
-                            backgroundColor: Colors.transparent,
-                            onChanged: (v) => state.pwdValue = v,
-                            defText: state.pwdValue,
-                            hintColor: ColorX.text586(),
-                            obscureText: !state.pwdVisible.value,
-                            inputType: TextInputType.visiblePassword);
-                      }),
-                    ),
-                    InkWell(
-                      onTap: () =>
-                          state.pwdVisible.value = !state.pwdVisible.value,
-                      child: Obx(() {
-                        return state.pwdVisible.value
-                            ? Image.asset(
-                                ImageX.icon_show,
-                                color: ColorX.iconBlack(),
-                                width: 30.w,
-                              )
-                            : Image.asset(
-                                ImageX.icon_hide,
-                                color: ColorX.iconBlack(),
-                                width: 30.w,
-                              );
-                      }),
-                    ),
-                  ],
-                ),
+              SizedBox(height: 10.h,),
+              Padding(
+                padding: EdgeInsets.only(left: 35.w),
+                child: Text(Intr().shurujieshaoren, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
               ),
-            ),
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
-            ),
-            SizedBox(height: 20.h,),
-            Center(
-              child: FocusContainer(
-                width: 335.w,
-                padding: EdgeInsets.symmetric(horizontal: 15.w),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                    Expanded(
-                      child: Obx(() {
-                        return WidgetUtils().buildTextField(
-                            260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().querenmima,
-                            backgroundColor: Colors.transparent,
-                            onChanged: (v) => state.confirmPwdValue = v,
-                            defText: state.confirmPwdValue,
-                            hintColor: ColorX.text586(),
-                            obscureText: !state.confirmPwdVisible.value,
-                            inputType: TextInputType.visiblePassword);
-                      }),
+              SizedBox(height: 20.h,),
+              _getImageCode(),
+              SizedBox(height: 10.h,),
+              Center(
+                child: Text.rich(TextSpan(children: [
+                  WidgetSpan(
+                    // child: InkWell(
+                    //   onTap: ()=> state.agreeCheck.value = !state.agreeCheck.value,
+                    child: Obx(() {
+                      return WidgetUtils().buildImage(state.agreeCheck.value ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r,fit: BoxFit.scaleDown);
+                    }),
+                    // ),
+                  ),
+                  WidgetSpan(
+                    child: SizedBox(
+                      width: 5.w,
                     ),
-                    InkWell(
-                      onTap: () => state.confirmPwdVisible.value =
-                          !state.confirmPwdVisible.value,
-                      child: Obx(() {
-                        return state.confirmPwdVisible.value
-                            ? Image.asset(
-                                ImageX.icon_show,
-                                color: ColorX.iconBlack(),
-                                width: 30.w,
-                              )
-                            : Image.asset(
-                                ImageX.icon_hide,
-                                color: ColorX.iconBlack(),
-                                width: 30.w,
-                              );
-                      }),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
-            ),
-            SizedBox( height: 20.h,),
-            Center(
-              child: FocusContainer(
-                width: 335.w,
-                padding: EdgeInsets.symmetric(horizontal: 15.w),
-                child: Row(
-                  children: [
-                    Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                    WidgetUtils().buildTextField(
-                        290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().zsxm,
-                        hintColor: ColorX.text586(),
-                        backgroundColor: Colors.transparent,
-                        onChanged: (v) => state.realname = v,
-                        focusNode: state.nameFocus),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().ytxyhkhmyz, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
-            ),
-            SizedBox(height: 20.h,),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: FocusContainer(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Row(
-                  children: [
-                    SizedBox(width: 10.w,),
-                    InkWell(
-                      onTap: () => DialogUtils().showSelectAreaBtmDialog(context, state.phoneData ?? {}).then((value) {
-                        if(unEmpty(value)){ state.areaNo.value = value!; }
-                      }),
-                      child: Row(
-                        children: [
-                          Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                          Obx(() {
-                            return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),);
-                          }),
-                          WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
-                        ],
+                  ),
+                  TextSpan(
+                    text: Intr().wywdbty,
+                    style: TextStyle(fontSize: 13.sp, color: ColorX.text0917()),
+                  ),
+                  WidgetSpan(
+                    child: InkWell(
+                      onTap: () {
+                        Get.toNamed(Routes.html,
+                            arguments: HtmlEvent(
+                                data: "${AppData.baseUrl()}/m/#/detail/Contact",
+                                isHtmlData: false,
+                                pageTitle: Intr().kaihuxieyi));
+                      },
+                      child: Text(
+                        Intr().kaihuxieyi,
+                        style: TextStyle(
+                            fontSize: 13.sp,
+                            color: ColorX.text0917(),
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
-                    Expanded(
-                      child: WidgetUtils().buildTextField(0, 46.h, 14.sp, ColorX.textBlack(), Intr().shoujihaoma,hintColor: ColorX.text586(),
-                          backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
-                    )
-                  ],
-                ),
+                  )
+                ])),
               ),
-            ),//
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().shuruzhenshiyouxiao, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
-            ),
-            SizedBox(height: 20.h,),
-            Center(
-              child: FocusContainer(
-                width: 335.w,
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: WidgetUtils().buildTextField(
-                    335.w, 46.h, 14.sp, ColorX.textBlack(), Intr().jieshaoren,
-                    hintColor: ColorX.text586(),
-                    backgroundColor: Colors.transparent,
-                    onChanged: (v) => state.tgcode = v,
-                    padding: EdgeInsets.symmetric(horizontal: 5.w)),
+              SizedBox(height: 10.h,),
+              Center(
+                child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
+                    bg: ColorX.color_fd273e,
+                    textColor: Colors.white,
+                    textSize: 16.sp, onPressed: () {
+                      if (state.varcode.value.status == 1 &&
+                          state.varcode.value.type == 3) {
+                        _handleClickVerify();
+                      } else {
+                        logic.clickRegister();
+                      }
+                    }),
               ),
-            ),
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(Intr().shurujieshaoren, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
-            ),
-            SizedBox(height: 20.h,),
-            _getImageCode(),
-            SizedBox(height: 10.h,),
-            Center(
-              child: Text.rich(TextSpan(children: [
-                WidgetSpan(
-                  // child: InkWell(
-                  //   onTap: ()=> state.agreeCheck.value = !state.agreeCheck.value,
-                  child: Obx(() {
-                    return WidgetUtils().buildImage(state.agreeCheck.value ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r,fit: BoxFit.scaleDown);
-                  }),
-                  // ),
-                ),
-                WidgetSpan(
-                  child: SizedBox(
-                    width: 5.w,
-                  ),
-                ),
-                TextSpan(
-                  text: Intr().wywdbty,
-                  style: TextStyle(fontSize: 13.sp, color: ColorX.text0917()),
-                ),
-                WidgetSpan(
-                  child: InkWell(
-                    onTap: () {
-                      Get.toNamed(Routes.html,
-                          arguments: HtmlEvent(
-                              data: Constants.contact,
-                              isHtmlData: false,
-                              pageTitle: Intr().kaihuxieyi));
-                    },
-                    child: Text(
-                      Intr().kaihuxieyi,
-                      style: TextStyle(
-                          fontSize: 13.sp,
-                          color: ColorX.text0917(),
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                )
-              ])),
-            ),
-            SizedBox(height: 10.h,),
-            Center(
-              child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
-                  bg: ColorX.color_fd273e,
-                  textColor: Colors.white,
-                  textSize: 16.sp, onPressed: () {
-                    if (state.varcode.value.status == 1 &&
-                        state.varcode.value.type == 3) {
-                      _handleClickVerify();
-                    } else {
-                      logic.clickRegister();
-                    }
-                  }),
-            ),
-            SizedBox(height: 10.h,),
-          ],
-        ),
-      ),
+              SizedBox(height: 10.h,),
+            ],
+          ),
+        );
+      }),
     );
   }
 
   Widget _getAliCode() {
     if (state.varcode.value.status == 1 && state.varcode.value.type == 2) {
-      return Container(
-        width: double.infinity,
-        height: 48,
-        margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 16.w),
-        child: AliyunCaptchaButton(
-          type: AliyunCaptchaType.slide,
-          // 重要：请设置正确的类型
-          option: AliyunCaptchaOption(
-            appKey: 'FFFF0N00000000009A34',
-            scene: 'cn-hangzhou',
-            language: 'cn',
-            // 更多参数请参见：https://help.aliyun.com/document_detail/193141.html
-          ),
-          customStyle: '''
+      return GestureDetector(
+        onTapDown: (details){
+          _disableScrolling.value = true;
+        },
+        onTapUp: (details){
+          _disableScrolling.value = false;
+        },
+        onTapCancel: (){
+          _disableScrolling.value = false;
+        },
+        child: Container(
+          width: double.infinity,
+          height: 48,
+          margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 16.w),
+          child: AliyunCaptchaButton(
+            type: AliyunCaptchaType.slide,
+            // 重要：请设置正确的类型
+            option: AliyunCaptchaOption(
+              appKey: 'FFFF0N00000000009A34',
+              scene: 'cn-hangzhou',
+              language: 'cn',
+              // 更多参数请参见：https://help.aliyun.com/document_detail/193141.html
+            ),
+            customStyle: '''
       .nc_scale {
         background: #eeeeee !important;
         /* 默认背景色 */
@@ -399,12 +415,17 @@ class _RegisterPageState extends State<RegisterPage> {
         color: #ef9f06 !important;
       }
     ''',
-          onSuccess: (dynamic data) {
-            // {"sig": "...", "token": "..."}
-            logic.clickRegister(data: data);
-          },
-          onFailure: (String failCode) {},
-          onError: (String errorCode) {},
+            onSuccess: (dynamic data) {
+              _disableScrolling.value = false;
+              logic.clickRegister(data: data);
+            },
+            onFailure: (String failCode) {
+              _disableScrolling.value = false;
+            },
+            onError: (String errorCode) {
+              _disableScrolling.value = false;
+            },
+          ),
         ),
       );
     } else {
@@ -430,7 +451,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Expanded(
                         child: WidgetUtils().buildTextField(
                           0, 46.h, 14.sp, ColorX.textBlack(), Intr().yzm,
-                          hintColor: ColorX.text586(),
+                          hintColor: ColorX.text949(),
                           backgroundColor: Colors.transparent,
                           inputType: TextInputType.text,
                           onChanged: (v) => state.vcode = v,
@@ -462,21 +483,16 @@ class _RegisterPageState extends State<RegisterPage> {
     );
     await TencentCaptcha.verify(
       config: config,
-      onLoaded: (dynamic data) {
-        print(">tx>>>onLoaded" + data.toString());
-      },
+      onLoaded: (dynamic data) {},
       onSuccess: (dynamic data) {
-        print(">tx>>>onSuccess" + data.toString());
         logic.clickRegister(data: data);
-        _addLog('onSuccess', data);
+        loggerArray(['onSuccess', data]);
       },
       onFail: (dynamic data) {
-        _addLog('onFail', data);
+        loggerArray(['onFail', data]);
       },
     );
   }
 
-  void _addLog(String method, dynamic data) {
-    print(data.toString());
-  }
+
 }

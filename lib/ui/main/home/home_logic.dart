@@ -36,25 +36,6 @@ class HomeLogic extends GetxController {
   StreamSubscription? balanceStream;
   StreamSubscription? apiSub;
 
-  var count = 100; //测试倒计时
-  void loadFirstName() {
-    if (state.user.value.username?.isNotEmpty == true) {
-      bool isExit = AppData.isValidUser(state.user.value.username ?? "");
-      if (!isExit) {
-        DialogUtils().showCurrencyDialog(Get.context!).then((value) {
-          if (value == true) {
-            ///切换的时候需要把右边数据情况
-            // state.rightAccount.value = PlatformEntity();
-            loadData();
-            loadBalance();
-          }
-        });
-      }
-
-      AppData.setValidUser(state.user.value.username ?? "");
-    }
-    state.user.refresh();
-  }
 
   @override
   void onReady() {
@@ -125,7 +106,6 @@ class HomeLogic extends GetxController {
       case 1:
 
         ///提现
-        // DialogUtils().showCurrencyDialog(context);
         if (AppData.isLogin()) {
           Get.toNamed(Routes.withdraw);
         } else {
@@ -472,12 +452,30 @@ class HomeLogic extends GetxController {
   }
 
   void delayLoadFirst() {
-    bool isExit = AppData.isValidUser(state.user?.value?.username ?? "");
+    bool isExit = AppData.isValidUser(state.user.value.username.em());
     if (isExit == true) {
       return;
     }
-    Future.delayed(Duration(seconds: 3), () {
-      loadFirstName();
-    });
+    loadFirstName();
   }
+
+  void loadFirstName() {
+    if (state.user.value.username?.isNotEmpty == true) {
+      bool isExit = AppData.isValidUser(state.user.value.username!);
+      if (!isExit) {
+        DialogUtils().showCurrencyDialog(Get.context!).then((value) {
+          if (value == true) {
+            ///切换的时候需要把右边数据情况
+            // state.rightAccount.value = PlatformEntity();
+            loadData();
+            loadBalance();
+          }
+        });
+      }
+      AppData.setValidUser(state.user.value.username!);
+    }
+    state.user.refresh();
+  }
+
+
 }

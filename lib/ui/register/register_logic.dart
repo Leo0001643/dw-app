@@ -123,4 +123,7 @@ class RegisterLogic extends GetxController {
       getVarcode();///出错需要刷新验证码
     });
   }
+
+
+
 }
