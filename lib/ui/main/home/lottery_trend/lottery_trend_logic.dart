@@ -50,7 +50,8 @@ class LotteryTrendLogic extends GetxController {
     if(AppData.isLogin()){
       var gameCode = state.PC28HashTable[item.lid.toString()];
       if(isEmpty(gameCode)){//跳转经典彩
-        WidgetUtils().jumpGameRoom(Get.context!, GameKindEntity(), GameKindGameKindList(gameCode: "",liveName: "jingdian_lotto",tags: "ds_lotto_jd"));
+        // loggerArray(["打印点击去购彩的详情",item.toJson()]);
+        WidgetUtils().jumpGameRoom(Get.context!, GameKindEntity(), GameKindGameKindList(gameCode: "${item.lid.em()}",liveName: "jingdian_lotto",tags: "ds_lotto_jd"));
         return;
       }
       logger(state.PC28HashTable[item.lid.em()]);

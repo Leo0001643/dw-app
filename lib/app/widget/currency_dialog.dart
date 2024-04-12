@@ -36,7 +36,6 @@ class StateCurrencyDialog extends State<CurrencyDialog>{
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Container(

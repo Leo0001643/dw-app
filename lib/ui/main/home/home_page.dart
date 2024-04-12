@@ -126,28 +126,14 @@ class StateHomePage extends State<HomePage>
                                     if (isEmpty(state.noticeList)) {
                                       return Container();
                                     }
-                                    return InkWell(
-                                      onTap: () {
-                                        DialogUtils().showCurrencyDialog(context).then((value) {
-                                          if(value == true){
-                                            ///切换的时候需要把右边数据情况
-                                            // state.rightAccount.value = PlatformEntity();
-                                            // logic.loadData();
-                                            // logic.loadBalance();
-                                          }
-                                        });
-                                        // WidgetUtils().goMessageCenter();
-                                      },
-                                      child: Marquee(
-                                        text:
-                                            buildNoticeString(state.noticeList),
-                                        style: TextStyle(
-                                            fontSize: 13.sp,
-                                            color: ColorX.text0917()),
-                                        scrollAxis: Axis.horizontal,
-                                        startPadding: 10.w,
-                                        blankSpace: 5.w,
-                                      ),
+                                    return Marquee(
+                                      text: buildNoticeString(state.noticeList),
+                                      style: TextStyle(
+                                          fontSize: 13.sp,
+                                          color: ColorX.text0917()),
+                                      scrollAxis: Axis.horizontal,
+                                      startPadding: 10.w,
+                                      blankSpace: 5.w,
                                     );
                                   }),
                                 ),

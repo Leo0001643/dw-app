@@ -23,8 +23,6 @@ deploymentTargetDropDown.xml
 render.experimental.xml
 
 # Keystore files
-*.jks
-*.keystore
 .flutter-plugins-dependencies
 .flutter-plugins
 # Google Services (e.g. APIs or Firebase)

@@ -23,4 +23,6 @@ class LotteryTrendState {
   '46': 'fastbtb28',//比特币1分PC28
   };
 
+
+
 }
