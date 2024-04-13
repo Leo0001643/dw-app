@@ -1,10 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
@@ -27,12 +29,8 @@ class GameRoleBottomDialog extends StatefulWidget{
 class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleTickerProviderStateMixin{
 
   late TabController _tabController;
-  InAppWebViewController? controller;
 
-
-  var progress = 0.0.obs;
-  var progressVisible= true.obs;//显示隐藏
-
+  var htmlContent = "".obs;
   var tabs = [Intr().wanfaguizhe,Intr().youxishuyu,Intr().xiazhujiqiao,];
 
   @override
@@ -41,6 +39,7 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
     ..addListener(() {
       loadData(_tabController.index);
     });
+    loadData(widget.tabIndex);
     super.initState();
   }
 
@@ -91,36 +90,11 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
               ),
             ],
           ),
-          Obx(() => Visibility(
-            visible: progressVisible.value,
-            child: LinearProgressIndicator(
-              value: progress.value/100,//取值为0-1
-              minHeight: 3,
-              valueColor: const AlwaysStoppedAnimation(Colors.amberAccent),
-              backgroundColor: Colors.white,
-            ),
-          ),
-          ),
           Expanded(
-            child: InAppWebView(
-              initialSettings: InAppWebViewSettings(
-                loadWithOverviewMode: false,
-                overScrollMode: OverScrollMode.ALWAYS,
-                displayZoomControls: false,
-                builtInZoomControls: false,
-                useWideViewPort: false,
-                disallowOverScroll: true,
-                enableViewportScale: true,
-                ignoresViewportScaleLimits: true,
-              ),
-              onWebViewCreated: (ct){
-                controller = ct;
-                loadData(widget.tabIndex);
-              },
-              onProgressChanged: (controller,pg){
-                progress.value = pg.toDouble();
-                progressVisible.value = pg != 100;
-              },
+            child: SingleChildScrollView(
+              child: Obx(() {
+                return Html(data: htmlContent.value,shrinkWrap: true,);
+              }),
             ),
           ),
         ],
@@ -141,7 +115,7 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
         break;
     }
     HttpService.getGameRole(tag).then((value) {
-      controller?.loadData(data: value.content.em());
+      htmlContent.value = value.content.em();
     });
   }
 

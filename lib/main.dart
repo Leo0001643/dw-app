@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
           initialRoute: Routes.main,
           getPages: Routes.getPages,
           navigatorObservers: [defaultLifecycleObserver,RouteObservers()],
-          locale: Intr().currentLocale(),
+          locale: Intr().defaultLocale(context),
           fallbackLocale: Intr().fallbackLocale(), ///添加一个默认语言选项，以备上面指定的语言翻译 不存在
           supportedLocales: Intr().locales,
           localizationsDelegates: const [
