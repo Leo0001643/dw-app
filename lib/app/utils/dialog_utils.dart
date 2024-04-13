@@ -408,6 +408,7 @@ class DialogUtils {
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,
+        enableDrag: false,///开启拖动会影响子布局的滚动
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(15.r), topLeft: Radius.circular(15.r)),

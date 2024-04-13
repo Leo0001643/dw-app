@@ -11,8 +11,10 @@ class PreferentialDetailState {
   ///详情
   var detail = PromotionDetailEntity();
 
-  ///webview高度
-  var contentHeight = 1.sh.obs;
   var scaffoldKey = GlobalKey<ScaffoldState>();
+
+
+
+
 
 }

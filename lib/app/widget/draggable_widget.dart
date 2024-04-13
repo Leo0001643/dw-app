@@ -19,8 +19,10 @@ import 'package:sprintf/sprintf.dart';
 class DraggableWidget extends StatefulWidget{
 
   final Widget child;
+  final Function(Offset offset)? onOffsetChanged;
 
-  DraggableWidget(this.child,{super.key});
+
+  DraggableWidget(this.child,this.onOffsetChanged,{super.key});
 
   @override
   State<StatefulWidget> createState() => _StateDraggableWidget();
@@ -32,11 +34,15 @@ class _StateDraggableWidget extends State<DraggableWidget> with WidgetsBindingOb
   late Rx<Offset> rxOffset;
 
   var isDrag = false.obs;
+  Orientation? _previousOrientation;
 
   @override
   void initState() {
     rxOffset = Offset(20, 100).obs;
     WidgetsBinding.instance.addObserver(this);
+    Future.delayed(Duration(milliseconds: 100),(){
+      _previousOrientation = MediaQuery.of(context).orientation;
+    });
     super.initState();
   }
 
@@ -49,13 +55,19 @@ class _StateDraggableWidget extends State<DraggableWidget> with WidgetsBindingOb
   @override
   void didChangeMetrics() {
     super.didChangeMetrics();
-    final newOrientation = MediaQuery.of(context).orientation;
-    if(newOrientation == Orientation.portrait){
-      rxOffset.value = Offset(20, 100);
-      rxOffset.refresh();
-    }else{
-      rxOffset.value = Offset(50, 10);
-      rxOffset.refresh();
+    var current = MediaQuery.of(context).orientation;
+    if(_previousOrientation !=null && _previousOrientation != current){
+      _previousOrientation = current;
+      logger("走这里了吗");
+      final newOrientation = MediaQuery.of(context).orientation;
+      if(newOrientation == Orientation.portrait){
+        rxOffset.value = Offset(20, 100);
+        rxOffset.refresh();
+      }else{
+        rxOffset.value = Offset(50, 10);
+        rxOffset.refresh();
+      }
+      widget.onOffsetChanged?.call(rxOffset.value);
     }
   }
 
@@ -72,10 +84,17 @@ class _StateDraggableWidget extends State<DraggableWidget> with WidgetsBindingOb
             isDrag.value = true;
             rxOffset.value = details.localPosition;
             rxOffset.refresh();
+            widget.onOffsetChanged?.call(rxOffset.value);
+          },
+          onDragEnd: (details){
+            isDrag.value = false;
+            rxOffset.value = details.offset;
+            rxOffset.refresh();
           },
           onDraggableCanceled: (velocity,offset){
+            loggerArray(["输出一下最后的位置",rxOffset.value,offset]);
             isDrag.value = false;
-            rxOffset.value = Offset(offset.dx,offset.dy);
+            rxOffset.value = offset;
             rxOffset.refresh();
           },
           child: isDrag.value ? Container() :widget.child,

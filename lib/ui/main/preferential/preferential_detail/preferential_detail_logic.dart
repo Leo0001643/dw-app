@@ -19,10 +19,5 @@ class PreferentialDetailLogic extends GetxController {
     super.onClose();
   }
 
-  void loadPage(InAppWebViewController controller){
-    print("收到数据了吧 ${state.detail.title}");
-    var content = '${state.detail.content.em()}';
-    controller.loadData(data: content);
-  }
 
 }

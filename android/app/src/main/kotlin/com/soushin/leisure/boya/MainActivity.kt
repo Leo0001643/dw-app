@@ -1,6 +1,8 @@
-package com.soushin.leisure.leisure_games
+package com.soushin.leisure.boya
 
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity: FlutterActivity() {
+
+    
 }

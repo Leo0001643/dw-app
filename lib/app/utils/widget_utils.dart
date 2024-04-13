@@ -1060,7 +1060,11 @@ class WidgetUtils {
             }
           } else if (element.gameKind == "live") {
             ///真人
-            openGamePage(element,<String, dynamic>{"gameCode":element.gameCode.em()});
+            if(unEmpty(element.gameCode.em())){
+              openGamePage(element,<String, dynamic>{"gameCode":element.gameCode.em()});
+            } else {
+              openGamePage(element,<String, dynamic>{"pageSite":element.gameKind.em()});
+            }
           } else if (element.gameKind == "chess") {
             ///棋牌
             Get.toNamed(Routes.chess_game_list,

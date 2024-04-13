@@ -1,9 +1,11 @@
 
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/intl/luangage/vi.dart';
+import 'package:leisure_games/app/logger.dart';
 
 import 'luangage/cn.dart';
 import 'luangage/en.dart';
@@ -27,6 +29,27 @@ class Intr extends Translations{
   ///当前语言环境
   Locale currentLocale(){
     return locales[AppData.localeIndex()];
+  }
+
+  Locale defaultLocale(BuildContext context){
+    //获取当前系统使用的语言
+    var locale = View.of(context).platformDispatcher.locale;
+    logger(locale.toString());
+    for (var element in locales) {
+      if(element.languageCode == locale.languageCode){
+        AppData.setLocaleIndex(locales.indexOf(element));
+        return element;
+      }
+    }
+    ///如果默认语言不在支持的语言范围内，默认英文，前提是app支持英文
+    for (var element in locales) {
+      if(element.languageCode == "en"){
+        AppData.setLocaleIndex(locales.indexOf(element));
+        return element;
+      }
+    }
+    AppData.setLocaleIndex(0);
+    return currentLocale();
   }
 
   ///当前语言环境

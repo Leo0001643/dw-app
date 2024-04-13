@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -55,42 +56,8 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
           ),
           SizedBox(
             height: 0.6.sh,
-            child: Column(
-              children: [
-                Obx(() => Visibility(
-                    visible: progressVisible.value,
-                    child: LinearProgressIndicator(
-                      value: progress.value/100,//取值为0-1
-                      minHeight: 3,
-                      valueColor: AlwaysStoppedAnimation(Colors.amberAccent),
-                      backgroundColor: Colors.white,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InAppWebView(
-                    initialData: InAppWebViewInitialData(data: widget.desc.content.em(),),
-                    onProgressChanged: (controller,pg){
-                      progress.value = pg.toDouble();
-                      progressVisible.value = pg != 100;
-                    },
-                    initialOptions: InAppWebViewGroupOptions(
-                      android: AndroidInAppWebViewOptions(
-                        loadWithOverviewMode: false,
-                        overScrollMode: AndroidOverScrollMode.OVER_SCROLL_NEVER,
-                        displayZoomControls: false,
-                        builtInZoomControls: false,
-                        useWideViewPort: false,
-                      ),
-                      ios: IOSInAppWebViewOptions(
-                        disallowOverScroll: true,
-                        enableViewportScale: true,
-                        ignoresViewportScaleLimits: true,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            child: SingleChildScrollView(
+              child: Html(data: widget.desc.content.em(),),
             ),
           ),
         ],
