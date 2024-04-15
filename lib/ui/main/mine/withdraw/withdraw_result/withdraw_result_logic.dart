@@ -27,7 +27,7 @@ class WithdrawResultLogic extends GetxController {
     state.result.refresh();
     var user = AppData.user();
 
-    HttpService.getBalance({ "cur":5, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
+    HttpService.getBalance({ "cur":state.result.value.status, "platform":"main","oid":user?.oid,"username":user?.username }).then((value) {
       state.balance.value = "${value.money.em()}";
 
       ///提现成功需要刷新用户余额
