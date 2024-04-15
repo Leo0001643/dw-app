@@ -63,12 +63,12 @@ class _GameRoomPageState extends State<GameRoomPage> with LifecycleAware, Lifecy
   void onLifecycleEvent(LifecycleEvent event) {
     loggerArray(["生命周期变化了",event]);
     switch (event) {
-      case LifecycleEvent.active:
+      case LifecycleEvent.visible:
       ///播放音乐
         AudioUtils().appForeground = true;
         if(AppData.bgMusic()){ AudioUtils().playRoom(); }
         break;
-      case LifecycleEvent.inactive:
+      case LifecycleEvent.invisible:
         AudioUtils().appForeground = false;
         AudioUtils().stopBg();
         break;
