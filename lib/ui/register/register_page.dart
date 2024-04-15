@@ -39,6 +39,9 @@ class _RegisterPageState extends State<RegisterPage> {
         logic.memberRegCheck();
       }
     });
+    state.varcode.listen((p0) {
+      aliyunCaptchaController.reset();
+    });
     super.initState();
   }
 
@@ -348,19 +351,24 @@ class _RegisterPageState extends State<RegisterPage> {
                 ])),
               ),
               SizedBox(height: 10.h,),
-              Center(
-                child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
-                    bg: ColorX.color_fd273e,
-                    textColor: Colors.white,
-                    textSize: 16.sp, onPressed: () {
-                      if (state.varcode.value.status == 1 &&
-                          state.varcode.value.type == 3) {
-                        _handleClickVerify();
-                      } else {
-                        logic.clickRegister();
-                      }
-                    }),
-              ),
+              Obx(() {
+                return Visibility(
+                  visible: state.varcode.value.type != 2,
+                  child: Center(
+                    child: WidgetUtils().buildElevatedButton(Intr().register, 335.w, 48.h,
+                        bg: ColorX.color_fd273e,
+                        textColor: Colors.white,
+                        textSize: 16.sp, onPressed: () {
+                          if (state.varcode.value.status == 1 &&
+                              state.varcode.value.type == 3) {
+                            _handleClickVerify();
+                          } else {
+                            logic.clickRegister();
+                          }
+                        }),
+                  ),
+                );
+              }),
               SizedBox(height: 10.h,),
             ],
           ),
@@ -369,6 +377,8 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+
+  AliyunCaptchaController aliyunCaptchaController = AliyunCaptchaController();
   Widget _getAliCode() {
     if (state.varcode.value.status == 1 && state.varcode.value.type == 2) {
       return GestureDetector(
@@ -386,6 +396,7 @@ class _RegisterPageState extends State<RegisterPage> {
           height: 48,
           margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 16.w),
           child: AliyunCaptchaButton(
+            controller: aliyunCaptchaController,
             type: AliyunCaptchaType.slide,
             // 重要：请设置正确的类型
             option: AliyunCaptchaOption(
@@ -421,9 +432,11 @@ class _RegisterPageState extends State<RegisterPage> {
             },
             onFailure: (String failCode) {
               _disableScrolling.value = false;
+              aliyunCaptchaController.reset();
             },
             onError: (String errorCode) {
               _disableScrolling.value = false;
+              aliyunCaptchaController.reset();
             },
           ),
         ),

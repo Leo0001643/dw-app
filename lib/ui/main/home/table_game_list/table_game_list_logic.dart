@@ -143,6 +143,7 @@ class TableGameListLogic extends GetxController {
       "oid":user?.oid,"username":user?.username,"platformURL": Constants.frontDomain()};
 
     WidgetUtils().loginJump(element.gamename.em(),params);
+
   }
 
 

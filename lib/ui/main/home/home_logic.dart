@@ -102,6 +102,7 @@ class HomeLogic extends GetxController {
         } else {
           WidgetUtils().goLogin();
         }
+      // DialogUtils().showOtaUpdateDialog(context);
         break;
       case 1:
 

@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/utils/aws_utils.dart';
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
@@ -26,6 +27,7 @@ class AppData {
 
   static Future<bool> initData() async {
     prefs = await SharedPreferences.getInstance();
+
     logger("初始化完成${DateTime.now().toString()}");
     final deviceInfoPlugin = DeviceInfoPlugin();
     final packageInfo = await PackageInfo.fromPlatform();
@@ -52,6 +54,7 @@ class AppData {
     }
     ///初始化网络库
     HttpService.doInit();
+    // await AwsUtils().configureAmplify();
     return Future.value(true);
   }
 
