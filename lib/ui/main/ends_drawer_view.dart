@@ -402,7 +402,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
             height: 50.h,
           ),
           Text(
-            Intr().hyld,
+            Intr().hyld(),
             style: TextStyle(
                 fontSize: 20.sp,
                 color: ColorX.text0917(),

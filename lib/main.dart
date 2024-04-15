@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
           navigatorObservers: [defaultLifecycleObserver,RouteObservers()],
           locale: Intr().defaultLocale(context),
           fallbackLocale: Intr().fallbackLocale(), ///添加一个默认语言选项，以备上面指定的语言翻译 不存在
-          supportedLocales: Intr().locales,
+          supportedLocales: Intr().locales(),
           localizationsDelegates: const [
             RefreshLocalizations.delegate,
             GlobalMaterialLocalizations.delegate, /// 指定本地化的字符串和一些其他的值

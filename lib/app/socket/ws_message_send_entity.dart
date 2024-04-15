@@ -38,7 +38,7 @@ class WsMessageSendEntity {
 
 	factory WsMessageSendEntity.get({String? type,List<String>? msg,String? gameType,String? roomId,String? tableId}){
 		var entity = WsMessageSendEntity();
-		entity.siteId = Constants.siteid;
+		entity.siteId = Constants.siteid();
 		entity.oid = AppData.user()?.oid.em();
 		entity.clientName = AppData.user()?.username ?? SocketUtils().clientName;
 		entity.type = type;

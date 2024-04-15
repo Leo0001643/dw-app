@@ -1121,7 +1121,7 @@ class WidgetUtils {
           "username": user?.username,
           "platformURL": Constants.frontDomain(),
           "machineModel":Constants.model(),
-          "siteId":Constants.siteid,
+          "siteId":Constants.siteid(),
           "siteType":"1",
           "terminal":"APP",
           "version":Constants.version(),

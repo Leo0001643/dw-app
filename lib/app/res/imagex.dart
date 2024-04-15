@@ -1,5 +1,7 @@
 
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 
 class ImageX{
   
@@ -607,6 +609,12 @@ class ImageX{
 
   static const ic_ota_update =  'assets/images/ic_ota_update.png';
 
+  static const ic_boya_home =  'assets/images/ic_boya_home.png';
+  static const ic_boya_home_en =  'assets/images/ic_boya_home_en.png';
+
+  static const ic_dw_home =  'assets/images/ic_dw_home.png';
+  static const ic_dw_home_en =  'assets/images/ic_dw_home_en.png';
+
 
   
   static String startP(){
@@ -1028,9 +1036,12 @@ class ImageX{
   }
 
 
-
   static String icStationHomeZ(){
-    return AppData.localeIndex() == 0 ? ic_station_home : ic_station_home_en;
+    if(channelName == Constants.channel_boya){
+      return AppData.localeIndex() == 0 ? ic_boya_home : ic_boya_home_en;
+    }else {
+      return AppData.localeIndex() == 0 ? ic_dw_home : ic_dw_home_en;
+    }
   }
 
   static String countDown1Z(){

@@ -107,7 +107,7 @@ class HttpService{
         //系统版本号【APP强制使用】
         var commonParams = {
           "machineModel":Constants.model(),
-          "siteId":Constants.siteid,
+          "siteId":Constants.siteid(),
           "siteType":"1",
           "terminal":"APP",
           "version":Constants.version(),

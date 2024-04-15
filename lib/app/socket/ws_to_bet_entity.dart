@@ -44,7 +44,7 @@ class WsToBetEntity {
 
 	factory WsToBetEntity.get({String? moneyType, String? nowTerm, List<WsBetContent>? betList,String? gameType,String? roomId,String? tableId}){
 		var entity = WsToBetEntity();
-		entity.siteId = Constants.siteid;
+		entity.siteId = Constants.siteid();
 		entity.oid = AppData.user()?.oid ?? "";
 		entity.clientName = AppData.user()?.username ?? SocketUtils().clientName;
 		entity.type = "bet";
