@@ -27,6 +27,14 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
   var _disableScrolling = false.obs;
 
   @override
+  void initState() {
+    state.varcode.listen((p0) {
+      aliyunCaptchaController.reset();
+    });
+    super.initState();
+  }
+
+  @override
   void dispose() {
     Get.delete<ProxyRegisterLogic>();
     super.dispose();
@@ -359,21 +367,26 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
               SizedBox(
                 height: 20.h,
               ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
-                child:  WidgetUtils().buildElevatedButton(
-                    Intr().confirm, 335.w, 48.h,
-                    bg: ColorX.color_fd273e,
-                    textColor: Colors.white,
-                    textSize: 16.sp, onPressed: () {
-                  if (state.varcode.value.status == 1 &&
-                      state.varcode.value.type == 3) {
-                    _handleClickVerify();
-                  } else {
-                    logic.register();
-                  }
-                }),
-              ),
+              Obx(() {
+                return Visibility(
+                  visible: state.varcode.value.type != 2,
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 16.w,vertical: 10.h),
+                    child:  WidgetUtils().buildElevatedButton(
+                        Intr().confirm, 335.w, 48.h,
+                        bg: ColorX.color_fd273e,
+                        textColor: Colors.white,
+                        textSize: 16.sp, onPressed: () {
+                      if (state.varcode.value.status == 1 &&
+                          state.varcode.value.type == 3) {
+                        _handleClickVerify();
+                      } else {
+                        logic.register();
+                      }
+                    }),
+                  ),
+                );
+              }),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 27.w),
                 child: Text.rich(
@@ -469,6 +482,8 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
     });
   }
 
+
+  AliyunCaptchaController aliyunCaptchaController = AliyunCaptchaController();
   Widget _getAliCode() {
     if (state.varcode.value.status == 1 && state.varcode.value.type == 2) {
       return GestureDetector(
@@ -491,6 +506,7 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
             right: 16,
           ),
           child: AliyunCaptchaButton(
+            controller: aliyunCaptchaController,
             type: AliyunCaptchaType.slide,
             // 重要：请设置正确的类型
             option: AliyunCaptchaOption(
@@ -522,10 +538,17 @@ class _ProxyRegisterPageState extends State<ProxyRegisterPage> {
     ''',
             onSuccess: (dynamic data) {
               // {"sig": "...", "token": "..."}
+              _disableScrolling.value = false;
               logic.register(data: data);
             },
-            onFailure: (String failCode) {},
-            onError: (String errorCode) {},
+            onFailure: (String failCode) {
+              _disableScrolling.value = false;
+              aliyunCaptchaController.reset();
+            },
+            onError: (String errorCode) {
+              _disableScrolling.value = false;
+              aliyunCaptchaController.reset();
+            },
           ),
         ),
       );

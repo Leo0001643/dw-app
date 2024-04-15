@@ -26,6 +26,14 @@ class _LoginPageState extends State<LoginPage> {
   final state = Get.find<LoginLogic>().state;
 
   @override
+  void initState() {
+    state.varcode.listen((p0) {
+      aliyunCaptchaController.reset();
+    });
+    super.initState();
+  }
+
+  @override
   void dispose() {
     Get.delete<LoginLogic>();
     super.dispose();
@@ -154,24 +162,29 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 20.h,),
-            Center(
-              child: Obx(() {
-                return WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
-                    bg: state.btnEnable.value
-                        ? ColorX.color_fd273e
-                        : ColorX.color_ff5163,
-                    textColor: Colors.white,
-                    textSize: 16.sp, onPressed: () {
-                      if (state.varcode.value.status == 1 &&
-                          state.varcode.value.type == 3) {
-                        _handleClickVerify();
-                      } else {
-                        String?varCodeId= state.varcode.value.varCodeId;
-                        logic.clickLogin(varCode:state.vcode,varCodeId:varCodeId);
-                      }
-                    });
-              }),
-            ),
+            Obx(() {
+              return Visibility(
+                visible: state.varcode.value.type != 2,
+                child: Center(
+                  child: Obx(() {
+                    return WidgetUtils().buildElevatedButton(Intr().login, 335.w, 48.h,
+                        bg: state.btnEnable.value
+                            ? ColorX.color_fd273e
+                            : ColorX.color_ff5163,
+                        textColor: Colors.white,
+                        textSize: 16.sp, onPressed: () {
+                          if (state.varcode.value.status == 1 &&
+                              state.varcode.value.type == 3) {
+                            _handleClickVerify();
+                          } else {
+                            String?varCodeId= state.varcode.value.varCodeId;
+                            logic.clickLogin(varCode:state.vcode,varCodeId:varCodeId);
+                          }
+                        });
+                  }),
+                ),
+              );
+            }),
           ],
         ),
       ),
@@ -238,6 +251,7 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  AliyunCaptchaController aliyunCaptchaController = AliyunCaptchaController();
   Widget _getAliCode() {
     if (state.varcode.value.status == 1 && state.varcode.value.type == 2) {
       return Container(
@@ -245,6 +259,7 @@ class _LoginPageState extends State<LoginPage> {
         height: 48,
         margin: EdgeInsets.symmetric(vertical: 10.h,horizontal: 16.w),
         child: AliyunCaptchaButton(
+          controller: aliyunCaptchaController,
           type: AliyunCaptchaType.slide,
           // 重要：请设置正确的类型
           option: AliyunCaptchaOption(
@@ -278,8 +293,12 @@ class _LoginPageState extends State<LoginPage> {
             // {"sig": "...", "token": "..."}
             logic.clickLogin(data: data);
           },
-          onFailure: (String failCode) {},
-          onError: (String errorCode) {},
+          onFailure: (String failCode) {
+            aliyunCaptchaController.reset();
+          },
+          onError: (String errorCode) {
+            aliyunCaptchaController.reset();
+          },
         ),
       );
     } else {

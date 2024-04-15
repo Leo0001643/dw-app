@@ -605,6 +605,7 @@ class ImageX{
   static const ic_station_home =  'assets/images/ic_station_home.png';
   static const ic_station_home_en =  'assets/images/ic_station_home_en.png';
 
+  static const ic_ota_update =  'assets/images/ic_ota_update.png';
 
 
 

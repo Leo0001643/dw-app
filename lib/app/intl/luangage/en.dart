@@ -1101,6 +1101,9 @@ class EN{
     "guanbijianyimima":"关闭简易密码后，将清空您设置的简易密码请使用用户名密码登录。登录成功后，会自动抹除简易密码。",
     "wolaishuoliangju":"我来说两句...",
     "fanshuixiangqing":"返水详情",
+    "faxianxinbanben":"发现新版本",
+    "xiacizaishuo":"下次再说",
+    "lijigengxin":"立即更新",
 
 
   };

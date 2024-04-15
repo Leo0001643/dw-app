@@ -19,6 +19,7 @@ import 'package:leisure_games/app/widget/language_dialog.dart';
 import 'package:leisure_games/app/widget/lucky_draw_dialog.dart';
 import 'package:leisure_games/app/widget/message_dialog.dart';
 import 'package:leisure_games/app/widget/notice_dialog.dart';
+import 'package:leisure_games/app/widget/ota_update_dialog.dart';
 import 'package:leisure_games/app/widget/rebate_role_bottom_dialog.dart';
 import 'package:leisure_games/app/widget/select_account_btm_dialog.dart';
 import 'package:leisure_games/app/widget/select_area_btm_dialog.dart';
@@ -287,6 +288,16 @@ class DialogUtils {
         context: context,
         builder: (context) {
           return JumpTypeDialog(title);
+        });
+  }
+
+  ///app升级
+  Future showOtaUpdateDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return OtaUpdateDialog();
         });
   }
 
