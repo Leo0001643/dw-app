@@ -59,6 +59,7 @@ import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/ota_version_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -521,6 +522,14 @@ class JsonConvert {
       return data.map<NoticeEntity>((Map<String, dynamic> e) =>
           NoticeEntity.fromJson(e)).toList() as M;
     }
+    if (<OtaVersionEntity>[] is M) {
+      return data.map<OtaVersionEntity>((Map<String, dynamic> e) =>
+          OtaVersionEntity.fromJson(e)).toList() as M;
+    }
+    if (<OtaVersionIOS>[] is M) {
+      return data.map<OtaVersionIOS>((Map<String, dynamic> e) =>
+          OtaVersionIOS.fromJson(e)).toList() as M;
+    }
     if (<PaymentChannelEntity>[] is M) {
       return data.map<PaymentChannelEntity>((Map<String, dynamic> e) =>
           PaymentChannelEntity.fromJson(e)).toList() as M;
@@ -912,6 +921,8 @@ class JsonConvertClassCollection {
     (MessageItemEntity).toString(): MessageItemEntity.fromJson,
     (NewsRateEntity).toString(): NewsRateEntity.fromJson,
     (NoticeEntity).toString(): NoticeEntity.fromJson,
+    (OtaVersionEntity).toString(): OtaVersionEntity.fromJson,
+    (OtaVersionIOS).toString(): OtaVersionIOS.fromJson,
     (PaymentChannelEntity).toString(): PaymentChannelEntity.fromJson,
     (PaymentChannelBankSet).toString(): PaymentChannelBankSet.fromJson,
     (PaymentListEntity).toString(): PaymentListEntity.fromJson,

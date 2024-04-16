@@ -1,5 +1,6 @@
 
 import 'package:dio/dio.dart' hide Headers;
+import 'package:leisure_games/app/utils/aws_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
@@ -39,6 +40,7 @@ import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/ota_version_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -256,7 +258,6 @@ abstract class RetrofitClient{
   Future<BaseResponseEntity<BetDetailItemChildEntity>> getRecordDetailNew(@Body() Map<String,dynamic> params,);
 
 
-
   @GET('/ds-api-web/queryPointLog')
   Future<BaseResponseEntity<PointRecordEntity>> queryPointLog(@Queries() Map<String,dynamic> params,);
 
@@ -356,6 +357,8 @@ abstract class RetrofitClient{
   @GET('/ds-api-web/backWaterDetail')
   Future<BaseResponseEntity<List<RebateDetailEntity>>> backWaterDetail(@Queries() Map<String,dynamic> params,);
 
+  @GET('https://gjz-app-down1.s3.ap-east-1.amazonaws.com/{dir}/check_{name}.json')
+  Future<OtaVersionEntity> otaUpdate(@Path("dir") String dir,@Path("name") String name,);
 
 
 

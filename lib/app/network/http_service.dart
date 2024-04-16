@@ -11,6 +11,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:leisure_games/app/network/retrofit_client.dart';
+import 'package:leisure_games/app/utils/aws_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
@@ -50,6 +51,7 @@ import 'package:leisure_games/ui/bean/member_point_entity.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/ota_version_entity.dart';
 import 'package:leisure_games/ui/bean/payment_channel_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -508,7 +510,9 @@ class HttpService{
     return buildFuture<List<RebateDetailEntity>>(()=> _client.backWaterDetail(params));
   }
 
-
+  static Future<OtaVersionEntity> otaUpdate(){
+    return buildOtaFuture<OtaVersionEntity>(()=> _client.otaUpdate(AwsUtils().getBucket(),AwsUtils().getBucket()));
+  }
 
 
 
@@ -561,7 +565,21 @@ class HttpService{
     }
   }
 
-
+  ///检查更新返回体
+  ///封装请求体，自动处理各种异常问题
+  static Future<T> buildOtaFuture<T>(RequestOtaCallback callback,{bool loading = true,bool errorHandler = true}) async {
+    if(loading){ EasyLoading.show(maskType: EasyLoadingMaskType.black,status: "loading".tr); }
+    try{
+      var value = await callback.call();
+      if(loading){ EasyLoading.dismiss(); }
+      return Future.value(value);
+    }catch(error){
+      loggerArray(["请求异常信息",error]);
+      if(loading){ EasyLoading.dismiss(); }
+      if(errorHandler){ ErrorResponseHandler().onErrorHandle(error); }
+      return Future.error(error);
+    }
+  }
 
 
 }
@@ -569,3 +587,4 @@ class HttpService{
 
 typedef RequestCallback = Future<BaseResponseEntity<dynamic>> Function();
 typedef RequestTrendCallback = Future<TrendResponseEntity<dynamic>> Function();
+typedef RequestOtaCallback = Future<dynamic> Function();
