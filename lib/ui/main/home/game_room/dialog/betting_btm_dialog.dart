@@ -302,7 +302,7 @@ class StateBettingBtmDialog extends State<BettingBtmDialog> with SingleTickerPro
                               //   bc.e = element.play2;
                               //   odds.add(bc);
                               // });
-                              betInfo.content = GameRuleUtil.allChoosedChip(selectBetting);
+                              betInfo.content = GameRuleUtil.allChoosedChip(selectBetting,inputAmt.value);
                               loggerArray(["打印投注信息",betInfo.toJson()]);
                               Navigator.pop(context);
                               ///确认投注

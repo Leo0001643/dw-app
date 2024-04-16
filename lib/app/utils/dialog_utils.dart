@@ -39,6 +39,7 @@ import 'package:leisure_games/ui/bean/btc_source_entity.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/check_point_entity.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
+import 'package:leisure_games/ui/bean/ota_version_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/usdt_channel_entity.dart';
@@ -292,12 +293,12 @@ class DialogUtils {
   }
 
   ///app升级
-  Future showOtaUpdateDialog(BuildContext context) {
-    return showDialog(
+  Future<bool?> showOtaUpdateDialog(BuildContext context,OtaVersionIOS entity) {
+    return showDialog<bool>(
         context: context,
         barrierDismissible: false,
         builder: (context) {
-          return OtaUpdateDialog();
+          return OtaUpdateDialog(entity);
         });
   }
 

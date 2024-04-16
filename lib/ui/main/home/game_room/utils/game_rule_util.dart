@@ -939,7 +939,7 @@ class GameRuleUtil {
   }
 
   ///整理所有选择的投注
-  static List<WsBetContent> allChoosedChip(List<OddsContent> selects){
+  static List<WsBetContent> allChoosedChip(List<OddsContent> selects,String amount){
     var list = List<WsBetContent>.empty(growable: true);
     selects.forEach((element) {
       var odds_1314 = "";
@@ -962,7 +962,7 @@ class GameRuleUtil {
         odds_1314 = teshuOdds2["14_big_even"]['play'];
       }
       var bc = WsBetContent();
-      bc.c = "${element.money.em()}";
+      bc.c = amount;//"${element.money.em()}";
       bc.b = element.name?.replaceAll(RegExp(r'[^\d]'), "").em();
       bc.d = element.play.em();
       bc.e = odds_1314;
