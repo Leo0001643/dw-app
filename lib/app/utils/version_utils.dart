@@ -71,10 +71,10 @@ class VersionUtils {
         loggerArray(["收到更新下载回调了",event.status,event.value]);
         switch (event.status) {
           case OtaStatus.DOWNLOADING: // 下载中
-            if (entity.isMust()) {
+            // if (entity.isMust()) {
               var value = (double.tryParse('${event.value}') ?? 0) / 100;
-              EasyLoading.showProgress(value);
-            }
+              EasyLoading.showProgress(value,maskType: EasyLoadingMaskType.black);
+            // }
             break;
           case OtaStatus.INSTALLING: //安装中
             break;

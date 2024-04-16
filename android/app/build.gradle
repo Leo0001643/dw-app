@@ -86,14 +86,14 @@ android {
             applicationId "com.soushin.leisure.dw"
             namespace "com.soushin.leisure.dw"
             signingConfig signingConfigs.dw
-            manifestPlaceholders = [channel_value: "com.soushin.leisure.dw"]
+            manifestPlaceholders = [package_name: "com.soushin.leisure.dw"]
 
         }
         boya{
             applicationId "com.soushin.leisure.boya"
             namespace "com.soushin.leisure.boya"
             signingConfig signingConfigs.boya
-            manifestPlaceholders = [channel_value: "com.soushin.leisure.boya"]
+            manifestPlaceholders = [package_name: "com.soushin.leisure.boya"]
         }
     }
 

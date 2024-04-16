@@ -22,7 +22,7 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name="${channel_value}.MainActivity"
+            android:name="${package_name}.MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
@@ -54,7 +54,7 @@
         </provider>
         <provider
             android:name="sk.fourq.otaupdate.OtaUpdateFileProvider"
-            android:authorities="${applicationId}.ota_update_provider"
+            android:authorities="${package_name}.ota_update_provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
