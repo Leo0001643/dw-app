@@ -7,6 +7,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/utils/aws_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/ota_version_entity.dart';
 import 'package:ota_update/ota_update.dart';
@@ -63,7 +64,7 @@ class VersionUtils {
 
   /// 开始下载
   static void _download(OtaVersionIOS entity) async {
-    String destinationFilename = "${channelName}_${DateUtil.formatDate(DateTime.now(),format: "yyyyMMddHHmmss")}_apk";
+    String destinationFilename = "${AwsUtils().getBucket()}_${DateUtil.formatDate(DateTime.now(),format: "yyyyMMddHHmmss")}_apk";
     try {
       loggerArray(["apk下载地址打印",entity.url]);
       OtaUpdate().execute(entity.url.em(), destinationFilename: destinationFilename).listen((OtaEvent event) {
