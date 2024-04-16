@@ -48,3 +48,9 @@ sansan888 aeuio888
 
 博雅web版
 http://2020904.com/m/#/home
+
+
+flutter build apk --flavor dw --dart-define=CHANNEL=dw
+
+flutter build apk --flavor boya --dart-define=CHANNEL=boya
+
