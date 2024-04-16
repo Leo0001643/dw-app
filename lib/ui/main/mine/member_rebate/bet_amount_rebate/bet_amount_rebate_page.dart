@@ -4,9 +4,12 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_entity.dart';
+import 'package:leisure_games/ui/bean/rebate_detail_params.dart';
 
 import 'bet_amount_rebate_logic.dart';
 
@@ -44,6 +47,10 @@ class _BetAmountRebatePageState extends State<BetAmountRebatePage> {
             color: ColorX.cardBg3(),
             padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
             child: Obx(() {
+              var total = 0.0;
+              state.record.value.record?.forEach((element) {
+                total += DataUtils.formatNum(element.lossMoneyBonus);
+              });
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -53,7 +60,7 @@ class _BetAmountRebatePageState extends State<BetAmountRebatePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(Intr().zongji,style: TextStyle(fontSize: 16.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500,),),
-                      Text("¥${state.params.value.details?.lossMoneyBonus.em()}",style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500,),),
+                      Text("¥$total",style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500,),),
                     ],
                   ),
                 ],
@@ -107,33 +114,37 @@ class _BetAmountRebatePageState extends State<BetAmountRebatePage> {
   }
 
 
+//
   ///投注量
   Widget buildBetAmountItem(DayReturnWaterDetailsRecord item) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 33,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(item.date.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+    return InkWell(
+      onTap: ()=> Get.toNamed(Routes.rebate_detail,arguments: RebateDetailParams(record: item,details: state.params.value.details)),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 33,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(item.date.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              ),
             ),
-          ),
-          Expanded(
-            flex: 33,
-            child: Center(
-              child: Text(item.validBetMoney.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+            Expanded(
+              flex: 33,
+              child: Center(
+                child: Text(item.validBetMoney.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              ),
             ),
-          ),
-          Expanded(
-            flex: 33,
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Text(item.lossMoneyBonus.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.color_23a81d,),),
+            Expanded(
+              flex: 33,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(item.lossMoneyBonus.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.color_23a81d,),),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
