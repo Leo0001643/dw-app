@@ -4,6 +4,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/luangage/vi.dart';
 import 'package:leisure_games/app/logger.dart';
 
@@ -718,6 +720,13 @@ class Intr extends Translations{
   String get faxianxinbanben => "faxianxinbanben".tr;
   String get xiacizaishuo => "xiacizaishuo".tr;
   String get lijigengxin => "lijigengxin".tr;
+  String get guojizhan2023_boya => '2023guojizhan_boya'.tr;
+  String get guojizhan2023_dw => '2023guojizhan_dw'.tr;
+  String get hyld_boya => 'hyld_boya'.tr;
+  String get hyld_dw => 'hyld_dw'.tr;
+  String get jianchagengxin => 'jianchagengxin'.tr;
+  String get yijingshizuixinl => 'yijingshizuixinl'.tr;
+
 
 
 

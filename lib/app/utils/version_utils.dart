@@ -4,6 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:leisure_games/app/network/http_service.dart';
@@ -29,6 +30,19 @@ class VersionUtils {
   factory VersionUtils() => getInstance();
 
   /// 版本检测
+  Future<bool> checkNewVersion() async {
+    var value = await HttpService.otaUpdate();
+    loggerArray(["版本对比",value.android?.version,value.iOS?.version,AppData.deviceInfo().version]);
+    if(GetPlatform.isAndroid && formatVersion(value.android?.version) > formatVersion(AppData.deviceInfo().version)){
+      return true;
+    }else if(GetPlatform.isIOS && formatVersion(value.iOS?.version) > formatVersion(AppData.deviceInfo().version)){
+      return true;
+    }
+    return false;
+  }
+
+
+  /// 版本检测
   void checkVersion(BuildContext context) {
 
     HttpService.otaUpdate().then((value) {
@@ -37,6 +51,8 @@ class VersionUtils {
         _update(context, value.android!);
       }else if(GetPlatform.isIOS && formatVersion(value.iOS?.version) > formatVersion(AppData.deviceInfo().version)){
         _update(context, value.iOS!);
+      }else {
+        showToast(Intr().yijingshizuixinl);
       }
     });
   }
@@ -67,14 +83,15 @@ class VersionUtils {
     String destinationFilename = "${AwsUtils().getBucket()}_${DateUtil.formatDate(DateTime.now(),format: "yyyyMMddHHmmss")}_apk";
     try {
       loggerArray(["apk下载地址打印",entity.url]);
-      OtaUpdate().execute(entity.url.em(), destinationFilename: destinationFilename).listen((OtaEvent event) {
+      OtaUpdate().execute(entity.url.em(), destinationFilename: destinationFilename,androidProviderAuthority: 'com.soushin.leisure.boya.ota_update_provider')
+          .listen((OtaEvent event) {
         loggerArray(["收到更新下载回调了",event.status,event.value]);
         switch (event.status) {
           case OtaStatus.DOWNLOADING: // 下载中
-            if (entity.isMust()) {
+            // if (entity.isMust()) {
               var value = (double.tryParse('${event.value}') ?? 0) / 100;
-              EasyLoading.showProgress(value);
-            }
+              EasyLoading.showProgress(value,maskType: EasyLoadingMaskType.black);
+            // }
             break;
           case OtaStatus.INSTALLING: //安装中
             break;

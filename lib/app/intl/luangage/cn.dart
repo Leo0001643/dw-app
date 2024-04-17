@@ -1033,6 +1033,8 @@ class CN {
     "faxianxinbanben":"发现新版本",
     "xiacizaishuo":"下次再说",
     "lijigengxin":"立即更新",
+    "jianchagengxin":"检查更新",
+    "yijingshizuixinl":"已经是最新版本了",
 
 
 
