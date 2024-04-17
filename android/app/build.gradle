@@ -42,7 +42,6 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
-
         dw.res.srcDirs 'src/main/res-dw'
         boya.res.srcDirs 'src/main/res-boya'
     }
@@ -78,24 +77,7 @@ android {
             storePassword '12345678'
         }
     }
-    flavorDimensions "dw"
 
-    // 配置渠道对应appid，还支持配置其他渠道参数
-    productFlavors {
-        dw{
-            applicationId "com.soushin.leisure.dw"
-            namespace "com.soushin.leisure.dw"
-            signingConfig signingConfigs.dw
-            manifestPlaceholders = [package_name: "com.soushin.leisure.dw"]
-
-        }
-        boya{
-            applicationId "com.soushin.leisure.boya"
-            namespace "com.soushin.leisure.boya"
-            signingConfig signingConfigs.boya
-            manifestPlaceholders = [package_name: "com.soushin.leisure.boya"]
-        }
-    }
 
     buildTypes {
         release {
@@ -115,6 +97,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "dw"
+    // 配置渠道对应appid，还支持配置其他渠道参数
+    productFlavors {
+        dw{
+            applicationId "com.soushin.leisure.dw"
+            namespace "com.soushin.leisure.dw"
+            signingConfig signingConfigs.dw
+            manifestPlaceholders = [package_name: "com.soushin.leisure.dw"]
+        }
+        boya{
+            applicationId "com.soushin.leisure.boya"
+            namespace "com.soushin.leisure.boya"
+            signingConfig signingConfigs.boya
+            manifestPlaceholders = [package_name: "com.soushin.leisure.boya"]
+        }
+    }
+
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
