@@ -859,6 +859,11 @@ class WidgetUtils {
   ///打开游戏页面
   void loginJump(String title, Map<String, dynamic> params,) {
     HttpService.loginBusinessAgent(params).then((value) {
+      ///pg电子游戏返回的是html,不支持跳转外部浏览器
+      if(!value["gameUrl"].toString().isUrl()){
+        Get.toNamed(Routes.game_html, arguments: HtmlEvent(data: value["gameUrl"], isHtmlData: !value["gameUrl"].toString().isUrl(), pageTitle: title));
+        return;
+      }
       DialogUtils().showLoadGameDialog(Get.context!, title,).then((inapp) {
         if (unEmpty(inapp)) {
           if (value is Map) {

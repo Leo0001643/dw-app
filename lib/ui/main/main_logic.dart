@@ -65,8 +65,7 @@ class MainLogic extends GetxController {
     Map<Permission, PermissionStatus>? statuses ;
     if(GetPlatform.isAndroid){
       // final androidInfo = await DeviceInfoPlugin().androidInfo;
-      statuses = await [Permission.storage,Permission.photos,
-        Permission.requestInstallPackages].request();
+      statuses = await [Permission.storage,Permission.photos].request();
     } else if(GetPlatform.isIOS){
       statuses = await [Permission.photos,].request();
     }

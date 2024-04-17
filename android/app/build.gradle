@@ -98,7 +98,7 @@ android {
         }
     }
 
-    flavorDimensions "dw"
+    flavorDimensions = ["dw"]
     // 配置渠道对应appid，还支持配置其他渠道参数
     productFlavors {
         dw{

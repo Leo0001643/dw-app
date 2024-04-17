@@ -83,7 +83,7 @@ class VersionUtils {
     String destinationFilename = "${AwsUtils().getBucket()}_${DateUtil.formatDate(DateTime.now(),format: "yyyyMMddHHmmss")}_apk";
     try {
       loggerArray(["apk下载地址打印",entity.url]);
-      OtaUpdate().execute(entity.url.em(), destinationFilename: destinationFilename,androidProviderAuthority: 'com.soushin.leisure.boya.ota_update_provider')
+      OtaUpdate().execute(entity.url.em(), destinationFilename: destinationFilename)
           .listen((OtaEvent event) {
         loggerArray(["收到更新下载回调了",event.status,event.value]);
         switch (event.status) {
