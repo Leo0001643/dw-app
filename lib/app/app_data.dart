@@ -115,6 +115,16 @@ class AppData {
     return prefs?.getBool("kaijiang_anim") ?? true;
   }
 
+
+  static void setIsFirst(bool first) {
+    prefs?.setBool("is_first", first);
+  }
+
+  static bool isFirst() {
+    return prefs?.getBool("is_first") ?? true;
+  }
+
+
   static void setDaojishiAnim(bool open) {
     prefs?.setBool("daojishi_anim", open);
   }
