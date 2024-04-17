@@ -64,15 +64,16 @@ class MainLogic extends GetxController {
     // You can request multiple permissions at once.
     Map<Permission, PermissionStatus>? statuses ;
     if(GetPlatform.isAndroid){
-      final androidInfo = await DeviceInfoPlugin().androidInfo;
-      statuses = await [androidInfo.version.sdkInt <= 32 ? Permission.storage:Permission.photos].request();
+      // final androidInfo = await DeviceInfoPlugin().androidInfo;
+      statuses = await [Permission.storage,Permission.photos,
+        Permission.requestInstallPackages].request();
     } else if(GetPlatform.isIOS){
       statuses = await [Permission.photos,].request();
     }
     statuses?.forEach((key, value) {
       loggerArray(['拒绝的权限',key,value]);
       if(value.isDenied){///被拒绝了
-        showToast("${'permissionDenied'.tr}=$value");
+        // showToast("${'permissionDenied'.tr}=$value");
         return;
       }
     });

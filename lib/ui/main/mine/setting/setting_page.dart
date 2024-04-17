@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/app/utils/version_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
@@ -351,9 +352,41 @@ class _SettingPageState extends State<SettingPage> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 10.h,
+            InkWell(
+              onTap: () => VersionUtils().checkVersion(context),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.r),
+                    color: ColorX.cardBg()),
+                margin: EdgeInsets.only(left: 15.w, right: 15.w, top: 10.h),
+                padding:
+                EdgeInsets.symmetric(vertical: 15.h, horizontal: 12.w),
+                child: Row(
+                  children: [
+                    Text(Intr().jianchagengxin,
+                      style: TextStyle(fontSize: 12.sp, color: ColorX.text0d1()),
+                    ),
+                    Expanded(child: Container()),
+                    Obx(() {
+                      return Visibility(
+                        visible: state.newVersion.value,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: ColorX.color_fc243b,
+                              borderRadius: BorderRadius.circular(10.r)
+                          ),
+                          width: 10.r,
+                          height: 10.r,
+                        ),
+                      );
+                    }),
+                    SizedBox(width: 5.w,),
+                    Image.asset(ImageX.icon_right_grey, color: ColorX.text586(),)
+                  ],
+                ),
+              ),
             ),
+            SizedBox(height: 10.h,),
             WidgetUtils().buildElevatedButton(
                 Intr().tuichudenglu, 335.w, 45.h,
                 textColor: ColorX.color_fc243b,
@@ -361,7 +394,6 @@ class _SettingPageState extends State<SettingPage> {
               DialogUtils().showLogoutDialog(context).then((value) {
                 if (value == true) {
                   AppData.clear();
-
                   ///退出登录需求切换页面到首页
                   eventBus.fire(ChangeMainPageEvent(0));
                   eventBus.fire(LoginRefreshEvent());

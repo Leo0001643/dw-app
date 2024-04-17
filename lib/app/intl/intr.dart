@@ -743,6 +743,10 @@ class Intr extends Translations{
   String get guojizhan2023_dw => '2023guojizhan_dw'.tr;
   String get hyld_boya => 'hyld_boya'.tr;
   String get hyld_dw => 'hyld_dw'.tr;
+  String get jianchagengxin => 'jianchagengxin'.tr;
+  String get yijingshizuixinl => 'yijingshizuixinl'.tr;
+
+
 
 
   String hyld(){
