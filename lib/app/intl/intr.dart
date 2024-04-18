@@ -26,38 +26,35 @@ class Intr extends Translations{
 
   factory Intr() => getInstance();
 
-
-
   ///当前语言环境
   Locale currentLocale(){
     return locales()[AppData.localeIndex()];
   }
 
-  Locale defaultLocale(BuildContext context){
+  ///设置默认语言
+  void defaultLocale(BuildContext context){
     //获取当前系统使用的语言
     var locale = View.of(context).platformDispatcher.locale;
-    logger(locale.toString());
+    loggerArray(["但是鼎折覆餗",locale.toString()]);
     for (var element in locales()) {
       if(element.languageCode == locale.languageCode){
         AppData.setLocaleIndex(locales().indexOf(element));
-        return element;
+        return;
       }
     }
     ///如果默认语言不在支持的语言范围内，默认英文，前提是app支持英文
     for (var element in locales()) {
       if(element.languageCode == "en"){
         AppData.setLocaleIndex(locales().indexOf(element));
-        return element;
+        return;
       }
     }
-    AppData.setLocaleIndex(0);
-    return currentLocale();
   }
 
-  ///当前语言环境
-  Locale fallbackLocale(){
-    return locales()[0];
-  }
+  // ///当前语言环境
+  // Locale fallbackLocale(){
+  //   return locales()[0];
+  // }
 
 
   //中文 英文 越南语 ,const Locale("vi","VI"),const Locale('en','US')
@@ -745,7 +742,7 @@ class Intr extends Translations{
   String get hyld_dw => 'hyld_dw'.tr;
   String get jianchagengxin => 'jianchagengxin'.tr;
   String get yijingshizuixinl => 'yijingshizuixinl'.tr;
-
+  String get weishouxuanzhuangquanxian => 'weishouxuanzhuangquanxian'.tr;
 
 
 

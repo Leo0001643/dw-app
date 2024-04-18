@@ -1107,6 +1107,7 @@ class EN{
     "lijigengxin":"立即更新",
     "jianchagengxin":"检查更新",
     "yijingshizuixinl":"已经是最新版本了",
+    "weishouxuanzhuangquanxian":"未授予安装权限，更新已取消",
 
   };
 

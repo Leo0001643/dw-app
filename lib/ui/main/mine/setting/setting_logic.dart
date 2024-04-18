@@ -26,5 +26,4 @@ class SettingLogic extends GetxController {
 
 
 
-
 }

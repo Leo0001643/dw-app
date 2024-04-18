@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:install_plugin/install_plugin.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
@@ -25,6 +27,7 @@ import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sprintf/sprintf.dart';
 
 import 'home_state.dart';
@@ -102,7 +105,6 @@ class HomeLogic extends GetxController {
         } else {
           WidgetUtils().goLogin();
         }
-      // DialogUtils().showOtaUpdateDialog(context);
         break;
       case 1:
 
@@ -271,6 +273,7 @@ class HomeLogic extends GetxController {
   void loadData() {
     ///更换站点logo
     state.stationLogo.value = ImageX.icStationHomeZ();
+    logger("这里是啥语言换了吗111${AppData.localeIndex()}   ${Intr().currentLocale()}");
 
     HttpService.getGameKind(AppData.wallet() ? 1 : 5).then((value) {
       state.menuGroup.assignAll(value);
