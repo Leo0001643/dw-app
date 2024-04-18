@@ -6,9 +6,6 @@ import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 class Constants {
 
-  // static const host = "http://soptj9qq.com";
-  static const host = "https://9000vlmdm4.kj99883.com/";
-
   // static const base_url = "$host:8860";
   // static const contact = "${host}/m/#/detail/Contact";
   // static const hongbao = "http://soptj9qq.com/m/#/Hongbao/%s/%s/%s";
@@ -30,6 +27,14 @@ class Constants {
       return "9003";
     } else {
       return "9000";
+    }
+  }
+
+  static String defaultHost(){
+    if(channelName == channel_boya){
+      return "https://9000vlmdm4.kj99883.com/";
+    } else {
+      return "https://9000vlmdm4.kj99883.com/";
     }
   }
 

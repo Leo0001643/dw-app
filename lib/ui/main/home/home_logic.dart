@@ -273,7 +273,7 @@ class HomeLogic extends GetxController {
   void loadData() {
     ///更换站点logo
     state.stationLogo.value = ImageX.icStationHomeZ();
-    logger("这里是啥语言换了吗111${AppData.localeIndex()}   ${Intr().currentLocale()}");
+    // logger("这里是啥语言换了吗111${AppData.localeIndex()}   ${Intr().currentLocale()}");
 
     HttpService.getGameKind(AppData.wallet() ? 1 : 5).then((value) {
       state.menuGroup.assignAll(value);

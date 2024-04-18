@@ -46,7 +46,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
     } else {
       if(i == 1){
         Get.toNamed(Routes.withdraw_channel,arguments: i.toString());
-      }else {
+      } else {
         Get.toNamed(Routes.withdraw_check,arguments: i.toString());
       }
     }

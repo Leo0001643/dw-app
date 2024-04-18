@@ -92,10 +92,6 @@ dependencies:
   flutter_svg: ^2.0.9
   install_plugin: ^2.1.0
 
-#  ota_update: ^6.0.0
-#  amplify_auth_cognito: ^1.7.2
-#  amplify_flutter: ^1.7.0
-#  amplify_storage_s3: ^1.7.0
 
 
 dependency_overrides:
