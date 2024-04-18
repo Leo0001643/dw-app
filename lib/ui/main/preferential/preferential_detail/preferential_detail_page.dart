@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -61,8 +62,21 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
               padding: EdgeInsets.only(left: 15.w),
               child: Text(state.detail.titleSec.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698D,),),
             ),
-            Html(
-              data: state.detail.content.em(),
+            HtmlWidget(
+              state.detail.content.em(),
+              textStyle: TextStyle(color: ColorX.color_333333),
+              customStylesBuilder: (element){
+                // loggerArray(['打印看一下构建参数',element.localName,element.styles.map((e) => "${e.property}=${e.value?.toString()}").toList()]);
+                switch (element.localName) {
+                  // case "table":
+                  //   return {'width': '100%'};
+                  case "td":
+                    return {'border': '1pt solid windowtext;'};
+                  // case "p":
+                  //   return {'font-size': '12pt','font-family': '宋体',};
+                }
+                return null;
+              },
             ),
           ],
         ),
