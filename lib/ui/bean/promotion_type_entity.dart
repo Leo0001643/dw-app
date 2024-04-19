@@ -20,7 +20,6 @@ class PromotionTypeEntity {
 		json.remove("url");
 		p.data = <String,List<PromotionTypeKey>>{};
 		var all = List<PromotionTypeKey>.empty(growable: true);
-		p.data![Intr().quanbu] = all;
 		json.forEach((key, value) {
 			var list = List<PromotionTypeKey>.empty(growable: true);
 			(value as List).forEach((element) {
@@ -30,6 +29,8 @@ class PromotionTypeEntity {
 			p.data![key] = list;
 			all.addAll(list);
 		});
+		all.sort((a, b) => a.sortby.em().compareTo(b.sortby.em()));
+		p.data![Intr().quanbu] = all;
 		return p;
 	}
 

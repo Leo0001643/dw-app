@@ -9,6 +9,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
+import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 ///app全局错误监听处理
 class ErrorResponseHandler {
@@ -84,6 +85,8 @@ class ErrorResponseHandler {
           eventBus.fire(ChangeMainPageEvent(0));
           ///清除用户登录信息
           AppData.clear();
+          ///退出登录需要清空消息未读数量
+          Get.find<HomeLogic>().state.unreadCount.value = 0;
           showToast(toast);
           break;
         case 900078://无效的请求方式

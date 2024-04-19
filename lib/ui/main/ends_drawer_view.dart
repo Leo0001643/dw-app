@@ -369,7 +369,8 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                       DialogUtils().showLogoutDialog(context).then((value) {
                     if (value == true) {
                       AppData.clear();
-
+                      ///退出登录需要清空消息未读数量
+                      Get.find<HomeLogic>().state.unreadCount.value = 0;
                       ///退出登录需求切换页面到首页
                       eventBus.fire(ChangeMainPageEvent(0));
                       eventBus.fire(LoginRefreshEvent());

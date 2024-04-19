@@ -114,7 +114,7 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
             ),
             Container(
               // padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-              color: ColorX.cardBg(),
+              color: ColorX.appBarBg(),
               width: 1.sw,
               alignment: Alignment.topLeft,
               child: Obx(() {
