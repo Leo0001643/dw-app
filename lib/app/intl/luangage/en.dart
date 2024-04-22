@@ -1108,6 +1108,8 @@ class EN{
     "jianchagengxin":"检查更新",
     "yijingshizuixinl":"已经是最新版本了",
     "weishouxuanzhuangquanxian":"未授予安装权限，更新已取消",
+    "denglumima":"登录密码",
+    "zhucetishiyu":"1.标有*号代表必须填写项目\n2. 注册即代表您已同意各项“开户协议“",
 
   };
 

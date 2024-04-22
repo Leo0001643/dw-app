@@ -119,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                       WidgetUtils().buildTextField(
-                        290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().qsryhm,
+                        290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().yhm,
                         hintColor: ColorX.text949(),
                         backgroundColor: Colors.transparent,
                         onChanged: (v) => state.accountValue = v,
@@ -150,7 +150,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       Expanded(
                         child: Obx(() {
                           return WidgetUtils().buildTextField(
-                              260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().mm,
+                              260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().denglumima,
                               backgroundColor: Colors.transparent,
                               onChanged: (v) => state.pwdValue = v,
                               defText: state.pwdValue,
@@ -311,7 +311,13 @@ class _RegisterPageState extends State<RegisterPage> {
               SizedBox(height: 20.h,),
               _getImageCode(),
               SizedBox(height: 10.h,),
-              Center(
+              Padding(
+                padding: EdgeInsets.only(left: 20.w),
+                child: Text(Intr().zhucetishiyu,
+                  style: TextStyle(fontSize: 13.sp, color: ColorX.text0917(),fontWeight: FontWeight.w700),),
+              ),
+              SizedBox(height: 20.h,),
+              /*Center(
                 child: Text.rich(TextSpan(children: [
                   WidgetSpan(
                     // child: InkWell(
@@ -350,7 +356,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   )
                 ])),
               ),
-              SizedBox(height: 10.h,),
+              SizedBox(height: 10.h,),*/
               Obx(() {
                 return Visibility(
                   visible: state.varcode.value.type != 2,
@@ -452,32 +458,42 @@ class _RegisterPageState extends State<RegisterPage> {
         return Container(
           margin: EdgeInsets.symmetric(horizontal: 20.w),
           alignment: Alignment.center,
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: FocusContainer(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                      Expanded(
-                        child: WidgetUtils().buildTextField(
-                          0, 46.h, 14.sp, ColorX.textBlack(), Intr().yzm,
-                          hintColor: ColorX.text949(),
-                          backgroundColor: Colors.transparent,
-                          inputType: TextInputType.text,
-                          onChanged: (v) => state.vcode = v,
-                        ),
+              Row(
+                children: [
+                  Expanded(
+                    child: FocusContainer(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                          Expanded(
+                            child: WidgetUtils().buildTextField(
+                              0, 46.h, 14.sp, ColorX.textBlack(), Intr().yzm,
+                              hintColor: ColorX.text949(),
+                              backgroundColor: Colors.transparent,
+                              inputType: TextInputType.text,
+                              onChanged: (v) => state.vcode = v,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                  SizedBox(width: 15.w,),
+                  Obx(() {
+                    return WidgetUtils().buildVarCode(state.varcode.value.varCode.em(), ()=> logic.getVarcode());
+                  }),
+                ],
               ),
-              SizedBox(width: 15.w,),
-              Obx(() {
-                return WidgetUtils().buildVarCode(state.varcode.value.varCode.em(), ()=> logic.getVarcode());
-              }),
+              SizedBox(height: 10.h,),
+              Padding(
+                padding: EdgeInsets.only(left: 15.w),
+                child: Text(Intr().yzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+              ),
             ],
           ),
         );

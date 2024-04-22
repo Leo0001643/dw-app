@@ -11,7 +11,7 @@ class RegisterState {
   var pwdVisible = false.obs;
   var confirmPwdVisible = false.obs;
 
-  var agreeCheck = true.obs;
+  // var agreeCheck = true.obs;
 
   var accountValue = "";
 
