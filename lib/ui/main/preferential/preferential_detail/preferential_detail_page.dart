@@ -62,21 +62,24 @@ class _PreferentialDetailPageState extends State<PreferentialDetailPage> {
               padding: EdgeInsets.only(left: 15.w),
               child: Text(state.detail.titleSec.em(),style: TextStyle(fontSize: 12.sp,color: ColorX.color_58698D,),),
             ),
-            HtmlWidget(
-              state.detail.content.em(),
-              textStyle: TextStyle(color: ColorX.color_333333),
-              customStylesBuilder: (element){
-                // loggerArray(['打印看一下构建参数',element.localName,element.styles.map((e) => "${e.property}=${e.value?.toString()}").toList()]);
-                switch (element.localName) {
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              child: HtmlWidget(
+                state.detail.content.em(),
+                textStyle: TextStyle(color: ColorX.color_333333),
+                customStylesBuilder: (element){
+                  // loggerArray(['打印看一下构建参数',element.localName,element.styles.map((e) => "${e.property}=${e.value?.toString()}").toList()]);
+                  switch (element.localName) {
                   // case "table":
                   //   return {'width': '100%'};
-                  case "td":
-                    return {'border': '1pt solid windowtext;'};
+                    case "td":
+                      return {'border': '1pt solid windowtext;'};
                   // case "p":
-                  //   return {'font-size': '12pt','font-family': '宋体',};
-                }
-                return null;
-              },
+                  //   return {};
+                  }
+                  return null;
+                },
+              ),
             ),
           ],
         ),

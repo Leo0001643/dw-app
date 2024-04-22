@@ -223,7 +223,9 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(Intr().jinrizuhezhanbilv,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
-                    Text("${state.constituteRatio.value.combinBetRatio.em()}%",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
+                    Obx(() {
+                      return Text("${state.constituteRatio.value.combinBetRatio.em()}%",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),);
+                    }),
                   ],
                 ),
               ),

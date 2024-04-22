@@ -75,18 +75,20 @@ class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
   Widget buildOptionItem(option) {
     var status = option is UserDrawDetailBanks ? option.bankStatus : option.status;
     var bindAccount = unEmpty(option is UserDrawDetailBanks ? option.bankAccount : option.account);
-    var text = (status == 0 || bindAccount) ? option.toString() : "${option.toString()}(${Intr().tingyong_termi})";
+    if(option.toString() == Intr().dianjitianjiazhanghu){
+      bindAccount = true;
+    }
+    //账户必须是正常使用状态切已绑定账号
+    var text = (status == 0 && bindAccount) ? option.toString() : "${option.toString()}(${Intr().tingyong_termi})";
     // var color = status == 0 ? ColorX.text0917() :ColorX.text5d6();
 
     return InkWell(
       onTap: (){
-        if(status == 0 || bindAccount) {
-          if(option.toString() == Intr().dianjitianjiazhanghu){
-            Get.offAndToNamed(option is UserDrawDetailBanks ? Routes.bind_bank : Routes.bind_usdt);
-          } else {///绑定银行卡
-            Navigator.pop(context,option);
-          }
-        }
+         if(option.toString() == Intr().dianjitianjiazhanghu){
+           Get.offAndToNamed(option is UserDrawDetailBanks ? Routes.bind_bank : Routes.bind_usdt);
+         }else if(status == 0 && bindAccount){///绑定银行卡
+           Navigator.pop(context,option);
+         }
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15.w),
