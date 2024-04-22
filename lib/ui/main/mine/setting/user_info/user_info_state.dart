@@ -14,5 +14,10 @@ class UserInfoState {
   var userEdit = UserDetailEntity().obs;
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
+  var areaNo = "+86".obs;
+  ///手机区号数据
+  Map<String,List<String>>? phoneData;
+
+  var mobile = "";
 
 }

@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
@@ -33,12 +35,12 @@ class _UserInfoPageState extends State<UserInfoPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text(Intr().yhm,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              child: Text(Intr().yhm,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
             ),
             SizedBox(height: 5.h,),
             Center(
               child: Obx(() {
-                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_62_586,
+                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text5d6(),
                     Intr().yhm,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586(),suffixIcon: true,
                 defText: state.userDetail.value.username.em(),);
               }),
@@ -46,25 +48,57 @@ class _UserInfoPageState extends State<UserInfoPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text(Intr().nicheng,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              child: Text(Intr().nicheng,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
             ),
             SizedBox(height: 5.h,),
             Center(
               child: Obx(() {
                 return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(),
-                    Intr().shurunicheng,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586(),
+                    Intr().shurunicheng,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text5d6(),
                 defText: state.userDetail.value.alias.em(),onChanged: (v)=> state.userEdit.value.alias = v);
               }),
             ),
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text(Intr().shoujihaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              child: Text(Intr().shoujihaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
             ),
             SizedBox(height: 5.h,),
             Center(
               child: Obx(() {
-                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_62_586, Intr().shuruzhenshiyouxiao,
+                if(isEmpty(state.userDetail.value.mobile.em())){
+                  return Container(
+                    width: 335.w,
+                    height: 45.h,
+                    decoration: BoxDecoration(
+                      color: ColorX.cardBg3(),
+                      borderRadius: BorderRadius.circular(5.r),
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(width: 10.w,),
+                        InkWell(
+                          onTap: () => DialogUtils().showSelectAreaBtmDialog(context, state.phoneData ?? {}).then((value) {
+                            if(unEmpty(value)){ state.areaNo.value = value!; }
+                          }),
+                          child: Row(
+                            children: [
+                              Obx(() {
+                                return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),);
+                              }),
+                              WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: WidgetUtils().buildTextField(0, 46.h, 14.sp, ColorX.text0917(), Intr().shoujihaoma,hintColor: ColorX.text586(),
+                              backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text5d6(), Intr().shuruzhenshiyouxiao,
                     backgroundColor: ColorX.cardBg3(),inputType: TextInputType.number,hintColor: ColorX.text586(),
                 suffixIcon: true,defText: state.userDetail.value.mobile.em());
               }),
@@ -72,12 +106,12 @@ class _UserInfoPageState extends State<UserInfoPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text(Intr().qqhaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              child: Text(Intr().qqhaoma,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
             ),
             SizedBox(height: 5.h,),
             Center(
               child: Obx(() {
-                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.color_091722, Intr().shuruqqhaoma,
+                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text5d6(), Intr().shuruqqhaoma,
                     backgroundColor: ColorX.cardBg3(),inputType: TextInputType.number,hintColor: ColorX.text586(),
                 defText: state.userDetail.value.qq.em(),onChanged: (v)=> state.userEdit.value.qq = v);
               }),
@@ -85,12 +119,12 @@ class _UserInfoPageState extends State<UserInfoPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text(Intr().weixin,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              child: Text(Intr().weixin,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
             ),
             SizedBox(height: 5.h,),
             Center(
               child: Obx(() {
-                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(),
+                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text5d6(),
                     Intr().shuruweixinhao,backgroundColor: ColorX.cardBg3(),hintColor: ColorX.text586(),
                     defText: state.userDetail.value.wechat.em(),onChanged: (v)=> state.userEdit.value.wechat = v);
               }),
@@ -98,12 +132,12 @@ class _UserInfoPageState extends State<UserInfoPage> {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 35.w),
-              child: Text(Intr().dianziyouxiang,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+              child: Text(Intr().dianziyouxiang,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
             ),
             SizedBox(height: 5.h,),
             Center(
               child: Obx(() {
-                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text0917(),
+                return WidgetUtils().buildTextField(335.w, 45.h, 14.sp, ColorX.text5d6(),
                     Intr().shurudianziyouxiang,backgroundColor: ColorX.cardBg3(),
                     inputType: TextInputType.emailAddress,hintColor: ColorX.text586(),
                     defText: state.userDetail.value.email.em(),onChanged: (v)=> state.userEdit.value.email = v);

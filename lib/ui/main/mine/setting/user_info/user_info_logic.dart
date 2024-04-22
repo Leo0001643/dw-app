@@ -1,9 +1,14 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/res/jsonx.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 
 import 'user_info_state.dart';
 
@@ -13,6 +18,9 @@ class UserInfoLogic extends GetxController {
   @override
   void onReady() {
     loadData();
+    DataUtils.readPhoneData().then((value) {
+      state.phoneData = value;
+    });
     super.onReady();
   }
 
@@ -34,6 +42,9 @@ class UserInfoLogic extends GetxController {
 
   void saveUser(){
     var params = <String,dynamic>{};
+    if(unEmpty(state.mobile) && state.userDetail.value.mobile != state.mobile){
+      params["mobile"] = "${state.areaNo.value}${state.mobile}";
+    }
     if(unEmpty(state.userEdit.value.alias) && state.userDetail.value.alias != state.userEdit.value.alias){
       params["alias"] = state.userEdit.value.alias;
     }
@@ -54,6 +65,7 @@ class UserInfoLogic extends GetxController {
 
     var user = AppData.user();
     params.addAll({"oid":user?.oid,"username":user?.username});
+
 
     HttpService.updateUserDetail(params).then((value) {
       showToast(Intr().caozuochenggong);
