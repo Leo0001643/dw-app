@@ -52,7 +52,7 @@ class StateSelectLanguagePage extends State<SelectLanguagePage>{
                     itemCount: state.countryList.length,
                     physics: const NeverScrollableScrollPhysics(),
                     separatorBuilder: (context,index){
-                      return Divider(height: 1.h,color: ColorX.color_f1f1f1,);
+                      return Divider(height: 1.h,color: ColorX.linef1f(),);
                     },
                     itemBuilder: (context,index){
                       var item = state.countryList[index];

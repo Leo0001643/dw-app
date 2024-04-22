@@ -6,9 +6,6 @@ import 'package:leisure_games/ui/main/home/home_logic.dart';
 
 class Constants {
 
-  // static const host = "http://soptj9qq.com";
-  static const host = "https://9000vlmdm4.kj99883.com/";
-
   // static const base_url = "$host:8860";
   // static const contact = "${host}/m/#/detail/Contact";
   // static const hongbao = "http://soptj9qq.com/m/#/Hongbao/%s/%s/%s";
@@ -25,7 +22,21 @@ class Constants {
 
   static const PC28 = "PC28";
 
-  static const siteid = "9000";
+  static String siteid(){
+    if(channelName == channel_boya){
+      return "9003";
+    } else {
+      return "9000";
+    }
+  }
+
+  static String defaultHost(){
+    if(channelName == channel_boya){
+      return "https://9000vlmdm4.kj99883.com/";
+    } else {
+      return "https://9000vlmdm4.kj99883.com/";
+    }
+  }
 
   ///PC28游戏类型
   static const fastbtb28Code = "fastbtb28";
@@ -67,7 +78,8 @@ class Constants {
   static const code_qmf = "qmf";
   static const code_jingdong = "jingdong";
 
-
+  static const channel_dw = "dw";
+  static const channel_boya = "boya";
 
 
 }

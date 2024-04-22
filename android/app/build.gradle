@@ -26,9 +26,10 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    namespace "com.soushin.leisure.leisure_games"
+//    namespace "com.soushin.leisure.boya"
     compileSdkVersion 34
     ndkVersion flutter.ndkVersion
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
@@ -41,11 +42,13 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        dw.res.srcDirs 'src/main/res-dw'
+        boya.res.srcDirs 'src/main/res-boya'
     }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.soushin.leisure.leisure_games"
+//        applicationId "com.soushin.leisure.boya"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 21
@@ -58,31 +61,65 @@ android {
         config {
             keyAlias 'apk'
             keyPassword '12345678'
+            storeFile file('../boya.jks')
+            storePassword '12345678'
+        }
+        dw {
+            keyAlias 'apk'
+            keyPassword '12345678'
             storeFile file('../leisure.jks')
             storePassword '12345678'
         }
+        boya {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../boya.jks')
+            storePassword '12345678'
+        }
     }
+
+
     buildTypes {
         release {
 //            minifyEnabled true
 //            shrinkResources true
 //            zipAlignEnabled true
-            signingConfig signingConfigs.config
+            // 需要移除默认签名
+            signingConfig null
             multiDexKeepProguard file('multidex-config.pro')
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             minifyEnabled false
-            signingConfig signingConfigs.config
+            // 需要移除默认签名
+            signingConfig null
             multiDexKeepProguard file('multidex-config.pro')
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
+    flavorDimensions = ["dw"]
+    // 配置渠道对应appid，还支持配置其他渠道参数
+    productFlavors {
+        dw{
+            applicationId "com.soushin.leisure.dw"
+            namespace "com.soushin.leisure.dw"
+            signingConfig signingConfigs.dw
+            manifestPlaceholders = [package_name: "com.soushin.leisure.dw"]
+        }
+        boya{
+            applicationId "com.soushin.leisure.boya"
+            namespace "com.soushin.leisure.boya"
+            signingConfig signingConfigs.boya
+            manifestPlaceholders = [package_name: "com.soushin.leisure.boya"]
+        }
+    }
+
+
     android.applicationVariants.all { variant ->
         variant.outputs.all {
             // 自定义文件名{示例：AppName-Flavor-debug-v1.0.0_201807301409}
-            outputFileName = "dw${variant.flavorName}_${variant.buildType.name}_${variant.versionName}_${buildTime()}.apk"
+            outputFileName = "${variant.flavorName}_${variant.buildType.name}_${variant.versionName}_${buildTime()}.apk"
         }
     }
 

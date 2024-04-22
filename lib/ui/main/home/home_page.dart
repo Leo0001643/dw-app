@@ -213,7 +213,7 @@ class StateHomePage extends State<HomePage>
                                 height: 5.h,
                               ),
                               Text(
-                                Intr().guojizhan2023,
+                                Intr().guojizhan2023(),
                                 style: TextStyle(
                                     fontSize: 10.sp, color: ColorX.text5862()),
                               ),

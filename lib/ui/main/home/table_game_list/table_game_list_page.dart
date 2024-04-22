@@ -15,6 +15,7 @@ import 'table_game_list_logic.dart';
 
 
 ///桌游列表
+///电子游戏
 class TableGameListPage extends StatefulWidget {
   const TableGameListPage({Key? key}) : super(key: key);
 
@@ -113,7 +114,7 @@ class _TableGameListPageState extends State<TableGameListPage>  with TickerProvi
             ),
             Container(
               // padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.h),
-              color: ColorX.cardBg(),
+              color: ColorX.appBarBg(),
               width: 1.sw,
               alignment: Alignment.topLeft,
               child: Obx(() {

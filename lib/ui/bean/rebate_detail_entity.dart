@@ -5,19 +5,19 @@ export 'package:leisure_games/generated/json/rebate_detail_entity.g.dart';
 
 @JsonSerializable()
 class RebateDetailEntity {
-	String? gameType;
-	String? lossMoney;
-	String? lossMoneyBonus;
-	String? validBetMoney;
+  String? gameType;
+  String? lossMoney;
+  String? lossMoneyBonus;
+  String? validBetMoney;
 
-	RebateDetailEntity();
+  RebateDetailEntity();
 
-	factory RebateDetailEntity.fromJson(Map<String, dynamic> json) => $RebateDetailEntityFromJson(json);
+  factory RebateDetailEntity.fromJson(Map<String, dynamic> json) => $RebateDetailEntityFromJson(json);
 
-	Map<String, dynamic> toJson() => $RebateDetailEntityToJson(this);
+  Map<String, dynamic> toJson() => $RebateDetailEntityToJson(this);
 
-	@override
-	String toString() {
-		return jsonEncode(this);
-	}
+  @override
+  String toString() {
+    return jsonEncode(this);
+  }
 }

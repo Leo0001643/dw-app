@@ -88,17 +88,15 @@ dependencies:
   flutter_oss_aliyun: ^6.4.1
   cached_network_image: ^3.3.1
   lifecycle: ^0.8.0
-  flutter_html: 3.0.0-alpha.5
   flutter_svg: ^2.0.9
-  ota_update: ^6.0.0
-#  amplify_auth_cognito: ^1.7.2
-#  amplify_flutter: ^1.7.0
-#  amplify_storage_s3: ^1.7.0
+  install_plugin: ^2.1.0
+  flutter_widget_from_html: ^0.14.11
+  flutter_html: 3.0.0-alpha.5
+
 
 
 dependency_overrides:
   meta: ^1.10.0 # 替换为你需要的meta库的版本号
-
 
 
 dev_dependencies:

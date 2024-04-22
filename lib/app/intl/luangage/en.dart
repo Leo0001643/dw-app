@@ -532,7 +532,8 @@ class EN{
     "dollar":"dollar（US）",
     "thb":"Thai baht（Thai Baht）",
     "vnd":"VND（VND）",
-    "hyld":"Welcome to xxxx",
+    "2023guojizhan_boya":"@2024 BOYA CASINO",
+    "2023guojizhan_dw":"@2024 DW International",
     "qqzlxd":"The world's leading xxxx",
     "register":"register",
     "login":"log on",
@@ -1104,7 +1105,9 @@ class EN{
     "faxianxinbanben":"发现新版本",
     "xiacizaishuo":"下次再说",
     "lijigengxin":"立即更新",
-
+    "jianchagengxin":"检查更新",
+    "yijingshizuixinl":"已经是最新版本了",
+    "weishouxuanzhuangquanxian":"未授予安装权限，更新已取消",
 
   };
 

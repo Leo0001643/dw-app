@@ -98,6 +98,7 @@ class HttpService{
 
     getDio().interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler){
+        // logger("这里是啥语言换了吗${AppData.localeIndex()}   ${Intr().currentLocale()}");
         options.headers["Content-Type"] = "application/x-www-form-urlencoded";
         options.headers["Accept-Language"] = Intr().currentLocale().languageCode;
         if(unEmpty(AppData.deviceInfo().deviceId)){
@@ -109,7 +110,7 @@ class HttpService{
         //系统版本号【APP强制使用】
         var commonParams = {
           "machineModel":Constants.model(),
-          "siteId":Constants.siteid,
+          "siteId":Constants.siteid(),
           "siteType":"1",
           "terminal":"APP",
           "version":Constants.version(),

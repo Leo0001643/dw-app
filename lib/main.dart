@@ -38,7 +38,10 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,//强制竖屏
       DeviceOrientation.portraitDown
     ]);
-
+    if(AppData.isFirst()){
+      Intr().defaultLocale(context);
+      AppData.setIsFirst(false);
+    }
     return ScreenUtilInit(
       //填入设计稿中设备的屏幕尺寸,单位dp
         designSize: const Size(375, 778),
@@ -48,9 +51,9 @@ class MyApp extends StatelessWidget {
           initialRoute: Routes.main,
           getPages: Routes.getPages,
           navigatorObservers: [defaultLifecycleObserver,RouteObservers()],
-          locale: Intr().defaultLocale(context),
-          fallbackLocale: Intr().fallbackLocale(), ///添加一个默认语言选项，以备上面指定的语言翻译 不存在
-          supportedLocales: Intr().locales,
+          locale: Intr().currentLocale(),
+          fallbackLocale: Intr().currentLocale(), ///添加一个默认语言选项，以备上面指定的语言翻译 不存在
+          supportedLocales: Intr().locales(),
           localizationsDelegates: const [
             RefreshLocalizations.delegate,
             GlobalMaterialLocalizations.delegate, /// 指定本地化的字符串和一些其他的值

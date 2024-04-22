@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -21,13 +22,9 @@ class LanguageDialog extends StatefulWidget{
 class StateLanguageDialog extends State<LanguageDialog>{
 
 
-  var dropdownValue = LanguageMenuEntity(language: Intr().zhongwenjianti, icon: ImageX.icon_zh,locale: Intr().locales[0]).obs;
+  List<LanguageMenuEntity> country = Intr().country();
 
-  late List<LanguageMenuEntity> country = [
-    dropdownValue.value,
-    LanguageMenuEntity(language: Intr().yingyu, icon: ImageX.icon_us,locale: Intr().locales[1]),
-    LanguageMenuEntity(language: Intr().yuenanyu, icon: ImageX.icon_vi,locale: Intr().locales[2]),
-  ];
+  late var dropdownValue = country[AppData.localeIndex()].obs;
 
 
 

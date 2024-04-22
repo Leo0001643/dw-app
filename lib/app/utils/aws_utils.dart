@@ -19,11 +19,11 @@ class AwsUtils{
 
 
   String getBucket(){
-    // if(channelName == Constants.channel_boya){
-    //   return "boya";
-    // }else {
+    if(channelName == Constants.channel_boya){
+      return "boya";
+    }else {
       return "gjz";
-    // }
+    }
   }
 
 

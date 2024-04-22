@@ -115,6 +115,16 @@ class AppData {
     return prefs?.getBool("kaijiang_anim") ?? true;
   }
 
+
+  static void setIsFirst(bool first) {
+    prefs?.setBool("is_first", first);
+  }
+
+  static bool isFirst() {
+    return prefs?.getBool("is_first") ?? true;
+  }
+
+
   static void setDaojishiAnim(bool open) {
     prefs?.setBool("daojishi_anim", open);
   }
@@ -271,7 +281,7 @@ class AppData {
     if(unEmpty(base_url)) return base_url;
     base_url = prefs?.getString("base_url") ?? "";
     if(isEmpty(base_url)){
-      base_url = Constants.host;
+      base_url = Constants.defaultHost();
     }
     return base_url;
   }

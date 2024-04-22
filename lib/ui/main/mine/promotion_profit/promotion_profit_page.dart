@@ -81,7 +81,7 @@ class _PromotionProfitPageState extends State<PromotionProfitPage> with SingleTi
                       color: ColorX.cardBg2(),
                       shadow: BoxShadow(color: Colors.transparent),
                       icon: InkWell(
-                        onTap: ()=> WidgetUtils().clickCopy(state.userCode.value),
+                        onTap: ()=> WidgetUtils().clickCopy("sp${state.userCode.value}"),
                         child: Text(Intr().fuzhi,style: TextStyle(fontSize: 14.sp,color: ColorX.text5862()),),
                       ),
                     ),

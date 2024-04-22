@@ -451,8 +451,9 @@ class VI{
     "dollar":"美元（US）",
     "thb":"泰铢（Thai Baht）",
     "vnd":"越南盾（VND）",
-    "hyld":"欢迎来到 xxx",
-    "qqzlxd":"全球最领先的 xxxx",
+    "hyld_boya":"Welcome to BOYA CASINO",
+    "hyld_dw":"Welcome to DW International",
+    "qqzlxd":"全球最领先的 BOYA CASINO",
     "register":"Đăng ký",
     "login":"Đăng nhập",
     "grzx":"Trung tâm cá nhân",
@@ -1034,7 +1035,9 @@ class VI{
     "faxianxinbanben":"发现新版本",
     "xiacizaishuo":"下次再说",
     "lijigengxin":"立即更新",
-
+    "jianchagengxin":"检查更新",
+    "yijingshizuixinl":"已经是最新版本了",
+    "weishouxuanzhuangquanxian":"未授予安装权限，更新已取消",
 
   };
 }

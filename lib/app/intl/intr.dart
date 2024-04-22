@@ -4,8 +4,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/constants.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/luangage/vi.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 
 import 'luangage/cn.dart';
 import 'luangage/en.dart';
@@ -22,39 +26,55 @@ class Intr extends Translations{
 
   factory Intr() => getInstance();
 
-
-  //中文 英文 越南语
-  var locales = [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
-
   ///当前语言环境
   Locale currentLocale(){
-    return locales[AppData.localeIndex()];
+    return locales()[AppData.localeIndex()];
   }
 
-  Locale defaultLocale(BuildContext context){
+  ///设置默认语言
+  void defaultLocale(BuildContext context){
     //获取当前系统使用的语言
     var locale = View.of(context).platformDispatcher.locale;
-    logger(locale.toString());
-    for (var element in locales) {
+    loggerArray(["但是鼎折覆餗",locale.toString()]);
+    for (var element in locales()) {
       if(element.languageCode == locale.languageCode){
-        AppData.setLocaleIndex(locales.indexOf(element));
-        return element;
+        AppData.setLocaleIndex(locales().indexOf(element));
+        return;
       }
     }
     ///如果默认语言不在支持的语言范围内，默认英文，前提是app支持英文
-    for (var element in locales) {
+    for (var element in locales()) {
       if(element.languageCode == "en"){
-        AppData.setLocaleIndex(locales.indexOf(element));
-        return element;
+        AppData.setLocaleIndex(locales().indexOf(element));
+        return;
       }
     }
-    AppData.setLocaleIndex(0);
-    return currentLocale();
   }
 
-  ///当前语言环境
-  Locale fallbackLocale(){
-    return locales[0];
+  // ///当前语言环境
+  // Locale fallbackLocale(){
+  //   return locales()[0];
+  // }
+
+
+  //中文 英文 越南语 ,const Locale("vi","VI"),const Locale('en','US')
+  List<Locale> locales(){
+    if(channelName == Constants.channel_boya){
+      return [const Locale('zh','ZH')];
+    }else{
+      return [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
+    }
+  }
+
+  List<LanguageMenuEntity> country (){
+    if(channelName == Constants.channel_boya){
+      return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: Intr().locales()[0])];
+    } else {
+      return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: Intr().locales()[0]),
+        LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: Intr().locales()[1]),
+        LanguageMenuEntity(language: "Tiếng Việt", icon: ImageX.icon_vi,locale: Intr().locales()[2]),
+      ];
+    }
   }
 
   String get theme => 'theme'.tr;
@@ -93,7 +113,6 @@ class Intr extends Translations{
   String get dollar => 'dollar'.tr;
   String get thb => 'thb'.tr;
   String get vnd => 'vnd'.tr;
-  String get hyld => 'hyld'.tr;
   String get qqzlxd => 'qqzlxd'.tr;
   String get register => 'register'.tr;
   String get login => 'login'.tr;
@@ -615,7 +634,6 @@ class Intr extends Translations{
   String get jinrikai => 'jinrikai'.tr;
   String get wodeshoucang => 'wodeshoucang'.tr;
   String get lianxiwomen => 'lianxiwomen'.tr;
-  String get guojizhan2023 => '2023guojizhan'.tr;
   String get yingyongneijiazai => 'yingyongneijiazai'.tr;
   String get liulanqidakai => 'liulanqidakai'.tr;
   String get biaozhunshijian => 'biaozhunshijian'.tr;
@@ -718,8 +736,31 @@ class Intr extends Translations{
   String get faxianxinbanben => "faxianxinbanben".tr;
   String get xiacizaishuo => "xiacizaishuo".tr;
   String get lijigengxin => "lijigengxin".tr;
+  String get guojizhan2023_boya => '2023guojizhan_boya'.tr;
+  String get guojizhan2023_dw => '2023guojizhan_dw'.tr;
+  String get hyld_boya => 'hyld_boya'.tr;
+  String get hyld_dw => 'hyld_dw'.tr;
+  String get jianchagengxin => 'jianchagengxin'.tr;
+  String get yijingshizuixinl => 'yijingshizuixinl'.tr;
+  String get weishouxuanzhuangquanxian => 'weishouxuanzhuangquanxian'.tr;
 
 
+
+  String hyld(){
+    if(channelName == Constants.channel_boya){
+      return hyld_boya;
+    }else {
+      return hyld_dw;
+    }
+  }
+
+  String guojizhan2023(){
+    if(channelName == Constants.channel_boya){
+      return guojizhan2023_boya;
+    }else {
+      return guojizhan2023_dw;
+    }
+  }
 
 
 

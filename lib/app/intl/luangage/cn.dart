@@ -453,7 +453,8 @@ class CN {
     "dollar":"美元（US）",
     "thb":"泰铢（Thai Baht）",
     "vnd":"越南盾（VND）",
-    "hyld":"欢迎来到国际站",
+    "hyld_boya":"欢迎来到博雅娱乐城！",
+    "hyld_dw":"欢迎来到DW国际站！",
     "qqzlxd":"全球最领先的娱乐平台",
     "register":"注册",
     "login":"登录",
@@ -953,7 +954,7 @@ class CN {
     "jinrikai":"今日开",
     "wodeshoucang":"我的收藏",
     "lianxiwomen":"联系我们",
-    "2023guojizhan":"@2023国际站",
+    "2023guojizhan":"@2024博雅娱乐城",
     "yingyongneijiazai":"应用内轻加载",
     "liulanqidakai":"使用系统默认浏览器打开",
     "biaozhunshijian":"本站标准时间以美东时间为准\n美东时间=北京时间-12小时",
@@ -1033,6 +1034,9 @@ class CN {
     "faxianxinbanben":"发现新版本",
     "xiacizaishuo":"下次再说",
     "lijigengxin":"立即更新",
+    "jianchagengxin":"检查更新",
+    "yijingshizuixinl":"已经是最新版本了",
+    "weishouxuanzhuangquanxian":"未授予安装权限，更新已取消",
 
 
 

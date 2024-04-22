@@ -19,5 +19,9 @@ class SettingState {
 
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
+  ///是否有新版本
+  var newVersion = false.obs;
+
+
 
 }

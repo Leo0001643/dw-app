@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -45,9 +44,9 @@ class PreferentialLogic extends GetxController {
 
   void loadData() {
     HttpService.getPromotionTpe().then((value) {
-      loggerArray(["让我看看这里返回了什么呢",value]);
       var data = jsonDecode(value);
       state.promotions.value = PromotionTypeEntity.fromJson(data);
+      loggerArray(["让我看看这里返回了什么呢",state.promotions.value.data]);
       ///需要对tab进行排序
       var containOther = false;
       state.tabs.clear();
