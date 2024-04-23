@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -85,7 +86,7 @@ class StateSelectAccountBtmDialog extends State<SelectAccountBtmDialog>{
     return InkWell(
       onTap: (){
          if(option.toString() == Intr().dianjitianjiazhanghu){
-           Get.offAndToNamed(option is UserDrawDetailBanks ? Routes.bind_bank : Routes.bind_usdt);
+           Get.offAndToNamed(widget.isUsdt ? Routes.bind_usdt : Routes.bind_bank);
          }else if(bindAccount){///绑定银行卡
            Navigator.pop(context,option);
          }

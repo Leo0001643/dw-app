@@ -66,8 +66,12 @@ class MainLogic extends GetxController {
     // You can request multiple permissions at once.
     Map<Permission, PermissionStatus>? statuses ;
     if(GetPlatform.isAndroid){
-      // final androidInfo = await DeviceInfoPlugin().androidInfo;
-      statuses = await [Permission.storage,Permission.photos].request();
+      final androidInfo = await DeviceInfoPlugin().androidInfo;
+      if(androidInfo.version.sdkInt >= 33){
+        statuses = await [Permission.photos].request();
+      } else {
+        statuses = await [Permission.storage].request();
+      }
     } else if(GetPlatform.isIOS){
       statuses = await [Permission.photos,].request();
     }

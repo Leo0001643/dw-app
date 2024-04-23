@@ -35,7 +35,7 @@ class WebConfigEntity {
 	@JSONField(name: "domain_m_jingdiancai")
 	WebConfigDomainMGuanfangcai? domainMJingdiancai;
 	@JSONField(name: "register_option")
-	List<WebConfigRegisterOption>? registerOption;
+	List<String>? registerOption;
 
 	WebConfigEntity();
 

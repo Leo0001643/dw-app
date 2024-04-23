@@ -78,12 +78,9 @@ WebConfigEntity $WebConfigEntityFromJson(Map<String, dynamic> json) {
   if (domainMJingdiancai != null) {
     webConfigEntity.domainMJingdiancai = domainMJingdiancai;
   }
-  final List<
-      WebConfigRegisterOption>? registerOption = (json['register_option'] as List<
+  final List<String>? registerOption = (json['register_option'] as List<
       dynamic>?)?.map(
-          (e) =>
-      jsonConvert.convert<WebConfigRegisterOption>(
-          e) as WebConfigRegisterOption).toList();
+          (e) => jsonConvert.convert<String>(e) as String).toList();
   if (registerOption != null) {
     webConfigEntity.registerOption = registerOption;
   }
@@ -107,8 +104,7 @@ Map<String, dynamic> $WebConfigEntityToJson(WebConfigEntity entity) {
   data['domain_m_guanfangcai'] = entity.domainMGuanfangcai?.toJson();
   data['domain_m_pc28'] = entity.domainMPc28?.toJson();
   data['domain_m_jingdiancai'] = entity.domainMJingdiancai?.toJson();
-  data['register_option'] =
-      entity.registerOption?.map((v) => v.toJson()).toList();
+  data['register_option'] = entity.registerOption;
   return data;
 }
 
@@ -129,7 +125,7 @@ extension WebConfigEntityExtension on WebConfigEntity {
     WebConfigDomainMGuanfangcai? domainMGuanfangcai,
     WebConfigDomainMGuanfangcai? domainMPc28,
     WebConfigDomainMGuanfangcai? domainMJingdiancai,
-    List<WebConfigRegisterOption>? registerOption,
+    List<String>? registerOption,
   }) {
     return WebConfigEntity()
       ..domainPc28 = domainPc28 ?? this.domainPc28

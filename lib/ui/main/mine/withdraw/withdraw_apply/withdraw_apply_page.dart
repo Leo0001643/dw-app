@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -81,6 +82,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                 onTap: (){
                                   // var list  = state.pageType.value == '1' ? state.userDraw.value.banks : state.userDraw.value.dcBanks;
                                   // if(isEmpty(state.userDraw.value.banks)){ return; }
+
                                   if(state.pageType.value == '1' && unEmpty(state.userDraw.value.banks) && isEmpty(state.walletChannel)){
                                     var list = state.userDraw.value.banks.where((element) => element.bankStatus == 0).toList();
                                     DialogUtils().showSelectAccountBtmDialog(context, list, false).then((value) {

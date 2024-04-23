@@ -254,11 +254,11 @@ class HttpService{
 
   ///渠道【登录:login,会员注册:register,代理注册:agentReg】
   static Future<VarCodeEntity> getVarcode(String channel,){
-    return buildFuture<VarCodeEntity>(()=> _client.getVarcode(channel,));
+    return buildFuture<VarCodeEntity>(()=> _client.getVarcode(channel,),loading: false);
   }
 
   static Future<String> memberRegCheck(String realName,){
-    return buildFuture<String>(()=> _client.memberRegCheck(realName,),loading: false);
+    return buildFuture<String>(()=> _client.memberRegCheck(realName,),loading: false,errorHandler: false);
   }
 
   static Future<LoginUserEntity> userRegister(Map<String,dynamic> params,){

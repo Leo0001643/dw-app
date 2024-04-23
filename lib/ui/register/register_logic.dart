@@ -79,7 +79,8 @@ class RegisterLogic extends GetxController {
       "varCodeId": state.varcode.value.varCodeId,
       "agree": 1,
       "mobile":"${state.areaNo.value}${state.mobile}",
-    };
+      "token": -1,
+  };
     //阿里的滑动验证
     if (data != null &&
         state.varcode.value.status == 1 &&
@@ -112,9 +113,9 @@ class RegisterLogic extends GetxController {
       params["token"] = -1;
     }
     ///介绍人
-    if(unEmpty(state.tgcode)){
-      params["intr"] = state.tgcode;
-    }
+    // if(unEmpty(state.tgcode)){
+    //   params["intr"] = state.tgcode;
+    // }
     HttpService.userRegister(params).then((value) {
       eventBus.fire(LoginRefreshEvent());
       AppData.setUser(value);
