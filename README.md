@@ -54,3 +54,7 @@ flutter build apk --flavor dw --dart-define=CHANNEL=dw
 
 flutter build apk --flavor boya --dart-define=CHANNEL=boya
 
+
+
+
+

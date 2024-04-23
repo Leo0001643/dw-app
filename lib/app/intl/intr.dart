@@ -35,7 +35,7 @@ class Intr extends Translations{
   void defaultLocale(BuildContext context){
     //获取当前系统使用的语言
     var locale = View.of(context).platformDispatcher.locale;
-    loggerArray(["但是鼎折覆餗",locale.toString()]);
+    // loggerArray(["但是鼎折覆餗",locale.toString()]);
     for (var element in locales()) {
       if(element.languageCode == locale.languageCode){
         AppData.setLocaleIndex(locales().indexOf(element));

@@ -1,11 +1,8 @@
 
-import 'dart:convert';
-
 import 'package:flutter_oss_aliyun/flutter_oss_aliyun.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
-import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 
 /// Author: Soushin-932707629@qq.com
@@ -25,14 +22,13 @@ class OssUtils{
   factory OssUtils() => getInstance();
 
   var accessKey = "xxxx";
-  var accessSecret = "xxx";
-  var bucketName = "dw-app-lines";
+  var accessSecret = "xxxx";
   Client? client;
 
   void initData(){
     client = Client.init(
         ossEndpoint: "oss-accelerate.aliyuncs.com",
-        bucketName: bucketName, authGetter: (){
+        bucketName: fileName(), authGetter: (){
       return Auth(
         accessKey: accessKey,
         accessSecret: accessSecret,
