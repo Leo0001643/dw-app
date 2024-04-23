@@ -5,6 +5,7 @@ import 'package:android_id/android_id.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
+import 'package:jpush_flutter/jpush_flutter.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
@@ -54,7 +55,6 @@ class AppData {
     }
     ///初始化网络库
     HttpService.doInit();
-    // await AwsUtils().configureAmplify();
     return Future.value(true);
   }
 

@@ -82,14 +82,16 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                                   // var list  = state.pageType.value == '1' ? state.userDraw.value.banks : state.userDraw.value.dcBanks;
                                   // if(isEmpty(state.userDraw.value.banks)){ return; }
                                   if(state.pageType.value == '1' && unEmpty(state.userDraw.value.banks) && isEmpty(state.walletChannel)){
-                                    DialogUtils().showSelectAccountBtmDialog(context, state.userDraw.value.banks,false).then((value) {
+                                    var list = state.userDraw.value.banks.where((element) => element.bankStatus == 0).toList();
+                                    DialogUtils().showSelectAccountBtmDialog(context, list, false).then((value) {
                                       if(unEmpty(value)){
                                         state.selectValue = value!;
                                         state.dropdownValue.value = state.selectValue.toString();
                                       }
                                     });
                                   } else if(state.pageType.value == '5'){
-                                    var list = state.userDraw.value.dcBanks.where((element) => unEmpty(element.account) && element.type?.startsWith("USDT") == true).toList();
+                                    var list = state.userDraw.value.dcBanks.where((element) => unEmpty(element.account) && element.status == 1
+                                        && element.type?.startsWith("USDT") == true).toList();
                                     DialogUtils().showSelectAccountBtmDialog(context, list, true).then((value) {
                                       if(unEmpty(value)){
                                         state.selectValue = value!;

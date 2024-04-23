@@ -105,13 +105,23 @@ android {
             applicationId "com.soushin.leisure.dw"
             namespace "com.soushin.leisure.dw"
             signingConfig signingConfigs.dw
-            manifestPlaceholders = [package_name: "com.soushin.leisure.dw"]
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+            ]
         }
         boya{
             applicationId "com.soushin.leisure.boya"
             namespace "com.soushin.leisure.boya"
             signingConfig signingConfigs.boya
-            manifestPlaceholders = [package_name: "com.soushin.leisure.boya"]
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+            ]
         }
     }
 
