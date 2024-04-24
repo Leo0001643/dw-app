@@ -42,7 +42,7 @@ dependencies:
   flutter_easyloading: ^3.0.5
   get: ^4.6.6
   dio: ^5.4.1
-  shared_preferences: ^2.2.2
+  shared_preferences: ^2.2.3
   path_provider: ^2.1.1
   common_utils: ^2.1.0
   #  webview_flutter: ^2.8.0
@@ -97,7 +97,13 @@ dependencies:
 
 dependency_overrides:
   meta: ^1.10.0 # 替换为你需要的meta库的版本号
-
+  flutter_ume_plus: ^3.0.2
+  flutter_ume_kit_ui_plus: ^2.0.0
+  flutter_ume_kit_device_plus: ^2.0.0
+#  flutter_ume_kit_perf: ^1.0.0
+#  flutter_ume_kit_show_code: ^1.0.0+1
+  flutter_ume_kit_console_plus: 2.0.3
+  flutter_ume_kit_dio_plus: ^3.4.5
 
 dev_dependencies:
   flutter_test:

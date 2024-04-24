@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/socket/socket_utils.dart';
@@ -38,7 +39,7 @@ class WsMessageSendEntity {
 
 	factory WsMessageSendEntity.get({String? type,List<String>? msg,String? gameType,String? roomId,String? tableId}){
 		var entity = WsMessageSendEntity();
-		entity.siteId = Constants.siteid();
+		entity.siteId = ConfigManager.siteid();
 		entity.oid = AppData.user()?.oid.em();
 		entity.clientName = AppData.user()?.username ?? SocketUtils().clientName;
 		entity.type = type;

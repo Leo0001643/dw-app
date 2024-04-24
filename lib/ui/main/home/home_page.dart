@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -18,7 +19,6 @@ import 'package:leisure_games/ui/main/home/game_menu_view.dart';
 import 'package:leisure_games/ui/main/home/more_tab_view.dart';
 import 'package:marquee/marquee.dart';
 
-import '../../../app/utils/dialog_utils.dart';
 import 'home_logic.dart';
 
 class HomePage extends StatefulWidget {
@@ -213,7 +213,7 @@ class StateHomePage extends State<HomePage>
                                 height: 5.h,
                               ),
                               Text(
-                                Intr().guojizhan2023(),
+                                ConfigManager.guojizhan2023(),
                                 style: TextStyle(
                                     fontSize: 10.sp, color: ColorX.text5862()),
                               ),

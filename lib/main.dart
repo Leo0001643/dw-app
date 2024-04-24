@@ -1,4 +1,5 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -7,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tencent_captcha/tencent_captcha.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:leisure_games/app/app_theme.dart';
+import 'package:leisure_games/app/config_manager.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:lifecycle/lifecycle.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -16,7 +19,11 @@ import 'app/intl/intr.dart';
 import 'app/logger.dart';
 import 'app/route_observers.dart';
 import 'app/routes.dart';
-
+import 'package:flutter_ume_plus/flutter_ume_plus.dart'; // UME framework
+import 'package:flutter_ume_kit_ui_plus/flutter_ume_kit_ui_plus.dart'; // UI kits
+import 'package:flutter_ume_kit_device_plus/flutter_ume_kit_device_plus.dart'; // Device info
+import 'package:flutter_ume_kit_console_plus/flutter_ume_kit_console_plus.dart'; // Show debugPrint
+import 'package:flutter_ume_kit_dio_plus/flutter_ume_kit_dio_plus.dart'; // Dio Inspector
 
 
 void main() {
@@ -26,7 +33,27 @@ void main() {
   TencentCaptcha.init("189921981");
   Logger.init(tag: 'leisure_games',isDebug: isDebug);
   WidgetsFlutterBinding.ensureInitialized();
-  AppData.initData().then((value) => runApp(MyApp()));///初始化本地数据
+  AppData.initData().then((value){
+    if (kDebugMode) {// Register plugin kits
+      PluginManager.instance
+        ..register(WidgetInfoInspector())
+        ..register(WidgetDetailInspector())
+        // ..register(ColorSucker())
+        // ..register(AlignRuler())
+        // ..register(ColorPicker())// New feature
+        // ..register(TouchIndicator())
+        ..register(CpuInfoPage())
+        ..register(DeviceInfoPanel())
+        // ..register(Console())
+        ..register(DioInspector(dio: HttpService.getDio()));// Pass in your Dio instance
+      // After flutter_ume 0.3.0
+      runApp(UMEWidget(enable: true, child: MyApp()));
+      // Before flutter_ume 0.3.0
+      // runApp(injectUMEWidget(child: MyApp(), enable: true));
+    } else {
+      runApp(MyApp());
+    }
+  });///初始化本地数据
 }
 
 // ignore: must_be_immutable
@@ -53,7 +80,7 @@ class MyApp extends StatelessWidget {
           navigatorObservers: [defaultLifecycleObserver,RouteObservers()],
           locale: Intr().currentLocale(),
           fallbackLocale: Intr().currentLocale(), ///添加一个默认语言选项，以备上面指定的语言翻译 不存在
-          supportedLocales: Intr().locales(),
+          supportedLocales: ConfigManager.locales(),
           localizationsDelegates: const [
             RefreshLocalizations.delegate,
             GlobalMaterialLocalizations.delegate, /// 指定本地化的字符串和一些其他的值

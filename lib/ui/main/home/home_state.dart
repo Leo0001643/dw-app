@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
@@ -61,6 +62,6 @@ class HomeState {
   var routeName = "".obs;
 
   ///站点logo
-  var stationLogo = ImageX.icStationHomeZ().obs;
+  var stationLogo = ConfigManager.icStationHomeZ().obs;
 
 }

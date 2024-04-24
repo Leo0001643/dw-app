@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
-import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/res/imagex.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/ui/bean/language_menu_entity.dart';
 
 class SelectLanguageState {
@@ -11,7 +10,7 @@ class SelectLanguageState {
   }
 
 
-  List<LanguageMenuEntity> country = Intr().country();
+  List<LanguageMenuEntity> country = ConfigManager.country();
 
   late var dropdownValue = country[AppData.localeIndex()].obs;
 

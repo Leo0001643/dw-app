@@ -110,6 +110,8 @@ android {
                     JPUSH_PKGNAME: applicationId,
                     JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
                     JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "DW国际站",
+                    apk_name: "DW International",
             ]
         }
         boya{
@@ -121,6 +123,8 @@ android {
                     JPUSH_PKGNAME: applicationId,
                     JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
                     JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "博雅",
+                    apk_name: "BOYA",
             ]
         }
     }

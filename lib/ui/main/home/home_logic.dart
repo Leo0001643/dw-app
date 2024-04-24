@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:install_plugin/install_plugin.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
@@ -272,7 +273,7 @@ class HomeLogic extends GetxController {
 
   void loadData() {
     ///更换站点logo
-    state.stationLogo.value = ImageX.icStationHomeZ();
+    state.stationLogo.value = ConfigManager.icStationHomeZ();
     // logger("这里是啥语言换了吗111${AppData.localeIndex()}   ${Intr().currentLocale()}");
 
     HttpService.getGameKind(AppData.wallet() ? 1 : 5).then((value) {

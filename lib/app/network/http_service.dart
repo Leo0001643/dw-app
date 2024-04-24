@@ -5,13 +5,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:leisure_games/app/network/retrofit_client.dart';
-import 'package:leisure_games/app/utils/aws_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
@@ -110,7 +110,7 @@ class HttpService{
         //系统版本号【APP强制使用】
         var commonParams = {
           "machineModel":Constants.model(),
-          "siteId":Constants.siteid(),
+          "siteId":ConfigManager.siteid(),
           "siteType":"1",
           "terminal":"APP",
           "version":Constants.version(),
@@ -512,7 +512,7 @@ class HttpService{
   }
 
   static Future<OtaVersionEntity> otaUpdate(){
-    return buildOtaFuture<OtaVersionEntity>(()=> _client.otaUpdate(AwsUtils().getBucket(),AwsUtils().getBucket()));
+    return buildOtaFuture<OtaVersionEntity>(()=> _client.otaUpdate(ConfigManager.getBucket(),ConfigManager.getBucket()));
   }
 
 

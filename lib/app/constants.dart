@@ -22,22 +22,6 @@ class Constants {
 
   static const PC28 = "PC28";
 
-  static String siteid(){
-    if(channelName == channel_boya){
-      return "9003";
-    } else {
-      return "9000";
-    }
-  }
-
-  static String defaultHost(){
-    if(channelName == channel_boya){
-      return "https://9000vlmdm4.kj99883.com/";
-    } else {
-      return "https://9000vlmdm4.kj99883.com/";
-    }
-  }
-
   ///PC28游戏类型
   static const fastbtb28Code = "fastbtb28";
   static const jndx28Code = "jndx28";
@@ -45,10 +29,8 @@ class Constants {
   static const tw28Code = "tw28";
 
 
-
   static const html_btc = "https://btc.com";
   static const html_blockchain = "https://www.blockchain.com/btc/unconfirmed-transactions";
-
 
 
   static String model(){
@@ -77,9 +59,6 @@ class Constants {
   static const code_caifutong = "caifutong";
   static const code_qmf = "qmf";
   static const code_jingdong = "jingdong";
-
-  static const channel_dw = "dw";
-  static const channel_boya = "boya";
 
 
 }

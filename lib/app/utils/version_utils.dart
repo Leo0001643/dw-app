@@ -7,12 +7,12 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:install_plugin/install_plugin.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:leisure_games/app/network/http_service.dart';
-import 'package:leisure_games/app/utils/aws_utils.dart';
 import 'package:leisure_games/ui/bean/ota_version_entity.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -89,7 +89,7 @@ class VersionUtils {
 
   /// 开始下载
   static void _download(OtaVersionIOS entity) async {
-    var destinationFilename = "${AwsUtils().getBucket()}_${DateUtil.formatDate(DateTime.now(),format: "yyyyMMddHHmmss")}.apk";
+    var destinationFilename = "${ConfigManager.getBucket()}_${DateUtil.formatDate(DateTime.now(),format: "yyyyMMddHHmmss")}.apk";
     try {
       var dir = await getDownloadsDirectory();
       var fillName = "${dir?.path}/$destinationFilename";

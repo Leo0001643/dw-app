@@ -1,5 +1,6 @@
 
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 
@@ -1035,14 +1036,6 @@ class ImageX{
     return AppData.theme() ? language : language_dark;
   }
 
-
-  static String icStationHomeZ(){
-    if(channelName == Constants.channel_boya){
-      return AppData.localeIndex() == 0 ? ic_boya_home : ic_boya_home_en;
-    }else {
-      return AppData.localeIndex() == 0 ? ic_dw_home : ic_dw_home_en;
-    }
-  }
 
   static String countDown1Z(){
     return AppData.localeIndex() == 0 ? countDown1 : countDown1_en;

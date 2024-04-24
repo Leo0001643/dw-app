@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
@@ -36,7 +37,7 @@ class WsLoginEntity {
 
 	factory WsLoginEntity.get({String? gameType,String? roomId,String? tableId}){
 		var entity = WsLoginEntity();
-		entity.siteId = Constants.siteid();
+		entity.siteId = ConfigManager.siteid();
 		entity.oid = AppData.user()?.oid ?? "";
 		entity.clientName = AppData.user()?.username ?? SocketUtils().clientName;
 		entity.type = "login";

@@ -1,24 +1,22 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:android_id/android_id.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
-import 'package:jpush_flutter/jpush_flutter.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
-import 'package:leisure_games/app/utils/aws_utils.dart';
-import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/device_info.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '/app/global.dart';
+
+
 /// 应用内数据缓存处理
 /// @author SouShin
 /// @time 2021/8/10 10:22
@@ -281,7 +279,7 @@ class AppData {
     if(unEmpty(base_url)) return base_url;
     base_url = prefs?.getString("base_url") ?? "";
     if(isEmpty(base_url)){
-      base_url = Constants.defaultHost();
+      base_url = ConfigManager.defaultHost();
     }
     return base_url;
   }

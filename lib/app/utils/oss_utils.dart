@@ -1,5 +1,6 @@
 
 import 'package:flutter_oss_aliyun/flutter_oss_aliyun.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
@@ -28,7 +29,7 @@ class OssUtils{
   void initData(){
     client = Client.init(
         ossEndpoint: "oss-accelerate.aliyuncs.com",
-        bucketName: fileName(), authGetter: (){
+        bucketName: ConfigManager.fileName(), authGetter: (){
       return Auth(
         accessKey: accessKey,
         accessSecret: accessSecret,
@@ -47,7 +48,7 @@ class OssUtils{
   }
 
   Future<BaseApiOssEntity?> downloadFile() async {
-    var result = await client?.getObject(fileName());
+    var result = await client?.getObject(ConfigManager.fileName());
     loggerArray(['获取对象数据',result?.statusCode,result?.statusMessage,result?.headers,result?.data]);
     if(result?.statusCode == 200){
       return BaseApiOssEntity.fromJson(result?.data);
@@ -56,13 +57,6 @@ class OssUtils{
   }
 
 
-  String fileName(){
-    if(channelName == Constants.channel_boya){
-      return "line_boya.json";
-    }else{
-      return "line_gjz.json";
-    }
-  }
 
 
 

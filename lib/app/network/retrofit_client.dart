@@ -1,6 +1,5 @@
 
 import 'package:dio/dio.dart' hide Headers;
-import 'package:leisure_games/app/utils/aws_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';

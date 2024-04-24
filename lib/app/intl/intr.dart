@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/luangage/vi.dart';
@@ -28,7 +29,7 @@ class Intr extends Translations{
 
   ///当前语言环境
   Locale currentLocale(){
-    return locales()[AppData.localeIndex()];
+    return ConfigManager.locales()[AppData.localeIndex()];
   }
 
   ///设置默认语言
@@ -36,16 +37,16 @@ class Intr extends Translations{
     //获取当前系统使用的语言
     var locale = View.of(context).platformDispatcher.locale;
     // loggerArray(["但是鼎折覆餗",locale.toString()]);
-    for (var element in locales()) {
+    for (var element in ConfigManager.locales()) {
       if(element.languageCode == locale.languageCode){
-        AppData.setLocaleIndex(locales().indexOf(element));
+        AppData.setLocaleIndex(ConfigManager.locales().indexOf(element));
         return;
       }
     }
     ///如果默认语言不在支持的语言范围内，默认英文，前提是app支持英文
-    for (var element in locales()) {
+    for (var element in ConfigManager.locales()) {
       if(element.languageCode == "en"){
-        AppData.setLocaleIndex(locales().indexOf(element));
+        AppData.setLocaleIndex(ConfigManager.locales().indexOf(element));
         return;
       }
     }
@@ -57,25 +58,6 @@ class Intr extends Translations{
   // }
 
 
-  //中文 英文 越南语 ,const Locale("vi","VI"),const Locale('en','US')
-  List<Locale> locales(){
-    if(channelName == Constants.channel_boya){
-      return [const Locale('zh','ZH')];
-    }else{
-      return [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
-    }
-  }
-
-  List<LanguageMenuEntity> country (){
-    if(channelName == Constants.channel_boya){
-      return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: Intr().locales()[0])];
-    } else {
-      return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: Intr().locales()[0]),
-        LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: Intr().locales()[1]),
-        LanguageMenuEntity(language: "Tiếng Việt", icon: ImageX.icon_vi,locale: Intr().locales()[2]),
-      ];
-    }
-  }
 
   String get theme => 'theme'.tr;
   String get home => 'home'.tr;
@@ -750,26 +732,6 @@ class Intr extends Translations{
 
 
 
-
-
-
-
-
-  String hyld(){
-    if(channelName == Constants.channel_boya){
-      return hyld_boya;
-    }else {
-      return hyld_dw;
-    }
-  }
-
-  String guojizhan2023(){
-    if(channelName == Constants.channel_boya){
-      return guojizhan2023_boya;
-    }else {
-      return guojizhan2023_dw;
-    }
-  }
 
 
 
