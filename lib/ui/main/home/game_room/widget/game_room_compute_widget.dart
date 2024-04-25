@@ -13,7 +13,6 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_state.dart';
-import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 class GameRoomComputeWidget extends StatelessWidget {

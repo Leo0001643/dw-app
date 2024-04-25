@@ -2,8 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
@@ -17,7 +15,6 @@ import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/room_copy_writing_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
-import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/home/text_timer/text_timer_state.dart';
 import 'package:scratcher/scratcher.dart';
 

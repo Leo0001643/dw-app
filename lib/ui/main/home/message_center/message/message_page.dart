@@ -1,4 +1,3 @@
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -6,7 +5,6 @@ import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/message_item_entity.dart';
 

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
-import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 

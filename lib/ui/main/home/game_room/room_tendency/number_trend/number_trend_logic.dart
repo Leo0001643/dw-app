@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:get/get.dart';
 
 import 'number_trend_state.dart';

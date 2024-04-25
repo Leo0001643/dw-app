@@ -1,6 +1,5 @@
 import 'dart:core';
 
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -9,7 +8,6 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
-import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 
 

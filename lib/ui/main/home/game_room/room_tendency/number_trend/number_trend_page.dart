@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/controller/room_tendency_controller.dart';
 import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/main/home/game_room/room_tendency/number_trend/number_trend_state.dart';

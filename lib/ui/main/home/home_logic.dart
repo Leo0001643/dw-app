@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'dart:io';
+
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:install_plugin/install_plugin.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/constants.dart';
@@ -13,7 +12,6 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
-import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -28,7 +26,6 @@ import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sprintf/sprintf.dart';
 
 import 'home_state.dart';

@@ -1,15 +1,11 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 
 import 'loss_percent_state.dart';
-
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:leisure_games/app/global.dart';
-import 'package:leisure_games/app/logger.dart';
 
 class LossPercentLogic extends GetxController {
   final LossPercentState state = LossPercentState();

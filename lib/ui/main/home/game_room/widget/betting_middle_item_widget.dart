@@ -9,7 +9,6 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/audio_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
-import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 
 class BettingMiddleItemWidget extends StatefulWidget {
   int index=0;

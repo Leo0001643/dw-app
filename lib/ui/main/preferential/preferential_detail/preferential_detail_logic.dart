@@ -1,7 +1,5 @@
 
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/app/global.dart';
 
 import 'preferential_detail_state.dart';
 

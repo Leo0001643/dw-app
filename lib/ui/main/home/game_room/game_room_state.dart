@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:get/get.dart';
-import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/bean/phrase_entity.dart';

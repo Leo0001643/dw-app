@@ -10,12 +10,8 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/nested_inner_scroll_child.dart';
-import 'package:leisure_games/ui/bean/chess_event.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
-import 'package:leisure_games/ui/bean/html_event.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';
-import 'package:leisure_games/ui/main/main_logic.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../bean/pc28_lotto_entity.dart';
 import 'text_timer/text_timer_page.dart';

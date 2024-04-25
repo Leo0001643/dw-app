@@ -1,5 +1,4 @@
 
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +22,6 @@ import 'package:leisure_games/ui/main/home/game_room/widget/game_room_compute_wi
 import 'package:leisure_games/ui/main/home/game_room/widget/open_lottery_item.dart';
 import 'package:lifecycle/lifecycle.dart';
 
-import '../../../bean/room_copy_writing_entity.dart';
 import 'game_room_logic.dart';
 import 'widget/game_room_head_widget.dart';
 import 'widget/game_room_hot_widget.dart';

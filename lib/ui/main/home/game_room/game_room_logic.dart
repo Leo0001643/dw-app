@@ -26,7 +26,6 @@ import 'package:leisure_games/ui/bean/music_switch_event.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/count_down_lottery_entity.dart';
 import 'package:leisure_games/ui/main/home/game_room/bean/game_room_item_entity.dart';
-import 'package:leisure_games/ui/main/home/game_room/bean/odds_content.dart';
 import 'package:leisure_games/ui/main/home/game_room/text_timer/text_item_logic.dart';
 import 'package:leisure_games/ui/main/home/game_room/utils/game_rule_util.dart';
 import 'package:leisure_games/ui/main/home/home_logic.dart';

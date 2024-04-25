@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-import 'package:leisure_games/ui/bean/html_event.dart';
-import 'package:leisure_games/ui/bean/login_game_agent_entity.dart';
 import 'package:leisure_games/ui/bean/news_rate_entity.dart';
 
 class LossPercentState {

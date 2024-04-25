@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/ui/bean/dew_info_entity.dart';
 
 import 'data_analysis_state.dart';
