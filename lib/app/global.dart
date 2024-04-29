@@ -19,9 +19,6 @@ void showToastFull(String message,{bool? toastLength,}){
   EasyLoading.showToast(message,duration: toastLength == true ? const Duration(seconds: 3):const Duration(seconds: 1));
 }
 
-///目前支持 dw  boya
-String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'dw');
-
 ///是否debug环境
 final isDebug = !inProduct();
 

@@ -5,7 +5,6 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/language_menu_entity.dart';
-import 'global.dart';
 
 /// Author: Soushin-932707629@qq.com
 /// Date: 2024/4/24 15:44
@@ -97,14 +96,9 @@ class ConfigManager {
     }
   }
 
-
-
-
-
-
-
-
-
 }
 
+
+///目前支持 dw  boya
+String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'dw');
 

@@ -66,6 +66,11 @@ class WithdrawApplyLogic extends GetxController {
       showToast(Intr().qingshurutixianmima);
       return;
     }
+    var amount = DataUtils.formatNum(state.withdrawAmount.value);
+    if(amount > state.balance.value.money.em()){
+      showToast(Intr().huiyuanchukuanjinedayuzhuzhanghu);
+      return;
+    }
 
     var user = AppData.user();
     var params = {"oid":user?.oid,"username":user?.username, "cur":state.pageType.value,
