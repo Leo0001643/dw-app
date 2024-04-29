@@ -33,7 +33,7 @@ class ConfigManager {
 
   static String defaultHostWs(){
     if(channelName == channel_boya){
-      return "wss://ws.mzm3mzdj.com/";
+      return "wss://9003mzg3nm.njc2n2m5.com/";
     } else {
       return "wss://9000ywfjn2.uy4ayov.com/";
     }
