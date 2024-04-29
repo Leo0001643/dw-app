@@ -25,9 +25,17 @@ class ConfigManager {
 
   static String defaultHost(){
     if(channelName == channel_boya){
-      return "https://9000vlmdm4.kj99883.com/";
+      return "https://9003zgvmyj.mzm3mzdj.com/";
     } else {
       return "https://9000vlmdm4.kj99883.com/";
+    }
+  }
+
+  static String defaultHostWs(){
+    if(channelName == channel_boya){
+      return "wss://ws.mzm3mzdj.com/";
+    } else {
+      return "wss://9000ywfjn2.uy4ayov.com/";
     }
   }
 
@@ -95,6 +103,7 @@ class ConfigManager {
       return "line_gjz.json";
     }
   }
+
 
 }
 

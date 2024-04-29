@@ -296,7 +296,7 @@ class AppData {
     if(unEmpty(base_wsurl)) return base_wsurl;
     base_wsurl = prefs?.getString("base_wsurl") ?? "";
     if(isEmpty(base_wsurl)){
-      base_wsurl = "${Constants.host_ws}?language=s%";
+      base_wsurl = ConfigManager.defaultHostWs();
     }
     return base_wsurl;
   }

@@ -22,14 +22,14 @@ class OssUtils{
 
   factory OssUtils() => getInstance();
 
-  var accessKey = "xxxx";
-  var accessSecret = "xxxx";
+  var accessKey = "****";
+  var accessSecret = "****";
   Client? client;
 
   void initData(){
     client = Client.init(
         ossEndpoint: "oss-accelerate.aliyuncs.com",
-        bucketName: ConfigManager.fileName(), authGetter: (){
+        bucketName: "dw-app-lines", authGetter: (){
       return Auth(
         accessKey: accessKey,
         accessSecret: accessSecret,

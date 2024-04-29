@@ -62,7 +62,7 @@ class SocketUtils{
         var msg = IsolateMsgEntity.fromJson(jsonDecode(message));
         switch(msg.key){
           case "connected":
-            loggerArray(["长连接连接成功"]);
+            loggerArray(["长连接连接成功",AppData.baseWsUrl()]);
             isConnect = true;
             callback?.call();
             break;
@@ -151,7 +151,8 @@ class SocketUtils{
   ///异步任务工作区
   static void isolateMain(SendPort sendPort) {
     // sendPort.send('Message from child Isolate');
-    var url = sprintf(AppData.baseWsUrl(),[Intr().currentLocale().languageCode]);
+    var url = sprintf("${AppData.baseWsUrl()}?language=%s",[Intr().currentLocale().languageCode]);
+    loggerArray(["开始连接",url]);
     WebSocketChannel channel = WebSocketChannel.connect(Uri.parse(url));
     channel.ready.then((value) {
       sendPort.send(buildMessage("connected"));

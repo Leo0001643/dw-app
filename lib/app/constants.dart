@@ -16,7 +16,7 @@ class Constants {
   static const pageSize = 20;
 
   // static const websocket = "ws://ws.by4aocqs.com:9999";
-  static const host_ws = "wss://9000ywfjn2.uy4ayov.com/";
+  // static const host_ws = "wss://9000ywfjn2.uy4ayov.com/";
 
   // static const web_gjz = "http://soptj9qq.com";
 
