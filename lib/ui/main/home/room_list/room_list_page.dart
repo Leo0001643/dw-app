@@ -171,21 +171,21 @@ class _RoomListPageState extends State<RoomListPage> {
                       Expanded(
                         child: InkWell(
                           onTap: ()=> DialogUtils().showGameRoleBtmDialog(context,0,logic),
-                          child: buildRoleItem(Intr().wanfaguizhe,Intr().wanfaguizhe_jieshao,0),
+                          child: buildRoleItem(Intr().wanfaguizhe,"",0),
                         ),
                       ),
                       SizedBox(width: 10.w,),
                       Expanded(
                         child: InkWell(
                           onTap: ()=> DialogUtils().showGameRoleBtmDialog(context,1,logic),
-                          child: buildRoleItem(Intr().youxishuyu,Intr().youxishuyu_jieshao, 1),
+                          child: buildRoleItem(Intr().youxishuyu,"", 1),
                         ),
                       ),
                       SizedBox(width: 10.w,),
                       Expanded(
                         child: InkWell(
                           onTap: ()=> DialogUtils().showGameRoleBtmDialog(context,2,logic),
-                          child: buildRoleItem(Intr().xiazhujiqiao,Intr().xiazhujiqiao_jieshao, 2),
+                          child: buildRoleItem(Intr().xiazhujiqiao,"", 2),
                         ),
                       ),
                     ],

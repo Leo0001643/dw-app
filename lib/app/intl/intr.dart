@@ -162,9 +162,9 @@ class Intr extends Translations{
   String get wanfaguizhe => 'wanfaguizhe'.tr;
   String get youxishuyu => 'youxishuyu'.tr;
   String get xiazhujiqiao => 'xiazhujiqiao'.tr;
-  String get wanfaguizhe_jieshao => 'wanfaguizhe_jieshao'.tr;
-  String get youxishuyu_jieshao => 'youxishuyu_jieshao'.tr;
-  String get xiazhujiqiao_jieshao => 'xiazhujiqiao_jieshao'.tr;
+  // String get wanfaguizhe_jieshao => 'wanfaguizhe_jieshao'.tr;
+  // String get youxishuyu_jieshao => 'youxishuyu_jieshao'.tr;
+  // String get xiazhujiqiao_jieshao => 'xiazhujiqiao_jieshao'.tr;
   String get card_ptf => 'card_ptf'.tr;
   String get card_gjf => 'card_gjf'.tr;
   String get card_gbf => 'card_gbf'.tr;
