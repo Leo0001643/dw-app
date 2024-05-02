@@ -648,7 +648,7 @@ class Intr extends Translations{
   String get no => "no".tr;
   String get fengpanxinxi => "fengpanxinxi".tr;
   String get kaishifengpan => "kaishifengpan".tr;
-  String get lianjiefuwushibai => "kaishifengpan".tr;
+  String get lianjiefuwushibai => "lianjiefuwushibai".tr;
   String get kaijiangzhong => "kaijiangzhong".tr;
   String get agent_password_tip => "agent_password_tip".tr;
   String get agent_phone_tip => "agent_phone_tip".tr;
