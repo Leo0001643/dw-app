@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -42,20 +43,7 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
               height: 126.h,
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 0.6.sw,
-                        child:  Text(Intr().xszxkf,
-                          style: TextStyle(fontSize: 24.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),),
-                      ),
-
-                      SizedBox(height: 10.h,),
-                      Text(Intr().qthwnfw,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917()),),
-                    ],
-                  ),
+                  Text(Intr().qthwnfw,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917())),
                   Expanded(child: Container()),
                 ],
               ),

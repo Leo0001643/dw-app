@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -62,7 +63,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                   child: Container(
                     margin: EdgeInsets.only(right: 10.w),
                     alignment: Alignment.center,
-                    width: 50.w,
+                    width: 70.w,
                     height: 26.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
@@ -83,131 +84,123 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
           ),
           SizedBox(height: 10.h),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 15.w),
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 6.h, // 设置高度为6像素
-                        width: 6.w, // 设置宽度为6像素
-                        decoration: const BoxDecoration(
-                          color: ColorX.color_60c549,
-                          shape: BoxShape.circle, // 设置形状为圆形
-                        ),
-                      ),
-                      SizedBox(
-                        width: 7.h,
-                      ),
-                      Text(
-                        "kuai".tr,
-                        style: TextStyle(
-                            fontSize: 14.sp, color: ColorX.color_58698d),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 6.h, // 设置高度为6像素
-                        width: 6.w, // 设置宽度为6像素
-                        decoration: const BoxDecoration(
-                          color: ColorX.color_ff9e52,
-                          shape: BoxShape.circle, // 设置形状为圆形
-                        ),
-                      ),
-                      SizedBox(
-                        width: 7.h,
-                      ),
-                      Text(
-                        "yiban".tr,
-                        style: TextStyle(
-                            fontSize: 14.sp, color: ColorX.color_58698d),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 6.h, // 设置高度为6像素
-                        width: 6.w, // 设置宽度为6像素
-                        decoration: const BoxDecoration(
-                          color: ColorX.color_d53849,
-                          shape: BoxShape.circle, // 设置形状为圆形
-                        ),
-                      ),
-                      SizedBox(
-                        width: 7.h,
-                      ),
-                      Text(
-                        "henman".tr,
-                        style: TextStyle(
-                            fontSize: 14.sp, color: ColorX.color_58698d),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 6.h, // 设置高度为6像素
-                        width: 6.w, // 设置宽度为6像素
-                        decoration: const BoxDecoration(
-                          color: ColorX.color_b5b5b5,
-                          shape: BoxShape.circle, // 设置形状为圆形
-                        ),
-                      ),
-                      SizedBox(
-                        width: 7.h,
-                      ),
-                      Text(
-                       "bukeyong".tr,
-                        style: TextStyle(
-                            fontSize: 14.sp, color: ColorX.color_58698d),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 10.w,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
+                    Container(
+                      height: 6.h, // 设置高度为6像素
+                      width: 6.w, // 设置宽度为6像素
+                      decoration: const BoxDecoration(
+                        color: ColorX.color_60c549,
+                        shape: BoxShape.circle, // 设置形状为圆形
+                      ),
+                    ),
+                    SizedBox(
+                      width: 7.h,
+                    ),
                     Text(
-                      "fangjiechi".tr,
+                      "kuai".tr,
                       style: TextStyle(
                           fontSize: 14.sp, color: ColorX.color_58698d),
                     ),
-                    Transform.scale(
-                        scale: 0.8, // 调整这个值以缩放 Switch 的大小
-                        child: Switch(
-                          thumbColor: MaterialStateColor.resolveWith((states) {
-                            // 根据状态返回相应的颜色
-                            if (states.contains(MaterialState.selected)) {
-                              // Switch 处于激活状态时的颜色
-                              return Colors.white;
-                            }
-                            // Switch 处于非激活状态时的颜色
-                            return Colors.white; // 你可以根据需要修改颜色
-                          }),
-                          onChanged: (value) {},
-                          value: false,
-                          inactiveTrackColor: ColorX.text949(),
-                          activeTrackColor: ColorX.color_69c25c,
-                          activeColor: Colors.white,
-                        ))
                   ],
-                )
+                ),
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Container(
+                      height: 6.h, // 设置高度为6像素
+                      width: 6.w, // 设置宽度为6像素
+                      decoration: const BoxDecoration(
+                        color: ColorX.color_ff9e52,
+                        shape: BoxShape.circle, // 设置形状为圆形
+                      ),
+                    ),
+                    SizedBox(
+                      width: 7.h,
+                    ),
+                    Text(
+                      "yiban".tr,
+                      style: TextStyle(
+                          fontSize: 14.sp, color: ColorX.color_58698d),
+                    ),
+                  ],
+                ),
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Container(
+                      height: 6.h, // 设置高度为6像素
+                      width: 6.w, // 设置宽度为6像素
+                      decoration: const BoxDecoration(
+                        color: ColorX.color_d53849,
+                        shape: BoxShape.circle, // 设置形状为圆形
+                      ),
+                    ),
+                    SizedBox(
+                      width: 7.h,
+                    ),
+                    Text(
+                      "henman".tr,
+                      style: TextStyle(
+                          fontSize: 14.sp, color: ColorX.color_58698d),
+                    ),
+                  ],
+                ),
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Container(
+                      height: 6.h, // 设置高度为6像素
+                      width: 6.w, // 设置宽度为6像素
+                      decoration: const BoxDecoration(
+                        color: ColorX.color_b5b5b5,
+                        shape: BoxShape.circle, // 设置形状为圆形
+                      ),
+                    ),
+                    SizedBox(
+                      width: 7.w,
+                    ),
+                    Text(
+                      "bukeyong".tr,
+                      style: TextStyle(
+                          fontSize: 14.sp, color: ColorX.color_58698d),
+                    ),
+                  ],
+                ),
               ],
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                "fangjiechi".tr,
+                style: TextStyle(
+                    fontSize: 14.sp, color: ColorX.color_58698d),
+              ),
+              Transform.scale(
+                  scale: 0.8, // 调整这个值以缩放 Switch 的大小
+                  child: Switch(
+                    thumbColor: MaterialStateColor.resolveWith((states) {
+                      // 根据状态返回相应的颜色
+                      if (states.contains(MaterialState.selected)) {
+                        // Switch 处于激活状态时的颜色
+                        return Colors.white;
+                      }
+                      // Switch 处于非激活状态时的颜色
+                      return Colors.white; // 你可以根据需要修改颜色
+                    }),
+                    onChanged: (value) {},
+                    value: false,
+                    inactiveTrackColor: ColorX.text949(),
+                    activeTrackColor: ColorX.color_69c25c,
+                    activeColor: Colors.white,
+                  ))
+            ],
           ),
           Container(
             margin: EdgeInsets.all(15.r),

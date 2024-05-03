@@ -62,6 +62,7 @@ class HomeLogic extends GetxController {
     languageStream = eventBus.on<LanguageEvent>().listen((event) {
       loadData();
       loadUserData();
+      queryRoutes();
     });
     balanceStream = eventBus.on<ChangeBalanceEvent>().listen((event) {
       loadBalance();
