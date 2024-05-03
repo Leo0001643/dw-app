@@ -54,7 +54,9 @@ class _NumberDescriptionPageState extends State<NumberDescriptionPage> {
           children: [
             Image.asset(ImageX.icon_tiitle_ext),
             SizedBox(width: 12.w,),
-            Text(title,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+            Expanded(
+              child: Text(title,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+            ),
           ],
         ),
         Container(

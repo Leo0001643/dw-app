@@ -1002,51 +1002,51 @@ class GameRuleUtil {
   /// 根据betType返回投注类型的中文名称,当以cao开头时，betNum对应特码数字
   static String getBetTypeName(String betType) {
     if (GameType_Big == (betType)) {
-      return "特码-大";
+      return "${Intr().bet_tema}-${Intr().bet_da}";
     } else if (GameType_Small == (betType)) {
-      return "特码-小";
+      return "${Intr().bet_tema}-${Intr().bet_xiao}";
     } else if (GameType_Odd == (betType)) {
-      return "特码-单";
+      return "${Intr().bet_tema}-${Intr().bet_dan}";
     } else if (GameType_Even == (betType)) {
-      return "特码-双";
+      return "${Intr().bet_tema}-${Intr().bet_shuang}";
     } else if (GameType_BigOdd == (betType)) {
-      return "大单";
+      return "${Intr().bet_da} ${Intr().bet_dan}";
     } else if (GameType_SmallOdd == (betType)) {
-      return "小单";
+      return "${Intr().bet_xiao} ${Intr().bet_dan}";
     } else if (GameType_BigEven == (betType)) {
-      return "大双";
+      return "${Intr().bet_da} ${Intr().bet_shuang}";
     } else if (GameType_SmallEven == (betType)) {
-      return "小双";
+      return "${Intr().bet_xiao} ${Intr().bet_shuang}";
     } else if (GameType_Max == (betType)) {
-      return "极大";
+      return Intr().bet_jida;
     } else if (GameType_Min == (betType)) {
-      return "极小";
+      return Intr().bet_jixiao;
     } else if (GameType_Red == (betType)) {
-      return "红波";
+      return Intr().bet_hongbo;
     } else if (GameType_Blue == (betType)) {
-      return "蓝波";
+      return Intr().bet_lanbo;
     } else if (GameType_Green == (betType)) {
-      return "绿波";
+      return Intr().bet_lvbo;
     } else if (GameType_Pair == (betType)) {
-      return "对子";
+      return Intr().bet_duizi;
     } else if (GameType_Straight == (betType)) {
-      return "顺子";
+      return Intr().bet_sunzi;
     } else if (GameType_Leopard == (betType)) {
-      return "豹子";
+      return Intr().bet_baozi;
     } else if (GameType_Cao == (betType)) {
-      return "特码";
+      return Intr().tema;
     } else if (GameType_First == (betType)) {
-      return "第一球";
+      return Intr().diyiqiu;
     } else if (GameType_Second == (betType)) {
-      return "第二球";
+      return Intr().dierqiu;
     } else if (GameType_Three == (betType)) {
-      return "第三球";
+      return Intr().disanqiu;
     } else if (GameType_equal == (betType)) {
-      return "和";
+      return Intr().bet_he;
     } else if (GameType_dragon == (betType)) {
-      return "龙";
+      return Intr().bet_long;
     } else if (GameType_tiger == (betType)) {
-      return "虎";
+      return Intr().bet_hu;
     } else {
       return getWhereBallName(betType);
     }
@@ -1422,21 +1422,21 @@ class GameRuleUtil {
     String ballName = "";
 
     if (betType.contains(GameType_First_String)) {
-      ballName = "$ballName-第一球";
+      ballName = "$ballName-${Intr().diyiqiu}";
     } else if (betType.contains(GameType_Second_String)) {
-      ballName = "$ballName-第二球";
+      ballName = "$ballName-${Intr().dierqiu}";
     } else if (betType.contains(GameType_Three_String)) {
-      ballName = "$ballName-第三球";
+      ballName = "$ballName-${Intr().disanqiu}";
     }
 
     if (betType.contains(GameType_Big)) {
-      ballName = "$ballName-大";
+      ballName = "$ballName-${Intr().bet_da}";
     } else if (betType.contains(GameType_Small)) {
-      ballName = "$ballName-小";
+      ballName = "$ballName-${Intr().bet_xiao}";
     } else if (betType.contains(GameType_Odd)) {
-      ballName = "$ballName-单";
+      ballName = "$ballName-${Intr().bet_dan}";
     } else if (betType.contains(GameType_Even)) {
-      ballName = "$ballName-双";
+      ballName = "$ballName-${Intr().bet_shuang}";
     }
 
     return ballName;

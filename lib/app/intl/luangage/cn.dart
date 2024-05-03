@@ -1040,6 +1040,15 @@ class CN {
     "denglumima":"登录密码",
     "zhucetishiyu":"1.标有*号代表必须填写项目\n2. 注册即代表您已同意各项“开户协议“",
     "huiyuanchukuanjinedayuzhuzhanghu":"会员出款金额大于主账户余额！",
+    "bet_tema":"特码",
+    "bet_jida":"极大",
+    "bet_jixiao":"极小",
+    "bet_hongbo":"红波",
+    "bet_lanbo":"蓝波",
+    "bet_lvbo":"绿波",
+    "bet_sunzi":"顺子",
+    "bet_baozi":"豹子",
+    "bet_duizi":"对子",
 
 
 

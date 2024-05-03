@@ -728,7 +728,15 @@ class Intr extends Translations{
   String get denglumima => 'denglumima'.tr;
   String get zhucetishiyu => 'zhucetishiyu'.tr;
   String get huiyuanchukuanjinedayuzhuzhanghu => 'huiyuanchukuanjinedayuzhuzhanghu'.tr;
-
+  String get bet_tema => 'bet_tema'.tr;
+  String get bet_jida => 'bet_jida'.tr;
+  String get bet_jixiao => 'bet_jixiao'.tr;
+  String get bet_hongbo => 'bet_hongbo'.tr;
+  String get bet_lanbo => 'bet_lanbo'.tr;
+  String get bet_lvbo => 'bet_lvbo'.tr;
+  String get bet_sunzi => 'bet_sunzi'.tr;
+  String get bet_baozi => 'bet_baozi'.tr;
+  String get bet_duizi => 'bet_duizi'.tr;
 
 
 

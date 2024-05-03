@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/controller/room_tendency_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 
 import 'double_queue_logic.dart';
@@ -61,7 +62,7 @@ class _DoubleQueuePageState extends State<DoubleQueuePage> with AutomaticKeepAli
     var num = "";
     item.split("|").forEach((element) {
       if(isEmpty(type)){
-        type = element;
+        type = element.replaceAll(",", "-");
       } else {
         num = element;
       }

@@ -61,8 +61,7 @@ class _NumberSourcePageState extends State<NumberSourcePage> with SingleTickerPr
               ),
               labelColor: ColorX.text0917(),
               unselectedLabelColor: ColorX.text586(),
-              width: 300.w,
-              tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 15.sp,fontWeight: FontWeight.w600),)).toList(),
+              tabs: state.tabs.map((e) => Text(e,style: TextStyle(fontSize: 12.sp,fontWeight: FontWeight.w600),)).toList(),
             ),
           ),
           Expanded(

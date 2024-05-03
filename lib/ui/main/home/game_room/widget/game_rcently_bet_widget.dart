@@ -32,7 +32,8 @@ class GameRecentlyBetWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6.w),
                 color: ColorX.cardBg(),
             ),
-            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
+            // alignment: Alignment.center,
             child: buildCurrentTermType(logic, context),
           );
         });
@@ -216,7 +217,7 @@ class GameRecentlyBetWidget extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           WidgetUtils().buildDixqi2(termData),
           SizedBox(width: 5.w,),

@@ -41,22 +41,14 @@ class ConfigManager {
 
   //中文 英文 越南语 ,const Locale("vi","VI"),const Locale('en','US')
   static List<Locale> locales(){
-    if(channelName == channel_boya){
-      return [const Locale('zh','ZH')];
-    }else{
-      return [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
-    }
+    return [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
   }
 
   static List<LanguageMenuEntity> country (){
-    if(channelName == channel_boya){
-      return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: locales()[0])];
-    } else {
-      return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: locales()[0]),
-        LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: locales()[1]),
-        LanguageMenuEntity(language: "Tiếng Việt", icon: ImageX.icon_vi,locale: locales()[2]),
-      ];
-    }
+    return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: locales()[0]),
+      LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: locales()[1]),
+      LanguageMenuEntity(language: "Tiếng Việt", icon: ImageX.icon_vi,locale: locales()[2]),
+    ];
   }
 
   ///更多
