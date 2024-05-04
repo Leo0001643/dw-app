@@ -42,27 +42,26 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmGirdDialog> {
         children: [
           buildHeader(),
           SizedBox(height: 10.h,),
-          GridView.builder(
-            shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              crossAxisSpacing: 39.0,
-              mainAxisSpacing: 18.0,
-              childAspectRatio: 70 / 30,
-            ),
-            itemCount: data.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Obx(() {
-                return InkWell(
-                  onTap: () {
-                    // currentIndex.value = data.indexOf(data.elementAt(index));
-                    Navigator.pop(context,data.elementAt(index));
-                  },
-                  child: buildOptionItem2(data.elementAt(index),
-                      currentIndex.value == data.indexOf(data.elementAt(index))),
-                );
-              });
-            },
+          Container(
+            alignment: data.length < 3 ? Alignment.centerLeft : Alignment.center,
+            child: Obx(() {
+              return Wrap(
+                spacing: 10.w,
+                runSpacing: 5.h,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: data.map((e) {
+                  var index = data.indexOf(e);
+                  return InkWell(
+                    onTap: () {
+                      // currentIndex.value = data.indexOf(data.elementAt(index));
+                      Navigator.pop(context,data.elementAt(index));
+                    },
+                    child: buildOptionItem2(data.elementAt(index),
+                        currentIndex.value == data.indexOf(data.elementAt(index))),
+                  );
+                }).toList(),
+              );
+            }),
           ),
           SizedBox(height: 30.h,),
           Align(
@@ -134,17 +133,19 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmGirdDialog> {
 
   Widget buildOptionItem2(dynamic option, bool select) {
     return Container(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.r),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(0.1),
         border: Border.all(
-          color: select ? ColorX.color_fc243b : ColorX.text0917(),
+          color: select ? ColorX.color_fc243b : Colors.transparent,
         ),
         borderRadius: BorderRadius.circular(8.0),
       ),
+      width: 0.28.sw,
       child: Text(
         option.toString(),
+        textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 16.sp,
           fontWeight: FontWeight.bold,
@@ -155,6 +156,7 @@ class StateSelectOptionBtmDialog extends State<SelectOptionBtmGirdDialog> {
   }
 }
 
+/*
 class MyRoteGridView extends StatefulWidget {
   @override
   _MyGridViewState createState() => _MyGridViewState();
@@ -238,3 +240,4 @@ class _MyGridViewState extends State<MyRoteGridView> {
     );
   }
 }
+*/

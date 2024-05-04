@@ -71,6 +71,7 @@ class WidgetUtils {
       {Color? bg,
         Color textColor = Colors.white,
         double textSize = 14,
+        TextAlign? textAlign,
         VoidCallback? onPressed}) {
     return ElevatedButton(
       onPressed: onPressed,
@@ -85,6 +86,7 @@ class WidgetUtils {
       ),
       child: Text(
         text,
+        textAlign: textAlign,
         style: TextStyle(
             fontSize: textSize.sp,
             color: textColor,

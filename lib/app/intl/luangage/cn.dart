@@ -1049,6 +1049,7 @@ class CN {
     "bet_sunzi":"顺子",
     "bet_baozi":"豹子",
     "bet_duizi":"对子",
+    "hello_you": "嗨, %s",
 
 
 

@@ -25,6 +25,8 @@ class ImageX{
   static const icon_customer = 'assets/images/icon_customer.png';
   static const service_dark = 'assets/images/service_dark.svg';
   static const uncheck_dark = 'assets/images/uncheck.svg';
+  static const svg_service_sel = 'assets/images/svg_service_sel.svg';
+
 
 
   static const icon_dan = 'assets/images/icon_dan.png';

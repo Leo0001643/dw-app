@@ -836,9 +836,9 @@ class VI{
     "wodeshuzhiqianbao_":"ví USDT của tôi:đã đăng ký %s(vẫn có thể đăng ký %s)",
     "tianjiayinhangka": "thêm thẻ ngân hàng",
     "zuiduoketianjia_":"(nhiều nhất có thể thêm %s)",
-    "wenxintixing_yinhangka":"lời nhắc nhở:\ntên chủ tài khoản ngân hàng phải khớp với tên đã nhập khi đăng ký;\nmỗi khách hàng có thể đăng ký tối đa 3 thẻ ngân hàng;\nsau khi đã đăng ký không được tự ý sửa đổi,nếu cần sửa đổi, vui lòng",
+    "wenxintixing_yinhangka":"lời nhắc nhở:\n1.tên chủ tài khoản ngân hàng phải khớp với tên đã nhập khi đăng ký;\n2.mỗi khách hàng có thể đăng ký tối đa 3 thẻ ngân hàng;\n3.sau khi đã đăng ký không được tự ý sửa đổi,nếu cần sửa đổi, vui lòng",
     "tianjiashuziqianbao":"thêm ví tiền ảo",
-    "wenxintixing_usdt":"lời nhắc nhở:\nmỗi khách hàng có thể đăng ký tối đa 3 ví tiền ảo;\nsau khi đã đăng ký không được tự ý sửa đổi, nếu cần sửa đổi, vui lòng",
+    "wenxintixing_usdt":"lời nhắc nhở:\n1.mỗi khách hàng có thể đăng ký tối đa 3 ví tiền ảo;\n2.sau khi đã đăng ký không được tự ý sửa đổi, nếu cần sửa đổi, vui lòng",
     "dizhi":"địa chỉ ví",
     "suoshuxieyi":"giao thức",
     "hongbao":"lì xì",
@@ -1050,6 +1050,7 @@ class VI{
     "bet_sunzi":"sảnh",
     "bet_baozi":"báo",
     "bet_duizi":"đôi",
+    "hello_you": "chào, %s",
 
 
   };

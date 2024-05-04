@@ -737,6 +737,7 @@ class Intr extends Translations{
   String get bet_sunzi => 'bet_sunzi'.tr;
   String get bet_baozi => 'bet_baozi'.tr;
   String get bet_duizi => 'bet_duizi'.tr;
+  String hello_you(List<String> args) => 'hello_you'.trArgs(args);
 
 
 
