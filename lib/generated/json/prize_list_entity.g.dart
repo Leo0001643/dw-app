@@ -1,7 +1,5 @@
 import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/prize_list_entity.dart';
-import 'dart:ffi';
-
 import 'package:leisure_games/app/intl/intr.dart';
 
 

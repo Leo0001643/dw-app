@@ -738,9 +738,9 @@ class Intr extends Translations{
   String get bet_baozi => 'bet_baozi'.tr;
   String get bet_duizi => 'bet_duizi'.tr;
   String hello_you(List<String> args) => 'hello_you'.trArgs(args);
-
-
-
+  String get zuotian => 'zuotian'.tr;
+  String get ti_confirm => 'ti_confirm'.tr;
+  String get ruoxuxiugaitixianzhanghu => 'ruoxuxiugaitixianzhanghu'.tr;
 
 
 
