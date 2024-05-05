@@ -1,12 +1,10 @@
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
-import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/change_balance_event.dart';
 import 'package:leisure_games/ui/bean/platform_entity.dart';
 

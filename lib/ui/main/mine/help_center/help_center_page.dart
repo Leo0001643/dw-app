@@ -9,8 +9,6 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 
-import '../../../../main.dart';
-import '../../ends_drawer_view.dart';
 import 'help_center_logic.dart';
 
 class HelpCenterPage extends StatefulWidget {

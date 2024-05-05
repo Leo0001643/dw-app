@@ -230,7 +230,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                 ),
               ),
               Center(
-                child: EmptyDataWidget(width: 100.w, height: 100.h),
+                child: EmptyDataWidget(width: 1.sw, height: 100.h),
               ),
             ],
           ),

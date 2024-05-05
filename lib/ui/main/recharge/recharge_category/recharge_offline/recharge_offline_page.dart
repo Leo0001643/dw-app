@@ -47,7 +47,9 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
                 width: 8.r,height: 8.r,
               ),
               SizedBox(width: 13.w,),
-              Text(Intr().diyibu_chakanshoukuanxinxi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              Expanded(
+                child: Text(Intr().diyibu_chakanshoukuanxinxi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              ),
             ],
           ),
           SizedBox(height: 15.h,),
@@ -94,7 +96,9 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
                 width: 8.r,height: 8.r,
               ),
               SizedBox(width: 13.w,),
-              Text(Intr().dierbu_tianchongdingdan,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              Expanded(
+                child: Text(Intr().dierbu_tianchongdingdan,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              ),
             ],
           ),
           SizedBox(height: 10.h,),
@@ -193,15 +197,18 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              WidgetUtils().buildElevatedButton(Intr().bibiduihuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
+              WidgetUtils().buildElevatedButton(Intr().bibiduihuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),
+                  textAlign: TextAlign.center,onPressed: (){
                 Get.toNamed(Routes.coin_exchange);
               }),
               SizedBox(width: 16.w,),
-              WidgetUtils().buildElevatedButton(Intr().chongzhijilu, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
+              WidgetUtils().buildElevatedButton(Intr().chongzhijilu, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),
+                  textAlign: TextAlign.center,onPressed: (){
                 Get.toNamed(Routes.recharge_record);
               }),
               SizedBox(width: 16.w,),
-              WidgetUtils().buildElevatedButton(Intr().eduzhuanhuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
+              WidgetUtils().buildElevatedButton(Intr().eduzhuanhuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),
+                  textAlign: TextAlign.center,onPressed: (){
                 Get.toNamed(Routes.quota_conversion);
               }),
             ],

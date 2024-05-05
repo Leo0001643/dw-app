@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,12 +5,12 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
-import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:leisure_games/ui/bean/prize_list_entity.dart';
+
 import 'bonus_packet_logic.dart';
 
 ///红包和奖金

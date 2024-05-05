@@ -8,6 +8,7 @@ import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
+
 import 'coin_exchange_logic.dart';
 
 ///
@@ -57,16 +58,20 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
                           children: [
                             WidgetUtils().buildImage(balance.icon.em(),18.r, 18.r),
                             SizedBox(width: 5.w,),
-                            Text( Intr().cong_from ,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700,color: ColorX.text5862()),),
-                            SizedBox(width: 5.w,),
+                            SizedBox(
+                              width: 50.w,
+                              child: Text( Intr().cong_from ,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700,color: ColorX.text5862()),),
+                            ),
                             Expanded(
-                              child: Center(
+                              child: Align(
+                                alignment: Alignment.centerLeft,
                                 child: Text(balance.language.em(),
                                   style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700,color: ColorX.textBlack()),),
                               ),
                             ),
                             SizedBox(width: 5.w,),
                             Expanded(
+                              flex: 2,
                               child: Obx(() {
                                 var balance = state.c2u.value ? state.cnyBal.value : state.usdtBal.value;
                                 var symbol = state.c2u.value ? "¥":"₮";
@@ -96,15 +101,19 @@ class _CoinExchangePageState extends State<CoinExchangePage> {
                           children: [
                             WidgetUtils().buildImage(balance.icon.em(),18.r, 18.r),
                             SizedBox(width: 5.w,),
-                            Text( Intr().zhi_to ,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700,color: ColorX.text5862()),),
-                            SizedBox(width: 5.w,),
+                            SizedBox(
+                              width: 50.w,
+                              child: Text( Intr().zhi_to ,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700,color: ColorX.text5862()),),
+                            ),
                             Expanded(
-                              child: Center(
+                              child: Align(
+                                alignment: Alignment.centerLeft,
                                 child: Text(balance.language.em(),style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w700,color: ColorX.textBlack()),),
                               ),
                             ),
                             SizedBox(width: 5.w,),
                             Expanded(
+                              flex: 2,
                               child: Obx(() {
                                 var balance = state.c2u.value ?  state.usdtBal.value:state.cnyBal.value;
                                 var symbol = state.c2u.value ? "₮":"¥";

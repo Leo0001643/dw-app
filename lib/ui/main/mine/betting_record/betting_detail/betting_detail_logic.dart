@@ -1,12 +1,9 @@
-import 'package:common_utils/common_utils.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
-import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
-import 'package:leisure_games/ui/bean/bet_record_group_entity.dart';
 
 import 'betting_detail_state.dart';
 

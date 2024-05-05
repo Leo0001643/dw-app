@@ -14,7 +14,7 @@ class MemberRebateState {
   // var currentTime = Intr().jinri.obs;
   // late var times = [currentTime.value,Intr().day_7,Intr().day_15,Intr().day_30,];
 
-  var selectTime = PaymentListBanks(bankName: Intr().jintian,id: 0).obs;
+  var selectTime = PaymentListBanks(bankName: Intr().zuotian,id: 0).obs;
   late List<PaymentListBanks> filterTime = [
     selectTime.value,
     PaymentListBanks(bankName: Intr().day_7,id: 1),

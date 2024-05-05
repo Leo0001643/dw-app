@@ -259,7 +259,7 @@ class _QuotaConversionPageState extends State<QuotaConversionPage>  with SingleT
               Row(
                 children: [
                   WidgetUtils().buildElevatedButton(Intr().yijianguiji, 168.w, 40.h,
-                      bg: ColorX.cardBg(),textColor: ColorX.text0917(),
+                      bg: ColorX.cardBg(),textColor: ColorX.text0917(),textAlign: TextAlign.center,
                       onPressed: ()=> logic.oneKeyCollect()),
                   SizedBox(width: 10.w,),
                   WidgetUtils().buildElevatedButton(Intr().chongzhi, 168.w, 40.h,

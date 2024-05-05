@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -71,20 +68,21 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
             child: Row(
               children: [
                 Expanded(
-                  flex: 40,
+                  flex: 60,
                   child: Text(Intr().touzhuriqi,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                 ),
                 Expanded(
-                  flex: 30,
+                  flex: 20,
                   child: Text(Intr().shuying,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                 ),
                 Expanded(
-                  flex: 30,
+                  flex: 20,
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(Intr().youxiaotouzhu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
                   ),
                 ),
+                SizedBox(width: 12.r,),
               ],
             ),
           ),
@@ -146,21 +144,22 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
       child: Row(
         children: [
           Expanded(
-            flex: 40,
+            flex: 60,
             child: Text(Intr().zongji,style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
           ),
           Expanded(
-            flex: 30,
+            flex: 20,
             child: Text("${(group.winloseTotal.em() >= 0) ? "+" : ""}${DataUtils.formatMoney(group.winloseTotal)}",
               style: TextStyle(fontSize: 14.sp,color: (group.winloseTotal.em() >= 0) ? ColorX.color_23a81d : ColorX.color_fc243b,fontWeight: FontWeight.w600),),
           ),
           Expanded(
-            flex: 30,
+            flex: 20,
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(DataUtils.formatMoney(group.validAmountTotal),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w600),),
             ),
           ),
+          SizedBox(width: 12.r,),
         ],
       ),
     );
@@ -188,16 +187,16 @@ class _BettingRecordPageState extends State<BettingRecordPage> {
         child: Row(
           children: [
             Expanded(
-              flex: 40,
+              flex: 60,
               child: Text(item.time.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
             Expanded(
-              flex: 30,
+              flex: 20,
               child: Text("${(item.winlose.em() >= 0) ? "+" : ""}${DataUtils.formatMoney(item.winlose)}",
                 style: TextStyle(fontSize: 14.sp,color: winloseColor),),
             ),
             Expanded(
-              flex: 30,
+              flex: 20,
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(DataUtils.formatMoney(item.validamount),style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),

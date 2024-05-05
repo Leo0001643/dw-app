@@ -8,7 +8,6 @@ import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
-import 'package:leisure_games/app/widget/lc_tabbar.dart';
 
 import 'select_avatar_logic.dart';
 

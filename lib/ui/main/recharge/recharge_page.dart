@@ -204,25 +204,22 @@ class _RechargePageState extends State<RechargePage> with LifecycleAware, Lifecy
           jumpPage(item);
         },
         child: Container(
-          padding: EdgeInsets.all(15.r),
+          padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 5.h),
           child: Row(
             children: [
-              SizedBox(width: 15.w,),
+              SizedBox(width: 10.w,),
               WidgetUtils().buildImage(item.icon.em(), 18.r, 18.r,),
               SizedBox(width: 8.w,),
               Expanded(
-                child: Text(
-                  item.bankName.em(),
-                  style: TextStyle(fontSize: 14.sp, color: ColorX.textBlack(),fontWeight: FontWeight.w600),
+                child: Container(
+                  height: 40.h,
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    item.bankName.em(),
+                    style: TextStyle(fontSize: 13.sp, color: ColorX.textBlack(),fontWeight: FontWeight.w600,height: 0.95),
+                  ),
                 ),
               ),
-              // Expanded(child: Container()),
-              // Image.asset(
-              //   ImageX.ic_into_right,
-              //   color: ColorX.icon586(),
-              //   width: 15.r,
-              //   height: 15.r,
-              // ),
             ],
           ),
         ),

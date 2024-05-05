@@ -1,13 +1,9 @@
-import 'dart:convert';
-
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
-import 'package:leisure_games/app/res/jsonx.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 
 import 'user_info_state.dart';

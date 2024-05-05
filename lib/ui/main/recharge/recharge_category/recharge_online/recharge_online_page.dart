@@ -45,7 +45,9 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                 width: 8.r,height: 8.r,
               ),
               SizedBox(width: 13.w,),
-              Text(Intr().dianjixiafangzhifu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              Expanded(
+                child: Text(Intr().dianjixiafangzhifu,style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+              ),
             ],
           ),
           SizedBox(height: 15.h,),
@@ -186,15 +188,18 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              WidgetUtils().buildElevatedButton(Intr().bibiduihuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
+              WidgetUtils().buildElevatedButton(Intr().bibiduihuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),
+                  textAlign: TextAlign.center,onPressed: (){
                 Get.toNamed(Routes.coin_exchange);
               }),
               SizedBox(width: 16.w,),
-              WidgetUtils().buildElevatedButton(Intr().chongzhijilu, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
+              WidgetUtils().buildElevatedButton(Intr().chongzhijilu, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),
+                  textAlign: TextAlign.center,onPressed: (){
                 Get.toNamed(Routes.recharge_record);
               }),
               SizedBox(width: 16.w,),
-              WidgetUtils().buildElevatedButton(Intr().eduzhuanhuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),onPressed: (){
+              WidgetUtils().buildElevatedButton(Intr().eduzhuanhuan, 102.w, 38.h,bg: ColorX.cardBg(),textColor: ColorX.text0917(),
+                  textAlign: TextAlign.center,onPressed: (){
                 Get.toNamed(Routes.quota_conversion);
               }),
             ],
@@ -223,11 +228,12 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
               border: Border.all(color: select ? ColorX.color_fc243b : ColorX.color_e8e8e8,width: 1.w),
               borderRadius: BorderRadius.circular(8.r),
             ),
-            width: 120.w,height: 40.h,
+            width: 120.w,//height: 40.h,
             padding: EdgeInsets.symmetric(vertical: 5.h),
             alignment: Alignment.center,
             child: Text(Intr().zhifutiaozhuan_(["${index + 1}"]),
-              style: TextStyle(fontSize: 14.sp,color: select?ColorX.color_fc243b:ColorX.text0917(),fontWeight: FontWeight.w600),),
+              style: TextStyle(fontSize: 14.sp,color: select?ColorX.color_fc243b:ColorX.text0917(),fontWeight: FontWeight.w600),
+            textAlign: TextAlign.center,),
           ),
           Visibility(
             visible: select,

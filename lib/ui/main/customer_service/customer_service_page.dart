@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,7 +6,6 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
 
@@ -41,10 +39,19 @@ class StateCustomerServicePage extends State<CustomerServicePage>{
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               margin: EdgeInsets.symmetric(horizontal: 20.w),
               height: 126.h,
-              child: Row(
+              width: 1.sw,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(Intr().qthwnfw,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917())),
-                  Expanded(child: Container()),
+                  SizedBox(height: 10.h,),
+                  Obx(() {
+                    return Visibility(
+                      visible: unEmpty(state.hiYou.value),
+                      child: Text(state.hiYou.value,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917())),
+                    );
+                  }),
                 ],
               ),
             ),

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
@@ -9,8 +8,6 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
-import 'package:leisure_games/ui/main/home/home_logic.dart';
-import 'package:leisure_games/ui/main/main_logic.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import 'promotion_profit_state.dart';

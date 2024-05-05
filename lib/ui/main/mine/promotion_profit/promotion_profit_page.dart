@@ -12,6 +12,7 @@ import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/lc_segment_tabs.dart';
 import 'package:leisure_games/ui/bean/spread_promos_data_entity.dart';
 import 'package:leisure_games/ui/bean/spread_user_entity.dart';
+
 import 'promotion_profit_logic.dart';
 
 ///

@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
@@ -47,6 +46,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                 height: 226.h,
               ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true,
                       systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
@@ -228,13 +228,25 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
                           ),
                         ),
                         SizedBox(height: 28.h,),
-                        WidgetUtils().buildElevatedButton(Intr().confirm, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
+                        WidgetUtils().buildElevatedButton(Intr().ti_confirm, 335.w, 50.h,bg: ColorX.color_fc243b,onPressed: (){
                           logic.withdraw();
                         }),
                         SizedBox(height: 20.h,),
                       ],
                     ),
-                  )
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 15.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(Intr().wenxintishi_,style: TextStyle(fontSize: 16.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600),),
+                        SizedBox(height: 5.h,),
+                        Text(Intr().ruoxuxiugaitixianzhanghu,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                        SizedBox(height: 20.h,),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ],

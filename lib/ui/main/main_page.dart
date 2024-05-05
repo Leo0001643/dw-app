@@ -6,10 +6,8 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/utils/version_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
-import 'package:leisure_games/ui/main/ends_drawer_view.dart';
 
 import 'main_logic.dart';
 import 'main_state.dart';
@@ -91,7 +89,7 @@ class ItemBuilder extends DelegateBuilder{
       case 2:
         return buildNormalLabel("home_recharge".tr,ImageX.iconChargeCoinT(),ImageX.icon_charge_coin,48.r,active,index:2);
       case 3:
-        return buildNormalLabel("home_kefu".tr,ImageX.iconCustomerT(),ImageX.icon_customer,24.r,active);
+        return buildNormalLabel("home_kefu".tr,ImageX.iconCustomerT(),ImageX.svg_service_sel,24.r,active);
       case 4:
         return buildNormalLabel("home_mine".tr,ImageX.myT(),ImageX.icon_mine,24.r,active);
       default :
