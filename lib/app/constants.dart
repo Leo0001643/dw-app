@@ -59,6 +59,7 @@ class Constants {
   static const code_caifutong = "caifutong";
   static const code_qmf = "qmf";
   static const code_jingdong = "jingdong";
+  static const code_siyu = "siyu";
 
 
 }

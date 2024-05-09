@@ -46,7 +46,8 @@ class _WithdrawResultPageState extends State<WithdrawResultPage> {
             ),
             Column(
               children: [
-                WidgetUtils().buildAppBar(Intr().tixian,bgColor: Colors.transparent,msg: true,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
+                WidgetUtils().buildAppBar(Intr().tixian,bgColor: Colors.transparent,msg: true,drawer: true,
+                    systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
                 Container(
                   height: 115.h,
                   child: Column(

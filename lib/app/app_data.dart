@@ -276,6 +276,7 @@ class AppData {
 
   ///从缓存获取base_url
   static String baseUrl(){
+    // return "https://api.00438.com/";
     if(unEmpty(base_url)) return base_url;
     base_url = prefs?.getString("base_url") ?? "";
     if(isEmpty(base_url)){

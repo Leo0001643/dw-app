@@ -5,6 +5,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
@@ -198,7 +199,7 @@ class StateSelectAnimationPage extends State<SelectAnimationPage>{
               child: InkWell(
                 onTap: (){
                   eventBus.fire(ChangeMainPageEvent(3));
-                  Get.back();
+                  Get.until((ModalRoute.withName(Routes.main)));
                 },
                 child:  Text(Intr().lxkf,
                   style: TextStyle(fontSize: 14.sp,color: ColorX.text0917(),fontWeight: FontWeight.w600,),),

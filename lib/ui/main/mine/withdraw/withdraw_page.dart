@@ -73,7 +73,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
           ),
           Column(
             children: [
-              WidgetUtils().buildAppBar(Intr().tixianzhongxin,bgColor: Colors.transparent,
+              WidgetUtils().buildAppBar(Intr().tixianzhongxin,bgColor: Colors.transparent,msg: true,drawer: true,
                   systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
               Container(
                 height: 140.h,

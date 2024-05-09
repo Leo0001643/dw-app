@@ -369,6 +369,11 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     Expanded(child: Container()),
                     Obx(() {
+                      return Text(state.curVersion.value,
+                        style: TextStyle(fontSize: 12.sp, color: ColorX.text586()),
+                      );
+                    }),
+                    Obx(() {
                       return Visibility(
                         visible: state.newVersion.value,
                         child: Container(

@@ -125,6 +125,7 @@ class _RechargeCategoryPageState extends State<RechargeCategoryPage> with Single
         case Constants.code_qmf:
         case Constants.code_caifutong:
         case Constants.code_jingdong:
+        case Constants.code_siyu:
         logic.loadData(value);
         break;
         default:

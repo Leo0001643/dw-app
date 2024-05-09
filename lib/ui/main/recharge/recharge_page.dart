@@ -240,6 +240,7 @@ class _RechargePageState extends State<RechargePage> with LifecycleAware, Lifecy
       case Constants.code_qmf:
       case Constants.code_caifutong:
       case Constants.code_jingdong:
+      case Constants.code_siyu:
         Get.toNamed(Routes.recharge_category, arguments: item);
         break;
       default:

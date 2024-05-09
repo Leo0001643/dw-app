@@ -44,7 +44,8 @@ class _WithdrawChannelPageState extends State<WithdrawChannelPage> {
           ),
           Column(
             children: [
-              WidgetUtils().buildAppBar(Intr().tixianfangshi,bgColor: Colors.transparent,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
+              WidgetUtils().buildAppBar(Intr().tixianfangshi,bgColor: Colors.transparent,msg: true,drawer: true,
+                  systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
               Expanded(
                 child: SingleChildScrollView(
                   child: Obx(() {

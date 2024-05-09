@@ -532,6 +532,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
         case Constants.code_qmf:
         case Constants.code_caifutong:
         case Constants.code_jingdong:
+        case Constants.code_siyu:
           Get.offAndToNamed(Routes.recharge_category, arguments: value);
           break;
         default:

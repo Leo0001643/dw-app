@@ -328,6 +328,7 @@ class _RechargeOfflinePageState extends State<RechargeOfflinePage> {
       case Constants.code_caifutong:
       case Constants.code_wangyin:
       case Constants.code_ysfzf:
+      case Constants.code_siyu:
         return ColorX.color_5583e7;
       case Constants.code_qmf:
         return ColorX.color_e75555;

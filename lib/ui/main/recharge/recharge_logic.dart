@@ -94,6 +94,9 @@ class RechargeLogic extends GetxController {
             case Constants.code_jingdong:
               element.icon = ImageX.jingdongT();
               break;
+            case Constants.code_siyu:
+              element.icon = ImageX.siyuT();
+              break;
             // case Constants.code_usdt:
             //   element.icon = ImageX.icon_cft;
             //   state.usdtBank.value = element;

@@ -21,7 +21,7 @@ class SettingState {
 
   ///是否有新版本
   var newVersion = false.obs;
-
-
+  ///当前版本
+  var curVersion = "".obs;
 
 }

@@ -618,6 +618,10 @@ class ImageX{
   static const ic_dw_home =  'assets/images/ic_dw_home.png';
   static const ic_dw_home_en =  'assets/images/ic_dw_home_en.png';
 
+  static const siyu =  'assets/images/siyu.png';
+  static const siyu_dark =  'assets/images/siyu_dark.svg';
+
+
 
   
   static String startP(){
@@ -1038,6 +1042,9 @@ class ImageX{
     return AppData.theme() ? language : language_dark;
   }
 
+  static String siyuT(){
+    return AppData.theme() ? siyu : siyu_dark;
+  }
 
   static String countDown1Z(){
     return AppData.localeIndex() == 0 ? countDown1 : countDown1_en;

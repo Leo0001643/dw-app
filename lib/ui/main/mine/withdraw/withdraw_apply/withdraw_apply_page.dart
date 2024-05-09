@@ -48,7 +48,7 @@ class _WithdrawApplyPageState extends State<WithdrawApplyPage> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true,
+                  WidgetUtils().buildAppBar(Intr().tixianxinxi,bgColor: Colors.transparent,msg: true,drawer: true,
                       systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 15.w),

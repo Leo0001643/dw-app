@@ -306,6 +306,7 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
         case Constants.code_qmf:
         case Constants.code_caifutong:
         case Constants.code_jingdong:
+        case Constants.code_siyu:
           Get.offAndToNamed(Routes.recharge_category, arguments: value);
           break;
         default:
