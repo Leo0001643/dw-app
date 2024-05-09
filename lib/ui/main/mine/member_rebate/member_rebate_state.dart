@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
+import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:leisure_games/ui/bean/constitute_ratio_entity.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
@@ -11,8 +13,16 @@ class MemberRebateState {
     ///Initialize variables
   }
 
-  // var currentTime = Intr().jinri.obs;
-  // late var times = [currentTime.value,Intr().day_7,Intr().day_15,Intr().day_30,];
+
+  var currentWallet = BillWalletEntity(Intr().wallet_cny, ImageX.iconJjGrey(),ImageX.icon_jj_red).obs;
+
+  late List<BillWalletEntity> wallets = [
+    currentWallet.value,
+    BillWalletEntity(Intr().wallet_usdt, ImageX.usdtT(),ImageX.active_usdt),
+  ];
+
+  ///选择的tab下标
+  var selectIndex = 0;
 
   var selectTime = PaymentListBanks(bankName: Intr().zuotian,id: 0).obs;
   late List<PaymentListBanks> filterTime = [

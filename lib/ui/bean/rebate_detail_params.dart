@@ -6,8 +6,9 @@ class RebateDetailParams{
 
   DayReturnWaterDetailsRecord? record;
   BackWaterEntity? details;
+  int? cur;
 
-  RebateDetailParams({this.details, this.record});
+  RebateDetailParams({this.details, this.record, this.cur});
 
 
 }

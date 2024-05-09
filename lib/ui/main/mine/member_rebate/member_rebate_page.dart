@@ -6,11 +6,13 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
 import 'package:leisure_games/app/widget/empty_data_widget.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
+import 'package:leisure_games/ui/bean/bill_wallet_entity.dart';
 import 'package:leisure_games/ui/bean/day_return_water_details_params.dart';
 import 'package:leisure_games/ui/bean/payment_list_entity.dart';
 
@@ -48,6 +50,25 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 10.h,),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Obx(() {
+                  return Row(
+                    children: state.wallets.map((e){
+                      return GestureDetector(
+                        onTap: (){
+                          state.currentWallet.value = e;
+                          state.currentWallet.refresh();
+                          state.selectIndex = state.wallets.indexOf(e);
+                          logic.loadList();
+                        },
+                        child: buildWalletTab(e, state.currentWallet.value == e ),
+                      );
+                    }).toList(),
+                  );
+                }),
+              ),
               SizedBox(height: 10.h,),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -132,9 +153,12 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                     }
                     var dateRange = logic.getRangeDate();
                     return InkWell(
-                      onTap: ()=> Get.toNamed(Routes.profit_rebate,arguments:
-                      DayReturnWaterDetailsParams(details:state.list.first, beginDate:dateRange.first,
-                          endDate:dateRange.last)),
+                      onTap: (){
+                        var cur = state.selectIndex == 0 ? 1 : 5;
+                        Get.toNamed(Routes.profit_rebate,arguments:
+                        DayReturnWaterDetailsParams(details:state.list.first, beginDate:dateRange.first,
+                            endDate:dateRange.last,cur: cur));
+                      },
                       child: buildProfitItem(state.list.first),
                     );
                   }),
@@ -142,7 +166,8 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                     if(state.list.em() < 2){
                       return Container();
                     }
-                    return buildRebateTotal(Intr().xiaoji,"¥${state.list.first.lossMoneyBonus.em()}");
+                    var symbol = state.selectIndex == 0 ? 1 : 5;
+                    return buildRebateTotal(Intr().xiaoji,"${symbolB(symbol)}${state.list.first.lossMoneyBonus.em()}");
                   }),
                 ],
               ),
@@ -201,8 +226,11 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                     }
                     var dateRange = logic.getRangeDate();
                     return InkWell(
-                      onTap: ()=> Get.toNamed(Routes.bet_amount_rebate,arguments:
-                      DayReturnWaterDetailsParams(details:state.list.last, beginDate:dateRange.first, endDate:dateRange.last)),
+                      onTap: (){
+                        var cur = state.selectIndex == 0 ? 1 : 5;
+                        Get.toNamed(Routes.bet_amount_rebate,arguments:
+                        DayReturnWaterDetailsParams(details:state.list.last, beginDate:dateRange.first, endDate:dateRange.last,cur: cur));
+                      },
                       child: buildBetAmountItem(state.list.last),
                     );
                   }),
@@ -212,7 +240,8 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
                     }
                     var total = 0.0;
                     state.list.forEach((element) { total += element.lossMoneyBonus.em(); });
-                    return buildRebateTotal(Intr().zongji, "¥$total");
+                    var symbol = state.selectIndex == 0 ? 1 : 5;
+                    return buildRebateTotal(Intr().zongji, "${symbolB(symbol)}$total");
                   }),
                 ],
               ),
@@ -256,6 +285,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
 
   ///负盈利
   Widget buildProfitItem(BackWaterEntity item) {
+    var symbol = state.selectIndex == 0 ? 1 : 5;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
       child: Row(
@@ -270,13 +300,13 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("¥${item.validBetMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text("${symbolB(symbol)}${item.validBetMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("¥${item.lossMoney.em()}",style: TextStyle(fontSize: 14.sp,
+              child: Text("${symbolB(symbol)}${item.lossMoney.em()}",style: TextStyle(fontSize: 14.sp,
                 color: ColorX.color_fe2427,fontWeight: FontWeight.w600),),
             ),
           ),
@@ -285,7 +315,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("¥${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+                Text("${symbolB(symbol)}${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
                 Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
               ],
             ),
@@ -309,6 +339,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
   }
 
   Widget buildBetAmountItem(BackWaterEntity item) {
+    var symbol = state.selectIndex == 0 ? 1 : 5;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 10.h),
       child: Row(
@@ -323,7 +354,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
           Expanded(
             flex: 25,
             child: Center(
-              child: Text("¥${item.validBetMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+              child: Text("${symbolB(symbol)}${item.validBetMoney.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
             ),
           ),
           Expanded(
@@ -331,7 +362,7 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("¥${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
+                Text("${symbolB(symbol)}${item.lossMoneyBonus.em()}",style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1(),),),
                 Image.asset(ImageX.ic_into_right,color: ColorX.icon586(),),
               ],
             ),
@@ -342,5 +373,23 @@ class _MemberRebatePageState extends State<MemberRebatePage> {
   }
 
 
+  Widget buildWalletTab(BillWalletEntity item,bool select) {
+    return Container(
+      decoration: BoxDecoration(
+        color: ColorX.cardBg(),
+        borderRadius: BorderRadius.circular(10.r),
+        border: select ? Border.all(color: ColorX.color_fc243b,width: 1.r) : null,
+      ),
+      margin: EdgeInsets.only(left: 15.w),
+      padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 8.h),
+      child: Row(
+        children: [
+          WidgetUtils().buildImage(select ? item.activeIcon:item.normalIcon, 15.r, 15.r),
+          SizedBox(width: 3.w,),
+          Text(item.name,style: TextStyle(fontSize: 14.sp,color: select ? ColorX.color_fc243b:ColorX.text0917()),),
+        ],
+      ),
+    );
+  }
 
 }

@@ -58,7 +58,7 @@ class _RebateDetailPageState extends State<RebateDetailPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(Intr().zongji,style: TextStyle(fontSize: 16.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500,),),
-                    Text("¥${state.params.record?.lossMoneyBonus.em()}",style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500,),),
+                    Text("${symbolB(state.params.cur)}${state.params.record?.lossMoneyBonus.em()}",style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500,),),
                   ],
                 ),
               ],
@@ -120,28 +120,6 @@ class _RebateDetailPageState extends State<RebateDetailPage> {
               );
             }),
           ),
-          // Column(
-          //   children: [
-          //     Obx(() {
-          //       if(state.list.em() < 2){
-          //         return Container();
-          //       }
-          //       var dateRange = logic.getRangeDate();
-          //       return InkWell(
-          //         onTap: ()=> Get.toNamed(Routes.profit_rebate,arguments:
-          //         DayReturnWaterDetailsParams(details:state.list.first, beginDate:dateRange.first,
-          //             endDate:dateRange.last)),
-          //         child: buildProfitItem(state.list.first),
-          //       );
-          //     }),
-          //     Obx(() {
-          //       if(state.list.em() < 2){
-          //         return Container();
-          //       }
-          //       return buildRebateTotal(Intr().xiaoji,"¥${state.list.first.lossMoneyBonus.em()}");
-          //     }),
-          //   ],
-          // ),
         ],
       ),
     );

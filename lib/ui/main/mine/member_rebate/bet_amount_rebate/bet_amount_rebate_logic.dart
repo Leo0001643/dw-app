@@ -33,7 +33,7 @@ class BetAmountRebateLogic extends GetxController {
     params["mark"] = "1";
     params["beginDate"] = item.beginDate;
     params["endDate"] = item.endDate;
-
+    params["cur"] = item.cur;
     HttpService.dayReturnWaterDetails(params).then((value) {
       state.record.value = value;
       state.record.refresh();

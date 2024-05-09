@@ -56,7 +56,7 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(Intr().zongji,style: TextStyle(fontSize: 16.sp,color: ColorX.text0d1(),fontWeight: FontWeight.w500,),),
-                        Text("¥${state.params.value.details?.lossMoneyBonus.em()}",style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500,),),
+                        Text("${symbolB(state.params.value.cur)}${state.params.value.details?.lossMoneyBonus.em()}",style: TextStyle(fontSize: 16.sp,color: ColorX.color_fc243b,fontWeight: FontWeight.w500,),),
                       ],
                     ),
                   ],
@@ -126,7 +126,7 @@ class _ProfitRebatePageState extends State<ProfitRebatePage> {
   ///负盈利
   Widget buildProfitItem(DayReturnWaterDetailsRecord item) {
     return InkWell(
-      onTap: ()=> Get.toNamed(Routes.rebate_detail,arguments: RebateDetailParams(record: item,details: state.params.value.details)),
+      onTap: ()=> Get.toNamed(Routes.rebate_detail,arguments: RebateDetailParams(record: item,details: state.params.value.details, cur: state.params.value.cur)),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15.w,vertical: 13.h),
         child: Row(

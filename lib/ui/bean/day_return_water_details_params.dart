@@ -6,9 +6,10 @@ class DayReturnWaterDetailsParams{
 
   String? beginDate;
   String? endDate;
+  int? cur;
   BackWaterEntity? details;
 
-  DayReturnWaterDetailsParams({this.details, this.beginDate, this.endDate});
+  DayReturnWaterDetailsParams({this.details, this.beginDate, this.endDate,this.cur});
 
 
   String beginDateStr(){

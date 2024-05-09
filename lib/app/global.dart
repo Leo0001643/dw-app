@@ -37,6 +37,18 @@ bool unEmpty(Object? obj) => ObjectUtil.isNotEmpty(obj);
 ///是否int型
 bool isInt(Object? obj) => unEmpty(obj) && int.tryParse(obj.toString()) != null;
 
+///钱包符号
+String symbolB(int? type){
+  switch(type){
+    case 1:
+      return '¥';
+    case 5:
+      return '₮';
+    default:
+      return '';
+  }
+}
+
 extension StringExtension on String? {
   ///防止字段为空报错
   String em({String aft = ""}){

@@ -27,6 +27,7 @@ class RebateDetailLogic extends GetxController {
     params["gameType"] = state.params.details?.gameType?.toUpperCase() == Constants.PC28 ? 1:2;
     params["date"] = state.params.record?.date;
     params["id"] = state.params.record?.id;
+    params["cur"] = state.params.cur;
     HttpService.backWaterDetail(params).then((value) {
       state.data.assignAll(value);
       state.data.refresh();

@@ -36,9 +36,12 @@ class MemberRebateLogic extends GetxController {
 
     var user = AppData.user();
     var params = <String,dynamic>{"oid":user?.oid,"username":user?.username};
+    var cur = state.selectIndex == 0 ? 1 : 5;
+
     var dateRange = getRangeDate();
     params["beginDate"] = dateRange.first;
     params["endDate"] = dateRange.last;
+    params["cur"] = cur;
 
     ///回水统计
     HttpService.backWaterTotal(params).then((value) {
@@ -47,7 +50,7 @@ class MemberRebateLogic extends GetxController {
     });
 
     ///查询组合占比
-    HttpService.queryConstituteRatio({"oid":user?.oid,"username":user?.username}).then((value) {
+    HttpService.queryConstituteRatio({"oid":user?.oid,"username":user?.username,"cur":cur}).then((value) {
       state.constituteRatio.value = value;
       state.constituteRatio.refresh();
     });
