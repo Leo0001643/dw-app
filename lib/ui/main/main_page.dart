@@ -109,7 +109,7 @@ class ItemBuilder extends DelegateBuilder{
       children: [
         WidgetUtils().buildImage(active ? activeicon: icon,iconsize,iconsize,),
         Visibility(
-          visible: index==2,
+            visible: index==2,
             child: SizedBox(height: 5.h,)),
         Text(
           label,
