@@ -1054,6 +1054,7 @@ class VI{
     "zuotian":"hôm qua",
     "ti_confirm":"xác định",
     "ruoxuxiugaitixianzhanghu":"1.nếu bạn cần sửa đổi thông tin tài khoản rút tiền, vui lòng liên hệ chăm sóc khách hàng\n2.nếu không có trường hợp đặc biệt, sẽ mất khoảng 3 đến 5 phút để đến tài khoản",
+    "shibieshibai":"Nhận ra thất bại!",
 
 
   };

@@ -24,4 +24,10 @@ class SettingState {
   ///当前版本
   var curVersion = "".obs;
 
+
+  ///生物识别支持
+  var localAuth = false.obs;
+
+
+
 }

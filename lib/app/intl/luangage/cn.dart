@@ -1053,7 +1053,7 @@ class CN {
     "zuotian":"昨天",
     "ti_confirm":"确定",
     "ruoxuxiugaitixianzhanghu":"1.若需修改提现账户信息，请联系客服修改\n2.若无特殊情况，约3-5分钟即可到账。",
-
+    "shibieshibai":"识别失败！",
 
   };
 

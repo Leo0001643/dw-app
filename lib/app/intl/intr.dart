@@ -741,6 +741,7 @@ class Intr extends Translations{
   String get zuotian => 'zuotian'.tr;
   String get ti_confirm => 'ti_confirm'.tr;
   String get ruoxuxiugaitixianzhanghu => 'ruoxuxiugaitixianzhanghu'.tr;
+  String get shibieshibai => 'shibieshibai'.tr;
 
 
 

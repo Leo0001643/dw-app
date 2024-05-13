@@ -1,6 +1,8 @@
 PODS:
   - audio_session (0.0.1):
     - Flutter
+  - device_info (0.0.1):
+    - Flutter
   - device_info_plus (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -22,7 +24,16 @@ PODS:
     - Flutter
   - install_plugin (2.0.0):
     - Flutter
+  - JCore (4.6.2)
+  - JPush (5.2.4):
+    - JCore (>= 2.0.0)
+  - jpush_flutter (0.0.2):
+    - Flutter
+    - JCore (>= 4.6.2)
+    - JPush (= 5.2.4)
   - just_audio (0.0.1):
+    - Flutter
+  - local_auth_ios (0.0.1):
     - Flutter
   - OrderedSet (5.0.0)
   - package_info_plus (0.4.5):
@@ -31,6 +42,8 @@ PODS:
     - Flutter
     - FlutterMacOS
   - permission_handler_apple (9.3.0):
+    - Flutter
+  - share (0.0.1):
     - Flutter
   - shared_preferences_foundation (0.0.1):
     - Flutter
@@ -51,6 +64,7 @@ PODS:
 
 DEPENDENCIES:
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
+  - device_info (from `.symlinks/plugins/device_info/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - Flutter (from `Flutter`)
   - flutter_aliyun_captcha (from `.symlinks/plugins/flutter_aliyun_captcha/ios`)
@@ -59,10 +73,13 @@ DEPENDENCIES:
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - image_gallery_saver (from `.symlinks/plugins/image_gallery_saver/ios`)
   - install_plugin (from `.symlinks/plugins/install_plugin/ios`)
+  - jpush_flutter (from `.symlinks/plugins/jpush_flutter/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
+  - local_auth_ios (from `.symlinks/plugins/local_auth_ios/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - share (from `.symlinks/plugins/share/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
@@ -72,12 +89,16 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - JCore
+    - JPush
     - OrderedSet
     - Toast
 
 EXTERNAL SOURCES:
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
+  device_info:
+    :path: ".symlinks/plugins/device_info/ios"
   device_info_plus:
     :path: ".symlinks/plugins/device_info_plus/ios"
   Flutter:
@@ -94,14 +115,20 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/image_gallery_saver/ios"
   install_plugin:
     :path: ".symlinks/plugins/install_plugin/ios"
+  jpush_flutter:
+    :path: ".symlinks/plugins/jpush_flutter/ios"
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
+  local_auth_ios:
+    :path: ".symlinks/plugins/local_auth_ios/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
+  share:
+    :path: ".symlinks/plugins/share/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   sqflite:
@@ -116,20 +143,26 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
-  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
+  audio_session: 088d2483ebd1dc43f51d253d4a1c517d9a2e7207
+  device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_aliyun_captcha: ae5a6d128035eb2075be2a99606bb58bea31cffe
   flutter_inappwebview_ios: 97215cf7d4677db55df76782dbd2930c5e1c1ea0
   flutter_tencent_captcha: 4853c2caa88a285990eb470f26ba7568f26689b4
-  fluttertoast: fafc4fa4d01a6a9e4f772ecd190ffa525e9e2d9c
+  fluttertoast: 77ff8760d90ff5041a97e3d0c0ecaaa8472524d2
   image_gallery_saver: cb43cc43141711190510e92c460eb1655cd343cb
   install_plugin: b52f81470a1f37b006607bdf7ffc6031df43fe76
+  JCore: 024c73b04e110b496e93d8c127ea9cd1ed934e4c
+  JPush: c3c6e328b39a7dd78cf6b1a7d072af1a9a1974bd
+  jpush_flutter: 3a45b38bdaeb2dbfa0d1e77da949b94eec34197c
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
+  local_auth_ios: 1ba1475238daa33a6ffa2a29242558437be435ac
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
   path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
-  permission_handler_apple: 036b856153a2b1f61f21030ff725f3e6fece2b78
+  permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
+  share: 0b2c3e82132f5888bccca3351c504d0003b3b410
   shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
   sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196

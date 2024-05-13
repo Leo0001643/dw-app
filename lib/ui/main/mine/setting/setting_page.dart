@@ -114,70 +114,80 @@ class _SettingPageState extends State<SettingPage> {
                       ),
                     ),
                   ),
-                  Divider(
-                    color: ColorX.color_10_949,
-                    height: 1.h,
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
+                  Obx(() {
+                    return Visibility(
+                      visible: !state.localAuth.value,
+                      child: Divider(
+                        color: ColorX.color_10_949,
+                        height: 1.h,
+                      ),
+                    );
+                  }),
+                  Obx(() {
+                    return Visibility(
+                      visible: !state.localAuth.value,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              Intr().shezhijianyimima,
-                              style: TextStyle(
-                                  fontSize: 12.sp, color: ColorX.text0d1()),
+                            Row(
+                              children: [
+                                Text(
+                                  Intr().shezhijianyimima,
+                                  style: TextStyle(
+                                      fontSize: 12.sp, color: ColorX.text0d1()),
+                                ),
+                                SizedBox(
+                                  width: 3.w,
+                                ),
+                                Image.asset(
+                                  ImageX.icon_wenhao,
+                                  color: ColorX.text586(),
+                                )
+                              ],
                             ),
-                            SizedBox(
-                              width: 3.w,
-                            ),
-                            Image.asset(
-                              ImageX.icon_wenhao,
-                              color: ColorX.text586(),
-                            )
+                            Obx(() {
+                              return Switch(
+                                thumbColor:
+                                MaterialStateColor.resolveWith((states) {
+                                  // 根据状态返回相应的颜色
+                                  if (states.contains(MaterialState.selected)) {
+                                    // Switch 处于激活状态时的颜色
+                                    return Colors.white;
+                                  }
+                                  // Switch 处于非激活状态时的颜色
+                                  return Colors.white; // 你可以根据需要修改颜色
+                                }),
+                                onChanged: (value) {
+                                  if(value){
+                                    Get.toNamed(Routes.set_simple_pwd)?.then((gestureValue) {
+                                      if(unEmpty(gestureValue)){
+                                        // AppData.setJymm(value);
+                                        //全局设置手势密码
+                                        AppData.setGestureValue(gestureValue);
+                                        state.jymmToggle.value = value;
+                                      }
+                                    });
+                                  } else {
+                                    DialogUtils().showMessageDialog(context, Intr().guanbijianyimima,onConfirm: (){
+                                      Navigator.pop(context);
+                                      state.jymmToggle.value = value;
+                                      AppData.setGestureValue("");
+                                    });
+                                  }
+                                },
+                                value: state.jymmToggle.value,
+                                inactiveTrackColor: ColorX.text949(),
+                                activeTrackColor: ColorX.color_69c25c,
+                                activeColor: Colors.white,
+                              );
+                            }),
                           ],
                         ),
-                        Obx(() {
-                          return Switch(
-                            thumbColor:
-                                MaterialStateColor.resolveWith((states) {
-                              // 根据状态返回相应的颜色
-                              if (states.contains(MaterialState.selected)) {
-                                // Switch 处于激活状态时的颜色
-                                return Colors.white;
-                              }
-                              // Switch 处于非激活状态时的颜色
-                              return Colors.white; // 你可以根据需要修改颜色
-                            }),
-                            onChanged: (value) {
-                              if(value){
-                                Get.toNamed(Routes.set_simple_pwd)?.then((gestureValue) {
-                                  if(unEmpty(gestureValue)){
-                                    // AppData.setJymm(value);
-                                    //全局设置手势密码
-                                    AppData.setGestureValue(gestureValue);
-                                    state.jymmToggle.value = value;
-                                  }
-                                });
-                              } else {
-                                DialogUtils().showMessageDialog(context, Intr().guanbijianyimima,onConfirm: (){
-                                  Navigator.pop(context);
-                                  state.jymmToggle.value = value;
-                                  AppData.setGestureValue("");
-                                });
-                              }
-                            },
-                            value: state.jymmToggle.value,
-                            inactiveTrackColor: ColorX.text949(),
-                            activeTrackColor: ColorX.color_69c25c,
-                            activeColor: Colors.white,
-                          );
-                        }),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  }),
                 ],
               ),
             ),

@@ -1054,6 +1054,7 @@ class EN {
     "zuotian":"Yesterday",
     "ti_confirm":"Submit",
     "ruoxuxiugaitixianzhanghu":"1.For any modification, please kindly approach Customer Support\n2.The withdrawal process will take 3-5 mins.",
+    "shibieshibai":"Recognition failure!",
 
 
   };

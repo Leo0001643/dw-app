@@ -18,6 +18,7 @@ import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/auth_utils.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/chess_event.dart';
@@ -702,7 +703,26 @@ class WidgetUtils {
 
   void goLogin() {
     if (unEmpty(AppData.getGestureValue())) {
-      Get.toNamed(Routes.simple_login);
+      ///校验设备是否支持生物识别
+      AuthUtils().authEnable().then((enable) {
+        if(enable){///校验生物识别是否注册
+          AuthUtils().getAvailableBiometrics().then((available) {
+            if(available){///识别认证
+              AuthUtils().authLogin().then((value) {
+                if(value){
+                  Get.offAndToNamed(Routes.simple_login_var,arguments: AppData.lastLoginUser());
+                } else {
+                  showToast(Intr().shibieshibai);
+                }
+              });
+            } else {
+              Get.toNamed(Routes.simple_login);
+            }
+          });
+        } else {
+          Get.toNamed(Routes.simple_login);
+        }
+      });
     } else {
       Get.toNamed(Routes.login);
     }
