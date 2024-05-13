@@ -93,6 +93,7 @@ dependencies:
   flutter_widget_from_html: ^0.14.11
   flutter_html: 3.0.0-alpha.5
   jpush_flutter: ^3.0.0
+  local_auth: 2.1.8
 
 
 dependency_overrides:

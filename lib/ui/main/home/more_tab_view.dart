@@ -50,7 +50,7 @@ class MoreTabView extends StatelessWidget {
         );
       },
       child: SizedBox(
-        width: 50.w,
+        width: 55.w,
         child: Column(
           children: [
             SvgPicture.asset(
@@ -61,7 +61,7 @@ class MoreTabView extends StatelessWidget {
               fit: BoxFit.contain,
             ),
             SizedBox(height: 4.h,),
-            Text(Intr().gengduo,style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
+            Text(Intr().gengduo,style: TextStyle(fontSize: 11.sp,color: ColorX.text0917()),),
           ],
         ),
       ),

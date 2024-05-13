@@ -155,9 +155,7 @@ class StateHomePage extends State<HomePage>
                                     ? userHeader(state.user.value)
                                     : noLoginHeader(state.user.value);
                               })),
-                              SizedBox(
-                                width: 15.w,
-                              ),
+                              SizedBox(width: 5.w,),
                               buildMenuItem(
                                   Intr().charge, ImageX.icChongzhiT(), 0),
                               buildMenuItem(
@@ -244,7 +242,7 @@ class StateHomePage extends State<HomePage>
     return InkWell(
       onTap: () => logic.clickMenu(context, i),
       child: SizedBox(
-        width: 50.w,
+        width: 55.w,
         child: Column(
           children: [
             SvgPicture.asset(
@@ -259,7 +257,7 @@ class StateHomePage extends State<HomePage>
             ),
             Text(
               text,
-              style: TextStyle(fontSize: 12.sp, color: ColorX.text0917()),
+              style: TextStyle(fontSize: 11.sp, color: ColorX.text0917()),
             ),
           ],
         ),
