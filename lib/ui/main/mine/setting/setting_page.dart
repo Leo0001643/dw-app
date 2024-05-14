@@ -7,6 +7,7 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/app/utils/auth_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/version_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -114,15 +115,10 @@ class _SettingPageState extends State<SettingPage> {
                       ),
                     ),
                   ),
-                  Obx(() {
-                    return Visibility(
-                      visible: !state.localAuth.value,
-                      child: Divider(
-                        color: ColorX.color_10_949,
-                        height: 1.h,
-                      ),
-                    );
-                  }),
+                  Divider(
+                    color: ColorX.color_10_949,
+                    height: 1.h,
+                  ),
                   Obx(() {
                     return Visibility(
                       visible: !state.localAuth.value,
@@ -178,6 +174,59 @@ class _SettingPageState extends State<SettingPage> {
                                   }
                                 },
                                 value: state.jymmToggle.value,
+                                inactiveTrackColor: ColorX.text949(),
+                                activeTrackColor: ColorX.color_69c25c,
+                                activeColor: Colors.white,
+                              );
+                            }),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+                  Obx(() {
+                    return Visibility(
+                      visible: state.localAuth.value,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                Intr().kaiqishengwushibie,
+                                style: TextStyle(
+                                    fontSize: 12.sp, color: ColorX.text0d1()),
+                              ),
+                            ),
+                            Obx(() {
+                              return Switch(
+                                thumbColor:
+                                MaterialStateColor.resolveWith((states) {
+                                  // 根据状态返回相应的颜色
+                                  if (states.contains(MaterialState.selected)) {
+                                    // Switch 处于激活状态时的颜色
+                                    return Colors.white;
+                                  }
+                                  // Switch 处于非激活状态时的颜色
+                                  return Colors.white; // 你可以根据需要修改颜色
+                                }),
+                                onChanged: (value) {
+                                  if(value){
+                                    AuthUtils().getAvailableBiometrics().then((ava){
+                                      if(ava){
+                                        AppData.setLocalAuth(value);
+                                        state.localAuthToggle.value = value;
+                                      } else {
+                                        showToast(Intr().qingzaixitongshezhifaceidzhuce);
+                                      }
+                                    });
+                                  } else {
+                                    AppData.setLocalAuth(value);
+                                    state.localAuthToggle.value = value;
+                                  }
+                                },
+                                value: state.localAuthToggle.value,
                                 inactiveTrackColor: ColorX.text949(),
                                 activeTrackColor: ColorX.color_69c25c,
                                 activeColor: Colors.white,

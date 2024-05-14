@@ -54,7 +54,7 @@ class StateHomePage extends State<HomePage>
                     flexibleSpace: Container(
                       padding: EdgeInsets.only(top: ScreenUtil().statusBarHeight),
                       alignment: Alignment.center,
-                      child: WidgetUtils().buildHomeAppBar(context,state.unreadCount,state.routeName,state.stationLogo, msg: true, drawer: true),
+                      child: WidgetUtils().buildHomeAppBar(context,state.routeName,state.stationLogo, msg: true, drawer: true),
                     )),
                 SliverToBoxAdapter(
                   child: Container(
@@ -118,9 +118,7 @@ class StateHomePage extends State<HomePage>
                                   width: 10.w,
                                 ),
                                 Image.asset(ImageX.icon_ntf),
-                                SizedBox(
-                                  width: 5.w,
-                                ),
+                                SizedBox(width: 5.w,),
                                 Expanded(
                                   child: Obx(() {
                                     if (isEmpty(state.noticeList)) {

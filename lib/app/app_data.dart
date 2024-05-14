@@ -315,6 +315,17 @@ class AppData {
     }
   }
 
+  //是否开启本地验证
+  static void setLocalAuth(bool enable){
+    prefs?.setBool("local_auth", enable);
+  }
+
+  //是否开启本地验证
+  static bool localAuth(){
+    return prefs?.getBool("local_auth") ?? false;
+  }
+
+
   static void clear() {
     prefs?.remove("user");
   }

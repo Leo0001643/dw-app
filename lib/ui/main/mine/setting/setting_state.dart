@@ -27,7 +27,8 @@ class SettingState {
 
   ///生物识别支持
   var localAuth = false.obs;
-
+  ///生物识别是否打开
+  var localAuthToggle = AppData.localAuth().obs;
 
 
 }

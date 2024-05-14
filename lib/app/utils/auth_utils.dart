@@ -39,7 +39,7 @@ class AuthUtils{
   Future<bool> getAvailableBiometrics() async{
     var availableBiometrics = await auth.getAvailableBiometrics();
     if (availableBiometrics.isNotEmpty) {
-      loggerArray(["已注册的识别类型 ",availableBiometrics]);
+      loggerArray(["已注册的识别类型",availableBiometrics]);
       return availableBiometrics.contains(BiometricType.face) || availableBiometrics.contains(BiometricType.fingerprint);
     }
     return false;

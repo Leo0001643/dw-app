@@ -954,7 +954,8 @@ class CN {
     "jinrikai":"今日开",
     "wodeshoucang":"我的收藏",
     "lianxiwomen":"联系我们",
-    "2023guojizhan":"@2024博雅娱乐城",
+    "2023guojizhan_dw":"@2023 国际站",
+    "2023guojizhan_boya":"@2023 boya casino",
     "yingyongneijiazai":"应用内轻加载",
     "liulanqidakai":"使用系统默认浏览器打开",
     "biaozhunshijian":"本站标准时间以美东时间为准\n美东时间=北京时间-12小时",
@@ -1054,6 +1055,8 @@ class CN {
     "ti_confirm":"确定",
     "ruoxuxiugaitixianzhanghu":"1.若需修改提现账户信息，请联系客服修改\n2.若无特殊情况，约3-5分钟即可到账。",
     "shibieshibai":"识别失败！",
+    "kaiqishengwushibie":"生物识别",
+    "qingzaixitongshezhifaceidzhuce":"请在系统设置中进行FaceID或指纹注册",
 
   };
 

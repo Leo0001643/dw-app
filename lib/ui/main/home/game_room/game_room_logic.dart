@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_barrage/flutter_barrage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
@@ -11,6 +10,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
+import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/socket/socket_utils.dart';
 import 'package:leisure_games/app/socket/ws_bet_entity.dart';
@@ -315,36 +315,68 @@ class GameRoomLogic extends GetxController {
 
   ///弹幕消息处理
   void handleMsgGetPic(WsMessageGetEntity entity) {
-    state.barrageWallController.send([
-      Bullet(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black26,
-            borderRadius: BorderRadius.circular(20.r),
-          ),
-          padding: EdgeInsets.symmetric(vertical: 5.h,horizontal: 3.w),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              GFAvatar(
-                backgroundImage: WidgetUtils().buildImageProvider(
-                    DataUtils.findAvatar(entity.avatar)),
-                shape: GFAvatarShape.circle,
-                radius: 10.r,
-              ),
-              SizedBox(width: 10.w,),
-              Row(
-                children: entity.msg!.map((e) {
-                  return entity.msg!.first.isUrl() ?
-                  WidgetUtils().buildImage(entity.msg!.first.em(), 15.r, 15.r)
-                      : Text(entity.msg!.first.em(),style: TextStyle(fontSize: 12.sp,color: Colors.white),);
-                }).toList(),
-              ),
-            ],
-          ),
+    state.barrageController.addBarrage(
+      context: Get.context,
+      barrageWidget: Container(
+        decoration: BoxDecoration(
+          color: Colors.black26,
+          borderRadius: BorderRadius.circular(20.r),
         ),
-      )
-    ]);
+        padding: EdgeInsets.symmetric(vertical: 5.h,horizontal: 3.w),
+        child: Wrap(
+          children: [
+            GFAvatar(
+              backgroundImage: WidgetUtils().buildImageProvider(
+                  DataUtils.findAvatar(entity.avatar)),
+              shape: GFAvatarShape.circle,
+              radius: 10.r,
+            ),
+            SizedBox(width: 10.w,),
+            Text.rich(TextSpan(
+                children: entity.msg!.map((e) {
+                  return e.isUrl() ?
+                  WidgetSpan(child: WidgetUtils().buildImage(entity.msg!.first.em(), 15.r, 15.r))
+                      : TextSpan(text: e.em(),style: TextStyle(fontSize: 12.sp,color: Colors.white,),);
+                }).toList()
+            )),
+          ],
+        ),
+      ),
+    );
+    // state.barrageWallController.send([
+    //   Bullet(
+    //     child: LayoutBuilder(
+    //       builder: (ctx,con){
+    //         loggerArray(['看看约束',con.maxWidth,con.maxHeight,1.sw,1.sh]);
+    //         return Container(
+    //           decoration: BoxDecoration(
+    //             color: Colors.black26,
+    //             borderRadius: BorderRadius.circular(20.r),
+    //           ),
+    //           padding: EdgeInsets.symmetric(vertical: 5.h,horizontal: 3.w),
+    //           child: Wrap(
+    //             children: [
+    //               GFAvatar(
+    //                 backgroundImage: WidgetUtils().buildImageProvider(
+    //                     DataUtils.findAvatar(entity.avatar)),
+    //                 shape: GFAvatarShape.circle,
+    //                 radius: 10.r,
+    //               ),
+    //               SizedBox(width: 10.w,),
+    //               Text.rich(TextSpan(
+    //                   children: entity.msg!.map((e) {
+    //                     return e.isUrl() ?
+    //                     WidgetSpan(child: WidgetUtils().buildImage(entity.msg!.first.em(), 15.r, 15.r))
+    //                         : TextSpan(text: e.em(),style: TextStyle(fontSize: 12.sp,color: Colors.white,),);
+    //                   }).toList()
+    //               )),
+    //             ],
+    //           ),
+    //         );
+    //       },
+    //     ),
+    //   )
+    // ]);
   }
 
   void handleMessage(CountDownLotteryEntity countDownLotteryEntity) {

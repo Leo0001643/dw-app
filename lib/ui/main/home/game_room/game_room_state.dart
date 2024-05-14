@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_barrage/flutter_barrage.dart';
+import 'package:flutter_barrage_craft/flutter_barrage_craft.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/expression_entity.dart';
 import 'package:leisure_games/ui/bean/pc28_lotto_entity.dart';
@@ -29,7 +29,8 @@ class GameRoomState {
   ///弹幕
   var barrage = RxList<String>.empty(growable: true);
   ///弹幕控制器
-  var barrageWallController = BarrageWallController();
+  var barrageController = BarrageController();
+
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   ///房间提示信息

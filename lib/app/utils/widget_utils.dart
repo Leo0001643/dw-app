@@ -24,6 +24,7 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/chess_event.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
+import 'package:leisure_games/ui/main/home/home_logic.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -124,7 +125,8 @@ class WidgetUtils {
     );
   }
 
-  Widget buildHomeAppBar(context,RxInt unRead,RxString routeName,RxString stationLogo, {bool msg = false, bool drawer = false,}) {
+  Widget buildHomeAppBar(context,RxString routeName,RxString stationLogo, {bool msg = false, bool drawer = false,}) {
+    var unRead = Get.find<HomeLogic>().state.unreadCount;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 10.r),
       child: Row(
@@ -213,6 +215,7 @@ class WidgetUtils {
     if(isEmpty(backIcon)){
       backIcon = ImageX.iconPageBackT();
     }
+    var unRead = Get.find<HomeLogic>().state.unreadCount;
     return AppBar(
       title: Text(
         title.em(),
@@ -240,12 +243,30 @@ class WidgetUtils {
               visible: msg,
               child: InkWell(
                 onTap: () => goMessageCenter(),
-                child: Padding(
-                  padding: EdgeInsets.all(10.r),
-                  child: Image.asset(
-                    ImageX.icon_user_msg,
-                    color: ColorX.icon586(),
-                  ),
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(10.r),
+                      child: Image.asset(
+                        ImageX.icon_user_msg,
+                        color: ColorX.icon586(),
+                      ),
+                    ),
+                    Obx(() {
+                      return Visibility(
+                        visible: unRead.value > 0,
+                        child: Positioned(
+                          top: 7.r, right: 2.r,
+                          child: GFBadge(
+                            size: 20.r,
+                            color: Colors.transparent,
+                            textColor: ColorX.color_fc243b,
+                            text: "${unRead.value}",
+                          ),
+                        ),
+                      );
+                    }),
+                  ],
                 ),
               ),
             ),
@@ -303,6 +324,7 @@ class WidgetUtils {
         GlobalKey<ScaffoldState>? scaffoldKey,
         SystemUiOverlayStyle? systemOverlayStyle,
       }) {
+    var unRead = Get.find<HomeLogic>().state.unreadCount;
     return AppBar(
       title: Obx(() {
         return Text(
@@ -330,12 +352,30 @@ class WidgetUtils {
           visible: msg,
           child: InkWell(
             onTap: () => goMessageCenter(),
-            child: Padding(
-              padding: EdgeInsets.all(10.r),
-              child: Image.asset(
-                ImageX.icon_user_msg,
-                color: ColorX.icon586(),
-              ),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: Image.asset(
+                    ImageX.icon_user_msg,
+                    color: ColorX.icon586(),
+                  ),
+                ),
+                Obx(() {
+                  return Visibility(
+                    visible: unRead.value > 0,
+                    child: Positioned(
+                      top: 7.r, right: 2.r,
+                      child: GFBadge(
+                        size: 20.r,
+                        color: Colors.transparent,
+                        textColor: ColorX.color_fc243b,
+                        text: "${unRead.value}",
+                      ),
+                    ),
+                  );
+                }),
+              ],
             ),
           ),
         ),
@@ -368,6 +408,7 @@ class WidgetUtils {
     GestureTapCallback? onTap,
     SystemUiOverlayStyle? systemOverlayStyle,
   }) {
+    var unRead = Get.find<HomeLogic>().state.unreadCount;
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -412,12 +453,30 @@ class WidgetUtils {
           visible: msg,
           child: InkWell(
             onTap: () => goMessageCenter(),
-            child: Padding(
-              padding: EdgeInsets.all(10.r),
-              child: Image.asset(
-                ImageX.icon_user_msg,
-                color: ColorX.icon586(),
-              ),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: Image.asset(
+                    ImageX.icon_user_msg,
+                    color: ColorX.icon586(),
+                  ),
+                ),
+                Obx(() {
+                  return Visibility(
+                    visible: unRead.value > 0,
+                    child: Positioned(
+                      top: 7.r, right: 2.r,
+                      child: GFBadge(
+                        size: 20.r,
+                        color: Colors.transparent,
+                        textColor: ColorX.color_fc243b,
+                        text: "${unRead.value}",
+                      ),
+                    ),
+                  );
+                }),
+              ],
             ),
           ),
         ),
@@ -448,6 +507,7 @@ class WidgetUtils {
         GestureTapCallback? onCollect,
         GlobalKey<ScaffoldState>? scaffoldKey,
       }) {
+    var unRead = Get.find<HomeLogic>().state.unreadCount;
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -511,12 +571,30 @@ class WidgetUtils {
               visible: msg,
               child: InkWell(
                 onTap: () => goMessageCenter(),
-                child: Padding(
-                  padding: EdgeInsets.all(10.r),
-                  child: Image.asset(
-                    ImageX.icon_user_msg,
-                    color: ColorX.icon586(),
-                  ),
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(10.r),
+                      child: Image.asset(
+                        ImageX.icon_user_msg,
+                        color: ColorX.icon586(),
+                      ),
+                    ),
+                    Obx(() {
+                      return Visibility(
+                        visible: unRead.value > 0,
+                        child: Positioned(
+                          top: 7.r, right: 2.r,
+                          child: GFBadge(
+                            size: 20.r,
+                            color: Colors.transparent,
+                            textColor: ColorX.color_fc243b,
+                            text: "${unRead.value}",
+                          ),
+                        ),
+                      );
+                    }),
+                  ],
                 ),
               ),
             ),
@@ -702,27 +780,18 @@ class WidgetUtils {
 
 
   void goLogin() {
-    if (unEmpty(AppData.getGestureValue())) {
+    ///如果已开启手势密码或生物识别
+    if(AppData.localAuth()){
       ///校验设备是否支持生物识别
-      AuthUtils().authEnable().then((enable) {
-        if(enable){///校验生物识别是否注册
-          AuthUtils().getAvailableBiometrics().then((available) {
-            if(available){///识别认证
-              AuthUtils().authLogin().then((value) {
-                if(value){
-                  Get.offAndToNamed(Routes.simple_login_var,arguments: AppData.lastLoginUser());
-                } else {
-                  showToast(Intr().shibieshibai);
-                }
-              });
-            } else {
-              Get.toNamed(Routes.simple_login);
-            }
-          });
+      AuthUtils().authLogin().then((value) {
+        if(value){//simple_login_var 这个页面会确认是否需要继续验证还是直接登录
+          Get.offAndToNamed(Routes.simple_login_var,arguments: AppData.lastLoginUser());
         } else {
-          Get.toNamed(Routes.simple_login);
+          showToast(Intr().shibieshibai);
         }
       });
+    } else if (unEmpty(AppData.getGestureValue())) {
+      Get.toNamed(Routes.simple_login);
     } else {
       Get.toNamed(Routes.login);
     }

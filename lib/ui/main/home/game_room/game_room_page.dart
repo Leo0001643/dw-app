@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_barrage/flutter_barrage.dart';
+import 'package:flutter_barrage_craft/flutter_barrage_craft.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
@@ -45,12 +45,18 @@ class _GameRoomPageState extends State<GameRoomPage> with LifecycleAware, Lifecy
     state.roomWriting.assignAll(AppData.roomWritingEntity() ?? []);
     state.room.value = Get.arguments;
     logic.loadData(state.room.value, true);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        state.barrageController.init(Size(MediaQuery.of(context).size.width, 0.2.sh));
+        state.barrageController.changeBarrageRate(0.5);
+      });
+    });
     super.initState();
   }
 
   @override
   void dispose() {
-    state.barrageWallController.dispose();
+    state.barrageController.dispose();
     Get.find<TextItemLogic>().closeTimer();
     Get.delete<TextItemLogic>();
     Get.delete<GameRoomLogic>();
@@ -99,7 +105,7 @@ class _GameRoomPageState extends State<GameRoomPage> with LifecycleAware, Lifecy
               padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
               child: Column(
                 children: [
-                  GameRoomHeadWidget(),
+                  const GameRoomHeadWidget(),
                   GameRoomComputeWidget(),
                 ],
               ),
@@ -139,18 +145,17 @@ class _GameRoomPageState extends State<GameRoomPage> with LifecycleAware, Lifecy
                                     );
                                   },
                                 ),
-                                Positioned(
-                                    left: 0,
-                                    right: 0,
-                                    top: 20.h,
-                                    child: buildCountDown()),
-                                BarrageWall(
-                                  maxBulletHeight: 5,
-                                  controller: state.barrageWallController,
-                                  speedCorrectionInMilliseconds: 3000,
-                                  height: 0.2.sh,
-                                  child: Container(),
+                                Positioned(left: 0, right: 0, top: 20.h,
+                                  child: buildCountDown(),
                                 ),
+                                // BarrageWall(
+                                //   maxBulletHeight: 5,
+                                //   controller: state.barrageWallController,
+                                //   speedCorrectionInMilliseconds: 3000,
+                                //   height: 0.2.sh,
+                                //   child: Container(),
+                                // ),
+                                BarrageView(controller: state.barrageController),
                               ],
                             ),
                           ),

@@ -38,11 +38,11 @@ dependencies:
   rxdart: ^0.27.7
   event_bus: ^2.0.0
   pull_to_refresh: ^2.0.0
-  fluttertoast: ^8.2.4
+#  fluttertoast: ^8.2.4
   flutter_easyloading: ^3.0.5
   get: ^4.6.6
   dio: ^5.4.1
-  shared_preferences: 2.2.2
+  shared_preferences: 2.2.3
   path_provider: ^2.1.1
   common_utils: ^2.1.0
   #  webview_flutter: ^2.8.0
@@ -60,7 +60,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   table_calendar: ^3.0.9
   data_table_2: ^2.5.8
-  syncfusion_flutter_charts: ^23.1.41
+  syncfusion_flutter_charts: ^25.2.3+1
   scratcher: ^2.4.0
   luckywheel: ^1.0.0
   sprintf: ^7.0.0
@@ -83,7 +83,8 @@ dependencies:
   flutter_aliyun_captcha: ^1.0.5
   flutter_tencent_captcha: ^0.1.2
   gesture_password_widget: ^2.0.1
-  flutter_barrage: ^0.5.5
+#  flutter_barrage: ^0.5.5
+  flutter_barrage_craft: ^1.0.1
   just_audio: ^0.9.36
   flutter_oss_aliyun: ^6.4.1
   cached_network_image: ^3.3.1
@@ -91,20 +92,16 @@ dependencies:
   flutter_svg: ^2.0.9
   install_plugin: ^2.1.0
   flutter_widget_from_html: ^0.14.11
-  flutter_html: 3.0.0-alpha.5
+  flutter_html: ^3.0.0-beta.2
   jpush_flutter: ^3.0.0
   local_auth: 2.1.8
 
 
 dependency_overrides:
   meta: ^1.10.0 # 替换为你需要的meta库的版本号
-  flutter_ume_plus: ^3.0.2
-  flutter_ume_kit_ui_plus: ^2.0.0
-  flutter_ume_kit_device_plus: ^2.0.0
-#  flutter_ume_kit_perf: ^1.0.0
-#  flutter_ume_kit_show_code: ^1.0.0+1
-  flutter_ume_kit_console_plus: 2.0.3
-  flutter_ume_kit_dio_plus: ^3.4.5
+  vm_service: 14.2.1
+  intl: 0.19.0
+  fading_edge_scrollview: ^4.1.1
 
 dev_dependencies:
   flutter_test:
@@ -118,6 +115,13 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   retrofit_generator: ^7.0.8
   json_serializable: ^6.6.2
+  flutter_ume_plus: ^4.0.0
+  flutter_ume_kit_ui_plus: ^4.0.0
+  flutter_ume_kit_device_plus: ^4.0.0
+  #  flutter_ume_kit_perf: ^1.0.0
+  #  flutter_ume_kit_show_code: ^1.0.0+1
+  flutter_ume_kit_console_plus: ^4.0.0
+  flutter_ume_kit_dio_plus: ^4.0.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

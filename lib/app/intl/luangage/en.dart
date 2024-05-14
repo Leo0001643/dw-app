@@ -954,8 +954,8 @@ class EN {
     "jinrikai":"Show today",
     "wodeshoucang":"Favorites",
     "lianxiwomen":"Contact Us",
-    "2023guojizhan_boya":"@2024 BOYA CASINO",
-    "2023guojizhan_dw":"@2024 DW International",
+    "2023guojizhan_dw":"@2023 DW International",
+    "2023guojizhan_boya":"@2023 boya casino",
     "yingyongneijiazai":"Light in-app loading",
     "liulanqidakai":"Use the default browser",
     "biaozhunshijian":"The website standard time is subject to Eastern Time\nCurrent Time (CST)= Eastern Time (EST)+12:0",
@@ -1055,6 +1055,8 @@ class EN {
     "ti_confirm":"Submit",
     "ruoxuxiugaitixianzhanghu":"1.For any modification, please kindly approach Customer Support\n2.The withdrawal process will take 3-5 mins.",
     "shibieshibai":"Recognition failure!",
+    "kaiqishengwushibie":"Biometric identification",
+    "qingzaixitongshezhifaceidzhuce":"Please do FaceID or fingerprint registration in system Settings",
 
 
   };

@@ -954,8 +954,8 @@ class VI{
     "jinrikai":"xổ hôm nay",
     "wodeshoucang":"sưu tập của tôi",
     "lianxiwomen":"Liên hệ chúng tôi",
-    "2023guojizhan_boya":"@2024 BOYA CASINO",
-    "2023guojizhan_dw":"@2024 DW International",
+    "2023guojizhan_boya":"@2023 boya casino",
+    "2023guojizhan_dw":"@2023 DW International",
     "yingyongneijiazai":"Nạp nhẹ trong ứng dụng",
     "liulanqidakai":"Mở bằng trình duyệt mặc định hệ thống",
     "biaozhunshijian":"giờ chuẩn của trang web này dựa trên giờ miền đông (EST)\ngiờ miền đông (EST)",
@@ -1055,6 +1055,8 @@ class VI{
     "ti_confirm":"xác định",
     "ruoxuxiugaitixianzhanghu":"1.nếu bạn cần sửa đổi thông tin tài khoản rút tiền, vui lòng liên hệ chăm sóc khách hàng\n2.nếu không có trường hợp đặc biệt, sẽ mất khoảng 3 đến 5 phút để đến tài khoản",
     "shibieshibai":"Nhận ra thất bại!",
+    "kaiqishengwushibie":"Sinh trắc học",
+    "qingzaixitongshezhifaceidzhuce":"Xin vui lòng đăng ký khuôn mặt hoặc dấu vân tay trong thiết lập hệ thống",
 
 
   };

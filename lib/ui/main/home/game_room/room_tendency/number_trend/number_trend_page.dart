@@ -84,13 +84,13 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                       labelAlignment: LabelAlignment.center,
                       minimum: 0,//设置最小值
                       interval: 1,//设置步长
-                      visibleMaximum: data.length.toDouble()/4,//设置可见数量 数量50的时候 50/4合适
+                      initialVisibleMinimum: data.length.toDouble()/4,//设置可见数量 数量50的时候 50/4合适
                       axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
                       labelStyle: TextStyle(fontSize: 10.sp,color: ColorX.text5862()),
-                      majorTickLines: const MajorTickLines(size: 0),
-                      minorTickLines: const MinorTickLines(size: 0),
+                      majorTickLines: MajorTickLines(size: 0,width: 1.w,color: ColorX.color_10_949),
+                      // minorTickLines: const MinorTickLines(),
                       majorGridLines: MajorGridLines(width: 1.w,color: ColorX.color_10_949),
-                      minorGridLines: MinorGridLines(width: 1.w,color: ColorX.color_10_949),
+                      // minorGridLines: MinorGridLines(width: 1.w,color: ColorX.color_10_949),
                     ),
                     primaryYAxis: NumericAxis(
                       axisLine: AxisLine(color: ColorX.color_10_949,width: 1.w),
@@ -108,7 +108,7 @@ class _NumberTrendPageState extends State<NumberTrendPage> with SingleTickerProv
                     backgroundColor: ColorX.cardBg(),
                     zoomPanBehavior: zoomPanBehavior,
                     tooltipBehavior: TooltipBehavior(enable: false),
-                    series: <ChartSeries<NumberData, String>>[
+                    series: <CartesianSeries<NumberData, String>>[
                       AreaSeries<NumberData, String>(
                         dataSource: data,
                         xValueMapper: (NumberData sales, _) => sales.term,
