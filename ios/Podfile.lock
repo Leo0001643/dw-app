@@ -8,6 +8,8 @@ PODS:
   - Flutter (1.0.0)
   - flutter_aliyun_captcha (1.0.4):
     - Flutter
+  - flutter_barrage_craft (0.0.1):
+    - Flutter
   - flutter_inappwebview_ios (0.0.1):
     - Flutter
     - flutter_inappwebview_ios/Core (= 0.0.1)
@@ -17,9 +19,6 @@ PODS:
     - OrderedSet (~> 5.0)
   - flutter_tencent_captcha (0.0.1):
     - Flutter
-  - fluttertoast (0.0.2):
-    - Flutter
-    - Toast
   - image_gallery_saver (2.0.2):
     - Flutter
   - install_plugin (2.0.0):
@@ -43,7 +42,7 @@ PODS:
     - FlutterMacOS
   - permission_handler_apple (9.3.0):
     - Flutter
-  - share (0.0.1):
+  - share_plus (0.0.1):
     - Flutter
   - shared_preferences_foundation (0.0.1):
     - Flutter
@@ -51,7 +50,6 @@ PODS:
   - sqflite (0.0.3):
     - Flutter
     - FlutterMacOS
-  - Toast (4.0.0)
   - url_launcher_ios (0.0.1):
     - Flutter
   - video_player_avfoundation (0.0.1):
@@ -68,9 +66,9 @@ DEPENDENCIES:
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - Flutter (from `Flutter`)
   - flutter_aliyun_captcha (from `.symlinks/plugins/flutter_aliyun_captcha/ios`)
+  - flutter_barrage_craft (from `.symlinks/plugins/flutter_barrage_craft/ios`)
   - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
   - flutter_tencent_captcha (from `.symlinks/plugins/flutter_tencent_captcha/ios`)
-  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - image_gallery_saver (from `.symlinks/plugins/image_gallery_saver/ios`)
   - install_plugin (from `.symlinks/plugins/install_plugin/ios`)
   - jpush_flutter (from `.symlinks/plugins/jpush_flutter/ios`)
@@ -79,7 +77,7 @@ DEPENDENCIES:
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
-  - share (from `.symlinks/plugins/share/ios`)
+  - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
@@ -92,7 +90,6 @@ SPEC REPOS:
     - JCore
     - JPush
     - OrderedSet
-    - Toast
 
 EXTERNAL SOURCES:
   audio_session:
@@ -105,12 +102,12 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_aliyun_captcha:
     :path: ".symlinks/plugins/flutter_aliyun_captcha/ios"
+  flutter_barrage_craft:
+    :path: ".symlinks/plugins/flutter_barrage_craft/ios"
   flutter_inappwebview_ios:
     :path: ".symlinks/plugins/flutter_inappwebview_ios/ios"
   flutter_tencent_captcha:
     :path: ".symlinks/plugins/flutter_tencent_captcha/ios"
-  fluttertoast:
-    :path: ".symlinks/plugins/fluttertoast/ios"
   image_gallery_saver:
     :path: ".symlinks/plugins/image_gallery_saver/ios"
   install_plugin:
@@ -127,8 +124,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
-  share:
-    :path: ".symlinks/plugins/share/ios"
+  share_plus:
+    :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   sqflite:
@@ -146,11 +143,11 @@ SPEC CHECKSUMS:
   audio_session: 088d2483ebd1dc43f51d253d4a1c517d9a2e7207
   device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_aliyun_captcha: ae5a6d128035eb2075be2a99606bb58bea31cffe
+  flutter_barrage_craft: ac15b5a3d80b5e6390443fdd214201674c9a3e78
   flutter_inappwebview_ios: 97215cf7d4677db55df76782dbd2930c5e1c1ea0
   flutter_tencent_captcha: 4853c2caa88a285990eb470f26ba7568f26689b4
-  fluttertoast: 77ff8760d90ff5041a97e3d0c0ecaaa8472524d2
   image_gallery_saver: cb43cc43141711190510e92c460eb1655cd343cb
   install_plugin: b52f81470a1f37b006607bdf7ffc6031df43fe76
   JCore: 024c73b04e110b496e93d8c127ea9cd1ed934e4c
@@ -162,10 +159,9 @@ SPEC CHECKSUMS:
   package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
   path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
-  share: 0b2c3e82132f5888bccca3351c504d0003b3b410
+  share_plus: 8875f4f2500512ea181eef553c3e27dba5135aad
   shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
   sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
-  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   url_launcher_ios: bbd758c6e7f9fd7b5b1d4cde34d2b95fcce5e812
   video_player_avfoundation: 02011213dab73ae3687df27ce441fbbcc82b5579
   wakelock_plus: 8b09852c8876491e4b6d179e17dfe2a0b5f60d47

@@ -25,14 +25,12 @@ class AuthUtils{
   // 要检查该设备上是否有可用的本地认证，请调用canCheckBiometrics(如果您需要生物识别支持)和/或isDeviceSupported()(如果您只需要一些设备级认证):
   Future<bool> authEnable() async {
     if(GetPlatform.isIOS){
-      await auth.canCheckBiometrics.then((value){
-        loggerArray(["设置人脸检测",value]);
-        return value;
-      });
+      var value = await auth.canCheckBiometrics;
+      loggerArray(["设置人脸检测",value]);
+      return Future.value(value);
     } else {///是否支持生物识别
-      return false;
+      return Future.value(false);
     }
-    return false;
   }
 
   ///生物识别是否支持

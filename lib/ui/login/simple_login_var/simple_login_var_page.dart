@@ -44,7 +44,10 @@ class _SimpleLoginVarPageState extends State<SimpleLoginVarPage> {
         actions: [
           InkWell(
             onTap: ()=>Get.back(),
-            child: Image.asset(ImageX.icon_close,color: ColorX.icon586(),),
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(ImageX.icon_close,color: ColorX.icon586(),),
+            ),
           ),
         ],
       ),

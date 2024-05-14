@@ -153,7 +153,7 @@ class StateHomePage extends State<HomePage>
                                     ? userHeader(state.user.value)
                                     : noLoginHeader(state.user.value);
                               })),
-                              SizedBox(width: 5.w,),
+                              SizedBox(width: 3.w,),
                               buildMenuItem(
                                   Intr().charge, ImageX.icChongzhiT(), 0),
                               buildMenuItem(

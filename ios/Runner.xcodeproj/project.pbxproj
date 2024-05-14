@@ -13,7 +13,7 @@
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		5650ECF149993BE95860B7B2 /* Pods_dw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE055C870BF62B2CE32074 /* Pods_dw.framework */; };
 		5B7E2721770010D9C135D38C /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEDCF38F1064529430D4717 /* Pods_Runner.framework */; };
-		5C9DA04E09869944893BDAC6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		5C9DA04E09869944893BDAC6 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
@@ -148,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C9DA04E09869944893BDAC6 /* BuildFile in Frameworks */,
+				5C9DA04E09869944893BDAC6 /* (null) in Frameworks */,
 				5B7E2721770010D9C135D38C /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,7 +401,7 @@
 		97C146E61CF9000F007C117D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					331C8080294A63A400263BE5 = {

@@ -785,7 +785,7 @@ class WidgetUtils {
       ///校验设备是否支持生物识别
       AuthUtils().authLogin().then((value) {
         if(value){//simple_login_var 这个页面会确认是否需要继续验证还是直接登录
-          Get.offAndToNamed(Routes.simple_login_var,arguments: AppData.lastLoginUser());
+          Get.toNamed(Routes.simple_login_var,arguments: AppData.lastLoginUser());
         } else {
           showToast(Intr().shibieshibai);
         }

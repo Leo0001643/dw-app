@@ -32,7 +32,6 @@ class SettingLogic extends GetxController {
 
   void initData() {
     AuthUtils().authEnable().then((value){
-      loggerArray(["设置人脸检测",value]);
       state.localAuth.value = value;
     });
   }
