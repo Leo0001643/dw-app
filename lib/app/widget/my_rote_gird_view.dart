@@ -1,9 +1,8 @@
 
-import 'package:common_utils/common_utils.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -11,7 +10,6 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/oss_utils.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
-import 'package:http/http.dart' as http;
 
 typedef void FunctionApiCallback(BaseWsApiEntity data);
 

@@ -24,7 +24,6 @@ import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/ui/bean/chess_event.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
-import 'package:leisure_games/ui/main/home/home_logic.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -125,8 +124,7 @@ class WidgetUtils {
     );
   }
 
-  Widget buildHomeAppBar(context,RxString routeName,RxString stationLogo, {bool msg = false, bool drawer = false,}) {
-    var unRead = Get.find<HomeLogic>().state.unreadCount;
+  Widget buildHomeAppBar(context,RxInt unRead,RxString routeName,RxString stationLogo, {bool msg = false, bool drawer = false,}) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 10.r),
       child: Row(
@@ -215,7 +213,6 @@ class WidgetUtils {
     if(isEmpty(backIcon)){
       backIcon = ImageX.iconPageBackT();
     }
-    var unRead = Get.find<HomeLogic>().state.unreadCount;
     return AppBar(
       title: Text(
         title.em(),
@@ -243,30 +240,12 @@ class WidgetUtils {
               visible: msg,
               child: InkWell(
                 onTap: () => goMessageCenter(),
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(10.r),
-                      child: Image.asset(
-                        ImageX.icon_user_msg,
-                        color: ColorX.icon586(),
-                      ),
-                    ),
-                    Obx(() {
-                      return Visibility(
-                        visible: unRead.value > 0,
-                        child: Positioned(
-                          top: 7.r, right: 2.r,
-                          child: GFBadge(
-                            size: 20.r,
-                            color: Colors.transparent,
-                            textColor: ColorX.color_fc243b,
-                            text: "${unRead.value}",
-                          ),
-                        ),
-                      );
-                    }),
-                  ],
+                child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: Image.asset(
+                    ImageX.icon_user_msg,
+                    color: ColorX.icon586(),
+                  ),
                 ),
               ),
             ),
@@ -324,7 +303,6 @@ class WidgetUtils {
         GlobalKey<ScaffoldState>? scaffoldKey,
         SystemUiOverlayStyle? systemOverlayStyle,
       }) {
-    var unRead = Get.find<HomeLogic>().state.unreadCount;
     return AppBar(
       title: Obx(() {
         return Text(
@@ -352,30 +330,12 @@ class WidgetUtils {
           visible: msg,
           child: InkWell(
             onTap: () => goMessageCenter(),
-            child: Stack(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10.r),
-                  child: Image.asset(
-                    ImageX.icon_user_msg,
-                    color: ColorX.icon586(),
-                  ),
-                ),
-                Obx(() {
-                  return Visibility(
-                    visible: unRead.value > 0,
-                    child: Positioned(
-                      top: 7.r, right: 2.r,
-                      child: GFBadge(
-                        size: 20.r,
-                        color: Colors.transparent,
-                        textColor: ColorX.color_fc243b,
-                        text: "${unRead.value}",
-                      ),
-                    ),
-                  );
-                }),
-              ],
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(
+                ImageX.icon_user_msg,
+                color: ColorX.icon586(),
+              ),
             ),
           ),
         ),
@@ -408,7 +368,6 @@ class WidgetUtils {
     GestureTapCallback? onTap,
     SystemUiOverlayStyle? systemOverlayStyle,
   }) {
-    var unRead = Get.find<HomeLogic>().state.unreadCount;
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -453,30 +412,12 @@ class WidgetUtils {
           visible: msg,
           child: InkWell(
             onTap: () => goMessageCenter(),
-            child: Stack(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10.r),
-                  child: Image.asset(
-                    ImageX.icon_user_msg,
-                    color: ColorX.icon586(),
-                  ),
-                ),
-                Obx(() {
-                  return Visibility(
-                    visible: unRead.value > 0,
-                    child: Positioned(
-                      top: 7.r, right: 2.r,
-                      child: GFBadge(
-                        size: 20.r,
-                        color: Colors.transparent,
-                        textColor: ColorX.color_fc243b,
-                        text: "${unRead.value}",
-                      ),
-                    ),
-                  );
-                }),
-              ],
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Image.asset(
+                ImageX.icon_user_msg,
+                color: ColorX.icon586(),
+              ),
             ),
           ),
         ),
@@ -507,7 +448,6 @@ class WidgetUtils {
         GestureTapCallback? onCollect,
         GlobalKey<ScaffoldState>? scaffoldKey,
       }) {
-    var unRead = Get.find<HomeLogic>().state.unreadCount;
     return AppBar(
       title: InkWell(
         onTap: onTap,
@@ -571,30 +511,12 @@ class WidgetUtils {
               visible: msg,
               child: InkWell(
                 onTap: () => goMessageCenter(),
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(10.r),
-                      child: Image.asset(
-                        ImageX.icon_user_msg,
-                        color: ColorX.icon586(),
-                      ),
-                    ),
-                    Obx(() {
-                      return Visibility(
-                        visible: unRead.value > 0,
-                        child: Positioned(
-                          top: 7.r, right: 2.r,
-                          child: GFBadge(
-                            size: 20.r,
-                            color: Colors.transparent,
-                            textColor: ColorX.color_fc243b,
-                            text: "${unRead.value}",
-                          ),
-                        ),
-                      );
-                    }),
-                  ],
+                child: Padding(
+                  padding: EdgeInsets.all(10.r),
+                  child: Image.asset(
+                    ImageX.icon_user_msg,
+                    color: ColorX.icon586(),
+                  ),
                 ),
               ),
             ),
@@ -777,7 +699,6 @@ class WidgetUtils {
       goLogin();
     }
   }
-
 
   void goLogin() {
     ///如果已开启手势密码或生物识别

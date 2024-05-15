@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
@@ -13,7 +12,6 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
-import 'package:leisure_games/ui/bean/language_event.dart';
 
 class CurrencyDialog extends StatefulWidget {
 

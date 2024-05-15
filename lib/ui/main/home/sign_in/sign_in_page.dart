@@ -50,8 +50,7 @@ class _SignInPageState extends State<SignInPage> {
         ),
         child: Column(
           children: [
-            WidgetUtils().buildAppBar(Intr().qiandaoyouli,msg: true,bgColor: Colors.transparent,
-                systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
+            WidgetUtils().buildAppBar(Intr().qiandaoyouli,msg: true,bgColor: Colors.transparent,systemOverlayStyle: SystemUiOverlayStyle(statusBarIconBrightness: Brightness.light),scaffoldKey: state.scaffoldKey),
             Container(
               height: 0.125.sh,
               alignment: Alignment.centerLeft,
@@ -75,14 +74,12 @@ class _SignInPageState extends State<SignInPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Obx(() {
-                    return Text(Intr().benyueyiqian([state.checkInfo.value.signInNum.em()]),
-                      style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none),);
+                    return Text(Intr().benyueyiqian([state.checkInfo.value.signInNum.em()]),style: TextStyle(fontSize: 16.sp,color: ColorX.color_091722,decoration: TextDecoration.none),);
                   }),
 
                   Obx(() {
-                    var date = DateUtil.getDateTimeByMs(state.checkInfo.value.timestamp.em() * 1000).subtract(const Duration(hours: 12));
-                    // var date = DataUtils.format12Hour(state.checkInfo.value.timestamp.em() * 1000,format: Intr().nianyueri,isUtc:true);
-                    return Text(DateUtil.formatDate(date,format: Intr().nianyueri),style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none),);
+                    var date = DataUtils.format12Hour(state.checkInfo.value.timestamp.em() * 1000,format: Intr().nianyueri,isUtc:true);
+                    return Text(date,style: TextStyle(fontSize: 14.sp,color: Colors.white,decoration: TextDecoration.none),);
                   }),
                 ],
               ),
@@ -99,7 +96,7 @@ class _SignInPageState extends State<SignInPage> {
                   }),
                   SizedBox(height: 15.h,),
                   Obx(() {
-                    var date = DateUtil.getDateTimeByMs(state.checkInfo.value.timestamp.em() * 1000,).subtract(const Duration(hours: 12));
+                    var date = DateUtil.getDateTimeByMs(state.checkInfo.value.timestamp.em() * 1000,isUtc: true,);
                     if(state.checkInfo.value.log?.contains("${date.day}") == true){
                       return WidgetUtils().buildElevatedButton(Intr().yiqiandao, 320.w, 48.h, bg: ColorX.color_ffe0ac,onPressed: (){});
                     } else {
@@ -125,7 +122,7 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Widget buildCalendar(CheckInInfoEntity check) {
-    var now = DateUtil.getDateTimeByMs(check.timestamp.em() * 1000,).subtract(const Duration(hours: 12));
+    var now = DateUtil.getDateTimeByMs(check.timestamp.em() * 1000,isUtc: true);
     return TableCalendar(
       firstDay: DateTime.utc(now.year, now.month, 1),
       lastDay: DateTime.utc(now.year, now.month + 1, 0),
@@ -148,7 +145,7 @@ class _SignInPageState extends State<SignInPage> {
             ///只渲染当月数据
             if(day.day <= focusedDay.day){
               ///已签到 || 当天
-              if(check.log?.contains("${day.day}") ==  true){
+              if(check.log?.contains("${day.day}") ==  true || day.day == focusedDay.day){
                 // var text = check.log?.contains("${day.day}") ==  true ? "√":"•";
                 var text = check.log?.contains("${day.day}") ==  true ? "•":"•";
                 return Container(
@@ -186,7 +183,7 @@ class _SignInPageState extends State<SignInPage> {
               return Center(
                 child: Text("${day.day}",
                   textAlign: TextAlign.center,style: TextStyle(fontSize: 14.sp,
-                    color: ColorX.color_2c2c2c,fontWeight: FontWeight.w500,),),
+                    color: ColorX.color_58698d,fontWeight: FontWeight.w500,),),
               );
             }
             return Center(

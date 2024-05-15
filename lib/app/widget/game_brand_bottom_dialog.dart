@@ -5,7 +5,6 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
-import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/game_kind_entity.dart';
 
 class GameBrandBottomDialog extends StatefulWidget{
