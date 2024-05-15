@@ -46,10 +46,10 @@ class MainLogic extends GetxController {
     super.onClose();
   }
 
-  void initController(){
-    Get.put(WalletController());
-    Get.put(AvatarController());
-  }
+  // void initController(){
+  //   Get.put(WalletController());
+  //   Get.put(AvatarController());
+  // }
 
 
   void openDrawer() {

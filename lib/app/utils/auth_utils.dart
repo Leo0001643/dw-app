@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:local_auth/local_auth.dart';
@@ -44,15 +45,16 @@ class AuthUtils{
   }
 
   ///开始认证
-  Future<bool> authLogin()async{
+  Future<bool> authLogin() async {
     try {
-      final bool didAuthenticate = await auth.authenticate(localizedReason: 'Please authenticate to login');
+      final bool didAuthenticate = await auth.authenticate(localizedReason: Intr().qingyanzhengshenfen,);
       return didAuthenticate;
     } catch(e) {
       ErrorResponseHandler().onErrorHandle(e);
       return false;
     }
   }
+
 
 
 

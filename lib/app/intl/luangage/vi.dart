@@ -1057,6 +1057,7 @@ class VI{
     "shibieshibai":"Nhận ra thất bại!",
     "kaiqishengwushibie":"Sinh trắc học",
     "qingzaixitongshezhifaceidzhuce":"Xin vui lòng đăng ký khuôn mặt hoặc dấu vân tay trong thiết lập hệ thống",
+    "qingyanzhengshenfen":"Xin xác nhận đăng nhập",
 
 
   };

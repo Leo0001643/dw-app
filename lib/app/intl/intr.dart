@@ -744,6 +744,7 @@ class Intr extends Translations{
   String get shibieshibai => 'shibieshibai'.tr;
   String get kaiqishengwushibie => 'kaiqishengwushibie'.tr;
   String get qingzaixitongshezhifaceidzhuce => 'qingzaixitongshezhifaceidzhuce'.tr;
+  String get qingyanzhengshenfen => 'qingyanzhengshenfen'.tr;
 
 
 

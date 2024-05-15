@@ -1057,6 +1057,10 @@ class CN {
     "shibieshibai":"识别失败！",
     "kaiqishengwushibie":"生物识别",
     "qingzaixitongshezhifaceidzhuce":"请在系统设置中进行FaceID或指纹注册",
+    "qingyanzhengshenfen":"请验证您的身份",
+
+
+
 
   };
 

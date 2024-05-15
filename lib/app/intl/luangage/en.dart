@@ -1057,6 +1057,7 @@ class EN {
     "shibieshibai":"Recognition failure!",
     "kaiqishengwushibie":"Biometric identification",
     "qingzaixitongshezhifaceidzhuce":"Please do FaceID or fingerprint registration in system Settings",
+    "qingyanzhengshenfen":"Please authenticate to login",
 
 
   };
