@@ -23,6 +23,7 @@ final isDebug = !inProduct();
 
 ///判断程序当前的运行环境
 bool inProduct(){
+  // return false;
   return const bool.fromEnvironment("dart.vm.product");
 }
 

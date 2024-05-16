@@ -8,6 +8,7 @@ import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
@@ -54,7 +55,7 @@ class StateHomePage extends State<HomePage>
                     flexibleSpace: Container(
                       padding: EdgeInsets.only(top: ScreenUtil().statusBarHeight),
                       alignment: Alignment.center,
-                      child: WidgetUtils().buildHomeAppBar(context,state.unreadCount,state.routeName,state.stationLogo, msg: true, drawer: true),
+                      child: WidgetUtils().buildHomeAppBar(context,state.routeName,state.stationLogo, msg: true, drawer: true),
                     )),
                 SliverToBoxAdapter(
                   child: Container(
@@ -408,7 +409,7 @@ class StateHomePage extends State<HomePage>
   }
 
   ///未登录
-  Widget noLoginHeader(LoginUserEntity user) {
+  Widget noLoginHeader(LoginUserEntity? user) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

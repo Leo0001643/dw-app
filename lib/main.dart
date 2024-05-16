@@ -34,7 +34,7 @@ void main() {
   Logger.init(tag: 'leisure_games',isDebug: isDebug);
   WidgetsFlutterBinding.ensureInitialized();
   AppData.initData().then((value){
-    if (kDebugMode) {// Register plugin kits
+    if (isDebug) {// Register plugin kits
       PluginManager.instance
         ..register(WidgetInfoInspector())
         ..register(WidgetDetailInspector())
