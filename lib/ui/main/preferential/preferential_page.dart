@@ -1,14 +1,19 @@
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/empty_data_widget.dart';
 import 'package:leisure_games/app/widget/lc_tabbar.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
+import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
 
@@ -29,13 +34,15 @@ class StatePreferentialPage extends State<PreferentialPage> with TickerProviderS
   final logic = Get.find<PreferentialLogic>();
   final state = Get.find<PreferentialLogic>().state;
   // late RefreshController _refreshController;
+  StreamSubscription? languageStream;
+  StreamSubscription? apiSub;
 
   @override
   void initState() {
     // _refreshController= RefreshController();
     state.tabs.listen((p0) {
-      if(unEmpty(p0)){
-        state.tabController = TabController(length: state.tabs.length, vsync: this)
+      if(unEmpty(p0) && mounted){
+        state.tabController = TabController(length: p0.length, vsync: this)
           ..addListener(() {
             logic.clickTab(state.tabController!.index);
           });
@@ -46,7 +53,7 @@ class StatePreferentialPage extends State<PreferentialPage> with TickerProviderS
 
   @override
   void dispose() {
-    // _refreshController.dispose();
+
     super.dispose();
   }
 
@@ -126,7 +133,7 @@ class StatePreferentialPage extends State<PreferentialPage> with TickerProviderS
           children: [
             ClipRRect(
               borderRadius: BorderRadius.only(topRight: Radius.circular(10.r),topLeft: Radius.circular(10.r),),
-              child: Image.network("${state.promotions.value.url.em()}${item.picurl.em()}",fit: BoxFit.fill,
+              child: Image.network("${state.promotions.url.em()}${item.picurl.em()}",fit: BoxFit.fill,
                 height: 163.h,width: 335.w,),
             ),
             Row(

@@ -10,7 +10,7 @@ class PreferentialState {
   var tabs = RxList<String>.empty(growable: true);
 
   ///优惠活动
-  var promotions = PromotionTypeEntity().obs;
+  var promotions = PromotionTypeEntity();
 
   var list = RxList<PromotionTypeKey>.empty(growable: true);
 

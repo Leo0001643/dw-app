@@ -8,6 +8,7 @@ import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
+import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 
 import 'customer_service_state.dart';
@@ -16,10 +17,15 @@ class CustomerServiceLogic extends GetxController {
   final CustomerServiceState state = CustomerServiceState();
   StreamSubscription? apiSub;
   StreamSubscription? loginStream;
+  StreamSubscription? languageStream;
 
   @override
   void onReady() {
     apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
+      loadData();
+    });
+    ///语言国际化更新
+    languageStream = eventBus.on<LanguageEvent>().listen((event) {
       loadData();
     });
     loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
@@ -35,6 +41,7 @@ class CustomerServiceLogic extends GetxController {
 
   @override
   void onClose() {
+    languageStream?.cancel();
     loginStream?.cancel();
     apiSub?.cancel();
     super.onClose();
@@ -52,7 +59,6 @@ class CustomerServiceLogic extends GetxController {
     }
     HttpService.getCustomerService().then((value) {
       state.services.assignAll(value);
-      state.services.refresh();
     });
   }
 

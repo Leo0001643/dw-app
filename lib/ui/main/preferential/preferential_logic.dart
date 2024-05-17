@@ -44,30 +44,31 @@ class PreferentialLogic extends GetxController {
   void loadData() {
     HttpService.getPromotionTpe().then((value) {
       var data = jsonDecode(value);
-      state.promotions.value = PromotionTypeEntity.fromJson(data);
-      loggerArray(["让我看看这里返回了什么呢",state.promotions.value.data]);
+      state.promotions = PromotionTypeEntity.fromJson(data);
+      loggerArray(["让我看看这里返回了什么呢",state.promotions.data]);
       ///需要对tab进行排序
       var containOther = false;
-      state.tabs.clear();
-      state.tabs.add(Intr().quanbu);
-      state.promotions.value.data?.forEach((key, value) {
+      var tabs = List<String>.empty(growable: true);
+      tabs.add(Intr().quanbu);
+      state.promotions.data?.forEach((key, value) {
         if(key == Intr().qita){
           containOther = true;
         } else if(key != Intr().quanbu){
-          state.tabs.add(key);
+          tabs.add(key);
         }
       });
       if(containOther){
-        state.tabs.add(Intr().qita);
+        tabs.add(Intr().qita);
       }
-      state.tabs.refresh();
+      state.tabs.assignAll(tabs);
       clickTab(0);
     });
   }
 
   void clickTab(int index) {
-    state.list.assignAll(state.promotions.value.data![state.tabs[index]] ?? []);
-    state.list.refresh();
+    state.list.assignAll(state.promotions.data![state.tabs[index]] ?? []);
+    loggerArray(["这里切换没有刷新吗",state.list]);
+    // state.list.refresh();
   }
 
   void onClickType(PromotionTypeKey item) {

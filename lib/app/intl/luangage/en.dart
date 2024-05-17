@@ -738,7 +738,7 @@ class EN {
     "xukouchushouxufei":"Convenience fee will be deducted %s",
     "shixiaoshouxufei":"Timeliness Service Charge:",
     "mianshoushouxufei":"Free of charge",
-    "shixiaokouchu":"Withdraw within %sH from the latest deposit,the withdrawal amount will be deducted",
+    "shixiaokouchu":"Withdraw within %sH from the latest deposit,Convenience fee will be deducted %s",
     "shixiaomianshou":"Withdraw within %sH from the latest deposit,free of charge",
     "cichijiheshijian":"Withdraw Audit Time:",
     "meidongshijian_":"Eastern Time (EST) :%s",

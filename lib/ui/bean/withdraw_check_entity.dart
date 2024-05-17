@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/generated/json/base/json_field.dart';
 import 'package:leisure_games/generated/json/withdraw_check_entity.g.dart';
 
@@ -66,7 +67,7 @@ class WithdrawCheckEntity {
 	String timeFeeHint(){
 		//时效稽核状态(1:通过,2:未通过)
 		if(timeFeeStatus == 2){
-			return Intr().shixiaokouchu_([timeFeeHours.em().toString(),"${timeFeePercent.em()}%",]);
+			return Intr().shixiaokouchu_([timeFeeHours.em().toString(),"${DataUtils.formatMoney(timeFeePercent)}%",]);
 		} else {
 			return Intr().shixiaomianshou_([timeFeeHours.em().toString(),]);
 		}
