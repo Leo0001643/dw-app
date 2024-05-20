@@ -316,20 +316,15 @@ class StateGameMenuView extends State<GameMenuView> {
         ),
         alignment: Alignment.center,
         width: 75.w,
-        height: 34.h,
+        height: 42.h,
         margin: EdgeInsets.only(bottom: 10.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            WidgetUtils().buildImage(
-              findImage(e),
-              20.r,
-              20.r,
-            ),
-            SizedBox(
-              width: 3.w,
-            ),
-           Container(width: 50.w,
+            WidgetUtils().buildImage(findImage(e), 20.r, 20.r,),
+            SizedBox(width: 3.w,),
+           Container(
+             width: 50.w,
              child:  Text(
                e.gameKindName.em(),
                textAlign: TextAlign.center,

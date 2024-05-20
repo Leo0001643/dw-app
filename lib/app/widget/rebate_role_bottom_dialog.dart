@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/res/colorx.dart';
@@ -56,7 +56,26 @@ class StateRebateRoleBottomDialog extends State<RebateRoleBottomDialog>{
           SizedBox(
             height: 0.6.sh,
             child: SingleChildScrollView(
-              child: Html(data: widget.desc.content.em(),),
+              // child: Html(data: widget.desc.content.em(),),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
+                child: HtmlWidget(
+                  widget.desc.content.em(),
+                  textStyle: TextStyle(color: ColorX.color_333333),
+                  customStylesBuilder: (element){
+                    // loggerArray(['打印看一下构建参数',element.localName,element.styles.map((e) => "${e.property}=${e.value?.toString()}").toList()]);
+                    switch (element.localName) {
+                    // case "table":
+                    //   return {'width': '100%'};
+                      case "td":
+                        return {'border': '1pt solid windowtext;'};
+                    // case "p":
+                    //   return {};
+                    }
+                    return null;
+                  },
+                ),
+              ),
             ),
           ),
         ],

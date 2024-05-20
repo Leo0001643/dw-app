@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -91,7 +91,23 @@ class StateGameRoleBottomDialog extends State<GameRoleBottomDialog> with SingleT
           Expanded(
             child: SingleChildScrollView(
               child: Obx(() {
-                return Html(data: htmlContent.value,shrinkWrap: true,);
+                return HtmlWidget(
+                  htmlContent.value,
+                  textStyle: TextStyle(color: ColorX.color_333333),
+                  customStylesBuilder: (element){
+                    // loggerArray(['打印看一下构建参数',element.localName,element.styles.map((e) => "${e.property}=${e.value?.toString()}").toList()]);
+                    switch (element.localName) {
+                    // case "table":
+                    //   return {'width': '100%'};
+                      case "td":
+                        return {'border': '1pt solid windowtext;'};
+                    // case "p":
+                    //   return {};
+                    }
+                    return null;
+                  },
+                );
+                // return Html(data: htmlContent.value,shrinkWrap: true,);
               }),
             ),
           ),

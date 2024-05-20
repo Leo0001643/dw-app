@@ -135,7 +135,7 @@ class WidgetUtils {
             width: 10.w,
           ),
           Obx(() {
-            return Image.asset(stationLogo.value,);
+            return Image.asset(stationLogo.value,width: 135.r,height: 45.r,fit: BoxFit.fill,);
           }),
           Expanded(child: Container()),
           Visibility(

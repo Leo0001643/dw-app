@@ -444,12 +444,20 @@ class HomeLogic extends GetxController {
 
     if (unEmpty(value)) {
       var list = value!.toApiList();
-      for (var i = 0; i < list.em(); i++) {
-        loggerArray(["线路对比结果", list[i].baseApi, AppData.baseUrl()]);
-        if (list[i].baseApi == AppData.baseUrl()) {
-          state.routeName.value = Intr().xianlu_(["${i + 1}"]);
-          return;
+      var length = list.takeWhile((v)=> v.baseApi == AppData.baseUrl()).length;
+      if(length > 0){
+        for (var i = 0; i < list.em(); i++) {
+          loggerArray(["线路对比结果", list[i].baseApi, AppData.baseUrl()]);
+          if (list[i].baseApi == AppData.baseUrl()) {
+            state.routeName.value = Intr().xianlu_(["${i + 1}"]);
+            return;
+          }
         }
+      } else if(list.isNotEmpty){
+        AppData.setBaseUrl(list[0].baseApi.em());
+        AppData.setBaseWsUrl(list[0].webSocket.em());
+        HttpService.changeBaseUrl(AppData.baseUrl());
+        state.routeName.value = Intr().xianlu_(["1"]);
       }
     }
   }
