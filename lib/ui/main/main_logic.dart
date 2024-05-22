@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/intl/intr.dart';
@@ -96,10 +97,11 @@ class MainLogic extends GetxController {
     },onError: (e){
       if(e["code"] == 90004){//整站维护中
         DialogUtils().showMessageDialog(Get.context!,Intr().zunjingdekehu,title: Intr().xitonggonggao,
-            btnCancel: Intr().cancel,btnConfirm: Intr().lxkf, onConfirm: (){
+            btnCancel: Intr().shuaxin,btnConfirm: Intr().lxkf, onConfirm: (){
               eventBus.fire(ChangeMainPageEvent(3)); //转到客服显示
               Get.until((ModalRoute.withName(Routes.main)));
-            },onCancel: (){
+            },onCancel: (){//刷新
+              eventBus.fire(BaseWsApiEntity(AppData.baseUrl(),AppData.baseWsUrl()));
               Navigator.pop(Get.context!);
             });
       }
