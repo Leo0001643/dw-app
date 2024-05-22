@@ -95,7 +95,7 @@ class MainLogic extends GetxController {
     HttpService.protect().then((value) {
       state.protect = value;
     },onError: (e){
-      if(e["code"] == 90004){//整站维护中
+      if(e["code"] == 900004){//整站维护中
         DialogUtils().showMessageDialog(Get.context!,Intr().zunjingdekehu,title: Intr().xitonggonggao,
             btnCancel: Intr().shuaxin,btnConfirm: Intr().lxkf, onConfirm: (){
               eventBus.fire(ChangeMainPageEvent(3)); //转到客服显示

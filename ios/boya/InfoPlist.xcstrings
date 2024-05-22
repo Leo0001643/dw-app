@@ -30,14 +30,14 @@
         }
       }
     },
-    "NSDocumentsFolderUsageDescription" : {
-      "comment" : "Privacy - Documents Folder Usage Description",
+    "NSFaceIDUsageDescription" : {
+      "comment" : "Privacy - Face ID Usage Description",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "需要使用文档权限，用以存储相关文件"
+            "value" : "需要使用Face ID以验证您的身份"
           }
         }
       }

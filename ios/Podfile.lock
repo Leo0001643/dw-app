@@ -32,7 +32,7 @@ PODS:
     - JPush (= 5.2.4)
   - just_audio (0.0.1):
     - Flutter
-  - local_auth_ios (0.0.1):
+  - local_auth_darwin (0.0.1):
     - Flutter
   - OrderedSet (5.0.0)
   - package_info_plus (0.4.5):
@@ -73,7 +73,7 @@ DEPENDENCIES:
   - install_plugin (from `.symlinks/plugins/install_plugin/ios`)
   - jpush_flutter (from `.symlinks/plugins/jpush_flutter/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
-  - local_auth_ios (from `.symlinks/plugins/local_auth_ios/ios`)
+  - local_auth_darwin (from `.symlinks/plugins/local_auth_darwin/darwin`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
@@ -116,8 +116,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/jpush_flutter/ios"
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
-  local_auth_ios:
-    :path: ".symlinks/plugins/local_auth_ios/ios"
+  local_auth_darwin:
+    :path: ".symlinks/plugins/local_auth_darwin/darwin"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
@@ -154,7 +154,7 @@ SPEC CHECKSUMS:
   JPush: c3c6e328b39a7dd78cf6b1a7d072af1a9a1974bd
   jpush_flutter: 3a45b38bdaeb2dbfa0d1e77da949b94eec34197c
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
-  local_auth_ios: 1ba1475238daa33a6ffa2a29242558437be435ac
+  local_auth_darwin: 4d56c90c2683319835a61274b57620df9c4520ab
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
   path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
