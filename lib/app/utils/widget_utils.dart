@@ -804,7 +804,7 @@ class WidgetUtils {
     }
     try {
       return image.isUrl()
-          ? NetworkImage(image,)
+          ? NetworkImage(image.trim(),)
           : AssetImage(image) as ImageProvider;
     } catch (e) {
       return AssetImage(defImage);
@@ -818,8 +818,9 @@ class WidgetUtils {
     }
     try {
       return image.isUrl()
-          ? CachedNetworkImage(imageUrl: image,fit: fit,width: width,height: height,
+          ? CachedNetworkImage(imageUrl: image.trim(),fit: fit,width: width,height: height,
           errorWidget: (context,url,error){
+            loggerArray(["异常了", url, error]);
             return Image.asset(defImage,width: width, height: height, fit: fit,);
           },
         placeholder: (context,url){

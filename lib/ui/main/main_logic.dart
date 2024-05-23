@@ -71,7 +71,7 @@ class MainLogic extends GetxController {
         statuses = await [Permission.storage].request();
       }
     } else if(GetPlatform.isIOS){
-      statuses = await [Permission.photos,].request();
+      statuses = await [Permission.photos].request();
     }
     statuses?.forEach((key, value) {
       loggerArray(['申请权限的状态',key,value]);
