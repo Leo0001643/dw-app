@@ -455,6 +455,8 @@ class EN {
     "vnd":"越南盾（VND）",
     "hyld_boya":"Welcome to BOYA CASINO",
     "hyld_dw":"Welcome to DW International",
+    "hyld_shouxin":"Welcome to shouxin",
+    "hyld_aomen":"Welcome to aomen",
     "qqzlxd":"The world's leading entertainment platform",
     "register":"Register",
     "login":"Login",
@@ -956,6 +958,8 @@ class EN {
     "lianxiwomen":"Contact Us",
     "2023guojizhan_dw":"@2023 DW International",
     "2023guojizhan_boya":"@2023 boya casino",
+    "2023guojizhan_shouxin":"@2023 shouxin",
+    "2023guojizhan_aomen":"@2023 aomen",
     "yingyongneijiazai":"Light in-app loading",
     "liulanqidakai":"Use the default browser",
     "biaozhunshijian":"The website standard time is subject to Eastern Time\nCurrent Time (CST)= Eastern Time (EST)+12:0",
@@ -1058,6 +1062,7 @@ class EN {
     "kaiqishengwushibie":"Biometric identification",
     "qingzaixitongshezhifaceidzhuce":"Please do FaceID or fingerprint registration in system Settings",
     "qingyanzhengshenfen":"Please authenticate to login",
+    "wangluocuowu":"Network error!",
 
 
   };

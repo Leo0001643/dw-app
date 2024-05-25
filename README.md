@@ -56,5 +56,30 @@ flutter build apk --flavor boya --dart-define=CHANNEL=boya
 
 
 
+新建站点：9006，线路文件名：line_shouxin.json, 包名: shouxin.apk,网站名称：守信
+包名：com.dw.pro.shouxin
+默认线路配置如下：
+API: https://9006owm4yz.mzm3mzdj.com
+WS: wss://9006ogm5nj.njc2n2m5.com:443
+
+
+新建站点：9007，线路文件名：line_aomen.json, 包名: aomen.apk,网站名称：澳门
+包名：com.dw.pro.aomen
+默认线路配置如下：
+API: https://9007mzg3nj.mzm3mzdj.com
+WS: wss://9007mdg4ym.njc2n2m5.com:443
+
+
+网站：9007  澳门娱乐城（英文名称：MACAU CASINO）
+主题色：PC白色背景蓝色主题  手机端默认版本
+语言：中英文
+手机默认区号：+86
+币种：CNY+USDT
+法币-USDT互转：开启
+站点类型：A网
+
+@h5_nick
+
+
 
 

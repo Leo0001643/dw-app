@@ -1,4 +1,7 @@
 
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
@@ -35,6 +38,13 @@ class ErrorResponseHandler {
     var current = DateTime.now().millisecondsSinceEpoch;
     if(error is Map){
       responseHandler(error);
+    } else if(error is DioException){
+      var toast = Intr().wangluocuowu;
+      if(toast != lastToast || (current - lastTime) >= 5000){
+        lastTime = current;
+        lastToast = toast;
+        showToast(toast);
+      }
     } else {
       var toast= error.toString();
       if(toast != lastToast || (current - lastTime) >= 5000){

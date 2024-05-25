@@ -607,9 +607,6 @@ class ImageX{
   static const language =  'assets/images/language.svg';
   static const language_dark =  'assets/images/language_dark.svg';
 
-  static const ic_station_home =  'assets/images/ic_station_home.png';
-  static const ic_station_home_en =  'assets/images/ic_station_home_en.png';
-
   static const ic_ota_update =  'assets/images/ic_ota_update.png';
 
   static const ic_boya_home =  'assets/images/ic_boya_home.png';
@@ -617,6 +614,12 @@ class ImageX{
 
   static const ic_dw_home =  'assets/images/ic_dw_home.png';
   static const ic_dw_home_en =  'assets/images/ic_dw_home_en.png';
+
+  static const ic_shouxin_home =  'assets/images/ic_shouxin_home.png';
+  static const ic_shouxin_home_en =  'assets/images/ic_shouxin_home_en.png';
+
+  static const ic_aomen_home =  'assets/images/ic_aomen_home.png';
+  static const ic_aomen_home_en =  'assets/images/ic_aomen_home_en.png';
 
   static const siyu =  'assets/images/siyu.png';
   static const siyu_dark =  'assets/images/siyu_dark.svg';

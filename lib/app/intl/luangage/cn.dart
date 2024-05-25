@@ -455,6 +455,8 @@ class CN {
     "vnd":"越南盾（VND）",
     "hyld_boya":"欢迎来到博雅娱乐城！",
     "hyld_dw":"欢迎来到DW国际站！",
+    "hyld_shouxin":"欢迎来到守信！",
+    "hyld_aomen":"欢迎来到澳门！",
     "qqzlxd":"全球最领先的娱乐平台",
     "register":"注册",
     "login":"登录",
@@ -956,6 +958,9 @@ class CN {
     "lianxiwomen":"联系我们",
     "2023guojizhan_dw":"@2023 国际站",
     "2023guojizhan_boya":"@2023 boya casino",
+    "2023guojizhan_shouxin":"@2023 守信",
+    "2023guojizhan_aomen":"@2023 澳门",
+
     "yingyongneijiazai":"应用内轻加载",
     "liulanqidakai":"使用系统默认浏览器打开",
     "biaozhunshijian":"本站标准时间以美东时间为准\n美东时间=北京时间-12小时",
@@ -1058,6 +1063,7 @@ class CN {
     "kaiqishengwushibie":"生物识别",
     "qingzaixitongshezhifaceidzhuce":"请在系统设置中进行FaceID或指纹注册",
     "qingyanzhengshenfen":"请验证您的身份",
+    "wangluocuowu":"网络错误！",
 
 
 

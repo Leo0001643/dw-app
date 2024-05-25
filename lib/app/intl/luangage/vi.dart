@@ -455,6 +455,8 @@ class VI{
     "vnd":"越南盾（VND）",
     "hyld_boya":"Welcome to BOYA CASINO",
     "hyld_dw":"Welcome to DW International",
+    "hyld_shouxin":"Welcome to shouxin",
+    "hyld_aomen":"Welcome to aomen",
     "qqzlxd":"Website giải trí hàng đầu thế giới",
     "register":"Đăng ký",
     "login":"Đăng nhập",
@@ -956,6 +958,8 @@ class VI{
     "lianxiwomen":"Liên hệ chúng tôi",
     "2023guojizhan_boya":"@2023 boya casino",
     "2023guojizhan_dw":"@2023 DW International",
+    "2023guojizhan_shouxin":"@2023 shouxin",
+    "2023guojizhan_aomen":"@2023 aomen",
     "yingyongneijiazai":"Nạp nhẹ trong ứng dụng",
     "liulanqidakai":"Mở bằng trình duyệt mặc định hệ thống",
     "biaozhunshijian":"giờ chuẩn của trang web này dựa trên giờ miền đông (EST)\ngiờ miền đông (EST)",
@@ -1058,6 +1062,7 @@ class VI{
     "kaiqishengwushibie":"Sinh trắc học",
     "qingzaixitongshezhifaceidzhuce":"Xin vui lòng đăng ký khuôn mặt hoặc dấu vân tay trong thiết lập hệ thống",
     "qingyanzhengshenfen":"Xin xác nhận đăng nhập",
+    "wangluocuowu":"Lỗi mạng!",
 
 
   };
