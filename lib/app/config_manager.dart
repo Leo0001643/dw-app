@@ -62,16 +62,30 @@ class ConfigManager {
     }
   }
 
+  ///澳门仅支持中英文
   //中文 英文 越南语 ,const Locale("vi","VI"),const Locale('en','US')
   static List<Locale> locales(){
-    return [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
+    switch(channelName){
+      case channel_aomen:
+        return [const Locale('zh','ZH'),const Locale('en','US')];
+      default:
+        return [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
+    }
   }
 
+  ///澳门仅支持中英文
   static List<LanguageMenuEntity> country (){
-    return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: locales()[0]),
-      LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: locales()[1]),
-      LanguageMenuEntity(language: "Tiếng Việt", icon: ImageX.icon_vi,locale: locales()[2]),
-    ];
+    switch(channelName){
+      case channel_aomen:
+        return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: locales()[0]),
+          LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: locales()[1]),
+        ];
+      default:
+        return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: locales()[0]),
+          LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: locales()[1]),
+          LanguageMenuEntity(language: "Tiếng Việt", icon: ImageX.icon_vi,locale: locales()[2]),
+        ];
+    }
   }
 
   ///更多
@@ -158,6 +172,6 @@ class ConfigManager {
 }
 
 
-///目前支持 dw  boya
-String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'dw');
+///目前支持 dw  boya  shouxin  aomen
+String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'aomen');
 

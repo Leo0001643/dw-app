@@ -12,30 +12,30 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XLg-T3-bUw">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage-dw" translatesAutoresizingMaskIntoConstraints="NO" id="O6J-xw-MhK">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage-shouxin" translatesAutoresizingMaskIntoConstraints="NO" id="TYg-Er-dzw">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Tie-bS-wzO"/>
+                        <viewLayoutGuide key="safeArea" id="pWQ-wg-tkK"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="O6J-xw-MhK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8qA-F4-vN2"/>
-                            <constraint firstItem="O6J-xw-MhK" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Ffz-z0-HIF"/>
-                            <constraint firstAttribute="bottom" secondItem="O6J-xw-MhK" secondAttribute="bottom" id="mOe-G4-Y2U"/>
-                            <constraint firstAttribute="trailing" secondItem="O6J-xw-MhK" secondAttribute="trailing" id="uZZ-Fw-int"/>
+                            <constraint firstItem="TYg-Er-dzw" firstAttribute="top" secondItem="XLg-T3-bUw" secondAttribute="top" id="aEg-Fs-qAO"/>
+                            <constraint firstItem="TYg-Er-dzw" firstAttribute="leading" secondItem="XLg-T3-bUw" secondAttribute="leading" id="nIM-3z-806"/>
+                            <constraint firstAttribute="trailing" secondItem="TYg-Er-dzw" secondAttribute="trailing" id="ndv-Rq-6hp"/>
+                            <constraint firstAttribute="bottom" secondItem="TYg-Er-dzw" secondAttribute="bottom" id="ri6-3e-3gX"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+            <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage-dw" width="250" height="431.33334350585938"/>
+        <image name="LaunchImage-shouxin" width="414" height="736"/>
     </resources>
 </document>
