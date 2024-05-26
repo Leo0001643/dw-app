@@ -44,6 +44,8 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
         dw.res.srcDirs 'src/main/res-dw'
         boya.res.srcDirs 'src/main/res-boya'
+        shouxin.res.srcDirs 'src/main/res-shouxin'
+        aomen.res.srcDirs 'src/main/res-aomen'
     }
 
     defaultConfig {
@@ -74,6 +76,18 @@ android {
             keyAlias 'apk'
             keyPassword '12345678'
             storeFile file('../boya.jks')
+            storePassword '12345678'
+        }
+        shouxin {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../shouxin.jks')
+            storePassword '12345678'
+        }
+        aomen {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../aomen.jks')
             storePassword '12345678'
         }
     }
@@ -125,6 +139,32 @@ android {
                     JPUSH_CHANNEL:"developer-default",
                     flavors_name: "博雅",
                     apk_name: "BOYA",
+            ]
+        }
+        shouxin{
+            applicationId "com.dw.pro.shouxin"
+            namespace "com.dw.pro.shouxin"
+            signingConfig signingConfigs.shouxin
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "守信",
+                    apk_name: "SHOUXIN",
+            ]
+        }
+        aomen{
+            applicationId "com.dw.pro.aomen"
+            namespace "com.dw.pro.aomen"
+            signingConfig signingConfigs.aomen
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "澳门",
+                    apk_name: "AOMEN",
             ]
         }
     }
