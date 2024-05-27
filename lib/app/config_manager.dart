@@ -73,17 +73,17 @@ class ConfigManager {
     }
   }
 
-  ///澳门仅支持中英文
+  ///默认支持中英文越南语
   static List<LanguageMenuEntity> country (){
     switch(channelName){
-      case channel_aomen:
+      case channel_dw:
         return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: locales()[0]),
           LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: locales()[1]),
+          LanguageMenuEntity(language: "Tiếng Việt", icon: ImageX.icon_vi,locale: locales()[2]),
         ];
       default:
         return [LanguageMenuEntity(language: "中文简体", icon: ImageX.icon_zh,locale: locales()[0]),
           LanguageMenuEntity(language: "English", icon: ImageX.icon_us,locale: locales()[1]),
-          LanguageMenuEntity(language: "Tiếng Việt", icon: ImageX.icon_vi,locale: locales()[2]),
         ];
     }
   }

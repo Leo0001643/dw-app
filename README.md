@@ -54,6 +54,10 @@ flutter build apk --flavor dw --dart-define=CHANNEL=dw
 
 flutter build apk --flavor boya --dart-define=CHANNEL=boya
 
+flutter build apk --flavor shouxin --dart-define=CHANNEL=shouxin
+
+flutter build apk --flavor aomen --dart-define=CHANNEL=aomen
+
 
 
 新建站点：9006，线路文件名：line_shouxin.json, 包名: shouxin.apk,网站名称：守信
