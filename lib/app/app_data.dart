@@ -180,7 +180,7 @@ class AppData {
 
 
   static bool isValidUser(String user) {
-    return prefs?.getBool("valid_user_$user",) ??false;
+    return prefs?.getBool("valid_user_$user",) ?? false;
   }
 
 

@@ -7,6 +7,7 @@ import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
+import 'package:leisure_games/ui/bean/register_currency_event.dart';
 
 import 'register_state.dart';
 
@@ -117,9 +118,12 @@ class RegisterLogic extends GetxController {
     //   params["intr"] = state.tgcode;
     // }
     HttpService.userRegister(params).then((value) {
+      ///登录成功刷新各页面
       eventBus.fire(LoginRefreshEvent());
       AppData.setUser(value);
-      Get.until((ModalRoute.withName(Routes.main)));
+      Get.until(ModalRoute.withName(Routes.main));
+      ///通知显示币种选择弹窗
+      eventBus.fire(RegisterCurrencyEvent());
     },onError: (error){
       getVarcode();///出错需要刷新验证码
     });

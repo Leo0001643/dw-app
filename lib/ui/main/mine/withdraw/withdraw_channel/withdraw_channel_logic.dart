@@ -41,7 +41,7 @@ class WithdrawChannelLogic extends GetxController {
       if(isEmpty(state.userDraw.value.banks)){
         DialogUtils().showMessageDialog(context, Intr().ninhaimeibangdingyhkzhanghu,btnConfirm: Intr().qubangding, onConfirm: (){
           Navigator.pop(context);
-          Get.toNamed(Routes.bind_bank);
+          Get.offAndToNamed(Routes.bind_bank);
         });
         return;
       }
@@ -50,7 +50,7 @@ class WithdrawChannelLogic extends GetxController {
       if(isEmpty(item.account)){
         DialogUtils().showMessageDialog(context, Intr().ninhaimeibangdingqianbao,btnConfirm: Intr().qubangding, onConfirm: (){
           Navigator.pop(context);
-          Get.toNamed(Routes.bind_wallet);
+          Get.offAndToNamed(Routes.bind_wallet);
         });
         return;
       }

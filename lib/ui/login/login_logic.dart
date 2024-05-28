@@ -5,7 +5,6 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
-
 import 'login_state.dart';
 
 class LoginLogic extends GetxController {
@@ -94,7 +93,6 @@ class LoginLogic extends GetxController {
       AppData.setUser(value);
       AppData.setLoginUser(state.accountValue);
       AppData.setLoginPwd(state.accountValue,state.pwdValue);
-
       Get.until((ModalRoute.withName(Routes.main)));
     },onError: (error){
       getVarcode();///出错需要刷新验证码

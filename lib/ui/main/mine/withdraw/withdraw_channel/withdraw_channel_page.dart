@@ -50,9 +50,11 @@ class _WithdrawChannelPageState extends State<WithdrawChannelPage> {
                 child: SingleChildScrollView(
                   child: Obx(() {
                     var list = List.empty(growable: true);
-                    if(unEmpty(state.userDraw.value.banks)){
-                      list.add(state.userDraw.value.banks.first);
-                    }
+                    ///添加银行卡的ITEM
+                    list.add(UserDrawDetailBanks());
+                    // if(unEmpty(state.userDraw.value.banks)){
+                    //   list.add(state.userDraw.value.banks.first);
+                    // }
                     state.userDraw.value.dcBanks.forEach((element) {
                       ///筛选出第三方钱包
                       if(element.type?.startsWith('USDT') == false && element.status == 1){

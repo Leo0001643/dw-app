@@ -64,7 +64,14 @@ class StateHomePage extends State<HomePage>
                       children: [
                         Obx(() {
                           if (isEmpty(state.bannerList)) {
-                            return Container();
+                            return Container(///没有banner图占位用
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.r),
+                                border: Border.all(color: ColorX.color_333333,width: 1.r),
+                              ),
+                              width: 345,
+                              height: 110,
+                            );
                           }
                           return GFCarousel(
                               autoPlay: true,

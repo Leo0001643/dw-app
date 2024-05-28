@@ -74,7 +74,6 @@ class HomeLogic extends GetxController {
       ///线路切换 修改当前线路名称
       queryRoutes();
     });
-    delayLoadFirst();
     super.onReady();
   }
 
@@ -462,31 +461,6 @@ class HomeLogic extends GetxController {
     }
   }
 
-  void delayLoadFirst() {
-    bool isExit = AppData.isValidUser(state.user.value.username.em());
-    if (isExit == true) {
-      return;
-    }
-    loadFirstName();
-  }
-
-  void loadFirstName() {
-    if (state.user.value.username?.isNotEmpty == true) {
-      bool isExit = AppData.isValidUser(state.user.value.username!);
-      if (!isExit) {
-        DialogUtils().showCurrencyDialog(Get.context!).then((value) {
-          if (value == true) {
-            ///切换的时候需要把右边数据情况
-            // state.rightAccount.value = PlatformEntity();
-            loadData();
-            loadBalance();
-          }
-        });
-      }
-      AppData.setValidUser(state.user.value.username!);
-    }
-    state.user.refresh();
-  }
 
 
 }
