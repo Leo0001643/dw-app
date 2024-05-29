@@ -173,5 +173,5 @@ class ConfigManager {
 
 
 ///目前支持 dw  boya  shouxin  aomen
-String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'aomen');
+String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'shouxin');
 

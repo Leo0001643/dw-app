@@ -116,7 +116,7 @@ android {
     // 配置渠道对应appid，还支持配置其他渠道参数
     productFlavors {
         dw{
-            applicationId "com.soushin.leisure.dw"
+            applicationId "com.dw.pro.dw"
             namespace "com.soushin.leisure.dw"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
@@ -131,7 +131,7 @@ android {
             ]
         }
         boya{
-            applicationId "com.soushin.leisure.boya"
+            applicationId "com.dw.pro.boya"
             namespace "com.soushin.leisure.boya"
             versionCode 2
             versionName "1.0.2"
