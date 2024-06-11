@@ -44,8 +44,10 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
         dw.res.srcDirs 'src/main/res-dw'
         boya.res.srcDirs 'src/main/res-boya'
+        fuyuan.res.srcDirs 'src/main/res-fuyuan'
         shouxin.res.srcDirs 'src/main/res-shouxin'
         aomen.res.srcDirs 'src/main/res-aomen'
+
     }
 
     defaultConfig {
@@ -88,6 +90,12 @@ android {
             keyAlias 'apk'
             keyPassword '12345678'
             storeFile file('../aomen.jks')
+            storePassword '12345678'
+        }
+        fuyuan {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../fuyuan.jks')
             storePassword '12345678'
         }
     }
@@ -173,6 +181,21 @@ android {
                     JPUSH_CHANNEL:"developer-default",
                     flavors_name: "澳门",
                     apk_name: "AOMEN",
+            ]
+        }
+        aomen{
+            applicationId "com.dw.pro.fuyuan"
+            namespace "com.dw.pro.fuyuan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+            signingConfig signingConfigs.aomen
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "富源国际",
+                    apk_name: "FUYUAN",
             ]
         }
     }

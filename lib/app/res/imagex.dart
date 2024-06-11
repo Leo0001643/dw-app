@@ -615,6 +615,10 @@ class ImageX{
   static const ic_dw_home =  'assets/images/ic_dw_home.png';
   static const ic_dw_home_en =  'assets/images/ic_dw_home_en.png';
 
+  static const ic_fuyuan_home =  'assets/images/ic_fuyuan_home.png';
+  static const ic_fuyuan_home_en =  'assets/images/ic_fuyuan_home_en.png';
+
+
   static const ic_shouxin_home =  'assets/images/ic_shouxin_home.png';
   static const ic_shouxin_home_en =  'assets/images/ic_shouxin_home_en.png';
 

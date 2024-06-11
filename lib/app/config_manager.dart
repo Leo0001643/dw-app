@@ -15,6 +15,7 @@ class ConfigManager {
   static const channel_boya = "boya";
   static const channel_shouxin = "shouxin";
   static const channel_aomen = "aomen";
+  static const channel_fuyuan = "fuyuan";
 
 
   static String siteid(){
@@ -23,6 +24,8 @@ class ConfigManager {
         return "9000";
       case channel_boya:
         return "9003";
+      case channel_fuyuan:
+        return "9005";
       case channel_shouxin:
         return "9006";
       case channel_aomen:
@@ -38,6 +41,8 @@ class ConfigManager {
         return "https://9000vlmdm4.kj99883.com/";
       case channel_boya:
         return "https://9003zgvmyj.mzm3mzdj.com/";
+      case channel_fuyuan:
+        return "https://9005owm4yz.mzm3mzdj.com/";
       case channel_shouxin:
         return "https://9006owm4yz.mzm3mzdj.com/";
       case channel_aomen:
@@ -53,6 +58,8 @@ class ConfigManager {
         return "wss://9000ywfjn2.uy4ayov.com/";
       case channel_boya:
         return "wss://9003mzg3nm.njc2n2m5.com/";
+      case channel_fuyuan:
+        return "wss://9005ogm5nj.njc2n2m5.com:443/";
       case channel_shouxin:
         return "wss://9006ogm5nj.njc2n2m5.com:443/";
       case channel_aomen:
@@ -95,6 +102,8 @@ class ConfigManager {
         return Intr().hyld_dw;
       case channel_boya:
         return Intr().hyld_boya;
+      case channel_fuyuan:
+        return Intr().hyld_fuyuan;
       case channel_shouxin:
         return Intr().hyld_shouxin;
       case channel_aomen:
@@ -111,6 +120,8 @@ class ConfigManager {
         return Intr().guojizhan2023_dw;
       case channel_boya:
         return Intr().guojizhan2023_boya;
+      case channel_fuyuan:
+        return Intr().guojizhan2023_fuyuan;
       case channel_shouxin:
         return Intr().guojizhan2023_shouxin;
       case channel_aomen:
@@ -127,6 +138,8 @@ class ConfigManager {
         return AppData.localeIndex() == 0 ? ImageX.ic_dw_home : ImageX.ic_dw_home_en;
       case channel_boya:
         return AppData.localeIndex() == 0 ? ImageX.ic_boya_home : ImageX.ic_boya_home_en;
+      case channel_fuyuan:
+        return AppData.localeIndex() == 0 ? ImageX.ic_fuyuan_home :ImageX.ic_fuyuan_home_en;
       case channel_shouxin:
         return AppData.localeIndex() == 0 ? ImageX.ic_shouxin_home :ImageX.ic_shouxin_home_en;
       case channel_aomen:
@@ -143,6 +156,8 @@ class ConfigManager {
         return "gjz";
       case channel_boya:
         return "boya";
+      case channel_fuyuan:
+        return "fuyuan";
       case channel_shouxin:
         return "shouxin";
       case channel_aomen:
@@ -159,6 +174,8 @@ class ConfigManager {
         return "line_gjz.json";
       case channel_boya:
         return "line_boya.json";
+      case channel_fuyuan:
+        return "line_fuyuan.json";
       case channel_shouxin:
         return "line_shouxin.json";
       case channel_aomen:
@@ -172,6 +189,6 @@ class ConfigManager {
 }
 
 
-///目前支持 dw  boya  shouxin  aomen
-String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'shouxin');
+///目前支持 dw  boya  shouxin  aomen fuyuan
+String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'boya');
 
