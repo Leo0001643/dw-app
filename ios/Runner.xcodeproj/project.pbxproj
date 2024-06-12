@@ -7,20 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0751EE3D3A8013B6E081AB84 /* Pods_shouxin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E82BA1EBB184E1C51CECC76B /* Pods_shouxin.framework */; };
-		22F7B1A151A5DF621003E4A6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		22F7B1A151A5DF621003E4A6 /* Pods_boya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91BD1DDAACD0691BA86482AD /* Pods_boya.framework */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
-		8D9E720CA54BE9F3E0FEB6AD /* Pods_aomen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81789AC0942198FEBDCBD486 /* Pods_aomen.framework */; };
-		A47D531B5AF66770CA9CF258 /* Pods_dw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC56AF5066FB65CC20C3A44 /* Pods_dw.framework */; };
-		A93F15B62C19C17C00DF6EFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
-		A93F15B72C19C17C00DF6EFE /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
-		A93F15BE2C19C17C00DF6EFE /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
-		A93F15BF2C19C17C00DF6EFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
-		A93F15D82C19C29D00DF6EFE /* fuyuan.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A93F15D72C19C29D00DF6EFE /* fuyuan.xcassets */; };
-		A93F15DA2C19C2B400DF6EFE /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A93F15D92C19C2B400DF6EFE /* InfoPlist.xcstrings */; };
-		A93F15DC2C19C2E100DF6EFE /* Launch Screen-fuyuan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93F15DB2C19C2E100DF6EFE /* Launch Screen-fuyuan.storyboard */; };
+		5650ECF149993BE95860B7B2 /* Pods_dw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE055C870BF62B2CE32074 /* Pods_dw.framework */; };
 		A9AD707B2C02C7D900B786BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		A9AD707C2C02C7D900B786BC /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
+		A9AD707E2C02C7D900B786BC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		A9AD707F2C02C7D900B786BC /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEDCF38F1064529430D4717 /* Pods_Runner.framework */; };
 		A9AD70832C02C7D900B786BC /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		A9AD70852C02C7D900B786BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		A9AD70992C02C89500B786BC /* shouxin.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9AD70982C02C89500B786BC /* shouxin.xcassets */; };
@@ -28,6 +21,8 @@
 		A9AD709D2C02C8E700B786BC /* Launch Screen-shouxin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9AD709C2C02C8E700B786BC /* Launch Screen-shouxin.storyboard */; };
 		A9AD70B62C02D17400B786BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		A9AD70B72C02D17400B786BC /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
+		A9AD70B92C02D17400B786BC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		A9AD70BA2C02D17400B786BC /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEDCF38F1064529430D4717 /* Pods_Runner.framework */; };
 		A9AD70BF2C02D17400B786BC /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		A9AD70C02C02D17400B786BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		A9AD70D52C02D1C300B786BC /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A9AD70D42C02D1C300B786BC /* InfoPlist.xcstrings */; };
@@ -47,21 +42,9 @@
 		A9CD3FDA2BCB6FF500F9D4E8 /* dw.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9CD3FC92BCB6A5400F9D4E8 /* dw.xcassets */; };
 		A9CD40042BCB773700F9D4E8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A9CD40032BCB773700F9D4E8 /* InfoPlist.xcstrings */; };
 		A9CD40062BCB77F200F9D4E8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A9CD40052BCB77F200F9D4E8 /* InfoPlist.xcstrings */; };
-		B36661006F8F2FFDB88E22FC /* Pods_boya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3993EFCF86229D2445615E3A /* Pods_boya.framework */; };
-		C1D094ED6FBB110E0E539FAF /* Pods_fuyuan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58939F147C7352E35FDDB070 /* Pods_fuyuan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A93F15C02C19C17C00DF6EFE /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A9AD70882C02C7D900B786BC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,82 +88,37 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0257BA1965AC5F9D3BD07282 /* Pods-dw.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		03AD16BF1293EB27CDB1A175 /* Pods-aomen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release.xcconfig"; sourceTree = "<group>"; };
-		074DD61A9A714D5B8AB63866 /* Pods-fuyuan.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
-		0A80A17B51F7E8FC39CF02EA /* Pods-fuyuan.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-dw.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-dw.xcconfig"; sourceTree = "<group>"; };
-		0BB80D900842B99945A2A74E /* Pods-boya.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		0DA12D0C66CCA4D011A3737D /* Pods-shouxin.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
-		101195B82FC94DA4C8C48AB0 /* Pods-boya.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-shouxin.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-shouxin.xcconfig"; sourceTree = "<group>"; };
-		10761F8E7BB5C9D2F0EE13A2 /* Pods-shouxin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release.xcconfig"; sourceTree = "<group>"; };
+		002F6B128CF923521D83E02E /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		00AC8ADACF3D59A1E6CBA337 /* Pods-dw.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-dw.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
-		155B25D06835584B35B4DFB7 /* Pods-fuyuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release.xcconfig"; sourceTree = "<group>"; };
-		18B200E7D8F7F3BF9B8B1336 /* Pods-dw.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-aomen.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-aomen.xcconfig"; sourceTree = "<group>"; };
-		1BDEC8956756E71CE30DDD5A /* Pods-shouxin.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-aomen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-aomen.xcconfig"; sourceTree = "<group>"; };
-		1C4DCF69694343EFB2962161 /* Pods-shouxin.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-aomen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-aomen.xcconfig"; sourceTree = "<group>"; };
-		23715488250975F3ABF43A88 /* Pods-aomen.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		2584E005D6D5749F87BE3E44 /* Pods-shouxin.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-boya.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-boya.xcconfig"; sourceTree = "<group>"; };
-		25CF964DD14BF6CDC159CAAC /* Pods-dw.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
-		2ABFCC563DA0FFAE28F6A7B1 /* Pods-shouxin.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-boya.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-boya.xcconfig"; sourceTree = "<group>"; };
-		2AF28FE673E0467371E2825A /* Pods-fuyuan.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
-		2F2F306DFE56BD8AF340C5D5 /* Pods-aomen.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		324C9BA42B705A7D8644F0CC /* Pods-boya.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
+		16BE055C870BF62B2CE32074 /* Pods_dw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		38AC0A5BA419071F1881BCC7 /* Pods-dw.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-aomen.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-aomen.xcconfig"; sourceTree = "<group>"; };
-		38B8BE3AB20A673D91CC466E /* Pods-dw.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-boya.xcconfig"; sourceTree = "<group>"; };
-		3993EFCF86229D2445615E3A /* Pods_boya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_boya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B1C6E6CF816139E909815D9 /* Pods-boya.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-boya.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-boya.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
-		3F8A7B671A2F5CC81C13D16B /* Pods-fuyuan.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		461CC57147CD2375F6761E46 /* Pods-dw.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-dw.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-dw.xcconfig"; sourceTree = "<group>"; };
-		535AB5B479CEA1519858C9C9 /* Pods-dw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug.xcconfig"; sourceTree = "<group>"; };
-		561C652975ADEE7D04743009 /* Pods-fuyuan.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-boya.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-boya.xcconfig"; sourceTree = "<group>"; };
-		58939F147C7352E35FDDB070 /* Pods_fuyuan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fuyuan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F65815E6537919FEE0DFF6D /* Pods-dw.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile.xcconfig"; sourceTree = "<group>"; };
-		609B03991CDBD84D3469175E /* Pods-boya.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug.xcconfig"; sourceTree = "<group>"; };
-		63ECF5E23D1995CDE274B0B8 /* Pods-aomen.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-aomen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-aomen.xcconfig"; sourceTree = "<group>"; };
-		69664C6B1FF1A303CB9F4BC3 /* Pods-aomen.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-boya.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-boya.xcconfig"; sourceTree = "<group>"; };
-		70DA30D7DAEFDEFA24A33F78 /* Pods-fuyuan.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
+		3EF5A944D3B4843075E8D0EE /* Pods-boya.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-dw.xcconfig"; sourceTree = "<group>"; };
+		422A8E6183AFF96324A732BF /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		4390C8A3CFD7B25E2C0F4F45 /* Pods-boya.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-boya.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-boya.xcconfig"; sourceTree = "<group>"; };
+		5FC5241FF578268F9024A81C /* Pods-dw.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-boya.xcconfig"; sourceTree = "<group>"; };
+		65CD9E9CCB9ABFB81A42662D /* Pods-boya.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug.xcconfig"; sourceTree = "<group>"; };
+		684455B0DC426471DA8093F5 /* Pods-dw.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-dw.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-dw.xcconfig"; sourceTree = "<group>"; };
+		7084B474784E30A11D4DA223 /* Pods-boya.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		75C12B53DF56869DEAD786AE /* Pods-fuyuan.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-boya.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-boya.xcconfig"; sourceTree = "<group>"; };
-		77031ABDD77C43C3AD9B040D /* Pods-shouxin.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		774FE1D36CC1FEECCE102357 /* Pods-boya.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
-		7829EC1914026AE7EF7CB700 /* Pods-fuyuan.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile.xcconfig"; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
-		7F920105E80CA2DF387184D2 /* Pods-dw.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-aomen.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-aomen.xcconfig"; sourceTree = "<group>"; };
-		81789AC0942198FEBDCBD486 /* Pods_aomen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aomen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8178E2D8EC43AAE4E1C53FBC /* Pods-shouxin.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		8682024118E5A035A8C783FF /* Pods-boya.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-aomen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-aomen.xcconfig"; sourceTree = "<group>"; };
-		86C58BA6EBC4250E0003AA84 /* Pods-aomen.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
-		8DAE786B44F1093E192C4831 /* Pods-boya.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-dw.xcconfig"; sourceTree = "<group>"; };
-		8F89A008553CEFDD3D37BD68 /* Pods-shouxin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug.xcconfig"; sourceTree = "<group>"; };
-		91C817720733C3C8E3AB52D2 /* Pods-aomen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug.xcconfig"; sourceTree = "<group>"; };
-		91F3693D1F81D64EAE83C9C5 /* Pods-fuyuan.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		93A0DAD2EB65236FB0E21042 /* Pods-dw.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		93E3830AAD2869B5B4E50B8B /* Pods-shouxin.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile.xcconfig"; sourceTree = "<group>"; };
-		94740C8A892EC85EAA366DA5 /* Pods-boya.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-boya.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-boya.xcconfig"; sourceTree = "<group>"; };
-		953FD5F3F0AC6CDA63EF0740 /* Pods-shouxin.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-boya.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-boya.xcconfig"; sourceTree = "<group>"; };
+		7B9773A71D500DB2BE4B21B4 /* Pods-boya.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-boya.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-boya.xcconfig"; sourceTree = "<group>"; };
+		7F3A7314D60E8E1301F1686D /* Pods-Runner.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-boya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-boya.xcconfig"; sourceTree = "<group>"; };
+		80B9C10C3BF80B75CA000FE0 /* Pods-boya.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-dw.xcconfig"; sourceTree = "<group>"; };
+		91118ED21F895B174F542FA4 /* Pods-boya.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release.xcconfig"; sourceTree = "<group>"; };
+		91BD1DDAACD0691BA86482AD /* Pods_boya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_boya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93D10B52239BBFBBD9F9577C /* Pods-dw.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-boya.xcconfig"; sourceTree = "<group>"; };
+		93EE2B78BF03C603FEA68ACF /* Pods-Runner.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-dw.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
-		97A9A52E686881DDA4CCFA16 /* Pods-aomen.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-boya.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-boya.xcconfig"; sourceTree = "<group>"; };
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98FD97B50C03881FC1870492 /* Pods-dw.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-shouxin.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-shouxin.xcconfig"; sourceTree = "<group>"; };
-		9927BE72F353C5138074A75B /* Pods-dw.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-dw.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-dw.xcconfig"; sourceTree = "<group>"; };
-		99EB8442C8624AEA9D696023 /* Pods-dw.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		9BB01D1D0C198B36A1C54026 /* Pods-aomen.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-dw.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-dw.xcconfig"; sourceTree = "<group>"; };
-		9DB6311C6AEA03656E485010 /* Pods-shouxin.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		9FE5EB64AB93F7FADAECD8EC /* Pods-dw.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
-		A40A7E9D72AAF6F852C306E9 /* Pods-shouxin.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
-		A6B23A1AD04FA588B40D2D7B /* Pods-boya.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-dw.xcconfig"; sourceTree = "<group>"; };
-		A93F15D42C19C17C00DF6EFE /* fuyuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fuyuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A93F15D52C19C17D00DF6EFE /* fuyuan-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "fuyuan-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app/ios/fuyuan-Info.plist"; sourceTree = "<absolute>"; };
-		A93F15D72C19C29D00DF6EFE /* fuyuan.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = fuyuan.xcassets; sourceTree = "<group>"; };
-		A93F15D92C19C2B400DF6EFE /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		A93F15DB2C19C2E100DF6EFE /* Launch Screen-fuyuan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen-fuyuan.storyboard"; sourceTree = "<group>"; };
+		A1547CF18E52846540A8B6CC /* Pods-Runner.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-boya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-boya.xcconfig"; sourceTree = "<group>"; };
+		A8FA418BA253FA0102C0AAFB /* Pods-dw.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-boya.xcconfig"; sourceTree = "<group>"; };
 		A9AD70962C02C7D900B786BC /* shouxin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shouxin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9AD70972C02C7DA00B786BC /* shouxin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "shouxin-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app/ios/shouxin-Info.plist"; sourceTree = "<absolute>"; };
 		A9AD70982C02C89500B786BC /* shouxin.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = shouxin.xcassets; sourceTree = "<group>"; };
@@ -208,58 +146,26 @@
 		A9CD3FE32BCB6FF600F9D4E8 /* dw-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "dw-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app-channel/ios/dw-Info.plist"; sourceTree = "<absolute>"; };
 		A9CD40032BCB773700F9D4E8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		A9CD40052BCB77F200F9D4E8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		AA85D21681B98E9FE487A032 /* Pods-fuyuan.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-aomen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-aomen.xcconfig"; sourceTree = "<group>"; };
-		AD8558C9E1FF2EE8845EC82F /* Pods-boya.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-aomen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-aomen.xcconfig"; sourceTree = "<group>"; };
-		ADE6AF0E23899B2F040AEE16 /* Pods-boya.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release.xcconfig"; sourceTree = "<group>"; };
-		B29984F822352B29FBB98774 /* Pods-dw.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-dw.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-dw.xcconfig"; sourceTree = "<group>"; };
-		B34F29C919F6957F15C45159 /* Pods-fuyuan.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-aomen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-aomen.xcconfig"; sourceTree = "<group>"; };
-		B39D13DD549F9B29B6BA4F0A /* Pods-shouxin.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-shouxin.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-shouxin.xcconfig"; sourceTree = "<group>"; };
-		B6B954EBD1D31FCEB8CBA282 /* Pods-shouxin.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-dw.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-dw.xcconfig"; sourceTree = "<group>"; };
-		BDC84085105854BD82A8B788 /* Pods-dw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release.xcconfig"; sourceTree = "<group>"; };
-		C763C1236D0401E3187AE929 /* Pods-aomen.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		C80F41B864EF041AE3214425 /* Pods-fuyuan.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-shouxin.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-shouxin.xcconfig"; sourceTree = "<group>"; };
-		CA7D29E2E30EA047D29BDA7D /* Pods-boya.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
-		CAE908117FC79108F8127D60 /* Pods-aomen.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
-		CC938F80079C6CA10435E3D7 /* Pods-aomen.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-boya.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-boya.xcconfig"; sourceTree = "<group>"; };
-		CE67B2EAA359332EE0FB179E /* Pods-shouxin.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-dw.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-dw.xcconfig"; sourceTree = "<group>"; };
-		D31129A5EC63F7F0352068C5 /* Pods-dw.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-boya.xcconfig"; sourceTree = "<group>"; };
-		D563F1010EB598031E8B0CA5 /* Pods-aomen.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-dw.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-dw.xcconfig"; sourceTree = "<group>"; };
-		D7ED85D1EBE8F59C04ED4494 /* Pods-aomen.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-shouxin.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-shouxin.xcconfig"; sourceTree = "<group>"; };
-		D8670280F8F84A4DD466C834 /* Pods-aomen.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile.xcconfig"; sourceTree = "<group>"; };
-		D96137834C477988589C9B2D /* Pods-fuyuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug.xcconfig"; sourceTree = "<group>"; };
-		DA04EF5BDD3FEE966651DD2C /* Pods-shouxin.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-aomen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-aomen.xcconfig"; sourceTree = "<group>"; };
-		DCF602764D9E7B55CD4F7A41 /* Pods-aomen.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-aomen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-aomen.xcconfig"; sourceTree = "<group>"; };
-		DDC56AF5066FB65CC20C3A44 /* Pods_dw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDE46D456023B0486393BCDF /* Pods-fuyuan.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-aomen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-aomen.xcconfig"; sourceTree = "<group>"; };
-		DE65CC82DA3807CE29E3DFC0 /* Pods-fuyuan.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-boya.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-boya.xcconfig"; sourceTree = "<group>"; };
-		E350D80C45EDD38AD4A73F6D /* Pods-boya.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-dw.xcconfig"; sourceTree = "<group>"; };
-		E48AE0BA4ECA47FAA41EF88F /* Pods-aomen.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-aomen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-aomen.xcconfig"; sourceTree = "<group>"; };
-		E82BA1EBB184E1C51CECC76B /* Pods_shouxin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shouxin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA54643DD7C80809AD22AE18 /* Pods-dw.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-boya.xcconfig"; sourceTree = "<group>"; };
-		EB599BF5EF6D9116BC619EB9 /* Pods-fuyuan.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-dw.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-dw.xcconfig"; sourceTree = "<group>"; };
-		EC7915FBBD2B244593A31A66 /* Pods-fuyuan.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-dw.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-dw.xcconfig"; sourceTree = "<group>"; };
-		ED8C9A0E71D332317F924F91 /* Pods-aomen.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-dw.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-dw.xcconfig"; sourceTree = "<group>"; };
-		F44431205D7827C8E5BA5865 /* Pods-boya.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-boya.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-boya.xcconfig"; sourceTree = "<group>"; };
-		FAE932E4CDE7803B81295630 /* Pods-boya.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
-		FB8DED2B7AA71CBA0DF7EA2B /* Pods-shouxin.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-dw.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-dw.xcconfig"; sourceTree = "<group>"; };
-		FC8E72CC424019A4A018B33A /* Pods-boya.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile.xcconfig"; sourceTree = "<group>"; };
-		FD0359F097BA47151BF9AB59 /* Pods-boya.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-aomen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-aomen.xcconfig"; sourceTree = "<group>"; };
+		AF64EB1527D29842CAC53100 /* Pods-dw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release.xcconfig"; sourceTree = "<group>"; };
+		B4711FCE1722F34B51BFCB27 /* Pods-Runner.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-dw.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-dw.xcconfig"; sourceTree = "<group>"; };
+		C14F07B7A6D1AAA7CDEA2266 /* Pods-Runner.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dw.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dw.xcconfig"; sourceTree = "<group>"; };
+		C4083E095B400EF5CBD5D90A /* Pods-boya.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-boya.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-boya.xcconfig"; sourceTree = "<group>"; };
+		C425988FDB0C223EA7B6A285 /* Pods-dw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug.xcconfig"; sourceTree = "<group>"; };
+		D20A31787228E46BDB39CC56 /* Pods-boya.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile.xcconfig"; sourceTree = "<group>"; };
+		D40E671DDD3291D4D35D8E89 /* Pods-Runner.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-boya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-boya.xcconfig"; sourceTree = "<group>"; };
+		DAEDCF38F1064529430D4717 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBFF140423283DEFB93F1AA2 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		DD3BBEDDE818839FE2F7E8CA /* Pods-dw.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile.xcconfig"; sourceTree = "<group>"; };
+		E5911C5F0519ABE645072969 /* Pods-dw.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-dw.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-dw.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A93F15B82C19C17C00DF6EFE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C1D094ED6FBB110E0E539FAF /* Pods_fuyuan.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A9AD707D2C02C7D900B786BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0751EE3D3A8013B6E081AB84 /* Pods_shouxin.framework in Frameworks */,
+				A9AD707E2C02C7D900B786BC /* (null) in Frameworks */,
+				A9AD707F2C02C7D900B786BC /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +173,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D9E720CA54BE9F3E0FEB6AD /* Pods_aomen.framework in Frameworks */,
+				A9AD70B92C02D17400B786BC /* (null) in Frameworks */,
+				A9AD70BA2C02D17400B786BC /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,8 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22F7B1A151A5DF621003E4A6 /* BuildFile in Frameworks */,
-				B36661006F8F2FFDB88E22FC /* Pods_boya.framework in Frameworks */,
+				22F7B1A151A5DF621003E4A6 /* Pods_boya.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A47D531B5AF66770CA9CF258 /* Pods_dw.framework in Frameworks */,
+				5650ECF149993BE95860B7B2 /* Pods_dw.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,18 +212,6 @@
 			path = RunnerTests;
 			sourceTree = "<group>";
 		};
-		52D197DD6D45810003A62644 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				81789AC0942198FEBDCBD486 /* Pods_aomen.framework */,
-				3993EFCF86229D2445615E3A /* Pods_boya.framework */,
-				DDC56AF5066FB65CC20C3A44 /* Pods_dw.framework */,
-				58939F147C7352E35FDDB070 /* Pods_fuyuan.framework */,
-				E82BA1EBB184E1C51CECC76B /* Pods_shouxin.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,7 +226,6 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
-				A93F15D62C19C28600DF6EFE /* fuyuan */,
 				A9AD70762C02C7AB00B786BC /* aomen */,
 				A9AD70752C02C79D00B786BC /* shouxin */,
 				A9CD3FC62BCB6A2900F9D4E8 /* dw */,
@@ -342,12 +235,11 @@
 				97C146EF1CF9000F007C117D /* Products */,
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				BCC0C91EF793704341C2F529 /* Pods */,
+				BD541235D663B652EE3CA6ED /* Frameworks */,
 				A9CD3FC02BCB686700F9D4E8 /* boya-Info.plist */,
 				A9CD3FE32BCB6FF600F9D4E8 /* dw-Info.plist */,
 				A9AD70972C02C7DA00B786BC /* shouxin-Info.plist */,
 				A9AD70D32C02D17500B786BC /* aomen-Info.plist */,
-				A93F15D52C19C17D00DF6EFE /* fuyuan-Info.plist */,
-				52D197DD6D45810003A62644 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -359,7 +251,6 @@
 				A9CD3FE22BCB6FF500F9D4E8 /* dw.app */,
 				A9AD70962C02C7D900B786BC /* shouxin.app */,
 				A9AD70D22C02D17400B786BC /* aomen.app */,
-				A93F15D42C19C17C00DF6EFE /* fuyuan.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -378,16 +269,6 @@
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
 			path = Runner;
-			sourceTree = "<group>";
-		};
-		A93F15D62C19C28600DF6EFE /* fuyuan */ = {
-			isa = PBXGroup;
-			children = (
-				A93F15D72C19C29D00DF6EFE /* fuyuan.xcassets */,
-				A93F15D92C19C2B400DF6EFE /* InfoPlist.xcstrings */,
-				A93F15DB2C19C2E100DF6EFE /* Launch Screen-fuyuan.storyboard */,
-			);
-			path = fuyuan;
 			sourceTree = "<group>";
 		};
 		A9AD70752C02C79D00B786BC /* shouxin */ = {
@@ -433,98 +314,45 @@
 		BCC0C91EF793704341C2F529 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				91C817720733C3C8E3AB52D2 /* Pods-aomen.debug.xcconfig */,
-				9BB01D1D0C198B36A1C54026 /* Pods-aomen.debug-dw.xcconfig */,
-				23715488250975F3ABF43A88 /* Pods-aomen.debug-fuyuan.xcconfig */,
-				CC938F80079C6CA10435E3D7 /* Pods-aomen.debug-boya.xcconfig */,
-				CAE908117FC79108F8127D60 /* Pods-aomen.debug-shouxin.xcconfig */,
-				E48AE0BA4ECA47FAA41EF88F /* Pods-aomen.debug-aomen.xcconfig */,
-				03AD16BF1293EB27CDB1A175 /* Pods-aomen.release.xcconfig */,
-				ED8C9A0E71D332317F924F91 /* Pods-aomen.release-dw.xcconfig */,
-				97A9A52E686881DDA4CCFA16 /* Pods-aomen.release-boya.xcconfig */,
-				C763C1236D0401E3187AE929 /* Pods-aomen.release-fuyuan.xcconfig */,
-				63ECF5E23D1995CDE274B0B8 /* Pods-aomen.release-aomen.xcconfig */,
-				D7ED85D1EBE8F59C04ED4494 /* Pods-aomen.release-shouxin.xcconfig */,
-				D8670280F8F84A4DD466C834 /* Pods-aomen.profile.xcconfig */,
-				D563F1010EB598031E8B0CA5 /* Pods-aomen.profile-dw.xcconfig */,
-				2F2F306DFE56BD8AF340C5D5 /* Pods-aomen.profile-fuyuan.xcconfig */,
-				69664C6B1FF1A303CB9F4BC3 /* Pods-aomen.profile-boya.xcconfig */,
-				86C58BA6EBC4250E0003AA84 /* Pods-aomen.profile-shouxin.xcconfig */,
-				DCF602764D9E7B55CD4F7A41 /* Pods-aomen.profile-aomen.xcconfig */,
-				609B03991CDBD84D3469175E /* Pods-boya.debug.xcconfig */,
-				E350D80C45EDD38AD4A73F6D /* Pods-boya.debug-dw.xcconfig */,
-				324C9BA42B705A7D8644F0CC /* Pods-boya.debug-fuyuan.xcconfig */,
-				F44431205D7827C8E5BA5865 /* Pods-boya.debug-boya.xcconfig */,
-				FAE932E4CDE7803B81295630 /* Pods-boya.debug-shouxin.xcconfig */,
-				8682024118E5A035A8C783FF /* Pods-boya.debug-aomen.xcconfig */,
-				ADE6AF0E23899B2F040AEE16 /* Pods-boya.release.xcconfig */,
-				A6B23A1AD04FA588B40D2D7B /* Pods-boya.release-dw.xcconfig */,
-				94740C8A892EC85EAA366DA5 /* Pods-boya.release-boya.xcconfig */,
-				CA7D29E2E30EA047D29BDA7D /* Pods-boya.release-fuyuan.xcconfig */,
-				AD8558C9E1FF2EE8845EC82F /* Pods-boya.release-aomen.xcconfig */,
-				101195B82FC94DA4C8C48AB0 /* Pods-boya.release-shouxin.xcconfig */,
-				FC8E72CC424019A4A018B33A /* Pods-boya.profile.xcconfig */,
-				8DAE786B44F1093E192C4831 /* Pods-boya.profile-dw.xcconfig */,
-				0BB80D900842B99945A2A74E /* Pods-boya.profile-fuyuan.xcconfig */,
-				3B1C6E6CF816139E909815D9 /* Pods-boya.profile-boya.xcconfig */,
-				774FE1D36CC1FEECCE102357 /* Pods-boya.profile-shouxin.xcconfig */,
-				FD0359F097BA47151BF9AB59 /* Pods-boya.profile-aomen.xcconfig */,
-				535AB5B479CEA1519858C9C9 /* Pods-dw.debug.xcconfig */,
-				9927BE72F353C5138074A75B /* Pods-dw.debug-dw.xcconfig */,
-				0257BA1965AC5F9D3BD07282 /* Pods-dw.debug-fuyuan.xcconfig */,
-				38B8BE3AB20A673D91CC466E /* Pods-dw.debug-boya.xcconfig */,
-				25CF964DD14BF6CDC159CAAC /* Pods-dw.debug-shouxin.xcconfig */,
-				38AC0A5BA419071F1881BCC7 /* Pods-dw.debug-aomen.xcconfig */,
-				BDC84085105854BD82A8B788 /* Pods-dw.release.xcconfig */,
-				461CC57147CD2375F6761E46 /* Pods-dw.release-dw.xcconfig */,
-				EA54643DD7C80809AD22AE18 /* Pods-dw.release-boya.xcconfig */,
-				99EB8442C8624AEA9D696023 /* Pods-dw.release-fuyuan.xcconfig */,
-				18B200E7D8F7F3BF9B8B1336 /* Pods-dw.release-aomen.xcconfig */,
-				98FD97B50C03881FC1870492 /* Pods-dw.release-shouxin.xcconfig */,
-				5F65815E6537919FEE0DFF6D /* Pods-dw.profile.xcconfig */,
-				B29984F822352B29FBB98774 /* Pods-dw.profile-dw.xcconfig */,
-				93A0DAD2EB65236FB0E21042 /* Pods-dw.profile-fuyuan.xcconfig */,
-				D31129A5EC63F7F0352068C5 /* Pods-dw.profile-boya.xcconfig */,
-				9FE5EB64AB93F7FADAECD8EC /* Pods-dw.profile-shouxin.xcconfig */,
-				7F920105E80CA2DF387184D2 /* Pods-dw.profile-aomen.xcconfig */,
-				D96137834C477988589C9B2D /* Pods-fuyuan.debug.xcconfig */,
-				EC7915FBBD2B244593A31A66 /* Pods-fuyuan.debug-dw.xcconfig */,
-				3F8A7B671A2F5CC81C13D16B /* Pods-fuyuan.debug-fuyuan.xcconfig */,
-				75C12B53DF56869DEAD786AE /* Pods-fuyuan.debug-boya.xcconfig */,
-				074DD61A9A714D5B8AB63866 /* Pods-fuyuan.debug-shouxin.xcconfig */,
-				DDE46D456023B0486393BCDF /* Pods-fuyuan.debug-aomen.xcconfig */,
-				155B25D06835584B35B4DFB7 /* Pods-fuyuan.release.xcconfig */,
-				EB599BF5EF6D9116BC619EB9 /* Pods-fuyuan.release-dw.xcconfig */,
-				DE65CC82DA3807CE29E3DFC0 /* Pods-fuyuan.release-boya.xcconfig */,
-				70DA30D7DAEFDEFA24A33F78 /* Pods-fuyuan.release-fuyuan.xcconfig */,
-				B34F29C919F6957F15C45159 /* Pods-fuyuan.release-aomen.xcconfig */,
-				C80F41B864EF041AE3214425 /* Pods-fuyuan.release-shouxin.xcconfig */,
-				7829EC1914026AE7EF7CB700 /* Pods-fuyuan.profile.xcconfig */,
-				0A80A17B51F7E8FC39CF02EA /* Pods-fuyuan.profile-dw.xcconfig */,
-				91F3693D1F81D64EAE83C9C5 /* Pods-fuyuan.profile-fuyuan.xcconfig */,
-				561C652975ADEE7D04743009 /* Pods-fuyuan.profile-boya.xcconfig */,
-				2AF28FE673E0467371E2825A /* Pods-fuyuan.profile-shouxin.xcconfig */,
-				AA85D21681B98E9FE487A032 /* Pods-fuyuan.profile-aomen.xcconfig */,
-				8F89A008553CEFDD3D37BD68 /* Pods-shouxin.debug.xcconfig */,
-				CE67B2EAA359332EE0FB179E /* Pods-shouxin.debug-dw.xcconfig */,
-				8178E2D8EC43AAE4E1C53FBC /* Pods-shouxin.debug-fuyuan.xcconfig */,
-				2ABFCC563DA0FFAE28F6A7B1 /* Pods-shouxin.debug-boya.xcconfig */,
-				A40A7E9D72AAF6F852C306E9 /* Pods-shouxin.debug-shouxin.xcconfig */,
-				1BDEC8956756E71CE30DDD5A /* Pods-shouxin.debug-aomen.xcconfig */,
-				10761F8E7BB5C9D2F0EE13A2 /* Pods-shouxin.release.xcconfig */,
-				B6B954EBD1D31FCEB8CBA282 /* Pods-shouxin.release-dw.xcconfig */,
-				2584E005D6D5749F87BE3E44 /* Pods-shouxin.release-boya.xcconfig */,
-				9DB6311C6AEA03656E485010 /* Pods-shouxin.release-fuyuan.xcconfig */,
-				DA04EF5BDD3FEE966651DD2C /* Pods-shouxin.release-aomen.xcconfig */,
-				B39D13DD549F9B29B6BA4F0A /* Pods-shouxin.release-shouxin.xcconfig */,
-				93E3830AAD2869B5B4E50B8B /* Pods-shouxin.profile.xcconfig */,
-				FB8DED2B7AA71CBA0DF7EA2B /* Pods-shouxin.profile-dw.xcconfig */,
-				77031ABDD77C43C3AD9B040D /* Pods-shouxin.profile-fuyuan.xcconfig */,
-				953FD5F3F0AC6CDA63EF0740 /* Pods-shouxin.profile-boya.xcconfig */,
-				0DA12D0C66CCA4D011A3737D /* Pods-shouxin.profile-shouxin.xcconfig */,
-				1C4DCF69694343EFB2962161 /* Pods-shouxin.profile-aomen.xcconfig */,
+				DBFF140423283DEFB93F1AA2 /* Pods-Runner.debug.xcconfig */,
+				002F6B128CF923521D83E02E /* Pods-Runner.release.xcconfig */,
+				422A8E6183AFF96324A732BF /* Pods-Runner.profile.xcconfig */,
+				93EE2B78BF03C603FEA68ACF /* Pods-Runner.debug-dw.xcconfig */,
+				D40E671DDD3291D4D35D8E89 /* Pods-Runner.debug-boya.xcconfig */,
+				C14F07B7A6D1AAA7CDEA2266 /* Pods-Runner.release-dw.xcconfig */,
+				7F3A7314D60E8E1301F1686D /* Pods-Runner.release-boya.xcconfig */,
+				B4711FCE1722F34B51BFCB27 /* Pods-Runner.profile-dw.xcconfig */,
+				A1547CF18E52846540A8B6CC /* Pods-Runner.profile-boya.xcconfig */,
+				65CD9E9CCB9ABFB81A42662D /* Pods-boya.debug.xcconfig */,
+				7084B474784E30A11D4DA223 /* Pods-boya.debug-dw.xcconfig */,
+				7B9773A71D500DB2BE4B21B4 /* Pods-boya.debug-boya.xcconfig */,
+				91118ED21F895B174F542FA4 /* Pods-boya.release.xcconfig */,
+				3EF5A944D3B4843075E8D0EE /* Pods-boya.release-dw.xcconfig */,
+				C4083E095B400EF5CBD5D90A /* Pods-boya.release-boya.xcconfig */,
+				D20A31787228E46BDB39CC56 /* Pods-boya.profile.xcconfig */,
+				80B9C10C3BF80B75CA000FE0 /* Pods-boya.profile-dw.xcconfig */,
+				4390C8A3CFD7B25E2C0F4F45 /* Pods-boya.profile-boya.xcconfig */,
+				C425988FDB0C223EA7B6A285 /* Pods-dw.debug.xcconfig */,
+				00AC8ADACF3D59A1E6CBA337 /* Pods-dw.debug-dw.xcconfig */,
+				5FC5241FF578268F9024A81C /* Pods-dw.debug-boya.xcconfig */,
+				AF64EB1527D29842CAC53100 /* Pods-dw.release.xcconfig */,
+				684455B0DC426471DA8093F5 /* Pods-dw.release-dw.xcconfig */,
+				A8FA418BA253FA0102C0AAFB /* Pods-dw.release-boya.xcconfig */,
+				DD3BBEDDE818839FE2F7E8CA /* Pods-dw.profile.xcconfig */,
+				E5911C5F0519ABE645072969 /* Pods-dw.profile-dw.xcconfig */,
+				93D10B52239BBFBBD9F9577C /* Pods-dw.profile-boya.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BD541235D663B652EE3CA6ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				91BD1DDAACD0691BA86482AD /* Pods_boya.framework */,
+				16BE055C870BF62B2CE32074 /* Pods_dw.framework */,
+				DAEDCF38F1064529430D4717 /* Pods_Runner.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,42 +375,19 @@
 			productReference = 331C8081294A63A400263BE5 /* RunnerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A93F15B22C19C17C00DF6EFE /* fuyuan */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A93F15C42C19C17C00DF6EFE /* Build configuration list for PBXNativeTarget "fuyuan" */;
-			buildPhases = (
-				1D18C43527485468171A9DF4 /* [CP] Check Pods Manifest.lock */,
-				A93F15B42C19C17C00DF6EFE /* Run Script */,
-				A93F15B52C19C17C00DF6EFE /* Sources */,
-				A93F15B82C19C17C00DF6EFE /* Frameworks */,
-				A93F15BA2C19C17C00DF6EFE /* Resources */,
-				A93F15C02C19C17C00DF6EFE /* Embed Frameworks */,
-				A93F15C12C19C17C00DF6EFE /* Thin Binary */,
-				92F636C4F9AE5E04BAD98CA2 /* [CP] Embed Pods Frameworks */,
-				7DDC2D7FE92D1B51B72B8FE1 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = fuyuan;
-			productName = Runner;
-			productReference = A93F15D42C19C17C00DF6EFE /* fuyuan.app */;
-			productType = "com.apple.product-type.application";
-		};
 		A9AD70772C02C7D900B786BC /* shouxin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9AD708C2C02C7D900B786BC /* Build configuration list for PBXNativeTarget "shouxin" */;
 			buildPhases = (
-				B8CB3CC2396AC4868FD1C9DB /* [CP] Check Pods Manifest.lock */,
+				A9AD70782C02C7D900B786BC /* [CP] Check Pods Manifest.lock */,
 				A9AD70792C02C7D900B786BC /* Run Script */,
 				A9AD707A2C02C7D900B786BC /* Sources */,
 				A9AD707D2C02C7D900B786BC /* Frameworks */,
 				A9AD70802C02C7D900B786BC /* Resources */,
 				A9AD70882C02C7D900B786BC /* Embed Frameworks */,
 				A9AD70892C02C7D900B786BC /* Thin Binary */,
-				C54A29C14214B69BE8CB5C58 /* [CP] Embed Pods Frameworks */,
-				1DDAA75200B4A0C6C1790824 /* [CP] Copy Pods Resources */,
+				A9AD708A2C02C7D900B786BC /* [CP] Embed Pods Frameworks */,
+				A9AD708B2C02C7D900B786BC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -597,15 +402,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9AD70C52C02D17400B786BC /* Build configuration list for PBXNativeTarget "aomen" */;
 			buildPhases = (
-				3EFE151B7861D8AA1AC67ABC /* [CP] Check Pods Manifest.lock */,
+				A9AD70B32C02D17400B786BC /* [CP] Check Pods Manifest.lock */,
 				A9AD70B42C02D17400B786BC /* Run Script */,
 				A9AD70B52C02D17400B786BC /* Sources */,
 				A9AD70B82C02D17400B786BC /* Frameworks */,
 				A9AD70BB2C02D17400B786BC /* Resources */,
 				A9AD70C12C02D17400B786BC /* Embed Frameworks */,
 				A9AD70C22C02D17400B786BC /* Thin Binary */,
-				DD8A8D48DEF7B0FA0D1F7CDF /* [CP] Embed Pods Frameworks */,
-				B2DF0FC21ACFB9DB5F52F3DB /* [CP] Copy Pods Resources */,
+				A9AD70C32C02D17400B786BC /* [CP] Embed Pods Frameworks */,
+				A9AD70C42C02D17400B786BC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -620,15 +425,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9CD3FBB2BCB686700F9D4E8 /* Build configuration list for PBXNativeTarget "boya" */;
 			buildPhases = (
-				3893DF9C61EE7B9928B6D0DB /* [CP] Check Pods Manifest.lock */,
+				A9CD3FAB2BCB686700F9D4E8 /* [CP] Check Pods Manifest.lock */,
 				A9CD3FAC2BCB686700F9D4E8 /* Run Script */,
 				A9CD3FAD2BCB686700F9D4E8 /* Sources */,
 				A9CD3FB02BCB686700F9D4E8 /* Frameworks */,
 				A9CD3FB22BCB686700F9D4E8 /* Resources */,
 				A9CD3FB82BCB686700F9D4E8 /* Embed Frameworks */,
 				A9CD3FB92BCB686700F9D4E8 /* Thin Binary */,
-				BEC21CBCE90541D4878206A9 /* [CP] Embed Pods Frameworks */,
-				789749EE5BCFD0BAC094F935 /* [CP] Copy Pods Resources */,
+				A9CD3FBA2BCB686700F9D4E8 /* [CP] Embed Pods Frameworks */,
+				1C34B345D6F9F0E1372BA32D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -643,15 +448,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9CD3FDE2BCB6FF500F9D4E8 /* Build configuration list for PBXNativeTarget "dw" */;
 			buildPhases = (
-				3A5B40A73A182FB7338F94FB /* [CP] Check Pods Manifest.lock */,
+				A9CD3FCC2BCB6FF500F9D4E8 /* [CP] Check Pods Manifest.lock */,
 				A9CD3FCD2BCB6FF500F9D4E8 /* Run Script */,
 				A9CD3FCE2BCB6FF500F9D4E8 /* Sources */,
 				A9CD3FD12BCB6FF500F9D4E8 /* Frameworks */,
 				A9CD3FD32BCB6FF500F9D4E8 /* Resources */,
 				A9CD3FDB2BCB6FF500F9D4E8 /* Embed Frameworks */,
 				A9CD3FDC2BCB6FF500F9D4E8 /* Thin Binary */,
-				54F8B2D9E4E5DBB8FE70B4CF /* [CP] Embed Pods Frameworks */,
-				1A7B38B1E405EA36BD697D83 /* [CP] Copy Pods Resources */,
+				A9CD3FDD2BCB6FF500F9D4E8 /* [CP] Embed Pods Frameworks */,
+				D0AEB75FC107B2FF4E7AD869 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -696,7 +501,6 @@
 				A9CD3FCB2BCB6FF500F9D4E8 /* dw */,
 				A9AD70772C02C7D900B786BC /* shouxin */,
 				A9AD70B22C02D17400B786BC /* aomen */,
-				A93F15B22C19C17C00DF6EFE /* fuyuan */,
 			);
 		};
 /* End PBXProject section */
@@ -706,18 +510,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A93F15BA2C19C17C00DF6EFE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A93F15DA2C19C2B400DF6EFE /* InfoPlist.xcstrings in Resources */,
-				A93F15D82C19C29D00DF6EFE /* fuyuan.xcassets in Resources */,
-				A93F15BE2C19C17C00DF6EFE /* AppFrameworkInfo.plist in Resources */,
-				A93F15DC2C19C2E100DF6EFE /* Launch Screen-fuyuan.storyboard in Resources */,
-				A93F15BF2C19C17C00DF6EFE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,146 +564,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A7B38B1E405EA36BD697D83 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1D18C43527485468171A9DF4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-fuyuan-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1DDAA75200B4A0C6C1790824 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-shouxin/Pods-shouxin-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-shouxin/Pods-shouxin-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-shouxin/Pods-shouxin-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3893DF9C61EE7B9928B6D0DB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-boya-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3A5B40A73A182FB7338F94FB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-dw-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3EFE151B7861D8AA1AC67ABC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-aomen-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		54F8B2D9E4E5DBB8FE70B4CF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		789749EE5BCFD0BAC094F935 /* [CP] Copy Pods Resources */ = {
+		1C34B345D6F9F0E1372BA32D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -928,70 +581,27 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-boya/Pods-boya-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7DDC2D7FE92D1B51B72B8FE1 /* [CP] Copy Pods Resources */ = {
+		A9AD70782C02C7D900B786BC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fuyuan/Pods-fuyuan-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fuyuan/Pods-fuyuan-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fuyuan/Pods-fuyuan-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		92F636C4F9AE5E04BAD98CA2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fuyuan/Pods-fuyuan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-fuyuan/Pods-fuyuan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fuyuan/Pods-fuyuan-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A93F15B42C19C17C00DF6EFE /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Run Script";
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
-		};
-		A93F15C12C19C17C00DF6EFE /* Thin Binary */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}",
-			);
-			name = "Thin Binary";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		A9AD70792C02C7D900B786BC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1024,6 +634,62 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
+		A9AD708A2C02C7D900B786BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9AD708B2C02C7D900B786BC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9AD70B32C02D17400B786BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A9AD70B42C02D17400B786BC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1054,6 +720,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
+		};
+		A9AD70C32C02D17400B786BC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9AD70C42C02D17400B786BC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9CD3FAB2BCB686700F9D4E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-boya-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		A9CD3FAC2BCB686700F9D4E8 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1086,6 +808,45 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
+		A9CD3FBA2BCB686700F9D4E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-boya/Pods-boya-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-boya/Pods-boya-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-boya/Pods-boya-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9CD3FCC2BCB6FF500F9D4E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-dw-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A9CD3FCD2BCB6FF500F9D4E8 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1117,94 +878,38 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
-		B2DF0FC21ACFB9DB5F52F3DB /* [CP] Copy Pods Resources */ = {
+		A9CD3FDD2BCB6FF500F9D4E8 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-aomen/Pods-aomen-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0AEB75FC107B2FF4E7AD869 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-aomen/Pods-aomen-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-aomen/Pods-aomen-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B8CB3CC2396AC4868FD1C9DB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-shouxin-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BEC21CBCE90541D4878206A9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-boya/Pods-boya-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-boya/Pods-boya-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-boya/Pods-boya-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C54A29C14214B69BE8CB5C58 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-shouxin/Pods-shouxin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-shouxin/Pods-shouxin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-shouxin/Pods-shouxin-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DD8A8D48DEF7B0FA0D1F7CDF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-aomen/Pods-aomen-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-aomen/Pods-aomen-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-aomen/Pods-aomen-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1215,15 +920,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A93F15B52C19C17C00DF6EFE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A93F15B62C19C17C00DF6EFE /* AppDelegate.swift in Sources */,
-				A93F15B72C19C17C00DF6EFE /* GeneratedPluginRegistrant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1495,985 +1191,6 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
-		};
-		A93F15C52C19C17C00DF6EFE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Debug;
-		};
-		A93F15C62C19C17C00DF6EFE /* Debug-dw */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Debug-dw";
-		};
-		A93F15C72C19C17C00DF6EFE /* Debug-boya */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Debug-boya";
-		};
-		A93F15C82C19C17C00DF6EFE /* Debug-shouxin */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Debug-shouxin";
-		};
-		A93F15C92C19C17C00DF6EFE /* Debug-aomen */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Debug-aomen";
-		};
-		A93F15CA2C19C17C00DF6EFE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Release;
-		};
-		A93F15CB2C19C17C00DF6EFE /* Release-dw */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Release-dw";
-		};
-		A93F15CC2C19C17C00DF6EFE /* Release-boya */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Release-boya";
-		};
-		A93F15CD2C19C17C00DF6EFE /* Release-aomen */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Release-aomen";
-		};
-		A93F15CE2C19C17C00DF6EFE /* Release-shouxin */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Release-shouxin";
-		};
-		A93F15CF2C19C17C00DF6EFE /* Profile */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Profile;
-		};
-		A93F15D02C19C17C00DF6EFE /* Profile-dw */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Profile-dw";
-		};
-		A93F15D12C19C17C00DF6EFE /* Profile-boya */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Profile-boya";
-		};
-		A93F15D22C19C17C00DF6EFE /* Profile-shouxin */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Profile-shouxin";
-		};
-		A93F15D32C19C17C00DF6EFE /* Profile-aomen */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Profile-aomen";
-		};
-		A93F15DD2C19C46C00DF6EFE /* Debug-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = "Debug-fuyuan";
-		};
-		A93F15DE2C19C46C00DF6EFE /* Debug-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGames.RunnerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
-			};
-			name = "Debug-fuyuan";
-		};
-		A93F15DF2C19C46C00DF6EFE /* Debug-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "boya-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Debug-fuyuan";
-		};
-		A93F15E02C19C46C00DF6EFE /* Debug-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "dw-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.dw;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Debug-fuyuan";
-		};
-		A93F15E12C19C46C00DF6EFE /* Debug-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "shouxin-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "守信娱乐城";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.shouxin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Debug-fuyuan";
-		};
-		A93F15E22C19C46C00DF6EFE /* Debug-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "aomen-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "澳门娱乐城";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.aomen;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Debug-fuyuan";
-		};
-		A93F15E32C19C46C00DF6EFE /* Debug-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Debug-fuyuan";
-		};
-		A93F15E42C19C47800DF6EFE /* Release-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = "Release-fuyuan";
-		};
-		A93F15E52C19C47800DF6EFE /* Release-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGames.RunnerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
-			};
-			name = "Release-fuyuan";
-		};
-		A93F15E62C19C47800DF6EFE /* Release-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "boya-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Release-fuyuan";
-		};
-		A93F15E72C19C47800DF6EFE /* Release-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "dw-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Release-fuyuan";
-		};
-		A93F15E82C19C47800DF6EFE /* Release-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "shouxin-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "守信娱乐城";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.shouxin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Release-fuyuan";
-		};
-		A93F15E92C19C47800DF6EFE /* Release-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "aomen-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "澳门娱乐城";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.aomen;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Release-fuyuan";
-		};
-		A93F15EA2C19C47800DF6EFE /* Release-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Release-fuyuan";
-		};
-		A93F15EB2C19C48700DF6EFE /* Profile-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = "Profile-fuyuan";
-		};
-		A93F15EC2C19C48700DF6EFE /* Profile-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGames.RunnerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
-			};
-			name = "Profile-fuyuan";
-		};
-		A93F15ED2C19C48700DF6EFE /* Profile-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "boya-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Profile-fuyuan";
-		};
-		A93F15EE2C19C48700DF6EFE /* Profile-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "dw-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.dw;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Profile-fuyuan";
-		};
-		A93F15EF2C19C48700DF6EFE /* Profile-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "shouxin-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "守信娱乐城";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.shouxin;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Profile-fuyuan";
-		};
-		A93F15F02C19C48700DF6EFE /* Profile-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "aomen-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "澳门娱乐城";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.aomen;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Profile-fuyuan";
-		};
-		A93F15F12C19C48700DF6EFE /* Profile-fuyuan */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 4TBAQ9C579;
-				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "fuyuan-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "富源国际";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = "Profile-fuyuan";
 		};
 		A9AD708D2C02C7D900B786BC /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -4813,19 +3530,16 @@
 			buildConfigurations = (
 				331C8088294A63A400263BE5 /* Debug */,
 				A9CD3FEC2BCB729500F9D4E8 /* Debug-dw */,
-				A93F15DE2C19C46C00DF6EFE /* Debug-fuyuan */,
 				A9CD3FE72BCB724000F9D4E8 /* Debug-boya */,
 				A9AD70A02C02CEC800B786BC /* Debug-shouxin */,
 				A9AD70DC2C02D42200B786BC /* Debug-aomen */,
 				331C8089294A63A400263BE5 /* Release */,
 				A9CD3FF62BCB72B300F9D4E8 /* Release-dw */,
 				A9CD3FF12BCB72AA00F9D4E8 /* Release-boya */,
-				A93F15E52C19C47800DF6EFE /* Release-fuyuan */,
 				A9AD70E32C02D42E00B786BC /* Release-aomen */,
 				A9AD70A62C02CED700B786BC /* Release-shouxin */,
 				331C808A294A63A400263BE5 /* Profile */,
 				A9CD40002BCB72C400F9D4E8 /* Profile-dw */,
-				A93F15EC2C19C48700DF6EFE /* Profile-fuyuan */,
 				A9CD3FFB2BCB72BC00F9D4E8 /* Profile-boya */,
 				A9AD70AC2C02CEE100B786BC /* Profile-shouxin */,
 				A9AD70EA2C02D43700B786BC /* Profile-aomen */,
@@ -4838,47 +3552,19 @@
 			buildConfigurations = (
 				97C147031CF9000F007C117D /* Debug */,
 				A9CD3FEA2BCB729500F9D4E8 /* Debug-dw */,
-				A93F15DD2C19C46C00DF6EFE /* Debug-fuyuan */,
 				A9CD3FE52BCB724000F9D4E8 /* Debug-boya */,
 				A9AD709E2C02CEC800B786BC /* Debug-shouxin */,
 				A9AD70DA2C02D42200B786BC /* Debug-aomen */,
 				97C147041CF9000F007C117D /* Release */,
 				A9CD3FF42BCB72B300F9D4E8 /* Release-dw */,
 				A9CD3FEF2BCB72AA00F9D4E8 /* Release-boya */,
-				A93F15E42C19C47800DF6EFE /* Release-fuyuan */,
 				A9AD70E12C02D42E00B786BC /* Release-aomen */,
 				A9AD70A42C02CED700B786BC /* Release-shouxin */,
 				249021D3217E4FDB00AE95B9 /* Profile */,
 				A9CD3FFE2BCB72C400F9D4E8 /* Profile-dw */,
-				A93F15EB2C19C48700DF6EFE /* Profile-fuyuan */,
 				A9CD3FF92BCB72BC00F9D4E8 /* Profile-boya */,
 				A9AD70AA2C02CEE100B786BC /* Profile-shouxin */,
 				A9AD70E82C02D43700B786BC /* Profile-aomen */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A93F15C42C19C17C00DF6EFE /* Build configuration list for PBXNativeTarget "fuyuan" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A93F15C52C19C17C00DF6EFE /* Debug */,
-				A93F15C62C19C17C00DF6EFE /* Debug-dw */,
-				A93F15E32C19C46C00DF6EFE /* Debug-fuyuan */,
-				A93F15C72C19C17C00DF6EFE /* Debug-boya */,
-				A93F15C82C19C17C00DF6EFE /* Debug-shouxin */,
-				A93F15C92C19C17C00DF6EFE /* Debug-aomen */,
-				A93F15CA2C19C17C00DF6EFE /* Release */,
-				A93F15CB2C19C17C00DF6EFE /* Release-dw */,
-				A93F15CC2C19C17C00DF6EFE /* Release-boya */,
-				A93F15EA2C19C47800DF6EFE /* Release-fuyuan */,
-				A93F15CD2C19C17C00DF6EFE /* Release-aomen */,
-				A93F15CE2C19C17C00DF6EFE /* Release-shouxin */,
-				A93F15CF2C19C17C00DF6EFE /* Profile */,
-				A93F15D02C19C17C00DF6EFE /* Profile-dw */,
-				A93F15F12C19C48700DF6EFE /* Profile-fuyuan */,
-				A93F15D12C19C17C00DF6EFE /* Profile-boya */,
-				A93F15D22C19C17C00DF6EFE /* Profile-shouxin */,
-				A93F15D32C19C17C00DF6EFE /* Profile-aomen */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4888,19 +3574,16 @@
 			buildConfigurations = (
 				A9AD708D2C02C7D900B786BC /* Debug */,
 				A9AD708E2C02C7D900B786BC /* Debug-dw */,
-				A93F15E12C19C46C00DF6EFE /* Debug-fuyuan */,
 				A9AD708F2C02C7D900B786BC /* Debug-boya */,
 				A9AD70A32C02CEC800B786BC /* Debug-shouxin */,
 				A9AD70DF2C02D42200B786BC /* Debug-aomen */,
 				A9AD70902C02C7D900B786BC /* Release */,
 				A9AD70912C02C7D900B786BC /* Release-dw */,
 				A9AD70922C02C7D900B786BC /* Release-boya */,
-				A93F15E82C19C47800DF6EFE /* Release-fuyuan */,
 				A9AD70E62C02D42E00B786BC /* Release-aomen */,
 				A9AD70A92C02CED700B786BC /* Release-shouxin */,
 				A9AD70932C02C7D900B786BC /* Profile */,
 				A9AD70942C02C7D900B786BC /* Profile-dw */,
-				A93F15EF2C19C48700DF6EFE /* Profile-fuyuan */,
 				A9AD70952C02C7D900B786BC /* Profile-boya */,
 				A9AD70AF2C02CEE100B786BC /* Profile-shouxin */,
 				A9AD70ED2C02D43700B786BC /* Profile-aomen */,
@@ -4913,19 +3596,16 @@
 			buildConfigurations = (
 				A9AD70C62C02D17400B786BC /* Debug */,
 				A9AD70C72C02D17400B786BC /* Debug-dw */,
-				A93F15E22C19C46C00DF6EFE /* Debug-fuyuan */,
 				A9AD70C82C02D17400B786BC /* Debug-boya */,
 				A9AD70C92C02D17400B786BC /* Debug-shouxin */,
 				A9AD70E02C02D42200B786BC /* Debug-aomen */,
 				A9AD70CA2C02D17400B786BC /* Release */,
 				A9AD70CB2C02D17400B786BC /* Release-dw */,
 				A9AD70CC2C02D17400B786BC /* Release-boya */,
-				A93F15E92C19C47800DF6EFE /* Release-fuyuan */,
 				A9AD70E72C02D42E00B786BC /* Release-aomen */,
 				A9AD70CD2C02D17400B786BC /* Release-shouxin */,
 				A9AD70CE2C02D17400B786BC /* Profile */,
 				A9AD70CF2C02D17400B786BC /* Profile-dw */,
-				A93F15F02C19C48700DF6EFE /* Profile-fuyuan */,
 				A9AD70D02C02D17400B786BC /* Profile-boya */,
 				A9AD70D12C02D17400B786BC /* Profile-shouxin */,
 				A9AD70EE2C02D43700B786BC /* Profile-aomen */,
@@ -4938,19 +3618,16 @@
 			buildConfigurations = (
 				A9CD3FBC2BCB686700F9D4E8 /* Debug */,
 				A9CD3FED2BCB729500F9D4E8 /* Debug-dw */,
-				A93F15DF2C19C46C00DF6EFE /* Debug-fuyuan */,
 				A9CD3FE82BCB724000F9D4E8 /* Debug-boya */,
 				A9AD70A12C02CEC800B786BC /* Debug-shouxin */,
 				A9AD70DD2C02D42200B786BC /* Debug-aomen */,
 				A9CD3FBD2BCB686700F9D4E8 /* Release */,
 				A9CD3FF72BCB72B300F9D4E8 /* Release-dw */,
 				A9CD3FF22BCB72AA00F9D4E8 /* Release-boya */,
-				A93F15E62C19C47800DF6EFE /* Release-fuyuan */,
 				A9AD70E42C02D42E00B786BC /* Release-aomen */,
 				A9AD70A72C02CED700B786BC /* Release-shouxin */,
 				A9CD3FBE2BCB686700F9D4E8 /* Profile */,
 				A9CD40012BCB72C400F9D4E8 /* Profile-dw */,
-				A93F15ED2C19C48700DF6EFE /* Profile-fuyuan */,
 				A9CD3FFC2BCB72BC00F9D4E8 /* Profile-boya */,
 				A9AD70AD2C02CEE100B786BC /* Profile-shouxin */,
 				A9AD70EB2C02D43700B786BC /* Profile-aomen */,
@@ -4963,19 +3640,16 @@
 			buildConfigurations = (
 				A9CD3FDF2BCB6FF500F9D4E8 /* Debug */,
 				A9CD3FEE2BCB729500F9D4E8 /* Debug-dw */,
-				A93F15E02C19C46C00DF6EFE /* Debug-fuyuan */,
 				A9CD3FE92BCB724000F9D4E8 /* Debug-boya */,
 				A9AD70A22C02CEC800B786BC /* Debug-shouxin */,
 				A9AD70DE2C02D42200B786BC /* Debug-aomen */,
 				A9CD3FE02BCB6FF500F9D4E8 /* Release */,
 				A9CD3FF82BCB72B300F9D4E8 /* Release-dw */,
 				A9CD3FF32BCB72AA00F9D4E8 /* Release-boya */,
-				A93F15E72C19C47800DF6EFE /* Release-fuyuan */,
 				A9AD70E52C02D42E00B786BC /* Release-aomen */,
 				A9AD70A82C02CED700B786BC /* Release-shouxin */,
 				A9CD3FE12BCB6FF500F9D4E8 /* Profile */,
 				A9CD40022BCB72C400F9D4E8 /* Profile-dw */,
-				A93F15EE2C19C48700DF6EFE /* Profile-fuyuan */,
 				A9CD3FFD2BCB72BC00F9D4E8 /* Profile-boya */,
 				A9AD70AE2C02CEE100B786BC /* Profile-shouxin */,
 				A9AD70EC2C02D43700B786BC /* Profile-aomen */,
