@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="g80-wC-tji"/>
+                        <viewLayoutGuide key="safeArea" id="Fgy-Bo-Wry"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rm0-gL-grB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="USo-qF-0VY"/>

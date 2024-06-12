@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A9AD70B22C02D17400B786BC"
+               BlueprintIdentifier = "A93F15F22C19D49000DF6EFE"
                BuildableName = "aomen.app"
                BlueprintName = "aomen"
                ReferencedContainer = "container:Runner.xcodeproj">
@@ -43,7 +43,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A9AD70B22C02D17400B786BC"
+            BlueprintIdentifier = "A93F15F22C19D49000DF6EFE"
             BuildableName = "aomen.app"
             BlueprintName = "aomen"
             ReferencedContainer = "container:Runner.xcodeproj">
@@ -60,7 +60,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A9AD70B22C02D17400B786BC"
+            BlueprintIdentifier = "A93F15F22C19D49000DF6EFE"
             BuildableName = "aomen.app"
             BlueprintName = "aomen"
             ReferencedContainer = "container:Runner.xcodeproj">

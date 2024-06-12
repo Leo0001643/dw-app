@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A93F162C2C19D58200DF6EFE"
-               BuildableName = "fuyuan.app"
-               BlueprintName = "fuyuan"
+               BlueprintIdentifier = "A93F160F2C19D54B00DF6EFE"
+               BuildableName = "shouxin.app"
+               BlueprintName = "shouxin"
                ReferencedContainer = "container:Runner.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,9 +43,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A93F162C2C19D58200DF6EFE"
-            BuildableName = "fuyuan.app"
-            BlueprintName = "fuyuan"
+            BlueprintIdentifier = "A93F160F2C19D54B00DF6EFE"
+            BuildableName = "shouxin.app"
+            BlueprintName = "shouxin"
             ReferencedContainer = "container:Runner.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -60,9 +60,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A93F162C2C19D58200DF6EFE"
-            BuildableName = "fuyuan.app"
-            BlueprintName = "fuyuan"
+            BlueprintIdentifier = "A93F160F2C19D54B00DF6EFE"
+            BuildableName = "shouxin.app"
+            BlueprintName = "shouxin"
             ReferencedContainer = "container:Runner.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
