@@ -32,12 +32,12 @@ require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelpe
 
 flutter_ios_podfile_setup
 
-target 'Runner' do
-  use_frameworks!
-  use_modular_headers!
-
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-end
+#target 'Runner' do
+#  use_frameworks!
+#  use_modular_headers!
+#
+#  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+#end
 
 target 'boya' do
   use_frameworks!
@@ -47,6 +47,13 @@ target 'boya' do
 end
 
 target 'dw' do
+  use_frameworks!
+  use_modular_headers!
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+end
+
+target 'fuyuan' do
   use_frameworks!
   use_modular_headers!
 
