@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
-		22F7B1A151A5DF621003E4A6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		22F7B1A151A5DF621003E4A6 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2618DAE23AA9178265F3EB78 /* Pods_boya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F48D8733FF3F2159B540C9 /* Pods_boya.framework */; };
 		31B1091892D3508A2ACA32CA /* Pods_fuyuan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28756AABD3EAF958B1638629 /* Pods_fuyuan.framework */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		5650ECF149993BE95860B7B2 /* Pods_dw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE055C870BF62B2CE32074 /* Pods_dw.framework */; };
 		5B7E2721770010D9C135D38C /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEDCF38F1064529430D4717 /* Pods_Runner.framework */; };
-		5C9DA04E09869944893BDAC6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		5C9DA04E09869944893BDAC6 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		86921CAFC7143A35A9156B1C /* Pods_shouxin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62843C62E77056E541DC4D9 /* Pods_shouxin.framework */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
@@ -241,13 +241,13 @@
 		A9BB67A32BB7D7FA004D8299 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A9BB67A42BB7D8AC004D8299 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		A9CD3FBF2BCB686700F9D4E8 /* boya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = boya.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9CD3FC02BCB686700F9D4E8 /* boya-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "boya-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app-channel/ios/boya-Info.plist"; sourceTree = "<absolute>"; };
+		A9CD3FC02BCB686700F9D4E8 /* boya-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "boya-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app/ios/boya-Info.plist"; sourceTree = "<absolute>"; };
 		A9CD3FC12BCB698A00F9D4E8 /* boya.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = boya.xcassets; sourceTree = "<group>"; };
 		A9CD3FC42BCB69E700F9D4E8 /* Launch Screen-boya.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen-boya.storyboard"; sourceTree = "<group>"; };
 		A9CD3FC72BCB6A4200F9D4E8 /* Launch Screen-dw.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen-dw.storyboard"; sourceTree = "<group>"; };
 		A9CD3FC92BCB6A5400F9D4E8 /* dw.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = dw.xcassets; sourceTree = "<group>"; };
 		A9CD3FE22BCB6FF500F9D4E8 /* dw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dw.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9CD3FE32BCB6FF600F9D4E8 /* dw-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "dw-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app-channel/ios/dw-Info.plist"; sourceTree = "<absolute>"; };
+		A9CD3FE32BCB6FF600F9D4E8 /* dw-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "dw-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app/ios/dw-Info.plist"; sourceTree = "<absolute>"; };
 		A9CD40032BCB773700F9D4E8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		A9CD40052BCB77F200F9D4E8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		AA92982D1091446064C66EA2 /* Pods-shouxin.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-aomen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-aomen.xcconfig"; sourceTree = "<group>"; };
@@ -304,7 +304,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C9DA04E09869944893BDAC6 /* BuildFile in Frameworks */,
+				5C9DA04E09869944893BDAC6 /* (null) in Frameworks */,
 				5B7E2721770010D9C135D38C /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +337,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22F7B1A151A5DF621003E4A6 /* BuildFile in Frameworks */,
+				22F7B1A151A5DF621003E4A6 /* (null) in Frameworks */,
 				2618DAE23AA9178265F3EB78 /* Pods_boya.framework in Frameworks */,
 				CCC5A00BF01075193D65F937 /* Pods_boya.framework in Frameworks */,
 			);
@@ -399,6 +399,7 @@
 				A93F160E2C19D49100DF6EFE /* aomen-Info.plist */,
 				A93F162B2C19D54C00DF6EFE /* shouxin-Info.plist */,
 				A93F16482C19D58500DF6EFE /* fuyuan-Info.plist */,
+				A93F16A92C19DF3400DF6EFE /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -460,6 +461,14 @@
 				A93F16582C19D79900DF6EFE /* Launch Screen-fuyuan.storyboard */,
 			);
 			path = fuyuan;
+			sourceTree = "<group>";
+		};
+		A93F16A92C19DF3400DF6EFE /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				29F48D8733FF3F2159B540C9 /* Pods_boya.framework */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		A9CD3FC32BCB69B300F9D4E8 /* boya */ = {
