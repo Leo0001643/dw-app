@@ -58,6 +58,7 @@ flutter build apk --flavor shouxin --dart-define=CHANNEL=shouxin
 
 flutter build apk --flavor aomen --dart-define=CHANNEL=aomen
 
+flutter build apk --flavor fuyuan --dart-define=CHANNEL=fuyuan
 
 
 新建站点：9006，线路文件名：line_shouxin.json, 包名: shouxin.apk,网站名称：守信

@@ -42,7 +42,7 @@ class ConfigManager {
       case channel_boya:
         return "https://9003zgvmyj.mzm3mzdj.com/";
       case channel_fuyuan:
-        return "https://9005owm4yz.mzm3mzdj.com/";
+        return "https://9005mmq5y2.mzm3mzdj.com/";
       case channel_shouxin:
         return "https://9006owm4yz.mzm3mzdj.com/";
       case channel_aomen:
@@ -59,7 +59,7 @@ class ConfigManager {
       case channel_boya:
         return "wss://9003mzg3nm.njc2n2m5.com/";
       case channel_fuyuan:
-        return "wss://9005ogm5nj.njc2n2m5.com:443/";
+        return "wss://9005zmzjzm.njc2n2m5.com:443/";
       case channel_shouxin:
         return "wss://9006ogm5nj.njc2n2m5.com:443/";
       case channel_aomen:

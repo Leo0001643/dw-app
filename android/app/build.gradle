@@ -36,9 +36,9 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
-//    kotlinOptions {
-//        jvmTarget = '1.8'
-//    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -153,6 +153,21 @@ android {
                     apk_name: "BOYA",
             ]
         }
+        fuyuan{
+            applicationId "com.dw.pro.fuyuan"
+            namespace "com.dw.pro.fuyuan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+            signingConfig signingConfigs.aomen
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "富源国际",
+                    apk_name: "FUYUAN",
+            ]
+        }
         shouxin{
             applicationId "com.dw.pro.shouxin"
             namespace "com.dw.pro.shouxin"
@@ -183,21 +198,7 @@ android {
                     apk_name: "AOMEN",
             ]
         }
-        aomen{
-            applicationId "com.dw.pro.fuyuan"
-            namespace "com.dw.pro.fuyuan"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-            signingConfig signingConfigs.aomen
-            manifestPlaceholders = [
-                    package_name: applicationId,
-                    JPUSH_PKGNAME: applicationId,
-                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
-                    JPUSH_CHANNEL:"developer-default",
-                    flavors_name: "富源国际",
-                    apk_name: "FUYUAN",
-            ]
-        }
+
     }
 
 
