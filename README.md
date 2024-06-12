@@ -7,7 +7,9 @@ https://www.figma.com/team_invite/redeem/2TeFBk4OwM7y0FwXUmruLr
 
 ### git
 https://github.com/Leo0001643/dw-app.git
-
+项目地址：https://github.com/Leo0001643/dw-app.git
+Lancebyebye
+19931125Tu~
 
 https://9000vlmdm4.kj99883.com
 
@@ -82,8 +84,6 @@ WS: wss://9007mdg4ym.njc2n2m5.com:443
 币种：CNY+USDT
 法币-USDT互转：开启
 站点类型：A网
-
-@h5_nick
 
 
 网站:9005 富源国际(英文名称:FUYUAN)主题色:手机端默认版本语言:中英文手机默认区号:+86币种:CNY+USDT
