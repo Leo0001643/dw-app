@@ -37,6 +37,8 @@
 	</dict>
 	<key>NSDocumentsFolderUsageDescription</key>
 	<string>需要使用文档权限，用以存储相关文件</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>需要使用麦克风权限，用以录制音频文件</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>需要使用相册权限，用以保存图片到相册</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>

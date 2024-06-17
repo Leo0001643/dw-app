@@ -53,6 +53,18 @@
           }
         }
       }
+    },
+    "NSMicrophoneUsageDescription" : {
+      "comment" : "Privacy - Microphone Library Additions Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "需要使用麦克风权限，用以录制音频文件"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
