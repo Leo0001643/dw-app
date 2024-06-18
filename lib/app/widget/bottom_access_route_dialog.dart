@@ -201,11 +201,13 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                   ))
             ],
           ),
-          Container(
-            margin: EdgeInsets.all(15.r),
-            child: MyRoteGridView((value){
-              entity = value;
-            }),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 5.h,horizontal: 15.w),
+              child: MyRoteGridView((value){
+                entity = value;
+              }),
+            ),
           ),
         ],
       ),
