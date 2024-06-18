@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/utils/oss_utils.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 
 import 'my_rote_gird_view.dart';
@@ -263,4 +265,8 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
     loggerArray(["访问延时，状态", duration.inMilliseconds, response.statusCode]);
     return Future.value(RouteTest(duration.inMilliseconds,"", baseUrl));
   }*/
+
+
+
+
 }

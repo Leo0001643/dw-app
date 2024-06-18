@@ -67,8 +67,6 @@ extension StringExtension on String? {
   double parseDouble(){
     return double.parse(em(aft: "0.00"));
   }
-
-
 }
 
 extension NumExtension on num? {

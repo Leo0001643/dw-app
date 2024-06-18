@@ -5,6 +5,7 @@ import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
@@ -359,6 +360,8 @@ abstract class RetrofitClient{
   @GET('https://gjz-app-down1.s3.ap-east-1.amazonaws.com/{dir}/check_{name}.json')
   Future<OtaVersionEntity> otaUpdate(@Path("dir") String dir,@Path("name") String name,);
 
+  @GET('https://gjz-app-line.s3.ap-east-1.amazonaws.com/{name}')
+  Future<BaseApiOssEntity> apiLines(@Path("name") String name,);
 
 
 

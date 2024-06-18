@@ -12,11 +12,13 @@ import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/error_response_handler.dart';
 import 'package:leisure_games/app/network/retrofit_client.dart';
+import 'package:leisure_games/app/utils/oss_utils.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_desc_entity.dart';
 import 'package:leisure_games/ui/bean/back_water_entity.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bank_entity.dart';
+import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_item_child_entity.dart';
 import 'package:leisure_games/ui/bean/bet_detail_list_entity.dart';
@@ -515,8 +517,23 @@ class HttpService{
     return buildOtaFuture<OtaVersionEntity>(()=> _client.otaUpdate(ConfigManager.getBucket(),ConfigManager.getBucket()));
   }
 
-
-
+  ///优先尝试在阿里存储桶获取，如果阿里获取不到再去亚马逊获取
+  static Future<BaseApiOssEntity?> getApiLines() async {
+    BaseApiOssEntity? entity;
+    try{
+      entity = await OssUtils().downloadFile();
+      return entity;
+    } catch(error){
+      loggerArray(["getApiLines exception",error]);
+    }
+    try{
+      entity = await buildOtaFuture<BaseApiOssEntity>(()=> _client.apiLines(ConfigManager.fileName()));
+      return entity;
+    } catch(error){
+      loggerArray(["getApiLines exception",error]);
+    }
+    return null;
+  }
 
 
 

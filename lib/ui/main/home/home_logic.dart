@@ -425,20 +425,17 @@ class HomeLogic extends GetxController {
   }
 
   ///请求云存储里的路线
+  ///2024/6/18需求 不用缓存，每次打开页面都请求一次路线
   void queryRoutes() async {
-    var value = AppData.ossApi();
-    if (isEmpty(value) ||
-        value!.updateTime.em() <
-            (DateTime.now().millisecondsSinceEpoch - 86400000)) {
-      value = await OssUtils().downloadFile();
-      if (unEmpty(value)) {
-        ///用于判断是否需要更新缓存使用
-        value?.updateTime = DateTime.now().millisecondsSinceEpoch;
-        AppData.setOssApi(value!);
+    // var value = AppData.ossApi();
+    var value = await HttpService.getApiLines();
+    if (unEmpty(value)) {
+      ///用于判断是否需要更新缓存使用
+      value?.updateTime = DateTime.now().millisecondsSinceEpoch;
+      AppData.setOssApi(value!);
 
-        ///适配多渠道环境 如果换成其他渠道本地host就跟线路里的不是一回事了 所以得处理一下多渠道的环境问题
-        AppData.checkBaseUrl(value);
-      }
+      ///适配多渠道环境 如果换成其他渠道本地host就跟线路里的不是一回事了 所以得处理一下多渠道的环境问题
+      AppData.checkBaseUrl(value);
     }
 
     if (unEmpty(value)) {

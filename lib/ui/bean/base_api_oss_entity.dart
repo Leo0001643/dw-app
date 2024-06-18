@@ -12,8 +12,19 @@ class BaseApiOssEntity {
 	List<String>? webSockets;
 	List<String>? dns;
 	int? updateTime;
+	String? download;
 
 	//{"baseAPIs":["https://9000vlmdm4.kj99883.com/","https://9000vlmdm4.kj99883.com/"],"webSockets":["wss://9000ywfjn2.uy4ayov.com/","wss://9000ywfjn2.uy4ayov.com/"],"dns":["119.9.75.6"]}
+
+	//{
+	//     "baseAPIs": [
+	//         "https://9005mmq5y2.mzm3mzdj.com/"
+	//     ],
+	//     "webSockets": [
+	//         "wss://9005zmzjzm.njc2n2m5.com:443/"
+	//     ],
+	//     "download": "https://gjz-app-down1.s3.ap-east-1.amazonaws.com/fuyuan/fuyuan.apk"
+	// }
 
 	BaseApiOssEntity();
 

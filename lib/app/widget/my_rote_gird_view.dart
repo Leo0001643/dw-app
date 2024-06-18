@@ -7,6 +7,7 @@ import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
+import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/oss_utils.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
@@ -15,7 +16,7 @@ typedef void FunctionApiCallback(BaseWsApiEntity data);
 
 class MyRoteGridView extends StatefulWidget {
   final FunctionApiCallback callback;
-  MyRoteGridView(this.callback, {super.key});
+  const MyRoteGridView(this.callback, {super.key});
 
   @override
   _MyGridViewState createState() => _MyGridViewState();
@@ -25,13 +26,11 @@ class _MyGridViewState extends State<MyRoteGridView> {
   var selectedTileIndex = (-1).obs;
   var list = RxList<BaseWsApiEntity>.empty(growable: true);
 
-
   @override
   void initState() {
     queryRoutes();
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -116,19 +115,18 @@ class _MyGridViewState extends State<MyRoteGridView> {
 
   ///请求云存储里的路线
   void queryRoutes() async {
-    var value = AppData.ossApi();
-    if(isEmpty(value) || value!.updateTime.em() < (DateTime.now().millisecondsSinceEpoch - 86400000)){
-      value = await OssUtils().downloadFile();
-      ///用于判断是否需要更新缓存使用
-      value!.updateTime = DateTime.now().millisecondsSinceEpoch;
-      AppData.setOssApi(value);
-    }
-    list.assignAll(value.toApiList());
-    list.refresh();///显示路线
-    for(var i=0;i< list.em();i++){
-      list[i].delayTime = await testApiDelay(list[i].baseApi.em());
-    }
-    list.refresh();
+    var value = await HttpService.getApiLines();
+   if(unEmpty(value)){
+     ///用于判断是否需要更新缓存使用
+     value!.updateTime = DateTime.now().millisecondsSinceEpoch;
+     AppData.setOssApi(value);
+     list.assignAll(value.toApiList());
+     list.refresh();///显示路线
+     for(var i=0;i< list.em();i++){
+       list[i].delayTime = await testApiDelay(list[i].baseApi.em());
+     }
+     list.refresh();
+   }
   }
 
   Future<int> testApiDelay(String apiurl) async {
