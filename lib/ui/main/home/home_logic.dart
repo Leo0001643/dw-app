@@ -17,8 +17,10 @@ import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/oss_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
+import 'package:leisure_games/generated/json/base/json_convert_content.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
+import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/change_balance_event.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
@@ -74,6 +76,7 @@ class HomeLogic extends GetxController {
       ///线路切换 修改当前线路名称
       queryRoutes();
     });
+
     super.onReady();
   }
 
@@ -440,7 +443,8 @@ class HomeLogic extends GetxController {
 
     if (unEmpty(value)) {
       var list = value!.toApiList();
-      var length = list.takeWhile((v)=> v.baseApi == AppData.baseUrl()).length;
+      var length = list.where((v)=> v.baseApi == AppData.baseUrl()).length;
+      loggerArray(["线路对比结果",length,JsonConvert.fromJsonAsT(list), AppData.baseUrl()]);
       if(length > 0){
         for (var i = 0; i < list.em(); i++) {
           loggerArray(["线路对比结果", list[i].baseApi, AppData.baseUrl()]);
