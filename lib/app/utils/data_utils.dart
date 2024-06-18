@@ -9,11 +9,13 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/app/global.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/res/jsonx.dart';
 import 'package:uuid/uuid.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
 
 
 class DataUtils{
@@ -635,6 +637,20 @@ class DataUtils{
     // 将新的带有白色背景的图片转换回Uint8List
     final byteData = await newImage.toByteData(format: ui.ImageByteFormat.png);
     return byteData!.buffer.asUint8List();
+  }
+
+
+
+  static Future<int> testApiDelay(String apiurl) async {
+    apiurl = apiurl.startsWith("http") ? apiurl : "http://$apiurl";
+    final uri = Uri.parse(apiurl); // 替换为你要测试的接口地址
+    final stopwatch = Stopwatch();
+    stopwatch.start(); // 启动计时器
+    final response = await http.get(uri); // 发起接口请求
+    stopwatch.stop(); // 停止计时器
+    final duration = stopwatch.elapsed; // 获取经过的时间
+    loggerArray(["访问延时，状态",apiurl,duration.inMilliseconds,response.statusCode]);
+    return Future.value(duration.inMilliseconds);
   }
 
 

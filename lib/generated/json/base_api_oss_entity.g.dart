@@ -24,6 +24,10 @@ BaseApiOssEntity $BaseApiOssEntityFromJson(Map<String, dynamic> json) {
   if (updateTime != null) {
     baseApiOssEntity.updateTime = updateTime;
   }
+  final String? download = jsonConvert.convert<String>(json['download']);
+  if (download != null) {
+    baseApiOssEntity.download = download;
+  }
   return baseApiOssEntity;
 }
 
@@ -33,6 +37,7 @@ Map<String, dynamic> $BaseApiOssEntityToJson(BaseApiOssEntity entity) {
   data['webSockets'] = entity.webSockets;
   data['dns'] = entity.dns;
   data['updateTime'] = entity.updateTime;
+  data['download'] = entity.download;
   return data;
 }
 
@@ -42,11 +47,51 @@ extension BaseApiOssEntityExtension on BaseApiOssEntity {
     List<String>? webSockets,
     List<String>? dns,
     int? updateTime,
+    String? download,
   }) {
     return BaseApiOssEntity()
       ..baseAPIs = baseAPIs ?? this.baseAPIs
       ..webSockets = webSockets ?? this.webSockets
       ..dns = dns ?? this.dns
-      ..updateTime = updateTime ?? this.updateTime;
+      ..updateTime = updateTime ?? this.updateTime
+      ..download = download ?? this.download;
+  }
+}
+
+BaseWsApiEntity $BaseWsApiEntityFromJson(Map<String, dynamic> json) {
+  final BaseWsApiEntity baseWsApiEntity = BaseWsApiEntity();
+  final String? baseApi = jsonConvert.convert<String>(json['baseApi']);
+  if (baseApi != null) {
+    baseWsApiEntity.baseApi = baseApi;
+  }
+  final String? webSocket = jsonConvert.convert<String>(json['webSocket']);
+  if (webSocket != null) {
+    baseWsApiEntity.webSocket = webSocket;
+  }
+  final int? delayTime = jsonConvert.convert<int>(json['delayTime']);
+  if (delayTime != null) {
+    baseWsApiEntity.delayTime = delayTime;
+  }
+  return baseWsApiEntity;
+}
+
+Map<String, dynamic> $BaseWsApiEntityToJson(BaseWsApiEntity entity) {
+  final Map<String, dynamic> data = <String, dynamic>{};
+  data['baseApi'] = entity.baseApi;
+  data['webSocket'] = entity.webSocket;
+  data['delayTime'] = entity.delayTime;
+  return data;
+}
+
+extension BaseWsApiEntityExtension on BaseWsApiEntity {
+  BaseWsApiEntity copyWith({
+    String? baseApi,
+    String? webSocket,
+    int? delayTime,
+  }) {
+    return BaseWsApiEntity()
+      ..baseApi = baseApi ?? this.baseApi
+      ..webSocket = webSocket ?? this.webSocket
+      ..delayTime = delayTime ?? this.delayTime;
   }
 }

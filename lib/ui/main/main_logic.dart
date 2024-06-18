@@ -107,7 +107,7 @@ class MainLogic extends GetxController {
               eventBus.fire(ChangeMainPageEvent(3)); //转到客服显示
               Get.until((ModalRoute.withName(Routes.main)));
             },onCancel: (){//刷新
-              eventBus.fire(BaseWsApiEntity(AppData.baseUrl(),AppData.baseWsUrl()));
+              eventBus.fire(BaseWsApiEntity(baseApi: AppData.baseUrl(),webSocket: AppData.baseWsUrl()));
               Navigator.pop(Get.context!);
             });
       }

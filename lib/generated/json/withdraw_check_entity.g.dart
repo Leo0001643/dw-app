@@ -4,6 +4,8 @@ import 'package:leisure_games/app/global.dart';
 
 import 'package:leisure_games/app/intl/intr.dart';
 
+import 'package:leisure_games/app/utils/data_utils.dart';
+
 
 WithdrawCheckEntity $WithdrawCheckEntityFromJson(Map<String, dynamic> json) {
   final WithdrawCheckEntity withdrawCheckEntity = WithdrawCheckEntity();

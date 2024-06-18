@@ -216,7 +216,12 @@ class JsonConvert {
         if (value == null) {
           return null;
         }
-        return convertFuncMap[type]!(value as Map<String, dynamic>) as T;
+        var covertFunc = convertFuncMap[type]!;
+        if (covertFunc is Map<String, dynamic>) {
+          return covertFunc(value as Map<String, dynamic>) as T;
+        } else {
+          return covertFunc(Map<String, dynamic>.from(value)) as T;
+        }
       } else {
         throw UnimplementedError(
             '$type unimplemented,you can try running the app again');
@@ -301,6 +306,10 @@ class JsonConvert {
     if (<BaseApiOssEntity>[] is M) {
       return data.map<BaseApiOssEntity>((Map<String, dynamic> e) =>
           BaseApiOssEntity.fromJson(e)).toList() as M;
+    }
+    if (<BaseWsApiEntity>[] is M) {
+      return data.map<BaseWsApiEntity>((Map<String, dynamic> e) =>
+          BaseWsApiEntity.fromJson(e)).toList() as M;
     }
     if (<BetDetailItemChildEntity>[] is M) {
       return data.map<BetDetailItemChildEntity>((Map<String, dynamic> e) =>
@@ -863,6 +872,7 @@ class JsonConvertClassCollection {
     (BalanceEntity).toString(): BalanceEntity.fromJson,
     (BankEntity).toString(): BankEntity.fromJson,
     (BaseApiOssEntity).toString(): BaseApiOssEntity.fromJson,
+    (BaseWsApiEntity).toString(): BaseWsApiEntity.fromJson,
     (BetDetailItemChildEntity).toString(): BetDetailItemChildEntity.fromJson,
     (Record).toString(): Record.fromJson,
     (Total).toString(): Total.fromJson,

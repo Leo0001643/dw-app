@@ -64,7 +64,7 @@ class HomeLogic extends GetxController {
     languageStream = eventBus.on<LanguageEvent>().listen((event) {
       loadData();
       loadUserData();
-      queryRoutes();
+      updateLoadName();///更新线路名称
     });
     balanceStream = eventBus.on<ChangeBalanceEvent>().listen((event) {
       loadBalance();
@@ -72,9 +72,7 @@ class HomeLogic extends GetxController {
     apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
       loadData();
       loadUserData();
-
-      ///线路切换 修改当前线路名称
-      queryRoutes();
+      updateLoadName();///更新线路名称
     });
 
     super.onReady();
@@ -418,10 +416,7 @@ class HomeLogic extends GetxController {
 
   void showNotice(List<NoticeEntity> value, int i) {
     if (value.length > i) {
-      DialogUtils()
-          .showNoticeDialog(
-              Get.context!, value[i].noteTitle.em(), value[i].noteContent.em())
-          .then((v) {
+      DialogUtils().showNoticeDialog(Get.context!, value[i].noteTitle.em(), value[i].noteContent.em()).then((v) {
         showNotice(value, i + 1);
       });
     }
@@ -436,30 +431,57 @@ class HomeLogic extends GetxController {
       ///用于判断是否需要更新缓存使用
       value?.updateTime = DateTime.now().millisecondsSinceEpoch;
       AppData.setOssApi(value!);
-
       ///适配多渠道环境 如果换成其他渠道本地host就跟线路里的不是一回事了 所以得处理一下多渠道的环境问题
       AppData.checkBaseUrl(value);
     }
 
     if (unEmpty(value)) {
       var list = value!.toApiList();
-      var length = list.where((v)=> v.baseApi == AppData.baseUrl()).length;
-      loggerArray(["线路对比结果",length,JsonConvert.fromJsonAsT(list), AppData.baseUrl()]);
-      if(length > 0){
-        for (var i = 0; i < list.em(); i++) {
-          loggerArray(["线路对比结果", list[i].baseApi, AppData.baseUrl()]);
-          if (list[i].baseApi == AppData.baseUrl()) {
-            state.routeName.value = Intr().xianlu_(["${i + 1}"]);
-            return;
+      ///2024/6/18需求 线路自动测速，选择速度最快的线路
+      for(var i=0;i< list.em();i++){
+        list[i].delayTime = await DataUtils.testApiDelay(list[i].baseApi.em());
+        // logger("测试延时速度了===${list[i].delayTime}");
+      }
+      ///执行冒泡排序
+      int n = list.length;
+      // 遍历所有数组元素
+      for (int i = 0; i < n; i++) {
+        // Last i elements are already in place
+        for (int j = 0; j < n - i - 1; j++) {
+          // 遍历数组从0到n-i-1
+          // 交换如果找到元素大于下一个元素
+          if (list[j].delayTime.em() > list[j + 1].delayTime.em()) {
+            // 交换 arr[j+1] 和 arr[j]
+            var temp = list[j];
+            list[j] = list[j + 1];
+            list[j + 1] = temp;
           }
         }
-      } else if(list.isNotEmpty){
-        AppData.setBaseUrl(list[0].baseApi.em());
-        AppData.setBaseWsUrl(list[0].webSocket.em());
-        HttpService.changeBaseUrl(AppData.baseUrl());
-        state.routeName.value = Intr().xianlu_(["1"]);
       }
+      var apis = value.toApiList();
+      // loggerArray(["输出冒泡排序算法",JsonConvert.fromJsonAsT(apis),JsonConvert.fromJsonAsT(list)]);
+      apis.forEach((v){
+        if(v.baseApi == list.first.baseApi){
+          AppData.setBaseUrl(v.baseApi.em());
+          AppData.setBaseWsUrl(v.webSocket.em());
+          HttpService.changeBaseUrl(AppData.baseUrl());
+          state.routeName.value = Intr().xianlu_(["${apis.indexOf(v) + 1}"]);
+          return;
+        }
+      });
     }
+  }
+
+  ///更新线路名称
+  void updateLoadName() {
+    var apis = AppData.ossApi()?.toApiList();
+    // loggerArray(["输出冒泡排序算法",JsonConvert.fromJsonAsT(apis),JsonConvert.fromJsonAsT(list)]);
+    apis?.forEach((v){
+      if(v.baseApi == AppData.baseUrl()){
+        state.routeName.value = Intr().xianlu_(["${apis.indexOf(v) + 1}"]);
+        return;
+      }
+    });
   }
 
 

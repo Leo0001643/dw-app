@@ -2,13 +2,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
+import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/oss_utils.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 
@@ -129,22 +129,11 @@ class _MyGridViewState extends State<MyRoteGridView> {
      });
      list.refresh();///显示路线
      for(var i=0;i< list.em();i++){
-       list[i].delayTime = await testApiDelay(list[i].baseApi.em());
+       list[i].delayTime = await DataUtils.testApiDelay(list[i].baseApi.em());
      }
      list.refresh();
    }
   }
 
-  Future<int> testApiDelay(String apiurl) async {
-    apiurl = apiurl.startsWith("http") ? apiurl : "http://$apiurl";
-    final uri = Uri.parse(apiurl); // 替换为你要测试的接口地址
-    final stopwatch = Stopwatch();
-    stopwatch.start(); // 启动计时器
-    final response = await http.get(uri); // 发起接口请求
-    stopwatch.stop(); // 停止计时器
-    final duration = stopwatch.elapsed; // 获取经过的时间
-    loggerArray(["访问延时，状态",duration.inMilliseconds,response.statusCode]);
-    return Future.value(duration.inMilliseconds);
-  }
 
 }
