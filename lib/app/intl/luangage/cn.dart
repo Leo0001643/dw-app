@@ -458,6 +458,7 @@ class CN {
     "hyld_shouxin":"欢迎来到守信娱乐城！",
     "hyld_aomen":"欢迎来到澳门娱乐城！",
     "hyld_fuyuan":"欢迎来到富源国际娱乐城！",
+    "hyld_gdvip":"欢迎来到广东贵宾会！",
     "qqzlxd":"全球最领先的娱乐平台",
     "register":"注册",
     "login":"登录",
@@ -962,7 +963,7 @@ class CN {
     "2023guojizhan_shouxin":"@2023 守信",
     "2023guojizhan_aomen":"@2023 澳门",
     "2023guojizhan_fuyuan":"@2023 富源国际",
-
+    "2023guojizhan_gdvip":"@2023 广东贵宾会",
     "yingyongneijiazai":"应用内轻加载",
     "liulanqidakai":"使用系统默认浏览器打开",
     "biaozhunshijian":"本站标准时间以美东时间为准\n美东时间=北京时间-12小时",

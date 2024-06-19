@@ -458,6 +458,7 @@ class EN {
     "hyld_shouxin":"Welcome to SHOUXIN CASINO",
     "hyld_aomen":"Welcome to MACAU CASINO",
     "hyld_fuyuan":"Welcome to FUYUAN CASINO",
+    "hyld_gdvip":"Welcome to Guangdong Club",
     "qqzlxd":"The world's leading entertainment platform",
     "register":"Register",
     "login":"Login",
@@ -962,7 +963,7 @@ class EN {
     "2023guojizhan_shouxin":"@2023 shouxin",
     "2023guojizhan_aomen":"@2023 aomen",
     "2023guojizhan_fuyuan":"@2023 fuyuan",
-
+    "2023guojizhan_gdvip":"@2023 gdvip",
     "yingyongneijiazai":"Light in-app loading",
     "liulanqidakai":"Use the default browser",
     "biaozhunshijian":"The website standard time is subject to Eastern Time\nCurrent Time (CST)= Eastern Time (EST)+12:0",

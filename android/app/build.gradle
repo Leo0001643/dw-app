@@ -47,6 +47,7 @@ android {
         fuyuan.res.srcDirs 'src/main/res-fuyuan'
         shouxin.res.srcDirs 'src/main/res-shouxin'
         aomen.res.srcDirs 'src/main/res-aomen'
+        gdvip.res.srcDirs 'src/main/res-gdvip'
 
     }
 
@@ -98,6 +99,12 @@ android {
             storeFile file('../fuyuan.jks')
             storePassword '12345678'
         }
+        gdvip {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../gdvip.jks')
+            storePassword '12345678'
+        }
     }
 
 
@@ -125,7 +132,7 @@ android {
     productFlavors {
         dw{
             applicationId "com.dw.pro.dw"
-            namespace "com.soushin.leisure.dw"
+            namespace "com.dw.pro.dw"
             versionCode 3
             versionName "1.0.3"
             versionCode flutterVersionCode.toInteger()
@@ -142,7 +149,7 @@ android {
         }
         boya{
             applicationId "com.dw.pro.boya"
-            namespace "com.soushin.leisure.boya"
+            namespace "com.dw.pro.boya"
             versionCode 3
             versionName "1.0.3"
             signingConfig signingConfigs.boya
@@ -206,7 +213,23 @@ android {
                     apk_name: "AOMEN",
             ]
         }
-
+        gdvip{
+            applicationId "com.dw.pro.gdvip"
+            namespace "com.dw.pro.gdvip"
+            versionCode 1
+            versionName "1.0.1"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+            signingConfig signingConfigs.aomen
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "广东贵宾会",
+                    apk_name: "Guangdong Club",
+            ]
+        }
     }
 
 
