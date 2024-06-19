@@ -1065,6 +1065,7 @@ class VI{
     "qingzaixitongshezhifaceidzhuce":"Xin vui lòng đăng ký khuôn mặt hoặc dấu vân tay trong thiết lập hệ thống",
     "qingyanzhengshenfen":"Xin xác nhận đăng nhập",
     "wangluocuowu":"Lỗi mạng!",
+    "qiehuanchenggong":"Chuyển đổi thành công",
 
 
   };

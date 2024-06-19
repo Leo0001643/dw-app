@@ -9,8 +9,8 @@ EventBus eventBus=EventBus();
 EventBus behaviorBus = EventBus.customController(BehaviorSubject());
 
 ///显示Toast消息
-void showToast(String message,{bool? toastLength,}){
-  EasyLoading.showToast(message,duration: toastLength == true ? const Duration(seconds: 3):const Duration(seconds: 1));
+Future<void> showToast(String message,{bool? toastLength,}){
+  return EasyLoading.showToast(message,duration: toastLength == true ? const Duration(seconds: 3):const Duration(seconds: 1));
 }
 
 ///显示Toast消息

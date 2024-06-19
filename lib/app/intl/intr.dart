@@ -752,6 +752,7 @@ class Intr extends Translations{
   String get guojizhan2023_shouxin => '2023guojizhan_shouxin'.tr;
   String get guojizhan2023_aomen => '2023guojizhan_aomen'.tr;
   String get guojizhan2023_fuyuan => '2023guojizhan_fuyuan'.tr;
+  String get qiehuanchenggong => 'qiehuanchenggong'.tr;
 
 
 

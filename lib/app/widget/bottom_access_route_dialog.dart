@@ -51,13 +51,17 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                   onTap: (){
                     ///这里需要去更换baseurl和 wsbaseurl
                     if(unEmpty(entity)){
-                      AppData.setBaseUrl(entity!.baseApi.em());
-                      AppData.setBaseWsUrl(entity!.webSocket.em());
-                      HttpService.changeBaseUrl(AppData.baseUrl());
-                      eventBus.fire(entity);///通知各页面刷新数据
-                      showToast(Intr().caozuochenggong);
+                      ///这里吐司提前弹出，后面切换回调用接口显示加载弹窗，那个会把弹窗取消覆盖
+                      showToast(Intr().qiehuanchenggong).then((v){
+                        Future.delayed(Duration(milliseconds: 500),(){
+                          AppData.setBaseUrl(entity!.baseApi.em());
+                          AppData.setBaseWsUrl(entity!.webSocket.em());
+                          HttpService.changeBaseUrl(AppData.baseUrl());
+                          eventBus.fire(entity);///通知各页面刷新数据
+                          Navigator.pop(context,entity?.baseApi);
+                        });
+                      });
                     }
-                    Navigator.pop(context,entity?.baseApi);
                   },
                   child: Container(
                     margin: EdgeInsets.only(right: 10.w),

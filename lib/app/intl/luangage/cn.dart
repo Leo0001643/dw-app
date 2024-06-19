@@ -1066,6 +1066,7 @@ class CN {
     "qingzaixitongshezhifaceidzhuce":"请在系统设置中进行FaceID或指纹注册",
     "qingyanzhengshenfen":"请验证您的身份",
     "wangluocuowu":"网络错误！",
+    "qiehuanchenggong":"切换成功",
 
 
 
