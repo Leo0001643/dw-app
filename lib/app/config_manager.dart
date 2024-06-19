@@ -116,7 +116,7 @@ class ConfigManager {
       case channel_aomen:
         return Intr().hyld_aomen;
       case channel_gdvip:
-        return Intr().hyld_aomen;
+        return Intr().hyld_gdvip;
       default:
         return Intr().hyld_dw;
     }
