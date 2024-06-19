@@ -126,6 +126,8 @@ android {
         dw{
             applicationId "com.dw.pro.dw"
             namespace "com.soushin.leisure.dw"
+            versionCode 2
+            versionName "1.0.2"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.dw
@@ -156,6 +158,8 @@ android {
         fuyuan{
             applicationId "com.dw.pro.fuyuan"
             namespace "com.dw.pro.fuyuan"
+            versionCode 2
+            versionName "1.0.2"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -171,6 +175,8 @@ android {
         shouxin{
             applicationId "com.dw.pro.shouxin"
             namespace "com.dw.pro.shouxin"
+            versionCode 2
+            versionName "1.0.2"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.shouxin
@@ -186,6 +192,8 @@ android {
         aomen{
             applicationId "com.dw.pro.aomen"
             namespace "com.dw.pro.aomen"
+            versionCode 2
+            versionName "1.0.2"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
