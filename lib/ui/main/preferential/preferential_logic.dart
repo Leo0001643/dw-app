@@ -9,6 +9,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
+import 'package:leisure_games/ui/bean/change_api_event.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
@@ -27,7 +28,7 @@ class PreferentialLogic extends GetxController {
     languageStream = eventBus.on<LanguageEvent>().listen((event) {
       loadData();
     });
-    apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
+    apiSub = eventBus.on<ChangeApiEvent>().listen((event) {
       loadData();
     });
     super.onReady();

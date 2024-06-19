@@ -72,6 +72,10 @@ BaseWsApiEntity $BaseWsApiEntityFromJson(Map<String, dynamic> json) {
   if (delayTime != null) {
     baseWsApiEntity.delayTime = delayTime;
   }
+  final int? index = jsonConvert.convert<int>(json['index']);
+  if (index != null) {
+    baseWsApiEntity.index = index;
+  }
   return baseWsApiEntity;
 }
 
@@ -80,6 +84,7 @@ Map<String, dynamic> $BaseWsApiEntityToJson(BaseWsApiEntity entity) {
   data['baseApi'] = entity.baseApi;
   data['webSocket'] = entity.webSocket;
   data['delayTime'] = entity.delayTime;
+  data['index'] = entity.index;
   return data;
 }
 
@@ -88,10 +93,12 @@ extension BaseWsApiEntityExtension on BaseWsApiEntity {
     String? baseApi,
     String? webSocket,
     int? delayTime,
+    int? index,
   }) {
     return BaseWsApiEntity()
       ..baseApi = baseApi ?? this.baseApi
       ..webSocket = webSocket ?? this.webSocket
-      ..delayTime = delayTime ?? this.delayTime;
+      ..delayTime = delayTime ?? this.delayTime
+      ..index = index ?? this.index;
   }
 }

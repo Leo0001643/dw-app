@@ -6,6 +6,7 @@ import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
+import 'package:leisure_games/ui/bean/change_api_event.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/customer_service_entity.dart';
 import 'package:leisure_games/ui/bean/language_event.dart';
@@ -21,7 +22,7 @@ class CustomerServiceLogic extends GetxController {
 
   @override
   void onReady() {
-    apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
+    apiSub = eventBus.on<ChangeApiEvent>().listen((event) {
       loadData();
     });
     ///语言国际化更新

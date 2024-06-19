@@ -10,6 +10,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
+import 'package:leisure_games/ui/bean/change_api_event.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/register_currency_event.dart';
@@ -32,7 +33,7 @@ class MainLogic extends GetxController {
       state.pageController.jumpToPage(event.pageIndex);
       state.tabController?.animateTo(event.pageIndex);
     });
-    apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
+    apiSub = eventBus.on<ChangeApiEvent>().listen((event) {
       loadData();
     });
     registerStream = eventBus.on<RegisterCurrencyEvent>().listen((event) {
@@ -107,7 +108,7 @@ class MainLogic extends GetxController {
               eventBus.fire(ChangeMainPageEvent(3)); //转到客服显示
               Get.until((ModalRoute.withName(Routes.main)));
             },onCancel: (){//刷新
-              eventBus.fire(BaseWsApiEntity(baseApi: AppData.baseUrl(),webSocket: AppData.baseWsUrl()));
+              eventBus.fire(ChangeApiEvent());
               Navigator.pop(Get.context!);
             });
       }

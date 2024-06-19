@@ -8,6 +8,7 @@ import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/utils/oss_utils.dart';
+import 'package:leisure_games/ui/bean/change_api_event.dart';
 import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 
 import 'my_rote_gird_view.dart';
@@ -57,7 +58,7 @@ class StateAccessRouteDialog extends State<BottomAccessRouteDialog> {
                           AppData.setBaseUrl(entity!.baseApi.em());
                           AppData.setBaseWsUrl(entity!.webSocket.em());
                           HttpService.changeBaseUrl(AppData.baseUrl());
-                          eventBus.fire(entity);///通知各页面刷新数据
+                          eventBus.fire(ChangeApiEvent());///通知各页面刷新数据
                           Navigator.pop(context,entity?.baseApi);
                         });
                       });

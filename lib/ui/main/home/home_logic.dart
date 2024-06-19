@@ -10,17 +10,14 @@ import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
-import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/dialog_utils.dart';
 import 'package:leisure_games/app/utils/oss_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
-import 'package:leisure_games/generated/json/base/json_convert_content.dart';
+import 'package:leisure_games/ui/bean/change_api_event.dart';
 import 'package:leisure_games/ui/bean/act_status_entity.dart';
-import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
-import 'package:leisure_games/ui/bean/base_response_entity.dart';
 import 'package:leisure_games/ui/bean/change_balance_event.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
 import 'package:leisure_games/ui/bean/html_event.dart';
@@ -69,7 +66,7 @@ class HomeLogic extends GetxController {
     balanceStream = eventBus.on<ChangeBalanceEvent>().listen((event) {
       loadBalance();
     });
-    apiSub = eventBus.on<BaseWsApiEntity>().listen((event) {
+    apiSub = eventBus.on<ChangeApiEvent>().listen((event) {
       loadData();
       loadUserData();
       updateLoadName();///更新线路名称
@@ -458,17 +455,11 @@ class HomeLogic extends GetxController {
           }
         }
       }
-      var apis = value.toApiList();
       // loggerArray(["输出冒泡排序算法",JsonConvert.fromJsonAsT(apis),JsonConvert.fromJsonAsT(list)]);
-      apis.forEach((v){
-        if(v.baseApi == list.first.baseApi){
-          AppData.setBaseUrl(v.baseApi.em());
-          AppData.setBaseWsUrl(v.webSocket.em());
-          HttpService.changeBaseUrl(AppData.baseUrl());
-          state.routeName.value = Intr().xianlu_(["${apis.indexOf(v) + 1}"]);
-          return;
-        }
-      });
+      AppData.setBaseUrl(list.first.baseApi.em());
+      AppData.setBaseWsUrl(list.first.webSocket.em());
+      HttpService.changeBaseUrl(AppData.baseUrl());
+      state.routeName.value = Intr().xianlu_(["${list.first.index.em() + 1}"]);
     }
   }
 
@@ -478,7 +469,7 @@ class HomeLogic extends GetxController {
     // loggerArray(["输出冒泡排序算法",JsonConvert.fromJsonAsT(apis),JsonConvert.fromJsonAsT(list)]);
     apis?.forEach((v){
       if(v.baseApi == AppData.baseUrl()){
-        state.routeName.value = Intr().xianlu_(["${apis.indexOf(v) + 1}"]);
+        state.routeName.value = Intr().xianlu_(["${v.index.em() + 1}"]);
         return;
       }
     });

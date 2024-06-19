@@ -41,7 +41,7 @@ class BaseApiOssEntity {
 		var list = List<BaseWsApiEntity>.empty(growable: true);
 		for(var i=0;i< baseAPIs.em();i++){
 			var webSocket = webSockets.em() > i ? webSockets![i] : "";
-			list.add(BaseWsApiEntity(baseApi: baseAPIs![i],webSocket: webSocket));
+			list.add(BaseWsApiEntity(baseApi: baseAPIs![i],webSocket: webSocket,index: i));
 		}
 		return list;
 	}
@@ -56,8 +56,9 @@ class BaseWsApiEntity{
 	String? baseApi;
 	String? webSocket;
 	int? delayTime;
+	int? index;
 
-	BaseWsApiEntity({this.baseApi, this.webSocket});
+	BaseWsApiEntity({this.baseApi, this.webSocket,this.index});
 
 	factory BaseWsApiEntity.fromJson(Map<String, dynamic> json) => $BaseWsApiEntityFromJson(json);
 
