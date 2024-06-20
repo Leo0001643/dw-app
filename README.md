@@ -11,12 +11,6 @@ https://github.com/Leo0001643/dw-app.git
 Lancebyebye
 19931125Tu~
 
-https://9000vlmdm4.kj99883.com
-
-wss://9000ywfjn2.uy4ayov.com:443
-
-网页版的api 请求头 和websocket地址 有变动
-
 
 # dart
 dart pub run build_runner build
@@ -61,6 +55,9 @@ flutter build apk --flavor shouxin --dart-define=CHANNEL=shouxin
 flutter build apk --flavor aomen --dart-define=CHANNEL=aomen
 
 flutter build apk --flavor fuyuan --dart-define=CHANNEL=fuyuan
+
+flutter build apk --flavor gdvip --dart-define=CHANNEL=gdvip
+
 
 
 新建站点：9006，线路文件名：line_shouxin.json, 包名: shouxin.apk,网站名称：守信
