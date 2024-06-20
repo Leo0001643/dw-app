@@ -216,8 +216,8 @@ android {
         gdvip{
             applicationId "com.dw.pro.gdvip"
             namespace "com.dw.pro.gdvip"
-            versionCode 1
-            versionName "1.0.1"
+            versionCode 3
+            versionName "1.0.3"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
