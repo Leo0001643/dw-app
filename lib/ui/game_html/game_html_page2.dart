@@ -87,8 +87,10 @@ class _GameHtmlPageState extends State<GameHtmlPage2>{
                     ),
                     shouldOverrideUrlLoading: (controller,action) async {
                       var url = action.request.url.toString();
-                      loggerArray(["路由切换，看看是打开哪个页面了",url,action.request.headers]);
-                      if(url.contains(Constants.frontDomain())){
+                      var platformUrl = Constants.frontDomain();
+                      loggerArray(["路由切换，看看是打开哪个页面了",url,platformUrl]);
+                      ///排除platformUrl可能是参数导致的判断错误
+                      if(url.contains(platformUrl) && !url.contains("=$platformUrl")){
                         Get.back();
                         Future.value(NavigationActionPolicy.CANCEL);
                       }
