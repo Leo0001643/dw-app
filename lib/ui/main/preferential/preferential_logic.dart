@@ -46,7 +46,6 @@ class PreferentialLogic extends GetxController {
     HttpService.getPromotionTpe().then((value) {
       var data = jsonDecode(value);
       state.promotions = PromotionTypeEntity.fromJson(data);
-      loggerArray(["让我看看这里返回了什么呢",state.promotions.data]);
       ///需要对tab进行排序
       var containOther = false;
       var tabs = List<String>.empty(growable: true);
