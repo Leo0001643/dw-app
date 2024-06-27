@@ -30,9 +30,9 @@ class VI{
     "nick": "tên nick:",
     "phone": "số điện thoại:",
 
-    "qq_number": "số QQ:",
-    "wx_number": "số wechat:",
-    "e_mail": "địa chỉ email:",
+    "qq_number": "số QQ",
+    "wx_number": "số wechat",
+    "e_mail": "địa chỉ email",
     "e_mail_tip": "nhập địa chỉ email",
     "wx_number_tip": "nhập số wechat",
     "qq_number_tip": "nhập số QQ",
@@ -1068,7 +1068,10 @@ class VI{
     "qingyanzhengshenfen":"Xin xác nhận đăng nhập",
     "wangluocuowu":"Lỗi mạng!",
     "qiehuanchenggong":"Chuyển đổi thành công",
-
+    "jiesaorenbunengkong":"người giới thiệu không được để trống",
+    "emailbunengkong":"địa chỉ email không được để trống",
+    "wechatbunengkong":"số wechat không được để trống",
+    "qqbunengkong":"số QQ không được để trống",
 
   };
 }

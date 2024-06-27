@@ -35,7 +35,7 @@ class WebConfigEntity {
 	@JSONField(name: "domain_m_jingdiancai")
 	WebConfigDomainMGuanfangcai? domainMJingdiancai;
 	@JSONField(name: "register_option")
-	List<String>? registerOption;
+	List<WebConfigRegisterOption>? registerOption;
 
 	WebConfigEntity();
 
@@ -220,6 +220,10 @@ class WebConfigRegisterOption {
 	String? mobileRegisterOption;
 	@JSONField(name: "qq_register_option")
 	String? qqRegisterOption;
+
+	///1 不填写(不显示)
+	///2 选填(显示 不带星号)
+	///3 必填(显示 带星号)
 
 	WebConfigRegisterOption();
 

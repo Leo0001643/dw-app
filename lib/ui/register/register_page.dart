@@ -256,59 +256,217 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Text(Intr().ytxyhkhmyz, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
               ),
               SizedBox(height: 20.h,),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: FocusContainer(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: Row(
+              Obx(() {
+                return Visibility(
+                  visible: state.mobileVisible.value,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(width: 10.w,),
-                      InkWell(
-                        onTap: () => DialogUtils().showSelectAreaBtmDialog(context, state.phoneData ?? {}).then((value) {
-                          if(unEmpty(value)){ state.areaNo.value = value!; }
-                        }),
-                        child: Row(
-                          children: [
-                            Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                            Obx(() {
-                              return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),);
-                            }),
-                            WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
-                          ],
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: FocusContainer(
+                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          child: Row(
+                            children: [
+                              SizedBox(width: 10.w,),
+                              InkWell(
+                                onTap: () => DialogUtils().showSelectAreaBtmDialog(context, state.phoneData ?? {}).then((value) {
+                                  if(unEmpty(value)){ state.areaNo.value = value!; }
+                                }),
+                                child: Row(
+                                  children: [
+                                    Visibility(
+                                      visible: state.mobileMust.value,
+                                      child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                                    ),
+                                    Obx(() {
+                                      return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),);
+                                    }),
+                                    WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: WidgetUtils().buildTextField(0, 46.h, 14.sp, ColorX.textBlack(), Intr().shoujihaoma,hintColor: ColorX.text949(),
+                                    backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                      Expanded(
-                        child: WidgetUtils().buildTextField(0, 46.h, 14.sp, ColorX.textBlack(), Intr().shoujihaoma,hintColor: ColorX.text949(),
-                            backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
-                      )
+                      SizedBox(height: 10.h,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 35.w),
+                        child: Text(Intr().shuruzhenshiyouxiao, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                      ),
+                      SizedBox(height: 20.h,),
                     ],
                   ),
-                ),
-              ),//
-              SizedBox(height: 10.h,),
-              Padding(
-                padding: EdgeInsets.only(left: 35.w),
-                child: Text(Intr().shuruzhenshiyouxiao, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
-              ),
-              SizedBox(height: 20.h,),
-              Center(
-                child: FocusContainer(
-                  width: 335.w,
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: WidgetUtils().buildTextField(
-                      335.w, 46.h, 14.sp, ColorX.textBlack(), Intr().jieshaoren,
-                      hintColor: ColorX.text949(),
-                      backgroundColor: Colors.transparent,
-                      onChanged: (v) => state.tgcode = v,
-                      padding: EdgeInsets.symmetric(horizontal: 5.w)),
-                ),
-              ),
-              SizedBox(height: 10.h,),
-              Padding(
-                padding: EdgeInsets.only(left: 35.w),
-                child: Text(Intr().shurujieshaoren, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
-              ),
-              SizedBox(height: 20.h,),
+                );
+              }),//
+              Obx(() {
+                return Visibility(
+                  visible: state.agentVisible.value,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: FocusContainer(
+                          width: 335.w,
+                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          child: Row(
+                            children: [
+                              Visibility(
+                                visible: state.agentMust.value,
+                                child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                              ),
+                              Expanded(
+                                child: WidgetUtils().buildTextField(
+                                  0, 46.h, 14.sp, ColorX.textBlack(), Intr().jieshaoren,
+                                  hintColor: ColorX.text949(),
+                                  backgroundColor: Colors.transparent,
+                                  onChanged: (v) => state.tgcode = v,
+                                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10.h,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 35.w),
+                        child: Text(Intr().shurujieshaoren, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                      ),
+                      SizedBox(height: 20.h,),
+                    ],
+                  ),
+                );
+              }),
+              Obx(() {
+                return Visibility(
+                  visible: state.qqVisible.value,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: FocusContainer(
+                          width: 335.w,
+                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          child: Row(
+                            children: [
+                              Visibility(
+                                visible: state.qqMust.value,
+                                child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                              ),
+                              Expanded(
+                                child: WidgetUtils().buildTextField(
+                                  0, 46.h, 14.sp, ColorX.textBlack(), Intr().qq_number,
+                                  hintColor: ColorX.text949(),
+                                  backgroundColor: Colors.transparent,
+                                  inputType: TextInputType.number,
+                                  onChanged: (v) => state.qq = v,
+                                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10.h,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 35.w),
+                        child: Text(Intr().qq_number_tip, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                      ),
+                      SizedBox(height: 20.h,),
+                    ],
+                  ),
+                );
+              }),
+              Obx(() {
+                return Visibility(
+                  visible: state.emailVisible.value,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: FocusContainer(
+                          width: 335.w,
+                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          child: Row(
+                            children: [
+                              Visibility(
+                                visible: state.emailMust.value,
+                                child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                              ),
+                              Expanded(
+                                child: WidgetUtils().buildTextField(
+                                    0, 46.h, 14.sp, ColorX.textBlack(), Intr().e_mail,
+                                    hintColor: ColorX.text949(),
+                                    backgroundColor: Colors.transparent,
+                                    inputType: TextInputType.emailAddress,
+                                    onChanged: (v) => state.email = v,
+                                    padding: EdgeInsets.symmetric(horizontal: 5.w)
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10.h,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 35.w),
+                        child: Text(Intr().e_mail_tip, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                      ),
+                      SizedBox(height: 20.h,),
+                    ],
+                  ),
+                );
+              }),
+              Obx(() {
+                return Visibility(
+                  visible: state.weixinVisible.value,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: FocusContainer(
+                          width: 335.w,
+                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          child: Row(
+                            children: [
+                              Visibility(
+                                visible: state.weixinMust.value,
+                                child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                              ),
+                              Expanded(
+                                child: WidgetUtils().buildTextField(
+                                    0, 46.h, 14.sp, ColorX.textBlack(), Intr().wx_number,
+                                    hintColor: ColorX.text949(),
+                                    backgroundColor: Colors.transparent,
+                                    inputType: TextInputType.text,
+                                    onChanged: (v) => state.wechat = v,
+                                    padding: EdgeInsets.symmetric(horizontal: 5.w)
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 10.h,),
+                      Padding(
+                        padding: EdgeInsets.only(left: 35.w),
+                        child: Text(Intr().wx_number_tip, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                      ),
+                      SizedBox(height: 20.h,),
+                    ],
+                  ),
+                );
+              }),
               _getImageCode(),
               SizedBox(height: 10.h,),
               Padding(
@@ -317,46 +475,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   style: TextStyle(fontSize: 13.sp, color: ColorX.text0917(),fontWeight: FontWeight.w700),),
               ),
               SizedBox(height: 20.h,),
-              /*Center(
-                child: Text.rich(TextSpan(children: [
-                  WidgetSpan(
-                    // child: InkWell(
-                    //   onTap: ()=> state.agreeCheck.value = !state.agreeCheck.value,
-                    child: Obx(() {
-                      return WidgetUtils().buildImage(state.agreeCheck.value ? ImageX.icon_select : ImageX.iconUnselect(), 24.r, 24.r,fit: BoxFit.scaleDown);
-                    }),
-                    // ),
-                  ),
-                  WidgetSpan(
-                    child: SizedBox(
-                      width: 5.w,
-                    ),
-                  ),
-                  TextSpan(
-                    text: Intr().wywdbty,
-                    style: TextStyle(fontSize: 13.sp, color: ColorX.text0917()),
-                  ),
-                  WidgetSpan(
-                    child: InkWell(
-                      onTap: () {
-                        Get.toNamed(Routes.html,
-                            arguments: HtmlEvent(
-                                data: "${AppData.baseUrl()}/m/#/detail/Contact",
-                                isHtmlData: false,
-                                pageTitle: Intr().kaihuxieyi));
-                      },
-                      child: Text(
-                        Intr().kaihuxieyi,
-                        style: TextStyle(
-                            fontSize: 13.sp,
-                            color: ColorX.text0917(),
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  )
-                ])),
-              ),
-              SizedBox(height: 10.h,),*/
               Obx(() {
                 return Visibility(
                   visible: state.varcode.value.type != 2,

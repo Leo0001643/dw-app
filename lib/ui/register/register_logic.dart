@@ -8,6 +8,7 @@ import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/register_currency_event.dart';
+import 'package:leisure_games/ui/main/main_logic.dart';
 
 import 'register_state.dart';
 
@@ -20,12 +21,25 @@ class RegisterLogic extends GetxController {
     DataUtils.readPhoneData().then((value) {
       state.phoneData = value;
     });
+    ///读取注册配置
+    if(unEmpty(Get.find<MainLogic>().state.webConfig?.registerOption)){
+      var config = Get.find<MainLogic>().state.webConfig!.registerOption!.first;
+      state.emailVisible.value = config.emailRegisterOption != "1";
+      state.emailMust.value = config.emailRegisterOption == "3";
+      state.agentVisible.value = config.agentRegisterOption != "1";
+      state.agentMust.value = config.agentRegisterOption == "3";
+      state.weixinVisible.value = config.weixinRegisterOption != "1";
+      state.weixinMust.value = config.weixinRegisterOption == "3";
+      state.mobileVisible.value = config.mobileRegisterOption != "1";
+      state.mobileMust.value = config.mobileRegisterOption == "3";
+      state.qqVisible.value = config.qqRegisterOption != "1";
+      state.qqMust.value = config.qqRegisterOption == "3";
+    }
     super.onReady();
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
   }
 
@@ -62,8 +76,29 @@ class RegisterLogic extends GetxController {
       showToast(Intr().zhenshixingmingbunengkong);
       return;
     }
-    if(state.mobile.length < 9 || state.mobile.length > 15) {
+    ///手机号必填
+    if(state.mobileMust.value && (state.mobile.length < 9 || state.mobile.length > 15)) {
       showToast(Intr().agent_phone_tip);
+      return;
+    }
+    ///介绍人必填
+    if(state.agentMust.value && isEmpty(state.tgcode)) {
+      showToast(Intr().jiesaorenbunengkong);
+      return;
+    }
+    ///qq必填
+    if(state.qqMust.value && isEmpty(state.qq)) {
+      showToast(Intr().qqbunengkong);
+      return;
+    }
+    ///email必填
+    if(state.emailMust.value && isEmpty(state.email)) {
+      showToast(Intr().emailbunengkong);
+      return;
+    }
+    ///wechat必填
+    if(state.weixinMust.value && isEmpty(state.wechat)) {
+      showToast(Intr().wechatbunengkong);
       return;
     }
     if (isEmpty(state.vcode) && state.varcode.value.status == 1&& state.varcode.value.type == 1) {
@@ -79,9 +114,28 @@ class RegisterLogic extends GetxController {
       "varCode": state.vcode,
       "varCodeId": state.varcode.value.varCodeId,
       "agree": 1,
-      "mobile":"${state.areaNo.value}${state.mobile}",
       "token": -1,
   };
+    ///介绍人
+    if(unEmpty(state.tgcode)){
+      params["intr"] = state.tgcode;
+    }
+    ///手机号
+    if(unEmpty(state.mobile)){
+      params["mobile"] = "${state.areaNo.value}${state.mobile}";
+    }
+    ///邮箱
+    if(unEmpty(state.email)){
+      params["email"] = state.email;
+    }
+    ///qq
+    if(unEmpty(state.qq)){
+      params["qq"] = state.qq;
+    }
+    ///wechat
+    if(unEmpty(state.wechat)){
+      params["wechat"] = state.wechat;
+    }
     //阿里的滑动验证
     if (data != null &&
         state.varcode.value.status == 1 &&
@@ -113,10 +167,6 @@ class RegisterLogic extends GetxController {
       params["randstr"] = data["randstr"];
       params["token"] = -1;
     }
-    ///介绍人
-    // if(unEmpty(state.tgcode)){
-    //   params["intr"] = state.tgcode;
-    // }
     HttpService.userRegister(params).then((value) {
       ///登录成功刷新各页面
       eventBus.fire(LoginRefreshEvent());

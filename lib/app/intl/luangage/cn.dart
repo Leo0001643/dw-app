@@ -30,9 +30,9 @@ class CN {
     "nick": "昵称:",
     "phone": "手机号码:",
 
-    "qq_number": "QQ号码:",
-    "wx_number": "微信号码:",
-    "e_mail": "电子邮箱:",
+    "qq_number": "QQ号码",
+    "wx_number": "微信号码",
+    "e_mail": "电子邮箱",
     "e_mail_tip": "输入电子邮箱",
     "wx_number_tip": "输入微信号码",
     "qq_number_tip": "输入QQ号码",
@@ -1068,8 +1068,10 @@ class CN {
     "qingyanzhengshenfen":"请验证您的身份",
     "wangluocuowu":"网络错误！",
     "qiehuanchenggong":"切换成功",
-
-
+    "jiesaorenbunengkong":"介绍人不能为空",
+    "emailbunengkong":"电子邮箱不能为空",
+    "wechatbunengkong":"微信号码不能为空",
+    "qqbunengkong":"QQ号码不能为空",
 
 
   };

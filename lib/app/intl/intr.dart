@@ -561,7 +561,7 @@ class Intr extends Translations{
   String get huishou => 'huishou'.tr;
   String get sishiershuzihuozimu => 'sishiershuzihuozimu'.tr;
   String get bashiershuzihuozimu => 'bashiershuzihuozimu'.tr;
-  String get zhenshixingmingbunengkong => 'huishou'.tr;
+  String get zhenshixingmingbunengkong => 'zhenshixingmingbunengkong'.tr;
   String get yanzhengmabunengkong => 'yanzhengmabunengkong'.tr;
   String get mimashurubuyizhi => 'mimashurubuyizhi'.tr;
   String get usdt_coin => 'usdt_coin'.tr;
@@ -747,6 +747,17 @@ class Intr extends Translations{
   String get qingyanzhengshenfen => 'qingyanzhengshenfen'.tr;
   String get qiehuanchenggong => 'qiehuanchenggong'.tr;
   String get wangluocuowu => 'wangluocuowu'.tr;
+  String get jiesaorenbunengkong => 'jiesaorenbunengkong'.tr;
+  String get emailbunengkong => 'emailbunengkong'.tr;
+  String get wechatbunengkong => 'wechatbunengkong'.tr;
+  String get qqbunengkong => 'qqbunengkong'.tr;
+  String get qq_number => 'qq_number'.tr;
+  String get wx_number => 'wx_number'.tr;
+  String get e_mail => 'e_mail'.tr;
+  String get e_mail_tip => 'e_mail_tip'.tr;
+  String get wx_number_tip => 'wx_number_tip'.tr;
+  String get qq_number_tip => 'qq_number_tip'.tr;
+
   String get hyld_shouxin => 'hyld_shouxin'.tr;
   String get hyld_aomen => 'hyld_aomen'.tr;
   String get hyld_fuyuan => 'hyld_fuyuan'.tr;
@@ -755,8 +766,6 @@ class Intr extends Translations{
   String get guojizhan2023_aomen => '2023guojizhan_aomen'.tr;
   String get guojizhan2023_fuyuan => '2023guojizhan_fuyuan'.tr;
   String get guojizhan2023_gdvip => '2023guojizhan_gdvip'.tr;
-
-
 
 
 

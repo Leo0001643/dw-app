@@ -30,9 +30,9 @@ class EN {
     "nick": "Nickname:",
     "phone": "Mobile:",
 
-    "qq_number": "QQ:",
-    "wx_number": "Wechat:",
-    "e_mail": "Email:",
+    "qq_number": "QQ",
+    "wx_number": "Wechat",
+    "e_mail": "Email",
     "e_mail_tip": "Enter Email address",
     "wx_number_tip": "Enter Wechat ID",
     "qq_number_tip": "Enter QQ number",
@@ -1068,7 +1068,10 @@ class EN {
     "qingyanzhengshenfen":"Please authenticate to login",
     "wangluocuowu":"Network error!",
     "qiehuanchenggong":"Switch successful",
-
+    "jiesaorenbunengkong":"Referrer Code cannot be empty",
+    "emailbunengkong":"Email address cannot be empty",
+    "wechatbunengkong":"Wechat ID cannot be empty",
+    "qqbunengkong":"QQ number cannot be empty",
 
   };
 
