@@ -3,6 +3,7 @@ import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/bonus_total_entity.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/member_point_entity.dart';
+import 'package:leisure_games/ui/bean/web_config_entity.dart';
 
 class MineState {
   MineState() {
@@ -21,7 +22,6 @@ class MineState {
 
   ///用户信息
   var user = LoginUserEntity().obs;
-
 
 
 }

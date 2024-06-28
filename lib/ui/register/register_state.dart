@@ -56,4 +56,5 @@ class RegisterState {
   ///手机区号数据
   Map<String,List<String>>? phoneData;
 
+
 }

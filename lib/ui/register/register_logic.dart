@@ -18,23 +18,10 @@ class RegisterLogic extends GetxController {
   @override
   void onReady() {
     getVarcode();
+    getWebConfig();
     DataUtils.readPhoneData().then((value) {
       state.phoneData = value;
     });
-    ///读取注册配置
-    if(unEmpty(Get.find<MainLogic>().state.webConfig?.registerOption)){
-      var config = Get.find<MainLogic>().state.webConfig!.registerOption!.first;
-      state.emailVisible.value = config.emailRegisterOption != "1";
-      state.emailMust.value = config.emailRegisterOption == "3";
-      state.agentVisible.value = config.agentRegisterOption != "1";
-      state.agentMust.value = config.agentRegisterOption == "3";
-      state.weixinVisible.value = config.weixinRegisterOption != "1";
-      state.weixinMust.value = config.weixinRegisterOption == "3";
-      state.mobileVisible.value = config.mobileRegisterOption != "1";
-      state.mobileMust.value = config.mobileRegisterOption == "3";
-      state.qqVisible.value = config.qqRegisterOption != "1";
-      state.qqMust.value = config.qqRegisterOption == "3";
-    }
     super.onReady();
   }
 
@@ -176,6 +163,22 @@ class RegisterLogic extends GetxController {
       eventBus.fire(RegisterCurrencyEvent());
     },onError: (error){
       getVarcode();///出错需要刷新验证码
+    });
+  }
+
+  void getWebConfig() {
+    HttpService.getWebConfig().then((value) {
+      var config = value.registerOption!.first;
+      state.emailVisible.value = config.emailRegisterOption != "1";
+      state.emailMust.value = config.emailRegisterOption == "3";
+      state.agentVisible.value = config.agentRegisterOption != "1";
+      state.agentMust.value = config.agentRegisterOption == "3";
+      state.weixinVisible.value = config.weixinRegisterOption != "1";
+      state.weixinMust.value = config.weixinRegisterOption == "3";
+      state.mobileVisible.value = config.mobileRegisterOption != "1";
+      state.mobileMust.value = config.mobileRegisterOption == "3";
+      state.qqVisible.value = config.qqRegisterOption != "1";
+      state.qqMust.value = config.qqRegisterOption == "3";
     });
   }
 

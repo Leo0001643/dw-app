@@ -10,9 +10,10 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		22F7B1A151A5DF621003E4A6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		2618DAE23AA9178265F3EB78 /* Pods_boya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F48D8733FF3F2159B540C9 /* Pods_boya.framework */; };
-		31B1091892D3508A2ACA32CA /* Pods_fuyuan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28756AABD3EAF958B1638629 /* Pods_fuyuan.framework */; };
+		31B1091892D3508A2ACA32CA /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		4F99D56AE21018C819E4803F /* Pods_fuyuan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970CCCF0C06B1230CC993AFA /* Pods_fuyuan.framework */; };
 		5650ECF149993BE95860B7B2 /* Pods_dw.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BE055C870BF62B2CE32074 /* Pods_dw.framework */; };
 		5B7E2721770010D9C135D38C /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEDCF38F1064529430D4717 /* Pods_Runner.framework */; };
 		5C9DA04E09869944893BDAC6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
@@ -238,6 +239,7 @@
 		93EE2B78BF03C603FEA68ACF /* Pods-Runner.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-dw.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		954714FA9B13014BCA947298 /* Pods-aomen.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		954D5D81E219D696ACC3624F /* Pods-fuyuan.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-shouxin.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-shouxin.xcconfig"; sourceTree = "<group>"; };
+		970CCCF0C06B1230CC993AFA /* Pods_fuyuan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fuyuan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -391,7 +393,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31B1091892D3508A2ACA32CA /* Pods_fuyuan.framework in Frameworks */,
+				31B1091892D3508A2ACA32CA /* BuildFile in Frameworks */,
+				4F99D56AE21018C819E4803F /* Pods_fuyuan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,6 +740,7 @@
 				A62843C62E77056E541DC4D9 /* Pods_shouxin.framework */,
 				32A3194D8DDBCB8899DBAA0A /* Pods_boya.framework */,
 				F02387B1E6F256C5B20254C7 /* Pods_gdvip.framework */,
+				970CCCF0C06B1230CC993AFA /* Pods_fuyuan.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
