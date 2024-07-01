@@ -186,6 +186,13 @@ class WidgetUtils {
             ),
           ),
           Visibility(
+            visible: !msg,
+            child: InkWell(
+              onTap: () => Get.toNamed(Routes.select_language),
+              child: WidgetUtils().buildImage(ImageX.languageT(), 18.r, 18.r),
+            ),
+          ),
+          Visibility(
             visible: drawer,
             child: InkWell(
               onTap: () => Get.find<MainLogic>().openDrawer(),

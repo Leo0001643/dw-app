@@ -89,10 +89,10 @@ class LoginLogic extends GetxController {
       params["token"] = -1;
     }
     HttpService.login(params).then((value) {
-      eventBus.fire(LoginRefreshEvent());
       AppData.setUser(value);
       AppData.setLoginUser(state.accountValue);
       AppData.setLoginPwd(state.accountValue,state.pwdValue);
+      eventBus.fire(LoginRefreshEvent());
       Get.until((ModalRoute.withName(Routes.main)));
     },onError: (error){
       getVarcode();///出错需要刷新验证码

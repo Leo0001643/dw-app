@@ -631,6 +631,7 @@ class ImageX{
   static const ic_gdvip_home =  'assets/images/ic_gdvip_home.png';
   static const ic_gdvip_home_en =  'assets/images/ic_gdvip_home_en.png';
 
+  static const dw_bg_init =  'assets/images/dw_bg_init.png';
 
 
 

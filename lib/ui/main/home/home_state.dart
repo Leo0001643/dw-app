@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
+import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/ui/bean/balance_entity.dart';
 import 'package:leisure_games/ui/bean/domain_config_entity.dart';
@@ -62,5 +63,8 @@ class HomeState {
 
   ///站点logo
   var stationLogo = ConfigManager.icStationHomeZ().obs;
+
+  ///是否登录
+  var isLogin = AppData.isLogin().obs;
 
 }

@@ -701,7 +701,7 @@ class CN {
     "zhifushuoming_2":" 协议转账到收款账户，若您使用其他虚拟货币支付，则可能造成资金损失;\n3.该地址是您的专属地址，可以多次使用，建议保存",
     "nicheng_":"昵称：%s",
     "wodeqianbao":"我的钱包",
-    "tixianmima":"提现密码",
+    "tixianmima":"修改提现密码",
     "zijinmingxi":"资金交易",
     "bangdingyinhangka":"绑定银行卡",
     "bangdingusdt":"绑定USDT",

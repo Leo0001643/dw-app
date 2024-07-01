@@ -337,9 +337,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 8.h,
-            ),
+            SizedBox(height: 8.h,),
             Visibility(
               visible: AppData.isLogin(),
               child: Container(

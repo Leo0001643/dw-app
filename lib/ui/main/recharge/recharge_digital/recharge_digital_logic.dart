@@ -53,7 +53,13 @@ class RechargeDigitalLogic extends GetxController {
   }
 
 
-
+  String getQrcode(){
+    var qrcode = "";
+    if(state.currentAccount.value is PaymentChannelBankSet){
+      qrcode = (state.currentAccount.value as PaymentChannelBankSet).pic.em();
+    }
+    return qrcode;
+  }
 
   String getAddress(){
     var address = "";

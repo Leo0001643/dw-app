@@ -150,12 +150,15 @@ import 'package:leisure_games/ui/main/recharge/recharge_wallet/recharge_wallet_b
 import 'package:leisure_games/ui/main/recharge/recharge_wallet/recharge_wallet_page.dart';
 import 'package:leisure_games/ui/register/register_binding.dart';
 import 'package:leisure_games/ui/register/register_page.dart';
+import 'package:leisure_games/ui/splash/splash_binding.dart';
+import 'package:leisure_games/ui/splash/splash_page.dart';
 
 import '../ui/game_html/game_html_page2.dart';
 import '../ui/main/mine/setting/set_simple_pwd/set_simple_pwd_page2.dart';
 
 class Routes {
   static const String main = "/";
+  static const String splash = "/splash";
   static const String login = "/login";
   static const String register = "/register";
   static const String html = "/html";
@@ -236,6 +239,7 @@ class Routes {
 
 
   static final List<GetPage> getPages=[
+    GetPage(name: splash,binding: SplashBinding(), page: () => SplashPage()),
     GetPage(name: main, binding: MainBinding(),
         bindings: [HomeBinding(),PreferentialBinding(),RechargeBinding(),
           CustomerServiceBinding(),MineBinding()], page: () => MainPage()),

@@ -6,6 +6,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tencent_captcha/tencent_captcha.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:leisure_games/app/app_theme.dart';
 import 'package:leisure_games/app/config_manager.dart';
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate, /// 对应的Cupertino风格
             GlobalWidgetsLocalizations.delegate, /// 指定默认的文本排列方向, 由左到右或由右到左
           ],
+          defaultTransition: Transition.native,
           themeMode: AppTheme().currentTheme(),
           theme: AppTheme().lightTheme,
           darkTheme: AppTheme().darkTheme,

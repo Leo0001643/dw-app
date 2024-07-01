@@ -47,6 +47,7 @@ class HomeLogic extends GetxController {
     ///余额发生变化，刷新余额数据
     loginStream = eventBus.on<LoginRefreshEvent>().listen((event) {
       loadUserData(jumpNotice: event.show_notice);
+      state.isLogin.value = AppData.isLogin();
     });
 
     Get.find<AvatarController>().addListener(() {
@@ -241,12 +242,6 @@ class HomeLogic extends GetxController {
                 data: value.content.em(),
                 pageTitle: Intr().lianxiwomen));
       });
-    } else if (Intr().eduzhuanhuan == title) {
-      if (AppData.isLogin()) {
-        Get.toNamed(Routes.quota_conversion);
-      } else {
-        WidgetUtils().goLogin();
-      }
     } else if (Intr().jishuzhichi == title) {
       HttpService.getNewsRate("wenti").then((value) {
         Get.toNamed(Routes.html,
@@ -254,14 +249,6 @@ class HomeLogic extends GetxController {
                 isHtmlData: true,
                 data: value.content.em(),
                 pageTitle: Intr().jishuzhichi));
-      });
-    } else if (Intr().fangjiechijiaocheng == title) {
-      HttpService.getNewsRate("jiechijiaocheng").then((value) {
-        Get.toNamed(Routes.html,
-            arguments: HtmlEvent(
-                isHtmlData: true,
-                data: value.content.em(),
-                pageTitle: Intr().fangjiechijiaocheng));
       });
     }
   }

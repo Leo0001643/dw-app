@@ -54,7 +54,9 @@ class StateHomePage extends State<HomePage>
                     flexibleSpace: Container(
                       padding: EdgeInsets.only(top: ScreenUtil().statusBarHeight),
                       alignment: Alignment.center,
-                      child: WidgetUtils().buildHomeAppBar(context,state.routeName,state.stationLogo, msg: true, drawer: true),
+                      child: Obx(() {
+                        return WidgetUtils().buildHomeAppBar(context,state.routeName,state.stationLogo, msg: state.isLogin.value, drawer: true);
+                      }),
                     )),
                 SliverToBoxAdapter(
                   child: Container(
@@ -204,8 +206,7 @@ class StateHomePage extends State<HomePage>
                               LayoutBuilder(
                                 builder: (context,cst){
                                   var labelBtm = [
-                                    Intr().guanyuwomen, Intr().yonghuzhongxin, Intr().lianxiwomen,
-                                    Intr().eduzhuanhuan, Intr().jishuzhichi, Intr().fangjiechijiaocheng];
+                                    Intr().guanyuwomen, Intr().lianxiwomen, Intr().yonghuzhongxin, Intr().jishuzhichi];
                                   return Wrap(
                                     direction: Axis.horizontal,
                                     children: labelBtm.map((e) => buildComInfo(e, labelBtm.last == e)).toList(),
@@ -283,12 +284,10 @@ class StateHomePage extends State<HomePage>
         SizedBox(
           width: 5.w,
         ),
-        last
-            ? Container()
-            : Text(
-                "|",
-                style: TextStyle(fontSize: 12.sp, color: ColorX.text5862()),
-              ),
+        Visibility(
+          visible: !last,
+          child: Text("|", style: TextStyle(fontSize: 12.sp, color: ColorX.text5862()),),
+        ),
         SizedBox(
           width: 5.w,
         ),

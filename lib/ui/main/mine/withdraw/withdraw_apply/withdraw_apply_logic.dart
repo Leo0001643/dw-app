@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:leisure_games/app/app_data.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
@@ -70,7 +71,6 @@ class WithdrawApplyLogic extends GetxController {
       showToast(Intr().huiyuanchukuanjinedayuzhuzhanghu);
       return;
     }
-
     var user = AppData.user();
     var params = {"oid":user?.oid,"username":user?.username, "cur":state.pageType.value,
       "getPassword":state.pwdValue,"gold":state.actualAmount.value,"money":state.withdrawAmount.value};
@@ -79,6 +79,9 @@ class WithdrawApplyLogic extends GetxController {
     } else if(state.selectValue is UsdtEntity){
       params["bankCode"] = state.selectValue.type;
       // params["cardNumber"] = "${state.dropdownValue.value.cardNumber}";
+    } else if(state.selectValue is UserDrawDetailBanks){
+      // loggerArray(["提现申请信息大红印",state.selectValue.toJson(),state.dropdownValue.value]);
+      params["bankCode"] = "${state.selectValue.cardNumber}";
     } else {
       params["bankCode"] = state.pageType.value;
     }

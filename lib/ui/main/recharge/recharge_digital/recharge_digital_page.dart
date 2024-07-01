@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -238,7 +240,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                             Text(AppData.user()!.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                                             InkWell(
                                               onTap: ()=> WidgetUtils().clickCopy(AppData.user()!.username.em()),
-                                              child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
+                                              child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),width: 28.r,fit: BoxFit.fill,),
                                             ),
                                           ],
                                         ),
@@ -254,20 +256,31 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                   Row(
                                     children: [
                                       Obx(() {
-                                        return Visibility(
-                                          visible: state.selectOnline.value,
-                                          child: Obx(() {
-                                            return QrImageView(
-                                              data: logic.getAddress(),
-                                              size: 112.r,
-                                              backgroundColor: Colors.white,
-                                            );
-                                          }),
-                                        );
+                                        if(unEmpty(logic.getQrcode())){
+                                          // 移除 Base64 头信息
+                                          String base64String = logic.getQrcode().split(',').last;
+                                          return Image.memory(
+                                            base64Decode(base64String),
+                                            width: 90.r,
+                                            height: 90.r,
+                                            fit: BoxFit.fill,
+                                          );
+                                        } else {
+                                          return Visibility(
+                                            visible: state.selectOnline.value,
+                                            child: Obx(() {
+                                              return QrImageView(
+                                                data: logic.getAddress(),
+                                                size: 112.r,
+                                                backgroundColor: Colors.white,
+                                              );
+                                            }),
+                                          );
+                                        }
                                       }),
                                       Obx(() {
                                         return Visibility(
-                                          visible: state.selectOnline.value,
+                                          visible: state.selectOnline.value || unEmpty(logic.getQrcode()),
                                           child: SizedBox(width: 17.w,),
                                         );
                                       }),
@@ -283,30 +296,21 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                                 borderRadius: BorderRadius.circular(8.r),
                                               ),
                                               padding: EdgeInsets.all(5.r),
-                                              child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: [
-                                                  Obx(() {
-                                                    return Text(logic.getAddress(),
-                                                      style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),);
-                                                  }),
-                                                  Container(
-                                                    constraints: BoxConstraints(
-                                                      maxWidth: 0.5.sw,
+                                              child: Obx(() {
+                                                return Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Text(logic.getAddress(),
+                                                        style: TextStyle(fontSize: 14.sp,color: ColorX.text949()),),
                                                     ),
-                                                    child: InkWell(
+                                                    InkWell(
                                                       onTap: ()=> WidgetUtils().clickCopy(logic.getAddress(),),
-                                                      child: Row(
-                                                        mainAxisAlignment: MainAxisAlignment.center,
-                                                        children: [
-                                                          Image.asset(ImageX.icon_copy,color: ColorX.text5862(),),
-                                                          Text(Intr().fuzhilianjie, style: TextStyle(fontSize: 12.sp,color: ColorX.text0917()),),
-                                                        ],
-                                                      ),
+                                                      child: Image.asset(ImageX.icon_copy,color: ColorX.text5862(),width: 28.r,fit: BoxFit.fill,),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
+                                                  ],
+                                                );
+                                              }),
                                             )
                                           ],
                                         ),
@@ -385,7 +389,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                           Text(AppData.user()!.username.em(),style: TextStyle(fontSize: 14.sp,color: ColorX.text0917()),),
                                           InkWell(
                                             onTap: ()=> WidgetUtils().clickCopy(AppData.user()!.username.em()),
-                                            child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),),
+                                            child: Image.asset(ImageX.icon_copy,color: ColorX.text586(),width: 28.r,fit: BoxFit.fill,),
                                           ),
                                         ],
                                       ),

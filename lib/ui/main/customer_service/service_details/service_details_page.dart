@@ -167,7 +167,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
           ),
           padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
           margin: EdgeInsets.symmetric(horizontal: 20.w),
-          height: 72.h,
+          // height: 72.h,
           child: Row(
             children: [
               ClipRRect(
@@ -177,28 +177,27 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
               SizedBox(
                 width: 8.w,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    server.name.em(),
-                    style: TextStyle(fontSize: 14.sp, color: ColorX.text0917()),
-                  ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Text(
-                    server.number.em(),
-                    style: TextStyle(
-                        fontSize: 14.sp,
-                        color: ColorX.text0917(),
-                        fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
               Expanded(
-                child: Container(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      server.name.em(),
+                      style: TextStyle(fontSize: 14.sp, color: ColorX.text0917()),
+                    ),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    Text(
+                      server.number.em(),
+                      style: TextStyle(
+                          fontSize: 14.sp,
+                          color: ColorX.text0917(),
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
               ),
               InkWell(
                 onTap: () {
