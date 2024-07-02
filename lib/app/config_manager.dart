@@ -203,6 +203,29 @@ class ConfigManager {
   }
 
 
+
+  ///启动页图片
+  static String getSplashImage(){
+    switch(channelName){
+      case channel_dw:
+        return ImageX.dw_bg_init;
+      case channel_boya:
+        return ImageX.boya_bg_init;
+      case channel_fuyuan:
+        return ImageX.fuyuan_bg_init;
+      case channel_shouxin:
+        return ImageX.shouxin_bg_init;
+      case channel_aomen:
+        return ImageX.aomen_bg_init;
+      case channel_gdvip:
+        return ImageX.gdvip_bg_init;
+      default:
+        return ImageX.dw_bg_init;
+    }
+  }
+
+
+
 }
 
 

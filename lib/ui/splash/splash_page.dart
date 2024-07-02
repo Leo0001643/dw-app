@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:leisure_games/app/config_manager.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
@@ -36,7 +37,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: WidgetUtils().buildImage(ImageX.dw_bg_init, 1.sw, 1.sh,fit: BoxFit.fill),
+      body: WidgetUtils().buildImage(ConfigManager.getSplashImage(), 1.sw, 1.sh,fit: BoxFit.fill),
     );
   }
 

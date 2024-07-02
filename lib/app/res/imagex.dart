@@ -632,6 +632,11 @@ class ImageX{
   static const ic_gdvip_home_en =  'assets/images/ic_gdvip_home_en.png';
 
   static const dw_bg_init =  'assets/images/dw_bg_init.png';
+  static const boya_bg_init =  'assets/images/boya_bg_init.png';
+  static const shouxin_bg_init =  'assets/images/shouxin_bg_init.png';
+  static const aomen_bg_init =  'assets/images/aomen_bg_init.png';
+  static const fuyuan_bg_init =  'assets/images/fuyuan_bg_init.png';
+  static const gdvip_bg_init =  'assets/images/gdvip_bg_init.png';
 
 
 

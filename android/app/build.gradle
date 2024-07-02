@@ -133,8 +133,8 @@ android {
         dw{
             applicationId "com.dw.pro.dw"
             namespace "com.dw.pro.dw"
-            versionCode 3
-            versionName "1.0.3"
+            versionCode 4
+            versionName "1.0.4"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.dw
@@ -150,8 +150,8 @@ android {
         boya{
             applicationId "com.dw.pro.boya"
             namespace "com.dw.pro.boya"
-            versionCode 3
-            versionName "1.0.3"
+            versionCode 4
+            versionName "1.0.4"
             signingConfig signingConfigs.boya
             manifestPlaceholders = [
                     package_name: applicationId,
@@ -165,8 +165,8 @@ android {
         fuyuan{
             applicationId "com.dw.pro.fuyuan"
             namespace "com.dw.pro.fuyuan"
-            versionCode 3
-            versionName "1.0.3"
+            versionCode 4
+            versionName "1.0.4"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -182,8 +182,8 @@ android {
         shouxin{
             applicationId "com.dw.pro.shouxin"
             namespace "com.dw.pro.shouxin"
-            versionCode 3
-            versionName "1.0.3"
+            versionCode 4
+            versionName "1.0.4"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.shouxin
@@ -199,8 +199,8 @@ android {
         aomen{
             applicationId "com.dw.pro.aomen"
             namespace "com.dw.pro.aomen"
-            versionCode 3
-            versionName "1.0.3"
+            versionCode 4
+            versionName "1.0.4"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -216,8 +216,8 @@ android {
         gdvip{
             applicationId "com.dw.pro.gdvip"
             namespace "com.dw.pro.gdvip"
-            versionCode 3
-            versionName "1.0.3"
+            versionCode 4
+            versionName "1.0.4"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
