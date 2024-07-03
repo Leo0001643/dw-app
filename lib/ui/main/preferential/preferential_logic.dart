@@ -23,7 +23,6 @@ class PreferentialLogic extends GetxController {
 
   @override
   void onReady() {
-    loadData();
     ///语言国际化更新
     languageStream = eventBus.on<LanguageEvent>().listen((event) {
       loadData();

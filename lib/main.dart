@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
         builder: (context,e)=> GetMaterialApp(
           translations: Intr(),
           enableLog: true,
-          initialRoute: Routes.main,
+          initialRoute: Routes.splash,
           getPages: Routes.getPages,
           navigatorObservers: [defaultLifecycleObserver,RouteObservers()],
           locale: Intr().currentLocale(),

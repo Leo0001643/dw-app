@@ -16,6 +16,7 @@ import 'package:leisure_games/ui/bean/base_api_oss_entity.dart';
 import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/promotion_type_entity.dart';
 import 'package:leisure_games/ui/main/main_logic.dart';
+import 'package:lifecycle/lifecycle.dart';
 
 import 'preferential_logic.dart';
 
@@ -29,7 +30,7 @@ class PreferentialPage extends StatefulWidget {
 }
 
 
-class StatePreferentialPage extends State<PreferentialPage> with TickerProviderStateMixin{
+class StatePreferentialPage extends State<PreferentialPage> with TickerProviderStateMixin,LifecycleAware, LifecycleMixin {
 
   final logic = Get.find<PreferentialLogic>();
   final state = Get.find<PreferentialLogic>().state;
@@ -49,6 +50,14 @@ class StatePreferentialPage extends State<PreferentialPage> with TickerProviderS
       }
     });
     super.initState();
+  }
+
+  @override
+  void onLifecycleEvent(LifecycleEvent event) {
+    loggerArray(["生命周期变化了",event]);
+    if(event == LifecycleEvent.active){
+      logic.loadData();
+    }
   }
 
   @override

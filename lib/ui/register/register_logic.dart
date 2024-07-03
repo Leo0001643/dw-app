@@ -105,7 +105,7 @@ class RegisterLogic extends GetxController {
   };
     ///介绍人
     if(unEmpty(state.tgcode)){
-      params["intr"] = state.tgcode;
+      params["sp"] = state.tgcode.replaceAll("sp", "").replaceAll("SP", "").replaceAll("Sp", "").replaceAll("sP", "");
     }
     ///手机号
     if(unEmpty(state.mobile)){
@@ -181,6 +181,27 @@ class RegisterLogic extends GetxController {
       state.qqMust.value = config.qqRegisterOption == "3";
     });
   }
+
+//注册接口参数
+// siteType: 1
+// siteId: 9000
+// version: 1.0.0
+// terminal: MP
+// machineModel: wap_Safari_16.6
+// username: dms003
+// password: 12345678
+// confirmPwd: 12345678
+// email: sdsfd@qq.com
+// mobile: +8615615100090
+// qq: 52323424234
+// realName: dms
+// scene: nc_login_h5
+// sp: 100969202
+// token: -1
+// varCode: 6508
+// varCodeId: gptknecgkvnoxyxgicrnezarx
+// wechat: ydfd
+// agree: 1
 
 
 

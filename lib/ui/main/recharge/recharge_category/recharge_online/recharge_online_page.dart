@@ -60,18 +60,16 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Obx(() {
-                        return Wrap(
-                          spacing: 5.w,
-                          children: state.paymentList.map((element) {
-                            var index = state.paymentList.indexOf(element);
-                            return buildPayItem(element, index, state.selectIndex.value == index);
-                          }).toList(),
-                        );
-                      }),
-                    ),
+                    Obx(() {
+                      return Wrap(
+                        spacing: 15.w,
+                        runSpacing: 10.h,
+                        children: state.paymentList.map((element) {
+                          var index = state.paymentList.indexOf(element);
+                          return buildPayItem(element, index, state.selectIndex.value == index);
+                        }).toList(),
+                      );
+                    }),
                     SizedBox(height: 10.h,),
                     Text(Intr().wenxintishi_,style: TextStyle(fontSize: 12.sp,color: ColorX.text586(),fontWeight: FontWeight.w600),),
                     Text(Intr().wenxintishi_1,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
@@ -228,7 +226,7 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
               border: Border.all(color: select ? ColorX.color_fc243b : ColorX.color_e8e8e8,width: 1.w),
               borderRadius: BorderRadius.circular(8.r),
             ),
-            width: 120.w,//height: 40.h,
+            width: 150.w,//height: 40.h,
             padding: EdgeInsets.symmetric(vertical: 5.h),
             alignment: Alignment.center,
             child: Text(Intr().zhifutiaozhuan_(["${index + 1}"]),
