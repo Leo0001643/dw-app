@@ -81,6 +81,12 @@ target 'gdvip' do
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
+target 'leyou' do
+  use_frameworks!
+  use_modular_headers!
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

@@ -87,10 +87,10 @@ class ConfigManager {
   //中文 英文 越南语 ,const Locale("vi","VI"),const Locale('en','US')
   static List<Locale> locales(){
     switch(channelName){
-      case channel_aomen:
-        return [const Locale('zh','ZH'),const Locale('en','US')];
-      default:
+      case channel_dw:
         return [const Locale('zh','ZH'),const Locale('en','US'),const Locale("vi","VI")];
+      default:
+        return [const Locale('zh','ZH'),const Locale('en','US')];
     }
   }
 
@@ -242,11 +242,9 @@ class ConfigManager {
     }
   }
 
-
-
 }
 
 
 ///目前支持 dw(9000) boya(9003) fuyuan(9005) shouxin(9006) aomen(9007) gdvip(9008) leyou(9009)
-String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'boya');
+String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'leyou');
 

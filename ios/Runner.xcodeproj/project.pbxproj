@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00282D88EE144976EB84492F /* Pods_leyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334051DDDCC12B56E2B245FA /* Pods_leyou.framework */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		22F7B1A151A5DF621003E4A6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		2618DAE23AA9178265F3EB78 /* Pods_boya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F48D8733FF3F2159B540C9 /* Pods_boya.framework */; };
@@ -43,6 +44,13 @@
 		A93F16592C19D79900DF6EFE /* Launch Screen-fuyuan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93F16582C19D79900DF6EFE /* Launch Screen-fuyuan.storyboard */; };
 		A93F165B2C19D7AA00DF6EFE /* Launch Screen-aomen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93F165A2C19D7AA00DF6EFE /* Launch Screen-aomen.storyboard */; };
 		A93F165D2C19D7B500DF6EFE /* Launch Screen-shouxin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A93F165C2C19D7B500DF6EFE /* Launch Screen-shouxin.storyboard */; };
+		A99C8DB82C36C21200F94BF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
+		A99C8DB92C36C21200F94BF9 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
+		A99C8DBF2C36C21200F94BF9 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		A99C8DC02C36C21200F94BF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
+		A99C8DE12C36C26D00F94BF9 /* leyou.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A99C8DE02C36C26D00F94BF9 /* leyou.xcassets */; };
+		A99C8DE32C36C31700F94BF9 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A99C8DE22C36C31700F94BF9 /* InfoPlist.xcstrings */; };
+		A99C8DE52C36C39E00F94BF9 /* Launch Screen-leyou.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A99C8DE42C36C39E00F94BF9 /* Launch Screen-leyou.storyboard */; };
 		A9BB67A52BB7D8AC004D8299 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A9BB67A42BB7D8AC004D8299 /* InfoPlist.xcstrings */; };
 		A9C04F2A2C22CFBD001B4F55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		A9C04F2B2C22CFBD001B4F55 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
@@ -123,6 +131,16 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A99C8DC22C36C21200F94BF9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A9C04F342C22CFBD001B4F55 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -161,9 +179,13 @@
 		00AC8ADACF3D59A1E6CBA337 /* Pods-dw.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-dw.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		00D2F553B1DDF934653B82D2 /* Pods-gdvip.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		031B722B895D383EFE632672 /* Pods-shouxin.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
+		03F4DD28C3255CEA067237DE /* Pods-leyou.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
+		06C0AA69C2071748B0DF0998 /* Pods-shouxin.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-leyou.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		0C35F2D1F733D92D96570208 /* Pods-gdvip.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-dw.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		0D9294F3929625102B473A68 /* Pods-boya.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-aomen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-aomen.xcconfig"; sourceTree = "<group>"; };
+		0E47D8F9483BB2BBEC8E938B /* Pods-leyou.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-gdvip.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-gdvip.xcconfig"; sourceTree = "<group>"; };
 		0F65BB8B868907AC392081BB /* Pods-boya.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
+		104A1B01BDB470A6D0547A46 /* Pods-leyou.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-boya.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-boya.xcconfig"; sourceTree = "<group>"; };
 		108179C849EAF15F5E4E7360 /* Pods-aomen.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		109294F35849F5DAB2B447CE /* Pods-fuyuan.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-boya.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-boya.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
@@ -173,35 +195,53 @@
 		16BE055C870BF62B2CE32074 /* Pods_dw.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dw.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB9FF069F82146BC5B2305 /* Pods-aomen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug.xcconfig"; sourceTree = "<group>"; };
 		197D4503AC0950DE914869E5 /* Pods-gdvip.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
+		1B2C9F674D4CA01FD1E195BF /* Pods-fuyuan.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-leyou.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		1D284741E97299B9F7C521AE /* Pods-dw.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
+		1E431014E26405CB567C30F7 /* Pods-fuyuan.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-leyou.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-leyou.xcconfig"; sourceTree = "<group>"; };
+		1F347DBC046F34943BB6D324 /* Pods-leyou.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-boya.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-boya.xcconfig"; sourceTree = "<group>"; };
 		1FB02EDC3581BA2F33E3A73D /* Pods-fuyuan.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-boya.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-boya.xcconfig"; sourceTree = "<group>"; };
 		2027536EFCFEC9D52F161249 /* Pods-dw.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		23144A928ED9197945CB56B0 /* Pods-dw.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-shouxin.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-shouxin.xcconfig"; sourceTree = "<group>"; };
+		235489BDCCE7B624CF45A229 /* Pods-boya.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-leyou.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-leyou.xcconfig"; sourceTree = "<group>"; };
+		249E0E48375A8DA87F06D220 /* Pods-leyou.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-leyou.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		28F6CAB54BAB44279A5B4F7E /* Pods-fuyuan.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile.xcconfig"; sourceTree = "<group>"; };
 		29F48D8733FF3F2159B540C9 /* Pods_boya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_boya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B7E7711578EEC2F0D07A098 /* Pods-boya.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-aomen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-aomen.xcconfig"; sourceTree = "<group>"; };
+		2BF5DD88CF60D2BA6BC11DD5 /* Pods-shouxin.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-leyou.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-leyou.xcconfig"; sourceTree = "<group>"; };
 		2C4693593021852805491306 /* Pods-aomen.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		2DC8FC76E098AE7648BB4753 /* Pods-aomen.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-boya.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-boya.xcconfig"; sourceTree = "<group>"; };
+		2E1FABA1A58DAF77FC2DC1AE /* Pods-leyou.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-aomen.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		2FE7B9F613B7158A5B3CEBE4 /* Pods-gdvip.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-gdvip.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-gdvip.xcconfig"; sourceTree = "<group>"; };
 		32A3194D8DDBCB8899DBAA0A /* Pods_boya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_boya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		334051DDDCC12B56E2B245FA /* Pods_leyou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_leyou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CF4C0DA57D3F173B236860 /* Pods-boya.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		372A706A9DBCFE072F84B8C4 /* Pods-shouxin.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-dw.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-dw.xcconfig"; sourceTree = "<group>"; };
 		38E6F3176D7D211E4446AC66 /* Pods-shouxin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release.xcconfig"; sourceTree = "<group>"; };
+		39D301359FC37725FD67A610 /* Pods-leyou.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
 		3A73910468BEF5725C7E127E /* Pods-shouxin.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-aomen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		3C48860B609A3157A7508CE3 /* Pods-dw.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-leyou.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-leyou.xcconfig"; sourceTree = "<group>"; };
 		3EAB5D57FA5DD13154EF78EA /* Pods-fuyuan.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		3EF5A944D3B4843075E8D0EE /* Pods-boya.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-dw.xcconfig"; sourceTree = "<group>"; };
 		3FDF847781DA38A9C3B6DA29 /* Pods-Runner.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		401831A59D9B9723330903E6 /* Pods-gdvip.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-aomen.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-aomen.xcconfig"; sourceTree = "<group>"; };
+		42272E29858D794BD5A5595C /* Pods-Runner.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-leyou.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-leyou.xcconfig"; sourceTree = "<group>"; };
 		422A8E6183AFF96324A732BF /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		4390C8A3CFD7B25E2C0F4F45 /* Pods-boya.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-boya.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-boya.xcconfig"; sourceTree = "<group>"; };
 		4549587277CE04A71AC05948 /* Pods-fuyuan.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-dw.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-dw.xcconfig"; sourceTree = "<group>"; };
+		4588D50B9E9D95847706C5F5 /* Pods-leyou.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-leyou.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-leyou.xcconfig"; sourceTree = "<group>"; };
+		4739E29216ED551DEF296EF1 /* Pods-fuyuan.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-leyou.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-leyou.xcconfig"; sourceTree = "<group>"; };
+		4832F766EF3D613E624DD151 /* Pods-leyou.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
+		48EA39FBA4E7259B889248B0 /* Pods-leyou.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
 		4E230933AFE8179B81866FB9 /* Pods-aomen.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-dw.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-dw.xcconfig"; sourceTree = "<group>"; };
+		4E7D6570CCF62647CC9CA04C /* Pods-dw.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-leyou.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		51578BA4F0831B856C48F57D /* Pods-Runner.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-aomen.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		54D4ADDF659B68D11EBC6854 /* Pods-fuyuan.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
+		56842314710D0591382A1DFF /* Pods-dw.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-leyou.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-leyou.xcconfig"; sourceTree = "<group>"; };
 		5921A63FA27F3318FFE0E3E1 /* Pods-fuyuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release.xcconfig"; sourceTree = "<group>"; };
+		5B69E9EB1A324FAFA56B7FED /* Pods-Runner.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-leyou.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		5B87D95C8CB97E9F69350B14 /* Pods-fuyuan.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-aomen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		5B919E5D9796C04208C78219 /* Pods-shouxin.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		5D5EA5DEAE4DEC9760F1E4A9 /* Pods-shouxin.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
@@ -230,9 +270,12 @@
 		7FDFF640D3A8C70690F593FB /* Pods-Runner.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
 		80B9C10C3BF80B75CA000FE0 /* Pods-boya.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-dw.xcconfig"; sourceTree = "<group>"; };
 		84B0F670BDFC2617B2E5F2C2 /* Pods-boya.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
+		84E317D56B3BF03F40D9C748 /* Pods-leyou.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-dw.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		85BEB5A1D697B867B16A3B8C /* Pods-Runner.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
 		865BE4EEA150C62F029F4A0A /* Pods-fuyuan.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-dw.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-dw.xcconfig"; sourceTree = "<group>"; };
+		8669846B63ED3485F93BFFE8 /* Pods-leyou.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-shouxin.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-shouxin.xcconfig"; sourceTree = "<group>"; };
 		869DF8A1C8DCE8F78B501CED /* Pods-gdvip.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-aomen.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-aomen.xcconfig"; sourceTree = "<group>"; };
+		8BB9F181F434EAF330C12066 /* Pods-leyou.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		91118ED21F895B174F542FA4 /* Pods-boya.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release.xcconfig"; sourceTree = "<group>"; };
 		938E84032D802108777D510E /* Pods-aomen.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-aomen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-aomen.xcconfig"; sourceTree = "<group>"; };
 		93D10B52239BBFBBD9F9577C /* Pods-dw.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-boya.xcconfig"; sourceTree = "<group>"; };
@@ -247,7 +290,10 @@
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		985BE15760BEB06D1E5D4B28 /* Pods-gdvip.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
 		98AEF292E456B120A9343EAB /* Pods-fuyuan.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-aomen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-aomen.xcconfig"; sourceTree = "<group>"; };
+		98B867FE9ED1B60B29470E67 /* Pods-Runner.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-leyou.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-leyou.xcconfig"; sourceTree = "<group>"; };
 		9A69FB8FE59EB6027B889903 /* Pods-shouxin.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
+		9B69D767FEB8C8588E3A97B6 /* Pods-leyou.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-boya.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-boya.xcconfig"; sourceTree = "<group>"; };
+		9D46A56033AA16AF5ADDF291 /* Pods-gdvip.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-leyou.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-leyou.xcconfig"; sourceTree = "<group>"; };
 		9DEA89FDF0876A68F0CB0A36 /* Pods-gdvip.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		9FB2E97ED1047E7537884669 /* Pods-gdvip.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		A027CC0AF0F58F7BC94B277D /* Pods-boya.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +318,11 @@
 		A93F165C2C19D7B500DF6EFE /* Launch Screen-shouxin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen-shouxin.storyboard"; sourceTree = "<group>"; };
 		A9578EFC37DDD33DDC36AB26 /* Pods-shouxin.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		A9819A011E330FBBE524C139 /* Pods-shouxin.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-dw.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-dw.xcconfig"; sourceTree = "<group>"; };
+		A99C8DDC2C36C21200F94BF9 /* leyou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = leyou.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A99C8DDD2C36C21500F94BF9 /* leyou-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "leyou-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app/ios/leyou-Info.plist"; sourceTree = "<absolute>"; };
+		A99C8DE02C36C26D00F94BF9 /* leyou.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = leyou.xcassets; sourceTree = "<group>"; };
+		A99C8DE22C36C31700F94BF9 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		A99C8DE42C36C39E00F94BF9 /* Launch Screen-leyou.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen-leyou.storyboard"; sourceTree = "<group>"; };
 		A9BB67982BB7D5C1004D8299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A9BB67992BB7D5C1004D8299 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9BB679C2BB7D5FA004D8299 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -298,9 +349,11 @@
 		ACA82285C651D797B0BEC142 /* Pods-gdvip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release.xcconfig"; sourceTree = "<group>"; };
 		AF64EB1527D29842CAC53100 /* Pods-dw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release.xcconfig"; sourceTree = "<group>"; };
 		AFAC2BCDEBDF4D2881C3CA80 /* Pods-shouxin.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-boya.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-boya.xcconfig"; sourceTree = "<group>"; };
+		B061A2A8C1B9983759E2EE81 /* Pods-leyou.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile.xcconfig"; sourceTree = "<group>"; };
 		B2D1762CCE866A1752E772DD /* Pods-fuyuan.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-aomen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-aomen.xcconfig"; sourceTree = "<group>"; };
 		B3E833FC352C78BA5ED3160F /* Pods-aomen.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		B4711FCE1722F34B51BFCB27 /* Pods-Runner.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-dw.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-dw.xcconfig"; sourceTree = "<group>"; };
+		B4C059FF8C8F4944AE9A2AA5 /* Pods-leyou.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-aomen.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-aomen.xcconfig"; sourceTree = "<group>"; };
 		B4F4BC6747118C63DB50743F /* Pods-shouxin.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		B61237E14D198023A0CA42AB /* Pods-aomen.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
 		B7ABDEFDF7906C42EFB8CF52 /* Pods-Runner.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
@@ -308,16 +361,21 @@
 		B8CFB3B9AA43AA452E118C23 /* Pods-aomen.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-aomen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		B950F04B891B2D71AD81C28A /* Pods-gdvip.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-boya.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-boya.xcconfig"; sourceTree = "<group>"; };
 		BA225558B10F43AAC3EDFBEC /* Pods-shouxin.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-boya.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-boya.xcconfig"; sourceTree = "<group>"; };
+		BB754B980B7BDE95B78F8042 /* Pods-aomen.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-leyou.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-leyou.xcconfig"; sourceTree = "<group>"; };
+		BC688F9AD4E7FAD7BD2FDCA9 /* Pods-gdvip.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-leyou.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-leyou.xcconfig"; sourceTree = "<group>"; };
 		C14F07B7A6D1AAA7CDEA2266 /* Pods-Runner.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dw.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dw.xcconfig"; sourceTree = "<group>"; };
 		C3645BCE73F543F75A952045 /* Pods-aomen.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
 		C4083E095B400EF5CBD5D90A /* Pods-boya.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-boya.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-boya.xcconfig"; sourceTree = "<group>"; };
 		C425988FDB0C223EA7B6A285 /* Pods-dw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug.xcconfig"; sourceTree = "<group>"; };
 		C7DA72BAB5100FBC60413E72 /* Pods-gdvip.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		C890890194A5C7D67DDB7CEE /* Pods-aomen.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-gdvip.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-gdvip.xcconfig"; sourceTree = "<group>"; };
+		C94BAF27A51E9C88CCEFD142 /* Pods-leyou.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-leyou.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-leyou.xcconfig"; sourceTree = "<group>"; };
+		CA749533B1CE1AAF8798F238 /* Pods-leyou.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-aomen.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-aomen.xcconfig"; sourceTree = "<group>"; };
 		CA9478D6A01DFB3F573C8352 /* Pods-fuyuan.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
 		CB4A518718434B897B2A6E1C /* Pods-shouxin.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
 		CD4BFCC15756C202A95CEF87 /* Pods-dw.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-aomen.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-aomen.xcconfig"; sourceTree = "<group>"; };
 		CDBE644DC3C25A9AB35CB88F /* Pods-shouxin.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-gdvip.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-gdvip.xcconfig"; sourceTree = "<group>"; };
+		CEB3A597FEDF2D57B084FAB2 /* Pods-leyou.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		CFA60725DAA9A9322F4D90AF /* Pods-fuyuan.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		D0A1DEC6A5529A4E9D16E5FD /* Pods-dw.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		D20A31787228E46BDB39CC56 /* Pods-boya.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile.xcconfig"; sourceTree = "<group>"; };
@@ -325,6 +383,7 @@
 		D40E671DDD3291D4D35D8E89 /* Pods-Runner.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-boya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-boya.xcconfig"; sourceTree = "<group>"; };
 		D89FCAFDB606EDA55E691411 /* Pods-dw.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-gdvip.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-gdvip.xcconfig"; sourceTree = "<group>"; };
 		D8E8351F11842714A68A5C1D /* Pods-boya.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-aomen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-aomen.xcconfig"; sourceTree = "<group>"; };
+		DA6E0BD615D32EDB17E560BD /* Pods-shouxin.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-leyou.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-leyou.xcconfig"; sourceTree = "<group>"; };
 		DAEDCF38F1064529430D4717 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFF140423283DEFB93F1AA2 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		DC431332F3C96EA6E431B3D5 /* Pods-gdvip.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-dw.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-dw.xcconfig"; sourceTree = "<group>"; };
@@ -342,21 +401,30 @@
 		E7900BD531826AB8059338AA /* Pods-Runner.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aomen.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aomen.xcconfig"; sourceTree = "<group>"; };
 		E7B8EBF38451C56C1F34E114 /* Pods-shouxin.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-shouxin.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-shouxin.xcconfig"; sourceTree = "<group>"; };
 		E9F98B2DB23756E457D3B27B /* Pods-aomen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release.xcconfig"; sourceTree = "<group>"; };
-		F02387B1E6F256C5B20254C7 /* Pods_gdvip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gdvip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC8061719C6568A1AE690DFA /* Pods-leyou.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-dw.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-dw.xcconfig"; sourceTree = "<group>"; };
+		F0963879AC8C1297D4078F73 /* Pods-leyou.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-dw.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-dw.xcconfig"; sourceTree = "<group>"; };
 		F0B732EF926678F56530A814 /* Pods-fuyuan.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		F0E3959202E7F3079338BF20 /* Pods-fuyuan.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-gdvip.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-gdvip.xcconfig"; sourceTree = "<group>"; };
+		F11B2CFBCAC5D4E1C0838299 /* Pods-leyou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug.xcconfig"; sourceTree = "<group>"; };
 		F128954E96822417A43330FD /* Pods_aomen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aomen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17234AE2445E0BBBFAF2C80 /* Pods-Runner.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-aomen.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-aomen.xcconfig"; sourceTree = "<group>"; };
 		F1DD19D80E0E346B2E252AA1 /* Pods-fuyuan.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-dw.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-dw.xcconfig"; sourceTree = "<group>"; };
+		F1E4AC143DF0007AA952B50A /* Pods-leyou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release.xcconfig"; sourceTree = "<group>"; };
+		F2066E29D5775133794FDAD9 /* Pods-leyou.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
+		F299EA920DB2F59656278815 /* Pods-aomen.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-leyou.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-leyou.xcconfig"; sourceTree = "<group>"; };
 		F80C7352562726048BC3A556 /* Pods-Runner.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		F81C8E5225A9FE60A1268A9B /* Pods-fuyuan.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		F867544F68BE84E54E0D1F43 /* Pods-shouxin.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-boya.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-boya.xcconfig"; sourceTree = "<group>"; };
 		F9B8AB348523AAF571DC9712 /* Pods-dw.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
+		F9BE1AD6EDCBECCEBDB05329 /* Pods-aomen.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-leyou.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-leyou.xcconfig"; sourceTree = "<group>"; };
 		FB0ADDA0E9314223411AD863 /* Pods-fuyuan.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-boya.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-boya.xcconfig"; sourceTree = "<group>"; };
 		FB3954E962C54D9416741899 /* Pods-gdvip.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-boya.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-boya.xcconfig"; sourceTree = "<group>"; };
+		FB6FBAF85A26F1F12B81B64B /* Pods-boya.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-leyou.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-leyou.xcconfig"; sourceTree = "<group>"; };
+		FC6DB41F9CD1F948A4CDB832 /* Pods-gdvip.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-leyou.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		FCC0309E45DA7DD537BCE29C /* Pods-aomen.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		FE25DCA7C4826567916AC7C2 /* Pods-aomen.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile.xcconfig"; sourceTree = "<group>"; };
 		FE3BE1FC0CD8EDEF4BF92041 /* Pods-fuyuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug.xcconfig"; sourceTree = "<group>"; };
+		FE60A73C410173D16EE7F3D7 /* Pods-boya.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-leyou.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		FEAD0D28C65F8050FC94685E /* Pods-shouxin.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile.xcconfig"; sourceTree = "<group>"; };
 		FF34121466CA6C6FB7081B56 /* Pods-Runner.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		FF459BAE287BE996528299AF /* Pods-gdvip.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-shouxin.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-shouxin.xcconfig"; sourceTree = "<group>"; };
@@ -395,6 +463,14 @@
 			files = (
 				31B1091892D3508A2ACA32CA /* BuildFile in Frameworks */,
 				4F99D56AE21018C819E4803F /* Pods_fuyuan.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A99C8DBA2C36C21200F94BF9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00282D88EE144976EB84492F /* Pods_leyou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +532,7 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				A99C8DB32C36C1BC00F94BF9 /* leyou */,
 				A9C04F252C22CFB4001B4F55 /* gdvip */,
 				A93F164B2C19D63100DF6EFE /* fuyuan */,
 				A93F164A2C19D60800DF6EFE /* aomen */,
@@ -475,6 +552,7 @@
 				A93F16482C19D58500DF6EFE /* fuyuan-Info.plist */,
 				A93F16A92C19DF3400DF6EFE /* Recovered References */,
 				A9C04F4C2C22CFBF001B4F55 /* gdvip-Info.plist */,
+				A99C8DDD2C36C21500F94BF9 /* leyou-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -489,6 +567,7 @@
 				A93F162A2C19D54B00DF6EFE /* shouxin.app */,
 				A93F16472C19D58200DF6EFE /* fuyuan.app */,
 				A9C04F4B2C22CFBD001B4F55 /* gdvip.app */,
+				A99C8DDC2C36C21200F94BF9 /* leyou.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -545,6 +624,16 @@
 				29F48D8733FF3F2159B540C9 /* Pods_boya.framework */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		A99C8DB32C36C1BC00F94BF9 /* leyou */ = {
+			isa = PBXGroup;
+			children = (
+				A99C8DE02C36C26D00F94BF9 /* leyou.xcassets */,
+				A99C8DE22C36C31700F94BF9 /* InfoPlist.xcstrings */,
+				A99C8DE42C36C39E00F94BF9 /* Launch Screen-leyou.storyboard */,
+			);
+			path = leyou;
 			sourceTree = "<group>";
 		};
 		A9C04F252C22CFB4001B4F55 /* gdvip */ = {
@@ -727,6 +816,51 @@
 				5B919E5D9796C04208C78219 /* Pods-shouxin.debug-gdvip.xcconfig */,
 				CDBE644DC3C25A9AB35CB88F /* Pods-shouxin.release-gdvip.xcconfig */,
 				CB4A518718434B897B2A6E1C /* Pods-shouxin.profile-gdvip.xcconfig */,
+				98B867FE9ED1B60B29470E67 /* Pods-Runner.debug-leyou.xcconfig */,
+				42272E29858D794BD5A5595C /* Pods-Runner.release-leyou.xcconfig */,
+				5B69E9EB1A324FAFA56B7FED /* Pods-Runner.profile-leyou.xcconfig */,
+				F299EA920DB2F59656278815 /* Pods-aomen.debug-leyou.xcconfig */,
+				F9BE1AD6EDCBECCEBDB05329 /* Pods-aomen.release-leyou.xcconfig */,
+				BB754B980B7BDE95B78F8042 /* Pods-aomen.profile-leyou.xcconfig */,
+				235489BDCCE7B624CF45A229 /* Pods-boya.debug-leyou.xcconfig */,
+				FB6FBAF85A26F1F12B81B64B /* Pods-boya.release-leyou.xcconfig */,
+				FE60A73C410173D16EE7F3D7 /* Pods-boya.profile-leyou.xcconfig */,
+				3C48860B609A3157A7508CE3 /* Pods-dw.debug-leyou.xcconfig */,
+				56842314710D0591382A1DFF /* Pods-dw.release-leyou.xcconfig */,
+				4E7D6570CCF62647CC9CA04C /* Pods-dw.profile-leyou.xcconfig */,
+				4739E29216ED551DEF296EF1 /* Pods-fuyuan.debug-leyou.xcconfig */,
+				1E431014E26405CB567C30F7 /* Pods-fuyuan.release-leyou.xcconfig */,
+				1B2C9F674D4CA01FD1E195BF /* Pods-fuyuan.profile-leyou.xcconfig */,
+				9D46A56033AA16AF5ADDF291 /* Pods-gdvip.debug-leyou.xcconfig */,
+				BC688F9AD4E7FAD7BD2FDCA9 /* Pods-gdvip.release-leyou.xcconfig */,
+				FC6DB41F9CD1F948A4CDB832 /* Pods-gdvip.profile-leyou.xcconfig */,
+				F11B2CFBCAC5D4E1C0838299 /* Pods-leyou.debug.xcconfig */,
+				84E317D56B3BF03F40D9C748 /* Pods-leyou.debug-dw.xcconfig */,
+				1F347DBC046F34943BB6D324 /* Pods-leyou.debug-boya.xcconfig */,
+				CEB3A597FEDF2D57B084FAB2 /* Pods-leyou.debug-fuyuan.xcconfig */,
+				8BB9F181F434EAF330C12066 /* Pods-leyou.debug-gdvip.xcconfig */,
+				C94BAF27A51E9C88CCEFD142 /* Pods-leyou.debug-leyou.xcconfig */,
+				4832F766EF3D613E624DD151 /* Pods-leyou.debug-shouxin.xcconfig */,
+				B4C059FF8C8F4944AE9A2AA5 /* Pods-leyou.debug-aomen.xcconfig */,
+				F1E4AC143DF0007AA952B50A /* Pods-leyou.release.xcconfig */,
+				F0963879AC8C1297D4078F73 /* Pods-leyou.release-dw.xcconfig */,
+				9B69D767FEB8C8588E3A97B6 /* Pods-leyou.release-boya.xcconfig */,
+				F2066E29D5775133794FDAD9 /* Pods-leyou.release-fuyuan.xcconfig */,
+				0E47D8F9483BB2BBEC8E938B /* Pods-leyou.release-gdvip.xcconfig */,
+				4588D50B9E9D95847706C5F5 /* Pods-leyou.release-leyou.xcconfig */,
+				8669846B63ED3485F93BFFE8 /* Pods-leyou.release-shouxin.xcconfig */,
+				CA749533B1CE1AAF8798F238 /* Pods-leyou.release-aomen.xcconfig */,
+				B061A2A8C1B9983759E2EE81 /* Pods-leyou.profile.xcconfig */,
+				EC8061719C6568A1AE690DFA /* Pods-leyou.profile-dw.xcconfig */,
+				104A1B01BDB470A6D0547A46 /* Pods-leyou.profile-boya.xcconfig */,
+				03F4DD28C3255CEA067237DE /* Pods-leyou.profile-fuyuan.xcconfig */,
+				39D301359FC37725FD67A610 /* Pods-leyou.profile-gdvip.xcconfig */,
+				249E0E48375A8DA87F06D220 /* Pods-leyou.profile-leyou.xcconfig */,
+				48EA39FBA4E7259B889248B0 /* Pods-leyou.profile-shouxin.xcconfig */,
+				2E1FABA1A58DAF77FC2DC1AE /* Pods-leyou.profile-aomen.xcconfig */,
+				2BF5DD88CF60D2BA6BC11DD5 /* Pods-shouxin.debug-leyou.xcconfig */,
+				DA6E0BD615D32EDB17E560BD /* Pods-shouxin.release-leyou.xcconfig */,
+				06C0AA69C2071748B0DF0998 /* Pods-shouxin.profile-leyou.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -739,8 +873,8 @@
 				F128954E96822417A43330FD /* Pods_aomen.framework */,
 				A62843C62E77056E541DC4D9 /* Pods_shouxin.framework */,
 				32A3194D8DDBCB8899DBAA0A /* Pods_boya.framework */,
-				F02387B1E6F256C5B20254C7 /* Pods_gdvip.framework */,
 				970CCCF0C06B1230CC993AFA /* Pods_fuyuan.framework */,
+				334051DDDCC12B56E2B245FA /* Pods_leyou.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -858,6 +992,29 @@
 			productReference = A93F16472C19D58200DF6EFE /* fuyuan.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A99C8DB42C36C21200F94BF9 /* leyou */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A99C8DC62C36C21200F94BF9 /* Build configuration list for PBXNativeTarget "leyou" */;
+			buildPhases = (
+				A99C8DB52C36C21200F94BF9 /* [CP] Check Pods Manifest.lock */,
+				A99C8DB62C36C21200F94BF9 /* Run Script */,
+				A99C8DB72C36C21200F94BF9 /* Sources */,
+				A99C8DBA2C36C21200F94BF9 /* Frameworks */,
+				A99C8DBC2C36C21200F94BF9 /* Resources */,
+				A99C8DC22C36C21200F94BF9 /* Embed Frameworks */,
+				A99C8DC32C36C21200F94BF9 /* Thin Binary */,
+				A99C8DC42C36C21200F94BF9 /* [CP] Embed Pods Frameworks */,
+				A99C8DC52C36C21200F94BF9 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = leyou;
+			productName = Runner;
+			productReference = A99C8DDC2C36C21200F94BF9 /* leyou.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A9C04F262C22CFBD001B4F55 /* gdvip */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9C04F382C22CFBD001B4F55 /* Build configuration list for PBXNativeTarget "gdvip" */;
@@ -968,6 +1125,7 @@
 				A93F160F2C19D54B00DF6EFE /* shouxin */,
 				A93F162C2C19D58200DF6EFE /* fuyuan */,
 				A9C04F262C22CFBD001B4F55 /* gdvip */,
+				A99C8DB42C36C21200F94BF9 /* leyou */,
 			);
 		};
 /* End PBXProject section */
@@ -1027,6 +1185,18 @@
 				A93F16382C19D58200DF6EFE /* AppFrameworkInfo.plist in Resources */,
 				A93F16592C19D79900DF6EFE /* Launch Screen-fuyuan.storyboard in Resources */,
 				A93F16392C19D58200DF6EFE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A99C8DBC2C36C21200F94BF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A99C8DE32C36C31700F94BF9 /* InfoPlist.xcstrings in Resources */,
+				A99C8DE52C36C39E00F94BF9 /* Launch Screen-leyou.storyboard in Resources */,
+				A99C8DBF2C36C21200F94BF9 /* AppFrameworkInfo.plist in Resources */,
+				A99C8DC02C36C21200F94BF9 /* Main.storyboard in Resources */,
+				A99C8DE12C36C26D00F94BF9 /* leyou.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1395,6 +1565,93 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fuyuan/Pods-fuyuan-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A99C8DB52C36C21200F94BF9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-leyou-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A99C8DB62C36C21200F94BF9 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
+		};
+		A99C8DC32C36C21200F94BF9 /* Thin Binary */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}",
+			);
+			name = "Thin Binary";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
+		};
+		A99C8DC42C36C21200F94BF9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-leyou/Pods-leyou-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-leyou/Pods-leyou-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-leyou/Pods-leyou-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A99C8DC52C36C21200F94BF9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-leyou/Pods-leyou-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-leyou/Pods-leyou-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-leyou/Pods-leyou-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A9C04F272C22CFBD001B4F55 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1722,6 +1979,15 @@
 			files = (
 				A93F16302C19D58200DF6EFE /* AppDelegate.swift in Sources */,
 				A93F16312C19D58200DF6EFE /* GeneratedPluginRegistrant.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A99C8DB72C36C21200F94BF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A99C8DB82C36C21200F94BF9 /* AppDelegate.swift in Sources */,
+				A99C8DB92C36C21200F94BF9 /* GeneratedPluginRegistrant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4721,6 +4987,1347 @@
 			};
 			name = "Profile-fuyuan";
 		};
+		A99C8DC72C36C21200F94BF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		A99C8DC82C36C21200F94BF9 /* Debug-dw */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-dw";
+		};
+		A99C8DC92C36C21200F94BF9 /* Debug-boya */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-boya";
+		};
+		A99C8DCA2C36C21200F94BF9 /* Debug-fuyuan */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-fuyuan";
+		};
+		A99C8DCB2C36C21200F94BF9 /* Debug-gdvip */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-gdvip";
+		};
+		A99C8DCC2C36C21200F94BF9 /* Debug-shouxin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-shouxin";
+		};
+		A99C8DCD2C36C21200F94BF9 /* Debug-aomen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-aomen";
+		};
+		A99C8DCE2C36C21200F94BF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		A99C8DCF2C36C21200F94BF9 /* Release-dw */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-dw";
+		};
+		A99C8DD02C36C21200F94BF9 /* Release-boya */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-boya";
+		};
+		A99C8DD12C36C21200F94BF9 /* Release-fuyuan */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-fuyuan";
+		};
+		A99C8DD22C36C21200F94BF9 /* Release-gdvip */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-gdvip";
+		};
+		A99C8DD32C36C21200F94BF9 /* Release-shouxin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-shouxin";
+		};
+		A99C8DD42C36C21200F94BF9 /* Release-aomen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-aomen";
+		};
+		A99C8DD52C36C21200F94BF9 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Profile;
+		};
+		A99C8DD62C36C21200F94BF9 /* Profile-dw */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-dw";
+		};
+		A99C8DD72C36C21200F94BF9 /* Profile-boya */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-boya";
+		};
+		A99C8DD82C36C21200F94BF9 /* Profile-fuyuan */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-fuyuan";
+		};
+		A99C8DD92C36C21200F94BF9 /* Profile-gdvip */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-gdvip";
+		};
+		A99C8DDA2C36C21200F94BF9 /* Profile-shouxin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-shouxin";
+		};
+		A99C8DDB2C36C21200F94BF9 /* Profile-aomen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-aomen";
+		};
+		A99C8DE62C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-leyou";
+		};
+		A99C8DE72C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 85T97ATLCB;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-leyou";
+		};
+		A99C8DE82C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGames.RunnerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
+			};
+			name = "Release-leyou";
+		};
+		A99C8DE92C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "boya-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-leyou";
+		};
+		A99C8DEA2C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "dw-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.dw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-leyou";
+		};
+		A99C8DEB2C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "aomen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "澳门";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.aomen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-leyou";
+		};
+		A99C8DEC2C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "shouxin-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "守信";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.shouxin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-leyou";
+		};
+		A99C8DED2C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "fuyuan-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "富源";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-leyou";
+		};
+		A99C8DEE2C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "gdvip-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "广东贵宾会";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.gdvip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-leyou";
+		};
+		A99C8DEF2C36C4E900F94BF9 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-leyou";
+		};
+		A99C8DF02C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DF12C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 85T97ATLCB;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DF22C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGames.RunnerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DF32C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "boya-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DF42C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "dw-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.dw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DF52C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "aomen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "澳门";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.aomen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DF62C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "shouxin-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "守信";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.shouxin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DF72C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "fuyuan-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "富源";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DF82C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "gdvip-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "广东贵宾会";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.gdvip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DF92C36C4F700F94BF9 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-leyou";
+		};
+		A99C8DFA2C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Profile-leyou";
+		};
+		A99C8DFB2C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 85T97ATLCB;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-leyou";
+		};
+		A99C8DFC2C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGames.RunnerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
+			};
+			name = "Profile-leyou";
+		};
+		A99C8DFD2C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "boya-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-leyou";
+		};
+		A99C8DFE2C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "dw-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.dw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-leyou";
+		};
+		A99C8DFF2C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "aomen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "澳门";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.aomen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-leyou";
+		};
+		A99C8E002C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "shouxin-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "守信";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.shouxin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-leyou";
+		};
+		A99C8E012C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "fuyuan-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "富源";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-leyou";
+		};
+		A99C8E022C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "gdvip-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "广东贵宾会";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.gdvip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-leyou";
+		};
+		A99C8E032C36C50300F94BF9 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.4;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-leyou";
+		};
 		A9C04F392C22CFBD001B4F55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
@@ -6928,6 +8535,7 @@
 				A9CD3FE72BCB724000F9D4E8 /* Debug-boya */,
 				A93F16702C19DB9C00DF6EFE /* Debug-fuyuan */,
 				A9C04F552C22D2E8001B4F55 /* Debug-gdvip */,
+				A99C8DF22C36C4F700F94BF9 /* Debug-leyou */,
 				A93F16682C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16602C19DB8200DF6EFE /* Debug-aomen */,
 				331C8089294A63A400263BE5 /* Release */,
@@ -6935,6 +8543,7 @@
 				A9CD3FF12BCB72AA00F9D4E8 /* Release-boya */,
 				A93F16882C19DBB600DF6EFE /* Release-fuyuan */,
 				A9C04F5E2C22D2F6001B4F55 /* Release-gdvip */,
+				A99C8DE82C36C4E900F94BF9 /* Release-leyou */,
 				A93F16802C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F16782C19DBA500DF6EFE /* Release-aomen */,
 				331C808A294A63A400263BE5 /* Profile */,
@@ -6942,6 +8551,7 @@
 				A9CD3FFB2BCB72BC00F9D4E8 /* Profile-boya */,
 				A93F16A02C19DBCE00DF6EFE /* Profile-fuyuan */,
 				A9C04F672C22D305001B4F55 /* Profile-gdvip */,
+				A99C8DFC2C36C50300F94BF9 /* Profile-leyou */,
 				A93F16982C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16902C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -6956,6 +8566,7 @@
 				A9CD3FE52BCB724000F9D4E8 /* Debug-boya */,
 				A93F166E2C19DB9C00DF6EFE /* Debug-fuyuan */,
 				A9C04F532C22D2E8001B4F55 /* Debug-gdvip */,
+				A99C8DF02C36C4F700F94BF9 /* Debug-leyou */,
 				A93F16662C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F165E2C19DB8200DF6EFE /* Debug-aomen */,
 				97C147041CF9000F007C117D /* Release */,
@@ -6963,6 +8574,7 @@
 				A9CD3FEF2BCB72AA00F9D4E8 /* Release-boya */,
 				A93F16862C19DBB600DF6EFE /* Release-fuyuan */,
 				A9C04F5C2C22D2F6001B4F55 /* Release-gdvip */,
+				A99C8DE62C36C4E900F94BF9 /* Release-leyou */,
 				A93F167E2C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F16762C19DBA500DF6EFE /* Release-aomen */,
 				249021D3217E4FDB00AE95B9 /* Profile */,
@@ -6970,6 +8582,7 @@
 				A9CD3FF92BCB72BC00F9D4E8 /* Profile-boya */,
 				A93F169E2C19DBCE00DF6EFE /* Profile-fuyuan */,
 				A9C04F652C22D305001B4F55 /* Profile-gdvip */,
+				A99C8DFA2C36C50300F94BF9 /* Profile-leyou */,
 				A93F16962C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F168E2C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -6984,6 +8597,7 @@
 				A9CD3FE62BCB724000F9D4E8 /* Debug-boya */,
 				A93F166F2C19DB9C00DF6EFE /* Debug-fuyuan */,
 				A9C04F542C22D2E8001B4F55 /* Debug-gdvip */,
+				A99C8DF12C36C4F700F94BF9 /* Debug-leyou */,
 				A93F16672C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F165F2C19DB8200DF6EFE /* Debug-aomen */,
 				97C147071CF9000F007C117D /* Release */,
@@ -6991,6 +8605,7 @@
 				A9CD3FF02BCB72AA00F9D4E8 /* Release-boya */,
 				A93F16872C19DBB600DF6EFE /* Release-fuyuan */,
 				A9C04F5D2C22D2F6001B4F55 /* Release-gdvip */,
+				A99C8DE72C36C4E900F94BF9 /* Release-leyou */,
 				A93F167F2C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F16772C19DBA500DF6EFE /* Release-aomen */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
@@ -6998,6 +8613,7 @@
 				A9CD3FFA2BCB72BC00F9D4E8 /* Profile-boya */,
 				A93F169F2C19DBCE00DF6EFE /* Profile-fuyuan */,
 				A9C04F662C22D305001B4F55 /* Profile-gdvip */,
+				A99C8DFB2C36C50300F94BF9 /* Profile-leyou */,
 				A93F16972C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F168F2C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -7012,6 +8628,7 @@
 				A93F16062C19D49000DF6EFE /* Debug-boya */,
 				A93F16732C19DB9C00DF6EFE /* Debug-fuyuan */,
 				A9C04F582C22D2E8001B4F55 /* Debug-gdvip */,
+				A99C8DF52C36C4F700F94BF9 /* Debug-leyou */,
 				A93F166B2C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16632C19DB8200DF6EFE /* Debug-aomen */,
 				A93F16072C19D49000DF6EFE /* Release */,
@@ -7019,6 +8636,7 @@
 				A93F16092C19D49000DF6EFE /* Release-boya */,
 				A93F168B2C19DBB600DF6EFE /* Release-fuyuan */,
 				A9C04F612C22D2F6001B4F55 /* Release-gdvip */,
+				A99C8DEB2C36C4E900F94BF9 /* Release-leyou */,
 				A93F16832C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F167B2C19DBA500DF6EFE /* Release-aomen */,
 				A93F160A2C19D49000DF6EFE /* Profile */,
@@ -7026,6 +8644,7 @@
 				A93F160C2C19D49000DF6EFE /* Profile-boya */,
 				A93F16A32C19DBCE00DF6EFE /* Profile-fuyuan */,
 				A9C04F6A2C22D305001B4F55 /* Profile-gdvip */,
+				A99C8DFF2C36C50300F94BF9 /* Profile-leyou */,
 				A93F169B2C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16932C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -7040,6 +8659,7 @@
 				A93F16232C19D54B00DF6EFE /* Debug-boya */,
 				A93F16742C19DB9C00DF6EFE /* Debug-fuyuan */,
 				A9C04F592C22D2E8001B4F55 /* Debug-gdvip */,
+				A99C8DF62C36C4F700F94BF9 /* Debug-leyou */,
 				A93F166C2C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16642C19DB8200DF6EFE /* Debug-aomen */,
 				A93F16242C19D54B00DF6EFE /* Release */,
@@ -7047,6 +8667,7 @@
 				A93F16262C19D54B00DF6EFE /* Release-boya */,
 				A93F168C2C19DBB600DF6EFE /* Release-fuyuan */,
 				A9C04F622C22D2F6001B4F55 /* Release-gdvip */,
+				A99C8DEC2C36C4E900F94BF9 /* Release-leyou */,
 				A93F16842C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F167C2C19DBA500DF6EFE /* Release-aomen */,
 				A93F16272C19D54B00DF6EFE /* Profile */,
@@ -7054,6 +8675,7 @@
 				A93F16292C19D54B00DF6EFE /* Profile-boya */,
 				A93F16A42C19DBCE00DF6EFE /* Profile-fuyuan */,
 				A9C04F6B2C22D305001B4F55 /* Profile-gdvip */,
+				A99C8E002C36C50300F94BF9 /* Profile-leyou */,
 				A93F169C2C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16942C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -7068,6 +8690,7 @@
 				A93F16402C19D58200DF6EFE /* Debug-boya */,
 				A93F16752C19DB9C00DF6EFE /* Debug-fuyuan */,
 				A9C04F5A2C22D2E8001B4F55 /* Debug-gdvip */,
+				A99C8DF72C36C4F700F94BF9 /* Debug-leyou */,
 				A93F166D2C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16652C19DB8200DF6EFE /* Debug-aomen */,
 				A93F16412C19D58200DF6EFE /* Release */,
@@ -7075,6 +8698,7 @@
 				A93F16432C19D58200DF6EFE /* Release-boya */,
 				A93F168D2C19DBB600DF6EFE /* Release-fuyuan */,
 				A9C04F632C22D2F6001B4F55 /* Release-gdvip */,
+				A99C8DED2C36C4E900F94BF9 /* Release-leyou */,
 				A93F16852C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F167D2C19DBA500DF6EFE /* Release-aomen */,
 				A93F16442C19D58200DF6EFE /* Profile */,
@@ -7082,8 +8706,40 @@
 				A93F16462C19D58200DF6EFE /* Profile-boya */,
 				A93F16A52C19DBCE00DF6EFE /* Profile-fuyuan */,
 				A9C04F6C2C22D305001B4F55 /* Profile-gdvip */,
+				A99C8E012C36C50300F94BF9 /* Profile-leyou */,
 				A93F169D2C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16952C19DBBF00DF6EFE /* Profile-aomen */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A99C8DC62C36C21200F94BF9 /* Build configuration list for PBXNativeTarget "leyou" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A99C8DC72C36C21200F94BF9 /* Debug */,
+				A99C8DC82C36C21200F94BF9 /* Debug-dw */,
+				A99C8DC92C36C21200F94BF9 /* Debug-boya */,
+				A99C8DCA2C36C21200F94BF9 /* Debug-fuyuan */,
+				A99C8DCB2C36C21200F94BF9 /* Debug-gdvip */,
+				A99C8DF92C36C4F700F94BF9 /* Debug-leyou */,
+				A99C8DCC2C36C21200F94BF9 /* Debug-shouxin */,
+				A99C8DCD2C36C21200F94BF9 /* Debug-aomen */,
+				A99C8DCE2C36C21200F94BF9 /* Release */,
+				A99C8DCF2C36C21200F94BF9 /* Release-dw */,
+				A99C8DD02C36C21200F94BF9 /* Release-boya */,
+				A99C8DD12C36C21200F94BF9 /* Release-fuyuan */,
+				A99C8DD22C36C21200F94BF9 /* Release-gdvip */,
+				A99C8DEF2C36C4E900F94BF9 /* Release-leyou */,
+				A99C8DD32C36C21200F94BF9 /* Release-shouxin */,
+				A99C8DD42C36C21200F94BF9 /* Release-aomen */,
+				A99C8DD52C36C21200F94BF9 /* Profile */,
+				A99C8DD62C36C21200F94BF9 /* Profile-dw */,
+				A99C8DD72C36C21200F94BF9 /* Profile-boya */,
+				A99C8DD82C36C21200F94BF9 /* Profile-fuyuan */,
+				A99C8DD92C36C21200F94BF9 /* Profile-gdvip */,
+				A99C8E032C36C50300F94BF9 /* Profile-leyou */,
+				A99C8DDA2C36C21200F94BF9 /* Profile-shouxin */,
+				A99C8DDB2C36C21200F94BF9 /* Profile-aomen */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -7096,6 +8752,7 @@
 				A9C04F3B2C22CFBD001B4F55 /* Debug-boya */,
 				A9C04F3C2C22CFBD001B4F55 /* Debug-fuyuan */,
 				A9C04F5B2C22D2E8001B4F55 /* Debug-gdvip */,
+				A99C8DF82C36C4F700F94BF9 /* Debug-leyou */,
 				A9C04F3D2C22CFBD001B4F55 /* Debug-shouxin */,
 				A9C04F3E2C22CFBD001B4F55 /* Debug-aomen */,
 				A9C04F3F2C22CFBD001B4F55 /* Release */,
@@ -7103,6 +8760,7 @@
 				A9C04F412C22CFBD001B4F55 /* Release-boya */,
 				A9C04F422C22CFBD001B4F55 /* Release-fuyuan */,
 				A9C04F642C22D2F6001B4F55 /* Release-gdvip */,
+				A99C8DEE2C36C4E900F94BF9 /* Release-leyou */,
 				A9C04F432C22CFBD001B4F55 /* Release-shouxin */,
 				A9C04F442C22CFBD001B4F55 /* Release-aomen */,
 				A9C04F452C22CFBD001B4F55 /* Profile */,
@@ -7110,6 +8768,7 @@
 				A9C04F472C22CFBD001B4F55 /* Profile-boya */,
 				A9C04F482C22CFBD001B4F55 /* Profile-fuyuan */,
 				A9C04F6D2C22D305001B4F55 /* Profile-gdvip */,
+				A99C8E022C36C50300F94BF9 /* Profile-leyou */,
 				A9C04F492C22CFBD001B4F55 /* Profile-shouxin */,
 				A9C04F4A2C22CFBD001B4F55 /* Profile-aomen */,
 			);
@@ -7124,6 +8783,7 @@
 				A9CD3FE82BCB724000F9D4E8 /* Debug-boya */,
 				A93F16712C19DB9C00DF6EFE /* Debug-fuyuan */,
 				A9C04F562C22D2E8001B4F55 /* Debug-gdvip */,
+				A99C8DF32C36C4F700F94BF9 /* Debug-leyou */,
 				A93F16692C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16612C19DB8200DF6EFE /* Debug-aomen */,
 				A9CD3FBD2BCB686700F9D4E8 /* Release */,
@@ -7131,6 +8791,7 @@
 				A9CD3FF22BCB72AA00F9D4E8 /* Release-boya */,
 				A93F16892C19DBB600DF6EFE /* Release-fuyuan */,
 				A9C04F5F2C22D2F6001B4F55 /* Release-gdvip */,
+				A99C8DE92C36C4E900F94BF9 /* Release-leyou */,
 				A93F16812C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F16792C19DBA500DF6EFE /* Release-aomen */,
 				A9CD3FBE2BCB686700F9D4E8 /* Profile */,
@@ -7138,6 +8799,7 @@
 				A9CD3FFC2BCB72BC00F9D4E8 /* Profile-boya */,
 				A93F16A12C19DBCE00DF6EFE /* Profile-fuyuan */,
 				A9C04F682C22D305001B4F55 /* Profile-gdvip */,
+				A99C8DFD2C36C50300F94BF9 /* Profile-leyou */,
 				A93F16992C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16912C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -7152,6 +8814,7 @@
 				A9CD3FE92BCB724000F9D4E8 /* Debug-boya */,
 				A93F16722C19DB9C00DF6EFE /* Debug-fuyuan */,
 				A9C04F572C22D2E8001B4F55 /* Debug-gdvip */,
+				A99C8DF42C36C4F700F94BF9 /* Debug-leyou */,
 				A93F166A2C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16622C19DB8200DF6EFE /* Debug-aomen */,
 				A9CD3FE02BCB6FF500F9D4E8 /* Release */,
@@ -7159,6 +8822,7 @@
 				A9CD3FF32BCB72AA00F9D4E8 /* Release-boya */,
 				A93F168A2C19DBB600DF6EFE /* Release-fuyuan */,
 				A9C04F602C22D2F6001B4F55 /* Release-gdvip */,
+				A99C8DEA2C36C4E900F94BF9 /* Release-leyou */,
 				A93F16822C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F167A2C19DBA500DF6EFE /* Release-aomen */,
 				A9CD3FE12BCB6FF500F9D4E8 /* Profile */,
@@ -7166,6 +8830,7 @@
 				A9CD3FFD2BCB72BC00F9D4E8 /* Profile-boya */,
 				A93F16A22C19DBCE00DF6EFE /* Profile-fuyuan */,
 				A9C04F692C22D305001B4F55 /* Profile-gdvip */,
+				A99C8DFE2C36C50300F94BF9 /* Profile-leyou */,
 				A93F169A2C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16922C19DBBF00DF6EFE /* Profile-aomen */,
 			);
