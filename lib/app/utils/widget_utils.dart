@@ -138,20 +138,18 @@ class WidgetUtils {
             return Image.asset(stationLogo.value,width: 135.r,height: 45.r,fit: BoxFit.fill,);
           }),
           Expanded(child: Container()),
-          Visibility(
-            visible: msg,
-            child: InkWell(
-              onTap: () => DialogUtils().showAccessRouteDialog2(context),
-              child: Padding(
-                  padding: EdgeInsets.all(10.r),
-                  child: Row(
-                    children: [
-                      Obx(() {
-                        return Text(routeName.value, style: TextStyle(color: ColorX.iconBlack()));
-                      }),
-                      WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
-                    ],
-                  )),
+          InkWell(
+            onTap: () => DialogUtils().showAccessRouteDialog2(context),
+            child: Padding(
+                padding: EdgeInsets.all(10.r),
+                child: Row(
+                  children: [
+                    Obx(() {
+                      return Text(routeName.value, style: TextStyle(color: ColorX.iconBlack()));
+                    }),
+                    WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
+                  ],
+                ),
             ),
           ),
           Visibility(

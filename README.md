@@ -59,6 +59,7 @@ flutter build apk --flavor fuyuan --dart-define=CHANNEL=fuyuan
 
 flutter build apk --flavor gdvip --dart-define=CHANNEL=gdvip
 
+flutter build apk --flavor leyou --dart-define=CHANNEL=leyou
 
 
 
