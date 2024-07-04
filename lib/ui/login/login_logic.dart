@@ -24,10 +24,9 @@ class LoginLogic extends GetxController {
   }
 
   void getVarcode() {
-    HttpService.getVarcode("register").then((value) {
+    HttpService.getVarcode("login").then((value) {
       state.varcode.value = value;
       state.varcode.refresh();
-
     });
   }
 

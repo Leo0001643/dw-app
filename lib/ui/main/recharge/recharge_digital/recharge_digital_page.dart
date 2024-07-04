@@ -403,11 +403,11 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                                     Row(
                                       children: [
                                         Text("*",style: TextStyle(fontSize: 14.sp,color: ColorX.color_fc243b),),
-                                        Text(Intr().huikuanjine,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
+                                        Text(Intr().change_money,style: TextStyle(fontSize: 12.sp,color: ColorX.text586()),),
                                       ],
                                     ),
                                     SizedBox(height: 10.h,),
-                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().qingshuruhuikuanjine,defText: state.remitAmount,
+                                    WidgetUtils().buildTextField(300.w, 45.h, 14.sp, ColorX.text0917(), Intr().input_money_change,defText: state.remitAmount,
                                         backgroundColor: ColorX.cardBg2(), inputType: TextInputType.number,hintColor: ColorX.text586()
                                         ,onChanged: (v)=> state.remitAmount = v),
                                   ],
@@ -424,7 +424,7 @@ class _RechargeDigitalPageState extends State<RechargeDigitalPage> with SingleTi
                           if(state.selectOnline.value){
                             eventBus.fire(ChangeMainPageEvent(0));
                             Get.back();
-                          }else {
+                          } else {
                             if(unEmpty(state.walletAddress)&& unEmpty(state.remitAmount)){
                               DialogUtils().showMessageDialog(context, Intr().shifoujinxingzhuanzhang,onConfirm: (){
                                 Navigator.pop(context);

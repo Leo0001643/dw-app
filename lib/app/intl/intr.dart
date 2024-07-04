@@ -757,15 +757,20 @@ class Intr extends Translations{
   String get e_mail_tip => 'e_mail_tip'.tr;
   String get wx_number_tip => 'wx_number_tip'.tr;
   String get qq_number_tip => 'qq_number_tip'.tr;
+  String get change_money => 'change_money'.tr;
+  String get input_money_change => 'input_money_change'.tr;
 
   String get hyld_shouxin => 'hyld_shouxin'.tr;
   String get hyld_aomen => 'hyld_aomen'.tr;
   String get hyld_fuyuan => 'hyld_fuyuan'.tr;
   String get hyld_gdvip => 'hyld_gdvip'.tr;
+  String get hyld_leyou => 'hyld_leyou'.tr;
+
   String get guojizhan2023_shouxin => '2023guojizhan_shouxin'.tr;
   String get guojizhan2023_aomen => '2023guojizhan_aomen'.tr;
   String get guojizhan2023_fuyuan => '2023guojizhan_fuyuan'.tr;
   String get guojizhan2023_gdvip => '2023guojizhan_gdvip'.tr;
+  String get guojizhan2023_leyou => '2023guojizhan_leyou'.tr;
 
 
 
