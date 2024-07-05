@@ -83,7 +83,7 @@ class ConfigManager {
     }
   }
 
-  ///澳门仅支持中英文
+  ///仅DW支持中/英/越南文
   //中文 英文 越南语 ,const Locale("vi","VI"),const Locale('en','US')
   static List<Locale> locales(){
     switch(channelName){
