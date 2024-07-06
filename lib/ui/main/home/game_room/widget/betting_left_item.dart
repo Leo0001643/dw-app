@@ -40,7 +40,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
       String betMoney = c.c??"0";
       allMonny += DataUtils.formatNum(betMoney);
     }
-
+    var isSelf = wsBetResultEntity.username == AppData.user()?.username;
     // print("=========>avatar  ${wsBetResultEntity.avatar} ${wsBetResultEntity.content}}");
     return Container(
       child: Column(
@@ -48,8 +48,10 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
         children: [
           SizedBox(height: 10.h,),
           Padding(
-            padding: EdgeInsets.only(left: 13.w),
+            padding: EdgeInsets.only(left: 13.w,right: 13.w,bottom: 5.h),
             child: Row(
+              textDirection: isSelf ? TextDirection.rtl : TextDirection.ltr,
+              // mainAxisAlignment: isSelf ? MainAxisAlignment.end : MainAxisAlignment.start,
               children: [
                 GFAvatar(
                   backgroundImage: AssetImage(DataUtils.findAvatar(wsBetResultEntity.avatar)),

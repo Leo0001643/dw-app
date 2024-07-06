@@ -246,5 +246,5 @@ class ConfigManager {
 
 
 ///目前支持 dw(9000) boya(9003) fuyuan(9005) shouxin(9006) aomen(9007) gdvip(9008) leyou(9009)
-String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'leyou');
+String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'gdvip');
 
