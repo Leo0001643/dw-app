@@ -114,14 +114,22 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: FocusContainer(
                   width: 335.w,
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                      SizedBox(height: 10.h,),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                          Text(Intr().yhm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                        ],
+                      ),
                       WidgetUtils().buildTextField(
-                        290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().yhm,
+                        290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().sidao12shuzihuozimu,
                         hintColor: ColorX.text949(),
                         backgroundColor: Colors.transparent,
+                        padding: EdgeInsets.symmetric(horizontal: 5.w),
                         onChanged: (v) => state.accountValue = v,
                         // focusedBorder: OutlineInputBorder(
                         //   borderSide: BorderSide(color: ColorX.line10949(), width: 1.w),
@@ -131,129 +139,136 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 10.h,),
-              Padding(
-                padding: EdgeInsets.only(left: 35.w),
-                child: Text(Intr().sidao12shuzihuozimu, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
+              SizedBox(height: 20.h,),
               Center(
                 child: FocusContainer(
                   width: 335.w,
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  child: Column(
                     children: [
-                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                      Expanded(
-                        child: Obx(() {
-                          return WidgetUtils().buildTextField(
-                              260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().denglumima,
-                              backgroundColor: Colors.transparent,
-                              onChanged: (v) => state.pwdValue = v,
-                              defText: state.pwdValue,
-                              hintColor: ColorX.text949(),
-                              obscureText: !state.pwdVisible.value,
-                              inputType: TextInputType.visiblePassword);
-                        }),
+                      SizedBox(height: 10.h,),
+                      Row(
+                        children: [
+                          Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                          Text(Intr().denglumima, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                        ],
                       ),
-                      InkWell(
-                        onTap: () =>
-                        state.pwdVisible.value = !state.pwdVisible.value,
-                        child: Obx(() {
-                          return state.pwdVisible.value
-                              ? Image.asset(
-                            ImageX.icon_show,
-                            color: ColorX.iconBlack(),
-                            width: 30.w,
-                          )
-                              : Image.asset(
-                            ImageX.icon_hide,
-                            color: ColorX.iconBlack(),
-                            width: 30.w,
-                          );
-                        }),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Obx(() {
+                              return WidgetUtils().buildTextField(
+                                  260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().wszhzm,
+                                  backgroundColor: Colors.transparent,
+                                  onChanged: (v) => state.pwdValue = v,
+                                  defText: state.pwdValue,
+                                  hintColor: ColorX.text949(),
+                                  obscureText: !state.pwdVisible.value,
+                                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                                  inputType: TextInputType.visiblePassword);
+                            }),
+                          ),
+                          InkWell(
+                            onTap: () =>
+                            state.pwdVisible.value = !state.pwdVisible.value,
+                            child: Obx(() {
+                              return state.pwdVisible.value
+                                  ? Image.asset(
+                                ImageX.icon_show,
+                                color: ColorX.iconBlack(),
+                                width: 30.w,
+                              )
+                                  : Image.asset(
+                                ImageX.icon_hide,
+                                color: ColorX.iconBlack(),
+                                width: 30.w,
+                              );
+                            }),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(height: 10.h,),
-              Padding(
-                padding: EdgeInsets.only(left: 35.w),
-                child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
               ),
               SizedBox(height: 20.h,),
               Center(
                 child: FocusContainer(
                   width: 335.w,
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  child: Column(
                     children: [
-                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                      Expanded(
-                        child: Obx(() {
-                          return WidgetUtils().buildTextField(
-                              260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().querenmima,
-                              backgroundColor: Colors.transparent,
-                              onChanged: (v) => state.confirmPwdValue = v,
-                              defText: state.confirmPwdValue,
-                              hintColor: ColorX.text949(),
-                              obscureText: !state.confirmPwdVisible.value,
-                              inputType: TextInputType.visiblePassword);
-                        }),
+                      SizedBox(height: 10.h,),
+                      Row(
+                        children: [
+                          Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                          Text(Intr().querenmima, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                        ],
                       ),
-                      InkWell(
-                        onTap: () => state.confirmPwdVisible.value =
-                        !state.confirmPwdVisible.value,
-                        child: Obx(() {
-                          return state.confirmPwdVisible.value
-                              ? Image.asset(
-                            ImageX.icon_show,
-                            color: ColorX.iconBlack(),
-                            width: 30.w,
-                          )
-                              : Image.asset(
-                            ImageX.icon_hide,
-                            color: ColorX.iconBlack(),
-                            width: 30.w,
-                          );
-                        }),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Obx(() {
+                              return WidgetUtils().buildTextField(
+                                  260.w, 46.h, 14.sp, ColorX.textBlack(), Intr().wszhzm,
+                                  backgroundColor: Colors.transparent,
+                                  onChanged: (v) => state.confirmPwdValue = v,
+                                  defText: state.confirmPwdValue,
+                                  hintColor: ColorX.text949(),
+                                  obscureText: !state.confirmPwdVisible.value,
+                                  padding: EdgeInsets.symmetric(horizontal: 5.w),
+                                  inputType: TextInputType.visiblePassword);
+                            }),
+                          ),
+                          InkWell(
+                            onTap: () => state.confirmPwdVisible.value =
+                            !state.confirmPwdVisible.value,
+                            child: Obx(() {
+                              return state.confirmPwdVisible.value
+                                  ? Image.asset(
+                                ImageX.icon_show,
+                                color: ColorX.iconBlack(),
+                                width: 30.w,
+                              )
+                                  : Image.asset(
+                                ImageX.icon_hide,
+                                color: ColorX.iconBlack(),
+                                width: 30.w,
+                              );
+                            }),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(height: 10.h,),
-              Padding(
-                padding: EdgeInsets.only(left: 35.w),
-                child: Text(Intr().wszhzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
               ),
               SizedBox( height: 20.h,),
               Center(
                 child: FocusContainer(
                   width: 335.w,
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
-                  child: Row(
+                  child: Column(
                     children: [
-                      Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                      WidgetUtils().buildTextField(
-                          290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().zsxm,
-                          hintColor: ColorX.text949(),
-                          backgroundColor: Colors.transparent,
-                          onChanged: (v) => state.realname = v,
-                          focusNode: state.nameFocus),
+                      SizedBox(height: 10.h,),
+                      Row(
+                        children: [
+                          Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                          Text(Intr().zsxm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                        ],
+                      ),
+                  WidgetUtils().buildTextField(
+                      290.w, 46.h, 14.sp, ColorX.textBlack(), Intr().ytxyhkhmyz,
+                      hintColor: ColorX.text949(),
+                      backgroundColor: Colors.transparent,
+                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      onChanged: (v) => state.realname = v,
+                      focusNode: state.nameFocus,),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(height: 10.h,),
-              Padding(
-                padding: EdgeInsets.only(left: 35.w),
-                child: Text(Intr().ytxyhkhmyz, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
               ),
               SizedBox(height: 20.h,),
               Obx(() {
@@ -266,38 +281,43 @@ class _RegisterPageState extends State<RegisterPage> {
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: FocusContainer(
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: Row(
+                          child: Column(
                             children: [
-                              SizedBox(width: 10.w,),
-                              InkWell(
-                                onTap: () => DialogUtils().showSelectAreaBtmDialog(context, state.phoneData ?? {}).then((value) {
-                                  if(unEmpty(value)){ state.areaNo.value = value!; }
-                                }),
-                                child: Row(
-                                  children: [
-                                    Visibility(
+                              SizedBox(height: 10.h,),
+                              Row(
+                                children: [
+                                  Visibility(
                                       visible: state.mobileMust.value,
-                                      child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                                    ),
-                                    Obx(() {
-                                      return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),);
-                                    }),
-                                    WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
-                                  ],
-                                ),
+                                      child:Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                                  ),
+                                  Text(Intr().shoujihaoma, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                                ],
                               ),
-                              Expanded(
-                                child: WidgetUtils().buildTextField(0, 46.h, 14.sp, ColorX.textBlack(), Intr().shoujihaoma,hintColor: ColorX.text949(),
-                                    backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
-                              )
+                              Row(
+                                children: [
+                                  SizedBox(width: 10.w,),
+                                  InkWell(
+                                    onTap: () => DialogUtils().showSelectAreaBtmDialog(context, state.phoneData ?? {}).then((value) {
+                                      if(unEmpty(value)){ state.areaNo.value = value!; }
+                                    }),
+                                    child: Row(
+                                      children: [
+                                        Obx(() {
+                                          return Text(state.areaNo.value,style: TextStyle(fontSize: 14.sp,color: ColorX.textBlack(),fontWeight: FontWeight.w700),);
+                                        }),
+                                        WidgetUtils().buildImage(ImageX.iconDownArrow(), 18.r, 18.r),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: WidgetUtils().buildTextField(0, 46.h, 14.sp, ColorX.textBlack(), Intr().shuruzhenshiyouxiao,hintColor: ColorX.text949(),
+                                        backgroundColor: Colors.transparent,inputType: TextInputType.phone,onChanged: (v)=> state.mobile=v),
+                                  )
+                                ],
+                              ),
                             ],
                           ),
                         ),
-                      ),
-                      SizedBox(height: 10.h,),
-                      Padding(
-                        padding: EdgeInsets.only(left: 35.w),
-                        child: Text(Intr().shuruzhenshiyouxiao, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
                       ),
                       SizedBox(height: 20.h,),
                     ],
@@ -315,29 +335,28 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: FocusContainer(
                           width: 335.w,
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: Row(
+                          child: Column(
                             children: [
-                              Visibility(
-                                visible: state.agentMust.value,
-                                child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                              SizedBox(height: 10.h,),
+                              Row(
+                                children: [
+                                  Visibility(
+                                    visible: state.agentMust.value,
+                                    child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                                  ),
+                                  Text(Intr().jieshaoren, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                                ],
                               ),
-                              Expanded(
-                                child: WidgetUtils().buildTextField(
-                                  0, 46.h, 14.sp, ColorX.textBlack(), Intr().jieshaoren,
-                                  hintColor: ColorX.text949(),
-                                  backgroundColor: Colors.transparent,
-                                  onChanged: (v) => state.tgcode = v,
-                                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                                ),
+                              WidgetUtils().buildTextField(
+                                double.infinity, 46.h, 14.sp, ColorX.textBlack(), Intr().shurujieshaoren,
+                                hintColor: ColorX.text949(),
+                                backgroundColor: Colors.transparent,
+                                onChanged: (v) => state.tgcode = v,
+                                padding: EdgeInsets.symmetric(horizontal: 5.w),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      SizedBox(height: 10.h,),
-                      Padding(
-                        padding: EdgeInsets.only(left: 35.w),
-                        child: Text(Intr().shurujieshaoren, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
                       ),
                       SizedBox(height: 20.h,),
                     ],
@@ -355,30 +374,29 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: FocusContainer(
                           width: 335.w,
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: Row(
+                          child: Column(
                             children: [
-                              Visibility(
-                                visible: state.qqMust.value,
-                                child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                              SizedBox(height: 10.h,),
+                              Row(
+                                children: [
+                                  Visibility(
+                                    visible: state.qqMust.value,
+                                    child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                                  ),
+                                  Text(Intr().qq_number, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                                ],
                               ),
-                              Expanded(
-                                child: WidgetUtils().buildTextField(
-                                  0, 46.h, 14.sp, ColorX.textBlack(), Intr().qq_number,
-                                  hintColor: ColorX.text949(),
-                                  backgroundColor: Colors.transparent,
-                                  inputType: TextInputType.number,
-                                  onChanged: (v) => state.qq = v,
-                                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                                ),
+                              WidgetUtils().buildTextField(
+                                double.infinity, 46.h, 14.sp, ColorX.textBlack(), Intr().qq_number_tip,
+                                hintColor: ColorX.text949(),
+                                backgroundColor: Colors.transparent,
+                                inputType: TextInputType.number,
+                                onChanged: (v) => state.qq = v,
+                                padding: EdgeInsets.symmetric(horizontal: 5.w),
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      SizedBox(height: 10.h,),
-                      Padding(
-                        padding: EdgeInsets.only(left: 35.w),
-                        child: Text(Intr().qq_number_tip, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
                       ),
                       SizedBox(height: 20.h,),
                     ],
@@ -396,30 +414,29 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: FocusContainer(
                           width: 335.w,
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: Row(
+                          child: Column(
                             children: [
-                              Visibility(
-                                visible: state.emailMust.value,
-                                child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                              SizedBox(height: 10.h,),
+                              Row(
+                                children: [
+                                  Visibility(
+                                    visible: state.emailMust.value,
+                                    child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                                  ),
+                                  Text(Intr().e_mail, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                                ],
                               ),
-                              Expanded(
-                                child: WidgetUtils().buildTextField(
-                                    0, 46.h, 14.sp, ColorX.textBlack(), Intr().e_mail,
-                                    hintColor: ColorX.text949(),
-                                    backgroundColor: Colors.transparent,
-                                    inputType: TextInputType.emailAddress,
-                                    onChanged: (v) => state.email = v,
-                                    padding: EdgeInsets.symmetric(horizontal: 5.w)
-                                ),
+                              WidgetUtils().buildTextField(
+                                  double.infinity, 46.h, 14.sp, ColorX.textBlack(), Intr().e_mail_tip,
+                                  hintColor: ColorX.text949(),
+                                  backgroundColor: Colors.transparent,
+                                  inputType: TextInputType.emailAddress,
+                                  onChanged: (v) => state.email = v,
+                                  padding: EdgeInsets.symmetric(horizontal: 5.w)
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      SizedBox(height: 10.h,),
-                      Padding(
-                        padding: EdgeInsets.only(left: 35.w),
-                        child: Text(Intr().e_mail_tip, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
                       ),
                       SizedBox(height: 20.h,),
                     ],
@@ -437,30 +454,29 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: FocusContainer(
                           width: 335.w,
                           padding: EdgeInsets.symmetric(horizontal: 10.w),
-                          child: Row(
+                          child: Column(
                             children: [
-                              Visibility(
-                                visible: state.weixinMust.value,
-                                child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                              SizedBox(height: 10.h,),
+                              Row(
+                                children: [
+                                  Visibility(
+                                    visible: state.weixinMust.value,
+                                    child: Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                                  ),
+                                  Text(Intr().wx_number, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                                ],
                               ),
-                              Expanded(
-                                child: WidgetUtils().buildTextField(
-                                    0, 46.h, 14.sp, ColorX.textBlack(), Intr().wx_number,
-                                    hintColor: ColorX.text949(),
-                                    backgroundColor: Colors.transparent,
-                                    inputType: TextInputType.text,
-                                    onChanged: (v) => state.wechat = v,
-                                    padding: EdgeInsets.symmetric(horizontal: 5.w)
-                                ),
+                              WidgetUtils().buildTextField(
+                                  double.infinity, 46.h, 14.sp, ColorX.textBlack(), Intr().wx_number_tip,
+                                  hintColor: ColorX.text949(),
+                                  backgroundColor: Colors.transparent,
+                                  inputType: TextInputType.text,
+                                  onChanged: (v) => state.wechat = v,
+                                  padding: EdgeInsets.symmetric(horizontal: 5.w)
                               ),
                             ],
-                          ),
+                          )
                         ),
-                      ),
-                      SizedBox(height: 10.h,),
-                      Padding(
-                        padding: EdgeInsets.only(left: 35.w),
-                        child: Text(Intr().wx_number_tip, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
                       ),
                       SizedBox(height: 20.h,),
                     ],
@@ -584,18 +600,22 @@ class _RegisterPageState extends State<RegisterPage> {
                   Expanded(
                     child: FocusContainer(
                       padding: EdgeInsets.symmetric(horizontal: 10.w),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Column(
                         children: [
-                          Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
-                          Expanded(
-                            child: WidgetUtils().buildTextField(
-                              0, 46.h, 14.sp, ColorX.textBlack(), Intr().yzm,
-                              hintColor: ColorX.text949(),
-                              backgroundColor: Colors.transparent,
-                              inputType: TextInputType.text,
-                              onChanged: (v) => state.vcode = v,
-                            ),
+                          SizedBox(height: 10.h,),
+                          Row(
+                            children: [
+                              Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                              Text(Intr().yzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
+                            ],
+                          ),
+                          WidgetUtils().buildTextField(
+                            double.infinity, 46.h, 14.sp, ColorX.textBlack(), Intr().qsrzcyzm,
+                            hintColor: ColorX.text949(),
+                            backgroundColor: Colors.transparent,
+                            inputType: TextInputType.text,
+                            padding: EdgeInsets.symmetric(horizontal: 5.w),
+                            onChanged: (v) => state.vcode = v,
                           ),
                         ],
                       ),
@@ -606,11 +626,6 @@ class _RegisterPageState extends State<RegisterPage> {
                     return WidgetUtils().buildVarCode(state.varcode.value.varCode.em(), ()=> logic.getVarcode());
                   }),
                 ],
-              ),
-              SizedBox(height: 10.h,),
-              Padding(
-                padding: EdgeInsets.only(left: 15.w),
-                child: Text(Intr().yzm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.w700),),
               ),
             ],
           ),

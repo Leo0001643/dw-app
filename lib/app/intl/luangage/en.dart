@@ -30,9 +30,9 @@ class EN {
     "nick": "Nickname:",
     "phone": "Mobile:",
 
-    "qq_number": "QQ",
-    "wx_number": "Wechat",
-    "e_mail": "Email",
+    "qq_number": "QQ:",
+    "wx_number": "Wechat:",
+    "e_mail": "Email:",
     "e_mail_tip": "Enter Email address",
     "wx_number_tip": "Enter Wechat ID",
     "qq_number_tip": "Enter QQ number",

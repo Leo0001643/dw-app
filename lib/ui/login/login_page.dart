@@ -74,22 +74,22 @@ class _LoginPageState extends State<LoginPage> {
               child: FocusContainer(
                 width: 335.w,
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: WidgetUtils().buildTextField(
-                    325.w, 46.h, 14.sp, ColorX.textBlack(), Intr().yhm,
-                    hintColor: ColorX.text949(),
-                    defText: state.accountValue,
-                    backgroundColor: Colors.transparent,
-                    onChanged: (v) => logic.editChange(true, v)),
-              ),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(
-                Intr().sidao12shuzihuozimu,
-                style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.bold),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10.h,),
+                    Text(Intr().yhm, style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.bold),),
+                    WidgetUtils().buildTextField(
+                        325.w, 46.h, 14.sp, ColorX.textBlack(), Intr().sidao12shuzihuozimu,
+                        hintColor: ColorX.text949(),
+                        defText: state.accountValue,
+                        backgroundColor: Colors.transparent,
+                        padding: EdgeInsets.symmetric(horizontal: 5.w),
+                        onChanged: (v) => logic.editChange(true, v),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(
@@ -99,47 +99,55 @@ class _LoginPageState extends State<LoginPage> {
               child: FocusContainer(
                 width: 335.w,
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Obx(() {
-                        return WidgetUtils().buildTextField(
-                            0, 46.h, 14.sp, ColorX.textBlack(), Intr().mm,
-                            backgroundColor: Colors.transparent,
-                            onChanged: (v) => logic.editChange(false, v),
-                            defText: state.pwdValue,
-                            hintColor: ColorX.text949(),
-                            obscureText: !state.pwdVisible.value,
-                            inputType: TextInputType.visiblePassword);
-                      }),
+                    SizedBox(height: 10.h,),
+                    Row(
+                      children: [
+                        Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
+                        Text(
+                          Intr().mm,
+                          style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                    InkWell(
-                      onTap: () =>
-                      state.pwdVisible.value = !state.pwdVisible.value,
-                      child: Obx(() {
-                        return state.pwdVisible.value
-                            ? Image.asset(
-                          ImageX.icon_show,
-                          color: ColorX.icon586(),
-                          width: 30.w,
-                        )
-                            : Image.asset(
-                          ImageX.icon_hide,
-                          color: ColorX.icon586(),
-                          width: 30.w,
-                        );
-                      }),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Obx(() {
+                            return WidgetUtils().buildTextField(
+                                0, 46.h, 14.sp, ColorX.textBlack(), Intr().wszhzm,
+                                backgroundColor: Colors.transparent,
+                                onChanged: (v) => logic.editChange(false, v),
+                                defText: state.pwdValue,
+                                hintColor: ColorX.text949(),
+                                obscureText: !state.pwdVisible.value,
+                                padding: EdgeInsets.symmetric(horizontal: 5.w),
+                                inputType: TextInputType.visiblePassword);
+                          }),
+                        ),
+                        InkWell(
+                          onTap: () =>
+                          state.pwdVisible.value = !state.pwdVisible.value,
+                          child: Obx(() {
+                            return state.pwdVisible.value
+                                ? Image.asset(
+                              ImageX.icon_show,
+                              color: ColorX.icon586(),
+                              width: 30.w,
+                            )
+                                : Image.asset(
+                              ImageX.icon_hide,
+                              color: ColorX.icon586(),
+                              width: 30.w,
+                            );
+                          }),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ),
-            ),
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(
-                Intr().wszhzm,
-                style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(height: 10.h,),
@@ -197,50 +205,48 @@ class _LoginPageState extends State<LoginPage> {
       print(
           "-------->类型  ${(state.varcode.value.status == 1 && state.varcode.value.type == 1)}");
       if (state.varcode.value.status == 1 && state.varcode.value.type == 1) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.w),
-              alignment: Alignment.center,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: FocusContainer(
-                      padding: EdgeInsets.symmetric(horizontal: 10.w),
-                      child: Row(
+        return Container(
+          margin: EdgeInsets.symmetric(horizontal: 20.w),
+          alignment: Alignment.center,
+          child: Row(
+            children: [
+              Expanded(
+                child: FocusContainer(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 10.h,),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("*", style: TextStyle(color: ColorX.color_fe2427, fontSize: 14.sp),),
                           Expanded(
-                            child: WidgetUtils().buildTextField(
-                              0, 46.h, 14.sp, ColorX.textBlack(), Intr().yzm,
-                              hintColor: ColorX.text949(),
-                              backgroundColor: Colors.transparent,
-                              inputType: TextInputType.text,
-                              onChanged: (v) => state.vcode = v,
+                            child: Text(
+                              Intr().yzm,
+                              style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
                       ),
-                    ),
+                      WidgetUtils().buildTextField(
+                        double.infinity, 46.h, 14.sp, ColorX.textBlack(), Intr().qsrzcyzm,
+                        hintColor: ColorX.text949(),
+                        backgroundColor: Colors.transparent,
+                        inputType: TextInputType.text,
+                        padding: EdgeInsets.symmetric(horizontal: 5.w),
+                        onChanged: (v) => state.vcode = v,
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 15.w,),
-                  Obx(() {
-                    return WidgetUtils().buildVarCode(state.varcode.value.varCode.em(), ()=> logic.getVarcode());
-                  }),
-                ],
+                ),
               ),
-            ),
-            SizedBox(height: 10.h,),
-            Padding(
-              padding: EdgeInsets.only(left: 35.w),
-              child: Text(
-                Intr().qsrzcyzm,
-                style: TextStyle(fontSize: 13.sp, color: ColorX.text586(),fontWeight: FontWeight.bold),
-              ),
-            ),
-          ],
+              SizedBox(width: 15.w,),
+              Obx(() {
+                return WidgetUtils().buildVarCode(state.varcode.value.varCode.em(), ()=> logic.getVarcode());
+              }),
+            ],
+          ),
         );
       } else if (state.varcode.value.status == 1 &&
           state.varcode.value.type == 2) {
