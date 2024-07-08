@@ -47,22 +47,17 @@ class VersionUtils {
 
 
   /// 版本检测
-  void checkVersion(BuildContext context) {
-    ///先申请安装权限
-    Permission.requestInstallPackages.request().then((value) {
-      if(value.isGranted){
-        HttpService.otaUpdate().then((value) {
-          loggerArray(["版本对比",value.android?.version,value.iOS?.version,AppData.deviceInfo().version]);
-          if(GetPlatform.isAndroid && formatVersion(value.android?.version) > formatVersion(AppData.deviceInfo().version)){
-            _update(context, value.android!);
-          }else if(GetPlatform.isIOS && formatVersion(value.iOS?.version) > formatVersion(AppData.deviceInfo().version)){
-            _update(context, value.iOS!);
-          }else {
-            showToast(Intr().yijingshizuixinl);
-          }
-        });
-      } else {
-        showToast(Intr().weishouxuanzhuangquanxian);
+  void checkVersion(BuildContext context,bool show) {
+    HttpService.otaUpdate().then((value) {
+      loggerArray(["版本对比",value.android?.version,value.iOS?.version,AppData.deviceInfo().version]);
+      if(GetPlatform.isAndroid && formatVersion(value.android?.version) > formatVersion(AppData.deviceInfo().version)){
+        _update(context, value.android!);
+      }else if(GetPlatform.isIOS && formatVersion(value.iOS?.version) > formatVersion(AppData.deviceInfo().version)){
+        _update(context, value.iOS!);
+      }else {
+        if(show){
+          showToast(Intr().yijingshizuixinl);
+        }
       }
     });
   }
@@ -72,7 +67,14 @@ class VersionUtils {
     DialogUtils().showOtaUpdateDialog(context, entity).then((value){
       if(value == true){
         if(GetPlatform.isAndroid){
-          _download(entity);
+          ///先申请安装权限
+          Permission.requestInstallPackages.request().then((value) {
+            if(value.isGranted){
+              _download(entity);
+            } else {
+              showToast(Intr().weishouxuanzhuangquanxian);
+            }
+          });
         } else if(GetPlatform.isIOS){
           launchUrlString(entity.url.em());
         }

@@ -479,7 +479,14 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                     user.username.em(),
                     style: TextStyle(fontSize: 16.sp, color: ColorX.text0917()),
                   ),
-                  Image.asset(ImageX.icon_vip),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.redAccent,
+                      borderRadius: BorderRadius.circular(5.r),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 3.r,),
+                    child: Text(user.gradeName.em(),style: TextStyle(fontSize: 7.sp,color: Colors.white),),
+                  ),
                 ],
               ),
               Expanded(child: Container()),

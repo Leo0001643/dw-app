@@ -413,7 +413,7 @@ class _SettingPageState extends State<SettingPage> {
               ),
             ),
             InkWell(
-              onTap: () => VersionUtils().checkVersion(context),
+              onTap: () => VersionUtils().checkVersion(context,true),
               child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.r),

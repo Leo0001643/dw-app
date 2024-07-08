@@ -339,7 +339,16 @@ class StateHomePage extends State<HomePage>
             SizedBox(
               width: 5.w,
             ),
-            Image.asset(ImageX.icon_vip),
+            Obx(() {
+              return Container(
+                decoration: BoxDecoration(
+                  color: Colors.redAccent,
+                  borderRadius: BorderRadius.circular(5.r),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 3.r,),
+                child: Text(state.user.value.gradeName.em(),style: TextStyle(fontSize: 7.sp,color: Colors.white),),
+              );
+            }),
             Expanded(
               child: Container(),
             ),

@@ -25,6 +25,7 @@ import 'package:leisure_games/ui/bean/language_event.dart';
 import 'package:leisure_games/ui/bean/login_refresh_event.dart';
 import 'package:leisure_games/ui/bean/login_user_entity.dart';
 import 'package:leisure_games/ui/bean/notice_entity.dart';
+import 'package:leisure_games/ui/bean/ota_version_entity.dart';
 import 'package:sprintf/sprintf.dart';
 
 import 'home_state.dart';

@@ -296,7 +296,7 @@ class DialogUtils {
   Future<bool?> showOtaUpdateDialog(BuildContext context,OtaVersionIOS entity) {
     return showDialog<bool>(
         context: context,
-        barrierDismissible: false,
+        barrierDismissible: entity.must != "true",
         builder: (context) {
           return OtaUpdateDialog(entity);
         });

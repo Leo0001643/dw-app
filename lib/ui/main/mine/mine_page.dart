@@ -99,7 +99,16 @@ class StateMinePage extends State<MinePage> {
                               ),
                               Row(
                                 children: [
-                                  Image.asset(ImageX.icon_vip),
+                                  Obx(() {
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.redAccent,
+                                        borderRadius: BorderRadius.circular(5.r),
+                                      ),
+                                      padding: EdgeInsets.symmetric(horizontal: 3.r,),
+                                      child: Text(state.user.value.gradeName.em(),style: TextStyle(fontSize: 7.sp,color: Colors.white),),
+                                    );
+                                  }),
                                   SizedBox(
                                     width: 3.w,
                                   ),

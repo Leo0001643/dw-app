@@ -31,7 +31,7 @@ class OtaVersionIOS {
 	String? version;
 	String? url;
 
-	OtaVersionIOS();
+	OtaVersionIOS({this.must});
 
 	factory OtaVersionIOS.fromJson(Map<String, dynamic> json) => $OtaVersionIOSFromJson(json);
 
