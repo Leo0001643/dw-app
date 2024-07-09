@@ -56,7 +56,7 @@ class ConfigManager {
       case channel_gdvip:
         return "https://112.74.43.160:5564/";
       case channel_leyou:
-        return "https://112.74.43.160:5564/";
+        return "https://9009mjlkow.mzm3mzdj.com/";
       default:
         return "https://9000vlmdm4.kj99883.com/";
     }
@@ -77,7 +77,7 @@ class ConfigManager {
       case channel_gdvip:
         return "wss://112.74.43.160:5574/";
       case channel_leyou:
-        return "wss://112.74.43.160:5564/";
+        return "wss://9009odvhod.njc2n2m5.com:443/";
       default:
         return "wss://9000ywfjn2.uy4ayov.com/";
     }
