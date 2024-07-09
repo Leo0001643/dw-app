@@ -6,12 +6,14 @@ import 'package:leisure_games/app/constants.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/res/colorx.dart';
 import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/ui/bean/change_main_page_event.dart';
+import 'package:lifecycle/lifecycle.dart';
 
 import 'mine_logic.dart';
 
@@ -20,9 +22,17 @@ class MinePage extends StatefulWidget {
   State<StatefulWidget> createState() => StateMinePage();
 }
 
-class StateMinePage extends State<MinePage> {
+class StateMinePage extends State<MinePage> with LifecycleAware, LifecycleMixin {
   final logic = Get.find<MineLogic>();
   final state = Get.find<MineLogic>().state;
+
+  @override
+  void onLifecycleEvent(LifecycleEvent event) {
+    loggerArray(["生命周期变化了",event]);
+    if(event == LifecycleEvent.active){
+      // logic.loadData();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
