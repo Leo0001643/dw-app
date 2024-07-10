@@ -190,7 +190,7 @@ class _RechargeWalletPageState extends State<RechargeWalletPage> {
                                     if(state.channelList.isEmpty) return Container();
                                     var list = state.channelList[state.selectIndex.value].moneyQuick?.split("|") ?? [];
                                     return Wrap(
-                                      alignment:WrapAlignment.spaceBetween,
+                                      alignment:WrapAlignment.start,
                                       runSpacing: 10.h,spacing: 10.w,
                                       children: [
                                         ...list.map((e) => buildBtnAmount(int.tryParse(e) ?? 0)),

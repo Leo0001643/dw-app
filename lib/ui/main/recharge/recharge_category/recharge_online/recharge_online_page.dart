@@ -163,7 +163,7 @@ class _RechargeOnlinePageState extends State<RechargeOnlinePage> {
                         if(state.paymentList.isEmpty) return Container();
                         var list = state.paymentList[state.selectIndex.value].moneyQuick?.split("|") ?? [];
                         return Wrap(
-                          alignment:WrapAlignment.spaceBetween,
+                          alignment:WrapAlignment.start,
                           runSpacing: 10.h,spacing: 10.w,
                           children: [
                             ...list.map((e) => buildBtnAmount(int.tryParse(e) ?? 0)),
