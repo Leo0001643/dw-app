@@ -41,7 +41,7 @@ class RechargeOnlineLogic extends GetxController {
     var item =state.paymentList[state.selectIndex.value];
 
     var params = <String,dynamic>{"oid":AppData.user()?.oid.em(),"username":AppData.user()?.username.em(),
-      "id":item.id,"money":state.remitAmount,
+      "id":item.id,"money":state.remitAmount.value,
       "bankCode": item.banks?.first.bankCode};
 
     HttpService.onlineDeposit(params).then((value) {

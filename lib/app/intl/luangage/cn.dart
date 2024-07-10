@@ -1049,7 +1049,7 @@ class CN {
     "yijingshizuixinl":"已经是最新版本了",
     "weishouxuanzhuangquanxian":"未授予安装权限，更新已取消",
     "denglumima":"登录密码:",
-    "zhucetishiyu":"1.标有*号代表必须填写项目\n2. 注册即代表您已同意各项“开户协议“",
+    "zhucetishiyu":"1.标有*号代表必须填写项目\n2. 注册即代表您已同意各项“开户协议”",
     "huiyuanchukuanjinedayuzhuzhanghu":"会员出款金额大于主账户余额！",
     "bet_tema":"特码",
     "bet_jida":"极大",

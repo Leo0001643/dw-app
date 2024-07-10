@@ -281,10 +281,12 @@ class GameRoomLogic extends GetxController {
   ///投注结果
   void handleBetResult(WsBetEntity entity) {
     print("=====>3");
-    loggerArray(["投注信息打印",entity.toJson()]);
+    loggerArray(["投注信息打印",entity.toJson(),AppData.user()?.username]);
     if(entity.username == AppData.user()?.username){
       ///如果是自己投注成功 需要提示投注成功
-      showToast(Intr().touzhuchenggong);
+      Future.delayed(const Duration(seconds: 1),(){
+        showToast(Intr().touzhuchenggong);
+      });
       ///还需要刷新用户余额
       eventBus.fire(ChangeBalanceEvent());
     }

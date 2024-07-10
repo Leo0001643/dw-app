@@ -121,7 +121,7 @@ class GameRoomHeadWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            AppData.user()!.username?.em() ?? "",
+            Intr().zongyue,
             style: TextStyle(fontSize: 12.sp, color: textColor),
           ),
           SizedBox(

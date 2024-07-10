@@ -93,7 +93,7 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                           Wrap(
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
-                              Text(Intr().gentou,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: Colors.white),),
+                              Text(Intr().gentou,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w600,color: ColorX.color_4893fc),),
                               Image.asset(ImageX.icon_right_black,color: Colors.white,),
                             ],
                           ),

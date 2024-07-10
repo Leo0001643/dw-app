@@ -75,7 +75,7 @@ dependencies:
   #  azlistview: ^2.0.0
   image_gallery_saver: ^2.0.3
   scrollable_positioned_list: ^0.3.8
-  web_socket_channel: ^2.4.0
+  web_socket_channel: ^3.0.0
   uuid: ^4.3.0
   url_launcher: ^6.2.2
 #  open_filex: ^4.3.4

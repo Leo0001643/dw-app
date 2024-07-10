@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import 'dart:io';
 import 'dart:isolate';
 
 import 'package:flutter/cupertino.dart';
@@ -22,8 +23,8 @@ import 'package:leisure_games/app/socket/ws_to_bet_entity.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
 import 'package:leisure_games/ui/main/home/game_room/game_room_logic.dart';
 import 'package:sprintf/sprintf.dart';
+import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/status.dart' as status;
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 /// Author: Soushin
 /// Date: 2024/2/26 16:53
@@ -55,7 +56,9 @@ class SocketUtils{
   void connect({Function? callback}) async {
     ReceivePort receivePort = ReceivePort();
     mainSendPort = receivePort.sendPort;
-    isolate = await Isolate.spawn(isolateMain, mainSendPort!);
+    var url = sprintf("${AppData.baseWsUrl()}?language=%s",[Intr().currentLocale().languageCode]);
+    loggerArray(["开始连接",url]);
+    isolate = await Isolate.spawn(isolateMain, [mainSendPort!,url],);
     receivePort.listen((message) {
       loggerArray(["收到来自子Isolate的消息",message]);
       if(message is String){
@@ -149,11 +152,16 @@ class SocketUtils{
 
 
   ///异步任务工作区
-  static void isolateMain(SendPort sendPort) {
+  static void isolateMain(List params) {
     // sendPort.send('Message from child Isolate');
-    var url = sprintf("${AppData.baseWsUrl()}?language=%s",[Intr().currentLocale().languageCode]);
-    loggerArray(["开始连接",url]);
-    WebSocketChannel channel = WebSocketChannel.connect(Uri.parse(url));
+    SendPort sendPort = params[0];
+    String url = params[1];
+    HttpClient client = HttpClient();
+    client.badCertificateCallback = (X509Certificate cr, String host, int port) {
+      return true;
+    };
+
+    IOWebSocketChannel channel = IOWebSocketChannel.connect(url,customClient: client);
     channel.ready.then((value) {
       sendPort.send(buildMessage("connected"));
     });
@@ -216,7 +224,7 @@ class SocketUtils{
           loggerArray(["长连接发送投注消息",msg.toJson()]);
           break;
         case "close":
-          channel.sink.close(status.goingAway);
+          channel.sink.close(status.normalClosure);
           logger("已关闭长连接");
           break;
       }
