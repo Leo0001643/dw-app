@@ -287,9 +287,9 @@ class AppData {
 
   static String base_wsurl = "";
 
-  static void setBaseWsUrl(String baseWsUrl) {
-    base_wsurl = baseWsUrl;
-    prefs?.setString("base_wsurl", baseWsUrl);
+  static void setBaseWsUrl(String wsUrl) {
+    base_wsurl = wsUrl;
+    prefs?.setString("base_wsurl", wsUrl);
   }
 
   ///从缓存获取base_wsurl
