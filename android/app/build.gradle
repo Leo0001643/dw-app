@@ -49,6 +49,7 @@ android {
         aomen.res.srcDirs 'src/main/res-aomen'
         gdvip.res.srcDirs 'src/main/res-gdvip'
         leyou.res.srcDirs 'src/main/res-leyou'
+        jsgj.res.srcDirs 'src/main/res-jsgj'
 
     }
 
@@ -110,6 +111,12 @@ android {
             keyAlias 'apk'
             keyPassword '12345678'
             storeFile file('../leyou.jks')
+            storePassword '12345678'
+        }
+        jsgj {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../jsgj.jks')
             storePassword '12345678'
         }
     }
@@ -252,6 +259,23 @@ android {
                     JPUSH_CHANNEL:"developer-default",
                     flavors_name: "乐游娱乐城",
                     apk_name: "Leyou Casino",
+            ]
+        }
+        jsgj{
+            applicationId "com.dw.pro.jsgj"
+            namespace "com.dw.pro.jsgj"
+            versionCode 5
+            versionName "1.0.5"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+            signingConfig signingConfigs.aomen
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "江山国际",
+                    apk_name: "JIANGSHAN CASINO",
             ]
         }
     }
