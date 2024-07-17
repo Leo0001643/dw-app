@@ -765,12 +765,15 @@ class Intr extends Translations{
   String get hyld_fuyuan => 'hyld_fuyuan'.tr;
   String get hyld_gdvip => 'hyld_gdvip'.tr;
   String get hyld_leyou => 'hyld_leyou'.tr;
+  String get hyld_jsgj => 'hyld_jsgj'.tr;
+
 
   String get guojizhan2023_shouxin => '2023guojizhan_shouxin'.tr;
   String get guojizhan2023_aomen => '2023guojizhan_aomen'.tr;
   String get guojizhan2023_fuyuan => '2023guojizhan_fuyuan'.tr;
   String get guojizhan2023_gdvip => '2023guojizhan_gdvip'.tr;
   String get guojizhan2023_leyou => '2023guojizhan_leyou'.tr;
+  String get guojizhan2023_jsgj => '2023guojizhan_jsgj'.tr;
 
 
 

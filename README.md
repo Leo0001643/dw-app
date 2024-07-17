@@ -61,13 +61,27 @@ flutter build apk --flavor gdvip --dart-define=CHANNEL=gdvip
 
 flutter build apk --flavor leyou --dart-define=CHANNEL=leyou
 
+flutter build apk --flavor jsgj --dart-define=CHANNEL=jsgj
 
 
 
+网站：9010  江山国际（JIANGSHAN CASINO）
+主题色：PC黑色背景主题  手机端默认版本
+语言：中英文
+手机默认区号：+86
+币种：CNY+USDT
+法币-USDT互转：开启
 
 
+#站点ID: 9010, 网站名称：江山国际， 唯一包名：com.dw.pro.jsgj, 包名: jsgj.apk, jsgj.ipa
+BASE_API 默认线路：https://112.74.43.160:5564
+WS_API 默认线路：wss://112.74.43.160:5574
 
+#线路文件
+line_jsgj.json
 
+#版本检测文件
+check_jsgj.json
 
 
 

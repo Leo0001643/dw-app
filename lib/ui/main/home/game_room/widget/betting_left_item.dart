@@ -114,7 +114,6 @@ class StateBettingLeftItem extends State<BettingLeftItem>{
                       WsBetContent? item= wsBetResultEntity.content?[index];
                       return buildBettingInfoItem(wsBetResultEntity,item);
                     }),
-
                 Container(
                   padding: EdgeInsets.only(right: 10.w,top: 8.h),
                   child: Row(
