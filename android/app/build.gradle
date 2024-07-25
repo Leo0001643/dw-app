@@ -50,6 +50,7 @@ android {
         gdvip.res.srcDirs 'src/main/res-gdvip'
         leyou.res.srcDirs 'src/main/res-leyou'
         jsgj.res.srcDirs 'src/main/res-jsgj'
+        longmen.res.srcDirs 'src/main/res-longmen'
 
     }
 
@@ -117,6 +118,12 @@ android {
             keyAlias 'apk'
             keyPassword '12345678'
             storeFile file('../jsgj.jks')
+            storePassword '12345678'
+        }
+        longmen {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../longmen.jks')
             storePassword '12345678'
         }
     }
@@ -276,6 +283,23 @@ android {
                     JPUSH_CHANNEL:"developer-default",
                     flavors_name: "江山国际",
                     apk_name: "JIANGSHAN CASINO",
+            ]
+        }
+        longmen{
+            applicationId "com.dw.pro.longmen"
+            namespace "com.dw.pro.longmen"
+            versionCode 5
+            versionName "1.0.5"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+            signingConfig signingConfigs.aomen
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "龍门娱乐",
+                    apk_name: "LONGMEN CASINO",
             ]
         }
     }

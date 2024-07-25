@@ -637,6 +637,9 @@ class ImageX{
   static const ic_jsgj_home =  'assets/images/ic_jsgj_home.png';
   static const ic_jsgj_home_en =  'assets/images/ic_jsgj_home_en.png';
 
+  static const ic_longmen_home =  'assets/images/ic_longmen_home.png';
+  static const ic_longmen_home_en =  'assets/images/ic_longmen_home_en.png';
+
 
   static const dw_bg_init =  'assets/images/dw_bg_init.png';
   static const boya_bg_init =  'assets/images/boya_bg_init.png';
@@ -646,6 +649,7 @@ class ImageX{
   static const gdvip_bg_init =  'assets/images/gdvip_bg_init.png';
   static const leyou_bg_init =  'assets/images/leyou_bg_init.png';
   static const jsgj_bg_init =  'assets/images/jsgj_bg_init.png';
+  static const longmen_bg_init =  'assets/images/longmen_bg_init.png';
 
 
 
