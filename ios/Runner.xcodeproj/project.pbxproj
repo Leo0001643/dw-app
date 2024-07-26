@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00282D88EE144976EB84492F /* Pods_leyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334051DDDCC12B56E2B245FA /* Pods_leyou.framework */; };
+		00282D88EE144976EB84492F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		22F7B1A151A5DF621003E4A6 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		2618DAE23AA9178265F3EB78 /* Pods_boya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F48D8733FF3F2159B540C9 /* Pods_boya.framework */; };
@@ -83,10 +83,18 @@
 		A9CD3FDA2BCB6FF500F9D4E8 /* dw.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9CD3FC92BCB6A5400F9D4E8 /* dw.xcassets */; };
 		A9CD40042BCB773700F9D4E8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A9CD40032BCB773700F9D4E8 /* InfoPlist.xcstrings */; };
 		A9CD40062BCB77F200F9D4E8 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A9CD40052BCB77F200F9D4E8 /* InfoPlist.xcstrings */; };
+		A9D6921D2C53A833008CA4A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
+		A9D6921E2C53A833008CA4A1 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
+		A9D692252C53A833008CA4A1 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		A9D692262C53A833008CA4A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
+		A9D6924B2C53A8F9008CA4A1 /* longmen.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9D6924A2C53A8F9008CA4A1 /* longmen.xcassets */; };
+		A9D6924D2C53A916008CA4A1 /* Launch Screen-longmen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9D6924C2C53A916008CA4A1 /* Launch Screen-longmen.storyboard */; };
+		A9D6924F2C53A93B008CA4A1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A9D6924E2C53A93B008CA4A1 /* InfoPlist.xcstrings */; };
 		B4AEA7C84DE1D5F29BE0A044 /* Pods_gdvip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E2D481F4F996FC5EE6825D1 /* Pods_gdvip.framework */; };
 		B8D611DCB04EA97F9EADD25C /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		B99AB525E0BA1EA782C6F941 /* Pods_aomen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F128954E96822417A43330FD /* Pods_aomen.framework */; };
 		CBA51AE004DD26E33AE3EBBA /* Pods_leyou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F25E649106D68C823C64D0 /* Pods_leyou.framework */; };
+		CBD4BEC4CE308F6EE541CEEE /* Pods_longmen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A893A2F298A50DBC70F28BE8 /* Pods_longmen.framework */; };
 		CCC5A00BF01075193D65F937 /* Pods_boya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32A3194D8DDBCB8899DBAA0A /* Pods_boya.framework */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +199,16 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A9D692272C53A833008CA4A1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -204,8 +222,10 @@
 		03F4DD28C3255CEA067237DE /* Pods-leyou.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		06C0AA69C2071748B0DF0998 /* Pods-shouxin.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-leyou.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		090A49D5F7047BAAF42659A1 /* Pods-jsgj.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile-boya.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile-boya.xcconfig"; sourceTree = "<group>"; };
+		0A410981A1AE84EDAC2EE223 /* Pods-shouxin.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-longmen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-longmen.xcconfig"; sourceTree = "<group>"; };
 		0A9417672917EDE84FC93665 /* Pods-fuyuan.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
 		0C35F2D1F733D92D96570208 /* Pods-gdvip.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-dw.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-dw.xcconfig"; sourceTree = "<group>"; };
+		0D445D385F0A8798EDACDC32 /* Pods-leyou.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-longmen.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-longmen.xcconfig"; sourceTree = "<group>"; };
 		0D9294F3929625102B473A68 /* Pods-boya.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-aomen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-aomen.xcconfig"; sourceTree = "<group>"; };
 		0E47D8F9483BB2BBEC8E938B /* Pods-leyou.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-gdvip.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-gdvip.xcconfig"; sourceTree = "<group>"; };
 		0F65BB8B868907AC392081BB /* Pods-boya.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +233,7 @@
 		108179C849EAF15F5E4E7360 /* Pods-aomen.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		109294F35849F5DAB2B447CE /* Pods-fuyuan.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-boya.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-boya.xcconfig"; sourceTree = "<group>"; };
 		126F34F79478A998D69BD64F /* Pods-jsgj.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.debug-leyou.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.debug-leyou.xcconfig"; sourceTree = "<group>"; };
+		1323D05A4A189298F8E2EA49 /* Pods-longmen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release.xcconfig"; sourceTree = "<group>"; };
 		13DE8D4542AF16B602FE5D2F /* Pods-aomen.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
@@ -222,8 +243,9 @@
 		18EB9FF069F82146BC5B2305 /* Pods-aomen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug.xcconfig"; sourceTree = "<group>"; };
 		197D4503AC0950DE914869E5 /* Pods-gdvip.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		1B2C9F674D4CA01FD1E195BF /* Pods-fuyuan.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-leyou.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-leyou.xcconfig"; sourceTree = "<group>"; };
-		1C8A1A5D00B57F32E9BD263B /* Pods_jsgj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_jsgj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C9EE81FBEA130785E5C9E8D /* Pods-longmen.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
 		1D284741E97299B9F7C521AE /* Pods-dw.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
+		1D55A1258550A22F16759F89 /* Pods-aomen.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-longmen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-longmen.xcconfig"; sourceTree = "<group>"; };
 		1E431014E26405CB567C30F7 /* Pods-fuyuan.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-leyou.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-leyou.xcconfig"; sourceTree = "<group>"; };
 		1F347DBC046F34943BB6D324 /* Pods-leyou.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-boya.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-boya.xcconfig"; sourceTree = "<group>"; };
 		1FB02EDC3581BA2F33E3A73D /* Pods-fuyuan.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-boya.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-boya.xcconfig"; sourceTree = "<group>"; };
@@ -241,8 +263,10 @@
 		2BF5DD88CF60D2BA6BC11DD5 /* Pods-shouxin.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-leyou.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-leyou.xcconfig"; sourceTree = "<group>"; };
 		2C4693593021852805491306 /* Pods-aomen.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		2CAABED010FFE0548CD2B5EA /* Pods-jsgj.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
+		2D4D44D93657854E0B39A830 /* Pods-aomen.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-longmen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-longmen.xcconfig"; sourceTree = "<group>"; };
 		2DC8FC76E098AE7648BB4753 /* Pods-aomen.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-boya.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-boya.xcconfig"; sourceTree = "<group>"; };
 		2E1FABA1A58DAF77FC2DC1AE /* Pods-leyou.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-aomen.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-aomen.xcconfig"; sourceTree = "<group>"; };
+		2EE7DE2EAD23DBA116B9AA35 /* Pods-longmen.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
 		2F81FF80043A44710CD3D473 /* Pods-boya.release-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-jsgj.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-jsgj.xcconfig"; sourceTree = "<group>"; };
 		2FE7B9F613B7158A5B3CEBE4 /* Pods-gdvip.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-gdvip.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-gdvip.xcconfig"; sourceTree = "<group>"; };
 		30A6A326093E8EB2F6674D17 /* Pods-jsgj.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
@@ -250,13 +274,17 @@
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CF4C0DA57D3F173B236860 /* Pods-boya.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
+		363C5BC93B4EB55C6985367F /* Pods-longmen.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug-dw.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		36D57C79EAB03C1988ACBECA /* Pods-fuyuan.release-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-jsgj.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-jsgj.xcconfig"; sourceTree = "<group>"; };
 		372A706A9DBCFE072F84B8C4 /* Pods-shouxin.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-dw.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-dw.xcconfig"; sourceTree = "<group>"; };
+		378FE53BC397D374CC529337 /* Pods-jsgj.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile-longmen.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile-longmen.xcconfig"; sourceTree = "<group>"; };
 		38E6F3176D7D211E4446AC66 /* Pods-shouxin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release.xcconfig"; sourceTree = "<group>"; };
 		39D301359FC37725FD67A610 /* Pods-leyou.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
 		3A73910468BEF5725C7E127E /* Pods-shouxin.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-aomen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		3BAE92555CEA4804670496F7 /* Pods-longmen.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release-aomen.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release-aomen.xcconfig"; sourceTree = "<group>"; };
 		3C48860B609A3157A7508CE3 /* Pods-dw.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-leyou.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-leyou.xcconfig"; sourceTree = "<group>"; };
+		3EA78F74889752BD77BC4F8C /* Pods-longmen.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile-dw.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile-dw.xcconfig"; sourceTree = "<group>"; };
 		3EAB5D57FA5DD13154EF78EA /* Pods-fuyuan.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		3EF5A944D3B4843075E8D0EE /* Pods-boya.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-dw.xcconfig"; sourceTree = "<group>"; };
 		3FDF847781DA38A9C3B6DA29 /* Pods-Runner.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
@@ -267,22 +295,29 @@
 		4549587277CE04A71AC05948 /* Pods-fuyuan.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-dw.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		4588D50B9E9D95847706C5F5 /* Pods-leyou.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-leyou.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-leyou.xcconfig"; sourceTree = "<group>"; };
 		4739E29216ED551DEF296EF1 /* Pods-fuyuan.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-leyou.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-leyou.xcconfig"; sourceTree = "<group>"; };
+		4745E3A33BBCD54EBF610593 /* Pods-longmen.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release-boya.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release-boya.xcconfig"; sourceTree = "<group>"; };
 		4832F766EF3D613E624DD151 /* Pods-leyou.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		48EA39FBA4E7259B889248B0 /* Pods-leyou.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
+		4DF3FBF3ECE1407E316728FF /* Pods-fuyuan.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-longmen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-longmen.xcconfig"; sourceTree = "<group>"; };
 		4E230933AFE8179B81866FB9 /* Pods-aomen.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-dw.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		4E7D6570CCF62647CC9CA04C /* Pods-dw.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-leyou.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		51578BA4F0831B856C48F57D /* Pods-Runner.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-aomen.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-aomen.xcconfig"; sourceTree = "<group>"; };
+		52DBD6BBF88996F7173DF0F6 /* Pods-longmen.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		54D4ADDF659B68D11EBC6854 /* Pods-fuyuan.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
 		54F32921A8CA23D1BA6E8DD7 /* Pods-jsgj.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.debug-dw.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		56842314710D0591382A1DFF /* Pods-dw.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-leyou.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-leyou.xcconfig"; sourceTree = "<group>"; };
+		579D7F78C3D54AE2B1D6234B /* Pods-jsgj.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.debug-longmen.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.debug-longmen.xcconfig"; sourceTree = "<group>"; };
+		57DA89E523952106C9D5E689 /* Pods-fuyuan.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-longmen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-longmen.xcconfig"; sourceTree = "<group>"; };
 		5921A63FA27F3318FFE0E3E1 /* Pods-fuyuan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release.xcconfig"; sourceTree = "<group>"; };
 		5A60A0D9F953F3FD6BF3895A /* Pods-jsgj.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.release-dw.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.release-dw.xcconfig"; sourceTree = "<group>"; };
+		5AD4F7964D9CC982845ABE21 /* Pods-dw.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-longmen.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-longmen.xcconfig"; sourceTree = "<group>"; };
 		5B69E9EB1A324FAFA56B7FED /* Pods-Runner.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-leyou.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		5B87D95C8CB97E9F69350B14 /* Pods-fuyuan.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-aomen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		5B919E5D9796C04208C78219 /* Pods-shouxin.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		5D5EA5DEAE4DEC9760F1E4A9 /* Pods-shouxin.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		5E2D481F4F996FC5EE6825D1 /* Pods_gdvip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gdvip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FC5241FF578268F9024A81C /* Pods-dw.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-boya.xcconfig"; sourceTree = "<group>"; };
+		5FC547BC36494E18A2817C98 /* Pods-longmen.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug-longmen.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug-longmen.xcconfig"; sourceTree = "<group>"; };
 		619726DE805D5E8D485D0D6D /* Pods-shouxin.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-dw.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		62540C02450FC26029027E74 /* Pods-jsgj.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile.xcconfig"; sourceTree = "<group>"; };
 		6282508462377E71D49ABA7B /* Pods-fuyuan.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
@@ -292,13 +327,21 @@
 		669C009F5E51EAC7B9BB8803 /* Pods-dw.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-aomen.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-aomen.xcconfig"; sourceTree = "<group>"; };
 		684455B0DC426471DA8093F5 /* Pods-dw.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-dw.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-dw.xcconfig"; sourceTree = "<group>"; };
 		68B4176BBF929A5DA3CF8521 /* Pods-dw.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
+		68C4A13E6A79DA43EEA4EC7E /* Pods-longmen.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release-shouxin.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release-shouxin.xcconfig"; sourceTree = "<group>"; };
 		6A4BFBBDC3ED51EF75A8D773 /* Pods-aomen.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-boya.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-boya.xcconfig"; sourceTree = "<group>"; };
 		6B6E1830439F5FAE536E0BBB /* Pods-aomen.release-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-jsgj.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-jsgj.xcconfig"; sourceTree = "<group>"; };
+		6C0E6B80D2E021D439B9D09E /* Pods-dw.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-longmen.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-longmen.xcconfig"; sourceTree = "<group>"; };
 		6C4ADFCA4EAACEBAB3ECB9C0 /* Pods-boya.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-gdvip.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-gdvip.xcconfig"; sourceTree = "<group>"; };
+		6D7A3AE2728876D4BD03942B /* Pods-longmen.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release-longmen.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release-longmen.xcconfig"; sourceTree = "<group>"; };
 		7084B474784E30A11D4DA223 /* Pods-boya.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-dw.xcconfig"; sourceTree = "<group>"; };
+		71A8F84E22A9E8885E7A14CE /* Pods-boya.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-longmen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-longmen.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		74E9A5596FB0507D21ECD156 /* Pods-aomen.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-longmen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-longmen.xcconfig"; sourceTree = "<group>"; };
+		7563D6A40758A622F781186B /* Pods-jsgj.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.release-longmen.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.release-longmen.xcconfig"; sourceTree = "<group>"; };
+		759A0085D1791A13F57B4AFE /* Pods-boya.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-longmen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-longmen.xcconfig"; sourceTree = "<group>"; };
 		765FDEF3C6FE6CFC38E89799 /* Pods-jsgj.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.debug-boya.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.debug-boya.xcconfig"; sourceTree = "<group>"; };
+		775EE586C55FB7B970A81AC1 /* Pods-longmen.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug-boya.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug-boya.xcconfig"; sourceTree = "<group>"; };
 		78B0AE074BEA62ADF3184D7D /* Pods-Runner.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		794C3AEBFF3B5747B118EF64 /* Pods-aomen.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-dw.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-dw.xcconfig"; sourceTree = "<group>"; };
 		7A0A00342FECABF4551F59C7 /* Pods-boya.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
@@ -311,7 +354,10 @@
 		7F3A7314D60E8E1301F1686D /* Pods-Runner.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-boya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-boya.xcconfig"; sourceTree = "<group>"; };
 		7FDFF640D3A8C70690F593FB /* Pods-Runner.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
 		80B9C10C3BF80B75CA000FE0 /* Pods-boya.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-dw.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-dw.xcconfig"; sourceTree = "<group>"; };
+		81FC5DD7DE5EA5E8EF3D08B4 /* Pods-longmen.release-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release-jsgj.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release-jsgj.xcconfig"; sourceTree = "<group>"; };
+		8205028CC7D753850EED03A3 /* Pods-dw.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-longmen.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-longmen.xcconfig"; sourceTree = "<group>"; };
 		82A8B80069DBD784D9245724 /* Pods-jsgj.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
+		82FAA34B8B0626DD91F635E9 /* Pods-longmen.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile-leyou.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		830192CF8EE5953CAE7C713F /* Pods-boya.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
 		84B0F670BDFC2617B2E5F2C2 /* Pods-boya.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		84E317D56B3BF03F40D9C748 /* Pods-leyou.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-dw.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-dw.xcconfig"; sourceTree = "<group>"; };
@@ -325,9 +371,13 @@
 		896276B590428B086034ECA0 /* Pods-jsgj.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.release-leyou.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.release-leyou.xcconfig"; sourceTree = "<group>"; };
 		8BB9F181F434EAF330C12066 /* Pods-leyou.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		8BF67914A41656462E273B5F /* Pods-shouxin.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
+		8D1E1CBA10439CC1253A41CD /* Pods-Runner.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-longmen.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-longmen.xcconfig"; sourceTree = "<group>"; };
+		8FE3F7275CAE9329F5084E52 /* Pods-longmen.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release-leyou.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release-leyou.xcconfig"; sourceTree = "<group>"; };
 		91118ED21F895B174F542FA4 /* Pods-boya.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release.xcconfig"; sourceTree = "<group>"; };
+		912DD2990242B53D59247B3F /* Pods-longmen.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug-aomen.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug-aomen.xcconfig"; sourceTree = "<group>"; };
 		938E84032D802108777D510E /* Pods-aomen.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-aomen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-aomen.xcconfig"; sourceTree = "<group>"; };
 		93D10B52239BBFBBD9F9577C /* Pods-dw.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-boya.xcconfig"; sourceTree = "<group>"; };
+		93D9D04C439A8AD81FF0762D /* Pods-longmen.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile-longmen.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile-longmen.xcconfig"; sourceTree = "<group>"; };
 		93EE2B78BF03C603FEA68ACF /* Pods-Runner.debug-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-dw.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-dw.xcconfig"; sourceTree = "<group>"; };
 		954714FA9B13014BCA947298 /* Pods-aomen.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		954D5D81E219D696ACC3624F /* Pods-fuyuan.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-shouxin.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-shouxin.xcconfig"; sourceTree = "<group>"; };
@@ -340,6 +390,7 @@
 		985BE15760BEB06D1E5D4B28 /* Pods-gdvip.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
 		98AEF292E456B120A9343EAB /* Pods-fuyuan.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-aomen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-aomen.xcconfig"; sourceTree = "<group>"; };
 		98B867FE9ED1B60B29470E67 /* Pods-Runner.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-leyou.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-leyou.xcconfig"; sourceTree = "<group>"; };
+		9984EBAF8E1150945B35C844 /* Pods-boya.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-longmen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-longmen.xcconfig"; sourceTree = "<group>"; };
 		9A69FB8FE59EB6027B889903 /* Pods-shouxin.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		9A7D834F4D9EEC6E003EF5F3 /* Pods-jsgj.profile-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile-jsgj.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile-jsgj.xcconfig"; sourceTree = "<group>"; };
 		9B16CE720D39A5CDE75371D3 /* Pods-Runner.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
@@ -347,13 +398,18 @@
 		9B96EC3217E3C1CD092BB1A2 /* Pods-jsgj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.debug.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.debug.xcconfig"; sourceTree = "<group>"; };
 		9D46A56033AA16AF5ADDF291 /* Pods-gdvip.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-leyou.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-leyou.xcconfig"; sourceTree = "<group>"; };
 		9DEA89FDF0876A68F0CB0A36 /* Pods-gdvip.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
+		9DF0122BE252F1F0EAD5347E /* Pods-longmen.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		9FB2E97ED1047E7537884669 /* Pods-gdvip.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		A027CC0AF0F58F7BC94B277D /* Pods-boya.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
 		A1547CF18E52846540A8B6CC /* Pods-Runner.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-boya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-boya.xcconfig"; sourceTree = "<group>"; };
+		A485058C7DB39FE4E83CDD28 /* Pods-gdvip.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-longmen.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-longmen.xcconfig"; sourceTree = "<group>"; };
 		A4DC2C03479A0012B37BAA5E /* Pods-Runner.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-gdvip.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-gdvip.xcconfig"; sourceTree = "<group>"; };
+		A58A763F7CEFE640E395C771 /* Pods-leyou.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-longmen.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-longmen.xcconfig"; sourceTree = "<group>"; };
+		A61C605D7060C04E68023274 /* Pods-leyou.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-longmen.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-longmen.xcconfig"; sourceTree = "<group>"; };
 		A62843C62E77056E541DC4D9 /* Pods_shouxin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shouxin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6965DA5857CAA88717BD04A /* Pods-jsgj.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.release-gdvip.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.release-gdvip.xcconfig"; sourceTree = "<group>"; };
 		A70D6A1F798680298E4B0EF0 /* Pods-Runner.release-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-jsgj.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-jsgj.xcconfig"; sourceTree = "<group>"; };
+		A893A2F298A50DBC70F28BE8 /* Pods_longmen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_longmen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8FA418BA253FA0102C0AAFB /* Pods-dw.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-boya.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-boya.xcconfig"; sourceTree = "<group>"; };
 		A93F160D2C19D49000DF6EFE /* aomen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aomen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93F160E2C19D49100DF6EFE /* aomen-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "aomen-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app/ios/aomen-Info.plist"; sourceTree = "<absolute>"; };
@@ -404,14 +460,22 @@
 		A9CD3FE32BCB6FF600F9D4E8 /* dw-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "dw-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app/ios/dw-Info.plist"; sourceTree = "<absolute>"; };
 		A9CD40032BCB773700F9D4E8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		A9CD40052BCB77F200F9D4E8 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		A9D692472C53A833008CA4A1 /* longmen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = longmen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9D692482C53A834008CA4A1 /* longmen-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "longmen-Info.plist"; path = "/Users/Soushin/StudioProjects/dw-app/ios/longmen-Info.plist"; sourceTree = "<absolute>"; };
+		A9D6924A2C53A8F9008CA4A1 /* longmen.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = longmen.xcassets; sourceTree = "<group>"; };
+		A9D6924C2C53A916008CA4A1 /* Launch Screen-longmen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen-longmen.storyboard"; sourceTree = "<group>"; };
+		A9D6924E2C53A93B008CA4A1 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		AA92982D1091446064C66EA2 /* Pods-shouxin.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-aomen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-aomen.xcconfig"; sourceTree = "<group>"; };
 		AC6F8117D4C84552A9E34DEE /* Pods-gdvip.release-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-jsgj.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-jsgj.xcconfig"; sourceTree = "<group>"; };
 		ACA82285C651D797B0BEC142 /* Pods-gdvip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release.xcconfig"; sourceTree = "<group>"; };
 		ADA94E2877D9F4DD6D992696 /* Pods-jsgj.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile-aomen.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile-aomen.xcconfig"; sourceTree = "<group>"; };
+		AE1B5A0D28BE1DD861C7978C /* Pods-longmen.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile-aomen.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		AF64EB1527D29842CAC53100 /* Pods-dw.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release.xcconfig"; sourceTree = "<group>"; };
 		AFAC2BCDEBDF4D2881C3CA80 /* Pods-shouxin.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-boya.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-boya.xcconfig"; sourceTree = "<group>"; };
 		B061A2A8C1B9983759E2EE81 /* Pods-leyou.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile.xcconfig"; sourceTree = "<group>"; };
 		B2D1762CCE866A1752E772DD /* Pods-fuyuan.debug-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug-aomen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug-aomen.xcconfig"; sourceTree = "<group>"; };
+		B33F8662BF1107D94EE99E46 /* Pods-longmen.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
+		B382740C6A4E18CF9D3D7FA6 /* Pods-longmen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug.xcconfig"; sourceTree = "<group>"; };
 		B3E833FC352C78BA5ED3160F /* Pods-aomen.debug-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-fuyuan.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		B417EE60582F9E8E20FDB2DA /* Pods-jsgj.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile-leyou.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		B4711FCE1722F34B51BFCB27 /* Pods-Runner.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-dw.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-dw.xcconfig"; sourceTree = "<group>"; };
@@ -422,21 +486,28 @@
 		B8A2DD7694931E6E2949796C /* Pods-aomen.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-boya.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-boya.xcconfig"; sourceTree = "<group>"; };
 		B8CFB3B9AA43AA452E118C23 /* Pods-aomen.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-aomen.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		B950F04B891B2D71AD81C28A /* Pods-gdvip.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-boya.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-boya.xcconfig"; sourceTree = "<group>"; };
+		B9D46AFAA23A192B3D0314E5 /* Pods-fuyuan.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-longmen.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-longmen.xcconfig"; sourceTree = "<group>"; };
 		BA225558B10F43AAC3EDFBEC /* Pods-shouxin.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug-boya.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug-boya.xcconfig"; sourceTree = "<group>"; };
 		BB245D48BB99D9E85E9F14C9 /* Pods-gdvip.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
 		BB754B980B7BDE95B78F8042 /* Pods-aomen.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-leyou.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-leyou.xcconfig"; sourceTree = "<group>"; };
+		BC166E3686752975AC52A5DD /* Pods-shouxin.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-longmen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-longmen.xcconfig"; sourceTree = "<group>"; };
 		BC688F9AD4E7FAD7BD2FDCA9 /* Pods-gdvip.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-leyou.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-leyou.xcconfig"; sourceTree = "<group>"; };
+		BD598C5FB3A0C2439E15F2DF /* Pods-Runner.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-longmen.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-longmen.xcconfig"; sourceTree = "<group>"; };
+		C0726D09BC17B21BDE5026EC /* Pods-longmen.profile-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile-boya.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile-boya.xcconfig"; sourceTree = "<group>"; };
 		C14F07B7A6D1AAA7CDEA2266 /* Pods-Runner.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dw.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dw.xcconfig"; sourceTree = "<group>"; };
 		C2B9E0CC039620BCAF226808 /* Pods-jsgj.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		C3645BCE73F543F75A952045 /* Pods-aomen.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
 		C4083E095B400EF5CBD5D90A /* Pods-boya.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-boya.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-boya.xcconfig"; sourceTree = "<group>"; };
 		C425988FDB0C223EA7B6A285 /* Pods-dw.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug.xcconfig"; sourceTree = "<group>"; };
+		C6D13A6DCC2642AB9C06A335 /* Pods-longmen.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug-leyou.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug-leyou.xcconfig"; sourceTree = "<group>"; };
 		C7DA72BAB5100FBC60413E72 /* Pods-gdvip.profile-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-fuyuan.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		C890890194A5C7D67DDB7CEE /* Pods-aomen.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-gdvip.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-gdvip.xcconfig"; sourceTree = "<group>"; };
 		C94BAF27A51E9C88CCEFD142 /* Pods-leyou.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-leyou.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-leyou.xcconfig"; sourceTree = "<group>"; };
 		CA38B8567016AED9208DF396 /* Pods-jsgj.release-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.release-boya.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.release-boya.xcconfig"; sourceTree = "<group>"; };
+		CA60E72620288B840917BB31 /* Pods-longmen.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release-gdvip.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release-gdvip.xcconfig"; sourceTree = "<group>"; };
 		CA714ECD63AF0D4C6F799320 /* Pods-leyou.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
 		CA749533B1CE1AAF8798F238 /* Pods-leyou.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-aomen.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-aomen.xcconfig"; sourceTree = "<group>"; };
+		CA803F779CA278E54254C096 /* Pods-shouxin.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-longmen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-longmen.xcconfig"; sourceTree = "<group>"; };
 		CA9478D6A01DFB3F573C8352 /* Pods-fuyuan.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
 		CAE0588BDB3F67B374034C75 /* Pods-jsgj.release-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.release-jsgj.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.release-jsgj.xcconfig"; sourceTree = "<group>"; };
 		CB4A518718434B897B2A6E1C /* Pods-shouxin.profile-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-gdvip.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-gdvip.xcconfig"; sourceTree = "<group>"; };
@@ -448,11 +519,13 @@
 		D20A31787228E46BDB39CC56 /* Pods-boya.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile.xcconfig"; sourceTree = "<group>"; };
 		D3549F1E2F282B2D83B63EEB /* Pods-boya.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.release-shouxin.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.release-shouxin.xcconfig"; sourceTree = "<group>"; };
 		D40E671DDD3291D4D35D8E89 /* Pods-Runner.debug-boya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-boya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-boya.xcconfig"; sourceTree = "<group>"; };
+		D5308BB79D72B7424B8D53E8 /* Pods-longmen.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile.xcconfig"; sourceTree = "<group>"; };
 		D8921FCFCCCD8B44764F11B6 /* Pods-jsgj.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.profile-dw.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.profile-dw.xcconfig"; sourceTree = "<group>"; };
 		D89FCAFDB606EDA55E691411 /* Pods-dw.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.release-gdvip.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.release-gdvip.xcconfig"; sourceTree = "<group>"; };
 		D8E8351F11842714A68A5C1D /* Pods-boya.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-aomen.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-aomen.xcconfig"; sourceTree = "<group>"; };
 		D902F6F88C9AA74361C8E43C /* Pods-shouxin.profile-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile-jsgj.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile-jsgj.xcconfig"; sourceTree = "<group>"; };
 		DA6E0BD615D32EDB17E560BD /* Pods-shouxin.release-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-leyou.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-leyou.xcconfig"; sourceTree = "<group>"; };
+		DAD06784C0FC8BD2109C2DA7 /* Pods-gdvip.release-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-longmen.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-longmen.xcconfig"; sourceTree = "<group>"; };
 		DAEDCF38F1064529430D4717 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFF140423283DEFB93F1AA2 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		DC431332F3C96EA6E431B3D5 /* Pods-gdvip.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-dw.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-dw.xcconfig"; sourceTree = "<group>"; };
@@ -463,9 +536,12 @@
 		E1445DE59380D61804F8D126 /* Pods-gdvip.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-dw.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-dw.xcconfig"; sourceTree = "<group>"; };
 		E16A0E850D0D5147D67244FF /* Pods-aomen.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.release-shouxin.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.release-shouxin.xcconfig"; sourceTree = "<group>"; };
 		E2667F36AA7B008704679E06 /* Pods-shouxin.release-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.release-aomen.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.release-aomen.xcconfig"; sourceTree = "<group>"; };
+		E281350D0DA449138C1AD5A9 /* Pods-longmen.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
+		E28AF38C3E48B3ECDEAEC2BF /* Pods-longmen.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release-dw.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release-dw.xcconfig"; sourceTree = "<group>"; };
 		E358A999E2925BFD3A5FC848 /* Pods-leyou.profile-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-jsgj.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-jsgj.xcconfig"; sourceTree = "<group>"; };
 		E3DA99FD4269C51441DEB2BE /* Pods-gdvip.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile.xcconfig"; sourceTree = "<group>"; };
 		E3F15A7DC1FDEC567D903847 /* Pods-Runner.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shouxin.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shouxin.xcconfig"; sourceTree = "<group>"; };
+		E44EBA72E60065A25D862AE1 /* Pods-longmen.profile-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.profile-jsgj.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.profile-jsgj.xcconfig"; sourceTree = "<group>"; };
 		E50C0095929A291B4F6AC144 /* Pods-shouxin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.debug.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.debug.xcconfig"; sourceTree = "<group>"; };
 		E5911C5F0519ABE645072969 /* Pods-dw.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-dw.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-dw.xcconfig"; sourceTree = "<group>"; };
 		E6A3DA51F4A8868CED8F3C6C /* Pods-boya.profile-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-shouxin.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-shouxin.xcconfig"; sourceTree = "<group>"; };
@@ -475,6 +551,7 @@
 		EBC5E1DCB6DEBAD97ED2B61C /* Pods-jsgj.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jsgj.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-jsgj/Pods-jsgj.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		EC8061719C6568A1AE690DFA /* Pods-leyou.profile-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.profile-dw.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.profile-dw.xcconfig"; sourceTree = "<group>"; };
 		EDA397F356C7699D3FA90434 /* Pods-aomen.profile-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile-jsgj.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile-jsgj.xcconfig"; sourceTree = "<group>"; };
+		EF074D933DFA309377FC2FAE /* Pods-longmen.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
 		F0963879AC8C1297D4078F73 /* Pods-leyou.release-dw.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-dw.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-dw.xcconfig"; sourceTree = "<group>"; };
 		F0B732EF926678F56530A814 /* Pods-fuyuan.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		F0E3959202E7F3079338BF20 /* Pods-fuyuan.release-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.release-gdvip.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.release-gdvip.xcconfig"; sourceTree = "<group>"; };
@@ -485,6 +562,7 @@
 		F1E4AC143DF0007AA952B50A /* Pods-leyou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release.xcconfig"; sourceTree = "<group>"; };
 		F2066E29D5775133794FDAD9 /* Pods-leyou.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-leyou.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-leyou/Pods-leyou.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		F299EA920DB2F59656278815 /* Pods-aomen.debug-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-leyou.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-leyou.xcconfig"; sourceTree = "<group>"; };
+		F2E8719A994B315E12B32148 /* Pods-gdvip.profile-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-longmen.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-longmen.xcconfig"; sourceTree = "<group>"; };
 		F3297AED37F63008F35C6877 /* Pods-dw.debug-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.debug-jsgj.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.debug-jsgj.xcconfig"; sourceTree = "<group>"; };
 		F785882887699A3E3AEE39D0 /* Pods-Runner.profile-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-jsgj.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-jsgj.xcconfig"; sourceTree = "<group>"; };
 		F80C7352562726048BC3A556 /* Pods-Runner.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
@@ -500,10 +578,12 @@
 		FC4DD094496E74052C40739C /* Pods-boya.profile-jsgj.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-jsgj.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-jsgj.xcconfig"; sourceTree = "<group>"; };
 		FC6DB41F9CD1F948A4CDB832 /* Pods-gdvip.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.profile-leyou.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		FCC0309E45DA7DD537BCE29C /* Pods-aomen.debug-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.debug-shouxin.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.debug-shouxin.xcconfig"; sourceTree = "<group>"; };
+		FCFD3AEE74E9B5687A9E4AF9 /* Pods-Runner.debug-longmen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-longmen.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-longmen.xcconfig"; sourceTree = "<group>"; };
 		FE25DCA7C4826567916AC7C2 /* Pods-aomen.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aomen.profile.xcconfig"; path = "Target Support Files/Pods-aomen/Pods-aomen.profile.xcconfig"; sourceTree = "<group>"; };
 		FE3BE1FC0CD8EDEF4BF92041 /* Pods-fuyuan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fuyuan.debug.xcconfig"; path = "Target Support Files/Pods-fuyuan/Pods-fuyuan.debug.xcconfig"; sourceTree = "<group>"; };
 		FE60A73C410173D16EE7F3D7 /* Pods-boya.profile-leyou.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-boya.profile-leyou.xcconfig"; path = "Target Support Files/Pods-boya/Pods-boya.profile-leyou.xcconfig"; sourceTree = "<group>"; };
 		FEAD0D28C65F8050FC94685E /* Pods-shouxin.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shouxin.profile.xcconfig"; path = "Target Support Files/Pods-shouxin/Pods-shouxin.profile.xcconfig"; sourceTree = "<group>"; };
+		FECEB91362D899B5BF1B230D /* Pods-longmen.release-fuyuan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-longmen.release-fuyuan.xcconfig"; path = "Target Support Files/Pods-longmen/Pods-longmen.release-fuyuan.xcconfig"; sourceTree = "<group>"; };
 		FF34121466CA6C6FB7081B56 /* Pods-Runner.debug-gdvip.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-gdvip.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-gdvip.xcconfig"; sourceTree = "<group>"; };
 		FF459BAE287BE996528299AF /* Pods-gdvip.release-shouxin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gdvip.release-shouxin.xcconfig"; path = "Target Support Files/Pods-gdvip/Pods-gdvip.release-shouxin.xcconfig"; sourceTree = "<group>"; };
 		FFAEF784363774203F81B140 /* Pods-dw.profile-aomen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dw.profile-aomen.xcconfig"; path = "Target Support Files/Pods-dw/Pods-dw.profile-aomen.xcconfig"; sourceTree = "<group>"; };
@@ -556,7 +636,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00282D88EE144976EB84492F /* Pods_leyou.framework in Frameworks */,
+				00282D88EE144976EB84492F /* BuildFile in Frameworks */,
 				CBA51AE004DD26E33AE3EBBA /* Pods_leyou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,6 +665,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5650ECF149993BE95860B7B2 /* Pods_dw.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9D6921F2C53A833008CA4A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBD4BEC4CE308F6EE541CEEE /* Pods_longmen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +708,7 @@
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
+				A9D692492C53A8DB008CA4A1 /* longmen */,
 				A95EAA872C47A3BB004F7C2B /* jsgj */,
 				A99C8DB32C36C1BC00F94BF9 /* leyou */,
 				A9C04F252C22CFB4001B4F55 /* gdvip */,
@@ -643,6 +732,7 @@
 				A9C04F4C2C22CFBF001B4F55 /* gdvip-Info.plist */,
 				A99C8DDD2C36C21500F94BF9 /* leyou-Info.plist */,
 				A95EAA862C47A31B004F7C2B /* jsgj-Info.plist */,
+				A9D692482C53A834008CA4A1 /* longmen-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -659,6 +749,7 @@
 				A9C04F4B2C22CFBD001B4F55 /* gdvip.app */,
 				A99C8DDC2C36C21200F94BF9 /* leyou.app */,
 				A95EAA852C47A31B004F7C2B /* jsgj.app */,
+				A9D692472C53A833008CA4A1 /* longmen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -765,6 +856,16 @@
 				A9CD40032BCB773700F9D4E8 /* InfoPlist.xcstrings */,
 			);
 			path = dw;
+			sourceTree = "<group>";
+		};
+		A9D692492C53A8DB008CA4A1 /* longmen */ = {
+			isa = PBXGroup;
+			children = (
+				A9D6924A2C53A8F9008CA4A1 /* longmen.xcassets */,
+				A9D6924C2C53A916008CA4A1 /* Launch Screen-longmen.storyboard */,
+				A9D6924E2C53A93B008CA4A1 /* InfoPlist.xcstrings */,
+			);
+			path = longmen;
 			sourceTree = "<group>";
 		};
 		BCC0C91EF793704341C2F529 /* Pods */ = {
@@ -1013,6 +1114,63 @@
 				8BF67914A41656462E273B5F /* Pods-shouxin.debug-jsgj.xcconfig */,
 				00836AB4406F0B64939A7CE5 /* Pods-shouxin.release-jsgj.xcconfig */,
 				D902F6F88C9AA74361C8E43C /* Pods-shouxin.profile-jsgj.xcconfig */,
+				FCFD3AEE74E9B5687A9E4AF9 /* Pods-Runner.debug-longmen.xcconfig */,
+				BD598C5FB3A0C2439E15F2DF /* Pods-Runner.release-longmen.xcconfig */,
+				8D1E1CBA10439CC1253A41CD /* Pods-Runner.profile-longmen.xcconfig */,
+				2D4D44D93657854E0B39A830 /* Pods-aomen.debug-longmen.xcconfig */,
+				1D55A1258550A22F16759F89 /* Pods-aomen.release-longmen.xcconfig */,
+				74E9A5596FB0507D21ECD156 /* Pods-aomen.profile-longmen.xcconfig */,
+				759A0085D1791A13F57B4AFE /* Pods-boya.debug-longmen.xcconfig */,
+				9984EBAF8E1150945B35C844 /* Pods-boya.release-longmen.xcconfig */,
+				71A8F84E22A9E8885E7A14CE /* Pods-boya.profile-longmen.xcconfig */,
+				8205028CC7D753850EED03A3 /* Pods-dw.debug-longmen.xcconfig */,
+				5AD4F7964D9CC982845ABE21 /* Pods-dw.release-longmen.xcconfig */,
+				6C0E6B80D2E021D439B9D09E /* Pods-dw.profile-longmen.xcconfig */,
+				57DA89E523952106C9D5E689 /* Pods-fuyuan.debug-longmen.xcconfig */,
+				4DF3FBF3ECE1407E316728FF /* Pods-fuyuan.release-longmen.xcconfig */,
+				B9D46AFAA23A192B3D0314E5 /* Pods-fuyuan.profile-longmen.xcconfig */,
+				A485058C7DB39FE4E83CDD28 /* Pods-gdvip.debug-longmen.xcconfig */,
+				DAD06784C0FC8BD2109C2DA7 /* Pods-gdvip.release-longmen.xcconfig */,
+				F2E8719A994B315E12B32148 /* Pods-gdvip.profile-longmen.xcconfig */,
+				579D7F78C3D54AE2B1D6234B /* Pods-jsgj.debug-longmen.xcconfig */,
+				7563D6A40758A622F781186B /* Pods-jsgj.release-longmen.xcconfig */,
+				378FE53BC397D374CC529337 /* Pods-jsgj.profile-longmen.xcconfig */,
+				A61C605D7060C04E68023274 /* Pods-leyou.debug-longmen.xcconfig */,
+				A58A763F7CEFE640E395C771 /* Pods-leyou.release-longmen.xcconfig */,
+				0D445D385F0A8798EDACDC32 /* Pods-leyou.profile-longmen.xcconfig */,
+				B382740C6A4E18CF9D3D7FA6 /* Pods-longmen.debug.xcconfig */,
+				363C5BC93B4EB55C6985367F /* Pods-longmen.debug-dw.xcconfig */,
+				775EE586C55FB7B970A81AC1 /* Pods-longmen.debug-boya.xcconfig */,
+				9DF0122BE252F1F0EAD5347E /* Pods-longmen.debug-fuyuan.xcconfig */,
+				E281350D0DA449138C1AD5A9 /* Pods-longmen.debug-gdvip.xcconfig */,
+				C6D13A6DCC2642AB9C06A335 /* Pods-longmen.debug-leyou.xcconfig */,
+				B33F8662BF1107D94EE99E46 /* Pods-longmen.debug-jsgj.xcconfig */,
+				5FC547BC36494E18A2817C98 /* Pods-longmen.debug-longmen.xcconfig */,
+				EF074D933DFA309377FC2FAE /* Pods-longmen.debug-shouxin.xcconfig */,
+				912DD2990242B53D59247B3F /* Pods-longmen.debug-aomen.xcconfig */,
+				1323D05A4A189298F8E2EA49 /* Pods-longmen.release.xcconfig */,
+				E28AF38C3E48B3ECDEAEC2BF /* Pods-longmen.release-dw.xcconfig */,
+				4745E3A33BBCD54EBF610593 /* Pods-longmen.release-boya.xcconfig */,
+				FECEB91362D899B5BF1B230D /* Pods-longmen.release-fuyuan.xcconfig */,
+				CA60E72620288B840917BB31 /* Pods-longmen.release-gdvip.xcconfig */,
+				8FE3F7275CAE9329F5084E52 /* Pods-longmen.release-leyou.xcconfig */,
+				81FC5DD7DE5EA5E8EF3D08B4 /* Pods-longmen.release-jsgj.xcconfig */,
+				6D7A3AE2728876D4BD03942B /* Pods-longmen.release-longmen.xcconfig */,
+				68C4A13E6A79DA43EEA4EC7E /* Pods-longmen.release-shouxin.xcconfig */,
+				3BAE92555CEA4804670496F7 /* Pods-longmen.release-aomen.xcconfig */,
+				D5308BB79D72B7424B8D53E8 /* Pods-longmen.profile.xcconfig */,
+				3EA78F74889752BD77BC4F8C /* Pods-longmen.profile-dw.xcconfig */,
+				C0726D09BC17B21BDE5026EC /* Pods-longmen.profile-boya.xcconfig */,
+				52DBD6BBF88996F7173DF0F6 /* Pods-longmen.profile-fuyuan.xcconfig */,
+				1C9EE81FBEA130785E5C9E8D /* Pods-longmen.profile-gdvip.xcconfig */,
+				82FAA34B8B0626DD91F635E9 /* Pods-longmen.profile-leyou.xcconfig */,
+				E44EBA72E60065A25D862AE1 /* Pods-longmen.profile-jsgj.xcconfig */,
+				93D9D04C439A8AD81FF0762D /* Pods-longmen.profile-longmen.xcconfig */,
+				2EE7DE2EAD23DBA116B9AA35 /* Pods-longmen.profile-shouxin.xcconfig */,
+				AE1B5A0D28BE1DD861C7978C /* Pods-longmen.profile-aomen.xcconfig */,
+				0A410981A1AE84EDAC2EE223 /* Pods-shouxin.debug-longmen.xcconfig */,
+				CA803F779CA278E54254C096 /* Pods-shouxin.release-longmen.xcconfig */,
+				BC166E3686752975AC52A5DD /* Pods-shouxin.profile-longmen.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1027,8 +1185,8 @@
 				32A3194D8DDBCB8899DBAA0A /* Pods_boya.framework */,
 				970CCCF0C06B1230CC993AFA /* Pods_fuyuan.framework */,
 				5E2D481F4F996FC5EE6825D1 /* Pods_gdvip.framework */,
-				1C8A1A5D00B57F32E9BD263B /* Pods_jsgj.framework */,
 				25F25E649106D68C823C64D0 /* Pods_leyou.framework */,
+				A893A2F298A50DBC70F28BE8 /* Pods_longmen.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1261,6 +1419,29 @@
 			productReference = A9CD3FE22BCB6FF500F9D4E8 /* dw.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A9D692192C53A833008CA4A1 /* longmen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9D6922B2C53A833008CA4A1 /* Build configuration list for PBXNativeTarget "longmen" */;
+			buildPhases = (
+				A9D6921A2C53A833008CA4A1 /* [CP] Check Pods Manifest.lock */,
+				A9D6921B2C53A833008CA4A1 /* Run Script */,
+				A9D6921C2C53A833008CA4A1 /* Sources */,
+				A9D6921F2C53A833008CA4A1 /* Frameworks */,
+				A9D692212C53A833008CA4A1 /* Resources */,
+				A9D692272C53A833008CA4A1 /* Embed Frameworks */,
+				A9D692282C53A833008CA4A1 /* Thin Binary */,
+				A9D692292C53A833008CA4A1 /* [CP] Embed Pods Frameworks */,
+				A9D6922A2C53A833008CA4A1 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = longmen;
+			productName = Runner;
+			productReference = A9D692472C53A833008CA4A1 /* longmen.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1304,6 +1485,7 @@
 				A9C04F262C22CFBD001B4F55 /* gdvip */,
 				A99C8DB42C36C21200F94BF9 /* leyou */,
 				A95EAA5A2C47A31B004F7C2B /* jsgj */,
+				A9D692192C53A833008CA4A1 /* longmen */,
 			);
 		};
 /* End PBXProject section */
@@ -1423,6 +1605,18 @@
 				A9CD3FD92BCB6FF500F9D4E8 /* Launch Screen-dw.storyboard in Resources */,
 				A9CD3FDA2BCB6FF500F9D4E8 /* dw.xcassets in Resources */,
 				A9CD40042BCB773700F9D4E8 /* InfoPlist.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9D692212C53A833008CA4A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9D692252C53A833008CA4A1 /* AppFrameworkInfo.plist in Resources */,
+				A9D6924B2C53A8F9008CA4A1 /* longmen.xcassets in Resources */,
+				A9D6924D2C53A916008CA4A1 /* Launch Screen-longmen.storyboard in Resources */,
+				A9D6924F2C53A93B008CA4A1 /* InfoPlist.xcstrings in Resources */,
+				A9D692262C53A833008CA4A1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2156,6 +2350,93 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-dw/Pods-dw-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A9D6921A2C53A833008CA4A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-longmen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9D6921B2C53A833008CA4A1 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
+		};
+		A9D692282C53A833008CA4A1 /* Thin Binary */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}",
+			);
+			name = "Thin Binary";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
+		};
+		A9D692292C53A833008CA4A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-longmen/Pods-longmen-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-longmen/Pods-longmen-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-longmen/Pods-longmen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9D6922A2C53A833008CA4A1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-longmen/Pods-longmen-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-longmen/Pods-longmen-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-longmen/Pods-longmen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D75BDF9FD2452450D0DF662C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2301,6 +2582,15 @@
 			files = (
 				A9CD3FCF2BCB6FF500F9D4E8 /* AppDelegate.swift in Sources */,
 				A9CD3FD02BCB6FF500F9D4E8 /* GeneratedPluginRegistrant.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9D6921C2C53A833008CA4A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9D6921D2C53A833008CA4A1 /* AppDelegate.swift in Sources */,
+				A9D6921E2C53A833008CA4A1 /* GeneratedPluginRegistrant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10303,6 +10593,1651 @@
 			};
 			name = "Profile-dw";
 		};
+		A9D6922C2C53A833008CA4A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		A9D6922D2C53A833008CA4A1 /* Debug-dw */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-dw";
+		};
+		A9D6922E2C53A833008CA4A1 /* Debug-boya */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-boya";
+		};
+		A9D6922F2C53A833008CA4A1 /* Debug-fuyuan */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-fuyuan";
+		};
+		A9D692302C53A833008CA4A1 /* Debug-gdvip */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-gdvip";
+		};
+		A9D692312C53A833008CA4A1 /* Debug-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-leyou";
+		};
+		A9D692322C53A833008CA4A1 /* Debug-jsgj */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-jsgj";
+		};
+		A9D692332C53A833008CA4A1 /* Debug-shouxin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-shouxin";
+		};
+		A9D692342C53A833008CA4A1 /* Debug-aomen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-aomen";
+		};
+		A9D692352C53A833008CA4A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		A9D692362C53A833008CA4A1 /* Release-dw */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-dw";
+		};
+		A9D692372C53A833008CA4A1 /* Release-boya */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-boya";
+		};
+		A9D692382C53A833008CA4A1 /* Release-fuyuan */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-fuyuan";
+		};
+		A9D692392C53A833008CA4A1 /* Release-gdvip */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-gdvip";
+		};
+		A9D6923A2C53A833008CA4A1 /* Release-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-leyou";
+		};
+		A9D6923B2C53A833008CA4A1 /* Release-jsgj */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-jsgj";
+		};
+		A9D6923C2C53A833008CA4A1 /* Release-shouxin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-shouxin";
+		};
+		A9D6923D2C53A833008CA4A1 /* Release-aomen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-aomen";
+		};
+		A9D6923E2C53A833008CA4A1 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Profile;
+		};
+		A9D6923F2C53A833008CA4A1 /* Profile-dw */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-dw";
+		};
+		A9D692402C53A833008CA4A1 /* Profile-boya */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-boya";
+		};
+		A9D692412C53A833008CA4A1 /* Profile-fuyuan */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-fuyuan";
+		};
+		A9D692422C53A833008CA4A1 /* Profile-gdvip */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-gdvip";
+		};
+		A9D692432C53A833008CA4A1 /* Profile-leyou */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-leyou";
+		};
+		A9D692442C53A833008CA4A1 /* Profile-jsgj */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-jsgj";
+		};
+		A9D692452C53A833008CA4A1 /* Profile-shouxin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-shouxin";
+		};
+		A9D692462C53A833008CA4A1 /* Profile-aomen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-aomen";
+		};
+		A9D692502C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-longmen";
+		};
+		A9D692512C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 85T97ATLCB;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D692522C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGames.RunnerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
+			};
+			name = "Debug-longmen";
+		};
+		A9D692532C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "boya-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D692542C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "dw-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.dw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D692552C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "aomen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "澳门";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.aomen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D692562C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "shouxin-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "守信";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.shouxin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D692572C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "fuyuan-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "富源";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D692582C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "gdvip-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "广东贵宾会";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.gdvip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D692592C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D6925A2C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "jsgj-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "江山国际";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.jsgj;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D6925B2C53AA72008CA4A1 /* Debug-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-longmen";
+		};
+		A9D6925C2C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-longmen";
+		};
+		A9D6925D2C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 85T97ATLCB;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D6925E2C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGames.RunnerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
+			};
+			name = "Release-longmen";
+		};
+		A9D6925F2C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "boya-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D692602C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "dw-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.dw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D692612C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "aomen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "澳门";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.aomen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D692622C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "shouxin-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "守信";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.shouxin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D692632C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "fuyuan-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "富源";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D692642C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "gdvip-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "广东贵宾会";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.gdvip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D692652C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D692662C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "jsgj-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "江山国际";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.jsgj;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D692672C53AA84008CA4A1 /* Release-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-longmen";
+		};
+		A9D692682C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Profile-longmen";
+		};
+		A9D692692C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 85T97ATLCB;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
+		A9D6926A2C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soushin.leisure.leisureGames.RunnerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
+			};
+			name = "Profile-longmen";
+		};
+		A9D6926B2C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "boya-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "博雅娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.boya;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
+		A9D6926C2C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "dw-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DW国际站";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.dw;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
+		A9D6926D2C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "aomen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "澳门";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.aomen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
+		A9D6926E2C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "shouxin-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "守信";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.shouxin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
+		A9D6926F2C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "fuyuan-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "富源";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.fuyuan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
+		A9D692702C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "gdvip-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "广东贵宾会";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.gdvip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
+		A9D692712C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "leyou-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "乐游娱乐城";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.leyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
+		A9D692722C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "jsgj-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "江山国际";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.jsgj;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
+		A9D692732C53AA8E008CA4A1 /* Profile-longmen */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1.0.5;
+				DEVELOPMENT_TEAM = 4TBAQ9C579;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = "longmen-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "龍门娱乐";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw.pro.longmen;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-longmen";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -10316,6 +12251,7 @@
 				A9C04F552C22D2E8001B4F55 /* Debug-gdvip */,
 				A99C8DF22C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA902C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692522C53AA72008CA4A1 /* Debug-longmen */,
 				A93F16682C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16602C19DB8200DF6EFE /* Debug-aomen */,
 				331C8089294A63A400263BE5 /* Release */,
@@ -10325,6 +12261,7 @@
 				A9C04F5E2C22D2F6001B4F55 /* Release-gdvip */,
 				A99C8DE82C36C4E900F94BF9 /* Release-leyou */,
 				A95EAA9B2C47A6B5004F7C2B /* Release-jsgj */,
+				A9D6925E2C53AA84008CA4A1 /* Release-longmen */,
 				A93F16802C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F16782C19DBA500DF6EFE /* Release-aomen */,
 				331C808A294A63A400263BE5 /* Profile */,
@@ -10334,6 +12271,7 @@
 				A9C04F672C22D305001B4F55 /* Profile-gdvip */,
 				A99C8DFC2C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAA62C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D6926A2C53AA8E008CA4A1 /* Profile-longmen */,
 				A93F16982C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16902C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -10350,6 +12288,7 @@
 				A9C04F532C22D2E8001B4F55 /* Debug-gdvip */,
 				A99C8DF02C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA8E2C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692502C53AA72008CA4A1 /* Debug-longmen */,
 				A93F16662C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F165E2C19DB8200DF6EFE /* Debug-aomen */,
 				97C147041CF9000F007C117D /* Release */,
@@ -10359,6 +12298,7 @@
 				A9C04F5C2C22D2F6001B4F55 /* Release-gdvip */,
 				A99C8DE62C36C4E900F94BF9 /* Release-leyou */,
 				A95EAA992C47A6B5004F7C2B /* Release-jsgj */,
+				A9D6925C2C53AA84008CA4A1 /* Release-longmen */,
 				A93F167E2C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F16762C19DBA500DF6EFE /* Release-aomen */,
 				249021D3217E4FDB00AE95B9 /* Profile */,
@@ -10368,6 +12308,7 @@
 				A9C04F652C22D305001B4F55 /* Profile-gdvip */,
 				A99C8DFA2C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAA42C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D692682C53AA8E008CA4A1 /* Profile-longmen */,
 				A93F16962C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F168E2C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -10384,6 +12325,7 @@
 				A9C04F542C22D2E8001B4F55 /* Debug-gdvip */,
 				A99C8DF12C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA8F2C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692512C53AA72008CA4A1 /* Debug-longmen */,
 				A93F16672C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F165F2C19DB8200DF6EFE /* Debug-aomen */,
 				97C147071CF9000F007C117D /* Release */,
@@ -10393,6 +12335,7 @@
 				A9C04F5D2C22D2F6001B4F55 /* Release-gdvip */,
 				A99C8DE72C36C4E900F94BF9 /* Release-leyou */,
 				A95EAA9A2C47A6B5004F7C2B /* Release-jsgj */,
+				A9D6925D2C53AA84008CA4A1 /* Release-longmen */,
 				A93F167F2C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F16772C19DBA500DF6EFE /* Release-aomen */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
@@ -10402,6 +12345,7 @@
 				A9C04F662C22D305001B4F55 /* Profile-gdvip */,
 				A99C8DFB2C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAA52C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D692692C53AA8E008CA4A1 /* Profile-longmen */,
 				A93F16972C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F168F2C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -10418,6 +12362,7 @@
 				A9C04F582C22D2E8001B4F55 /* Debug-gdvip */,
 				A99C8DF52C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA932C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692552C53AA72008CA4A1 /* Debug-longmen */,
 				A93F166B2C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16632C19DB8200DF6EFE /* Debug-aomen */,
 				A93F16072C19D49000DF6EFE /* Release */,
@@ -10427,6 +12372,7 @@
 				A9C04F612C22D2F6001B4F55 /* Release-gdvip */,
 				A99C8DEB2C36C4E900F94BF9 /* Release-leyou */,
 				A95EAA9E2C47A6B5004F7C2B /* Release-jsgj */,
+				A9D692612C53AA84008CA4A1 /* Release-longmen */,
 				A93F16832C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F167B2C19DBA500DF6EFE /* Release-aomen */,
 				A93F160A2C19D49000DF6EFE /* Profile */,
@@ -10436,6 +12382,7 @@
 				A9C04F6A2C22D305001B4F55 /* Profile-gdvip */,
 				A99C8DFF2C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAA92C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D6926D2C53AA8E008CA4A1 /* Profile-longmen */,
 				A93F169B2C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16932C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -10452,6 +12399,7 @@
 				A9C04F592C22D2E8001B4F55 /* Debug-gdvip */,
 				A99C8DF62C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA942C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692562C53AA72008CA4A1 /* Debug-longmen */,
 				A93F166C2C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16642C19DB8200DF6EFE /* Debug-aomen */,
 				A93F16242C19D54B00DF6EFE /* Release */,
@@ -10461,6 +12409,7 @@
 				A9C04F622C22D2F6001B4F55 /* Release-gdvip */,
 				A99C8DEC2C36C4E900F94BF9 /* Release-leyou */,
 				A95EAA9F2C47A6B5004F7C2B /* Release-jsgj */,
+				A9D692622C53AA84008CA4A1 /* Release-longmen */,
 				A93F16842C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F167C2C19DBA500DF6EFE /* Release-aomen */,
 				A93F16272C19D54B00DF6EFE /* Profile */,
@@ -10470,6 +12419,7 @@
 				A9C04F6B2C22D305001B4F55 /* Profile-gdvip */,
 				A99C8E002C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAAA2C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D6926E2C53AA8E008CA4A1 /* Profile-longmen */,
 				A93F169C2C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16942C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -10486,6 +12436,7 @@
 				A9C04F5A2C22D2E8001B4F55 /* Debug-gdvip */,
 				A99C8DF72C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA952C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692572C53AA72008CA4A1 /* Debug-longmen */,
 				A93F166D2C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16652C19DB8200DF6EFE /* Debug-aomen */,
 				A93F16412C19D58200DF6EFE /* Release */,
@@ -10495,6 +12446,7 @@
 				A9C04F632C22D2F6001B4F55 /* Release-gdvip */,
 				A99C8DED2C36C4E900F94BF9 /* Release-leyou */,
 				A95EAAA02C47A6B5004F7C2B /* Release-jsgj */,
+				A9D692632C53AA84008CA4A1 /* Release-longmen */,
 				A93F16852C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F167D2C19DBA500DF6EFE /* Release-aomen */,
 				A93F16442C19D58200DF6EFE /* Profile */,
@@ -10504,6 +12456,7 @@
 				A9C04F6C2C22D305001B4F55 /* Profile-gdvip */,
 				A99C8E012C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAAB2C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D6926F2C53AA8E008CA4A1 /* Profile-longmen */,
 				A93F169D2C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16952C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -10520,6 +12473,7 @@
 				A95EAA712C47A31B004F7C2B /* Debug-gdvip */,
 				A95EAA722C47A31B004F7C2B /* Debug-leyou */,
 				A95EAA982C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D6925A2C53AA72008CA4A1 /* Debug-longmen */,
 				A95EAA732C47A31B004F7C2B /* Debug-shouxin */,
 				A95EAA742C47A31B004F7C2B /* Debug-aomen */,
 				A95EAA752C47A31B004F7C2B /* Release */,
@@ -10529,6 +12483,7 @@
 				A95EAA792C47A31B004F7C2B /* Release-gdvip */,
 				A95EAA7A2C47A31B004F7C2B /* Release-leyou */,
 				A95EAAA32C47A6B5004F7C2B /* Release-jsgj */,
+				A9D692662C53AA84008CA4A1 /* Release-longmen */,
 				A95EAA7B2C47A31B004F7C2B /* Release-shouxin */,
 				A95EAA7C2C47A31B004F7C2B /* Release-aomen */,
 				A95EAA7D2C47A31B004F7C2B /* Profile */,
@@ -10538,6 +12493,7 @@
 				A95EAA812C47A31B004F7C2B /* Profile-gdvip */,
 				A95EAA822C47A31B004F7C2B /* Profile-leyou */,
 				A95EAAAE2C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D692722C53AA8E008CA4A1 /* Profile-longmen */,
 				A95EAA832C47A31B004F7C2B /* Profile-shouxin */,
 				A95EAA842C47A31B004F7C2B /* Profile-aomen */,
 			);
@@ -10554,6 +12510,7 @@
 				A99C8DCB2C36C21200F94BF9 /* Debug-gdvip */,
 				A99C8DF92C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA972C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692592C53AA72008CA4A1 /* Debug-longmen */,
 				A99C8DCC2C36C21200F94BF9 /* Debug-shouxin */,
 				A99C8DCD2C36C21200F94BF9 /* Debug-aomen */,
 				A99C8DCE2C36C21200F94BF9 /* Release */,
@@ -10563,6 +12520,7 @@
 				A99C8DD22C36C21200F94BF9 /* Release-gdvip */,
 				A99C8DEF2C36C4E900F94BF9 /* Release-leyou */,
 				A95EAAA22C47A6B5004F7C2B /* Release-jsgj */,
+				A9D692652C53AA84008CA4A1 /* Release-longmen */,
 				A99C8DD32C36C21200F94BF9 /* Release-shouxin */,
 				A99C8DD42C36C21200F94BF9 /* Release-aomen */,
 				A99C8DD52C36C21200F94BF9 /* Profile */,
@@ -10572,6 +12530,7 @@
 				A99C8DD92C36C21200F94BF9 /* Profile-gdvip */,
 				A99C8E032C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAAD2C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D692712C53AA8E008CA4A1 /* Profile-longmen */,
 				A99C8DDA2C36C21200F94BF9 /* Profile-shouxin */,
 				A99C8DDB2C36C21200F94BF9 /* Profile-aomen */,
 			);
@@ -10588,6 +12547,7 @@
 				A9C04F5B2C22D2E8001B4F55 /* Debug-gdvip */,
 				A99C8DF82C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA962C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692582C53AA72008CA4A1 /* Debug-longmen */,
 				A9C04F3D2C22CFBD001B4F55 /* Debug-shouxin */,
 				A9C04F3E2C22CFBD001B4F55 /* Debug-aomen */,
 				A9C04F3F2C22CFBD001B4F55 /* Release */,
@@ -10597,6 +12557,7 @@
 				A9C04F642C22D2F6001B4F55 /* Release-gdvip */,
 				A99C8DEE2C36C4E900F94BF9 /* Release-leyou */,
 				A95EAAA12C47A6B5004F7C2B /* Release-jsgj */,
+				A9D692642C53AA84008CA4A1 /* Release-longmen */,
 				A9C04F432C22CFBD001B4F55 /* Release-shouxin */,
 				A9C04F442C22CFBD001B4F55 /* Release-aomen */,
 				A9C04F452C22CFBD001B4F55 /* Profile */,
@@ -10606,6 +12567,7 @@
 				A9C04F6D2C22D305001B4F55 /* Profile-gdvip */,
 				A99C8E022C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAAC2C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D692702C53AA8E008CA4A1 /* Profile-longmen */,
 				A9C04F492C22CFBD001B4F55 /* Profile-shouxin */,
 				A9C04F4A2C22CFBD001B4F55 /* Profile-aomen */,
 			);
@@ -10622,6 +12584,7 @@
 				A9C04F562C22D2E8001B4F55 /* Debug-gdvip */,
 				A99C8DF32C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA912C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692532C53AA72008CA4A1 /* Debug-longmen */,
 				A93F16692C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16612C19DB8200DF6EFE /* Debug-aomen */,
 				A9CD3FBD2BCB686700F9D4E8 /* Release */,
@@ -10631,6 +12594,7 @@
 				A9C04F5F2C22D2F6001B4F55 /* Release-gdvip */,
 				A99C8DE92C36C4E900F94BF9 /* Release-leyou */,
 				A95EAA9C2C47A6B5004F7C2B /* Release-jsgj */,
+				A9D6925F2C53AA84008CA4A1 /* Release-longmen */,
 				A93F16812C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F16792C19DBA500DF6EFE /* Release-aomen */,
 				A9CD3FBE2BCB686700F9D4E8 /* Profile */,
@@ -10640,6 +12604,7 @@
 				A9C04F682C22D305001B4F55 /* Profile-gdvip */,
 				A99C8DFD2C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAA72C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D6926B2C53AA8E008CA4A1 /* Profile-longmen */,
 				A93F16992C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16912C19DBBF00DF6EFE /* Profile-aomen */,
 			);
@@ -10656,6 +12621,7 @@
 				A9C04F572C22D2E8001B4F55 /* Debug-gdvip */,
 				A99C8DF42C36C4F700F94BF9 /* Debug-leyou */,
 				A95EAA922C47A6A5004F7C2B /* Debug-jsgj */,
+				A9D692542C53AA72008CA4A1 /* Debug-longmen */,
 				A93F166A2C19DB9300DF6EFE /* Debug-shouxin */,
 				A93F16622C19DB8200DF6EFE /* Debug-aomen */,
 				A9CD3FE02BCB6FF500F9D4E8 /* Release */,
@@ -10665,6 +12631,7 @@
 				A9C04F602C22D2F6001B4F55 /* Release-gdvip */,
 				A99C8DEA2C36C4E900F94BF9 /* Release-leyou */,
 				A95EAA9D2C47A6B5004F7C2B /* Release-jsgj */,
+				A9D692602C53AA84008CA4A1 /* Release-longmen */,
 				A93F16822C19DBAE00DF6EFE /* Release-shouxin */,
 				A93F167A2C19DBA500DF6EFE /* Release-aomen */,
 				A9CD3FE12BCB6FF500F9D4E8 /* Profile */,
@@ -10674,8 +12641,46 @@
 				A9C04F692C22D305001B4F55 /* Profile-gdvip */,
 				A99C8DFE2C36C50300F94BF9 /* Profile-leyou */,
 				A95EAAA82C47A6C2004F7C2B /* Profile-jsgj */,
+				A9D6926C2C53AA8E008CA4A1 /* Profile-longmen */,
 				A93F169A2C19DBC700DF6EFE /* Profile-shouxin */,
 				A93F16922C19DBBF00DF6EFE /* Profile-aomen */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9D6922B2C53A833008CA4A1 /* Build configuration list for PBXNativeTarget "longmen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9D6922C2C53A833008CA4A1 /* Debug */,
+				A9D6922D2C53A833008CA4A1 /* Debug-dw */,
+				A9D6922E2C53A833008CA4A1 /* Debug-boya */,
+				A9D6922F2C53A833008CA4A1 /* Debug-fuyuan */,
+				A9D692302C53A833008CA4A1 /* Debug-gdvip */,
+				A9D692312C53A833008CA4A1 /* Debug-leyou */,
+				A9D692322C53A833008CA4A1 /* Debug-jsgj */,
+				A9D6925B2C53AA72008CA4A1 /* Debug-longmen */,
+				A9D692332C53A833008CA4A1 /* Debug-shouxin */,
+				A9D692342C53A833008CA4A1 /* Debug-aomen */,
+				A9D692352C53A833008CA4A1 /* Release */,
+				A9D692362C53A833008CA4A1 /* Release-dw */,
+				A9D692372C53A833008CA4A1 /* Release-boya */,
+				A9D692382C53A833008CA4A1 /* Release-fuyuan */,
+				A9D692392C53A833008CA4A1 /* Release-gdvip */,
+				A9D6923A2C53A833008CA4A1 /* Release-leyou */,
+				A9D6923B2C53A833008CA4A1 /* Release-jsgj */,
+				A9D692672C53AA84008CA4A1 /* Release-longmen */,
+				A9D6923C2C53A833008CA4A1 /* Release-shouxin */,
+				A9D6923D2C53A833008CA4A1 /* Release-aomen */,
+				A9D6923E2C53A833008CA4A1 /* Profile */,
+				A9D6923F2C53A833008CA4A1 /* Profile-dw */,
+				A9D692402C53A833008CA4A1 /* Profile-boya */,
+				A9D692412C53A833008CA4A1 /* Profile-fuyuan */,
+				A9D692422C53A833008CA4A1 /* Profile-gdvip */,
+				A9D692432C53A833008CA4A1 /* Profile-leyou */,
+				A9D692442C53A833008CA4A1 /* Profile-jsgj */,
+				A9D692732C53AA8E008CA4A1 /* Profile-longmen */,
+				A9D692452C53A833008CA4A1 /* Profile-shouxin */,
+				A9D692462C53A833008CA4A1 /* Profile-aomen */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
