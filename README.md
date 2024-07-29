@@ -65,6 +65,7 @@ flutter build apk --flavor jsgj --dart-define=CHANNEL=jsgj
 
 flutter build apk --flavor longmen --dart-define=CHANNEL=longmen
 
+flutter build apk --flavor jbp --dart-define=CHANNEL=jbp
 
 
 https://112.74.43.160:5564                         #国内IP线路1
@@ -79,24 +80,26 @@ wss://9011m2rlzj.njc2n2m5.com:443/?language=zh     #自有独享加速
 wss://m2uxzd888888.njc2n2m5.com:443/?language=zh   #CDN线路
 wss://oti4mw999999.njc2n2m5.com:443/?language=zh
 
-Roman, [Jul 25, 2024 at 09:38:35]:
-网站：9011  龍门娱乐  （LONGMEN CASINO）
-主题色：PC黑色背景主题  手机端默认版本
+网站：9012  聚寳盆娛樂    （JUBAOPEN CASINO）
+主题色：PC白色背景蓝色主题   手机端默认版本
 语言：中英文
 手机默认区号：+86
 币种：CNY+USDT
 法币-USDT互转：开启
 站点类型：A网
 
-#站点ID: 9011, 网站名称：龍門， 唯一包名：com.dw.pro.longmen, 包名: longmen.apk, longmen.ipa
+#站点ID: 9012, 网站名称：聚寳盆， 唯一包名：com.dw.pro.jbp, 包名: jbp.apk, jbp.ipa
 #默认线路：
 https://112.74.43.160:5564
 wss://112.74.43.160:5564/
 
 #线路文件
-line_longmen.json
+line_jbp.json
 
 #版本检测文件
-check_longmen.json
+check_jbp.json
+
+
+
 
 

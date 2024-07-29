@@ -767,6 +767,7 @@ class Intr extends Translations{
   String get hyld_leyou => 'hyld_leyou'.tr;
   String get hyld_jsgj => 'hyld_jsgj'.tr;
   String get hyld_longmen => 'hyld_longmen'.tr;
+  String get hyld_jbp => 'hyld_jbp'.tr;
 
 
   String get guojizhan2023_shouxin => '2023guojizhan_shouxin'.tr;
@@ -776,6 +777,7 @@ class Intr extends Translations{
   String get guojizhan2023_leyou => '2023guojizhan_leyou'.tr;
   String get guojizhan2023_jsgj => '2023guojizhan_jsgj'.tr;
   String get guojizhan2023_longmen => '2023guojizhan_longmen'.tr;
+  String get guojizhan2023_jbp => '2023guojizhan_jbp'.tr;
 
 
 

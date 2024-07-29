@@ -51,6 +51,7 @@ android {
         leyou.res.srcDirs 'src/main/res-leyou'
         jsgj.res.srcDirs 'src/main/res-jsgj'
         longmen.res.srcDirs 'src/main/res-longmen'
+        jbp.res.srcDirs 'src/main/res-jbp'
 
     }
 
@@ -124,6 +125,12 @@ android {
             keyAlias 'apk'
             keyPassword '12345678'
             storeFile file('../longmen.jks')
+            storePassword '12345678'
+        }
+        jbp {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../jbp.jks')
             storePassword '12345678'
         }
     }
@@ -300,6 +307,23 @@ android {
                     JPUSH_CHANNEL:"developer-default",
                     flavors_name: "龍门娱乐",
                     apk_name: "LONGMEN CASINO",
+            ]
+        }
+        jbp{
+            applicationId "com.dw.pro.jbp"
+            namespace "com.dw.pro.jbp"
+            versionCode 5
+            versionName "1.0.5"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+            signingConfig signingConfigs.aomen
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "聚寳盆娛樂",
+                    apk_name: "JUBAOPEN CASINO",
             ]
         }
     }

@@ -407,6 +407,7 @@ class StateEndsDrawerView extends State<EndsDrawerView> {
                 fontSize: 20.sp,
                 color: ColorX.text0917(),
                 fontWeight: FontWeight.w600),
+            textAlign: TextAlign.center,
           ),
           Text(
             Intr().qqzlxd,

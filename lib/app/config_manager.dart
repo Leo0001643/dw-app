@@ -20,6 +20,7 @@ class ConfigManager {
   static const channel_leyou = "leyou";
   static const channel_jsgj = "jsgj";
   static const channel_longmen = "longmen";
+  static const channel_jbp = "jbp";
 
 
   static String siteid(){
@@ -42,6 +43,8 @@ class ConfigManager {
         return "9010";
       case channel_longmen:
         return "9011";
+      case channel_jbp:
+        return "9012";
       default:
         return "9000";
     }
@@ -67,6 +70,8 @@ class ConfigManager {
         return "https://112.74.43.160:5564/";
       case channel_longmen:
         return "https://112.74.43.160:5564/";
+      case channel_jbp:
+        return "https://112.74.43.160:5564/";
       default:
         return "https://9000vlmdm4.kj99883.com/";
     }
@@ -91,6 +96,8 @@ class ConfigManager {
       case channel_jsgj:
         return "wss://112.74.43.160:5574/";
       case channel_longmen:
+        return "wss://112.74.43.160:5564/";
+      case channel_jbp:
         return "wss://112.74.43.160:5564/";
       default:
         return "wss://9000ywfjn2.uy4ayov.com/";
@@ -144,6 +151,8 @@ class ConfigManager {
         return Intr().hyld_jsgj;
       case channel_longmen:
         return Intr().hyld_longmen;
+      case channel_jbp:
+        return Intr().hyld_jbp;
       default:
         return Intr().hyld_dw;
     }
@@ -168,6 +177,8 @@ class ConfigManager {
         return Intr().guojizhan2023_jsgj;
       case channel_longmen:
         return Intr().guojizhan2023_longmen;
+      case channel_jbp:
+        return Intr().guojizhan2023_jbp;
       default:
         return Intr().guojizhan2023_dw;
     }
@@ -194,6 +205,8 @@ class ConfigManager {
         return AppData.localeIndex() == 0 ? ImageX.ic_jsgj_home :ImageX.ic_jsgj_home_en;
       case channel_longmen:
         return AppData.localeIndex() == 0 ? ImageX.ic_longmen_home :ImageX.ic_longmen_home_en;
+      case channel_jbp:
+        return AppData.localeIndex() == 0 ? ImageX.ic_jbp_home :ImageX.ic_jbp_home_en;
       default:
         return AppData.localeIndex() == 0 ? ImageX.ic_dw_home : ImageX.ic_dw_home_en;
       }
@@ -220,6 +233,8 @@ class ConfigManager {
         return "jsgj";
       case channel_longmen:
         return "longmen";
+      case channel_jbp:
+        return "jbp";
       default:
         return "gjz";
     }
@@ -246,6 +261,8 @@ class ConfigManager {
         return "line_jsgj.json";
       case channel_longmen:
         return "line_longmen.json";
+      case channel_jbp:
+        return "line_jbp.json";
       default:
         return "line_gjz.json";
     }
@@ -273,6 +290,8 @@ class ConfigManager {
         return ImageX.jsgj_bg_init;
       case channel_longmen:
         return ImageX.longmen_bg_init;
+      case channel_jbp:
+        return ImageX.jbp_bg_init;
       default:
         return ImageX.dw_bg_init;
     }
@@ -281,6 +300,6 @@ class ConfigManager {
 }
 
 
-///目前支持 dw(9000) boya(9003) fuyuan(9005) shouxin(9006) aomen(9007) gdvip(9008) leyou(9009) jsgj(9010) longmen(9011)
-String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'longmen');
+///目前支持 dw(9000) boya(9003) fuyuan(9005) shouxin(9006) aomen(9007) gdvip(9008) leyou(9009) jsgj(9010) longmen(9011) jbp(9012)
+String channelName = const String.fromEnvironment('CHANNEL', defaultValue: 'jbp');
 
