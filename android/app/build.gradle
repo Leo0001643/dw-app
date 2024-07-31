@@ -52,6 +52,7 @@ android {
         jsgj.res.srcDirs 'src/main/res-jsgj'
         longmen.res.srcDirs 'src/main/res-longmen'
         jbp.res.srcDirs 'src/main/res-jbp'
+        yygj.res.srcDirs 'src/main/res-yygj'
 
     }
 
@@ -131,6 +132,12 @@ android {
             keyAlias 'apk'
             keyPassword '12345678'
             storeFile file('../jbp.jks')
+            storePassword '12345678'
+        }
+        yygj {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../yygj.jks')
             storePassword '12345678'
         }
     }
@@ -324,6 +331,23 @@ android {
                     JPUSH_CHANNEL:"developer-default",
                     flavors_name: "聚寳盆娛樂",
                     apk_name: "JUBAOPEN CASINO",
+            ]
+        }
+        yygj{
+            applicationId "com.dw.pro.yygj"
+            namespace "com.dw.pro.yygj"
+            versionCode 5
+            versionName "1.0.5"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+            signingConfig signingConfigs.aomen
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "优赢国际",
+                    apk_name: "YOUYING CASINO",
             ]
         }
     }
