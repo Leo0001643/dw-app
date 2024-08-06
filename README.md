@@ -83,15 +83,13 @@ line_yygj.json
 #版本检测文件
 check_yygj.json
 
-
-⽹站：9013 优赢国际 （YOUYING CASINO）
-主题⾊：PC版本1 黑色主题 ⼿机端模板1
+⽹站：9015 至信国际 （International Zhixin）
+主题⾊：PC版本2 蓝色主题     ⼿机端模板1
 语⾔：中英⽂
 ⼿机默认区号：+86
 币种：CNY+USDT
 法币-USDT互转：开启
 站点类型：A⽹
-
 
 
 
