@@ -53,6 +53,7 @@ android {
         longmen.res.srcDirs 'src/main/res-longmen'
         jbp.res.srcDirs 'src/main/res-jbp'
         yygj.res.srcDirs 'src/main/res-yygj'
+        zxgj.res.srcDirs 'src/main/res-zxgj'
 
     }
 
@@ -138,6 +139,12 @@ android {
             keyAlias 'apk'
             keyPassword '12345678'
             storeFile file('../yygj.jks')
+            storePassword '12345678'
+        }
+        zxgj {
+            keyAlias 'apk'
+            keyPassword '12345678'
+            storeFile file('../zxgj.jks')
             storePassword '12345678'
         }
     }
@@ -348,6 +355,23 @@ android {
                     JPUSH_CHANNEL:"developer-default",
                     flavors_name: "优赢国际",
                     apk_name: "YOUYING CASINO",
+            ]
+        }
+        zxgj{
+            applicationId "com.dw.pro.zxgj"
+            namespace "com.dw.pro.zxgj"
+            versionCode 5
+            versionName "1.0.5"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+            signingConfig signingConfigs.aomen
+            manifestPlaceholders = [
+                    package_name: applicationId,
+                    JPUSH_PKGNAME: applicationId,
+                    JPUSH_APPKEY: "appkey",//NOTE: JPush上注册的包名对应的 Appkey.
+                    JPUSH_CHANNEL:"developer-default",
+                    flavors_name: "至信国际",
+                    apk_name: "International Zhixin",
             ]
         }
     }

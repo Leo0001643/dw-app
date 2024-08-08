@@ -69,6 +69,7 @@ flutter build apk --flavor jbp --dart-define=CHANNEL=jbp
 
 flutter build apk --flavor yygj --dart-define=CHANNEL=yygj
 
+flutter build apk --flavor zxgj --dart-define=CHANNEL=zxgj
 
 
 
@@ -92,7 +93,16 @@ check_yygj.json
 站点类型：A⽹
 
 
+#站点ID: 9015, 网站名称：至信国际， 唯一包名：com.dw.pro.zxgj, 包名: zxgj.apk, zxgj.ipa
+#默认线路：
+https://112.74.43.160:5564
+wss://112.74.43.160:5564/
 
+#线路文件
+line_zxgj.json
+
+#版本检测文件
+check_zxgj.json
 
 
 
