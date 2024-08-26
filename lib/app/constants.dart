@@ -35,7 +35,10 @@ class Constants {
 
   static String model(){
     var info = AppData.deviceInfo();
-    return "${info.name}_${info.systemName}_${info.systemVersion}";
+    //?!.*@&
+    var ml = "${info.name}_${info.systemName}_${info.systemVersion}";
+    ml = ml.replaceAll("?", "").replaceAll("!", "").replaceAll(".", "").replaceAll("*", "").replaceAll("@", "").replaceAll("&", "");
+    return ml;
   }
 
   static String version(){
