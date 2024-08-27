@@ -30,6 +30,7 @@ class BettingRecordLogic extends GetxController {
     } else {
       params["cur"] = 5;
     }
+
     var beginTime =  DateTime.now().subtract(const Duration(days: 6));
     var endTime = DateTime.now();
     params["beginDate"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
