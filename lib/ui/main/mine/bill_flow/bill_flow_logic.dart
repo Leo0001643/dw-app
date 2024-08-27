@@ -30,7 +30,7 @@ class BillFlowLogic extends GetxController {
     params["cur"] = state.selectIndex == 0 ? 1:5;
     params["page"] = state.page;
     params["pageSize"] = Constants.pageSize;
-    var now = DateTime.now();
+    var now = DateTime.now().subtract(const Duration(hours: 12));
 
     ///筛选时间
     switch(state.selectTime.value.id){
