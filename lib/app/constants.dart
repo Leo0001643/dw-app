@@ -37,7 +37,7 @@ class Constants {
     var info = AppData.deviceInfo();
     //?!.*@&
     var ml = "${info.name}_${info.systemName}_${info.systemVersion}";
-    ml = ml.replaceAll("?", "").replaceAll("!", "").replaceAll(".", "").replaceAll("*", "").replaceAll("@", "").replaceAll("&", "");
+    ml = ml.replaceAll(RegExp(r'[?!.*@&]'), "");
     return ml;
   }
 

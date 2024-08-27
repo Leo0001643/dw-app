@@ -10,6 +10,7 @@ import 'package:leisure_games/app/controller/avatar_controller.dart';
 import 'package:leisure_games/app/controller/wallet_controller.dart';
 import 'package:leisure_games/app/global.dart';
 import 'package:leisure_games/app/intl/intr.dart';
+import 'package:leisure_games/app/logger.dart';
 import 'package:leisure_games/app/network/http_service.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/data_utils.dart';
@@ -96,7 +97,6 @@ class HomeLogic extends GetxController {
   void clickMenu(BuildContext context, int index) {
     switch (index) {
       case 0:
-
         ///充值
         if (AppData.isLogin()) {
           eventBus.fire(ChangeMainPageEvent(2));
