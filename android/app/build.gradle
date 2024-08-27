@@ -175,8 +175,8 @@ android {
         dw{
             applicationId "com.dw.pro.dw"
             namespace "com.dw.pro.dw"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.dw
@@ -192,8 +192,8 @@ android {
         boya{
             applicationId "com.dw.pro.boya"
             namespace "com.dw.pro.boya"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             signingConfig signingConfigs.boya
             manifestPlaceholders = [
                     package_name: applicationId,
@@ -207,8 +207,8 @@ android {
         fuyuan{
             applicationId "com.dw.pro.fuyuan"
             namespace "com.dw.pro.fuyuan"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -224,8 +224,8 @@ android {
         shouxin{
             applicationId "com.dw.pro.shouxin"
             namespace "com.dw.pro.shouxin"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.shouxin
@@ -241,8 +241,8 @@ android {
         aomen{
             applicationId "com.dw.pro.aomen"
             namespace "com.dw.pro.aomen"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -258,8 +258,8 @@ android {
         gdvip{
             applicationId "com.dw.pro.gdvip"
             namespace "com.dw.pro.gdvip"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -275,8 +275,8 @@ android {
         leyou{
             applicationId "com.dw.pro.leyou"
             namespace "com.dw.pro.leyou"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -292,8 +292,8 @@ android {
         jsgj{
             applicationId "com.dw.pro.jsgj"
             namespace "com.dw.pro.jsgj"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -309,8 +309,8 @@ android {
         longmen{
             applicationId "com.dw.pro.longmen"
             namespace "com.dw.pro.longmen"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -326,8 +326,8 @@ android {
         jbp{
             applicationId "com.dw.pro.jbp"
             namespace "com.dw.pro.jbp"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -343,8 +343,8 @@ android {
         yygj{
             applicationId "com.dw.pro.yygj"
             namespace "com.dw.pro.yygj"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
@@ -360,8 +360,8 @@ android {
         zxgj{
             applicationId "com.dw.pro.zxgj"
             namespace "com.dw.pro.zxgj"
-            versionCode 5
-            versionName "1.0.5"
+            versionCode 6
+            versionName "1.0.6"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             signingConfig signingConfigs.aomen
