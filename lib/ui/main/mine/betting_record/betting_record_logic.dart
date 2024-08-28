@@ -30,18 +30,17 @@ class BettingRecordLogic extends GetxController {
     } else {
       params["cur"] = 5;
     }
+    var now = DateTime.now().subtract(const Duration(hours: 12));
 
-    var beginTime =  DateTime.now().subtract(const Duration(days: 6));
-    var endTime = DateTime.now();
-    params["beginDate"] = DataUtils.format12Hour(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
-    params["endDate"] = DataUtils.format12Hour(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
+    var beginTime =  now.subtract(const Duration(days: 6));
+    var endTime = now;
+    params["beginDate"] = DataUtils.format24Hour(beginTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
+    params["endDate"] = DataUtils.format24Hour(endTime.millisecondsSinceEpoch,format: DateFormats.y_mo_d);
 
     HttpService.getRecordGroupDay(params).then((value) {
       state.record.value = value;
       state.record.refresh();
     });
-
-
   }
 
 
