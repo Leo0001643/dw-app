@@ -646,11 +646,17 @@ class DataUtils{
     final uri = Uri.parse(apiurl); // 替换为你要测试的接口地址
     final stopwatch = Stopwatch();
     stopwatch.start(); // 启动计时器
-    final response = await http.get(uri); // 发起接口请求
-    stopwatch.stop(); // 停止计时器
-    final duration = stopwatch.elapsed; // 获取经过的时间
-    loggerArray(["访问延时，状态",apiurl,duration.inMilliseconds,response.statusCode]);
-    return Future.value(duration.inMilliseconds);
+    try{
+      final response = await http.Client().get(uri).timeout(const Duration(seconds: 5)); // 发起接口请求
+      stopwatch.stop(); // 停止计时器
+      final duration = stopwatch.elapsed; // 获取经过的时间
+      loggerArray(["访问延时，状态",apiurl,duration.inMilliseconds,response.statusCode]);
+      return Future.value(duration.inMilliseconds);
+    }catch(e){
+      stopwatch.stop(); // 停止计时器
+      final duration = stopwatch.elapsed; // 获取经过的时间
+      return Future.value(duration.inMilliseconds);
+    }
   }
 
 
