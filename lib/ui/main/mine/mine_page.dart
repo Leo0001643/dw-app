@@ -30,7 +30,7 @@ class StateMinePage extends State<MinePage> with LifecycleAware, LifecycleMixin 
   void onLifecycleEvent(LifecycleEvent event) {
     loggerArray(["生命周期变化了",event]);
     if(event == LifecycleEvent.active){
-      // logic.loadData();
+      logic.loadData();
     }
   }
 

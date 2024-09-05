@@ -80,7 +80,7 @@ class HomeLogic extends GetxController {
 
   @override
   void onClose() {
-    state.timer?.cancel();
+    // state.timer?.cancel();
     loginStream?.cancel();
     languageStream?.cancel();
     balanceStream?.cancel();
@@ -134,28 +134,32 @@ class HomeLogic extends GetxController {
         }
         break;
       case 6:
-
         ///抢红包
-        if (state.hongbaoVisible.isFalse) {
-          showToast(Intr().huodongweikaiqi);
-          return;
-        }
-        if (AppData.isLogin()) {
-          var path =
+        HttpService.getActStatus().then((value) {
+          var hongbao = value.list?["hongbao"];
+          var offTime = DateTime.now().millisecondsSinceEpoch ~/ 1000 - value.cTime.em();
+          var curTime = DateTime.now().millisecondsSinceEpoch ~/ 1000 - offTime;
+          if (hongbao!=null && curTime > hongbao.startTime.em() && curTime < hongbao.endTime.em()){
+            if (AppData.isLogin()) {
+              var path =
               sprintf("${Constants.frontDomain()}/m/#/Hongbao/%s/%s/%s", [
-            AppData.user()?.oid,
-            AppData.user()?.username,
-            Intr().currentLocale().languageCode
-          ]);
-          // print("抢红包>>地址"+path);
-          Get.toNamed(Routes.html,
-              arguments: HtmlEvent(
-                  data: path,
-                  isHtmlData: false,
-                  pageTitle: Intr().hongbaohuodong));
-        } else {
-          WidgetUtils().goLogin();
-        }
+                AppData.user()?.oid,
+                AppData.user()?.username,
+                Intr().currentLocale().languageCode
+              ]);
+              // print("抢红包>>地址"+path);
+              Get.toNamed(Routes.html,
+                  arguments: HtmlEvent(
+                      data: path,
+                      isHtmlData: false,
+                      pageTitle: Intr().hongbaohuodong));
+            } else {
+              WidgetUtils().goLogin();
+            }
+          } else {
+            showToast(Intr().huodongweikaiqi);
+          }
+        });
         break;
       case 7:
 
@@ -290,46 +294,46 @@ class HomeLogic extends GetxController {
     //   state.timerEntity.refresh();
     // });
 
-    HttpService.getActStatus().then((value) {
-      var hongbao = value.list?["hongbao"];
+    // HttpService.getActStatus().then((value) {
+    //   var hongbao = value.list?["hongbao"];
 
       ///显示红包
-      if (hongbao?.status == 1) {
-        startCountDown(value.cTime.em(), hongbao!);
-        HttpService.getActPic().then((value) {
-          state.act.value = value;
-          state.act.refresh();
-        });
-      }
-    });
+      // if (hongbao?.status == 1) {
+      //   startCountDown(value.cTime.em(), hongbao!);
+      //   HttpService.getActPic().then((value) {
+      //     state.act.value = value;
+      //     state.act.refresh();
+      //   });
+      // }
+    // });
   }
 
   void startCountDown(int ctime, ActStatusList act) {
-    var offTime = DateTime.now().millisecondsSinceEpoch ~/ 1000 - ctime;
-    state.timer?.cancel();
-    state.timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      var curTime = DateTime.now().millisecondsSinceEpoch ~/ 1000 - offTime;
-      if (curTime < act.picStartTime.em() || curTime > act.endTime.em()) {
-        state.hongbaoVisible.value = false;
-      } else if (curTime < act.startTime.em()) {
-        state.act.value.logo?.status = Intr().weikaishi; //未开始
-        state.hongbaoVisible.value = true;
-      } else if (curTime > act.startTime.em() && curTime < act.endTime.em()) {
-        var countTime = act.endTime.em() - curTime;
-        if (countTime > 24 * 60 * 60) {
-          state.act.value.logo?.status = Intr().jinxingzhong; //进行中
-        } else {
-          state.act.value.logo?.status = DataUtils.format12Hour(
-              countTime * 1000,
-              format: "HH:mm:ss"); //进行中
-        }
-        state.act.refresh();
-        state.hongbaoVisible.value = true;
-      } else if (curTime < act.startTime.em()) {
-        state.act.value.logo?.status = Intr().yijieshu; //已结束
-        state.hongbaoVisible.value = true;
-      }
-    });
+    // var offTime = DateTime.now().millisecondsSinceEpoch ~/ 1000 - ctime;
+    // state.timer?.cancel();
+    // state.timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    //   var curTime = DateTime.now().millisecondsSinceEpoch ~/ 1000 - offTime;
+    //   if (curTime < act.picStartTime.em() || curTime > act.endTime.em()) {
+    //     state.hongbaoVisible.value = false;
+    //   } else if (curTime < act.startTime.em()) {
+        // state.act.value.logo?.status = Intr().weikaishi; //未开始
+        // state.hongbaoVisible.value = true;
+      // } else if (curTime > act.startTime.em() && curTime < act.endTime.em()) {
+      //   var countTime = act.endTime.em() - curTime;
+      //   if (countTime > 24 * 60 * 60) {
+          // state.act.value.logo?.status = Intr().jinxingzhong; //进行中
+        // } else {
+          // state.act.value.logo?.status = DataUtils.format12Hour(
+          //     countTime * 1000,
+          //     format: "HH:mm:ss"); //进行中
+        // }
+        // state.act.refresh();
+        // state.hongbaoVisible.value = true;
+      // } else if (curTime < act.startTime.em()) {
+        // state.act.value.logo?.status = Intr().yijieshu; //已结束
+        // state.hongbaoVisible.value = true;
+      // }
+    // });
   }
 
   ///加载用户登录信息

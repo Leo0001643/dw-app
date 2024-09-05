@@ -30,6 +30,11 @@ class DataUtils{
     return DateUtil.formatDateMs(ms,format: format,isUtc: isUtc);
   }
 
+  ///北京时间转美国东部时间 北京时间=美国东部时间+12小时
+  static String formatUTC(int ms,{String format = 'yyyy-MM-dd hh:mm:ss'}){
+    return DateFormat(format).format(DateUtil.getDateTimeByMs(ms).subtract(const Duration(hours: 12)));
+  }
+
   /// get WeekDay.
   /// dateTime
   static String getWeekday(DateTime? dateTime) {

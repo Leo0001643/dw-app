@@ -37,12 +37,12 @@ class HomeState {
   var pc28Lotto = Pc28LottoEntity().obs;
 
   ///活动内容
-  var act = Pic30BackEntity().obs;
+  // var act = Pic30BackEntity().obs;
 
   ///红包是否可见
-  var hongbaoVisible = false.obs;
-  var hongbaoManual = true.obs; //手动关闭
-  Timer? timer;
+  // var hongbaoVisible = false.obs;
+  // var hongbaoManual = true.obs; //手动关闭
+  // Timer? timer;
 
   ///用户信息
   var user = LoginUserEntity().obs;
