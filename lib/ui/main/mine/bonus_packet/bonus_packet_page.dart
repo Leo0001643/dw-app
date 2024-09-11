@@ -166,7 +166,7 @@ class _BonusPacketPageState extends State<BonusPacketPage> {
             flex: 25,
             child: Align(
               alignment: Alignment.center,
-              child: Text(DataUtils.format12Hour(item.endTime.em() * 1000,format: DateFormats.y_mo_d),
+              child: Text(DataUtils.formatUTC(item.endTime.em() * 1000,format: DateFormats.y_mo_d),
                 style: TextStyle(fontSize: 14.sp,color: ColorX.text0d1()),),
             ),
           ),

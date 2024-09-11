@@ -35,6 +35,7 @@ class DataUtils{
     return DateFormat(format).format(DateUtil.getDateTimeByMs(ms).subtract(const Duration(hours: 12)));
   }
 
+
   /// get WeekDay.
   /// dateTime
   static String getWeekday(DateTime? dateTime) {
