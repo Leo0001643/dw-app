@@ -43,7 +43,7 @@ class LoginLogic extends GetxController {
     }
   }
 
-  void clickLogin({dynamic data,String? varCode,String?varCodeId}){
+  void clickLogin({dynamic data,String? varCode,String? varCodeId}){
     if(!state.btnEnable.value){ return; }
     var params = <String,dynamic>{
       "username": state.accountValue,

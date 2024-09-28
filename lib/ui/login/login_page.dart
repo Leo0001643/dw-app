@@ -204,7 +204,7 @@ class _LoginPageState extends State<LoginPage> {
     return Obx(() {
       print(
           "-------->类型  ${(state.varcode.value.status == 1 && state.varcode.value.type == 1)}");
-      if (state.varcode.value.status == 1 && state.varcode.value.type == 1) {
+      if (state.varcode.value.status == 1 && state.varcode.value.type == 1 ) {
         return Container(
           margin: EdgeInsets.symmetric(horizontal: 20.w),
           alignment: Alignment.center,

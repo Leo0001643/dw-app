@@ -8,7 +8,7 @@ export 'package:leisure_games/generated/json/var_code_entity.g.dart';
 @JsonSerializable()
 class VarCodeEntity {
 	int? status;///验证码状态【1:开启,2:关闭】
-	int? type;///验证码类型【0:无验证码,1:图形验证码,2:滑块验证码】
+	int? type;///验证码类型【0:无验证码,1:纯数字图形验证码,2:阿里滑块验证码,3:腾讯滑块验证码,4:数字字母图形验证码】
 	String? varCode;
 	String? varCodeId;
 
@@ -22,4 +22,12 @@ class VarCodeEntity {
 	String toString() {
 		return jsonEncode(this);
 	}
+
+
+	bool isImageVar(){
+		return (status == 1 && type == 1) || (status == 1 && type == 4);
+	}
+
+
+
 }
