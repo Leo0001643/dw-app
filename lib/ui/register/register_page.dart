@@ -641,11 +641,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void _handleClickVerify() async {
     TencentCaptchaConfig config = TencentCaptchaConfig(
+      appId: "189921981",
       enableDarkMode: true,
     );
     await TencentCaptcha.verify(
       config: config,
-      onLoaded: (dynamic data) {},
+      onLoaded: (dynamic data) {
+        loggerArray(['onLoaded', data]);
+      },
       onSuccess: (dynamic data) {
         logic.clickRegister(data: data);
         loggerArray(['onSuccess', data]);
