@@ -9,23 +9,25 @@ def startCmd():
                  "9012": "jbp", "9013": "yygj", "9015": "zxgj"}
 
 
-#     list = ["9000", "9003", "9005", "9006"]
-#     list = ["9007", "9008", "9009", "9010"]
-    list = ["9011", "9012", "9013", "9015"]
-
-#     list = ["9000"]
+#     list = ["9000", "9003", "9005", "9006", "9007", "9008", "9009", "9010", "9011", "9012", "9013", "9015"]
+    list = ["9000", "9003"]
 
 
     for site in list:
+#         print("清理缓存 : " + site)
+#         system = os.system("flutter clean")
+#         print("请求依赖 : " + site)
+#         system = os.system("flutter pub get")
         print("开始打包 : " + site)
-#         flutter build apk --flavor dw --dart-define=CHANNEL=dw
-#         print("将key 从 : " + os.getcwd()+"/"+"app/key/"+site+"/"+"fob.jks" +"    复制到  "+ os.getcwd()+"/"+"fob.jks")
-#         shutil.copyfile(os.getcwd()+"/"+"app/key/"+site+"/"+"fob.jks", os.getcwd()+"/"+"fob.jks")
-#       system = os.system("gradlew " + "clean" )
-        cmd = "flutter build apk --flavor " + key_value[site] + " --dart-define=CHANNEL=" + key_value[site]
+#         cmd = "flutter build apk --flavor " + key_value[site] + " --dart-define=CHANNEL=" + key_value[site]
+        cmd = "flutter build ipa --flavor " + key_value[site] + " --dart-define=CHANNEL=" + key_value[site]
         print(cmd)
         system = os.system(cmd)
         print(system)
 
     # for key in key_value.keys():
 startCmd()
+
+
+
+

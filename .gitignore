@@ -33,3 +33,4 @@ google-services.json
 /.dart_tool/
 /pubspec.lock
 /WEB-assets/
+/package/
