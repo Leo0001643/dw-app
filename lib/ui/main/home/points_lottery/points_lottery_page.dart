@@ -97,9 +97,9 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
                   ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(bottom: 30.h,),
+                      padding: EdgeInsets.only(bottom: 30.h,right: 3.w),
                       child: InkWell(
-                        child: Image.asset(ImageX.drawBtnP(),),
+                        child: Image.asset(ImageX.drawBtnP(),width: 68.w,fit: BoxFit.fill,),
                         onTap: ()=> logic.start(1),
                       ),
                     ),
