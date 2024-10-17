@@ -23,6 +23,7 @@ class PointsLotteryLogic extends GetxController {
     timer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
       state.wheelState.value = !state.wheelState.value;
     });
+    state.wheelController.calcAngle();
     getShakeInfo();
     super.onReady();
   }

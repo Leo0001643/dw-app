@@ -10,7 +10,7 @@ def startCmd():
 
 
 #     list = ["9000", "9003", "9005", "9006", "9007", "9008", "9009", "9010", "9011", "9012", "9013", "9015"]
-    list = ["9000", "9003"]
+    list = ["9000", "9005"]
 
 
     for site in list:
@@ -19,8 +19,8 @@ def startCmd():
 #         print("请求依赖 : " + site)
 #         system = os.system("flutter pub get")
         print("开始打包 : " + site)
-#         cmd = "flutter build apk --flavor " + key_value[site] + " --dart-define=CHANNEL=" + key_value[site]
-        cmd = "flutter build ipa --flavor " + key_value[site] + " --dart-define=CHANNEL=" + key_value[site]
+        cmd = "flutter build apk --flavor " + key_value[site] + " --dart-define=CHANNEL=" + key_value[site]
+#         cmd = "flutter build ipa --flavor " + key_value[site] + " --dart-define=CHANNEL=" + key_value[site]
         print(cmd)
         system = os.system(cmd)
         print(system)
