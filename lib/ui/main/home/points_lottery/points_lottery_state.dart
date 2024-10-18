@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leisure_games/ui/bean/bet_shake_entity.dart';
 import 'package:leisure_games/ui/bean/shake_info_entity.dart';
-import 'package:luckywheel/luckywheel.dart';
+
+import '../../../../app/widget/luckywheel/lucky_wheel_controller.dart';
 
 class PointsLotteryState {
   PointsLotteryState() {

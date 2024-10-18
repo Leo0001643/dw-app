@@ -10,8 +10,9 @@ import 'package:leisure_games/app/res/imagex.dart';
 import 'package:leisure_games/app/routes.dart';
 import 'package:leisure_games/app/utils/widget_utils.dart';
 import 'package:leisure_games/app/widget/drawer_scaffold.dart';
-import 'package:luckywheel/luckywheel.dart';
 
+import '../../../../app/widget/luckywheel/lucky_wheel.dart';
+import '../../../../app/widget/luckywheel/lucky_wheel_controller.dart';
 import 'points_lottery_logic.dart';
 
 ///积分摇奖
@@ -97,7 +98,7 @@ class _PointsLotteryPageState extends State<PointsLotteryPage> with TickerProvid
                   ),
                   Center(
                     child: Padding(
-                      padding: EdgeInsets.only(bottom: 30.h,right: 3.w),
+                      padding: EdgeInsets.only(bottom: 30.h),
                       child: InkWell(
                         child: Image.asset(ImageX.drawBtnP(),width: 68.w,fit: BoxFit.fill,),
                         onTap: ()=> logic.start(1),
